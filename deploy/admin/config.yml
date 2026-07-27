@@ -1,0 +1,60 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/blog"
+public_folder: "/assets/images/blog"
+
+site_url: "https://compoundingjourney.netlify.app"
+display_url: "https://compoundingjourney.netlify.app"
+logo_url: "/icone%20foto%20limpo.png"
+
+publish_mode: editorial_workflow
+show_preview_links: true
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: "blog_en"
+    label: "Blog — English"
+    label_singular: "English article"
+    folder: "content/blog/en"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    fields: &article_fields
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publication date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Category", name: "category", widget: "select", options: ["Money habits", "Investing", "Financial freedom", "Life design"] }
+      - { label: "Featured image", name: "featured_image", widget: "image" }
+      - { label: "Image alt text", name: "image_alt", widget: "string", required: false }
+      - { label: "Summary", name: "summary", widget: "text", hint: "Used on listing pages and in the SEO description." }
+      - { label: "Translation key", name: "translation_key", widget: "string", hint: "Use the same key for all language versions." }
+      - { label: "Author", name: "author", widget: "string", default: "Sandy Bradbury" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog_es"
+    label: "Blog — Español"
+    label_singular: "Artículo en español"
+    folder: "content/blog/es"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    fields: *article_fields
+
+  - name: "blog_pt"
+    label: "Blog — Português"
+    label_singular: "Artigo em português"
+    folder: "content/blog/pt"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    fields: *article_fields

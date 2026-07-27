@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://compoundingjourney.netlify.app/?lang=es</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.netlify.app/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.netlify.app/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.netlify.app/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compoundingjourney.netlify.app/" />
+  </url>
+  <url>
+    <loc>https://compoundingjourney.netlify.app/?lang=en</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.netlify.app/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.netlify.app/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.netlify.app/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compoundingjourney.netlify.app/" />
+  </url>
+  <url>
+    <loc>https://compoundingjourney.netlify.app/?lang=pt</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.netlify.app/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.netlify.app/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.netlify.app/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compoundingjourney.netlify.app/" />
+  </url>
+  <url>
+    <loc>https://compoundingjourney.netlify.app/en/blog/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.netlify.app/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.netlify.app/es/blog/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.netlify.app/pt/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compoundingjourney.netlify.app/en/blog/" />
+  </url>
+  <url>
+    <loc>https://compoundingjourney.netlify.app/es/blog/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.netlify.app/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.netlify.app/es/blog/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.netlify.app/pt/blog/" />
+  </url>
+  <url>
+    <loc>https://compoundingjourney.netlify.app/pt/blog/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.netlify.app/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.netlify.app/es/blog/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.netlify.app/pt/blog/" />
+  </url>
+</urlset>
