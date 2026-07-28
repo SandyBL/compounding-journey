@@ -1,0 +1,50 @@
+[
+  {
+    "language": "en",
+    "slug": "slow-money-system",
+    "title": "The slow money system: a calmer way to build wealth",
+    "date": "2026-07-21",
+    "category": "Money habits",
+    "summary": "A practical weekly rhythm that replaces financial urgency with a few sustainable decisions.",
+    "author": "Sandy Bradbury",
+    "translationKey": "slow-money-system",
+    "searchText": "Speed is not always progress personal finance urgency optimize track opportunity pressure sustainable decisions three accounts income monthly spending irregular costs investing long term freedom weekly review balances transactions unexpected costs future consistency wealth",
+    "translations": {
+      "en": "slow-money-system",
+      "es": "sistema-dinero-lento",
+      "pt": "sistema-dinheiro-lento"
+    }
+  },
+  {
+    "language": "es",
+    "slug": "sistema-dinero-lento",
+    "title": "El sistema de dinero lento: una forma más tranquila de crear patrimonio",
+    "date": "2026-07-21",
+    "category": "Hábitos financieros",
+    "summary": "Un ritmo semanal práctico que sustituye la urgencia financiera por unas pocas decisiones sostenibles.",
+    "author": "Sandy Bradbury",
+    "translationKey": "slow-money-system",
+    "searchText": "velocidad progreso finanzas personales urgencia optimizar controlar oportunidades decisiones sostenibles tres cuentas ingresos gastos mensuales imprevistos inversión libertad largo plazo revisión semanal saldos movimientos constancia patrimonio",
+    "translations": {
+      "en": "slow-money-system",
+      "es": "sistema-dinero-lento",
+      "pt": "sistema-dinheiro-lento"
+    }
+  },
+  {
+    "language": "pt",
+    "slug": "sistema-dinheiro-lento",
+    "title": "O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio",
+    "date": "2026-07-21",
+    "category": "Hábitos financeiros",
+    "summary": "Um ritmo semanal prático que troca a urgência financeira por poucas decisões sustentáveis.",
+    "author": "Sandy Bradbury",
+    "translationKey": "slow-money-system",
+    "searchText": "velocidade progresso finanças pessoais urgência otimizar acompanhar oportunidades decisões sustentáveis três contas renda gastos mensais imprevistos investimento liberdade longo prazo revisão semanal saldos transações consistência patrimônio",
+    "translations": {
+      "en": "slow-money-system",
+      "es": "sistema-dinero-lento",
+      "pt": "sistema-dinheiro-lento"
+    }
+  }
+]

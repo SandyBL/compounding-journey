@@ -2,8 +2,6 @@
 title: "O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio"
 date: "2026-07-21"
 category: "Hábitos financeiros"
-featured_image: "/logo-compounding-journey.png"
-image_alt: "Símbolo da árvore Compounding Journey"
 summary: "Um ritmo semanal prático que troca a urgência financeira por poucas decisões sustentáveis."
 translation_key: "slow-money-system"
 author: "Sandy Bradbury"
