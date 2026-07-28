@@ -2,8 +2,6 @@
 title: "The slow money system: a calmer way to build wealth"
 date: "2026-07-21"
 category: "Money habits"
-featured_image: "/logo-compounding-journey.png"
-image_alt: "Compounding Journey tree mark"
 summary: "A practical weekly rhythm that replaces financial urgency with a small set of repeatable decisions."
 translation_key: "slow-money-system"
 author: "Sandy Bradbury"

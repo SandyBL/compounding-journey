@@ -4,27 +4,27 @@
 
   const copy = {
     en: {
-      reading: 'min read', toc: 'In this article', loading: 'Reading the journal…',
+      reading: 'min read', toc: 'In this article',
       error: 'This article could not be loaded. Check the URL or publish the Markdown file in Decap CMS.',
-      leadEyebrow: 'Free workbook', leadTitle: 'Turn the idea into a weekly practice',
-      leadText: 'Download the personal budget template and build a money rhythm that is clear, calm, and repeatable.',
-      leadButton: 'Get the free template', authorPrefix: 'Written by',
+      journeyEyebrow: 'Continue the Journey', journeyTitle: 'Turn insight into your next clear step.',
+      journeyText: 'Use the practical tools or complete the financial assessment to understand where your journey can go next.',
+      toolsButton: 'Explore the tools', assessmentButton: 'Take the assessment', authorPrefix: 'Written by',
       authorBio: 'Sandy writes about practical money systems, intentional work, and the patient path toward financial freedom.'
     },
     es: {
-      reading: 'min de lectura', toc: 'En este artículo', loading: 'Abriendo el artículo…',
+      reading: 'min de lectura', toc: 'En este artículo',
       error: 'No se pudo cargar este artículo. Comprueba la URL o publica el archivo Markdown en Decap CMS.',
-      leadEyebrow: 'Plantilla gratuita', leadTitle: 'Convierte la idea en una práctica semanal',
-      leadText: 'Descarga la plantilla de presupuesto personal y crea un ritmo financiero claro, tranquilo y sostenible.',
-      leadButton: 'Descargar plantilla', authorPrefix: 'Escrito por',
+      journeyEyebrow: 'Continúa el Viaje', journeyTitle: 'Convierte una idea en tu próximo paso claro.',
+      journeyText: 'Usa las herramientas prácticas o completa la evaluación financiera para saber cómo continuar tu viaje.',
+      toolsButton: 'Ver herramientas', assessmentButton: 'Hacer la evaluación', authorPrefix: 'Escrito por',
       authorBio: 'Sandy escribe sobre sistemas financieros prácticos, trabajo con intención y el camino paciente hacia la libertad financiera.'
     },
     pt: {
-      reading: 'min de leitura', toc: 'Neste artigo', loading: 'Abrindo o artigo…',
+      reading: 'min de leitura', toc: 'Neste artigo',
       error: 'Não foi possível carregar este artigo. Confira a URL ou publique o arquivo Markdown no Decap CMS.',
-      leadEyebrow: 'Planilha gratuita', leadTitle: 'Transforme a ideia em uma prática semanal',
-      leadText: 'Baixe a planilha de orçamento pessoal e crie um ritmo financeiro claro, tranquilo e sustentável.',
-      leadButton: 'Baixar planilha', authorPrefix: 'Escrito por',
+      journeyEyebrow: 'Continue a Jornada', journeyTitle: 'Transforme uma ideia no seu próximo passo claro.',
+      journeyText: 'Use as ferramentas práticas ou complete a avaliação financeira para entender como continuar sua jornada.',
+      toolsButton: 'Ver ferramentas', assessmentButton: 'Fazer a avaliação', authorPrefix: 'Escrito por',
       authorBio: 'Sandy escreve sobre sistemas financeiros práticos, trabalho intencional e o caminho paciente para a liberdade financeira.'
     }
   };
@@ -75,19 +75,14 @@
     });
   }
 
-  function addLeadMagnet(body) {
+  function addJourneyPanel(body) {
     const headings = body.querySelectorAll('h2');
     const anchor = headings[1] || headings[0];
     if (!anchor) return;
-    const downloads = {
-      en: '/assets/templates/en/personal-budget.xlsx',
-      es: '/assets/templates/es/presupuesto-personal.xlsx',
-      pt: '/assets/templates/pt/orcamento-pessoal.xlsx'
-    };
     const box = document.createElement('aside');
-    box.className = 'lead-magnet';
-    box.setAttribute('aria-label', labels.leadEyebrow);
-    box.innerHTML = `<p class="eyebrow">${labels.leadEyebrow}</p><h2>${labels.leadTitle}</h2><p>${labels.leadText}</p><a class="button" href="${downloads[language] || downloads.en}" download>${labels.leadButton}</a>`;
+    box.className = 'journey-panel';
+    box.setAttribute('aria-label', labels.journeyEyebrow);
+    box.innerHTML = `<div><p class="eyebrow">${labels.journeyEyebrow}</p><h2>${labels.journeyTitle}</h2><p>${labels.journeyText}</p></div><div class="journey-actions"><a class="button" href="/#herramientas">${labels.toolsButton}</a><a class="button button-secondary" href="/#contacto">${labels.assessmentButton}</a></div>`;
     anchor.parentNode.insertBefore(box, anchor);
   }
 
@@ -97,12 +92,12 @@
     heading.textContent = labels.toc;
     body.querySelectorAll('h2').forEach((item, index) => {
       item.id = item.id || slugify(item.textContent) || `section-${index + 1}`;
-      const li = document.createElement('li');
+      const listItem = document.createElement('li');
       const link = document.createElement('a');
       link.href = `#${item.id}`;
       link.textContent = item.textContent;
-      li.appendChild(link);
-      list.appendChild(li);
+      listItem.appendChild(link);
+      list.appendChild(listItem);
     });
   }
 
@@ -113,37 +108,32 @@
 
   async function renderArticle() {
     updateLanguageLinks();
-    status.textContent = labels.loading;
     if (!slug || !/^[a-z0-9-]+$/i.test(slug)) throw new Error('Missing or invalid article slug');
     const response = await fetch(`/content/blog/${language}/${slug}.md`);
     if (!response.ok) throw new Error(`Article request failed: ${response.status}`);
     const source = await response.text();
     const { attributes, body: markdown } = parseFrontMatter(source);
-    const rendered = marked.parse(markdown, { gfm: true });
     const body = document.querySelector('[data-article-body]');
-    body.innerHTML = DOMPurify.sanitize(rendered);
+    body.innerHTML = DOMPurify.sanitize(marked.parse(markdown, { gfm: true }));
     status.hidden = true;
     document.querySelector('[data-article-content]').hidden = false;
+    document.querySelector('[data-article-details]').hidden = false;
 
     const title = attributes.title || slug.replace(/-/g, ' ');
     const summary = attributes.summary || '';
     const date = attributes.date ? new Date(`${attributes.date}T12:00:00Z`) : null;
     const dateText = date ? new Intl.DateTimeFormat(language, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(date) : '';
-    const minutes = estimateReadingTime(markdown);
     document.querySelector('[data-article-title]').textContent = title;
     document.querySelector('[data-article-summary]').textContent = summary;
     document.querySelector('[data-article-category]').textContent = attributes.category || '';
     document.querySelector('[data-article-date]').textContent = dateText;
-    document.querySelector('[data-reading-time]').textContent = `${minutes} ${labels.reading}`;
-    document.querySelector('[data-article-image]').src = attributes.featured_image || '/logo-compounding-journey.png';
-    document.querySelector('[data-article-image]').alt = attributes.image_alt || '';
+    document.querySelector('[data-reading-time]').textContent = `${estimateReadingTime(markdown)} ${labels.reading}`;
     document.querySelector('[data-author-name]').textContent = `${labels.authorPrefix} ${attributes.author || 'Sandy Bradbury'}`;
     document.querySelector('[data-author-bio]').textContent = labels.authorBio;
     document.title = `${title} | Compounding Journey`;
     setMeta('meta[name="description"]', summary);
     setMeta('meta[property="og:title"]', title);
     setMeta('meta[property="og:description"]', summary);
-    setMeta('meta[property="og:image"]', new URL(attributes.featured_image || '/logo-compounding-journey.png', window.location.origin).href);
     setMeta('meta[property="og:url"]', window.location.href);
     setMeta('link[rel="canonical"]', window.location.href, 'href');
     document.querySelectorAll('link[rel="alternate"]').forEach((link) => {
@@ -151,10 +141,12 @@
       link.href = `${window.location.origin}/${code}/blog/article.html?post=${encodeURIComponent(translationSlug(code))}`;
     });
     buildToc(body);
-    addLeadMagnet(body);
+    addJourneyPanel(body);
   }
 
   renderArticle().catch(() => {
+    document.querySelector('[data-article-content]').hidden = true;
+    status.hidden = false;
     status.textContent = labels.error;
     status.classList.add('is-error');
   });
