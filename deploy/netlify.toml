@@ -1,8 +1,0 @@
-[build]
-  command = "node scripts/generate-blog-catalog.mjs"
-  publish = "."
-[[redirects]]
-from = "https://compoundingjourney.netlify.app/*"
-to = "https://compoundingjourney.com"
-status = 301
-force = true

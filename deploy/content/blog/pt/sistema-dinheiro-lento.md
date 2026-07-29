@@ -4,7 +4,7 @@ date: "2026-07-21"
 category: "Hábitos financeiros"
 summary: "Um ritmo semanal prático que troca a urgência financeira por poucas decisões sustentáveis."
 translation_key: "slow-money-system"
-author: "Sandy Bradbury"
+author: "Sandy Bradbury / Compounding Journey"
 ---
 
 ## Velocidade não é o mesmo que progresso

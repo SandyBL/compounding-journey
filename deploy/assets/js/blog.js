@@ -111,7 +111,7 @@
     document.querySelector('[data-article-category]').textContent = attributes.category || '';
     document.querySelector('[data-article-date]').textContent = dateText;
     document.querySelector('[data-reading-time]').textContent = `${estimateReadingTime(markdown)} ${labels.reading}`;
-    document.querySelector('[data-author-name]').textContent = `${labels.authorPrefix} ${attributes.author || 'Sandy Bradbury'}`;
+    document.querySelector('[data-author-name]').textContent = `${labels.authorPrefix} ${attributes.author || 'Sandy Bradbury / Compounding Journey'}`;
     document.querySelector('[data-author-bio]').textContent = labels.authorBio;
     document.title = `${title} | Compounding Journey`;
     setMeta('meta[name="description"]', summary);
