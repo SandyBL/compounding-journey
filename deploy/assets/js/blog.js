@@ -6,25 +6,19 @@
     en: {
       reading: 'min read', toc: 'In this article',
       error: 'This article could not be loaded. Check the URL or publish the Markdown file in Decap CMS.',
-      journeyEyebrow: 'Continue the Journey', journeyTitle: 'Turn insight into your next clear step.',
-      journeyText: 'Use the practical tools or complete the financial assessment to understand where your journey can go next.',
-      toolsButton: 'Explore the tools', assessmentButton: 'Take the assessment', authorPrefix: 'Written by',
+      authorPrefix: 'Written by',
       authorBio: 'Sandy writes about practical money systems, intentional work, and the patient path toward financial freedom.'
     },
     es: {
       reading: 'min de lectura', toc: 'En este artículo',
       error: 'No se pudo cargar este artículo. Comprueba la URL o publica el archivo Markdown en Decap CMS.',
-      journeyEyebrow: 'Continúa el Viaje', journeyTitle: 'Convierte una idea en tu próximo paso claro.',
-      journeyText: 'Usa las herramientas prácticas o completa la evaluación financiera para saber cómo continuar tu viaje.',
-      toolsButton: 'Ver herramientas', assessmentButton: 'Hacer la evaluación', authorPrefix: 'Escrito por',
+      authorPrefix: 'Escrito por',
       authorBio: 'Sandy escribe sobre sistemas financieros prácticos, trabajo con intención y el camino paciente hacia la libertad financiera.'
     },
     pt: {
       reading: 'min de leitura', toc: 'Neste artigo',
       error: 'Não foi possível carregar este artigo. Confira a URL ou publique o arquivo Markdown no Decap CMS.',
-      journeyEyebrow: 'Continue a Jornada', journeyTitle: 'Transforme uma ideia no seu próximo passo claro.',
-      journeyText: 'Use as ferramentas práticas ou complete a avaliação financeira para entender como continuar sua jornada.',
-      toolsButton: 'Ver ferramentas', assessmentButton: 'Fazer a avaliação', authorPrefix: 'Escrito por',
+      authorPrefix: 'Escrito por',
       authorBio: 'Sandy escreve sobre sistemas financeiros práticos, trabalho intencional e o caminho paciente para a liberdade financeira.'
     }
   };
@@ -73,17 +67,6 @@
       });
       link.href = `/${code}/blog/article.html?${query.toString()}`;
     });
-  }
-
-  function addJourneyPanel(body) {
-    const headings = body.querySelectorAll('h2');
-    const anchor = headings[1] || headings[0];
-    if (!anchor) return;
-    const box = document.createElement('aside');
-    box.className = 'journey-panel';
-    box.setAttribute('aria-label', labels.journeyEyebrow);
-    box.innerHTML = `<div><p class="eyebrow">${labels.journeyEyebrow}</p><h2>${labels.journeyTitle}</h2><p>${labels.journeyText}</p></div><div class="journey-actions"><a class="button" href="/#herramientas">${labels.toolsButton}</a><a class="button button-secondary" href="/#contacto">${labels.assessmentButton}</a></div>`;
-    anchor.parentNode.insertBefore(box, anchor);
   }
 
   function buildToc(body) {
@@ -141,11 +124,11 @@
       link.href = `${window.location.origin}/${code}/blog/article.html?post=${encodeURIComponent(translationSlug(code))}`;
     });
     buildToc(body);
-    addJourneyPanel(body);
   }
 
   renderArticle().catch(() => {
     document.querySelector('[data-article-content]').hidden = true;
+    document.querySelector('[data-article-journey]').hidden = true;
     status.hidden = false;
     status.textContent = labels.error;
     status.classList.add('is-error');
