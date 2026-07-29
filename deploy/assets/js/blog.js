@@ -5,18 +5,21 @@
   const copy = {
     en: {
       reading: 'min read', toc: 'In this article',
+      insight: 'Key insight',
       error: 'This article could not be loaded. Check the URL or publish the Markdown file in Decap CMS.',
       authorPrefix: 'Written by',
       authorBio: 'Sandy writes about practical money systems, intentional work, and the patient path toward financial freedom.'
     },
     es: {
       reading: 'min de lectura', toc: 'En este artículo',
+      insight: 'Idea clave',
       error: 'No se pudo cargar este artículo. Comprueba la URL o publica el archivo Markdown en Decap CMS.',
       authorPrefix: 'Escrito por',
       authorBio: 'Sandy escribe sobre sistemas financieros prácticos, trabajo con intención y el camino paciente hacia la libertad financiera.'
     },
     pt: {
       reading: 'min de leitura', toc: 'Neste artigo',
+      insight: 'Ideia-chave',
       error: 'Não foi possível carregar este artigo. Confira a URL ou publique o arquivo Markdown no Decap CMS.',
       authorPrefix: 'Escrito por',
       authorBio: 'Sandy escreve sobre sistemas financeiros práticos, trabalho intencional e o caminho paciente para a liberdade financeira.'
@@ -89,15 +92,61 @@
     return Math.max(1, Math.ceil(words / 210));
   }
 
+  function normalizeMarkdown(markdown) {
+    const cleaned = markdown
+      .replace(/\\?\[cite:\s*[^\]\n]+\\?\]/gi, '')
+      .replace(/\\([\\`*_[\]{}()#+\-.!>|])/g, '$1')
+      .replace(/[ \t]+$/gm, '');
+
+    const lines = cleaned.split('\n');
+    const normalized = [];
+
+    lines.forEach((line, index) => {
+      const previous = normalized[normalized.length - 1];
+      const next = lines[index + 1];
+      const betweenTableRows = line.trim() === '' && /^\s*\|/.test(previous || '') && /^\s*\|/.test(next || '');
+      if (!betweenTableRows) normalized.push(line);
+    });
+
+    return normalized.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+  }
+
+  function enhanceArticle(body) {
+    body.querySelectorAll('table').forEach((table) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'article-table-wrap';
+      table.parentNode.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+
+    body.querySelectorAll('blockquote').forEach((blockquote) => {
+      const firstParagraph = blockquote.querySelector('p');
+      if (!firstParagraph || !/^\s*💡/.test(firstParagraph.textContent)) return;
+      const firstTextNode = Array.from(firstParagraph.childNodes).find((node) => node.nodeType === Node.TEXT_NODE && /💡/.test(node.textContent));
+      if (firstTextNode) firstTextNode.textContent = firstTextNode.textContent.replace(/^\s*💡\s*/, '');
+      blockquote.classList.add('article-callout');
+      blockquote.dataset.label = labels.insight;
+    });
+
+    body.querySelectorAll('a[href]').forEach((link) => {
+      if (link.origin !== window.location.origin) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+    });
+  }
+
   async function renderArticle() {
     updateLanguageLinks();
     if (!slug || !/^[a-z0-9-]+$/i.test(slug)) throw new Error('Missing or invalid article slug');
     const response = await fetch(`/content/blog/${language}/${slug}.md`);
     if (!response.ok) throw new Error(`Article request failed: ${response.status}`);
     const source = await response.text();
-    const { attributes, body: markdown } = parseFrontMatter(source);
+    const { attributes, body: rawMarkdown } = parseFrontMatter(source);
+    const markdown = normalizeMarkdown(rawMarkdown);
     const body = document.querySelector('[data-article-body]');
     body.innerHTML = DOMPurify.sanitize(marked.parse(markdown, { gfm: true }));
+    enhanceArticle(body);
     status.hidden = true;
     document.querySelector('[data-article-content]').hidden = false;
     document.querySelector('[data-article-details]').hidden = false;
