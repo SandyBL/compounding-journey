@@ -4,18 +4,34 @@ import path from 'node:path';
 const root = process.cwd();
 const contentRoot = path.join(root, 'content', 'blog');
 const languages = ['en', 'es', 'pt'];
+const defaultAuthor = 'Sandy Bradbury / Compounding Journey';
+
+function parseScalar(value) {
+  const trimmed = value.trim();
+  if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
+    return trimmed.slice(1, -1);
+  }
+  return trimmed;
+}
 
 function parseFrontMatter(source) {
   const match = source.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
   if (!match) return { attributes: {}, body: source };
   const attributes = {};
+  let currentKey = '';
   match[1].split('\n').forEach((line) => {
+    if (/^\s+/.test(line) && currentKey) {
+      attributes[currentKey] += ` ${line.trim()}`;
+      return;
+    }
     const separator = line.indexOf(':');
     if (separator < 0) return;
     const key = line.slice(0, separator).trim();
-    let value = line.slice(separator + 1).trim();
-    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) value = value.slice(1, -1);
-    attributes[key] = value;
+    currentKey = key;
+    attributes[key] = line.slice(separator + 1).trim();
+  });
+  Object.keys(attributes).forEach((key) => {
+    attributes[key] = parseScalar(attributes[key]);
   });
   return { attributes, body: source.slice(match[0].length) };
 }
@@ -45,7 +61,7 @@ for (const language of languages) {
       date: attributes.date || '',
       category: attributes.category || '',
       summary: attributes.summary || '',
-      author: attributes.author || 'Sandy Bradbury',
+      author: attributes.author || defaultAuthor,
       translationKey: attributes.translation_key || path.basename(file, '.md'),
       searchText: searchableText(body)
     });
