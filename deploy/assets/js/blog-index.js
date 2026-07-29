@@ -144,7 +144,7 @@
       return response.json();
     })
     .then((catalog) => {
-      articles = catalog;
+      articles = catalog.filter((article) => article.language === language);
       populateCategories();
       render();
     })
