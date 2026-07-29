@@ -138,7 +138,7 @@
     searchInput.focus();
   });
 
-  fetch('/content/blog/catalog.json')
+  fetch('/content/blog/catalog.json', { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) throw new Error(`Catalog request failed: ${response.status}`);
       return response.json();

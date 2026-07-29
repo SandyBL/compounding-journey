@@ -1,7 +1,9 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = process.cwd();
+const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(scriptDirectory, '..');
 const contentRoot = path.join(root, 'content', 'blog');
 const languages = ['en', 'es', 'pt'];
 const defaultAuthor = 'Sandy Bradbury / Compounding Journey';
