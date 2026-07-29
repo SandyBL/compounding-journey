@@ -124,4 +124,4 @@ Controlling your expenses isn't about giving up what you love—it's about desig
 
 
 
-\[Assess Your Financial Habits →](https://compoundingjourney.com/?lang=en#contact)
+\[Assess Your Financial Habits →](https://compoundingjourney.com/?lang=en#contacto)
