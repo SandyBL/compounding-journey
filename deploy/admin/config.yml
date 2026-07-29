@@ -5,7 +5,7 @@ backend:
 site_url: "https://compoundingjourney.netlify.app"
 display_url: "https://compoundingjourney.netlify.app"
 logo_url: "/icone%20foto%20limpo.png"
-media_folder: "assets/uploads"
+media_folder: "deploy/assets/uploads"
 public_folder: "/assets/uploads"
 
 publish_mode: editorial_workflow
@@ -19,13 +19,13 @@ collections:
   - name: "blog_en"
     label: "Blog — English"
     label_singular: "English article"
-    folder: "content/blog/en"
+    folder: "deploy/content/blog/en"
     create: true
     extension: "md"
     format: "frontmatter"
     slug: "{{slug}}"
     summary: "{{title}} — {{date}}"
-    fields: &article_fields
+    fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publication date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Category", name: "category", widget: "select", options: ["Money habits", "Investing", "Financial freedom", "Life design"] }
@@ -37,21 +37,35 @@ collections:
   - name: "blog_es"
     label: "Blog — Español"
     label_singular: "Artículo en español"
-    folder: "content/blog/es"
+    folder: "deploy/content/blog/es"
     create: true
     extension: "md"
     format: "frontmatter"
     slug: "{{slug}}"
     summary: "{{title}} — {{date}}"
-    fields: *article_fields
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha de publicación", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Categoría", name: "category", widget: "select", options: ["Hábitos financieros", "Inversión", "Libertad financiera", "Diseño de vida"] }
+      - { label: "Resumen", name: "summary", widget: "text", hint: "Se usa en las listas de artículos y en la descripción SEO." }
+      - { label: "Clave de traducción", name: "translation_key", widget: "string", hint: "Usa la misma clave en las versiones de todos los idiomas." }
+      - { label: "Autor", name: "author", widget: "string", default: "Sandy Bradbury" }
+      - { label: "Contenido", name: "body", widget: "markdown" }
 
   - name: "blog_pt"
     label: "Blog — Português"
     label_singular: "Artigo em português"
-    folder: "content/blog/pt"
+    folder: "deploy/content/blog/pt"
     create: true
     extension: "md"
     format: "frontmatter"
     slug: "{{slug}}"
     summary: "{{title}} — {{date}}"
-    fields: *article_fields
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Data de publicação", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Categoria", name: "category", widget: "select", options: ["Hábitos financeiros", "Investimentos", "Liberdade financeira", "Design de vida"] }
+      - { label: "Resumo", name: "summary", widget: "text", hint: "Usado nas listas de artigos e na descrição de SEO." }
+      - { label: "Chave de tradução", name: "translation_key", widget: "string", hint: "Use a mesma chave nas versões de todos os idiomas." }
+      - { label: "Autor", name: "author", widget: "string", default: "Sandy Bradbury" }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }
