@@ -5,6 +5,8 @@ backend:
 site_url: "https://compoundingjourney.netlify.app"
 display_url: "https://compoundingjourney.netlify.app"
 logo_url: "/icone%20foto%20limpo.png"
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
 publish_mode: editorial_workflow
 show_preview_links: true
