@@ -28,6 +28,7 @@
 
   const language = document.documentElement.lang || 'en';
   const labels = copy[language] || copy.en;
+  const productionOrigin = 'https://compoundingjourney.com';
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('post');
   const status = document.querySelector('[data-article-status]');
@@ -166,11 +167,14 @@
     setMeta('meta[name="description"]', summary);
     setMeta('meta[property="og:title"]', title);
     setMeta('meta[property="og:description"]', summary);
-    setMeta('meta[property="og:url"]', window.location.href);
-    setMeta('link[rel="canonical"]', window.location.href, 'href');
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', summary);
+    const canonicalUrl = `${productionOrigin}/${language}/blog/article.html?post=${encodeURIComponent(slug)}`;
+    setMeta('meta[property="og:url"]', canonicalUrl);
+    setMeta('link[rel="canonical"]', canonicalUrl, 'href');
     document.querySelectorAll('link[rel="alternate"]').forEach((link) => {
       const code = link.hreflang;
-      link.href = `${window.location.origin}/${code}/blog/article.html?post=${encodeURIComponent(translationSlug(code))}`;
+      link.href = `${productionOrigin}/${code}/blog/article.html?post=${encodeURIComponent(translationSlug(code))}`;
     });
     buildToc(body);
   }

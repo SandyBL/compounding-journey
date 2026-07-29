@@ -6,25 +6,25 @@ The site is available in Spanish, English, and Portuguese. It provides education
 
 ## Official Site
 
-- [Compounding Journey](https://compoundingjourney.netlify.app/)
-- [Spanish version](https://compoundingjourney.netlify.app/?lang=es)
-- [English version](https://compoundingjourney.netlify.app/?lang=en)
-- [Portuguese version](https://compoundingjourney.netlify.app/?lang=pt)
+- [Compounding Journey](https://compoundingjourney.com/)
+- [Spanish version](https://compoundingjourney.com/?lang=es)
+- [English version](https://compoundingjourney.com/?lang=en)
+- [Portuguese version](https://compoundingjourney.com/?lang=pt)
 
 ## Main Topics and Tools
 
-- [Financial education pillars](https://compoundingjourney.netlify.app/#pilares): money psychology, intentional investing, sustainable habits, and financial freedom.
-- [Financial calculators](https://compoundingjourney.netlify.app/#herramientas): compound interest, financial freedom, and purchase cost in working hours.
-- [Excel templates](https://compoundingjourney.netlify.app/#plantillas): free personal budgeting and expense-management resources.
-- [Frequently asked questions](https://compoundingjourney.netlify.app/#preguntas-frecuentes): direct answers about the 4% rule, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
-- [About Sandy Bradbury](https://compoundingjourney.netlify.app/#biografia): the creator's approach to money psychology, financial habits, and diversified investing.
-- [Contact](https://compoundingjourney.netlify.app/#contacto): questionnaires and a direct contact form.
+- [Financial education pillars](https://compoundingjourney.com/#pilares): money psychology, intentional investing, sustainable habits, and financial freedom.
+- [Financial calculators](https://compoundingjourney.com/#herramientas): compound interest, financial freedom, and purchase cost in working hours.
+- [Excel templates](https://compoundingjourney.com/#plantillas): free personal budgeting and expense-management resources.
+- [Frequently asked questions](https://compoundingjourney.com/#preguntas-frecuentes): direct answers about the 4% rule, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
+- [About Sandy Bradbury](https://compoundingjourney.com/#biografia): the creator's approach to money psychology, financial habits, and diversified investing.
+- [Contact](https://compoundingjourney.com/#contacto): questionnaires and a direct contact form.
 
 ## Free Downloads
 
-- [Personal budget template](https://compoundingjourney.netlify.app/assets/templates/personal-budget.xlsx)
-- [Expense management template](https://compoundingjourney.netlify.app/assets/templates/expense-management.xlsx)
-- [Monthly personal finances analysis](https://compoundingjourney.netlify.app/assets/templates/monthly-personal-finances-analysis.xlsx)
+- [Personal budget template](https://compoundingjourney.com/assets/templates/personal-budget.xlsx)
+- [Expense management template](https://compoundingjourney.com/assets/templates/expense-management.xlsx)
+- [Monthly personal finances analysis](https://compoundingjourney.com/assets/templates/monthly-personal-finances-analysis.xlsx)
 
 ## Official Profiles
 

@@ -66,4 +66,4 @@ Utilizar uma planilha ou modelo permite comparar o planejado com o gasto real[ci
 ### Pronto para Dominar suas Finanças?
 Controlar suas despesas não significa abrir mão do que você ama, mas sim construir uma vida com verdadeira segurança e liberdade financeira[cite: 4]. Preencha nosso formulário rápido para avaliar seus hábitos de consumo, identificar pontos de melhoria e construir um plano claro rumo à sua independência financeira.
 
-[Avalie seus Hábitos Financeiros →](https://compoundingjourney.netlify.app/?lang=pt#contact)
+[Avalie seus Hábitos Financeiros →](https://compoundingjourney.com/?lang=pt#contact)
