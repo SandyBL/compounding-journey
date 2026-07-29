@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-site_url: "https://compoundingjourney.netlify.app"
-display_url: "https://compoundingjourney.netlify.app"
+site_url: "https://compoundingjourney.com"
+display_url: "https://compoundingjourney.com"
 logo_url: "/icone%20foto%20limpo.png"
 media_folder: "deploy/assets/uploads"
 public_folder: "/assets/uploads"
