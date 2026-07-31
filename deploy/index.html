@@ -571,6 +571,51 @@
             color: rgba(30, 70, 32, 0.25);
         }
 
+        .contact-path-nav {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.5rem;
+            max-width: 52rem;
+            margin: 1.75rem auto 0;
+            padding: 0.45rem;
+            border: 1px solid rgba(239, 234, 224, 0.95);
+            border-radius: 1.1rem;
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: 0 12px 35px rgba(45, 36, 27, 0.06);
+        }
+
+        .contact-path-link {
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            padding: 0.8rem 0.75rem;
+            border-radius: 0.8rem;
+            color: #1E4620;
+            font-size: 0.75rem;
+            font-weight: 800;
+            line-height: 1.25;
+            text-align: center;
+            transition: color 180ms ease, background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .contact-path-link:hover {
+            color: #2D241B;
+            background: rgba(197, 155, 39, 0.16);
+            box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.24);
+            transform: translateY(-1px);
+        }
+
+        .contact-path-link:focus-visible {
+            outline: 2px solid rgba(30, 70, 32, 0.7);
+            outline-offset: 2px;
+        }
+
+        #contact-form {
+            scroll-margin-top: 6.5rem;
+        }
+
         @keyframes diagnosticStatusPulse {
             0% {
                 opacity: 0.7;
@@ -607,6 +652,18 @@
         }
 
         @media (max-width: 639px) {
+            .contact-path-nav {
+                gap: 0.25rem;
+                padding: 0.3rem;
+            }
+
+            .contact-path-link {
+                flex-direction: column;
+                gap: 0.35rem;
+                padding: 0.7rem 0.3rem;
+                font-size: 0.65rem;
+            }
+
             .header-shell {
                 gap: 0.5rem;
                 padding-right: 0.75rem;
@@ -892,10 +949,10 @@
                     <span lang-content="en">Templates</span>
                     <span lang-content="pt">Modelos</span>
                 </a>
-                <a href="#biografia">
-                    <span lang-content="es">Sobre mí</span>
-                    <span lang-content="en">About</span>
-                    <span lang-content="pt">Sobre mim</span>
+                <a href="#assessment">
+                    <span lang-content="es">Diagnóstico</span>
+                    <span lang-content="en">Assessment</span>
+                    <span lang-content="pt">Diagnóstico</span>
                 </a>
                 <a href="#preguntas-frecuentes">
                     <span lang-content="es">FAQ</span>
@@ -2016,332 +2073,16 @@
         </div>
     </section>
 
-    <!-- PROFILE AND BIO SECTION -->
-    <section id="biografia" class="scroll-mt-20 py-20 bg-white border-b border-creamborder">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                
-                <!-- Profile Image Frame / Adaptive Card Layout -->
-                <div class="md:col-span-5 flex justify-center">
-                    <div class="relative group w-full max-w-[320px]">
-                        <!-- Decorative natural green/warm gold glow -->
-                        <div class="absolute -inset-1.5 bg-gradient-to-r from-forestgreen to-warmgold rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                        
-                        <div class="relative bg-white p-5 rounded-[2rem] border border-creamborder shadow-xl flex flex-col items-center">
-                            <!-- Circular photo element containing user assets -->
-                            <div class="w-48 h-48 rounded-full overflow-hidden bg-gradient-to-br from-forestgreen to-warmgold relative border-4 border-white shadow-inner flex items-center justify-center">
-                                
-                                <!-- Premium Fallback Graphic (shows only if photo is offline/blocked) -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 select-none">
-                                    <span class="text-4xl font-extrabold tracking-wider leading-none">SB</span>
-                                    <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Wealth Planner</span>
-                                </div>
-
-                                <!-- Actual Image Tag with fallback failure support -->
-                            <img
-                                src="icone%20foto%20limpo.png"
-                                alt="Sandy Bradbury"
-                                width="365"
-                                height="352"
-                                loading="lazy"
-                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-10"
-                                onerror="this.style.display='none'; console.log('Notice: Switched profile picture to modern abstract vector fallback.')"
-                            >
-                        </div>
-                        
-                        <div class="mt-5 text-center">
-                            <h3 class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</h3>
-                            <p class="text-xs text-warmgold font-bold uppercase tracking-widest mt-1">
-                                <span lang-content="es">Asesor Financiero</span>
-                                <span lang-content="en">Financial Advisor</span>
-                                <span lang-content="pt">Planejador Financeiro</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Biography content translated directly -->
-            <div class="md:col-span-7 space-y-6">
-                <h2 class="text-3xl font-extrabold text-forestgreen tracking-tight">
-                    <span lang-content="es">Finanzas para una vida con intención</span>
-                    <span lang-content="en">Finance for an intentional life</span>
-                    <span lang-content="pt">Finanças para uma vida com intenção</span>
-                </h2>
-
-                <div lang-content="es" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
-                    <p>
-                        Hola, soy <strong>Sandy Bradbury</strong>. Ayudo a personas y familias a ordenar su dinero alrededor de lo que realmente importa: ganar tranquilidad hoy y construir libertad para mañana. Mi enfoque combina psicología del dinero, hábitos sostenibles e inversiones diversificadas de calidad.
-                    </p>
-                    <p>
-                        En <strong>El viaje del Crecimiento Compuesto</strong> no hablo solo de rentabilidad. Exploro cómo usar el interés compuesto para comprar tiempo, reducir dependencias y diseñar una vida con propósito. Tú eres el protagonista del viaje: la estrategia pone el mapa, la disciplina mantiene el rumbo y tus valores deciden el destino.
-                    </p>
-                </div>
-
-                <div lang-content="en" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
-                    <p>
-                        Hello, I’m <strong>Sandy Bradbury</strong>. I help individuals and families organize money around what truly matters: greater peace of mind today and more freedom tomorrow. My approach combines money psychology, sustainable habits, and diversified quality investments.
-                    </p>
-                    <p>
-                        In <strong>Compounding Journey</strong>, I go beyond returns. I explore how compound growth can buy time, reduce dependency, and help you design a purposeful life. You are the protagonist of the journey: strategy provides the map, discipline keeps you moving, and your values choose the destination.
-                    </p>
-                </div>
-
-                <div lang-content="pt" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
-                    <p>
-                        Olá, sou <strong>Sandy Bradbury</strong>. Ajudo pessoas e famílias a organizar o dinheiro em torno do que realmente importa: ganhar tranquilidade hoje e construir liberdade para amanhã. A minha abordagem combina psicologia do dinheiro, hábitos sustentáveis e investimentos diversificados de qualidade.
-                    </p>
-                    <p>
-                        Em <strong>A Jornada de Crescimento Composto</strong>, não falo apenas de rentabilidade. Exploro como o crescimento composto pode comprar tempo, reduzir dependências e ajudar-te a desenhar uma vida com propósito. Tu és o protagonista da jornada: a estratégia oferece o mapa, a disciplina mantém o rumo e os teus valores escolhem o destino.
-                    </p>
-                </div>
-
-                <div class="pt-4 flex flex-wrap gap-4">
-                        <a 
-                            href="https://www.linkedin.com/in/sandy-bradbury" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-3 px-6 py-3.5 bg-[#0077B5] hover:bg-[#0077B5]/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
-                        >
-                            <i class="fa-brands fa-linkedin text-lg"></i>
-                            <span lang-content="es">Conectar en LinkedIn</span>
-                            <span lang-content="en">Connect on LinkedIn</span>
-                            <span lang-content="pt">Conectar no LinkedIn</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
-                        </a>
-                        
-                        <a 
-                            href="https://compoundingjourney.substack.com/" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-3 px-6 py-3.5 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
-                        >
-                            <i class="fa-solid fa-bookmark text-warmgold text-lg"></i>
-                            <span lang-content="es">Leer en Substack</span>
-                            <span lang-content="en">Read on Substack</span>
-                            <span lang-content="pt">Ler no Substack</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- FREQUENTLY ASKED QUESTIONS -->
-    <section id="preguntas-frecuentes" class="scroll-mt-20 relative overflow-hidden py-20 bg-creamsoft border-b border-creamborder">
-        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-            <div class="absolute -top-24 left-1/3 w-80 h-80 rounded-full bg-warmgold/10 blur-3xl"></div>
-            <div class="absolute -bottom-32 -right-20 w-96 h-96 rounded-full bg-forestgreen/5 blur-3xl"></div>
-        </div>
-
-        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-10">
-                <div class="md:col-span-5">
-                    <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                        <span lang-content="es">Respuestas directas</span>
-                        <span lang-content="en">Direct answers</span>
-                        <span lang-content="pt">Respostas diretas</span>
-                    </p>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-forestgreen leading-tight">
-                        <span lang-content="es">Preguntas frecuentes</span>
-                        <span lang-content="en">Frequently asked questions</span>
-                        <span lang-content="pt">Perguntas frequentes</span>
-                    </h2>
-                </div>
-                <div class="md:col-span-7 md:border-l md:border-creamborder md:pl-8 flex items-end">
-                    <p class="text-sm text-darkbark/70 leading-relaxed">
-                        <span lang-content="es">Conceptos esenciales para usar las herramientas de la página con contexto y tomar decisiones más informadas.</span>
-                        <span lang-content="en">Essential context for using the site's tools and making more informed decisions.</span>
-                        <span lang-content="pt">Conceitos essenciais para usar as ferramentas da página com contexto e tomar decisões mais informadas.</span>
-                    </p>
-                </div>
-            </div>
-
-            <div lang-content="es" class="space-y-4">
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿Qué es la regla del 4% para la libertad financiera?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">La regla del 4% es una referencia para estimar el capital necesario para financiar gastos anuales con una cartera de inversión. Divide tus gastos anuales entre 0,04, o multiplícalos por 25. Es una aproximación educativa, no una garantía: impuestos, comisiones, inflación, horizonte temporal y composición de la cartera pueden cambiar el resultado.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿Dónde puedo descargar plantillas de presupuesto personal en Excel?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding Journey ofrece descargas gratuitas en Excel para <a href="assets/templates/es/presupuesto-personal.xlsx" download="Plantilla de Presupuesto Personal.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">presupuesto personal</a>, <a href="assets/templates/es/gestion-de-gastos.xlsx" download="Plantilla de Gestion de Gastos.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">control de gastos</a> y <a href="assets/templates/es/analisis-balance-mensual.xlsx" download="Plantilla de Analisis del Balance Mensual.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">análisis mensual de finanzas personales</a>. También están reunidas en la sección <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Plantillas</a>.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿Qué calculadoras financieras gratuitas incluye Compounding Journey?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">La página incluye una calculadora de interés compuesto, una calculadora orientativa de libertad financiera basada en gastos y tasa de retirada, y una calculadora que convierte el coste de una compra en horas de trabajo. Todas están disponibles en la sección <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Herramientas</a>.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿Qué es el crecimiento compuesto (o la capitalización compuesta)?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">El crecimiento compuesto es el proceso mediante el cual los rendimientos de tu dinero (intereses, dividendos o plusvalías) generan nuevos rendimientos con el tiempo. En lugar de retirar las ganancias, las reinviertes, permitiendo que tu capital crezca de forma exponencial a largo plazo.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿Cuál es la diferencia entre ahorrar e invertir?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Ahorrar es guardar dinero en cuentas líquidas y de bajo riesgo para emergencias o metas a corto plazo. Invertir implica comprar activos de calidad (como fondos indexados globales o acciones) con mayor potencial de crecimiento para proteger tu poder adquisitivo frente a la inflación y construir libertad a largo plazo.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿Por qué podría necesitar un asesor financiero o planificador patrimonial?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Aunque las herramientas online aportan claridad, un asesor financiero te ayuda a conectar los números con tus valores de vida. Te acompaña para definir una estrategia a medida, gestionar emociones durante la volatilidad del mercado, optimizar tu estructura y mantener la disciplina a lo largo del tiempo.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿Cómo funciona la calculadora de coste en horas de vida?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Esta calculadora obtiene tu salario real neto por hora a partir de tus ingresos y horas trabajadas al mes. Después, transforma el precio de cualquier compra en las horas de vida exactas que necesitas intercambiar por ella, ayudándote a gastar con intención.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿Por qué es importante conocer mi perfil de riesgo de inversión antes de invertir?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Tu perfil de riesgo mide tu horizonte temporal, tu capacidad financiera y tu tolerancia emocional ante las fluctuaciones del mercado. Conocerlo evita asumas riesgos que te quiten el sueño o elijas carteras tan conservadoras que no superen la inflación.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>¿El contenido sustituye el asesoramiento financiero personalizado?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son estrictamente educativas e ilustrativas. No constituyen asesoramiento financiero, de inversión o fiscal formal. Para recibir recomendaciones adaptadas a tu contexto, objetivos y tolerancia al riesgo, puedes completar los formularios de diagnóstico o enviarme un mensaje directo.</p>
-                </details>
-            </div>
-
-            <div lang-content="en" class="space-y-4">
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>What is the 4% rule for financial freedom?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">The 4% rule is a guideline for estimating the invested capital that may support annual spending. Divide annual expenses by 0.04, or multiply them by 25. It is an educational estimate, not a guarantee: taxes, fees, inflation, time horizon, and portfolio composition can change the outcome.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Where can I download personal budget templates in Excel?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding Journey provides free Excel downloads for <a href="assets/templates/en/personal-budget.xlsx" download="Template Personal Budget.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">personal budgeting</a>, <a href="assets/templates/en/expense-management.xlsx" download="Template Expense Management.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">expense tracking</a>, and <a href="assets/templates/en/monthly-balance-analysis.xlsx" download="Template Monthly Balance Analysis.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">monthly personal finance analysis</a>. They are also collected in the <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Templates</a> section.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Which free financial calculators does Compounding Journey include?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">The page includes a compound interest calculator, a financial freedom calculator based on spending and a withdrawal rate, and a calculator that converts a purchase price into working hours. All three are available in the <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Tools</a> section.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>What is compound growth (or compounding)?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding (or compound growth) is the process where earnings on your money—such as interest, dividends, or capital gains—generate their own earnings over time. Instead of withdrawing your returns, you reinvest them, causing your capital to grow exponentially rather than linearly over long horizons.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>What is the difference between saving and investing?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Saving is keeping cash in liquid, low-risk accounts to cover short-term needs or emergency funds. Investing involves buying quality assets (like global index funds or equities) with higher potential growth to preserve purchasing power against inflation and build long-term freedom.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Why might I need a financial advisor or wealth planner?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">While online tools provide clarity, a financial advisor helps you connect numbers to your personal life values. An advisor assists in building a customized strategy, managing emotional reactions during market volatility, optimizing tax structures, and keeping your long-term plan disciplined and sustainable.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>How does the “Cost in Hours of Life” calculator work?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">This calculator determines your net hourly wage based on your monthly income and working hours. It then converts any potential purchase price into the exact number of hours of your life required to pay for it, helping you make mindful spending decisions.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Why is knowing my investment risk profile important before I invest?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Your risk profile measures your time horizon, financial capacity, and emotional tolerance for market fluctuations. Knowing it prevents you from taking risks that keep you awake at night or choosing portfolios so conservative that they fail to keep pace with inflation.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Does this content replace personalized financial advice?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. All tools, calculators, and templates on Compounding Journey are strictly educational and illustrative. They do not constitute formal financial, investment, or tax advice. For tailored recommendations based on your personal context, goals, and risk tolerance, you can complete our financial diagnostic forms or send a direct message through our contact section.</p>
-                </details>
-            </div>
-
-            <div lang-content="pt" class="space-y-4">
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>O que é a regra dos 4% para a liberdade financeira?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A regra dos 4% é uma referência para estimar o capital investido que poderá suportar despesas anuais. Divide as despesas anuais por 0,04, ou multiplica-as por 25. É uma estimativa educativa, não uma garantia: impostos, comissões, inflação, horizonte temporal e composição da carteira podem alterar o resultado.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Onde posso descarregar modelos de orçamento pessoal em Excel?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A Compounding Journey disponibiliza downloads gratuitos em Excel para <a href="assets/templates/pt/orcamento-pessoal.xlsx" download="Modelo de Orcamento Pessoal.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">orçamento pessoal</a>, <a href="assets/templates/pt/gestao-de-despesas.xlsx" download="Modelo de Gestao de Despesas.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">controlo de despesas</a> e <a href="assets/templates/pt/analise-balanco-mensal.xlsx" download="Modelo de Analise Balanco Mensal.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">análise mensal de finanças pessoais</a>. Também estão reunidos na secção <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Modelos</a>.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Que calculadoras financeiras gratuitas inclui a Compounding Journey?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de levantamento, e uma calculadora que converte o custo de uma compra em horas de trabalho. Todas estão disponíveis na secção <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Ferramentas</a>.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>O que é o crescimento composto (ou capitalização)?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">O crescimento composto é o processo pelo qual os rendimentos do teu dinheiro (juros, dividendos ou mais-valias) geram novos rendimentos ao longo do tempo. Em vez de retirar os ganhos, reinveste-los, permitindo que o teu capital cresça de forma exponencial no longo prazo.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Qual é a diferença entre poupar e investir?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Poupar é guardar dinheiro em contas líquidas e de baixo risco para emergências ou objetivos de curto prazo. Investir envolve comprar ativos de qualidade (como fundos indexados globais ou ações) com maior potencial de crescimento para proteger o teu poder de compra contra a inflação e construir liberdade no longo prazo.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Porque posso precisar de um consultor financeiro ou planejador financeiro?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Embora as ferramentas online tragam clareza, um planejador financeiro ajuda-te a ligar os números aos teus valores de vida. Acompanha-te na definição de uma estratégia à medida, na gestão emocional durante a volatilidade dos mercados, na otimização da tua estrutura e na manutenção da disciplina.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Como funciona a calculadora de custo em horas de vida?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Esta calculadora obtém a tua taxa horária líquida real a partir dos teus rendimentos e horas trabalhadas por mês. Depois, transforma o preço de qualquer compra nas horas de vida exatas que precisas de trocar por ela, ajudando-te a gastar com intenção.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Porque é importante conhecer o meu perfil de risco de investimento antes de investir?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">O teu perfil de risco mede o teu horizonte temporal, a tua capacidade financeira e a tua tolerância emocional às oscilações do mercado. Conhecê-lo evita que assumas riscos que te tirem o sono ou escolhas carteiras tão conservadoras que não vençam a inflação.</p>
-                </details>
-                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
-                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>O conteúdo substitui aconselhamento financeiro personalizado?</span>
-                    </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Não. Todas as ferramentas, calculadoras e modelos de A Jornada de Crescimento Composto são estritamente educacionais e ilustrativos. Não constituem aconselhamento financeiro, de investimento ou fiscal formal. Para recomendações adaptadas ao teu contexto, objetivos e tolerância ao risco, podes preencher os formulários de diagnóstico ou enviar uma mensagem direta.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contacto" class="scroll-mt-20 py-20 bg-white">
+    <!-- ASSESSMENT SECTION -->
+    <section id="assessment" aria-labelledby="assessment-heading" class="scroll-mt-20 py-20 bg-white border-b border-creamborder">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                    <span lang-content="es">Diagnóstico y contacto</span>
-                    <span lang-content="en">Assessment and contact</span>
-                    <span lang-content="pt">Diagnóstico e contacto</span>
+                    <span lang-content="es">Diagnóstico financiero</span>
+                    <span lang-content="en">Financial assessment</span>
+                    <span lang-content="pt">Diagnóstico financeiro</span>
                 </p>
-                <h2 class="text-3xl font-extrabold text-forestgreen">
+                <h2 id="assessment-heading" class="text-3xl font-extrabold text-forestgreen">
                     <span lang-content="es">Convierte tus números en un plan claro</span>
                     <span lang-content="en">Turn your numbers into a clear plan</span>
                     <span lang-content="pt">Transforma os teus números num plano claro</span>
@@ -2554,8 +2295,418 @@
                 </ol>
             </div>
 
-            <!-- Stage 3: Transition to contact -->
-            <div class="relative overflow-hidden rounded-3xl bg-forestgreen p-8 sm:p-12 mt-6 text-white shadow-lg">
+        </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS -->
+    <section id="preguntas-frecuentes" class="scroll-mt-20 relative overflow-hidden py-20 bg-creamsoft border-b border-creamborder">
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div class="absolute -top-24 left-1/3 w-80 h-80 rounded-full bg-warmgold/10 blur-3xl"></div>
+            <div class="absolute -bottom-32 -right-20 w-96 h-96 rounded-full bg-forestgreen/5 blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-10">
+                <div class="md:col-span-5">
+                    <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
+                        <span lang-content="es">Respuestas directas</span>
+                        <span lang-content="en">Direct answers</span>
+                        <span lang-content="pt">Respostas diretas</span>
+                    </p>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-forestgreen leading-tight">
+                        <span lang-content="es">Preguntas frecuentes</span>
+                        <span lang-content="en">Frequently asked questions</span>
+                        <span lang-content="pt">Perguntas frequentes</span>
+                    </h2>
+                </div>
+                <div class="md:col-span-7 md:border-l md:border-creamborder md:pl-8 flex items-end">
+                    <p class="text-sm text-darkbark/70 leading-relaxed">
+                        <span lang-content="es">Conceptos esenciales para usar las herramientas de la página con contexto y tomar decisiones más informadas.</span>
+                        <span lang-content="en">Essential context for using the site's tools and making more informed decisions.</span>
+                        <span lang-content="pt">Conceitos essenciais para usar as ferramentas da página com contexto e tomar decisões mais informadas.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div lang-content="es" class="space-y-4">
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿Qué es la regla del 4% para la libertad financiera?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">La regla del 4% es una referencia para estimar el capital necesario para financiar gastos anuales con una cartera de inversión. Divide tus gastos anuales entre 0,04, o multiplícalos por 25. Es una aproximación educativa, no una garantía: impuestos, comisiones, inflación, horizonte temporal y composición de la cartera pueden cambiar el resultado.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿Dónde puedo descargar plantillas de presupuesto personal en Excel?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding Journey ofrece descargas gratuitas en Excel para <a href="assets/templates/es/presupuesto-personal.xlsx" download="Plantilla de Presupuesto Personal.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">presupuesto personal</a>, <a href="assets/templates/es/gestion-de-gastos.xlsx" download="Plantilla de Gestion de Gastos.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">control de gastos</a> y <a href="assets/templates/es/analisis-balance-mensual.xlsx" download="Plantilla de Analisis del Balance Mensual.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">análisis mensual de finanzas personales</a>. También están reunidas en la sección <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Plantillas</a>.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿Qué calculadoras financieras gratuitas incluye Compounding Journey?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">La página incluye una calculadora de interés compuesto, una calculadora orientativa de libertad financiera basada en gastos y tasa de retirada, y una calculadora que convierte el coste de una compra en horas de trabajo. Todas están disponibles en la sección <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Herramientas</a>.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿Qué es el crecimiento compuesto (o la capitalización compuesta)?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">El crecimiento compuesto es el proceso mediante el cual los rendimientos de tu dinero (intereses, dividendos o plusvalías) generan nuevos rendimientos con el tiempo. En lugar de retirar las ganancias, las reinviertes, permitiendo que tu capital crezca de forma exponencial a largo plazo.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿Cuál es la diferencia entre ahorrar e invertir?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Ahorrar es guardar dinero en cuentas líquidas y de bajo riesgo para emergencias o metas a corto plazo. Invertir implica comprar activos de calidad (como fondos indexados globales o acciones) con mayor potencial de crecimiento para proteger tu poder adquisitivo frente a la inflación y construir libertad a largo plazo.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿Por qué podría necesitar un asesor financiero o planificador patrimonial?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Aunque las herramientas online aportan claridad, un asesor financiero te ayuda a conectar los números con tus valores de vida. Te acompaña para definir una estrategia a medida, gestionar emociones durante la volatilidad del mercado, optimizar tu estructura y mantener la disciplina a lo largo del tiempo.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿Cómo funciona la calculadora de coste en horas de vida?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Esta calculadora obtiene tu salario real neto por hora a partir de tus ingresos y horas trabajadas al mes. Después, transforma el precio de cualquier compra en las horas de vida exactas que necesitas intercambiar por ella, ayudándote a gastar con intención.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿Por qué es importante conocer mi perfil de riesgo de inversión antes de invertir?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Tu perfil de riesgo mide tu horizonte temporal, tu capacidad financiera y tu tolerancia emocional ante las fluctuaciones del mercado. Conocerlo evita asumas riesgos que te quiten el sueño o elijas carteras tan conservadoras que no superen la inflación.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>¿El contenido sustituye el asesoramiento financiero personalizado?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son estrictamente educativas e ilustrativas. No constituyen asesoramiento financiero, de inversión o fiscal formal. Para recibir recomendaciones adaptadas a tu contexto, objetivos y tolerancia al riesgo, puedes completar los formularios de diagnóstico o enviarme un mensaje directo.</p>
+                </details>
+            </div>
+
+            <div lang-content="en" class="space-y-4">
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>What is the 4% rule for financial freedom?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">The 4% rule is a guideline for estimating the invested capital that may support annual spending. Divide annual expenses by 0.04, or multiply them by 25. It is an educational estimate, not a guarantee: taxes, fees, inflation, time horizon, and portfolio composition can change the outcome.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Where can I download personal budget templates in Excel?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding Journey provides free Excel downloads for <a href="assets/templates/en/personal-budget.xlsx" download="Template Personal Budget.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">personal budgeting</a>, <a href="assets/templates/en/expense-management.xlsx" download="Template Expense Management.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">expense tracking</a>, and <a href="assets/templates/en/monthly-balance-analysis.xlsx" download="Template Monthly Balance Analysis.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">monthly personal finance analysis</a>. They are also collected in the <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Templates</a> section.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Which free financial calculators does Compounding Journey include?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">The page includes a compound interest calculator, a financial freedom calculator based on spending and a withdrawal rate, and a calculator that converts a purchase price into working hours. All three are available in the <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Tools</a> section.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>What is compound growth (or compounding)?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding (or compound growth) is the process where earnings on your money—such as interest, dividends, or capital gains—generate their own earnings over time. Instead of withdrawing your returns, you reinvest them, causing your capital to grow exponentially rather than linearly over long horizons.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>What is the difference between saving and investing?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Saving is keeping cash in liquid, low-risk accounts to cover short-term needs or emergency funds. Investing involves buying quality assets (like global index funds or equities) with higher potential growth to preserve purchasing power against inflation and build long-term freedom.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Why might I need a financial advisor or wealth planner?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">While online tools provide clarity, a financial advisor helps you connect numbers to your personal life values. An advisor assists in building a customized strategy, managing emotional reactions during market volatility, optimizing tax structures, and keeping your long-term plan disciplined and sustainable.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>How does the “Cost in Hours of Life” calculator work?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">This calculator determines your net hourly wage based on your monthly income and working hours. It then converts any potential purchase price into the exact number of hours of your life required to pay for it, helping you make mindful spending decisions.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Why is knowing my investment risk profile important before I invest?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Your risk profile measures your time horizon, financial capacity, and emotional tolerance for market fluctuations. Knowing it prevents you from taking risks that keep you awake at night or choosing portfolios so conservative that they fail to keep pace with inflation.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Does this content replace personalized financial advice?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. All tools, calculators, and templates on Compounding Journey are strictly educational and illustrative. They do not constitute formal financial, investment, or tax advice. For tailored recommendations based on your personal context, goals, and risk tolerance, you can complete our financial diagnostic forms or send a direct message through our contact section.</p>
+                </details>
+            </div>
+
+            <div lang-content="pt" class="space-y-4">
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>O que é a regra dos 4% para a liberdade financeira?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A regra dos 4% é uma referência para estimar o capital investido que poderá suportar despesas anuais. Divide as despesas anuais por 0,04, ou multiplica-as por 25. É uma estimativa educativa, não uma garantia: impostos, comissões, inflação, horizonte temporal e composição da carteira podem alterar o resultado.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Onde posso descarregar modelos de orçamento pessoal em Excel?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A Compounding Journey disponibiliza downloads gratuitos em Excel para <a href="assets/templates/pt/orcamento-pessoal.xlsx" download="Modelo de Orcamento Pessoal.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">orçamento pessoal</a>, <a href="assets/templates/pt/gestao-de-despesas.xlsx" download="Modelo de Gestao de Despesas.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">controlo de despesas</a> e <a href="assets/templates/pt/analise-balanco-mensal.xlsx" download="Modelo de Analise Balanco Mensal.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">análise mensal de finanças pessoais</a>. Também estão reunidos na secção <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Modelos</a>.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Que calculadoras financeiras gratuitas inclui a Compounding Journey?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de levantamento, e uma calculadora que converte o custo de uma compra em horas de trabalho. Todas estão disponíveis na secção <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Ferramentas</a>.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>O que é o crescimento composto (ou capitalização)?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">O crescimento composto é o processo pelo qual os rendimentos do teu dinheiro (juros, dividendos ou mais-valias) geram novos rendimentos ao longo do tempo. Em vez de retirar os ganhos, reinveste-los, permitindo que o teu capital cresça de forma exponencial no longo prazo.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Qual é a diferença entre poupar e investir?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Poupar é guardar dinheiro em contas líquidas e de baixo risco para emergências ou objetivos de curto prazo. Investir envolve comprar ativos de qualidade (como fundos indexados globais ou ações) com maior potencial de crescimento para proteger o teu poder de compra contra a inflação e construir liberdade no longo prazo.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Porque posso precisar de um consultor financeiro ou planejador financeiro?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Embora as ferramentas online tragam clareza, um planejador financeiro ajuda-te a ligar os números aos teus valores de vida. Acompanha-te na definição de uma estratégia à medida, na gestão emocional durante a volatilidade dos mercados, na otimização da tua estrutura e na manutenção da disciplina.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Como funciona a calculadora de custo em horas de vida?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Esta calculadora obtém a tua taxa horária líquida real a partir dos teus rendimentos e horas trabalhadas por mês. Depois, transforma o preço de qualquer compra nas horas de vida exatas que precisas de trocar por ela, ajudando-te a gastar com intenção.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>Porque é importante conhecer o meu perfil de risco de investimento antes de investir?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">O teu perfil de risco mede o teu horizonte temporal, a tua capacidade financeira e a tua tolerância emocional às oscilações do mercado. Conhecê-lo evita que assumas riscos que te tirem o sono ou escolhas carteiras tão conservadoras que não vençam a inflação.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <span>O conteúdo substitui aconselhamento financeiro personalizado?</span>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Não. Todas as ferramentas, calculadoras e modelos de A Jornada de Crescimento Composto são estritamente educacionais e ilustrativos. Não constituem aconselhamento financeiro, de investimento ou fiscal formal. Para recomendações adaptadas ao teu contexto, objetivos e tolerância ao risco, podes preencher os formulários de diagnóstico ou enviar uma mensagem direta.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contacto" aria-labelledby="contact-heading" class="scroll-mt-20 py-20 bg-creamsoft">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
+                    <span lang-content="es">Contacto y acompañamiento</span>
+                    <span lang-content="en">Contact and guidance</span>
+                    <span lang-content="pt">Contacto e acompanhamento</span>
+                </p>
+                <h2 id="contact-heading" class="text-3xl font-extrabold text-forestgreen">
+                    <span lang-content="es">Tres formas de seguir en contacto</span>
+                    <span lang-content="en">Three ways to stay connected</span>
+                    <span lang-content="pt">Três formas de manter o contacto</span>
+                </h2>
+                <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
+                <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
+                    <span lang-content="es">Conoce al asesor, sigue la newsletter o cuéntanos directamente tu situación financiera.</span>
+                    <span lang-content="en">Meet the advisor, follow the newsletter, or tell us directly about your financial situation.</span>
+                    <span lang-content="pt">Conhece o consultor, acompanha a newsletter ou fala-nos diretamente sobre a tua situação financeira.</span>
+                </p>
+
+                <nav class="contact-path-nav" aria-labelledby="contact-heading">
+                    <a href="#biografia" class="contact-path-link">
+                        <i class="fa-solid fa-user-tie text-warmgold" aria-hidden="true"></i>
+                        <span lang-content="es">Conoce al asesor</span>
+                        <span lang-content="en">Meet the Advisor</span>
+                        <span lang-content="pt">Conhece o consultor</span>
+                    </a>
+                    <a href="#contact-newsletter" class="contact-path-link">
+                        <i class="fa-regular fa-newspaper text-warmgold" aria-hidden="true"></i>
+                        <span lang-content="es">Sigue la Newsletter</span>
+                        <span lang-content="en">Follow the Newsletter</span>
+                        <span lang-content="pt">Acompanha a Newsletter</span>
+                    </a>
+                    <a href="#contact-form" class="contact-path-link">
+                        <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
+                        <span lang-content="es">Envía una consulta</span>
+                        <span lang-content="en">Send an Inquiry</span>
+                        <span lang-content="pt">Envia uma questão</span>
+                    </a>
+                </nav>
+            </div>
+
+            <section id="biografia" aria-labelledby="about-heading" class="scroll-mt-20 mb-12 pb-12 border-b border-creamborder">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+
+                        <!-- Profile Image Frame / Adaptive Card Layout -->
+                        <div class="md:col-span-5 flex justify-center">
+                            <div class="relative group w-full max-w-[320px]">
+                                <!-- Decorative natural green/warm gold glow -->
+                                <div class="absolute -inset-1.5 bg-gradient-to-r from-forestgreen to-warmgold rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+
+                                <div class="relative bg-white p-5 rounded-[2rem] border border-creamborder shadow-xl flex flex-col items-center">
+                                    <!-- Circular photo element containing user assets -->
+                                    <div class="w-48 h-48 rounded-full overflow-hidden bg-gradient-to-br from-forestgreen to-warmgold relative border-4 border-white shadow-inner flex items-center justify-center">
+
+                                        <!-- Premium Fallback Graphic (shows only if photo is offline/blocked) -->
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 select-none">
+                                            <span class="text-4xl font-extrabold tracking-wider leading-none">SB</span>
+                                            <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Wealth Planner</span>
+                                        </div>
+
+                                        <!-- Actual Image Tag with fallback failure support -->
+                                    <img
+                                        src="icone%20foto%20limpo.png"
+                                        alt="Sandy Bradbury"
+                                        width="365"
+                                        height="352"
+                                        loading="lazy"
+                                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-10"
+                                        onerror="this.style.display='none'; console.log('Notice: Switched profile picture to modern abstract vector fallback.')"
+                                    >
+                                </div>
+
+                                <div class="mt-5 text-center">
+                                    <h3 class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</h3>
+                                    <p class="text-xs text-warmgold font-bold uppercase tracking-widest mt-1">
+                                        <span lang-content="es">Asesor Financiero</span>
+                                        <span lang-content="en">Financial Advisor</span>
+                                        <span lang-content="pt">Planejador Financeiro</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Biography content translated directly -->
+                    <div class="md:col-span-7 space-y-6">
+                        <p class="text-warmgold text-xs font-bold uppercase tracking-widest">
+                            <span lang-content="es">Sobre mí</span>
+                            <span lang-content="en">About</span>
+                            <span lang-content="pt">Sobre mim</span>
+                        </p>
+                        <h2 id="about-heading" class="text-3xl font-extrabold text-forestgreen tracking-tight">
+                            <span lang-content="es">Finanzas para una vida con intención</span>
+                            <span lang-content="en">Finance for an intentional life</span>
+                            <span lang-content="pt">Finanças para uma vida com intenção</span>
+                        </h2>
+
+                        <div lang-content="es" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
+                            <p>
+                                Hola, soy <strong>Sandy Bradbury</strong>. Ayudo a personas y familias a ordenar su dinero alrededor de lo que realmente importa: ganar tranquilidad hoy y construir libertad para mañana. Mi enfoque combina psicología del dinero, hábitos sostenibles e inversiones diversificadas de calidad.
+                            </p>
+                            <p>
+                                En <strong>El viaje del Crecimiento Compuesto</strong> no hablo solo de rentabilidad. Exploro cómo usar el interés compuesto para comprar tiempo, reducir dependencias y diseñar una vida con propósito. Tú eres el protagonista del viaje: la estrategia pone el mapa, la disciplina mantiene el rumbo y tus valores deciden el destino.
+                            </p>
+                        </div>
+
+                        <div lang-content="en" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
+                            <p>
+                                Hello, I’m <strong>Sandy Bradbury</strong>. I help individuals and families organize money around what truly matters: greater peace of mind today and more freedom tomorrow. My approach combines money psychology, sustainable habits, and diversified quality investments.
+                            </p>
+                            <p>
+                                In <strong>Compounding Journey</strong>, I go beyond returns. I explore how compound growth can buy time, reduce dependency, and help you design a purposeful life. You are the protagonist of the journey: strategy provides the map, discipline keeps you moving, and your values choose the destination.
+                            </p>
+                        </div>
+
+                        <div lang-content="pt" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
+                            <p>
+                                Olá, sou <strong>Sandy Bradbury</strong>. Ajudo pessoas e famílias a organizar o dinheiro em torno do que realmente importa: ganhar tranquilidade hoje e construir liberdade para amanhã. A minha abordagem combina psicologia do dinheiro, hábitos sustentáveis e investimentos diversificados de qualidade.
+                            </p>
+                            <p>
+                                Em <strong>A Jornada de Crescimento Composto</strong>, não falo apenas de rentabilidade. Exploro como o crescimento composto pode comprar tempo, reduzir dependências e ajudar-te a desenhar uma vida com propósito. Tu és o protagonista da jornada: a estratégia oferece o mapa, a disciplina mantém o rumo e os teus valores escolhem o destino.
+                            </p>
+                        </div>
+
+                        <div class="pt-4 flex flex-wrap gap-4">
+                                <a
+                                    href="https://www.linkedin.com/in/sandy-bradbury"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-3 px-6 py-3.5 bg-[#0077B5] hover:bg-[#0077B5]/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
+                                >
+                                    <i class="fa-brands fa-linkedin text-lg"></i>
+                                    <span lang-content="es">Conectar en LinkedIn</span>
+                                    <span lang-content="en">Connect on LinkedIn</span>
+                                    <span lang-content="pt">Conectar no LinkedIn</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
+                                </a>
+
+                                <a
+                                    href="https://preview.mailerlite.io/forms/2524111/193713027715958521/share"
+                                    data-newsletter-link
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-3 px-6 py-3.5 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
+                                >
+                                    <i class="fa-solid fa-bookmark text-warmgold text-lg"></i>
+                                    <span lang-content="es">Leer en Substack</span>
+                                    <span lang-content="en">Read on Substack</span>
+                                    <span lang-content="pt">Ler no Substack</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact-newsletter" aria-labelledby="contact-newsletter-heading" class="scroll-mt-20 mb-12">
+                <div class="relative overflow-hidden rounded-3xl border border-creamborder bg-white p-8 sm:p-12 shadow-sm">
+                    <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-warmgold/10 blur-2xl pointer-events-none" aria-hidden="true"></div>
+                    <div class="relative grid grid-cols-1 md:grid-cols-12 gap-8 md:items-center">
+                        <div class="md:col-span-7">
+                            <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-forestgreen text-warmgold shadow-md">
+                                <i class="fa-regular fa-newspaper text-lg" aria-hidden="true"></i>
+                            </div>
+                            <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
+                                <span lang-content="es">Una conversación que continúa</span>
+                                <span lang-content="en">A conversation that continues</span>
+                                <span lang-content="pt">Uma conversa que continua</span>
+                            </p>
+                            <h3 id="contact-newsletter-heading" class="text-2xl font-extrabold text-forestgreen leading-tight">
+                                <span lang-content="es">Sigue la newsletter en tu idioma</span>
+                                <span lang-content="en">Follow the newsletter in your language</span>
+                                <span lang-content="pt">Acompanha a newsletter no teu idioma</span>
+                            </h3>
+                            <p class="mt-3 text-sm text-darkbark/70 leading-relaxed">
+                                <span lang-content="es">Recibe ideas prácticas sobre psicología del dinero, inversión con propósito y decisiones financieras que respetan tus valores.</span>
+                                <span lang-content="en">Receive practical ideas on money psychology, purposeful investing, and financial decisions that reflect your values.</span>
+                                <span lang-content="pt">Recebe ideias práticas sobre psicologia do dinheiro, investimento com propósito e decisões financeiras alinhadas com os teus valores.</span>
+                            </p>
+                        </div>
+
+                        <div class="md:col-span-5 rounded-2xl bg-creamsoft border border-creamborder p-6">
+                            <p class="text-sm font-semibold text-darkbark/75 leading-relaxed mb-5">
+                                <span lang-content="es">El botón abre automáticamente la edición en español seleccionada para esta página.</span>
+                                <span lang-content="en">The button automatically opens the English edition selected for this page.</span>
+                                <span lang-content="pt">O botão abre automaticamente a edição em português selecionada para esta página.</span>
+                            </p>
+                            <a href="https://preview.mailerlite.io/forms/2524111/193713027715958521/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                                <span lang-content="es">Seguir la Newsletter</span>
+                                <span lang-content="en">Follow the Newsletter</span>
+                                <span lang-content="pt">Acompanhar a Newsletter</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-warmgold" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Transition to contact -->
+            <div class="relative overflow-hidden rounded-3xl bg-forestgreen p-8 sm:p-12 text-white shadow-lg">
                 <div class="absolute -right-12 -top-12 w-40 h-40 bg-warmgold/10 rounded-full blur-2xl pointer-events-none"></div>
                 <div class="contact-transition-layout relative flex flex-col gap-6 md:flex-row md:items-center">
                     <div class="flex items-start gap-4 max-w-2xl">
@@ -2566,14 +2717,14 @@
                         </div>
                         <div>
                             <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                                <span lang-content="es">Etapa 03 · Tu siguiente paso</span>
-                                <span lang-content="en">Stage 03 · Your next step</span>
-                                <span lang-content="pt">Etapa 03 · O teu próximo passo</span>
+                                <span lang-content="es">Consulta directa · Tu siguiente paso</span>
+                                <span lang-content="en">Direct inquiry · Your next step</span>
+                                <span lang-content="pt">Questão direta · O teu próximo passo</span>
                             </p>
                             <h3 class="text-2xl font-extrabold leading-tight">
-                                <span lang-content="es">¿Ya tienes tu diagnóstico? Demos el siguiente paso.</span>
-                                <span lang-content="en">Do you already have your assessment? Let’s take the next step.</span>
-                                <span lang-content="pt">Já tens o teu diagnóstico? Vamos dar o próximo passo.</span>
+                                <span lang-content="es">Cuando estés listo, demos el siguiente paso.</span>
+                                <span lang-content="en">When you’re ready, let’s take the next step.</span>
+                                <span lang-content="pt">Quando estiveres pronto, vamos dar o próximo passo.</span>
                             </h3>
                             <p class="diagnostic-copy-light text-sm leading-relaxed mt-3">
                                 <span lang-content="es">Cuéntame qué descubriste, qué dudas aparecieron y qué decisión quieres trabajar con mayor claridad.</span>
@@ -2583,9 +2734,9 @@
                         </div>
                     </div>
                     <a href="#contact-form" class="inline-flex shrink-0 items-center justify-center gap-3 rounded-xl bg-warmgold px-6 py-3.5 text-sm font-extrabold text-darkbark hover:bg-warmgold/95 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all">
-                        <span lang-content="es">Comentar mis resultados</span>
-                        <span lang-content="en">Discuss my results</span>
-                        <span lang-content="pt">Comentar os meus resultados</span>
+                        <span lang-content="es">Abrir el formulario</span>
+                        <span lang-content="en">Open the inquiry form</span>
+                        <span lang-content="pt">Abrir o formulário</span>
                         <span lang-content="es" aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></span>
                         <span lang-content="en" aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></span>
                         <span lang-content="pt" aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></span>
@@ -2594,8 +2745,26 @@
             </div>
 
             <!-- Form Container Card -->
-            <div class="bg-creamsoft rounded-3xl border border-creamborder p-8 sm:p-12 mt-6 shadow-sm relative overflow-hidden">
+            <div class="bg-white rounded-3xl border border-creamborder p-8 sm:p-12 mt-6 shadow-sm relative overflow-hidden">
                 <div class="absolute -top-12 -right-12 w-40 h-40 bg-forestgreen/5 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="relative z-10 mb-8 text-center">
+                    <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
+                        <span lang-content="es">Formulario de contacto</span>
+                        <span lang-content="en">Contact form</span>
+                        <span lang-content="pt">Formulário de contacto</span>
+                    </p>
+                    <h3 class="text-2xl font-extrabold text-forestgreen">
+                        <span lang-content="es">Cuéntame qué necesitas aclarar</span>
+                        <span lang-content="en">Tell me what you’d like to clarify</span>
+                        <span lang-content="pt">Conta-me o que gostarias de esclarecer</span>
+                    </h3>
+                    <p class="mt-3 text-sm text-darkbark/65 leading-relaxed max-w-2xl mx-auto">
+                        <span lang-content="es">Incluye el contexto que consideres importante para que podamos empezar con una conversación útil y concreta.</span>
+                        <span lang-content="en">Include any context that matters so we can begin with a useful, focused conversation.</span>
+                        <span lang-content="pt">Inclui o contexto que consideres importante para começarmos com uma conversa útil e concreta.</span>
+                    </p>
+                </div>
 
                 <form id="contact-form" name="contact" method="POST" autocomplete="on" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-10">
                     <input type="hidden" name="form-name" value="contact">
