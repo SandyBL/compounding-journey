@@ -491,6 +491,23 @@
             min-width: 0;
         }
 
+        .header-brand-copy {
+            min-width: 0;
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        .header-brand-name {
+            display: block;
+            color: #1E4620;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            text-transform: uppercase;
+        }
+
         .header-language-switcher,
         .header-publication-switcher,
         .lang-btn,
@@ -884,6 +901,125 @@
             color: #9b2c2c;
             font-size: 0.9rem;
         }
+
+        .simulator-stage {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 85% 18%, rgba(197, 155, 39, 0.2), transparent 26rem),
+                linear-gradient(135deg, #173719 0%, #1e4620 58%, #243c2b 100%);
+        }
+
+        .simulator-stage::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.16;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to right, transparent, black 45%, black);
+        }
+
+        .simulator-panel {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .simulator-scorecard {
+            position: relative;
+            min-height: 22rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 2rem;
+            background: rgba(252, 241, 219, 0.08);
+            box-shadow: 0 28px 70px rgba(23, 55, 25, 0.3);
+            backdrop-filter: blur(12px);
+        }
+
+        .simulator-score-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .simulator-score-row:last-child {
+            border-bottom: 0;
+        }
+
+        .simulator-score-label {
+            color: rgba(252, 241, 219, 0.75);
+        }
+
+        .simulator-value-positive {
+            color: #9fe0bd;
+        }
+
+        .simulator-value-gold {
+            color: #d8b85f;
+        }
+
+        .simulator-value-happiness {
+            color: #9ed8e8;
+        }
+
+        .simulator-value-iq {
+            color: #f0cd73;
+        }
+
+        .simulator-compass {
+            border: 1px solid rgba(197, 155, 39, 0.5);
+            background: rgba(197, 155, 39, 0.1);
+        }
+
+        .simulator-play-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            min-height: 3.25rem;
+            padding: 0.85rem 1.35rem;
+            border-radius: 0.8rem;
+            background: #c59b27;
+            color: #173719;
+            font-weight: 800;
+            box-shadow: 0 12px 28px rgba(197, 155, 39, 0.22);
+            transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .simulator-play-link:hover {
+            transform: translateY(-2px);
+            background: #d2ad45;
+            box-shadow: 0 16px 34px rgba(197, 155, 39, 0.3);
+        }
+
+        .simulator-play-link:focus-visible {
+            outline: 3px solid rgba(252, 241, 219, 0.8);
+            outline-offset: 4px;
+        }
+
+        body.lang-es .simulator-play-link[lang-content="es"],
+        body.lang-en .simulator-play-link[lang-content="en"],
+        body.lang-pt .simulator-play-link[lang-content="pt"] {
+            display: inline-flex !important;
+        }
+
+        @media (max-width: 900px) {
+            .simulator-panel {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .simulator-scorecard {
+                min-height: auto;
+            }
+        }
     </style>
 </head>
 <body class="lang-es bg-creamsoft font-sans text-darkbark/90 antialiased scroll-smooth">
@@ -923,9 +1059,7 @@
                 </div>
                 <!-- Fixed brand name with a localized tagline -->
                 <div class="header-brand-copy flex flex-col justify-center">
-                    <span lang-content="es" class="text-[10px] sm:text-sm font-extrabold tracking-tight text-forestgreen leading-tight uppercase">Compounding Journey</span>
-                    <span lang-content="en" class="text-[10px] sm:text-sm font-extrabold tracking-tight text-forestgreen leading-tight uppercase">Compounding Journey</span>
-                    <span lang-content="pt" class="text-[10px] sm:text-sm font-extrabold tracking-tight text-forestgreen leading-tight uppercase">Compounding Journey</span>
+                    <span class="header-brand-name">Compounding Journey</span>
                     <span lang-content="es" class="text-[9px] sm:text-[10px] font-bold text-warmgold tracking-wider mt-0.5">TU MAPA HACIA LA LIBERTAD</span>
                     <span lang-content="en" class="text-[9px] sm:text-[10px] font-bold text-warmgold tracking-wider mt-0.5">YOUR MAP TO FREEDOM</span>
                     <span lang-content="pt" class="text-[9px] sm:text-[10px] font-bold text-warmgold tracking-wider mt-0.5">O TEU MAPA PARA A LIBERDADE</span>
@@ -948,6 +1082,11 @@
                     <span lang-content="es">Plantillas</span>
                     <span lang-content="en">Templates</span>
                     <span lang-content="pt">Modelos</span>
+                </a>
+                <a href="#simulador">
+                    <span lang-content="es">Simulador</span>
+                    <span lang-content="en">Simulator</span>
+                    <span lang-content="pt">Simulador</span>
                 </a>
                 <a href="#assessment">
                     <span lang-content="es">Diagnóstico</span>
@@ -2069,6 +2208,85 @@
                     <span lang-content="pt">Entrar em contacto</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSONAL FINANCE SIMULATOR -->
+    <section id="simulador" aria-labelledby="simulator-heading" class="simulator-stage scroll-mt-20 py-20 text-white border-b border-creamborder">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="simulator-panel">
+                <div>
+                    <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-3">
+                        <span lang-content="es">Aprender tomando decisiones</span>
+                        <span lang-content="en">Learn by making decisions</span>
+                        <span lang-content="pt">Aprender a tomar decisões</span>
+                    </p>
+                    <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-6">
+                        <span lang-content="es">Simulador de Finanzas Personales</span>
+                        <span lang-content="en">Personal Finance Simulator</span>
+                        <span lang-content="pt">Simulador de Finanças Pessoais</span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-creamsoft/85 leading-relaxed max-w-2xl mb-4">
+                        <span lang-content="es">Pon a prueba cómo reaccionas ante decisiones financieras de la vida cotidiana. Cada elección cambia tu patrimonio, flujo de caja, felicidad e inteligencia financiera.</span>
+                        <span lang-content="en">Test how you respond to everyday financial decisions. Every choice changes your net worth, cash flow, happiness, and financial intelligence.</span>
+                        <span lang-content="pt">Testa como reages a decisões financeiras do dia a dia. Cada escolha altera o teu património, fluxo de caixa, felicidade e inteligência financeira.</span>
+                    </p>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed max-w-2xl mb-8">
+                        <span lang-content="es">Recorre 15 situaciones, descubre las consecuencias de tus decisiones y comprueba cuántos puntos consigues al final.</span>
+                        <span lang-content="en">Work through 15 scenarios, discover the consequences of your decisions, and see how many points you earn at the end.</span>
+                        <span lang-content="pt">Percorre 15 situações, descobre as consequências das tuas decisões e vê quantos pontos consegues no final.</span>
+                    </p>
+
+                    <a lang-content="es" href="/es/simulator.html" class="simulator-play-link">
+                        <span>Jugar al simulador</span>
+                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+                    </a>
+                    <a lang-content="en" href="/en/simulator.html" class="simulator-play-link">
+                        <span>Play the simulator</span>
+                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+                    </a>
+                    <a lang-content="pt" href="/pt/simulator.html" class="simulator-play-link">
+                        <span>Jogar o simulador</span>
+                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="simulator-scorecard" aria-hidden="true">
+                    <div class="flex items-center justify-between gap-4 mb-5">
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-warmgold font-extrabold">
+                                <span lang-content="es">Tu marcador</span>
+                                <span lang-content="en">Your scorecard</span>
+                                <span lang-content="pt">O teu placar</span>
+                            </p>
+                            <p class="text-xl font-extrabold mt-1">
+                                <span lang-content="es">Decisión 08 / 15</span>
+                                <span lang-content="en">Decision 08 / 15</span>
+                                <span lang-content="pt">Decisão 08 / 15</span>
+                            </p>
+                        </div>
+                        <div class="simulator-compass w-14 h-14 rounded-full flex items-center justify-center text-warmgold text-xl">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                    </div>
+                    <div class="simulator-score-row">
+                        <span class="simulator-score-label text-sm"><span lang-content="es">Patrimonio neto</span><span lang-content="en">Net worth</span><span lang-content="pt">Património líquido</span></span>
+                        <strong class="simulator-value-positive">+$18,240</strong>
+                    </div>
+                    <div class="simulator-score-row">
+                        <span class="simulator-score-label text-sm"><span lang-content="es">Flujo de caja</span><span lang-content="en">Cash flow</span><span lang-content="pt">Fluxo de caixa</span></span>
+                        <strong class="simulator-value-gold">+$735</strong>
+                    </div>
+                    <div class="simulator-score-row">
+                        <span class="simulator-score-label text-sm"><span lang-content="es">Felicidad</span><span lang-content="en">Happiness</span><span lang-content="pt">Felicidade</span></span>
+                        <strong class="simulator-value-happiness">68%</strong>
+                    </div>
+                    <div class="simulator-score-row">
+                        <span class="simulator-score-label text-sm"><span lang-content="es">Inteligencia financiera</span><span lang-content="en">Financial intelligence</span><span lang-content="pt">Inteligência financeira</span></span>
+                        <strong class="simulator-value-iq">74 pts</strong>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
