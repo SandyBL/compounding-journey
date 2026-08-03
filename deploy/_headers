@@ -20,5 +20,12 @@
 /assets/css/blog.css
   Cache-Control: public, max-age=604800, must-revalidate
 
+/assets/css/header.css
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/assets/fonts/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
 /assets/js/blog.js
   Cache-Control: public, max-age=604800, must-revalidate
