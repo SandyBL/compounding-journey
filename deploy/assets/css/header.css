@@ -1,0 +1,188 @@
+@font-face {
+  font-family: "Compounding Jakarta";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/plus-jakarta-sans-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Compounding Jakarta";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/assets/fonts/plus-jakarta-sans-800.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("/assets/fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+}
+
+:root {
+  --site-header-font: "Compounding Jakarta", "Plus Jakarta Sans", sans-serif;
+  --site-header-forest: #1e4620;
+  --site-header-gold: #c59b27;
+  --site-header-border: #efeae0;
+}
+
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--site-header-border);
+  background: #fcf1db;
+  box-shadow: 0 1px 3px rgba(45, 36, 27, 0.1);
+  backdrop-filter: none;
+  transform: translateZ(0);
+}
+
+.site-header .header-shell {
+  width: min(1280px, 100%);
+  height: 80px;
+  margin-inline: auto;
+  padding-inline: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-header .header-brand {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header .header-brand-logo {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  max-width: 64px;
+  min-height: 64px;
+  max-height: 64px;
+  flex: 0 0 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.site-header .header-brand-logo img {
+  width: 64px;
+  height: 64px;
+  max-width: 64px;
+  max-height: 64px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.site-header .header-brand:hover .header-brand-logo img {
+  transform: scale(1.05);
+}
+
+.site-header .header-brand-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--site-header-font);
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.site-header .header-brand-name,
+.site-header .header-brand-tagline {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--site-header-font);
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.site-header .header-brand-name {
+  color: var(--site-header-forest);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.site-header .header-brand-tagline[lang-content] {
+  animation: none !important;
+  transform: none !important;
+}
+
+body.lang-es .site-header .header-brand-tagline[lang-content="es"],
+body.lang-en .site-header .header-brand-tagline[lang-content="en"],
+body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
+  display: block !important;
+}
+
+.site-header .header-brand-tagline {
+  margin-top: 1px;
+  color: var(--site-header-gold);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+}
+
+.site-header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 639px) {
+  .site-header .header-shell {
+    gap: 8px;
+    padding-inline: 12px;
+  }
+
+  .site-header .header-brand-logo,
+  .site-header .header-brand-logo img {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    max-width: 48px;
+    min-height: 48px;
+    max-height: 48px;
+  }
+
+  .site-header .header-brand-logo {
+    flex-basis: 48px;
+    border-radius: 14px;
+  }
+
+  .site-header .header-brand-copy {
+    display: none;
+  }
+
+  .site-header .header-actions {
+    gap: 6px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .site-header .header-shell {
+    padding-inline: 24px;
+  }
+}

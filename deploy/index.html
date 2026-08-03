@@ -35,14 +35,10 @@
     <meta id="twitter-description" name="twitter:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
     <meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
-    <!-- Google Fonts: Plus Jakarta Sans for premium modern aesthetic -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Compiled production styles -->
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -487,27 +483,6 @@
             display: none;
         }
 
-        .header-brand {
-            min-width: 0;
-        }
-
-        .header-brand-copy {
-            min-width: 0;
-            font-family: "Plus Jakarta Sans", sans-serif;
-        }
-
-        .header-brand-name {
-            display: block;
-            color: #1E4620;
-            font-family: "Plus Jakarta Sans", sans-serif;
-            font-size: 0.875rem;
-            font-style: normal;
-            font-weight: 800;
-            letter-spacing: -0.025em;
-            line-height: 1.15;
-            text-transform: uppercase;
-        }
-
         .header-language-switcher,
         .header-publication-switcher,
         .lang-btn,
@@ -679,22 +654,6 @@
                 gap: 0.35rem;
                 padding: 0.7rem 0.3rem;
                 font-size: 0.65rem;
-            }
-
-            .header-shell {
-                gap: 0.5rem;
-                padding-right: 0.75rem;
-                padding-left: 0.75rem;
-            }
-
-            .header-brand-logo {
-                width: 3rem;
-                height: 3rem;
-                border-radius: 0.875rem;
-            }
-
-            .header-brand-copy {
-                display: none;
             }
 
             .header-actions {
@@ -1021,6 +980,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260803-3">
 </head>
 <body class="lang-es bg-creamsoft font-sans text-darkbark/90 antialiased scroll-smooth">
 
@@ -1041,7 +1001,7 @@
     </div>
 
     <!-- NAVIGATION HEADER -->
-    <header class="sticky top-0 z-50 bg-[#FCF1DB]/95 backdrop-blur border-b border-creamborder shadow-sm">
+    <header class="site-header sticky top-0 z-50 bg-[#FCF1DB]/95 backdrop-blur border-b border-creamborder shadow-sm">
         <div class="header-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             
             <!-- Brand Logotype & Dynamic Typography Integration -->
@@ -1049,7 +1009,7 @@
                 <!-- Compounding Journey Substack Logo Image - Direct Load -->
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
                     <img
-                        src="logo-compounding-journey.png"
+                        src="/logo-compounding-journey.png"
                         alt="Compounding Journey"
                         width="2048"
                         height="2048"
@@ -1060,9 +1020,9 @@
                 <!-- Fixed brand name with a localized tagline -->
                 <div class="header-brand-copy flex flex-col justify-center">
                     <span class="header-brand-name">Compounding Journey</span>
-                    <span lang-content="es" class="text-[9px] sm:text-[10px] font-bold text-warmgold tracking-wider mt-0.5">TU MAPA HACIA LA LIBERTAD</span>
-                    <span lang-content="en" class="text-[9px] sm:text-[10px] font-bold text-warmgold tracking-wider mt-0.5">YOUR MAP TO FREEDOM</span>
-                    <span lang-content="pt" class="text-[9px] sm:text-[10px] font-bold text-warmgold tracking-wider mt-0.5">O TEU MAPA PARA A LIBERDADE</span>
+                    <span lang-content="es" class="header-brand-tagline">TU MAPA HACIA LA LIBERTAD</span>
+                    <span lang-content="en" class="header-brand-tagline">YOUR MAP TO FREEDOM</span>
+                    <span lang-content="pt" class="header-brand-tagline">O TEU MAPA PARA A LIBERDADE</span>
                 </div>
             </a>
 
