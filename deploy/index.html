@@ -2117,9 +2117,9 @@
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
                             <span class="ml-auto rounded-full bg-warmgold px-3 py-1 text-[10px] font-extrabold tracking-wider text-darkbark">
-                                <span lang-content="es">R$ 49 (aprox. US$ 10)</span>
-                                <span lang-content="en">R$ 49 (approx. US$ 10)</span>
-                                <span lang-content="pt">R$ 49 (aprox. US$ 10)</span>
+                                <span lang-content="es">R$ 25 (aprox. US$ 5)</span>
+                                <span lang-content="en">R$ 25 (approx. US$ 5)</span>
+                                <span lang-content="pt">R$ 25 (aprox. US$ 5)</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
@@ -2332,7 +2332,7 @@
                             <span lang-content="en">Review income, expenses, assets, and debts to get an organized view of your starting point.</span>
                             <span lang-content="pt">Revê rendimentos, despesas, ativos e dívidas para obter uma visão organizada do teu ponto de partida.</span>
                         </p>
-                        <a href="https://forms.gle/JBNEUfAsCptJW8k47" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="https://forms.gle/JBNEUfAsCptJW8k47" data-assessment-link="financialSnapshot" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
                             <span lang-content="es">Acceder al balance financiero</span>
                             <span lang-content="en">Open Financial Form</span>
                             <span lang-content="pt">Aceder ao balanço financeiro</span>
@@ -2367,7 +2367,7 @@
                             <span lang-content="en">Explore your goals, time horizon, experience, and emotional tolerance for market fluctuations.</span>
                             <span lang-content="pt">Explora objetivos, horizonte temporal, experiência e tolerância emocional às oscilações.</span>
                         </p>
-                        <a href="https://forms.gle/W3pfmhuaSaAUufu76" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="https://forms.gle/W3pfmhuaSaAUufu76" data-assessment-link="riskRelationship" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
                             <span lang-content="es">Acceder al perfil de inversión</span>
                             <span lang-content="en">Open Profile Form</span>
                             <span lang-content="pt">Aceder ao perfil de investimento</span>
@@ -3235,6 +3235,21 @@
             pt: "https://preview.mailerlite.io/forms/2524111/193713995121690448/share"
         };
 
+        const assessmentLinks = {
+            en: {
+                financialSnapshot: "https://forms.gle/krYTH3FLmy3mat2h7",
+                riskRelationship: "https://forms.gle/RvyqqxLazobUWuM58"
+            },
+            es: {
+                financialSnapshot: "https://forms.gle/JBNEUfAsCptJW8k47",
+                riskRelationship: "https://forms.gle/W3pfmhuaSaAUufu76"
+            },
+            pt: {
+                financialSnapshot: "https://forms.gle/KEb2jmZkK6y74DW68",
+                riskRelationship: "https://forms.gle/ZCSbwwdoXVe8GU7j6"
+            }
+        };
+
         const templateDownloads = {
             en: {
                 monthlyAnalysis: {
@@ -3362,6 +3377,10 @@
 
             document.querySelectorAll('[data-blog-link]').forEach(link => {
                 link.href = `/${normalizedLanguage}/blog/`;
+            });
+
+            document.querySelectorAll('[data-assessment-link]').forEach(link => {
+                link.href = assessmentLinks[normalizedLanguage][link.dataset.assessmentLink];
             });
 
             document.querySelectorAll('[data-template-download]').forEach(link => {
