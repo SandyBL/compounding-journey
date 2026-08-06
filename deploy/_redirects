@@ -1,2 +1,8 @@
 https://compoundingjourney.netlify.app/ https://compoundingjourney.com/ 301!
 https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 301!
+/pillars /index.html 200
+/simulators /index.html 200
+/tools /index.html 200
+/templates /index.html 200
+/faq /index.html 200
+/assessment /index.html 200
