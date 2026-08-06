@@ -483,6 +483,195 @@
             display: none;
         }
 
+        .mobile-menu-toggle {
+            display: inline-grid;
+            width: 2.75rem;
+            height: 2.75rem;
+            place-items: center;
+            border: 1px solid rgba(30, 70, 32, 0.18);
+            border-radius: 0.85rem;
+            background: rgba(255, 255, 255, 0.82);
+            color: #1E4620;
+            box-shadow: 0 2px 8px rgba(45, 36, 27, 0.08);
+            transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: #2D241B;
+            background: rgba(197, 155, 39, 0.18);
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-toggle:focus-visible,
+        .mobile-nav-link:focus-visible,
+        .mobile-resources-toggle:focus-visible,
+        .mobile-nav-cta:focus-visible {
+            outline: 3px solid rgba(197, 155, 39, 0.48);
+            outline-offset: 3px;
+        }
+
+        .mobile-menu-toggle__icon,
+        .mobile-menu-toggle__icon::before,
+        .mobile-menu-toggle__icon::after {
+            display: block;
+            width: 1.2rem;
+            height: 2px;
+            border-radius: 9999px;
+            background: currentColor;
+            content: "";
+            transition: transform 180ms ease, opacity 180ms ease;
+        }
+
+        .mobile-menu-toggle__icon {
+            position: relative;
+        }
+
+        .mobile-menu-toggle__icon::before,
+        .mobile-menu-toggle__icon::after {
+            position: absolute;
+            left: 0;
+        }
+
+        .mobile-menu-toggle__icon::before {
+            transform: translateY(-0.38rem);
+        }
+
+        .mobile-menu-toggle__icon::after {
+            transform: translateY(0.38rem);
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] .mobile-menu-toggle__icon {
+            background: transparent;
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] .mobile-menu-toggle__icon::before {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] .mobile-menu-toggle__icon::after {
+            transform: rotate(-45deg);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 80px 0 0;
+            z-index: 49;
+        }
+
+        .mobile-menu[hidden],
+        .mobile-resources-panel[hidden] {
+            display: none;
+        }
+
+        .mobile-menu__backdrop {
+            position: absolute;
+            inset: 0;
+            border: 0;
+            background: rgba(24, 38, 28, 0.48);
+            backdrop-filter: blur(4px);
+        }
+
+        .mobile-menu__drawer {
+            position: relative;
+            width: min(100%, 27rem);
+            height: 100%;
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 1rem max(1.25rem, env(safe-area-inset-bottom));
+            border-left: 1px solid rgba(239, 234, 224, 0.95);
+            background: #FFFDF8;
+            box-shadow: -24px 0 70px rgba(24, 38, 28, 0.18);
+            overflow-y: auto;
+        }
+
+        .mobile-menu__label {
+            margin: 0.35rem 0.75rem 0.75rem;
+            color: rgba(45, 36, 27, 0.5);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .mobile-nav {
+            display: grid;
+            gap: 0.3rem;
+        }
+
+        .mobile-nav-link,
+        .mobile-resources-toggle {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.9rem 0.85rem;
+            border: 0;
+            border-radius: 0.85rem;
+            background: transparent;
+            color: #2D241B;
+            font: inherit;
+            font-size: 1rem;
+            font-weight: 800;
+            text-align: left;
+            transition: color 180ms ease, background-color 180ms ease;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-resources-toggle:hover,
+        .mobile-nav-link.is-active {
+            color: #1E4620;
+            background: rgba(30, 70, 32, 0.08);
+        }
+
+        .mobile-resources-toggle svg {
+            width: 1rem;
+            height: 1rem;
+            transition: transform 180ms ease;
+        }
+
+        .mobile-resources-toggle[aria-expanded="true"] svg {
+            transform: rotate(180deg);
+        }
+
+        .mobile-resources-panel {
+            display: grid;
+            gap: 0.2rem;
+            margin: 0 0 0.35rem 0.85rem;
+            padding-left: 0.75rem;
+            border-left: 2px solid rgba(197, 155, 39, 0.42);
+        }
+
+        .mobile-resources-panel .mobile-nav-link {
+            padding-block: 0.75rem;
+            color: rgba(45, 36, 27, 0.72);
+            font-size: 0.9rem;
+        }
+
+        .mobile-nav-cta {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: auto;
+            padding: 1rem 1.25rem;
+            border-radius: 0.95rem;
+            background: #1E4620;
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 800;
+            box-shadow: 0 14px 30px rgba(30, 70, 32, 0.2);
+            transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .mobile-nav-cta:hover {
+            background: #2D241B;
+            transform: translateY(-2px);
+            box-shadow: 0 18px 34px rgba(45, 36, 27, 0.24);
+        }
+
         .header-language-switcher,
         .header-publication-switcher,
         .lang-btn,
@@ -666,8 +855,7 @@
             }
 
             .header-publication-switcher {
-                gap: 0;
-                padding: 0.2rem;
+                display: none;
             }
 
             .lang-btn {
@@ -690,11 +878,18 @@
                 box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
             }
 
-            .desktop-section-nav a {
+            .desktop-section-nav > a,
+            .desktop-resources-toggle {
                 position: relative;
-                padding: 0.55rem 0.65rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                padding: 0.65rem 0.7rem;
+                border: 0;
                 border-radius: 9999px;
+                background: transparent;
                 color: rgba(45, 36, 27, 0.68);
+                font-family: inherit;
                 font-size: 0.68rem;
                 font-weight: 700;
                 line-height: 1;
@@ -702,23 +897,113 @@
                 transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
             }
 
-            .desktop-section-nav a:hover {
+            .desktop-section-nav > a:hover,
+            .desktop-resources-toggle:hover,
+            .desktop-resources[data-open="true"] .desktop-resources-toggle,
+            .desktop-resources:hover .desktop-resources-toggle,
+            .desktop-resources:focus-within .desktop-resources-toggle {
                 color: #1E4620;
                 background: rgba(30, 70, 32, 0.08);
                 transform: translateY(-1px);
             }
 
-            .desktop-section-nav a.is-active {
+            .desktop-section-nav a.is-active,
+            .desktop-resources:has(a.is-active) .desktop-resources-toggle {
                 color: #1E4620;
                 background: rgba(197, 155, 39, 0.18);
                 box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.28);
             }
 
-            .desktop-section-nav a:focus-visible {
+            .desktop-section-nav a:focus-visible,
+            .desktop-resources-toggle:focus-visible {
                 outline: 2px solid rgba(197, 155, 39, 0.75);
                 outline-offset: 2px;
                 color: #1E4620;
                 background: rgba(197, 155, 39, 0.12);
+            }
+
+            .desktop-resources {
+                position: relative;
+            }
+
+            .desktop-resources-toggle svg {
+                width: 0.75rem;
+                height: 0.75rem;
+                transition: transform 180ms ease;
+            }
+
+            .desktop-resources[data-open="true"] .desktop-resources-toggle svg,
+            .desktop-resources:hover .desktop-resources-toggle svg,
+            .desktop-resources:focus-within .desktop-resources-toggle svg {
+                transform: rotate(180deg);
+            }
+
+            .desktop-resources-menu {
+                position: absolute;
+                top: calc(100% + 0.65rem);
+                left: 50%;
+                width: 12rem;
+                padding: 0.45rem;
+                border: 1px solid rgba(239, 234, 224, 0.98);
+                border-radius: 1rem;
+                background: #FFFDF8;
+                box-shadow: 0 18px 50px rgba(45, 36, 27, 0.16);
+                opacity: 0;
+                pointer-events: none;
+                transform: translate(-50%, -0.35rem);
+                transition: opacity 160ms ease, transform 160ms ease;
+            }
+
+            .desktop-resources-menu::before {
+                position: absolute;
+                right: 0;
+                bottom: 100%;
+                left: 0;
+                height: 0.75rem;
+                content: "";
+            }
+
+            .desktop-resources[data-open="true"] .desktop-resources-menu,
+            .desktop-resources:hover .desktop-resources-menu,
+            .desktop-resources:focus-within .desktop-resources-menu {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translate(-50%, 0);
+            }
+
+            .desktop-resources-menu a {
+                display: flex;
+                padding: 0.75rem 0.8rem;
+                border-radius: 0.7rem;
+                color: rgba(45, 36, 27, 0.78);
+                font-size: 0.75rem;
+                font-weight: 750;
+                transition: color 180ms ease, background-color 180ms ease;
+            }
+
+            .desktop-resources-menu a:hover,
+            .desktop-resources-menu a.is-active {
+                color: #1E4620;
+                background: rgba(30, 70, 32, 0.08);
+            }
+
+            .desktop-nav-cta {
+                margin-left: 0.25rem;
+                padding: 0.72rem 0.9rem !important;
+                background: #1E4620 !important;
+                color: #FFFFFF !important;
+                font-weight: 800 !important;
+                box-shadow: 0 8px 20px rgba(30, 70, 32, 0.2);
+            }
+
+            .desktop-nav-cta:hover {
+                background: #2D241B !important;
+                color: #FFFFFF !important;
+                box-shadow: 0 11px 24px rgba(45, 36, 27, 0.24);
+            }
+
+            .mobile-menu-toggle {
+                display: none;
             }
         }
 
@@ -1005,7 +1290,7 @@
         <div class="header-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             
             <!-- Brand Logotype & Dynamic Typography Integration -->
-            <a href="#" class="header-brand flex items-center gap-3 group">
+            <a href="/" class="header-brand flex items-center gap-3 group">
                 <!-- Compounding Journey Substack Logo Image - Direct Load -->
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
                     <img
@@ -1028,40 +1313,45 @@
 
             <!-- Desktop Section Navigation -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
-                <a href="#pilares">
+                <a href="/pillars" data-site-route="/pillars" data-section="pilares">
                     <span lang-content="es">Pilares</span>
                     <span lang-content="en">Pillars</span>
                     <span lang-content="pt">Pilares</span>
                 </a>
-                <a href="#herramientas">
-                    <span lang-content="es">Herramientas</span>
-                    <span lang-content="en">Tools</span>
-                    <span lang-content="pt">Ferramentas</span>
+                <a href="/simulators" data-site-route="/simulators" data-section="simulador">
+                    <span lang-content="es">Simuladores</span>
+                    <span lang-content="en">Simulators</span>
+                    <span lang-content="pt">Simuladores</span>
                 </a>
-                <a href="#plantillas">
-                    <span lang-content="es">Plantillas</span>
-                    <span lang-content="en">Templates</span>
-                    <span lang-content="pt">Modelos</span>
-                </a>
-                <a href="#simulador">
-                    <span lang-content="es">Simulador</span>
-                    <span lang-content="en">Simulator</span>
-                    <span lang-content="pt">Simulador</span>
-                </a>
-                <a href="#assessment">
-                    <span lang-content="es">Diagnóstico</span>
-                    <span lang-content="en">Assessment</span>
-                    <span lang-content="pt">Diagnóstico</span>
-                </a>
-                <a href="#preguntas-frecuentes">
+                <div class="desktop-resources" data-resources-dropdown>
+                    <button type="button" class="desktop-resources-toggle" aria-expanded="false" aria-controls="desktop-resources-menu">
+                        <span lang-content="es">Recursos</span>
+                        <span lang-content="en">Resources</span>
+                        <span lang-content="pt">Recursos</span>
+                        <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div id="desktop-resources-menu" class="desktop-resources-menu">
+                        <a href="/tools" data-site-route="/tools" data-section="herramientas">
+                            <span lang-content="es">Herramientas</span>
+                            <span lang-content="en">Tools</span>
+                            <span lang-content="pt">Ferramentas</span>
+                        </a>
+                        <a href="/templates" data-site-route="/templates" data-section="plantillas">
+                            <span lang-content="es">Plantillas</span>
+                            <span lang-content="en">Templates</span>
+                            <span lang-content="pt">Modelos</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="/faq" data-site-route="/faq" data-section="preguntas-frecuentes">
                     <span lang-content="es">FAQ</span>
                     <span lang-content="en">FAQ</span>
                     <span lang-content="pt">FAQ</span>
                 </a>
-                <a href="#contacto">
-                    <span lang-content="es">Contacto</span>
-                    <span lang-content="en">Contact</span>
-                    <span lang-content="pt">Contacto</span>
+                <a href="/assessment" data-site-route="/assessment" data-section="assessment" class="desktop-nav-cta">
+                    <span lang-content="es">Freedom Compass</span>
+                    <span lang-content="en">Freedom Compass</span>
+                    <span lang-content="pt">Freedom Compass</span>
                 </a>
             </nav>
 
@@ -1104,9 +1394,49 @@
                         <i class="fa-regular fa-envelope" aria-hidden="true"></i>
                     </a>
                 </div>
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+                    <span class="mobile-menu-toggle__icon" aria-hidden="true"></span>
+                </button>
             </div>
         </div>
+
     </header>
+
+        <div id="mobile-menu" class="mobile-menu" hidden>
+            <button type="button" class="mobile-menu__backdrop" data-mobile-menu-close aria-label="Close navigation menu"></button>
+            <div class="mobile-menu__drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+                <p class="mobile-menu__label">
+                    <span lang-content="es">Navegación</span>
+                    <span lang-content="en">Navigation</span>
+                    <span lang-content="pt">Navegação</span>
+                </p>
+                <nav class="mobile-nav" aria-label="Mobile section navigation">
+                    <a class="mobile-nav-link" href="/pillars" data-site-route="/pillars" data-section="pilares">
+                        <span lang-content="es">Pilares</span><span lang-content="en">Pillars</span><span lang-content="pt">Pilares</span>
+                    </a>
+                    <a class="mobile-nav-link" href="/simulators" data-site-route="/simulators" data-section="simulador">
+                        <span lang-content="es">Simuladores</span><span lang-content="en">Simulators</span><span lang-content="pt">Simuladores</span>
+                    </a>
+                    <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-resources-panel">
+                        <span><span lang-content="es">Recursos</span><span lang-content="en">Resources</span><span lang-content="pt">Recursos</span></span>
+                        <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div id="mobile-resources-panel" class="mobile-resources-panel" hidden>
+                        <a class="mobile-nav-link" href="/tools" data-site-route="/tools" data-section="herramientas">
+                            <span lang-content="es">Herramientas</span><span lang-content="en">Tools</span><span lang-content="pt">Ferramentas</span>
+                        </a>
+                        <a class="mobile-nav-link" href="/templates" data-site-route="/templates" data-section="plantillas">
+                            <span lang-content="es">Plantillas</span><span lang-content="en">Templates</span><span lang-content="pt">Modelos</span>
+                        </a>
+                    </div>
+                    <a class="mobile-nav-link" href="/faq" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
+                </nav>
+                <a class="mobile-nav-cta" href="/assessment" data-site-route="/assessment" data-section="assessment">
+                    <span lang-content="es">Freedom Compass</span><span lang-content="en">Freedom Compass</span><span lang-content="pt">Freedom Compass</span>
+                    <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M4 10h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
 
     <main>
     <!-- HERO SECTION -->
@@ -1499,6 +1829,85 @@
                             <p lang-content="en" class="text-sm text-darkbark/80 mt-2">A simple, efficient, maintainable strategy prevents emotional decisions and lets you spend your energy living instead of watching markets.</p>
                             <p lang-content="pt" class="text-sm text-darkbark/80 mt-2">Uma estratégia simples, eficiente e fácil de manter evita decisões emocionais e permite dedicar energia a viver, não a vigiar mercados.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSONAL FINANCE SIMULATOR -->
+    <section id="simulador" aria-labelledby="simulator-heading" class="simulator-stage scroll-mt-20 py-20 text-white border-b border-creamborder">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="simulator-panel">
+                <div>
+                    <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-3">
+                        <span lang-content="es">Aprender tomando decisiones</span>
+                        <span lang-content="en">Learn by making decisions</span>
+                        <span lang-content="pt">Aprender a tomar decisões</span>
+                    </p>
+                    <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-6">
+                        <span lang-content="es">Simulador de Finanzas Personales</span>
+                        <span lang-content="en">Personal Finance Simulator</span>
+                        <span lang-content="pt">Simulador de Finanças Pessoais</span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-creamsoft/85 leading-relaxed max-w-2xl mb-4">
+                        <span lang-content="es">Pon a prueba cómo reaccionas ante decisiones financieras de la vida cotidiana. Cada elección cambia tu patrimonio, flujo de caja, felicidad e inteligencia financiera.</span>
+                        <span lang-content="en">Test how you respond to everyday financial decisions. Every choice changes your net worth, cash flow, happiness, and financial intelligence.</span>
+                        <span lang-content="pt">Testa como reages a decisões financeiras do dia a dia. Cada escolha altera o teu património, fluxo de caixa, felicidade e inteligência financeira.</span>
+                    </p>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed max-w-2xl mb-8">
+                        <span lang-content="es">Recorre 15 situaciones, descubre las consecuencias de tus decisiones y comprueba cuántos puntos consigues al final.</span>
+                        <span lang-content="en">Work through 15 scenarios, discover the consequences of your decisions, and see how many points you earn at the end.</span>
+                        <span lang-content="pt">Percorre 15 situações, descobre as consequências das tuas decisões e vê quantos pontos consegues no final.</span>
+                    </p>
+
+                    <a lang-content="es" href="/es/simulator.html" class="simulator-play-link">
+                        <span>Jugar al simulador</span>
+                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+                    </a>
+                    <a lang-content="en" href="/en/simulator.html" class="simulator-play-link">
+                        <span>Play the simulator</span>
+                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+                    </a>
+                    <a lang-content="pt" href="/pt/simulator.html" class="simulator-play-link">
+                        <span>Jogar o simulador</span>
+                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="simulator-scorecard" aria-hidden="true">
+                    <div class="flex items-center justify-between gap-4 mb-5">
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-warmgold font-extrabold">
+                                <span lang-content="es">Tu marcador</span>
+                                <span lang-content="en">Your scorecard</span>
+                                <span lang-content="pt">O teu placar</span>
+                            </p>
+                            <p class="text-xl font-extrabold mt-1">
+                                <span lang-content="es">Decisión 08 / 15</span>
+                                <span lang-content="en">Decision 08 / 15</span>
+                                <span lang-content="pt">Decisão 08 / 15</span>
+                            </p>
+                        </div>
+                        <div class="simulator-compass w-14 h-14 rounded-full flex items-center justify-center text-warmgold text-xl">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                    </div>
+                    <div class="simulator-score-row">
+                        <span class="simulator-score-label text-sm"><span lang-content="es">Patrimonio neto</span><span lang-content="en">Net worth</span><span lang-content="pt">Património líquido</span></span>
+                        <strong class="simulator-value-positive">+$18,240</strong>
+                    </div>
+                    <div class="simulator-score-row">
+                        <span class="simulator-score-label text-sm"><span lang-content="es">Flujo de caja</span><span lang-content="en">Cash flow</span><span lang-content="pt">Fluxo de caixa</span></span>
+                        <strong class="simulator-value-gold">+$735</strong>
+                    </div>
+                    <div class="simulator-score-row">
+                        <span class="simulator-score-label text-sm"><span lang-content="es">Felicidad</span><span lang-content="en">Happiness</span><span lang-content="pt">Felicidade</span></span>
+                        <strong class="simulator-value-happiness">68%</strong>
+                    </div>
+                    <div class="simulator-score-row">
+                        <span class="simulator-score-label text-sm"><span lang-content="es">Inteligencia financiera</span><span lang-content="en">Financial intelligence</span><span lang-content="pt">Inteligência financeira</span></span>
+                        <strong class="simulator-value-iq">74 pts</strong>
                     </div>
                 </div>
             </div>
@@ -2168,85 +2577,6 @@
                     <span lang-content="pt">Entrar em contacto</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- PERSONAL FINANCE SIMULATOR -->
-    <section id="simulador" aria-labelledby="simulator-heading" class="simulator-stage scroll-mt-20 py-20 text-white border-b border-creamborder">
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="simulator-panel">
-                <div>
-                    <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-3">
-                        <span lang-content="es">Aprender tomando decisiones</span>
-                        <span lang-content="en">Learn by making decisions</span>
-                        <span lang-content="pt">Aprender a tomar decisões</span>
-                    </p>
-                    <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-6">
-                        <span lang-content="es">Simulador de Finanzas Personales</span>
-                        <span lang-content="en">Personal Finance Simulator</span>
-                        <span lang-content="pt">Simulador de Finanças Pessoais</span>
-                    </h2>
-                    <p class="text-base sm:text-lg text-creamsoft/85 leading-relaxed max-w-2xl mb-4">
-                        <span lang-content="es">Pon a prueba cómo reaccionas ante decisiones financieras de la vida cotidiana. Cada elección cambia tu patrimonio, flujo de caja, felicidad e inteligencia financiera.</span>
-                        <span lang-content="en">Test how you respond to everyday financial decisions. Every choice changes your net worth, cash flow, happiness, and financial intelligence.</span>
-                        <span lang-content="pt">Testa como reages a decisões financeiras do dia a dia. Cada escolha altera o teu património, fluxo de caixa, felicidade e inteligência financeira.</span>
-                    </p>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed max-w-2xl mb-8">
-                        <span lang-content="es">Recorre 15 situaciones, descubre las consecuencias de tus decisiones y comprueba cuántos puntos consigues al final.</span>
-                        <span lang-content="en">Work through 15 scenarios, discover the consequences of your decisions, and see how many points you earn at the end.</span>
-                        <span lang-content="pt">Percorre 15 situações, descobre as consequências das tuas decisões e vê quantos pontos consegues no final.</span>
-                    </p>
-
-                    <a lang-content="es" href="/es/simulator.html" class="simulator-play-link">
-                        <span>Jugar al simulador</span>
-                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
-                    </a>
-                    <a lang-content="en" href="/en/simulator.html" class="simulator-play-link">
-                        <span>Play the simulator</span>
-                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
-                    </a>
-                    <a lang-content="pt" href="/pt/simulator.html" class="simulator-play-link">
-                        <span>Jogar o simulador</span>
-                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
-                    </a>
-                </div>
-
-                <div class="simulator-scorecard" aria-hidden="true">
-                    <div class="flex items-center justify-between gap-4 mb-5">
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-warmgold font-extrabold">
-                                <span lang-content="es">Tu marcador</span>
-                                <span lang-content="en">Your scorecard</span>
-                                <span lang-content="pt">O teu placar</span>
-                            </p>
-                            <p class="text-xl font-extrabold mt-1">
-                                <span lang-content="es">Decisión 08 / 15</span>
-                                <span lang-content="en">Decision 08 / 15</span>
-                                <span lang-content="pt">Decisão 08 / 15</span>
-                            </p>
-                        </div>
-                        <div class="simulator-compass w-14 h-14 rounded-full flex items-center justify-center text-warmgold text-xl">
-                            <i class="fa-solid fa-compass"></i>
-                        </div>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="es">Patrimonio neto</span><span lang-content="en">Net worth</span><span lang-content="pt">Património líquido</span></span>
-                        <strong class="simulator-value-positive">+$18,240</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="es">Flujo de caja</span><span lang-content="en">Cash flow</span><span lang-content="pt">Fluxo de caixa</span></span>
-                        <strong class="simulator-value-gold">+$735</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="es">Felicidad</span><span lang-content="en">Happiness</span><span lang-content="pt">Felicidade</span></span>
-                        <strong class="simulator-value-happiness">68%</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="es">Inteligencia financiera</span><span lang-content="en">Financial intelligence</span><span lang-content="pt">Inteligência financeira</span></span>
-                        <strong class="simulator-value-iq">74 pts</strong>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -3089,7 +3419,12 @@
                     <span lang-content="pt">&copy; 2026 A Jornada de Crescimento Composto. Todos os direitos reservados.</span>
                 </p>
                 <div class="flex gap-4">
-                    <a href="#preguntas-frecuentes" class="hover:text-warmgold transition-colors">FAQ</a>
+                    <a href="/faq" data-site-route="/faq" data-section="preguntas-frecuentes" class="hover:text-warmgold transition-colors">FAQ</a>
+                    <a href="#contacto" class="hover:text-warmgold transition-colors">
+                        <span lang-content="es">Contacto</span>
+                        <span lang-content="en">Contact</span>
+                        <span lang-content="pt">Contacto</span>
+                    </a>
                     <a href="https://www.linkedin.com/in/sandy-bradbury" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">LinkedIn</a>
                     <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Substack</a>
                     <a href="https://www.instagram.com/compounding.journey_sb/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Instagram</a>
@@ -3393,6 +3728,18 @@
                 }
             });
 
+            const navigationLabels = {
+                es: { open: 'Abrir menú de navegación', close: 'Cerrar menú de navegación', mobile: 'Navegación móvil' },
+                en: { open: 'Open navigation menu', close: 'Close navigation menu', mobile: 'Mobile navigation' },
+                pt: { open: 'Abrir menu de navegação', close: 'Fechar menu de navegação', mobile: 'Navegação móvel' }
+            }[normalizedLanguage];
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenuDrawer = document.querySelector('.mobile-menu__drawer');
+            const mobileMenuBackdrop = document.querySelector('[data-mobile-menu-close]');
+            mobileMenuToggle?.setAttribute('aria-label', mobileMenuToggle.getAttribute('aria-expanded') === 'true' ? navigationLabels.close : navigationLabels.open);
+            mobileMenuDrawer?.setAttribute('aria-label', navigationLabels.mobile);
+            mobileMenuBackdrop?.setAttribute('aria-label', navigationLabels.close);
+
             if (!hasExplicitCurrencyPreference) {
                 selectedCurrency = normalizedLanguage === "en" ? "USD" : "EUR";
             }
@@ -3652,11 +3999,160 @@
             successCard.style.opacity = '0';
         }
 
+        const siteRoutes = {
+            '/pillars': 'pilares',
+            '/simulators': 'simulador',
+            '/tools': 'herramientas',
+            '/templates': 'plantillas',
+            '/faq': 'preguntas-frecuentes',
+            '/assessment': 'assessment'
+        };
+
+        function getActiveLanguage() {
+            return supportedLanguages.find(language => document.body.classList.contains(`lang-${language}`)) || 'es';
+        }
+
+        function scrollToSiteSection(sectionId, behavior = 'smooth') {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior, block: 'start' });
+            }
+        }
+
+        function closeDesktopResources() {
+            const dropdown = document.querySelector('[data-resources-dropdown]');
+            const toggle = dropdown?.querySelector('.desktop-resources-toggle');
+            dropdown?.removeAttribute('data-open');
+            toggle?.setAttribute('aria-expanded', 'false');
+        }
+
+        function initializeNavigationMenus() {
+            const dropdown = document.querySelector('[data-resources-dropdown]');
+            const dropdownToggle = dropdown?.querySelector('.desktop-resources-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileResourcesToggle = document.querySelector('.mobile-resources-toggle');
+            const mobileResourcesPanel = document.getElementById('mobile-resources-panel');
+            let previousBodyOverflow = '';
+
+            const getNavigationLabels = () => ({
+                es: { open: 'Abrir menú de navegación', close: 'Cerrar menú de navegación' },
+                en: { open: 'Open navigation menu', close: 'Close navigation menu' },
+                pt: { open: 'Abrir menu de navegação', close: 'Fechar menu de navegação' }
+            }[getActiveLanguage()]);
+
+            const setDesktopResourcesOpen = open => {
+                if (!dropdown || !dropdownToggle) return;
+                dropdown.toggleAttribute('data-open', open);
+                dropdownToggle.setAttribute('aria-expanded', String(open));
+            };
+
+            const setMobileResourcesOpen = open => {
+                if (!mobileResourcesToggle || !mobileResourcesPanel) return;
+                mobileResourcesToggle.setAttribute('aria-expanded', String(open));
+                mobileResourcesPanel.hidden = !open;
+            };
+
+            const closeMobileMenu = (restoreFocus = true) => {
+                if (!mobileMenu || !mobileMenuToggle || mobileMenu.hidden) return;
+                mobileMenu.hidden = true;
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.setAttribute('aria-label', getNavigationLabels().open);
+                document.body.style.overflow = previousBodyOverflow;
+                setMobileResourcesOpen(false);
+                if (restoreFocus) mobileMenuToggle.focus();
+            };
+
+            const openMobileMenu = () => {
+                if (!mobileMenu || !mobileMenuToggle) return;
+                previousBodyOverflow = document.body.style.overflow;
+                mobileMenu.hidden = false;
+                mobileMenuToggle.setAttribute('aria-expanded', 'true');
+                mobileMenuToggle.setAttribute('aria-label', getNavigationLabels().close);
+                document.body.style.overflow = 'hidden';
+                mobileMenu.querySelector('.mobile-nav-link, .mobile-resources-toggle')?.focus();
+            };
+
+            dropdownToggle?.addEventListener('click', event => {
+                event.stopPropagation();
+                setDesktopResourcesOpen(!dropdown.hasAttribute('data-open'));
+            });
+
+            dropdown?.addEventListener('pointerenter', () => setDesktopResourcesOpen(true));
+            dropdown?.addEventListener('pointerleave', () => setDesktopResourcesOpen(false));
+            dropdown?.addEventListener('focusin', () => setDesktopResourcesOpen(true));
+            dropdown?.addEventListener('focusout', event => {
+                if (!dropdown.contains(event.relatedTarget)) setDesktopResourcesOpen(false);
+            });
+
+            mobileMenuToggle?.addEventListener('click', () => {
+                if (mobileMenu.hidden) openMobileMenu();
+                else closeMobileMenu();
+            });
+            mobileResourcesToggle?.addEventListener('click', () => {
+                setMobileResourcesOpen(mobileResourcesToggle.getAttribute('aria-expanded') !== 'true');
+            });
+            mobileMenu?.querySelector('[data-mobile-menu-close]')?.addEventListener('click', () => closeMobileMenu());
+
+            document.addEventListener('click', event => {
+                if (dropdown && !dropdown.contains(event.target)) closeDesktopResources();
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape') {
+                    closeDesktopResources();
+                    closeMobileMenu();
+                    return;
+                }
+
+                if (event.key !== 'Tab' || !mobileMenu || mobileMenu.hidden) return;
+                const focusableItems = [...mobileMenu.querySelectorAll('a[href], button:not([disabled])')]
+                    .filter(element => !element.hidden && element.getClientRects().length);
+                if (!focusableItems.length) return;
+                const firstItem = focusableItems[0];
+                const lastItem = focusableItems[focusableItems.length - 1];
+                if (event.shiftKey && document.activeElement === firstItem) {
+                    event.preventDefault();
+                    lastItem.focus();
+                } else if (!event.shiftKey && document.activeElement === lastItem) {
+                    event.preventDefault();
+                    firstItem.focus();
+                }
+            });
+
+            document.querySelectorAll('[data-site-route]').forEach(link => {
+                link.addEventListener('click', event => {
+                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    const route = link.dataset.siteRoute;
+                    const sectionId = link.dataset.section || siteRoutes[route];
+                    if (!route || !sectionId) return;
+
+                    event.preventDefault();
+                    const language = getActiveLanguage();
+                    const nextUrl = new URL(route, window.location.origin);
+                    nextUrl.searchParams.set('lang', language);
+                    window.history.pushState({ lang: language, sectionId }, '', nextUrl);
+                    closeDesktopResources();
+                    closeMobileMenu(false);
+                    scrollToSiteSection(sectionId);
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1180) closeMobileMenu(false);
+            });
+        }
+
+        function scrollToCurrentRoute(behavior = 'auto') {
+            const sectionId = siteRoutes[window.location.pathname] || window.location.hash.slice(1);
+            if (sectionId) scrollToSiteSection(sectionId, behavior);
+        }
+
         function initializeDesktopScrollSpy() {
-            const navigationLinks = [...document.querySelectorAll('.desktop-section-nav a[href^="#"]')];
-            const sections = navigationLinks
-                .map(link => document.querySelector(link.getAttribute('href')))
-                .filter(Boolean);
+            const navigationLinks = [...document.querySelectorAll('[data-section]')];
+            const sections = [...new Set(navigationLinks
+                .map(link => document.getElementById(link.dataset.section))
+                .filter(Boolean))];
 
             if (!navigationLinks.length || !sections.length || !('IntersectionObserver' in window)) {
                 return;
@@ -3664,7 +4160,7 @@
 
             const setActiveLink = sectionId => {
                 navigationLinks.forEach(link => {
-                    const isActive = link.getAttribute('href') === `#${sectionId}`;
+                    const isActive = link.dataset.section === sectionId;
                     link.classList.toggle('is-active', isActive);
 
                     if (isActive) {
@@ -3704,11 +4200,14 @@
 
         window.addEventListener('popstate', function() {
             setLanguage(detectInitialLanguage(), false);
+            scrollToCurrentRoute();
         });
 
         // Initialize language and calculator values as soon as the page markup is ready
         setLanguage(detectInitialLanguage());
+        initializeNavigationMenus();
         initializeDesktopScrollSpy();
+        requestAnimationFrame(() => scrollToCurrentRoute());
     </script>
 </body>
 </html>
