@@ -1,0 +1,8 @@
+# Publishing an article in the content studio commits Markdown and nothing else.
+# Regenerating on every deploy is what keeps the catalog, the pre-rendered
+# article pages and the sitemap in step with that Markdown.
+#
+# No publish directory is set here on purpose: the project already builds from
+# this folder, and overriding it in config would be a second place to get wrong.
+[build]
+  command = "node scripts/generate-blog-catalog.mjs && node scripts/generate-blog-pages.mjs"
