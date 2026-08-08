@@ -328,6 +328,36 @@ async function updateBlogIndex(language, articles) {
   await fs.writeFile(file, source);
 }
 
+// The generator only ever writes pages, so a slug renamed or deleted in the
+// content studio used to leave its old directory behind: still deployed and
+// still indexable, but missing from the sitemap and the journal index. That
+// orphan then competes with the new URL. Deleting directories that no longer
+// match a catalog slug keeps what is live equal to what is published.
+async function pruneRemovedArticles(language, slugs) {
+  const blogRoot = path.join(root, language, 'blog');
+  const entries = await fs.readdir(blogRoot, { withFileTypes: true });
+  const removed = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory() || slugs.has(entry.name)) continue;
+    const directory = path.join(blogRoot, entry.name);
+    const contents = await fs.readdir(directory);
+
+    // Only remove what this script could have produced: a directory holding
+    // index.html and nothing else. Anything hand-authored is reported instead,
+    // because guessing wrong here deletes work no build step can recreate.
+    if (contents.length !== 1 || contents[0] !== 'index.html') {
+      console.warn(`Kept /${language}/blog/${entry.name}/ — not a generated page. Remove it by hand if it is stale.`);
+      continue;
+    }
+
+    await fs.rm(directory, { recursive: true });
+    removed.push(`/${language}/blog/${entry.name}/`);
+  }
+
+  return removed;
+}
+
 // lastmod is only emitted where a real modification date exists. Stamping every
 // URL with the build date would tell Google the whole site changed on each
 // deploy, which is the kind of unreliable signal that makes it ignore lastmod.
@@ -407,10 +437,20 @@ for (const entry of catalog) {
   generated.push(article);
 }
 
+const removed = [];
+
 for (const language of languages) {
-  await updateBlogIndex(language, generated.filter((article) => article.language === language));
+  const articles = generated.filter((article) => article.language === language);
+  await updateBlogIndex(language, articles);
+  removed.push(...await pruneRemovedArticles(language, new Set(articles.map((article) => article.slug))));
 }
 
 await fs.writeFile(path.join(root, 'sitemap.xml'), buildSitemap(generated));
 
 console.log(`Generated ${generated.length} article pages, ${languages.length} journal indexes and sitemap.xml with ${generated.length + 9} URLs.`);
+
+if (removed.length) {
+  console.log(`Removed ${removed.length} article page(s) no longer in the catalog:`);
+  removed.forEach((url) => console.log(`  ${url}`));
+  console.log('A deleted article should 404 from here. If one of these was renamed instead, add a 301 to _redirects so the old URL keeps its ranking.');
+}
