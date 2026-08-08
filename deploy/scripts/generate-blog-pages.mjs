@@ -146,8 +146,10 @@ function languageSwitcher(article, current) {
   return `<nav class="header-language-switcher" aria-label="Language">${links}</nav>`;
 }
 
+// Spanish keeps the apex URL; the other languages have their own pre-rendered
+// home page written by generate-home-pages.mjs.
 function homeHref(language) {
-  return language === defaultLanguage ? '/' : `/?lang=${language}`;
+  return language === defaultLanguage ? '/' : `/${language}/`;
 }
 
 function structuredData(article, labels, body) {
@@ -160,7 +162,7 @@ function structuredData(article, labels, body) {
       description: article.summary,
       inLanguage: article.language,
       datePublished: article.date,
-      dateModified: article.date,
+      dateModified: article.updated || article.date,
       url,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
       image: [logo],
@@ -216,6 +218,7 @@ function renderPage(article, labels, body, headings) {
   <meta property="og:url" content="${url}" />
   <meta property="og:image" content="${logo}" />
   <meta property="article:published_time" content="${article.date}" />
+  <meta property="article:modified_time" content="${article.updated || article.date}" />
   <meta property="article:author" content="${escapeHtml(article.author)}" />
   <meta property="article:section" content="${escapeHtml(article.category)}" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -247,7 +250,7 @@ ${structuredData(article, labels, body)}
 ${body}
     </div><footer class="author-card"><img src="/logo-compounding-journey.png" alt="Compounding Journey logo" width="2048" height="2048" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
   </article>
-    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p></div><div class="journey-actions"><a class="button" href="/#herramientas">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="/#contacto">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
+    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p></div><div class="journey-actions"><a class="button" href="${homeHref(article.language)}#herramientas">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#contacto">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
   <footer class="site-footer"><div class="container footer-row"><a href="/${article.language}/blog/">${escapeHtml(labels.backFooter)}</a><span>© 2026 Compounding Journey</span></div></footer>
 </div></body>
@@ -371,13 +374,14 @@ function sitemapEntry(loc, lastmod, alternates) {
   </url>`;
 }
 
+function lastModified(article) {
+  return article.updated || article.date;
+}
+
 function buildSitemap(articles) {
-  const homeAlternates = [
-    { hreflang: 'es', href: `${origin}/` },
-    { hreflang: 'en', href: `${origin}/?lang=en` },
-    { hreflang: 'pt', href: `${origin}/?lang=pt` },
-    { hreflang: 'x-default', href: `${origin}/` }
-  ];
+  const homeAlternates = languages
+    .map((code) => ({ hreflang: code, href: `${origin}${homeHref(code)}` }))
+    .concat([{ hreflang: 'x-default', href: `${origin}/` }]);
   const blogAlternates = languages
     .map((code) => ({ hreflang: code, href: `${origin}/${code}/blog/` }))
     .concat([{ hreflang: 'x-default', href: `${origin}/es/blog/` }]);
@@ -385,17 +389,15 @@ function buildSitemap(articles) {
     .map((code) => ({ hreflang: code, href: `${origin}/${code}/simulator.html` }))
     .concat([{ hreflang: 'x-default', href: `${origin}/es/simulator.html` }]);
 
-  const newest = articles.reduce((latest, article) => (article.date > latest ? article.date : latest), '');
+  const newest = articles.reduce((latest, article) => (lastModified(article) > latest ? lastModified(article) : latest), '');
 
   const entries = [
-    sitemapEntry(`${origin}/`, '', homeAlternates),
-    sitemapEntry(`${origin}/?lang=en`, '', homeAlternates),
-    sitemapEntry(`${origin}/?lang=pt`, '', homeAlternates),
+    ...languages.map((code) => sitemapEntry(`${origin}${homeHref(code)}`, '', homeAlternates)),
     ...languages.map((code) => sitemapEntry(`${origin}/${code}/blog/`, newest, blogAlternates)),
     ...languages.map((code) => sitemapEntry(`${origin}/${code}/simulator.html`, '', simulatorAlternates)),
     ...articles.map((article) => sitemapEntry(
       `${origin}${articlePath(article.language, article.slug)}`,
-      article.date,
+      lastModified(article),
       languages
         .filter((code) => article.translations[code])
         .map((code) => ({ hreflang: code, href: `${origin}${articlePath(code, article.translations[code])}` }))

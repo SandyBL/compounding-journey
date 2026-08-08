@@ -4,24 +4,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
   <url>
+    <loc>https://compoundingjourney.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.com/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/" />
+  </url>
+  <url>
     <loc>https://compoundingjourney.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.com/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/" />
   </url>
   <url>
-    <loc>https://compoundingjourney.com/?lang=en</loc>
+    <loc>https://compoundingjourney.com/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.com/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/?lang=pt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/" />
-  </url>
-  <url>
-    <loc>https://compoundingjourney.com/?lang=pt</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://compoundingjourney.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://compoundingjourney.com/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/" />
   </url>
   <url>

@@ -2,6 +2,17 @@
 https://compoundingjourney.netlify.app/ https://compoundingjourney.com/ 301!
 https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 301!
 
+# The home page used to serve all three translations from one document and pick
+# one with JavaScript, so "/", "/?lang=en" and "/?lang=pt" were the same bytes
+# under three addresses. Each language now has its own pre-rendered page, and
+# the query-string addresses are folded into it so their history is not lost.
+/ lang=en /en/ 301!
+/ lang=pt /pt/ 301!
+
+# Spanish lives at the apex URL. /es/ is the address people guess from the
+# other two, so it points there rather than 404ing.
+/es/ / 301
+
 # The journal used to render every article from one client-side shell, so each
 # translation shared a URL, a canonical and an empty document. Those addresses
 # now point at the pre-rendered page for the requested slug.

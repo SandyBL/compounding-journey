@@ -67,4 +67,4 @@ Un fondo de emergencia te protege contra las sorpresas de la vida—como reparac
 ### ¿Listo para Dominar tus Hábitos Financieros?
 Pagarte a ti mismo primero es el paso fundamental para recuperar el control de tu tiempo y construir tranquilidad[cite: 1]. Realiza nuestra evaluación de hábitos para diagnosticar tu rutina actual de ahorro y descubrir pasos concretos para acelerar tu independencia.
 
-[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/?lang=es#contacto)
+[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#contacto)

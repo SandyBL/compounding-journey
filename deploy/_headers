@@ -23,6 +23,12 @@
   Cache-Control: public, max-age=60, must-revalidate
   X-Robots-Tag: noindex
 
+# The authored multi-language home page. It is the input to
+# generate-home-pages.mjs, not a page: the real ones are /, /en/ and /pt/.
+/content/home/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
 /assets/css/blog.css
   Cache-Control: public, max-age=604800, must-revalidate
 
