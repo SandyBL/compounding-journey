@@ -1,8 +1,22 @@
+# Keep the Netlify subdomain out of the index; the apex domain is canonical.
 https://compoundingjourney.netlify.app/ https://compoundingjourney.com/ 301!
 https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 301!
-/pillars /index.html 200
-/simulators /index.html 200
-/tools /index.html 200
-/templates /index.html 200
-/faq /index.html 200
-/assessment /index.html 200
+
+# The journal used to render every article from one client-side shell, so each
+# translation shared a URL, a canonical and an empty document. Those addresses
+# now point at the pre-rendered page for the requested slug.
+/en/blog/article.html post=:slug /en/blog/:slug/ 301
+/es/blog/article.html post=:slug /es/blog/:slug/ 301
+/pt/blog/article.html post=:slug /pt/blog/:slug/ 301
+/en/blog/article.html /en/blog/ 301
+/es/blog/article.html /es/blog/ 301
+/pt/blog/article.html /pt/blog/ 301
+
+# Navigation shortcuts. These used to rewrite to index.html with a 200, which
+# served six byte-identical copies of the home page under different URLs.
+/pillars /#pilares 301
+/simulators /#simulador 301
+/tools /#herramientas 301
+/templates /#plantillas 301
+/faq /#preguntas-frecuentes 301
+/assessment /#assessment 301

@@ -26,9 +26,7 @@
   }
 
   function articleUrl(article) {
-    const query = new URLSearchParams({ post: article.slug });
-    Object.entries(article.translations || {}).forEach(([code, slug]) => query.set(code, slug));
-    return `/${article.language}/blog/article.html?${query.toString()}`;
+    return `/${article.language}/blog/${article.slug}/`;
   }
 
   function formatDate(date) {

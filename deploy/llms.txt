@@ -7,7 +7,7 @@ The site is available in Spanish, English, and Portuguese. It provides education
 ## Official Site
 
 - [Compounding Journey](https://compoundingjourney.com/)
-- [Spanish version](https://compoundingjourney.com/?lang=es)
+- [Spanish version](https://compoundingjourney.com/)
 - [English version](https://compoundingjourney.com/?lang=en)
 - [Portuguese version](https://compoundingjourney.com/?lang=pt)
 
@@ -20,11 +20,26 @@ The site is available in Spanish, English, and Portuguese. It provides education
 - [About Sandy Bradbury](https://compoundingjourney.com/#biografia): the creator's approach to money psychology, financial habits, and diversified investing.
 - [Contact](https://compoundingjourney.com/#contacto): questionnaires and a direct contact form.
 
+## Journal
+
+- [Journal in English](https://compoundingjourney.com/en/blog/)
+- [Diario en español](https://compoundingjourney.com/es/blog/)
+- [Diário em português](https://compoundingjourney.com/pt/blog/)
+
+Every article is published as its own page under `/{language}/blog/{slug}/` and
+all of them are listed in [the sitemap](https://compoundingjourney.com/sitemap.xml).
+
+## Interactive Simulator
+
+- [Personal Finance & Wealth Simulator](https://compoundingjourney.com/en/simulator.html)
+- [Simulador de Finanzas Personales y Riqueza](https://compoundingjourney.com/es/simulator.html)
+- [Simulador de Finanças Pessoais e Riqueza](https://compoundingjourney.com/pt/simulator.html)
+
 ## Free Downloads
 
-- [Personal budget template](https://compoundingjourney.com/assets/templates/personal-budget.xlsx)
-- [Expense management template](https://compoundingjourney.com/assets/templates/expense-management.xlsx)
-- [Monthly personal finances analysis](https://compoundingjourney.com/assets/templates/monthly-personal-finances-analysis.xlsx)
+- Personal budget template: [English](https://compoundingjourney.com/assets/templates/en/personal-budget.xlsx), [Spanish](https://compoundingjourney.com/assets/templates/es/presupuesto-personal.xlsx), [Portuguese](https://compoundingjourney.com/assets/templates/pt/orcamento-pessoal.xlsx)
+- Expense management template: [English](https://compoundingjourney.com/assets/templates/en/expense-management.xlsx), [Spanish](https://compoundingjourney.com/assets/templates/es/gestion-de-gastos.xlsx), [Portuguese](https://compoundingjourney.com/assets/templates/pt/gestao-de-despesas.xlsx)
+- Monthly balance analysis: [English](https://compoundingjourney.com/assets/templates/en/monthly-balance-analysis.xlsx), [Spanish](https://compoundingjourney.com/assets/templates/es/analisis-balance-mensual.xlsx), [Portuguese](https://compoundingjourney.com/assets/templates/pt/analise-balanco-mensal.xlsx)
 
 ## Official Profiles
 

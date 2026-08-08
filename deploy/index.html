@@ -8,11 +8,11 @@
     <link rel="preload" href="/logo-compounding-journey.png" as="image" type="image/png" fetchpriority="high">
     <title>El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad</title>
     <meta id="meta-description" name="description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="icon" type="image/png" href="/logo-compounding-journey.png">
-    <link id="canonical-link" rel="canonical" href="https://compoundingjourney.com/?lang=es">
+    <link id="canonical-link" rel="canonical" href="https://compoundingjourney.com/">
     <link id="alternate-en" rel="alternate" hreflang="en" href="https://compoundingjourney.com/?lang=en">
-    <link id="alternate-es" rel="alternate" hreflang="es" href="https://compoundingjourney.com/?lang=es">
+    <link id="alternate-es" rel="alternate" hreflang="es" href="https://compoundingjourney.com/">
     <link id="alternate-pt" rel="alternate" hreflang="pt" href="https://compoundingjourney.com/?lang=pt">
     <link id="alternate-default" rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/">
 
@@ -20,7 +20,7 @@
     <meta property="og:site_name" content="Compounding Journey">
     <meta id="og-title" property="og:title" content="El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad">
     <meta id="og-description" property="og:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
-    <meta id="og-url" property="og:url" content="https://compoundingjourney.com/?lang=es">
+    <meta id="og-url" property="og:url" content="https://compoundingjourney.com/">
     <meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
     <meta property="og:image:width" content="2048">
     <meta property="og:image:height" content="2048">
@@ -108,15 +108,15 @@
             "@id": "https://compoundingjourney.com/#organization"
           },
           "hasPart": [
-            { "@id": "https://compoundingjourney.com/?lang=es#faq" },
+            { "@id": "https://compoundingjourney.com/#faq" },
             { "@id": "https://compoundingjourney.com/?lang=en#faq" },
             { "@id": "https://compoundingjourney.com/?lang=pt#faq" }
           ]
         },
         {
           "@type": "FAQPage",
-          "@id": "https://compoundingjourney.com/?lang=es#faq",
-          "url": "https://compoundingjourney.com/?lang=es#preguntas-frecuentes",
+          "@id": "https://compoundingjourney.com/#faq",
+          "url": "https://compoundingjourney.com/#preguntas-frecuentes",
           "name": "Preguntas frecuentes sobre libertad financiera y herramientas de presupuesto",
           "inLanguage": "es",
           "isPartOf": { "@id": "https://compoundingjourney.com/#website" },
@@ -3632,14 +3632,23 @@
         }
 
         function getLanguageUrl(lang) {
-            const url = new URL(window.location.pathname, getSiteOrigin());
-            url.searchParams.set("lang", lang);
-            return url.href;
+            return lang === "es" ? `${getSiteOrigin()}/` : `${getSiteOrigin()}/?lang=${lang}`;
         }
 
+        // Canonical URLs follow the address that was actually requested, never the
+        // language the visitor's browser happens to prefer. Googlebot crawls with
+        // its own locale, so deriving the canonical from detection made "/" point
+        // at "/?lang=en" and dropped the primary URL out of the index.
+        function getUrlLanguage() {
+            const urlLanguage = new URLSearchParams(window.location.search).get("lang")?.toLowerCase();
+            return supportedLanguages.includes(urlLanguage) ? urlLanguage : "es";
+        }
+
+        let canonicalLanguage = getUrlLanguage();
+
         function updateLanguageMetadata(lang) {
-            const localizedUrl = getLanguageUrl(lang);
-            const baseUrl = `${getSiteOrigin()}${window.location.pathname}`;
+            const localizedUrl = getLanguageUrl(canonicalLanguage);
+            const baseUrl = `${getSiteOrigin()}/`;
 
             document.title = pageTitles[lang];
             document.getElementById("meta-description").content = pageDescriptions[lang];
@@ -3681,6 +3690,8 @@
             document.body.classList.remove(...supportedLanguages.map(language => `lang-${language}`));
             document.body.classList.add('lang-' + normalizedLanguage);
             document.documentElement.lang = normalizedLanguage;
+            // Only an explicit switch changes the address, and therefore the canonical.
+            if (updateUrl) canonicalLanguage = normalizedLanguage;
             updateLanguageMetadata(normalizedLanguage);
 
             try {
@@ -3691,7 +3702,11 @@
 
             if (updateUrl) {
                 const url = new URL(window.location.href);
-                url.searchParams.set("lang", normalizedLanguage);
+                if (normalizedLanguage === "es") {
+                    url.searchParams.delete("lang");
+                } else {
+                    url.searchParams.set("lang", normalizedLanguage);
+                }
                 window.history.replaceState({ lang: normalizedLanguage }, "", url);
             }
             
@@ -4199,12 +4214,15 @@
         }
 
         window.addEventListener('popstate', function() {
+            canonicalLanguage = getUrlLanguage();
             setLanguage(detectInitialLanguage(), false);
             scrollToCurrentRoute();
         });
 
-        // Initialize language and calculator values as soon as the page markup is ready
-        setLanguage(detectInitialLanguage());
+        // Initialize language and calculator values as soon as the page markup is ready.
+        // The URL is left untouched here: rewriting "/" to "/?lang=xx" on load would
+        // make the canonical depend on the visitor's browser locale.
+        setLanguage(detectInitialLanguage(), false);
         initializeNavigationMenus();
         initializeDesktopScrollSpy();
         requestAnimationFrame(() => scrollToCurrentRoute());

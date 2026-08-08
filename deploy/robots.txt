@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# The content studio is a private Netlify Identity area with nothing to index.
+Disallow: /admin/
+
 Sitemap: https://compoundingjourney.com/sitemap.xml
