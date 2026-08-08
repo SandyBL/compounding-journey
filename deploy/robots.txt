@@ -4,4 +4,9 @@ Allow: /
 # The content studio is a private Netlify Identity area with nothing to index.
 Disallow: /admin/
 
+# Generator input: the Markdown articles and the multi-language home page
+# template. Every word of it is already served, in a better form, from the
+# pages built out of it. Nothing links here.
+Disallow: /content/
+
 Sitemap: https://compoundingjourney.com/sitemap.xml

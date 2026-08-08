@@ -2,14 +2,15 @@
 
 > Compounding Journey is Sandy Bradbury's multilingual financial education site about money psychology, intentional investing, compound growth, personal budgeting, and building financial freedom around personal values.
 
-The site is available in Spanish, English, and Portuguese. It provides educational articles, interactive financial calculators, free downloadable Excel templates, information about Sandy Bradbury, and ways to follow or contact the project. The content and tools are general educational resources and do not replace personalized financial advice.
+The site is available in Spanish, English, and Portuguese. Each language has its own pre-rendered pages; nothing depends on JavaScript to become readable. It provides educational articles, interactive financial calculators, free downloadable Excel templates, information about Sandy Bradbury, and ways to follow or contact the project. The content and tools are general educational resources and do not replace personalized financial advice.
 
-## Official Site
+The complete text of this site — every FAQ answer and every article, in all three languages — is available in a single file: [llms-full.txt](https://compoundingjourney.com/llms-full.txt).
 
-- [Compounding Journey](https://compoundingjourney.com/)
-- [Spanish version](https://compoundingjourney.com/)
-- [English version](https://compoundingjourney.com/?lang=en)
-- [Portuguese version](https://compoundingjourney.com/?lang=pt)
+## Home Pages
+
+- [Español](https://compoundingjourney.com/)
+- [English](https://compoundingjourney.com/en/)
+- [Português](https://compoundingjourney.com/pt/)
 
 ## Main Topics and Tools
 
@@ -22,12 +23,33 @@ The site is available in Spanish, English, and Portuguese. It provides education
 
 ## Journal
 
-- [Journal in English](https://compoundingjourney.com/en/blog/)
 - [Diario en español](https://compoundingjourney.com/es/blog/)
+- [Journal in English](https://compoundingjourney.com/en/blog/)
 - [Diário em português](https://compoundingjourney.com/pt/blog/)
 
 Every article is published as its own page under `/{language}/blog/{slug}/` and
 all of them are listed in [the sitemap](https://compoundingjourney.com/sitemap.xml).
+
+### Español
+
+- [El sistema de dinero lento: una forma más tranquila de crear patrimonio](https://compoundingjourney.com/es/blog/sistema-dinero-lento/): Un ritmo semanal práctico que sustituye la urgencia financiera por unas pocas decisiones sostenibles.
+- [Págate a Ti Mismo Primero: El Hábito Clave para Crear Riqueza](https://compoundingjourney.com/es/blog/pagate-a-ti-mismo-primero-el-habito-clave-para-crear-riqueza/): Descubre cómo ahorrar un porcentaje fijo antes de gastar romperá el ciclo de vivir al día y te ayudará a construir tu fondo de emergencia.
+- [Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza](https://compoundingjourney.com/es/blog/fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza/): Descubre consejos simples para presupuestar, rastrear tus gastos y tomar decisiones financieras inteligentes para alcanzar la libertad sin renunciar a lo que te hace feliz.
+- [Cómo Crear Riqueza con Buenos Hábitos Financieros: Lecciones de Padre Rico, Padre Pobre](https://compoundingjourney.com/es/blog/como-crear-riqueza-con-buenos-habitos-financieros-lecciones-de-padre-rico-padre-pobre/): Descubre cómo construir riqueza a largo plazo con buenos hábitos financieros. Aprende la diferencia entre activos, pasivos, deuda buena y flujo de caja.
+
+### English
+
+- [The slow money system: a calmer way to build wealth](https://compoundingjourney.com/en/blog/slow-money-system/): A practical weekly rhythm that replaces financial urgency with a small set of repeatable decisions.
+- [Pay Yourself First: The Simple Habit to Build Lasting Wealth](https://compoundingjourney.com/en/blog/pay-yourself-first-the-simple-habit-to-build-lasting-wealth/): Learn how saving a fixed percentage before spending can break the paycheck-to-paycheck cycle and help you easily build an emergency fund.
+- [Foundations of Personal Finance: How to Control Expenses and Build Wealth](https://compoundingjourney.com/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/): Discover simple tips for budgeting, tracking expenses, and making smarter money choices to achieve financial freedom without giving up what makes you happy.
+- [Building Wealth Through Good Financial Habits: Key Lessons from Rich Dad, Poor Dad](https://compoundingjourney.com/en/blog/building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad/): Discover how to build long-term wealth using proven financial habits from Rich Dad, Poor Dad. Learn the key differences between assets, liabilities, good debt, and cash flow.
+
+### Português
+
+- [O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio](https://compoundingjourney.com/pt/blog/sistema-dinheiro-lento/): Um ritmo semanal prático que troca a urgência financeira por poucas decisões sustentáveis.
+- [Pague-se a Si Mesmo Primeiro: O Hábito Chave para Criar Riqueza](https://compoundingjourney.com/pt/blog/pague-se-a-si-mesmo-primeiro-o-habito-chave-para-criar-riqueza/): Descubra como poupar uma percentagem fixa antes de gastar pode romper o ciclo de viver de salário em salário e construir o seu fundo de emergência.
+- [Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza](https://compoundingjourney.com/pt/blog/fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza/): Descubra dicas simples para criar orçamentos, rastrear despesas e tomar decisões financeiras inteligentes para alcançar a liberdade sem abrir mão do que te faz feliz.
+- [Como Construir Riqueza com Bons Hábitos Financeiros: Lições de Pai Rico, Pai Pobre](https://compoundingjourney.com/pt/blog/como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre/): Aprenda a construir riqueza de longo prazo com bons hábitos financeiros. Entenda a diferença entre ativos, passivos, dívida boa e fluxo de caixa.
 
 ## Interactive Simulator
 
@@ -48,4 +70,4 @@ all of them are listed in [the sitemap](https://compoundingjourney.com/sitemap.x
 
 ## Attribution
 
-When citing this site, attribute the material to Compounding Journey and Sandy Bradbury and link to the most relevant page section or downloadable resource.
+When citing this site, attribute the material to Compounding Journey and Sandy Bradbury and link to the most relevant page or downloadable resource.

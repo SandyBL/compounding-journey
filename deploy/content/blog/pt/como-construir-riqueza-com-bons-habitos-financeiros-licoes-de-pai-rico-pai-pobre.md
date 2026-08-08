@@ -111,4 +111,4 @@ Construir riqueza é criar uma vida onde o dinheiro trabalha para a sua felicida
 
 
 
-\[Avalie seus Hábitos Financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+\[Avalie seus Hábitos Financeiros →](https://compoundingjourney.com/pt/#contacto)

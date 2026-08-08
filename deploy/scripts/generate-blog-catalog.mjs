@@ -61,6 +61,11 @@ for (const language of languages) {
       slug: path.basename(file, '.md'),
       title: attributes.title || path.basename(file, '.md').replace(/-/g, ' '),
       date: attributes.date || '',
+      // Optional. Set "updated" in the front matter when an article is revised:
+      // it becomes dateModified and the sitemap lastmod, which is what tells a
+      // crawler the page is worth re-reading. Left empty it falls back to date,
+      // so nothing claims to have changed when it has not.
+      updated: attributes.updated || '',
       category: attributes.category || '',
       summary: attributes.summary || '',
       author: attributes.author || defaultAuthor,
