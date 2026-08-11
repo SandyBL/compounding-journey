@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de la Libertad Financiera | Compounding Journey</title>
+    <meta name="description" content="Convierte tus ahorros, inversiones y objetivos de vida en una línea de tiempo visual que muestra cuándo podrías alcanzar cada nivel de libertad financiera.">
+    <link rel="canonical" href="https://compoundingjourney.com/es/simulators/freedom-calendar.html">
+    <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/freedom-calendar.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/freedom-calendar.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/freedom-calendar.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/freedom-calendar.html">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="es_ES"><meta property="og:title" content="Calendario de la Libertad Financiera"><meta property="og:description" content="Visualiza cuándo tus ahorros e inversiones pueden desbloquear cada etapa de libertad financiera."><meta property="og:url" content="https://compoundingjourney.com/es/simulators/freedom-calendar.html"><meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Calendario de la Libertad Financiera"><meta name="twitter:description" content="Visualiza cuándo tus ahorros e inversiones pueden desbloquear cada etapa de libertad financiera."><meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calendario de la Libertad","url":"https://compoundingjourney.com/es/simulators/freedom-calendar.html","description":"Una línea de tiempo visual de independencia financiera basada en ahorros, inversiones y objetivos de vida.","inLanguage":"es","applicationCategory":"FinanceApplication","operatingSystem":"Cualquier navegador web","browserRequirements":"Requiere JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for trajectory visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#fcfaf7',
+                            100: '#f8f4ed',
+                            200: '#f1e8da',
+                            300: '#e6d8c3',
+                            400: '#d7c2a5',
+                            500: '#c3a985'
+                        },
+                        espresso: {
+                            800: '#3a2719',
+                            900: '#2c1d11',
+                            950: '#1e130a'
+                        },
+                        forest: {
+                            600: '#2e6f40',
+                            700: '#1e532d',
+                            800: '#134e2a',
+                            900: '#0d381e'
+                        },
+                        gold: {
+                            400: '#e5b84c',
+                            500: '#d4a338',
+                            600: '#c3922e',
+                            700: '#a3751e'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f8f4ed;
+            color: #2c1d11;
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(44, 29, 17, 0.08);
+        }
+        .gradient-gold {
+            background: linear-gradient(135deg, #d4a338 0%, #c3922e 100%);
+        }
+        .gradient-forest {
+            background: linear-gradient(135deg, #2e6f40 0%, #134e2a 100%);
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #1e532d;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
+
+    <!-- HEADER & BRAND BAR -->
+    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+        <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+            <a href="/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Volver a Compounding Journey">
+                <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
+                    <img src="/logo-compounding-journey.png" alt="Compounding Journey" width="2048" height="2048" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="header-brand-copy">
+                    <span class="header-brand-name">Compounding Journey</span>
+                    <span class="header-brand-tagline">Tu mapa hacia la libertad</span>
+                </div>
+            </a>
+
+            <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
+                <a href="/#simulador" class="site-return-link hidden sm:inline-flex">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    <span>Sitio web</span>
+                </a>
+                <button onclick="toggleProfileDrawer()" class="px-4 py-2 rounded-xl bg-forest-800 hover:bg-forest-900 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md">
+                                <i class="fa-solid fa-sliders"></i>
+                                <span>Personalizar Ingresos y Edad</span>
+                            </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROFILE & PARAMETERS DRAWER (COLLAPSIBLE) -->
+    <section id="profileDrawer" class="hidden bg-cream-200 border-b border-cream-300 py-6 px-4 transition-all">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
+                    <i class="fa-solid fa-user-gear text-forest-800"></i> Tu Perfil Financiero Base
+                </h3>
+                <button onclick="toggleProfileDrawer()" class="text-xs text-espresso-800 hover:text-espresso-950 font-bold">
+                    <i class="fa-solid fa-xmark"></i> Cerrar
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                    <label class="block text-xs font-bold text-espresso-900 mb-1">Edad Actual</label>
+                    <input type="number" id="inputCurrentAge" value="30" min="18" max="75" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                </div>
+
+                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                    <label class="block text-xs font-bold text-espresso-900 mb-1">Salario Anual Neto ($)</label>
+                    <input type="number" id="inputAnnualIncome" value="60000" step="1000" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                </div>
+
+                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                    <label class="block text-xs font-bold text-espresso-900 mb-1">Horas Semanales de Trabajo</label>
+                    <input type="number" id="inputWorkHours" value="40" min="10" max="80" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                </div>
+
+                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                    <label class="block text-xs font-bold text-espresso-900 mb-1">Patrimonio Invertido ($)</label>
+                    <input type="number" id="inputNetWorth" value="15000" step="1000" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                </div>
+
+                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                    <label class="block text-xs font-bold text-espresso-900 mb-1">Gastos Básicos Mensuales ($)</label>
+                    <input type="number" id="inputBasicExpenses" value="2500" step="100" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                </div>
+            </div>
+            
+            <p class="text-xs text-espresso-800/80 mt-3 italic">
+                * Nota: Tu salario neto por hora se calcula en <span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">$28.85/hr</span>. Asume una tasa de retorno real del 7% y una tasa de retiro seguro del 4% (Regla del 25x de FIRE).
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-6xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
+
+        <!-- INTRO BANNER -->
+        <div class="mb-8 text-center sm:text-left bg-cream-50 rounded-2xl p-6 border border-cream-300 custom-shadow flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="max-w-2xl">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-gold-600">El Convertidor de Costo de Oportunidad</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-espresso-900 font-serif mt-1">¿Cuánto te está costando realmente tu gasto diario?</h2>
+                <p class="text-sm sm:text-base text-espresso-800/90 mt-2 leading-relaxed">
+                    Cuando compras un almuerzo de $15 o arrendas un auto de lujo, no solo estás gastando dólares: estás gastando <strong class="text-forest-800">horas de vida trabajadas</strong> y <strong class="text-forest-800">años de libertad futura</strong>. ¡Reduce o elimina hábitos a continuación para adelantar tu Fecha Objetivo de Libertad al instante!
+                </p>
+            </div>
+
+            <!-- Quick Action Preset Buttons -->
+            <div class="flex flex-col sm:flex-row md:flex-col gap-2 w-full md:w-auto flex-shrink-0">
+                <button onclick="setGlobalPreset(0)" class="px-4 py-2 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow transition-all">
+                    ⚡ Eliminar Todos los Hábitos (Recorte 100%)
+                </button>
+                <button onclick="setGlobalPreset(50)" class="px-4 py-2 bg-gold-600 hover:bg-gold-700 text-espresso-950 font-bold text-xs rounded-xl shadow transition-all">
+                    ⚖️ Recorte Moderado (50% en Todos)
+                </button>
+                <button onclick="setGlobalPreset(100)" class="px-4 py-2 bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs rounded-xl border border-cream-300 transition-all">
+                    🔄 Restablecer Todos los Hábitos al 100%
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- LEFT COLUMN: HABIT CONTROLS (7 COLS) -->
+            <div class="lg:col-span-7 space-y-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-lg font-bold text-espresso-900 font-serif flex items-center gap-2">
+                        <i class="fa-solid fa-cart-flatbed-suitcases text-gold-600"></i> Tus Micro-Gastos y Hábitos de Estilo de Vida
+                    </h3>
+                    <button onclick="addCustomHabit()" class="px-3 py-1.5 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-plus"></i> Agregar Gasto Personalizado
+                    </button>
+                </div>
+
+                <!-- DYNAMIC HABIT CARDS CONTAINER -->
+                <div id="habitsContainer" class="space-y-4">
+                    <!-- Injected dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: THE FREEDOM CALENDAR HERO PANEL (5 COLS STICKY) -->
+            <div class="lg:col-span-5">
+                <div class="sticky top-20 space-y-3.5 max-h-[calc(100vh-6rem)] overflow-y-auto pr-1 custom-scrollbar">
+                    
+                    <!-- THE FREEDOM TARGET CARD -->
+                    <div class="bg-gradient-to-br from-forest-900 via-forest-800 to-espresso-950 text-cream-50 rounded-2xl p-4 sm:p-5 border border-forest-700/60 custom-shadow text-center relative overflow-hidden">
+                        
+                        <div class="absolute -top-12 -right-12 w-32 h-32 bg-gold-500/15 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-gold-400 block mb-1">Tu Edad Objetivo de Libertad Financiera</span>
+                        
+                        <!-- Freedom Target Age Display -->
+                        <div class="my-2.5 flex items-center justify-center gap-2.5">
+                            <div class="bg-espresso-950/60 px-3.5 py-1.5 rounded-xl border border-espresso-800/80">
+                                <span class="text-[10px] text-cream-300/80 block uppercase font-bold tracking-wider">Línea Base</span>
+                                <span id="baselineAgeDisplay" class="text-xl font-black text-rose-300 font-mono">Edad 65</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-gold-400 text-sm"></i>
+                            <div class="bg-gradient-to-br from-forest-700 to-forest-800 px-4 py-1.5 rounded-xl border border-gold-500/40 shadow-lg scale-105">
+                                <span class="text-[10px] text-emerald-200 block uppercase font-bold tracking-wider">Nuevo Objetivo</span>
+                                <span id="optimizedAgeDisplay" class="text-2xl font-black text-emerald-300 font-mono">Edad 56</span>
+                            </div>
+                        </div>
+
+                        <!-- Years Pulled Forward Badge -->
+                        <div id="yearsSavedBadge" class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-500 text-espresso-950 font-black text-xs shadow-md mt-0.5">
+                            <i class="fa-solid fa-calendar-check text-xs"></i>
+                            <span>¡Libertad Adelantada 9 AÑOS!</span>
+                        </div>
+
+                        <!-- Calendar Visual Timeline Progress Bar -->
+                        <div class="mt-4 text-left bg-espresso-950/40 p-2.5 rounded-xl border border-forest-800/50">
+                            <div class="flex justify-between text-[11px] text-cream-200 font-medium mb-1">
+                                <span>Inicio: <strong id="currentAgeLabel" class="text-cream-50">30</strong></span>
+                                <span>Objetivo: <strong id="timelineTargetLabel" class="text-emerald-300 font-bold">56</strong></span>
+                                <span>Estándar: <strong class="text-rose-300">65</strong></span>
+                            </div>
+                            <div class="w-full bg-espresso-900 h-3 rounded-full overflow-hidden p-0.5 border border-forest-700/60 relative">
+                                <div id="timelineProgressFill" class="bg-gradient-to-r from-emerald-400 via-emerald-300 to-gold-400 h-full rounded-full transition-all duration-500" style="width: 55%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IMPACT BREAKDOWN STATS GRID -->
+                    <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-2.5">
+                        <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-forest-800 border-b border-cream-200 pb-1.5 flex items-center justify-between">
+                            <span>Resumen de Libertad Recuperada</span>
+                            <i class="fa-solid fa-piggy-bank text-gold-600 text-xs"></i>
+                        </h4>
+
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300">
+                                <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">Ahorro Mensual</span>
+                                <span id="statMonthlySaved" class="text-base font-bold text-forest-800 font-mono">+$850/mes</span>
+                            </div>
+
+                            <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300">
+                                <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">Días Trabajados Ahorrados</span>
+                                <span id="statWorkDaysSaved" class="text-base font-bold text-gold-600 font-mono">35.4 Días/Año</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300 flex justify-between items-center">
+                            <div>
+                                <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">Patrimonio Ganado a 30 Años</span>
+                                <span id="stat30YearWealth" class="text-lg font-extrabold text-emerald-700 font-mono">$1,036,400</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[9px] text-espresso-800/60 block">Retorno Real 7%</span>
+                                <i class="fa-solid fa-chart-line text-emerald-600 text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CHART CARD -->
+                    <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow">
+                        <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-forest-800 mb-2 flex items-center justify-between">
+                            <span>Comparación de Trayectoria de Riqueza</span>
+                            <span class="text-[9px] font-semibold text-espresso-800/60">Horizonte de 30 Años</span>
+                        </h4>
+                        <div class="h-36 sm:h-40 w-full">
+                            <canvas id="wealthChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CALL-TO-ACTION (CTA) SECTION -->
+        <div class="bg-gradient-to-br from-forest-800 to-forest-900 text-cream-50 rounded-2xl p-8 custom-shadow text-center mt-12">
+            <div class="w-16 h-16 mx-auto mb-4">
+                <svg viewBox="0 0 200 200" class="w-full h-full">
+                    <circle cx="100" cy="65" r="50" fill="#2e6f40"/>
+                    <path d="M92 180 L92 120 Q80 100 65 95 Q85 85 96 60 Q104 60 115 85 Q135 100 108 120 L108 180 Z" fill="#ffffff"/>
+                    <circle cx="100" cy="45" r="35" fill="#388e3c"/>
+                    <circle cx="75" cy="55" r="7" fill="#d4a338"/>
+                    <circle cx="125" cy="55" r="7" fill="#d4a338"/>
+                </svg>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-bold font-serif mb-3">¿Listo para Construir tu Mapa Personalizado hacia la Libertad?</h3>
+            <p class="text-cream-200 max-w-xl mx-auto mb-6 leading-relaxed text-sm sm:text-base">
+                Comprende dónde estás parado hoy, elimina las fugas silenciosas de riqueza y da tus próximos pasos financieros con total claridad y confianza.
+            </p>
+            <a href="https://compoundingjourney.com/?lang=es#contacto" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gold-600 hover:bg-gold-500 text-espresso-950 font-extrabold text-base rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                <span>Recibe Orientación Inicial en Compounding Journey</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
+        <p>© <script>document.write(new Date().getFullYear())</script> Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.</p>
+    </footer>
+
+    <script>
+        // HABIT DATABASE IN SPANISH
+        const HABITS_DATA = [
+            {
+                id: 'coffee',
+                title: 'Café Especial y Bebidas Diarias',
+                icon: 'fa-mug-hot',
+                category: 'Micro-Hábito Diario',
+                baseCost: 5,
+                unit: 'day', // 'day', 'week', 'month'
+                desc: 'Cafés especiales, bebidas energéticas o cafés helados comprados al paso.',
+                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de $0.50 por taza!',
+                choicePct: 100
+            },
+            {
+                id: 'lunch',
+                title: 'Restaurantes y Entregas de Almuerzo Diarias',
+                icon: 'fa-utensils',
+                category: 'Micro-Hábito Diario',
+                baseCost: 15,
+                unit: 'day',
+                desc: 'Pedir por UberEats/DoorDash o comer fuera en lugar de llevar almuerzo preparado.',
+                tip: 'Prepara comidas en lote los domingos o ten comidas congeladas gourmet en el trabajo para reducir el delivery a 1 día por semana como recompensa.',
+                choicePct: 100
+            },
+            {
+                id: 'subscriptions',
+                title: 'Suscripciones a Streaming y Apps No Utilizadas',
+                icon: 'fa-tv',
+                category: 'Recurrente Mensual',
+                baseCost: 120,
+                unit: 'month',
+                desc: 'Múltiples servicios de streaming, membresías de gimnasio o aplicaciones sin uso.',
+                tip: 'Adopta la "Regla de Una a la Vez": suscríbete a solo 1 servicio de streaming al mes, mira lo que quieras, cancela y cambia.',
+                choicePct: 100
+            },
+            {
+                id: 'carLease',
+                title: 'Renovar el Leasing del Auto Cada 3 Años',
+                icon: 'fa-car',
+                category: 'Estilo de Vida Mayor',
+                baseCost: 350,
+                unit: 'month',
+                desc: 'Manejar siempre un auto arrendado nuevo en lugar de mantener un vehículo propio confiable y pagado.',
+                tip: 'Compra un auto seminuevo certificado de 3 años y mantenlo durante 7–10 años. Redirige las cuotas del leasing directamente a fondos indexados.',
+                choicePct: 100
+            },
+            {
+                id: 'impulseShopping',
+                title: 'Compras Impulsivas de Ropa y Tecnología',
+                icon: 'fa-bag-shopping',
+                category: 'Gasto Impulsivo',
+                baseCost: 40,
+                unit: 'week',
+                desc: 'Comprar camisetas, accesorios o ofertas tecnológicas que no tenías planeadas.',
+                tip: 'Aplica la "Regla de Enfriamiento de 72 Horas" para compras no esenciales. Si aún lo quieres 3 días después, evalúa primero su costo en horas de trabajo.',
+                choicePct: 100
+            },
+            {
+                id: 'weekendDining',
+                title: 'Salidas Fin de Semana y Cenas Premium',
+                icon: 'fa-martini-glass-citrus',
+                category: 'Social y Ocio',
+                baseCost: 80,
+                unit: 'week',
+                desc: 'Cócteles, comida para llevar y cenas sociales de alto nivel los fines de semana.',
+                tip: 'Organiza cenas comunitarias ("potluck") con amigos o cambia a agua con gas después de 1 cóctel cuando salgas a comer para mantener la diversión sin la gran cuenta.',
+                choicePct: 100
+            },
+            {
+                id: 'energySnacks',
+                title: 'Snacks y Bebidas de Conveniencia Diarios',
+                icon: 'fa-bolt',
+                category: 'Micro-Hábito Diario',
+                baseCost: 6,
+                unit: 'day',
+                desc: 'Snacks de gasolinera, latas de energía y compras impulsivas en máquinas expendedoras.',
+                tip: 'Compra snacks y bebidas al por mayor en clubes de descuento y ten paquetes de emergencia en tu auto, mochila o escritorio.',
+                choicePct: 100
+            },
+            {
+                id: 'techUpgrades',
+                title: 'Actualización Anual de Teléfono Inteligente',
+                icon: 'fa-mobile-screen-button',
+                category: 'Estilo de Vida Mayor',
+                baseCost: 50,
+                unit: 'month',
+                desc: 'Cambiar tu teléfono cada año por el modelo más nuevo.',
+                tip: 'Cambia la batería de tu teléfono después de 2 años en lugar de comprar un dispositivo nuevo. Apunta a un ciclo de vida de 4 años por teléfono.',
+                choicePct: 100
+            },
+            {
+                id: 'gymMembership',
+                title: 'Membresías de Gimnasio y Fitness No Usadas',
+                icon: 'fa-dumbbell',
+                category: 'Recurrente Mensual',
+                baseCost: 60,
+                unit: 'month',
+                desc: 'Pagar acceso a gimnasios boutique o apps de fitness que raras veces usas.',
+                tip: 'Si vas menos de dos veces por semana, congela la membresía. Intenta correr al aire libre, calistenia o pases por visita.',
+                choicePct: 100
+            },
+            {
+                id: 'storageUnit',
+                title: 'Alquiler de Bodegas/Trasteros para Acumulación',
+                icon: 'fa-boxes-stacked',
+                category: 'Recurrente Mensual',
+                baseCost: 150,
+                unit: 'month',
+                desc: 'Alquilar un espacio fuera de casa para guardar muebles viejos y artículos extra.',
+                tip: 'Organiza una venta de garaje de fin de semana o dona los objetos. Si el contenido no vale 2 años de alquiler, ¡liquídalo!',
+                choicePct: 100
+            },
+            {
+                id: 'foodWaste',
+                title: 'Desperdicio de Comida y Comestibles Vencidos',
+                icon: 'fa-trash-arrow-up',
+                category: 'Gasto Impulsivo',
+                baseCost: 40,
+                unit: 'week',
+                desc: 'Comestibles y productos frescos que se echan a perder en el refrigerador antes de comerlos.',
+                tip: 'Compra con una lista exacta de comidas, haz un inventario antes de comprar y congela alimentos frescos antes de que se arruinen.',
+                choicePct: 100
+            },
+            {
+                id: 'shortRideshares',
+                title: 'Viajes Cortos en Apps de Transporte (Uber/Lyft)',
+                icon: 'fa-taxi',
+                category: 'Micro-Hábito Diario',
+                baseCost: 25,
+                unit: 'week',
+                desc: 'Pedir viajes en app para distancias cortas que podrías caminar o hacer en transporte público.',
+                tip: 'Ponte la regla de caminar cualquier trayecto de menos de 15 minutos o mantén una tarjeta de transporte público a mano. ¡Sirve como ejercicio diario gratuito!',
+                choicePct: 100
+            },
+            {
+                id: 'bottledWater',
+                title: 'Agua Embotellada y Bebidas de Un Solo Uso',
+                icon: 'fa-bottle-water',
+                category: 'Micro-Hábito Diario',
+                baseCost: 3,
+                unit: 'day',
+                desc: 'Comprar botellas de agua, gaseosas o tés por pura conveniencia.',
+                tip: 'Lleva una botella de agua de acero inoxidable reutilizable con filtro. Ahorras dinero y reduces el plástico al instante.',
+                choicePct: 100
+            }
+        ];
+
+        // USER PROFILE BASELINE STATE
+        let profile = {
+            currentAge: 30,
+            annualIncome: 60000,
+            workHoursPerWeek: 40,
+            startingNetWorth: 15000,
+            basicMonthlyExpenses: 2500, // Rent, groceries, utilities, basics
+            realReturnRate: 0.07, // 7% real compound interest rate
+            safeWithdrawalRate: 0.04 // 4% rule (FIRE 25x rule)
+        };
+
+        let habits = JSON.parse(JSON.stringify(HABITS_DATA));
+        let chartInstance = null;
+
+        function getHourlyWage() {
+            const annualHours = Math.max(1, profile.workHoursPerWeek * 52);
+            return Math.max(0.01, profile.annualIncome / annualHours);
+        }
+
+        function getHabitMonthlyCost(habit, forceChoicePct = null) {
+            const pct = (forceChoicePct !== null) ? forceChoicePct : habit.choicePct;
+            const effectiveCost = (habit.baseCost * pct) / 100;
+            
+            if (habit.unit === 'day') {
+                return effectiveCost * (365 / 12);
+            } else if (habit.unit === 'week') {
+                return effectiveCost * (52 / 12);
+            } else {
+                return effectiveCost;
+            }
+        }
+
+        function calculate30YearWealth(monthlySavings) {
+            if (monthlySavings <= 0) return 0;
+            const r = profile.realReturnRate / 12;
+            const n = 360;
+            return monthlySavings * ((Math.pow(1 + r, n) - 1) / r);
+        }
+
+        function simulateFreedomAge(monthlyHabitsCost) {
+            const annualExpenses = (profile.basicMonthlyExpenses + monthlyHabitsCost) * 12;
+            const targetNetWorth = annualExpenses / profile.safeWithdrawalRate;
+            let currentNW = profile.startingNetWorth;
+            const annualSavings = Math.max(0, profile.annualIncome - annualExpenses);
+
+            if (currentNW >= targetNetWorth) return profile.currentAge;
+
+            let years = 0;
+            const maxYears = 70;
+
+            while (currentNW < targetNetWorth && years < maxYears) {
+                currentNW = (currentNW * (1 + profile.realReturnRate)) + annualSavings;
+                years++;
+            }
+
+            return Math.min(85, profile.currentAge + years);
+        }
+
+        function renderHabitCards() {
+            const container = document.getElementById('habitsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const hourlyWage = getHourlyWage();
+
+            habits.forEach((habit, idx) => {
+                const fullMonthlyCost = getHabitMonthlyCost(habit, 100);
+                const currentMonthlyCost = getHabitMonthlyCost(habit);
+                const monthlySaved = fullMonthlyCost - currentMonthlyCost;
+
+                const annualSaved = monthlySaved * 12;
+                const workHoursSavedPerYear = annualSaved / hourlyWage;
+                const workDaysSavedPerYear = workHoursSavedPerYear / 8; // Assuming 8-hr workday
+
+                const card = document.createElement('div');
+                card.className = 'bg-cream-50 rounded-2xl p-5 border border-cream-300 custom-shadow transition-all duration-200 hover:border-cream-400';
+
+                const unitLabel = habit.unit === 'day' ? 'día' : (habit.unit === 'week' ? 'sem' : 'mes');
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-3 mb-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-forest-800/10 text-forest-800 flex items-center justify-center text-lg flex-shrink-0">
+                                <i class="fa-solid ${habit.icon}"></i>
+                            </div>
+                            <div>
+                                ${habit.isCustom ? 
+                                    `<input type="text" value="${habit.title}" onchange="updateHabitTitle(${idx}, this.value)" class="font-bold text-espresso-950 text-base bg-transparent border-b border-dashed border-cream-400 focus:outline-none focus:border-forest-800">` : 
+                                    `<h4 class="font-bold text-espresso-950 text-base">${habit.title}</h4>`
+                                }
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-cream-200 text-espresso-800 block mt-0.5 w-fit">
+                                    ${habit.category} • Base: $${habit.baseCost}/${unitLabel}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Badge: Work Days Saved & Actions -->
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold font-mono ${monthlySaved > 0 ? 'text-emerald-700 bg-emerald-100' : 'text-espresso-800/60 bg-cream-200'} px-2.5 py-1 rounded-lg block">
+                                ${monthlySaved > 0 ? '+' + workDaysSavedPerYear.toFixed(1) + ' Días Trabajo/Año Ahorrados' : 'Gasto Total'}
+                            </span>
+                            ${habit.isCustom ? `
+                                <button onclick="deleteHabit(${idx})" class="text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors" title="Eliminar Gasto">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-espresso-800/80 mb-3 leading-relaxed">${habit.desc}</p>
+
+                    ${habit.tip ? `
+                        <div class="mb-3 p-2.5 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-start gap-2 text-xs text-espresso-900">
+                            <i class="fa-solid fa-lightbulb text-gold-600 mt-0.5 flex-shrink-0"></i>
+                            <div>
+                                <strong class="text-gold-700 font-bold block mb-0.5">Consejo de Acción Inteligente:</strong>
+                                <span class="text-espresso-800/90 leading-normal">${habit.tip}</span>
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- EDITABLE COST & FREQUENCY INPUT ROW -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 p-3 bg-cream-100/90 rounded-xl border border-cream-300">
+                        <div class="flex items-center justify-between gap-2">
+                            <label class="text-xs font-bold text-espresso-900">Gasto Base ($):</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-2.5 text-xs text-espresso-800 font-bold">$</span>
+                                <input type="number" min="0" step="1" value="${habit.baseCost}" 
+                                    onchange="updateHabitBaseCost(${idx}, this.value)" 
+                                    class="w-28 pl-6 pr-2 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold font-mono text-forest-800 focus:ring-2 focus:ring-forest-800">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between gap-2">
+                            <label class="text-xs font-bold text-espresso-900">Frecuencia:</label>
+                            <select onchange="updateHabitUnit(${idx}, this.value)" 
+                                class="px-2.5 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold text-espresso-900 focus:ring-2 focus:ring-forest-800 cursor-pointer">
+                                <option value="day" ${habit.unit === 'day' ? 'selected' : ''}>Diario ($/día)</option>
+                                <option value="week" ${habit.unit === 'week' ? 'selected' : ''}>Semanal ($/sem)</option>
+                                <option value="month" ${habit.unit === 'month' ? 'selected' : ''}>Mensual ($/mes)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Slider Control -->
+                    <div class="space-y-2 bg-cream-100 p-3.5 rounded-xl border border-cream-200">
+                        <div class="flex justify-between items-center text-xs font-bold">
+                            <span class="text-espresso-900">Opción de Gasto: <strong class="text-forest-800 font-mono">${habit.choicePct}%</strong></span>
+                            <span class="text-espresso-800 font-mono">Actual: $${Math.round(currentMonthlyCost)}/mes <span class="text-[10px] font-normal text-espresso-800/70">(Total: $${Math.round(fullMonthlyCost)}/mes)</span></span>
+                        </div>
+
+                        <input type="range" min="0" max="100" step="25" value="${habit.choicePct}" 
+                            oninput="updateHabitChoice(${idx}, this.value)" 
+                            class="w-full accent-forest-800 bg-cream-300 h-2 rounded-lg cursor-pointer">
+
+                        <div class="flex justify-between text-[10px] font-semibold text-espresso-800/70">
+                            <span>0% (Eliminado)</span>
+                            <span>50% (Recortado)</span>
+                            <span>100% (Mantener Todo)</span>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function updateHabitBaseCost(index, value) {
+            const val = parseFloat(value);
+            habits[index].baseCost = isNaN(val) ? 0 : Math.max(0, val);
+            recalculateAll();
+            renderHabitCards();
+        }
+
+        function updateHabitUnit(index, unit) {
+            habits[index].unit = unit;
+            renderHabitCards();
+            recalculateAll();
+        }
+
+        function updateHabitTitle(index, title) {
+            habits[index].title = title || 'Gasto Personalizado';
+        }
+
+        function addCustomHabit() {
+            habits.push({
+                id: 'custom_' + Date.now(),
+                title: 'Nuevo Gasto Personalizado',
+                icon: 'fa-receipt',
+                category: 'Gasto Personalizado',
+                baseCost: 10,
+                unit: 'day',
+                desc: 'Ingresa el costo y la frecuencia de tu gasto recurrente personalizado.',
+                tip: 'Analiza si este gasto te aporta verdadero valor o si puede ser optimizado sin afectar tu calidad de vida.',
+                choicePct: 100,
+                isCustom: true
+            });
+            renderHabitCards();
+            recalculateAll();
+        }
+
+        function deleteHabit(index) {
+            habits.splice(index, 1);
+            renderHabitCards();
+            recalculateAll();
+        }
+
+        function updateHabitChoice(index, value) {
+            habits[index].choicePct = parseInt(value, 10);
+            renderHabitCards();
+            recalculateAll();
+        }
+
+        function setGlobalPreset(pct) {
+            habits.forEach(h => h.choicePct = pct);
+            renderHabitCards();
+            recalculateAll();
+        }
+
+        function toggleProfileDrawer() {
+            const drawer = document.getElementById('profileDrawer');
+            if (drawer) drawer.classList.toggle('hidden');
+        }
+
+        function updateProfileSettings() {
+            profile.currentAge = parseInt(document.getElementById('inputCurrentAge').value, 10) || 30;
+            profile.annualIncome = parseFloat(document.getElementById('inputAnnualIncome').value) || 60000;
+            profile.workHoursPerWeek = parseInt(document.getElementById('inputWorkHours').value, 10) || 40;
+            profile.startingNetWorth = parseFloat(document.getElementById('inputNetWorth').value) || 15000;
+            profile.basicMonthlyExpenses = parseFloat(document.getElementById('inputBasicExpenses').value) || 2500;
+
+            const wage = getHourlyWage();
+            document.getElementById('computedHourlyWage').innerText = `$${wage.toFixed(2)}/hr`;
+
+            renderHabitCards();
+            recalculateAll();
+        }
+
+        function recalculateAll() {
+            const hourlyWage = getHourlyWage();
+
+            // Total Monthly Spend at 100%
+            const baselineMonthlyHabits = habits.reduce((sum, h) => sum + getHabitMonthlyCost(h, 100), 0);
+            
+            // Total Monthly Spend at Current Choices
+            const optimizedMonthlyHabits = habits.reduce((sum, h) => sum + getHabitMonthlyCost(h), 0);
+
+            const monthlySaved = baselineMonthlyHabits - optimizedMonthlyHabits;
+            const annualSaved = monthlySaved * 12;
+
+            // Work Time Saved
+            const annualWorkHoursSaved = annualSaved / hourlyWage;
+            const annualWorkDaysSaved = annualWorkHoursSaved / 8;
+
+            // 30-Year Compounded Wealth Gained
+            const wealthGained30Yr = calculate30YearWealth(monthlySaved);
+
+            // Freedom Target Ages
+            const baselineFreedomAge = simulateFreedomAge(baselineMonthlyHabits);
+            const optimizedFreedomAge = simulateFreedomAge(optimizedMonthlyHabits);
+            const yearsPulledForward = Math.max(0, baselineFreedomAge - optimizedFreedomAge);
+
+            // UPDATE UI ELEMENTS
+            document.getElementById('baselineAgeDisplay').innerText = `Edad ${baselineFreedomAge}`;
+            document.getElementById('optimizedAgeDisplay').innerText = `Edad ${optimizedFreedomAge}`;
+
+            const badge = document.getElementById('yearsSavedBadge');
+            if (yearsPulledForward > 0) {
+                badge.classList.remove('hidden');
+                badge.innerHTML = `<i class="fa-solid fa-calendar-check"></i><span>¡Libertad Adelantada ${yearsPulledForward} AÑOS!</span>`;
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            document.getElementById('currentAgeLabel').innerText = profile.currentAge;
+            document.getElementById('timelineTargetLabel').innerText = optimizedFreedomAge;
+
+            // Progress Fill Bar
+            const totalRange = Math.max(1, 65 - profile.currentAge);
+            const progressPct = Math.min(100, Math.max(10, ((65 - optimizedFreedomAge) / totalRange) * 100));
+            document.getElementById('timelineProgressFill').style.width = `${progressPct}%`;
+
+            // Stat Cards
+            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('es-ES')}/mes`;
+            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Días/Año`;
+            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('es-ES')}`;
+
+            // Update Chart
+            updateWealthChart(baselineMonthlyHabits, optimizedMonthlyHabits);
+        }
+
+        function updateWealthChart(baselineHabitsMonthly, optimizedHabitsMonthly) {
+            const ctx = document.getElementById('wealthChart');
+            if (!ctx) return;
+
+            const yearsToProject = 30;
+            const labels = [];
+            const baselineData = [];
+            const optimizedData = [];
+
+            const baselineAnnualSavings = Math.max(0, profile.annualIncome - (profile.basicMonthlyExpenses * 12) - (baselineHabitsMonthly * 12));
+            const optimizedAnnualSavings = Math.max(0, profile.annualIncome - (profile.basicMonthlyExpenses * 12) - (optimizedHabitsMonthly * 12));
+
+            for (let i = 0; i <= yearsToProject; i += 5) {
+                labels.push(`Año ${i}`);
+            }
+
+            let curB = profile.startingNetWorth;
+            let curO = profile.startingNetWorth;
+
+            for (let year = 0; year <= yearsToProject; year++) {
+                if (year % 5 === 0) {
+                    baselineData.push(Math.round(curB));
+                    optimizedData.push(Math.round(curO));
+                }
+                curB = (curB * (1 + profile.realReturnRate)) + baselineAnnualSavings;
+                curO = (curO * (1 + profile.realReturnRate)) + optimizedAnnualSavings;
+            }
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Estrategia de Hábitos Optimizada',
+                            data: optimizedData,
+                            borderColor: '#2e6f40',
+                            backgroundColor: 'rgba(46, 111, 64, 0.15)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3,
+                            pointBackgroundColor: '#2e6f40'
+                        },
+                        {
+                            label: 'Hábitos Base (Sin Recortes)',
+                            data: baselineData,
+                            borderColor: '#e11d48',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            pointBackgroundColor: '#e11d48'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { size: 11, family: 'Inter' },
+                                boxWidth: 12
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: val => '$' + (val / 1000).toFixed(0) + 'k',
+                                font: { size: 10 }
+                            }
+                        },
+                        x: {
+                            ticks: { font: { size: 10 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ON INITIAL LOAD
+        window.onload = function() {
+            updateProfileSettings();
+        };
+    </script>
+</body>
+</html>

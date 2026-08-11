@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full bg-[#fbf8f3]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquina do Tempo do Mercado: Simulador Histórico | Compounding Journey</title>
+    <meta name="description" content="Compara carteiras durante ciclos e crises desde 1920 para explorar risco, recuperação, diversificação e rentabilidade a longo prazo.">
+    <link rel="canonical" href="https://compoundingjourney.com/pt/simulators/market-time-machine.html">
+    <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/market-time-machine.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/market-time-machine.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/market-time-machine.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/market-time-machine.html">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Máquina do Tempo do Mercado"><meta property="og:description" content="Compara carteiras através de ciclos e crises históricas."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/market-time-machine.html"><meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Máquina do Tempo do Mercado"><meta name="twitter:description" content="Compara carteiras através de ciclos e crises históricas."><meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Máquina do Tempo do Mercado","url":"https://compoundingjourney.com/pt/simulators/market-time-machine.html","description":"Um simulador interativo para comparar carteiras durante ciclos de mercado desde 1920.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#fcfaf7',
+                            100: '#f7f4ee',
+                            200: '#efe9df',
+                            300: '#dfd5c4',
+                            400: '#c8b79e',
+                        },
+                        espresso: {
+                            800: '#422c1d',
+                            900: '#2c1d11',
+                            950: '#1c120a',
+                        },
+                        forest: {
+                            600: '#226338',
+                            700: '#18502b',
+                            800: '#134e2a',
+                            900: '#0d381e',
+                        },
+                        gold: {
+                            400: '#e5b842',
+                            500: '#d4a338',
+                            600: '#c3922e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #efe9df;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c8b79e;
+            border-radius: 9999px;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(44, 29, 17, 0.05), 0 8px 10px -6px rgba(44, 29, 17, 0.03);
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #134e2a;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        /* Custom Tooltip Styling */
+        .has-tooltip {
+            position: relative;
+        }
+        .tooltip-box {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 40;
+            white-space: nowrap;
+        }
+        .has-tooltip:hover .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+</head>
+<body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
+
+    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+        <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+            <a href="/pt/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Voltar ao Compounding Journey">
+                <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
+                    <img src="/logo-compounding-journey.png" alt="Compounding Journey" width="2048" height="2048" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="header-brand-copy">
+                    <span class="header-brand-name">Compounding Journey</span>
+                    <span class="header-brand-tagline">O teu mapa para a liberdade</span>
+                </div>
+            </a>
+
+            <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
+                <a href="/pt/#simulador" class="site-return-link hidden sm:inline-flex">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    <span>Website</span>
+                </a>
+                <button onclick="toggleHowToPlayModal()" class="px-3 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-circle-question"></i>
+                                    <span>Como Funciona</span>
+                                </button>
+                <button onclick="resetSimulation()" class="px-3 py-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1">
+                                    <i class="fa-solid fa-rotate-right"></i>
+                                    <span>Reiniciar</span>
+                                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-1 space-y-4">
+
+        <div class="bg-gradient-to-r from-forest-900 via-forest-800 to-espresso-900 rounded-2xl p-4 sm:p-5 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="space-y-1 max-w-2xl">
+                <div class="flex items-center gap-2">
+                    <span class="bg-gold-500 text-espresso-950 font-bold text-[10px] uppercase px-2 py-0.5 rounded-md">Simulador de Alocação</span>
+                    <h2 class="text-base sm:text-lg font-bold font-serif">Compare seu Portfólio Personalizado com Modelos Famosos</h2>
+                </div>
+                <p class="text-xs text-cream-200 leading-relaxed">
+                    Monte a sua estratégia utilizando os sliders e acompanhe em tempo real como o seu portfólio teria perfomado lado a lado com <strong>5 referências famosas do mercado</strong> desde 1920!
+                </p>
+            </div>
+
+            <!-- PRESET QUICK SELECTOR -->
+            <div class="w-full md:w-auto bg-white/10 backdrop-blur-md p-2.5 rounded-xl border border-white/20 space-y-1">
+                <label class="text-[10px] font-bold text-cream-200 uppercase tracking-wider block flex items-center justify-between">
+                    <span>Carregar Modelo nos Sliders:</span>
+                    <i class="fa-solid fa-circle-info text-amber-300 ml-1" title="Passe o mouse na legenda abaixo para ver a composição detalhada"></i>
+                </label>
+                <select id="presetSelect" onchange="applyPreset(this.value)" class="w-full text-xs bg-espresso-950 text-white border border-gold-500/40 rounded-lg p-2 font-medium focus:ring-2 focus:ring-gold-400">
+                    <option value="classic6040">Clássico (60% Ações / 40% Títulos)</option>
+                    <option value="allweather">All-Weather de Ray Dalio (30% Ações, 55% Títulos, 15% Ouro)</option>
+                    <option value="permanent">Portfólio Permanente (25% Ações, 25% Títulos, 25% Ouro, 25% Caixa)</option>
+                    <option value="aggressive">100% Ações (Crescimento Agressivo)</option>
+                    <option value="conservative">Conservador (20% Ações, 60% Títulos, 20% Caixa)</option>
+                    <option value="custom" selected>Personalizado (Edite os sliders)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-3">
+                <div class="flex items-center justify-between border-b border-cream-200 pb-2">
+                    <div>
+                        <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-forest-800"></i> Construção do Seu Portfólio
+                        </h3>
+                        <p class="text-[11px] text-espresso-800/70">Ajuste a alocação dos sliders (Soma: 100%)</p>
+                    </div>
+                    <span id="totalAllocationBadge" class="text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                        100%
+                    </span>
+                </div>
+
+                <!-- SLIDERS LIST -->
+                <div class="space-y-2.5 pt-1">
+                    <!-- 1. Equities / Stocks -->
+                    <div class="space-y-0.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-espresso-950 flex items-center gap-1.5">
+                                <i class="fa-solid fa-chart-line text-blue-600"></i> Ações Globais / EUA (S&P 500)
+                            </span>
+                            <span id="val_stocks" class="font-mono text-blue-700">60%</span>
+                        </div>
+                        <input type="range" id="slider_stocks" min="0" max="100" value="60" oninput="onSliderChange('stocks', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- 2. Government Bonds -->
+                    <div class="space-y-0.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-espresso-950 flex items-center gap-1.5">
+                                <i class="fa-solid fa-building-columns text-emerald-700"></i> Títulos do Tesouro (10 Anos)
+                            </span>
+                            <span id="val_bonds" class="font-mono text-emerald-800">40%</span>
+                        </div>
+                        <input type="range" id="slider_bonds" min="0" max="100" value="40" oninput="onSliderChange('bonds', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- 3. Real Estate / REITs -->
+                    <div class="space-y-0.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-espresso-950 flex items-center gap-1.5">
+                                <i class="fa-solid fa-city text-amber-700"></i> Imóveis & REITs
+                            </span>
+                            <span id="val_reits" class="font-mono text-amber-800">0%</span>
+                        </div>
+                        <input type="range" id="slider_reits" min="0" max="100" value="0" oninput="onSliderChange('reits', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- 4. Gold & Commodities -->
+                    <div class="space-y-0.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-espresso-950 flex items-center gap-1.5">
+                                <i class="fa-solid fa-coins text-gold-600"></i> Ouro & Commodities
+                            </span>
+                            <span id="val_gold" class="font-mono text-gold-600">0%</span>
+                        </div>
+                        <input type="range" id="slider_gold" min="0" max="100" value="0" oninput="onSliderChange('gold', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- 5. Cash & T-Bills -->
+                    <div class="space-y-0.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-espresso-950 flex items-center gap-1.5">
+                                <i class="fa-solid fa-wallet text-slate-600"></i> Caixa / T-Bills (Curto Prazo)
+                            </span>
+                            <span id="val_cash" class="font-mono text-slate-700">0%</span>
+                        </div>
+                        <input type="range" id="slider_cash" min="0" max="100" value="0" oninput="onSliderChange('cash', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+
+                <button onclick="normalizeAllocation()" id="normalizeBtn" class="hidden w-full py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs border border-amber-300 transition">
+                    ⚡ Ajustar Automaticamente para 100%
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- TIME TRAVEL CONTROLS CARD -->
+                <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-3">
+                    <div class="flex items-center justify-between border-b border-cream-200 pb-2">
+                        <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
+                            <i class="fa-solid fa-play text-forest-800"></i> Controles da Viagem
+                        </h3>
+                        <span id="currentYearDisplay" class="text-sm font-extrabold font-mono px-3 py-0.5 rounded-lg bg-forest-800 text-amber-300">
+                            ANO: 1920
+                        </span>
+                    </div>
+
+                    <!-- SIMULATION PARAMETERS -->
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="space-y-1">
+                            <label class="text-espresso-800 font-semibold block">Capital Inicial:</label>
+                            <div class="relative w-full">
+                                <span class="absolute left-2.5 top-1.5 text-espresso-800 font-mono font-bold">$</span>
+                                <input type="number" id="initialCapitalInput" value="100000" step="10000" min="1000" onchange="recalculateSimulation()" class="w-full pl-6 pr-2 py-1 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950 focus:ring-1 focus:ring-forest-800">
+                            </div>
+                        </div>
+
+                        <!-- START YEAR SELECTOR -->
+                        <div class="space-y-1">
+                            <label class="text-espresso-800 font-semibold block">Ano de Início:</label>
+                            <select id="startYearSelect" onchange="changeStartYear(this.value)" class="w-full py-1 px-2 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950">
+                                <option value="1920" selected>1920</option>
+                                <option value="1929">1929 (Grande Depressão)</option>
+                                <option value="1970">1970 (Estagflação)</option>
+                                <option value="1990">1990 (Década de 90)</option>
+                                <option value="2000">2000 (Bolha Dot-Com)</option>
+                                <option value="2008">2008 (Crise Subprime)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <button onclick="togglePlayPause()" id="playPauseBtn" class="py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-play" id="playPauseIcon"></i>
+                            <span id="playPauseText">Iniciar Viagem</span>
+                        </button>
+                        <button onclick="advanceOneYear()" id="nextYearBtn" class="py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-forward-step"></i>
+                            <span>+1 Ano</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIOS BENCHMARK LEGEND WITH TOOLTIPS -->
+                <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-bold text-espresso-950 uppercase tracking-wider font-serif">Portfólios Comparados no Gráfico:</h4>
+                        <span class="text-[10px] text-espresso-800/60 flex items-center gap-1"><i class="fa-solid fa-circle-info"></i> Passe o mouse para ver a composição</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-[11px]">
+                        
+                        <!-- 1. Custom Portfolio -->
+                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-950 cursor-pointer shadow-sm hover:border-emerald-400 transition">
+                            <span class="w-3 h-3 rounded-full bg-forest-800 flex-shrink-0"></span>
+                            <span><strong>Seu Portfólio (Sliders)</strong></span>
+                            <!-- Tooltip -->
+                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
+                                <div class="font-bold text-amber-300 border-b border-white/20 pb-0.5 mb-1 font-serif">🟢 Seu Portfólio Atual:</div>
+                                <div id="tooltipCustomComposition" class="space-y-0.5">
+                                    <!-- Dynamic JS content -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Classic 60/40 -->
+                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-950 cursor-pointer shadow-sm hover:border-blue-400 transition">
+                            <span class="w-3 h-3 rounded-full bg-blue-600 flex-shrink-0"></span>
+                            <span><strong>Clássico 60/40</strong></span>
+                            <!-- Tooltip -->
+                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
+                                <div class="font-bold text-blue-300 border-b border-white/20 pb-0.5 mb-1 font-serif">🔵 Clássico 60/40:</div>
+                                <div>• 60% Ações (S&P 500)</div>
+                                <div>• 40% Títulos do Tesouro</div>
+                            </div>
+                        </div>
+
+                        <!-- 3. All-Weather -->
+                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-purple-50 border border-purple-200 text-purple-950 cursor-pointer shadow-sm hover:border-purple-400 transition">
+                            <span class="w-3 h-3 rounded-full bg-purple-600 flex-shrink-0"></span>
+                            <span><strong>All-Weather (Dalio)</strong></span>
+                            <!-- Tooltip -->
+                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
+                                <div class="font-bold text-purple-300 border-b border-white/20 pb-0.5 mb-1 font-serif">🟣 All-Weather (Ray Dalio):</div>
+                                <div>• 30% Ações (S&P 500)</div>
+                                <div>• 55% Títulos do Tesouro (Longo/Médio)</div>
+                                <div>• 15% Ouro & Commodities</div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Permanent Portfolio -->
+                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-950 cursor-pointer shadow-sm hover:border-amber-400 transition">
+                            <span class="w-3 h-3 rounded-full bg-amber-600 flex-shrink-0"></span>
+                            <span><strong>Permanente (Browne)</strong></span>
+                            <!-- Tooltip -->
+                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
+                                <div class="font-bold text-amber-300 border-b border-white/20 pb-0.5 mb-1 font-serif">🟠 Portfólio Permanente (Harry Browne):</div>
+                                <div>• 25% Ações (S&P 500)</div>
+                                <div>• 25% Títulos do Tesouro</div>
+                                <div>• 25% Ouro Fisico</div>
+                                <div>• 25% Caixa / T-Bills</div>
+                            </div>
+                        </div>
+
+                        <!-- 5. Aggressive Stocks -->
+                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-950 cursor-pointer shadow-sm hover:border-rose-400 transition">
+                            <span class="w-3 h-3 rounded-full bg-rose-600 flex-shrink-0"></span>
+                            <span><strong>100% Ações</strong></span>
+                            <!-- Tooltip -->
+                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
+                                <div class="font-bold text-rose-300 border-b border-white/20 pb-0.5 mb-1 font-serif">🔴 100% Ações (Agressivo):</div>
+                                <div>• 100% Ações Globais / EUA</div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Conservative Portfolio -->
+                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-teal-50 border border-teal-200 text-teal-950 cursor-pointer shadow-sm hover:border-teal-400 transition">
+                            <span class="w-3 h-3 rounded-full bg-teal-600 flex-shrink-0"></span>
+                            <span><strong>Conservador (20/80)</strong></span>
+                            <!-- Tooltip -->
+                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
+                                <div class="font-bold text-teal-300 border-b border-white/20 pb-0.5 mb-1 font-serif">🟢 Conservador (20/80):</div>
+                                <div>• 20% Ações</div>
+                                <div>• 60% Títulos do Tesouro</div>
+                                <div>• 20% Caixa / T-Bills</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bg-cream-50 rounded-2xl p-4 sm:p-5 border border-cream-300 custom-shadow space-y-4">
+            <div class="flex items-center justify-between border-b border-cream-200 pb-2">
+                <div>
+                    <h3 class="text-sm sm:text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line text-forest-800"></i> Trajetória do Patrimônio (Sua Carteira vs. Referências)
+                    </h3>
+                    <p id="chartSubtext" class="text-xs text-espresso-800/70">Acompanhe o crescimento e a resiliência das estratégias ao longo das décadas</p>
+                </div>
+                <span id="progressBadge" class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-cream-200 text-espresso-800">
+                    1920 - 2026
+                </span>
+            </div>
+
+            <!-- STAT COMPARISON CARDS FOR ALL 6 PORTFOLIOS -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
+                <!-- 1. Custom Portfolio -->
+                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-0.5 shadow-sm">
+                    <span class="text-[10px] font-bold uppercase text-emerald-800 block truncate">🟢 Seu Portfólio</span>
+                    <div id="statCustomVal" class="text-xs sm:text-sm font-extrabold font-mono text-emerald-900">$100.000</div>
+                    <div id="statCustomCagr" class="text-[11px] font-mono text-emerald-700">CAGR: 0.0%</div>
+                </div>
+
+                <!-- 2. Classic 60/40 -->
+                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-blue-50 border border-blue-200 space-y-0.5 shadow-sm">
+                    <span class="text-[10px] font-bold uppercase text-blue-800 block truncate">🔵 Clássico 60/40</span>
+                    <div id="statClassicVal" class="text-xs sm:text-sm font-extrabold font-mono text-blue-900">$100.000</div>
+                    <div id="statClassicCagr" class="text-[11px] font-mono text-blue-700">CAGR: 0.0%</div>
+                </div>
+
+                <!-- 3. All-Weather -->
+                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-purple-50 border border-purple-200 space-y-0.5 shadow-sm">
+                    <span class="text-[10px] font-bold uppercase text-purple-800 block truncate">🟣 All-Weather</span>
+                    <div id="statWeatherVal" class="text-xs sm:text-sm font-extrabold font-mono text-purple-900">$100.000</div>
+                    <div id="statWeatherCagr" class="text-[11px] font-mono text-purple-700">CAGR: 0.0%</div>
+                </div>
+
+                <!-- 4. Permanent Portfolio -->
+                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-amber-50 border border-amber-200 space-y-0.5 shadow-sm">
+                    <span class="text-[10px] font-bold uppercase text-amber-800 block truncate">🟠 Permanente</span>
+                    <div id="statPermanentVal" class="text-xs sm:text-sm font-extrabold font-mono text-amber-900">$100.000</div>
+                    <div id="statPermanentCagr" class="text-[11px] font-mono text-amber-700">CAGR: 0.0%</div>
+                </div>
+
+                <!-- 5. Aggressive Stocks -->
+                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-rose-50 border border-rose-200 space-y-0.5 shadow-sm">
+                    <span class="text-[10px] font-bold uppercase text-rose-800 block truncate">🔴 100% Ações</span>
+                    <div id="statAggressiveVal" class="text-xs sm:text-sm font-extrabold font-mono text-rose-900">$100.000</div>
+                    <div id="statAggressiveCagr" class="text-[11px] font-mono text-rose-700">CAGR: 0.0%</div>
+                </div>
+
+                <!-- 6. Conservative Portfolio -->
+                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-teal-50 border border-teal-200 space-y-0.5 shadow-sm">
+                    <span class="text-[10px] font-bold uppercase text-teal-800 block truncate">🟢 Conservador</span>
+                    <div id="statConservativeVal" class="text-xs sm:text-sm font-extrabold font-mono text-teal-900">$100.000</div>
+                    <div id="statConservativeCagr" class="text-[11px] font-mono text-teal-700">CAGR: 0.0%</div>
+                </div>
+            </div>
+
+            <!-- CANVAS CHART WITH EXPANDED HEIGHT -->
+            <div class="h-80 sm:h-[480px] w-full relative pt-2">
+                <canvas id="timeMachineChart"></canvas>
+            </div>
+
+            <!-- LOG TIMELINE SUMMARY -->
+            <div id="simLogContainer" class="space-y-1.5 pt-2 border-t border-cream-200">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-espresso-800/70 block">Eventos Historicamente Atravessados:</span>
+                <div id="simLogList" class="max-h-40 overflow-y-auto custom-scrollbar space-y-1 pr-1 text-[11px]">
+                    <!-- Dynamic Injection -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- EVENT EXPLANATION MODAL -->
+    <div id="eventModal" class="fixed inset-0 bg-espresso-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-cream-50 border-2 border-amber-600 rounded-2xl max-w-lg w-full p-6 custom-shadow space-y-4 animate-in fade-in zoom-in duration-300">
+            <div class="flex items-center justify-between border-b border-cream-200 pb-2.5">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg font-bold shadow animate-pulse">
+                        <i id="eventModalIcon" class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <div>
+                        <span id="eventModalYear" class="text-[10px] font-bold text-amber-700 uppercase tracking-widest block">EVENTO HISTÓRICO (1929)</span>
+                        <h3 id="eventModalTitle" class="text-sm sm:text-base font-bold font-serif text-espresso-950">A Grande Depressão</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENT DESCRIPTION & MARKET IMPACT -->
+            <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 space-y-2">
+                <p id="eventModalDesc" class="text-xs text-espresso-900 leading-relaxed">
+                    Descrição detalhada do evento histórico e dos choques no mercado financeiro...
+                </p>
+                <div id="eventModalStats" class="p-2 rounded-lg bg-white/80 border border-amber-300/50 text-[11px] font-mono text-espresso-950 space-y-0.5">
+                    <!-- Dynamic historical market returns breakdown -->
+                </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-forest-800/10 border border-forest-800/20 text-xs text-espresso-900 space-y-1">
+                <strong class="text-forest-800 flex items-center gap-1 font-serif">
+                    <i class="fa-solid fa-lightbulb text-gold-600"></i> O que o Gráfico Está Mostrando?
+                </strong>
+                <p class="text-[11px] text-espresso-800 leading-normal">
+                    Observe como o portfólio 🔴 (100% Ações) sofre quedas acentuadas na crise, enquanto estratégias diversificadas como 🟣 (All-Weather) e 🟢 (Seu Portfólio) suavizam a volatilidade através da renda fixa e ouro!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 pt-1">
+                <button onclick="closeEventModal(true)" class="py-2.5 px-3 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
+                    <span>Continuar Viagem</span>
+                    <i class="fa-solid fa-play text-[10px]"></i>
+                </button>
+                <button onclick="closeEventModal(false)" class="py-2.5 px-3 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-pause text-[10px]"></i>
+                    <span>Pausar & Analisar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW TO PLAY MODAL -->
+    <div id="howToPlayModal" class="fixed inset-0 bg-espresso-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-cream-50 border-2 border-forest-800 rounded-2xl max-w-lg w-full p-6 custom-shadow space-y-4 animate-in fade-in zoom-in duration-300">
+            <div class="flex items-center justify-between border-b border-cream-200 pb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-forest-800 text-amber-300 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-compass text-base"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-serif font-bold text-espresso-950">Como Funciona a Máquina do Tempo</h3>
+                        <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">Simulação Histórica de 1920 a 2026</p>
+                    </div>
+                </div>
+                <button onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3 text-xs text-espresso-900 leading-relaxed">
+                <div class="p-3 rounded-xl bg-forest-800/10 border border-forest-800/20 space-y-1">
+                    <strong class="text-forest-800 flex items-center gap-1">
+                        <i class="fa-solid fa-bullseye text-gold-600"></i> Objetivos do Simulador:
+                    </strong>
+                    <ul class="list-disc list-inside space-y-1 text-[11px]">
+                        <li><strong>Alocação Personalizada:</strong> Crie seu portfólio e teste a eficiência da diversificação.</li>
+                        <li><strong>Comparação em Tempo Real:</strong> Veja como sua carteira performa contra 5 modelos de referência consagrados.</li>
+                        <li><strong>Aulas de História Financeira:</strong> Pop-ups explicativos destacam como cada classe de ativo reagiu às maiores crises do século XX e XXI.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="font-bold text-espresso-950 uppercase text-[10px] tracking-wider text-espresso-800/70">Instruções:</h4>
+                    <ol class="list-decimal list-inside space-y-1 text-[11px]">
+                        <li>Ajuste a alocação de ativos utilizando os sliders para montar a sua estratégia.</li>
+                        <li>Pressione <strong>"Iniciar Viagem"</strong> para avançar os anos de 1920 até hoje.</li>
+                        <li>Analise o retorno acumulado no gráfico e descubra qual modelo apresentou a maior resiliência!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <button onclick="toggleHowToPlayModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
+                Entendido! Vamos Iniciar
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // HISTORICAL ANNUAL RETURN DATA (1920 – 2026) %
+        const HISTORICAL_YEARS_DATA = [
+            { year: 1920, stocks: 5.2, bonds: 11.2, reits: 3.0, gold: 0.0, cash: 5.5 },
+            { year: 1921, stocks: 12.6, bonds: 15.8, reits: 4.0, gold: 0.0, cash: 5.0 },
+            { year: 1922, stocks: 28.4, bonds: 8.2, reits: 10.0, gold: 0.0, cash: 4.0 },
+            { year: 1923, stocks: -3.2, bonds: 3.5, reits: 2.0, gold: 0.0, cash: 4.2 },
+            { year: 1924, stocks: 26.8, bonds: 7.4, reits: 12.0, gold: 0.0, cash: 3.8 },
+            { year: 1925, stocks: 22.5, bonds: 6.1, reits: 15.0, gold: 0.0, cash: 3.5 },
+            { year: 1926, stocks: 11.6, bonds: 5.4, reits: 8.0, gold: 0.0, cash: 3.5 },
+            { year: 1927, stocks: 37.5, bonds: 4.8, reits: 18.0, gold: 0.0, cash: 3.2 },
+            { year: 1928, stocks: 43.6, bonds: 0.8, reits: 20.0, gold: 0.0, cash: 4.0 },
+            
+            // CRASH EVENT 1929
+            { year: 1929, stocks: -8.4, bonds: 4.2, reits: -12.0, gold: 0.0, cash: 4.8, event: {
+                title: 'O Grande Colapso de 1929',
+                icon: 'fa-building-crack',
+                desc: 'Terça-Feira Negra e início da Grande Depressão. O mercado de ações colapsou após anos de especulação desenfreada, desencadeando falências bancárias em massa.',
+                impact: 'Ações caíram -8.4% em 1929 e continuaram caindo nos anos seguintes. Títulos do tesouro ofereceram proteção positiva (+4.2%).'
+            }},
+            { year: 1930, stocks: -24.9, bonds: 4.5, reits: -20.0, gold: 0.0, cash: 2.4 },
+            { year: 1931, stocks: -43.3, bonds: -2.6, reits: -35.0, gold: 0.0, cash: 1.1, event: {
+                title: 'Fundo da Grande Depressão (1931)',
+                icon: 'fa-burst',
+                desc: 'Pior ano da história de Wall Street. O desespero fez milhões de investidores realizarem todas as suas perdas e jurarem nunca mais voltar às ações.',
+                impact: 'Queda devastadora de -43.3% nas ações. Portfólios com ouro e títulos amorteceram a queda drasticamente.'
+            }},
+            { year: 1932, stocks: -8.2, bonds: 8.8, reits: -18.0, gold: 0.0, cash: 1.0 },
+            { year: 1933, stocks: 54.0, bonds: 1.9, reits: 25.0, gold: 20.0, cash: 0.3 },
+            { year: 1934, stocks: -1.4, bonds: 8.0, reits: 5.0, gold: 69.0, cash: 0.2 },
+            { year: 1935, stocks: 47.7, bonds: 4.5, reits: 30.0, gold: 0.0, cash: 0.2 },
+            { year: 1936, stocks: 33.9, bonds: 5.0, reits: 20.0, gold: 0.0, cash: 0.2 },
+            { year: 1937, stocks: -35.0, bonds: 1.6, reits: -25.0, gold: 0.0, cash: 0.3, event: {
+                title: 'Recessão Secundária de 1937',
+                icon: 'fa-triangle-exclamation',
+                desc: 'Aperto monetário do Fed e cortes de gastos públicos resultaram em uma recaída violenta no meio da recuperação.',
+                impact: 'Ações despencaram -35.0%, testando a disciplina de quem havia sobrevivido à crise de 1929.'
+            }},
+            { year: 1938, stocks: 31.1, bonds: 5.5, reits: 15.0, gold: 0.0, cash: 0.1 },
+            { year: 1939, stocks: -0.4, bonds: 4.4, reits: -2.0, gold: 0.0, cash: 0.0 },
+            { year: 1940, stocks: -9.8, bonds: 3.0, reits: -5.0, gold: 0.0, cash: 0.0 },
+            { year: 1941, stocks: -11.6, bonds: 0.5, reits: -8.0, gold: 0.0, cash: 0.1 },
+            { year: 1942, stocks: 20.3, bonds: 2.3, reits: 12.0, gold: 0.0, cash: 0.3 },
+            { year: 1943, stocks: 25.9, bonds: 2.1, reits: 18.0, gold: 0.0, cash: 0.3 },
+            { year: 1944, stocks: 19.8, bonds: 2.8, reits: 15.0, gold: 0.0, cash: 0.3 },
+            { year: 1945, stocks: 36.4, bonds: 3.8, reits: 22.0, gold: 0.0, cash: 0.3 },
+            { year: 1946, stocks: -8.1, bonds: 3.1, reits: -4.0, gold: 0.0, cash: 0.4 },
+            { year: 1947, stocks: 5.7, bonds: 0.9, reits: 2.0, gold: 0.0, cash: 0.6 },
+            { year: 1948, stocks: 5.5, bonds: 1.9, reits: 4.0, gold: 0.0, cash: 1.0 },
+            { year: 1949, stocks: 18.8, bonds: 4.6, reits: 10.0, gold: 0.0, cash: 1.1 },
+            { year: 1950, stocks: 31.7, bonds: 0.1, reits: 15.0, gold: 0.0, cash: 1.2 },
+            { year: 1951, stocks: 24.0, bonds: -0.3, reits: 12.0, gold: 0.0, cash: 1.5 },
+            { year: 1952, stocks: 18.4, bonds: 2.3, reits: 8.0, gold: 0.0, cash: 1.7 },
+            { year: 1953, stocks: -1.0, bonds: 3.6, reits: 2.0, gold: 0.0, cash: 1.8 },
+            { year: 1954, stocks: 52.6, bonds: 2.7, reits: 28.0, gold: 0.0, cash: 0.9 },
+            { year: 1955, stocks: 31.6, bonds: -1.3, reits: 18.0, gold: 0.0, cash: 1.7 },
+            { year: 1956, stocks: 6.6, bonds: -2.3, reits: 4.0, gold: 0.0, cash: 2.6 },
+            { year: 1957, stocks: -10.8, bonds: 6.8, reits: -6.0, gold: 0.0, cash: 3.2 },
+            { year: 1958, stocks: 43.4, bonds: -2.1, reits: 25.0, gold: 0.0, cash: 1.8 },
+            { year: 1959, stocks: 12.0, bonds: -2.7, reits: 8.0, gold: 0.0, cash: 3.3 },
+            { year: 1960, stocks: 0.5, bonds: 11.6, reits: 3.0, gold: 0.0, cash: 2.9 },
+            { year: 1961, stocks: 26.9, bonds: 2.1, reits: 16.0, gold: 0.0, cash: 2.2 },
+            { year: 1962, stocks: -8.7, bonds: 5.7, reits: -4.0, gold: 0.0, cash: 2.7 },
+            { year: 1963, stocks: 22.8, bonds: 1.6, reits: 12.0, gold: 0.0, cash: 3.1 },
+            { year: 1964, stocks: 16.5, bonds: 3.7, reits: 10.0, gold: 0.0, cash: 3.5 },
+            { year: 1965, stocks: 12.5, bonds: 0.7, reits: 8.0, gold: 0.0, cash: 3.9 },
+            { year: 1966, stocks: -10.1, bonds: 2.9, reits: -8.0, gold: 0.0, cash: 4.8 },
+            { year: 1967, stocks: 24.0, bonds: -1.6, reits: 18.0, gold: 0.0, cash: 4.3 },
+            { year: 1968, stocks: 11.1, bonds: 3.3, reits: 9.0, gold: 0.0, cash: 5.3 },
+            { year: 1969, stocks: -8.5, bonds: -5.0, reits: -6.0, gold: 0.0, cash: 6.6 },
+            { year: 1970, stocks: 4.0, bonds: 12.1, reits: 2.0, gold: 0.0, cash: 6.5 },
+            { year: 1971, stocks: 14.3, bonds: 9.8, reits: 12.0, gold: 17.0, cash: 4.4 },
+            { year: 1972, stocks: 19.0, bonds: 2.8, reits: 8.0, gold: 48.0, cash: 3.8 },
+            { year: 1973, stocks: -14.7, bonds: -1.1, reits: -15.0, gold: 72.0, cash: 6.9 },
+            { year: 1974, stocks: -26.5, bonds: 4.4, reits: -28.0, gold: 66.0, cash: 7.9, event: {
+                title: 'Choque do Petróleo e Estagflação (1974)',
+                icon: 'fa-fire-flame-curved',
+                desc: 'Embargo de petróleo da OPEP, inflação de dois dígitos e desaceleração econômica severa. O ouro explodiu como ativo de proteção.',
+                impact: 'Ações caíram -26.5% e Imóveis -28.0%. Em contrapartida, o Ouro subiu impressionantes +66.0%!'
+            }},
+            { year: 1975, stocks: 37.2, bonds: 9.2, reits: 18.0, gold: -24.0, cash: 5.8 },
+            { year: 1976, stocks: 23.8, bonds: 16.8, reits: 48.0, gold: -4.0, cash: 5.1 },
+            { year: 1977, stocks: -7.2, bonds: -0.7, reits: 22.0, gold: 23.0, cash: 5.1 },
+            { year: 1978, stocks: 6.6, bonds: -1.2, reits: 10.0, gold: 37.0, cash: 7.2 },
+            { year: 1979, stocks: 18.4, bonds: 0.7, reits: 24.0, gold: 126.0, cash: 10.0 },
+            { year: 1980, stocks: 32.4, bonds: -3.0, reits: 25.0, gold: 12.0, cash: 11.5 },
+            { year: 1981, stocks: -4.9, bonds: 8.2, reits: 4.0, gold: -32.0, cash: 14.0 },
+            { year: 1982, stocks: 21.5, bonds: 32.8, reits: 20.0, gold: 15.0, cash: 10.6 },
+            { year: 1983, stocks: 22.5, bonds: 3.2, reits: 14.0, gold: -15.0, cash: 8.6 },
+            { year: 1984, stocks: 6.3, bonds: 13.7, reits: 18.0, gold: -19.0, cash: 9.5 },
+            { year: 1985, stocks: 31.7, bonds: 25.7, reits: 19.0, gold: 6.0, cash: 7.5 },
+            { year: 1986, stocks: 18.7, bonds: 24.3, reits: 18.0, gold: 19.0, cash: 6.0 },
+            { year: 1987, stocks: 5.3, bonds: -2.7, reits: -3.0, gold: 24.0, cash: 5.8, event: {
+                title: 'Segunda-Feira Negra (1987)',
+                icon: 'fa-bolt',
+                desc: 'Maior queda percentual em um único dia da história do Dow Jones (-22.6%). Falhas em modelos computadorizados provocaram vendas em cascata.',
+                impact: 'Apesar do pânico em outubro, o mercado recuperou-se e encerrou o ano com saldo positivo de +5.3% nas ações.'
+            }},
+            { year: 1988, stocks: 16.6, bonds: 9.7, reits: 13.0, gold: -15.0, cash: 6.7 },
+            { year: 1989, stocks: 31.7, bonds: 14.5, reits: 8.0, gold: -2.0, cash: 8.1 },
+            { year: 1990, stocks: -3.1, bonds: 9.0, reits: -15.0, gold: -8.0, cash: 7.5 },
+            { year: 1991, stocks: 30.5, bonds: 15.0, reits: 35.0, gold: -4.0, cash: 5.4 },
+            { year: 1992, stocks: 7.6, bonds: 9.3, reits: 14.0, gold: -6.0, cash: 3.5 },
+            { year: 1993, stocks: 10.1, bonds: 14.2, reits: 19.0, gold: 17.0, cash: 3.0 },
+            { year: 1994, stocks: 1.3, bonds: -2.9, reits: 3.0, gold: -2.0, cash: 4.3 },
+            { year: 1995, stocks: 37.6, bonds: 23.5, reits: 15.0, gold: 1.0, cash: 5.5 },
+            { year: 1996, stocks: 23.0, bonds: 1.4, reits: 35.0, gold: -5.0, cash: 5.0 },
+            { year: 1997, stocks: 33.4, bonds: 9.9, reits: 20.0, gold: -21.0, cash: 5.1 },
+            { year: 1998, stocks: 28.6, bonds: 14.9, reits: -18.0, gold: -1.0, cash: 4.9 },
+            { year: 1999, stocks: 21.0, bonds: -9.0, reits: -4.0, gold: 1.0, cash: 4.7 },
+            { year: 2000, stocks: -9.1, bonds: 11.6, reits: 26.8, gold: -0.6, cash: 5.8, event: {
+                title: 'Estouro da Bolha Dot-Com (2000)',
+                icon: 'fa-laptop-code',
+                desc: 'Colapso de valuations eufóricos de empresas de tecnologia sem lucro. Início de um bear market de 3 anos nas ações.',
+                impact: 'Ações despencaram -9.1%, enquanto Títulos (+11.6%) e Imóveis/REITs (+26.8%) atuaram como excelentes amortecedores.'
+            }},
+            { year: 2001, stocks: -11.9, bonds: 8.4, reits: 15.5, gold: 2.5, cash: 3.8 },
+            { year: 2002, stocks: -22.1, bonds: 15.1, reits: 3.8, gold: 24.7, cash: 1.7 },
+            { year: 2003, stocks: 28.7, bonds: 2.2, reits: 37.1, gold: 19.4, cash: 1.0 },
+            { year: 2004, stocks: 10.9, bonds: 4.3, reits: 31.6, gold: 5.5, cash: 1.2 },
+            { year: 2005, stocks: 4.9, bonds: 2.9, reits: 12.2, gold: 18.0, cash: 3.0 },
+            { year: 2006, stocks: 15.8, bonds: 4.3, reits: 35.1, gold: 23.0, cash: 4.8 },
+            { year: 2007, stocks: 5.5, bonds: 10.2, reits: -15.7, gold: 30.9, cash: 4.7 },
+            { year: 2008, stocks: -37.0, bonds: 20.1, reits: -37.7, gold: 5.6, cash: 1.5, event: {
+                title: 'Crise Financeira Global de 2008',
+                icon: 'fa-skull-crossbones',
+                desc: 'Falência do Lehman Brothers e colapso do sistema de crédito subprime mundial. A pior queda desde 1929.',
+                impact: 'Ações caíram -37.0% e REITs -37.7%. No entanto, Títulos do Tesouro subiram +20.1%, provando o poder da diversificação!'
+            }},
+            { year: 2009, stocks: 26.5, bonds: -11.1, reits: 28.0, gold: 23.4, cash: 0.1 },
+            { year: 2010, stocks: 15.1, bonds: 8.5, reits: 27.9, gold: 29.5, cash: 0.1 },
+            { year: 2011, stocks: 2.1, bonds: 16.0, reits: 8.3, gold: 10.2, cash: 0.1 },
+            { year: 2012, stocks: 16.0, bonds: 2.9, reits: 19.7, gold: 7.0, cash: 0.1 },
+            { year: 2013, stocks: 32.4, bonds: -2.7, reits: 2.9, gold: -28.3, cash: 0.1 },
+            { year: 2014, stocks: 13.7, bonds: 10.7, reits: 28.0, gold: -1.7, cash: 0.0 },
+            { year: 2015, stocks: 1.4, bonds: 1.2, reits: 2.8, gold: -10.4, cash: 0.1 },
+            { year: 2016, stocks: 11.9, bonds: 1.0, reits: 8.6, gold: 8.5, cash: 0.2 },
+            { year: 2017, stocks: 21.8, bonds: 2.8, reits: 8.7, gold: 13.7, cash: 0.8 },
+            { year: 2018, stocks: -4.4, bonds: 0.8, reits: -4.0, gold: -1.6, cash: 1.8 },
+            { year: 2019, stocks: 31.5, bonds: 9.6, reits: 28.7, gold: 18.3, cash: 2.2 },
+            { year: 2020, stocks: 18.4, bonds: 11.3, reits: -5.1, gold: 24.6, cash: 0.5, event: {
+                title: 'Pandemia & Lockdowns Globais (2020)',
+                icon: 'fa-virus-covid',
+                desc: 'Paralisação econômica global relâmpago seguida por estímulos fiscais e monetários trilionários sem precedentes.',
+                impact: 'Após um crash de -34% em poucas semanas, o mercado encerrou o ano em alta forte de +18.4% impulsionado por liquidez.'
+            }},
+            { year: 2021, stocks: 28.7, bonds: -1.5, reits: 41.3, gold: -3.6, cash: 0.1 },
+            { year: 2022, stocks: -18.1, bonds: -13.0, reits: -24.9, gold: -0.1, cash: 1.5, event: {
+                title: 'Aperto Monetário & Inflação (2022)',
+                icon: 'fa-arrow-trend-down',
+                desc: 'O Fed elevou os juros agressivamente para combater a inflação. Pior queda simultânea em ações e títulos em 50 anos!',
+                impact: 'Ações caíram -18.1% e Títulos caíram -13.0%, testando investidores que dependiam apenas de títulos como proteção.'
+            }},
+            { year: 2023, stocks: 26.3, bonds: 5.5, reits: 11.4, gold: 13.1, cash: 5.0 },
+            { year: 2024, stocks: 24.2, bonds: 1.2, reits: 8.5, gold: 27.2, cash: 5.2 },
+            { year: 2025, stocks: 12.5, bonds: 4.8, reits: 9.1, gold: 11.0, cash: 4.5 },
+            { year: 2026, stocks: 9.8, bonds: 5.0, reits: 7.5, gold: 8.2, cash: 4.0 }
+        ];
+
+        const PORTFOLIO_BENCHMARKS = {
+            classic6040: { name: 'Clássico (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0, color: '#2563eb' },
+            allweather: { name: 'All-Weather (Dalio)', stocks: 30, bonds: 55, reits: 0, gold: 15, cash: 0, color: '#7c3aed' },
+            permanent: { name: 'Permanente (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25, color: '#d97706' },
+            aggressive: { name: '100% Ações', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0, color: '#e11d48' },
+            conservative: { name: 'Conservador (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20, color: '#0d9488' }
+        };
+
+        let state = {
+            allocation: { stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0 },
+            initialCapital: 100000,
+            startYear: 1920,
+            currentYearIdx: 0,
+            isPlaying: false,
+            wasPlayingBeforeModal: false,
+            timer: null,
+            chartInstance: null,
+            
+            // Portfolios Data Tracks
+            customTrack: [],
+            classicTrack: [],
+            allWeatherTrack: [],
+            permanentTrack: [],
+            aggressiveTrack: [],
+            conservativeTrack: []
+        };
+
+        function onSliderChange(assetKey, val) {
+            state.allocation[assetKey] = parseInt(val, 10);
+            document.getElementById(`val_${assetKey}`).innerText = `${state.allocation[assetKey]}%`;
+            document.getElementById('presetSelect').value = 'custom';
+            checkTotalAllocation();
+            updateTooltipComposition();
+            recalculateSimulation();
+        }
+
+        function updateTooltipComposition() {
+            const compEl = document.getElementById('tooltipCustomComposition');
+            if (!compEl) return;
+            compEl.innerHTML = `
+                <div>• ${state.allocation.stocks}% Ações</div>
+                <div>• ${state.allocation.bonds}% Títulos</div>
+                <div>• ${state.allocation.reits}% Imóveis/REITs</div>
+                <div>• ${state.allocation.gold}% Ouro</div>
+                <div>• ${state.allocation.cash}% Caixa</div>
+            `;
+        }
+
+        function checkTotalAllocation() {
+            const sum = Object.values(state.allocation).reduce((a, b) => a + b, 0);
+            const badge = document.getElementById('totalAllocationBadge');
+            const normBtn = document.getElementById('normalizeBtn');
+            const playBtn = document.getElementById('playPauseBtn');
+
+            badge.innerText = `${sum}%`;
+            if (sum === 100) {
+                badge.className = 'text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300';
+                normBtn.classList.add('hidden');
+                playBtn.disabled = false;
+                playBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                badge.className = 'text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 border border-rose-300';
+                normBtn.classList.remove('hidden');
+                playBtn.disabled = true;
+                playBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        function normalizeAllocation() {
+            const sum = Object.values(state.allocation).reduce((a, b) => a + b, 0);
+            if (sum === 0) {
+                state.allocation = { stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0 };
+            } else {
+                let currentSum = 0;
+                const keys = Object.keys(state.allocation);
+                keys.forEach((k, idx) => {
+                    if (idx === keys.length - 1) {
+                        state.allocation[k] = 100 - currentSum;
+                    } else {
+                        state.allocation[k] = Math.round((state.allocation[k] / sum) * 100);
+                        currentSum += state.allocation[k];
+                    }
+                });
+            }
+
+            Object.keys(state.allocation).forEach(k => {
+                document.getElementById(`slider_${k}`).value = state.allocation[k];
+                document.getElementById(`val_${k}`).innerText = `${state.allocation[k]}%`;
+            });
+
+            checkTotalAllocation();
+            updateTooltipComposition();
+            recalculateSimulation();
+        }
+
+        function applyPreset(presetKey) {
+            if (presetKey === 'custom' || !PORTFOLIO_BENCHMARKS[presetKey]) return;
+            const target = PORTFOLIO_BENCHMARKS[presetKey];
+            state.allocation = { stocks: target.stocks, bonds: target.bonds, reits: target.reits, gold: target.gold, cash: target.cash };
+
+            Object.keys(state.allocation).forEach(k => {
+                document.getElementById(`slider_${k}`).value = state.allocation[k];
+                document.getElementById(`val_${k}`).innerText = `${state.allocation[k]}%`;
+            });
+
+            checkTotalAllocation();
+            updateTooltipComposition();
+            recalculateSimulation();
+        }
+
+        function changeStartYear(val) {
+            state.startYear = parseInt(val, 10);
+            const foundIdx = HISTORICAL_YEARS_DATA.findIndex(d => d.year === state.startYear);
+            state.currentYearIdx = foundIdx !== -1 ? foundIdx : 0;
+            pauseSimulation();
+            recalculateSimulation();
+        }
+
+        function recalculateSimulation() {
+            const capInput = document.getElementById('initialCapitalInput');
+            state.initialCapital = parseFloat(capInput.value) || 100000;
+
+            const startIdx = HISTORICAL_YEARS_DATA.findIndex(d => d.year === state.startYear);
+            if (startIdx === -1) return;
+
+            // Reset tracks
+            state.customTrack = [];
+            state.classicTrack = [];
+            state.allWeatherTrack = [];
+            state.permanentTrack = [];
+            state.aggressiveTrack = [];
+            state.conservativeTrack = [];
+
+            let customVal = state.initialCapital;
+            let classicVal = state.initialCapital;
+            let allWeatherVal = state.initialCapital;
+            let permanentVal = state.initialCapital;
+            let aggressiveVal = state.initialCapital;
+            let conservativeVal = state.initialCapital;
+
+            for (let i = startIdx; i <= state.currentYearIdx; i++) {
+                const item = HISTORICAL_YEARS_DATA[i];
+
+                // Helper return function
+                const calcReturn = (alloc) => {
+                    return (alloc.stocks / 100) * item.stocks +
+                           (alloc.bonds / 100) * item.bonds +
+                           (alloc.reits / 100) * item.reits +
+                           (alloc.gold / 100) * item.gold +
+                           (alloc.cash / 100) * item.cash;
+                };
+
+                // 1. Custom Portfolio
+                customVal *= (1 + calcReturn(state.allocation) / 100);
+
+                // 2. Benchmarks
+                classicVal *= (1 + calcReturn(PORTFOLIO_BENCHMARKS.classic6040) / 100);
+                allWeatherVal *= (1 + calcReturn(PORTFOLIO_BENCHMARKS.allweather) / 100);
+                permanentVal *= (1 + calcReturn(PORTFOLIO_BENCHMARKS.permanent) / 100);
+                aggressiveVal *= (1 + calcReturn(PORTFOLIO_BENCHMARKS.aggressive) / 100);
+                conservativeVal *= (1 + calcReturn(PORTFOLIO_BENCHMARKS.conservative) / 100);
+
+                state.customTrack.push({ year: item.year, val: Math.round(customVal) });
+                state.classicTrack.push({ year: item.year, val: Math.round(classicVal) });
+                state.allWeatherTrack.push({ year: item.year, val: Math.round(allWeatherVal) });
+                state.permanentTrack.push({ year: item.year, val: Math.round(permanentVal) });
+                state.aggressiveTrack.push({ year: item.year, val: Math.round(aggressiveVal) });
+                state.conservativeTrack.push({ year: item.year, val: Math.round(conservativeVal) });
+            }
+
+            renderChart();
+            updateMetrics();
+            renderLogList();
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('timeMachineChart');
+            if (!ctx) return;
+
+            const labels = state.customTrack.map(d => d.year);
+
+            if (state.chartInstance) {
+                state.chartInstance.destroy();
+                state.chartInstance = null;
+            }
+
+            state.chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: '🟢 Seu Portfólio Personalizado',
+                            data: state.customTrack.map(d => d.val),
+                            borderColor: '#134e2a',
+                            backgroundColor: 'rgba(19, 78, 42, 0.08)',
+                            borderWidth: 3.5,
+                            fill: true,
+                            tension: 0.1,
+                            pointRadius: 2
+                        },
+                        {
+                            label: '🔵 Clássico 60/40',
+                            data: state.classicTrack.map(d => d.val),
+                            borderColor: '#2563eb',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: '🟣 All-Weather (Dalio)',
+                            data: state.allWeatherTrack.map(d => d.val),
+                            borderColor: '#7c3aed',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: '🟠 Permanente (Browne)',
+                            data: state.permanentTrack.map(d => d.val),
+                            borderColor: '#d97706',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: '🔴 100% Ações (Agressivo)',
+                            data: state.aggressiveTrack.map(d => d.val),
+                            borderColor: '#e11d48',
+                            borderWidth: 2,
+                            borderDash: [4, 4],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: '🟢 Conservador (20/80)',
+                            data: state.conservativeTrack.map(d => d.val),
+                            borderColor: '#0d9488',
+                            borderWidth: 1.5,
+                            borderDash: [2, 2],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: { size: 11, family: 'Inter' },
+                                boxWidth: 12
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.dataset.label}: $${context.raw.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(val) {
+                                    if (val >= 1e9) return '$' + (val / 1e9).toFixed(1) + 'B';
+                                    if (val >= 1e6) return '$' + (val / 1e6).toFixed(1) + 'M';
+                                    if (val >= 1e3) return '$' + (val / 1e3).toFixed(0) + 'k';
+                                    return '$' + val;
+                                },
+                                font: { size: 10, family: 'Inter' }
+                            },
+                            grid: { color: '#efe9df' }
+                        },
+                        x: {
+                            ticks: { font: { size: 10, family: 'Inter' } },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateMetrics() {
+            if (state.customTrack.length === 0) return;
+
+            const latestCustom = state.customTrack[state.customTrack.length - 1];
+            const latestClassic = state.classicTrack[state.classicTrack.length - 1];
+            const latestWeather = state.allWeatherTrack[state.allWeatherTrack.length - 1];
+            const latestPermanent = state.permanentTrack[state.permanentTrack.length - 1];
+            const latestAggressive = state.aggressiveTrack[state.aggressiveTrack.length - 1];
+            const latestConservative = state.conservativeTrack[state.conservativeTrack.length - 1];
+            
+            const currentYear = latestCustom.year;
+            const yearsCount = currentYear - state.startYear;
+
+            document.getElementById('currentYearDisplay').innerText = `ANO: ${currentYear}`;
+            document.getElementById('progressBadge').innerText = `${state.startYear} - ${currentYear}`;
+
+            const calcCagr = (val) => yearsCount > 0 ? ((Math.pow(val / state.initialCapital, 1 / yearsCount) - 1) * 100).toFixed(1) : '0.0';
+
+            // 1. Custom Stat
+            document.getElementById('statCustomVal').innerText = `$${latestCustom.val.toLocaleString()}`;
+            document.getElementById('statCustomCagr').innerText = `CAGR: ${calcCagr(latestCustom.val)}%`;
+
+            // 2. Classic Stat
+            document.getElementById('statClassicVal').innerText = `$${latestClassic.val.toLocaleString()}`;
+            document.getElementById('statClassicCagr').innerText = `CAGR: ${calcCagr(latestClassic.val)}%`;
+
+            // 3. All-Weather Stat
+            document.getElementById('statWeatherVal').innerText = `$${latestWeather.val.toLocaleString()}`;
+            document.getElementById('statWeatherCagr').innerText = `CAGR: ${calcCagr(latestWeather.val)}%`;
+
+            // 4. Permanent Stat
+            document.getElementById('statPermanentVal').innerText = `$${latestPermanent.val.toLocaleString()}`;
+            document.getElementById('statPermanentCagr').innerText = `CAGR: ${calcCagr(latestPermanent.val)}%`;
+
+            // 5. Aggressive Stat
+            document.getElementById('statAggressiveVal').innerText = `$${latestAggressive.val.toLocaleString()}`;
+            document.getElementById('statAggressiveCagr').innerText = `CAGR: ${calcCagr(latestAggressive.val)}%`;
+
+            // 6. Conservative Stat
+            document.getElementById('statConservativeVal').innerText = `$${latestConservative.val.toLocaleString()}`;
+            document.getElementById('statConservativeCagr').innerText = `CAGR: ${calcCagr(latestConservative.val)}%`;
+        }
+
+        function renderLogList() {
+            const listEl = document.getElementById('simLogList');
+            if (!listEl) return;
+            listEl.innerHTML = '';
+
+            const startIdx = HISTORICAL_YEARS_DATA.findIndex(d => d.year === state.startYear);
+            for (let i = startIdx; i <= state.currentYearIdx; i++) {
+                const item = HISTORICAL_YEARS_DATA[i];
+                if (item.event) {
+                    const row = document.createElement('div');
+                    row.className = 'flex items-center justify-between p-1.5 rounded bg-amber-100/70 border border-amber-300 text-espresso-950 font-medium cursor-pointer hover:bg-amber-200 transition';
+                    row.innerHTML = `
+                        <span class="flex items-center gap-1.5 font-serif font-bold text-amber-900">
+                            <i class="fa-solid ${item.event.icon} text-amber-700"></i>
+                            ${item.year}: ${item.event.title}
+                        </span>
+                        <span class="font-mono text-[10px] text-amber-800 font-bold">VER EVENTO</span>
+                    `;
+                    row.onclick = () => showEventModal(item.event, item.year);
+                    listEl.appendChild(row);
+                }
+            }
+        }
+
+        function togglePlayPause() {
+            if (state.isPlaying) {
+                pauseSimulation();
+            } else {
+                startSimulation();
+            }
+        }
+
+        function startSimulation() {
+            const maxIdx = HISTORICAL_YEARS_DATA.length - 1;
+            if (state.currentYearIdx >= maxIdx) {
+                state.currentYearIdx = HISTORICAL_YEARS_DATA.findIndex(d => d.year === state.startYear);
+            }
+
+            state.isPlaying = true;
+            document.getElementById('playPauseIcon').className = 'fa-solid fa-pause';
+            document.getElementById('playPauseText').innerText = 'Pausar Viagem';
+
+            state.timer = setInterval(() => {
+                if (state.currentYearIdx < maxIdx) {
+                    state.currentYearIdx++;
+                    recalculateSimulation();
+
+                    const currentItem = HISTORICAL_YEARS_DATA[state.currentYearIdx];
+                    if (currentItem && currentItem.event) {
+                        pauseSimulation();
+                        state.wasPlayingBeforeModal = true;
+                        showEventModal(currentItem.event, currentItem.year);
+                    }
+                } else {
+                    pauseSimulation();
+                }
+            }, 800);
+        }
+
+        function pauseSimulation() {
+            state.isPlaying = false;
+            if (state.timer) {
+                clearInterval(state.timer);
+                state.timer = null;
+            }
+            document.getElementById('playPauseIcon').className = 'fa-solid fa-play';
+            document.getElementById('playPauseText').innerText = 'Iniciar Viagem';
+        }
+
+        function advanceOneYear() {
+            pauseSimulation();
+            const maxIdx = HISTORICAL_YEARS_DATA.length - 1;
+            if (state.currentYearIdx < maxIdx) {
+                state.currentYearIdx++;
+                recalculateSimulation();
+
+                const currentItem = HISTORICAL_YEARS_DATA[state.currentYearIdx];
+                if (currentItem && currentItem.event) {
+                    state.wasPlayingBeforeModal = false;
+                    showEventModal(currentItem.event, currentItem.year);
+                }
+            }
+        }
+
+        function showEventModal(eventData, year) {
+            document.getElementById('eventModalYear').innerText = `EVENTO HISTÓRICO (${year})`;
+            document.getElementById('eventModalTitle').innerText = eventData.title;
+            document.getElementById('eventModalIcon').className = `fa-solid ${eventData.icon}`;
+            document.getElementById('eventModalDesc').innerText = eventData.desc;
+            document.getElementById('eventModalStats').innerText = eventData.impact;
+
+            document.getElementById('eventModal').classList.remove('hidden');
+        }
+
+        function closeEventModal(resume = true) {
+            document.getElementById('eventModal').classList.add('hidden');
+            if (resume && state.wasPlayingBeforeModal) {
+                state.wasPlayingBeforeModal = false;
+                startSimulation();
+            } else {
+                state.wasPlayingBeforeModal = false;
+                pauseSimulation();
+            }
+        }
+
+        function toggleHowToPlayModal() {
+            const modal = document.getElementById('howToPlayModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function resetSimulation() {
+            pauseSimulation();
+            state.wasPlayingBeforeModal = false;
+            document.getElementById('startYearSelect').value = '1920';
+            changeStartYear(1920);
+        }
+
+        window.onload = function() {
+            checkTotalAllocation();
+            updateTooltipComposition();
+            recalculateSimulation();
+        };
+    </script>
+</body>
+</html>

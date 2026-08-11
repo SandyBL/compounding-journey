@@ -151,6 +151,48 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   flex: 0 0 auto;
 }
 
+.site-header .site-return-link {
+  min-height: 32px;
+  padding: 6px 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #e6d8c3;
+  border-radius: 8px;
+  background: transparent;
+  color: #3a2719;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.site-header .site-return-link:hover {
+  border-color: #d7c2a5;
+  background: #f3e8d5;
+}
+
+.site-header .site-return-link:focus-visible {
+  outline: 3px solid rgba(197, 155, 39, 0.35);
+  outline-offset: 2px;
+}
+
+.site-simulator-nav {
+  position: relative;
+  z-index: 40;
+  padding: 8px 16px;
+}
+
+.site-simulator-tabs {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
 @media (max-width: 639px) {
   .site-header .header-shell {
     gap: 8px;
@@ -178,6 +220,18 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
 
   .site-header .header-actions {
     gap: 6px;
+  }
+
+  .site-header .site-return-link {
+    display: none;
+  }
+
+  .site-header .simulator-header-actions button {
+    min-height: 32px;
+  }
+
+  .site-simulator-nav {
+    padding-inline: 8px;
   }
 }
 

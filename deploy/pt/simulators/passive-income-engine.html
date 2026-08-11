@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full bg-[#fbf8f3]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador do Motor de Rendimento Passivo | Compounding Journey</title>
+    <meta name="description" content="Constrói uma carteira de ativos produtivos, avança no tempo e explora como o rendimento passivo pode crescer até cobrir as tuas despesas.">
+    <link rel="canonical" href="https://compoundingjourney.com/pt/simulators/passive-income-engine.html">
+    <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/passive-income-engine.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/passive-income-engine.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/passive-income-engine.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/passive-income-engine.html">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Motor de Rendimento Passivo"><meta property="og:description" content="Constrói ativos e explora o caminho até à independência financeira."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/passive-income-engine.html"><meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Motor de Rendimento Passivo"><meta name="twitter:description" content="Constrói ativos e explora o caminho até à independência financeira."><meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Motor de Rendimento Passivo","url":"https://compoundingjourney.com/pt/simulators/passive-income-engine.html","description":"Um simulador interativo para construir ativos produtivos e acompanhar o rendimento passivo ao longo do tempo.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Inter & Merriweather Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#fcfaf7',
+                            100: '#f7f4ee',
+                            200: '#efe9df',
+                            300: '#dfd5c4',
+                            400: '#c8b79e',
+                        },
+                        espresso: {
+                            800: '#422c1d',
+                            900: '#2c1d11',
+                            950: '#1c120a',
+                        },
+                        forest: {
+                            600: '#226338',
+                            700: '#18502b',
+                            800: '#134e2a',
+                            900: '#0d381e',
+                        },
+                        gold: {
+                            400: '#e5b842',
+                            500: '#d4a338',
+                            600: '#c3922e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #efe9df;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c8b79e;
+            border-radius: 9999px;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(44, 29, 17, 0.05), 0 8px 10px -6px rgba(44, 29, 17, 0.03);
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+</head>
+<body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
+    
+    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+        <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+            <a href="/pt/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Voltar ao Compounding Journey">
+                <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
+                    <img src="/logo-compounding-journey.png" alt="Compounding Journey" width="2048" height="2048" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="header-brand-copy">
+                    <span class="header-brand-name">Compounding Journey</span>
+                    <span class="header-brand-tagline">O teu mapa para a liberdade</span>
+                </div>
+            </a>
+
+            <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
+                <a href="/pt/#simulador" class="site-return-link hidden sm:inline-flex">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    <span>Website</span>
+                </a>
+                <button onclick="toggleLeaderboardModal()" class="px-2.5 py-1.5 rounded-xl border border-gold-600 text-gold-600 hover:bg-gold-500 hover:text-espresso-950 font-semibold text-xs transition flex items-center gap-1.5" title="Ver Salão da Fama">
+                                    <i class="fa-solid fa-trophy text-gold-500"></i>
+                                    <span class="hidden sm:inline">Classificação</span>
+                                </button>
+                <button onclick="toggleHowToPlayModal()" class="px-2.5 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-circle-question"></i>
+                                    <span>Como Jogar</span>
+                                </button>
+                <button onclick="advanceTime(12)" class="px-3 py-1.5 rounded-xl bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs shadow transition flex items-center gap-1.5 active:scale-95">
+                                    <i class="fa-solid fa-angles-right text-[10px]"></i>
+                                    <span>+1 Ano</span>
+                                </button>
+                <button onclick="resetSimulation()" class="p-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1" title="Reiniciar Simulação">
+                                    <i class="fa-solid fa-rotate-right"></i>
+                                    <span class="hidden sm:inline text-xs">Reiniciar</span>
+                                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-1 space-y-4">
+        
+        <!-- DASHBOARD TOP STATS BAR (6 CARDS) -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+            <!-- Liquid Cash -->
+            <div class="bg-cream-50 rounded-2xl p-3 border border-cream-300 custom-shadow flex flex-col justify-between">
+                <div class="flex items-center justify-between text-[11px] font-semibold text-espresso-800/70">
+                    <span>Caixa Disponível</span>
+                    <i class="fa-solid fa-wallet text-amber-600"></i>
+                </div>
+                <div class="mt-1">
+                    <span id="cashDisplay" class="text-base sm:text-lg font-bold font-mono text-espresso-950">$10.000</span>
+                    <span class="block text-[9px] text-espresso-800/60 mt-0.5">Capital para ativos</span>
+                </div>
+            </div>
+
+            <!-- Active Income (Salary) -->
+            <div class="bg-cream-50 rounded-2xl p-3 border border-blue-200 custom-shadow flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-blue-600"></div>
+                <div class="flex items-center justify-between text-[11px] font-semibold text-blue-900">
+                    <span>Salário Ativo</span>
+                    <i class="fa-solid fa-briefcase text-blue-600"></i>
+                </div>
+                <div class="mt-1">
+                    <span id="activeDisplay" class="text-base sm:text-lg font-bold font-mono text-blue-800">$3.200/mês</span>
+                    <span class="block text-[9px] text-espresso-800/60 mt-0.5">Renda do trabalho familiar</span>
+                </div>
+            </div>
+
+            <!-- Passive Income (Green) -->
+            <div class="bg-cream-50 rounded-2xl p-3 border border-emerald-200 custom-shadow flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-emerald-500"></div>
+                <div class="flex items-center justify-between text-[11px] font-semibold text-forest-800">
+                    <span>Renda Passiva</span>
+                    <i class="fa-solid fa-arrow-trend-up text-emerald-600"></i>
+                </div>
+                <div class="mt-1">
+                    <span id="passiveDisplay" class="text-base sm:text-lg font-bold font-mono text-emerald-700">+$0/mês</span>
+                    <span class="block text-[9px] text-espresso-800/60 mt-0.5">Fluxo de caixa dos ativos</span>
+                </div>
+            </div>
+
+            <!-- Monthly Expenses (Red) -->
+            <div class="bg-cream-50 rounded-2xl p-3 border border-rose-200 custom-shadow flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-rose-500"></div>
+                <div class="flex items-center justify-between text-[11px] font-semibold text-rose-800">
+                    <span>Despesas de Vida</span>
+                    <i class="fa-solid fa-arrow-trend-down text-rose-600"></i>
+                </div>
+                <div class="mt-1">
+                    <span id="expensesDisplay" class="text-base sm:text-lg font-bold font-mono text-rose-700">$2.670/mês</span>
+                    <span class="block text-[9px] text-espresso-800/60 mt-0.5">Custo de vida base</span>
+                </div>
+            </div>
+
+            <!-- Life Joy & Fulfillment Score -->
+            <div class="bg-cream-50 rounded-2xl p-3 border border-amber-300 custom-shadow flex flex-col justify-between relative overflow-hidden bg-gradient-to-br from-cream-50 to-amber-100/50">
+                <div class="flex items-center justify-between text-[11px] font-semibold text-amber-900">
+                    <span>Alegria de Viver</span>
+                    <i class="fa-solid fa-face-smile text-amber-500 text-sm"></i>
+                </div>
+                <div class="mt-1">
+                    <span id="happinessDisplay" class="text-base sm:text-lg font-bold font-mono text-amber-700">66 / 100</span>
+                    <span id="happinessSubtext" class="block text-[9px] text-amber-900/70 font-medium mt-0.5">Aumenta promoções e moral</span>
+                </div>
+            </div>
+
+            <!-- Financial Independence % -->
+            <div class="bg-cream-50 rounded-2xl p-3 border border-gold-400 custom-shadow flex flex-col justify-between bg-gradient-to-br from-cream-50 to-amber-50/40">
+                <div class="flex items-center justify-between text-[11px] font-semibold text-espresso-800">
+                    <span>Cobertura da Liberdade</span>
+                    <i class="fa-solid fa-bullseye text-gold-600"></i>
+                </div>
+                <div class="mt-1">
+                    <div class="flex items-baseline gap-1">
+                        <span id="freedomPctDisplay" class="text-base sm:text-lg font-bold font-mono text-gold-600">0.0%</span>
+                    </div>
+                    <div class="w-full bg-cream-200 rounded-full h-1.5 mt-1 overflow-hidden">
+                        <div id="freedomProgressBar" class="bg-gold-500 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TURN ACTION BAR -->
+        <div class="bg-gradient-to-r from-forest-800 to-forest-900 rounded-2xl p-3.5 sm:p-4 text-white shadow-md flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="space-y-1 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2">
+                    <span class="bg-gold-500 text-espresso-950 font-bold text-[10px] uppercase px-2 py-0.5 rounded-md">Ciclo de Turno Anual</span>
+                    <h3 class="text-sm font-bold font-serif">1. Ajuste Despesas e Compre Ativos  ➔  2. Avance +1 Ano</h3>
+                </div>
+                <p class="text-xs text-cream-200">
+                    Fluxo de Caixa Líquido Mensal: <span class="font-mono text-cream-100">(Ativo + Passivo - Despesas)</span> = <strong id="projectedMonthlySavings" class="text-gold-400 font-mono">+$530/mês</strong> superávit líquido somado ao saldo a cada ano.
+                </p>
+            </div>
+
+            <!-- TIME ADVANCE ACTION BUTTON -->
+            <div class="flex items-center gap-2.5 w-full md:w-auto">
+                <button onclick="advanceTime(12)" class="w-full md:w-auto px-6 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-espresso-950 font-bold text-xs shadow transition flex items-center justify-center gap-2 active:scale-95">
+                    <i class="fa-solid fa-angles-right"></i>
+                    <span>Avançar +1 Ano</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- LAST TURN FEEDBACK NOTIFICATION -->
+        <div id="turnSummaryToast" class="hidden bg-cream-100 border border-cream-300 rounded-xl p-3 text-xs text-espresso-900 space-y-2 shadow-sm animate-in fade-in duration-300">
+            <div class="flex items-center justify-between border-b border-cream-200 pb-1.5">
+                <div class="flex items-center gap-2 font-bold text-forest-800">
+                    <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+                    <span id="turnSummaryTitle">Período Avançado</span>
+                </div>
+                <button onclick="document.getElementById('turnSummaryToast').classList.add('hidden')" class="text-espresso-800/60 hover:text-espresso-950">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p id="turnSummaryText" class="text-xs text-espresso-800">Ano avançado! Saldo de caixa atualizado.</p>
+            <div id="eventLogList" class="space-y-1.5 pt-1 hidden">
+                <!-- Dynamic Injection -->
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+            <!-- LEFT MAIN PANEL: ASSET MARKETPLACE & LIFESTYLE TOGGLES (8 COLS) -->
+            <div class="lg:col-span-8 space-y-4">
+                
+                <!-- SECTION 1: ASSET MARKETPLACE -->
+                <div class="bg-cream-50 rounded-2xl p-3.5 border border-cream-300 custom-shadow space-y-3">
+                    <div class="flex items-center justify-between border-b border-cream-200 pb-2">
+                        <div>
+                            <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
+                                <i class="fa-solid fa-store text-forest-800"></i> Mercado de Ativos Geradores de Renda
+                            </h3>
+                            <p class="text-[11px] text-espresso-800/70">Invista o caixa disponível em ativos. Equilibre rendimento seguro com crescimento e volatilidade!</p>
+                        </div>
+                        <span class="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                            Caixa Disponível: <span id="marketplaceCash" class="font-mono">$10.000</span>
+                        </span>
+                    </div>
+
+                    <!-- ASSET GRID (3 COLUMNS) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5" id="assetGridContainer">
+                        <!-- Injected via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- SECTION 2: LIFESTYLE & EXPENSE CONTROLS (6 CATEGORIES) -->
+                <div class="bg-cream-50 rounded-2xl p-3.5 border border-cream-300 custom-shadow space-y-3">
+                    <div>
+                        <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2 border-b border-cream-200 pb-1.5">
+                            <i class="fa-solid fa-sliders text-rose-600"></i> Ajuste de Estilo de Vida e Despesas
+                        </h3>
+                        <p class="text-[11px] text-espresso-800/70 mt-0.5">Elevar seu padrão de vida aumenta os custos, mas gera mais Alegria de Viver!</p>
+                    </div>
+
+                    <!-- 6 LIFESTYLE CATEGORIES -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
+                        <!-- Vivienda -->
+                        <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
+                                <span class="truncate"><i class="fa-solid fa-house text-amber-700 mr-1"></i>Moradia</span>
+                            </div>
+                            <select id="housingSelect" onchange="updateLifestyle('housing', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                                <option value="modest">Modesta Div. ($800)</option>
+                                <option value="standard" selected>Ap. Padrão ($1.200)</option>
+                                <option value="luxury">Cobertura Luxo ($2.200)</option>
+                            </select>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="housingCostBadge">$1.200/mês</div>
+                        </div>
+
+                        <!-- Transporte -->
+                        <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
+                                <span class="truncate"><i class="fa-solid fa-car text-amber-700 mr-1"></i>Transporte</span>
+                            </div>
+                            <select id="transportSelect" onchange="updateLifestyle('transport', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                                <option value="public">Transp. Público ($100)</option>
+                                <option value="used" selected>Usado Confiável ($300)</option>
+                                <option value="lease">SUV de Luxo ($800)</option>
+                            </select>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="transportCostBadge">$300/mês</div>
+                        </div>
+
+                        <!-- Comida -->
+                        <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
+                                <span class="truncate"><i class="fa-solid fa-utensils text-amber-700 mr-1"></i>Alimentação</span>
+                            </div>
+                            <select id="lifestyleSelect" onchange="updateLifestyle('lifestyle', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                                <option value="frugal">Frugal / Em Casa ($300)</option>
+                                <option value="balanced" selected>Restaurantes / Eq. ($500)</option>
+                                <option value="lavish">Jantares Finos ($1.100)</option>
+                            </select>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="lifestyleCostBadge">$500/mês</div>
+                        </div>
+
+                        <!-- Tecnología y Suscripciones -->
+                        <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
+                                <span class="truncate"><i class="fa-solid fa-mobile-screen text-amber-700 mr-1"></i>Tecno/Subs</span>
+                            </div>
+                            <select id="subscriptionsSelect" onchange="updateLifestyle('subscriptions', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                                <option value="basic">Mínimo e Grátis ($30)</option>
+                                <option value="standard" selected>Assinaturas Padrão ($120)</option>
+                                <option value="unlimited">Tech Premium ($350)</option>
+                            </select>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="subscriptionsCostBadge">$120/mês</div>
+                        </div>
+
+                        <!-- Viajes y Vacaciones -->
+                        <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
+                                <span class="truncate"><i class="fa-solid fa-plane text-amber-700 mr-1"></i>Viagens</span>
+                            </div>
+                            <select id="travelSelect" onchange="updateLifestyle('travel', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                                <option value="staycation">Passeios Locais ($100)</option>
+                                <option value="annual" selected>Viagem Anual ($300)</option>
+                                <option value="luxury">Viagens de Luxo ($750)</option>
+                            </select>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="travelCostBadge">$300/mês</div>
+                        </div>
+
+                        <!-- Compras y Ropa -->
+                        <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
+                                <span class="truncate"><i class="fa-solid fa-bag-shopping text-amber-700 mr-1"></i>Compras</span>
+                            </div>
+                            <select id="shoppingSelect" onchange="updateLifestyle('shopping', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                                <option value="minimal">Brechó / Mínimo ($100)</option>
+                                <option value="standard" selected>Vestuário Padrão ($250)</option>
+                                <option value="luxury">Roupas de Grife ($650)</option>
+                            </select>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="shoppingCostBadge">$250/mês</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDEBAR: CROSSOVER POINT CARD + ASSET HOLDINGS (4 COLS) -->
+            <div class="lg:col-span-4 space-y-4">
+                <div class="sticky top-16 space-y-3">
+
+                    <!-- CROSSOVER POINT RACING CARD -->
+                    <div class="bg-cream-50 rounded-2xl p-3 border border-cream-300 custom-shadow space-y-2">
+                        <div class="flex items-center justify-between border-b border-cream-200 pb-1.5">
+                            <h2 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-1.5">
+                                <i class="fa-solid fa-flag-checkered text-gold-600"></i>
+                                Corrida para o Cruzamento
+                            </h2>
+                            <span id="monthsPassedBadge" class="text-[10px] font-mono font-bold text-forest-800 bg-cream-200 px-2 py-0.5 rounded-full">Ano 0</span>
+                        </div>
+
+                        <!-- FAMILY STATUS BADGE IF KID IS BORN -->
+                        <div id="familyStatusBadge" class="hidden px-2 py-1 rounded-lg bg-amber-100 border border-amber-300 text-[10px] font-bold text-amber-900 flex items-center justify-between">
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-baby text-amber-600"></i> <span id="familyStatusText">Filho em Casa</span></span>
+                        </div>
+
+                        <!-- DUAL RACING BARS -->
+                        <div class="space-y-2 bg-cream-100 p-2.5 rounded-xl border border-cream-200">
+                            <!-- Red Line: Expenses -->
+                            <div>
+                                <div class="flex justify-between text-[10px] font-bold mb-0.5">
+                                    <span class="text-rose-700 flex items-center gap-1">
+                                        <span class="w-2 h-2 rounded-full bg-rose-600 inline-block"></span>
+                                        Meta de Despesas
+                                    </span>
+                                    <span id="barExpenseVal" class="font-mono text-rose-700">$2.670/mês</span>
+                                </div>
+                                <div class="w-full bg-cream-300 rounded-full h-2.5 overflow-hidden p-0.5">
+                                    <div id="expensesBar" class="bg-rose-500 h-1.5 rounded-full transition-all duration-500" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Green Line: Passive Income -->
+                            <div>
+                                <div class="flex justify-between text-[10px] font-bold mb-0.5">
+                                    <span class="text-forest-800 flex items-center gap-1">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span>
+                                        Renda Passiva
+                                    </span>
+                                    <span id="barPassiveVal" class="font-mono text-emerald-700">$0/mês</span>
+                                </div>
+                                <div class="w-full bg-cream-300 rounded-full h-2.5 overflow-hidden p-0.5">
+                                    <div id="passiveBar" class="bg-emerald-600 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="crossoverGapNotice" class="text-center py-1 text-[10px] font-medium text-espresso-800/80 bg-cream-100 rounded-lg border border-cream-200">
+                            Falta: <span id="gapAmountDisplay" class="font-bold text-rose-700">$2.670/mês</span> para a liberdade.
+                        </div>
+                    </div>
+
+                    <!-- ASSET HOLDINGS CARD -->
+                    <div class="bg-cream-50 rounded-2xl p-3 border border-cream-300 custom-shadow space-y-2.5">
+                        <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center justify-between border-b border-cream-200 pb-1.5">
+                            <span><i class="fa-solid fa-boxes-stacked text-forest-800"></i> Seus Ativos</span>
+                            <span id="holdingsCountBadge" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cream-200 text-espresso-800">0 Ativos</span>
+                        </h3>
+
+                        <!-- ASSET ALLOCATION PIE DIAGRAM -->
+                        <div id="pieChartContainer" class="hidden pb-1 border-b border-cream-200">
+                            <span class="text-[9px] font-bold uppercase tracking-wider text-espresso-800/70 block mb-1 text-center">Distribuição do Portfólio</span>
+                            <div class="h-32 w-full relative">
+                                <canvas id="assetPieChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- ASSET HOLDINGS LIST CONTAINER -->
+                        <div id="holdingsContainer" class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">
+                            <!-- Dynamic Injection -->
+                        </div>
+
+                        <div class="border-t border-cream-200 pt-1.5 text-[10px] space-y-0.5 text-espresso-800">
+                            <div class="flex justify-between">
+                                <span class="text-espresso-800/70">Total Investido:</span>
+                                <span id="sidebarTotalInvested" class="font-mono font-bold">$0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-espresso-800/70">Renda Passiva Total:</span>
+                                <span id="sidebarTotalPassive" class="font-mono font-bold text-emerald-700">+$0/mês</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- HOW TO PLAY / GOAL OF THE GAME MODAL -->
+    <div id="howToPlayModal" class="fixed inset-0 bg-espresso-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-cream-50 border-2 border-forest-800 rounded-2xl max-w-lg w-full p-6 sm:p-7 custom-shadow space-y-4 animate-in fade-in zoom-in duration-300">
+            <div class="flex items-center justify-between border-b border-cream-200 pb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-forest-800 text-amber-300 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-compass text-base"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-serif font-bold text-espresso-950">Como Funciona o Jogo</h3>
+                        <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">Objetivo e Turnos Anuais</p>
+                    </div>
+                </div>
+                <button onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- CORE GOAL -->
+            <div class="p-3 rounded-xl bg-forest-800/10 border border-forest-800/20 text-xs space-y-1">
+                <span class="font-bold text-forest-800 flex items-center gap-1">
+                    <i class="fa-solid fa-bullseye text-gold-600"></i> O Objetivo Principal:
+                </span>
+                <p class="text-espresso-900 leading-relaxed">
+                    Alcance o <strong>Ponto de Cruzamento</strong> onde sua <strong>Renda Passiva mensal (Linha Verde)</strong> supere suas <strong>Despesas de Vida mensais (Linha Vermelha)</strong>. Com 100% de cobertura, o trabalho torna-se 100% opcional!
+                </p>
+            </div>
+
+            <!-- 3 STEP GAMEPLAY LOOP -->
+            <div class="space-y-2 text-xs">
+                <h4 class="font-bold text-espresso-950 uppercase text-[10px] tracking-wider text-espresso-800/70">O Ciclo de Turno Anual:</h4>
+                
+                <div class="flex items-start gap-2.5 p-2 rounded-lg bg-cream-100 border border-cream-300">
+                    <span class="w-5 h-5 rounded-full bg-rose-500 text-white font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">1</span>
+                    <div>
+                        <strong class="text-espresso-950 block">Ajuste suas Despesas de Estilo de Vida</strong>
+                        <p class="text-[11px] text-espresso-800/80">Otimize moradia, transporte e alimentação para equilibrar seus gastos com a Alegria de Viver.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-2.5 p-2 rounded-lg bg-cream-100 border border-cream-300">
+                    <span class="w-5 h-5 rounded-full bg-forest-800 text-white font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">2</span>
+                    <div>
+                        <strong class="text-espresso-950 block">Compre Ativos Geradores de Renda e Gerencie o Risco</strong>
+                        <p class="text-[11px] text-espresso-800/80">Invista o saldo acumulado em ETFs de Dividendos, Títulos do Tesouro, Imóveis ou Bitcoin.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-2.5 p-2 rounded-lg bg-cream-100 border border-cream-300">
+                    <span class="w-5 h-5 rounded-full bg-gold-600 text-espresso-950 font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">3</span>
+                    <div>
+                        <strong class="text-espresso-950 block">Clique em "+1 Ano" para Avançar</strong>
+                        <p class="text-[11px] text-espresso-800/80">Acumule a poupança líquida do ano, lide com imprevistos (inflação, reformas) e vença!</p>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="toggleHowToPlayModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
+                Entendido! Vamos Gerar Renda Passiva
+            </button>
+        </div>
+    </div>
+
+    <!-- CROSSOVER VICTORY MODAL OVERLAY -->
+    <div id="victoryModal" class="fixed inset-0 bg-espresso-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-cream-50 border-2 border-gold-500 rounded-2xl max-w-lg w-full p-6 sm:p-8 custom-shadow text-center space-y-5 animate-in fade-in zoom-in duration-300">
+            <div class="w-16 h-16 rounded-full bg-gold-400/20 text-gold-600 flex items-center justify-center mx-auto text-3xl border border-gold-400">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <div>
+                <span class="text-xs font-bold text-gold-600 tracking-widest uppercase">Independência Financeira Alcançada!</span>
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-espresso-950 mt-1">Você Atingiu o Ponto de Cruzamento!</h2>
+                <p class="text-xs sm:text-sm text-espresso-800/80 mt-2">
+                    Sua renda passiva mensal (<span id="victoryPassive" class="font-bold text-emerald-700">$0</span>) cobre totalmente suas despesas de vida (<span id="victoryExpenses" class="font-bold text-rose-700">$0</span>). O trabalho agora é 100% opcional!
+                </p>
+            </div>
+
+            <div class="bg-cream-100 p-4 rounded-xl border border-cream-300 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left text-xs">
+                <div>
+                    <span class="text-espresso-800/70 block">Tempo até a Liberdade:</span>
+                    <span id="victoryTime" class="font-bold text-sm text-forest-800 font-mono">0 Anos</span>
+                </div>
+                <div>
+                    <span class="text-espresso-800/70 block">Patrimônio Líquido:</span>
+                    <span id="victoryNetWorth" class="font-bold text-sm text-forest-800 font-mono">$0</span>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                    <span class="text-espresso-800/70 block">Alegria de Viver:</span>
+                    <span id="victoryJoyTitle" class="font-bold text-xs text-amber-700">Construtor Equilibrado</span>
+                </div>
+            </div>
+
+            <!-- LEADERBOARD SUBMISSION IN VICTORY MODAL -->
+            <div id="victoryLeaderboardSubmit" class="bg-amber-50 border border-gold-400 p-3.5 rounded-xl text-left space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-espresso-950 flex items-center gap-1.5">
+                        <i class="fa-solid fa-award text-gold-600"></i> Entrar no Salão da Fama
+                    </span>
+                    <span class="text-[10px] text-espresso-800/70 font-mono">Rank por menor número de anos</span>
+                </div>
+                <div class="flex gap-2">
+                    <input type="text" id="playerNameInput" placeholder="Digite seu nome ou apelido..." class="flex-1 text-xs px-3 py-2 rounded-lg border border-cream-300 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500 text-espresso-950">
+                    <button onclick="submitPlayerScore()" class="px-3.5 py-2 rounded-lg bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs transition flex items-center gap-1 shrink-0">
+                        <i class="fa-solid fa-check"></i> Salvar
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-3 pt-2">
+                <a href="https://compoundingjourney.com/#contacto" target="_blank" class="block w-full py-3 px-4 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-sm shadow transition flex items-center justify-center gap-2">
+                    <span>Monte seu Plano Real de Liberdade</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button onclick="closeVictoryModal()" class="w-full py-2.5 px-4 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 font-medium text-xs transition">
+                    Continuar Jogando e Multiplicando Riqueza
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STANDALONE LEADERBOARD MODAL -->
+    <div id="leaderboardModal" class="fixed inset-0 bg-espresso-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-cream-50 border-2 border-gold-500 rounded-2xl max-w-lg w-full p-6 custom-shadow space-y-4 animate-in fade-in zoom-in duration-300">
+            <div class="flex items-center justify-between border-b border-cream-200 pb-3">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-gold-500 text-espresso-950 flex items-center justify-center text-lg shadow">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-serif font-bold text-espresso-950 leading-tight">Salão da Fama da Liberdade</h3>
+                        <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">Melhores Investidores • Menor Tempo até a Liberdade</p>
+                    </div>
+                </div>
+                <button onclick="toggleLeaderboardModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- LEADERBOARD TABLE CONTAINER -->
+            <div class="max-h-64 overflow-y-auto custom-scrollbar border border-cream-200 rounded-xl bg-cream-100">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-cream-200/70 text-espresso-800/80 font-bold border-b border-cream-300 sticky top-0">
+                        <tr>
+                            <th class="p-2.5 text-center w-10">#</th>
+                            <th class="p-2.5">Nome do Investidor</th>
+                            <th class="p-2.5 text-center">Tempo até Liberdade</th>
+                            <th class="p-2.5 text-right">Patrimônio Líquido</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardTableBody" class="divide-y divide-cream-200 text-espresso-950 font-medium">
+                        <!-- Dynamic Injection -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex justify-between items-center pt-1 text-[11px] text-espresso-800/70">
+                <span>Alcance a independência em tempo recorde!</span>
+                <button onclick="resetLeaderboard()" class="text-rose-700 hover:underline text-[10px]">Resetar Pontuações</button>
+            </div>
+
+            <button onclick="toggleLeaderboardModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
+                Voltar ao Jogo
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // GAME STATE
+        let monthsPassed = 0; // Increments in steps of 12 (Years)
+        let cash = 10000;
+        let baseMonthlySalary = 3200; // Household Active Salary baseline
+        let pieChartInstance = null;
+
+        // ASSET DATA DEFINITIONS (PORTUGUESE TRANSLATION)
+        const assets = [
+            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos do mercado. Os pagamentos se multiplicam e crescem organicamente.', riskText: 'Baixo Risco / Crescimento Contínuo' },
+            { id: 'bonds', name: 'Títulos do Tesouro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Garantidos pelo governo. Rendem mais em ciclos de juros altos.', riskText: 'Garantido / Seguro' },
+            { id: 'rental_property', name: 'Imóvel para Aluguel', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Fluxo imobiliário. Sujeito a custos ocasionais de reforma.', riskText: 'Risco Médio / Fluxo de Caixa' },
+            { id: 'reit_index', name: 'Fundos Imobiliários (REITs)', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fundo de investimento imobiliário. Pagamentos mensais constantes.', riskText: 'Risco Moderado / Imóveis' },
+            { id: 'digital_business', name: 'Negócio Digital', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimento, sensível a custos de anúncios.', riskText: 'Alto Rendimento / Volátil' },
+            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoativo. Grandes ciclos de alta, pressão em ciclos de baixa.', riskText: 'Alta Volatilidade / Especulativo' }
+        ];
+
+        const DEFAULT_LEADERBOARD = [
+            { name: "Sofia Chen (Gurus do FIRE)", months: 264, netWorth: 680000 },
+            { name: "Marcos Vance", months: 288, netWorth: 590000 },
+            { name: "Elena Rostova", months: 312, netWorth: 510000 },
+            { name: "David K.", months: 348, netWorth: 440000 },
+            { name: "Sara e Alexandre", months: 384, netWorth: 390000 }
+        ];
+
+        // FAMILY & LIFE CYCLE STATE
+        let familyState = {
+            hasKid: false,
+            kidAgeMonths: 0,
+            kidEventTriggered: false,
+            hasPet: false,
+            hasElderCare: false,
+            promotionTriggered: false,
+            inflationMultiplier: 1.0,
+            totalJoyAccumulated: 0
+        };
+
+        let currentLifestyle = {
+            housing: 'standard',
+            transport: 'used',
+            lifestyle: 'balanced',
+            subscriptions: 'standard',
+            travel: 'annual',
+            shopping: 'standard'
+        };
+
+        const lifestyleCosts = {
+            housing: { modest: 800, standard: 1200, luxury: 2200 },
+            transport: { public: 100, used: 300, lease: 800 },
+            lifestyle: { frugal: 300, balanced: 500, lavish: 1100 },
+            subscriptions: { basic: 30, standard: 120, unlimited: 350 },
+            travel: { staycation: 100, annual: 300, luxury: 750 },
+            shopping: { minimal: 100, standard: 250, luxury: 650 }
+        };
+
+        // LIFESTYLE JOY / HAPPINESS POINTS
+        const lifestyleHappiness = {
+            housing: { modest: 5, standard: 15, luxury: 30 },
+            transport: { public: 2, used: 8, lease: 20 },
+            lifestyle: { frugal: 5, balanced: 15, lavish: 30 },
+            subscriptions: { basic: 2, standard: 8, unlimited: 18 },
+            travel: { staycation: 3, annual: 12, luxury: 25 },
+            shopping: { minimal: 2, standard: 8, luxury: 18 }
+        };
+
+        function getHappinessScore() {
+            return lifestyleHappiness.housing[currentLifestyle.housing] +
+                   lifestyleHappiness.transport[currentLifestyle.transport] +
+                   lifestyleHappiness.lifestyle[currentLifestyle.lifestyle] +
+                   lifestyleHappiness.subscriptions[currentLifestyle.subscriptions] +
+                   lifestyleHappiness.travel[currentLifestyle.travel] +
+                   lifestyleHappiness.shopping[currentLifestyle.shopping];
+        }
+
+        function getMonthlyExpenses() {
+            let base = lifestyleCosts.housing[currentLifestyle.housing] +
+                       lifestyleCosts.transport[currentLifestyle.transport] +
+                       lifestyleCosts.lifestyle[currentLifestyle.lifestyle] +
+                       lifestyleCosts.subscriptions[currentLifestyle.subscriptions] +
+                       lifestyleCosts.travel[currentLifestyle.travel] +
+                       lifestyleCosts.shopping[currentLifestyle.shopping];
+
+            // Parenting stage expense additions
+            if (familyState.hasKid) {
+                const ageYears = Math.floor(familyState.kidAgeMonths / 12);
+                if (ageYears < 6) base += 500;        // Baby / Toddler
+                else if (ageYears < 13) base += 750;  // Primary School
+                else base += 1000;                    // Teenager
+            }
+
+            // Pet extra expenses
+            if (familyState.hasPet) {
+                base += 120;
+            }
+
+            // Eldercare support for aging parents
+            if (familyState.hasElderCare) {
+                base += 250;
+            }
+
+            // Apply macro inflation creep
+            base = base * familyState.inflationMultiplier;
+
+            return Math.round(base);
+        }
+
+        function getTotalMonthlyPassiveIncome() {
+            return assets.reduce((sum, asset) => sum + (asset.ownedUnits * asset.monthlyYieldPerUnit), 0);
+        }
+
+        function getTotalInvestedCapital() {
+            return assets.reduce((sum, asset) => sum + (asset.ownedUnits * asset.unitCost), 0);
+        }
+
+        function getNetWorth() {
+            return cash + getTotalInvestedCapital();
+        }
+
+        function getNetMonthlySurplus() {
+            return baseMonthlySalary + getTotalMonthlyPassiveIncome() - getMonthlyExpenses();
+        }
+
+        function getFreedomCoveragePct() {
+            const exp = getMonthlyExpenses();
+            if (exp === 0) return 100;
+            return Math.min(100, (getTotalMonthlyPassiveIncome() / exp) * 100);
+        }
+
+        function advanceTime(months = 12) {
+            let eventLogs = [];
+            monthsPassed += 12;
+
+            const joyScore = getHappinessScore();
+            familyState.totalJoyAccumulated += joyScore * 12;
+
+            // 1. DYNAMIC INFLATION CREEP (Every 2 years / 24 months)
+            if (monthsPassed % 24 === 0) {
+                const oldExpenses = getMonthlyExpenses();
+                familyState.inflationMultiplier *= 1.04; // +4% inflation
+                const newExpenses = getMonthlyExpenses();
+                const expDiff = newExpenses - oldExpenses;
+                eventLogs.push(`💸 <strong>Inflação Progressiva (+4%):</strong> A inflação macroeconômica aumentou as despesas da família em <strong>+$${expDiff.toLocaleString()}/mês</strong> (Novas Despesas: $${newExpenses.toLocaleString()}/mês).`);
+            }
+
+            // 2. HAPPINESS / LIFE JOY COMPENSATION EFFECTS
+            if (joyScore >= 70) { 
+                if (Math.random() < 0.40) {
+                    const bonus = Math.floor(Math.random() * 2500) + 2000;
+                    cash += bonus;
+                    eventLogs.push(`🌟 <strong>Bônus de Alta Alegria de Viver!</strong> Sua ótima energia e bem-estar no trabalho renderam um Bônus de Desempenho de <strong>+$${bonus.toLocaleString()}</strong> no Saldo de Caixa.`);
+                }
+            } else if (joyScore < 30) {
+                if (Math.random() < 0.30) {
+                    const burnoutCost = 1200;
+                    if (cash >= burnoutCost) cash -= burnoutCost;
+                    eventLogs.push(`😫 <strong>Esgotamento por Frugalidade Extrema:</strong> O estresse acumulado exigiu gastos de <strong>-$${burnoutCost.toLocaleString()}</strong> em saúde e descanso.`);
+                }
+            }
+
+            // 3. FAMILY & LIFE CYCLE STAGES
+            if (!familyState.hasKid && !familyState.kidEventTriggered && monthsPassed >= 24) {
+                if (Math.random() < 0.25 || monthsPassed === 48) {
+                    familyState.hasKid = true;
+                    familyState.kidEventTriggered = true;
+                    familyState.kidAgeMonths = 0;
+
+                    if (currentLifestyle.housing === 'modest') {
+                        currentLifestyle.housing = 'standard';
+                        document.getElementById('housingSelect').value = 'standard';
+                    }
+                    
+                    eventLogs.push(`🍼 <strong>Evento de Vida: Nascimento de um Bebê!</strong> Adicionados <strong>+$500/mês</strong> em custos de fraldas, berçário e cuidados.`);
+                }
+            } else if (familyState.hasKid) {
+                const prevAgeYears = Math.floor(familyState.kidAgeMonths / 12);
+                familyState.kidAgeMonths += 12;
+                const newAgeYears = Math.floor(familyState.kidAgeMonths / 12);
+
+                if (newAgeYears >= 18) {
+                    familyState.hasKid = false;
+                    eventLogs.push(`🎓 <strong>Ninho Vazio!</strong> Seu filho completou 18 anos e foi para a faculdade. As despesas caíram em <strong>-$1.000/mês</strong>!`);
+                } else if (prevAgeYears < 6 && newAgeYears >= 6) {
+                    eventLogs.push(`🎒 <strong>Fase Escolar:</strong> Seu filho entrou no ensino fundamental. Custos aumentaram em <strong>+$250/mês</strong> (+$750/mês total do filho) em material e esportes.`);
+                } else if (prevAgeYears < 13 && newAgeYears >= 13) {
+                    eventLogs.push(`🎧 <strong>Fase Adolescente:</strong> Atividades, tecnologia e roupas elevaram os gastos do filho em <strong>+$250/mês</strong> (+$1.000/mês total).`);
+                }
+            }
+
+            // Career Promotion
+            const promotionChance = joyScore >= 50 ? 0.40 : 0.20;
+            if (!familyState.promotionTriggered && monthsPassed >= 36 && Math.random() < promotionChance) {
+                familyState.promotionTriggered = true;
+                const raiseAmount = 400;
+                baseMonthlySalary += raiseAmount;
+                eventLogs.push(`💼 <strong>Promoção de Carreira!</strong> Aumento salarial! O salário ativo da família subiu <strong>+$${raiseAmount}/mês</strong> (Novo Salário: $${baseMonthlySalary.toLocaleString()}/mês).`);
+            }
+
+            // Pet Adoption
+            if (!familyState.hasPet && monthsPassed >= 60 && Math.random() < 0.15) {
+                familyState.hasPet = true;
+                eventLogs.push(`🐶 <strong>Adoção de um Pet!</strong> Adicionados <strong>+$120/mês</strong> em ração, veterinário e plano de saúde animal.`);
+            }
+
+            // Aging Parents Healthcare Support
+            if (!familyState.hasElderCare && monthsPassed >= 120 && Math.random() < 0.20) {
+                familyState.hasElderCare = true;
+                eventLogs.push(`👴 <strong>Apoio a Pais Idosos:</strong> Você assumiu suporte médico mensal para seus pais, adicionando <strong>+$250/mês</strong> às despesas.`);
+            }
+
+            // 4. OUT-OF-POCKET EXPENSE SHOCKS & WINDFALLS
+            const shockRoll = Math.random();
+            if (shockRoll < 0.10 && cash >= 1000) {
+                const cost = Math.floor(Math.random() * 800) + 1000;
+                cash -= cost;
+                eventLogs.push(`🏥 <strong>Emergência Médica / Odontológica:</strong> Despesa de saúde inesperada de <strong>-$${cost.toLocaleString()}</strong> no Caixa.`);
+            } else if (shockRoll >= 0.10 && shockRoll < 0.20 && cash >= 1200) {
+                const cost = Math.floor(Math.random() * 1000) + 1200;
+                cash -= cost;
+                eventLogs.push(`🚗 <strong>Manutenção do Veículo:</strong> Conserto do carro exigiu <strong>-$${cost.toLocaleString()}</strong> do Caixa.`);
+            } else if (shockRoll >= 0.20 && shockRoll < 0.28 && cash >= 1500) {
+                const cost = Math.floor(Math.random() * 1200) + 1600;
+                cash -= cost;
+                eventLogs.push(`🏛️ <strong>Aumento de IPTU / Seguros:</strong> Reajuste anual de impostos descontou <strong>-$${cost.toLocaleString()}</strong> do Caixa.`);
+            } else if (shockRoll >= 0.28 && shockRoll < 0.33) {
+                const bonus = Math.floor(Math.random() * 2000) + 1500;
+                cash += bonus;
+                eventLogs.push(`💻 <strong>Projeto Freelance Extra!</strong> Você ganhou um extra de <strong>+$${bonus.toLocaleString()}</strong> em dinheiro.`);
+            } else if (shockRoll >= 0.33 && shockRoll < 0.38) {
+                const inheritance = Math.floor(Math.random() * 5000) + 6000;
+                cash += inheritance;
+                eventLogs.push(`🎁 <strong>Herança ou Presente Familiar!</strong> Você recebeu uma quantia de <strong>+$${inheritance.toLocaleString()}</strong> no Caixa.`);
+            } else if (shockRoll >= 0.38 && shockRoll < 0.42) {
+                const taxBonus = Math.floor(Math.random() * 1500) + 1200;
+                cash += taxBonus;
+                eventLogs.push(`🧾 <strong>Restituição de Imposto de Renda:</strong> O retorno fiscal adicionou <strong>+$${taxBonus.toLocaleString()}</strong> ao Caixa.`);
+            }
+
+            // 5. ASSET DYNAMICS
+            // Dividend ETF Organic Compounding
+            const divEtf = assets.find(a => a.id === 'dividend_etf');
+            if (divEtf) {
+                const compoundRate = 1 + (0.035 + Math.random() * 0.03);
+                const oldYield = divEtf.monthlyYieldPerUnit;
+                divEtf.monthlyYieldPerUnit = parseFloat((divEtf.monthlyYieldPerUnit * compoundRate).toFixed(1));
+                const yieldDiff = (divEtf.monthlyYieldPerUnit - oldYield).toFixed(1);
+                if (divEtf.ownedUnits > 0) {
+                    const totalEtfBoost = (yieldDiff * divEtf.ownedUnits).toFixed(0);
+                    eventLogs.push(`📈 <strong>Crescimento de Dividendos!</strong> As empresas aumentaram os proventos (+${((compoundRate - 1)*100).toFixed(1)}%). O rendimento subiu +$${yieldDiff}/mês por unidade (Ganho total: <strong>+$${totalEtfBoost}/mês</strong>).`);
+                }
+            }
+
+            // Treasury Bonds Rate Cycles
+            const bonds = assets.find(a => a.id === 'bonds');
+            if (Math.random() < 0.25) {
+                if (bonds) {
+                    bonds.monthlyYieldPerUnit = 3.2;
+                    bonds.riskText = 'Alta dos Juros (7.7% ao ano)';
+                    if (bonds.ownedUnits > 0) {
+                        const bondBoost = ((3.2 - bonds.baseYield) * bonds.ownedUnits).toFixed(0);
+                        eventLogs.push(`🏦 <strong>Alta de Juros pelo Banco Central:</strong> O rendimento dos Títulos subiu para <strong>+$3.2/unidade</strong> (7.7% ao ano). Adicionou <strong>+$${bondBoost}/mês</strong> à renda passiva.`);
+                    }
+                }
+            } else if (bonds) {
+                bonds.monthlyYieldPerUnit = bonds.baseYield;
+                bonds.riskText = 'Garantido / Seguro';
+            }
+
+            // Bitcoin Single Evaluation
+            const btc = assets.find(a => a.id === 'bitcoin');
+            if (btc) {
+                const btcRoll = Math.random();
+                if (btcRoll < 0.28) {
+                    btc.monthlyYieldPerUnit = 65;
+                    if (btc.ownedUnits > 0) {
+                        const btcGain = ((65 - btc.baseYield) * btc.ownedUnits).toFixed(0);
+                        eventLogs.push(`🚀 <strong>Ciclo de Alta no Bitcoin:</strong> O rally impulsionou o fluxo para +$65/unidade/mês! Somou <strong>+$${btcGain}/mês</strong> à sua renda passiva.`);
+                    }
+                } else if (btcRoll < 0.52) {
+                    btc.monthlyYieldPerUnit = -15;
+                    if (btc.ownedUnits > 0) {
+                        const btcLoss = (Math.abs(-15 - btc.baseYield) * btc.ownedUnits).toFixed(0);
+                        eventLogs.push(`📉 <strong>Ciclo de Baixa no Bitcoin:</strong> Correção temporária de preço (-$15/unidade/mês). Reduziu a renda passiva em <strong>-$${btcLoss}/mês</strong>.`);
+                    }
+                } else {
+                    btc.monthlyYieldPerUnit = btc.baseYield;
+                }
+            }
+
+            // Digital Business
+            const biz = assets.find(a => a.id === 'digital_business');
+            if (biz) {
+                const bizRoll = Math.random();
+                if (bizRoll < 0.25) {
+                    biz.monthlyYieldPerUnit = 120;
+                    if (biz.ownedUnits > 0) {
+                        eventLogs.push(`🚀 <strong>Expansão do Negócio Digital:</strong> Novo produto elevou o rendimento para +$120/unidade/mês este ano.`);
+                    }
+                } else if (bizRoll < 0.45) {
+                    biz.monthlyYieldPerUnit = 35;
+                    if (biz.ownedUnits > 0) {
+                        eventLogs.push(`⚠️ <strong>Aumento de Custos com Anúncios:</strong> Maior concorrência reduziu o rendimento do negócio digital para +$35/unidade/mês este ano.`);
+                    }
+                } else {
+                    biz.monthlyYieldPerUnit = biz.baseYield;
+                }
+            }
+
+            // Condo Repair
+            const condo = assets.find(a => a.id === 'rental_property');
+            if (condo && condo.ownedUnits > 0 && Math.random() < 0.20) {
+                const repairCost = Math.floor(Math.random() * 1500) + 1000;
+                if (cash >= repairCost) {
+                    cash -= repairCost;
+                    eventLogs.push(`🛠️ <strong>Reforma no Imóvel:</strong> Despesa emergencial de manutenção: <strong>-$${repairCost.toLocaleString()}</strong> do Caixa.`);
+                }
+            }
+
+            // 6. CASH SURPLUS ACCUMULATION
+            const netMonthly = baseMonthlySalary + getTotalMonthlyPassiveIncome() - getMonthlyExpenses();
+            const annualNetAdded = netMonthly * 12;
+            cash += annualNetAdded;
+
+            // UPDATE UI FEEDBACK
+            const toast = document.getElementById('turnSummaryToast');
+            const toastTitle = document.getElementById('turnSummaryTitle');
+            const toastText = document.getElementById('turnSummaryText');
+            const eventLogList = document.getElementById('eventLogList');
+            
+            if (toast && toastText) {
+                const yearsPassedStr = `Ano ${Math.floor(monthsPassed / 12)}`;
+                toastTitle.innerText = `Período Avançado (${yearsPassedStr})`;
+                toastText.innerHTML = `Superávit líquido acumulado: <strong class="font-mono text-emerald-800">${annualNetAdded >= 0 ? '+' : ''}$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}$${Math.round(netMonthly).toLocaleString()}/mês x 12 meses somados ao Caixa).`;
+
+                if (eventLogs.length > 0) {
+                    eventLogList.classList.remove('hidden');
+                    eventLogList.innerHTML = eventLogs.map(e => `
+                        <div class="p-2 rounded-lg bg-amber-50 border border-amber-200 text-[11px] text-amber-950">${e}</div>
+                    `).join('');
+                } else {
+                    eventLogList.classList.add('hidden');
+                    eventLogList.innerHTML = '';
+                }
+
+                toast.classList.remove('hidden');
+            }
+
+            renderUI();
+
+            if (getTotalMonthlyPassiveIncome() >= getMonthlyExpenses() && getMonthlyExpenses() > 0) {
+                triggerCrossoverVictory();
+            }
+        }
+
+        function toggleHowToPlayModal() {
+            const modal = document.getElementById('howToPlayModal');
+            if (modal) modal.classList.toggle('hidden');
+        }
+
+        function toggleLeaderboardModal() {
+            const modal = document.getElementById('leaderboardModal');
+            if (modal) {
+                modal.classList.toggle('hidden');
+                if (!modal.classList.contains('hidden')) {
+                    renderLeaderboardTable();
+                }
+            }
+        }
+
+        function getLeaderboard() {
+            const saved = localStorage.getItem('compounding_journey_leaderboard_pt');
+            if (saved) {
+                try { return JSON.parse(saved); } catch(e) {}
+            }
+            return DEFAULT_LEADERBOARD;
+        }
+
+        function saveLeaderboard(data) {
+            localStorage.setItem('compounding_journey_leaderboard_pt', JSON.stringify(data));
+        }
+
+        function renderLeaderboardTable() {
+            const container = document.getElementById('leaderboardTableBody');
+            if (!container) return;
+            const list = getLeaderboard();
+            list.sort((a, b) => a.months - b.months);
+
+            container.innerHTML = '';
+            list.forEach((entry, idx) => {
+                const yrs = Math.floor(entry.months / 12);
+                const timeStr = yrs > 0 ? `${yrs} Anos (${entry.months}m)` : `${entry.months} Meses`;
+
+                let rankBadge = `<span class="font-bold font-mono text-espresso-800">${idx + 1}</span>`;
+                if (idx === 0) rankBadge = `<i class="fa-solid fa-crown text-amber-500 text-sm"></i>`;
+                else if (idx === 1) rankBadge = `<i class="fa-solid fa-medal text-slate-400 text-sm"></i>`;
+                else if (idx === 2) rankBadge = `<i class="fa-solid fa-medal text-amber-700 text-sm"></i>`;
+
+                const tr = document.createElement('tr');
+                tr.className = idx % 2 === 0 ? 'bg-cream-50/50 hover:bg-cream-100' : 'bg-cream-100/40 hover:bg-cream-100';
+                tr.innerHTML = `
+                    <td class="p-2.5 text-center">${rankBadge}</td>
+                    <td class="p-2.5 font-semibold text-espresso-950">${entry.name}</td>
+                    <td class="p-2.5 text-center font-mono font-bold text-forest-800">${timeStr}</td>
+                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">$${entry.netWorth.toLocaleString()}</td>
+                `;
+                container.appendChild(tr);
+            });
+        }
+
+        function submitPlayerScore() {
+            const nameInput = document.getElementById('playerNameInput');
+            const name = nameInput ? nameInput.value.trim() : '';
+            if (!name) return;
+
+            const list = getLeaderboard();
+            list.push({
+                name: name,
+                months: monthsPassed,
+                netWorth: Math.round(getNetWorth())
+            });
+
+            saveLeaderboard(list);
+
+            const submitBox = document.getElementById('victoryLeaderboardSubmit');
+            if (submitBox) {
+                submitBox.innerHTML = `
+                    <div class="text-center py-1 text-emerald-800 font-bold text-xs flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                        Pontuação salva no Salão da Fama!
+                    </div>
+                `;
+            }
+
+            setTimeout(() => {
+                closeVictoryModal();
+                toggleLeaderboardModal();
+            }, 800);
+        }
+
+        function resetLeaderboard() {
+            saveLeaderboard(DEFAULT_LEADERBOARD);
+            renderLeaderboardTable();
+        }
+
+        function triggerCrossoverVictory() {
+            const exp = getMonthlyExpenses();
+            const pass = getTotalMonthlyPassiveIncome();
+            const joyScore = getHappinessScore();
+            
+            document.getElementById('victoryPassive').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;
+            document.getElementById('victoryExpenses').innerText = `$${exp.toLocaleString()}/mês`;
+            
+            const yrs = Math.floor(monthsPassed / 12);
+            document.getElementById('victoryTime').innerText = `${yrs} Anos (${monthsPassed} Meses)`;
+            document.getElementById('victoryNetWorth').innerText = `$${Math.round(getNetWorth()).toLocaleString()}`;
+
+            // Life Joy Title
+            const joyTitleElem = document.getElementById('victoryJoyTitle');
+            if (joyTitleElem) {
+                if (joyScore >= 75) {
+                    joyTitleElem.innerHTML = `👑 <strong class="text-amber-700">Mestre da Riqueza e Alegria</strong> (${joyScore}/100 Alegria)`;
+                } else if (joyScore >= 45) {
+                    joyTitleElem.innerHTML = `⚖️ <strong class="text-emerald-700">Construtor Equilibrado</strong> (${joyScore}/100 Alegria)`;
+                } else {
+                    joyTitleElem.innerHTML = `🪙 <strong class="text-rose-700">Asceta Frugal</strong> (${joyScore}/100 Alegria)`;
+                }
+            }
+
+            document.getElementById('victoryModal').classList.remove('hidden');
+        }
+
+        function closeVictoryModal() {
+            const modal = document.getElementById('victoryModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function renderUI() {
+            const exp = getMonthlyExpenses();
+            const pass = getTotalMonthlyPassiveIncome();
+            const coverage = getFreedomCoveragePct();
+            const netSurplus = getNetMonthlySurplus();
+            const joyScore = getHappinessScore();
+
+            // Header stats
+            document.getElementById('cashDisplay').innerText = `$${Math.round(cash).toLocaleString()}`;
+            document.getElementById('activeDisplay').innerText = `$${baseMonthlySalary.toLocaleString()}/mês`;
+            document.getElementById('expensesDisplay').innerText = `$${exp.toLocaleString()}/mês`;
+            document.getElementById('passiveDisplay').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;
+            document.getElementById('freedomPctDisplay').innerText = `${coverage.toFixed(1)}%`;
+            document.getElementById('freedomProgressBar').style.width = `${coverage}%`;
+            document.getElementById('marketplaceCash').innerText = `$${Math.round(cash).toLocaleString()}`;
+
+            // Life Joy Card Update
+            const joyDisplay = document.getElementById('happinessDisplay');
+            const joySubtext = document.getElementById('happinessSubtext');
+            if (joyDisplay && joySubtext) {
+                joyDisplay.innerText = `${joyScore} / 100`;
+                if (joyScore >= 70) {
+                    joySubtext.innerText = 'Alta energia • Bônus frequentes!';
+                    joySubtext.className = 'block text-[9px] text-emerald-800 font-bold mt-0.5';
+                } else if (joyScore >= 40) {
+                    joySubtext.innerText = 'Equilibrado • Ritmo sustentável';
+                    joySubtext.className = 'block text-[9px] text-amber-900/70 font-medium mt-0.5';
+                } else {
+                    joySubtext.innerText = 'Frugalidade extrema • Risco de estresse';
+                    joySubtext.className = 'block text-[9px] text-rose-700 font-bold mt-0.5';
+                }
+            }
+
+            // Family Status Badge
+            const familyBadge = document.getElementById('familyStatusBadge');
+            const familyText = document.getElementById('familyStatusText');
+            if (familyState.hasKid) {
+                familyBadge.classList.remove('hidden');
+                const yrs = Math.floor(familyState.kidAgeMonths / 12);
+                let stageLabel = "Bebé (+$500/mês)";
+                if (yrs >= 13) stageLabel = "Adolescente (+$1.000/mês)";
+                else if (yrs >= 6) stageLabel = "Ensino Fundamental (+$750/mês)";
+                familyText.innerText = `Filho ${yrs} Anos • ${stageLabel}`;
+            } else {
+                familyBadge.classList.add('hidden');
+            }
+
+            // Turn Action Projected Savings
+            const projElem = document.getElementById('projectedMonthlySavings');
+            if (projElem) {
+                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}$${Math.round(netSurplus).toLocaleString()}/mês`;
+                projElem.className = netSurplus >= 0 ? 'text-gold-400 font-mono font-bold' : 'text-rose-300 font-mono font-bold';
+            }
+
+            // Time & Crossover Bar
+            const years = Math.floor(monthsPassed / 12);
+            document.getElementById('monthsPassedBadge').innerText = `Ano ${years}`;
+
+            document.getElementById('barExpenseVal').innerText = `$${exp.toLocaleString()}/mês`;
+            document.getElementById('barPassiveVal').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;
+
+            // Normalize racing bar scales
+            const maxBarScale = Math.max(exp, pass, 3000);
+            document.getElementById('expensesBar').style.width = `${Math.min(100, (exp / maxBarScale) * 100)}%`;
+            document.getElementById('passiveBar').style.width = `${Math.min(100, (pass / maxBarScale) * 100)}%`;
+
+            const gap = exp - pass;
+            const gapElem = document.getElementById('crossoverGapNotice');
+            if (gap <= 0) {
+                gapElem.className = 'text-center py-1.5 text-xs font-bold text-emerald-800 bg-emerald-100 rounded-lg border border-emerald-300';
+                gapElem.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> PONTO DE CRUZAMENTO ALCANÇADO!`;
+            } else {
+                gapElem.className = 'text-center py-1 text-xs font-medium text-espresso-800/80 bg-cream-100 rounded-lg border border-cream-200';
+                gapElem.innerHTML = `Falta: <span class="font-bold text-rose-700">$${Math.round(gap).toLocaleString()}/mês</span> para a liberdade.`;
+            }
+
+            renderMarketplace();
+            renderHoldingsSidebar();
+        }
+
+        function renderMarketplace() {
+            const container = document.getElementById('assetGridContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            assets.forEach((asset) => {
+                const canAfford = cash >= asset.unitCost;
+                const card = document.createElement('div');
+                card.className = 'p-3 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5 flex flex-col justify-between';
+
+                const yieldColor = asset.monthlyYieldPerUnit >= 0 ? 'text-emerald-700' : 'text-rose-600';
+                const yieldSign = asset.monthlyYieldPerUnit >= 0 ? '+' : '';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
+                            <span class="flex items-center gap-1.5 truncate">
+                                <i class="fa-solid ${asset.icon} text-forest-800"></i>
+                                ${asset.name}
+                            </span>
+                        </div>
+                        <p class="text-[10px] text-espresso-800/70 mt-0.5 line-clamp-2">${asset.desc}</p>
+                    </div>
+
+                    <div class="space-y-1.5 pt-1.5 border-t border-cream-200">
+                        <div class="flex justify-between items-center text-[11px]">
+                            <span class="text-espresso-800/70">Preço: <strong class="text-espresso-950 font-mono">$${asset.unitCost.toLocaleString()}</strong></span>
+                            <span class="${yieldColor} font-bold font-mono">${yieldSign}$${asset.monthlyYieldPerUnit}/mês</span>
+                        </div>
+                        <div class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-200 truncate">
+                            <i class="fa-solid fa-shield-halved mr-0.5 text-amber-600"></i>${asset.riskText}
+                        </div>
+
+                        <div class="flex gap-1.5">
+                            <button onclick="buyAsset('${asset.id}', 1)" ${!canAfford ? 'disabled' : ''} class="flex-1 py-1 rounded-lg bg-forest-800 hover:bg-forest-700 disabled:opacity-40 text-white text-[11px] font-bold transition">
+                                Comprar 1
+                            </button>
+                            <button onclick="buyMaxAsset('${asset.id}')" ${!canAfford ? 'disabled' : ''} class="px-2 py-1 rounded-lg border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white disabled:opacity-40 text-[11px] font-bold transition">
+                                Máx
+                            </button>
+                        </div>
+                        ${asset.ownedUnits > 0 ? `
+                        <div class="flex gap-1.5 pt-1 border-t border-cream-200">
+                            <button onclick="sellAsset('${asset.id}', 1)" class="flex-1 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
+                                Vender 1
+                            </button>
+                            <button onclick="sellAllAsset('${asset.id}')" class="px-2 py-0.5 rounded-lg bg-rose-700 hover:bg-rose-800 text-white text-[10px] font-bold transition">
+                                Vender Tudo (${asset.ownedUnits})
+                            </button>
+                        </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderHoldingsSidebar() {
+            const container = document.getElementById('holdingsContainer');
+            const totalHoldingsCount = assets.reduce((sum, a) => sum + a.ownedUnits, 0);
+            
+            document.getElementById('holdingsCountBadge').innerText = `${totalHoldingsCount} Ativos`;
+            document.getElementById('sidebarTotalInvested').innerText = `$${getTotalInvestedCapital().toLocaleString()}`;
+            document.getElementById('sidebarTotalPassive').innerText = `+$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mês`;
+
+            updateAssetPieChart();
+
+            if (!container) return;
+            container.innerHTML = '';
+
+            const activeHoldings = assets.filter(a => a.ownedUnits > 0);
+
+            if (activeHoldings.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-4 text-espresso-800/60 italic text-xs">
+                        Você ainda não possui ativos. Compre no mercado!
+                    </div>
+                `;
+                return;
+            }
+
+            activeHoldings.forEach((asset) => {
+                const totalIncome = asset.ownedUnits * asset.monthlyYieldPerUnit;
+                const div = document.createElement('div');
+                div.className = 'p-2 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5';
+
+                div.innerHTML = `
+                    <div class="flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid ${asset.icon} text-forest-800"></i>
+                            <div>
+                                <span class="font-bold text-espresso-950 block leading-tight text-[11px]">${asset.name}</span>
+                                <span class="text-[9px] text-espresso-800/70 font-mono">${asset.ownedUnits} Unid. ($${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>
+                            </div>
+                        </div>
+                        <span class="font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}">${totalIncome >= 0 ? '+' : ''}$${Math.round(totalIncome)}/mês</span>
+                    </div>
+                    <div class="flex items-center justify-end gap-1.5 pt-1 border-t border-cream-200">
+                        <button onclick="sellAsset('${asset.id}', 1)" class="px-2 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
+                            Vender 1
+                        </button>
+                        <button onclick="sellAllAsset('${asset.id}')" class="px-2 py-0.5 rounded-lg bg-rose-700 hover:bg-rose-800 text-white text-[10px] font-bold transition">
+                            Vender Tudo
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(div);
+            });
+        }
+
+        function updateAssetPieChart() {
+            const pieContainer = document.getElementById('pieChartContainer');
+            const ctx = document.getElementById('assetPieChart');
+            if (!ctx || !pieContainer) return;
+
+            const activeHoldings = assets.filter(a => a.ownedUnits > 0);
+
+            if (activeHoldings.length === 0) {
+                pieContainer.classList.add('hidden');
+                if (pieChartInstance) {
+                    pieChartInstance.destroy();
+                    pieChartInstance = null;
+                }
+                return;
+            }
+
+            pieContainer.classList.remove('hidden');
+
+            const labels = activeHoldings.map(a => a.name);
+            const dataValues = activeHoldings.map(a => a.ownedUnits * a.unitCost);
+            const totalVal = dataValues.reduce((a, b) => a + b, 0);
+
+            const colorPalette = [
+                '#134e2a', // Verde Floresta
+                '#d4a338', // Ouro
+                '#3a2719', // Espresso
+                '#10b981', // Esmeralda
+                '#2563eb', // Azul
+                '#9333ea'  // Roxo
+            ];
+
+            if (pieChartInstance) {
+                pieChartInstance.destroy();
+                pieChartInstance = null;
+            }
+
+            try {
+                pieChartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: dataValues,
+                            backgroundColor: colorPalette.slice(0, activeHoldings.length),
+                            borderWidth: 2,
+                            borderColor: '#fcfaf7'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: { size: 9, family: 'Inter' },
+                                    boxWidth: 8,
+                                    padding: 4
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const val = context.raw || 0;
+                                        const pct = totalVal > 0 ? ((val / totalVal) * 100).toFixed(1) : 0;
+                                        return ` $${val.toLocaleString()} (${pct}%)`;
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '55%'
+                    }
+                });
+            } catch(e) {
+                console.error("Erro ao renderizar gráfico:", e);
+                pieChartInstance = null;
+            }
+        }
+
+        function buyAsset(assetId, units = 1) {
+            const asset = assets.find(a => a.id === assetId);
+            if (!asset) return;
+
+            const totalCost = asset.unitCost * units;
+            if (cash >= totalCost) {
+                cash -= totalCost;
+                asset.ownedUnits += units;
+                renderUI();
+
+                if (getTotalMonthlyPassiveIncome() >= getMonthlyExpenses()) {
+                    triggerCrossoverVictory();
+                }
+            }
+        }
+
+        function buyMaxAsset(assetId) {
+            const asset = assets.find(a => a.id === assetId);
+            if (!asset) return;
+
+            const maxUnits = Math.floor(cash / asset.unitCost);
+            if (maxUnits > 0) {
+                buyAsset(assetId, maxUnits);
+            }
+        }
+
+        function sellAsset(assetId, units = 1) {
+            const asset = assets.find(a => a.id === assetId);
+            if (!asset || asset.ownedUnits < units) return;
+
+            const returnCash = asset.unitCost * units;
+            cash += returnCash;
+            asset.ownedUnits -= units;
+            renderUI();
+        }
+
+        function sellAllAsset(assetId) {
+            const asset = assets.find(a => a.id === assetId);
+            if (!asset || asset.ownedUnits <= 0) return;
+
+            sellAsset(assetId, asset.ownedUnits);
+        }
+
+        function updateLifestyle(type, value) {
+            currentLifestyle[type] = value;
+            
+            // Update cost badges
+            document.getElementById('housingCostBadge').innerText = `$${lifestyleCosts.housing[currentLifestyle.housing]}/mês`;
+            document.getElementById('transportCostBadge').innerText = `$${lifestyleCosts.transport[currentLifestyle.transport]}/mês`;
+            document.getElementById('lifestyleCostBadge').innerText = `$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mês`;
+            document.getElementById('subscriptionsCostBadge').innerText = `$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mês`;
+            document.getElementById('travelCostBadge').innerText = `$${lifestyleCosts.travel[currentLifestyle.travel]}/mês`;
+            document.getElementById('shoppingCostBadge').innerText = `$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mês`;
+
+            renderUI();
+        }
+
+        function resetSimulation() {
+            monthsPassed = 0;
+            cash = 10000;
+            baseMonthlySalary = 3200;
+            familyState = { 
+                hasKid: false, 
+                kidAgeMonths: 0, 
+                kidEventTriggered: false, 
+                hasPet: false, 
+                hasElderCare: false,
+                promotionTriggered: false,
+                inflationMultiplier: 1.0,
+                totalJoyAccumulated: 0 
+            };
+            currentLifestyle = { housing: 'standard', transport: 'used', lifestyle: 'balanced', subscriptions: 'standard', travel: 'annual', shopping: 'standard' };
+
+            assets.forEach(a => {
+                a.ownedUnits = 0;
+                a.monthlyYieldPerUnit = a.baseYield;
+            });
+
+            document.getElementById('housingSelect').value = 'standard';
+            document.getElementById('transportSelect').value = 'used';
+            document.getElementById('lifestyleSelect').value = 'balanced';
+            document.getElementById('subscriptionsSelect').value = 'standard';
+            document.getElementById('travelSelect').value = 'annual';
+            document.getElementById('shoppingSelect').value = 'standard';
+
+            updateLifestyle('housing', 'standard');
+            closeVictoryModal();
+            renderUI();
+        }
+
+        window.onload = function() {
+            renderUI();
+        };
+    </script>
+</body>
+</html>

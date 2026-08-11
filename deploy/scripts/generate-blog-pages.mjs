@@ -19,6 +19,12 @@ const origin = 'https://compoundingjourney.com';
 const languages = ['en', 'es', 'pt'];
 const defaultLanguage = 'es';
 const logo = `${origin}/logo-compounding-journey.png`;
+const simulatorSlugs = [
+  'freedom-calendar',
+  'market-time-machine',
+  'passive-income-engine',
+  'monte-carlo-fire'
+];
 
 const copy = {
   en: {
@@ -388,6 +394,12 @@ function buildSitemap(articles) {
   const simulatorAlternates = languages
     .map((code) => ({ hreflang: code, href: `${origin}/${code}/simulator.html` }))
     .concat([{ hreflang: 'x-default', href: `${origin}/es/simulator.html` }]);
+  const simulatorToolEntries = simulatorSlugs.flatMap((slug) => {
+    const alternates = languages
+      .map((code) => ({ hreflang: code, href: `${origin}/${code}/simulators/${slug}.html` }))
+      .concat([{ hreflang: 'x-default', href: `${origin}/es/simulators/${slug}.html` }]);
+    return languages.map((code) => sitemapEntry(`${origin}/${code}/simulators/${slug}.html`, '', alternates));
+  });
 
   const newest = articles.reduce((latest, article) => (lastModified(article) > latest ? lastModified(article) : latest), '');
 
@@ -395,6 +407,7 @@ function buildSitemap(articles) {
     ...languages.map((code) => sitemapEntry(`${origin}${homeHref(code)}`, '', homeAlternates)),
     ...languages.map((code) => sitemapEntry(`${origin}/${code}/blog/`, newest, blogAlternates)),
     ...languages.map((code) => sitemapEntry(`${origin}/${code}/simulator.html`, '', simulatorAlternates)),
+    ...simulatorToolEntries,
     ...articles.map((article) => sitemapEntry(
       `${origin}${articlePath(article.language, article.slug)}`,
       lastModified(article),
@@ -449,7 +462,7 @@ for (const language of languages) {
 
 await fs.writeFile(path.join(root, 'sitemap.xml'), buildSitemap(generated));
 
-console.log(`Generated ${generated.length} article pages, ${languages.length} journal indexes and sitemap.xml with ${generated.length + 9} URLs.`);
+console.log(`Generated ${generated.length} article pages, ${languages.length} journal indexes and sitemap.xml with ${generated.length + 21} URLs.`);
 
 if (removed.length) {
   console.log(`Removed ${removed.length} article page(s) no longer in the catalog:`);

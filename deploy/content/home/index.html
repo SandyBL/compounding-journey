@@ -1165,61 +1165,45 @@
             mask-image: linear-gradient(to right, transparent, black 45%, black);
         }
 
-        .simulator-panel {
+        .simulator-grid {
             position: relative;
             display: grid;
-            grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-            gap: 3rem;
-            align-items: center;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1rem;
         }
 
-        .simulator-scorecard {
+        .simulator-card {
             position: relative;
-            min-height: 22rem;
-            padding: 2rem;
+            display: flex;
+            min-height: 20rem;
+            flex-direction: column;
+            padding: 1.4rem;
             border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             background: rgba(252, 241, 219, 0.08);
-            box-shadow: 0 28px 70px rgba(23, 55, 25, 0.3);
+            box-shadow: 0 22px 55px rgba(10, 31, 15, 0.22);
             backdrop-filter: blur(12px);
+            transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
         }
 
-        .simulator-score-row {
+        .simulator-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(216, 184, 95, 0.58);
+            background: rgba(252, 241, 219, 0.12);
+        }
+
+        .simulator-card-icon {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .simulator-score-row:last-child {
-            border-bottom: 0;
-        }
-
-        .simulator-score-label {
-            color: rgba(252, 241, 219, 0.75);
-        }
-
-        .simulator-value-positive {
-            color: #9fe0bd;
-        }
-
-        .simulator-value-gold {
-            color: #d8b85f;
-        }
-
-        .simulator-value-happiness {
-            color: #9ed8e8;
-        }
-
-        .simulator-value-iq {
-            color: #f0cd73;
-        }
-
-        .simulator-compass {
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: 1.25rem;
+            border-radius: 1rem;
             border: 1px solid rgba(197, 155, 39, 0.5);
             background: rgba(197, 155, 39, 0.1);
+            color: #e4c66f;
+            font-size: 1.15rem;
         }
 
         .simulator-play-link {
@@ -1227,11 +1211,13 @@
             align-items: center;
             justify-content: center;
             gap: 0.7rem;
-            min-height: 3.25rem;
-            padding: 0.85rem 1.35rem;
+            min-height: 2.8rem;
+            margin-top: auto;
+            padding: 0.72rem 0.9rem;
             border-radius: 0.8rem;
             background: #c59b27;
             color: #173719;
+            font-size: 0.78rem;
             font-weight: 800;
             box-shadow: 0 12px 28px rgba(197, 155, 39, 0.22);
             transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
@@ -1252,6 +1238,22 @@
         body.lang-en .simulator-play-link[lang-content="en"],
         body.lang-pt .simulator-play-link[lang-content="pt"] {
             display: inline-flex !important;
+        }
+
+        @media (max-width: 1100px) {
+            .simulator-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .simulator-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .simulator-card {
+                min-height: 0;
+            }
         }
 
         @media (max-width: 900px) {
@@ -1835,81 +1837,60 @@
         </div>
     </section>
 
-    <!-- PERSONAL FINANCE SIMULATOR -->
+    <!-- INTERACTIVE SIMULATOR SUITE -->
     <section id="simulador" aria-labelledby="simulator-heading" class="simulator-stage scroll-mt-20 py-20 text-white border-b border-creamborder">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="simulator-panel">
-                <div>
-                    <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-3">
-                        <span lang-content="es">Aprender tomando decisiones</span>
-                        <span lang-content="en">Learn by making decisions</span>
-                        <span lang-content="pt">Aprender a tomar decisões</span>
-                    </p>
-                    <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-6">
-                        <span lang-content="es">Simulador de Finanzas Personales</span>
-                        <span lang-content="en">Personal Finance Simulator</span>
-                        <span lang-content="pt">Simulador de Finanças Pessoais</span>
-                    </h2>
-                    <p class="text-base sm:text-lg text-creamsoft/85 leading-relaxed max-w-2xl mb-4">
-                        <span lang-content="es">Pon a prueba cómo reaccionas ante decisiones financieras de la vida cotidiana. Cada elección cambia tu patrimonio, flujo de caja, felicidad e inteligencia financiera.</span>
-                        <span lang-content="en">Test how you respond to everyday financial decisions. Every choice changes your net worth, cash flow, happiness, and financial intelligence.</span>
-                        <span lang-content="pt">Testa como reages a decisões financeiras do dia a dia. Cada escolha altera o teu património, fluxo de caixa, felicidade e inteligência financeira.</span>
-                    </p>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed max-w-2xl mb-8">
-                        <span lang-content="es">Recorre 15 situaciones, descubre las consecuencias de tus decisiones y comprueba cuántos puntos consigues al final.</span>
-                        <span lang-content="en">Work through 15 scenarios, discover the consequences of your decisions, and see how many points you earn at the end.</span>
-                        <span lang-content="pt">Percorre 15 situações, descobre as consequências das tuas decisões e vê quantos pontos consegues no final.</span>
-                    </p>
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-3"><span lang-content="es">Aprende experimentando</span><span lang-content="en">Learn by experimenting</span><span lang-content="pt">Aprende experimentando</span></p>
+                <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4"><span lang-content="es">Cinco simuladores para diseñar tu libertad</span><span lang-content="en">Five simulators to design your freedom</span><span lang-content="pt">Cinco simuladores para desenhar a tua liberdade</span></h2>
+                <p class="text-base text-creamsoft/80 leading-relaxed"><span lang-content="es">Explora decisiones, tiempo, mercados, ingresos pasivos y la resiliencia de tu plan FIRE con experiencias prácticas y gratuitas.</span><span lang-content="en">Explore decisions, time, markets, passive income, and the resilience of your FIRE plan through free hands-on experiences.</span><span lang-content="pt">Explora decisões, tempo, mercados, rendimento passivo e a resistência do teu plano FIRE através de experiências práticas e gratuitas.</span></p>
+            </div>
 
-                    <a lang-content="es" href="/es/simulator.html" class="simulator-play-link">
-                        <span>Jugar al simulador</span>
-                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
-                    </a>
-                    <a lang-content="en" href="/en/simulator.html" class="simulator-play-link">
-                        <span>Play the simulator</span>
-                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
-                    </a>
-                    <a lang-content="pt" href="/pt/simulator.html" class="simulator-play-link">
-                        <span>Jogar o simulador</span>
-                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
-                    </a>
-                </div>
+            <div class="simulator-grid">
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Decisiones financieras</span><span lang-content="en">Financial Decisions</span><span lang-content="pt">Decisões Financeiras</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Vive 15 situaciones cotidianas y observa cómo cada elección cambia tu patrimonio, bienestar y conocimiento financiero.</span><span lang-content="en">Navigate 15 everyday scenarios and see how each choice changes your wealth, well-being, and financial knowledge.</span><span lang-content="pt">Percorre 15 situações quotidianas e vê como cada escolha altera o teu património, bem-estar e conhecimento financeiro.</span></p>
+                    <a lang-content="es" href="/es/simulator.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="en" href="/en/simulator.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="pt" href="/pt/simulator.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </article>
 
-                <div class="simulator-scorecard" aria-hidden="true">
-                    <div class="flex items-center justify-between gap-4 mb-5">
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-warmgold font-extrabold">
-                                <span lang-content="es">Tu marcador</span>
-                                <span lang-content="en">Your scorecard</span>
-                                <span lang-content="pt">O teu placar</span>
-                            </p>
-                            <p class="text-xl font-extrabold mt-1">
-                                <span lang-content="es">Decisión 08 / 15</span>
-                                <span lang-content="en">Decision 08 / 15</span>
-                                <span lang-content="pt">Decisão 08 / 15</span>
-                            </p>
-                        </div>
-                        <div class="simulator-compass w-14 h-14 rounded-full flex items-center justify-center text-warmgold text-xl">
-                            <i class="fa-solid fa-compass"></i>
-                        </div>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="es">Patrimonio neto</span><span lang-content="en">Net worth</span><span lang-content="pt">Património líquido</span></span>
-                        <strong class="simulator-value-positive">+$18,240</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="es">Flujo de caja</span><span lang-content="en">Cash flow</span><span lang-content="pt">Fluxo de caixa</span></span>
-                        <strong class="simulator-value-gold">+$735</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="es">Felicidad</span><span lang-content="en">Happiness</span><span lang-content="pt">Felicidade</span></span>
-                        <strong class="simulator-value-happiness">68%</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="es">Inteligencia financiera</span><span lang-content="en">Financial intelligence</span><span lang-content="pt">Inteligência financeira</span></span>
-                        <strong class="simulator-value-iq">74 pts</strong>
-                    </div>
-                </div>
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Calendario de la Libertad</span><span lang-content="en">Freedom Calendar</span><span lang-content="pt">Calendário da Liberdade</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Convierte tus metas financieras en una línea de tiempo visual y descubre cuándo cada nivel de libertad puede estar a tu alcance.</span><span lang-content="en">Turn financial goals into a visual timeline and discover when each level of freedom may come within reach.</span><span lang-content="pt">Transforma metas financeiras numa linha temporal visual e descobre quando cada nível de liberdade pode ficar ao teu alcance.</span></p>
+                    <a lang-content="es" href="/es/simulators/freedom-calendar.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="en" href="/en/simulators/freedom-calendar.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="pt" href="/pt/simulators/freedom-calendar.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </article>
+
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Máquina del Tiempo del Mercado</span><span lang-content="en">Market Time Machine</span><span lang-content="pt">Máquina do Tempo do Mercado</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Compara carteras a través de crisis y ciclos históricos para entender el riesgo, la recuperación y el poder de mantener el rumbo.</span><span lang-content="en">Compare portfolios across historic crises and cycles to understand risk, recovery, and the power of staying invested.</span><span lang-content="pt">Compara carteiras através de crises e ciclos históricos para compreender o risco, a recuperação e o poder de manter o rumo.</span></p>
+                    <a lang-content="es" href="/es/simulators/market-time-machine.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="en" href="/en/simulators/market-time-machine.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="pt" href="/pt/simulators/market-time-machine.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </article>
+
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Motor de Ingresos Pasivos</span><span lang-content="en">Passive Income Engine</span><span lang-content="pt">Motor de Rendimento Passivo</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Construye una combinación de activos, adelanta el tiempo y observa cómo el flujo de caja puede crecer hasta cubrir tus gastos.</span><span lang-content="en">Build an asset mix, advance through time, and watch cash flow grow toward covering your living expenses.</span><span lang-content="pt">Constrói uma combinação de ativos, avança no tempo e vê o fluxo de caixa crescer até cobrir as tuas despesas.</span></p>
+                    <a lang-content="es" href="/es/simulators/passive-income-engine.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="en" href="/en/simulators/passive-income-engine.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="pt" href="/pt/simulators/passive-income-engine.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </article>
+
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-plane-up" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Vuelo de Supervivencia FIRE</span><span lang-content="en">FIRE Survival Flight</span><span lang-content="pt">Voo de Sobrevivência FIRE</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Somete tu retiro a miles de futuros posibles con Monte Carlo y mide la probabilidad de que tu cartera sobreviva.</span><span lang-content="en">Stress-test retirement across thousands of possible futures with Monte Carlo and measure your portfolio's survival odds.</span><span lang-content="pt">Testa a reforma em milhares de futuros possíveis com Monte Carlo e mede a probabilidade de sobrevivência da tua carteira.</span></p>
+                    <a lang-content="es" href="/es/simulators/monte-carlo-fire.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="en" href="/en/simulators/monte-carlo-fire.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a lang-content="pt" href="/pt/simulators/monte-carlo-fire.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </article>
             </div>
         </div>
     </section>

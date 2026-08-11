@@ -137,6 +137,32 @@ O teu perfil de risco mede o teu horizonte temporal, a tua capacidade financeira
 
 Não. Todas as ferramentas, calculadoras e modelos de A Jornada de Crescimento Composto são estritamente educacionais e ilustrativos. Não constituem aconselhamento financeiro, de investimento ou fiscal formal. Para recomendações adaptadas ao teu contexto, objetivos e tolerância ao risco, podes preencher os formulários de diagnóstico ou enviar uma mensagem direta.
 
+## Interactive simulators
+
+### Español
+
+- Simulador de Finanzas Personales y Riqueza: https://compoundingjourney.com/es/simulator.html
+- Calendario de la Libertad: https://compoundingjourney.com/es/simulators/freedom-calendar.html
+- Máquina del Tiempo del Mercado: https://compoundingjourney.com/es/simulators/market-time-machine.html
+- Motor de Ingresos Pasivos: https://compoundingjourney.com/es/simulators/passive-income-engine.html
+- Vuelo de Supervivencia FIRE Monte Carlo: https://compoundingjourney.com/es/simulators/monte-carlo-fire.html
+
+### English
+
+- Personal Finance & Wealth Simulator: https://compoundingjourney.com/en/simulator.html
+- Freedom Calendar: https://compoundingjourney.com/en/simulators/freedom-calendar.html
+- Market Time Machine: https://compoundingjourney.com/en/simulators/market-time-machine.html
+- Passive Income Engine: https://compoundingjourney.com/en/simulators/passive-income-engine.html
+- Monte Carlo FIRE Survival Flight: https://compoundingjourney.com/en/simulators/monte-carlo-fire.html
+
+### Português
+
+- Simulador de Finanças Pessoais e Riqueza: https://compoundingjourney.com/pt/simulator.html
+- Calendário da Liberdade: https://compoundingjourney.com/pt/simulators/freedom-calendar.html
+- Máquina do Tempo do Mercado: https://compoundingjourney.com/pt/simulators/market-time-machine.html
+- Motor de Rendimento Passivo: https://compoundingjourney.com/pt/simulators/passive-income-engine.html
+- Voo de Sobrevivência FIRE Monte Carlo: https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html
+
 ## Journal articles
 
 ### El sistema de dinero lento: una forma más tranquila de crear patrimonio
