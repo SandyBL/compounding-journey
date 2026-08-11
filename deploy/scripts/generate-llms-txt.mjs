@@ -23,6 +23,35 @@ const defaultLanguage = 'es';
 
 const languageNames = { es: 'Español', en: 'English', pt: 'Português' };
 const journalNames = { es: 'Diario en español', en: 'Journal in English', pt: 'Diário em português' };
+const simulatorCatalog = {
+  en: [
+    ['Personal Finance & Wealth Simulator', '/en/simulator.html', 'Practice everyday money decisions and see their effects on wealth, cash flow, happiness, and financial knowledge.'],
+    ['Freedom Calendar', '/en/simulators/freedom-calendar.html', 'Turn financial goals into a visual timeline toward increasing levels of freedom.'],
+    ['Market Time Machine', '/en/simulators/market-time-machine.html', 'Compare portfolios through market cycles and historic crises from 1920 onward.'],
+    ['Passive Income Engine', '/en/simulators/passive-income-engine.html', 'Build income-producing assets and track passive cash flow over time.'],
+    ['Monte Carlo FIRE Survival Flight', '/en/simulators/monte-carlo-fire.html', 'Stress-test retirement withdrawals across thousands of possible market futures.']
+  ],
+  es: [
+    ['Simulador de Finanzas Personales y Riqueza', '/es/simulator.html', 'Practica decisiones financieras cotidianas y observa su efecto en tu patrimonio, flujo de caja, felicidad y conocimiento.'],
+    ['Calendario de la Libertad', '/es/simulators/freedom-calendar.html', 'Convierte objetivos financieros en una línea de tiempo visual hacia mayores niveles de libertad.'],
+    ['Máquina del Tiempo del Mercado', '/es/simulators/market-time-machine.html', 'Compara carteras durante ciclos y crisis históricas desde 1920.'],
+    ['Motor de Ingresos Pasivos', '/es/simulators/passive-income-engine.html', 'Construye activos productivos y sigue el crecimiento de los ingresos pasivos.'],
+    ['Vuelo de Supervivencia FIRE Monte Carlo', '/es/simulators/monte-carlo-fire.html', 'Pon a prueba retiradas de jubilación en miles de futuros de mercado posibles.']
+  ],
+  pt: [
+    ['Simulador de Finanças Pessoais e Riqueza', '/pt/simulator.html', 'Pratica decisões financeiras quotidianas e observa o efeito no património, fluxo de caixa, felicidade e conhecimento.'],
+    ['Calendário da Liberdade', '/pt/simulators/freedom-calendar.html', 'Transforma objetivos financeiros numa linha temporal visual rumo a maiores níveis de liberdade.'],
+    ['Máquina do Tempo do Mercado', '/pt/simulators/market-time-machine.html', 'Compara carteiras durante ciclos e crises históricas desde 1920.'],
+    ['Motor de Rendimento Passivo', '/pt/simulators/passive-income-engine.html', 'Constrói ativos produtivos e acompanha o crescimento do rendimento passivo.'],
+    ['Voo de Sobrevivência FIRE Monte Carlo', '/pt/simulators/monte-carlo-fire.html', 'Testa levantamentos de reforma em milhares de futuros de mercado possíveis.']
+  ]
+};
+
+function simulatorLines(language) {
+  return simulatorCatalog[language]
+    .map(([name, url, description]) => `- [${name}](${origin}${url}): ${description}`)
+    .join('\n');
+}
 
 function homeUrl(language) {
   return language === defaultLanguage ? `${origin}/` : `${origin}/${language}/`;
@@ -96,11 +125,9 @@ all of them are listed in [the sitemap](${origin}/sitemap.xml).
 
 ${languages.map((code) => `### ${languageNames[code]}\n\n${articleLines(code)}`).join('\n\n')}
 
-## Interactive Simulator
+## Interactive Simulators
 
-- [Personal Finance & Wealth Simulator](${origin}/en/simulator.html)
-- [Simulador de Finanzas Personales y Riqueza](${origin}/es/simulator.html)
-- [Simulador de Finanças Pessoais e Riqueza](${origin}/pt/simulator.html)
+${languages.map((code) => `### ${languageNames[code]}\n\n${simulatorLines(code)}`).join('\n\n')}
 
 ## Free Downloads
 
@@ -187,6 +214,10 @@ financial advice. When citing it, attribute Compounding Journey and Sandy
 Bradbury and link to the relevant page.
 
 ${languages.map((code) => faqSection(code)).filter(Boolean).join('\n\n')}
+
+## Interactive simulators
+
+${languages.map((code) => `### ${languageNames[code]}\n\n${simulatorLines(code)}`).join('\n\n')}
 
 ## Journal articles
 

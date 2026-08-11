@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monte Carlo FIRE Retirement Survival Simulator | Compounding Journey</title>
+  <meta name="description" content="Stress-test a FIRE retirement plan across thousands of Monte Carlo market paths and estimate how likely a portfolio is to sustain withdrawals.">
+  <link rel="canonical" href="https://compoundingjourney.com/en/simulators/monte-carlo-fire.html">
+  <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/monte-carlo-fire.html">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="en_US"><meta property="og:title" content="Monte Carlo FIRE Retirement Survival Simulator"><meta property="og:description" content="Estimate whether a retirement portfolio can survive thousands of possible market futures."><meta property="og:url" content="https://compoundingjourney.com/en/simulators/monte-carlo-fire.html"><meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Monte Carlo FIRE Retirement Survival Simulator"><meta name="twitter:description" content="Estimate whether a retirement portfolio can survive thousands of possible market futures."><meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Monte Carlo FIRE Survival Flight","url":"https://compoundingjourney.com/en/simulators/monte-carlo-fire.html","description":"A Monte Carlo simulator for estimating retirement portfolio survival under varied market returns and withdrawal assumptions.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Inter & Orbitron for HUD styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #f1f5f9;
+      background-color: #020617;
+    }
+    
+    .font-hud {
+      font-family: 'Orbitron', monospace;
+    }
+
+    /* Custom Glassmorphism Panels */
+    .hud-glass {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+    }
+
+    /* Canvas CRT Overlay Grid Effect */
+    .scanlines {
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.3) 50%
+      );
+      background-size: 100% 4px;
+    }
+
+    /* Glowing accent lights */
+    .glow-cyan {
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
+    }
+    .glow-green {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+    }
+    .glow-amber {
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+    }
+    .glow-red {
+      box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
+    }
+
+    /* Range slider custom thumb */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      background: #38bdf8;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0284c7;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    @keyframes warningPulse {
+      0%, 100% { border-color: rgba(239, 68, 68, 0.9); box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
+      50% { border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
+    }
+    .crash-warning {
+      animation: warningPulse 1s infinite;
+    }
+  </style>
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-100">
+
+  <!-- HEADER & NAVIGATION -->
+    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+        <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+            <a href="/en/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Return to Compounding Journey">
+                <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
+                    <img src="/logo-compounding-journey.png" alt="Compounding Journey" width="2048" height="2048" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="header-brand-copy">
+                    <span class="header-brand-name">Compounding Journey</span>
+                    <span class="header-brand-tagline">Your map to freedom</span>
+                </div>
+            </a>
+
+            <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
+                <a href="/en/#simulador" class="site-return-link hidden sm:inline-flex">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    <span>Website</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+  <div class="site-simulator-nav bg-slate-950 border-b border-slate-800">
+    <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+            <button id="nav-btn-cockpit" onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
+              <i class="fa-solid fa-gauge-high mr-1"></i> COCKPIT
+            </button>
+            <button id="nav-btn-leaderboard" onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+              <i class="fa-solid fa-trophy mr-1 text-amber-400"></i> LEADERBOARD
+            </button>
+            <button id="nav-btn-montecarlo" onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+              <i class="fa-solid fa-chart-line mr-1"></i> 1,000 SIMS
+            </button>
+            <button id="nav-btn-academy" onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+              <i class="fa-solid fa-graduation-cap mr-1"></i> ACADEMY
+            </button>
+          </nav>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
+
+    <!-- ================================================================= -->
+    <!-- TAB 1: INTERACTIVE FLIGHT COCKPIT -->
+    <!-- ================================================================= -->
+    <div id="tab-cockpit" class="space-y-6">
+
+      <!-- MISSION BRIEFING & ONBOARDING -->
+      <div class="hud-glass p-5 rounded-2xl border border-cyan-500/40 relative overflow-hidden shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-950/30 to-slate-900">
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          <div class="space-y-1.5 max-w-3xl">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-cyan-500 text-slate-950 font-hud font-bold text-[11px] uppercase tracking-wider">
+                🎯 MISSION OBJECTIVE
+              </span>
+              <span class="text-xs text-cyan-300 font-mono font-semibold">Goal: Reach Age 100 with Minimal Years in Crashline!</span>
+            </div>
+            <h2 class="text-base sm:text-lg font-bold text-white font-hud">
+              PILOT YOUR RETIREMENT FLIGHT TO AGE 100
+            </h2>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong class="text-cyan-300">How Crashline Works:</strong> If market drops or high spending drain your net worth to $0, you enter the <strong class="text-red-400">CRASHLINE ZONE</strong>. 
+              You get a <strong>10-Year Grace Period</strong> to adjust tactics (side job, spending cuts, cash buffers, downsizing) and bounce back. Stay in the crashline for 10 consecutive years and your flight is destroyed!
+            </p>
+          </div>
+
+          <!-- Quick 3-Step Guide Badges -->
+          <div class="grid grid-cols-3 gap-2 w-full lg:w-auto text-[11px] shrink-0 font-mono">
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+              <span class="text-cyan-400 font-bold block">1. BALANCE ASSETS</span>
+              <span class="text-[10px] text-slate-400 block leading-tight">Too many stocks = crash vulnerability!</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+              <span class="text-emerald-400 font-bold block">2. LAUNCH FLIGHT</span>
+              <span class="text-[10px] text-slate-400 block leading-tight">Fly from Age 50 to 100</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+              <span class="text-amber-400 font-bold block">3. USE 6 TACTICS</span>
+              <span class="text-[10px] text-slate-400 block leading-tight">Climb out of crashline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Top Presets & Quick Flight Scenarios -->
+      <div class="hud-glass p-4 rounded-2xl border border-slate-800 shadow-xl">
+        <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="font-hud font-bold text-cyan-400 uppercase text-[11px] flex items-center gap-1.5">
+              <i class="fa-solid fa-sliders text-cyan-400"></i> RETIREMENT SCENARIO PRESETS:
+            </span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
+              <i class="fa-solid fa-fire-flame-curved text-red-400"></i> High Risk SWR ($850k / $45k)
+            </button>
+            <button onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+              <i class="fa-solid fa-shield-halved text-cyan-400"></i> Trinity Standard ($1M / $40k)
+            </button>
+            <button onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+              <i class="fa-solid fa-leaf text-emerald-400"></i> Tight Lean FIRE ($650k / $35k)
+            </button>
+            <button onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+              <i class="fa-solid fa-crown text-purple-400"></i> Fat FIRE ($1.5M / $75k)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN COCKPIT GRID (Left Controls + Right Canvas Monitor) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- LEFT COLUMN: Flight Controls Deck (4 cols) -->
+        <div class="lg:col-span-4 space-y-5">
+          
+          <!-- Flight Parameters Card -->
+          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
+            <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-2.5 flex items-center justify-between">
+              <span><i class="fa-solid fa-gears mr-1.5"></i> PILOT & FUEL PARAMETERS</span>
+              <span class="text-[10px] text-slate-400 font-sans font-normal">Pre-Flight Deck</span>
+            </h3>
+
+            <!-- Pilot Name Input -->
+            <div class="space-y-1">
+              <label class="text-xs font-medium text-slate-300 flex items-center gap-1.5">
+                <i class="fa-solid fa-id-card text-amber-400"></i> Pilot Callsign / Name
+              </label>
+              <input type="text" id="input-pilot-name" value="Captain FIRE" onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
+            </div>
+
+            <!-- Nest Egg Input (Controlled Max: $2,000,000, Default: $850,000) -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label class="text-slate-300 font-medium flex items-center gap-1.5">
+                  Starting Nest Egg ($)
+                </label>
+                <div class="flex items-center gap-2">
+                  <button onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
+                    <i class="fa-solid fa-calculator mr-1"></i> Estimate Required
+                  </button>
+                  <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">$850,000</span>
+                </div>
+              </div>
+              <input type="range" id="input-nestegg" min="200000" max="2000000" step="25000" value="850000" oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+            </div>
+
+            <!-- Annual Spending Input (Controlled Min: $35,000, Default: $45,000) -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label class="text-slate-300 font-medium flex items-center gap-1.5">
+                  Annual Living Spend ($)
+                </label>
+                <div class="flex items-center gap-2">
+                  <button onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
+                    <i class="fa-solid fa-calculator mr-1"></i> Calculate Budget
+                  </button>
+                  <span id="disp-spending" class="font-mono text-emerald-300 font-bold">$45,000</span>
+                </div>
+              </div>
+              <input type="range" id="input-spending" min="35000" max="150000" step="2500" value="45000" oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1">
+                <span>Withdrawal Rate (SWR):</span>
+                <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800">
+                  5.3% (HIGH RISK)
+                </span>
+              </div>
+            </div>
+
+            <!-- Age Range Inputs -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="space-y-1">
+                <div class="flex justify-between items-center text-xs">
+                  <label class="text-slate-300 font-medium">FIRE Freedom Age</label>
+                  <span class="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 rounded font-mono">Target Start</span>
+                </div>
+                <input type="number" id="input-startage" min="30" max="85" value="50" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+              </div>
+              <div class="space-y-1">
+                <div class="flex justify-between items-center text-xs">
+                  <label class="text-slate-300 font-medium">Destination Age</label>
+                  <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded font-mono">Longevity</span>
+                </div>
+                <input type="number" id="input-endage" min="70" max="110" value="100" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+              </div>
+            </div>
+
+            <!-- Asset Allocation Strategy -->
+            <div class="space-y-2 pt-2 border-t border-slate-800">
+              <div class="flex justify-between items-center">
+                <label class="text-xs font-bold text-slate-200">Asset Allocation Portfolio</label>
+                <!-- Target Date Fund Toggle -->
+                <label class="inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="toggle-tdf" onchange="toggleTargetDateFund()" class="sr-only peer">
+                  <div class="w-8 h-4 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-cyan-500 relative"></div>
+                  <span class="ml-2 text-[11px] font-mono text-cyan-400">Auto Target Date Fund</span>
+                </label>
+              </div>
+
+              <!-- Allocation Sliders Container -->
+              <div id="allocation-sliders-container" class="space-y-2 pt-1">
+                <div>
+                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                    <span class="text-cyan-400 font-bold">Stocks (High Volatility Growth)</span>
+                    <span id="disp-pct-stocks">80%</span>
+                  </div>
+                  <input type="range" id="input-stocks" min="0" max="100" value="80" oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                    <span class="text-emerald-400 font-bold">Bonds (Stability & Yield)</span>
+                    <span id="disp-pct-bonds">15%</span>
+                  </div>
+                  <input type="range" id="input-bonds" min="0" max="100" value="15" oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                    <span class="text-amber-400 font-bold">Cash Buffer</span>
+                    <span id="disp-pct-cash">5%</span>
+                  </div>
+                  <input type="range" id="input-cash" min="0" max="100" value="5" oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                </div>
+              </div>
+
+              <!-- Target Date Fund Glidepath Visual Progress Bar -->
+              <div id="tdf-glidepath-card" class="hidden p-3 rounded-xl bg-cyan-950/40 border border-cyan-800/80 space-y-2">
+                <div class="flex justify-between items-center text-[11px]">
+                  <span class="font-bold text-cyan-300 font-mono"><i class="fa-solid fa-route text-cyan-400"></i> Dynamic TDF Glidepath</span>
+                  <span id="tdf-status-text" class="text-[10px] text-slate-400">De-risking active</span>
+                </div>
+                <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden flex border border-slate-700">
+                  <div id="tdf-bar-stocks" class="bg-cyan-500 h-full transition-all duration-300" style="width: 80%"></div>
+                  <div id="tdf-bar-bonds" class="bg-emerald-500 h-full transition-all duration-300" style="width: 15%"></div>
+                  <div id="tdf-bar-cash" class="bg-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
+                </div>
+                <p class="text-[10px] text-slate-300 leading-tight">
+                  Automatically shifts from growth stocks to conservative bonds as your age increases toward 100.
+                </p>
+              </div>
+            </div>
+
+            <!-- Turbulence Sequence Selector -->
+            <div class="space-y-1.5 pt-2 border-t border-slate-800">
+              <label class="text-xs font-bold text-slate-200">Economic Turbulence Sequence</label>
+              <select id="select-market-sequence" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
+                <option value="simulated">🎲 High Volatility Monte Carlo (Random Turbulence)</option>
+                <option value="1970s">🔥 1970s Severe Inflation Spike & Bear Market</option>
+                <option value="2000s">💥 2000 Dot-Com Crash + 2008 Great Recession</option>
+                <option value="bull">🚀 Extended Historical Bull Market</option>
+              </select>
+            </div>
+
+            <!-- Launch & Reset Controls -->
+            <div class="pt-3 flex gap-2">
+              <button id="btn-launch-flight" onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plane-departure text-sm"></i> <span id="btn-launch-text">LAUNCH FLIGHT</span>
+              </button>
+              <button onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition">
+                <i class="fa-solid fa-rotate-left"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Visual HUD Monitor & 6 Mid-Flight Action Deck (8 cols) -->
+        <div class="lg:col-span-8 space-y-5">
+          
+          <!-- Cockpit Sky & Flight Path Visual Container -->
+          <div id="hud-visual-container" class="hud-glass p-4 rounded-2xl border border-slate-800 relative overflow-hidden shadow-2xl transition-all duration-300">
+            
+            <!-- HUD Telemetry Header Overlay -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-800/80">
+              <div class="flex items-center space-x-3">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-hud font-semibold bg-slate-900 border border-slate-700 text-cyan-300">
+                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5"></i> AGE: <span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
+                </span>
+                <span id="hud-flight-status-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
+                  Ready On Tarmac
+                </span>
+              </div>
+
+              <!-- Flight Telemetry Counters -->
+              <div class="flex items-center gap-3 sm:gap-4 text-xs font-mono">
+                <div>
+                  <span class="text-slate-400 text-[10px] block uppercase">Altitude</span>
+                  <span id="hud-portfolio-val" class="text-emerald-400 font-bold text-sm">$850,000</span>
+                </div>
+                <div class="border-l border-slate-800 pl-3">
+                  <span class="text-slate-400 text-[10px] block uppercase">Current SWR</span>
+                  <span id="hud-current-swr" class="text-amber-300 font-bold text-sm">5.3%</span>
+                </div>
+                <div class="border-l border-slate-800 pl-3">
+                  <span class="text-slate-400 text-[10px] block uppercase">Crashline Yrs</span>
+                  <span id="hud-crashline-counter" class="text-emerald-400 font-bold text-sm">0 / 10 Yrs</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Canvas Flight Monitor Visualizer -->
+            <div class="relative w-full h-[290px] sm:h-[340px] bg-slate-950 rounded-xl overflow-hidden border border-slate-800/80 group">
+              <canvas id="flightCanvas" class="w-full h-full block"></canvas>
+              <div class="scanlines absolute inset-0 pointer-events-none opacity-40"></div>
+
+              <!-- Flight Pitch Legend Overlay -->
+              <div class="absolute top-3 right-3 px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 backdrop-blur-md text-[11px] font-mono space-y-1 shadow-lg pointer-events-none hidden sm:block">
+                <div class="text-[10px] text-slate-400 uppercase font-bold border-b border-slate-800 pb-1 flex items-center gap-1.5">
+                  <i class="fa-solid fa-compass text-cyan-400"></i> FLIGHT PITCH
+                </div>
+                <div id="hud-pitch-badge" class="flex items-center gap-1.5 font-bold text-emerald-400">
+                  <span>🛫 PITCH: LEVEL CRUISE</span>
+                </div>
+              </div>
+
+              <!-- Dynamic Co-pilot Educational Guidance Popup -->
+              <div id="copilot-banner" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
+                <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 text-base">
+                  <i id="copilot-icon" class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="space-y-1 flex-1">
+                  <div class="flex justify-between items-center">
+                    <span id="copilot-title" class="font-hud font-bold text-amber-400 text-xs uppercase">CO-PILOT ALERT: MARKET TURBULENCE</span>
+                    <button onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                  <p id="copilot-message" class="text-slate-200 text-xs leading-relaxed">
+                    Market dropped -22% this year. Early retirement drops trigger Sequence of Returns Risk!
+                  </p>
+                  <div id="copilot-tip" class="text-[11px] text-cyan-300 font-mono pt-1 border-t border-slate-800/80">
+                    💡 Tip: Activate mid-flight adjustments below to stabilize pitch.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Atmospheric Indicator Footer Overlay -->
+              <div class="absolute bottom-2 left-3 right-3 flex justify-between items-center pointer-events-none text-[10px] font-mono text-slate-400">
+                <div class="flex items-center gap-2">
+                  <span id="canvas-sky-status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span id="canvas-sky-status-text">Atmosphere: Clear Skies & Safe Cruising Altitude</span>
+                </div>
+                <span>Target Horizon: Age 100</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- MID-FLIGHT 6 TACTICAL ADJUSTMENTS DECK -->
+          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3.5 shadow-xl">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+              <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+                <i class="fa-solid fa-gamepad text-cyan-400"></i> MID-FLIGHT COCKPIT ADJUSTMENTS (6 TACTICS)
+              </h3>
+              <span class="text-[11px] font-mono text-slate-400">Toggle during flight to bounce back!</span>
+            </div>
+
+            <!-- 6 Tactical Adjustment Action Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              
+              <!-- Tactic 1: Part-Time Side Job -->
+              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('job')">
+                <div class="flex justify-between items-start">
+                  <div class="w-7 h-7 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-briefcase"></i>
+                  </div>
+                  <input type="checkbox" id="check-action-job" class="sr-only">
+                  <span id="badge-action-job" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Part-Time Income</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">Earn $15,000/yr part-time income to reduce portfolio withdrawals.</p>
+                </div>
+                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-slate-400">Impact:</span>
+                  <span class="text-emerald-400 font-bold">+$15k / Yr Buffer</span>
+                </div>
+              </div>
+
+              <!-- Tactic 2: Cut Spending 15% -->
+              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cutspend')">
+                <div class="flex justify-between items-start">
+                  <div class="w-7 h-7 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-scissors"></i>
+                  </div>
+                  <input type="checkbox" id="check-action-cutspend" class="sr-only">
+                  <span id="badge-action-cutspend" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Cut Spending 15%</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">Trim living expenses during market downturn years.</p>
+                </div>
+                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-slate-400">Impact:</span>
+                  <span class="text-amber-400 font-bold">Saves ~$6.7k / Yr</span>
+                </div>
+              </div>
+
+              <!-- Tactic 3: Draw From Cash Bucket -->
+              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cashbuffer')">
+                <div class="flex justify-between items-start">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-vault"></i>
+                  </div>
+                  <input type="checkbox" id="check-action-cashbuffer" class="sr-only">
+                  <span id="badge-action-cashbuffer" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Cash Bucket Shield</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">Draw from cash buffer to avoid selling stocks in down years.</p>
+                </div>
+                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-slate-400">Impact:</span>
+                  <span class="text-cyan-300 font-bold">Protects Principal</span>
+                </div>
+              </div>
+
+              <!-- Tactic 4: Dynamic Spending Guardrails -->
+              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('guardrails')">
+                <div class="flex justify-between items-start">
+                  <div class="w-7 h-7 rounded-lg bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-chart-line-down"></i>
+                  </div>
+                  <input type="checkbox" id="check-action-guardrails" class="sr-only">
+                  <span id="badge-action-guardrails" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Dynamic Guardrails</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">Guyton-Klinger rule: auto-cuts spending 10% when portfolio drops &gt;15%.</p>
+                </div>
+                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-slate-400">Impact:</span>
+                  <span class="text-purple-300 font-bold">Auto Drawdown Stop</span>
+                </div>
+              </div>
+
+              <!-- Tactic 5: Downsize / Equity Inflow -->
+              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('downsize')">
+                <div class="flex justify-between items-start">
+                  <div class="w-7 h-7 rounded-lg bg-blue-950 text-blue-400 border border-blue-800 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-house-circle-check"></i>
+                  </div>
+                  <input type="checkbox" id="check-action-downsize" class="sr-only">
+                  <span id="badge-action-downsize" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Downsize Real Estate</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">One-time equity cash-in of +$100,000 emergency fuel injection.</p>
+                </div>
+                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-slate-400">Impact:</span>
+                  <span class="text-blue-300 font-bold">+$100k Instant Fuel</span>
+                </div>
+              </div>
+
+              <!-- Tactic 6: Social Security / Pension -->
+              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('pension')">
+                <div class="flex justify-between items-start">
+                  <div class="w-7 h-7 rounded-lg bg-pink-950 text-pink-400 border border-pink-800 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                  </div>
+                  <input type="checkbox" id="check-action-pension" class="sr-only">
+                  <span id="badge-action-pension" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Social Security Benefit</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">Claim guaranteed +$20,000/yr annuity income starting at Age 62+.</p>
+                </div>
+                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-slate-400">Impact:</span>
+                  <span class="text-pink-300 font-bold">+$20k / Yr Guaranteed</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB 2: PILOT LEADERBOARD & FLIGHT LOGS -->
+    <!-- ================================================================= -->
+    <div id="tab-leaderboard" class="hidden space-y-6">
+
+      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3 shadow-xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-base sm:text-lg font-bold font-hud text-amber-400 flex items-center gap-2">
+              <i class="fa-solid fa-trophy text-amber-400"></i> RETIREMENT FLIGHT LEADERBOARD
+            </h2>
+            <p class="text-xs text-slate-300">
+              Pilots ranked by category starting line: <strong>1st: Reaching Age 100</strong>, <strong>2nd: Fewest Crashline Years</strong>, and <strong>3rd: Ending Nest Egg</strong>.
+            </p>
+          </div>
+          <button onclick="clearLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
+            <i class="fa-solid fa-trash mr-1"></i> Reset Board
+          </button>
+        </div>
+
+        <!-- Leaderboard Category Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
+          <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400"></i> Scenario Category:</span>
+          <button id="lb-filter-ALL" onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">ALL CATEGORIES</button>
+          <button id="lb-filter-High Risk SWR" onclick="filterLeaderboard('High Risk SWR')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">High Risk SWR</button>
+          <button id="lb-filter-Trinity Standard" onclick="filterLeaderboard('Trinity Standard')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Trinity Standard</button>
+          <button id="lb-filter-Tight Lean FIRE" onclick="filterLeaderboard('Tight Lean FIRE')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Tight Lean FIRE</button>
+          <button id="lb-filter-Fat FIRE" onclick="filterLeaderboard('Fat FIRE')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Fat FIRE</button>
+          <button id="lb-filter-Custom Scenario" onclick="filterLeaderboard('Custom Scenario')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Custom Scenario</button>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs font-mono">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]">
+                <th class="py-2.5 px-3">Rank</th>
+                <th class="py-2.5 px-3">Pilot Callsign</th>
+                <th class="py-2.5 px-3 text-cyan-400">Scenario Preset Category</th>
+                <th class="py-2.5 px-3">Reached Age 100?</th>
+                <th class="py-2.5 px-3 text-red-400">Crashline Years</th>
+                <th class="py-2.5 px-3 text-amber-300">Tactics Used (Penalty)</th>
+                <th class="py-2.5 px-3 text-emerald-400">Ending Nest Egg</th>
+                <th class="py-2.5 px-3 text-amber-400">Flight Score</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-table-body" class="divide-y divide-slate-800/60 text-slate-200">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB 3: 1,000 MONTE CARLO BATCH ENGINE -->
+    <!-- ================================================================= -->
+    <div id="tab-montecarlo" class="hidden space-y-6">
+
+      <!-- Monte Carlo Header Card -->
+      <div class="hud-glass p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
+              <i class="fa-solid fa-network-wired text-cyan-400"></i> 1,000 MONTE CARLO STRESS-TEST ENGINE
+            </h2>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Simulates 1,000 randomized retirement flight paths over a 50-year horizon (Age 50 to Age 100) using high volatility historical distributions.
+            </p>
+          </div>
+          <button onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
+            <i class="fa-solid fa-play mr-1.5"></i> RUN 1,000 SIMULATIONS
+          </button>
+        </div>
+      </div>
+
+      <!-- Monte Carlo Key Metrics Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono">
+        
+        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
+          <span class="text-[10px] text-slate-400 uppercase">Flight Success Rate</span>
+          <div id="mc-metric-success" class="text-2xl font-bold font-hud text-emerald-400">-- %</div>
+          <p class="text-[10px] text-slate-400">Paths reaching Age 100 safely.</p>
+        </div>
+
+        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
+          <span class="text-[10px] text-slate-400 uppercase">Median Ending Wealth</span>
+          <div id="mc-metric-median" class="text-2xl font-bold font-hud text-cyan-300">--</div>
+          <p class="text-[10px] text-slate-400">50th percentile nest egg at Age 100.</p>
+        </div>
+
+        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
+          <span class="text-[10px] text-slate-400 uppercase">Worst 10% Outcome</span>
+          <div id="mc-metric-p10" class="text-2xl font-bold font-hud text-amber-400">--</div>
+          <p class="text-[10px] text-slate-400">10th percentile stress test outcome.</p>
+        </div>
+
+        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
+          <span class="text-[10px] text-slate-400 uppercase">Best 10% Outcome</span>
+          <div id="mc-metric-p90" class="text-2xl font-bold font-hud text-purple-400">--</div>
+          <p class="text-[10px] text-slate-400">90th percentile top tier growth.</p>
+        </div>
+
+      </div>
+
+      <!-- Monte Carlo Outcome Percentiles Table -->
+      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4">
+        <h3 class="font-hud font-bold text-xs uppercase text-slate-200">Percentile Wealth Distribution Over Time</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs font-mono">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]">
+                <th class="py-2 px-3">Retirement Age</th>
+                <th class="py-2 px-3 text-red-400">10th Percentile (Worst Case)</th>
+                <th class="py-2 px-3 text-amber-400">25th Percentile</th>
+                <th class="py-2 px-3 text-cyan-300">50th Percentile (Median)</th>
+                <th class="py-2 px-3 text-emerald-400">75th Percentile</th>
+                <th class="py-2 px-3 text-purple-400">90th Percentile (Best Case)</th>
+              </tr>
+            </thead>
+            <tbody id="mc-table-body" class="divide-y divide-slate-800/60 text-slate-300">
+              <tr>
+                <td colspan="6" class="py-6 text-center text-slate-400 font-sans">
+                  Click "Run 1,000 Simulations" to generate Monte Carlo trajectory data.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB 4: FIRE FLIGHT ACADEMY -->
+    <!-- ================================================================= -->
+    <div id="tab-academy" class="hidden space-y-6">
+
+      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-2">
+        <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-cyan-400"></i> FIRE FLIGHT ACADEMY: CORE RETIREMENT LESSONS
+        </h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Master the financial science of wealth decumulation, asset allocation balancing, and longevity protection.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+
+        <!-- Module 1: SWR -->
+        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-lg font-bold">
+            01
+          </div>
+          <h3 class="font-hud font-bold text-sm text-white">The 4% Safe Withdrawal Rate Rule</h3>
+          <p class="text-slate-300 leading-relaxed">
+            Derived from the landmark 1998 Trinity Study, the 4% rule states that withdrawing 4% of your initial portfolio in year one (adjusted for inflation each subsequent year) historically provided a 95%+ success rate over 30-year retirement periods.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-cyan-300">
+            Formula: Required Nest Egg = Annual Spending × 25
+          </div>
+        </div>
+
+        <!-- Module 2: SORR -->
+        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-red-950 text-red-400 border border-red-800 flex items-center justify-center text-lg font-bold">
+            02
+          </div>
+          <h3 class="font-hud font-bold text-sm text-white">Sequence of Returns Risk (SORR)</h3>
+          <p class="text-slate-300 leading-relaxed">
+            Market timing matters tremendously once you enter decumulation! A severe stock market crash in the first 5 years of retirement forces you to sell stocks at bottom-barrel prices, sending your flight into the crashline zone.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-red-300">
+            Defense: Shift asset allocation toward bonds/cash to cushion early crashes.
+          </div>
+        </div>
+
+        <!-- Module 3: TDF Glidepaths -->
+        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-lg font-bold">
+            03
+          </div>
+          <h3 class="font-hud font-bold text-sm text-white">Target Date Funds & De-Risking Glidepaths</h3>
+          <p class="text-slate-300 leading-relaxed">
+            As retirement progresses, holding 100% aggressive equities increases crash exposure. Target Date Funds automatically shift asset allocation toward fixed income (bonds/cash) over time to lock in gains and buffer volatility.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-emerald-300">
+            Rule of Thumb: % Bonds = Age minus 10 (e.g. at Age 60, ~50% Bonds/Cash).
+          </div>
+        </div>
+
+        <!-- Module 4: Dynamic Adjustments -->
+        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-lg font-bold">
+            04
+          </div>
+          <h3 class="font-hud font-bold text-sm text-white">Dynamic Spending Guardrails & Part-Time Work</h3>
+          <p class="text-slate-300 leading-relaxed">
+            Flexible retirees don't rigidly withdraw fixed amounts during severe bear markets. Taking a part-time job, cutting spending by 15%, or tapping cash buckets lets your stock portfolio recover without forcing liquidations.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-amber-300">
+            Guyton-Klinger Rule: Cut spending by 10% when portfolio drops >15%.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="hud-glass border-t border-slate-800 py-3 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="font-hud text-cyan-400">SURVIVAL FLIGHT</span> &bull; <span>FIRE Retirement Longevity Simulator (Age 50-100)</span>
+      </div>
+      <div class="text-[11px] text-slate-500">
+        Educational simulator for modeling retirement decumulation & Sequence of Returns Risk.
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: ANNUAL RETIREMENT SPEND CALCULATOR -->
+  <div id="modal-calc-spend" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+    <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-emerald-600/60 space-y-5 shadow-2xl relative">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="font-hud font-bold text-sm text-emerald-400 flex items-center gap-2">
+          <i class="fa-solid fa-calculator text-emerald-400"></i> RETIREMENT ANNUAL BUDGET CALCULATOR
+        </h3>
+        <button onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-300">
+        Estimate your annual retirement spending by filling in estimated monthly expenses below:
+      </p>
+
+      <div class="space-y-3 text-xs font-mono">
+        <div class="flex justify-between items-center">
+          <label class="text-slate-300">Housing & Utilities ($/mo):</label>
+          <input type="number" id="calc-spend-housing" value="1500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+        </div>
+        <div class="flex justify-between items-center">
+          <label class="text-slate-300">Food, Groceries & Dining ($/mo):</label>
+          <input type="number" id="calc-spend-food" value="800" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+        </div>
+        <div class="flex justify-between items-center">
+          <label class="text-slate-300">Healthcare & Insurance ($/mo):</label>
+          <input type="number" id="calc-spend-health" value="500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+        </div>
+        <div class="flex justify-between items-center">
+          <label class="text-slate-300">Travel, Hobbies & Leisure ($/mo):</label>
+          <input type="number" id="calc-spend-travel" value="400" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+        </div>
+        <div class="flex justify-between items-center">
+          <label class="text-slate-300">Misc & Emergency Buffer ($/mo):</label>
+          <input type="number" id="calc-spend-misc" value="550" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+        </div>
+
+        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-sm">
+          <span class="font-sans font-bold text-slate-200">Total Calculated Annual Spend:</span>
+          <span id="calc-spend-total" class="font-hud font-bold text-emerald-400 text-base">$45,000 / yr</span>
+        </div>
+      </div>
+
+      <div class="flex gap-3 pt-2">
+        <button onclick="closeSpendCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+          Cancel
+        </button>
+        <button onclick="applyCalculatedSpend()" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow glow-green">
+          Apply to Cockpit Spend
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: NEST EGG TARGET CALCULATOR -->
+  <div id="modal-calc-nestegg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+    <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-cyan-600/60 space-y-5 shadow-2xl relative">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="font-hud font-bold text-sm text-cyan-400 flex items-center gap-2">
+          <i class="fa-solid fa-calculator text-cyan-400"></i> NEST EGG TARGET CALCULATOR
+        </h3>
+        <button onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-300">
+        Calculate your target nest egg using your annual retirement spend and target Safe Withdrawal Rate (SWR):
+      </p>
+
+      <div class="space-y-4 text-xs font-mono">
+        <div class="flex justify-between items-center">
+          <label class="text-slate-300">Annual Living Spend ($):</label>
+          <input type="number" id="calc-egg-spend" value="45000" step="1000" oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+        </div>
+        <div class="flex justify-between items-center">
+          <label class="text-slate-300">Target Safe Withdrawal Rate (%):</label>
+          <select id="calc-egg-swr" onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+            <option value="4.0" selected>4.0% (Trinity Standard)</option>
+            <option value="3.5">3.5% (Conservative FIRE)</option>
+            <option value="3.0">3.0% (Ultra Safe / Perpetual)</option>
+            <option value="5.3">5.3% (Aggressive SWR)</option>
+          </select>
+        </div>
+
+        <div class="p-3 rounded-xl bg-cyan-950/60 border border-cyan-800 space-y-1">
+          <div class="text-[11px] text-cyan-300">FIRE Multiplier Formula:</div>
+          <div id="calc-egg-formula" class="text-xs text-slate-300">$45,000 × 25 = $1,125,000 (25x Rule)</div>
+        </div>
+
+        <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-sm">
+          <span class="font-sans font-bold text-slate-200">Required Starting Nest Egg:</span>
+          <span id="calc-egg-total" class="font-hud font-bold text-cyan-400 text-base">$1,125,000</span>
+        </div>
+      </div>
+
+      <div class="flex gap-3 pt-2">
+        <button onclick="closeNestEggCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+          Cancel
+        </button>
+        <button onclick="applyCalculatedEgg()" class="flex-1 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow glow-cyan">
+          Apply to Cockpit Nest Egg
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLIGHT DEBRIEF / OUTCOME MODAL -->
+  <div id="modal-flight-debrief" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+    <div class="hud-glass max-w-md w-full p-6 rounded-2xl border border-slate-700 space-y-4 shadow-2xl text-center">
+      <div id="debrief-icon-box" class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl">
+        <i id="debrief-icon" class="fa-solid fa-trophy"></i>
+      </div>
+      <h3 id="debrief-title" class="text-lg font-hud font-bold text-white">FLIGHT SUCCESSFUL!</h3>
+      <p id="debrief-msg" class="text-xs text-slate-300 leading-relaxed">
+        You successfully reached Age 100 with $1,240,000 remaining in portfolio fuel!
+      </p>
+
+      <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-left space-y-1.5 font-mono text-xs">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Pilot Callsign:</span>
+          <span id="debrief-pilot-name" class="text-amber-300 font-bold">Captain FIRE</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Scenario Category:</span>
+          <span id="debrief-scenario-cat" class="text-cyan-300 font-bold">High Risk SWR</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Final Nest Egg:</span>
+          <span id="debrief-final-bal" class="text-emerald-400 font-bold">$1,240,000</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Total Years Survived:</span>
+          <span id="debrief-years" class="text-cyan-300 font-bold">50 Years</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Years in Crashline Zone:</span>
+          <span id="debrief-crashline-yrs" class="text-red-400 font-bold">0 Years</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Tactical Adjustments:</span>
+          <span id="debrief-tactic-yrs" class="text-amber-300 font-bold">0 Tactic-Yrs (-0 pts)</span>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <button onclick="closeDebriefModal(); switchTab('leaderboard');" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
+          VIEW LEADERBOARD
+        </button>
+        <button onclick="closeDebriefModal()" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-hud font-bold text-xs uppercase shadow glow-cyan">
+          RETRY FLIGHT
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- JAVASCRIPT ENGINE & SIMULATION LOGIC -->
+  <!-- ================================================================= -->
+  <script>
+    /* =================================================================
+       GLOBAL STATE & CONFIGURATION
+       ================================================================= */
+    let leaderboardScores = [
+      { pilot: 'Captain FIRE', category: 'High Risk SWR', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },
+      { pilot: 'FatCat Captain', category: 'Fat FIRE', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },
+      { pilot: 'Trinity Ace', category: 'Trinity Standard', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },
+      { pilot: 'Lean Flyer', category: 'Tight Lean FIRE', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },
+      { pilot: 'Wingman FIRE', category: 'High Risk SWR', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }
+    ];
+    let activeLeaderboardFilter = 'ALL';
+
+    const state = {
+      pilotName: 'Captain FIRE',
+      activePreset: 'High Risk SWR',
+
+      // Flight setup
+      nestEgg: 850000,
+      annualSpending: 45000,
+      startAge: 50,
+      targetAge: 100,
+      
+      // Allocation
+      pctStocks: 80,
+      pctBonds: 15,
+      pctCash: 5,
+      useTargetDateFund: false,
+
+      // 6 Mid-flight tactics
+      actJob: false,
+      actCutSpend: false,
+      actCashBuffer: false,
+      actGuardrails: false,
+      actDownsize: false,
+      actPension: false,
+
+      // Live simulation telemetry
+      isSimulating: false,
+      currentAge: 50,
+      currentNestEgg: 850000,
+      peakNestEgg: 850000,
+      yearsInCrashlineConsecutive: 0,
+      totalCrashlineYears: 0,
+      totalTacticYears: 0,
+      marketSequence: 'simulated',
+      simulationInterval: null,
+      historyLogs: []
+    };
+
+    // Calibration for market benchmarks
+    const MARKET_BENCHMARKS = {
+      stocks: { mean: 0.082, stdDev: 0.24 }, // Higher equity dispersion & volatility drag
+      bonds: { mean: 0.035, stdDev: 0.06 },  // Bond yield
+      cash: { mean: 0.015, stdDev: 0.01 },   // Cash yield
+      inflation: { mean: 0.035, stdDev: 0.025 } // CPI inflation
+    };
+
+    // Historical crash sequences
+    const PRESET_HISTORICAL_SEQUENCES = {
+      '1970s': [
+        { stock: -0.18, bond: -0.03, infl: 0.07 },
+        { stock: -0.28, bond: 0.01, infl: 0.12 },
+        { stock: 0.35, bond: 0.07, infl: 0.09 },
+        { stock: 0.20, bond: 0.09, infl: 0.07 },
+        { stock: -0.12, bond: -0.02, infl: 0.14 },
+        { stock: 0.16, bond: 0.04, infl: 0.11 }
+      ],
+      '2000s': [
+        { stock: -0.12, bond: 0.10, infl: 0.03 },
+        { stock: -0.15, bond: 0.08, infl: 0.02 },
+        { stock: -0.25, bond: 0.09, infl: 0.01 },
+        { stock: 0.26, bond: 0.02, infl: 0.02 },
+        { stock: 0.08, bond: 0.04, infl: 0.03 },
+        { stock: -0.40, bond: 0.18, infl: 0.00 } // 2008 Crash
+      ],
+      'bull': [
+        { stock: 0.16, bond: 0.04, infl: 0.02 },
+        { stock: 0.19, bond: 0.03, infl: 0.02 },
+        { stock: 0.14, bond: 0.05, infl: 0.02 },
+        { stock: 0.24, bond: 0.02, infl: 0.02 },
+        { stock: 0.15, bond: 0.04, infl: 0.02 }
+      ]
+    };
+
+    /* =================================================================
+       INITIALIZATION & UI CONTROLS
+       ================================================================= */
+    window.onload = function() {
+      updatePilotName();
+      updateControlsUI();
+      renderLeaderboardTable();
+      renderCanvas();
+    };
+
+    window.addEventListener('resize', renderCanvas);
+
+    function updatePilotName() {
+      const el = document.getElementById('input-pilot-name');
+      if (el && el.value.trim() !== '') {
+        state.pilotName = el.value.trim();
+      }
+    }
+
+    function checkAndDetectPresetCategory() {
+      if (state.nestEgg === 850000 && state.annualSpending === 45000) {
+        state.activePreset = 'High Risk SWR';
+      } else if (state.nestEgg === 1000000 && state.annualSpending === 40000) {
+        state.activePreset = 'Trinity Standard';
+      } else if (state.nestEgg === 650000 && state.annualSpending === 35000) {
+        state.activePreset = 'Tight Lean FIRE';
+      } else if (state.nestEgg === 1500000 && state.annualSpending === 75000) {
+        state.activePreset = 'Fat FIRE';
+      } else {
+        state.activePreset = 'Custom Scenario';
+      }
+    }
+
+    function updateControlsUI() {
+      const nestEggEl = document.getElementById('input-nestegg');
+      const spendingEl = document.getElementById('input-spending');
+      const startAgeEl = document.getElementById('input-startage');
+      const endAgeEl = document.getElementById('input-endage');
+
+      if (nestEggEl) state.nestEgg = parseFloat(nestEggEl.value) || 850000;
+      if (spendingEl) state.annualSpending = parseFloat(spendingEl.value) || 45000;
+      if (startAgeEl) state.startAge = parseInt(startAgeEl.value) || 50;
+      if (endAgeEl) state.targetAge = parseInt(endAgeEl.value) || 100;
+
+      // Auto-detect if current parameters match a preset or represent a custom scenario
+      checkAndDetectPresetCategory();
+
+      const seqEl = document.getElementById('select-market-sequence');
+      if (seqEl) state.marketSequence = seqEl.value;
+
+      // Update text displays safely
+      const dispEgg = document.getElementById('disp-nestegg');
+      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();
+
+      const dispSpend = document.getElementById('disp-spending');
+      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();
+
+      const swrVal = (state.annualSpending / state.nestEgg) * 100;
+      const swrStr = swrVal.toFixed(1) + '%';
+      
+      const badgeSwr = document.getElementById('disp-swr-badge');
+      if (badgeSwr) {
+        if (swrVal > 4.5) {
+          badgeSwr.innerText = `${swrStr} (HIGH RISK)`;
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800 animate-pulse';
+        } else if (swrVal > 3.8) {
+          badgeSwr.innerText = `${swrStr} (MODERATE RISK)`;
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950 text-amber-400 border border-amber-800';
+        } else {
+          badgeSwr.innerText = `${swrStr} (SAFE SWR)`;
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800';
+        }
+      }
+
+      if (!state.isSimulating) {
+        state.currentAge = state.startAge;
+        state.currentNestEgg = state.nestEgg;
+        state.peakNestEgg = state.nestEgg;
+
+        const hudAge = document.getElementById('hud-current-age');
+        if (hudAge) hudAge.innerText = state.currentAge;
+
+        const hudVal = document.getElementById('hud-portfolio-val');
+        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();
+
+        const hudSwr = document.getElementById('hud-current-swr');
+        if (hudSwr) hudSwr.innerText = swrStr;
+
+        const crashCounter = document.getElementById('hud-crashline-counter');
+        if (crashCounter) {
+          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Yrs`;
+          crashCounter.className = 'text-emerald-400 font-bold text-sm';
+        }
+      }
+
+      if (state.useTargetDateFund) {
+        updateTargetDateGlidepath(state.currentAge);
+      }
+
+      renderCanvas();
+    }
+
+    function loadPreset(type) {
+      playSound('click');
+      if (type === 'highrisk') {
+        state.activePreset = 'High Risk SWR';
+        setControlValues(850000, 45000, 50, 100, 80, 15, 5);
+      } else if (type === 'trinity') {
+        state.activePreset = 'Trinity Standard';
+        setControlValues(1000000, 40000, 50, 100, 70, 20, 10);
+      } else if (type === 'leanfire') {
+        state.activePreset = 'Tight Lean FIRE';
+        setControlValues(650000, 35000, 50, 100, 85, 10, 5);
+      } else if (type === 'fatfire') {
+        state.activePreset = 'Fat FIRE';
+        setControlValues(1500000, 75000, 50, 100, 75, 20, 5);
+      }
+    }
+
+    function setControlValues(egg, spend, start, end, stocks, bonds, cash) {
+      document.getElementById('input-nestegg').value = egg;
+      document.getElementById('input-spending').value = spend;
+      document.getElementById('input-startage').value = start;
+      document.getElementById('input-endage').value = end;
+
+      state.pctStocks = stocks;
+      state.pctBonds = bonds;
+      state.pctCash = cash;
+
+      document.getElementById('input-stocks').value = stocks;
+      document.getElementById('input-bonds').value = bonds;
+      document.getElementById('input-cash').value = cash;
+
+      document.getElementById('disp-pct-stocks').innerText = stocks + '%';
+      document.getElementById('disp-pct-bonds').innerText = bonds + '%';
+      document.getElementById('disp-pct-cash').innerText = cash + '%';
+
+      updateControlsUI();
+    }
+
+    /* =================================================================
+       ASSET ALLOCATION & TARGET DATE FUND
+       ================================================================= */
+    function adjustAssetAllocation(changed) {
+      if (state.useTargetDateFund) return;
+
+      let s = parseInt(document.getElementById('input-stocks').value) || 0;
+      let b = parseInt(document.getElementById('input-bonds').value) || 0;
+      let c = parseInt(document.getElementById('input-cash').value) || 0;
+
+      if (changed === 'stocks') {
+        let rem = 100 - s;
+        b = Math.round(rem * 0.7);
+        c = rem - b;
+      } else if (changed === 'bonds') {
+        let rem = 100 - b;
+        s = Math.round(rem * 0.8);
+        c = rem - s;
+      } else {
+        let rem = 100 - c;
+        s = Math.round(rem * 0.75);
+        b = rem - s;
+      }
+
+      state.pctStocks = s;
+      state.pctBonds = b;
+      state.pctCash = c;
+
+      document.getElementById('input-stocks').value = s;
+      document.getElementById('input-bonds').value = b;
+      document.getElementById('input-cash').value = c;
+
+      document.getElementById('disp-pct-stocks').innerText = s + '%';
+      document.getElementById('disp-pct-bonds').innerText = b + '%';
+      document.getElementById('disp-pct-cash').innerText = c + '%';
+    }
+
+    function toggleTargetDateFund() {
+      const toggle = document.getElementById('toggle-tdf');
+      state.useTargetDateFund = toggle.checked;
+
+      const slidersBox = document.getElementById('allocation-sliders-container');
+      const tdfCard = document.getElementById('tdf-glidepath-card');
+
+      if (state.useTargetDateFund) {
+        if (slidersBox) slidersBox.classList.add('opacity-40', 'pointer-events-none');
+        if (tdfCard) tdfCard.classList.remove('hidden');
+        updateTargetDateGlidepath(state.currentAge);
+      } else {
+        if (slidersBox) slidersBox.classList.remove('opacity-40', 'pointer-events-none');
+        if (tdfCard) tdfCard.classList.add('hidden');
+      }
+      playSound('click');
+    }
+
+    function updateTargetDateGlidepath(age) {
+      let stocks = Math.max(20, Math.min(90, 110 - age));
+      let bonds = Math.max(10, Math.min(70, age - 20));
+      let cash = 100 - (stocks + bonds);
+      if (cash < 5) {
+        cash = 5;
+        bonds = 100 - stocks - cash;
+      }
+
+      state.pctStocks = stocks;
+      state.pctBonds = bonds;
+      state.pctCash = cash;
+
+      const barS = document.getElementById('tdf-bar-stocks');
+      const barB = document.getElementById('tdf-bar-bonds');
+      const barC = document.getElementById('tdf-bar-cash');
+
+      if (barS) barS.style.width = stocks + '%';
+      if (barB) barB.style.width = bonds + '%';
+      if (barC) barC.style.width = cash + '%';
+
+      const tdfText = document.getElementById('tdf-status-text');
+      if (tdfText) tdfText.innerText = `Age ${age}: ${stocks}% Stocks / ${bonds}% Bonds / ${cash}% Cash`;
+    }
+
+    /* =================================================================
+       MID-FLIGHT 6 TACTICAL ADJUSTMENTS
+       ================================================================= */
+    function toggleAction(action) {
+      playSound('click');
+      if (action === 'job') {
+        state.actJob = !state.actJob;
+        updateActionCardUI('job', state.actJob, 'glow-cyan', 'border-cyan-500');
+      } else if (action === 'cutspend') {
+        state.actCutSpend = !state.actCutSpend;
+        updateActionCardUI('cutspend', state.actCutSpend, 'glow-amber', 'border-amber-500');
+      } else if (action === 'cashbuffer') {
+        state.actCashBuffer = !state.actCashBuffer;
+        updateActionCardUI('cashbuffer', state.actCashBuffer, 'glow-green', 'border-emerald-500');
+      } else if (action === 'guardrails') {
+        state.actGuardrails = !state.actGuardrails;
+        updateActionCardUI('guardrails', state.actGuardrails, 'glow-cyan', 'border-purple-500');
+      } else if (action === 'downsize') {
+        state.actDownsize = !state.actDownsize;
+        updateActionCardUI('downsize', state.actDownsize, 'glow-cyan', 'border-blue-500');
+        if (state.actDownsize && state.isSimulating) {
+          state.currentNestEgg += 100000; // Instant emergency lump-sum injection
+          showCopilotBanner(
+            '🏠 REAL ESTATE DOWNSIZING INJECTION',
+            'You injected +$100,000 emergency fuel from downsizing your home into your retirement portfolio!',
+            '💡 Tip: Real estate equity acts as a powerful last-resort longevity buffer.',
+            'info'
+          );
+        }
+      } else if (action === 'pension') {
+        state.actPension = !state.actPension;
+        updateActionCardUI('pension', state.actPension, 'glow-cyan', 'border-pink-500');
+      }
+      renderCanvas();
+    }
+
+    function updateActionCardUI(key, isActive, glowClass, borderClass) {
+      const card = document.getElementById('card-action-' + key);
+      const badge = document.getElementById('badge-action-' + key);
+      const check = document.getElementById('check-action-' + key);
+
+      if (!card || !badge) return;
+
+      if (isActive) {
+        card.classList.add(glowClass, borderClass, 'bg-slate-900/90');
+        badge.innerText = 'ACTIVE';
+        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 font-bold';
+        if (check) check.checked = true;
+      } else {
+        card.classList.remove(glowClass, borderClass, 'bg-slate-900/90');
+        badge.innerText = 'INACTIVE';
+        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700';
+        if (check) check.checked = false;
+      }
+    }
+
+    /* =================================================================
+       SIMULATION ENGINE (STEP BY STEP FLIGHT & CRASHLINE LOGIC)
+       ================================================================= */
+    function toggleFlightSimulation() {
+      if (state.isSimulating) {
+        pauseFlightSimulation();
+      } else {
+        startFlightSimulation();
+      }
+    }
+
+    function startFlightSimulation() {
+      if (state.currentAge >= state.targetAge || state.yearsInCrashlineConsecutive >= 10) {
+        resetFlightSimulation();
+      }
+
+      state.isSimulating = true;
+      playSound('engine');
+
+      const launchBtnText = document.getElementById('btn-launch-text');
+      if (launchBtnText) launchBtnText.innerText = 'PAUSE FLIGHT';
+
+      const badge = document.getElementById('hud-flight-status-badge');
+      if (badge) {
+        badge.innerText = '✈️ IN FLIGHT (AIRBORNE)';
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cyan-950 text-cyan-400 border border-cyan-700 animate-pulse';
+      }
+
+      state.simulationInterval = setInterval(simulateOneYearStep, 800);
+    }
+
+    function pauseFlightSimulation() {
+      state.isSimulating = false;
+      if (state.simulationInterval) clearInterval(state.simulationInterval);
+
+      const launchBtnText = document.getElementById('btn-launch-text');
+      if (launchBtnText) launchBtnText.innerText = 'RESUME FLIGHT';
+
+      const badge = document.getElementById('hud-flight-status-badge');
+      if (badge) {
+        badge.innerText = '⏸️ FLIGHT PAUSED';
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-amber-950 text-amber-400 border border-amber-800';
+      }
+    }
+
+    function resetFlightSimulation() {
+      pauseFlightSimulation();
+      state.currentAge = state.startAge;
+      state.currentNestEgg = state.nestEgg;
+      state.peakNestEgg = state.nestEgg;
+      state.yearsInCrashlineConsecutive = 0;
+      state.totalCrashlineYears = 0;
+      state.totalTacticYears = 0;
+      state.historyLogs = [];
+
+      hideCopilotBanner();
+
+      const container = document.getElementById('hud-visual-container');
+      if (container) container.classList.remove('crash-warning');
+
+      const launchBtnText = document.getElementById('btn-launch-text');
+      if (launchBtnText) launchBtnText.innerText = 'LAUNCH FLIGHT';
+
+      const badge = document.getElementById('hud-flight-status-badge');
+      if (badge) {
+        badge.innerText = 'Ready On Tarmac';
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800';
+      }
+
+      updateControlsUI();
+      playSound('click');
+    }
+
+    function simulateOneYearStep() {
+      if (state.currentAge >= state.targetAge || state.yearsInCrashlineConsecutive >= 10) {
+        finishFlightSimulation();
+        return;
+      }
+
+      state.currentAge++;
+
+      // Track active tactics penalty (1 Tactic-Year per active tactic per year)
+      let activeTacticsThisYear = 0;
+      if (state.actJob) activeTacticsThisYear++;
+      if (state.actCutSpend) activeTacticsThisYear++;
+      if (state.actCashBuffer) activeTacticsThisYear++;
+      if (state.actGuardrails) activeTacticsThisYear++;
+      if (state.actDownsize) activeTacticsThisYear++;
+      if (state.actPension) activeTacticsThisYear++;
+      state.totalTacticYears += activeTacticsThisYear;
+
+      if (state.useTargetDateFund) {
+        updateTargetDateGlidepath(state.currentAge);
+      }
+
+      // Calculate annual living spending
+      let effectiveSpend = state.annualSpending;
+
+      // Apply mid-flight tactical adjustments
+      if (state.actJob) {
+        effectiveSpend = Math.max(0, effectiveSpend - 15000);
+      }
+      if (state.actCutSpend) {
+        effectiveSpend = effectiveSpend * 0.85;
+      }
+      if (state.actPension && state.currentAge >= 62) {
+        effectiveSpend = Math.max(0, effectiveSpend - 20000);
+      }
+
+      // Generate annual market returns with Sequence of Returns Risk (SORR) stress testing
+      let stockRet = 0, bondRet = 0, infl = 0;
+
+      if (state.marketSequence !== 'simulated' && PRESET_HISTORICAL_SEQUENCES[state.marketSequence]) {
+        const seq = PRESET_HISTORICAL_SEQUENCES[state.marketSequence];
+        const stepIdx = (state.currentAge - state.startAge - 1) % seq.length;
+        stockRet = seq[stepIdx].stock;
+        bondRet = seq[stepIdx].bond;
+        infl = seq[stepIdx].infl;
+      } else {
+        stockRet = randomGaussian(MARKET_BENCHMARKS.stocks.mean, MARKET_BENCHMARKS.stocks.stdDev);
+        bondRet = randomGaussian(MARKET_BENCHMARKS.bonds.mean, MARKET_BENCHMARKS.bonds.stdDev);
+        infl = randomGaussian(MARKET_BENCHMARKS.inflation.mean, MARKET_BENCHMARKS.inflation.stdDev);
+
+        // Inject periodic bear market shocks during early retirement decades (Ages 50 - 65)
+        const yearsElapsed = state.currentAge - state.startAge;
+        if (yearsElapsed <= 15 && (yearsElapsed % 5 === 2 || yearsElapsed === 3)) {
+          stockRet -= 0.18; // -18% market shock to enforce early SORR vulnerability
+        }
+      }
+
+      // Apply Dynamic Guardrails rule
+      if (state.actGuardrails && stockRet < -0.15) {
+        effectiveSpend = effectiveSpend * 0.90;
+      }
+
+      // Adjust spending for inflation
+      effectiveSpend = effectiveSpend * (1 + Math.max(0, infl));
+
+      // Weighted portfolio return
+      let weightedReturn = (stockRet * (state.pctStocks / 100)) + 
+                         (bondRet * (state.pctBonds / 100)) + 
+                         (MARKET_BENCHMARKS.cash.mean * (state.pctCash / 100));
+
+      // Cash Buffer tactic protects stock liquidation in down years
+      if (state.actCashBuffer && stockRet < 0) {
+        weightedReturn += 0.035;
+      }
+
+      // Calculate ending balance
+      let startBal = state.currentNestEgg;
+      let afterSpend = startBal - effectiveSpend;
+      let endBal = afterSpend * (1 + weightedReturn);
+
+      state.currentNestEgg = Math.round(endBal);
+      if (state.currentNestEgg > state.peakNestEgg) {
+        state.peakNestEgg = state.currentNestEgg;
+      }
+
+      // Crashline Check ($0 or below)
+      const container = document.getElementById('hud-visual-container');
+      if (state.currentNestEgg <= 0) {
+        state.yearsInCrashlineConsecutive++;
+        state.totalCrashlineYears++;
+        if (container) container.classList.add('crash-warning');
+
+        showCopilotBanner(
+          '🚨 CRASHLINE EMERGENCY: PORTFOLIO STALL',
+          `Your net worth hit $0 at Age ${state.currentAge}! You have ${10 - state.yearsInCrashlineConsecutive} year(s) remaining in the crashline before game over. Activate side income, downsizing, or spending cuts to bounce back!`,
+          '💡 Tip: Turn on Part-Time Income, Real Estate Downsizing, or Cut Spending to climb out of $0 bankruptcy.',
+          'danger'
+        );
+        playSound('alert');
+      } else {
+        state.yearsInCrashlineConsecutive = 0; // Reset consecutive counter if balance climbs back > $0
+        if (container) container.classList.remove('crash-warning');
+      }
+
+      // Record log entry
+      state.historyLogs.push({
+        age: state.currentAge,
+        startBal: startBal,
+        spend: effectiveSpend,
+        returnPct: weightedReturn,
+        endBal: state.currentNestEgg,
+        inCrashline: state.currentNestEgg <= 0
+      });
+
+      // Update Telemetry Displays
+      const hudAge = document.getElementById('hud-current-age');
+      if (hudAge) hudAge.innerText = state.currentAge;
+
+      const hudVal = document.getElementById('hud-portfolio-val');
+      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();
+
+      const curSwr = ((effectiveSpend / Math.max(1, state.currentNestEgg)) * 100).toFixed(1);
+      const hudSwr = document.getElementById('hud-current-swr');
+      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'CRASH';
+
+      const crashCounter = document.getElementById('hud-crashline-counter');
+      if (crashCounter) {
+        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Yrs`;
+        if (state.yearsInCrashlineConsecutive > 0) {
+          crashCounter.className = 'text-red-400 font-bold text-sm animate-pulse';
+        } else {
+          crashCounter.className = 'text-emerald-400 font-bold text-sm';
+        }
+      }
+
+      checkCopilotEvents(stockRet, infl);
+
+      renderCanvas();
+
+      // Check if player failed 10-year crashline limit
+      if (state.yearsInCrashlineConsecutive >= 10) {
+        finishFlightSimulation();
+      }
+    }
+
+    function checkCopilotEvents(stockRet, infl) {
+      if (state.currentNestEgg > 0) {
+        if (stockRet < -0.15) {
+          showCopilotBanner(
+            '🚨 MARKET DROP: SEQUENCE OF RETURNS RISK',
+            `Equities dropped ${(stockRet * 100).toFixed(1)}% at Age ${state.currentAge}. High stock exposure during bear markets causes steep drawdowns!`,
+            '💡 Tip: Rebalance into bonds or activate "Cash Bucket Shield" and "Side Income".',
+            'warning'
+          );
+        } else if (infl > 0.05) {
+          showCopilotBanner(
+            '🔥 INFLATION SURGE SHOCK',
+            `Inflation jumped to ${(infl * 100).toFixed(1)}%, driving up living costs.`,
+            '💡 Tip: Keep some equity growth in your portfolio long-term to outpace inflation.',
+            'warning'
+          );
+        }
+      }
+    }
+
+    function showCopilotBanner(title, msg, tip, type) {
+      const banner = document.getElementById('copilot-banner');
+      const titleEl = document.getElementById('copilot-title');
+      const msgEl = document.getElementById('copilot-message');
+      const tipEl = document.getElementById('copilot-tip');
+      const icon = document.getElementById('copilot-icon');
+
+      if (!banner || !titleEl || !msgEl || !tipEl) return;
+
+      titleEl.innerText = title;
+      msgEl.innerText = msg;
+      tipEl.innerText = tip;
+
+      if (type === 'danger') {
+        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-red-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-red-500';
+        if (icon) icon.className = 'fa-solid fa-triangle-exclamation text-red-400';
+      } else if (type === 'warning') {
+        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500';
+        if (icon) icon.className = 'fa-solid fa-fire text-amber-400';
+      } else {
+        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-cyan-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-cyan-500';
+        if (icon) icon.className = 'fa-solid fa-circle-info text-cyan-400';
+      }
+
+      banner.classList.remove('hidden');
+    }
+
+    function hideCopilotBanner() {
+      const banner = document.getElementById('copilot-banner');
+      if (banner) banner.classList.add('hidden');
+    }
+
+    function finishFlightSimulation() {
+      pauseFlightSimulation();
+
+      const modal = document.getElementById('modal-flight-debrief');
+      const title = document.getElementById('debrief-title');
+      const msg = document.getElementById('debrief-msg');
+      const iconBox = document.getElementById('debrief-icon-box');
+      const icon = document.getElementById('debrief-icon');
+      const pilotName = document.getElementById('debrief-pilot-name');
+      const debriefCat = document.getElementById('debrief-scenario-cat');
+      const finalBal = document.getElementById('debrief-final-bal');
+      const years = document.getElementById('debrief-years');
+      const crashYrs = document.getElementById('debrief-crashline-yrs');
+      const tacticYrs = document.getElementById('debrief-tactic-yrs');
+
+      if (!modal) return;
+
+      const survivedYears = state.currentAge - state.startAge;
+      const reachedTarget = state.currentAge >= state.targetAge && state.currentNestEgg > 0;
+
+      if (reachedTarget) {
+        title.innerText = 'MISSION ACCOMPLISHED!';
+        title.className = 'text-lg font-hud font-bold text-emerald-400';
+        msg.innerText = `Congratulations Pilot ${state.pilotName}! You successfully landed at Age 100 with $${state.currentNestEgg.toLocaleString()} in remaining nest egg altitude!`;
+        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-950 text-emerald-400 border border-emerald-700 shadow-lg glow-green';
+        icon.className = 'fa-solid fa-trophy';
+        playSound('success');
+      } else {
+        title.innerText = 'FLIGHT DESTROYED: CRASHLINE ENGINE FAILURE';
+        title.className = 'text-lg font-hud font-bold text-red-400';
+        msg.innerText = `Pilot ${state.pilotName}, your flight remained in the $0 crashline zone for 10 consecutive years at Age ${state.currentAge}. Your retirement portfolio ran out of fuel!`;
+        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-950 text-red-400 border border-red-700 shadow-lg glow-red';
+        icon.className = 'fa-solid fa-plane-slash';
+        playSound('crash');
+      }
+
+      if (pilotName) pilotName.innerText = state.pilotName;
+      if (debriefCat) debriefCat.innerText = state.activePreset;
+      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();
+      if (years) years.innerText = survivedYears + ' Years (Age ' + state.currentAge + ')';
+      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Year(s)';
+      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Tactic-Yrs (-${state.totalTacticYears * 75} pts)`;
+
+      // Register score on Leaderboard under the active preset category
+      registerScoreToLeaderboard(state.pilotName, state.activePreset, reachedTarget, state.totalCrashlineYears, state.totalTacticYears, Math.max(0, state.currentNestEgg));
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeDebriefModal() {
+      const modal = document.getElementById('modal-flight-debrief');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    /* =================================================================
+       LEADERBOARD SYSTEM BY CATEGORY
+       ================================================================= */
+    function getCategoryBonus(category) {
+      if (category === 'Tight Lean FIRE') return 2000;
+      if (category === 'High Risk SWR') return 1500;
+      if (category === 'Custom Scenario') return 1000;
+      if (category === 'Trinity Standard') return 800;
+      if (category === 'Fat FIRE') return 200;
+      return 1000;
+    }
+
+    function registerScoreToLeaderboard(pilot, category, reached100, crashYears, tacticYears, finalBalance) {
+      // Score formula: 
+      // Base score (5000 pts for reaching 100, 1000 pts baseline)
+      // + Scenario Difficulty Bonus (Lean FIRE +2000, High Risk SWR +1500, Trinity +800, Fat FIRE +200)
+      // - (crashYears * 500 pts penalty) 
+      // - (tacticYears * 75 pts penalty per active tactic-year) 
+      // + (finalBalance / 2500 pts wealth bonus)
+      let baseScore = reached100 ? 5000 : 1000;
+      let catBonus = getCategoryBonus(category);
+      let crashPenalty = crashYears * 500;
+      let tacticPenalty = (tacticYears || 0) * 75;
+      let wealthBonus = Math.round(finalBalance / 2500);
+
+      let score = baseScore + catBonus - crashPenalty - tacticPenalty + wealthBonus;
+      score = Math.max(100, score);
+
+      leaderboardScores.push({
+        pilot: pilot,
+        category: category || 'Custom Scenario',
+        reached100: reached100,
+        crashYears: crashYears,
+        tacticYears: tacticYears || 0,
+        finalBalance: finalBalance,
+        score: score
+      });
+
+      // Sort global leaderboard array by total score
+      leaderboardScores.sort((a, b) => b.score - a.score);
+
+      renderLeaderboardTable();
+    }
+
+    function filterLeaderboard(cat) {
+      activeLeaderboardFilter = cat;
+      const categories = ['ALL', 'High Risk SWR', 'Trinity Standard', 'Tight Lean FIRE', 'Fat FIRE', 'Custom Scenario'];
+      categories.forEach(c => {
+        const btn = document.getElementById('lb-filter-' + c);
+        if (btn) {
+          if (c === cat) {
+            btn.className = 'px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition';
+          } else {
+            btn.className = 'px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition';
+          }
+        }
+      });
+      renderLeaderboardTable();
+      playSound('click');
+    }
+
+    function getCategoryBadgeHTML(cat) {
+      if (cat === 'High Risk SWR') {
+        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800"><i class="fa-solid fa-fire text-red-400 mr-1"></i>High Risk SWR</span>`;
+      } else if (cat === 'Trinity Standard') {
+        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800"><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i>Trinity Standard</span>`;
+      } else if (cat === 'Tight Lean FIRE') {
+        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800"><i class="fa-solid fa-leaf text-emerald-400 mr-1"></i>Tight Lean FIRE</span>`;
+      } else if (cat === 'Fat FIRE') {
+        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800"><i class="fa-solid fa-crown text-purple-400 mr-1"></i>Fat FIRE</span>`;
+      } else {
+        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700"><i class="fa-solid fa-sliders mr-1"></i>Custom Scenario</span>`;
+      }
+    }
+
+    function renderLeaderboardTable() {
+      const tbody = document.getElementById('leaderboard-table-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+
+      // Filter entries by category if activeLeaderboardFilter !== 'ALL'
+      const filtered = activeLeaderboardFilter === 'ALL'
+        ? leaderboardScores
+        : leaderboardScores.filter(e => e.category === activeLeaderboardFilter);
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" class="py-6 text-center text-slate-400 font-sans">
+              No flight logs registered yet for <strong>${activeLeaderboardFilter}</strong>. Fly this preset to set the first score!
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      filtered.forEach((entry, idx) => {
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-slate-900/80 transition';
+        
+        let rankBadge = `<span class="font-bold text-slate-400">#${idx + 1}</span>`;
+        if (idx === 0) rankBadge = `<span class="font-bold text-amber-400"><i class="fa-solid fa-crown mr-1"></i> #1</span>`;
+        if (idx === 1) rankBadge = `<span class="font-bold text-slate-300"><i class="fa-solid fa-medal mr-1"></i> #2</span>`;
+        if (idx === 2) rankBadge = `<span class="font-bold text-amber-600"><i class="fa-solid fa-award mr-1"></i> #3</span>`;
+
+        row.innerHTML = `
+          <td class="py-3 px-3 font-hud">${rankBadge}</td>
+          <td class="py-3 px-3 font-bold text-white">${entry.pilot}</td>
+          <td class="py-3 px-3">${getCategoryBadgeHTML(entry.category)}</td>
+          <td class="py-3 px-3 font-bold">${entry.reached100 ? '<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> YES</span>' : '<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> NO</span>'}</td>
+          <td class="py-3 px-3 text-red-400 font-bold">${entry.crashYears} Year(s)</td>
+          <td class="py-3 px-3 text-amber-300 font-bold">${entry.tacticYears || 0} Tactic-Yrs</td>
+          <td class="py-3 px-3 text-emerald-400 font-bold">$${entry.finalBalance.toLocaleString()}</td>
+          <td class="py-3 px-3 text-amber-400 font-bold font-hud">${entry.score.toLocaleString()} pts</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function clearLeaderboard() {
+      leaderboardScores = [];
+      renderLeaderboardTable();
+      playSound('click');
+    }
+
+    /* =================================================================
+       ENHANCED CANVAS HUD VISUALIZER & CRASHLINE RENDERING
+       ================================================================= */
+    function renderCanvas() {
+      const canvas = document.getElementById('flightCanvas');
+      if (!canvas || !canvas.parentElement) return;
+
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+
+      const W = canvas.width;
+      const H = canvas.height;
+
+      const healthRatio = Math.max(0, Math.min(1.5, state.currentNestEgg / state.nestEgg));
+      let skyGrad = ctx.createLinearGradient(0, 0, 0, H);
+
+      const canvasStatusDot = document.getElementById('canvas-sky-status-dot');
+      const canvasStatusText = document.getElementById('canvas-sky-status-text');
+      const pitchBadge = document.getElementById('hud-pitch-badge');
+
+      if (state.yearsInCrashlineConsecutive > 0) {
+        skyGrad.addColorStop(0, '#7f1d1d');
+        skyGrad.addColorStop(1, '#020617');
+        if (canvasStatusText) {
+          canvasStatusText.innerText = `CRASHLINE EMERGENCY: ${state.yearsInCrashlineConsecutive}/10 Years in $0 Bankruptcy Zone!`;
+          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
+        }
+      } else if (healthRatio > 0.8) {
+        skyGrad.addColorStop(0, '#0a192f');
+        skyGrad.addColorStop(1, '#020c1b');
+        if (canvasStatusText) {
+          canvasStatusText.innerText = 'Atmosphere: Clear Skies & Safe Cruising Altitude';
+          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+        }
+      } else {
+        skyGrad.addColorStop(0, '#1e1b4b');
+        skyGrad.addColorStop(1, '#0f172a');
+        if (canvasStatusText) {
+          canvasStatusText.innerText = 'Atmosphere: Mild Turbulence / Altitude Caution';
+          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-pulse';
+        }
+      }
+
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, W, H);
+
+      // Bounds
+      const maxVal = Math.max(state.nestEgg * 2.2, state.peakNestEgg * 1.2);
+      const topY = 40;
+      const bottomY = H - 35;
+
+      // Draw Grid Lines & Y-Axis Dollar Labels
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+
+      const numGridLines = 4;
+      for (let i = 0; i <= numGridLines; i++) {
+        const y = bottomY - (i / numGridLines) * (bottomY - topY);
+        const dollarVal = (i / numGridLines) * maxVal;
+
+        ctx.beginPath();
+        ctx.moveTo(50, y);
+        ctx.lineTo(W, y);
+        ctx.stroke();
+
+        ctx.fillStyle = '#64748b';
+        ctx.font = '9px Orbitron';
+        ctx.fillText('$' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
+      }
+
+      // X-Axis Age Labels
+      const totalYears = Math.max(1, state.targetAge - state.startAge);
+      const startX = 60;
+      const endX = W - 30;
+
+      ctx.fillStyle = '#64748b';
+      ctx.font = '10px Orbitron';
+      for (let age = state.startAge; age <= state.targetAge; age += 10) {
+        const pct = (age - state.startAge) / totalYears;
+        const x = startX + pct * (endX - startX);
+        ctx.fillText(`Age ${age}`, x - 18, H - 12);
+      }
+
+      // Trajectory Pitch Status
+      if (state.historyLogs.length > 0) {
+        const lastLog = state.historyLogs[state.historyLogs.length - 1];
+        const prevBal = state.historyLogs.length > 1 ? state.historyLogs[state.historyLogs.length - 2].endBal : state.nestEgg;
+        const deltaBal = lastLog.endBal - prevBal;
+
+        if (pitchBadge) {
+          if (state.yearsInCrashlineConsecutive > 0) {
+            pitchBadge.innerHTML = `<span class="text-red-400 font-bold animate-pulse"><i class="fa-solid fa-plane-falling"></i> 🚨 CRASHLINE STALL</span>`;
+          } else if (deltaBal > 10000) {
+            pitchBadge.innerHTML = `<span class="text-emerald-400"><i class="fa-solid fa-arrow-trend-up"></i> 🛫 CLIMBING</span>`;
+          } else if (deltaBal >= -5000) {
+            pitchBadge.innerHTML = `<span class="text-cyan-300"><i class="fa-solid fa-arrow-right"></i> ✈️ LEVEL CRUISE</span>`;
+          } else {
+            pitchBadge.innerHTML = `<span class="text-amber-400"><i class="fa-solid fa-arrow-trend-down"></i> 📉 DESCENDING</span>`;
+          }
+        }
+
+        // Draw Curve
+        ctx.beginPath();
+        ctx.strokeStyle = state.yearsInCrashlineConsecutive > 0 ? '#ef4444' : '#06b6d4';
+        ctx.lineWidth = 3;
+
+        const startY = bottomY - ((state.nestEgg / maxVal) * (bottomY - topY));
+        ctx.moveTo(startX, startY);
+
+        state.historyLogs.forEach((log, idx) => {
+          const x = startX + ((idx + 1) / totalYears) * (endX - startX);
+          const y = bottomY - (Math.max(0, log.endBal) / maxVal) * (bottomY - topY);
+          ctx.lineTo(x, y);
+        });
+
+        ctx.stroke();
+
+        // Area fill
+        const lastIdx = state.historyLogs.length - 1;
+        const lastX = startX + ((lastIdx + 1) / totalYears) * (endX - startX);
+        const lastY = bottomY - (Math.max(0, state.historyLogs[lastIdx].endBal) / maxVal) * (bottomY - topY);
+
+        ctx.lineTo(lastX, bottomY);
+        ctx.lineTo(startX, bottomY);
+        ctx.closePath();
+
+        let fillGrad = ctx.createLinearGradient(0, 0, 0, H);
+        fillGrad.addColorStop(0, state.yearsInCrashlineConsecutive > 0 ? 'rgba(239, 68, 68, 0.35)' : 'rgba(6, 182, 212, 0.25)');
+        fillGrad.addColorStop(1, 'rgba(0, 0, 0, 0.0)');
+        ctx.fillStyle = fillGrad;
+        ctx.fill();
+
+        // Draw Airplane
+        drawAirplane(ctx, lastX, lastY, state.yearsInCrashlineConsecutive > 0 ? 0.1 : healthRatio);
+      } else {
+        const startY = bottomY - ((state.nestEgg / maxVal) * (bottomY - topY));
+        drawAirplane(ctx, startX, startY, 1.0);
+        if (pitchBadge) {
+          pitchBadge.innerHTML = `<span class="text-emerald-400">🛫 READY ON TARMAC</span>`;
+        }
+      }
+
+      // Ground Crashline ($0 Bankruptcy)
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = '#ef4444';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(50, bottomY);
+      ctx.lineTo(W, bottomY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#ef4444';
+      ctx.font = '10px Orbitron';
+      ctx.fillText('CRASHLINE ZONE ($0 BANKRUPTCY)', 65, bottomY - 6);
+    }
+
+    function drawAirplane(ctx, x, y, healthRatio) {
+      ctx.save();
+      ctx.translate(x, y);
+
+      ctx.shadowColor = healthRatio > 0.3 ? '#06b6d4' : '#ef4444';
+      ctx.shadowBlur = 12;
+
+      ctx.fillStyle = healthRatio > 0.3 ? '#38bdf8' : '#f87171';
+      ctx.beginPath();
+      ctx.moveTo(16, 0); // Nose
+      ctx.lineTo(-12, -10); // Left wing
+      ctx.lineTo(-6, 0);
+      ctx.lineTo(-12, 10); // Right wing
+      ctx.closePath();
+      ctx.fill();
+
+      // Thrust flame
+      ctx.fillStyle = '#f59e0b';
+      ctx.beginPath();
+      ctx.moveTo(-6, 0);
+      ctx.lineTo(-18, -3);
+      ctx.lineTo(-14, 0);
+      ctx.lineTo(-18, 3);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    /* =================================================================
+       CALCULATORS HANDLERS
+       ================================================================= */
+    function openSpendCalculator() {
+      const modal = document.getElementById('modal-calc-spend');
+      if (modal) modal.classList.remove('hidden');
+      computeCalculatedSpend();
+      playSound('click');
+    }
+    function closeSpendCalculator() {
+      const modal = document.getElementById('modal-calc-spend');
+      if (modal) modal.classList.add('hidden');
+    }
+    function computeCalculatedSpend() {
+      const h = parseFloat(document.getElementById('calc-spend-housing').value) || 0;
+      const f = parseFloat(document.getElementById('calc-spend-food').value) || 0;
+      const md = parseFloat(document.getElementById('calc-spend-health').value) || 0;
+      const t = parseFloat(document.getElementById('calc-spend-travel').value) || 0;
+      const m = parseFloat(document.getElementById('calc-spend-misc').value) || 0;
+
+      const totalMonthly = h + f + md + t + m;
+      const totalAnnual = totalMonthly * 12;
+
+      const totalEl = document.getElementById('calc-spend-total');
+      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString() + ' / yr';
+      return totalAnnual;
+    }
+    function applyCalculatedSpend() {
+      const annualSpend = computeCalculatedSpend();
+      const input = document.getElementById('input-spending');
+      if (input) input.value = Math.min(250000, Math.max(15000, annualSpend));
+      updateControlsUI();
+      closeSpendCalculator();
+      playSound('success');
+    }
+
+    function openNestEggCalculator() {
+      const modal = document.getElementById('modal-calc-nestegg');
+      if (modal) modal.classList.remove('hidden');
+      const spendInput = document.getElementById('calc-egg-spend');
+      if (spendInput) spendInput.value = state.annualSpending;
+      computeCalculatedEgg();
+      playSound('click');
+    }
+    function closeNestEggCalculator() {
+      const modal = document.getElementById('modal-calc-nestegg');
+      if (modal) modal.classList.add('hidden');
+    }
+    function computeCalculatedEgg() {
+      const spend = parseFloat(document.getElementById('calc-egg-spend').value) || 45000;
+      const swrPct = parseFloat(document.getElementById('calc-egg-swr').value) || 4.0;
+      const multiplier = 100 / swrPct;
+
+      const requiredEgg = spend * multiplier;
+
+      const formulaEl = document.getElementById('calc-egg-formula');
+      if (formulaEl) {
+        formulaEl.innerText = `$${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString()} (${multiplier.toFixed(1)}x Rule)`;
+      }
+      const totalEl = document.getElementById('calc-egg-total');
+      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString();
+      return requiredEgg;
+    }
+    function applyCalculatedEgg() {
+      const reqEgg = computeCalculatedEgg();
+      const input = document.getElementById('input-nestegg');
+      if (input) input.value = Math.min(5000000, Math.max(200000, reqEgg));
+      updateControlsUI();
+      closeNestEggCalculator();
+      playSound('success');
+    }
+
+    /* =================================================================
+       TAB 3: 1,000 MONTE CARLO BATCH SIMULATOR
+       ================================================================= */
+    function runMonteCarloBatch() {
+      playSound('click');
+
+      const numSims = 1000;
+      const totalYears = Math.max(1, state.targetAge - state.startAge);
+      let successCount = 0;
+      let endingBalances = [];
+      let trajectorySnapshots = {
+        10: [], 20: [], 30: [], 40: [], 50: []
+      };
+
+      for (let sim = 0; sim < numSims; sim++) {
+        let bal = state.nestEgg;
+        let spend = state.annualSpending;
+
+        if (state.actJob) spend = Math.max(0, spend - 15000);
+        if (state.actCutSpend) spend = spend * 0.85;
+
+        let crashYearsConsec = 0;
+
+        for (let year = 1; year <= totalYears; year++) {
+          if (bal <= 0) {
+            crashYearsConsec++;
+            bal = 0;
+          } else {
+            crashYearsConsec = 0;
+            let sRet = randomGaussian(MARKET_BENCHMARKS.stocks.mean, MARKET_BENCHMARKS.stocks.stdDev);
+            let bRet = randomGaussian(MARKET_BENCHMARKS.bonds.mean, MARKET_BENCHMARKS.bonds.stdDev);
+            let infl = randomGaussian(MARKET_BENCHMARKS.inflation.mean, MARKET_BENCHMARKS.inflation.stdDev);
+
+            spend = spend * (1 + Math.max(0, infl));
+            let wRet = (sRet * (state.pctStocks / 100)) + (bRet * (state.pctBonds / 100)) + (MARKET_BENCHMARKS.cash.mean * (state.pctCash / 100));
+
+            if (state.actCashBuffer && sRet < 0) wRet += 0.03;
+
+            bal = (bal - spend) * (1 + wRet);
+          }
+
+          if (year % 10 === 0 && trajectorySnapshots[year]) {
+            trajectorySnapshots[year].push(Math.max(0, bal));
+          }
+        }
+
+        if (bal > 0) successCount++;
+        endingBalances.push(Math.max(0, bal));
+      }
+
+      endingBalances.sort((a, b) => a - b);
+
+      const successRate = ((successCount / numSims) * 100).toFixed(1);
+      const medianEnd = endingBalances[Math.floor(numSims * 0.5)];
+      const p10 = endingBalances[Math.floor(numSims * 0.1)];
+      const p90 = endingBalances[Math.floor(numSims * 0.9)];
+
+      const succEl = document.getElementById('mc-metric-success');
+      const medEl = document.getElementById('mc-metric-median');
+      const p10El = document.getElementById('mc-metric-p10');
+      const p90El = document.getElementById('mc-metric-p90');
+
+      if (succEl) succEl.innerText = successRate + '%';
+      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString();
+      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString();
+      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString();
+
+      // Render percentile table
+      const tbody = document.getElementById('mc-table-body');
+      if (tbody) {
+        tbody.innerHTML = '';
+        [10, 20, 30, 40, 50].forEach(y => {
+          if (y <= totalYears) {
+            let arr = trajectorySnapshots[y].sort((a, b) => a - b);
+            let n = arr.length;
+            let row = document.createElement('tr');
+            row.className = 'hover:bg-slate-900/60 transition';
+            row.innerHTML = `
+              <td class="py-2.5 px-3 font-bold text-white">Age ${state.startAge + y} (${y} Yrs)</td>
+              <td class="py-2.5 px-3 text-red-400 font-bold">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-amber-400">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-cyan-300 font-bold">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-emerald-400">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-purple-400 font-bold">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>
+            `;
+            tbody.appendChild(row);
+          }
+        });
+      }
+
+      playSound('success');
+    }
+
+    /* =================================================================
+       MATH HELPERS & TAB SWITCHING
+       ================================================================= */
+    function randomGaussian(mean, stdDev) {
+      let u = 0, v = 0;
+      while (u === 0) u = Math.random();
+      while (v === 0) v = Math.random();
+      let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+      return mean + num * stdDev;
+    }
+
+    function switchTab(tabKey) {
+      playSound('click');
+      const tabs = ['cockpit', 'leaderboard', 'montecarlo', 'academy'];
+      tabs.forEach(t => {
+        const tabEl = document.getElementById('tab-' + t);
+        const btnEl = document.getElementById('nav-btn-' + t);
+        if (tabEl) tabEl.classList.add('hidden');
+        if (btnEl) {
+          btnEl.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition';
+        }
+      });
+
+      const activeTab = document.getElementById('tab-' + tabKey);
+      const activeBtn = document.getElementById('nav-btn-' + tabKey);
+
+      if (activeTab) activeTab.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition';
+      }
+
+      if (tabKey === 'cockpit') {
+        renderCanvas();
+      } else if (tabKey === 'leaderboard') {
+        renderLeaderboardTable();
+      } else if (tabKey === 'montecarlo') {
+        runMonteCarloBatch();
+      }
+    }
+
+    /* =================================================================
+       WEBAUDIO SOUND SYNTHESIS
+       ================================================================= */
+    function playSound(type) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        const now = ctx.currentTime;
+
+        if (type === 'click') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(800, now);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'engine') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(120, now);
+          osc.frequency.exponentialRampToValueAtTime(240, now + 0.2);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        } else if (type === 'alert') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.setValueAtTime(880, now + 0.1);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+          osc.start(now);
+          osc.stop(now + 0.25);
+        } else if (type === 'success') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.1);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === 'crash') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(200, now);
+          osc.frequency.exponentialRampToValueAtTime(50, now + 0.4);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+          osc.start(now);
+          osc.stop(now + 0.4);
+        }
+      } catch (e) {
+        // AudioContext disabled or blocked by browser policy
+      }
+    }
+  </script>
+</body>
+</html>
