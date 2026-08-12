@@ -25,7 +25,12 @@ a { color: inherit; }
 button, input { font: inherit; }
 :focus-visible { outline: 3px solid rgba(200, 154, 50, .6); outline-offset: 4px; }
 
-.site-shell { overflow: hidden; min-height: 100vh; }
+/* The decorative circles bleed sideways, so the shell still has to clip on the
+   horizontal axis. `overflow: hidden` turned the shell into a scroll container,
+   which silently cancelled the sticky header declared in header.css; `clip`
+   trims the same overflow without creating one. The `hidden` line above it is
+   the fallback for browsers without `clip` support. */
+.site-shell { overflow-x: hidden; overflow-x: clip; min-height: 100vh; }
 .container { width: min(1280px, calc(100% - 48px)); margin-inline: auto; }
 .eyebrow { margin: 0 0 12px; color: var(--rust); font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; transform: translateY(-150%); padding: 10px 14px; border-radius: 6px; background: var(--paper); }
