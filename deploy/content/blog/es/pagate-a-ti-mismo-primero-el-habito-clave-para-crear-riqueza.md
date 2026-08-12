@@ -1,6 +1,6 @@
 ---
 title: "Págate a Ti Mismo Primero: El Hábito Clave para Crear Riqueza"
-date: 2025-02-11
+date: 2026-07-28
 category: Hábitos financieros
 summary: Descubre cómo ahorrar un porcentaje fijo antes de gastar romperá el
   ciclo de vivir al día y te ayudará a construir tu fondo de emergencia.
