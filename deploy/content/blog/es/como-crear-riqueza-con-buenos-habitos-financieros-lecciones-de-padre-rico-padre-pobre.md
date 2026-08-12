@@ -1,7 +1,7 @@
 ---
 title: "Cómo Crear Riqueza con Buenos Hábitos Financieros: Lecciones de Padre
   Rico, Padre Pobre"
-date: 2025-01-07
+date: 2026-08-04
 category: Hábitos financieros
 summary: Descubre cómo construir riqueza a largo plazo con buenos hábitos
   financieros. Aprende la diferencia entre activos, pasivos, deuda buena y flujo
