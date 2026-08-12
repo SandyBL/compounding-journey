@@ -1,6 +1,6 @@
 ---
 title: "Foundations of Personal Finance: How to Control Expenses and Build Wealth"
-date: 2025-01-14
+date: 2026-08-11
 category: Money habits
 summary: Discover simple tips for budgeting, tracking expenses, and making
   smarter money choices to achieve financial freedom without giving up what
