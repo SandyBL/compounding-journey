@@ -1,6 +1,6 @@
 ---
 title: "Pay Yourself First: The Simple Habit to Build Lasting Wealth"
-date: 2025-02-11
+date: 2026-07-28
 category: Money habits
 summary: Learn how saving a fixed percentage before spending can break the
   paycheck-to-paycheck cycle and help you easily build an emergency fund.
