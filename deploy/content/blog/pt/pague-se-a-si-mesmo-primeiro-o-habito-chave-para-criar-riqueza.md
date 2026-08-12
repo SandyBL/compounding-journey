@@ -1,6 +1,6 @@
 ---
 title: "Pague-se a Si Mesmo Primeiro: O Hábito Chave para Criar Riqueza"
-date: 2025-02-11
+date: 2026-07-28
 category: Hábitos financeiros
 summary: Descubra como poupar uma percentagem fixa antes de gastar pode romper o
   ciclo de viver de salário em salário e construir o seu fundo de emergência.
