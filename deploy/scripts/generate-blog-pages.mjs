@@ -233,7 +233,7 @@ function renderPage(article, labels, body, headings) {
   <meta name="twitter:image" content="${logo}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="/assets/css/blog.css?v=20260808-1" />
+  <link rel="stylesheet" href="/assets/css/blog.css?v=20260812-1" />
   <link rel="stylesheet" href="/assets/css/header.css?v=20260803-3" />
   <script type="application/ld+json">
 ${structuredData(article, labels, body)}
