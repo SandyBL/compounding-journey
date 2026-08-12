@@ -1,7 +1,7 @@
 ---
 title: "Como Construir Riqueza com Bons Hábitos Financeiros: Lições de Pai Rico,
   Pai Pobre"
-date: 2025-01-07
+date: 2026-08-04
 category: Hábitos financeiros
 summary: Aprenda a construir riqueza de longo prazo com bons hábitos
   financeiros. Entenda a diferença entre ativos, passivos, dívida boa e fluxo de
