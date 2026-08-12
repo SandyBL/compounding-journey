@@ -1,7 +1,7 @@
 ---
 title: "Building Wealth Through Good Financial Habits: Key Lessons from Rich
   Dad, Poor Dad"
-date: 2025-01-07
+date: 2026-08-04
 category: Money habits
 summary: Discover how to build long-term wealth using proven financial habits
   from Rich Dad, Poor Dad. Learn the key differences between assets,
