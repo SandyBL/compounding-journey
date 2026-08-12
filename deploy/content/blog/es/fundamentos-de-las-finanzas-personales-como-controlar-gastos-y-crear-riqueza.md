@@ -1,6 +1,6 @@
 ---
 title: "Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza"
-date: 2025-01-14
+date: 2026-08-11
 category: Hábitos financieros
 summary: Descubre consejos simples para presupuestar, rastrear tus gastos y
   tomar decisiones financieras inteligentes para alcanzar la libertad sin
