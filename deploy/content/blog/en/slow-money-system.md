@@ -1,10 +1,11 @@
 ---
 title: "The slow money system: a calmer way to build wealth"
-date: "2026-07-21"
-category: "Money habits"
-summary: "A practical weekly rhythm that replaces financial urgency with a small set of repeatable decisions."
-translation_key: "slow-money-system"
-author: "Sandy Bradbury / Compounding Journey"
+date: 2026-07-21
+category: Money habits
+summary: A practical weekly rhythm that replaces financial urgency with a small
+  set of repeatable decisions.
+translation_key: slow-money-system
+author: Sandy Bradbury / Compounding Journey
 ---
 
 ## Why speed is not the same as progress
@@ -40,3 +41,10 @@ Remove unnecessary categories, cancel alerts that do not help you act, and keep 
 ## Let consistency do the heavy work
 
 Wealth rarely arrives through one heroic month. It grows through ordinary months handled with care. Build a pace that leaves room for your life, then allow time and repetition to compound the result.
+
+---
+
+### Ready to Master Your Money Habits?
+Paying yourself first is the fundamental step toward buying back your time and creating financial peace[cite: 1]. Take our habit assessment to benchmark your current savings routine and discover actionable steps to accelerate your path to independence.
+
+[Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)
