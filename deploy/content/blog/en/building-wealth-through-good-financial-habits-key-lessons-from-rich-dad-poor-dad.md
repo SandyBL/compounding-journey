@@ -111,4 +111,4 @@ Building wealth is about designing a life where money serves your happiness and 
 
 
 
-\[Assess Your Financial Habits →](https://compoundingjourney.com/en/#contacto)
+\[Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)
