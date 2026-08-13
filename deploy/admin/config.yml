@@ -30,7 +30,7 @@ collections:
       - { label: "Category", name: "category", widget: "select", options: ["Money habits", "Investing", "Financial freedom", "Life design"] }
       - { label: "Summary", name: "summary", widget: "text", hint: "Used on listing pages and in the SEO description." }
       - { label: "Translation key", name: "translation_key", widget: "string", hint: "Use the same key for all language versions." }
-      - { label: "Author", name: "author", widget: "string", default: "Sandy Bradbury / Compounding Journey" }
+      - { label: "Author", name: "author", widget: "string", default: "Sandy Bradbury" }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "blog_es"
@@ -48,7 +48,7 @@ collections:
       - { label: "Categoría", name: "category", widget: "select", options: ["Hábitos financieros", "Inversión", "Libertad financiera", "Diseño de vida"] }
       - { label: "Resumen", name: "summary", widget: "text", hint: "Se usa en las listas de artículos y en la descripción SEO." }
       - { label: "Clave de traducción", name: "translation_key", widget: "string", hint: "Usa la misma clave en las versiones de todos los idiomas." }
-      - { label: "Autor", name: "author", widget: "string", default: "Sandy Bradbury / Compounding Journey" }
+      - { label: "Autor", name: "author", widget: "string", default: "Sandy Bradbury" }
       - { label: "Contenido", name: "body", widget: "markdown" }
 
   - name: "blog_pt"
@@ -66,5 +66,5 @@ collections:
       - { label: "Categoria", name: "category", widget: "select", options: ["Hábitos financeiros", "Investimentos", "Liberdade financeira", "Design de vida"] }
       - { label: "Resumo", name: "summary", widget: "text", hint: "Usado nas listas de artigos e na descrição de SEO." }
       - { label: "Chave de tradução", name: "translation_key", widget: "string", hint: "Use a mesma chave nas versões de todos os idiomas." }
-      - { label: "Autor", name: "author", widget: "string", default: "Sandy Bradbury / Compounding Journey" }
+      - { label: "Autor", name: "author", widget: "string", default: "Sandy Bradbury" }
       - { label: "Conteúdo", name: "body", widget: "markdown" }
