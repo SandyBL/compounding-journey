@@ -99,7 +99,7 @@ const llms = `# Compounding Journey
 
 > Compounding Journey is Sandy Bradbury's multilingual financial education site about money psychology, intentional investing, compound growth, personal budgeting, and building financial freedom around personal values.
 
-The site is available in Spanish, English, and Portuguese. Each language has its own pre-rendered pages; nothing depends on JavaScript to become readable. It provides educational articles, interactive financial calculators, free downloadable Excel templates, information about Sandy Bradbury, and ways to follow or contact the project. The content and tools are general educational resources and do not replace personalized financial advice.
+The site is available in Spanish, English, and Portuguese. Each language has its own pre-rendered pages; nothing depends on JavaScript to become readable. It provides educational articles, interactive financial calculators, free downloadable Excel templates, a financial assessment that returns a personal snapshot and risk profile, information about Sandy Bradbury, and ways to follow or contact the project. The content and tools are general educational resources and do not replace personalized financial advice.
 
 The complete text of this site — every FAQ answer and every article, in all three languages — is available in a single file: [llms-full.txt](${origin}/llms-full.txt).
 
@@ -112,9 +112,10 @@ ${languages.map((code) => `- [${languageNames[code]}](${homeUrl(code)})`).join('
 - [Financial education pillars](${origin}/#pilares): money psychology, intentional investing, sustainable habits, and financial freedom.
 - [Financial calculators](${origin}/#herramientas): compound interest, financial freedom, and purchase cost in working hours.
 - [Excel templates](${origin}/#plantillas): free personal budgeting and expense-management resources.
+- [Financial assessment](${origin}/#assessment): the personal financial balance and investment profile questionnaires, and the snapshot, risk profile, and recommended roadmap they produce.
 - [Frequently asked questions](${origin}/#preguntas-frecuentes): direct answers about the 4% rule, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
 - [About Sandy Bradbury](${origin}/#biografia): the creator's approach to money psychology, financial habits, and diversified investing.
-- [Contact](${origin}/#contacto): questionnaires and a direct contact form.
+- [Contact](${origin}/#contacto): the newsletter and a direct contact form.
 
 ## Journal
 

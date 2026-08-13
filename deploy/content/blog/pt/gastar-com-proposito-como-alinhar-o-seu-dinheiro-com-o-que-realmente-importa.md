@@ -85,4 +85,4 @@ Ao eliminar gastos supérfluos, liberta capital para poupar e investir[cite: 1].
 ### Pronto Para Dominar os Seus Hábitos Financeiros?
 Gastar com propósito é fazer com que o seu dinheiro trabalhe para a sua felicidade[cite: 1]. Faça a nossa avaliação rápida para analisar os seus hábitos de consumo, eliminar fugas financeiras e mapear o seu caminho para a independência.
 
-[Avalie os Seus Hábitos Financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Avalie os Seus Hábitos Financeiros →](https://compoundingjourney.com/pt/#assessment)
