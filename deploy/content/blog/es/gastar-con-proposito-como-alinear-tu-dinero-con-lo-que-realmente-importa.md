@@ -84,4 +84,4 @@ Al eliminar los gastos automáticos e innecesarios, liberas capital para ahorrar
 ### ¿Listo para Dominar tus Hábitos Financieros?
 Gastar con propósito es hacer que tu dinero trabaje para tu felicidad[cite: 1]. Completa nuestra evaluación rápida para analizar tus hábitos de gasto, eliminar fugas financieras y trazar tu mapa hacia la independencia.
 
-[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/?lang=es#contacto)
+[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#assessment)
