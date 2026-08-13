@@ -256,7 +256,7 @@ ${structuredData(article, labels, body)}
 ${body}
     </div><footer class="author-card"><img src="/logo-compounding-journey.png" alt="Compounding Journey logo" width="2048" height="2048" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
   </article>
-    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p></div><div class="journey-actions"><a class="button" href="${homeHref(article.language)}#herramientas">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#contacto">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
+    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p></div><div class="journey-actions"><a class="button" href="${homeHref(article.language)}#herramientas">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
   <footer class="site-footer"><div class="container footer-row"><a href="/${article.language}/blog/">${escapeHtml(labels.backFooter)}</a><span>© 2026 Compounding Journey</span></div></footer>
 </div></body>
