@@ -124,4 +124,4 @@ Controlar tus gastos no significa renunciar a lo que disfrutas, sino construir u
 
 
 
-\[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#contacto)
+\[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#assessment)
