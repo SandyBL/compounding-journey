@@ -45,6 +45,11 @@ const copy = {
     ctaBody: 'Use the practical tools or complete the financial assessment to understand where your journey can go next.',
     ctaTools: 'Explore the tools',
     ctaAssessment: 'Take the assessment',
+    readNextEyebrow: 'Keep reading',
+    readNextTitle: 'Three more from the journal',
+    readNextNote: 'Ideas that sit alongside this one. Pick the next step in your reading.',
+    readNextLink: 'Read article',
+    readNextAll: 'See every article',
     tagline: 'Your map to freedom',
     footerNote: 'Small choices. Long horizons.'
   },
@@ -66,6 +71,11 @@ const copy = {
     ctaBody: 'Usa las herramientas prácticas o completa el diagnóstico financiero para saber hacia dónde puede seguir tu viaje.',
     ctaTools: 'Explorar las herramientas',
     ctaAssessment: 'Hacer el diagnóstico',
+    readNextEyebrow: 'Sigue leyendo',
+    readNextTitle: 'Tres lecturas más del diario',
+    readNextNote: 'Ideas que acompañan a esta. Elige tu siguiente lectura.',
+    readNextLink: 'Leer el artículo',
+    readNextAll: 'Ver todos los artículos',
     tagline: 'Tu mapa hacia la libertad',
     footerNote: 'Decisiones pequeñas. Horizontes largos.'
   },
@@ -87,6 +97,11 @@ const copy = {
     ctaBody: 'Usa as ferramentas práticas ou completa o diagnóstico financeiro para perceber para onde pode seguir a tua jornada.',
     ctaTools: 'Explorar as ferramentas',
     ctaAssessment: 'Fazer o diagnóstico',
+    readNextEyebrow: 'Continua a ler',
+    readNextTitle: 'Mais três leituras do diário',
+    readNextNote: 'Ideias que acompanham esta. Escolhe a tua próxima leitura.',
+    readNextLink: 'Ler o artigo',
+    readNextAll: 'Ver todos os artigos',
     tagline: 'O teu mapa para a liberdade',
     footerNote: 'Escolhas pequenas. Horizontes longos.'
   }
@@ -158,6 +173,44 @@ function homeHref(language) {
   return language === defaultLanguage ? '/' : `/${language}/`;
 }
 
+// An article that ends in a dead end sends the reader back to the browser tab
+// bar. Three suggestions keep the journal reachable from every article and give
+// crawlers internal links between translations of the same language.
+// Same-category pieces come first because they are the closest continuation of
+// what was just read; the newest of the rest fill any remaining slot.
+function relatedArticles(article, all) {
+  const pool = all
+    .filter((candidate) => candidate.language === article.language && candidate.slug !== article.slug)
+    .sort((first, second) => second.date.localeCompare(first.date));
+  const sameCategory = pool.filter((candidate) => candidate.category === article.category);
+  const others = pool.filter((candidate) => candidate.category !== article.category);
+  return [...sameCategory, ...others].slice(0, 3);
+}
+
+function readNextSection(article, labels, related) {
+  if (!related.length) return '';
+
+  const cards = related.map((item, index) => `
+        <a class="read-next-card" href="${articlePath(item.language, item.slug)}">
+          <span class="read-next-index">${String(index + 1).padStart(2, '0')}</span>
+          <span class="post-meta"><span>${escapeHtml(item.category)}</span><span>${item.readingTime} ${escapeHtml(labels.reading)}</span></span>
+          <h3>${escapeHtml(item.title)}</h3>
+          <p>${escapeHtml(item.summary)}</p>
+          <span class="read-next-link">${escapeHtml(labels.readNextLink)}</span>
+        </a>`).join('');
+
+  return `
+    <section class="read-next" aria-labelledby="read-next-title"><div class="container">
+      <div class="read-next-head">
+        <div><p class="eyebrow">${escapeHtml(labels.readNextEyebrow)}</p><h2 id="read-next-title">${escapeHtml(labels.readNextTitle)}</h2></div>
+        <p class="read-next-note">${escapeHtml(labels.readNextNote)}</p>
+      </div>
+      <div class="read-next-grid">${cards}
+      </div>
+      <a class="read-next-all text-link" href="/${article.language}/blog/">${escapeHtml(labels.readNextAll)}</a>
+    </div></section>`;
+}
+
 function structuredData(article, labels, body) {
   const url = `${origin}${articlePath(article.language, article.slug)}`;
   const graph = [
@@ -191,7 +244,7 @@ function structuredData(article, labels, body) {
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
 }
 
-function renderPage(article, labels, body, headings) {
+function renderPage(article, labels, body, headings, related) {
   const url = `${origin}${articlePath(article.language, article.slug)}`;
   const alternates = languages
     .filter((code) => article.translations[code])
@@ -233,7 +286,7 @@ function renderPage(article, labels, body, headings) {
   <meta name="twitter:image" content="${logo}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="/assets/css/blog.css?v=20260812-1" />
+  <link rel="stylesheet" href="/assets/css/blog.css?v=20260813-1" />
   <link rel="stylesheet" href="/assets/css/header.css?v=20260803-3" />
   <script type="application/ld+json">
 ${structuredData(article, labels, body)}
@@ -255,7 +308,7 @@ ${structuredData(article, labels, body)}
     <div class="container article-layout">${toc}<div><div id="article-body" class="article-body">
 ${body}
     </div><footer class="author-card"><img src="/logo-compounding-journey.png" alt="Compounding Journey logo" width="2048" height="2048" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
-  </article>
+  </article>${readNextSection(article, labels, related)}
     <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p></div><div class="journey-actions"><a class="button" href="${homeHref(article.language)}#herramientas">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
   <footer class="site-footer"><div class="container footer-row"><a href="/${article.language}/blog/">${escapeHtml(labels.backFooter)}</a><span>© 2026 Compounding Journey</span></div></footer>
@@ -435,8 +488,11 @@ ${entries.join('\n')}
 }
 
 const catalog = JSON.parse(await fs.readFile(path.join(contentRoot, 'catalog.json'), 'utf8'));
-const generated = [];
+const prepared = [];
 
+// Rendering happens in a second pass: the read-next section on any article needs
+// the title, category and reading time of the others, so every article has to be
+// parsed before the first page can be written.
 for (const entry of catalog) {
   const source = await fs.readFile(path.join(contentRoot, entry.language, `${entry.slug}.md`), 'utf8');
   const { body: rawMarkdown } = parseFrontMatter(source);
@@ -446,10 +502,16 @@ for (const entry of catalog) {
   const headings = collectHeadings(html);
   const article = { ...entry, readingTime: readingTime(markdown) };
 
-  const directory = path.join(root, entry.language, 'blog', entry.slug);
+  prepared.push({ article, labels, html, headings });
+}
+
+const generated = prepared.map((item) => item.article);
+
+for (const { article, labels, html, headings } of prepared) {
+  const related = relatedArticles(article, generated);
+  const directory = path.join(root, article.language, 'blog', article.slug);
   await fs.mkdir(directory, { recursive: true });
-  await fs.writeFile(path.join(directory, 'index.html'), renderPage(article, labels, html, headings));
-  generated.push(article);
+  await fs.writeFile(path.join(directory, 'index.html'), renderPage(article, labels, html, headings, related));
 }
 
 const removed = [];
