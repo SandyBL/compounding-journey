@@ -111,4 +111,4 @@ Crear riqueza se trata de diseñar una vida donde el dinero trabaje para tu feli
 
 
 
-\[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#contacto)
+\[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#assessment)
