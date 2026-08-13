@@ -6,7 +6,7 @@ summary: O crescimento financeiro não exige cortar todas as alegrias, mas sim
   gastar com intenção. Alinhe as suas compras com os seus valores e alcance a
   liberdade.
 translation_key: spending-with-purpose-align-money-values
-author: Sandy Bradbury / Compounding Journey
+author: Sandy Bradbury
 ---
 Agora que já explorou o orçamento e a gestão de despesas, é momento de analisar com mais atenção *como* gasta o seu dinheiro—e por que razão isso faz toda a diferença[cite: 1]. O crescimento financeiro não se resume a cortar custos; consiste em garantir que o seu dinheiro é direcionado para aquilo que traz valor real à sua vida[cite: 1]. Vamos descobrir como gastar com propósito enquanto constrói um futuro financeiro próspero[cite: 1].
 
