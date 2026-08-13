@@ -6,7 +6,7 @@ summary: Descubra dicas simples para criar orçamentos, rastrear despesas e toma
   decisões financeiras inteligentes para alcançar a liberdade sem abrir mão do
   que te faz feliz.
 translation_key: foundations-personal-finance-controlling-expenses
-author: Sandy Bradbury / Compounding Journey
+author: Sandy Bradbury
 ---
 Alcançar o crescimento e a independência financeira começa com um princípio simples, mas extremamente poderoso: controlar suas despesas[cite: 4]. Pense no controle de gastos como a fundação da sua casa financeira — sem saber para onde o seu dinheiro vai, é quase impossível construir patrimônio ou aproveitar o poder dos juros compostos[cite: 4].
 
