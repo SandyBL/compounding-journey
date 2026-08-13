@@ -5,7 +5,7 @@ category: Hábitos financeiros
 summary: Um ritmo semanal prático que troca a urgência financeira por poucas
   decisões sustentáveis.
 translation_key: slow-money-system
-author: Sandy Bradbury / Compounding Journey
+author: Sandy Bradbury
 ---
 
 ## Velocidade não é o mesmo que progresso
