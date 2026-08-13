@@ -5,7 +5,7 @@ category: Money habits
 summary: A practical weekly rhythm that replaces financial urgency with a small
   set of repeatable decisions.
 translation_key: slow-money-system
-author: Sandy Bradbury / Compounding Journey
+author: Sandy Bradbury
 ---
 
 ## Why speed is not the same as progress
