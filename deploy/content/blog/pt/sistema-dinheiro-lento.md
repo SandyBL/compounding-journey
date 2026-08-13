@@ -1,10 +1,11 @@
 ---
 title: "O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio"
-date: "2026-07-21"
-category: "Hábitos financeiros"
-summary: "Um ritmo semanal prático que troca a urgência financeira por poucas decisões sustentáveis."
-translation_key: "slow-money-system"
-author: "Sandy Bradbury / Compounding Journey"
+date: 2026-07-21
+category: Hábitos financeiros
+summary: Um ritmo semanal prático que troca a urgência financeira por poucas
+  decisões sustentáveis.
+translation_key: slow-money-system
+author: Sandy Bradbury / Compounding Journey
 ---
 
 ## Velocidade não é o mesmo que progresso
@@ -40,3 +41,10 @@ Remova categorias desnecessárias, cancele alertas que não ajudam você a agir 
 ## Deixe a consistência fazer o trabalho pesado
 
 O patrimônio raramente nasce de um mês heroico. Ele cresce com meses comuns conduzidos com cuidado. Crie um ritmo que deixe espaço para sua vida e permita que o tempo multiplique o resultado.
+
+---
+
+### Pronto Para Dominar os Seus Hábitos Financeiros?
+Pagar-se a si mesmo primeiro é o passo fundamental para reaver o controlo do seu tempo e construir paz financeira[cite: 1]. Faça a nossa avaliação de hábitos para diagnosticar a sua rotina atual de poupança e descobrir passos práticos para acelerar a sua independência.
+
+[Avalie os Seus Hábitos Financeiros →](https://compoundingjourney.com/pt/#assessment)
