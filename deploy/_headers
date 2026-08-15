@@ -3,13 +3,38 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  # Two years, subdomains included. The site is HTTPS-only on Netlify and every
+  # internal link is root-relative, so there is no plaintext hop to preserve.
+  # "preload" is deliberately absent: submitting to the browser preload list is
+  # a decision that is slow and awkward to undo, and it is worth making
+  # separately once the header has been live long enough to trust.
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  # Severs window.opener for any cross-origin document this site opens, so a page
+  # reached through target="_blank" cannot navigate the tab it came from. The
+  # content studio signs in with the Netlify Identity widget in the page rather
+  # than through an OAuth popup, so nothing here depends on an opener handle.
+  Cross-Origin-Opener-Policy: same-origin
+  # The fallback policy. Every real page below restates its own, and every one of
+  # those wins over this line, so what this actually covers is the case none of
+  # them do: a request for a path that does not exist. Netlify answers those with
+  # the 404 document, but header rules are matched against the requested path, so
+  # /404.html below never applies to them and they used to arrive with no policy
+  # at all. See the /admin/* note for why a catch-all is safe to state here.
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
 
-# Content-Security-Policy is declared per public path rather than on /* so that
-# it can never reach /admin/*. The content studio loads Decap CMS and the
-# Identity client at runtime and builds its preview pane from generated markup,
-# so a policy tight enough for the public pages would break editing. Netlify
-# resolves overlapping rules by specificity, but the CMS is not worth betting on
-# that, so /admin/* is simply never matched by a rule below.
+# Content-Security-Policy is declared per public path, and the /* fallback above
+# is deliberately the first block in this file. Netlify emits one value per
+# header name rather than merging matching rules, but the two plausible ways of
+# choosing that value - most specific rule wins, or last matching rule wins -
+# disagree about which rule applies to a path that several of them match. Stating
+# the fallback first and every specific policy after it is the layout both agree
+# on: /admin/* and each language prefix win either way.
+#
+# That matters because of the content studio. It loads Decap CMS and the Identity
+# client at runtime and builds its preview pane from generated markup, so a
+# policy tight enough for the public pages would break editing. It therefore
+# carries its own policy below, one that restricts nothing, purely so that the
+# fallback can never reach it.
 #
 # The directives track what the public pages actually load, which is very
 # little: every script, style, font, image and fetch target is same-origin. The
@@ -40,8 +65,21 @@
 /pt/*
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
 
+# Static assets are never documents. A policy on a stylesheet, script, font or
+# image is ignored by the browser when the file is loaded the way the pages load
+# it, so this only takes effect when one of these URLs is opened directly in a
+# tab - which is exactly the case worth denying, because a file that renders as
+# a document is a file that can be turned into one.
+/assets/*
+  Content-Security-Policy: default-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; sandbox
+
+# The Tailwind bundle. It used to be the only stylesheet served without a version
+# in its URL while still being cached for a week, so a rebuilt bundle reached
+# returning visitors up to seven days after the markup that needed it. The <link>
+# now carries ?v=, which makes a changed bundle a changed URL, and a changed URL
+# can be cached for as long as anything else here.
 /assets/styles.css
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.png
   Cache-Control: public, max-age=2592000, must-revalidate
@@ -52,9 +90,36 @@
 /admin/*
   Cache-Control: no-store
   X-Robots-Tag: noindex
+  # Not a restriction: "*" plus the scheme sources and the two unsafe keywords
+  # add up to a policy that allows what no policy would. It exists only to shadow
+  # the /* fallback, so Decap CMS keeps loading its bundle, its inline styles,
+  # its blob: preview frames and its data: images exactly as it does today. The
+  # studio is behind Netlify Identity and serves no visitor content; the fallback
+  # would buy nothing here and could silently break publishing.
+  Content-Security-Policy: default-src * data: blob: 'unsafe-inline' 'unsafe-eval'
 
+# The full catalog: every field, including the searchable body text of every
+# article in every language. It is build input for the generators, not something
+# the browser fetches any more.
 /content/blog/catalog.json
   Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+# The per-language catalogs the journal index fetches. The <div data-catalog>
+# that names each one carries a content hash, so a republished catalog is a
+# different URL and this response never has to be revalidated. Listed one by one
+# rather than as catalog.*.json: a wildcard inside a filename is not a pattern
+# worth trusting a year-long cache to, and there are only ever three.
+/content/blog/catalog.en.json
+  Cache-Control: public, max-age=31536000, immutable
+  X-Robots-Tag: noindex
+
+/content/blog/catalog.es.json
+  Cache-Control: public, max-age=31536000, immutable
+  X-Robots-Tag: noindex
+
+/content/blog/catalog.pt.json
+  Cache-Control: public, max-age=31536000, immutable
   X-Robots-Tag: noindex
 
 /content/blog/*
@@ -64,6 +129,36 @@
 # The authored multi-language home page. It is the input to
 # generate-home-pages.mjs, not a page: the real ones are /, /en/ and /pt/.
 /content/home/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+# The publish directory is the project root, so everything the build needs in
+# order to run is served alongside the pages: the generators, the Tailwind
+# config and entry file, the manifest, the lockfile, and the dependency tree npm
+# installs next to them. robots.txt asks crawlers not to fetch these; these
+# headers are what keep them out of an index if one fetches them anyway, and
+# stop any of them being cached as though it were content.
+/scripts/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+/node_modules/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+/tailwind.config.js
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+/assets/tailwind.css
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+/package.json
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+/package-lock.json
   Cache-Control: no-store
   X-Robots-Tag: noindex
 
@@ -83,6 +178,18 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /assets/css/icons.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# The home page style sheet and behaviour, lifted out of the three documents
+# that used to carry them inline. All three link the same content-hashed URL, so
+# the second and third language cost nothing to load.
+/assets/css/home.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/home.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/home-identity.js
   Cache-Control: public, max-age=31536000, immutable
 
 /assets/fonts/*.woff2

@@ -1,0 +1,13 @@
+{
+  "name": "compounding-journey",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build tooling for the Compounding Journey static site. The pages are hand-authored and pre-rendered by the scripts in ./scripts; this manifest exists so the Tailwind bundle they are styled with is produced by the deploy rather than by hand.",
+  "scripts": {
+    "css": "tailwindcss -i ./assets/tailwind.css -o ./assets/styles.css --minify"
+  },
+  "comment": "The Tailwind CLI is a runtime dependency of the build rather than a devDependency: NODE_ENV is production in some Netlify build contexts, and npm skips devDependencies there, which would leave the CLI off the PATH and fail the deploy.",
+  "dependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

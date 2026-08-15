@@ -8,8 +8,8 @@
     <link rel="canonical" href="https://compoundingjourney.com/es/simulators/market-time-machine.html">
     <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/market-time-machine.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/market-time-machine.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/market-time-machine.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/market-time-machine.html">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="es_ES"><meta property="og:title" content="Máquina del Tiempo del Mercado"><meta property="og:description" content="Compara carteras a través de ciclos y crisis históricas."><meta property="og:url" content="https://compoundingjourney.com/es/simulators/market-time-machine.html"><meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
-    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Máquina del Tiempo del Mercado"><meta name="twitter:description" content="Compara carteras a través de ciclos y crisis históricas."><meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="es_ES"><meta property="og:title" content="Máquina del Tiempo del Mercado"><meta property="og:description" content="Compara carteras a través de ciclos y crisis históricas."><meta property="og:url" content="https://compoundingjourney.com/es/simulators/market-time-machine.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Máquina del Tiempo del Mercado"><meta name="twitter:description" content="Compara carteras a través de ciclos y crisis históricas."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Máquina del Tiempo del Mercado","url":"https://compoundingjourney.com/es/simulators/market-time-machine.html","description":"Un simulador interactivo para comparar carteras durante ciclos de mercado desde 1920.","inLanguage":"es","applicationCategory":"FinanceApplication","operatingSystem":"Cualquier navegador web","browserRequirements":"Requiere JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -62,7 +62,7 @@
             opacity: 1;
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
@@ -868,14 +868,35 @@
                 state.conservativeTrack.push({ year: item.year, val: Math.round(conservativeVal) });
             }
 
-            renderChart();
+            // The numbers are the product and the chart illustrates them, so the
+            // text is written first: a failure inside renderChart() can no longer
+            // take updateMetrics() and renderLogList() with it.
             updateMetrics();
             renderLogList();
+            renderChart();
         }
 
         function renderChart() {
             const ctx = document.getElementById('timeMachineChart');
             if (!ctx) return;
+
+            // chart-4.4.1.umd.min.js is deferred and can fail to load. Every value
+            // the chart plots is already on the page as text, so the graceful path
+            // is to say so and stop; throwing here would take the rest of the
+            // render down with it.
+            if (typeof Chart === 'undefined') {
+                if (!ctx.dataset.fallbackShown) {
+                    ctx.dataset.fallbackShown = 'true';
+                    // The canvas is a blank box once the chart cannot draw, and its container
+                    // is height-constrained; hiding it lets the note take the same space.
+                    ctx.hidden = true;
+                    const note = document.createElement('p');
+                    note.className = 'chart-unavailable';
+                    note.textContent = 'No se pudo dibujar el gráfico. Todas las cifras que mostraría también aparecen como texto en esta página.';
+                    ctx.insertAdjacentElement('afterend', note);
+                }
+                return;
+            }
 
             const labels = state.customTrack.map(d => d.year);
 

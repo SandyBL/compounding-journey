@@ -1,2 +1,6 @@
 # Local Netlify folder
 .netlify
+
+# Installed by the deploy so it can compile assets/styles.css from
+# assets/tailwind.css. Never committed.
+node_modules

@@ -4,7 +4,7 @@ backend:
 
 site_url: "https://compoundingjourney.com"
 display_url: "https://compoundingjourney.com"
-logo_url: "/icone%20foto%20limpo.png"
+logo_url: "/.netlify/images?url=/sandy-bradbury-portrait.png&w=200&h=200&fit=cover"
 # Required by the CMS even though nothing in the editor can reach it any more:
 # the image component has been removed from every body field, so there is no
 # control left that opens the media library or writes a path into an article.

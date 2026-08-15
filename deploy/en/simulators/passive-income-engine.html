@@ -8,8 +8,8 @@
     <link rel="canonical" href="https://compoundingjourney.com/en/simulators/passive-income-engine.html">
     <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/passive-income-engine.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/passive-income-engine.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/passive-income-engine.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/passive-income-engine.html">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="en_US"><meta property="og:title" content="Passive Income Engine Simulator"><meta property="og:description" content="Build assets and explore the path from active income to financial independence."><meta property="og:url" content="https://compoundingjourney.com/en/simulators/passive-income-engine.html"><meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
-    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Passive Income Engine Simulator"><meta name="twitter:description" content="Build assets and explore the path from active income to financial independence."><meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="en_US"><meta property="og:title" content="Passive Income Engine Simulator"><meta property="og:description" content="Build assets and explore the path from active income to financial independence."><meta property="og:url" content="https://compoundingjourney.com/en/simulators/passive-income-engine.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Passive Income Engine Simulator"><meta name="twitter:description" content="Build assets and explore the path from active income to financial independence."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Passive Income Engine","url":"https://compoundingjourney.com/en/simulators/passive-income-engine.html","description":"An interactive simulator for building income-producing assets and tracking passive cash flow over time.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -34,7 +34,7 @@
             box-shadow: 0 10px 25px -5px rgba(44, 29, 17, 0.05), 0 8px 10px -6px rgba(44, 29, 17, 0.03);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
@@ -1265,6 +1265,24 @@
             const pieContainer = document.getElementById('pieChartContainer');
             const ctx = document.getElementById('assetPieChart');
             if (!ctx || !pieContainer) return;
+
+            // chart-4.4.1.umd.min.js is deferred and can fail to load. Every value
+            // the chart plots is already on the page as text, so the graceful path
+            // is to say so and stop; throwing here would take the rest of the
+            // render down with it.
+            if (typeof Chart === 'undefined') {
+                if (!ctx.dataset.fallbackShown) {
+                    ctx.dataset.fallbackShown = 'true';
+                    // The canvas is a blank box once the chart cannot draw, and its container
+                    // is height-constrained; hiding it lets the note take the same space.
+                    ctx.hidden = true;
+                    const note = document.createElement('p');
+                    note.className = 'chart-unavailable';
+                    note.textContent = 'The chart could not be drawn. Every figure it would show is also listed as text on this page.';
+                    ctx.insertAdjacentElement('afterend', note);
+                }
+                return;
+            }
 
             const activeHoldings = assets.filter(a => a.ownedUnits > 0);
 

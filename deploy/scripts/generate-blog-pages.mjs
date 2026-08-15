@@ -9,8 +9,9 @@
 
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { renderMarkdown, collectHeadings, escapeHtml, normalizeMarkdown } from './markdown.mjs';
+import { renderMarkdown, collectHeadings, escapeHtml, normalizeMarkdown, jsonLdScript } from './markdown.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -32,10 +33,16 @@ function logoAt(size, format) {
 // and no artwork inside the body. The one image an article still needs is the
 // social card, because a link with no og:image is rendered by Facebook, X,
 // LinkedIn and Slack as a bare grey rectangle. That card is the site logo for
-// every article, so it is a constant rather than a per-article lookup — and it
-// is square, which is why the dimensions below are 2048x2048 and the Twitter
-// card is "summary" rather than the wide "summary_large_image" that suited the
-// 1200x630 illustrations.
+// every article, so it is a constant rather than a per-article lookup.
+//
+// It used to be the 2048x2048 master: a megabyte of mostly empty cream margin,
+// sent in full to every scraper that touched a link and then cropped by each of
+// them to its own shape. The Image CDN does the crop once, at the 1.91:1 the
+// platforms actually lay out, and the margin is what it removes — the tree and
+// the wordmark both sit well inside the kept band. The transfer drops from
+// ~1 MB to a few tens of kilobytes, which is the difference between a card that
+// renders in a chat client and one that times out.
+const socialCard = `${origin}/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png`;
 const socialImageAlt = 'Compounding Journey logo';
 
 const simulatorSlugs = [
@@ -70,7 +77,12 @@ const copy = {
     readNextLink: 'Read article',
     readNextAll: 'See every article',
     tagline: 'Your map to freedom',
-    footerNote: 'Small choices. Long horizons.'
+    footerNote: 'Small choices. Long horizons.',
+    // The journal index states how many articles it is showing. The number is
+    // written into the markup here and recomputed by assets/js/blog-index.js
+    // when a filter changes, so both have to agree on the wording.
+    countOne: 'article',
+    countMany: 'articles'
   },
   es: {
     locale: 'es_ES',
@@ -96,7 +108,9 @@ const copy = {
     readNextLink: 'Leer el artículo',
     readNextAll: 'Ver todos los artículos',
     tagline: 'Tu mapa hacia la libertad',
-    footerNote: 'Decisiones pequeñas. Horizontes largos.'
+    footerNote: 'Decisiones pequeñas. Horizontes largos.',
+    countOne: 'artículo',
+    countMany: 'artículos'
   },
   pt: {
     locale: 'pt_PT',
@@ -122,7 +136,9 @@ const copy = {
     readNextLink: 'Ler o artigo',
     readNextAll: 'Ver todos os artigos',
     tagline: 'O teu mapa para a liberdade',
-    footerNote: 'Escolhas pequenas. Horizontes longos.'
+    footerNote: 'Escolhas pequenas. Horizontes longos.',
+    countOne: 'artigo',
+    countMany: 'artigos'
   }
 };
 
@@ -260,7 +276,7 @@ function structuredData(article, labels, body) {
       ]
     }
   ];
-  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+  return jsonLdScript({ '@context': 'https://schema.org', '@graph': graph });
 }
 
 function renderPage(article, labels, body, headings, related) {
@@ -295,27 +311,28 @@ function renderPage(article, labels, body, headings, related) {
   <meta property="og:title" content="${escapeHtml(article.title)}" />
   <meta property="og:description" content="${escapeHtml(article.summary)}" />
   <meta property="og:url" content="${url}" />
-  <meta property="og:image" content="${logo}" />
-  <meta property="og:image:width" content="2048" />
-  <meta property="og:image:height" content="2048" />
+  <meta property="og:image" content="${socialCard}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:alt" content="${socialImageAlt}" />
   <meta property="article:published_time" content="${article.date}" />
   <meta property="article:modified_time" content="${article.updated || article.date}" />
   <meta property="article:author" content="${escapeHtml(article.author)}" />
   <meta property="article:section" content="${escapeHtml(article.category)}" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(article.title)}" />
   <meta name="twitter:description" content="${escapeHtml(article.summary)}" />
-  <meta name="twitter:image" content="${logo}" />
+  <meta name="twitter:image" content="${socialCard}" />
   <meta name="twitter:image:alt" content="${socialImageAlt}" />
-  <link rel="preload" href="/assets/css/blog.css?v=20260815-1" as="style" />
+  <link rel="preload" href="/assets/css/blog.css?v=20260815-2" as="style" />
   <!-- The serif sets the h1 and the whole article body, so it is on the LCP
        path. Fonts are always fetched in CORS mode, hence crossorigin even
        though this one is same-origin - without it the preload is discarded and
        the font downloads twice. -->
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/assets/css/blog.css?v=20260815-1" />
-  <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4" />
+  <link rel="stylesheet" href="/assets/css/blog.css?v=20260815-2" />
+  <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3" />
   <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1" />
   <script type="application/ld+json">
 ${structuredData(article, labels, body)}
@@ -364,14 +381,38 @@ async function updateBlogIndex(language, articles) {
   let source = await fs.readFile(file, 'utf8');
 
   const sorted = [...articles].sort((first, second) => second.date.localeCompare(first.date));
+  // Byte-for-byte the same card assets/js/blog-index.js builds, in the same
+  // order the toolbar defaults to (date, descending). The trailing card-link was
+  // missing here, so every card grew by one line the moment the catalog arrived
+  // and the whole grid jumped - a layout shift the pre-rendered markup was
+  // supposed to prevent. Keep the two templates in step.
   const cards = sorted.map((article) => `
         <article class="post-card">
           <div class="post-meta"><span>${language.toUpperCase()}</span><span>${escapeHtml(article.category)}</span><span>${escapeHtml(formatDate(language, article.date))}</span></div>
           <h3><a href="${articlePath(language, article.slug)}">${escapeHtml(article.title)}</a></h3>
           <p>${escapeHtml(article.summary)}</p>
+          <a class="card-link" href="${articlePath(language, article.slug)}">${escapeHtml(labels.readNextLink)} →</a>
         </article>`).join('');
 
-  const jsonLd = JSON.stringify({
+  // The count read "Loading articles…" until the fetch resolved, then became a
+  // number - a second shift, and a live region that announced a loading message
+  // to a screen reader on every visit. The real count is known here.
+  const countNoun = sorted.length === 1 ? labels.countOne : labels.countMany;
+  const resultCount = `${sorted.length} ${countNoun}`;
+
+  // Which catalog this page's script fetches, and which exact version of it.
+  // generate-blog-catalog.mjs has already written the file, so its hash is known
+  // here; putting it in the URL makes a republished catalog a new URL, which is
+  // what lets _headers serve it immutably instead of forbidding caching outright
+  // as the shared catalog.json had to be.
+  const catalogFile = path.join(contentRoot, `catalog.${language}.json`);
+  const catalogHash = createHash('sha256')
+    .update(await fs.readFile(catalogFile))
+    .digest('hex')
+    .slice(0, 12);
+  const catalogUrl = `/content/blog/catalog.${language}.json?v=${catalogHash}`;
+
+  const jsonLd = jsonLdScript({
     '@context': 'https://schema.org',
     '@graph': [
       {
@@ -399,7 +440,7 @@ async function updateBlogIndex(language, articles) {
         ]
       }
     ]
-  }, null, 2);
+  });
 
   const script = `\n  <script type="application/ld+json">\n${jsonLd}\n  </script>\n  `;
 
@@ -413,8 +454,23 @@ async function updateBlogIndex(language, articles) {
     );
   }
 
+  source = source.replace(
+    /<div class="post-grid" data-post-grid(?: data-catalog="[^"]*")?/,
+    `<div class="post-grid" data-post-grid data-catalog="${escapeHtml(catalogUrl)}"`
+  );
+
   const scriptResult = replaceBetween(source, 'jsonld', script);
   source = typeof scriptResult === 'string' ? scriptResult : source.replace('</head>', `${scriptResult.block}</head>`);
+
+  const countResult = replaceBetween(source, 'count', resultCount);
+  if (typeof countResult === 'string') {
+    source = countResult;
+  } else {
+    source = source.replace(
+      /(<p data-results-count[^>]*>)([\s\S]*?)(<\/p>)/,
+      `$1${countResult.block}$3`
+    );
+  }
 
   await fs.writeFile(file, source);
 }

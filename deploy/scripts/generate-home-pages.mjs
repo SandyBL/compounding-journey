@@ -18,7 +18,9 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { jsonLdScript } from './markdown.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -342,7 +344,7 @@ function rewriteStructuredData(html, language, config) {
 
   // hasPart and other cross-references still point at the retired query-string
   // addresses; move every one of them to the directory URLs in a single pass.
-  const serialized = JSON.stringify(data, null, 2)
+  const serialized = jsonLdScript(data)
     .replace(new RegExp(`${origin}/\\?lang=en`, 'g'), `${origin}/en/`)
     .replace(new RegExp(`${origin}/\\?lang=pt`, 'g'), `${origin}/pt/`);
 
@@ -530,9 +532,109 @@ function rewriteLocalizedLinks(html, language, config) {
   return { html: output, rewritten };
 }
 
+// --- inline asset extraction ------------------------------------------------
+
+// The template keeps its CSS and JavaScript inline, which is the right place to
+// author them: one file to edit, and the styles sit next to the markup they
+// describe. It is the wrong thing to ship. Those three blocks are roughly 84 KB,
+// they were repeated in full in all three generated documents, and none of it
+// could be cached — a returning visitor re-downloaded every byte with the HTML,
+// and a visitor who read the page in a second language downloaded it again.
+//
+// So the blocks are lifted out here into three files under /assets, named with a
+// hash of their own contents. All three pages link the same URLs, so the second
+// and third language cost nothing; the hash means a changed block is a changed
+// URL, which is what lets _headers cache them for a year; and moving the code
+// out of the document is the prerequisite for a Content-Security-Policy that
+// does not have to permit inline scripts.
+//
+// Contents are copied verbatim, indentation and all. The behaviour block is full
+// of template literals, and re-indenting would rewrite the strings inside them.
+const INLINE_ASSETS = [
+  {
+    label: 'styles',
+    // Matched in place so the <link> lands exactly where the <style> was. The
+    // cascade on this page is icons.css, styles.css, these rules, header.css,
+    // a11y.css - moving the block would change which declarations win.
+    pattern: /<style>([\s\S]*?)<\/style>/,
+    file: path.join('assets', 'css', 'home.css'),
+    url: '/assets/css/home.css',
+    tag: (url) => `<link rel="stylesheet" href="${url}">`
+  },
+  {
+    label: 'identity callback',
+    pattern: /<script type="module">([\s\S]*?)<\/script>/,
+    file: path.join('assets', 'js', 'home-identity.js'),
+    url: '/assets/js/home-identity.js',
+    tag: (url) => `<script type="module" src="${url}"></script>`
+  },
+  {
+    label: 'behaviour',
+    // Deliberately not deferred. The block sits at the end of <body> and runs
+    // during parsing today, which puts it ahead of the module above it - modules
+    // are deferred whether or not anyone asks. Adding defer here would silently
+    // swap the two, so the plain form is the faithful translation.
+    pattern: /<script>([\s\S]*?)<\/script>/,
+    file: path.join('assets', 'js', 'home.js'),
+    url: '/assets/js/home.js',
+    tag: (url) => `<script src="${url}"></script>`
+  }
+];
+
+// Reads each block out of the template once and writes it to disk. The blocks
+// are identical in all three documents - the language split, the head rewrite
+// and the link localizer all step over raw-text elements - so they are hashed
+// and written here rather than per page.
+async function extractInlineAssets(templateHtml) {
+  const extracted = [];
+
+  for (const asset of INLINE_ASSETS) {
+    const match = templateHtml.match(asset.pattern);
+    if (!match) {
+      throw new Error(
+        `Could not find the ${asset.label} block in content/home/index.html. `
+        + 'The generator lifts it out into a separate file, so the block has to '
+        + 'stay recognisable to the pattern in INLINE_ASSETS.'
+      );
+    }
+
+    const contents = match[1];
+    const hash = createHash('sha256').update(contents).digest('hex').slice(0, 12);
+    const destination = path.join(root, asset.file);
+
+    await fs.mkdir(path.dirname(destination), { recursive: true });
+    await fs.writeFile(destination, contents.startsWith('\n') ? contents.slice(1) : contents);
+
+    extracted.push({ ...asset, block: match[0], hash, href: `${asset.url}?v=${hash}` });
+    console.log(`Extracted home ${asset.label} → ${asset.file}?v=${hash} (${Math.round(contents.length / 1024)} KB).`);
+  }
+
+  return extracted;
+}
+
+function replaceInlineAssets(html, extracted, language) {
+  let output = html;
+
+  for (const asset of extracted) {
+    // The block has to be byte-identical to the template's, because that is what
+    // was written to disk. If a rewrite step ever starts touching script or
+    // style contents, this is where it has to be noticed rather than shipped.
+    if (!output.includes(asset.block)) {
+      throw new Error(
+        `The ${asset.label} block in the "${language}" homepage no longer matches `
+        + 'the template it was extracted from.'
+      );
+    }
+    output = output.replace(asset.block, asset.tag(asset.href));
+  }
+
+  return output;
+}
+
 // --- run -------------------------------------------------------------------
 
 const template = await fs.readFile(templateFile, 'utf8');
+const extractedAssets = await extractInlineAssets(template);
 
 const config = {
   pageTitles: extractObjectLiteral(template, 'pageTitles'),
@@ -559,6 +661,8 @@ for (const language of languages) {
   page = links.html;
 
   page = await rewriteTemplateMeta(page, language, config);
+
+  page = replaceInlineAssets(page, extractedAssets, language);
 
   assertAbsoluteAssetUrls(page, language);
 

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="E4KLrkhNpy-EpIG1IRxGICciCHV-9Trc6WycFxr4RGg" />
-    <link rel="preload" href="/assets/styles.css" as="style">
     <!-- The brand mark is a 2048px master used for social cards and structured
          data. Browsers only ever paint it at 64px, so the page itself asks the
          Netlify Image CDN for that size and leaves the master to the scrapers
@@ -27,9 +26,9 @@
     <meta id="og-title" property="og:title" content="El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad">
     <meta id="og-description" property="og:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
     <meta id="og-url" property="og:url" content="https://compoundingjourney.com/">
-    <meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
-    <meta property="og:image:width" content="2048">
-    <meta property="og:image:height" content="2048">
+    <meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:alt" content="Compounding Journey tree logo">
     <meta id="og-locale" property="og:locale" content="es_ES">
@@ -39,7 +38,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta id="twitter-title" name="twitter:title" content="El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad">
     <meta id="twitter-description" name="twitter:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
-    <meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
     <!-- The body font is declared in header.css, the third stylesheet the parser
          reaches, so the browser only discovers it once two other sheets have
@@ -49,8 +48,14 @@
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/assets/css/icons.css?v=20260815-1">
-    <!-- Compiled production styles -->
-    <link rel="stylesheet" href="/assets/styles.css">
+    <!-- Compiled production styles. Tailwind emits this file during the build,
+         after the page generators have run, so its contents are not knowable
+         when this markup is written. The ?v=source token below is a placeholder:
+         scripts/version-assets.mjs is the last step of the build and replaces it
+         with a hash of the bundle it just compiled. That makes a rebuilt bundle a
+         new URL, which is what lets _headers cache it immutably instead of
+         asking every returning visitor to revalidate it. -->
+    <link rel="stylesheet" href="/assets/styles.css?v=source">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -91,7 +96,7 @@
           "@id": "https://compoundingjourney.com/#sandy-bradbury",
           "name": "Sandy Bradbury",
           "url": "https://compoundingjourney.com/#biografia",
-          "image": "https://compoundingjourney.com/icone%20foto%20limpo.png",
+          "image": "https://compoundingjourney.com/sandy-bradbury-portrait.png",
           "jobTitle": "Financial Advisor",
           "worksFor": {
             "@id": "https://compoundingjourney.com/#organization"
@@ -1295,8 +1300,17 @@
                 min-height: auto;
             }
         }
+
+        /* The advisor photograph sits on top of an illustrated card that stands
+           in for it. If the photograph does not arrive, uncovering the card is
+           the whole fallback - and it has to be a class rather than an inline
+           style attribute so that the handler which applies it can live in a
+           script file the page is allowed to load. */
+        .portrait-unavailable {
+            display: none;
+        }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="lang-es bg-creamsoft font-sans text-darkbark/90 antialiased scroll-smooth">
@@ -1309,7 +1323,7 @@
 
     <div id="identity-callback" class="identity-callback" role="dialog" aria-modal="true" aria-labelledby="identity-callback-title" hidden>
         <div class="identity-callback__card">
-            <img class="identity-callback__logo" src="/icone%20foto%20limpo.png" alt="">
+            <img class="identity-callback__logo" src="/.netlify/images?url=/sandy-bradbury-portrait.png&amp;w=128&amp;h=128&amp;fit=cover" alt="" width="64" height="64" decoding="async">
             <h2 id="identity-callback-title" class="identity-callback__title">Set your password</h2>
             <p id="identity-callback-copy" class="identity-callback__copy">Choose a secure password to continue to the Content Studio.</p>
             <form id="identity-callback-form">
@@ -1969,7 +1983,7 @@
                         <span lang-content="en">Currency</span>
                         <span lang-content="pt">Moeda</span>
                     </label>
-                    <select id="calculator-currency" onchange="setCalculatorCurrency(this.value)" class="cursor-pointer rounded-lg border border-creamborder bg-creamsoft px-3 py-1.5 text-xs font-bold text-darkbark outline-none transition focus:border-forestgreen focus:ring-2 focus:ring-forestgreen/20">
+                    <select id="calculator-currency" class="cursor-pointer rounded-lg border border-creamborder bg-creamsoft px-3 py-1.5 text-xs font-bold text-darkbark outline-none transition focus:border-forestgreen focus:ring-2 focus:ring-forestgreen/20">
                         <option value="EUR">EUR · €</option>
                         <option value="USD">USD · $</option>
                         <option value="BRL">BRL · R$</option>
@@ -2024,7 +2038,6 @@
                                 id="calc-initial"
                                 min="0" max="100000000" step="100" inputmode="decimal" 
                                 value="5000" 
-                                oninput="calculateCompoundInterest()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
@@ -2041,7 +2054,6 @@
                                 id="calc-monthly"
                                 min="0" max="1000000" step="50" inputmode="decimal" 
                                 value="300" 
-                                oninput="calculateCompoundInterest()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
@@ -2062,7 +2074,6 @@
                                         max="40" 
                                         value="25"
                                         aria-valuetext="25 años"
-                                        oninput="syncYearsRangeToInput(this.value)"
                                         class="w-full accent-forestgreen"
                                     >
                                     <div class="flex justify-between mt-1 px-0.5 text-[10px] font-bold text-darkbark/55" aria-hidden="true">
@@ -2091,7 +2102,6 @@
                                 min="0" max="30" inputmode="decimal" 
                                 value="9" 
                                 step="0.5"
-                                oninput="calculateCompoundInterest()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
@@ -2207,7 +2217,6 @@
                                 value="30" 
                                 min="1"
                                 max="100"
-                                oninput="calculateFreedom()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
@@ -2226,7 +2235,6 @@
                                 value="60" 
                                 min="1"
                                 max="100"
-                                oninput="calculateFreedom()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
@@ -2243,7 +2251,6 @@
                                 id="freedom-desired-income"
                                 min="0" max="1000000" step="100" inputmode="decimal" 
                                 value="2500" 
-                                oninput="calculateFreedom()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
@@ -2339,7 +2346,6 @@
                                 value="2500"
                                 min="0"
                                 step="50"
-                                oninput="calculateLifeCost()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
@@ -2357,7 +2363,6 @@
                                 value="160"
                                 min="1"
                                 step="1"
-                                oninput="calculateLifeCost()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
@@ -2375,7 +2380,6 @@
                                 value="1200"
                                 min="0"
                                 step="10"
-                                oninput="calculateLifeCost()"
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                             <p class="text-[10px] text-darkbark/50 mt-2">
@@ -3117,13 +3121,14 @@
 
                                         <!-- Actual Image Tag with fallback failure support -->
                                     <img
-                                        src="/icone%20foto%20limpo.png"
+                                        id="advisor-portrait"
+                                        src="/.netlify/images?url=/sandy-bradbury-portrait.png&amp;w=730&amp;h=704&amp;fit=cover"
                                         alt="Sandy Bradbury"
                                         width="365"
                                         height="352"
                                         loading="lazy"
+                                        decoding="async"
                                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-10"
-                                        onerror="this.style.display='none'; console.log('Notice: Switched profile picture to modern abstract vector fallback.')"
                                     >
                                 </div>
 
@@ -3317,7 +3322,7 @@
                     </p>
                 </div>
 
-                <form id="contact-form" name="contact" method="POST" autocomplete="on" novalidate data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-10">
+                <form id="contact-form" name="contact" method="POST" autocomplete="on" novalidate data-netlify="true" netlify-honeypot="bot-field" class="space-y-6 relative z-10">
                     <input type="hidden" name="form-name" value="contact">
                     <input type="hidden" name="subject" data-form-copy="subject" value="Nuevo contacto - Compounding Journey">
                     <p class="hidden" aria-hidden="true">
@@ -3460,8 +3465,9 @@
                         <span lang-content="en">Your message was saved successfully. We will be in touch to discuss your goals and next steps.</span>
                         <span lang-content="pt">A tua mensagem foi guardada com sucesso. Entraremos em contacto para conversar sobre os teus objetivos e próximos passos.</span>
                     </p>
-                    <button 
-                        onclick="resetFeedbackCard()" 
+                    <button
+                        id="feedback-reset"
+                        type="button"
                         class="px-6 py-2.5 bg-creamsoft hover:bg-creamborder text-darkbark/80 font-semibold text-xs rounded-lg border border-creamborder transition-all"
                     >
                         <span lang-content="es">Enviar otro mensaje</span>
@@ -4586,35 +4592,74 @@
             scrollToCurrentRoute();
         });
 
-        // "/" is the Spanish document. A visitor who prefers another language is
-        // sent to that language's own URL once, and the choice is stored so the
-        // hop does not repeat. Only the default-language page can redirect, so
-        // /en/ and /pt/ are terminal and no loop is possible.
-        function redirectToPreferredLanguage() {
-            if (!isPrerenderedPage || pinnedLanguage !== "es") return false;
+        // "/" is the Spanish document, and it is also the site's x-default. It
+        // used to redirect a visitor whose browser preferred another language,
+        // which meant Googlebot — which renders with a US English locale — hit a
+        // scripted location.replace() on the one URL that must stay put, and
+        // every redirected reader paid for a full 230 KB document they were
+        // about to leave. The header switcher already offers /en/ and /pt/ as
+        // real crawlable links, so the page suggests rather than decides.
+        const languageSuggestion = {
+            en: {
+                text: "This page is also available in English.",
+                cta: "Read in English",
+                dismiss: "Dismiss"
+            },
+            pt: {
+                text: "Esta página também está disponível em português.",
+                cta: "Ler em português",
+                dismiss: "Fechar"
+            }
+        };
 
-            let preferred = null;
+        function suggestPreferredLanguage() {
+            if (!isPrerenderedPage || pinnedLanguage !== "es") return;
+
+            let dismissed = null;
             try {
-                preferred = localStorage.getItem("preferredLanguage")?.toLowerCase() || null;
+                dismissed = localStorage.getItem("languageSuggestionDismissed");
             } catch (error) {
-                console.warn("Language preference could not be read from localStorage.", error);
+                console.warn("Language suggestion state could not be read from localStorage.", error);
             }
+            if (dismissed) return;
 
-            if (!preferred) {
-                const browserLanguage = (navigator.language || "").toLowerCase().split("-")[0];
-                if (!supportedLanguages.includes(browserLanguage)) return false;
-                preferred = browserLanguage;
+            const browserLanguage = (navigator.language || "").toLowerCase().split("-")[0];
+            const copy = languageSuggestion[browserLanguage];
+            if (!copy) return;
+
+            const bar = document.createElement("div");
+            bar.className = "language-suggestion";
+            bar.setAttribute("role", "region");
+            bar.setAttribute("aria-label", copy.text);
+            bar.lang = browserLanguage;
+
+            const message = document.createElement("p");
+            message.className = "language-suggestion__text";
+            message.textContent = copy.text;
+
+            const cta = document.createElement("a");
+            cta.className = "language-suggestion__cta";
+            cta.href = languagePath(browserLanguage);
+            cta.hreflang = browserLanguage;
+            cta.textContent = copy.cta;
+
+            const close = document.createElement("button");
+            close.className = "language-suggestion__close";
+            close.type = "button";
+            close.textContent = copy.dismiss;
+            close.addEventListener("click", () => {
                 try {
-                    localStorage.setItem("preferredLanguage", preferred);
+                    localStorage.setItem("languageSuggestionDismissed", "1");
                 } catch (error) {
-                    console.warn("Language preference could not be saved to localStorage.", error);
+                    console.warn("Language suggestion state could not be saved to localStorage.", error);
                 }
-            }
+                bar.remove();
+            });
 
-            if (!supportedLanguages.includes(preferred) || preferred === pinnedLanguage) return false;
-
-            window.location.replace(`${languagePath(preferred)}${window.location.search}${window.location.hash}`);
-            return true;
+            bar.append(message, cta, close);
+            // Appended to the end of the body and positioned out of flow, so
+            // nothing that has already painted moves.
+            document.body.appendChild(bar);
         }
 
         // A visitor arriving from the retired /?lang=xx address is redirected to
@@ -4657,18 +4702,63 @@
             });
         }
 
+        // --- event wiring ---------------------------------------------------
+        //
+        // These listeners replace thirteen inline on* attributes that used to sit
+        // in the markup. They had to go for two reasons. An inline handler is a
+        // script the browser executes from an attribute, so a Content-Security-
+        // Policy strict enough to be worth setting has to allow 'unsafe-inline'
+        // for as long as one of them exists. And this file is loaded from
+        // /assets/js/, not written into the document, so the functions they named
+        // are no longer globals the attributes could reach.
+        //
+        // Each entry is [selector, event, handler]. A missing element is skipped
+        // rather than thrown on: the same script serves three generated pages and
+        // is loaded with defer, so a section removed from one of them should not
+        // take the rest of the page's behaviour down with it.
+        function on(selector, event, handler) {
+            const element = document.querySelector(selector);
+            if (element) element.addEventListener(event, handler);
+        }
+
+        ['#calc-initial', '#calc-monthly', '#calc-rate'].forEach((selector) => {
+            on(selector, 'input', calculateCompoundInterest);
+        });
+        on('#calc-years-range', 'input', (event) => syncYearsRangeToInput(event.target.value));
+        ['#freedom-current-age', '#freedom-target-age', '#freedom-desired-income'].forEach((selector) => {
+            on(selector, 'input', calculateFreedom);
+        });
+        ['#life-monthly-salary', '#life-monthly-hours', '#life-purchase-cost'].forEach((selector) => {
+            on(selector, 'input', calculateLifeCost);
+        });
+        on('#calculator-currency', 'change', (event) => setCalculatorCurrency(event.target.value));
+        on('#contact-form', 'submit', handleFormSubmit);
+        on('#feedback-reset', 'click', resetFeedbackCard);
+
+        // The advisor photograph sits on top of an illustrated card that stands in
+        // for it. If the photograph never arrives, uncovering the card is the whole
+        // fallback. This used to be an inline onerror that set a style property;
+        // it is a class now, because a handler in this file cannot be attached
+        // before the image starts loading, so it also has to cope with an error
+        // that already happened by the time it runs.
+        const portrait = document.querySelector('#advisor-portrait');
+        if (portrait) {
+            const hidePortrait = () => portrait.classList.add('portrait-unavailable');
+            portrait.addEventListener('error', hidePortrait);
+            if (portrait.complete && portrait.naturalWidth === 0) hidePortrait();
+        }
+
         // Initialize language and calculator values as soon as the page markup is ready.
         // The URL is left untouched here: rewriting "/" to "/?lang=xx" on load would
         // make the canonical depend on the visitor's browser locale.
-        if (!redirectToPreferredLanguage()) {
-            stripLanguageQuery();
-            setLanguage(detectInitialLanguage(), false);
-            initializeNavigationMenus();
-            initializeCalculatorTabs();
-            annotateExternalLinks();
-            initializeDesktopScrollSpy();
-            requestAnimationFrame(() => scrollToCurrentRoute());
-        }
+        stripLanguageQuery();
+        setLanguage(detectInitialLanguage(), false);
+        initializeNavigationMenus();
+        initializeCalculatorTabs();
+        annotateExternalLinks();
+        initializeDesktopScrollSpy();
+        suggestPreferredLanguage();
+        requestAnimationFrame(() => scrollToCurrentRoute());
     </script>
 </body>
 </html>

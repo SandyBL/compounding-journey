@@ -113,7 +113,14 @@ button, input { font: inherit; }
 .catalog-empty[hidden] { display: none; }
 .catalog-empty h3 { margin: 0 0 8px; color: var(--forest); font-family: var(--serif); font-size: 1.7rem; }
 .catalog-empty p, .catalog-error { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
-.catalog-error { grid-column: 1 / -1; padding: 32px; border: 1px solid #d9b0a7; background: #fff5f2; color: #8c3326; }
+/* The catalog failure notice used to replace the whole grid, so it was styled as
+   a full-width panel inside it. The grid is server-rendered now and stays put on
+   a failed fetch; the notice sits next to the result count instead, telling the
+   reader why the filters are disabled, so it is sized to that row. */
+.catalog-error { padding: 6px 10px; border: 1px solid #d9b0a7; background: #fff5f2; color: #8c3326; font-size: .78rem; font-weight: 600; }
+/* Filtering needs the catalog. When it does not arrive the controls are turned
+   off rather than left looking usable. */
+.catalog-field input:disabled, .catalog-field select:disabled { opacity: .55; cursor: not-allowed; }
 
 .pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 9px; margin-top: 38px; color: var(--muted); font-size: .82rem; font-weight: 700; }
 .pagination[hidden] { display: none; }

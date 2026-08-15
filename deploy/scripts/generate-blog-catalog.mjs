@@ -86,3 +86,29 @@ const catalog = articles
   .sort((first, second) => second.date.localeCompare(first.date));
 
 await fs.writeFile(path.join(contentRoot, 'catalog.json'), `${JSON.stringify(catalog, null, 2)}\n`);
+
+// catalog.json above is build input: it carries every language at once, plus the
+// full searchable body of every article, and it is what the generators read.
+//
+// It used to be what the journal index fetched in the browser too, which meant a
+// Spanish reader downloaded the English and Portuguese articles as well, and
+// every reader downloaded the complete text of all of them, to render a grid
+// that shows a title, a category, a date and a summary. The files below are that
+// grid's actual input: one per language, six fields per article, nothing else.
+//
+// The trade-off is deliberate and worth stating: the search box now matches on
+// title, category and summary rather than on article bodies. Restoring body
+// search means shipping the bodies again, which is the cost this removes; a
+// search index or an endpoint would be the way to get both back.
+const CLIENT_FIELDS = ['language', 'slug', 'title', 'date', 'category', 'summary'];
+
+for (const language of languages) {
+  const forLanguage = catalog
+    .filter((article) => article.language === language)
+    .map((article) => Object.fromEntries(CLIENT_FIELDS.map((field) => [field, article[field]])));
+
+  await fs.writeFile(
+    path.join(contentRoot, `catalog.${language}.json`),
+    `${JSON.stringify(forLanguage)}\n`
+  );
+}

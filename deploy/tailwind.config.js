@@ -1,11 +1,13 @@
 module.exports = {
-    // index.html is generated output: it holds only the Spanish strings, so a
-    // rebuild dropped every utility that appears exclusively in the English or
-    // Portuguese branches of the template. Scan the trilingual source instead,
-    // plus the pages that are authored by hand.
+    // index.html is generated output: it holds only the Spanish strings, so
+    // scanning it alone would drop every utility that appears exclusively in the
+    // English or Portuguese branches of the template. The trilingual source is
+    // the authoritative entry; the generated pages are listed after it so a
+    // hand-edit to one of them is still covered.
     content: [
         './content/home/index.html',
         './404.html',
+        './index.html',
         './{en,es,pt}/**/*.html',
         './assets/js/**/*.js',
     ],
