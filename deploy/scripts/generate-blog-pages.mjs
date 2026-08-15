@@ -315,7 +315,7 @@ function renderPage(article, labels, body, headings, related) {
        the font downloads twice. -->
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/blog.css?v=20260815-1" />
-  <link rel="stylesheet" href="/assets/css/header.css?v=20260803-3" />
+  <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4" />
   <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1" />
   <script type="application/ld+json">
 ${structuredData(article, labels, body)}

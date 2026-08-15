@@ -1,9 +1,11 @@
 /* Generated icon subset. Font Awesome Free 6.4.0, CC BY 4.0 (fontawesome.com).
    Replaces the cdnjs build, which shipped 102 KB of CSS defining ~2,450 icons
    and pulled 283 KB of webfonts from a third-party origin on the render path.
-   Only the 102 icons this site actually uses are declared here, and the solid
-   and brands faces are subset to exactly those glyphs. Regenerating after
-   adding a new icon means re-subsetting - see .netlify/results.md. */
+   Only the 102 icons this site actually uses are declared here, and all three
+   faces are subset to exactly those glyphs. The regular face carries only the
+   envelope and newspaper outlines, the two regular-weight icons the site draws.
+   Regenerating after adding a new icon means re-subsetting - see
+   .netlify/results.md. */
 @font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:900;font-display:block;src:url("/assets/fonts/fa-solid-900.woff2") format("woff2")}
 @font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:400;font-display:block;src:url("/assets/fonts/fa-regular-400.woff2") format("woff2")}
 @font-face{font-family:"Font Awesome 6 Brands";font-style:normal;font-weight:400;font-display:block;src:url("/assets/fonts/fa-brands-400.woff2") format("woff2")}

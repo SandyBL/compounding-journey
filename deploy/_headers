@@ -1,6 +1,44 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()
+
+# Content-Security-Policy is declared per public path rather than on /* so that
+# it can never reach /admin/*. The content studio loads Decap CMS and the
+# Identity client at runtime and builds its preview pane from generated markup,
+# so a policy tight enough for the public pages would break editing. Netlify
+# resolves overlapping rules by specificity, but the CMS is not worth betting on
+# that, so /admin/* is simply never matched by a rule below.
+#
+# The directives track what the public pages actually load, which is very
+# little: every script, style, font, image and fetch target is same-origin. The
+# two exceptions are inline code, which the pages use heavily for event handlers
+# and per-page logic, and cdn.jsdelivr.net, which the home pages import the
+# Netlify Identity client from when a visitor arrives on an invite or password
+# recovery link.
+#
+# Note for deploy previews: the collaboration drawer Netlify injects into
+# previews is served from app.netlify.com and is not allowed here. It is preview
+# chrome only - the published site does not load it - but if the drawer is
+# wanted, add https://app.netlify.com to script-src and connect-src.
+/
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+
+/index.html
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+
+/404.html
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+
+/en/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+
+/es/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+
+/pt/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
 
 /assets/styles.css
   Cache-Control: public, max-age=604800, must-revalidate
@@ -35,6 +73,9 @@
 /assets/css/header.css
   Cache-Control: public, max-age=604800, must-revalidate
 
+/assets/css/a11y.css
+  Cache-Control: public, max-age=604800, must-revalidate
+
 # Generated bundles: the precompiled Tailwind that replaced the Play CDN on the
 # simulator pages, and the Font Awesome subset that replaced the cdnjs build.
 # Both are versioned in their <link> URLs, so they can be cached hard.
@@ -50,3 +91,9 @@
 
 /assets/js/blog-index.js
   Cache-Control: public, max-age=604800, must-revalidate
+
+# Chart.js, self-hosted so the simulators no longer reach a third-party origin
+# on the render path. The version is in the filename, so an upgrade is a new
+# URL and this response can be cached permanently.
+/assets/js/chart-4.4.1.umd.min.js
+  Cache-Control: public, max-age=31536000, immutable

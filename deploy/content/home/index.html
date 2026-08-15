@@ -41,8 +41,13 @@
     <meta id="twitter-description" name="twitter:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
     <meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
+    <!-- The body font is declared in header.css, the third stylesheet the parser
+         reaches, so the browser only discovers it once two other sheets have
+         downloaded and parsed. Preloading it starts the fetch with the first
+         bytes of the document instead. Font Awesome needs no such hint: its
+         @font-face lives in icons.css, which is linked immediately below. -->
+    <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Font Awesome Icons -->
-    <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/icons.css?v=20260815-1">
     <!-- Compiled production styles -->
     <link rel="stylesheet" href="/assets/styles.css">
@@ -1291,7 +1296,7 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260803-3">
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="lang-es bg-creamsoft font-sans text-darkbark/90 antialiased scroll-smooth">
