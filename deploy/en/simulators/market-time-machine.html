@@ -13,8 +13,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Market Time Machine","url":"https://compoundingjourney.com/en/simulators/market-time-machine.html","description":"An interactive historical portfolio comparison simulator covering market cycles from 1920 onward.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=20260815-1">
-    <link rel="stylesheet" href="/assets/css/icons.css?v=20260815-1">
+    <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=cf36153ed998">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
     <!-- Chart.js -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
 
@@ -62,8 +62,8 @@
             opacity: 1;
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
+    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
 </head>
 <body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
 
@@ -71,7 +71,7 @@
 
     <!-- HEADER BAR -->
     <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
-        <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+        <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="/en/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Return to Compounding Journey">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
                     <img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
@@ -83,16 +83,47 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
+                <!-- The three translations, as flag links, in the same place and the
+                     same order as the main site header. Real links, not buttons:
+                     each language is a distinct pre-rendered document, so switching
+                     is a navigation, and the alternates stay crawlable. The
+                     generator writes aria-current="page" onto the current one. -->
+                <nav class="simulator-language-switcher" aria-label="Language">
+                    <a class="simulator-lang-btn" href="/en/simulators/market-time-machine.html" hreflang="en" lang="en" aria-label="English" aria-current="page">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#fff"/>
+                            <path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0z"/>
+                            <path fill="#B22234" d="M0 19h28v1H0z"/>
+                            <rect width="12" height="11" fill="#3C3B6E"/>
+                            <path fill="#fff" d="M2 2h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 4h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1zM2 6h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 8h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1z"/>
+                        </svg>
+                    </a>
+                    <a class="simulator-lang-btn" href="/es/simulators/market-time-machine.html" hreflang="es" lang="es" aria-label="Español">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#AA151B"/>
+                            <rect y="5" width="28" height="10" fill="#F1BF00"/>
+                            <rect x="7" y="8" width="2" height="5" rx="0.5" fill="#AA151B" opacity="0.85"/>
+                        </svg>
+                    </a>
+                    <a class="simulator-lang-btn" href="/pt/simulators/market-time-machine.html" hreflang="pt" lang="pt" aria-label="Português">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#009B3A"/>
+                            <path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/>
+                            <circle cx="14" cy="10" r="4" fill="#002776"/>
+                            <path d="M10.5 9.3c2.3-.7 4.8-.3 7 1" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        </svg>
+                    </a>
+                </nav>
                 <a href="/en/#simulador" class="site-return-link" aria-label="Back to the website">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">Website</span>
                 </a>
                 <button onclick="toggleHowToPlayModal()" class="px-3 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
-                                    <i class="fa-solid fa-circle-question"></i>
+                                    <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
                                     <span>How It Works</span>
                                 </button>
                 <button onclick="resetSimulation()" class="px-3 py-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1">
-                                    <i class="fa-solid fa-rotate-right"></i>
+                                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
                                     <span>Reset</span>
                                 </button>
             </div>
@@ -133,9 +164,9 @@
 
             <!-- PRESET QUICK SELECTOR -->
             <div class="w-full md:w-auto bg-white/10 backdrop-blur-md p-2.5 rounded-xl border border-white/20 space-y-1">
-                <label class="text-[10px] font-bold text-cream-200 uppercase tracking-wider block flex items-center justify-between">
+                <label for="presetSelect" class="text-[10px] font-bold text-cream-200 uppercase tracking-wider block flex items-center justify-between">
                     <span>Load Preset into Sliders:</span>
-                    <i class="fa-solid fa-circle-info text-amber-300 ml-1" title="Hover over the legend below to inspect detailed composition"></i>
+                    <i class="fa-solid fa-circle-info text-amber-300 ml-1" title="Hover over the legend below to inspect detailed composition" aria-hidden="true"></i>
                 </label>
                 <select id="presetSelect" onchange="applyPreset(this.value)" class="w-full text-xs bg-espresso-950 text-white border border-gold-500/40 rounded-lg p-2 font-medium focus:ring-2 focus:ring-gold-400">
                     <option value="classic6040">Classic 60/40 (60% Stocks / 40% Bonds)</option>
@@ -156,7 +187,7 @@
                 <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
-                            <i class="fa-solid fa-sliders text-forest-800"></i> Portfolio Construction
+                            <i class="fa-solid fa-sliders text-forest-800" aria-hidden="true"></i> Portfolio Construction
                         </h3>
                         <p class="text-[11px] text-espresso-800/70">Adjust the asset sliders below (Total must equal 100%)</p>
                     </div>
@@ -171,7 +202,7 @@
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
                             <span id="lbl_stocks" class="text-espresso-950 flex items-center gap-1.5">
-                                <i class="fa-solid fa-chart-line text-blue-600"></i> Global / US Equities (S&P 500)
+                                <i class="fa-solid fa-chart-line text-blue-600" aria-hidden="true"></i> Global / US Equities (S&P 500)
                             </span>
                             <span id="val_stocks" class="font-mono text-blue-700">60%</span>
                         </div>
@@ -182,7 +213,7 @@
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
                             <span id="lbl_bonds" class="text-espresso-950 flex items-center gap-1.5">
-                                <i class="fa-solid fa-building-columns text-emerald-700"></i> Treasury Bonds (10-Year)
+                                <i class="fa-solid fa-building-columns text-emerald-700" aria-hidden="true"></i> Treasury Bonds (10-Year)
                             </span>
                             <span id="val_bonds" class="font-mono text-emerald-800">40%</span>
                         </div>
@@ -193,7 +224,7 @@
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
                             <span id="lbl_reits" class="text-espresso-950 flex items-center gap-1.5">
-                                <i class="fa-solid fa-city text-amber-700"></i> Real Estate & REITs
+                                <i class="fa-solid fa-city text-amber-700" aria-hidden="true"></i> Real Estate & REITs
                             </span>
                             <span id="val_reits" class="font-mono text-amber-800">0%</span>
                         </div>
@@ -204,7 +235,7 @@
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
                             <span id="lbl_gold" class="text-espresso-950 flex items-center gap-1.5">
-                                <i class="fa-solid fa-coins text-gold-600"></i> Gold & Commodities
+                                <i class="fa-solid fa-coins text-gold-600" aria-hidden="true"></i> Gold & Commodities
                             </span>
                             <span id="val_gold" class="font-mono text-gold-600">0%</span>
                         </div>
@@ -215,7 +246,7 @@
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
                             <span id="lbl_cash" class="text-espresso-950 flex items-center gap-1.5">
-                                <i class="fa-solid fa-wallet text-slate-600"></i> Cash / T-Bills (Short Term)
+                                <i class="fa-solid fa-wallet text-slate-600" aria-hidden="true"></i> Cash / T-Bills (Short Term)
                             </span>
                             <span id="val_cash" class="font-mono text-slate-700">0%</span>
                         </div>
@@ -235,7 +266,7 @@
                 <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-3">
                     <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                         <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
-                            <i class="fa-solid fa-play text-forest-800"></i> Time Travel Controls
+                            <i class="fa-solid fa-play text-forest-800" aria-hidden="true"></i> Time Travel Controls
                         </h3>
                         <span id="currentYearDisplay" class="text-sm font-extrabold font-mono px-3 py-0.5 rounded-lg bg-forest-800 text-amber-300">
                             YEAR: 1920
@@ -245,7 +276,7 @@
                     <!-- SIMULATION PARAMETERS -->
                     <div class="grid grid-cols-2 gap-2 text-xs">
                         <div class="space-y-1">
-                            <label class="text-espresso-800 font-semibold block">Starting Capital:</label>
+                            <label for="initialCapitalInput" class="text-espresso-800 font-semibold block">Starting Capital:</label>
                             <div class="relative w-full">
                                 <span class="absolute left-2.5 top-1.5 text-espresso-800 font-mono font-bold">$</span>
                                 <input type="number" id="initialCapitalInput" value="100000" step="10000" min="1000" onchange="recalculateSimulation()" class="w-full pl-6 pr-2 py-1 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950 focus:ring-1 focus:ring-forest-800">
@@ -254,7 +285,7 @@
 
                         <!-- START YEAR SELECTOR -->
                         <div class="space-y-1">
-                            <label class="text-espresso-800 font-semibold block">Starting Year:</label>
+                            <label for="startYearSelect" class="text-espresso-800 font-semibold block">Starting Year:</label>
                             <select id="startYearSelect" onchange="changeStartYear(this.value)" class="w-full py-1 px-2 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950">
                                 <option value="1920" selected>1920</option>
                                 <option value="1929">1929 (Great Depression)</option>
@@ -269,11 +300,11 @@
                     <!-- ACTION BUTTONS -->
                     <div class="grid grid-cols-2 gap-2 pt-1">
                         <button onclick="togglePlayPause()" id="playPauseBtn" class="py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
-                            <i class="fa-solid fa-play" id="playPauseIcon"></i>
+                            <i class="fa-solid fa-play" id="playPauseIcon" aria-hidden="true"></i>
                             <span id="playPauseText">Start Journey</span>
                         </button>
                         <button onclick="advanceOneYear()" id="nextYearBtn" class="py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
-                            <i class="fa-solid fa-forward-step"></i>
+                            <i class="fa-solid fa-forward-step" aria-hidden="true"></i>
                             <span>+1 Year</span>
                         </button>
                     </div>
@@ -283,7 +314,7 @@
                 <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-2">
                     <div class="flex items-center justify-between">
                         <h4 class="text-xs font-bold text-espresso-950 uppercase tracking-wider font-serif">Portfolios Compared on Chart:</h4>
-                        <span class="text-[10px] text-espresso-800/60 flex items-center gap-1"><i class="fa-solid fa-circle-info"></i> Hover to view composition</span>
+                        <span class="text-[10px] text-espresso-800/60 flex items-center gap-1"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Hover to view composition</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-[11px]">
                         
@@ -374,7 +405,7 @@
             <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                 <div>
                     <h3 class="text-sm sm:text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
-                        <i class="fa-solid fa-chart-line text-forest-800"></i> Net Worth Trajectory (Your Portfolio vs. Benchmarks)
+                        <i class="fa-solid fa-chart-line text-forest-800" aria-hidden="true"></i> Net Worth Trajectory (Your Portfolio vs. Benchmarks)
                     </h3>
                     <p id="chartSubtext" class="text-xs text-espresso-800/70">Track net worth growth and strategy resilience across the decades</p>
                 </div>
@@ -449,7 +480,7 @@
             <div class="flex items-center justify-between border-b border-cream-200 pb-2.5">
                 <div class="flex items-center gap-2.5">
                     <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg font-bold shadow animate-pulse">
-                        <i id="eventModalIcon" class="fa-solid fa-triangle-exclamation"></i>
+                        <i id="eventModalIcon" class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
                     </div>
                     <div>
                         <span id="eventModalYear" class="text-[10px] font-bold text-amber-700 uppercase tracking-widest block">HISTORICAL EVENT (1929)</span>
@@ -470,7 +501,7 @@
 
             <div class="p-3 rounded-xl bg-forest-800/10 border border-forest-800/20 text-xs text-espresso-900 space-y-1">
                 <strong class="text-forest-800 flex items-center gap-1 font-serif">
-                    <i class="fa-solid fa-lightbulb text-gold-600"></i> What Does the Chart Show?
+                    <i class="fa-solid fa-lightbulb text-gold-600" aria-hidden="true"></i> What Does the Chart Show?
                 </strong>
                 <p class="text-[11px] text-espresso-800 leading-normal">
                     Observe how 🔴 (100% Stocks) suffers sharp drawdowns during crashes, while diversified strategies like 🟣 (All-Weather) and 🟢 (Your Portfolio) cushion volatility through fixed income and gold!
@@ -480,10 +511,10 @@
             <div class="grid grid-cols-2 gap-2 pt-1">
                 <button onclick="closeEventModal(true)" class="py-2.5 px-3 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
                     <span>Resume Journey</span>
-                    <i class="fa-solid fa-play text-[10px]"></i>
+                    <i class="fa-solid fa-play text-[10px]" aria-hidden="true"></i>
                 </button>
                 <button onclick="closeEventModal(false)" class="py-2.5 px-3 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-pause text-[10px]"></i>
+                    <i class="fa-solid fa-pause text-[10px]" aria-hidden="true"></i>
                     <span>Pause & Analyze</span>
                 </button>
             </div>
@@ -496,22 +527,22 @@
             <div class="flex items-center justify-between border-b border-cream-200 pb-3">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 rounded-lg bg-forest-800 text-amber-300 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-compass text-base"></i>
+                        <i class="fa-solid fa-compass text-base" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-serif font-bold text-espresso-950">How The Time Machine Works</h3>
                         <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">Historical Simulation from 1920 to 2026</p>
                     </div>
                 </div>
-                <button onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="Close">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
 
             <div class="space-y-3 text-xs text-espresso-900 leading-relaxed">
                 <div class="p-3 rounded-xl bg-forest-800/10 border border-forest-800/20 space-y-1">
                     <strong class="text-forest-800 flex items-center gap-1">
-                        <i class="fa-solid fa-bullseye text-gold-600"></i> Simulator Goals:
+                        <i class="fa-solid fa-bullseye text-gold-600" aria-hidden="true"></i> Simulator Goals:
                     </strong>
                     <ul class="list-disc list-inside space-y-1 text-[11px]">
                         <li><strong>Custom Allocation:</strong> Build your portfolio and test the power of diversification.</li>
@@ -1067,7 +1098,7 @@
                     row.className = 'flex items-center justify-between p-1.5 rounded bg-amber-100/70 border border-amber-300 text-espresso-950 font-medium cursor-pointer hover:bg-amber-200 transition';
                     row.innerHTML = `
                         <span class="flex items-center gap-1.5 font-serif font-bold text-amber-900">
-                            <i class="fa-solid ${item.event.icon} text-amber-700"></i>
+                            <i class="fa-solid ${item.event.icon} text-amber-700" aria-hidden="true"></i>
                             ${item.year}: ${item.event.title}
                         </span>
                         <span class="font-mono text-[10px] text-amber-800 font-bold">VIEW EVENT</span>
@@ -1178,16 +1209,6 @@
         };
     </script>
     <footer class="simulator-footer">
-      <nav class="simulator-footer__links" aria-label="Simulator links">
-        <a href="/en/">Compounding Journey</a>
-        <a href="/en/simulator.html">All simulators</a>
-        <a href="/en/blog/">Journal</a>
-      </nav>
-      <nav class="lang-switch" aria-label="Language">
-        <a class="lang-switch-link" href="/es/simulators/market-time-machine.html" hreflang="es" lang="es" aria-label="Español">ES</a>
-        <a class="lang-switch-link" href="/en/simulators/market-time-machine.html" hreflang="en" lang="en" aria-label="English" aria-current="page">EN</a>
-        <a class="lang-switch-link" href="/pt/simulators/market-time-machine.html" hreflang="pt" lang="pt" aria-label="Português">PT</a>
-      </nav>
       <p class="simulator-footer__note">&copy; 2026 Compounding Journey. For educational purposes only. Not formal financial advice.</p>
     </footer>
 </body>

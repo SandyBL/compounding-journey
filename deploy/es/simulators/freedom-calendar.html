@@ -15,8 +15,8 @@
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/css/sim-freedom-calendar.css?v=20260815-1">
-    <link rel="stylesheet" href="/assets/css/icons.css?v=20260815-1">
+    <link rel="stylesheet" href="/assets/css/sim-freedom-calendar.css?v=9ed9f1e92d79">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
     
     <style>
         body {
@@ -43,8 +43,8 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
+    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
 
@@ -52,7 +52,7 @@
 
     <!-- HEADER & BRAND BAR -->
     <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
-        <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+        <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Volver a Compounding Journey">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
                     <img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
@@ -64,12 +64,43 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
+                <!-- The three translations, as flag links, in the same place and the
+                     same order as the main site header. Real links, not buttons:
+                     each language is a distinct pre-rendered document, so switching
+                     is a navigation, and the alternates stay crawlable. The
+                     generator writes aria-current="page" onto the current one. -->
+                <nav class="simulator-language-switcher" aria-label="Idioma">
+                    <a class="simulator-lang-btn" href="/en/simulators/freedom-calendar.html" hreflang="en" lang="en" aria-label="English">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#fff"/>
+                            <path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0z"/>
+                            <path fill="#B22234" d="M0 19h28v1H0z"/>
+                            <rect width="12" height="11" fill="#3C3B6E"/>
+                            <path fill="#fff" d="M2 2h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 4h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1zM2 6h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 8h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1z"/>
+                        </svg>
+                    </a>
+                    <a class="simulator-lang-btn" href="/es/simulators/freedom-calendar.html" hreflang="es" lang="es" aria-label="Español" aria-current="page">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#AA151B"/>
+                            <rect y="5" width="28" height="10" fill="#F1BF00"/>
+                            <rect x="7" y="8" width="2" height="5" rx="0.5" fill="#AA151B" opacity="0.85"/>
+                        </svg>
+                    </a>
+                    <a class="simulator-lang-btn" href="/pt/simulators/freedom-calendar.html" hreflang="pt" lang="pt" aria-label="Português">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#009B3A"/>
+                            <path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/>
+                            <circle cx="14" cy="10" r="4" fill="#002776"/>
+                            <path d="M10.5 9.3c2.3-.7 4.8-.3 7 1" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        </svg>
+                    </a>
+                </nav>
                 <a href="/#simulador" class="site-return-link" aria-label="Volver al sitio web">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">Sitio web</span>
                 </a>
                 <button onclick="toggleProfileDrawer()" class="px-4 py-2 rounded-xl bg-forest-800 hover:bg-forest-900 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md">
-                                <i class="fa-solid fa-sliders"></i>
+                                <i class="fa-solid fa-sliders" aria-hidden="true"></i>
                                 <span>Personalizar Ingresos y Edad</span>
                             </button>
             </div>
@@ -97,37 +128,37 @@
     <section id="profileDrawer" class="hidden bg-cream-200 border-b border-cream-300 py-6 px-4 transition-all">
         <div class="max-w-6xl mx-auto">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
-                    <i class="fa-solid fa-user-gear text-forest-800"></i> Tu Perfil Financiero Base
-                </h3>
+                <h2 class="text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
+                    <i class="fa-solid fa-user-gear text-forest-800" aria-hidden="true"></i> Tu Perfil Financiero Base
+                </h2>
                 <button onclick="toggleProfileDrawer()" class="text-xs text-espresso-800 hover:text-espresso-950 font-bold">
-                    <i class="fa-solid fa-xmark"></i> Cerrar
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i> Cerrar
                 </button>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label class="block text-xs font-bold text-espresso-900 mb-1">Edad Actual</label>
+                    <label for="inputCurrentAge" class="block text-xs font-bold text-espresso-900 mb-1">Edad Actual</label>
                     <input type="number" id="inputCurrentAge" value="30" min="18" max="75" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label class="block text-xs font-bold text-espresso-900 mb-1">Salario Anual Neto ($)</label>
+                    <label for="inputAnnualIncome" class="block text-xs font-bold text-espresso-900 mb-1">Salario Anual Neto ($)</label>
                     <input type="number" id="inputAnnualIncome" value="60000" step="1000" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label class="block text-xs font-bold text-espresso-900 mb-1">Horas Semanales de Trabajo</label>
+                    <label for="inputWorkHours" class="block text-xs font-bold text-espresso-900 mb-1">Horas Semanales de Trabajo</label>
                     <input type="number" id="inputWorkHours" value="40" min="10" max="80" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label class="block text-xs font-bold text-espresso-900 mb-1">Patrimonio Invertido ($)</label>
+                    <label for="inputNetWorth" class="block text-xs font-bold text-espresso-900 mb-1">Patrimonio Invertido ($)</label>
                     <input type="number" id="inputNetWorth" value="15000" step="1000" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label class="block text-xs font-bold text-espresso-900 mb-1">Gastos Básicos Mensuales ($)</label>
+                    <label for="inputBasicExpenses" class="block text-xs font-bold text-espresso-900 mb-1">Gastos Básicos Mensuales ($)</label>
                     <input type="number" id="inputBasicExpenses" value="2500" step="100" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
             </div>
@@ -171,10 +202,10 @@
             <div class="lg:col-span-7 space-y-4">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-lg font-bold text-espresso-900 font-serif flex items-center gap-2">
-                        <i class="fa-solid fa-cart-flatbed text-gold-600"></i> Tus Micro-Gastos y Hábitos de Estilo de Vida
+                        <i class="fa-solid fa-cart-flatbed text-gold-600" aria-hidden="true"></i> Tus Micro-Gastos y Hábitos de Estilo de Vida
                     </h3>
                     <button onclick="addCustomHabit()" class="px-3 py-1.5 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow flex items-center gap-1.5 transition-all">
-                        <i class="fa-solid fa-plus"></i> Agregar Gasto Personalizado
+                        <i class="fa-solid fa-plus" aria-hidden="true"></i> Agregar Gasto Personalizado
                     </button>
                 </div>
 
@@ -201,7 +232,7 @@
                                 <span class="text-[10px] text-cream-300/80 block uppercase font-bold tracking-wider">Línea Base</span>
                                 <span id="baselineAgeDisplay" class="text-xl font-black text-rose-300 font-mono">Edad 65</span>
                             </div>
-                            <i class="fa-solid fa-arrow-right text-gold-400 text-sm"></i>
+                            <i class="fa-solid fa-arrow-right text-gold-400 text-sm" aria-hidden="true"></i>
                             <div class="bg-gradient-to-br from-forest-700 to-forest-800 px-4 py-1.5 rounded-xl border border-gold-500/40 shadow-lg scale-105">
                                 <span class="text-[10px] text-emerald-200 block uppercase font-bold tracking-wider">Nuevo Objetivo</span>
                                 <span id="optimizedAgeDisplay" class="text-2xl font-black text-emerald-300 font-mono">Edad 56</span>
@@ -210,7 +241,7 @@
 
                         <!-- Years Pulled Forward Badge -->
                         <div id="yearsSavedBadge" class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-500 text-espresso-950 font-black text-xs shadow-md mt-0.5">
-                            <i class="fa-solid fa-calendar-check text-xs"></i>
+                            <i class="fa-solid fa-calendar-check text-xs" aria-hidden="true"></i>
                             <span>¡Libertad Adelantada 9 AÑOS!</span>
                         </div>
 
@@ -231,7 +262,7 @@
                     <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-2.5">
                         <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-forest-800 border-b border-cream-200 pb-1.5 flex items-center justify-between">
                             <span>Resumen de Libertad Recuperada</span>
-                            <i class="fa-solid fa-piggy-bank text-gold-600 text-xs"></i>
+                            <i class="fa-solid fa-piggy-bank text-gold-600 text-xs" aria-hidden="true"></i>
                         </h4>
 
                         <div class="grid grid-cols-2 gap-2.5">
@@ -253,7 +284,7 @@
                             </div>
                             <div class="text-right">
                                 <span class="text-[9px] text-espresso-800/60 block">Retorno Real 7%</span>
-                                <i class="fa-solid fa-chart-line text-emerald-600 text-sm"></i>
+                                <i class="fa-solid fa-chart-line text-emerald-600 text-sm" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -291,7 +322,7 @@
             </p>
             <a href="https://compoundingjourney.com/#assessment" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gold-600 hover:bg-gold-500 text-espresso-950 font-extrabold text-base rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
                 <span>Recibe Orientación Inicial en Compounding Journey</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
             </a>
         </div>
 
@@ -300,11 +331,6 @@
     <!-- FOOTER -->
     <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
         <p>© <script>document.write(new Date().getFullYear())</script> Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.</p>
-    <nav class="lang-switch" aria-label="Idioma">
-        <a class="lang-switch-link" href="/es/simulators/freedom-calendar.html" hreflang="es" lang="es" aria-label="Español" aria-current="page">ES</a>
-        <a class="lang-switch-link" href="/en/simulators/freedom-calendar.html" hreflang="en" lang="en" aria-label="English">EN</a>
-        <a class="lang-switch-link" href="/pt/simulators/freedom-calendar.html" hreflang="pt" lang="pt" aria-label="Português">PT</a>
-      </nav>
     </footer>
 
     <script>
@@ -538,7 +564,7 @@
                     <div class="flex items-start justify-between gap-3 mb-2">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-forest-800/10 text-forest-800 flex items-center justify-center text-lg flex-shrink-0">
-                                <i class="fa-solid ${habit.icon}"></i>
+                                <i class="fa-solid ${habit.icon}" aria-hidden="true"></i>
                             </div>
                             <div>
                                 ${habit.isCustom ? 
@@ -558,7 +584,7 @@
                             </span>
                             ${habit.isCustom ? `
                                 <button onclick="deleteHabit(${idx})" class="text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors" title="Eliminar Gasto">
-                                    <i class="fa-solid fa-trash-can"></i>
+                                    <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
                                 </button>
                             ` : ''}
                         </div>
@@ -568,7 +594,7 @@
 
                     ${habit.tip ? `
                         <div class="mb-3 p-2.5 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-start gap-2 text-xs text-espresso-900">
-                            <i class="fa-solid fa-lightbulb text-gold-600 mt-0.5 flex-shrink-0"></i>
+                            <i class="fa-solid fa-lightbulb text-gold-600 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
                             <div>
                                 <strong class="text-gold-700 font-bold block mb-0.5">Consejo de Acción Inteligente:</strong>
                                 <span class="text-espresso-800/90 leading-normal">${habit.tip}</span>

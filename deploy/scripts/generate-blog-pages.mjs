@@ -325,15 +325,15 @@ function renderPage(article, labels, body, headings, related) {
   <meta name="twitter:description" content="${escapeHtml(article.summary)}" />
   <meta name="twitter:image" content="${socialCard}" />
   <meta name="twitter:image:alt" content="${socialImageAlt}" />
-  <link rel="preload" href="/assets/css/blog.css?v=20260815-2" as="style" />
+  <link rel="preload" href="/assets/css/blog.css?v=source" as="style" />
   <!-- The serif sets the h1 and the whole article body, so it is on the LCP
        path. Fonts are always fetched in CORS mode, hence crossorigin even
        though this one is same-origin - without it the preload is discarded and
        the font downloads twice. -->
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/assets/css/blog.css?v=20260815-2" />
-  <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3" />
-  <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1" />
+  <link rel="stylesheet" href="/assets/css/blog.css?v=source" />
+  <link rel="stylesheet" href="/assets/css/header.css?v=source" />
+  <link rel="stylesheet" href="/assets/css/a11y.css?v=source" />
   <script type="application/ld+json">
 ${structuredData(article, labels, body)}
   </script>

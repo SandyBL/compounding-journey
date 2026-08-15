@@ -15,8 +15,8 @@
   
   <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=20260815-1">
-  <link rel="stylesheet" href="/assets/css/icons.css?v=20260815-1">
+  <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=cd10a121cda1">
+  <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
   
 
   <style>
@@ -96,8 +96,8 @@
       animation: warningPulse 1s infinite;
     }
   </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
+    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-100">
 
@@ -105,7 +105,7 @@
 
   <!-- ENCABEZADO Y NAVEGACIÓN -->
     <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
-        <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+        <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Volver a Compounding Journey">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
                     <img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
@@ -117,6 +117,37 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
+                <!-- The three translations, as flag links, in the same place and the
+                     same order as the main site header. Real links, not buttons:
+                     each language is a distinct pre-rendered document, so switching
+                     is a navigation, and the alternates stay crawlable. The
+                     generator writes aria-current="page" onto the current one. -->
+                <nav class="simulator-language-switcher" aria-label="Idioma">
+                    <a class="simulator-lang-btn" href="/en/simulators/monte-carlo-fire.html" hreflang="en" lang="en" aria-label="English">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#fff"/>
+                            <path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0z"/>
+                            <path fill="#B22234" d="M0 19h28v1H0z"/>
+                            <rect width="12" height="11" fill="#3C3B6E"/>
+                            <path fill="#fff" d="M2 2h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 4h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1zM2 6h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 8h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1z"/>
+                        </svg>
+                    </a>
+                    <a class="simulator-lang-btn" href="/es/simulators/monte-carlo-fire.html" hreflang="es" lang="es" aria-label="Español" aria-current="page">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#AA151B"/>
+                            <rect y="5" width="28" height="10" fill="#F1BF00"/>
+                            <rect x="7" y="8" width="2" height="5" rx="0.5" fill="#AA151B" opacity="0.85"/>
+                        </svg>
+                    </a>
+                    <a class="simulator-lang-btn" href="/pt/simulators/monte-carlo-fire.html" hreflang="pt" lang="pt" aria-label="Português">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#009B3A"/>
+                            <path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/>
+                            <circle cx="14" cy="10" r="4" fill="#002776"/>
+                            <path d="M10.5 9.3c2.3-.7 4.8-.3 7 1" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        </svg>
+                    </a>
+                </nav>
                 <a href="/#simulador" class="site-return-link" aria-label="Volver al sitio web">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">Sitio web</span>
@@ -145,16 +176,16 @@
   <div class="site-simulator-nav bg-slate-950 border-b border-slate-800">
     <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
             <button id="nav-btn-cockpit" onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
-              <i class="fa-solid fa-gauge-high mr-1"></i> CABINA
+              <i class="fa-solid fa-gauge-high mr-1" aria-hidden="true"></i> CABINA
             </button>
             <button id="nav-btn-leaderboard" onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
-              <i class="fa-solid fa-trophy mr-1 text-amber-400"></i> CLASIFICACIÓN
+              <i class="fa-solid fa-trophy mr-1 text-amber-400" aria-hidden="true"></i> CLASIFICACIÓN
             </button>
             <button id="nav-btn-montecarlo" onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
-              <i class="fa-solid fa-chart-line mr-1"></i> 1.000 SIMS
+              <i class="fa-solid fa-chart-line mr-1" aria-hidden="true"></i> 1.000 SIMS
             </button>
             <button id="nav-btn-academy" onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
-              <i class="fa-solid fa-graduation-cap mr-1"></i> ACADEMIA
+              <i class="fa-solid fa-graduation-cap mr-1" aria-hidden="true"></i> ACADEMIA
             </button>
           </nav>
   </div>
@@ -209,21 +240,21 @@
         <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
           <div class="flex items-center gap-2">
             <span class="font-hud font-bold text-cyan-400 uppercase text-[11px] flex items-center gap-1.5">
-              <i class="fa-solid fa-sliders text-cyan-400"></i> ESCENARIOS PREDEFINIDOS DE RETIRO:
+              <i class="fa-solid fa-sliders text-cyan-400" aria-hidden="true"></i> ESCENARIOS PREDEFINIDOS DE RETIRO:
             </span>
           </div>
           <div class="flex flex-wrap gap-2">
             <button onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
-              <i class="fa-solid fa-fire-flame-curved text-red-400"></i> SWR de Alto Riesgo ($850k / $45k)
+              <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i> SWR de Alto Riesgo ($850k / $45k)
             </button>
             <button onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-shield-halved text-cyan-400"></i> Estándar Trinity ($1M / $40k)
+              <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Estándar Trinity ($1M / $40k)
             </button>
             <button onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-leaf text-emerald-400"></i> Lean FIRE Ajustado ($650k / $35k)
+              <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i> Lean FIRE Ajustado ($650k / $35k)
             </button>
             <button onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-crown text-purple-400"></i> Fat FIRE Holgado ($1,5M / $75k)
+              <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i> Fat FIRE Holgado ($1,5M / $75k)
             </button>
           </div>
         </div>
@@ -238,14 +269,14 @@
           <!-- Tarjeta de Parámetros de Vuelo -->
           <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
             <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-2.5 flex items-center justify-between">
-              <span><i class="fa-solid fa-gears mr-1.5"></i> PILOTO Y COMBUSTIBLE</span>
+              <span><i class="fa-solid fa-gears mr-1.5" aria-hidden="true"></i> PILOTO Y COMBUSTIBLE</span>
               <span class="text-[10px] text-slate-400 font-sans font-normal">Pre-Vuelo</span>
             </h3>
 
             <!-- Nombre o Caza del Piloto -->
             <div class="space-y-1">
-              <label class="text-xs font-medium text-slate-300 flex items-center gap-1.5">
-                <i class="fa-solid fa-id-card text-amber-400"></i> Piloto / Nombre de Caza
+              <label for="input-pilot-name" class="text-xs font-medium text-slate-300 flex items-center gap-1.5">
+                <i class="fa-solid fa-id-card text-amber-400" aria-hidden="true"></i> Piloto / Nombre de Caza
               </label>
               <input type="text" id="input-pilot-name" value="Capitán FIRE" onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
             </div>
@@ -258,7 +289,7 @@
                 </label>
                 <div class="flex items-center gap-2">
                   <button onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
-                    <i class="fa-solid fa-calculator mr-1"></i> Estimar Requerido
+                    <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Estimar Requerido
                   </button>
                   <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">$850,000</span>
                 </div>
@@ -274,7 +305,7 @@
                 </label>
                 <div class="flex items-center gap-2">
                   <button onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
-                    <i class="fa-solid fa-calculator mr-1"></i> Presupuestar
+                    <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Presupuestar
                   </button>
                   <span id="disp-spending" class="font-mono text-emerald-300 font-bold">$45,000</span>
                 </div>
@@ -292,14 +323,14 @@
             <div class="grid grid-cols-2 gap-3 pt-1">
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
-                  <label class="text-slate-300 font-medium">Edad de Libertad FIRE</label>
+                  <label for="input-startage" class="text-slate-300 font-medium">Edad de Libertad FIRE</label>
                   <span class="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 rounded font-mono">Inicio</span>
                 </div>
                 <input type="number" id="input-startage" min="30" max="85" value="50" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
               </div>
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
-                  <label class="text-slate-300 font-medium">Edad Destino</label>
+                  <label for="input-endage" class="text-slate-300 font-medium">Edad Destino</label>
                   <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded font-mono">Longevidad</span>
                 </div>
                 <input type="number" id="input-endage" min="70" max="110" value="100" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
@@ -309,7 +340,7 @@
             <!-- Asignación de Portafolio -->
             <div class="space-y-2 pt-2 border-t border-slate-800">
               <div class="flex justify-between items-center">
-                <label class="text-xs font-bold text-slate-200">Asignación de Activos del Portafolio</label>
+                <label for="toggle-tdf" class="text-xs font-bold text-slate-200">Asignación de Activos del Portafolio</label>
                 <!-- Interruptor Target Date Fund -->
                 <label class="inline-flex items-center cursor-pointer">
                   <input type="checkbox" id="toggle-tdf" onchange="toggleTargetDateFund()" class="sr-only peer">
@@ -346,7 +377,7 @@
               <!-- Visualizador de Trayectoria Glidepath -->
               <div id="tdf-glidepath-card" class="hidden p-3 rounded-xl bg-cyan-950/40 border border-cyan-800/80 space-y-2">
                 <div class="flex justify-between items-center text-[11px]">
-                  <span class="font-bold text-cyan-300 font-mono"><i class="fa-solid fa-route text-cyan-400"></i> Trayectoria Dinámica Glidepath</span>
+                  <span class="font-bold text-cyan-300 font-mono"><i class="fa-solid fa-route text-cyan-400" aria-hidden="true"></i> Trayectoria Dinámica Glidepath</span>
                   <span id="tdf-status-text" class="text-[10px] text-slate-400">Reducción de riesgo activa</span>
                 </div>
                 <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden flex border border-slate-700">
@@ -362,7 +393,7 @@
 
             <!-- Secuencia de Turbulencia Mercado -->
             <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <label class="text-xs font-bold text-slate-200">Secuencia de Turbulencia Económica</label>
+              <label for="select-market-sequence" class="text-xs font-bold text-slate-200">Secuencia de Turbulencia Económica</label>
               <select id="select-market-sequence" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
                 <option value="simulated">🎲 Monte Carlo de Alta Volatilidad (Turbulencia Aleatoria)</option>
                 <option value="1970s">🔥 Pico de Inflación Severo de 1970 y Mercado Bajista</option>
@@ -374,10 +405,10 @@
             <!-- Botones de Despegue y Reinicio -->
             <div class="pt-3 flex gap-2">
               <button id="btn-launch-flight" onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plane-departure text-sm"></i> <span id="btn-launch-text">DESPEGAR VUELO</span>
+                <i class="fa-solid fa-plane-departure text-sm" aria-hidden="true"></i> <span id="btn-launch-text">DESPEGAR VUELO</span>
               </button>
-              <button onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition">
-                <i class="fa-solid fa-rotate-left"></i>
+              <button onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="Reiniciar la simulación">
+                <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
               </button>
             </div>
           </div>
@@ -394,7 +425,7 @@
             <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-800/80">
               <div class="flex items-center space-x-3">
                 <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-hud font-semibold bg-slate-900 border border-slate-700 text-cyan-300">
-                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5"></i> EDAD: <span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
+                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i> EDAD: <span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
                 </span>
                 <span id="hud-flight-status-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
                   Listo en Pista
@@ -426,7 +457,7 @@
               <!-- Leyenda de Inclinación de Vuelo -->
               <div class="absolute top-3 right-3 px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 backdrop-blur-md text-[11px] font-mono space-y-1 shadow-lg pointer-events-none hidden sm:block">
                 <div class="text-[10px] text-slate-400 uppercase font-bold border-b border-slate-800 pb-1 flex items-center gap-1.5">
-                  <i class="fa-solid fa-compass text-cyan-400"></i> INCLINACIÓN
+                  <i class="fa-solid fa-compass text-cyan-400" aria-hidden="true"></i> INCLINACIÓN
                 </div>
                 <div id="hud-pitch-badge" class="flex items-center gap-1.5 font-bold text-emerald-400">
                   <span>🛫 CRUCERO NIVELADO</span>
@@ -436,13 +467,13 @@
               <!-- Cartel Dinámico Educativo del Copiloto -->
               <div id="copilot-banner" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
                 <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 text-base">
-                  <i id="copilot-icon" class="fa-solid fa-triangle-exclamation"></i>
+                  <i id="copilot-icon" class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
                 </div>
                 <div class="space-y-1 flex-1">
                   <div class="flex justify-between items-center">
                     <span id="copilot-title" class="font-hud font-bold text-amber-400 text-xs uppercase">ALERTA DEL COPILOTO: TURBULENCIA DE MERCADO</span>
-                    <button onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs">
-                      <i class="fa-solid fa-xmark"></i>
+                    <button onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="Descartar este aviso">
+                      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                   </div>
                   <p id="copilot-message" class="text-slate-200 text-xs leading-relaxed">
@@ -470,7 +501,7 @@
           <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3.5 shadow-xl">
             <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
               <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 flex items-center gap-2">
-                <i class="fa-solid fa-gamepad text-cyan-400"></i> AJUSTES TÁCTICOS EN CABINA (6 OPCIONES)
+                <i class="fa-solid fa-gamepad text-cyan-400" aria-hidden="true"></i> AJUSTES TÁCTICOS EN CABINA (6 OPCIONES)
               </h3>
               <span class="text-[11px] font-mono text-slate-400">¡Actívalas en vuelo para remontar!</span>
             </div>
@@ -482,13 +513,13 @@
               <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('job')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-briefcase"></i>
+                    <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                   </div>
-                  <input type="checkbox" id="check-action-job" class="sr-only">
+                  <input type="checkbox" id="check-action-job" class="sr-only" aria-labelledby="title-action-job">
                   <span id="badge-action-job" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVO</span>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-white">Trabajo Parcial</h4>
+                  <h4 id="title-action-job" class="text-xs font-bold text-white">Trabajo Parcial</h4>
                   <p class="text-[10px] text-slate-400 leading-tight">Gana $15.000/año a tiempo parcial para reducir retiros del portafolio.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
@@ -501,13 +532,13 @@
               <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cutspend')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-scissors"></i>
+                    <i class="fa-solid fa-scissors" aria-hidden="true"></i>
                   </div>
-                  <input type="checkbox" id="check-action-cutspend" class="sr-only">
+                  <input type="checkbox" id="check-action-cutspend" class="sr-only" aria-labelledby="title-action-cutspend">
                   <span id="badge-action-cutspend" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVO</span>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-white">Recortar Gastos 15%</h4>
+                  <h4 id="title-action-cutspend" class="text-xs font-bold text-white">Recortar Gastos 15%</h4>
                   <p class="text-[10px] text-slate-400 leading-tight">Reduce gastos de vida durante los años de caída de mercado.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
@@ -520,13 +551,13 @@
               <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cashbuffer')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-vault"></i>
+                    <i class="fa-solid fa-vault" aria-hidden="true"></i>
                   </div>
-                  <input type="checkbox" id="check-action-cashbuffer" class="sr-only">
+                  <input type="checkbox" id="check-action-cashbuffer" class="sr-only" aria-labelledby="title-action-cashbuffer">
                   <span id="badge-action-cashbuffer" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVO</span>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-white">Escudo de Efectivo</h4>
+                  <h4 id="title-action-cashbuffer" class="text-xs font-bold text-white">Escudo de Efectivo</h4>
                   <p class="text-[10px] text-slate-400 leading-tight">Usa el colchón de efectivo para no vender acciones en caídas.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
@@ -539,13 +570,13 @@
               <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('guardrails')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-arrow-trend-down"></i>
+                    <i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i>
                   </div>
-                  <input type="checkbox" id="check-action-guardrails" class="sr-only">
+                  <input type="checkbox" id="check-action-guardrails" class="sr-only" aria-labelledby="title-action-guardrails">
                   <span id="badge-action-guardrails" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVO</span>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-white">Guardrails Dinámicos</h4>
+                  <h4 id="title-action-guardrails" class="text-xs font-bold text-white">Guardrails Dinámicos</h4>
                   <p class="text-[10px] text-slate-400 leading-tight">Regla Guyton-Klinger: recorta gasto 10% si el portafolio cae &gt;15%.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
@@ -558,13 +589,13 @@
               <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('downsize')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-blue-950 text-blue-400 border border-blue-800 flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-house-circle-check"></i>
+                    <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
                   </div>
-                  <input type="checkbox" id="check-action-downsize" class="sr-only">
+                  <input type="checkbox" id="check-action-downsize" class="sr-only" aria-labelledby="title-action-downsize">
                   <span id="badge-action-downsize" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVO</span>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-white">Reducir Vivienda</h4>
+                  <h4 id="title-action-downsize" class="text-xs font-bold text-white">Reducir Vivienda</h4>
                   <p class="text-[10px] text-slate-400 leading-tight">Inyección única de +$100.000 por venta o alquiler de patrimonio inmobiliario.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
@@ -577,13 +608,13 @@
               <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('pension')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-pink-950 text-pink-400 border border-pink-800 flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-piggy-bank"></i>
+                    <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i>
                   </div>
-                  <input type="checkbox" id="check-action-pension" class="sr-only">
+                  <input type="checkbox" id="check-action-pension" class="sr-only" aria-labelledby="title-action-pension">
                   <span id="badge-action-pension" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVO</span>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-white">Cobro de Pensión</h4>
+                  <h4 id="title-action-pension" class="text-xs font-bold text-white">Cobro de Pensión</h4>
                   <p class="text-[10px] text-slate-400 leading-tight">Ingreso de renta garantizada de +$20.000/año a partir de los 62 años.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
@@ -610,20 +641,20 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
           <div>
             <h2 class="text-base sm:text-lg font-bold font-hud text-amber-400 flex items-center gap-2">
-              <i class="fa-solid fa-trophy text-amber-400"></i> TABLA DE CLASIFICACIÓN DE VUELO RETIRO
+              <i class="fa-solid fa-trophy text-amber-400" aria-hidden="true"></i> TABLA DE CLASIFICACIÓN DE VUELO RETIRO
             </h2>
             <p class="text-xs text-slate-300">
               Pilotos clasificados por categoría: <strong>1º Llegar a los 100 Años</strong>, <strong>2º Mínimo de Años en Desplome</strong>, y <strong>3º Capital Final Conservado</strong>.
             </p>
           </div>
           <button onclick="clearLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
-            <i class="fa-solid fa-trash mr-1"></i> Reiniciar Tabla
+            <i class="fa-solid fa-trash mr-1" aria-hidden="true"></i> Reiniciar Tabla
           </button>
         </div>
 
         <!-- Filtros por Categoría de Escenario -->
         <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
-          <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400"></i> Filtrar Categoría:</span>
+          <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i> Filtrar Categoría:</span>
           <button id="lb-filter-ALL" onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">TODAS LAS CATEGORÍAS</button>
           <button id="lb-filter-High Risk SWR" onclick="filterLeaderboard('High Risk SWR')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">SWR Alto Riesgo</button>
           <button id="lb-filter-Trinity Standard" onclick="filterLeaderboard('Trinity Standard')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Estándar Trinity</button>
@@ -666,14 +697,14 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
-              <i class="fa-solid fa-network-wired text-cyan-400"></i> MOTOR DE PRUEBAS DE ESTRÉS MONTE CARLO (1.000 CORRIDAS)
+              <i class="fa-solid fa-network-wired text-cyan-400" aria-hidden="true"></i> MOTOR DE PRUEBAS DE ESTRÉS MONTE CARLO (1.000 CORRIDAS)
             </h2>
             <p class="text-xs text-slate-300 leading-relaxed">
               Simula 1.000 trayectorias de vuelo aleatorias durante un horizonte de 50 años (Edad 50 a 100) aplicando distribuciones históricas de alta volatilidad.
             </p>
           </div>
           <button onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
-            <i class="fa-solid fa-play mr-1.5"></i> EJECUTAR 1.000 SIMULACIONES
+            <i class="fa-solid fa-play mr-1.5" aria-hidden="true"></i> EJECUTAR 1.000 SIMULACIONES
           </button>
         </div>
       </div>
@@ -742,7 +773,7 @@
 
       <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-2">
         <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-cyan-400"></i> ACADEMIA DE VUELO FIRE: LECCIONES CLAVE DE RETIRO
+          <i class="fa-solid fa-graduation-cap text-cyan-400" aria-hidden="true"></i> ACADEMIA DE VUELO FIRE: LECCIONES CLAVE DE RETIRO
         </h2>
         <p class="text-xs text-slate-300 leading-relaxed">
           Domina la ciencia financiera de desacumulación de riqueza, equilibrio de activos y protección contra el riesgo de longevidad.
@@ -823,11 +854,6 @@
         Simulador educativo para modelar desacumulación de riqueza y Riesgo de Secuencia de Rendimientos.
       </div>
     </div>
-  <nav class="lang-switch" aria-label="Idioma">
-        <a class="lang-switch-link" href="/es/simulators/monte-carlo-fire.html" hreflang="es" lang="es" aria-label="Español" aria-current="page">ES</a>
-        <a class="lang-switch-link" href="/en/simulators/monte-carlo-fire.html" hreflang="en" lang="en" aria-label="English">EN</a>
-        <a class="lang-switch-link" href="/pt/simulators/monte-carlo-fire.html" hreflang="pt" lang="pt" aria-label="Português">PT</a>
-      </nav>
   </footer>
 
   <!-- MODAL 1: CALCULADORA DE PRESUPUESTO DE RETIRO -->
@@ -835,10 +861,10 @@
     <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-emerald-600/60 space-y-5 shadow-2xl relative">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="font-hud font-bold text-sm text-emerald-400 flex items-center gap-2">
-          <i class="fa-solid fa-calculator text-emerald-400"></i> CALCULADORA DE PRESUPUESTO ANUAL DE RETIRO
+          <i class="fa-solid fa-calculator text-emerald-400" aria-hidden="true"></i> CALCULADORA DE PRESUPUESTO ANUAL DE RETIRO
         </h3>
-        <button onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm">
-          <i class="fa-solid fa-xmark"></i>
+        <button onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Cerrar la calculadora">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
 
@@ -848,23 +874,23 @@
 
       <div class="space-y-3 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label class="text-slate-300">Vivienda y Servicios ($/mes):</label>
+          <label for="calc-spend-housing" class="text-slate-300">Vivienda y Servicios ($/mes):</label>
           <input type="number" id="calc-spend-housing" value="1500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label class="text-slate-300">Comida y Alimentación ($/mes):</label>
+          <label for="calc-spend-food" class="text-slate-300">Comida y Alimentación ($/mes):</label>
           <input type="number" id="calc-spend-food" value="800" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label class="text-slate-300">Salud y Seguros ($/mes):</label>
+          <label for="calc-spend-health" class="text-slate-300">Salud y Seguros ($/mes):</label>
           <input type="number" id="calc-spend-health" value="500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label class="text-slate-300">Viajes y Ocio ($/mes):</label>
+          <label for="calc-spend-travel" class="text-slate-300">Viajes y Ocio ($/mes):</label>
           <input type="number" id="calc-spend-travel" value="400" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label class="text-slate-300">Varios y Fondo Emergencia ($/mes):</label>
+          <label for="calc-spend-misc" class="text-slate-300">Varios y Fondo Emergencia ($/mes):</label>
           <input type="number" id="calc-spend-misc" value="550" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
 
@@ -890,10 +916,10 @@
     <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-cyan-600/60 space-y-5 shadow-2xl relative">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="font-hud font-bold text-sm text-cyan-400 flex items-center gap-2">
-          <i class="fa-solid fa-calculator text-cyan-400"></i> CALCULADORA DE CAPITAL OBJETIVO
+          <i class="fa-solid fa-calculator text-cyan-400" aria-hidden="true"></i> CALCULADORA DE CAPITAL OBJETIVO
         </h3>
-        <button onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm">
-          <i class="fa-solid fa-xmark"></i>
+        <button onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Cerrar la calculadora">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
 
@@ -903,11 +929,11 @@
 
       <div class="space-y-4 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label class="text-slate-300">Gasto Anual de Vida ($):</label>
+          <label for="calc-egg-spend" class="text-slate-300">Gasto Anual de Vida ($):</label>
           <input type="number" id="calc-egg-spend" value="45000" step="1000" oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
         </div>
         <div class="flex justify-between items-center">
-          <label class="text-slate-300">Tasa Segura de Retiro Objetivo (%):</label>
+          <label for="calc-egg-swr" class="text-slate-300">Tasa Segura de Retiro Objetivo (%):</label>
           <select id="calc-egg-swr" onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
             <option value="4.0" selected>4,0% (Estándar Trinity)</option>
             <option value="3.5">3,5% (FIRE Conservador)</option>
@@ -942,7 +968,7 @@
   <div id="modal-flight-debrief" role="dialog" aria-modal="true" aria-labelledby="debrief-title" aria-describedby="debrief-msg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
     <div class="hud-glass max-w-md w-full p-6 rounded-2xl border border-slate-700 space-y-4 shadow-2xl text-center">
       <div id="debrief-icon-box" class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl">
-        <i id="debrief-icon" class="fa-solid fa-trophy"></i>
+        <i id="debrief-icon" class="fa-solid fa-trophy" aria-hidden="true"></i>
       </div>
       <h3 id="debrief-title" class="text-lg font-hud font-bold text-white">¡MISIÓN CUMPLIDA!</h3>
       <p id="debrief-msg" class="text-xs text-slate-300 leading-relaxed">
@@ -1770,9 +1796,9 @@
         row.className = 'hover:bg-slate-900/80 transition';
         
         let rankBadge = `<span class="font-bold text-slate-400">#${idx + 1}</span>`;
-        if (idx === 0) rankBadge = `<span class="font-bold text-amber-400"><i class="fa-solid fa-crown mr-1"></i> #1</span>`;
-        if (idx === 1) rankBadge = `<span class="font-bold text-slate-300"><i class="fa-solid fa-medal mr-1"></i> #2</span>`;
-        if (idx === 2) rankBadge = `<span class="font-bold text-amber-600"><i class="fa-solid fa-award mr-1"></i> #3</span>`;
+        if (idx === 0) rankBadge = `<span class="font-bold text-amber-400"><i class="fa-solid fa-crown mr-1" aria-hidden="true"></i> #1</span>`;
+        if (idx === 1) rankBadge = `<span class="font-bold text-slate-300"><i class="fa-solid fa-medal mr-1" aria-hidden="true"></i> #2</span>`;
+        if (idx === 2) rankBadge = `<span class="font-bold text-amber-600"><i class="fa-solid fa-award mr-1" aria-hidden="true"></i> #3</span>`;
 
         row.innerHTML = `
           <td class="py-3 px-3 font-hud">${rankBadge}</td>

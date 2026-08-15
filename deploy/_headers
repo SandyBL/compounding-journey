@@ -162,14 +162,19 @@
   Cache-Control: no-store
   X-Robots-Tag: noindex
 
+# Every stylesheet below is linked with a content hash that version-assets.mjs
+# stamps at the end of the build, so a changed file always arrives on a URL no
+# visitor has cached and an unchanged one keeps the URL they already hold. These
+# three used to carry hand-bumped date tokens and so had to revalidate weekly;
+# now that nothing is bumped by hand, they can be cached as hard as the rest.
 /assets/css/blog.css
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
 /assets/css/header.css
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
 /assets/css/a11y.css
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
 # Generated bundles: the precompiled Tailwind that replaced the Play CDN on the
 # simulator pages, and the Font Awesome subset that replaced the cdnjs build.

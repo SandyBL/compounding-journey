@@ -13,8 +13,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Passive Income Engine","url":"https://compoundingjourney.com/en/simulators/passive-income-engine.html","description":"An interactive simulator for building income-producing assets and tracking passive cash flow over time.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=20260815-1">
-    <link rel="stylesheet" href="/assets/css/icons.css?v=20260815-1">
+    <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=cf36153ed998">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
     <!-- Chart.js -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     
@@ -34,15 +34,15 @@
             box-shadow: 0 10px 25px -5px rgba(44, 29, 17, 0.05), 0 8px 10px -6px rgba(44, 29, 17, 0.03);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
+    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
 </head>
 <body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
 
     <a class="skip-link" href="#main">Skip to main content</a>
     
     <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
-        <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+        <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="/en/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Return to Compounding Journey">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
                     <img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
@@ -54,24 +54,55 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
+                <!-- The three translations, as flag links, in the same place and the
+                     same order as the main site header. Real links, not buttons:
+                     each language is a distinct pre-rendered document, so switching
+                     is a navigation, and the alternates stay crawlable. The
+                     generator writes aria-current="page" onto the current one. -->
+                <nav class="simulator-language-switcher" aria-label="Language">
+                    <a class="simulator-lang-btn" href="/en/simulators/passive-income-engine.html" hreflang="en" lang="en" aria-label="English" aria-current="page">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#fff"/>
+                            <path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0z"/>
+                            <path fill="#B22234" d="M0 19h28v1H0z"/>
+                            <rect width="12" height="11" fill="#3C3B6E"/>
+                            <path fill="#fff" d="M2 2h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 4h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1zM2 6h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 8h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1z"/>
+                        </svg>
+                    </a>
+                    <a class="simulator-lang-btn" href="/es/simulators/passive-income-engine.html" hreflang="es" lang="es" aria-label="Español">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#AA151B"/>
+                            <rect y="5" width="28" height="10" fill="#F1BF00"/>
+                            <rect x="7" y="8" width="2" height="5" rx="0.5" fill="#AA151B" opacity="0.85"/>
+                        </svg>
+                    </a>
+                    <a class="simulator-lang-btn" href="/pt/simulators/passive-income-engine.html" hreflang="pt" lang="pt" aria-label="Português">
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#009B3A"/>
+                            <path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/>
+                            <circle cx="14" cy="10" r="4" fill="#002776"/>
+                            <path d="M10.5 9.3c2.3-.7 4.8-.3 7 1" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        </svg>
+                    </a>
+                </nav>
                 <a href="/en/#simulador" class="site-return-link" aria-label="Back to the website">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">Website</span>
                 </a>
                 <button onclick="toggleLeaderboardModal()" class="px-2.5 py-1.5 rounded-xl border border-gold-600 text-gold-600 hover:bg-gold-500 hover:text-espresso-950 font-semibold text-xs transition flex items-center gap-1.5" title="View Hall of Fame">
-                                    <i class="fa-solid fa-trophy text-gold-500"></i>
+                                    <i class="fa-solid fa-trophy text-gold-500" aria-hidden="true"></i>
                                     <span class="hidden sm:inline">Leaderboard</span>
                                 </button>
                 <button onclick="toggleHowToPlayModal()" class="px-2.5 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
-                                    <i class="fa-solid fa-circle-question"></i>
+                                    <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
                                     <span>How to Play</span>
                                 </button>
                 <button onclick="advanceTime(12)" class="px-3 py-1.5 rounded-xl bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs shadow transition flex items-center gap-1.5 active:scale-95">
-                                    <i class="fa-solid fa-angles-right text-[10px]"></i>
+                                    <i class="fa-solid fa-angles-right text-[10px]" aria-hidden="true"></i>
                                     <span>+1 Year</span>
                                 </button>
                 <button onclick="resetSimulation()" class="p-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1" title="Restart Simulation">
-                                    <i class="fa-solid fa-rotate-right"></i>
+                                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
                                     <span class="hidden sm:inline text-xs">Reset</span>
                                 </button>
             </div>
@@ -103,7 +134,7 @@
             <div class="bg-cream-50 rounded-2xl p-3 border border-cream-300 custom-shadow flex flex-col justify-between">
                 <div class="flex items-center justify-between text-[11px] font-semibold text-espresso-800/70">
                     <span>Available Cash</span>
-                    <i class="fa-solid fa-wallet text-amber-600"></i>
+                    <i class="fa-solid fa-wallet text-amber-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
                     <span id="cashDisplay" class="text-base sm:text-lg font-bold font-mono text-espresso-950">$10,000</span>
@@ -116,7 +147,7 @@
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-blue-600"></div>
                 <div class="flex items-center justify-between text-[11px] font-semibold text-blue-900">
                     <span>Active Salary</span>
-                    <i class="fa-solid fa-briefcase text-blue-600"></i>
+                    <i class="fa-solid fa-briefcase text-blue-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
                     <span id="activeDisplay" class="text-base sm:text-lg font-bold font-mono text-blue-800">$3,200/mo</span>
@@ -129,7 +160,7 @@
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-emerald-500"></div>
                 <div class="flex items-center justify-between text-[11px] font-semibold text-forest-800">
                     <span>Passive Income</span>
-                    <i class="fa-solid fa-arrow-trend-up text-emerald-600"></i>
+                    <i class="fa-solid fa-arrow-trend-up text-emerald-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
                     <span id="passiveDisplay" class="text-base sm:text-lg font-bold font-mono text-emerald-700">+$0/mo</span>
@@ -142,7 +173,7 @@
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-rose-500"></div>
                 <div class="flex items-center justify-between text-[11px] font-semibold text-rose-800">
                     <span>Living Expenses</span>
-                    <i class="fa-solid fa-arrow-trend-down text-rose-600"></i>
+                    <i class="fa-solid fa-arrow-trend-down text-rose-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
                     <span id="expensesDisplay" class="text-base sm:text-lg font-bold font-mono text-rose-700">$2,670/mo</span>
@@ -154,7 +185,7 @@
             <div class="bg-cream-50 rounded-2xl p-3 border border-amber-300 custom-shadow flex flex-col justify-between relative overflow-hidden bg-gradient-to-br from-cream-50 to-amber-100/50">
                 <div class="flex items-center justify-between text-[11px] font-semibold text-amber-900">
                     <span>Life Joy Index</span>
-                    <i class="fa-solid fa-face-smile text-amber-500 text-sm"></i>
+                    <i class="fa-solid fa-face-smile text-amber-500 text-sm" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
                     <span id="happinessDisplay" class="text-base sm:text-lg font-bold font-mono text-amber-700">66 / 100</span>
@@ -166,7 +197,7 @@
             <div class="bg-cream-50 rounded-2xl p-3 border border-gold-400 custom-shadow flex flex-col justify-between bg-gradient-to-br from-cream-50 to-amber-50/40" role="status" aria-live="polite" aria-atomic="true">
                 <div class="flex items-center justify-between text-[11px] font-semibold text-espresso-800">
                     <span>Freedom Coverage</span>
-                    <i class="fa-solid fa-bullseye text-gold-600"></i>
+                    <i class="fa-solid fa-bullseye text-gold-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
                     <div class="flex items-baseline gap-1">
@@ -184,7 +215,7 @@
             <div class="space-y-1 text-center md:text-left">
                 <div class="flex items-center justify-center md:justify-start gap-2">
                     <span class="bg-gold-500 text-espresso-950 font-bold text-[10px] uppercase px-2 py-0.5 rounded-md">Annual Turn Loop</span>
-                    <h3 class="text-sm font-bold font-serif">1. Adjust Expenses & Buy Assets  ➔  2. Advance +1 Year</h3>
+                    <h2 class="text-sm font-bold font-serif">1. Adjust Expenses & Buy Assets  ➔  2. Advance +1 Year</h2>
                 </div>
                 <p class="text-xs text-cream-200">
                     Net Monthly Cash Flow: <span class="font-mono text-cream-100">(Active + Passive - Expenses)</span> = <strong id="projectedMonthlySavings" class="text-gold-400 font-mono">+$530/mo</strong> net surplus added to cash balance every year.
@@ -194,7 +225,7 @@
             <!-- TIME ADVANCE ACTION BUTTON -->
             <div class="flex items-center gap-2.5 w-full md:w-auto">
                 <button onclick="advanceTime(12)" class="w-full md:w-auto px-6 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-espresso-950 font-bold text-xs shadow transition flex items-center justify-center gap-2 active:scale-95">
-                    <i class="fa-solid fa-angles-right"></i>
+                    <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
                     <span>Advance +1 Year</span>
                 </button>
             </div>
@@ -204,11 +235,11 @@
         <div id="turnSummaryToast" class="hidden bg-cream-100 border border-cream-300 rounded-xl p-3 text-xs text-espresso-900 space-y-2 shadow-sm animate-in fade-in duration-300">
             <div class="flex items-center justify-between border-b border-cream-200 pb-1.5">
                 <div class="flex items-center gap-2 font-bold text-forest-800">
-                    <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+                    <i class="fa-solid fa-circle-check text-emerald-600 text-base" aria-hidden="true"></i>
                     <span id="turnSummaryTitle">Period Advanced</span>
                 </div>
-                <button onclick="document.getElementById('turnSummaryToast').classList.add('hidden')" class="text-espresso-800/60 hover:text-espresso-950">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="document.getElementById('turnSummaryToast').classList.add('hidden')" class="text-espresso-800/60 hover:text-espresso-950" aria-label="Dismiss summary">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
             <p id="turnSummaryText" class="text-xs text-espresso-800">Year advanced! Net cash updated.</p>
@@ -227,7 +258,7 @@
                     <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                         <div>
                             <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
-                                <i class="fa-solid fa-store text-forest-800"></i> Cash-Flow Asset Marketplace
+                                <i class="fa-solid fa-store text-forest-800" aria-hidden="true"></i> Cash-Flow Asset Marketplace
                             </h3>
                             <p class="text-[11px] text-espresso-800/70">Deploy available cash into assets. Balance safe yield vs growth & volatility!</p>
                         </div>
@@ -246,7 +277,7 @@
                 <div class="bg-cream-50 rounded-2xl p-3.5 border border-cream-300 custom-shadow space-y-3">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2 border-b border-cream-200 pb-1.5">
-                            <i class="fa-solid fa-sliders text-rose-600"></i> Lifestyle Creep & Expense Adjustments
+                            <i class="fa-solid fa-sliders text-rose-600" aria-hidden="true"></i> Lifestyle Creep & Expense Adjustments
                         </h3>
                         <p class="text-[11px] text-espresso-800/70 mt-0.5">Upgrading lifestyle raises expenses but increases Life Joy!</p>
                     </div>
@@ -256,9 +287,9 @@
                         <!-- Housing Option -->
                         <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
-                                <span class="truncate"><i class="fa-solid fa-house text-amber-700 mr-1"></i>Housing</span>
+                                <span id="label-housing" class="truncate"><i class="fa-solid fa-house text-amber-700 mr-1" aria-hidden="true"></i>Housing</span>
                             </div>
-                            <select id="housingSelect" onchange="updateLifestyle('housing', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="housingSelect" aria-labelledby="label-housing" onchange="updateLifestyle('housing', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="modest">Modest Shared ($800)</option>
                                 <option value="standard" selected>Standard Apt ($1,200)</option>
                                 <option value="luxury">Luxury Penthouse ($2,200)</option>
@@ -269,9 +300,9 @@
                         <!-- Transport Option -->
                         <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
-                                <span class="truncate"><i class="fa-solid fa-car text-amber-700 mr-1"></i>Transport</span>
+                                <span id="label-transport" class="truncate"><i class="fa-solid fa-car text-amber-700 mr-1" aria-hidden="true"></i>Transport</span>
                             </div>
-                            <select id="transportSelect" onchange="updateLifestyle('transport', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="transportSelect" aria-labelledby="label-transport" onchange="updateLifestyle('transport', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="public">Public Transit ($100)</option>
                                 <option value="used" selected>Reliable Used ($300)</option>
                                 <option value="lease">Luxury SUV Lease ($800)</option>
@@ -282,9 +313,9 @@
                         <!-- Dining & Lifestyle -->
                         <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
-                                <span class="truncate"><i class="fa-solid fa-utensils text-amber-700 mr-1"></i>Dining</span>
+                                <span id="label-lifestyle" class="truncate"><i class="fa-solid fa-utensils text-amber-700 mr-1" aria-hidden="true"></i>Dining</span>
                             </div>
-                            <select id="lifestyleSelect" onchange="updateLifestyle('lifestyle', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="lifestyleSelect" aria-labelledby="label-lifestyle" onchange="updateLifestyle('lifestyle', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="frugal">Frugal / Home ($300)</option>
                                 <option value="balanced" selected>Balanced Dining ($500)</option>
                                 <option value="lavish">Lavish Fine Dining ($1,100)</option>
@@ -295,9 +326,9 @@
                         <!-- Subscriptions & Tech -->
                         <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
-                                <span class="truncate"><i class="fa-solid fa-mobile-screen text-amber-700 mr-1"></i>Tech/Subs</span>
+                                <span id="label-subscriptions" class="truncate"><i class="fa-solid fa-mobile-screen text-amber-700 mr-1" aria-hidden="true"></i>Tech/Subs</span>
                             </div>
-                            <select id="subscriptionsSelect" onchange="updateLifestyle('subscriptions', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="subscriptionsSelect" aria-labelledby="label-subscriptions" onchange="updateLifestyle('subscriptions', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="basic">Minimal & Free ($30)</option>
                                 <option value="standard" selected>Standard Subs ($120)</option>
                                 <option value="unlimited">Premium Tech ($350)</option>
@@ -308,9 +339,9 @@
                         <!-- Travel & Vacations -->
                         <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
-                                <span class="truncate"><i class="fa-solid fa-plane text-amber-700 mr-1"></i>Travel</span>
+                                <span id="label-travel" class="truncate"><i class="fa-solid fa-plane text-amber-700 mr-1" aria-hidden="true"></i>Travel</span>
                             </div>
-                            <select id="travelSelect" onchange="updateLifestyle('travel', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="travelSelect" aria-labelledby="label-travel" onchange="updateLifestyle('travel', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="staycation">Staycations ($100)</option>
                                 <option value="annual" selected>Annual Trip ($300)</option>
                                 <option value="luxury">Luxury Travel ($750)</option>
@@ -321,9 +352,9 @@
                         <!-- Shopping & Apparel -->
                         <div class="p-2.5 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5">
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
-                                <span class="truncate"><i class="fa-solid fa-bag-shopping text-amber-700 mr-1"></i>Shopping</span>
+                                <span id="label-shopping" class="truncate"><i class="fa-solid fa-bag-shopping text-amber-700 mr-1" aria-hidden="true"></i>Shopping</span>
                             </div>
-                            <select id="shoppingSelect" onchange="updateLifestyle('shopping', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="shoppingSelect" aria-labelledby="label-shopping" onchange="updateLifestyle('shopping', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="minimal">Thrift / Minimal ($100)</option>
                                 <option value="standard" selected>Standard Wardrobe ($250)</option>
                                 <option value="luxury">Designer Apparel ($650)</option>
@@ -342,7 +373,7 @@
                     <div class="bg-cream-50 rounded-2xl p-3 border border-cream-300 custom-shadow space-y-2">
                         <div class="flex items-center justify-between border-b border-cream-200 pb-1.5">
                             <h2 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-1.5">
-                                <i class="fa-solid fa-flag-checkered text-gold-600"></i>
+                                <i class="fa-solid fa-flag-checkered text-gold-600" aria-hidden="true"></i>
                                 Crossover Point Race
                             </h2>
                             <span id="monthsPassedBadge" class="text-[10px] font-mono font-bold text-forest-800 bg-cream-200 px-2 py-0.5 rounded-full">Year 0</span>
@@ -350,7 +381,7 @@
 
                         <!-- FAMILY STATUS BADGE IF KID IS BORN -->
                         <div id="familyStatusBadge" class="hidden px-2 py-1 rounded-lg bg-amber-100 border border-amber-300 text-[10px] font-bold text-amber-900 flex items-center justify-between">
-                            <span class="flex items-center gap-1"><i class="fa-solid fa-baby text-amber-600"></i> <span id="familyStatusText">Child at Home</span></span>
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-baby text-amber-600" aria-hidden="true"></i> <span id="familyStatusText">Child at Home</span></span>
                         </div>
 
                         <!-- DUAL RACING BARS -->
@@ -392,7 +423,7 @@
                     <!-- ASSET HOLDINGS CARD -->
                     <div class="bg-cream-50 rounded-2xl p-3 border border-cream-300 custom-shadow space-y-2.5">
                         <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center justify-between border-b border-cream-200 pb-1.5">
-                            <span><i class="fa-solid fa-boxes-stacked text-forest-800"></i> Asset Holdings</span>
+                            <span><i class="fa-solid fa-boxes-stacked text-forest-800" aria-hidden="true"></i> Asset Holdings</span>
                             <span id="holdingsCountBadge" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cream-200 text-espresso-800">0 Assets</span>
                         </h3>
 
@@ -432,22 +463,22 @@
             <div class="flex items-center justify-between border-b border-cream-200 pb-3">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 rounded-lg bg-forest-800 text-amber-300 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-compass text-base"></i>
+                        <i class="fa-solid fa-compass text-base" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-serif font-bold text-espresso-950">How the Game Works</h3>
                         <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">Goal & Annual Turns</p>
                     </div>
                 </div>
-                <button onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="Close">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
 
             <!-- CORE GOAL -->
             <div class="p-3 rounded-xl bg-forest-800/10 border border-forest-800/20 text-xs space-y-1">
                 <span class="font-bold text-forest-800 flex items-center gap-1">
-                    <i class="fa-solid fa-bullseye text-gold-600"></i> The Ultimate Objective:
+                    <i class="fa-solid fa-bullseye text-gold-600" aria-hidden="true"></i> The Ultimate Objective:
                 </span>
                 <p class="text-espresso-900 leading-relaxed">
                     Reach the <strong>Crossover Point</strong> where your monthly <strong>Passive Income (Green Line)</strong> exceeds your <strong>Monthly Living Expenses (Red Line)</strong>. At 100% Freedom Coverage, work becomes 100% optional!
@@ -493,7 +524,7 @@
     <div id="victoryModal" class="fixed inset-0 bg-espresso-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-cream-50 border-2 border-gold-500 rounded-2xl max-w-lg w-full p-6 sm:p-8 custom-shadow text-center space-y-5 animate-in fade-in zoom-in duration-300">
             <div class="w-16 h-16 rounded-full bg-gold-400/20 text-gold-600 flex items-center justify-center mx-auto text-3xl border border-gold-400">
-                <i class="fa-solid fa-trophy"></i>
+                <i class="fa-solid fa-trophy" aria-hidden="true"></i>
             </div>
 
             <div>
@@ -523,14 +554,14 @@
             <div id="victoryLeaderboardSubmit" class="bg-amber-50 border border-gold-400 p-3.5 rounded-xl text-left space-y-2.5">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-espresso-950 flex items-center gap-1.5">
-                        <i class="fa-solid fa-award text-gold-600"></i> Submit to Freedom Hall of Fame
+                        <i class="fa-solid fa-award text-gold-600" aria-hidden="true"></i> Submit to Freedom Hall of Fame
                     </span>
                     <span class="text-[10px] text-espresso-800/70 font-mono">Ranked by fewest years</span>
                 </div>
                 <div class="flex gap-2">
-                    <input type="text" id="playerNameInput" placeholder="Enter your name or nickname..." class="flex-1 text-xs px-3 py-2 rounded-lg border border-cream-300 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500 text-espresso-950">
+                    <input type="text" id="playerNameInput" placeholder="Enter your name or nickname..." aria-label="Enter your name or nickname..." class="flex-1 text-xs px-3 py-2 rounded-lg border border-cream-300 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500 text-espresso-950">
                     <button onclick="submitPlayerScore()" class="px-3.5 py-2 rounded-lg bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs transition flex items-center gap-1 shrink-0">
-                        <i class="fa-solid fa-check"></i> Save Score
+                        <i class="fa-solid fa-check" aria-hidden="true"></i> Save Score
                     </button>
                 </div>
             </div>
@@ -538,7 +569,7 @@
             <div class="space-y-3 pt-2">
                 <a href="https://compoundingjourney.com/en/#assessment" target="_blank" rel="noopener noreferrer" class="block w-full py-3 px-4 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-sm shadow transition flex items-center justify-center gap-2">
                     <span>Map Your Real-Life Freedom Plan</span>
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </a>
                 <button onclick="closeVictoryModal()" class="w-full py-2.5 px-4 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 font-medium text-xs transition">
                     Continue Playing & Building Wealth
@@ -553,15 +584,15 @@
             <div class="flex items-center justify-between border-b border-cream-200 pb-3">
                 <div class="flex items-center gap-2.5">
                     <div class="w-9 h-9 rounded-xl bg-gold-500 text-espresso-950 flex items-center justify-center text-lg shadow">
-                        <i class="fa-solid fa-trophy"></i>
+                        <i class="fa-solid fa-trophy" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-serif font-bold text-espresso-950 leading-tight">Freedom Hall of Fame</h3>
                         <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">Top Performers • Shortest Time to Freedom</p>
                     </div>
                 </div>
-                <button onclick="toggleLeaderboardModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="toggleLeaderboardModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="Close">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
 
@@ -986,9 +1017,9 @@
                 const timeStr = yrs > 0 ? `${yrs} Years (${entry.months}m)` : `${entry.months} Months`;
 
                 let rankBadge = `<span class="font-bold font-mono text-espresso-800">${idx + 1}</span>`;
-                if (idx === 0) rankBadge = `<i class="fa-solid fa-crown text-amber-500 text-sm"></i>`;
-                else if (idx === 1) rankBadge = `<i class="fa-solid fa-medal text-slate-400 text-sm"></i>`;
-                else if (idx === 2) rankBadge = `<i class="fa-solid fa-medal text-amber-700 text-sm"></i>`;
+                if (idx === 0) rankBadge = `<i class="fa-solid fa-crown text-amber-500 text-sm" aria-hidden="true"></i>`;
+                else if (idx === 1) rankBadge = `<i class="fa-solid fa-medal text-slate-400 text-sm" aria-hidden="true"></i>`;
+                else if (idx === 2) rankBadge = `<i class="fa-solid fa-medal text-amber-700 text-sm" aria-hidden="true"></i>`;
 
                 const tr = document.createElement('tr');
                 tr.className = idx % 2 === 0 ? 'bg-cream-50/50 hover:bg-cream-100' : 'bg-cream-100/40 hover:bg-cream-100';
@@ -1020,7 +1051,7 @@
             if (submitBox) {
                 submitBox.innerHTML = `
                     <div class="text-center py-1 text-emerald-800 font-bold text-xs flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                        <i class="fa-solid fa-circle-check text-emerald-600" aria-hidden="true"></i>
                         Score saved to Hall of Fame!
                     </div>
                 `;
@@ -1166,7 +1197,7 @@
                     <div>
                         <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
                             <span class="flex items-center gap-1.5 truncate">
-                                <i class="fa-solid ${asset.icon} text-forest-800"></i>
+                                <i class="fa-solid ${asset.icon} text-forest-800" aria-hidden="true"></i>
                                 ${asset.name}
                             </span>
                         </div>
@@ -1179,7 +1210,7 @@
                             <span class="${yieldColor} font-bold font-mono">${yieldSign}$${asset.monthlyYieldPerUnit}/mo</span>
                         </div>
                         <div class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-200 truncate">
-                            <i class="fa-solid fa-shield-halved mr-0.5 text-amber-600"></i>${asset.riskText}
+                            <i class="fa-solid fa-shield-halved mr-0.5 text-amber-600" aria-hidden="true"></i>${asset.riskText}
                         </div>
 
                         <div class="flex gap-1.5">
@@ -1239,7 +1270,7 @@
                 div.innerHTML = `
                     <div class="flex items-center justify-between text-xs">
                         <div class="flex items-center gap-1.5">
-                            <i class="fa-solid ${asset.icon} text-forest-800"></i>
+                            <i class="fa-solid ${asset.icon} text-forest-800" aria-hidden="true"></i>
                             <div>
                                 <span class="font-bold text-espresso-950 block leading-tight text-[11px]">${asset.name}</span>
                                 <span class="text-[9px] text-espresso-800/70 font-mono">${asset.ownedUnits} Units ($${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>
@@ -1453,16 +1484,6 @@
         };
     </script>
     <footer class="simulator-footer">
-      <nav class="simulator-footer__links" aria-label="Simulator links">
-        <a href="/en/">Compounding Journey</a>
-        <a href="/en/simulator.html">All simulators</a>
-        <a href="/en/blog/">Journal</a>
-      </nav>
-      <nav class="lang-switch" aria-label="Language">
-        <a class="lang-switch-link" href="/es/simulators/passive-income-engine.html" hreflang="es" lang="es" aria-label="Español">ES</a>
-        <a class="lang-switch-link" href="/en/simulators/passive-income-engine.html" hreflang="en" lang="en" aria-label="English" aria-current="page">EN</a>
-        <a class="lang-switch-link" href="/pt/simulators/passive-income-engine.html" hreflang="pt" lang="pt" aria-label="Português">PT</a>
-      </nav>
       <p class="simulator-footer__note">&copy; 2026 Compounding Journey. For educational purposes only. Not formal financial advice.</p>
     </footer>
 </body>
