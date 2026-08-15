@@ -14,8 +14,8 @@
   const pageSize = 12;
   const copy = {
     en: { article: 'article', articles: 'articles', read: 'Read article', page: 'Page', next: 'Next', previous: 'Previous', error: 'The article catalog could not be loaded.' },
-    es: { article: 'artículo', articles: 'artículos', read: 'Leer artículo', page: 'Página', next: 'Siguiente', previous: 'Anterior', error: 'No se pudo cargar el catálogo de artículos.' },
-    pt: { article: 'artigo', articles: 'artigos', read: 'Ler artigo', page: 'Página', next: 'Próxima', previous: 'Anterior', error: 'Não foi possível carregar o catálogo de artigos.' }
+    es: { article: 'artículo', articles: 'artículos', read: 'Leer el artículo', page: 'Página', next: 'Siguiente', previous: 'Anterior', error: 'No se pudo cargar el catálogo de artículos.' },
+    pt: { article: 'artigo', articles: 'artigos', read: 'Ler o artigo', page: 'Página', next: 'Próxima', previous: 'Anterior', error: 'Não foi possível carregar o catálogo de artigos.' }
   };
   const labels = copy[language] || copy.en;
   let articles = [];
@@ -43,7 +43,7 @@
     const sortBy = sortSelect.value;
     const direction = orderSelect.value === 'asc' ? 1 : -1;
     const filtered = articles.filter((article) => {
-      const haystack = normalize(`${article.title} ${article.category} ${article.summary} ${article.searchText}`);
+      const haystack = normalize(`${article.title} ${article.category} ${article.summary}`);
       return (!query || haystack.includes(query)) && (!category || article.category === category);
     });
 
@@ -76,7 +76,7 @@
         currentPage = page;
         render();
         const toolbar = document.querySelector('.catalog-toolbar');
-        toolbar.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
+        if (toolbar) toolbar.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
         // Scrolling alone leaves focus on a button that has just been replaced,
         // which sends focus back to the top of the document.
         const firstLink = grid.querySelector('h3 a');
@@ -165,7 +165,16 @@
     searchInput.focus();
   });
 
-  fetch('/content/blog/catalog.json', { cache: 'no-store' })
+  // The grid, the count and the empty state are all pre-rendered by
+  // scripts/generate-blog-pages.mjs, in this same order and with this same
+  // markup. Redrawing them here on arrival replaced identical nodes and moved
+  // the page for no reason, so on first load the script only fills in the parts
+  // the server cannot know: the category options, and the pagination bar - and
+  // the bar only when there is more than one page to offer. Everything after
+  // that is a filter, sort or page change, which is a real change and does redraw.
+  const catalogUrl = grid.getAttribute('data-catalog') || `/content/blog/catalog.${language}.json`;
+
+  fetch(catalogUrl)
     .then((response) => {
       if (!response.ok) throw new Error(`Catalog request failed: ${response.status}`);
       return response.json();
@@ -173,11 +182,22 @@
     .then((catalog) => {
       articles = catalog.filter((article) => article.language === language);
       populateCategories();
-      render();
+      const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
+      if (totalPages > 1) render();
+      else renderPagination(1);
     })
     .catch(() => {
-      grid.innerHTML = `<p class="catalog-error">${labels.error}</p>`;
-      resultCount.textContent = '';
-      pagination.hidden = true;
+      // The grid is server-rendered, so a failed catalog fetch no longer means an
+      // empty page - it means the filters cannot work. Wiping the articles to
+      // print an error would be strictly worse than leaving them readable, so
+      // the controls are disabled and the message goes beside the count instead.
+      [searchInput, categorySelect, sortSelect, orderSelect].forEach((control) => {
+        control.disabled = true;
+      });
+      const notice = document.createElement('p');
+      notice.className = 'catalog-error';
+      notice.setAttribute('role', 'status');
+      notice.textContent = labels.error;
+      resultCount.insertAdjacentElement('afterend', notice);
     });
 })();

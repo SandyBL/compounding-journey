@@ -1,19 +1,8 @@
-@font-face {
-  font-family: "Compounding Jakarta";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/assets/fonts/plus-jakarta-sans-700.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Compounding Jakarta";
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("/assets/fonts/plus-jakarta-sans-800.woff2") format("woff2");
-}
-
+/* One family, one file. The variable face below covers 300-800, so the header
+   asks for it directly instead of going through an alias that listed two static
+   cuts first: those cuts were 700 and 800 of this same typeface, and naming them
+   ahead of the variable font meant every page downloaded 24 KB of duplicates for
+   weights the preloaded file already carried. */
 @font-face {
   font-family: "Plus Jakarta Sans";
   font-style: normal;
@@ -23,7 +12,7 @@
 }
 
 :root {
-  --site-header-font: "Compounding Jakarta", "Plus Jakarta Sans", sans-serif;
+  --site-header-font: "Plus Jakarta Sans", sans-serif;
   --site-header-forest: #1e4620;
   --site-header-gold: #c59b27;
   --site-header-border: #efeae0;
@@ -320,4 +309,88 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
    switcher needs its own breathing room inside them. */
 footer .lang-switch {
   margin-top: 12px;
+}
+
+/* The Spanish home page is the site's x-default, so it no longer redirects a
+   visitor whose browser prefers English or Portuguese — it offers. Fixed to the
+   viewport and appended after first paint, so the offer cannot move anything
+   that has already rendered. */
+.language-suggestion {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 60;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 16px;
+  padding: 12px 16px;
+  background: #faf6ed;
+  border-top: 1px solid #efeae0;
+  box-shadow: 0 -4px 16px rgba(42, 36, 30, 0.08);
+}
+
+.language-suggestion__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  /* #2a241e on #faf6ed is 13.4:1. */
+  color: #2a241e;
+}
+
+.language-suggestion__cta,
+.language-suggestion__close {
+  display: inline-flex;
+  align-items: center;
+  /* SC 2.5.8: the two controls sit side by side, so both need a real target. */
+  min-height: 44px;
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.language-suggestion__cta {
+  /* #ffffff on #1e4620 is 9.7:1. */
+  background: #1e4620;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.language-suggestion__cta:hover {
+  background: #163517;
+}
+
+.language-suggestion__close {
+  background: transparent;
+  /* rgba(42,36,30,.82) on #faf6ed clears 4.5:1 at this weight. */
+  color: rgba(42, 36, 30, 0.82);
+  border: 1px solid #efeae0;
+}
+
+.language-suggestion__close:hover {
+  background: #efeae0;
+}
+
+/* Shown in place of a simulator chart when Chart.js has not loaded. The canvas
+   is hidden at the same time, so this sits inside the height-constrained box the
+   chart would have filled rather than pushing the panel open. */
+.chart-unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 96px;
+  margin: 0;
+  padding: 16px;
+  max-width: 46ch;
+  margin-inline: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+  /* rgba(42,36,30,.82) on the cream panels clears 4.5:1 at this size. */
+  color: rgba(42, 36, 30, 0.82);
 }

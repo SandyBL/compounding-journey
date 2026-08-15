@@ -9,4 +9,47 @@ Disallow: /admin/
 # pages built out of it. Nothing links here.
 Disallow: /content/
 
+# Build machinery. The publish directory is the project root, so the generators,
+# the Tailwind config, the Tailwind entry file, the build manifest, the lockfile
+# and the dependency tree npm installs next to them are all served like any other
+# file. They are not addresses, and a search result pointing at one of them is a
+# result pointing at nothing a reader wants.
+#
+# This is a crawl directive, not access control: it asks well-behaved crawlers
+# not to fetch these paths. The matching X-Robots-Tag headers in _headers are
+# what keep them out of an index if something fetches them anyway.
+Disallow: /scripts/
+Disallow: /node_modules/
+Disallow: /tailwind.config.js
+Disallow: /assets/tailwind.css
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# The assistants that answer questions from the open web are the second audience
+# for this site, after search. They are welcome, and llms.txt is written for
+# them, but each one reads robots.txt under its own product name and several
+# treat the absence of their name as a reason to be conservative. Naming them
+# removes the ambiguity. Note that a user-agent group replaces the "*" group
+# rather than extending it, so each one restates the disallow list.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /admin/
+Disallow: /content/
+Disallow: /scripts/
+Disallow: /node_modules/
+Disallow: /tailwind.config.js
+Disallow: /assets/tailwind.css
+Disallow: /package.json
+Disallow: /package-lock.json
+
 Sitemap: https://compoundingjourney.com/sitemap.xml

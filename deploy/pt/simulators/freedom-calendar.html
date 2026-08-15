@@ -8,8 +8,8 @@
     <link rel="canonical" href="https://compoundingjourney.com/pt/simulators/freedom-calendar.html">
     <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/freedom-calendar.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/freedom-calendar.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/freedom-calendar.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/freedom-calendar.html">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Calendário da Liberdade Financeira"><meta property="og:description" content="Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/freedom-calendar.html"><meta property="og:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
-    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Calendário da Liberdade Financeira"><meta name="twitter:description" content="Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."><meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
+    <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Calendário da Liberdade Financeira"><meta property="og:description" content="Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/freedom-calendar.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Calendário da Liberdade Financeira"><meta name="twitter:description" content="Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calendário da Liberdade","url":"https://compoundingjourney.com/pt/simulators/freedom-calendar.html","description":"Uma linha temporal visual de independência financeira baseada em poupanças, investimentos e objetivos de vida.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
     <!-- Chart.js for trajectory visualization -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
@@ -43,7 +43,7 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+    <link rel="stylesheet" href="/assets/css/header.css?v=20260815-3">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
@@ -749,6 +749,24 @@
         function updateWealthChart(baselineHabitsMonthly, optimizedHabitsMonthly) {
             const ctx = document.getElementById('wealthChart');
             if (!ctx) return;
+
+            // chart-4.4.1.umd.min.js is deferred and can fail to load. Every value
+            // the chart plots is already on the page as text, so the graceful path
+            // is to say so and stop; throwing here would take the rest of the
+            // render down with it.
+            if (typeof Chart === 'undefined') {
+                if (!ctx.dataset.fallbackShown) {
+                    ctx.dataset.fallbackShown = 'true';
+                    // The canvas is a blank box once the chart cannot draw, and its container
+                    // is height-constrained; hiding it lets the note take the same space.
+                    ctx.hidden = true;
+                    const note = document.createElement('p');
+                    note.className = 'chart-unavailable';
+                    note.textContent = 'Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página.';
+                    ctx.insertAdjacentElement('afterend', note);
+                }
+                return;
+            }
 
             const yearsToProject = 30;
             const labels = [];
