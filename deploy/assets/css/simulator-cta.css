@@ -1,0 +1,168 @@
+/* The closing call to action the simulators end on.
+
+   This is the journal's "Continue the Journey" panel - `.tools-cta` /
+   `.cta-panel` / `.journey-actions` in blog.css - rebuilt under its own class
+   names. The rules are duplicated rather than shared because the two page
+   groups do not share a stylesheet: the articles load blog.css, the simulators
+   load a precompiled Tailwind subset that has no rule for any of those class
+   names, and linking blog.css here would pull in a 132 KB serif webfont plus
+   the whole article layout for the sake of one panel. Reusing the names without
+   the file would have been worse still: a later edit to blog.css would move one
+   of them and not the other.
+
+   The values below - the forest panel, the gold action, the 30px/34px padding,
+   the "CJ" watermark, the two breakpoints - are copied from blog.css so that
+   the two panels read as the same component. Two things are deliberately not
+   copies:
+
+   - The heading font is a stack rather than the journal's Newsreader. Each
+     simulator group is served a different serif (Playfair Display on the
+     Freedom Calendar, Merriweather on the Market Time Machine and the Passive
+     Income Engine, none at all on the Monte Carlo cockpit, which is a sans-only
+     page), so the stack resolves to whichever one the page already loaded and
+     falls back to Georgia. No page pays for a new font file.
+
+   - The eyebrow is gold, where the journal's `.eyebrow` is rust. Rust on the
+     forest panel is roughly 1.7:1, which is below any readable threshold; the
+     lighter gold below is the same hue family the rest of the site labels
+     sections with and clears 4.5:1 against this background. */
+
+.simulator-cta {
+  padding-top: 40px;
+}
+
+.simulator-cta__panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: 30px 34px;
+  overflow: hidden;
+  background: #173d2a;
+  color: #fff;
+  text-align: left;
+}
+
+/* The monogram the journal panel carries, at the same size and the same barely
+   there opacity. Decorative, so it is drawn from a pseudo-element and never
+   reaches the accessibility tree. */
+.simulator-cta__panel::after {
+  content: "CJ";
+  position: absolute;
+  right: 5%;
+  bottom: -72%;
+  color: rgba(255, 255, 255, 0.035);
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: 16rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.simulator-cta__eyebrow {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px;
+  color: #e0b95c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.simulator-cta__title {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0;
+  color: #fff;
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: clamp(1.65rem, 2.5vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.simulator-cta__body {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.simulator-cta__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.simulator-cta__button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  min-width: 164px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px;
+  border: 1px solid #c89a32;
+  background: #c89a32;
+  color: #1b2b20;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.simulator-cta__button:hover {
+  background: #e1bd62;
+  transform: translateY(-3px);
+}
+
+.simulator-cta__button:focus-visible {
+  outline: 3px solid rgba(200, 154, 50, 0.6);
+  outline-offset: 4px;
+}
+
+.simulator-cta__button--secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: #fff;
+}
+
+.simulator-cta__button--secondary:hover {
+  background: #fff;
+  color: #173d2a;
+}
+
+@media (max-width: 900px) {
+  .simulator-cta__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .simulator-cta__actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .simulator-cta__panel {
+    padding: 28px 22px;
+  }
+
+  .simulator-cta__actions {
+    display: grid;
+    width: 100%;
+  }
+
+  .simulator-cta__button {
+    width: 100%;
+    min-width: 0;
+  }
+}

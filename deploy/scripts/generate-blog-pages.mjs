@@ -12,6 +12,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { renderMarkdown, collectHeadings, escapeHtml, normalizeMarkdown, jsonLdScript } from './markdown.mjs';
+import { readViewCounts, totalsByTranslation, chooseFeatured } from './article-popularity.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -82,7 +83,13 @@ const copy = {
     // written into the markup here and recomputed by assets/js/blog-index.js
     // when a filter changes, so both have to agree on the wording.
     countOne: 'article',
-    countMany: 'articles'
+    countMany: 'articles',
+    // The featured card at the top of the index. Its badge says which rule
+    // picked the article: the reading counts, or the fallback to the newest one
+    // when nothing has been counted yet.
+    featuredLink: 'Read the essay',
+    featuredMostRead: 'Most read',
+    featuredLatest: 'Latest'
   },
   es: {
     locale: 'es_ES',
@@ -110,7 +117,10 @@ const copy = {
     tagline: 'Tu mapa hacia la libertad',
     footerNote: 'Decisiones pequeñas. Horizontes largos.',
     countOne: 'artículo',
-    countMany: 'artículos'
+    countMany: 'artículos',
+    featuredLink: 'Leer el artículo',
+    featuredMostRead: 'Lo más leído',
+    featuredLatest: 'Lo más reciente'
   },
   pt: {
     locale: 'pt_PT',
@@ -138,7 +148,10 @@ const copy = {
     tagline: 'O teu mapa para a liberdade',
     footerNote: 'Escolhas pequenas. Horizontes longos.',
     countOne: 'artigo',
-    countMany: 'artigos'
+    countMany: 'artigos',
+    featuredLink: 'Ler o artigo',
+    featuredMostRead: 'O mais lido',
+    featuredLatest: 'O mais recente'
   }
 };
 
@@ -349,7 +362,7 @@ ${structuredData(article, labels, body)}
       </div>
     </div>
   </header>
-  <main class="article-page-main"><article>
+  <main class="article-page-main"><article data-article-slug="${article.slug}">
     <header class="article-header"><div class="container article-header-inner"><div class="post-meta"><span>${escapeHtml(article.category)}</span><span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
     <div class="container article-layout">${toc}<div><div id="article-body" class="article-body">
 ${body}
@@ -358,7 +371,7 @@ ${body}
     <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p></div><div class="journey-actions"><a class="button" href="${homeHref(article.language)}#herramientas">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
   <footer class="site-footer"><div class="container footer-row"><a href="/${article.language}/blog/">${escapeHtml(labels.backFooter)}</a><span>© 2026 Compounding Journey</span></div></footer>
-</div></body>
+</div><script src="/assets/js/article-view.js?v=source" defer></script></body>
 </html>
 `;
 }
@@ -375,7 +388,21 @@ function replaceBetween(source, name, replacement) {
   return pattern.test(source) ? source.replace(pattern, block) : { block };
 }
 
-async function updateBlogIndex(language, articles) {
+// The card at the top of the index, in the markup the hand-authored one used.
+// The badge closes the meta line, which already carries a third item on the
+// grid cards below: it names the rule that chose this article, so a reader is
+// never told something is the most read one on a site that has counted no reads.
+function featuredCard(language, labels, article, ranked) {
+  const href = articlePath(language, article.slug);
+  const badge = ranked ? labels.featuredMostRead : labels.featuredLatest;
+  return `<article class="featured-card"><div class="featured-copy">`
+    + `<div class="post-meta"><span>${escapeHtml(article.category)}</span><span>${escapeHtml(formatDate(language, article.date))}</span><span>${escapeHtml(badge)}</span></div>`
+    + `<h2>${escapeHtml(article.title)}</h2><p>${escapeHtml(article.summary)}</p>`
+    + `<a class="text-link" href="${href}">${escapeHtml(labels.featuredLink)}</a>`
+    + `</div></article>`;
+}
+
+async function updateBlogIndex(language, articles, totals) {
   const file = path.join(root, language, 'blog', 'index.html');
   const labels = copy[language] || copy.en;
   let source = await fs.readFile(file, 'utf8');
@@ -472,7 +499,26 @@ async function updateBlogIndex(language, articles) {
     );
   }
 
+  // Which article is featured is decided here on every build, so publishing or
+  // republishing anything from the content studio re-checks it. The markers are
+  // in the index markup; the replacement of the bare card below is what puts
+  // them there the first time this runs against a hand-authored index.
+  const { article: featured, ranked } = chooseFeatured(sorted, totals);
+  // A language with no articles has nothing to feature. It cannot happen while
+  // every article is translated three ways, but leaving the previous card in
+  // place is the right answer if it ever does - an empty featured section would
+  // be a hole at the top of the page.
+  if (featured) {
+    const featuredResult = replaceBetween(source, 'featured', featuredCard(language, labels, featured, ranked));
+    if (typeof featuredResult === 'string') {
+      source = featuredResult;
+    } else {
+      source = source.replace(/<article class="featured-card">[\s\S]*?<\/article>/, featuredResult.block);
+    }
+  }
+
   await fs.writeFile(file, source);
+  return { featured, ranked };
 }
 
 // The generator only ever writes pages, so a slug renamed or deleted in the
@@ -600,11 +646,18 @@ for (const { article, labels, html, headings } of prepared) {
 }
 
 const removed = [];
+// One read of the view counter for the whole run, totalled per translation so
+// the three indexes agree on which article is the most read one.
+const totals = totalsByTranslation(generated, await readViewCounts());
 
 for (const language of languages) {
   const articles = generated.filter((article) => article.language === language);
-  await updateBlogIndex(language, articles);
+  const { featured, ranked } = await updateBlogIndex(language, articles, totals);
   removed.push(...await pruneRemovedArticles(language, new Set(articles.map((article) => article.slug))));
+  let featuredNote = 'unchanged (no articles)';
+  if (featured && ranked) featuredNote = `${featured.title} (${totals.get(featured.translationKey)} views)`;
+  else if (featured) featuredNote = `${featured.title} (newest article; nothing counted yet)`;
+  console.log(`Featured on /${language}/blog/: ${featuredNote}.`);
 }
 
 await fs.writeFile(path.join(root, 'sitemap.xml'), buildSitemap(generated));

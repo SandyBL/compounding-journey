@@ -6,8 +6,9 @@
   "scripts": {
     "css": "tailwindcss -i ./assets/tailwind.css -o ./assets/styles.css --minify"
   },
-  "comment": "The Tailwind CLI is a runtime dependency of the build rather than a devDependency: NODE_ENV is production in some Netlify build contexts, and npm skips devDependencies there, which would leave the CLI off the PATH and fail the deploy.",
+  "comment": "The Tailwind CLI is a runtime dependency of the build rather than a devDependency: NODE_ENV is production in some Netlify build contexts, and npm skips devDependencies there, which would leave the CLI off the PATH and fail the deploy. @netlify/database is one for the same reason plus a second: netlify/functions/article-view.mjs imports it at runtime. Both are pinned exactly, so a build cannot pick up a version no commit asked for.",
   "dependencies": {
+    "@netlify/database": "1.1.0",
     "tailwindcss": "3.4.17"
   }
 }

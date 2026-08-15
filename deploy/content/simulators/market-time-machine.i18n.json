@@ -783,5 +783,30 @@
     "en": "Close",
     "es": "Cerrar",
     "pt": "Fechar"
+  },
+  "ctaEyebrow": {
+    "en": "Continue the Journey",
+    "es": "Continúa el viaje",
+    "pt": "Continua a jornada"
+  },
+  "ctaAssessment": {
+    "en": "Take the assessment",
+    "es": "Hacer el diagnóstico",
+    "pt": "Fazer o diagnóstico"
+  },
+  "ctaTools": {
+    "en": "Explore the tools",
+    "es": "Explorar las herramientas",
+    "pt": "Explorar as ferramentas"
+  },
+  "ctaTitle": {
+    "en": "Turn a century of market history into your next decision.",
+    "es": "Convierte un siglo de historia del mercado en tu próxima decisión.",
+    "pt": "Transforma um século de história do mercado na tua próxima decisão."
+  },
+  "ctaBody": {
+    "en": "You have watched portfolios fall and recover across a hundred years of cycles. The financial assessment turns that perspective into a plan built around your own numbers.",
+    "es": "Ya viste cómo las carteras caen y se recuperan a lo largo de un siglo de ciclos. El diagnóstico financiero convierte esa perspectiva en un plan hecho con tus propios números.",
+    "pt": "Já viste como as carteiras caem e recuperam ao longo de um século de ciclos. O diagnóstico financeiro transforma essa perspetiva num plano feito com os teus próprios números."
   }
 }

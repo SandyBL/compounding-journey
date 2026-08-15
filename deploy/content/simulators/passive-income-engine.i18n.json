@@ -1103,5 +1103,30 @@
     "en": "Close",
     "es": "Cerrar",
     "pt": "Fechar"
+  },
+  "ctaEyebrow": {
+    "en": "Continue the Journey",
+    "es": "Continúa el viaje",
+    "pt": "Continua a jornada"
+  },
+  "ctaAssessment": {
+    "en": "Take the assessment",
+    "es": "Hacer el diagnóstico",
+    "pt": "Fazer o diagnóstico"
+  },
+  "ctaTools": {
+    "en": "Explore the tools",
+    "es": "Explorar las herramientas",
+    "pt": "Explorar as ferramentas"
+  },
+  "ctaTitle": {
+    "en": "Turn simulated cash flow into income that is really yours.",
+    "es": "Convierte el flujo simulado en ingresos que sean realmente tuyos.",
+    "pt": "Transforma o fluxo simulado em rendimento que seja mesmo teu."
+  },
+  "ctaBody": {
+    "en": "Building the engine here takes minutes. The financial assessment looks at where your money is today, and at what it would take to grow passive income for real.",
+    "es": "Construir el motor aquí toma minutos. El diagnóstico financiero mira dónde está tu dinero hoy y qué haría falta para hacer crecer tus ingresos pasivos de verdad.",
+    "pt": "Construir o motor aqui demora minutos. O diagnóstico financeiro olha para onde está o teu dinheiro hoje e para o que seria preciso para fazer crescer o rendimento passivo a sério."
   }
 }

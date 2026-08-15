@@ -1968,5 +1968,30 @@
     "en": "Close calculator",
     "es": "Cerrar la calculadora",
     "pt": "Fechar a calculadora"
+  },
+  "ctaEyebrow": {
+    "en": "Continue the Journey",
+    "es": "Continúa el viaje",
+    "pt": "Continua a jornada"
+  },
+  "ctaAssessment": {
+    "en": "Take the assessment",
+    "es": "Hacer el diagnóstico",
+    "pt": "Fazer o diagnóstico"
+  },
+  "ctaTools": {
+    "en": "Explore the tools",
+    "es": "Explorar las herramientas",
+    "pt": "Explorar as ferramentas"
+  },
+  "ctaTitle": {
+    "en": "Turn a survival probability into a plan you can act on.",
+    "es": "Convierte una probabilidad de supervivencia en un plan que puedas ejecutar.",
+    "pt": "Transforma uma probabilidade de sobrevivência num plano que consigas executar."
+  },
+  "ctaBody": {
+    "en": "Thousands of simulated futures show how fragile, or how resilient, a retirement plan is. The financial assessment helps you turn that number into the next concrete step.",
+    "es": "Miles de futuros simulados muestran qué tan frágil o resistente es un plan de retiro. El diagnóstico financiero te ayuda a convertir ese número en el siguiente paso concreto.",
+    "pt": "Milhares de futuros simulados mostram o quão frágil ou resistente é um plano de reforma. O diagnóstico financeiro ajuda-te a transformar esse número no próximo passo concreto."
   }
 }

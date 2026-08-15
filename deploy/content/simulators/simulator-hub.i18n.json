@@ -319,26 +319,6 @@
     "es": "                        Guardar Resultado\n",
     "pt": "                        Salvar Resultado\n"
   },
-  "resultsscreen4": {
-    "en": "            <!-- COMPOUNDING JOURNEY CTA BOX -->\n",
-    "es": "            <!-- CARD DE LLAMADO A LA ACCIÓN (CTA) DE COMPOUNDING JOURNEY -->\n",
-    "pt": "            <!-- CARD DE CHAMADA PARA AÇÃO (CTA) DO COMPOUNDING JOURNEY -->\n"
-  },
-  "text2xl2": {
-    "en": "Ready to Build Your Personal Map to Freedom?",
-    "es": "¿Listo para Construir tu Mapa Hacia la Libertad?",
-    "pt": "Pronto para Construir o Seu Mapa Para a Liberdade?"
-  },
-  "textCream200": {
-    "en": "                    Fill in our brief assessment form to understand exactly where you stand today, receive tailored financial guidance, and take your next steps with total confidence.\n",
-    "es": "                    Completa nuestro formulario de evaluación para entender exactamente dónde estás hoy, recibir orientación financiera personalizada y tomar tus próximos pasos con total confianza.\n",
-    "pt": "                    Preencha nosso formulário de avaliação para entender exatamente onde você está hoje, receber orientação financeira personalizada e tomar seus próximos passos com total confiança.\n"
-  },
-  "inlineFlex": {
-    "en": "Get Initial Guidance at Compounding Journey",
-    "es": "Recibir Orientación en Compounding Journey",
-    "pt": "Receber Orientação no Compounding Journey"
-  },
   "minHScreen4": {
     "en": "    <!-- FOOTER -->\n",
     "es": "    <!-- PIE DE PÁGINA -->\n",
@@ -1213,5 +1193,30 @@
     "en": "        // INITIALIZE ON LOAD\n",
     "es": "        // INICIALIZAR AL CARGAR LA PÁGINA\n",
     "pt": "        // INICIALIZAR AO CARREGAR A PÁGINA\n"
+  },
+  "ctaEyebrow": {
+    "en": "Continue the Journey",
+    "es": "Continúa el viaje",
+    "pt": "Continua a jornada"
+  },
+  "ctaTitle": {
+    "en": "Ready to Build Your Personal Map to Freedom?",
+    "es": "¿Listo para Construir tu Mapa Hacia la Libertad?",
+    "pt": "Pronto para Construir o teu Mapa Para a Liberdade?"
+  },
+  "ctaBody": {
+    "en": "The decisions in this game are the ones a real plan is made of. The financial assessment looks at where you actually stand today and turns it into tailored next steps.",
+    "es": "Las decisiones de este juego son las que forman un plan real. El diagnóstico financiero mira dónde estás hoy de verdad y lo convierte en próximos pasos hechos a tu medida.",
+    "pt": "As decisões deste jogo são as que formam um plano real. O diagnóstico financeiro olha para onde estás hoje na realidade e transforma isso em próximos passos à tua medida."
+  },
+  "ctaAssessment": {
+    "en": "Take the assessment",
+    "es": "Hacer el diagnóstico",
+    "pt": "Fazer o diagnóstico"
+  },
+  "ctaTools": {
+    "en": "Explore the tools",
+    "es": "Explorar las herramientas",
+    "pt": "Explorar as ferramentas"
   }
 }
