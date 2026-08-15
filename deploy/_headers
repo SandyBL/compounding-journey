@@ -35,6 +35,15 @@
 /assets/css/header.css
   Cache-Control: public, max-age=604800, must-revalidate
 
+# Generated bundles: the precompiled Tailwind that replaced the Play CDN on the
+# simulator pages, and the Font Awesome subset that replaced the cdnjs build.
+# Both are versioned in their <link> URLs, so they can be cached hard.
+/assets/css/sim-*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/css/icons.css
+  Cache-Control: public, max-age=31536000, immutable
+
 /assets/fonts/*.woff2
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *

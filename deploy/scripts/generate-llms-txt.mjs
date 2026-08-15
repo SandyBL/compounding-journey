@@ -12,6 +12,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { normalizeMarkdown } from './markdown.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -167,7 +168,11 @@ async function articleSection(article) {
     path.join(contentRoot, article.language, `${article.slug}.md`),
     'utf8'
   );
-  const body = parseFrontMatter(source).trim();
+  // The same normalizer the HTML pages are rendered through. Without it the
+  // file built specifically for assistants is the one surface still carrying
+  // the "[cite: 1]" markers and stray backslash escapes that imported drafts
+  // arrive with, while every human-facing page is clean.
+  const body = normalizeMarkdown(parseFrontMatter(source));
   const modified = article.updated || article.date;
 
   return [
