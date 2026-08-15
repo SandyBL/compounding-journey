@@ -10,10 +10,11 @@ Disallow: /admin/
 Disallow: /content/
 
 # Build machinery. The publish directory is the project root, so the generators,
-# the Tailwind config, the Tailwind entry file, the build manifest, the lockfile
-# and the dependency tree npm installs next to them are all served like any other
-# file. They are not addresses, and a search result pointing at one of them is a
-# result pointing at nothing a reader wants.
+# the Tailwind config, the Tailwind entry file, the build manifest and the
+# lockfile all sat alongside the pages and were served like any other file. Most
+# of them now answer 404 - see the block at the bottom of _redirects - but a
+# crawler that has one of these addresses from before should be told not to ask
+# again rather than be sent to a 404 to find out.
 #
 # This is a crawl directive, not access control: it asks well-behaved crawlers
 # not to fetch these paths. The matching X-Robots-Tag headers in _headers are
@@ -53,3 +54,10 @@ Disallow: /package.json
 Disallow: /package-lock.json
 
 Sitemap: https://compoundingjourney.com/sitemap.xml
+
+# There is no registered robots.txt directive for llms.txt, so these are
+# comments rather than fields - a crawler that does not know them ignores them,
+# which is the point. They are here because robots.txt is the one file every
+# crawler fetches first, and until now nothing on the site said these existed.
+# llms.txt: https://compoundingjourney.com/llms.txt
+# llms-full.txt: https://compoundingjourney.com/llms-full.txt

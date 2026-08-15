@@ -133,6 +133,31 @@
             return lang === "es" ? "/" : `/${lang}/`;
         }
 
+        // The cookie the language-preference edge function reads before deciding
+        // whether to redirect someone who lands on the apex. localStorage is the
+        // wrong place for it: the decision is made at the edge, before any script
+        // on the page has run, so it has to be something that travels with the
+        // request. The two stores answer different questions and both are kept -
+        // localStorage is what this script restores a preference from, the cookie
+        // is what stops the edge overruling a choice already made here.
+        //
+        // Its presence matters more than its value: once it is set, the edge
+        // stops negotiating and serves the apex as published. So writing it is
+        // how an explicit choice - including the choice to stay in Spanish - is
+        // made to stick.
+        function rememberLanguageAtEdge(lang) {
+            try {
+                const secure = window.location.protocol === "https:" ? "; Secure" : "";
+                document.cookie = `lang=${encodeURIComponent(lang)}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+            } catch (error) {
+                console.warn("Language preference could not be saved to a cookie.", error);
+            }
+        }
+
+        function hasLanguageCookie() {
+            return /(?:^|;\s*)lang=/.test(document.cookie || "");
+        }
+
         function getLanguageUrl(lang) {
             return `${getSiteOrigin()}${languagePath(lang)}`;
         }
@@ -204,6 +229,7 @@
                 } catch (error) {
                     console.warn("Language preference could not be saved to localStorage.", error);
                 }
+                rememberLanguageAtEdge(normalizedLanguage);
                 window.location.href = languagePath(normalizedLanguage);
                 return;
             }
@@ -220,6 +246,7 @@
             } catch (error) {
                 console.warn("Language preference could not be saved to localStorage.", error);
             }
+            if (updateUrl) rememberLanguageAtEdge(normalizedLanguage);
 
             if (updateUrl && !isPrerenderedPage) {
                 const url = new URL(window.location.href);
@@ -1004,6 +1031,18 @@
         function suggestPreferredLanguage() {
             if (!isPrerenderedPage || pinnedLanguage !== "es") return;
 
+            // The edge function asks the same question one layer earlier, from
+            // Accept-Language rather than navigator.language, and sets the cookie
+            // when it has an answer. A visitor carrying that cookie has already
+            // been offered their language - by a redirect, or by a choice they
+            // made here - so offering it again in a bar is asking twice.
+            //
+            // The bar is not redundant, though. It is what a visitor sees when
+            // the edge deliberately said nothing: no Accept-Language header, or a
+            // header that named a language the site does not publish while
+            // navigator.language names one it does.
+            if (hasLanguageCookie()) return;
+
             let dismissed = null;
             try {
                 dismissed = localStorage.getItem("languageSuggestionDismissed");
@@ -1042,6 +1081,11 @@
                 } catch (error) {
                     console.warn("Language suggestion state could not be saved to localStorage.", error);
                 }
+                // Dismissing is a choice to stay in Spanish, so it is recorded the
+                // same way any other choice is. Without this the bar stays gone but
+                // the edge would still be free to redirect the next visit to the
+                // apex - the reader would have said no here and been moved anyway.
+                rememberLanguageAtEdge("es");
                 bar.remove();
             });
 

@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { writeSharedCatalog } from './shared-catalog.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -85,10 +86,13 @@ const catalog = articles
   .map((article) => ({ ...article, translations: translationsByKey.get(article.translationKey) }))
   .sort((first, second) => second.date.localeCompare(first.date));
 
-await fs.writeFile(path.join(contentRoot, 'catalog.json'), `${JSON.stringify(catalog, null, 2)}\n`);
+await writeSharedCatalog(catalog);
 
-// catalog.json above is build input: it carries every language at once, plus the
-// full searchable body of every article, and it is what the generators read.
+// The catalog written above is build input: it carries every language at once,
+// plus the full searchable body of every article, and it is what the generators
+// read. It goes to a temporary directory rather than into content/blog, because
+// content/blog is inside the publish root and a build artifact that only three
+// scripts read has no business being uploaded. See scripts/shared-catalog.mjs.
 //
 // It used to be what the journal index fetched in the browser too, which meant a
 // Spanish reader downloaded the English and Portuguese articles as well, and

@@ -69,7 +69,7 @@
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">{{siteReturnLinkText}}</span>
                 </a>
-                <button onclick="toggleProfileDrawer()" class="px-4 py-2 rounded-xl bg-forest-800 hover:bg-forest-900 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md">
+                <button data-onclick="toggleProfileDrawer()" class="px-4 py-2 rounded-xl bg-forest-800 hover:bg-forest-900 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md">
                                 <i class="fa-solid fa-sliders" aria-hidden="true"></i>
                                 <span>{{px4}}</span>
                             </button>
@@ -134,34 +134,34 @@
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
                     <i class="fa-solid fa-user-gear text-forest-800" aria-hidden="true"></i>{{textBase}}                </h2>
-                <button onclick="toggleProfileDrawer()" class="text-xs text-espresso-800 hover:text-espresso-950 font-bold">
+                <button data-onclick="toggleProfileDrawer()" class="text-xs text-espresso-800 hover:text-espresso-950 font-bold">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>{{textXs}}                </button>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
                     <label for="inputCurrentAge" class="block text-xs font-bold text-espresso-900 mb-1">{{block}}</label>
-                    <input type="number" id="inputCurrentAge" value="30" min="18" max="75" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                    <input type="number" id="inputCurrentAge" value="30" min="18" max="75" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
                     <label for="inputAnnualIncome" class="block text-xs font-bold text-espresso-900 mb-1">{{block2}}</label>
-                    <input type="number" id="inputAnnualIncome" value="60000" step="1000" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                    <input type="number" id="inputAnnualIncome" value="60000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
                     <label for="inputWorkHours" class="block text-xs font-bold text-espresso-900 mb-1">{{block3}}</label>
-                    <input type="number" id="inputWorkHours" value="40" min="10" max="80" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                    <input type="number" id="inputWorkHours" value="40" min="10" max="80" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
                     <label for="inputNetWorth" class="block text-xs font-bold text-espresso-900 mb-1">{{block4}}</label>
-                    <input type="number" id="inputNetWorth" value="15000" step="1000" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                    <input type="number" id="inputNetWorth" value="15000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
                     <label for="inputBasicExpenses" class="block text-xs font-bold text-espresso-900 mb-1">{{block5}}</label>
-                    <input type="number" id="inputBasicExpenses" value="2500" step="100" onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                    <input type="number" id="inputBasicExpenses" value="2500" step="100" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
             </div>
             
@@ -184,11 +184,11 @@
 
             <!-- Quick Action Preset Buttons -->
             <div class="flex flex-col sm:flex-row md:flex-col gap-2 w-full md:w-auto flex-shrink-0">
-                <button onclick="setGlobalPreset(0)" class="px-4 py-2 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow transition-all">
+                <button data-onclick="setGlobalPreset(0)" class="px-4 py-2 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow transition-all">
 {{px42}}                </button>
-                <button onclick="setGlobalPreset(50)" class="px-4 py-2 bg-gold-600 hover:bg-gold-700 text-espresso-950 font-bold text-xs rounded-xl shadow transition-all">
+                <button data-onclick="setGlobalPreset(50)" class="px-4 py-2 bg-gold-600 hover:bg-gold-700 text-espresso-950 font-bold text-xs rounded-xl shadow transition-all">
 {{px43}}                </button>
-                <button onclick="setGlobalPreset(100)" class="px-4 py-2 bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs rounded-xl border border-cream-300 transition-all">
+                <button data-onclick="setGlobalPreset(100)" class="px-4 py-2 bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs rounded-xl border border-cream-300 transition-all">
 {{px44}}                </button>
             </div>
         </div>
@@ -200,7 +200,7 @@
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-lg font-bold text-espresso-900 font-serif flex items-center gap-2">
                         <i class="fa-solid fa-cart-flatbed text-gold-600" aria-hidden="true"></i>{{textLg}}                    </h3>
-                    <button onclick="addCustomHabit()" class="px-3 py-1.5 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow flex items-center gap-1.5 transition-all">
+                    <button data-onclick="addCustomHabit()" class="px-3 py-1.5 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow flex items-center gap-1.5 transition-all">
                         <i class="fa-solid fa-plus" aria-hidden="true"></i>{{px3}}                    </button>
                 </div>
 
@@ -507,7 +507,7 @@
                             </div>
                             <div>
                                 ${habit.isCustom ? 
-                                    `<input type="text" value="${habit.title}" onchange="updateHabitTitle(${idx}, this.value)" class="font-bold text-espresso-950 text-base bg-transparent border-b border-dashed border-cream-400 focus:outline-none focus:border-forest-800">` : 
+                                    `<input type="text" value="${habit.title}" data-onchange="updateHabitTitle(${idx}, this.value)" class="font-bold text-espresso-950 text-base bg-transparent border-b border-dashed border-cream-400 focus:outline-none focus:border-forest-800">` : 
                                     `<h4 class="font-bold text-espresso-950 text-base">${habit.title}</h4>`
                                 }
                                 <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-cream-200 text-espresso-800 block mt-0.5 w-fit">
@@ -543,13 +543,13 @@
 {{minHScreen40}}                            <div class="relative flex items-center">
                                 <span class="absolute left-2.5 text-xs text-espresso-800 font-bold">$</span>
                                 <input type="number" min="0" step="1" value="${habit.baseCost}" 
-                                    onchange="updateHabitBaseCost(${idx}, this.value)" 
+                                    data-onchange="updateHabitBaseCost(${idx}, this.value)" 
                                     class="w-28 pl-6 pr-2 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold font-mono text-forest-800 focus:ring-2 focus:ring-forest-800">
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between gap-2">
-{{minHScreen41}}                            <select onchange="updateHabitUnit(${idx}, this.value)" 
+{{minHScreen41}}                            <select data-onchange="updateHabitUnit(${idx}, this.value)" 
                                 class="px-2.5 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold text-espresso-900 focus:ring-2 focus:ring-forest-800 cursor-pointer">
 {{minHScreen42}}                            </select>
                         </div>
@@ -561,7 +561,7 @@
 {{minHScreen43}}                        </div>
 
                         <input type="range" min="0" max="100" step="25" value="${habit.choicePct}" 
-                            oninput="updateHabitChoice(${idx}, this.value)" 
+                            data-oninput="updateHabitChoice(${idx}, this.value)" 
                             class="w-full accent-forest-800 bg-cream-300 h-2 rounded-lg cursor-pointer">
 
                         <div class="flex justify-between text-[10px] font-semibold text-espresso-800/70">

@@ -10,9 +10,11 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { renderMarkdown, collectHeadings, escapeHtml, normalizeMarkdown, jsonLdScript } from './markdown.mjs';
-import { readViewCounts, totalsByTranslation, chooseFeatured } from './article-popularity.mjs';
+import { readViewCounts, readRecentViewCounts, totalsByTranslation, chooseFeatured, recentlyRead, translationPriorities } from './article-popularity.mjs';
+import { readSharedCatalog } from './shared-catalog.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -24,8 +26,8 @@ const logo = `${origin}/logo-compounding-journey.png`;
 // The 2048px master above is what social scrapers and structured data consume.
 // Browsers only ever paint the mark at 64px in the header and 96px in the
 // author card, so the pages themselves request that size from the Netlify
-// Image CDN instead of downloading a megabyte to scale it down. Ampersands are
-// escaped because these land in HTML attributes.
+// Image CDN instead of downloading three quarters of a megabyte to scale it
+// down. Ampersands are escaped because these land in HTML attributes.
 function logoAt(size, format) {
   const extra = format ? `&amp;fm=${format}` : '';
   return `/.netlify/images?url=/logo-compounding-journey.png&amp;w=${size}&amp;h=${size}&amp;fit=cover${extra}`;
@@ -36,12 +38,12 @@ function logoAt(size, format) {
 // LinkedIn and Slack as a bare grey rectangle. That card is the site logo for
 // every article, so it is a constant rather than a per-article lookup.
 //
-// It used to be the 2048x2048 master: a megabyte of mostly empty cream margin,
-// sent in full to every scraper that touched a link and then cropped by each of
-// them to its own shape. The Image CDN does the crop once, at the 1.91:1 the
-// platforms actually lay out, and the margin is what it removes — the tree and
-// the wordmark both sit well inside the kept band. The transfer drops from
-// ~1 MB to a few tens of kilobytes, which is the difference between a card that
+// It used to be the 2048x2048 master in full: three quarters of a megabyte of
+// mostly empty cream margin, sent to every scraper that touched a link and then
+// cropped by each of them to its own shape. The Image CDN does the crop once, at
+// the 1.91:1 the platforms actually lay out, and the margin is what it removes —
+// the tree and the wordmark both sit well inside the kept band. The transfer
+// drops to a few tens of kilobytes, which is the difference between a card that
 // renders in a chat client and one that times out.
 const socialCard = `${origin}/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png`;
 const socialImageAlt = 'Compounding Journey logo';
@@ -89,7 +91,13 @@ const copy = {
     // when nothing has been counted yet.
     featuredLink: 'Read the essay',
     featuredMostRead: 'Most read',
-    featuredLatest: 'Latest'
+    featuredLatest: 'Latest',
+    feedTitle: 'The Compounding Journal',
+    feedDescription: 'Practical money systems, intentional work, and the patient path toward financial freedom.',
+    feedLink: 'RSS feed',
+    recentTitle: 'Read this month',
+    recentNote: 'Ranked by how often each page was opened.',
+    privacyNote: 'This journal counts how many times each article page is opened, and nothing else. No cookie, no identifier, no record of who read what \u2014 just a number per article, used to decide what to feature here.'
   },
   es: {
     locale: 'es_ES',
@@ -120,7 +128,13 @@ const copy = {
     countMany: 'artículos',
     featuredLink: 'Leer el artículo',
     featuredMostRead: 'Lo más leído',
-    featuredLatest: 'Lo más reciente'
+    featuredLatest: 'Lo más reciente',
+    feedTitle: 'El Diario del Interés Compuesto',
+    feedDescription: 'Sistemas prácticos de dinero, trabajo intencional y el camino paciente hacia la libertad financiera.',
+    feedLink: 'Fuente RSS',
+    recentTitle: 'Lo m\u00e1s le\u00eddo este mes',
+    recentNote: 'Ordenado por cu\u00e1ntas veces se abri\u00f3 cada p\u00e1gina.',
+    privacyNote: 'Este diario cuenta cu\u00e1ntas veces se abre cada art\u00edculo, y nada m\u00e1s. Sin cookies, sin identificadores, sin registro de qui\u00e9n ley\u00f3 qu\u00e9: solo un n\u00famero por art\u00edculo, que sirve para decidir qu\u00e9 destacar aqu\u00ed.'
   },
   pt: {
     locale: 'pt_PT',
@@ -151,7 +165,13 @@ const copy = {
     countMany: 'artigos',
     featuredLink: 'Ler o artigo',
     featuredMostRead: 'O mais lido',
-    featuredLatest: 'O mais recente'
+    featuredLatest: 'O mais recente',
+    feedTitle: 'O Diário dos Juros Compostos',
+    feedDescription: 'Sistemas práticos de dinheiro, trabalho intencional e o caminho paciente para a liberdade financeira.',
+    feedLink: 'Fonte RSS',
+    recentTitle: 'O mais lido este m\u00eas',
+    recentNote: 'Ordenado por quantas vezes cada p\u00e1gina foi aberta.',
+    privacyNote: 'Este di\u00e1rio conta quantas vezes cada artigo \u00e9 aberto, e mais nada. Sem cookies, sem identificadores, sem registo de quem leu o qu\u00ea: apenas um n\u00famero por artigo, usado para decidir o que destacar aqui.'
   }
 };
 
@@ -316,6 +336,7 @@ function renderPage(article, labels, body, headings, related) {
   <meta name="author" content="${escapeHtml(article.author)}" />
   <link rel="canonical" href="${url}" />${alternates}
   <link rel="alternate" hreflang="x-default" href="${origin}${articlePath(defaultCode, defaultSlug)}" />
+  ${feedLinkTag(article.language, labels)}
   <link rel="icon" type="image/png" sizes="64x64" href="${logoAt(64, 'png')}" />
   <link rel="apple-touch-icon" sizes="180x180" href="${logoAt(180, 'png')}" />
   <meta property="og:type" content="article" />
@@ -339,11 +360,16 @@ function renderPage(article, labels, body, headings, related) {
   <meta name="twitter:image" content="${socialCard}" />
   <meta name="twitter:image:alt" content="${socialImageAlt}" />
   <link rel="preload" href="/assets/css/blog.css?v=source" as="style" />
-  <!-- The serif sets the h1 and the whole article body, so it is on the LCP
-       path. Fonts are always fetched in CORS mode, hence crossorigin even
-       though this one is same-origin - without it the preload is discarded and
-       the font downloads twice. -->
-  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- Both faces paint above the fold - the serif sets the headline and the
+       article body, the sans the header and the byline around it - and both are
+       discovered three levels down a waterfall the browser cannot see past:
+       HTML, then blog.css, then the @font-face inside it. Fonts are always
+       fetched in CORS mode, hence crossorigin even though these are
+       same-origin: without it the preload is discarded and the font downloads
+       twice. The version has to match the one blog.css asks for, or it downloads
+       twice for that reason instead. -->
+  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2?v=source" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2?v=source" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/blog.css?v=source" />
   <link rel="stylesheet" href="/assets/css/header.css?v=source" />
   <link rel="stylesheet" href="/assets/css/a11y.css?v=source" />
@@ -376,7 +402,8 @@ ${body}
 `;
 }
 
-// The journal index renders its grid from catalog.json in the browser. That
+// The journal index renders its grid from its per-language catalog in the
+// browser. That
 // leaves crawlers with a page containing no links to any article, so the same
 // list is also written into the markup between markers and simply replaced by
 // the client script once it loads.
@@ -402,7 +429,28 @@ function featuredCard(language, labels, article, ranked) {
     + `</div></article>`;
 }
 
-async function updateBlogIndex(language, articles, totals) {
+// The rail under the featured card. It is rendered here, at build time, from
+// counts that are already known - so it costs no request, cannot shift the
+// layout after paint, and is in the markup a crawler sees. When nothing has
+// been counted the function returns an empty string and the section is simply
+// not there, which is the only honest way to show a "read this month" list on a
+// site that has not measured a month yet.
+//
+// The note under the heading is where the site says what it counts. A ranking
+// by popularity invites the question, and answering it in one line next to the
+// ranking is better than a policy page nobody opens.
+function recentlyReadRail(language, labels, articles) {
+  if (articles.length === 0) return '';
+
+  const items = articles.map((article) => `<li><a href="${articlePath(language, article.slug)}">${escapeHtml(article.title)}</a><span>${escapeHtml(article.category)}</span></li>`).join('');
+  return `<section class="recently-read" aria-labelledby="recently-read-title">`
+    + `<h2 id="recently-read-title">${escapeHtml(labels.recentTitle)}</h2>`
+    + `<ol>${items}</ol>`
+    + `<p class="recently-read-note">${escapeHtml(labels.recentNote)}</p>`
+    + `</section>`;
+}
+
+async function updateBlogIndex(language, articles, totals, recentCounts) {
   const file = path.join(root, language, 'blog', 'index.html');
   const labels = copy[language] || copy.en;
   let source = await fs.readFile(file, 'utf8');
@@ -431,7 +479,7 @@ async function updateBlogIndex(language, articles, totals) {
   // generate-blog-catalog.mjs has already written the file, so its hash is known
   // here; putting it in the URL makes a republished catalog a new URL, which is
   // what lets _headers serve it immutably instead of forbidding caching outright
-  // as the shared catalog.json had to be.
+  // as the shared full catalog had to be while it was still published.
   const catalogFile = path.join(contentRoot, `catalog.${language}.json`);
   const catalogHash = createHash('sha256')
     .update(await fs.readFile(catalogFile))
@@ -489,6 +537,33 @@ async function updateBlogIndex(language, articles, totals) {
   const scriptResult = replaceBetween(source, 'jsonld', script);
   source = typeof scriptResult === 'string' ? scriptResult : source.replace('</head>', `${scriptResult.block}</head>`);
 
+  // Feed discovery in the <head>, and a plain link in the footer for anyone who
+  // wants to copy the URL rather than let their reader find it. Both go through
+  // markers so this stays a patch of the committed index rather than a rewrite.
+  const feedHeadResult = replaceBetween(source, 'feed', `\n  ${feedLinkTag(language, labels)}\n  `);
+  source = typeof feedHeadResult === 'string'
+    ? feedHeadResult
+    : source.replace('</head>', `${feedHeadResult.block}</head>`);
+
+  const footerLink = `<a href="/${language}/blog/feed.xml">${escapeHtml(labels.feedLink)}</a>`;
+  const feedFooterResult = replaceBetween(source, 'feedlink', footerLink);
+  source = typeof feedFooterResult === 'string'
+    ? feedFooterResult
+    : source.replace(
+      /(<footer class="site-footer"><div class="container footer-row">[\s\S]*?)(<\/div><\/footer>)/,
+      `$1${feedFooterResult.block}$2`
+    );
+
+  // What the site records, stated where a reader can find it rather than only
+  // where the ranking appears. The rail above is conditional - it is absent
+  // until something has been counted - and a disclosure that only shows up once
+  // there is data to disclose is the wrong way round. This line is permanent.
+  const privacy = `<p class="footer-privacy">${escapeHtml(labels.privacyNote)}</p>`;
+  const privacyResult = replaceBetween(source, 'privacy', privacy);
+  source = typeof privacyResult === 'string'
+    ? privacyResult
+    : source.replace(/(<\/div><\/footer>)/, `</div><div class="container">${privacyResult.block}</div></footer>`);
+
   const countResult = replaceBetween(source, 'count', resultCount);
   if (typeof countResult === 'string') {
     source = countResult;
@@ -517,8 +592,21 @@ async function updateBlogIndex(language, articles, totals) {
     }
   }
 
+  // Rendered after the featured card is chosen, so the rail never repeats what
+  // the card above it already shows.
+  const recent = recentlyRead(articles, recentCounts, featured?.slug);
+  const recentResult = replaceBetween(source, 'recent', recentlyReadRail(language, labels, recent));
+  if (typeof recentResult === 'string') {
+    source = recentResult;
+  } else {
+    source = source.replace(
+      /(<article class="featured-card">[\s\S]*?<\/article>)/,
+      `$1${recentResult.block}`
+    );
+  }
+
   await fs.writeFile(file, source);
-  return { featured, ranked };
+  return { featured, ranked, recent };
 }
 
 // The generator only ever writes pages, so a slug renamed or deleted in the
@@ -568,6 +656,126 @@ function lastModified(article) {
   return article.updated || article.date;
 }
 
+// The date the sources behind a generated page were last committed, as
+// YYYY-MM-DD, or '' when that cannot be established.
+//
+// Articles carry their own date in front matter, so the sitemap has always been
+// able to state one for them. The home pages and the five simulators have no
+// such field - they are built from a template and a bundle of translation
+// strings - and half the sitemap consequently went out with no <lastmod> at all.
+//
+// The commit date of the source is the honest answer to "when did this page last
+// change", and it is the only one available that does not drift: a file's mtime
+// in CI is the time the checkout ran, and the build date would claim every URL
+// changed on every deploy, which is exactly the unreliable signal the comment
+// above sitemapEntry() exists to avoid. Committing a change is the act that
+// changes a page here, so the two are the same event.
+//
+// Everything about this can fail - git may be absent, the clone may be shallow
+// enough not to reach the last commit that touched the path, the path may be
+// uncommitted - and every failure returns '', which reinstates the previous
+// behaviour of omitting the element. An absent lastmod is a crawler's problem to
+// solve by fetching; a wrong one is a signal it learns to distrust.
+function lastCommitted(...relativePaths) {
+  try {
+    const stdout = execFileSync(
+      'git',
+      ['log', '-1', '--format=%cs', '--', ...relativePaths],
+      { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }
+    ).trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(stdout) ? stdout : '';
+  } catch {
+    return '';
+  }
+}
+
+// Resolved once per build rather than once per URL: the three home pages come
+// from one template, and the three language builds of a simulator come from one
+// pair of source files, so each of these is a single git call answering three
+// sitemap entries.
+const homeLastModified = lastCommitted(path.join('content', 'home', 'index.html'));
+const simulatorHubLastModified = lastCommitted(
+  path.join('content', 'simulators', 'simulator-hub.html'),
+  path.join('content', 'simulators', 'simulator-hub.i18n.json')
+);
+const simulatorLastModified = Object.fromEntries(simulatorSlugs.map((slug) => [
+  slug,
+  lastCommitted(
+    path.join('content', 'simulators', `${slug}.html`),
+    path.join('content', 'simulators', `${slug}.i18n.json`)
+  )
+]));
+
+// RSS 2.0, one feed per language at /{lang}/blog/feed.xml.
+//
+// The journal is the only part of the site that gains items over time, and
+// until now the only way to learn that it had was to visit it. A feed is the
+// cheap, standard answer: readers subscribe in whatever client they already
+// use, and the aggregators and AI crawlers that poll feeds rather than re-crawl
+// pages get told about a new article instead of having to notice one.
+//
+// RSS rather than Atom because every reader handles it and the CMS produces
+// nothing Atom would express better. Dates are RFC 822, which is what the spec
+// requires and what strict validators check; the catalog stores plain
+// YYYY-MM-DD, so they are read as UTC midnight rather than in the build
+// machine's zone, which would move a date across a boundary depending on where
+// the deploy ran.
+function rfc822(date) {
+  return new Date(`${date}T00:00:00Z`).toUTCString();
+}
+
+function buildFeed(language, articles, labels) {
+  const self = `${origin}/${language}/blog/feed.xml`;
+  const sorted = [...articles].sort((first, second) => second.date.localeCompare(first.date));
+
+  // lastBuildDate is the newest article, not the moment of the build. Stamping
+  // it with the deploy time tells every subscribed reader the feed changed on
+  // every deploy, which is how a feed trains clients to poll it less.
+  const newest = sorted[0] ? lastModified(sorted[0]) : '';
+
+  const items = sorted.map((article) => {
+    const url = `${origin}${articlePath(language, article.slug)}`;
+    return `    <item>
+      <title>${escapeHtml(article.title)}</title>
+      <link>${url}</link>
+      <guid isPermaLink="true">${url}</guid>
+      <pubDate>${rfc822(article.date)}</pubDate>
+      <category>${escapeHtml(article.category)}</category>
+      <dc:creator>${escapeHtml(article.author)}</dc:creator>
+      <description>${escapeHtml(article.summary)}</description>
+    </item>`;
+  }).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
+  <channel>
+    <title>${escapeHtml(labels.feedTitle)}</title>
+    <link>${origin}/${language}/blog/</link>
+    <description>${escapeHtml(labels.feedDescription)}</description>
+    <language>${language}</language>
+    <atom:link href="${self}" rel="self" type="application/rss+xml" />
+    <image>
+      <url>${logo}</url>
+      <title>${escapeHtml(labels.feedTitle)}</title>
+      <link>${origin}/${language}/blog/</link>
+    </image>${newest ? `\n    <lastBuildDate>${rfc822(newest)}</lastBuildDate>` : ''}
+${items}
+  </channel>
+</rss>
+`;
+}
+
+// The <head> line that makes the feed discoverable: readers and browser
+// extensions look for exactly this, and it is what turns a URL somebody has to
+// be told about into one their client offers them. Every page in a language
+// points at that language's feed.
+function feedLinkTag(language, labels) {
+  return `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(labels.feedTitle)}" href="${origin}/${language}/blog/feed.xml" />`;
+}
+
 function buildSitemap(articles) {
   const homeAlternates = languages
     .map((code) => ({ hreflang: code, href: `${origin}${homeHref(code)}` }))
@@ -582,15 +790,19 @@ function buildSitemap(articles) {
     const alternates = languages
       .map((code) => ({ hreflang: code, href: `${origin}/${code}/simulators/${slug}.html` }))
       .concat([{ hreflang: 'x-default', href: `${origin}/es/simulators/${slug}.html` }]);
-    return languages.map((code) => sitemapEntry(`${origin}/${code}/simulators/${slug}.html`, '', alternates));
+    return languages.map((code) => sitemapEntry(
+      `${origin}/${code}/simulators/${slug}.html`,
+      simulatorLastModified[slug],
+      alternates
+    ));
   });
 
   const newest = articles.reduce((latest, article) => (lastModified(article) > latest ? lastModified(article) : latest), '');
 
   const entries = [
-    ...languages.map((code) => sitemapEntry(`${origin}${homeHref(code)}`, '', homeAlternates)),
+    ...languages.map((code) => sitemapEntry(`${origin}${homeHref(code)}`, homeLastModified, homeAlternates)),
     ...languages.map((code) => sitemapEntry(`${origin}/${code}/blog/`, newest, blogAlternates)),
-    ...languages.map((code) => sitemapEntry(`${origin}/${code}/simulator.html`, '', simulatorAlternates)),
+    ...languages.map((code) => sitemapEntry(`${origin}/${code}/simulator.html`, simulatorHubLastModified, simulatorAlternates)),
     ...simulatorToolEntries,
     ...articles.map((article) => sitemapEntry(
       `${origin}${articlePath(article.language, article.slug)}`,
@@ -618,7 +830,7 @@ ${entries.join('\n')}
 `;
 }
 
-const catalog = JSON.parse(await fs.readFile(path.join(contentRoot, 'catalog.json'), 'utf8'));
+const catalog = await readSharedCatalog();
 const prepared = [];
 
 // Rendering happens in a second pass: the read-next section on any article needs
@@ -646,23 +858,45 @@ for (const { article, labels, html, headings } of prepared) {
 }
 
 const removed = [];
-// One read of the view counter for the whole run, totalled per translation so
-// the three indexes agree on which article is the most read one.
-const totals = totalsByTranslation(generated, await readViewCounts());
+// One read of each counter for the whole run: the lifetime totals, summed per
+// translation so the three indexes agree on which article is the most read one,
+// and the trailing two month buckets that feed each index's own rail.
+const viewCounts = await readViewCounts();
+const totals = totalsByTranslation(generated, viewCounts);
+const recentCounts = await readRecentViewCounts();
 
 for (const language of languages) {
   const articles = generated.filter((article) => article.language === language);
-  const { featured, ranked } = await updateBlogIndex(language, articles, totals);
+  const { featured, ranked, recent } = await updateBlogIndex(language, articles, totals, recentCounts);
   removed.push(...await pruneRemovedArticles(language, new Set(articles.map((article) => article.slug))));
+
+  const labels = copy[language] || copy.en;
+  await fs.writeFile(path.join(root, language, 'blog', 'feed.xml'), buildFeed(language, articles, labels));
+
   let featuredNote = 'unchanged (no articles)';
   if (featured && ranked) featuredNote = `${featured.title} (${totals.get(featured.translationKey)} views)`;
   else if (featured) featuredNote = `${featured.title} (newest article; nothing counted yet)`;
   console.log(`Featured on /${language}/blog/: ${featuredNote}.`);
+  console.log(recent.length
+    ? `Read this month on /${language}/blog/: ${recent.length} article(s) listed.`
+    : `Read this month on /${language}/blog/: nothing counted yet, rail omitted.`);
+}
+
+// Where the next hour of translation work pays best. Printed, not published:
+// it is a note to whoever runs the journal, and it is only meaningful once
+// there is enough reading to compare.
+const priorities = translationPriorities(generated, viewCounts);
+if (priorities.length) {
+  console.log(`Translation priorities - ${priorities.length} article(s) read far more in one language than another:`);
+  for (const { translationKey, strongest, weakest, total } of priorities) {
+    console.log(`  ${translationKey}: ${strongest.language} ${strongest.views} vs ${weakest.language} ${weakest.views} (${total} total)`);
+  }
+  console.log('A wide gap usually means the weaker translation reads awkwardly or its title does not match how that audience searches.');
 }
 
 await fs.writeFile(path.join(root, 'sitemap.xml'), buildSitemap(generated));
 
-console.log(`Generated ${generated.length} article pages, ${languages.length} journal indexes and sitemap.xml with ${generated.length + 21} URLs.`);
+console.log(`Generated ${generated.length} article pages, ${languages.length} journal indexes, ${languages.length} RSS feeds and sitemap.xml with ${generated.length + 21} URLs.`);
 
 if (removed.length) {
   console.log(`Removed ${removed.length} article page(s) no longer in the catalog:`);

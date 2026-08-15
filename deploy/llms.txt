@@ -29,7 +29,13 @@ The complete text of this site — every FAQ answer and every article, in all th
 - [Diário em português](https://compoundingjourney.com/pt/blog/)
 
 Every article is published as its own page under `/{language}/blog/{slug}/` and
-all of them are listed in [the sitemap](https://compoundingjourney.com/sitemap.xml).
+all of them are listed in [the sitemap](https://compoundingjourney.com/sitemap.xml). Each language
+also publishes an RSS feed, which is the cheapest way to learn about a new
+article without re-crawling the index:
+
+- [Diario en español — RSS](https://compoundingjourney.com/es/blog/feed.xml)
+- [Journal in English — RSS](https://compoundingjourney.com/en/blog/feed.xml)
+- [Diário em português — RSS](https://compoundingjourney.com/pt/blog/feed.xml)
 
 ### Español
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
+  <channel>
+    <title>El Diario del Interés Compuesto</title>
+    <link>https://compoundingjourney.com/es/blog/</link>
+    <description>Sistemas prácticos de dinero, trabajo intencional y el camino paciente hacia la libertad financiera.</description>
+    <language>es</language>
+    <atom:link href="https://compoundingjourney.com/es/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://compoundingjourney.com/logo-compounding-journey.png</url>
+      <title>El Diario del Interés Compuesto</title>
+      <link>https://compoundingjourney.com/es/blog/</link>
+    </image>
+    <lastBuildDate>Thu, 13 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa</title>
+      <link>https://compoundingjourney.com/es/blog/gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/es/blog/gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa/</guid>
+      <pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Diseño de vida</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>El crecimiento financiero no exige eliminar tus alegrías, sino gastar con intencionalidad. Alinear tus compras con tus valores te dará libertad.</description>
+    </item>
+    <item>
+      <title>Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza</title>
+      <link>https://compoundingjourney.com/es/blog/fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/es/blog/fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza/</guid>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Hábitos financieros</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>Descubre consejos simples para presupuestar, rastrear tus gastos y tomar decisiones financieras inteligentes para alcanzar la libertad sin renunciar a lo que te hace feliz.</description>
+    </item>
+    <item>
+      <title>Cómo Crear Riqueza con Buenos Hábitos Financieros: Lecciones de Padre Rico, Padre Pobre</title>
+      <link>https://compoundingjourney.com/es/blog/como-crear-riqueza-con-buenos-habitos-financieros-lecciones-de-padre-rico-padre-pobre/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/es/blog/como-crear-riqueza-con-buenos-habitos-financieros-lecciones-de-padre-rico-padre-pobre/</guid>
+      <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Hábitos financieros</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>Descubre cómo construir riqueza a largo plazo con buenos hábitos financieros. Aprende la diferencia entre activos, pasivos, deuda buena y flujo de caja.</description>
+    </item>
+    <item>
+      <title>Págate a Ti Mismo Primero: El Hábito Clave para Crear Riqueza</title>
+      <link>https://compoundingjourney.com/es/blog/pagate-a-ti-mismo-primero-el-habito-clave-para-crear-riqueza/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/es/blog/pagate-a-ti-mismo-primero-el-habito-clave-para-crear-riqueza/</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+      <category>Hábitos financieros</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>Descubre cómo ahorrar un porcentaje fijo antes de gastar romperá el ciclo de vivir al día y te ayudará a construir tu fondo de emergencia.</description>
+    </item>
+    <item>
+      <title>El sistema de dinero lento: una forma más tranquila de crear patrimonio</title>
+      <link>https://compoundingjourney.com/es/blog/sistema-dinero-lento/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/es/blog/sistema-dinero-lento/</guid>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+      <category>Hábitos financieros</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>Un ritmo semanal práctico que sustituye la urgencia financiera por unas pocas decisiones sostenibles.</description>
+    </item>
+  </channel>
+</rss>

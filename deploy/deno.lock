@@ -11,6 +11,8 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@netlify/database@1.1.0",
+        "npm:@netlify/edge-functions@3.0.8",
         "npm:tailwindcss@3.4.17"
       ]
     }

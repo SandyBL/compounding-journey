@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{hFullLang}}" class="h-full bg-[#fbf8f3]">
+<html lang="{{lang.code}}" class="h-full bg-[#fbf8f3]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,19 +59,19 @@
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">{{siteReturnLinkText}}</span>
                 </a>
-                <button onclick="toggleLeaderboardModal()" class="px-2.5 py-1.5 rounded-xl border border-gold-600 text-gold-600 hover:bg-gold-500 hover:text-espresso-950 font-semibold text-xs transition flex items-center gap-1.5" title="{{px25Title}}">
+                <button data-onclick="toggleLeaderboardModal()" class="px-2.5 py-1.5 rounded-xl border border-gold-600 text-gold-600 hover:bg-gold-500 hover:text-espresso-950 font-semibold text-xs transition flex items-center gap-1.5" title="{{px25Title}}">
                                     <i class="fa-solid fa-trophy text-gold-500" aria-hidden="true"></i>
                                     <span class="hidden sm:inline">{{hidden}}</span>
                                 </button>
-                <button onclick="toggleHowToPlayModal()" class="px-2.5 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
+                <button data-onclick="toggleHowToPlayModal()" class="px-2.5 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
                                     <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
                                     <span>{{px25}}</span>
                                 </button>
-                <button onclick="advanceTime(12)" class="px-3 py-1.5 rounded-xl bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs shadow transition flex items-center gap-1.5 active:scale-95">
+                <button data-onclick="advanceTime(12)" class="px-3 py-1.5 rounded-xl bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs shadow transition flex items-center gap-1.5 active:scale-95">
                                     <i class="fa-solid fa-angles-right text-[10px]" aria-hidden="true"></i>
                                     <span>{{px3}}</span>
                                 </button>
-                <button onclick="resetSimulation()" class="p-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1" title="{{p15Title}}">
+                <button data-onclick="resetSimulation()" class="p-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1" title="{{p15Title}}">
                                     <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
                                     <span class="hidden sm:inline text-xs">{{hidden2}}</span>
                                 </button>
@@ -227,7 +227,7 @@
 
             <!-- TIME ADVANCE ACTION BUTTON -->
             <div class="flex items-center gap-2.5 w-full md:w-auto">
-                <button onclick="advanceTime(12)" class="w-full md:w-auto px-6 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-espresso-950 font-bold text-xs shadow transition flex items-center justify-center gap-2 active:scale-95">
+                <button data-onclick="advanceTime(12)" class="w-full md:w-auto px-6 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-espresso-950 font-bold text-xs shadow transition flex items-center justify-center gap-2 active:scale-95">
                     <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
                     <span>{{wFull}}</span>
                 </button>
@@ -241,7 +241,7 @@
                     <i class="fa-solid fa-circle-check text-emerald-600 text-base" aria-hidden="true"></i>
                     <span id="turnSummaryTitle">{{turnsummarytitle}}</span>
                 </div>
-                <button onclick="document.getElementById('turnSummaryToast').classList.add('hidden')" class="text-espresso-800/60 hover:text-espresso-950" aria-label="{{a11yDismissSummary}}">
+                <button data-onclick="dismissTurnSummary()" class="text-espresso-800/60 hover:text-espresso-950" aria-label="{{a11yDismissSummary}}">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
@@ -287,7 +287,7 @@
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
                                 <span id="label-housing" class="truncate"><i class="fa-solid fa-house text-amber-700 mr-1" aria-hidden="true"></i>{{truncate}}</span>
                             </div>
-                            <select id="housingSelect" aria-labelledby="label-housing" onchange="updateLifestyle('housing', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="housingSelect" aria-labelledby="label-housing" data-onchange="updateLifestyle('housing', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="modest">{{housingselect}}</option>
                                 <option value="standard" selected>{{housingselect2}}</option>
                                 <option value="luxury">{{housingselect3}}</option>
@@ -299,7 +299,7 @@
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
                                 <span id="label-transport" class="truncate"><i class="fa-solid fa-car text-amber-700 mr-1" aria-hidden="true"></i>{{truncate2}}</span>
                             </div>
-                            <select id="transportSelect" aria-labelledby="label-transport" onchange="updateLifestyle('transport', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="transportSelect" aria-labelledby="label-transport" data-onchange="updateLifestyle('transport', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="public">{{transportselect}}</option>
                                 <option value="used" selected>{{transportselect2}}</option>
                                 <option value="lease">{{transportselect3}}</option>
@@ -311,7 +311,7 @@
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
                                 <span id="label-lifestyle" class="truncate"><i class="fa-solid fa-utensils text-amber-700 mr-1" aria-hidden="true"></i>{{truncate3}}</span>
                             </div>
-                            <select id="lifestyleSelect" aria-labelledby="label-lifestyle" onchange="updateLifestyle('lifestyle', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="lifestyleSelect" aria-labelledby="label-lifestyle" data-onchange="updateLifestyle('lifestyle', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="frugal">{{lifestyleselect}}</option>
                                 <option value="balanced" selected>{{lifestyleselect2}}</option>
                                 <option value="lavish">{{lifestyleselect3}}</option>
@@ -323,7 +323,7 @@
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
                                 <span id="label-subscriptions" class="truncate"><i class="fa-solid fa-mobile-screen text-amber-700 mr-1" aria-hidden="true"></i>{{truncate4}}</span>
                             </div>
-                            <select id="subscriptionsSelect" aria-labelledby="label-subscriptions" onchange="updateLifestyle('subscriptions', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="subscriptionsSelect" aria-labelledby="label-subscriptions" data-onchange="updateLifestyle('subscriptions', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="basic">{{subscriptionsselect}}</option>
                                 <option value="standard" selected>{{subscriptionsselect2}}</option>
                                 <option value="unlimited">{{subscriptionsselect3}}</option>
@@ -335,7 +335,7 @@
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
                                 <span id="label-travel" class="truncate"><i class="fa-solid fa-plane text-amber-700 mr-1" aria-hidden="true"></i>{{truncate5}}</span>
                             </div>
-                            <select id="travelSelect" aria-labelledby="label-travel" onchange="updateLifestyle('travel', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="travelSelect" aria-labelledby="label-travel" data-onchange="updateLifestyle('travel', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="staycation">{{travelselect}}</option>
                                 <option value="annual" selected>{{travelselect2}}</option>
                                 <option value="luxury">{{travelselect3}}</option>
@@ -347,7 +347,7 @@
                             <div class="flex items-center justify-between text-[11px] font-bold text-espresso-950">
                                 <span id="label-shopping" class="truncate"><i class="fa-solid fa-bag-shopping text-amber-700 mr-1" aria-hidden="true"></i>{{truncate6}}</span>
                             </div>
-                            <select id="shoppingSelect" aria-labelledby="label-shopping" onchange="updateLifestyle('shopping', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
+                            <select id="shoppingSelect" aria-labelledby="label-shopping" data-onchange="updateLifestyle('shopping', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
                                 <option value="minimal">{{shoppingselect}}</option>
                                 <option value="standard" selected>{{shoppingselect2}}</option>
                                 <option value="luxury">{{shoppingselect3}}</option>
@@ -478,7 +478,7 @@
                         <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">{{text10px}}</p>
                     </div>
                 </div>
-                <button onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="{{a11yCloseDialog}}">
+                <button data-onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="{{a11yCloseDialog}}">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
@@ -520,7 +520,7 @@
                 </div>
             </div>
 
-            <button onclick="toggleHowToPlayModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
+            <button data-onclick="toggleHowToPlayModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
 {{wFull2}}            </button>
         </div>
     </div>
@@ -563,7 +563,7 @@
                 </div>
                 <div class="flex gap-2">
                     <input type="text" id="playerNameInput" placeholder="{{playernameinputPlaceholder}}" aria-label="{{playernameinputPlaceholder}}" class="flex-1 text-xs px-3 py-2 rounded-lg border border-cream-300 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500 text-espresso-950">
-                    <button onclick="submitPlayerScore()" class="px-3.5 py-2 rounded-lg bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs transition flex items-center gap-1 shrink-0">
+                    <button data-onclick="submitPlayerScore()" class="px-3.5 py-2 rounded-lg bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs transition flex items-center gap-1 shrink-0">
                         <i class="fa-solid fa-check" aria-hidden="true"></i>{{px35}}                    </button>
                 </div>
             </div>
@@ -573,7 +573,7 @@
                     <span>{{block5}}</span>
                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </a>
-                <button onclick="closeVictoryModal()" class="w-full py-2.5 px-4 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 font-medium text-xs transition">
+                <button data-onclick="closeVictoryModal()" class="w-full py-2.5 px-4 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 font-medium text-xs transition">
 {{wFull3}}                </button>
             </div>
         </div>
@@ -592,7 +592,7 @@
                         <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">{{text10px3}}</p>
                     </div>
                 </div>
-                <button onclick="toggleLeaderboardModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="{{a11yCloseDialog}}">
+                <button data-onclick="toggleLeaderboardModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="{{a11yCloseDialog}}">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
@@ -615,10 +615,10 @@
 
             <div class="flex justify-between items-center pt-1 text-[11px] text-espresso-800/70">
                 <span>{{flex7}}</span>
-                <button onclick="resetLeaderboard()" class="text-rose-700 hover:underline text-[10px]">{{textRose7002}}</button>
+                <button data-onclick="resetLeaderboard()" class="text-rose-700 hover:underline text-[10px]">{{textRose7002}}</button>
             </div>
 
-            <button onclick="toggleLeaderboardModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
+            <button data-onclick="toggleLeaderboardModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
 {{wFull4}}            </button>
         </div>
     </div>
@@ -1146,16 +1146,16 @@
                         </div>
 
                         <div class="flex gap-1.5">
-                            <button onclick="buyAsset('${asset.id}', 1)" ${!canAfford ? 'disabled' : ''} class="flex-1 py-1 rounded-lg bg-forest-800 hover:bg-forest-700 disabled:opacity-40 text-white text-[11px] font-bold transition">
+                            <button data-onclick="buyAsset('${asset.id}', 1)" ${!canAfford ? 'disabled' : ''} class="flex-1 py-1 rounded-lg bg-forest-800 hover:bg-forest-700 disabled:opacity-40 text-white text-[11px] font-bold transition">
 {{fontSans52}}                            </button>
-                            <button onclick="buyMaxAsset('${asset.id}')" ${!canAfford ? 'disabled' : ''} class="px-2 py-1 rounded-lg border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white disabled:opacity-40 text-[11px] font-bold transition">
+                            <button data-onclick="buyMaxAsset('${asset.id}')" ${!canAfford ? 'disabled' : ''} class="px-2 py-1 rounded-lg border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white disabled:opacity-40 text-[11px] font-bold transition">
 {{fontSans53}}                            </button>
                         </div>
                         ${asset.ownedUnits > 0 ? `
                         <div class="flex gap-1.5 pt-1 border-t border-cream-200">
-                            <button onclick="sellAsset('${asset.id}', 1)" class="flex-1 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
+                            <button data-onclick="sellAsset('${asset.id}', 1)" class="flex-1 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
 {{fontSans54}}                            </button>
-                            <button onclick="sellAllAsset('${asset.id}')" class="px-2 py-0.5 rounded-lg bg-rose-700 hover:bg-rose-800 text-white text-[10px] font-bold transition">
+                            <button data-onclick="sellAllAsset('${asset.id}')" class="px-2 py-0.5 rounded-lg bg-rose-700 hover:bg-rose-800 text-white text-[10px] font-bold transition">
 {{fontSans55}}                            </button>
                         </div>
                         ` : ''}
@@ -1202,9 +1202,9 @@
                         </div>
 {{fontSans60}}                    </div>
                     <div class="flex items-center justify-end gap-1.5 pt-1 border-t border-cream-200">
-                        <button onclick="sellAsset('${asset.id}', 1)" class="px-2 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
+                        <button data-onclick="sellAsset('${asset.id}', 1)" class="px-2 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
 {{fontSans61}}                        </button>
-                        <button onclick="sellAllAsset('${asset.id}')" class="px-2 py-0.5 rounded-lg bg-rose-700 hover:bg-rose-800 text-white text-[10px] font-bold transition">
+                        <button data-onclick="sellAllAsset('${asset.id}')" class="px-2 py-0.5 rounded-lg bg-rose-700 hover:bg-rose-800 text-white text-[10px] font-bold transition">
 {{fontSans62}}                        </button>
                     </div>
                 `;
@@ -1385,6 +1385,17 @@
             updateLifestyle('housing', 'standard');
             closeVictoryModal();
             renderUI();
+        }
+
+        // Named rather than written into the button's attribute. The dismissal
+        // is one DOM call, but sim-actions.js deliberately only understands a
+        // function name and literal arguments - an attribute that could express
+        // `document.getElementById(...).classList.add(...)` could express
+        // anything, which is the property that made inline handlers worth
+        // removing in the first place.
+        function dismissTurnSummary() {
+            const toast = document.getElementById('turnSummaryToast');
+            if (toast) toast.classList.add('hidden');
         }
 
         window.onload = function() {

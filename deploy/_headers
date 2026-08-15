@@ -1,7 +1,12 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  X-Frame-Options: SAMEORIGIN
+  # DENY rather than SAMEORIGIN, to agree with frame-ancestors 'none' below.
+  # Nothing on this site frames anything on this site: there is not one <iframe>
+  # in any published page, and the content studio's preview pane frames a blob:
+  # URL it builds itself, which this does not govern. SAMEORIGIN was permission
+  # for a case that does not exist.
+  X-Frame-Options: DENY
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()
   # Two years, subdomains included. The site is HTTPS-only on Netlify and every
   # internal link is root-relative, so there is no plaintext hop to preserve.
@@ -14,13 +19,29 @@
   # content studio signs in with the Netlify Identity widget in the page rather
   # than through an OAuth popup, so nothing here depends on an opener handle.
   Cross-Origin-Opener-Policy: same-origin
+  # Refuses to be loaded as a subresource by another origin. Every asset this
+  # site needs is same-origin - the fonts are self-hosted, the images go through
+  # /.netlify/images on this domain - so nothing here is a resource another site
+  # has a reason to embed. The one deliberate exception is the shareable
+  # imagery, which is overridden to cross-origin under /*.png below.
+  Cross-Origin-Resource-Policy: same-origin
+  # Where CSP violation reports go. Declared once here, and inherited by every
+  # response: unlike Content-Security-Policy, no rule below restates this name,
+  # so the fallback value is the value everywhere. See the /api/csp-report
+  # function for what happens to a report once it arrives.
+  Reporting-Endpoints: csp="/api/csp-report"
   # The fallback policy. Every real page below restates its own, and every one of
   # those wins over this line, so what this actually covers is the case none of
   # them do: a request for a path that does not exist. Netlify answers those with
   # the 404 document, but header rules are matched against the requested path, so
   # /404.html below never applies to them and they used to arrive with no policy
   # at all. See the /admin/* note for why a catch-all is safe to state here.
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+  #
+  # report-to and report-uri name the same endpoint twice on purpose. report-to
+  # is the current mechanism and the only one Chrome still honours; report-uri is
+  # deprecated and is what Firefox and Safari actually implement. A browser that
+  # understands both ignores report-uri, so nothing is reported twice.
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests; report-to csp; report-uri /api/csp-report
 
 # Content-Security-Policy is declared per public path, and the /* fallback above
 # is deliberately the first block in this file. Netlify emits one value per
@@ -30,40 +51,62 @@
 # the fallback first and every specific policy after it is the layout both agree
 # on: /admin/* and each language prefix win either way.
 #
-# That matters because of the content studio. It loads Decap CMS and the Identity
-# client at runtime and builds its preview pane from generated markup, so a
+# That matters because of the content studio. It loads the Decap CMS bundle from
+# a CDN at runtime and builds its preview pane from generated markup, so a
 # policy tight enough for the public pages would break editing. It therefore
 # carries its own policy below, one that restricts nothing, purely so that the
 # fallback can never reach it.
 #
 # The directives track what the public pages actually load, which is very
-# little: every script, style, font, image and fetch target is same-origin. The
-# two exceptions are inline code, which the pages use heavily for event handlers
-# and per-page logic, and cdn.jsdelivr.net, which the home pages import the
-# Netlify Identity client from when a visitor arrives on an invite or password
-# recovery link.
+# little: every script, style, font, image and fetch target is same-origin, with
+# no exceptions left. There used to be one - cdn.jsdelivr.net, which the home
+# pages imported the Netlify Identity client from when a visitor arrived on an
+# invite or password-recovery link. That import ran a third party's script on
+# the one screen where somebody types a password, and it bought an allowance on
+# every public page for a flow almost nobody reaches. The client is now served
+# from /assets/js/netlify-identity-1.2.0.js and script-src is 'self' alone.
+#
+# script-src no longer carries 'unsafe-inline'. It used to, because the five
+# simulator pages were built around inline <script> blocks and around a hundred
+# `onclick="..."` attributes, and a policy that permits inline script permits
+# any inline script - which is the injection the policy exists to stop, so the
+# keyword made script-src decorative. The behaviour now builds to
+# /assets/js/sim-*.js and the attributes are `data-onclick`, read by
+# sim-actions.js, so no page in the published output contains executable inline
+# script and the keyword could go. The remaining inline blocks are
+# type="application/ld+json", which is not executed and which script-src does
+# not govern.
+#
+# Adding it back is therefore not a small edit: it would re-open the hole for
+# every page this file covers. If a page genuinely needs inline script, give it
+# a nonce or a hash, not the keyword.
+#
+# style-src keeps 'unsafe-inline'. Tailwind's utility classes are the styling,
+# but the pages also carry inline style attributes for values computed at
+# runtime - bar widths, chart heights - which a hash cannot cover and which have
+# nothing like the reach of inline script.
 #
 # Note for deploy previews: the collaboration drawer Netlify injects into
 # previews is served from app.netlify.com and is not allowed here. It is preview
 # chrome only - the published site does not load it - but if the drawer is
 # wanted, add https://app.netlify.com to script-src and connect-src.
 /
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests; report-to csp; report-uri /api/csp-report
 
 /index.html
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests; report-to csp; report-uri /api/csp-report
 
 /404.html
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests; report-to csp; report-uri /api/csp-report
 
 /en/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests; report-to csp; report-uri /api/csp-report
 
 /es/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests; report-to csp; report-uri /api/csp-report
 
 /pt/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests; report-to csp; report-uri /api/csp-report
 
 # Static assets are never documents. A policy on a stylesheet, script, font or
 # image is ignored by the browser when the file is loaded the way the pages load
@@ -83,9 +126,86 @@
 
 /*.png
   Cache-Control: public, max-age=2592000, must-revalidate
+  # The exception to the same-origin default in /*. These are the logo, the
+  # portrait and the social card - the images the site exists to have shared, and
+  # a newsletter or a partner page embedding one of them from this domain is a
+  # thing to allow rather than to break. Social scrapers fetch server-side and
+  # never see this header either way; it is browsers embedding the file that it
+  # governs, and for these files that is the intended use.
+  Cross-Origin-Resource-Policy: cross-origin
 
 /assets/templates/*.xlsx
   Cache-Control: public, max-age=31536000, immutable
+
+# The per-language RSS feeds. Netlify would serve these as application/xml,
+# which some readers refuse to subscribe to; the RSS media type is what a client
+# looks for. Ten minutes of caching is enough to absorb a burst of pollers
+# without holding a new article back, and noindex keeps a feed out of the SERP
+# competing with the journal index it summarises.
+/en/blog/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=600, must-revalidate
+  X-Robots-Tag: noindex
+
+/es/blog/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=600, must-revalidate
+  X-Robots-Tag: noindex
+
+/pt/blog/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=600, must-revalidate
+  X-Robots-Tag: noindex
+
+# The two plain-text summaries written for AI crawlers. Both are regenerated on
+# every build from the same catalog the pages are built from, and neither is
+# versioned in the URL - nothing can be, because the whole point is a stable
+# address a crawler can come back to. An hour of caching, revalidated after
+# that: long enough that a crawler sweeping the site repeatedly does not refetch
+# 94 KB each time, short enough that a new article is not withheld for a day.
+#
+# The explicit charset is not cosmetic. These files carry accented Spanish and
+# Portuguese throughout, and a text/plain response without a charset is read as
+# the client's default rather than as UTF-8.
+#
+# noindex for the same reason the feeds carry it: this is the site restated for
+# machines, and a search result pointing at it would compete with the pages it
+# summarises. It suppresses the listing, not the fetch.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Robots-Tag: noindex
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Robots-Tag: noindex
+
+# The web app manifests, one per language. Netlify serves an unknown extension
+# as application/octet-stream, and a browser will not read a manifest it is
+# handed under that type - the link resolves, the fetch succeeds, and the site
+# is silently not installable.
+#
+# A day of caching rather than a year: these are not versioned in the <link>, so
+# a changed name or icon has to be able to reach people. must-revalidate keeps a
+# stale one from being served after it expires.
+#
+# noindex because a manifest is a description of the site, not a page of it, and
+# it duplicates the title and description of the home page it belongs to.
+/manifest.en.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=86400, must-revalidate
+  X-Robots-Tag: noindex
+
+/manifest.es.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=86400, must-revalidate
+  X-Robots-Tag: noindex
+
+/manifest.pt.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=86400, must-revalidate
+  X-Robots-Tag: noindex
 
 /admin/*
   Cache-Control: no-store
@@ -98,12 +218,43 @@
   # would buy nothing here and could silently break publishing.
   Content-Security-Policy: default-src * data: blob: 'unsafe-inline' 'unsafe-eval'
 
-# The full catalog: every field, including the searchable body text of every
-# article in every language. It is build input for the generators, not something
-# the browser fetches any more.
-/content/blog/catalog.json
+# /content is build input, not a site. The generators read it and write the real
+# pages; nothing here should be indexed, and nothing here should be cached as
+# though it were content. The catch-all comes first and the exceptions follow,
+# broadest to narrowest. Netlify resolves overlapping rules most-specific-first,
+# but this ordering also holds if they are ever read last-match-wins, so a file
+# under /content cannot end up indexable because a rule moved.
+/content/*
   Cache-Control: no-store
   X-Robots-Tag: noindex
+
+/content/blog/*
+  Cache-Control: public, max-age=60, must-revalidate
+  X-Robots-Tag: noindex
+
+# The authored multi-language home page. It is the input to
+# generate-home-pages.mjs, not a page: the real ones are /, /en/ and /pt/.
+# _redirects now answers this prefix with a 404, so these are what a request
+# would have received rather than what one does; they stay because a header rule
+# costs nothing and a redirect is one edit away from being removed.
+/content/home/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+# The simulator sources and their translation files, read by
+# generate-simulator-pages.mjs. simulator-hub.i18n.json alone is 104 KB, and
+# none of it is meant to be fetched by a browser - so, like /content/home, this
+# prefix is a 404 in _redirects as well.
+/content/simulators/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+# The full catalog - every field, including the searchable body text of every
+# article in every language - used to be published here and held off with
+# no-store and noindex. It is build input for the generators and nothing else, so
+# it is now written to a temporary directory outside the publish root instead;
+# see scripts/shared-catalog.mjs. Not published beats asking politely not to be
+# fetched, particularly for the one file that hands out every article at once.
 
 # The per-language catalogs the journal index fetches. The <div data-catalog>
 # that names each one carries a content hash, so a republished catalog is a
@@ -122,22 +273,20 @@
   Cache-Control: public, max-age=31536000, immutable
   X-Robots-Tag: noindex
 
-/content/blog/*
-  Cache-Control: public, max-age=60, must-revalidate
-  X-Robots-Tag: noindex
-
-# The authored multi-language home page. It is the input to
-# generate-home-pages.mjs, not a page: the real ones are /, /en/ and /pt/.
-/content/home/*
-  Cache-Control: no-store
-  X-Robots-Tag: noindex
-
 # The publish directory is the project root, so everything the build needs in
-# order to run is served alongside the pages: the generators, the Tailwind
-# config and entry file, the manifest, the lockfile, and the dependency tree npm
-# installs next to them. robots.txt asks crawlers not to fetch these; these
-# headers are what keep them out of an index if one fetches them anyway, and
-# stop any of them being cached as though it were content.
+# order to run sits alongside the pages: the generators, the Tailwind config and
+# entry file, the manifest and the lockfile. All of those are now answered with
+# a 404 by _redirects - see the block at the bottom of that file for which, and
+# why - so these rules describe a request that no longer gets a file back. They
+# stay as the second layer: a redirect can be edited out in a way a reader does
+# not notice, and the cost of keeping them is two lines each.
+#
+# /node_modules/* is the one entry here that was never needed. Netlify's deploy
+# does not upload it from a publish root - verified against production, where
+# /node_modules/tailwindcss/package.json is a 404 while /package.json was a 200
+# until this change - so the rule has only ever matched requests for files that
+# are not there. Kept for the same reason as the rest: it costs nothing and it
+# documents the answer to the obvious question.
 /scripts/*
   Cache-Control: no-store
   X-Robots-Tag: noindex
@@ -182,6 +331,13 @@
 /assets/css/sim-*.css
   Cache-Control: public, max-age=31536000, immutable
 
+# The shared call-to-action styling every simulator page links. sim-*.css above
+# does not reach it - the wildcard is a suffix on "sim-", and this file is not
+# one - so without its own rule it fell through to the /* fallback and was
+# revalidated on every simulator view.
+/assets/css/simulator-cta.css
+  Cache-Control: public, max-age=31536000, immutable
+
 /assets/css/icons.css
   Cache-Control: public, max-age=31536000, immutable
 
@@ -201,11 +357,37 @@
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
 
+# The journal index behaviour and the article view beacon. Both are linked with
+# a content hash, so neither needs revalidating: blog-index.js was still on a
+# week-long must-revalidate from before it was versioned, and article-view.js
+# had no rule at all and fell through to the /* fallback.
 /assets/js/blog-index.js
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/article-view.js
+  Cache-Control: public, max-age=31536000, immutable
 
 # Chart.js, self-hosted so the simulators no longer reach a third-party origin
 # on the render path. The version is in the filename, so an upgrade is a new
 # URL and this response can be cached permanently.
 /assets/js/chart-4.4.1.umd.min.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# The Netlify Identity client, self-hosted for the same reason and versioned the
+# same way. The home pages import it only when somebody arrives on an invite or
+# password-recovery link, and /admin/ imports it to sign in; both used to pull it
+# from cdn.jsdelivr.net, which meant a third party's script ran on the one screen
+# where a password is typed.
+/assets/js/netlify-identity-1.2.0.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# The simulator behaviour bundles, one per tool per language, lifted out of the
+# templates by generate-simulator-pages.mjs. They are the largest scripts on the
+# site - a simulator is 25-55 KB of logic - and they are the reason the pages can
+# be served without script-src 'unsafe-inline'. Each is linked with a content
+# hash, so a rebuilt bundle is a new URL and this one can be held for a year.
+#
+# The pattern is a prefix wildcard, so it also covers sim-actions.js, the shared
+# dispatcher every simulator page links.
+/assets/js/sim-*.js
   Cache-Control: public, max-age=31536000, immutable

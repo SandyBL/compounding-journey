@@ -25,9 +25,43 @@ https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 3
 
 # Navigation shortcuts. These used to rewrite to index.html with a 200, which
 # served six byte-identical copies of the home page under different URLs.
-/pillars /#pilares 301
-/simulators /#simulador 301
-/tools /#herramientas 301
-/templates /#plantillas 301
-/faq /#preguntas-frecuentes 301
-/assessment /#assessment 301
+#
+# They point at /en/ rather than the apex. Every one of them is an English word,
+# so the reader following one is reading English, and the apex is the Spanish
+# site - sending them there handed them a page in a language they did not ask
+# for and left the language switcher as the thing they had to find first. The
+# fragments stay Spanish because the section ids are the same on all three
+# published pages; only the document changes.
+/pillars /en/#pilares 301
+/simulators /en/#simulador 301
+/tools /en/#herramientas 301
+/templates /en/#plantillas 301
+/faq /en/#preguntas-frecuentes 301
+/assessment /en/#assessment 301
+
+# Build input, published by accident of geography.
+#
+# This site's publish directory is the repository root, so everything committed
+# here that Netlify does not exclude is served. It excludes less than you would
+# hope: node_modules and dotfiles are dropped, and netlify.toml with them, but
+# package.json, package-lock.json, tailwind.config.js and the whole of scripts/
+# were all fetchable at their repository paths. None of them is a secret - this
+# is a static site and its build has no credentials in it - but a manifest of
+# exact dependency versions is a shopping list for anyone looking for a known
+# vulnerability, and the generators are not part of what the site serves.
+#
+# content/home and content/simulators are here for a different reason: they are
+# the templates the published pages are generated from, so they were serving a
+# second, unstyled, unversioned copy of the homepage and of every simulator at a
+# URL nothing links. A noindex header kept them out of search results but still
+# answered anyone who asked.
+#
+# content/blog is deliberately absent from this list. The per-language catalogs
+# under it are fetched by assets/js/blog-index.js at runtime; blocking them
+# would empty the journal index.
+/scripts/* /404.html 404
+/package.json /404.html 404
+/package-lock.json /404.html 404
+/tailwind.config.js /404.html 404
+/content/home/* /404.html 404
+/content/simulators/* /404.html 404

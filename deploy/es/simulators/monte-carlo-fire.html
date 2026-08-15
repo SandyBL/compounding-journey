@@ -99,6 +99,10 @@
     <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.es.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-100">
 
@@ -178,17 +182,17 @@
     </section>
 
   <div class="site-simulator-nav bg-slate-950 border-b border-slate-800">
-    <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
-            <button id="nav-btn-cockpit" onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
+    <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800" role="tablist">
+            <button id="nav-btn-cockpit" role="tab" aria-selected="true" aria-controls="tab-cockpit" tabindex="0" data-onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
               <i class="fa-solid fa-gauge-high mr-1" aria-hidden="true"></i> CABINA
             </button>
-            <button id="nav-btn-leaderboard" onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-leaderboard" role="tab" aria-selected="false" aria-controls="tab-leaderboard" tabindex="-1" data-onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
               <i class="fa-solid fa-trophy mr-1 text-amber-400" aria-hidden="true"></i> CLASIFICACIÓN
             </button>
-            <button id="nav-btn-montecarlo" onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-montecarlo" role="tab" aria-selected="false" aria-controls="tab-montecarlo" tabindex="-1" data-onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
               <i class="fa-solid fa-chart-line mr-1" aria-hidden="true"></i> 1.000 SIMS
             </button>
-            <button id="nav-btn-academy" onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-academy" role="tab" aria-selected="false" aria-controls="tab-academy" tabindex="-1" data-onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
               <i class="fa-solid fa-graduation-cap mr-1" aria-hidden="true"></i> ACADEMIA
             </button>
           </nav>
@@ -200,7 +204,7 @@
     <!-- ================================================================= -->
     <!-- PESTAÑA 1: CABINA DE VUELO INTERACTIVA -->
     <!-- ================================================================= -->
-    <div id="tab-cockpit" class="space-y-6">
+    <div id="tab-cockpit" role="tabpanel" aria-labelledby="nav-btn-cockpit" class="space-y-6">
 
       <!-- BRIEFING DE LA MISIÓN -->
       <div class="hud-glass p-5 rounded-2xl border border-cyan-500/40 relative overflow-hidden shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-950/30 to-slate-900">
@@ -248,16 +252,16 @@
             </span>
           </div>
           <div class="flex flex-wrap gap-2">
-            <button onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
+            <button data-onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
               <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i> SWR de Alto Riesgo ($850k / $45k)
             </button>
-            <button onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
               <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Estándar Trinity ($1M / $40k)
             </button>
-            <button onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
               <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i> Lean FIRE Ajustado ($650k / $35k)
             </button>
-            <button onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
               <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i> Fat FIRE Holgado ($1,5M / $75k)
             </button>
           </div>
@@ -282,7 +286,7 @@
               <label for="input-pilot-name" class="text-xs font-medium text-slate-300 flex items-center gap-1.5">
                 <i class="fa-solid fa-id-card text-amber-400" aria-hidden="true"></i> Piloto / Nombre de Caza
               </label>
-              <input type="text" id="input-pilot-name" value="Capitán FIRE" onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
+              <input type="text" id="input-pilot-name" value="Capitán FIRE" data-onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
             </div>
 
             <!-- Entrada de Capital Inicial -->
@@ -292,13 +296,13 @@
                   Capital Acumulado ($)
                 </label>
                 <div class="flex items-center gap-2">
-                  <button onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Estimar Requerido
                   </button>
                   <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">$850,000</span>
                 </div>
               </div>
-              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" data-oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
             </div>
 
             <!-- Entrada de Gasto Anual -->
@@ -308,13 +312,13 @@
                   Gasto Anual de Vida ($)
                 </label>
                 <div class="flex items-center gap-2">
-                  <button onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Presupuestar
                   </button>
                   <span id="disp-spending" class="font-mono text-emerald-300 font-bold">$45,000</span>
                 </div>
               </div>
-              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" data-oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
               <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1">
                 <span>Tasa de Retiro Anual (SWR):</span>
                 <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800">
@@ -330,14 +334,14 @@
                   <label for="input-startage" class="text-slate-300 font-medium">Edad de Libertad FIRE</label>
                   <span class="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 rounded font-mono">Inicio</span>
                 </div>
-                <input type="number" id="input-startage" min="30" max="85" value="50" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+                <input type="number" id="input-startage" min="30" max="85" value="50" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
               </div>
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
                   <label for="input-endage" class="text-slate-300 font-medium">Edad Destino</label>
                   <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded font-mono">Longevidad</span>
                 </div>
-                <input type="number" id="input-endage" min="70" max="110" value="100" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+                <input type="number" id="input-endage" min="70" max="110" value="100" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
               </div>
             </div>
 
@@ -347,7 +351,7 @@
                 <label for="toggle-tdf" class="text-xs font-bold text-slate-200">Asignación de Activos del Portafolio</label>
                 <!-- Interruptor Target Date Fund -->
                 <label class="inline-flex items-center cursor-pointer">
-                  <input type="checkbox" id="toggle-tdf" onchange="toggleTargetDateFund()" class="sr-only peer">
+                  <input type="checkbox" id="toggle-tdf" data-onchange="toggleTargetDateFund()" class="sr-only peer">
                   <div class="w-8 h-4 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-cyan-500 relative"></div>
                   <span class="ml-2 text-[11px] font-mono text-cyan-400">Fondo Fecha Objetivo Auto</span>
                 </label>
@@ -360,21 +364,21 @@
                     <span id="lbl-alloc-stocks" class="text-cyan-400 font-bold">Acciones (Crecimiento y Volatilidad)</span>
                     <span id="disp-pct-stocks">80%</span>
                   </div>
-                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" data-oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
                     <span id="lbl-alloc-bonds" class="text-emerald-400 font-bold">Bonos (Estabilidad y Renta)</span>
                     <span id="disp-pct-bonds">15%</span>
                   </div>
-                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" data-oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
                     <span id="lbl-alloc-cash" class="text-amber-400 font-bold">Colchón de Efectivo</span>
                     <span id="disp-pct-cash">5%</span>
                   </div>
-                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" data-oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
               </div>
 
@@ -398,7 +402,7 @@
             <!-- Secuencia de Turbulencia Mercado -->
             <div class="space-y-1.5 pt-2 border-t border-slate-800">
               <label for="select-market-sequence" class="text-xs font-bold text-slate-200">Secuencia de Turbulencia Económica</label>
-              <select id="select-market-sequence" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
+              <select id="select-market-sequence" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
                 <option value="simulated">🎲 Monte Carlo de Alta Volatilidad (Turbulencia Aleatoria)</option>
                 <option value="1970s">🔥 Pico de Inflación Severo de 1970 y Mercado Bajista</option>
                 <option value="2000s">💥 Caída Dot-Com 2000 + Gran Recesión 2008</option>
@@ -408,10 +412,10 @@
 
             <!-- Botones de Despegue y Reinicio -->
             <div class="pt-3 flex gap-2">
-              <button id="btn-launch-flight" onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
+              <button id="btn-launch-flight" data-onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
                 <i class="fa-solid fa-plane-departure text-sm" aria-hidden="true"></i> <span id="btn-launch-text">DESPEGAR VUELO</span>
               </button>
-              <button onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="Reiniciar la simulación">
+              <button data-onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="Reiniciar la simulación">
                 <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
               </button>
             </div>
@@ -431,7 +435,7 @@
                 <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-hud font-semibold bg-slate-900 border border-slate-700 text-cyan-300">
                   <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i> EDAD: <span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
                 </span>
-                <span id="hud-flight-status-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
+                <span id="hud-flight-status-badge" role="status" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
                   Listo en Pista
                 </span>
               </div>
@@ -469,14 +473,14 @@
               </div>
 
               <!-- Cartel Dinámico Educativo del Copiloto -->
-              <div id="copilot-banner" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
+              <div id="copilot-banner" role="status" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
                 <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 text-base">
                   <i id="copilot-icon" class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
                 </div>
                 <div class="space-y-1 flex-1">
                   <div class="flex justify-between items-center">
                     <span id="copilot-title" class="font-hud font-bold text-amber-400 text-xs uppercase">ALERTA DEL COPILOTO: TURBULENCIA DE MERCADO</span>
-                    <button onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="Descartar este aviso">
+                    <button data-onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="Descartar este aviso">
                       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                   </div>
@@ -514,7 +518,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               
               <!-- Táctica 1: Empleo a Tiempo Parcial -->
-              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('job')">
+              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('job')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
@@ -533,7 +537,7 @@
               </div>
 
               <!-- Táctica 2: Recortar Gastos 15% -->
-              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cutspend')">
+              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cutspend')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-scissors" aria-hidden="true"></i>
@@ -552,7 +556,7 @@
               </div>
 
               <!-- Táctica 3: Escudo Colchón de Efectivo -->
-              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cashbuffer')">
+              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cashbuffer')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-vault" aria-hidden="true"></i>
@@ -571,7 +575,7 @@
               </div>
 
               <!-- Táctica 4: Reglas de Control Dinámico (Guardrails) -->
-              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('guardrails')">
+              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('guardrails')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i>
@@ -590,7 +594,7 @@
               </div>
 
               <!-- Táctica 5: Reducción de Vivienda -->
-              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('downsize')">
+              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('downsize')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-blue-950 text-blue-400 border border-blue-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
@@ -609,7 +613,7 @@
               </div>
 
               <!-- Táctica 6: Pensión o Seguridad Social -->
-              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('pension')">
+              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('pension')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-pink-950 text-pink-400 border border-pink-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i>
@@ -639,7 +643,7 @@
     <!-- ================================================================= -->
     <!-- PESTAÑA 2: CLASIFICACIÓN DE PILOTOS Y REGISTRO -->
     <!-- ================================================================= -->
-    <div id="tab-leaderboard" class="hidden space-y-6">
+    <div id="tab-leaderboard" role="tabpanel" aria-labelledby="nav-btn-leaderboard" class="hidden space-y-6">
 
       <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3 shadow-xl">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
@@ -651,7 +655,7 @@
               Pilotos clasificados por categoría: <strong>1º Llegar a los 100 Años</strong>, <strong>2º Mínimo de Años en Desplome</strong>, y <strong>3º Capital Final Conservado</strong>.
             </p>
           </div>
-          <button onclick="clearLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
+          <button data-onclick="clearLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
             <i class="fa-solid fa-trash mr-1" aria-hidden="true"></i> Reiniciar Tabla
           </button>
         </div>
@@ -659,12 +663,12 @@
         <!-- Filtros por Categoría de Escenario -->
         <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
           <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i> Filtrar Categoría:</span>
-          <button id="lb-filter-ALL" onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">TODAS LAS CATEGORÍAS</button>
-          <button id="lb-filter-High Risk SWR" onclick="filterLeaderboard('High Risk SWR')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">SWR Alto Riesgo</button>
-          <button id="lb-filter-Trinity Standard" onclick="filterLeaderboard('Trinity Standard')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Estándar Trinity</button>
-          <button id="lb-filter-Tight Lean FIRE" onclick="filterLeaderboard('Tight Lean FIRE')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Lean FIRE Ajustado</button>
-          <button id="lb-filter-Fat FIRE" onclick="filterLeaderboard('Fat FIRE')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Fat FIRE Holgado</button>
-          <button id="lb-filter-Custom Scenario" onclick="filterLeaderboard('Custom Scenario')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Escenario Personalizado</button>
+          <button id="lb-filter-ALL" data-onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">TODAS LAS CATEGORÍAS</button>
+          <button id="lb-filter-High Risk SWR" data-onclick="filterLeaderboard('High Risk SWR')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">SWR Alto Riesgo</button>
+          <button id="lb-filter-Trinity Standard" data-onclick="filterLeaderboard('Trinity Standard')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Estándar Trinity</button>
+          <button id="lb-filter-Tight Lean FIRE" data-onclick="filterLeaderboard('Tight Lean FIRE')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Lean FIRE Ajustado</button>
+          <button id="lb-filter-Fat FIRE" data-onclick="filterLeaderboard('Fat FIRE')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Fat FIRE Holgado</button>
+          <button id="lb-filter-Custom Scenario" data-onclick="filterLeaderboard('Custom Scenario')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Escenario Personalizado</button>
         </div>
 
         <!-- Tabla de Clasificación -->
@@ -694,7 +698,7 @@
     <!-- ================================================================= -->
     <!-- PESTAÑA 3: MOTOR MONTE CARLO DE 1.000 SIMULACIONES -->
     <!-- ================================================================= -->
-    <div id="tab-montecarlo" class="hidden space-y-6">
+    <div id="tab-montecarlo" role="tabpanel" aria-labelledby="nav-btn-montecarlo" class="hidden space-y-6">
 
       <!-- Tarjeta Encabezado Monte Carlo -->
       <div class="hud-glass p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
@@ -707,14 +711,14 @@
               Simula 1.000 trayectorias de vuelo aleatorias durante un horizonte de 50 años (Edad 50 a 100) aplicando distribuciones históricas de alta volatilidad.
             </p>
           </div>
-          <button onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
+          <button data-onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
             <i class="fa-solid fa-play mr-1.5" aria-hidden="true"></i> EJECUTAR 1.000 SIMULACIONES
           </button>
         </div>
       </div>
 
       <!-- Tarjetas Métricas Clave Monte Carlo -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono" role="status" aria-atomic="true">
         
         <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
           <span class="text-[10px] text-slate-400 uppercase">Tasa de Éxito de Vuelo</span>
@@ -773,7 +777,7 @@
     <!-- ================================================================= -->
     <!-- PESTAÑA 4: ACADEMIA DE VUELO FIRE -->
     <!-- ================================================================= -->
-    <div id="tab-academy" class="hidden space-y-6">
+    <div id="tab-academy" role="tabpanel" aria-labelledby="nav-btn-academy" class="hidden space-y-6">
 
       <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-2">
         <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
@@ -887,7 +891,7 @@
         <h3 class="font-hud font-bold text-sm text-emerald-400 flex items-center gap-2">
           <i class="fa-solid fa-calculator text-emerald-400" aria-hidden="true"></i> CALCULADORA DE PRESUPUESTO ANUAL DE RETIRO
         </h3>
-        <button onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Cerrar la calculadora">
+        <button data-onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Cerrar la calculadora">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
@@ -899,23 +903,23 @@
       <div class="space-y-3 text-xs font-mono">
         <div class="flex justify-between items-center">
           <label for="calc-spend-housing" class="text-slate-300">Vivienda y Servicios ($/mes):</label>
-          <input type="number" id="calc-spend-housing" value="1500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-housing" value="1500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-spend-food" class="text-slate-300">Comida y Alimentación ($/mes):</label>
-          <input type="number" id="calc-spend-food" value="800" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-food" value="800" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-spend-health" class="text-slate-300">Salud y Seguros ($/mes):</label>
-          <input type="number" id="calc-spend-health" value="500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-health" value="500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-spend-travel" class="text-slate-300">Viajes y Ocio ($/mes):</label>
-          <input type="number" id="calc-spend-travel" value="400" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-travel" value="400" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-spend-misc" class="text-slate-300">Varios y Fondo Emergencia ($/mes):</label>
-          <input type="number" id="calc-spend-misc" value="550" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-misc" value="550" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
 
         <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-sm">
@@ -925,10 +929,10 @@
       </div>
 
       <div class="flex gap-3 pt-2">
-        <button onclick="closeSpendCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+        <button data-onclick="closeSpendCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
           Cancelar
         </button>
-        <button onclick="applyCalculatedSpend()" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow glow-green">
+        <button data-onclick="applyCalculatedSpend()" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow glow-green">
           Aplicar a la Cabina
         </button>
       </div>
@@ -942,7 +946,7 @@
         <h3 class="font-hud font-bold text-sm text-cyan-400 flex items-center gap-2">
           <i class="fa-solid fa-calculator text-cyan-400" aria-hidden="true"></i> CALCULADORA DE CAPITAL OBJETIVO
         </h3>
-        <button onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Cerrar la calculadora">
+        <button data-onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Cerrar la calculadora">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
@@ -954,11 +958,11 @@
       <div class="space-y-4 text-xs font-mono">
         <div class="flex justify-between items-center">
           <label for="calc-egg-spend" class="text-slate-300">Gasto Anual de Vida ($):</label>
-          <input type="number" id="calc-egg-spend" value="45000" step="1000" oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+          <input type="number" id="calc-egg-spend" value="45000" step="1000" data-oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-egg-swr" class="text-slate-300">Tasa Segura de Retiro Objetivo (%):</label>
-          <select id="calc-egg-swr" onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+          <select id="calc-egg-swr" data-onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
             <option value="4.0" selected>4,0% (Estándar Trinity)</option>
             <option value="3.5">3,5% (FIRE Conservador)</option>
             <option value="3.0">3,0% (Ultra Seguro / Perpetuo)</option>
@@ -978,10 +982,10 @@
       </div>
 
       <div class="flex gap-3 pt-2">
-        <button onclick="closeNestEggCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+        <button data-onclick="closeNestEggCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
           Cancelar
         </button>
-        <button onclick="applyCalculatedEgg()" class="flex-1 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow glow-cyan">
+        <button data-onclick="applyCalculatedEgg()" class="flex-1 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow glow-cyan">
           Aplicar a la Cabina
         </button>
       </div>
@@ -1027,10 +1031,10 @@
       </div>
 
       <div class="flex gap-2">
-        <button onclick="closeDebriefModal(); switchTab('leaderboard');" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
+        <button data-onclick="closeDebriefAndShowLeaderboard()" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
           VER CLASIFICACIÓN
         </button>
-        <button onclick="closeDebriefModal()" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-hud font-bold text-xs uppercase shadow glow-cyan">
+        <button data-onclick="closeDebriefModal()" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-hud font-bold text-xs uppercase shadow glow-cyan">
           REINTENTAR VUELO
         </button>
       </div>
@@ -1040,1249 +1044,7 @@
   <!-- ================================================================= -->
   <!-- MOTOR JAVASCRIPT Y LÓGICA DE SIMULACIÓN -->
   <!-- ================================================================= -->
-  <script>
-    /* =================================================================
-       ESTADO GLOBAL Y CONFIGURACIÓN
-       ================================================================= */
-    let leaderboardScores = [
-      { pilot: 'Capitán FIRE', category: 'High Risk SWR', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },
-      { pilot: 'Piloto FatCat', category: 'Fat FIRE', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },
-      { pilot: 'As Trinity', category: 'Trinity Standard', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },
-      { pilot: 'Volador Lean', category: 'Tight Lean FIRE', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },
-      { pilot: 'Caza Wingman', category: 'High Risk SWR', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }
-    ];
-    let activeLeaderboardFilter = 'ALL';
-
-    const state = {
-      pilotName: 'Capitán FIRE',
-      activePreset: 'High Risk SWR',
-
-      // Configuración de Vuelo
-      nestEgg: 850000,
-      annualSpending: 45000,
-      startAge: 50,
-      targetAge: 100,
-      
-      // Asignación
-      pctStocks: 80,
-      pctBonds: 15,
-      pctCash: 5,
-      useTargetDateFund: false,
-
-      // 6 Tácticas en Cabina
-      actJob: false,
-      actCutSpend: false,
-      actCashBuffer: false,
-      actGuardrails: false,
-      actDownsize: false,
-      actPension: false,
-
-      // Telemetría de Simulación
-      isSimulating: false,
-      currentAge: 50,
-      currentNestEgg: 850000,
-      peakNestEgg: 850000,
-      yearsInCrashlineConsecutive: 0,
-      totalCrashlineYears: 0,
-      totalTacticYears: 0,
-      marketSequence: 'simulated',
-      simulationInterval: null,
-      historyLogs: []
-    };
-
-    // Calibración de Referencias de Mercado
-    const MARKET_BENCHMARKS = {
-      stocks: { mean: 0.082, stdDev: 0.24 }, // Mayor dispersión y volatilidad de acciones
-      bonds: { mean: 0.035, stdDev: 0.06 },  // Rendimiento de bonos
-      cash: { mean: 0.015, stdDev: 0.01 },   // Rendimiento de efectivo
-      inflation: { mean: 0.035, stdDev: 0.025 } // Inflación IPC
-    };
-
-    // Secuencias Históricas de Caída
-    const PRESET_HISTORICAL_SEQUENCES = {
-      '1970s': [
-        { stock: -0.18, bond: -0.03, infl: 0.07 },
-        { stock: -0.28, bond: 0.01, infl: 0.12 },
-        { stock: 0.35, bond: 0.07, infl: 0.09 },
-        { stock: 0.20, bond: 0.09, infl: 0.07 },
-        { stock: -0.12, bond: -0.02, infl: 0.14 },
-        { stock: 0.16, bond: 0.04, infl: 0.11 }
-      ],
-      '2000s': [
-        { stock: -0.12, bond: 0.10, infl: 0.03 },
-        { stock: -0.15, bond: 0.08, infl: 0.02 },
-        { stock: -0.25, bond: 0.09, infl: 0.01 },
-        { stock: 0.26, bond: 0.02, infl: 0.02 },
-        { stock: 0.08, bond: 0.04, infl: 0.03 },
-        { stock: -0.40, bond: 0.18, infl: 0.00 } // Caída 2008
-      ],
-      'bull': [
-        { stock: 0.16, bond: 0.04, infl: 0.02 },
-        { stock: 0.19, bond: 0.03, infl: 0.02 },
-        { stock: 0.14, bond: 0.05, infl: 0.02 },
-        { stock: 0.24, bond: 0.02, infl: 0.02 },
-        { stock: 0.15, bond: 0.04, infl: 0.02 }
-      ]
-    };
-
-    /* =================================================================
-       INICIALIZACIÓN Y CONTROLES DE INTERFAZ
-       ================================================================= */
-    window.onload = function() {
-      updatePilotName();
-      updateControlsUI();
-      renderLeaderboardTable();
-      renderCanvas();
-    };
-
-    window.addEventListener('resize', renderCanvas);
-
-    function updatePilotName() {
-      const el = document.getElementById('input-pilot-name');
-      if (el && el.value.trim() !== '') {
-        state.pilotName = el.value.trim();
-      }
-    }
-
-    function checkAndDetectPresetCategory() {
-      if (state.nestEgg === 850000 && state.annualSpending === 45000) {
-        state.activePreset = 'High Risk SWR';
-      } else if (state.nestEgg === 1000000 && state.annualSpending === 40000) {
-        state.activePreset = 'Trinity Standard';
-      } else if (state.nestEgg === 650000 && state.annualSpending === 35000) {
-        state.activePreset = 'Tight Lean FIRE';
-      } else if (state.nestEgg === 1500000 && state.annualSpending === 75000) {
-        state.activePreset = 'Fat FIRE';
-      } else {
-        state.activePreset = 'Custom Scenario';
-      }
-    }
-
-    function updateControlsUI() {
-      const nestEggEl = document.getElementById('input-nestegg');
-      const spendingEl = document.getElementById('input-spending');
-      const startAgeEl = document.getElementById('input-startage');
-      const endAgeEl = document.getElementById('input-endage');
-
-      if (nestEggEl) state.nestEgg = parseFloat(nestEggEl.value) || 850000;
-      if (spendingEl) state.annualSpending = parseFloat(spendingEl.value) || 45000;
-      if (startAgeEl) state.startAge = parseInt(startAgeEl.value) || 50;
-      if (endAgeEl) state.targetAge = parseInt(endAgeEl.value) || 100;
-
-      checkAndDetectPresetCategory();
-
-      const seqEl = document.getElementById('select-market-sequence');
-      if (seqEl) state.marketSequence = seqEl.value;
-
-      const dispEgg = document.getElementById('disp-nestegg');
-      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();
-      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString());
-
-      const dispSpend = document.getElementById('disp-spending');
-      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();
-      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString());
-
-      const swrVal = (state.annualSpending / state.nestEgg) * 100;
-      const swrStr = swrVal.toFixed(1) + '%';
-      
-      const badgeSwr = document.getElementById('disp-swr-badge');
-      if (badgeSwr) {
-        if (swrVal > 4.5) {
-          badgeSwr.innerText = `${swrStr} (ALTO RIESGO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800 animate-pulse';
-        } else if (swrVal > 3.8) {
-          badgeSwr.innerText = `${swrStr} (RIESGO MODERADO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950 text-amber-400 border border-amber-800';
-        } else {
-          badgeSwr.innerText = `${swrStr} (SWR SEGURO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800';
-        }
-      }
-
-      if (!state.isSimulating) {
-        state.currentAge = state.startAge;
-        state.currentNestEgg = state.nestEgg;
-        state.peakNestEgg = state.nestEgg;
-
-        const hudAge = document.getElementById('hud-current-age');
-        if (hudAge) hudAge.innerText = state.currentAge;
-
-        const hudVal = document.getElementById('hud-portfolio-val');
-        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();
-
-        const hudSwr = document.getElementById('hud-current-swr');
-        if (hudSwr) hudSwr.innerText = swrStr;
-
-        const crashCounter = document.getElementById('hud-crashline-counter');
-        if (crashCounter) {
-          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Años`;
-          crashCounter.className = 'text-emerald-400 font-bold text-sm';
-        }
-      }
-
-      if (state.useTargetDateFund) {
-        updateTargetDateGlidepath(state.currentAge);
-      }
-
-      renderCanvas();
-    }
-
-    function loadPreset(type) {
-      playSound('click');
-      if (type === 'highrisk') {
-        state.activePreset = 'High Risk SWR';
-        setControlValues(850000, 45000, 50, 100, 80, 15, 5);
-      } else if (type === 'trinity') {
-        state.activePreset = 'Trinity Standard';
-        setControlValues(1000000, 40000, 50, 100, 70, 20, 10);
-      } else if (type === 'leanfire') {
-        state.activePreset = 'Tight Lean FIRE';
-        setControlValues(650000, 35000, 50, 100, 85, 10, 5);
-      } else if (type === 'fatfire') {
-        state.activePreset = 'Fat FIRE';
-        setControlValues(1500000, 75000, 50, 100, 75, 20, 5);
-      }
-    }
-
-    function setControlValues(egg, spend, start, end, stocks, bonds, cash) {
-      document.getElementById('input-nestegg').value = egg;
-      document.getElementById('input-spending').value = spend;
-      document.getElementById('input-startage').value = start;
-      document.getElementById('input-endage').value = end;
-
-      state.pctStocks = stocks;
-      state.pctBonds = bonds;
-      state.pctCash = cash;
-
-      document.getElementById('input-stocks').value = stocks;
-      document.getElementById('input-bonds').value = bonds;
-      document.getElementById('input-cash').value = cash;
-
-      document.getElementById('disp-pct-stocks').innerText = stocks + '%';
-      document.getElementById('disp-pct-bonds').innerText = bonds + '%';
-      document.getElementById('disp-pct-cash').innerText = cash + '%';
-
-      updateControlsUI();
-    }
-
-    /* =================================================================
-       ASIGNACIÓN DE ACTIVOS Y FONDO FECHA OBJETIVO
-       ================================================================= */
-    function adjustAssetAllocation(changed) {
-      if (state.useTargetDateFund) return;
-
-      let s = parseInt(document.getElementById('input-stocks').value) || 0;
-      let b = parseInt(document.getElementById('input-bonds').value) || 0;
-      let c = parseInt(document.getElementById('input-cash').value) || 0;
-
-      if (changed === 'stocks') {
-        let rem = 100 - s;
-        b = Math.round(rem * 0.7);
-        c = rem - b;
-      } else if (changed === 'bonds') {
-        let rem = 100 - b;
-        s = Math.round(rem * 0.8);
-        c = rem - s;
-      } else {
-        let rem = 100 - c;
-        s = Math.round(rem * 0.75);
-        b = rem - s;
-      }
-
-      state.pctStocks = s;
-      state.pctBonds = b;
-      state.pctCash = c;
-
-      document.getElementById('input-stocks').value = s;
-      document.getElementById('input-bonds').value = b;
-      document.getElementById('input-cash').value = c;
-
-      document.getElementById('disp-pct-stocks').innerText = s + '%';
-      document.getElementById('disp-pct-bonds').innerText = b + '%';
-      document.getElementById('disp-pct-cash').innerText = c + '%';
-
-      // A range input announces its raw value, so an allocation slider read
-      // out as "80" rather than "80 percent".
-      document.getElementById('input-stocks').setAttribute('aria-valuetext', s + '%');
-      document.getElementById('input-bonds').setAttribute('aria-valuetext', b + '%');
-      document.getElementById('input-cash').setAttribute('aria-valuetext', c + '%');
-    }
-
-    function toggleTargetDateFund() {
-      const toggle = document.getElementById('toggle-tdf');
-      state.useTargetDateFund = toggle.checked;
-
-      const slidersBox = document.getElementById('allocation-sliders-container');
-      const tdfCard = document.getElementById('tdf-glidepath-card');
-
-      if (state.useTargetDateFund) {
-        if (slidersBox) slidersBox.classList.add('opacity-40', 'pointer-events-none');
-        if (tdfCard) tdfCard.classList.remove('hidden');
-        updateTargetDateGlidepath(state.currentAge);
-      } else {
-        if (slidersBox) slidersBox.classList.remove('opacity-40', 'pointer-events-none');
-        if (tdfCard) tdfCard.classList.add('hidden');
-      }
-      playSound('click');
-    }
-
-    function updateTargetDateGlidepath(age) {
-      let stocks = Math.max(20, Math.min(90, 110 - age));
-      let bonds = Math.max(10, Math.min(70, age - 20));
-      let cash = 100 - (stocks + bonds);
-      if (cash < 5) {
-        cash = 5;
-        bonds = 100 - stocks - cash;
-      }
-
-      state.pctStocks = stocks;
-      state.pctBonds = bonds;
-      state.pctCash = cash;
-
-      const barS = document.getElementById('tdf-bar-stocks');
-      const barB = document.getElementById('tdf-bar-bonds');
-      const barC = document.getElementById('tdf-bar-cash');
-
-      if (barS) barS.style.width = stocks + '%';
-      if (barB) barB.style.width = bonds + '%';
-      if (barC) barC.style.width = cash + '%';
-
-      const tdfText = document.getElementById('tdf-status-text');
-      if (tdfText) tdfText.innerText = `Edad ${age}: ${stocks}% Acciones / ${bonds}% Bonos / ${cash}% Efectivo`;
-    }
-
-    /* =================================================================
-       AJUSTES TÁCTICOS EN CABINA DE VUELO
-       ================================================================= */
-    function toggleAction(action) {
-      playSound('click');
-      if (action === 'job') {
-        state.actJob = !state.actJob;
-        updateActionCardUI('job', state.actJob, 'glow-cyan', 'border-cyan-500');
-      } else if (action === 'cutspend') {
-        state.actCutSpend = !state.actCutSpend;
-        updateActionCardUI('cutspend', state.actCutSpend, 'glow-amber', 'border-amber-500');
-      } else if (action === 'cashbuffer') {
-        state.actCashBuffer = !state.actCashBuffer;
-        updateActionCardUI('cashbuffer', state.actCashBuffer, 'glow-green', 'border-emerald-500');
-      } else if (action === 'guardrails') {
-        state.actGuardrails = !state.actGuardrails;
-        updateActionCardUI('guardrails', state.actGuardrails, 'glow-cyan', 'border-purple-500');
-      } else if (action === 'downsize') {
-        state.actDownsize = !state.actDownsize;
-        updateActionCardUI('downsize', state.actDownsize, 'glow-cyan', 'border-blue-500');
-        if (state.actDownsize && state.isSimulating) {
-          state.currentNestEgg += 100000;
-          showCopilotBanner(
-            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVENDA',
-            '¡Inyectaste +$100.000 de combustible de emergencia tras vender o reducir tu vivienda!',
-            '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',
-            'info'
-          );
-        }
-      } else if (action === 'pension') {
-        state.actPension = !state.actPension;
-        updateActionCardUI('pension', state.actPension, 'glow-cyan', 'border-pink-500');
-      }
-      renderCanvas();
-    }
-
-    function updateActionCardUI(key, isActive, glowClass, borderClass) {
-      const card = document.getElementById('card-action-' + key);
-      const badge = document.getElementById('badge-action-' + key);
-      const check = document.getElementById('check-action-' + key);
-
-      if (!card || !badge) return;
-
-      if (isActive) {
-        card.classList.add(glowClass, borderClass, 'bg-slate-900/90');
-        badge.innerText = 'ACTIVO';
-        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 font-bold';
-        if (check) check.checked = true;
-      } else {
-        card.classList.remove(glowClass, borderClass, 'bg-slate-900/90');
-        badge.innerText = 'INACTIVO';
-        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700';
-        if (check) check.checked = false;
-      }
-    }
-
-    /* =================================================================
-       MOTOR DE SIMULACIÓN (PASO A PASO Y LÓGICA CRASHLINE)
-       ================================================================= */
-    function toggleFlightSimulation() {
-      if (state.isSimulating) {
-        pauseFlightSimulation();
-      } else {
-        startFlightSimulation();
-      }
-    }
-
-    function startFlightSimulation() {
-      if (state.currentAge >= state.targetAge || state.yearsInCrashlineConsecutive >= 10) {
-        resetFlightSimulation();
-      }
-
-      state.isSimulating = true;
-      playSound('engine');
-
-      const launchBtnText = document.getElementById('btn-launch-text');
-      if (launchBtnText) launchBtnText.innerText = 'PAUSAR VUELO';
-
-      const badge = document.getElementById('hud-flight-status-badge');
-      if (badge) {
-        badge.innerText = '✈️ EN VUELO (EN EL AIRE)';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cyan-950 text-cyan-400 border border-cyan-700 animate-pulse';
-      }
-
-      state.simulationInterval = setInterval(simulateOneYearStep, 800);
-    }
-
-    function pauseFlightSimulation() {
-      state.isSimulating = false;
-      if (state.simulationInterval) clearInterval(state.simulationInterval);
-
-      const launchBtnText = document.getElementById('btn-launch-text');
-      if (launchBtnText) launchBtnText.innerText = 'REANUDAR VUELO';
-
-      const badge = document.getElementById('hud-flight-status-badge');
-      if (badge) {
-        badge.innerText = '⏸️ VUELO EN PAUSA';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-amber-950 text-amber-400 border border-amber-800';
-      }
-    }
-
-    function resetFlightSimulation() {
-      pauseFlightSimulation();
-      state.currentAge = state.startAge;
-      state.currentNestEgg = state.nestEgg;
-      state.peakNestEgg = state.nestEgg;
-      state.yearsInCrashlineConsecutive = 0;
-      state.totalCrashlineYears = 0;
-      state.totalTacticYears = 0;
-      state.historyLogs = [];
-
-      hideCopilotBanner();
-
-      const container = document.getElementById('hud-visual-container');
-      if (container) container.classList.remove('crash-warning');
-
-      const launchBtnText = document.getElementById('btn-launch-text');
-      if (launchBtnText) launchBtnText.innerText = 'DESPEGAR VUELO';
-
-      const badge = document.getElementById('hud-flight-status-badge');
-      if (badge) {
-        badge.innerText = 'Listo en Pista';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800';
-      }
-
-      updateControlsUI();
-      playSound('click');
-    }
-
-    function simulateOneYearStep() {
-      if (state.currentAge >= state.targetAge || state.yearsInCrashlineConsecutive >= 10) {
-        finishFlightSimulation();
-        return;
-      }
-
-      state.currentAge++;
-
-      let activeTacticsThisYear = 0;
-      if (state.actJob) activeTacticsThisYear++;
-      if (state.actCutSpend) activeTacticsThisYear++;
-      if (state.actCashBuffer) activeTacticsThisYear++;
-      if (state.actGuardrails) activeTacticsThisYear++;
-      if (state.actDownsize) activeTacticsThisYear++;
-      if (state.actPension) activeTacticsThisYear++;
-      state.totalTacticYears += activeTacticsThisYear;
-
-      if (state.useTargetDateFund) {
-        updateTargetDateGlidepath(state.currentAge);
-      }
-
-      let effectiveSpend = state.annualSpending;
-
-      if (state.actJob) {
-        effectiveSpend = Math.max(0, effectiveSpend - 15000);
-      }
-      if (state.actCutSpend) {
-        effectiveSpend = effectiveSpend * 0.85;
-      }
-      if (state.actPension && state.currentAge >= 62) {
-        effectiveSpend = Math.max(0, effectiveSpend - 20000);
-      }
-
-      let stockRet = 0, bondRet = 0, infl = 0;
-
-      if (state.marketSequence !== 'simulated' && PRESET_HISTORICAL_SEQUENCES[state.marketSequence]) {
-        const seq = PRESET_HISTORICAL_SEQUENCES[state.marketSequence];
-        const stepIdx = (state.currentAge - state.startAge - 1) % seq.length;
-        stockRet = seq[stepIdx].stock;
-        bondRet = seq[stepIdx].bond;
-        infl = seq[stepIdx].infl;
-      } else {
-        stockRet = randomGaussian(MARKET_BENCHMARKS.stocks.mean, MARKET_BENCHMARKS.stocks.stdDev);
-        bondRet = randomGaussian(MARKET_BENCHMARKS.bonds.mean, MARKET_BENCHMARKS.bonds.stdDev);
-        infl = randomGaussian(MARKET_BENCHMARKS.inflation.mean, MARKET_BENCHMARKS.inflation.stdDev);
-
-        const yearsElapsed = state.currentAge - state.startAge;
-        if (yearsElapsed <= 15 && (yearsElapsed % 5 === 2 || yearsElapsed === 3)) {
-          stockRet -= 0.18;
-        }
-      }
-
-      if (state.actGuardrails && stockRet < -0.15) {
-        effectiveSpend = effectiveSpend * 0.90;
-      }
-
-      effectiveSpend = effectiveSpend * (1 + Math.max(0, infl));
-
-      let weightedReturn = (stockRet * (state.pctStocks / 100)) + 
-                         (bondRet * (state.pctBonds / 100)) + 
-                         (MARKET_BENCHMARKS.cash.mean * (state.pctCash / 100));
-
-      if (state.actCashBuffer && stockRet < 0) {
-        weightedReturn += 0.035;
-      }
-
-      let startBal = state.currentNestEgg;
-      let afterSpend = startBal - effectiveSpend;
-      let endBal = afterSpend * (1 + weightedReturn);
-
-      state.currentNestEgg = Math.round(endBal);
-      if (state.currentNestEgg > state.peakNestEgg) {
-        state.peakNestEgg = state.currentNestEgg;
-      }
-
-      const container = document.getElementById('hud-visual-container');
-      if (state.currentNestEgg <= 0) {
-        state.yearsInCrashlineConsecutive++;
-        state.totalCrashlineYears++;
-        if (container) container.classList.add('crash-warning');
-
-        showCopilotBanner(
-          '🚨 EMERGENCIA EN DESPLOME: PERDIDA DE SUSTENTACIÓN',
-          `¡Tu patrimonio neto cayó a $0 a los ${state.currentAge} Años! Te quedan ${10 - state.yearsInCrashlineConsecutive} año(s) en la zona de desplome antes del fin de juego. ¡Activa empleo parcial, reducción o recortes!`,
-          '💡 Consejo: Activa Trabajo Parcial, Reducción de Vivienda o Recorte de Gastos para salir de la bancarrota $0.',
-          'danger'
-        );
-        playSound('alert');
-      } else {
-        state.yearsInCrashlineConsecutive = 0;
-        if (container) container.classList.remove('crash-warning');
-      }
-
-      state.historyLogs.push({
-        age: state.currentAge,
-        startBal: startBal,
-        spend: effectiveSpend,
-        returnPct: weightedReturn,
-        endBal: state.currentNestEgg,
-        inCrashline: state.currentNestEgg <= 0
-      });
-
-      const hudAge = document.getElementById('hud-current-age');
-      if (hudAge) hudAge.innerText = state.currentAge;
-
-      const hudVal = document.getElementById('hud-portfolio-val');
-      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();
-
-      const curSwr = ((effectiveSpend / Math.max(1, state.currentNestEgg)) * 100).toFixed(1);
-      const hudSwr = document.getElementById('hud-current-swr');
-      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'CAÍDA';
-
-      const crashCounter = document.getElementById('hud-crashline-counter');
-      if (crashCounter) {
-        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Años`;
-        if (state.yearsInCrashlineConsecutive > 0) {
-          crashCounter.className = 'text-red-400 font-bold text-sm animate-pulse';
-        } else {
-          crashCounter.className = 'text-emerald-400 font-bold text-sm';
-        }
-      }
-
-      checkCopilotEvents(stockRet, infl);
-
-      renderCanvas();
-
-      if (state.yearsInCrashlineConsecutive >= 10) {
-        finishFlightSimulation();
-      }
-    }
-
-    function checkCopilotEvents(stockRet, infl) {
-      if (state.currentNestEgg > 0) {
-        if (stockRet < -0.15) {
-          showCopilotBanner(
-            '🚨 CAÍDA DE MERCADO: RIESGO DE SECUENCIA DE RENDIMIENTOS',
-            `Las acciones cayeron un ${(stockRet * 100).toFixed(1)}% a los ${state.currentAge} años. ¡La alta exposición a acciones en mercados bajistas causa fuertes caídas!`,
-            '💡 Consejo: Reequilibra hacia bonos o activa "Escudo de Efectivo" y "Trabajo Parcial".',
-            'warning'
-          );
-        } else if (infl > 0.05) {
-          showCopilotBanner(
-            '🔥 PICO DE INFLACIÓN SHOCK',
-            `La inflación saltó al ${(infl * 100).toFixed(1)}%, aumentando los costos de vida.`,
-            '💡 Consejo: Mantén cierto crecimiento en acciones a largo plazo para superar la inflación.',
-            'warning'
-          );
-        }
-      }
-    }
-
-    function showCopilotBanner(title, msg, tip, type) {
-      const banner = document.getElementById('copilot-banner');
-      const titleEl = document.getElementById('copilot-title');
-      const msgEl = document.getElementById('copilot-message');
-      const tipEl = document.getElementById('copilot-tip');
-      const icon = document.getElementById('copilot-icon');
-
-      if (!banner || !titleEl || !msgEl || !tipEl) return;
-
-      titleEl.innerText = title;
-      msgEl.innerText = msg;
-      tipEl.innerText = tip;
-
-      if (type === 'danger') {
-        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-red-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-red-500';
-        if (icon) icon.className = 'fa-solid fa-triangle-exclamation text-red-400';
-      } else if (type === 'warning') {
-        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500';
-        if (icon) icon.className = 'fa-solid fa-fire text-amber-400';
-      } else {
-        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-cyan-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-cyan-500';
-        if (icon) icon.className = 'fa-solid fa-circle-info text-cyan-400';
-      }
-
-      banner.classList.remove('hidden');
-    }
-
-    function hideCopilotBanner() {
-      const banner = document.getElementById('copilot-banner');
-      if (banner) banner.classList.add('hidden');
-    }
-
-    function finishFlightSimulation() {
-      pauseFlightSimulation();
-
-      const modal = document.getElementById('modal-flight-debrief');
-      const title = document.getElementById('debrief-title');
-      const msg = document.getElementById('debrief-msg');
-      const iconBox = document.getElementById('debrief-icon-box');
-      const icon = document.getElementById('debrief-icon');
-      const pilotName = document.getElementById('debrief-pilot-name');
-      const debriefCat = document.getElementById('debrief-scenario-cat');
-      const finalBal = document.getElementById('debrief-final-bal');
-      const years = document.getElementById('debrief-years');
-      const crashYrs = document.getElementById('debrief-crashline-yrs');
-      const tacticYrs = document.getElementById('debrief-tactic-yrs');
-
-      if (!modal) return;
-
-      const survivedYears = state.currentAge - state.startAge;
-      const reachedTarget = state.currentAge >= state.targetAge && state.currentNestEgg > 0;
-
-      if (reachedTarget) {
-        title.innerText = '¡MISIÓN CUMPLIDA!';
-        title.className = 'text-lg font-hud font-bold text-emerald-400';
-        msg.innerText = `¡Felicitaciones Piloto ${state.pilotName}! ¡Aterrizaste con éxito a los 100 Años con $${state.currentNestEgg.toLocaleString()} en altitud de combustible restante!`;
-        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-950 text-emerald-400 border border-emerald-700 shadow-lg glow-green';
-        icon.className = 'fa-solid fa-trophy';
-        playSound('success');
-      } else {
-        title.innerText = '¡VUELO DESTRUIDO: BANCARROTA EN DESPLOME!';
-        title.className = 'text-lg font-hud font-bold text-red-400';
-        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de $0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu portafolio se quedó sin combustible!`;
-        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-950 text-red-400 border border-red-700 shadow-lg glow-red';
-        icon.className = 'fa-solid fa-plane-slash';
-        playSound('crash');
-      }
-
-      if (pilotName) pilotName.innerText = state.pilotName;
-      if (debriefCat) debriefCat.innerText = state.activePreset;
-      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();
-      if (years) years.innerText = survivedYears + ' Años (Edad ' + state.currentAge + ')';
-      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Año(s)';
-      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Años-Táctica (-${state.totalTacticYears * 75} pts)`;
-
-      registerScoreToLeaderboard(state.pilotName, state.activePreset, reachedTarget, state.totalCrashlineYears, state.totalTacticYears, Math.max(0, state.currentNestEgg));
-
-      modal.classList.remove('hidden');
-
-      // The run is over and the button that started it is now behind a
-      // full-screen overlay, so focus has to follow the debrief.
-      title.setAttribute('tabindex', '-1');
-      title.focus({ preventScroll: true });
-    }
-
-    function closeDebriefModal() {
-      const modal = document.getElementById('modal-flight-debrief');
-      // Focus is inside the overlay that is about to be hidden, so it has to
-      // be handed back to the control that opened the run.
-      const debriefReturnFocus = document.getElementById('btn-launch-flight')
-        || document.getElementById('input-nestegg');
-      if (modal) modal.classList.add('hidden');
-      if (debriefReturnFocus) debriefReturnFocus.focus({ preventScroll: true });
-    }
-
-    /* =================================================================
-       SISTEMA DE CLASIFICACIÓN POR CATEGORÍA
-       ================================================================= */
-    function getCategoryBonus(category) {
-      if (category === 'Tight Lean FIRE') return 2000;
-      if (category === 'High Risk SWR') return 1500;
-      if (category === 'Custom Scenario') return 1000;
-      if (category === 'Trinity Standard') return 800;
-      if (category === 'Fat FIRE') return 200;
-      return 1000;
-    }
-
-    function registerScoreToLeaderboard(pilot, category, reached100, crashYears, tacticYears, finalBalance) {
-      let baseScore = reached100 ? 5000 : 1000;
-      let catBonus = getCategoryBonus(category);
-      let crashPenalty = crashYears * 500;
-      let tacticPenalty = (tacticYears || 0) * 75;
-      let wealthBonus = Math.round(finalBalance / 2500);
-
-      let score = baseScore + catBonus - crashPenalty - tacticPenalty + wealthBonus;
-      score = Math.max(100, score);
-
-      leaderboardScores.push({
-        pilot: pilot,
-        category: category || 'Custom Scenario',
-        reached100: reached100,
-        crashYears: crashYears,
-        tacticYears: tacticYears || 0,
-        finalBalance: finalBalance,
-        score: score
-      });
-
-      leaderboardScores.sort((a, b) => b.score - a.score);
-
-      renderLeaderboardTable();
-    }
-
-    function filterLeaderboard(cat) {
-      activeLeaderboardFilter = cat;
-      const categories = ['ALL', 'High Risk SWR', 'Trinity Standard', 'Tight Lean FIRE', 'Fat FIRE', 'Custom Scenario'];
-      categories.forEach(c => {
-        const btn = document.getElementById('lb-filter-' + c);
-        if (btn) {
-          if (c === cat) {
-            btn.className = 'px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition';
-          } else {
-            btn.className = 'px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition';
-          }
-        }
-      });
-      renderLeaderboardTable();
-      playSound('click');
-    }
-
-    function getCategoryBadgeHTML(cat) {
-      if (cat === 'High Risk SWR') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800"><i class="fa-solid fa-fire text-red-400 mr-1"></i>SWR Alto Riesgo</span>`;
-      } else if (cat === 'Trinity Standard') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800"><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i>Estándar Trinity</span>`;
-      } else if (cat === 'Tight Lean FIRE') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800"><i class="fa-solid fa-leaf text-emerald-400 mr-1"></i>Lean FIRE Ajustado</span>`;
-      } else if (cat === 'Fat FIRE') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800"><i class="fa-solid fa-crown text-purple-400 mr-1"></i>Fat FIRE Holgado</span>`;
-      } else {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700"><i class="fa-solid fa-sliders mr-1"></i>Escenario Personalizado</span>`;
-      }
-    }
-
-    function renderLeaderboardTable() {
-      const tbody = document.getElementById('leaderboard-table-body');
-      if (!tbody) return;
-
-      tbody.innerHTML = '';
-
-      const filtered = activeLeaderboardFilter === 'ALL'
-        ? leaderboardScores
-        : leaderboardScores.filter(e => e.category === activeLeaderboardFilter);
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="8" class="py-6 text-center text-slate-400 font-sans">
-              No hay registros de vuelo para <strong>${activeLeaderboardFilter}</strong>. ¡Vuela este escenario para marcar la primera puntuación!
-            </td>
-          </tr>
-        `;
-        return;
-      }
-
-      filtered.forEach((entry, idx) => {
-        const row = document.createElement('tr');
-        row.className = 'hover:bg-slate-900/80 transition';
-        
-        let rankBadge = `<span class="font-bold text-slate-400">#${idx + 1}</span>`;
-        if (idx === 0) rankBadge = `<span class="font-bold text-amber-400"><i class="fa-solid fa-crown mr-1" aria-hidden="true"></i> #1</span>`;
-        if (idx === 1) rankBadge = `<span class="font-bold text-slate-300"><i class="fa-solid fa-medal mr-1" aria-hidden="true"></i> #2</span>`;
-        if (idx === 2) rankBadge = `<span class="font-bold text-amber-600"><i class="fa-solid fa-award mr-1" aria-hidden="true"></i> #3</span>`;
-
-        row.innerHTML = `
-          <td class="py-3 px-3 font-hud">${rankBadge}</td>
-          <td class="py-3 px-3 font-bold text-white">${entry.pilot}</td>
-          <td class="py-3 px-3">${getCategoryBadgeHTML(entry.category)}</td>
-          <td class="py-3 px-3 font-bold">${entry.reached100 ? '<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> SÍ</span>' : '<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> NO</span>'}</td>
-          <td class="py-3 px-3 text-red-400 font-bold">${entry.crashYears} Año(s)</td>
-          <td class="py-3 px-3 text-amber-300 font-bold">${entry.tacticYears || 0} Años-Táctica</td>
-          <td class="py-3 px-3 text-emerald-400 font-bold">$${entry.finalBalance.toLocaleString()}</td>
-          <td class="py-3 px-3 text-amber-400 font-bold font-hud">${entry.score.toLocaleString()} pts</td>
-        `;
-        tbody.appendChild(row);
-      });
-    }
-
-    function clearLeaderboard() {
-      leaderboardScores = [];
-      renderLeaderboardTable();
-      playSound('click');
-    }
-
-    /* =================================================================
-       VISUALIZADOR HUD EN CANVAS Y DIBUJO DE TRAYECTORIA
-       ================================================================= */
-    function renderCanvas() {
-      const canvas = document.getElementById('flightCanvas');
-      if (!canvas || !canvas.parentElement) return;
-
-      const ctx = canvas.getContext('2d');
-      canvas.width = canvas.parentElement.clientWidth;
-      canvas.height = canvas.parentElement.clientHeight;
-
-      const W = canvas.width;
-      const H = canvas.height;
-
-      const healthRatio = Math.max(0, Math.min(1.5, state.currentNestEgg / state.nestEgg));
-      let skyGrad = ctx.createLinearGradient(0, 0, 0, H);
-
-      const canvasStatusDot = document.getElementById('canvas-sky-status-dot');
-      const canvasStatusText = document.getElementById('canvas-sky-status-text');
-      const pitchBadge = document.getElementById('hud-pitch-badge');
-
-      if (state.yearsInCrashlineConsecutive > 0) {
-        skyGrad.addColorStop(0, '#7f1d1d');
-        skyGrad.addColorStop(1, '#020617');
-        if (canvasStatusText) {
-          canvasStatusText.innerText = `EMERGENCIA EN DESPLOME: ¡${state.yearsInCrashlineConsecutive}/10 Años en Bancarrota $0!`;
-          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
-        }
-      } else if (healthRatio > 0.8) {
-        skyGrad.addColorStop(0, '#0a192f');
-        skyGrad.addColorStop(1, '#020c1b');
-        if (canvasStatusText) {
-          canvasStatusText.innerText = 'Atmósfera: Cielos Despejados y Altitud Segura';
-          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
-        }
-      } else {
-        skyGrad.addColorStop(0, '#1e1b4b');
-        skyGrad.addColorStop(1, '#0f172a');
-        if (canvasStatusText) {
-          canvasStatusText.innerText = 'Atmósfera: Turbulencia Leve / Precaución de Altitud';
-          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-pulse';
-        }
-      }
-
-      ctx.fillStyle = skyGrad;
-      ctx.fillRect(0, 0, W, H);
-
-      const maxVal = Math.max(state.nestEgg * 2.2, state.peakNestEgg * 1.2);
-      const topY = 40;
-      const bottomY = H - 35;
-
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-      ctx.lineWidth = 1;
-
-      const numGridLines = 4;
-      for (let i = 0; i <= numGridLines; i++) {
-        const y = bottomY - (i / numGridLines) * (bottomY - topY);
-        const dollarVal = (i / numGridLines) * maxVal;
-
-        ctx.beginPath();
-        ctx.moveTo(50, y);
-        ctx.lineTo(W, y);
-        ctx.stroke();
-
-        ctx.fillStyle = '#64748b';
-        ctx.font = '9px Orbitron';
-        ctx.fillText('$' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
-      }
-
-      const totalYears = Math.max(1, state.targetAge - state.startAge);
-      const startX = 60;
-      const endX = W - 30;
-
-      ctx.fillStyle = '#64748b';
-      ctx.font = '10px Orbitron';
-      for (let age = state.startAge; age <= state.targetAge; age += 10) {
-        const pct = (age - state.startAge) / totalYears;
-        const x = startX + pct * (endX - startX);
-        ctx.fillText(`Edad ${age}`, x - 18, H - 12);
-      }
-
-      if (state.historyLogs.length > 0) {
-        const lastLog = state.historyLogs[state.historyLogs.length - 1];
-        const prevBal = state.historyLogs.length > 1 ? state.historyLogs[state.historyLogs.length - 2].endBal : state.nestEgg;
-        const deltaBal = lastLog.endBal - prevBal;
-
-        if (pitchBadge) {
-          if (state.yearsInCrashlineConsecutive > 0) {
-            pitchBadge.innerHTML = `<span class="text-red-400 font-bold animate-pulse"><i class="fa-solid fa-plane-circle-exclamation"></i> 🚨 PERDIDA SUSTENTACIÓN</span>`;
-          } else if (deltaBal > 10000) {
-            pitchBadge.innerHTML = `<span class="text-emerald-400"><i class="fa-solid fa-arrow-trend-up"></i> 🛫 ASCENDIENDO</span>`;
-          } else if (deltaBal >= -5000) {
-            pitchBadge.innerHTML = `<span class="text-cyan-300"><i class="fa-solid fa-arrow-right"></i> ✈️ CRUCERO NIVELADO</span>`;
-          } else {
-            pitchBadge.innerHTML = `<span class="text-amber-400"><i class="fa-solid fa-arrow-trend-down"></i> 📉 DESCENDIENDO</span>`;
-          }
-        }
-
-        ctx.beginPath();
-        ctx.strokeStyle = state.yearsInCrashlineConsecutive > 0 ? '#ef4444' : '#06b6d4';
-        ctx.lineWidth = 3;
-
-        const startY = bottomY - ((state.nestEgg / maxVal) * (bottomY - topY));
-        ctx.moveTo(startX, startY);
-
-        state.historyLogs.forEach((log, idx) => {
-          const x = startX + ((idx + 1) / totalYears) * (endX - startX);
-          const y = bottomY - (Math.max(0, log.endBal) / maxVal) * (bottomY - topY);
-          ctx.lineTo(x, y);
-        });
-
-        ctx.stroke();
-
-        const lastIdx = state.historyLogs.length - 1;
-        const lastX = startX + ((lastIdx + 1) / totalYears) * (endX - startX);
-        const lastY = bottomY - (Math.max(0, state.historyLogs[lastIdx].endBal) / maxVal) * (bottomY - topY);
-
-        ctx.lineTo(lastX, bottomY);
-        ctx.lineTo(startX, bottomY);
-        ctx.closePath();
-
-        let fillGrad = ctx.createLinearGradient(0, 0, 0, H);
-        fillGrad.addColorStop(0, state.yearsInCrashlineConsecutive > 0 ? 'rgba(239, 68, 68, 0.35)' : 'rgba(6, 182, 212, 0.25)');
-        fillGrad.addColorStop(1, 'rgba(0, 0, 0, 0.0)');
-        ctx.fillStyle = fillGrad;
-        ctx.fill();
-
-        drawAirplane(ctx, lastX, lastY, state.yearsInCrashlineConsecutive > 0 ? 0.1 : healthRatio);
-      } else {
-        const startY = bottomY - ((state.nestEgg / maxVal) * (bottomY - topY));
-        drawAirplane(ctx, startX, startY, 1.0);
-        if (pitchBadge) {
-          pitchBadge.innerHTML = `<span class="text-emerald-400">🛫 LISTO EN PISTA</span>`;
-        }
-      }
-
-      ctx.setLineDash([4, 4]);
-      ctx.strokeStyle = '#ef4444';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(50, bottomY);
-      ctx.lineTo(W, bottomY);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      ctx.fillStyle = '#ef4444';
-      ctx.font = '10px Orbitron';
-      ctx.fillText('ZONA CRASHLINE (BANCARROTA $0)', 65, bottomY - 6);
-    }
-
-    function drawAirplane(ctx, x, y, healthRatio) {
-      ctx.save();
-      ctx.translate(x, y);
-
-      ctx.shadowColor = healthRatio > 0.3 ? '#06b6d4' : '#ef4444';
-      ctx.shadowBlur = 12;
-
-      ctx.fillStyle = healthRatio > 0.3 ? '#38bdf8' : '#f87171';
-      ctx.beginPath();
-      ctx.moveTo(16, 0);
-      ctx.lineTo(-12, -10);
-      ctx.lineTo(-6, 0);
-      ctx.lineTo(-12, 10);
-      ctx.closePath();
-      ctx.fill();
-
-      ctx.fillStyle = '#f59e0b';
-      ctx.beginPath();
-      ctx.moveTo(-6, 0);
-      ctx.lineTo(-18, -3);
-      ctx.lineTo(-14, 0);
-      ctx.lineTo(-18, 3);
-      ctx.closePath();
-      ctx.fill();
-
-      ctx.restore();
-    }
-
-    /* =================================================================
-       MANEJADORES DE CALCULADORAS
-       ================================================================= */
-    function openSpendCalculator() {
-      const modal = document.getElementById('modal-calc-spend');
-      if (modal) modal.classList.remove('hidden');
-      computeCalculatedSpend();
-      playSound('click');
-    }
-    function closeSpendCalculator() {
-      const modal = document.getElementById('modal-calc-spend');
-      if (modal) modal.classList.add('hidden');
-    }
-    function computeCalculatedSpend() {
-      const h = parseFloat(document.getElementById('calc-spend-housing').value) || 0;
-      const f = parseFloat(document.getElementById('calc-spend-food').value) || 0;
-      const md = parseFloat(document.getElementById('calc-spend-health').value) || 0;
-      const t = parseFloat(document.getElementById('calc-spend-travel').value) || 0;
-      const m = parseFloat(document.getElementById('calc-spend-misc').value) || 0;
-
-      const totalMonthly = h + f + md + t + m;
-      const totalAnnual = totalMonthly * 12;
-
-      const totalEl = document.getElementById('calc-spend-total');
-      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString() + ' / año';
-      return totalAnnual;
-    }
-    function applyCalculatedSpend() {
-      const annualSpend = computeCalculatedSpend();
-      const input = document.getElementById('input-spending');
-      if (input) input.value = Math.min(250000, Math.max(15000, annualSpend));
-      updateControlsUI();
-      closeSpendCalculator();
-      playSound('success');
-    }
-
-    function openNestEggCalculator() {
-      const modal = document.getElementById('modal-calc-nestegg');
-      if (modal) modal.classList.remove('hidden');
-      const spendInput = document.getElementById('calc-egg-spend');
-      if (spendInput) spendInput.value = state.annualSpending;
-      computeCalculatedEgg();
-      playSound('click');
-    }
-    function closeNestEggCalculator() {
-      const modal = document.getElementById('modal-calc-nestegg');
-      if (modal) modal.classList.add('hidden');
-    }
-    function computeCalculatedEgg() {
-      const spend = parseFloat(document.getElementById('calc-egg-spend').value) || 45000;
-      const swrPct = parseFloat(document.getElementById('calc-egg-swr').value) || 4.0;
-      const multiplier = 100 / swrPct;
-
-      const requiredEgg = spend * multiplier;
-
-      const formulaEl = document.getElementById('calc-egg-formula');
-      if (formulaEl) {
-        formulaEl.innerText = `$${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString()} (Regla del ${multiplier.toFixed(1)}x)`;
-      }
-      const totalEl = document.getElementById('calc-egg-total');
-      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString();
-      return requiredEgg;
-    }
-    function applyCalculatedEgg() {
-      const reqEgg = computeCalculatedEgg();
-      const input = document.getElementById('input-nestegg');
-      if (input) input.value = Math.min(5000000, Math.max(200000, reqEgg));
-      updateControlsUI();
-      closeNestEggCalculator();
-      playSound('success');
-    }
-
-    /* =================================================================
-       PESTAÑA 3: SIMULADOR MONTE CARLO DE 1.000 CORRIDAS
-       ================================================================= */
-    function runMonteCarloBatch() {
-      playSound('click');
-
-      const numSims = 1000;
-      const totalYears = Math.max(1, state.targetAge - state.startAge);
-      let successCount = 0;
-      let endingBalances = [];
-      let trajectorySnapshots = {
-        10: [], 20: [], 30: [], 40: [], 50: []
-      };
-
-      for (let sim = 0; sim < numSims; sim++) {
-        let bal = state.nestEgg;
-        let spend = state.annualSpending;
-
-        if (state.actJob) spend = Math.max(0, spend - 15000);
-        if (state.actCutSpend) spend = spend * 0.85;
-
-        let crashYearsConsec = 0;
-
-        for (let year = 1; year <= totalYears; year++) {
-          if (bal <= 0) {
-            crashYearsConsec++;
-            bal = 0;
-          } else {
-            crashYearsConsec = 0;
-            let sRet = randomGaussian(MARKET_BENCHMARKS.stocks.mean, MARKET_BENCHMARKS.stocks.stdDev);
-            let bRet = randomGaussian(MARKET_BENCHMARKS.bonds.mean, MARKET_BENCHMARKS.bonds.stdDev);
-            let infl = randomGaussian(MARKET_BENCHMARKS.inflation.mean, MARKET_BENCHMARKS.inflation.stdDev);
-
-            spend = spend * (1 + Math.max(0, infl));
-            let wRet = (sRet * (state.pctStocks / 100)) + (bRet * (state.pctBonds / 100)) + (MARKET_BENCHMARKS.cash.mean * (state.pctCash / 100));
-
-            if (state.actCashBuffer && sRet < 0) wRet += 0.03;
-
-            bal = (bal - spend) * (1 + wRet);
-          }
-
-          if (year % 10 === 0 && trajectorySnapshots[year]) {
-            trajectorySnapshots[year].push(Math.max(0, bal));
-          }
-        }
-
-        if (bal > 0) successCount++;
-        endingBalances.push(Math.max(0, bal));
-      }
-
-      endingBalances.sort((a, b) => a - b);
-
-      const successRate = ((successCount / numSims) * 100).toFixed(1);
-      const medianEnd = endingBalances[Math.floor(numSims * 0.5)];
-      const p10 = endingBalances[Math.floor(numSims * 0.1)];
-      const p90 = endingBalances[Math.floor(numSims * 0.9)];
-
-      const succEl = document.getElementById('mc-metric-success');
-      const medEl = document.getElementById('mc-metric-median');
-      const p10El = document.getElementById('mc-metric-p10');
-      const p90El = document.getElementById('mc-metric-p90');
-
-      if (succEl) succEl.innerText = successRate + '%';
-      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString();
-      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString();
-      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString();
-
-      const tbody = document.getElementById('mc-table-body');
-      if (tbody) {
-        tbody.innerHTML = '';
-        [10, 20, 30, 40, 50].forEach(y => {
-          if (y <= totalYears) {
-            let arr = trajectorySnapshots[y].sort((a, b) => a - b);
-            let n = arr.length;
-            let row = document.createElement('tr');
-            row.className = 'hover:bg-slate-900/60 transition';
-            row.innerHTML = `
-              <td class="py-2.5 px-3 font-bold text-white">Edad ${state.startAge + y} (${y} Años)</td>
-              <td class="py-2.5 px-3 text-red-400 font-bold">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-amber-400">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-cyan-300 font-bold">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-emerald-400">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-purple-400 font-bold">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>
-            `;
-            tbody.appendChild(row);
-          }
-        });
-      }
-
-      playSound('success');
-    }
-
-    /* =================================================================
-       FUNCIONES MATEMÁTICAS Y NAVEGACIÓN DE PESTAÑAS
-       ================================================================= */
-    function randomGaussian(mean, stdDev) {
-      let u = 0, v = 0;
-      while (u === 0) u = Math.random();
-      while (v === 0) v = Math.random();
-      let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-      return mean + num * stdDev;
-    }
-
-    function switchTab(tabKey) {
-      playSound('click');
-      const tabs = ['cockpit', 'leaderboard', 'montecarlo', 'academy'];
-      tabs.forEach(t => {
-        const tabEl = document.getElementById('tab-' + t);
-        const btnEl = document.getElementById('nav-btn-' + t);
-        if (tabEl) tabEl.classList.add('hidden');
-        if (btnEl) {
-          btnEl.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition';
-        }
-      });
-
-      const activeTab = document.getElementById('tab-' + tabKey);
-      const activeBtn = document.getElementById('nav-btn-' + tabKey);
-
-      if (activeTab) activeTab.classList.remove('hidden');
-      if (activeBtn) {
-        activeBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition';
-      }
-
-      if (tabKey === 'cockpit') {
-        renderCanvas();
-      } else if (tabKey === 'leaderboard') {
-        renderLeaderboardTable();
-      } else if (tabKey === 'montecarlo') {
-        runMonteCarloBatch();
-      }
-    }
-
-    /* =================================================================
-       SINTETIZADOR DE SONIDO WEBAUDIO
-       ================================================================= */
-    function playSound(type) {
-      try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        const now = ctx.currentTime;
-
-        if (type === 'click') {
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(800, now);
-          gain.gain.setValueAtTime(0.05, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-          osc.start(now);
-          osc.stop(now + 0.05);
-        } else if (type === 'engine') {
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(120, now);
-          osc.frequency.exponentialRampToValueAtTime(240, now + 0.2);
-          gain.gain.setValueAtTime(0.08, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-          osc.start(now);
-          osc.stop(now + 0.2);
-        } else if (type === 'alert') {
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(440, now);
-          osc.frequency.setValueAtTime(880, now + 0.1);
-          gain.gain.setValueAtTime(0.08, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-          osc.start(now);
-          osc.stop(now + 0.25);
-        } else if (type === 'success') {
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(523.25, now);
-          osc.frequency.setValueAtTime(659.25, now + 0.1);
-          gain.gain.setValueAtTime(0.08, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-          osc.start(now);
-          osc.stop(now + 0.3);
-        } else if (type === 'crash') {
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(200, now);
-          osc.frequency.exponentialRampToValueAtTime(50, now + 0.4);
-          gain.gain.setValueAtTime(0.12, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-          osc.start(now);
-          osc.stop(now + 0.4);
-        }
-      } catch (e) {
-        // AudioContext no disponible o bloqueado por navegador
-      }
-    }
-  </script>
+    <script src="/assets/js/sim-actions.js?v=e0c8b11598c9" defer></script>
+    <script src="/assets/js/sim-monte-carlo-fire.es.js?v=fdce6ba12a71" defer></script>
 </body>
 </html>

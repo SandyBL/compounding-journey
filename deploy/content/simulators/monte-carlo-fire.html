@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{hFullLang}}" class="h-full bg-slate-950">
+<html lang="{{lang.code}}" class="h-full bg-slate-950">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -172,14 +172,14 @@
     </section>
 
   <div class="site-simulator-nav bg-slate-950 border-b border-slate-800">
-    <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
-            <button id="nav-btn-cockpit" onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
+    <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800" role="tablist">
+            <button id="nav-btn-cockpit" role="tab" aria-selected="true" aria-controls="tab-cockpit" tabindex="0" data-onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
               <i class="fa-solid fa-gauge-high mr-1" aria-hidden="true"></i>{{navBtnCockpit}}            </button>
-            <button id="nav-btn-leaderboard" onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-leaderboard" role="tab" aria-selected="false" aria-controls="tab-leaderboard" tabindex="-1" data-onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
               <i class="fa-solid fa-trophy mr-1 text-amber-400" aria-hidden="true"></i>{{navBtnLeaderboard}}            </button>
-            <button id="nav-btn-montecarlo" onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-montecarlo" role="tab" aria-selected="false" aria-controls="tab-montecarlo" tabindex="-1" data-onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
               <i class="fa-solid fa-chart-line mr-1" aria-hidden="true"></i>{{navBtnMontecarlo}}            </button>
-            <button id="nav-btn-academy" onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-academy" role="tab" aria-selected="false" aria-controls="tab-academy" tabindex="-1" data-onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
               <i class="fa-solid fa-graduation-cap mr-1" aria-hidden="true"></i>{{navBtnAcademy}}            </button>
           </nav>
   </div>
@@ -188,7 +188,7 @@
 
     <!-- ================================================================= -->
 {{main}}    <!-- ================================================================= -->
-    <div id="tab-cockpit" class="space-y-6">
+    <div id="tab-cockpit" role="tabpanel" aria-labelledby="nav-btn-cockpit" class="space-y-6">
 
 {{tabCockpit}}      <div class="hud-glass p-5 rounded-2xl border border-cyan-500/40 relative overflow-hidden shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-950/30 to-slate-900">
         <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
@@ -229,13 +229,13 @@
               <i class="fa-solid fa-sliders text-cyan-400" aria-hidden="true"></i>{{fontHud}}            </span>
           </div>
           <div class="flex flex-wrap gap-2">
-            <button onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
+            <button data-onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
               <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i>{{px3}}            </button>
-            <button onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
               <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i>{{px32}}            </button>
-            <button onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
               <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i>{{px33}}            </button>
-            <button onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
               <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i>{{px34}}            </button>
           </div>
         </div>
@@ -254,7 +254,7 @@
 {{hudGlass}}            <div class="space-y-1">
               <label for="input-pilot-name" class="text-xs font-medium text-slate-300 flex items-center gap-1.5">
                 <i class="fa-solid fa-id-card text-amber-400" aria-hidden="true"></i>{{textXs6}}              </label>
-              <input type="text" id="input-pilot-name" value="{{inputPilotNameValue}}" onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
+              <input type="text" id="input-pilot-name" value="{{inputPilotNameValue}}" data-onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
             </div>
 
 {{hudGlass2}}            <div class="space-y-1.5">
@@ -262,12 +262,12 @@
                 <label class="text-slate-300 font-medium flex items-center gap-1.5">
 {{textSlate300}}                </label>
                 <div class="flex items-center gap-2">
-                  <button onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i>{{text10px5}}                  </button>
                   <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">{{dispNestegg}}</span>
                 </div>
               </div>
-              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" data-oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
             </div>
 
 {{hudGlass3}}            <div class="space-y-1.5">
@@ -275,12 +275,12 @@
                 <label class="text-slate-300 font-medium flex items-center gap-1.5">
 {{textSlate3002}}                </label>
                 <div class="flex items-center gap-2">
-                  <button onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i>{{text10px6}}                  </button>
                   <span id="disp-spending" class="font-mono text-emerald-300 font-bold">{{dispSpending}}</span>
                 </div>
               </div>
-              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" data-oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
               <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1">
                 <span>{{flex2}}</span>
                 <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800">
@@ -294,14 +294,14 @@
                   <label for="input-startage" class="text-slate-300 font-medium">{{textSlate3003}}</label>
                   <span class="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 rounded font-mono">{{text9px}}</span>
                 </div>
-                <input type="number" id="input-startage" min="30" max="85" value="50" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+                <input type="number" id="input-startage" min="30" max="85" value="50" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
               </div>
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
                   <label for="input-endage" class="text-slate-300 font-medium">{{textSlate3004}}</label>
                   <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded font-mono">{{text9px2}}</span>
                 </div>
-                <input type="number" id="input-endage" min="70" max="110" value="100" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+                <input type="number" id="input-endage" min="70" max="110" value="100" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
               </div>
             </div>
 
@@ -309,7 +309,7 @@
               <div class="flex justify-between items-center">
                 <label for="toggle-tdf" class="text-xs font-bold text-slate-200">{{textXs7}}</label>
 {{flex3}}                <label class="inline-flex items-center cursor-pointer">
-                  <input type="checkbox" id="toggle-tdf" onchange="toggleTargetDateFund()" class="sr-only peer">
+                  <input type="checkbox" id="toggle-tdf" data-onchange="toggleTargetDateFund()" class="sr-only peer">
                   <div class="w-8 h-4 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-cyan-500 relative"></div>
                   <span class="ml-2 text-[11px] font-mono text-cyan-400">{{ml2}}</span>
                 </label>
@@ -321,21 +321,21 @@
                     <span id="lbl-alloc-stocks" class="text-cyan-400 font-bold">{{lblAllocStocks}}</span>
                     <span id="disp-pct-stocks">80%</span>
                   </div>
-                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" data-oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
                     <span id="lbl-alloc-bonds" class="text-emerald-400 font-bold">{{lblAllocBonds}}</span>
                     <span id="disp-pct-bonds">15%</span>
                   </div>
-                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" data-oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
                     <span id="lbl-alloc-cash" class="text-amber-400 font-bold">{{lblAllocCash}}</span>
                     <span id="disp-pct-cash">5%</span>
                   </div>
-                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" data-oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
               </div>
 
@@ -356,7 +356,7 @@
 
 {{hudGlass6}}            <div class="space-y-1.5 pt-2 border-t border-slate-800">
               <label for="select-market-sequence" class="text-xs font-bold text-slate-200">{{textXs8}}</label>
-              <select id="select-market-sequence" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
+              <select id="select-market-sequence" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
                 <option value="simulated">{{selectMarketSequence}}</option>
                 <option value="1970s">{{selectMarketSequence2}}</option>
                 <option value="2000s">{{selectMarketSequence3}}</option>
@@ -365,10 +365,10 @@
             </div>
 
 {{hudGlass7}}            <div class="pt-3 flex gap-2">
-              <button id="btn-launch-flight" onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
+              <button id="btn-launch-flight" data-onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
                 <i class="fa-solid fa-plane-departure text-sm" aria-hidden="true"></i> <span id="btn-launch-text">{{btnLaunchText}}</span>
               </button>
-              <button onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="{{a11yResetSimulation}}">
+              <button data-onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="{{a11yResetSimulation}}">
                 <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
               </button>
             </div>
@@ -385,7 +385,7 @@
                 <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-hud font-semibold bg-slate-900 border border-slate-700 text-cyan-300">
                   <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i>{{inlineFlex}}<span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
                 </span>
-                <span id="hud-flight-status-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
+                <span id="hud-flight-status-badge" role="status" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
 {{hudFlightStatusBadge}}                </span>
               </div>
 
@@ -417,14 +417,14 @@
                 </div>
               </div>
 
-{{relative2}}              <div id="copilot-banner" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
+{{relative2}}              <div id="copilot-banner" role="status" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
                 <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 text-base">
                   <i id="copilot-icon" class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
                 </div>
                 <div class="space-y-1 flex-1">
                   <div class="flex justify-between items-center">
                     <span id="copilot-title" class="font-hud font-bold text-amber-400 text-xs uppercase">{{copilotTitle}}</span>
-                    <button onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="{{a11yDismissBanner}}">
+                    <button data-onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="{{a11yDismissBanner}}">
                       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                   </div>
@@ -455,7 +455,7 @@
 
 {{hudGlass8}}            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               
-{{grid3}}              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('job')">
+{{grid3}}              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('job')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
@@ -473,7 +473,7 @@
                 </div>
               </div>
 
-{{grid4}}              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cutspend')">
+{{grid4}}              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cutspend')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-scissors" aria-hidden="true"></i>
@@ -491,7 +491,7 @@
                 </div>
               </div>
 
-{{grid5}}              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cashbuffer')">
+{{grid5}}              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cashbuffer')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-vault" aria-hidden="true"></i>
@@ -509,7 +509,7 @@
                 </div>
               </div>
 
-{{grid6}}              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('guardrails')">
+{{grid6}}              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('guardrails')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i>
@@ -527,7 +527,7 @@
                 </div>
               </div>
 
-{{grid7}}              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('downsize')">
+{{grid7}}              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('downsize')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-blue-950 text-blue-400 border border-blue-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
@@ -545,7 +545,7 @@
                 </div>
               </div>
 
-{{grid8}}              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('pension')">
+{{grid8}}              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('pension')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-pink-950 text-pink-400 border border-pink-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i>
@@ -574,7 +574,7 @@
 
     <!-- ================================================================= -->
 {{main2}}    <!-- ================================================================= -->
-    <div id="tab-leaderboard" class="hidden space-y-6">
+    <div id="tab-leaderboard" role="tabpanel" aria-labelledby="nav-btn-leaderboard" class="hidden space-y-6">
 
       <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3 shadow-xl">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
@@ -585,18 +585,18 @@
 {{textXs15}}<strong>{{textXs16}}</strong>, <strong>{{textXs17}}</strong>{{textXs18}}<strong>{{textXs19}}</strong>.
             </p>
           </div>
-          <button onclick="clearLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
+          <button data-onclick="clearLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
             <i class="fa-solid fa-trash mr-1" aria-hidden="true"></i>{{px35}}          </button>
         </div>
 
 {{hudGlass9}}        <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
           <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i>{{textSlate4005}}</span>
-          <button id="lb-filter-ALL" onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">{{lbFilterAll}}</button>
-          <button id="{{lbFilterHighRiskSwrId}}" onclick="{{lbFilterHighRiskSwrOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterHighRiskSwr}}</button>
-          <button id="{{lbFilterTrinityStandardId}}" onclick="{{lbFilterTrinityStandardOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterTrinityStandard}}</button>
-          <button id="{{lbFilterTightLeanFireId}}" onclick="{{lbFilterTightLeanFireOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterTightLeanFire}}</button>
-          <button id="{{lbFilterFatFireId}}" onclick="{{lbFilterFatFireOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterFatFire}}</button>
-          <button id="{{lbFilterCustomScenarioId}}" onclick="{{lbFilterCustomScenarioOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterCustomScenario}}</button>
+          <button id="lb-filter-ALL" data-onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">{{lbFilterAll}}</button>
+          <button id="{{lbFilterHighRiskSwrId}}" data-onclick="{{lbFilterHighRiskSwrOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterHighRiskSwr}}</button>
+          <button id="{{lbFilterTrinityStandardId}}" data-onclick="{{lbFilterTrinityStandardOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterTrinityStandard}}</button>
+          <button id="{{lbFilterTightLeanFireId}}" data-onclick="{{lbFilterTightLeanFireOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterTightLeanFire}}</button>
+          <button id="{{lbFilterFatFireId}}" data-onclick="{{lbFilterFatFireOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterFatFire}}</button>
+          <button id="{{lbFilterCustomScenarioId}}" data-onclick="{{lbFilterCustomScenarioOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterCustomScenario}}</button>
         </div>
 
 {{hudGlass10}}        <div class="overflow-x-auto">
@@ -623,7 +623,7 @@
 
     <!-- ================================================================= -->
 {{main3}}    <!-- ================================================================= -->
-    <div id="tab-montecarlo" class="hidden space-y-6">
+    <div id="tab-montecarlo" role="tabpanel" aria-labelledby="nav-btn-montecarlo" class="hidden space-y-6">
 
 {{tabMontecarlo}}      <div class="hud-glass p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -633,12 +633,12 @@
             <p class="text-xs text-slate-300 leading-relaxed">
 {{textXs20}}            </p>
           </div>
-          <button onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
+          <button data-onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
             <i class="fa-solid fa-play mr-1.5" aria-hidden="true"></i>{{shrink0}}          </button>
         </div>
       </div>
 
-{{tabMontecarlo2}}      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono">
+{{tabMontecarlo2}}      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono" role="status" aria-atomic="true">
         
         <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
           <span class="text-[10px] text-slate-400 uppercase">{{text10px15}}</span>
@@ -694,7 +694,7 @@
 
     <!-- ================================================================= -->
 {{main4}}    <!-- ================================================================= -->
-    <div id="tab-academy" class="hidden space-y-6">
+    <div id="tab-academy" role="tabpanel" aria-labelledby="nav-btn-academy" class="hidden space-y-6">
 
       <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-2">
         <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
@@ -790,7 +790,7 @@
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="font-hud font-bold text-sm text-emerald-400 flex items-center gap-2">
           <i class="fa-solid fa-calculator text-emerald-400" aria-hidden="true"></i>{{fontHud9}}        </h3>
-        <button onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="{{a11yCloseCalculator}}">
+        <button data-onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="{{a11yCloseCalculator}}">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
@@ -801,23 +801,23 @@
       <div class="space-y-3 text-xs font-mono">
         <div class="flex justify-between items-center">
           <label for="calc-spend-housing" class="text-slate-300">{{textSlate3009}}</label>
-          <input type="number" id="calc-spend-housing" value="1500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-housing" value="1500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-spend-food" class="text-slate-300">{{textSlate30010}}</label>
-          <input type="number" id="calc-spend-food" value="800" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-food" value="800" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-spend-health" class="text-slate-300">{{textSlate30011}}</label>
-          <input type="number" id="calc-spend-health" value="500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-health" value="500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-spend-travel" class="text-slate-300">{{textSlate30012}}</label>
-          <input type="number" id="calc-spend-travel" value="400" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-travel" value="400" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-spend-misc" class="text-slate-300">{{textSlate30013}}</label>
-          <input type="number" id="calc-spend-misc" value="550" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <input type="number" id="calc-spend-misc" value="550" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
 
         <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-sm">
@@ -827,9 +827,9 @@
       </div>
 
       <div class="flex gap-3 pt-2">
-        <button onclick="closeSpendCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+        <button data-onclick="closeSpendCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
 {{flex1}}        </button>
-        <button onclick="applyCalculatedSpend()" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow glow-green">
+        <button data-onclick="applyCalculatedSpend()" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow glow-green">
 {{flex12}}        </button>
       </div>
     </div>
@@ -840,7 +840,7 @@
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="font-hud font-bold text-sm text-cyan-400 flex items-center gap-2">
           <i class="fa-solid fa-calculator text-cyan-400" aria-hidden="true"></i>{{fontHud10}}        </h3>
-        <button onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="{{a11yCloseCalculator}}">
+        <button data-onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="{{a11yCloseCalculator}}">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
@@ -851,11 +851,11 @@
       <div class="space-y-4 text-xs font-mono">
         <div class="flex justify-between items-center">
           <label for="calc-egg-spend" class="text-slate-300">{{textSlate30014}}</label>
-          <input type="number" id="calc-egg-spend" value="45000" step="1000" oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+          <input type="number" id="calc-egg-spend" value="45000" step="1000" data-oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
         </div>
         <div class="flex justify-between items-center">
           <label for="calc-egg-swr" class="text-slate-300">{{textSlate30015}}</label>
-          <select id="calc-egg-swr" onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+          <select id="calc-egg-swr" data-onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
             <option value="4.0" selected>{{calcEggSwr}}</option>
             <option value="3.5">{{calcEggSwr2}}</option>
             <option value="3.0">{{calcEggSwr3}}</option>
@@ -875,9 +875,9 @@
       </div>
 
       <div class="flex gap-3 pt-2">
-        <button onclick="closeNestEggCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+        <button data-onclick="closeNestEggCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
 {{flex1}}        </button>
-        <button onclick="applyCalculatedEgg()" class="flex-1 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow glow-cyan">
+        <button data-onclick="applyCalculatedEgg()" class="flex-1 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow glow-cyan">
 {{flex13}}        </button>
       </div>
     </div>
@@ -920,9 +920,9 @@
       </div>
 
       <div class="flex gap-2">
-        <button onclick="closeDebriefModal(); switchTab('leaderboard');" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
+        <button data-onclick="closeDebriefAndShowLeaderboard()" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
 {{flex14}}        </button>
-        <button onclick="closeDebriefModal()" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-hud font-bold text-xs uppercase shadow glow-cyan">
+        <button data-onclick="closeDebriefModal()" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-hud font-bold text-xs uppercase shadow glow-cyan">
 {{flex15}}        </button>
       </div>
     </div>
@@ -1530,6 +1530,47 @@
       if (debriefReturnFocus) debriefReturnFocus.focus({ preventScroll: true });
     }
 
+    // The debrief's "see the leaderboard" button did both of these from its own
+    // attribute. Two statements in one attribute is more than a data-onclick can
+    // say, and the pair is one action anyway.
+    function closeDebriefAndShowLeaderboard() {
+      closeDebriefModal();
+      switchTab('leaderboard');
+    }
+
+    // Escape closes the debrief, and Tab is kept inside it while it is open.
+    // `aria-modal="true"` tells a screen reader the rest of the page is inert;
+    // it does not make it inert, so without this the Tab key walks out of the
+    // dialog into a page the same attribute just said was not there.
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape' && event.key !== 'Tab') return;
+
+      const modal = document.getElementById('modal-flight-debrief');
+      if (!modal || modal.classList.contains('hidden')) return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeDebriefModal();
+        return;
+      }
+
+      const focusable = [...modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]')]
+        .filter((element) => !element.hasAttribute('disabled') && element.getAttribute('tabindex') !== '-1');
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      // Also catches focus sitting on the heading, which is tabindex="-1" and so
+      // is not in the list: from there, either direction wraps to an end.
+      if (event.shiftKey && (document.activeElement === first || !focusable.includes(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
 {{minHScreen76}}    function getCategoryBonus(category) {
 {{minHScreen77}}      return 1000;
     }
@@ -1939,15 +1980,28 @@
       return mean + num * stdDev;
     }
 
-    function switchTab(tabKey) {
+    const TAB_KEYS = ['cockpit', 'leaderboard', 'montecarlo', 'academy'];
+
+    // `focusTab` says whether the newly selected tab should also take focus.
+    // A click already put focus on the button that was clicked, and stealing it
+    // back would be a no-op at best; arrow-key navigation is the case that has
+    // to move it, because in the tab pattern the arrow keys move the selection
+    // and the focus together.
+    function switchTab(tabKey, focusTab) {
       playSound('click');
-      const tabs = ['cockpit', 'leaderboard', 'montecarlo', 'academy'];
+      const tabs = TAB_KEYS;
       tabs.forEach(t => {
         const tabEl = document.getElementById('tab-' + t);
         const btnEl = document.getElementById('nav-btn-' + t);
         if (tabEl) tabEl.classList.add('hidden');
         if (btnEl) {
           btnEl.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition';
+          // The colour change above is the whole of what a sighted user gets.
+          // These two attributes are the same information for everybody else:
+          // which tab is current, and which single button the Tab key lands on
+          // so that arrowing between four tabs does not cost four tab stops.
+          btnEl.setAttribute('aria-selected', 'false');
+          btnEl.setAttribute('tabindex', '-1');
         }
       });
 
@@ -1957,6 +2011,9 @@
       if (activeTab) activeTab.classList.remove('hidden');
       if (activeBtn) {
         activeBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition';
+        activeBtn.setAttribute('aria-selected', 'true');
+        activeBtn.setAttribute('tabindex', '0');
+        if (focusTab) activeBtn.focus();
       }
 
       if (tabKey === 'cockpit') {
@@ -1967,6 +2024,27 @@
         runMonteCarloBatch();
       }
     }
+
+    // Left/Right move between tabs and wrap; Home and End jump to the ends.
+    // Without this a tablist is four buttons that happen to sit in a row, and
+    // the roving tabindex set above would make three of them unreachable.
+    document.addEventListener('keydown', function (event) {
+      const button = event.target.closest && event.target.closest('[role="tab"]');
+      if (!button) return;
+
+      const current = TAB_KEYS.indexOf(button.id.replace('nav-btn-', ''));
+      if (current === -1) return;
+
+      let next = null;
+      if (event.key === 'ArrowRight') next = (current + 1) % TAB_KEYS.length;
+      else if (event.key === 'ArrowLeft') next = (current - 1 + TAB_KEYS.length) % TAB_KEYS.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = TAB_KEYS.length - 1;
+      if (next === null) return;
+
+      event.preventDefault();
+      switchTab(TAB_KEYS[next], true);
+    });
 
 {{minHScreen118}}    function playSound(type) {
       try {

@@ -13,6 +13,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeMarkdown } from './markdown.mjs';
+import { readSharedCatalog } from './shared-catalog.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -75,7 +76,7 @@ function readJsonLd(template) {
 
 const template = await fs.readFile(templateFile, 'utf8');
 const graph = readJsonLd(template)['@graph'];
-const catalog = JSON.parse(await fs.readFile(path.join(contentRoot, 'catalog.json'), 'utf8'));
+const catalog = await readSharedCatalog();
 
 const faqByLanguage = new Map(
   graph.filter((node) => node['@type'] === 'FAQPage').map((node) => [node.inLanguage, node])
@@ -123,7 +124,11 @@ ${languages.map((code) => `- [${languageNames[code]}](${homeUrl(code)})`).join('
 ${languages.map((code) => `- [${journalNames[code]}](${origin}/${code}/blog/)`).join('\n')}
 
 Every article is published as its own page under \`/{language}/blog/{slug}/\` and
-all of them are listed in [the sitemap](${origin}/sitemap.xml).
+all of them are listed in [the sitemap](${origin}/sitemap.xml). Each language
+also publishes an RSS feed, which is the cheapest way to learn about a new
+article without re-crawling the index:
+
+${languages.map((code) => `- [${journalNames[code]} — RSS](${origin}/${code}/blog/feed.xml)`).join('\n')}
 
 ${languages.map((code) => `### ${languageNames[code]}\n\n${articleLines(code)}`).join('\n\n')}
 
@@ -212,6 +217,7 @@ generated from the same source as the pages themselves, so it does not drift.
 - Author: Sandy Bradbury
 - Languages: Spanish (${origin}/), English (${origin}/en/), Portuguese (${origin}/pt/)
 - Sitemap: ${origin}/sitemap.xml
+- Feeds: ${languages.map((code) => `${origin}/${code}/blog/feed.xml`).join(', ')}
 - Short index: ${origin}/llms.txt
 - Content last updated: ${newest}
 
