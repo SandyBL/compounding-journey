@@ -8,8 +8,6 @@ summary: Aprenda a construir riqueza de longo prazo com bons hábitos
  caixa.
 translation_key: building-wealth-good-financial-habits
 author: Sandy Bradbury
-hero: /assets/img/articles/building-wealth-good-financial-habits.svg
-hero_alt: "Nove blocos verdes sólidos de um lado de uma linha dourada tracejada e seis blocos esbatidos do outro."
 ---
 Bons hábitos vão muito além do desenvolvimento pessoal — eles são a verdadeira base do sucesso financeiro de longo prazo. Em seu famoso livro \*Pai Rico, Pai Pobre\*, Robert Kiyosaki enfatiza que construir riqueza não é apenas sobre o quanto você ganha, mas sobre como você gerencia o seu dinheiro e o faz trabalhar para a sua felicidade e liberdade.
 

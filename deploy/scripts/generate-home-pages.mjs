@@ -364,6 +364,76 @@ function removeAttribute(rawTag, attribute) {
 // Spanish targets in the markup and repointed by JavaScript on load. A reader
 // that does not run scripts was therefore given Spanish downloads on the
 // English page, so the correct target is baked in per language instead.
+// A download link that does not say what it hands over is a leap of faith.
+// The size is read from the file on disk at build time so the label cannot
+// drift away from the artefact it describes. Entries that point at an external
+// page rather than a file (the monthly analysis template is sold off-site) are
+// labelled as such instead, so the button's "download" wording is qualified.
+const externalTemplateLabel = {
+  es: 'Página externa',
+  en: 'External page',
+  pt: 'Página externa'
+};
+
+async function rewriteTemplateMeta(html, language, config) {
+  const downloads = config.templateDownloads[language] ?? {};
+  let output = html;
+
+  for (const [key, target] of Object.entries(downloads)) {
+    const pattern = new RegExp(
+      `(<p[^>]*\\sdata-template-meta="${key}"[^>]*>)([\\s\\S]*?)(</p>)`
+    );
+    if (!pattern.test(output)) continue;
+
+    let label;
+
+    if (/^https?:/i.test(target.href)) {
+      label = externalTemplateLabel[language];
+    } else {
+      const extension = path.extname(target.href).replace('.', '').toUpperCase() || 'FILE';
+      try {
+        const stats = await fs.stat(path.join(root, target.href.replace(/^\//, '')));
+        label = `${extension} · ${Math.max(1, Math.round(stats.size / 1024))} KB`;
+      } catch {
+        throw new Error(
+          `Template download "${key}" for "${language}" points at ${target.href}, which is not on disk.`
+        );
+      }
+    }
+
+    output = output.replace(pattern, `$1${label}$3`);
+  }
+
+  return output;
+}
+
+// The generated documents live at /, /en/ and /pt/. A relative `src` or `href`
+// therefore resolves against a different base in each one, which silently 404s
+// the asset on two of the three languages instead of failing the build. Every
+// asset reference must be root-relative, absolute, a fragment or a known scheme.
+const allowedUrlPrefixes = /^(\/|#|https?:|mailto:|tel:|data:|javascript:|\{)/i;
+
+function assertAbsoluteAssetUrls(html, language) {
+  const offenders = [];
+  const pattern = /\s(?:src|href|poster|action)="([^"]*)"/gi;
+  let match;
+
+  while ((match = pattern.exec(html)) !== null) {
+    const value = match[1].trim();
+    if (value === '' || allowedUrlPrefixes.test(value)) continue;
+    offenders.push(value);
+  }
+
+  if (offenders.length > 0) {
+    const unique = [...new Set(offenders)];
+    throw new Error(
+      `Relative asset URL(s) in the "${language}" homepage: ${unique.join(', ')}. `
+      + 'Use a root-relative path ("/assets/…") so the reference resolves the same '
+      + 'way at /, /en/ and /pt/.'
+    );
+  }
+}
+
 function rewriteLocalizedLinks(html, language, config) {
   const lower = html.toLowerCase();
   let cursor = 0;
@@ -418,6 +488,35 @@ function rewriteLocalizedLinks(html, language, config) {
       }
     }
 
+    // The brand lockup was hardcoded to "/", so the logo on /en/ and /pt/ threw
+    // the reader back into Spanish.
+    if (/\sdata-home-link\b/.test(tag.attributes)) {
+      raw = setAttribute(raw, 'href', languagePath(language));
+    }
+
+    // The language switcher is a set of real links; only the state marker
+    // differs per document.
+    const langSwitch = tag.attributes.match(/\sdata-lang-switch="([^"]+)"/);
+    if (langSwitch) {
+      const isCurrent = langSwitch[1] === language;
+      raw = isCurrent
+        ? setAttribute(raw, 'aria-current', 'page')
+        : removeAttribute(raw, 'aria-current');
+
+      const classes = (raw.match(/\sclass="([^"]*)"/)?.[1] ?? '')
+        .split(/\s+/)
+        .filter(name => name && name !== 'active');
+      if (isCurrent) classes.push('active');
+      raw = setAttribute(raw, 'class', classes.join(' '));
+    }
+
+    // Netlify Forms metadata that shipped Spanish on every language.
+    const formCopy = tag.attributes.match(/\sdata-form-copy="([^"]+)"/);
+    if (formCopy) {
+      const value = config.formCopy[language]?.[formCopy[1]];
+      if (value) raw = setAttribute(raw, 'value', value);
+    }
+
     if (raw !== tag.raw) {
       output += html.slice(copiedUpTo, tag.start) + raw;
       copiedUpTo = tag.end;
@@ -441,7 +540,8 @@ const config = {
   openGraphLocales: extractObjectLiteral(template, 'openGraphLocales'),
   newsletterLinks: extractObjectLiteral(template, 'newsletterLinks'),
   assessmentLinks: extractObjectLiteral(template, 'assessmentLinks'),
-  templateDownloads: extractObjectLiteral(template, 'templateDownloads')
+  templateDownloads: extractObjectLiteral(template, 'templateDownloads'),
+  formCopy: extractObjectLiteral(template, 'formCopy')
 };
 
 for (const language of languages) {
@@ -457,6 +557,10 @@ for (const language of languages) {
 
   const links = rewriteLocalizedLinks(page, language, config);
   page = links.html;
+
+  page = await rewriteTemplateMeta(page, language, config);
+
+  assertAbsoluteAssetUrls(page, language);
 
   const file = outputFile(language);
   await fs.mkdir(path.dirname(file), { recursive: true });

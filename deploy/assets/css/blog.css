@@ -119,8 +119,8 @@ button, input { font: inherit; }
 .pagination[hidden] { display: none; }
 .pagination button, .pagination span { display: inline-flex; align-items: center; justify-content: center; min-width: 34px; min-height: 34px; padding: 7px 9px; border: 0; background: transparent; font: inherit; text-decoration: none; }
 .pagination button { color: var(--forest); cursor: pointer; }
-.pagination button:hover:not(:disabled) { background: rgba(200,154,50,.14); }
-.pagination button:disabled { color: #aaa395; cursor: not-allowed; }
+.pagination button:hover:not([aria-disabled="true"]) { background: rgba(200,154,50,.14); }
+.pagination button[aria-disabled="true"] { color: #6f675b; cursor: not-allowed; }
 .pagination [aria-current="page"] { background: var(--forest); color: white; }
 .pagination-separator { min-width: auto !important; padding-inline: 0 !important; color: #b4aa99; }
 
@@ -165,15 +165,13 @@ button, input { font: inherit; }
 .article-header h1 { max-width: 820px; margin: 16px 0 18px; font-family: var(--serif); font-size: clamp(2.45rem, 5vw, 4.35rem); font-weight: 600; line-height: .98; letter-spacing: -.04em; }
 .article-dek { max-width: 720px; margin: 0; color: rgba(255,255,255,.73); font-family: var(--serif); font-size: clamp(1.12rem, 2vw, 1.45rem); line-height: 1.5; }
 .article-header .post-meta { margin-top: 24px; color: #e7c46c; }
-/* Per-article illustration between the headline and the body. The width is
-   capped at the same 1060px the article grid below occupies (230 + 70 + 760) so
-   the artwork lines up with the prose rather than running the full container.
-   The intrinsic width/height on the <img> plus width:100%/height:auto here keep
-   the 1200x630 box reserved during load, so nothing below it shifts. */
-.article-hero { margin: 0; padding: 44px 0 0; }
-.article-hero .container { width: min(1060px, calc(100% - 48px)); }
-.article-hero img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: var(--paper); }
-.article-layout { display: grid; grid-template-columns: 230px minmax(0, 760px); justify-content: center; gap: 70px; padding: 68px 0 92px; }
+/* The article body now begins directly under the dark header band, with no
+   illustration between them. The top padding is what carries the whole gap, so
+   it is tighter than the 68px used when a 1200x630 figure sat above it —
+   otherwise the prose floats in the middle of the page with nothing to explain
+   the distance. The sticky table of contents in the left column starts from the
+   same line, which keeps it clear of the fixed header at its 108px offset. */
+.article-layout { display: grid; grid-template-columns: 230px minmax(0, 760px); justify-content: center; gap: 70px; padding: 52px 0 92px; }
 .toc { position: sticky; top: 108px; align-self: start; padding-top: 8px; }
 .toc h2 { margin: 0 0 18px; color: var(--rust); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
 .toc ol { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; counter-reset: toc; }
@@ -264,8 +262,7 @@ button, input { font: inherit; }
   .footer-row { display: grid; }
   .article-header { padding: 42px 0 38px; }
   .article-header h1 { font-size: clamp(2.35rem, 12vw, 3.25rem); }
-  .article-hero { padding-top: 28px; }
-  .article-layout { padding: 42px 0 72px; }
+  .article-layout { padding: 34px 0 72px; }
   .article-body { font-size: 1.1rem; line-height: 1.76; }
   .article-body h2 { font-size: 2rem; }
   .article-body .article-callout { padding: 34px 24px 24px; }

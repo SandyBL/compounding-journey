@@ -6,8 +6,6 @@ summary: Um ritmo semanal prático que troca a urgência financeira por poucas
  decisões sustentáveis.
 translation_key: slow-money-system
 author: Sandy Bradbury
-hero: /assets/img/articles/slow-money-system.svg
-hero_alt: "Anéis concêntricos que se alargam a partir de um único ponto, com marcas douradas equidistantes ao longo de um raio."
 ---
 
 ## Velocidade não é o mesmo que progresso

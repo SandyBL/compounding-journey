@@ -1,5 +1,14 @@
 module.exports = {
-    content: ['./index.html'],
+    // index.html is generated output: it holds only the Spanish strings, so a
+    // rebuild dropped every utility that appears exclusively in the English or
+    // Portuguese branches of the template. Scan the trilingual source instead,
+    // plus the pages that are authored by hand.
+    content: [
+        './content/home/index.html',
+        './404.html',
+        './{en,es,pt}/**/*.html',
+        './assets/js/**/*.js',
+    ],
     theme: {
         extend: {
             colors: {

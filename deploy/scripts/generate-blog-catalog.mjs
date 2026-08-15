@@ -69,12 +69,6 @@ for (const language of languages) {
       category: attributes.category || '',
       summary: attributes.summary || '',
       author: attributes.author || defaultAuthor,
-      // Optional per-article artwork. "hero" is the in-page illustration (SVG,
-      // so it costs a couple of kB); the social card and structured-data image
-      // are the PNG rasterisation sitting next to it. Without these every
-      // article shared the site logo as its one og:image.
-      hero: attributes.hero || '',
-      heroAlt: attributes.hero_alt || '',
       translationKey: attributes.translation_key || path.basename(file, '.md'),
       searchText: searchableText(body)
     });

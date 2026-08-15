@@ -28,25 +28,15 @@ function logoAt(size, format) {
   const extra = format ? `&amp;fm=${format}` : '';
   return `/.netlify/images?url=/logo-compounding-journey.png&amp;w=${size}&amp;h=${size}&amp;fit=cover${extra}`;
 }
-// The in-page hero is the SVG named in the front matter; the social card is the
-// PNG rasterisation sitting beside it. Facebook, X, LinkedIn and Slack all
-// refuse SVG for og:image, and the Netlify Image CDN cannot take SVG as a
-// source either, so the two formats are not interchangeable here. Articles with
-// no hero fall back to the site logo, which is what every article used before.
-function socialImage(article) {
-  if (!article.hero) return logo;
-  return `${origin}${article.hero.replace(/\.svg$/, '.png')}`;
-}
-// The in-page illustration, rendered between the headline and the body. It sits
-// inside the initial viewport, so it is deliberately not lazy-loaded - deferring
-// an above-the-fold image is what pushes Largest Contentful Paint out. Explicit
-// dimensions reserve the box before the file lands so the prose underneath does
-// not jump. Articles with no "hero" in their front matter render nothing extra.
-function articleHero(article) {
-  if (!article.hero) return '';
-  const alt = escapeHtml(article.heroAlt || article.title);
-  return `<figure class="article-hero"><div class="container"><img src="${article.hero}" alt="${alt}" width="1200" height="630" decoding="async" /></div></figure>`;
-}
+// Articles are text only by design: nothing between the headline and the prose,
+// and no artwork inside the body. The one image an article still needs is the
+// social card, because a link with no og:image is rendered by Facebook, X,
+// LinkedIn and Slack as a bare grey rectangle. That card is the site logo for
+// every article, so it is a constant rather than a per-article lookup — and it
+// is square, which is why the dimensions below are 2048x2048 and the Twitter
+// card is "summary" rather than the wide "summary_large_image" that suited the
+// 1200x630 illustrations.
+const socialImageAlt = 'Compounding Journey logo';
 
 const simulatorSlugs = [
   'freedom-calendar',
@@ -253,7 +243,7 @@ function structuredData(article, labels, body) {
       dateModified: article.updated || article.date,
       url,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-      image: [socialImage(article)],
+      image: [logo],
       wordCount: body.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length,
       articleSection: article.category || undefined,
       author: { '@type': 'Person', '@id': `${origin}/#sandy-bradbury`, name: 'Sandy Bradbury', url: `${origin}/#biografia` },
@@ -305,19 +295,19 @@ function renderPage(article, labels, body, headings, related) {
   <meta property="og:title" content="${escapeHtml(article.title)}" />
   <meta property="og:description" content="${escapeHtml(article.summary)}" />
   <meta property="og:url" content="${url}" />
-  <meta property="og:image" content="${socialImage(article)}" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="${escapeHtml(article.heroAlt || article.title)}" />
+  <meta property="og:image" content="${logo}" />
+  <meta property="og:image:width" content="2048" />
+  <meta property="og:image:height" content="2048" />
+  <meta property="og:image:alt" content="${socialImageAlt}" />
   <meta property="article:published_time" content="${article.date}" />
   <meta property="article:modified_time" content="${article.updated || article.date}" />
   <meta property="article:author" content="${escapeHtml(article.author)}" />
   <meta property="article:section" content="${escapeHtml(article.category)}" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="${escapeHtml(article.title)}" />
   <meta name="twitter:description" content="${escapeHtml(article.summary)}" />
-  <meta name="twitter:image" content="${socialImage(article)}" />
-  <meta name="twitter:image:alt" content="${escapeHtml(article.heroAlt || article.title)}" />
+  <meta name="twitter:image" content="${logo}" />
+  <meta name="twitter:image:alt" content="${socialImageAlt}" />
   <link rel="preload" href="/assets/css/blog.css?v=20260815-1" as="style" />
   <!-- The serif sets the h1 and the whole article body, so it is on the LCP
        path. Fonts are always fetched in CORS mode, hence crossorigin even
@@ -326,6 +316,7 @@ function renderPage(article, labels, body, headings, related) {
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/blog.css?v=20260815-1" />
   <link rel="stylesheet" href="/assets/css/header.css?v=20260803-3" />
+  <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1" />
   <script type="application/ld+json">
 ${structuredData(article, labels, body)}
   </script>
@@ -343,7 +334,6 @@ ${structuredData(article, labels, body)}
   </header>
   <main class="article-page-main"><article>
     <header class="article-header"><div class="container article-header-inner"><div class="post-meta"><span>${escapeHtml(article.category)}</span><span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
-    ${articleHero(article)}
     <div class="container article-layout">${toc}<div><div id="article-body" class="article-body">
 ${body}
     </div><footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>

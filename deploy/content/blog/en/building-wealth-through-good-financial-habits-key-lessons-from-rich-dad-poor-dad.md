@@ -8,8 +8,6 @@ summary: Discover how to build long-term wealth using proven financial habits
  liabilities, good debt, and cash flow.
 translation_key: building-wealth-good-financial-habits
 author: Sandy Bradbury
-hero: /assets/img/articles/building-wealth-good-financial-habits.svg
-hero_alt: "Nine solid green blocks on one side of a dashed gold divider and six faded blocks on the other."
 ---
 Good habits extend far beyond personal growth—they are the true foundation of long-term financial success. In his landmark book \*Rich Dad, Poor Dad\*, Robert Kiyosaki emphasizes that building wealth isn't just about how much money you earn, but how you manage it and make it work for your happiness and freedom.
 

@@ -44,8 +44,11 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
+
+    <a class="skip-link" href="#main">Saltar al contenido principal</a>
 
     <!-- HEADER & BRAND BAR -->
     <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
@@ -61,9 +64,9 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
-                <a href="/#simulador" class="site-return-link hidden sm:inline-flex">
+                <a href="/#simulador" class="site-return-link" aria-label="Volver al sitio web">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                    <span>Sitio web</span>
+                    <span class="site-return-link__text">Sitio web</span>
                 </a>
                 <button onclick="toggleProfileDrawer()" class="px-4 py-2 rounded-xl bg-forest-800 hover:bg-forest-900 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md">
                                 <i class="fa-solid fa-sliders"></i>
@@ -136,7 +139,7 @@
     </section>
 
     <!-- MAIN CONTENT CONTAINER -->
-    <main class="max-w-6xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
+    <main id="main" tabindex="-1" class="max-w-6xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
 
         <!-- INTRO BANNER -->
         <div class="mb-8 text-center sm:text-left bg-cream-50 rounded-2xl p-6 border border-cream-300 custom-shadow flex flex-col md:flex-row items-center justify-between gap-6">
@@ -193,7 +196,7 @@
                         <span class="text-[11px] font-extrabold uppercase tracking-widest text-gold-400 block mb-1">Tu Edad Objetivo de Libertad Financiera</span>
                         
                         <!-- Freedom Target Age Display -->
-                        <div class="my-2.5 flex items-center justify-center gap-2.5">
+                        <div class="my-2.5 flex items-center justify-center gap-2.5" role="status" aria-live="polite" aria-atomic="true">
                             <div class="bg-espresso-950/60 px-3.5 py-1.5 rounded-xl border border-espresso-800/80">
                                 <span class="text-[10px] text-cream-300/80 block uppercase font-bold tracking-wider">Línea Base</span>
                                 <span id="baselineAgeDisplay" class="text-xl font-black text-rose-300 font-mono">Edad 65</span>
@@ -262,7 +265,7 @@
                             <span class="text-[9px] font-semibold text-espresso-800/60">Horizonte de 30 Años</span>
                         </h4>
                         <div class="h-36 sm:h-40 w-full">
-                            <canvas id="wealthChart"></canvas>
+                            <canvas id="wealthChart" role="img" aria-label="Gráfico: trayectoria del patrimonio en un horizonte de treinta años, comparando la ruta actual con la ajustada. Los valores finales aparecen como texto en las tarjetas de resumen."></canvas>
                         </div>
                     </div>
 
@@ -297,6 +300,11 @@
     <!-- FOOTER -->
     <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
         <p>© <script>document.write(new Date().getFullYear())</script> Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.</p>
+    <nav class="lang-switch" aria-label="Idioma">
+        <a class="lang-switch-link" href="/es/simulators/freedom-calendar.html" hreflang="es" lang="es" aria-label="Español" aria-current="page">ES</a>
+        <a class="lang-switch-link" href="/en/simulators/freedom-calendar.html" hreflang="en" lang="en" aria-label="English">EN</a>
+        <a class="lang-switch-link" href="/pt/simulators/freedom-calendar.html" hreflang="pt" lang="pt" aria-label="Português">PT</a>
+      </nav>
     </footer>
 
     <script>

@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="E4KLrkhNpy-EpIG1IRxGICciCHV-9Trc6WycFxr4RGg" />
     <link rel="preload" href="/assets/styles.css" as="style">
-    <link rel="preload" href="/logo-compounding-journey.png" as="image" type="image/png" fetchpriority="high">
+    <!-- The brand mark is a 2048px master used for social cards and structured
+         data. Browsers only ever paint it at 64px, so the page itself asks the
+         Netlify Image CDN for that size and leaves the master to the scrapers
+         that actually want it. Keep this URL byte-identical to the header <img>
+         below or the preload fetches a second copy. -->
+    <link rel="preload" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" as="image" fetchpriority="high">
     <title>Compounding Journey - Your Map to Freedom</title>
     <meta id="meta-description" name="description" content="Money psychology, purposeful investing, and practical tools for building financial freedom around your values.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <link rel="icon" type="image/png" href="/logo-compounding-journey.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=64&amp;h=64&amp;fit=cover&amp;fm=png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=180&amp;h=180&amp;fit=cover&amp;fm=png">
     <link id="canonical-link" rel="canonical" href="https://compoundingjourney.com/en/">
     <link id="alternate-en" rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/">
     <link id="alternate-es" rel="alternate" hreflang="es" href="https://compoundingjourney.com/">
@@ -37,7 +43,8 @@
     <meta name="twitter:image" content="https://compoundingjourney.com/logo-compounding-journey.png">
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/icons.css?v=20260815-1">
     <!-- Compiled production styles -->
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
@@ -283,7 +290,22 @@
             border-color: #1E4620;
         }
         .tab-btn.active i {
-            color: #C59B27;
+            color: #E3BC5A;
+        }
+        /* Selection is also marked structurally, so it does not depend on
+           colour alone (WCAG SC 1.4.1). */
+        .tab-btn.active::after {
+            content: "";
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 4px;
+            height: 3px;
+            border-radius: 2px;
+            background-color: #E3BC5A;
+        }
+        .tab-btn {
+            position: relative;
         }
 
         .compound-ratio {
@@ -735,7 +757,9 @@
             }
         }
 
-        @media (min-width: 1180px) {
+        /* Lowered from 1180px: every tablet in portrait and most in landscape fell
+           into the gap and was served the phone hamburger on a 1024px viewport. */
+        @media (min-width: 1024px) {
             .desktop-section-nav {
                 display: flex;
                 align-items: center;
@@ -1035,61 +1059,45 @@
             mask-image: linear-gradient(to right, transparent, black 45%, black);
         }
 
-        .simulator-panel {
+        .simulator-grid {
             position: relative;
             display: grid;
-            grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-            gap: 3rem;
-            align-items: center;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1rem;
         }
 
-        .simulator-scorecard {
+        .simulator-card {
             position: relative;
-            min-height: 22rem;
-            padding: 2rem;
+            display: flex;
+            min-height: 20rem;
+            flex-direction: column;
+            padding: 1.4rem;
             border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             background: rgba(252, 241, 219, 0.08);
-            box-shadow: 0 28px 70px rgba(23, 55, 25, 0.3);
+            box-shadow: 0 22px 55px rgba(10, 31, 15, 0.22);
             backdrop-filter: blur(12px);
+            transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
         }
 
-        .simulator-score-row {
+        .simulator-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(216, 184, 95, 0.58);
+            background: rgba(252, 241, 219, 0.12);
+        }
+
+        .simulator-card-icon {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .simulator-score-row:last-child {
-            border-bottom: 0;
-        }
-
-        .simulator-score-label {
-            color: rgba(252, 241, 219, 0.75);
-        }
-
-        .simulator-value-positive {
-            color: #9fe0bd;
-        }
-
-        .simulator-value-gold {
-            color: #d8b85f;
-        }
-
-        .simulator-value-happiness {
-            color: #9ed8e8;
-        }
-
-        .simulator-value-iq {
-            color: #f0cd73;
-        }
-
-        .simulator-compass {
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: 1.25rem;
+            border-radius: 1rem;
             border: 1px solid rgba(197, 155, 39, 0.5);
             background: rgba(197, 155, 39, 0.1);
+            color: #e4c66f;
+            font-size: 1.15rem;
         }
 
         .simulator-play-link {
@@ -1097,11 +1105,13 @@
             align-items: center;
             justify-content: center;
             gap: 0.7rem;
-            min-height: 3.25rem;
-            padding: 0.85rem 1.35rem;
+            min-height: 2.8rem;
+            margin-top: auto;
+            padding: 0.72rem 0.9rem;
             border-radius: 0.8rem;
             background: #c59b27;
             color: #173719;
+            font-size: 0.78rem;
             font-weight: 800;
             box-shadow: 0 12px 28px rgba(197, 155, 39, 0.22);
             transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
@@ -1124,6 +1134,22 @@
             display: inline-flex !important;
         }
 
+        @media (max-width: 1100px) {
+            .simulator-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .simulator-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .simulator-card {
+                min-height: 0;
+            }
+        }
+
         @media (max-width: 900px) {
             .simulator-panel {
                 grid-template-columns: 1fr;
@@ -1136,13 +1162,20 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=20260803-3">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="lang-en bg-creamsoft font-sans text-darkbark/90 antialiased scroll-smooth">
+
+    <a class="skip-link" href="#main">
+        
+        <span lang-content="en">Skip to main content</span>
+        
+    </a>
 
     <div id="identity-callback" class="identity-callback" role="dialog" aria-modal="true" aria-labelledby="identity-callback-title" hidden>
         <div class="identity-callback__card">
             <img class="identity-callback__logo" src="/icone%20foto%20limpo.png" alt="">
-            <h1 id="identity-callback-title" class="identity-callback__title">Set your password</h1>
+            <h2 id="identity-callback-title" class="identity-callback__title">Set your password</h2>
             <p id="identity-callback-copy" class="identity-callback__copy">Choose a secure password to continue to the Content Studio.</p>
             <form id="identity-callback-form">
                 <label class="identity-callback__label" for="identity-password">New password</label>
@@ -1160,14 +1193,14 @@
         <div class="header-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             
             <!-- Brand Logotype & Dynamic Typography Integration -->
-            <a href="/" class="header-brand flex items-center gap-3 group">
+            <a href="/en/" data-home-link class="header-brand flex items-center gap-3 group">
                 <!-- Compounding Journey Substack Logo Image - Direct Load -->
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
                     <img
-                        src="/logo-compounding-journey.png"
+                        src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover"
                         alt="Compounding Journey"
-                        width="2048"
-                        height="2048"
+                        width="128"
+                        height="128"
                         fetchpriority="high"
                         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
@@ -1183,12 +1216,12 @@
 
             <!-- Desktop Section Navigation -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
-                <a href="/pillars" data-site-route="/pillars" data-section="pilares">
+                <a href="#pilares" data-site-route="/pillars" data-section="pilares">
                     
                     <span lang-content="en">Pillars</span>
                     
                 </a>
-                <a href="/simulators" data-site-route="/simulators" data-section="simulador">
+                <a href="#simulador" data-site-route="/simulators" data-section="simulador">
                     
                     <span lang-content="en">Simulators</span>
                     
@@ -1201,24 +1234,24 @@
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="desktop-resources-menu" class="desktop-resources-menu">
-                        <a href="/tools" data-site-route="/tools" data-section="herramientas">
+                        <a href="#herramientas" data-site-route="/tools" data-section="herramientas">
                             
                             <span lang-content="en">Tools</span>
                             
                         </a>
-                        <a href="/templates" data-site-route="/templates" data-section="plantillas">
+                        <a href="#plantillas" data-site-route="/templates" data-section="plantillas">
                             
                             <span lang-content="en">Templates</span>
                             
                         </a>
                     </div>
                 </div>
-                <a href="/faq" data-site-route="/faq" data-section="preguntas-frecuentes">
+                <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
                     
                     <span lang-content="en">FAQ</span>
                     
                 </a>
-                <a href="/assessment" data-site-route="/assessment" data-section="assessment" class="desktop-nav-cta">
+                <a href="#assessment" data-site-route="/assessment" data-section="assessment" class="desktop-nav-cta">
                     
                     <span lang-content="en">Freedom Compass</span>
                     
@@ -1227,9 +1260,19 @@
 
             <!-- Navigation Links & Flags -->
             <div class="header-actions flex items-center gap-1 sm:gap-2 shrink-0">
-                <!-- Trilingual Flag Language Selectors -->
-                <div class="header-language-switcher flex items-center gap-1 bg-white/80 p-1 rounded-full border border-creamborder shadow-sm">
-                    <button type="button" onclick="setLanguage('en')" id="btn-en" aria-label="View site in English" aria-pressed="false" class="lang-btn flex h-8 w-10 items-center justify-center rounded-full p-1.5 hover:text-forestgreen transition-all">
+                <!-- Trilingual Flag Language Selectors.
+                     Real links, not buttons: each language is a distinct
+                     pre-rendered document, so switching is a navigation. This
+                     also makes the alternates crawlable and keyboard/AT
+                     behaviour match the blog header. The generator marks the
+                     current one with aria-current="page". -->
+                <span id="language-switcher-label" class="sr-only">
+                    
+                    <span lang-content="en">Language</span>
+                    
+                </span>
+                <nav class="header-language-switcher flex items-center gap-1 bg-white/80 p-1 rounded-full border border-creamborder shadow-sm" aria-labelledby="language-switcher-label">
+                    <a aria-current="page" href="/en/" id="btn-en" data-lang-switch="en" hreflang="en" lang="en" aria-label="View site in English" class="lang-btn flex h-8 w-10 items-center justify-center rounded-full p-1.5 hover:text-forestgreen transition-all active">
                         <svg aria-hidden="true" viewBox="0 0 28 20" class="h-4 w-6 overflow-hidden rounded-sm shadow-sm" xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="20" fill="#fff"/>
                             <path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0z"/>
@@ -1237,23 +1280,23 @@
                             <rect width="12" height="11" fill="#3C3B6E"/>
                             <path fill="#fff" d="M2 2h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 4h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1zM2 6h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 8h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1z"/>
                         </svg>
-                    </button>
-                    <button type="button" onclick="setLanguage('es')" id="btn-es" aria-label="Ver sitio en español" aria-pressed="true" class="lang-btn active flex h-8 w-10 items-center justify-center rounded-full p-1.5 hover:text-forestgreen transition-all">
+                    </a>
+                    <a href="/" id="btn-es" data-lang-switch="es" hreflang="es" lang="es" aria-label="Ver sitio en español" class="lang-btn flex h-8 w-10 items-center justify-center rounded-full p-1.5 hover:text-forestgreen transition-all">
                         <svg aria-hidden="true" viewBox="0 0 28 20" class="h-4 w-6 overflow-hidden rounded-sm shadow-sm" xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="20" fill="#AA151B"/>
                             <rect y="5" width="28" height="10" fill="#F1BF00"/>
                             <rect x="7" y="8" width="2" height="5" rx="0.5" fill="#AA151B" opacity="0.85"/>
                         </svg>
-                    </button>
-                    <button type="button" onclick="setLanguage('pt')" id="btn-pt" aria-label="Ver site em português" aria-pressed="false" class="lang-btn flex h-8 w-10 items-center justify-center rounded-full p-1.5 hover:text-forestgreen transition-all">
+                    </a>
+                    <a href="/pt/" id="btn-pt" data-lang-switch="pt" hreflang="pt" lang="pt" aria-label="Ver site em português" class="lang-btn flex h-8 w-10 items-center justify-center rounded-full p-1.5 hover:text-forestgreen transition-all">
                         <svg aria-hidden="true" viewBox="0 0 28 20" class="h-4 w-6 overflow-hidden rounded-sm shadow-sm" xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="20" fill="#009B3A"/>
                             <path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/>
                             <circle cx="14" cy="10" r="4" fill="#002776"/>
                             <path d="M10.5 9.3c2.3-.7 4.8-.3 7 1" fill="none" stroke="#fff" stroke-width="0.8"/>
                         </svg>
-                    </button>
-                </div>
+                    </a>
+                </nav>
 
                 <!-- Publication Links -->
                 <div class="header-publication-switcher" aria-label="Publications">
@@ -1281,10 +1324,10 @@
                     
                 </p>
                 <nav class="mobile-nav" aria-label="Mobile section navigation">
-                    <a class="mobile-nav-link" href="/pillars" data-site-route="/pillars" data-section="pilares">
+                    <a class="mobile-nav-link" href="#pilares" data-site-route="/pillars" data-section="pilares">
                         <span lang-content="en">Pillars</span>
                     </a>
-                    <a class="mobile-nav-link" href="/simulators" data-site-route="/simulators" data-section="simulador">
+                    <a class="mobile-nav-link" href="#simulador" data-site-route="/simulators" data-section="simulador">
                         <span lang-content="en">Simulators</span>
                     </a>
                     <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-resources-panel">
@@ -1292,23 +1335,23 @@
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="mobile-resources-panel" class="mobile-resources-panel" hidden>
-                        <a class="mobile-nav-link" href="/tools" data-site-route="/tools" data-section="herramientas">
+                        <a class="mobile-nav-link" href="#herramientas" data-site-route="/tools" data-section="herramientas">
                             <span lang-content="en">Tools</span>
                         </a>
-                        <a class="mobile-nav-link" href="/templates" data-site-route="/templates" data-section="plantillas">
+                        <a class="mobile-nav-link" href="#plantillas" data-site-route="/templates" data-section="plantillas">
                             <span lang-content="en">Templates</span>
                         </a>
                     </div>
-                    <a class="mobile-nav-link" href="/faq" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
+                    <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
                 </nav>
-                <a class="mobile-nav-cta" href="/assessment" data-site-route="/assessment" data-section="assessment">
+                <a class="mobile-nav-cta" href="#assessment" data-site-route="/assessment" data-section="assessment">
                     <span lang-content="en">Freedom Compass</span>
                     <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M4 10h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
             </div>
         </div>
 
-    <main>
+    <main id="main" tabindex="-1">
     <!-- HERO SECTION -->
     <section class="relative overflow-hidden bg-gradient-to-br from-forestgreen via-forestgreen to-darkbark text-white py-20 lg:py-28">
         <!-- Technical background pattern mimicking financial grid structure -->
@@ -1685,81 +1728,66 @@
         </div>
     </section>
 
-    <!-- PERSONAL FINANCE SIMULATOR -->
+    <!-- INTERACTIVE SIMULATOR SUITE -->
     <section id="simulador" aria-labelledby="simulator-heading" class="simulator-stage scroll-mt-20 py-20 text-white border-b border-creamborder">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="simulator-panel">
-                <div>
-                    <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-3">
-                        
-                        <span lang-content="en">Learn by making decisions</span>
-                        
-                    </p>
-                    <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-6">
-                        
-                        <span lang-content="en">Personal Finance Simulator</span>
-                        
-                    </h2>
-                    <p class="text-base sm:text-lg text-creamsoft/85 leading-relaxed max-w-2xl mb-4">
-                        
-                        <span lang-content="en">Test how you respond to everyday financial decisions. Every choice changes your net worth, cash flow, happiness, and financial intelligence.</span>
-                        
-                    </p>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed max-w-2xl mb-8">
-                        
-                        <span lang-content="en">Work through 15 scenarios, discover the consequences of your decisions, and see how many points you earn at the end.</span>
-                        
-                    </p>
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-3"><span lang-content="en">Learn by experimenting</span></p>
+                <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4"><span lang-content="en">Five simulators to design your freedom</span></h2>
+                <p class="text-base text-creamsoft/80 leading-relaxed"><span lang-content="en">Explore decisions, time, markets, passive income, and the resilience of your FIRE plan through free hands-on experiences.</span></p>
+            </div>
 
+            <div class="simulator-grid">
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">Financial Decisions</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Navigate 15 everyday scenarios and see how each choice changes your wealth, well-being, and financial knowledge.</span></p>
                     
-                    <a lang-content="en" href="/en/simulator.html" class="simulator-play-link">
-                        <span>Play the simulator</span>
-                        <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
-                    </a>
+                    <a lang-content="en" href="/en/simulator.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                     
-                </div>
+                </article>
 
-                <div class="simulator-scorecard" aria-hidden="true">
-                    <div class="flex items-center justify-between gap-4 mb-5">
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-warmgold font-extrabold">
-                                
-                                <span lang-content="en">Your scorecard</span>
-                                
-                            </p>
-                            <p class="text-xl font-extrabold mt-1">
-                                
-                                <span lang-content="en">Decision 08 / 15</span>
-                                
-                            </p>
-                        </div>
-                        <div class="simulator-compass w-14 h-14 rounded-full flex items-center justify-center text-warmgold text-xl">
-                            <i class="fa-solid fa-compass"></i>
-                        </div>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="en">Net worth</span></span>
-                        <strong class="simulator-value-positive">+$18,240</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="en">Cash flow</span></span>
-                        <strong class="simulator-value-gold">+$735</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="en">Happiness</span></span>
-                        <strong class="simulator-value-happiness">68%</strong>
-                    </div>
-                    <div class="simulator-score-row">
-                        <span class="simulator-score-label text-sm"><span lang-content="en">Financial intelligence</span></span>
-                        <strong class="simulator-value-iq">74 pts</strong>
-                    </div>
-                </div>
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">Freedom Calendar</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Turn financial goals into a visual timeline and discover when each level of freedom may come within reach.</span></p>
+                    
+                    <a lang-content="en" href="/en/simulators/freedom-calendar.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    
+                </article>
+
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">Market Time Machine</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Compare portfolios across historic crises and cycles to understand risk, recovery, and the power of staying invested.</span></p>
+                    
+                    <a lang-content="en" href="/en/simulators/market-time-machine.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    
+                </article>
+
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">Passive Income Engine</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Build an asset mix, advance through time, and watch cash flow grow toward covering your living expenses.</span></p>
+                    
+                    <a lang-content="en" href="/en/simulators/passive-income-engine.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    
+                </article>
+
+                <article class="simulator-card">
+                    <div class="simulator-card-icon"><i class="fa-solid fa-plane-up" aria-hidden="true"></i></div>
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">FIRE Survival Flight</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Stress-test retirement across thousands of possible futures with Monte Carlo and measure your portfolio's survival odds.</span></p>
+                    
+                    <a lang-content="en" href="/en/simulators/monte-carlo-fire.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    
+                </article>
             </div>
         </div>
     </section>
 
     <!-- INTERACTIVE CALCULATORS SUITE SECTION -->
-    <section id="herramientas" class="scroll-mt-20 py-16 bg-creamsoft border-t border-b border-creamborder">
+    <section id="herramientas" class="scroll-mt-20 py-16 bg-creamsoft border-t border-b border-creamborder" aria-labelledby="calculators-heading">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-1">
@@ -1767,7 +1795,7 @@
                     <span lang-content="en">Financial Tools</span>
                     
                 </p>
-                <h2 class="text-3xl font-extrabold text-forestgreen">
+                <h2 id="calculators-heading" class="text-3xl font-extrabold text-forestgreen">
                     
                     <span lang-content="en">Tools that turn money into freedom</span>
                     
@@ -1794,26 +1822,29 @@
                 </div>
             </div>
 
-            <!-- Tab Switching Nav Capsules -->
+            <!-- Tab Switching Nav Capsules.
+                 WAI-ARIA Authoring Practices tabs pattern: roving tabindex, so
+                 the tablist is a single tab stop and Left/Right/Home/End move
+                 between calculators. -->
             <div class="flex justify-center mb-8">
-                <div class="flex flex-wrap justify-center p-1.5 bg-white rounded-2xl border border-creamborder shadow-sm gap-2">
+                <div role="tablist" aria-labelledby="calculators-heading" class="flex flex-wrap justify-center p-1.5 bg-white rounded-2xl border border-creamborder shadow-sm gap-2">
                     <!-- Tab Button 1: Compound Interest -->
-                    <button onclick="switchTab('compound')" id="tab-btn-compound" class="tab-btn active inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
-                        <i class="fa-solid fa-chart-line text-sm"></i>
+                    <button type="button" role="tab" id="tab-btn-compound" aria-selected="true" aria-controls="panel-compound" tabindex="0" data-tab="compound" class="tab-btn active inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
+                        <i class="fa-solid fa-chart-line text-sm" aria-hidden="true"></i>
                         
                         <span lang-content="en">Compound Interest</span>
                         
                     </button>
                     <!-- Tab Button 2: Financial Freedom -->
-                    <button onclick="switchTab('freedom')" id="tab-btn-freedom" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
-                        <i class="fa-solid fa-crown text-sm"></i>
+                    <button type="button" role="tab" id="tab-btn-freedom" aria-selected="false" aria-controls="panel-freedom" tabindex="-1" data-tab="freedom" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
+                        <i class="fa-solid fa-crown text-sm" aria-hidden="true"></i>
                         
                         <span lang-content="en">Financial Freedom</span>
                         
                     </button>
                     <!-- Tab Button 3: Life Cost -->
-                    <button onclick="switchTab('life-cost')" id="tab-btn-life-cost" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
-                        <i class="fa-solid fa-hourglass-half text-sm"></i>
+                    <button type="button" role="tab" id="tab-btn-life-cost" aria-selected="false" aria-controls="panel-life-cost" tabindex="-1" data-tab="life-cost" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
+                        <i class="fa-solid fa-hourglass-half text-sm" aria-hidden="true"></i>
                         
                         <span lang-content="en">Cost in Hours</span>
                         
@@ -1822,7 +1853,7 @@
             </div>
 
             <!-- PANEL 1: COMPOUND INTEREST CALCULATOR -->
-            <div id="panel-compound" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300">
+            <div id="panel-compound" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-compound" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Inputs column -->
                     <div class="space-y-6">
@@ -1835,10 +1866,11 @@
                             </label>
                             <input 
                                 type="number" 
-                                id="calc-initial" 
+                                id="calc-initial"
+                                min="0" max="100000000" step="100" inputmode="decimal" 
                                 value="5000" 
                                 oninput="calculateCompoundInterest()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
 
@@ -1851,10 +1883,11 @@
                             </label>
                             <input 
                                 type="number" 
-                                id="calc-monthly" 
+                                id="calc-monthly"
+                                min="0" max="1000000" step="50" inputmode="decimal" 
                                 value="300" 
                                 oninput="calculateCompoundInterest()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
 
@@ -1872,7 +1905,8 @@
                                         id="calc-years-range" 
                                         min="1" 
                                         max="40" 
-                                        value="25" 
+                                        value="25"
+                                        aria-valuetext="25 años"
                                         oninput="syncYearsRangeToInput(this.value)"
                                         class="w-full accent-forestgreen"
                                     >
@@ -1898,17 +1932,18 @@
                             </label>
                             <input 
                                 type="number" 
-                                id="calc-rate" 
+                                id="calc-rate"
+                                min="0" max="30" inputmode="decimal" 
                                 value="9" 
                                 step="0.5"
                                 oninput="calculateCompoundInterest()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
                     </div>
 
                     <!-- Results Column -->
-                    <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder">
+                    <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-6">
                             <div>
                                 <p class="text-xs font-bold text-forestgreen/75 uppercase tracking-wider mb-1">
@@ -1999,7 +2034,7 @@
             </div>
 
             <!-- PANEL 2: FINANCIAL FREEDOM CALCULATOR (4% RULE) -->
-            <div id="panel-freedom" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
+            <div id="panel-freedom" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-freedom" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Inputs column -->
                     <div class="space-y-6">
@@ -2012,12 +2047,13 @@
                             </label>
                             <input 
                                 type="number" 
-                                id="freedom-current-age" 
+                                id="freedom-current-age"
+                                inputmode="numeric" 
                                 value="30" 
                                 min="1"
                                 max="100"
                                 oninput="calculateFreedom()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
 
@@ -2030,12 +2066,13 @@
                             </label>
                             <input 
                                 type="number" 
-                                id="freedom-target-age" 
+                                id="freedom-target-age"
+                                inputmode="numeric" 
                                 value="60" 
                                 min="1"
                                 max="100"
                                 oninput="calculateFreedom()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
 
@@ -2048,16 +2085,17 @@
                             </label>
                             <input 
                                 type="number" 
-                                id="freedom-desired-income" 
+                                id="freedom-desired-income"
+                                min="0" max="1000000" step="100" inputmode="decimal" 
                                 value="2500" 
                                 oninput="calculateFreedom()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
                     </div>
 
                     <!-- Results Column (Rule of 4%) -->
-                    <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder">
+                    <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-6">
                             <div>
                                 <p class="text-xs font-bold text-forestgreen/75 uppercase tracking-wider mb-1">
@@ -2112,7 +2150,7 @@
             </div>
 
             <!-- PANEL 3: LIFE COST CALCULATOR -->
-            <div id="panel-life-cost" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
+            <div id="panel-life-cost" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-life-cost" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-6">
                         <div>
@@ -2142,11 +2180,12 @@
                             <input
                                 type="number"
                                 id="life-monthly-salary"
+                                inputmode="decimal"
                                 value="2500"
                                 min="0"
                                 step="50"
                                 oninput="calculateLifeCost()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
 
@@ -2159,11 +2198,12 @@
                             <input
                                 type="number"
                                 id="life-monthly-hours"
+                                max="744" inputmode="numeric"
                                 value="160"
                                 min="1"
                                 step="1"
                                 oninput="calculateLifeCost()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
 
@@ -2176,11 +2216,12 @@
                             <input
                                 type="number"
                                 id="life-purchase-cost"
+                                inputmode="decimal"
                                 value="1200"
                                 min="0"
                                 step="10"
                                 oninput="calculateLifeCost()"
-                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                             <p class="text-[10px] text-darkbark/50 mt-2">
                                 
@@ -2190,7 +2231,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder">
+                    <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-7">
                             <div>
                                 <p class="text-[10px] font-bold text-forestgreen/75 uppercase tracking-widest mb-2">
@@ -2309,12 +2350,13 @@
                         </p>
                     </div>
                     <div class="mt-6">
-                        <a href="assets/templates/en/personal-budget.xlsx" download="Template Personal Budget.xlsx" data-template-download="personalBudget" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="/assets/templates/en/personal-budget.xlsx" download="Template Personal Budget.xlsx" data-template-download="personalBudget" aria-describedby="template-meta-personalBudget" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                             
                             <span lang-content="en">Download template</span>
                             
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
+                        <p id="template-meta-personalBudget" data-template-meta="personalBudget" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">XLSX · 10 KB</p>
                     </div>
                 </article>
 
@@ -2348,12 +2390,13 @@
                         </p>
                     </div>
                     <div class="mt-6">
-                        <a href="assets/templates/en/expense-management.xlsx" download="Template Expense Management.xlsx" data-template-download="expenseManagement" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="/assets/templates/en/expense-management.xlsx" download="Template Expense Management.xlsx" data-template-download="expenseManagement" aria-describedby="template-meta-expenseManagement" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                             
                             <span lang-content="en">Download template</span>
                             
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
+                        <p id="template-meta-expenseManagement" data-template-meta="expenseManagement" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">XLSX · 9 KB</p>
                     </div>
                 </article>
 
@@ -2387,12 +2430,13 @@
                         </p>
                     </div>
                     <div class="mt-6">
-                        <a href="https://pay.kiwify.com.br/1K9syUk" data-template-download="monthlyAnalysis" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="https://pay.kiwify.com.br/1K9syUk" data-template-download="monthlyAnalysis" aria-describedby="template-meta-monthlyAnalysis" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                             
                             <span lang-content="en">Download template</span>
                             
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
+                        <p id="template-meta-monthlyAnalysis" data-template-meta="monthlyAnalysis" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">External page</p>
                     </div>
                 </article>
             </div>
@@ -2415,7 +2459,7 @@
                         
                     </p>
                 </div>
-                <a href="#contacto" class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-warmgold text-darkbark text-xs font-extrabold hover:bg-white focus:outline-none focus:ring-4 focus:ring-white/30 transition-all">
+                <a href="#contacto" class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-warmgold text-darkbark text-xs font-extrabold hover:bg-white focus:ring-4 focus:ring-white/30 transition-all">
                     
                     <span lang-content="en">Contact me</span>
                     
@@ -2506,7 +2550,7 @@
                             <span lang-content="en">Review income, expenses, assets, and debts to get an organized view of your starting point.</span>
                             
                         </p>
-                        <a href="https://forms.gle/krYTH3FLmy3mat2h7" data-assessment-link="financialSnapshot" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="https://forms.gle/krYTH3FLmy3mat2h7" data-assessment-link="financialSnapshot" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                             
                             <span lang-content="en">Open Financial Form</span>
                             
@@ -2541,7 +2585,7 @@
                             <span lang-content="en">Explore your goals, time horizon, experience, and emotional tolerance for market fluctuations.</span>
                             
                         </p>
-                        <a href="https://forms.gle/RvyqqxLazobUWuM58" data-assessment-link="riskRelationship" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="https://forms.gle/RvyqqxLazobUWuM58" data-assessment-link="riskRelationship" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                             
                             <span lang-content="en">Open Profile Form</span>
                             
@@ -2685,55 +2729,55 @@
             <div lang-content="en" class="space-y-4">
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>What is the 4% rule for financial freedom?</span>
+                        <h3 class="text-base font-extrabold">What is the 4% rule for financial freedom?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">The 4% rule is a guideline for estimating the invested capital that may support annual spending. Divide annual expenses by 0.04, or multiply them by 25. It is an educational estimate, not a guarantee: taxes, fees, inflation, time horizon, and portfolio composition can change the outcome.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Where can I download personal budget templates in Excel?</span>
+                        <h3 class="text-base font-extrabold">Where can I download personal budget templates in Excel?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding Journey provides free Excel downloads for <a href="assets/templates/en/personal-budget.xlsx" download="Template Personal Budget.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">personal budgeting</a>, <a href="assets/templates/en/expense-management.xlsx" download="Template Expense Management.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">expense tracking</a>, and <a href="assets/templates/en/monthly-balance-analysis.xlsx" download="Template Monthly Balance Analysis.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">monthly personal finance analysis</a>. They are also collected in the <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Templates</a> section.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding Journey provides free Excel downloads for <a href="/assets/templates/en/personal-budget.xlsx" download="Template Personal Budget.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">personal budgeting</a>, <a href="/assets/templates/en/expense-management.xlsx" download="Template Expense Management.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">expense tracking</a>, and <a href="/assets/templates/en/monthly-balance-analysis.xlsx" download="Template Monthly Balance Analysis.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">monthly personal finance analysis</a>. They are also collected in the <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Templates</a> section.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Which free financial calculators does Compounding Journey include?</span>
+                        <h3 class="text-base font-extrabold">Which free financial calculators does Compounding Journey include?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">The page includes a compound interest calculator, a financial freedom calculator based on spending and a withdrawal rate, and a calculator that converts a purchase price into working hours. All three are available in the <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Tools</a> section.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>What is compound growth (or compounding)?</span>
+                        <h3 class="text-base font-extrabold">What is compound growth (or compounding)?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding (or compound growth) is the process where earnings on your money—such as interest, dividends, or capital gains—generate their own earnings over time. Instead of withdrawing your returns, you reinvest them, causing your capital to grow exponentially rather than linearly over long horizons.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>What is the difference between saving and investing?</span>
+                        <h3 class="text-base font-extrabold">What is the difference between saving and investing?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Saving is keeping cash in liquid, low-risk accounts to cover short-term needs or emergency funds. Investing involves buying quality assets (like global index funds or equities) with higher potential growth to preserve purchasing power against inflation and build long-term freedom.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Why might I need a financial advisor or wealth planner?</span>
+                        <h3 class="text-base font-extrabold">Why might I need a financial advisor or wealth planner?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">While online tools provide clarity, a financial advisor helps you connect numbers to your personal life values. An advisor assists in building a customized strategy, managing emotional reactions during market volatility, optimizing tax structures, and keeping your long-term plan disciplined and sustainable.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>How does the “Cost in Hours of Life” calculator work?</span>
+                        <h3 class="text-base font-extrabold">How does the “Cost in Hours of Life” calculator work?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">This calculator determines your net hourly wage based on your monthly income and working hours. It then converts any potential purchase price into the exact number of hours of your life required to pay for it, helping you make mindful spending decisions.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Why is knowing my investment risk profile important before I invest?</span>
+                        <h3 class="text-base font-extrabold">Why is knowing my investment risk profile important before I invest?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Your risk profile measures your time horizon, financial capacity, and emotional tolerance for market fluctuations. Knowing it prevents you from taking risks that keep you awake at night or choosing portfolios so conservative that they fail to keep pace with inflation.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
-                        <span>Does this content replace personalized financial advice?</span>
+                        <h3 class="text-base font-extrabold">Does this content replace personalized financial advice?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. All tools, calculators, and templates on Compounding Journey are strictly educational and illustrative. They do not constitute formal financial, investment, or tax advice. For tailored recommendations based on your personal context, goals, and risk tolerance, you can complete our financial diagnostic forms or send a direct message through our contact section.</p>
                 </details>
@@ -2808,7 +2852,7 @@
 
                                         <!-- Actual Image Tag with fallback failure support -->
                                     <img
-                                        src="icone%20foto%20limpo.png"
+                                        src="/icone%20foto%20limpo.png"
                                         alt="Sandy Bradbury"
                                         width="365"
                                         height="352"
@@ -2819,7 +2863,7 @@
                                 </div>
 
                                 <div class="mt-5 text-center">
-                                    <h3 class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</h3>
+                                    <p class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</p>
                                     <p class="text-xs text-warmgold font-bold uppercase tracking-widest mt-1">
                                         
                                         <span lang-content="en">Financial Advisor</span>
@@ -2921,7 +2965,7 @@
                                 <span lang-content="en">The button automatically opens the English edition selected for this page.</span>
                                 
                             </p>
-                            <a href="https://compoundingjourney.substack.com/" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:outline-none focus:ring-4 focus:ring-warmgold/30 transition-all">
+                            <a href="https://compoundingjourney.substack.com/" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:ring-4 focus:ring-warmgold/30 transition-all">
                                 
                                 <span lang-content="en">Follow the Newsletter</span>
                                 
@@ -2961,7 +3005,7 @@
                             </p>
                         </div>
                     </div>
-                    <a href="#contact-form" class="inline-flex shrink-0 items-center justify-center gap-3 rounded-xl bg-warmgold px-6 py-3.5 text-sm font-extrabold text-darkbark hover:bg-warmgold/95 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all">
+                    <a href="#contact-form" class="inline-flex shrink-0 items-center justify-center gap-3 rounded-xl bg-warmgold px-6 py-3.5 text-sm font-extrabold text-darkbark hover:bg-warmgold/95 focus:ring-4 focus:ring-white/30 transition-all">
                         
                         <span lang-content="en">Open the inquiry form</span>
                         
@@ -2994,12 +3038,29 @@
                     </p>
                 </div>
 
-                <form id="contact-form" name="contact" method="POST" autocomplete="on" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-10">
+                <form id="contact-form" name="contact" method="POST" autocomplete="on" novalidate data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-10">
                     <input type="hidden" name="form-name" value="contact">
-                    <input type="hidden" name="subject" value="Nuevo contacto - Compounding Journey">
-                    <p class="hidden">
-                        <label>No rellenar: <input name="bot-field"></label>
+                    <input type="hidden" name="subject" data-form-copy="subject" value="New contact - Compounding Journey">
+                    <p class="hidden" aria-hidden="true">
+                        <label>
+                            
+                            <span lang-content="en">Do not fill in:</span>
+                            
+                            <input name="bot-field" tabindex="-1" autocomplete="off">
+                        </label>
                     </p>
+
+                    <!-- Error summary. Announced on a failed submit and given focus
+                         so the reader is told what went wrong instead of being
+                         dropped back into the form with no explanation. -->
+                    <div id="form-error-summary" class="hidden rounded-xl border-2 border-[#B3261E] bg-[#FDF2F1] px-4 py-3" role="alert" tabindex="-1">
+                        <p class="text-sm font-bold text-[#8C1D18]">
+                            
+                            <span lang-content="en">Please review the highlighted fields before sending.</span>
+                            
+                        </p>
+                        <ul id="form-error-list" class="mt-2 list-disc pl-5 text-sm text-[#8C1D18] space-y-1"></ul>
+                    </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <!-- Field: Name -->
@@ -3008,16 +3069,24 @@
                                 
                                 <span lang-content="en">Full Name</span>
                                 
+                                <span class="text-[#8C1D18]" aria-hidden="true">*</span>
+                                <span class="sr-only">
+                                    
+                                    <span lang-content="en">(required)</span>
+                                    
+                                </span>
                             </label>
-                            <input 
-                                required 
-                                type="text" 
-                                id="form-name" 
-                                name="name" 
+                            <input
+                                required
+                                type="text"
+                                id="form-name"
+                                name="name"
                                 autocomplete="name"
                                 autocapitalize="words"
-                                class="w-full bg-white border border-creamborder rounded-xl px-4 py-3 text-darkbark text-sm placeholder-darkbark/40 focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen transition-all"
+                                aria-describedby="form-name-error"
+                                class="w-full bg-white border border-creamborder rounded-xl px-4 py-3 text-darkbark text-sm placeholder-darkbark/40 focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen transition-all"
                             >
+                            <p id="form-name-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                         </div>
 
                         <!-- Field: Email -->
@@ -3026,17 +3095,26 @@
                                 
                                 <span lang-content="en">Email Address</span>
                                 
+                                <span class="text-[#8C1D18]" aria-hidden="true">*</span>
+                                <span class="sr-only">
+                                    
+                                    <span lang-content="en">(required)</span>
+                                    
+                                </span>
                             </label>
-                            <input 
-                                required 
-                                type="email" 
-                                id="form-email" 
-                                name="email" 
+                            <input
+                                required
+                                type="email"
+                                id="form-email"
+                                name="email"
                                 autocomplete="email"
                                 inputmode="email"
                                 autocapitalize="none"
-                                class="w-full bg-white border border-creamborder rounded-xl px-4 py-3 text-darkbark text-sm placeholder-darkbark/40 focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen transition-all"
+                                spellcheck="false"
+                                aria-describedby="form-email-error"
+                                class="w-full bg-white border border-creamborder rounded-xl px-4 py-3 text-darkbark text-sm placeholder-darkbark/40 focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen transition-all"
                             >
+                            <p id="form-email-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                         </div>
                     </div>
 
@@ -3046,31 +3124,45 @@
                             
                             <span lang-content="en">How can we help you?</span>
                             
+                            <span class="text-[#8C1D18]" aria-hidden="true">*</span>
+                            <span class="sr-only">
+                                
+                                <span lang-content="en">(required)</span>
+                                
+                            </span>
                         </label>
-                        <textarea 
-                            required 
-                            id="form-message" 
-                            name="message" 
-                            rows="4" 
-                            class="w-full bg-white border border-creamborder rounded-xl px-4 py-3 text-darkbark text-sm placeholder-darkbark/40 focus:outline-none focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen transition-all resize-none"
+                        <textarea
+                            required
+                            id="form-message"
+                            name="message"
+                            rows="4"
+                            aria-describedby="form-message-hint form-message-error"
+                            class="w-full bg-white border border-creamborder rounded-xl px-4 py-3 text-darkbark text-sm placeholder-darkbark/40 focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen transition-all resize-y"
                         ></textarea>
+                        <p id="form-message-hint" class="mt-2 text-xs text-darkbark/60">
+                            
+                            <span lang-content="en">The more context you share, the more concrete the first reply will be.</span>
+                            
+                        </p>
+                        <p id="form-message-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                     </div>
 
                     <!-- Submit Button -->
                     <div class="text-center pt-2">
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             id="submit-btn"
                             class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-lg shadow-forestgreen/10 hover:shadow-forestgreen/25 hover:-translate-y-0.5 transition-all min-w-[200px]"
                         >
-                            <i id="submit-spinner" class="fa-solid fa-circle-notch animate-spin text-warmgold hidden"></i>
+                            <i id="submit-spinner" class="fa-solid fa-circle-notch animate-spin text-warmgold hidden" aria-hidden="true"></i>
+
                             
+                            <span id="submit-text-en" lang-content="en">Send Message</span>
                             
-                            <span id="submit-text-en" lang-content="en" class="hidden">Send Message</span>
-                            
-                            
-                            <i class="fa-solid fa-paper-plane text-sm text-warmgold"></i>
+
+                            <i class="fa-solid fa-paper-plane text-sm text-warmgold" aria-hidden="true"></i>
                         </button>
+                        <p id="form-submit-status" class="sr-only" role="status" aria-live="polite"></p>
                     </div>
                 </form>
 
@@ -3111,10 +3203,10 @@
                 <!-- Newsletter Minimalistic Brand Tree Vector mimicking original logo structure -->
                 <div class="h-16 w-16 mb-4 filter brightness-125">
                     <img
-                        src="logo-compounding-journey.png"
+                        src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover"
                         alt="Compounding Journey"
-                        width="2048"
-                        height="2048"
+                        width="128"
+                        height="128"
                         loading="lazy"
                         class="h-full w-full object-cover rounded-xl border border-white/20 shadow-md"
                     />
@@ -3139,7 +3231,7 @@
                     
                 </p>
                 <div class="flex gap-4">
-                    <a href="/faq" data-site-route="/faq" data-section="preguntas-frecuentes" class="hover:text-warmgold transition-colors">FAQ</a>
+                    <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes" class="hover:text-warmgold transition-colors">FAQ</a>
                     <a href="#contacto" class="hover:text-warmgold transition-colors">
                         
                         <span lang-content="en">Contact</span>
@@ -3320,11 +3412,11 @@
                     href: "https://pay.kiwify.com.br/1K9syUk"
                 },
                 expenseManagement: {
-                    href: "assets/templates/en/expense-management.xlsx",
+                    href: "/assets/templates/en/expense-management.xlsx",
                     filename: "Template Expense Management.xlsx"
                 },
                 personalBudget: {
-                    href: "assets/templates/en/personal-budget.xlsx",
+                    href: "/assets/templates/en/personal-budget.xlsx",
                     filename: "Template Personal Budget.xlsx"
                 }
             },
@@ -3333,11 +3425,11 @@
                     href: "https://pay.kiwify.com.br/RyUPxbu"
                 },
                 expenseManagement: {
-                    href: "assets/templates/es/gestion-de-gastos.xlsx",
+                    href: "/assets/templates/es/gestion-de-gastos.xlsx",
                     filename: "Plantilla de Gestion de Gastos.xlsx"
                 },
                 personalBudget: {
-                    href: "assets/templates/es/presupuesto-personal.xlsx",
+                    href: "/assets/templates/es/presupuesto-personal.xlsx",
                     filename: "Plantilla de Presupuesto Personal.xlsx"
                 }
             },
@@ -3346,11 +3438,11 @@
                     href: "https://pay.kiwify.com.br/cIkE63K"
                 },
                 expenseManagement: {
-                    href: "assets/templates/pt/gestao-de-despesas.xlsx",
+                    href: "/assets/templates/pt/gestao-de-despesas.xlsx",
                     filename: "Modelo de Gestao de Despesas.xlsx"
                 },
                 personalBudget: {
-                    href: "assets/templates/pt/orcamento-pessoal.xlsx",
+                    href: "/assets/templates/pt/orcamento-pessoal.xlsx",
                     filename: "Modelo de Orcamento Pessoal.xlsx"
                 }
             }
@@ -3467,13 +3559,13 @@
             
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
-                btn.setAttribute('aria-pressed', 'false');
+                btn.removeAttribute('aria-current');
             });
-            
+
             const activeBtn = document.getElementById('btn-' + normalizedLanguage);
             if (activeBtn) {
                 activeBtn.classList.add('active');
-                activeBtn.setAttribute('aria-pressed', 'true');
+                activeBtn.setAttribute('aria-current', 'page');
             }
 
             document.querySelectorAll('[data-newsletter-link]').forEach(link => {
@@ -3522,29 +3614,28 @@
             // Sync Placeholders
             const p = inputPlaceholders[normalizedLanguage];
             if (p) {
-                document.getElementById('form-name').placeholder = p.name;
-                document.getElementById('form-email').placeholder = p.email;
-                document.getElementById('form-message').placeholder = p.message;
+                const nameField = document.getElementById('form-name');
+                const emailField = document.getElementById('form-email');
+                const messageField = document.getElementById('form-message');
+                if (nameField) nameField.placeholder = p.name;
+                if (emailField) emailField.placeholder = p.email;
+                if (messageField) messageField.placeholder = p.message;
             }
 
-            // Submit Buttons translations
-            const textEs = document.getElementById('submit-text');
-            const textEn = document.getElementById('submit-text-en');
-            const textPt = document.getElementById('submit-text-pt');
+            // Submit button label. The three labels are lang-content spans, so a
+            // pre-rendered page only contains its own: dereferencing the other
+            // two threw here and killed every initializer that runs after
+            // setLanguage — the calculator tabs, the navigation menus, the
+            // external-link notices and the scroll spy all stayed unbound.
+            const submitLabels = {
+                es: document.getElementById('submit-text'),
+                en: document.getElementById('submit-text-en'),
+                pt: document.getElementById('submit-text-pt')
+            };
 
-            if (normalizedLanguage === 'es') {
-                textEs.classList.remove('hidden');
-                textEn.classList.add('hidden');
-                textPt.classList.add('hidden');
-            } else if (normalizedLanguage === 'en') {
-                textEs.classList.add('hidden');
-                textEn.classList.remove('hidden');
-                textPt.classList.add('hidden');
-            } else if (normalizedLanguage === 'pt') {
-                textEs.classList.add('hidden');
-                textEn.classList.add('hidden');
-                textPt.classList.remove('hidden');
-            }
+            Object.entries(submitLabels).forEach(([code, label]) => {
+                if (label) label.classList.toggle('hidden', code !== normalizedLanguage);
+            });
 
             // Recalculate calculators to adapt currency visual formatting if necessary
             calculateCompoundInterest();
@@ -3572,36 +3663,70 @@
         }
 
         // TAB SWITCHER
-        function switchTab(tabId) {
-            // Remove active states from buttons
-            document.getElementById('tab-btn-compound').classList.remove('active');
-            document.getElementById('tab-btn-freedom').classList.remove('active');
-            document.getElementById('tab-btn-life-cost').classList.remove('active');
+        const calculatorTabs = ['compound', 'freedom', 'life-cost'];
+        const calculatorRecalculators = {
+            compound: () => calculateCompoundInterest(),
+            freedom: () => calculateFreedom(),
+            'life-cost': () => calculateLifeCost()
+        };
 
-            // Hide panels
-            document.getElementById('panel-compound').classList.add('hidden');
-            document.getElementById('panel-freedom').classList.add('hidden');
-            document.getElementById('panel-life-cost').classList.add('hidden');
+        function switchTab(tabId, moveFocus = false) {
+            if (!calculatorTabs.includes(tabId)) return;
 
-            // Apply active state
-            if (tabId === 'compound') {
-                document.getElementById('tab-btn-compound').classList.add('active');
-                document.getElementById('panel-compound').classList.remove('hidden');
-                calculateCompoundInterest();
-            } else if (tabId === 'freedom') {
-                document.getElementById('tab-btn-freedom').classList.add('active');
-                document.getElementById('panel-freedom').classList.remove('hidden');
-                calculateFreedom();
-            } else if (tabId === 'life-cost') {
-                document.getElementById('tab-btn-life-cost').classList.add('active');
-                document.getElementById('panel-life-cost').classList.remove('hidden');
-                calculateLifeCost();
-            }
+            calculatorTabs.forEach(id => {
+                const button = document.getElementById(`tab-btn-${id}`);
+                const panel = document.getElementById(`panel-${id}`);
+                const isSelected = id === tabId;
+
+                button.classList.toggle('active', isSelected);
+                // Roving tabindex: only the selected tab is in the tab order,
+                // so Tab enters and leaves the tablist as one stop.
+                button.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+                button.setAttribute('tabindex', isSelected ? '0' : '-1');
+                panel.classList.toggle('hidden', !isSelected);
+            });
+
+            calculatorRecalculators[tabId]();
+
+            if (moveFocus) document.getElementById(`tab-btn-${tabId}`).focus();
+        }
+
+        function initializeCalculatorTabs() {
+            const tablist = document.querySelector('[role="tablist"][aria-labelledby="calculators-heading"]');
+            if (!tablist) return;
+
+            const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+
+                tab.addEventListener('keydown', event => {
+                    let nextIndex = null;
+                    if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+                    else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+                    else if (event.key === 'Home') nextIndex = 0;
+                    else if (event.key === 'End') nextIndex = tabs.length - 1;
+                    if (nextIndex === null) return;
+
+                    event.preventDefault();
+                    switchTab(tabs[nextIndex].dataset.tab, true);
+                });
+            });
         }
 
         // COMPOUND INTEREST CALCULATOR ENGINE
+        const yearsUnitLabels = {
+            es: value => `${value} ${Number(value) === 1 ? 'año' : 'años'}`,
+            en: value => `${value} ${Number(value) === 1 ? 'year' : 'years'}`,
+            pt: value => `${value} ${Number(value) === 1 ? 'ano' : 'anos'}`
+        };
+
         function syncYearsRangeToInput(val) {
             document.getElementById('calc-years-display').textContent = val;
+            // A bare slider announces "25" with no unit. aria-valuetext supplies
+            // the human reading (WCAG SC 1.3.1 / 4.1.2).
+            const slider = document.getElementById('calc-years-range');
+            if (slider) slider.setAttribute('aria-valuetext', yearsUnitLabels[currentLanguage()](val));
             calculateCompoundInterest();
         }
 
@@ -3718,15 +3843,147 @@
         }
 
         // NETLIFY FORMS AJAX SUBMISSION
+        // Localized form copy. `subject` is also read at build time by
+        // scripts/generate-home-pages.mjs, which stamps it into the hidden
+        // Netlify Forms field so the notification email is not always Spanish.
+        const formCopy = {
+            es: {
+                subject: "Nuevo contacto - Compounding Journey",
+                nameRequired: "Escribe tu nombre completo.",
+                emailRequired: "Escribe tu correo electrónico.",
+                emailInvalid: "Ese correo electrónico no parece válido. Revisa el formato, por ejemplo nombre@dominio.com.",
+                messageRequired: "Cuéntanos en qué te podemos ayudar.",
+                sending: "Enviando tu mensaje…",
+                sent: "Mensaje enviado correctamente.",
+                failed: "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo."
+            },
+            en: {
+                subject: "New contact - Compounding Journey",
+                nameRequired: "Enter your full name.",
+                emailRequired: "Enter your email address.",
+                emailInvalid: "That email address does not look valid. Check the format, for example name@domain.com.",
+                messageRequired: "Tell us how we can help you.",
+                sending: "Sending your message…",
+                sent: "Message sent successfully.",
+                failed: "There was a problem sending your message. Please try again."
+            },
+            pt: {
+                subject: "Novo contacto - Compounding Journey",
+                nameRequired: "Escreve o teu nome completo.",
+                emailRequired: "Escreve o teu e-mail.",
+                emailInvalid: "Esse e-mail não parece válido. Verifica o formato, por exemplo nome@dominio.com.",
+                messageRequired: "Conta-nos como te podemos ajudar.",
+                sending: "A enviar a tua mensagem…",
+                sent: "Mensagem enviada com sucesso.",
+                failed: "Ocorreu um problema ao enviar a tua mensagem. Por favor, tenta novamente."
+            }
+        };
+
+        function currentLanguage() {
+            if (document.body.classList.contains('lang-en')) return 'en';
+            if (document.body.classList.contains('lang-pt')) return 'pt';
+            return 'es';
+        }
+
+        function setFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(`${fieldId}-error`);
+            if (!field || !error) return;
+
+            if (message) {
+                error.textContent = message;
+                error.hidden = false;
+                field.setAttribute('aria-invalid', 'true');
+                field.classList.add('border-[#B3261E]');
+                field.classList.remove('border-creamborder');
+            } else {
+                error.textContent = '';
+                error.hidden = true;
+                field.removeAttribute('aria-invalid');
+                field.classList.remove('border-[#B3261E]');
+                field.classList.add('border-creamborder');
+            }
+        }
+
+        function validateContactForm() {
+            const copy = formCopy[currentLanguage()];
+            const values = {
+                'form-name': document.getElementById('form-name').value.trim(),
+                'form-email': document.getElementById('form-email').value.trim(),
+                'form-message': document.getElementById('form-message').value.trim()
+            };
+
+            const errors = [];
+            if (!values['form-name']) errors.push(['form-name', copy.nameRequired]);
+            if (!values['form-email']) {
+                errors.push(['form-email', copy.emailRequired]);
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values['form-email'])) {
+                errors.push(['form-email', copy.emailInvalid]);
+            }
+            if (!values['form-message']) errors.push(['form-message', copy.messageRequired]);
+
+            ['form-name', 'form-email', 'form-message'].forEach(id => setFieldError(id, null));
+            errors.forEach(([id, message]) => setFieldError(id, message));
+
+            const summary = document.getElementById('form-error-summary');
+            const list = document.getElementById('form-error-list');
+            list.textContent = '';
+
+            if (errors.length === 0) {
+                summary.classList.add('hidden');
+                return true;
+            }
+
+            errors.forEach(([id, message]) => {
+                const item = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = `#${id}`;
+                link.className = 'underline font-semibold';
+                link.textContent = message;
+                link.addEventListener('click', clickEvent => {
+                    clickEvent.preventDefault();
+                    document.getElementById(id).focus();
+                });
+                item.appendChild(link);
+                list.appendChild(item);
+            });
+
+            summary.classList.remove('hidden');
+            summary.focus();
+            return false;
+        }
+
+        // Clear a field's error as soon as the reader fixes it, rather than
+        // making them submit again to find out.
+        ['form-name', 'form-email', 'form-message'].forEach(id => {
+            const field = document.getElementById(id);
+            if (!field) return;
+            field.addEventListener('input', () => {
+                if (field.getAttribute('aria-invalid') === 'true') setFieldError(id, null);
+            });
+        });
+
+        let contactSubmitInFlight = false;
+
         async function handleFormSubmit(event) {
             event.preventDefault();
+            if (contactSubmitInFlight) return;
             const form = event.target;
             const submitBtn = document.getElementById('submit-btn');
             const spinner = document.getElementById('submit-spinner');
             const successCard = document.getElementById('success-card');
+            const status = document.getElementById('form-submit-status');
+            const copy = formCopy[currentLanguage()];
 
-            submitBtn.disabled = true;
+            if (!validateContactForm()) return;
+
+            // aria-disabled rather than `disabled`: a disabled control is removed
+            // from the tab order mid-interaction, which loses the reader's place.
+            contactSubmitInFlight = true;
+            submitBtn.setAttribute('aria-disabled', 'true');
+            submitBtn.setAttribute('aria-busy', 'true');
             spinner.classList.remove('hidden');
+            status.textContent = copy.sending;
 
             const formData = new FormData(form);
 
@@ -3739,34 +3996,51 @@
                     body: new URLSearchParams(formData).toString()
                 });
 
-                if (response.ok) {
-                    successCard.classList.remove('hidden');
-                    successCard.style.opacity = '1';
-                    form.reset();
-                } else {
-                    throw new Error("Netlify Forms submission failed");
+                if (!response.ok) throw new Error("Netlify Forms submission failed");
+
+                status.textContent = copy.sent;
+                successCard.classList.remove('hidden');
+                successCard.style.opacity = '1';
+                form.reset();
+                // The success panel covers the form; hide the form from AT and
+                // the tab order while it does, then move focus into the panel.
+                form.inert = true;
+                form.setAttribute('aria-hidden', 'true');
+                const heading = successCard.querySelector('h3');
+                if (heading) {
+                    heading.setAttribute('tabindex', '-1');
+                    heading.focus();
                 }
             } catch (err) {
                 console.error(err);
-                const errorMessages = {
-                    es: "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.",
-                    en: "There was a problem sending your message. Please try again.",
-                    pt: "Ocorreu um problema ao enviar a tua mensagem. Por favor, tenta novamente."
-                };
-                const language = document.body.classList.contains('lang-en')
-                    ? 'en'
-                    : document.body.classList.contains('lang-pt') ? 'pt' : 'es';
-                alert(errorMessages[language]);
+                status.textContent = copy.failed;
+                const summary = document.getElementById('form-error-summary');
+                const list = document.getElementById('form-error-list');
+                list.textContent = '';
+                const item = document.createElement('li');
+                item.textContent = copy.failed;
+                list.appendChild(item);
+                summary.classList.remove('hidden');
+                summary.focus();
             } finally {
-                submitBtn.disabled = false;
+                contactSubmitInFlight = false;
+                submitBtn.removeAttribute('aria-disabled');
+                submitBtn.removeAttribute('aria-busy');
                 spinner.classList.add('hidden');
             }
         }
 
         function resetFeedbackCard() {
             const successCard = document.getElementById('success-card');
+            const form = document.getElementById('contact-form');
             successCard.classList.add('hidden');
             successCard.style.opacity = '0';
+            if (form) {
+                form.inert = false;
+                form.removeAttribute('aria-hidden');
+                const firstField = document.getElementById('form-name');
+                if (firstField) firstField.focus();
+            }
         }
 
         const siteRoutes = {
@@ -3782,11 +4056,27 @@
             return supportedLanguages.find(language => document.body.classList.contains(`lang-${language}`)) || 'es';
         }
 
+        // CSS `prefers-reduced-motion` cannot override the `behavior` option
+        // passed to scrollIntoView, so the preference is read in script too.
+        const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function motionBehavior(preferred = 'smooth') {
+            return reducedMotionQuery.matches ? 'auto' : preferred;
+        }
+
         function scrollToSiteSection(sectionId, behavior = 'smooth') {
             const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior, block: 'start' });
+            if (!section) return;
+
+            section.scrollIntoView({ behavior: motionBehavior(behavior), block: 'start' });
+
+            // Scrolling alone moves the viewport but leaves keyboard and screen
+            // reader focus at the top of the document, so the next Tab lands
+            // back in the header. Move focus to the section as well.
+            if (!section.hasAttribute('tabindex')) {
+                section.setAttribute('tabindex', '-1');
             }
+            section.focus({ preventScroll: true });
         }
 
         function closeDesktopResources() {
@@ -3823,12 +4113,19 @@
                 mobileResourcesPanel.hidden = !open;
             };
 
+            const backgroundLayers = () => [
+                document.querySelector('header.site-header'),
+                document.getElementById('main'),
+                document.querySelector('footer')
+            ].filter(Boolean);
+
             const closeMobileMenu = (restoreFocus = true) => {
                 if (!mobileMenu || !mobileMenuToggle || mobileMenu.hidden) return;
                 mobileMenu.hidden = true;
                 mobileMenuToggle.setAttribute('aria-expanded', 'false');
                 mobileMenuToggle.setAttribute('aria-label', getNavigationLabels().open);
                 document.body.style.overflow = previousBodyOverflow;
+                backgroundLayers().forEach(layer => { layer.inert = false; });
                 setMobileResourcesOpen(false);
                 if (restoreFocus) mobileMenuToggle.focus();
             };
@@ -3840,6 +4137,10 @@
                 mobileMenuToggle.setAttribute('aria-expanded', 'true');
                 mobileMenuToggle.setAttribute('aria-label', getNavigationLabels().close);
                 document.body.style.overflow = 'hidden';
+                // The drawer declares aria-modal, but that alone does not stop a
+                // screen reader's virtual cursor or the Tab key from reaching the
+                // page behind it. `inert` does both.
+                backgroundLayers().forEach(layer => { layer.inert = true; });
                 mobileMenu.querySelector('.mobile-nav-link, .mobile-resources-toggle')?.focus();
             };
 
@@ -3870,6 +4171,13 @@
 
             document.addEventListener('keydown', event => {
                 if (event.key === 'Escape') {
+                    // Dismissing a menu must return focus to the control that
+                    // opened it, or the reader is dropped at the top of the page.
+                    if (dropdown?.hasAttribute('data-open') && dropdown.contains(document.activeElement)) {
+                        closeDesktopResources();
+                        dropdownToggle?.focus();
+                        return;
+                    }
                     closeDesktopResources();
                     closeMobileMenu();
                     return;
@@ -3890,26 +4198,51 @@
                 }
             });
 
+            // The nav used to href="/pillars" and push "/pillars?lang=en" into
+            // history. Those paths are apex redirects, so an English reader who
+            // middle-clicked the link opened the Spanish page, and every section
+            // ended up reachable at two URLs that crawlers had to reconcile.
+            // The links are now plain same-page anchors; this handler only adds
+            // the menu-closing and smooth-scroll behaviour on top of them.
             document.querySelectorAll('[data-site-route]').forEach(link => {
                 link.addEventListener('click', event => {
                     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-                    const route = link.dataset.siteRoute;
-                    const sectionId = link.dataset.section || siteRoutes[route];
-                    if (!route || !sectionId) return;
+                    const sectionId = link.dataset.section || siteRoutes[link.dataset.siteRoute];
+                    if (!sectionId) return;
 
                     event.preventDefault();
-                    const language = getActiveLanguage();
-                    const nextUrl = new URL(route, window.location.origin);
-                    nextUrl.searchParams.set('lang', language);
-                    window.history.pushState({ lang: language, sectionId }, '', nextUrl);
+                    window.history.pushState({ lang: getActiveLanguage(), sectionId }, '', `#${sectionId}`);
                     closeDesktopResources();
                     closeMobileMenu(false);
                     scrollToSiteSection(sectionId);
                 });
             });
 
+            // In-page calls to action — "Contact me", "Open the inquiry form",
+            // the contact path links and the footer links — were bare fragment
+            // anchors that bypassed this layer entirely: no smooth scroll, no
+            // focus move to the destination, and a history entry written by the
+            // browser rather than one carrying the active language. Routing them
+            // through the same handler makes every in-page link on the site
+            // behave identically, whichever language document is being served.
+            document.addEventListener('click', event => {
+                if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+                const link = event.target.closest('a[href^="#"]');
+                if (!link || link.hasAttribute('data-site-route') || link.classList.contains('skip-link')) return;
+
+                const sectionId = decodeURIComponent(link.getAttribute('href').slice(1));
+                if (!sectionId || !document.getElementById(sectionId)) return;
+
+                event.preventDefault();
+                window.history.pushState({ lang: getActiveLanguage(), sectionId }, '', `#${sectionId}`);
+                closeDesktopResources();
+                closeMobileMenu(false);
+                scrollToSiteSection(sectionId);
+            });
+
             window.addEventListener('resize', () => {
-                if (window.innerWidth >= 1180) closeMobileMenu(false);
+                if (window.innerWidth >= 1024) closeMobileMenu(false);
             });
         }
 
@@ -4016,6 +4349,35 @@
             window.history.replaceState(window.history.state, "", url);
         }
 
+        // Links that open a new tab must say so, or the reader loses the Back
+        // button with no warning (WCAG 3.2.5 / G201). Applied in script so a new
+        // external link cannot ship without the notice.
+        const newTabNotice = {
+            es: 'se abre en una pestaña nueva',
+            en: 'opens in a new tab',
+            pt: 'abre num separador novo'
+        };
+
+        function annotateExternalLinks() {
+            const notice = newTabNotice[currentLanguage()];
+
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                if (link.dataset.newTabAnnotated === 'true') return;
+                link.dataset.newTabAnnotated = 'true';
+
+                const label = link.getAttribute('aria-label');
+                if (label) {
+                    link.setAttribute('aria-label', `${label} (${notice})`);
+                    return;
+                }
+
+                const hint = document.createElement('span');
+                hint.className = 'sr-only';
+                hint.textContent = ` (${notice})`;
+                link.appendChild(hint);
+            });
+        }
+
         // Initialize language and calculator values as soon as the page markup is ready.
         // The URL is left untouched here: rewriting "/" to "/?lang=xx" on load would
         // make the canonical depend on the visitor's browser locale.
@@ -4023,6 +4385,8 @@
             stripLanguageQuery();
             setLanguage(detectInitialLanguage(), false);
             initializeNavigationMenus();
+            initializeCalculatorTabs();
+            annotateExternalLinks();
             initializeDesktopScrollSpy();
             requestAnimationFrame(() => scrollToCurrentRoute());
         }
