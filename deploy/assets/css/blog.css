@@ -1,4 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap');
+/* Both families are self-hosted rather than pulled from Google Fonts. The old
+   `@import` cost three serialised round trips before a single glyph could paint
+   (HTML -> blog.css -> fonts.googleapis.com CSS -> fonts.gstatic.com woff2), and
+   the serif here is not decorative: it sets the article body and every heading,
+   so that waterfall sat directly on top of Largest Contentful Paint. These are
+   the same latin-subset variable files Google would have served, now on our own
+   origin behind the immutable cache headers in _headers. */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/assets/fonts/dm-sans-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("/assets/fonts/newsreader-latin.woff2") format("woff2");
+}
 
 :root {
   --forest: #173d2a;
@@ -144,6 +165,14 @@ button, input { font: inherit; }
 .article-header h1 { max-width: 820px; margin: 16px 0 18px; font-family: var(--serif); font-size: clamp(2.45rem, 5vw, 4.35rem); font-weight: 600; line-height: .98; letter-spacing: -.04em; }
 .article-dek { max-width: 720px; margin: 0; color: rgba(255,255,255,.73); font-family: var(--serif); font-size: clamp(1.12rem, 2vw, 1.45rem); line-height: 1.5; }
 .article-header .post-meta { margin-top: 24px; color: #e7c46c; }
+/* Per-article illustration between the headline and the body. The width is
+   capped at the same 1060px the article grid below occupies (230 + 70 + 760) so
+   the artwork lines up with the prose rather than running the full container.
+   The intrinsic width/height on the <img> plus width:100%/height:auto here keep
+   the 1200x630 box reserved during load, so nothing below it shifts. */
+.article-hero { margin: 0; padding: 44px 0 0; }
+.article-hero .container { width: min(1060px, calc(100% - 48px)); }
+.article-hero img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: var(--paper); }
 .article-layout { display: grid; grid-template-columns: 230px minmax(0, 760px); justify-content: center; gap: 70px; padding: 68px 0 92px; }
 .toc { position: sticky; top: 108px; align-self: start; padding-top: 8px; }
 .toc h2 { margin: 0 0 18px; color: var(--rust); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
@@ -235,6 +264,7 @@ button, input { font: inherit; }
   .footer-row { display: grid; }
   .article-header { padding: 42px 0 38px; }
   .article-header h1 { font-size: clamp(2.35rem, 12vw, 3.25rem); }
+  .article-hero { padding-top: 28px; }
   .article-layout { padding: 42px 0 72px; }
   .article-body { font-size: 1.1rem; line-height: 1.76; }
   .article-body h2 { font-size: 2rem; }

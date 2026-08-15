@@ -19,6 +19,35 @@ const origin = 'https://compoundingjourney.com';
 const languages = ['en', 'es', 'pt'];
 const defaultLanguage = 'es';
 const logo = `${origin}/logo-compounding-journey.png`;
+// The 2048px master above is what social scrapers and structured data consume.
+// Browsers only ever paint the mark at 64px in the header and 96px in the
+// author card, so the pages themselves request that size from the Netlify
+// Image CDN instead of downloading a megabyte to scale it down. Ampersands are
+// escaped because these land in HTML attributes.
+function logoAt(size, format) {
+  const extra = format ? `&amp;fm=${format}` : '';
+  return `/.netlify/images?url=/logo-compounding-journey.png&amp;w=${size}&amp;h=${size}&amp;fit=cover${extra}`;
+}
+// The in-page hero is the SVG named in the front matter; the social card is the
+// PNG rasterisation sitting beside it. Facebook, X, LinkedIn and Slack all
+// refuse SVG for og:image, and the Netlify Image CDN cannot take SVG as a
+// source either, so the two formats are not interchangeable here. Articles with
+// no hero fall back to the site logo, which is what every article used before.
+function socialImage(article) {
+  if (!article.hero) return logo;
+  return `${origin}${article.hero.replace(/\.svg$/, '.png')}`;
+}
+// The in-page illustration, rendered between the headline and the body. It sits
+// inside the initial viewport, so it is deliberately not lazy-loaded - deferring
+// an above-the-fold image is what pushes Largest Contentful Paint out. Explicit
+// dimensions reserve the box before the file lands so the prose underneath does
+// not jump. Articles with no "hero" in their front matter render nothing extra.
+function articleHero(article) {
+  if (!article.hero) return '';
+  const alt = escapeHtml(article.heroAlt || article.title);
+  return `<figure class="article-hero"><div class="container"><img src="${article.hero}" alt="${alt}" width="1200" height="630" decoding="async" /></div></figure>`;
+}
+
 const simulatorSlugs = [
   'freedom-calendar',
   'market-time-machine',
@@ -224,7 +253,7 @@ function structuredData(article, labels, body) {
       dateModified: article.updated || article.date,
       url,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-      image: [logo],
+      image: [socialImage(article)],
       wordCount: body.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length,
       articleSection: article.category || undefined,
       author: { '@type': 'Person', '@id': `${origin}/#sandy-bradbury`, name: 'Sandy Bradbury', url: `${origin}/#biografia` },
@@ -268,14 +297,18 @@ function renderPage(article, labels, body, headings, related) {
   <meta name="author" content="${escapeHtml(article.author)}" />
   <link rel="canonical" href="${url}" />${alternates}
   <link rel="alternate" hreflang="x-default" href="${origin}${articlePath(defaultCode, defaultSlug)}" />
-  <link rel="icon" type="image/png" href="/logo-compounding-journey.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="${logoAt(64, 'png')}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="${logoAt(180, 'png')}" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Compounding Journey" />
   <meta property="og:locale" content="${labels.locale}" />
   <meta property="og:title" content="${escapeHtml(article.title)}" />
   <meta property="og:description" content="${escapeHtml(article.summary)}" />
   <meta property="og:url" content="${url}" />
-  <meta property="og:image" content="${logo}" />
+  <meta property="og:image" content="${socialImage(article)}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="${escapeHtml(article.heroAlt || article.title)}" />
   <meta property="article:published_time" content="${article.date}" />
   <meta property="article:modified_time" content="${article.updated || article.date}" />
   <meta property="article:author" content="${escapeHtml(article.author)}" />
@@ -283,10 +316,15 @@ function renderPage(article, labels, body, headings, related) {
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(article.title)}" />
   <meta name="twitter:description" content="${escapeHtml(article.summary)}" />
-  <meta name="twitter:image" content="${logo}" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="/assets/css/blog.css?v=20260813-1" />
+  <meta name="twitter:image" content="${socialImage(article)}" />
+  <meta name="twitter:image:alt" content="${escapeHtml(article.heroAlt || article.title)}" />
+  <link rel="preload" href="/assets/css/blog.css?v=20260815-1" as="style" />
+  <!-- The serif sets the h1 and the whole article body, so it is on the LCP
+       path. Fonts are always fetched in CORS mode, hence crossorigin even
+       though this one is same-origin - without it the preload is discarded and
+       the font downloads twice. -->
+  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/blog.css?v=20260815-1" />
   <link rel="stylesheet" href="/assets/css/header.css?v=20260803-3" />
   <script type="application/ld+json">
 ${structuredData(article, labels, body)}
@@ -296,7 +334,7 @@ ${structuredData(article, labels, body)}
   <a class="skip-link" href="#article-body">${escapeHtml(labels.skip)}</a>
   <header class="site-header">
     <div class="header-shell">
-      <a class="header-brand" href="${homeHref(article.language)}"><span class="header-brand-logo"><img src="/logo-compounding-journey.png" alt="Compounding Journey" width="2048" height="2048" fetchpriority="high" /></span><span class="header-brand-copy"><span class="header-brand-name">Compounding Journey</span><span class="header-brand-tagline">${escapeHtml(labels.tagline)}</span></span></a>
+      <a class="header-brand" href="${homeHref(article.language)}"><span class="header-brand-logo"><img src="${logoAt(128)}" alt="Compounding Journey" width="128" height="128" fetchpriority="high" /></span><span class="header-brand-copy"><span class="header-brand-name">Compounding Journey</span><span class="header-brand-tagline">${escapeHtml(labels.tagline)}</span></span></a>
       <div class="header-actions">
         <a class="header-return-link" href="/${article.language}/blog/"><span class="return-long">${escapeHtml(labels.back)}</span><span class="return-short">${escapeHtml(labels.backShort)}</span></a>
         ${languageSwitcher(article, article.language)}
@@ -305,9 +343,10 @@ ${structuredData(article, labels, body)}
   </header>
   <main class="article-page-main"><article>
     <header class="article-header"><div class="container article-header-inner"><div class="post-meta"><span>${escapeHtml(article.category)}</span><span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
+    ${articleHero(article)}
     <div class="container article-layout">${toc}<div><div id="article-body" class="article-body">
 ${body}
-    </div><footer class="author-card"><img src="/logo-compounding-journey.png" alt="Compounding Journey logo" width="2048" height="2048" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
+    </div><footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
   </article>${readNextSection(article, labels, related)}
     <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p></div><div class="journey-actions"><a class="button" href="${homeHref(article.language)}#herramientas">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>

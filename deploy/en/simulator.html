@@ -67,52 +67,15 @@
   ]
 }
     </script>
-    <link rel="icon" type="image/png" href="/logo-compounding-journey.png">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" sizes="64x64" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=64&amp;h=64&amp;fit=cover&amp;fm=png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=180&amp;h=180&amp;fit=cover&amp;fm=png">
     <!-- Chart.js for Trajectory Visuals -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/sim-simulator-hub.css?v=20260815-1">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=20260815-1">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cream: {
-                            50: '#fcfaf7',
-                            100: '#f8f4ed',
-                            200: '#f1e8da',
-                            300: '#e6d8c3',
-                            400: '#d7c2a5',
-                            500: '#c3a985'
-                        },
-                        espresso: {
-                            800: '#3a2719',
-                            900: '#2c1d11',
-                            950: '#1e130a'
-                        },
-                        forest: {
-                            600: '#2e6f40',
-                            700: '#1e532d',
-                            800: '#134e2a',
-                            900: '#0d381e'
-                        },
-                        gold: {
-                            500: '#d4a338',
-                            600: '#c3922e',
-                            700: '#a3751e'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        serif: ['Plus Jakarta Sans', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         body {
             background-color: #f8f4ed;
@@ -132,7 +95,7 @@
         <div class="header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="/en/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Return to Compounding Journey">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
-                    <img src="/logo-compounding-journey.png" alt="Compounding Journey" width="2048" height="2048" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
                 </div>
                 <div class="header-brand-copy">
                     <span class="header-brand-name">Compounding Journey</span>
@@ -193,6 +156,15 @@
             <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-forest-700 mb-2">Free interactive tool</p>
             <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-espresso-950 leading-tight">Personal Finance & Wealth Simulator</h1>
             <p class="mt-3 text-sm sm:text-base text-espresso-800/85 leading-relaxed max-w-2xl">Play through fifteen everyday money decisions — saving, investing, borrowing, spending — and watch each choice move your net worth, monthly cash flow, happiness and financial intelligence. At the end you get a financial profile that shows which habits are compounding in your favour and which are quietly working against you.</p>
+            <!-- The hub described itself but never linked down to the four
+                 standalone simulators, leaving them orphaned in the crawl. -->
+            <nav aria-label="Other simulators" class="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
+                <span class="text-espresso-800/60">Other simulators:</span>
+                <a href="/en/simulators/freedom-calendar.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">Freedom Calendar</a>
+                <a href="/en/simulators/market-time-machine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">Market Time Machine</a>
+                <a href="/en/simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">Passive Income Engine</a>
+                <a href="/en/simulators/monte-carlo-fire.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">Monte Carlo FIRE</a>
+            </nav>
         </div>
         
         <!-- STEPPER PROGRESS DOTS -->
