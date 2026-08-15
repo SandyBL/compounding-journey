@@ -10,6 +10,7 @@ generated from the same source as the pages themselves, so it does not drift.
 - Author: Sandy Bradbury
 - Languages: Spanish (https://compoundingjourney.com/), English (https://compoundingjourney.com/en/), Portuguese (https://compoundingjourney.com/pt/)
 - Sitemap: https://compoundingjourney.com/sitemap.xml
+- Feeds: https://compoundingjourney.com/es/blog/feed.xml, https://compoundingjourney.com/en/blog/feed.xml, https://compoundingjourney.com/pt/blog/feed.xml
 - Short index: https://compoundingjourney.com/llms.txt
 - Content last updated: 2026-08-13
 

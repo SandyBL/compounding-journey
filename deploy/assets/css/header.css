@@ -113,7 +113,13 @@ header.site-header {
   line-height: 1.15;
 }
 
-.site-header .header-brand-tagline[lang-content] {
+/* The tagline is the one language-tagged element that must not fade in: it sits
+   in the sticky header, so an entrance animation on it plays again every time
+   the header is re-composited. Both attribute names are matched - see the note
+   in the home template's <style> - because the tagline is written as
+   lang-content there and rewritten to data-i18n in the generated pages. */
+.site-header .header-brand-tagline[lang-content],
+.site-header .header-brand-tagline[data-i18n] {
   animation: none !important;
   transform: none !important;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{hFullLang}}" class="h-full bg-[#fbf8f3]">
+<html lang="{{lang.code}}" class="h-full bg-[#fbf8f3]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,11 +87,11 @@
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">{{siteReturnLinkText}}</span>
                 </a>
-                <button onclick="toggleHowToPlayModal()" class="px-3 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
+                <button data-onclick="toggleHowToPlayModal()" class="px-3 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
                                     <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
                                     <span>{{px3}}</span>
                                 </button>
-                <button onclick="resetSimulation()" class="px-3 py-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1">
+                <button data-onclick="resetSimulation()" class="px-3 py-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1">
                                     <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
                                     <span>{{px32}}</span>
                                 </button>
@@ -168,7 +168,7 @@
                     <span>{{text10px}}</span>
                     <i class="fa-solid fa-circle-info text-amber-300 ml-1" title="{{faSolidTitle}}" aria-hidden="true"></i>
                 </label>
-                <select id="presetSelect" onchange="applyPreset(this.value)" class="w-full text-xs bg-espresso-950 text-white border border-gold-500/40 rounded-lg p-2 font-medium focus:ring-2 focus:ring-gold-400">
+                <select id="presetSelect" data-onchange="applyPreset(this.value)" class="w-full text-xs bg-espresso-950 text-white border border-gold-500/40 rounded-lg p-2 font-medium focus:ring-2 focus:ring-gold-400">
                     <option value="classic6040">{{presetselect}}</option>
                     <option value="allweather">{{presetselect2}}</option>
                     <option value="permanent">{{presetselect3}}</option>
@@ -202,7 +202,7 @@
                                 <i class="fa-solid fa-chart-line text-blue-600" aria-hidden="true"></i>{{lblStocks}}                            </span>
                             <span id="val_stocks" class="font-mono text-blue-700">60%</span>
                         </div>
-                        <input type="range" id="slider_stocks" aria-labelledby="lbl_stocks" aria-valuetext="60%" min="0" max="100" value="60" oninput="onSliderChange('stocks', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_stocks" aria-labelledby="lbl_stocks" aria-valuetext="60%" min="0" max="100" value="60" data-oninput="onSliderChange('stocks', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <!-- 2. Government Bonds -->
@@ -212,7 +212,7 @@
                                 <i class="fa-solid fa-building-columns text-emerald-700" aria-hidden="true"></i>{{lblBonds}}                            </span>
                             <span id="val_bonds" class="font-mono text-emerald-800">40%</span>
                         </div>
-                        <input type="range" id="slider_bonds" aria-labelledby="lbl_bonds" aria-valuetext="40%" min="0" max="100" value="40" oninput="onSliderChange('bonds', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_bonds" aria-labelledby="lbl_bonds" aria-valuetext="40%" min="0" max="100" value="40" data-oninput="onSliderChange('bonds', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <!-- 3. Real Estate / REITs -->
@@ -222,7 +222,7 @@
                                 <i class="fa-solid fa-city text-amber-700" aria-hidden="true"></i>{{lblReits}}                            </span>
                             <span id="val_reits" class="font-mono text-amber-800">0%</span>
                         </div>
-                        <input type="range" id="slider_reits" aria-labelledby="lbl_reits" aria-valuetext="0%" min="0" max="100" value="0" oninput="onSliderChange('reits', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_reits" aria-labelledby="lbl_reits" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('reits', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <!-- 4. Gold & Commodities -->
@@ -232,7 +232,7 @@
                                 <i class="fa-solid fa-coins text-gold-600" aria-hidden="true"></i>{{lblGold}}                            </span>
                             <span id="val_gold" class="font-mono text-gold-600">0%</span>
                         </div>
-                        <input type="range" id="slider_gold" aria-labelledby="lbl_gold" aria-valuetext="0%" min="0" max="100" value="0" oninput="onSliderChange('gold', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_gold" aria-labelledby="lbl_gold" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('gold', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <!-- 5. Cash & T-Bills -->
@@ -242,11 +242,11 @@
                                 <i class="fa-solid fa-wallet text-slate-600" aria-hidden="true"></i>{{lblCash}}                            </span>
                             <span id="val_cash" class="font-mono text-slate-700">0%</span>
                         </div>
-                        <input type="range" id="slider_cash" aria-labelledby="lbl_cash" aria-valuetext="0%" min="0" max="100" value="0" oninput="onSliderChange('cash', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_cash" aria-labelledby="lbl_cash" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('cash', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
                 </div>
 
-                <button onclick="normalizeAllocation()" id="normalizeBtn" class="hidden w-full py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs border border-amber-300 transition">
+                <button data-onclick="normalizeAllocation()" id="normalizeBtn" class="hidden w-full py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs border border-amber-300 transition">
 {{normalizebtn}}                </button>
             </div>
 
@@ -267,14 +267,14 @@
                             <label for="initialCapitalInput" class="text-espresso-800 font-semibold block">{{textEspresso800}}</label>
                             <div class="relative w-full">
                                 <span class="absolute left-2.5 top-1.5 text-espresso-800 font-mono font-bold">$</span>
-                                <input type="number" id="initialCapitalInput" value="100000" step="10000" min="1000" onchange="recalculateSimulation()" class="w-full pl-6 pr-2 py-1 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950 focus:ring-1 focus:ring-forest-800">
+                                <input type="number" id="initialCapitalInput" value="100000" step="10000" min="1000" data-onchange="recalculateSimulation()" class="w-full pl-6 pr-2 py-1 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950 focus:ring-1 focus:ring-forest-800">
                             </div>
                         </div>
 
                         <!-- START YEAR SELECTOR -->
                         <div class="space-y-1">
                             <label for="startYearSelect" class="text-espresso-800 font-semibold block">{{textEspresso8002}}</label>
-                            <select id="startYearSelect" onchange="changeStartYear(this.value)" class="w-full py-1 px-2 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950">
+                            <select id="startYearSelect" data-onchange="changeStartYear(this.value)" class="w-full py-1 px-2 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950">
                                 <option value="1920" selected>1920</option>
                                 <option value="1929">{{startyearselect}}</option>
                                 <option value="1970">{{startyearselect2}}</option>
@@ -287,11 +287,11 @@
 
                     <!-- ACTION BUTTONS -->
                     <div class="grid grid-cols-2 gap-2 pt-1">
-                        <button onclick="togglePlayPause()" id="playPauseBtn" class="py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
+                        <button data-onclick="togglePlayPause()" id="playPauseBtn" class="py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-play" id="playPauseIcon" aria-hidden="true"></i>
                             <span id="playPauseText">{{playpausetext}}</span>
                         </button>
-                        <button onclick="advanceOneYear()" id="nextYearBtn" class="py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
+                        <button data-onclick="advanceOneYear()" id="nextYearBtn" class="py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-forward-step" aria-hidden="true"></i>
                             <span>{{nextyearbtn}}</span>
                         </button>
@@ -512,11 +512,11 @@
             </div>
 
             <div class="grid grid-cols-2 gap-2 pt-1">
-                <button onclick="closeEventModal(true)" class="py-2.5 px-3 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
+                <button data-onclick="closeEventModal(true)" class="py-2.5 px-3 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
                     <span>{{py25}}</span>
                     <i class="fa-solid fa-play text-[10px]" aria-hidden="true"></i>
                 </button>
-                <button onclick="closeEventModal(false)" class="py-2.5 px-3 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
+                <button data-onclick="closeEventModal(false)" class="py-2.5 px-3 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
                     <i class="fa-solid fa-pause text-[10px]" aria-hidden="true"></i>
                     <span>{{py252}}</span>
                 </button>
@@ -537,7 +537,7 @@
                         <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">{{text10px9}}</p>
                     </div>
                 </div>
-                <button onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="{{a11yCloseDialog}}">
+                <button data-onclick="toggleHowToPlayModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="{{a11yCloseDialog}}">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
@@ -563,7 +563,7 @@
                 </div>
             </div>
 
-            <button onclick="toggleHowToPlayModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
+            <button data-onclick="toggleHowToPlayModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
 {{wFull}}            </button>
         </div>
     </div>

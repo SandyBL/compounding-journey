@@ -4,13 +4,30 @@
    the serif here is not decorative: it sets the article body and every heading,
    so that waterfall sat directly on top of Largest Contentful Paint. These are
    the same latin-subset variable files Google would have served, now on our own
-   origin behind the immutable cache headers in _headers. */
+   origin behind the immutable cache headers in _headers.
+
+   Both files have since had their weight axis clipped to exactly the range
+   declared below. A variable font carries interpolation deltas for its whole
+   design space, and Google ships these with far more of it than this site can
+   reach: Newsreader spanned 200-800 and DM Sans 100-1000, but the `font-weight`
+   descriptor on a face is also a clamp, so a rule asking for 900 has always
+   rendered at 800 and the masters outside these ranges were bytes nobody could
+   see. Trimming them cost 51 KB of the two files that block first paint -
+   Newsreader 132 KB -> 92 KB, DM Sans 36 KB -> 23 KB - and leaves every weight
+   in range identical to within a rounding unit. Newsreader's optical-size axis
+   is untouched, because browsers drive that one from the font size and the text
+   here is set from 15px captions to 56px headlines.
+
+   The `?v=source` is what makes that safe to have done at all: these are served
+   immutable for a year, so the bytes at a URL can never change. See
+   scripts/version-assets.mjs, which stamps this file's font links with the same
+   content hash the preloads in the page get. */
 @font-face {
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 400 800;
   font-display: swap;
-  src: url("/assets/fonts/dm-sans-latin.woff2") format("woff2");
+  src: url("/assets/fonts/dm-sans-latin.woff2?v=source") format("woff2");
 }
 
 @font-face {
@@ -18,7 +35,7 @@
   font-style: normal;
   font-weight: 500 700;
   font-display: swap;
-  src: url("/assets/fonts/newsreader-latin.woff2") format("woff2");
+  src: url("/assets/fonts/newsreader-latin.woff2?v=source") format("woff2");
 }
 
 :root {
@@ -44,7 +61,11 @@ body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(
 img { display: block; max-width: 100%; }
 a { color: inherit; }
 button, input { font: inherit; }
-:focus-visible { outline: 3px solid rgba(200, 154, 50, .6); outline-offset: 4px; }
+/* The focus ring and the skip link are declared once, in a11y.css, which every
+   page loading this file also loads and loads after it. The copies that used to
+   sit here and below disagreed with it - a lower z-index, a shorter hidden
+   offset, and a gold at .6 alpha that does not reach 3:1 against the paper
+   background - so the page was correct only because of the link order. */
 
 /* The decorative circles bleed sideways, so the shell still has to clip on the
    horizontal axis. `overflow: hidden` turned the shell into a scroll container,
@@ -54,8 +75,6 @@ button, input { font: inherit; }
 .site-shell { overflow-x: hidden; overflow-x: clip; min-height: 100vh; }
 .container { width: min(1280px, calc(100% - 48px)); margin-inline: auto; }
 .eyebrow { margin: 0 0 12px; color: var(--rust); font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; transform: translateY(-150%); padding: 10px 14px; border-radius: 6px; background: var(--paper); }
-.skip-link:focus { transform: none; }
 
 .header-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
 .header-return-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 9px 14px; border: 1px solid #efeae0; border-radius: 999px; background: rgba(255,255,255,.62); color: rgba(45,36,27,.72); font-family: "Plus Jakarta Sans", sans-serif; font-size: .72rem; font-weight: 700; line-height: 1; text-decoration: none; transition: color .18s ease, background-color .18s ease, transform .18s ease; }
@@ -85,6 +104,22 @@ button, input { font: inherit; }
 .text-link { display: inline-flex; align-items: center; gap: 12px; width: fit-content; margin-top: 20px; color: var(--forest); font-size: .72rem; font-weight: 700; letter-spacing: .11em; text-decoration: none; text-transform: uppercase; }
 .text-link::after { content: "→"; font-size: 1.1rem; transition: transform .25s ease; }
 .text-link:hover::after { transform: translateX(5px); }
+
+/* The "read this month" rail under the featured card. It is written into the
+   markup by generate-blog-pages.mjs from counts that already exist at build
+   time, so it paints with the rest of the page rather than arriving later - the
+   whole point of ranking here instead of in the browser. When nothing has been
+   counted the section is absent from the markup entirely, which is why nothing
+   below needs an empty state. */
+.recently-read { max-width: 920px; margin: 26px 0 0; padding: 22px 26px; border: 1px solid var(--line); border-radius: 3px; background: rgba(255,255,255,.55); }
+.recently-read h2 { margin: 0 0 14px; color: var(--rust); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.recently-read ol { display: grid; gap: 10px; margin: 0; padding: 0; counter-reset: recently-read; list-style: none; }
+.recently-read li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; counter-increment: recently-read; }
+.recently-read li::before { content: counter(recently-read); min-width: 1.2em; color: var(--gold); font-size: .8rem; font-weight: 700; }
+.recently-read a { color: var(--ink); font-size: .95rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
+.recently-read a:hover { border-bottom-color: var(--gold); }
+.recently-read li span { color: var(--muted); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.recently-read-note { margin: 16px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.6; }
 
 .latest-section { padding: 8px 0 64px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
@@ -163,7 +198,11 @@ button, input { font: inherit; }
 .button-secondary:hover { background: white; color: var(--forest); }
 
 .site-footer { padding: 34px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
-.footer-row { display: flex; justify-content: space-between; gap: 20px; }
+.footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+/* The counting disclosure. Deliberately quiet - it is a standing statement of
+   fact, not a notice a reader has to dismiss - but full size text rather than
+   fine print, because shrinking it is how a disclosure stops being one. */
+.footer-privacy { max-width: 78ch; margin: 18px 0 0; font-size: .78rem; line-height: 1.65; }
 
 /* Article */
 .article-page-main { margin: 0; padding: 0; }
@@ -255,6 +294,7 @@ button, input { font: inherit; }
   .featured-card { min-height: 0; }
   .featured-copy { min-height: 0; padding: 26px 22px 30px; }
   .featured-copy h2 { font-size: 2rem; }
+  .recently-read { padding: 18px 20px; }
   .section-heading { display: block; }
   .section-heading p { margin-top: 14px; }
   .catalog-toolbar { grid-template-columns: 1fr; padding: 14px; }

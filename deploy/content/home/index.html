@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="E4KLrkhNpy-EpIG1IRxGICciCHV-9Trc6WycFxr4RGg" />
-    <!-- The brand mark is a 2048px master used for social cards and structured
+    <!-- build: The brand mark is a 2048px master used for social cards and structured
          data. Browsers only ever paint it at 64px, so the page itself asks the
          Netlify Image CDN for that size and leaves the master to the scrapers
          that actually want it. Keep this URL byte-identical to the header <img>
@@ -20,6 +20,16 @@
     <link id="alternate-es" rel="alternate" hreflang="es" href="https://compoundingjourney.com/">
     <link id="alternate-pt" rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/">
     <link id="alternate-default" rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/">
+
+    <!-- build: The plain-text summary of the whole site, written for the assistants
+         that answer questions from the open web. There is no registered rel
+         value for it, so this is the same rel="alternate" a feed uses,
+         distinguished by its media type: an alternate representation of this
+         document's site in text/plain. It is one file covering all three
+         languages, so all three home pages point at the same URL. robots.txt
+         names it too, for the crawlers that read that first and never parse a
+         document at all. -->
+    <link rel="alternate" type="text/plain" href="https://compoundingjourney.com/llms.txt" title="llms.txt">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Compounding Journey">
@@ -40,7 +50,7 @@
     <meta id="twitter-description" name="twitter:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
     <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
-    <!-- The body font is declared in header.css, the third stylesheet the parser
+    <!-- build: The body font is declared in header.css, the third stylesheet the parser
          reaches, so the browser only discovers it once two other sheets have
          downloaded and parsed. Preloading it starts the fetch with the first
          bytes of the document instead. Font Awesome needs no such hint: its
@@ -48,7 +58,7 @@
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/assets/css/icons.css?v=source">
-    <!-- Compiled production styles. Tailwind emits this file during the build,
+    <!-- build: Compiled production styles. Tailwind emits this file during the build,
          after the page generators have run, so its contents are not knowable
          when this markup is written. The ?v=source token below is a placeholder:
          scripts/version-assets.mjs is the last step of the build and replaces it
@@ -386,14 +396,37 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Two selectors for the same elements, because this file is read in two
+           states. In this template every string is present in all three
+           languages at once, tagged lang-content, and the rules below hide two
+           of them so the template can be opened and read as one page. In the
+           three documents the generator writes, only one language survives the
+           split and the attribute is rewritten to a bare data-i18n: the value
+           was the language, and a page that is entirely one language has no use
+           for a per-element claim about which language it is.
+
+           The data-i18n rules restate the display values the lang-content rules
+           resolve to, so the rendered result is identical either way. They are
+           not conditional on a body class, which also closes a trap: the class
+           is what the old client-side switcher toggled, and on a pre-rendered
+           page swapping it would have matched none of the language rules and
+           left the page blank. */
         [lang-content] {
             display: none !important;
+        }
+        [data-i18n] {
+            display: block !important;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        span[data-i18n],
+        inline[data-i18n] {
+            display: inline-block !important;
         }
         body.lang-es [lang-content="es"] {
             display: block !important;
             animation: fadeIn 0.4s ease-out forwards;
         }
-        body.lang-es span[lang-content="es"], 
+        body.lang-es span[lang-content="es"],
         body.lang-es inline[lang-content="es"] {
             display: inline-block !important;
         }
@@ -402,7 +435,7 @@
             display: block !important;
             animation: fadeIn 0.4s ease-out forwards;
         }
-        body.lang-en span[lang-content="en"], 
+        body.lang-en span[lang-content="en"],
         body.lang-en inline[lang-content="en"] {
             display: inline-block !important;
         }
@@ -411,7 +444,7 @@
             display: block !important;
             animation: fadeIn 0.4s ease-out forwards;
         }
-        body.lang-pt span[lang-content="pt"], 
+        body.lang-pt span[lang-content="pt"],
         body.lang-pt inline[lang-content="pt"] {
             display: inline-block !important;
         }
@@ -1096,12 +1129,41 @@
         }
 
         .identity-callback__card {
+            position: relative;
             width: min(100%, 28rem);
             padding: 2rem;
             border: 1px solid rgba(197, 155, 39, 0.35);
             border-radius: 1.5rem;
             background: #fffdf8;
             box-shadow: 0 24px 80px rgba(24, 58, 37, 0.28);
+        }
+
+        .identity-callback__close {
+            position: absolute;
+            top: 0.85rem;
+            right: 0.85rem;
+            display: grid;
+            place-items: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            padding: 0;
+            border: 1px solid #cfc6b5;
+            border-radius: 999px;
+            background: white;
+            color: #5d665e;
+            font-size: 1.4rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .identity-callback__close:hover {
+            border-color: #c59b27;
+            color: #243c2b;
+        }
+
+        .identity-callback__close:focus-visible {
+            outline: 3px solid rgba(197, 155, 39, 0.45);
+            outline-offset: 3px;
         }
 
         .identity-callback__logo {
@@ -1323,6 +1385,7 @@
 
     <div id="identity-callback" class="identity-callback" role="dialog" aria-modal="true" aria-labelledby="identity-callback-title" hidden>
         <div class="identity-callback__card">
+            <button id="identity-callback-close" class="identity-callback__close" type="button" aria-label="Close">&times;</button>
             <img class="identity-callback__logo" src="/.netlify/images?url=/sandy-bradbury-portrait.png&amp;w=128&amp;h=128&amp;fit=cover" alt="" width="64" height="64" decoding="async">
             <h2 id="identity-callback-title" class="identity-callback__title">Set your password</h2>
             <p id="identity-callback-copy" class="identity-callback__copy">Choose a secure password to continue to the Content Studio.</p>
@@ -3530,12 +3593,20 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- build: SCRIPTS. Both blocks below are lifted into files under /assets and
+         linked from the <head> with defer. The head order is set by `hoist` in
+         scripts/generate-home-pages.mjs, not by the order here: the behaviour
+         block has to run first, and it only does so here because a classic
+         script runs on sight while a module waits. They stay at the end of
+         <body> in this file because that is the only arrangement that works
+         when somebody opens this template directly. -->
     <script type="module">
         const callbackParameters = new URLSearchParams(window.location.hash.slice(1));
         const hasIdentityCallback = ['invite_token', 'recovery_token'].some((key) => callbackParameters.has(key));
 
-        if (hasIdentityCallback) {
+        if (hasIdentityCallback) await runIdentityCallback();
+
+        async function runIdentityCallback() {
             const dialog = document.querySelector('#identity-callback');
             const title = document.querySelector('#identity-callback-title');
             const copy = document.querySelector('#identity-callback-copy');
@@ -3544,24 +3615,105 @@
             const confirmation = document.querySelector('#identity-password-confirmation');
             const button = document.querySelector('#identity-callback-button');
             const status = document.querySelector('#identity-callback-status');
+            const closeButton = document.querySelector('#identity-callback-close');
 
-            const showDialog = () => {
+            // Every one of these is required, and a missing one used to surface as
+            // "Cannot set properties of null" thrown from inside showDialog - at
+            // which point the reader had a token in the address bar, no dialog, and
+            // nothing to act on. Refusing to start leaves the homepage usable.
+            const parts = { dialog, title, copy, form, password, confirmation, button, status, closeButton };
+            const missing = Object.keys(parts).filter((name) => !parts[name]);
+            if (missing.length > 0) {
+                console.error(`The account-setup dialog is missing ${missing.join(', ')}; not handling the identity link.`);
+                return;
+            }
+
+            // Restored on close rather than blanked, so the dialog cannot leave the
+            // page permanently unscrollable behind it - which is exactly what a
+            // hard-coded '' would do if anything else were managing overflow.
+            let previousOverflow = '';
+            let opener = null;
+            let pressStartedOnBackdrop = false;
+
+            const focusableInDialog = () => [...dialog.querySelectorAll('button, input, select, textarea, a[href]')]
+                .filter((node) => !node.disabled && node.getClientRects().length > 0);
+
+            const onKeydown = (event) => {
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closeDialog();
+                    return;
+                }
+
+                // aria-modal tells a screen reader the rest of the page is inert;
+                // Tab is what makes that true for everybody else. Without this,
+                // tabbing out of the card lands on a homepage the overlay is
+                // covering, with no visible focus ring anywhere.
+                if (event.key !== 'Tab') return;
+
+                const focusable = focusableInDialog();
+                if (focusable.length === 0) return;
+
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                const active = document.activeElement;
+
+                if (event.shiftKey && (active === first || !dialog.contains(active))) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && (active === last || !dialog.contains(active))) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            };
+
+            const openDialog = (focusTarget) => {
+                opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+                previousOverflow = document.body.style.overflow;
                 dialog.hidden = false;
                 document.body.style.overflow = 'hidden';
-                password.focus();
+                document.addEventListener('keydown', onKeydown);
+                focusTarget.focus();
             };
+
+            // The link stays in the address bar. Dismissing is meant to be a way
+            // out of the dialog, not a way to destroy a single-use token: someone
+            // who closes it by accident gets their invitation back by reloading.
+            const closeDialog = () => {
+                dialog.hidden = true;
+                document.body.style.overflow = previousOverflow;
+                document.removeEventListener('keydown', onKeydown);
+                opener?.focus();
+            };
+
+            closeButton.addEventListener('click', closeDialog);
+
+            // Both halves of the press have to land on the backdrop. Selecting
+            // text in a field and releasing the mouse outside the card still
+            // produces a click whose target is the overlay, and closing on that
+            // would throw away a half-typed password.
+            dialog.addEventListener('pointerdown', (event) => {
+                pressStartedOnBackdrop = event.target === dialog;
+            });
+            dialog.addEventListener('click', (event) => {
+                if (event.target === dialog && pressStartedOnBackdrop) closeDialog();
+            });
 
             const showCallbackError = (message) => {
                 title.textContent = 'This link is unavailable';
                 copy.textContent = 'The invitation or password-reset link could not be verified. Request a new email and try again.';
                 form.hidden = true;
                 status.textContent = message;
-                dialog.hidden = false;
-                document.body.style.overflow = 'hidden';
+                // The form is gone, so the close button is the only thing left to
+                // focus - and the only thing left to do.
+                openDialog(closeButton);
             };
 
             try {
-                const identity = await import('https://cdn.jsdelivr.net/npm/@netlify/identity@1.2.0/+esm');
+                // Self-hosted, and only fetched by the small number of visitors
+                // who arrive on an invite or recovery link - which is why it is a
+                // dynamic import rather than a second module in the head.
+                const identity = await import('/assets/js/netlify-identity-1.2.0.js');
                 const result = await identity.handleAuthCallback();
 
                 if (!result || !['invite', 'recovery'].includes(result.type)) {
@@ -3571,7 +3723,7 @@
                     copy.textContent = result.type === 'invite'
                         ? 'Create a password to activate your account and continue to the Content Studio.'
                         : 'Choose a new password for your account to continue to the Content Studio.';
-                    showDialog();
+                    openDialog(password);
 
                     form.addEventListener('submit', async (event) => {
                         event.preventDefault();
@@ -3744,6 +3896,31 @@
             return lang === "es" ? "/" : `/${lang}/`;
         }
 
+        // The cookie the language-preference edge function reads before deciding
+        // whether to redirect someone who lands on the apex. localStorage is the
+        // wrong place for it: the decision is made at the edge, before any script
+        // on the page has run, so it has to be something that travels with the
+        // request. The two stores answer different questions and both are kept -
+        // localStorage is what this script restores a preference from, the cookie
+        // is what stops the edge overruling a choice already made here.
+        //
+        // Its presence matters more than its value: once it is set, the edge
+        // stops negotiating and serves the apex as published. So writing it is
+        // how an explicit choice - including the choice to stay in Spanish - is
+        // made to stick.
+        function rememberLanguageAtEdge(lang) {
+            try {
+                const secure = window.location.protocol === "https:" ? "; Secure" : "";
+                document.cookie = `lang=${encodeURIComponent(lang)}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+            } catch (error) {
+                console.warn("Language preference could not be saved to a cookie.", error);
+            }
+        }
+
+        function hasLanguageCookie() {
+            return /(?:^|;\s*)lang=/.test(document.cookie || "");
+        }
+
         function getLanguageUrl(lang) {
             return `${getSiteOrigin()}${languagePath(lang)}`;
         }
@@ -3815,6 +3992,7 @@
                 } catch (error) {
                     console.warn("Language preference could not be saved to localStorage.", error);
                 }
+                rememberLanguageAtEdge(normalizedLanguage);
                 window.location.href = languagePath(normalizedLanguage);
                 return;
             }
@@ -3831,6 +4009,7 @@
             } catch (error) {
                 console.warn("Language preference could not be saved to localStorage.", error);
             }
+            if (updateUrl) rememberLanguageAtEdge(normalizedLanguage);
 
             if (updateUrl && !isPrerenderedPage) {
                 const url = new URL(window.location.href);
@@ -4615,6 +4794,18 @@
         function suggestPreferredLanguage() {
             if (!isPrerenderedPage || pinnedLanguage !== "es") return;
 
+            // The edge function asks the same question one layer earlier, from
+            // Accept-Language rather than navigator.language, and sets the cookie
+            // when it has an answer. A visitor carrying that cookie has already
+            // been offered their language - by a redirect, or by a choice they
+            // made here - so offering it again in a bar is asking twice.
+            //
+            // The bar is not redundant, though. It is what a visitor sees when
+            // the edge deliberately said nothing: no Accept-Language header, or a
+            // header that named a language the site does not publish while
+            // navigator.language names one it does.
+            if (hasLanguageCookie()) return;
+
             let dismissed = null;
             try {
                 dismissed = localStorage.getItem("languageSuggestionDismissed");
@@ -4653,6 +4844,11 @@
                 } catch (error) {
                     console.warn("Language suggestion state could not be saved to localStorage.", error);
                 }
+                // Dismissing is a choice to stay in Spanish, so it is recorded the
+                // same way any other choice is. Without this the bar stays gone but
+                // the edge would still be free to redirect the next visit to the
+                // apex - the reader would have said no here and been moved anyway.
+                rememberLanguageAtEdge("es");
                 bar.remove();
             });
 

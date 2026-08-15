@@ -58,6 +58,32 @@ const simulators = [
 
 const placeholderPattern = /\{\{([^{}]+)\}\}/g;
 
+/**
+ * The behaviour block at the end of each template: a bare `<script>` with no
+ * attributes, holding a few hundred lines of simulator logic.
+ *
+ * It is authored inline because a simulator is one artefact - markup, styles
+ * and behaviour describing the same thing - and splitting the source would make
+ * it harder to edit, not easier. It cannot ship inline: an inline block is
+ * exactly what `script-src 'unsafe-inline'` exists to permit, and that keyword
+ * is what stopped these pages having a Content-Security-Policy worth the name.
+ * So the source stays whole and the build separates it: the block is lifted to
+ * a file the policy can name, and the page links it.
+ *
+ * One file per language rather than one per simulator, because the block
+ * contains translated strings like any other part of the template.
+ */
+const BEHAVIOUR_BLOCK = /\n[^\S\n]*<script>\n([\s\S]*?)\n[^\S\n]*<\/script>/g;
+
+/**
+ * `<script>document.write(new Date().getFullYear())</script>` in the footer of
+ * two of the templates. It is inline script for a value that is a constant at
+ * build time, it forces a synchronous parser stop to print four characters, and
+ * document.write on a live document is the one API guaranteed to be worse than
+ * whatever it replaced. The year is substituted here instead.
+ */
+const FOOTER_YEAR = /<script>document\.write\(new Date\(\)\.getFullYear\(\)\)<\/script>/g;
+
 function resolvePlaceholder(token, language, strings, context) {
   if (token.startsWith('lang.')) {
     const field = token.slice('lang.'.length);
@@ -125,8 +151,55 @@ async function readSidecar(name) {
   return strings;
 }
 
+function behaviourFileName(name, language) {
+  return `sim-${name}.${language}.js`;
+}
+
+/**
+ * Splits a rendered page into the markup that ships and the behaviour that
+ * moves to its own file.
+ *
+ * Exactly one behaviour block is expected. Concatenating several would work,
+ * but a template that grew a second one is a template somebody restructured,
+ * and silently merging the two is how the order they ran in stops being
+ * something anybody checked.
+ *
+ * The replacement carries `defer` so it still runs after the document is
+ * parsed, which is what the inline block at the end of <body> did. `?v=source`
+ * is the placeholder version-assets.mjs resolves to the file's content hash at
+ * the end of the build, the same as every other asset.
+ *
+ * sim-actions.js is linked alongside it, and first: it is what gives the
+ * `data-onclick` attributes in the markup their meaning, and it is the same
+ * file on all fifteen pages. Both are deferred, so both run after parsing and
+ * in source order - the dispatcher only ever looks a function up at the moment
+ * an event fires, so the order between them does not actually matter, but
+ * declaring the shared piece first is how the pages read.
+ */
+function liftBehaviour(page, name, language, context) {
+  const blocks = [...page.matchAll(BEHAVIOUR_BLOCK)];
+  if (blocks.length !== 1) {
+    throw new Error(
+      `${context} has ${blocks.length} inline <script> blocks; expected exactly one. ` +
+        `The behaviour has to be liftable to a file for the page to be servable ` +
+        `without script-src 'unsafe-inline'.`
+    );
+  }
+
+  const [block] = blocks;
+  const tag =
+    `\n    <script src="/assets/js/sim-actions.js?v=source" defer></script>` +
+    `\n    <script src="/assets/js/${behaviourFileName(name, language)}?v=source" defer></script>`;
+  const markup = page
+    .replace(BEHAVIOUR_BLOCK, tag)
+    .replace(FOOTER_YEAR, String(new Date().getFullYear()));
+
+  return { markup, behaviour: `${block[1].trim()}\n` };
+}
+
 async function main() {
   let written = 0;
+  let lifted = 0;
 
   for (const simulator of simulators) {
     const templateFile = path.join(contentDir, `${simulator.name}.html`);
@@ -152,9 +225,16 @@ async function main() {
       const context = `content/simulators/${simulator.name}.html (${language})`;
       const page = render(template, language, strings, context);
 
+      const { markup, behaviour } = liftBehaviour(page, simulator.name, language, context);
+
+      const scriptFile = path.join(root, 'assets', 'js', behaviourFileName(simulator.name, language));
+      await fs.mkdir(path.dirname(scriptFile), { recursive: true });
+      await fs.writeFile(scriptFile, behaviour);
+      lifted += 1;
+
       const file = path.join(root, simulator.output.replace('{lang}', language));
       await fs.mkdir(path.dirname(file), { recursive: true });
-      await fs.writeFile(file, page);
+      await fs.writeFile(file, markup);
       written += 1;
     }
 
@@ -164,7 +244,7 @@ async function main() {
     );
   }
 
-  console.log(`Generated ${written} simulator documents from ${simulators.length} templates.`);
+  console.log(`Generated ${written} simulator documents from ${simulators.length} templates, and lifted ${lifted} behaviour bundles out of them.`);
 }
 
 main().catch((error) => {

@@ -40,6 +40,39 @@ export async function readViewCounts() {
   return counts;
 }
 
+// The same shape, over the trailing two month buckets rather than all time.
+//
+// Two rather than one because a build on the second of the month would
+// otherwise see a nearly empty table and render a "read this month" list with
+// one entry in it. Two buckets always contain between four and eight weeks of
+// reading, which is what the list actually claims.
+//
+// Returns null under exactly the conditions readViewCounts does, and is
+// tolerated the same way: the rail is omitted rather than the build failed.
+export async function readRecentViewCounts() {
+  let rows;
+  try {
+    const { getDatabase } = await import('@netlify/database');
+    const database = getDatabase();
+    rows = await database.sql`
+      SELECT language, slug, SUM(views) AS views
+      FROM article_views_monthly
+      WHERE month >= date_trunc('month', now() AT TIME ZONE 'UTC')::date - INTERVAL '1 month'
+      GROUP BY language, slug
+    `;
+  } catch (error) {
+    console.log(`Recently read: no monthly counts available (${error.message}). The rail will be omitted.`);
+    return null;
+  }
+
+  const counts = new Map();
+  for (const row of rows) {
+    const views = Number(row.views);
+    if (Number.isFinite(views) && views > 0) counts.set(`${row.language}/${row.slug}`, views);
+  }
+  return counts;
+}
+
 // Views for every translation of an article, summed onto its translation key.
 // Articles the catalog no longer lists simply never appear here, so a renamed
 // or deleted slug cannot keep a stale row in the ranking.
@@ -71,4 +104,72 @@ export function chooseFeatured(articles, totals) {
 
   const article = ordered[0];
   return { article, ranked: Boolean(article) && (totals.get(article.translationKey) || 0) > 0 };
+}
+
+// The short list under the featured card: the most read articles of the last
+// two month buckets, in this language, excluding whatever the featured card
+// already shows. Returns an empty array when nothing has been counted, which is
+// what makes the rail disappear rather than render a heading over nothing.
+//
+// Ranked on this language's own reads rather than the translation total, unlike
+// the featured card. The card answers "what is this journal known for", which is
+// the same answer in every language; the rail answers "what are people here
+// reading now", and a Portuguese reader is better served by what Portuguese
+// readers opened than by a total three languages contributed to.
+export function recentlyRead(articles, counts, exclude, limit = 3) {
+  if (!counts || counts.size === 0) return [];
+
+  return articles
+    .map((article) => ({ article, views: counts.get(`${article.language}/${article.slug}`) || 0 }))
+    .filter(({ article, views }) => views > 0 && article.slug !== exclude)
+    .sort((first, second) => (
+      second.views - first.views
+      || second.article.date.localeCompare(first.article.date)
+      || first.article.slug.localeCompare(second.article.slug)
+    ))
+    .slice(0, limit)
+    .map(({ article }) => article);
+}
+
+// A build-log report, not site output: which translations are carrying an
+// article and which are not.
+//
+// Every article is published in all three languages, so the question is never
+// "is this translated" but "is the translation being read". An article whose
+// English page is read ten times as often as its Spanish one is either reaching
+// a different audience or has a weaker translation, and either way it is where
+// the next hour of editing pays best. The report is printed rather than stored
+// because it is a prompt for a person, and a stale copy of it on disk would be
+// worse than none.
+export function translationPriorities(articles, counts, { minimum = 20, ratio = 4 } = {}) {
+  if (!counts || counts.size === 0) return [];
+
+  const groups = new Map();
+  for (const article of articles) {
+    const views = counts.get(`${article.language}/${article.slug}`) || 0;
+    const group = groups.get(article.translationKey) || { total: 0, byLanguage: [] };
+    group.total += views;
+    group.byLanguage.push({ language: article.language, slug: article.slug, views });
+    groups.set(article.translationKey, group);
+  }
+
+  const priorities = [];
+  for (const [translationKey, group] of groups) {
+    // Below the minimum the ratio is noise: two reads against zero is a 2x gap
+    // and means nothing. The threshold is what keeps this from reporting every
+    // article in the first week after a deploy.
+    if (group.total < minimum) continue;
+
+    const ordered = [...group.byLanguage].sort((first, second) => second.views - first.views);
+    const strongest = ordered[0];
+    const weakest = ordered[ordered.length - 1];
+    // +1 on the denominator so a translation with no reads at all is included
+    // rather than dividing by zero out of the report - that is the widest gap
+    // there is, and the one most worth seeing.
+    if (strongest.views / (weakest.views + 1) < ratio) continue;
+
+    priorities.push({ translationKey, strongest, weakest, total: group.total });
+  }
+
+  return priorities.sort((first, second) => second.total - first.total);
 }

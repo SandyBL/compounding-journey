@@ -24,6 +24,23 @@
  * linking a new file from a template is enough. The script is deliberately
  * strict - a missing or empty asset, or a build in which no placeholder was
  * found at all, fails rather than publishing URLs cached for a year.
+ *
+ * The match accepts an already-stamped hash as well as the placeholder, which
+ * makes this step idempotent: running it twice recomputes the same hash rather
+ * than finding nothing to do. That is what lets pages which are edited in place
+ * rather than rendered from a template - the three journal indexes, and 404.html
+ * - take part. Those files live in the repository carrying `?v=source`, the
+ * build stamps them, and the next build starts from the committed placeholder
+ * again; a local build that stamps a working copy is now equally harmless,
+ * because a stamped file is still a file this script can read.
+ *
+ * Stylesheets are stamped too, and first. A page cannot version a font on its
+ * own: the `<link rel="preload">` in the head and the `src: url(...)` in the
+ * @font-face have to be the same string or the browser downloads the file
+ * twice, and only one of those two lives in HTML. Doing the stylesheets in a
+ * pass of their own, before any page hash is taken, means both sides get the
+ * same hash of the same font file, and the stylesheet's own hash is taken from
+ * the copy that will actually be served.
  */
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
@@ -32,15 +49,18 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-/**
- * Generated pages that may carry placeholders. 404.html is deliberately absent:
- * it is hand-authored and lives in the repository, so rewriting it in place
- * would consume its own token and leave nothing to stamp on the next build.
- */
-const PAGE_ROOTS = ['index.html', 'en', 'es', 'pt'];
+/** Pages that may carry placeholders. 404.html is hand-authored; the rest are generated. */
+const PAGE_ROOTS = ['index.html', '404.html', 'en', 'es', 'pt'];
 
-/** `/assets/<anything>?v=source` - the placeholder this script resolves. */
-const PLACEHOLDER = /(\/assets\/[^"'?\s]+)\?v=source/g;
+/**
+ * `/assets/<anything>?v=source`, or the same URL already carrying a hash. Both
+ * are rewritten from the file on disk, so this step is idempotent and safe to
+ * run over a page that a previous local build already stamped.
+ */
+const PLACEHOLDER = /(\/assets\/[^"'?\s]+)\?v=(?:source|[0-9a-f]{12})/g;
+
+/** The same URL carrying anything else - a hand-written version this script rejects. */
+const HAND_VERSIONED = /\/assets\/[^"'?\s]+\?v=(?!source\b|[0-9a-f]{12}\b)[^"'\s>]*/g;
 
 async function hashOf(relativePath) {
   const absolute = path.join(root, relativePath);
@@ -74,24 +94,66 @@ async function* htmlPages() {
   }
 }
 
+async function* styleSheets() {
+  const directory = path.join(root, 'assets', 'css');
+  for (const found of await fs.readdir(directory, { withFileTypes: true })) {
+    if (found.isFile() && found.name.endsWith('.css')) yield path.join('assets', 'css', found.name);
+  }
+}
+
+/**
+ * Rewrites every placeholder in one file and returns how many it found. Shared
+ * by both passes, so a font linked from a stylesheet and a font preloaded from
+ * a page are hashed by the same code from the same bytes.
+ */
+async function stamp(file, hashes, stale) {
+  const absolute = path.join(root, file);
+  const source = await fs.readFile(absolute, 'utf8');
+  const wanted = [...source.matchAll(PLACEHOLDER)].map((match) => match[1]);
+
+  // A token this script did not write is a hand-maintained version - the
+  // failure mode that motivated the placeholder. Collect them all before
+  // failing, so one build reports every file that needs converting.
+  for (const [token] of source.matchAll(HAND_VERSIONED)) stale.push(`${file}: ${token}`);
+
+  if (wanted.length === 0) return { assets: 0, links: 0 };
+
+  for (const asset of new Set(wanted)) {
+    if (!hashes.has(asset)) hashes.set(asset, await hashOf(asset.replace(/^\//, '')));
+  }
+
+  const stamped = source.replace(PLACEHOLDER, (_match, asset) => `${asset}?v=${hashes.get(asset)}`);
+  if (stamped !== source) await fs.writeFile(absolute, stamped);
+  return { assets: new Set(wanted).size, links: wanted.length };
+}
+
 async function main() {
   const hashes = new Map();
+  const stale = [];
   let total = 0;
 
+  // Stylesheets first. Only the font links in blog.css carry a placeholder
+  // today; the Tailwind bundles have none and pass through untouched. This has
+  // to run before any page is read, because a page's hash of a stylesheet must
+  // be taken from the stamped copy rather than the one on the way in.
+  for await (const sheet of styleSheets()) {
+    const { assets, links } = await stamp(sheet, hashes, stale);
+    if (links > 0) console.log(`Versioned ${sheet}: ${assets} asset(s), ${links} link(s).`);
+  }
+
   for await (const page of htmlPages()) {
-    const absolute = path.join(root, page);
-    const markup = await fs.readFile(absolute, 'utf8');
-    const wanted = [...markup.matchAll(PLACEHOLDER)].map((match) => match[1]);
-    if (wanted.length === 0) continue;
+    const { assets, links } = await stamp(page, hashes, stale);
+    if (links === 0) continue;
+    total += links;
+    console.log(`Versioned ${page}: ${assets} asset(s), ${links} link(s).`);
+  }
 
-    for (const asset of new Set(wanted)) {
-      if (!hashes.has(asset)) hashes.set(asset, await hashOf(asset.replace(/^\//, '')));
-    }
-
-    const stamped = markup.replace(PLACEHOLDER, (_match, asset) => `${asset}?v=${hashes.get(asset)}`);
-    await fs.writeFile(absolute, stamped);
-    total += wanted.length;
-    console.log(`Versioned ${page}: ${new Set(wanted).size} asset(s), ${wanted.length} link(s).`);
+  if (stale.length > 0) {
+    throw new Error(
+      `${stale.length} asset link(s) carry a hand-written version instead of ` +
+        `"?v=source". Those are served immutable for a year and go stale the ` +
+        `moment somebody forgets to bump them:\n  ${stale.join('\n  ')}`,
+    );
   }
 
   // Nothing to stamp means the generators stopped emitting placeholders, which

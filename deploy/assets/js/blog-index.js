@@ -8,7 +8,16 @@
   const resultCount = document.querySelector('[data-results-count]');
   const emptyState = document.querySelector('[data-empty-state]');
   const clearButton = document.querySelector('[data-clear-filters]');
-  if (!grid || !pagination || !searchInput || !categorySelect || !sortSelect || !orderSelect) return;
+  // All nine are dereferenced unconditionally below, so all nine belong in the
+  // same guard. The three added last - the count, the empty state and the clear
+  // button - were being read in render() and in the fetch failure path without
+  // ever being checked, which turned a markup change into a thrown TypeError
+  // instead of the quiet stand-down this early return exists to perform. The
+  // grid is server-rendered either way, so standing down leaves a readable page.
+  if (
+    !grid || !pagination || !searchInput || !categorySelect || !sortSelect ||
+    !orderSelect || !resultCount || !emptyState || !clearButton
+  ) return;
 
   const language = document.documentElement.lang || 'en';
   const pageSize = 12;

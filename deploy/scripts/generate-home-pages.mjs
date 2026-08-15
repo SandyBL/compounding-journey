@@ -269,6 +269,20 @@ function replaceTagAttribute(html, selector, attribute, value) {
 function rewriteHead(html, language, config) {
   let output = html;
 
+  // Comments marked "build:" explain the build to whoever edits the template
+  // and mean nothing to a browser. Some of them are worse than nothing in the
+  // output: the one above the Tailwind <link> describes the ?v=source
+  // placeholder and how version-assets.mjs replaces it, which is a description
+  // of a token that is no longer in the file by the time anyone can read the
+  // comment. They are stripped here rather than deleted from the template,
+  // because the template is where they are true and where they are needed.
+  //
+  // Matched from the start of their line so the surrounding indentation and the
+  // newline go with them, and anchored on the marker so an ordinary comment -
+  // the section headings through the body, which do belong in the output - is
+  // never touched.
+  output = output.replace(/^[ \t]*<!--\s*build:[\s\S]*?-->\r?\n/gm, '');
+
   // This file is rewritten on every deploy. Without the notice the obvious
   // place to edit the home page is the home page, and the change is gone at
   // the next build.
@@ -566,18 +580,35 @@ const INLINE_ASSETS = [
     pattern: /<script type="module">([\s\S]*?)<\/script>/,
     file: path.join('assets', 'js', 'home-identity.js'),
     url: '/assets/js/home-identity.js',
+    // Hoisted into <head>. Second, because a module is deferred whether or not
+    // anyone asks and the behaviour block below has to keep running first.
+    hoist: 2,
     tag: (url) => `<script type="module" src="${url}"></script>`
   },
   {
     label: 'behaviour',
-    // Deliberately not deferred. The block sits at the end of <body> and runs
-    // during parsing today, which puts it ahead of the module above it - modules
-    // are deferred whether or not anyone asks. Adding defer here would silently
-    // swap the two, so the plain form is the faithful translation.
     pattern: /<script>([\s\S]*?)<\/script>/,
     file: path.join('assets', 'js', 'home.js'),
     url: '/assets/js/home.js',
-    tag: (url) => `<script src="${url}"></script>`
+    // Hoisted into <head> as well, and first of the two.
+    //
+    // In the template this block sits at the end of <body> and runs during
+    // parsing, which is the only arrangement that works for a file somebody
+    // opens directly. In the generated page it is the last thing a parser
+    // reaches after 140 KB of markup, so the browser cannot even begin fetching
+    // it until it has read everything above - on the page that matters most.
+    //
+    // Moving it to <head> with defer starts that fetch with the first bytes of
+    // the document and still runs it after the document is parsed, so it sees
+    // exactly the DOM it sees today and still runs before DOMContentLoaded.
+    //
+    // Order is the part that is easy to get wrong. Today this block runs before
+    // the module above it, because classic scripts run when the parser reaches
+    // them and modules wait. Defer puts both in the same queue, and that queue
+    // is in document order - so the two are emitted into the head in the order
+    // set by `hoist`, not the order they appear in the template.
+    hoist: 1,
+    tag: (url) => `<script defer src="${url}"></script>`
   }
 ];
 
@@ -625,10 +656,63 @@ function replaceInlineAssets(html, extracted, language) {
         + 'the template it was extracted from.'
       );
     }
-    output = output.replace(asset.block, asset.tag(asset.href));
+    // A hoisted asset leaves nothing behind: its tag goes into the head below
+    // instead. The blank line that remains is collapsed by tidyOutput().
+    output = output.replace(asset.block, asset.hoist ? '' : asset.tag(asset.href));
   }
 
   return output;
+}
+
+// Puts the hoisted tags at the end of <head>, in the order their `hoist` value
+// asks for rather than the order they were authored in. Last in the head means
+// after every stylesheet link, so a deferred script cannot delay the styles; and
+// before </head> means the browser has both URLs in hand before it has parsed a
+// single element of the body.
+function hoistToHead(html, extracted, language) {
+  const tags = extracted
+    .filter((asset) => asset.hoist)
+    .sort((first, second) => first.hoist - second.hoist)
+    .map((asset) => `    ${asset.tag(asset.href)}`);
+
+  if (tags.length === 0) return html;
+
+  const close = html.lastIndexOf('</head>');
+  if (close < 0) {
+    throw new Error(`The "${language}" homepage has no </head> to hoist its scripts into.`);
+  }
+
+  return `${html.slice(0, close)}${tags.join('\n')}\n${html.slice(close)}`;
+}
+
+// --- output tidying --------------------------------------------------------
+
+// Two pieces of residue that only exist because this page is generated, applied
+// last so nothing upstream has to know about either.
+//
+// The first is the attribute value. The template tags every string with the
+// language it is written in, and the split keeps one language and deletes the
+// other two - at which point 225 elements per page still claim, individually, to
+// be Spanish on a page that is entirely Spanish. The name is kept as a bare
+// data-i18n because the CSS still needs a hook for the display values these
+// elements had, and because it is a true statement about them: they are strings
+// that exist in three languages. The value is dropped because it is not.
+//
+// The second is the hole each deleted element left. Removing a <span> that sat
+// on its own line leaves that line's indentation and newline behind, and three
+// sibling languages per string meant 535 blank lines in every page - a third of
+// index.html was whitespace. This runs after replaceInlineAssets(), so the
+// stylesheet and the script have already become <link> and <script src> and the
+// only blank lines left to collapse are in markup.
+function tidyOutput(html) {
+  return html
+    .replace(/\slang-content="[a-z]{2}"/g, ' data-i18n')
+    // rewriteHead() strips the build: comments in the <head>. This catches the
+    // ones in the body - there is one, marking where the two script blocks are
+    // authored - and runs late enough that the blank line it leaves is cleaned
+    // up by the rule below.
+    .replace(/^[ \t]*<!--\s*build:[\s\S]*?-->\r?\n/gm, '')
+    .replace(/\n(?:[ \t]*\n)+/g, '\n');
 }
 
 // --- run -------------------------------------------------------------------
@@ -663,8 +747,11 @@ for (const language of languages) {
   page = await rewriteTemplateMeta(page, language, config);
 
   page = replaceInlineAssets(page, extractedAssets, language);
+  page = hoistToHead(page, extractedAssets, language);
 
   assertAbsoluteAssetUrls(page, language);
+
+  page = tidyOutput(page);
 
   const file = outputFile(language);
   await fs.mkdir(path.dirname(file), { recursive: true });

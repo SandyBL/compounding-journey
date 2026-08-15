@@ -15,6 +15,18 @@
 # stamps the hash into the pages that link it — which is only possible once both
 # the pages and the bundle exist.
 #
+# generate-manifests.mjs runs after every page generator and before the stamp,
+# because it edits pages the generators have just written: it links each one to
+# the manifest for its own language. It patches between markers rather than
+# appending, so running it twice leaves one block, not two.
+#
+# verify-output.mjs closes the chain. It reads what the steps above actually
+# wrote and fails the build on the three things that have gone wrong here before
+# and that nothing else notices: a version token written by hand instead of
+# hashed, an asset linked with no caching rule to match it, and a page whose
+# declared language disagrees with the URL it is served from. Each of those was
+# found by reading the output; this is what reads it every time.
+#
 # The install is explicit. Netlify only runs its automatic dependency step when
 # it finds a lockfile, and this project had none, which left the Tailwind CLI off
 # the PATH and failed the build with exit 127. Stating the install here does not
@@ -22,7 +34,7 @@
 # present. The only dependency is the CLI itself, pinned to an exact version in
 # package.json.
 [build]
-  command = "npm install --no-audit --no-fund && node scripts/generate-blog-catalog.mjs && node scripts/generate-home-pages.mjs && node scripts/generate-blog-pages.mjs && node scripts/generate-simulator-pages.mjs && node scripts/generate-llms-txt.mjs && npm run css && node scripts/version-assets.mjs"
+  command = "npm install --no-audit --no-fund && node scripts/generate-blog-catalog.mjs && node scripts/generate-home-pages.mjs && node scripts/generate-blog-pages.mjs && node scripts/generate-simulator-pages.mjs && node scripts/generate-llms-txt.mjs && node scripts/generate-manifests.mjs && npm run css && node scripts/version-assets.mjs && node scripts/verify-output.mjs"
 
 # The generators are Node ESM. Pin the runtime so a change to the Netlify
 # default cannot alter the build without a commit saying so.

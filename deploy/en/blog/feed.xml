@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
+  <channel>
+    <title>The Compounding Journal</title>
+    <link>https://compoundingjourney.com/en/blog/</link>
+    <description>Practical money systems, intentional work, and the patient path toward financial freedom.</description>
+    <language>en</language>
+    <atom:link href="https://compoundingjourney.com/en/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://compoundingjourney.com/logo-compounding-journey.png</url>
+      <title>The Compounding Journal</title>
+      <link>https://compoundingjourney.com/en/blog/</link>
+    </image>
+    <lastBuildDate>Thu, 13 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Spending with Purpose: How to Align Your Money with What Truly Matters</title>
+      <link>https://compoundingjourney.com/en/blog/spending-with-purpose-how-to-align-your-money-with-what-truly-matters/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/en/blog/spending-with-purpose-how-to-align-your-money-with-what-truly-matters/</guid>
+      <pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Life design</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>Financial growth isn&#39;t about cutting all joy—it&#39;s about intentional spending. Discover how aligning purchases with your core values unlocks lasting freedom.</description>
+    </item>
+    <item>
+      <title>Foundations of Personal Finance: How to Control Expenses and Build Wealth</title>
+      <link>https://compoundingjourney.com/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/</guid>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Money habits</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>Discover simple tips for budgeting, tracking expenses, and making smarter money choices to achieve financial freedom without giving up what makes you happy.</description>
+    </item>
+    <item>
+      <title>Building Wealth Through Good Financial Habits: Key Lessons from Rich Dad, Poor Dad</title>
+      <link>https://compoundingjourney.com/en/blog/building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/en/blog/building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad/</guid>
+      <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Money habits</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>Discover how to build long-term wealth using proven financial habits from Rich Dad, Poor Dad. Learn the key differences between assets, liabilities, good debt, and cash flow.</description>
+    </item>
+    <item>
+      <title>Pay Yourself First: The Simple Habit to Build Lasting Wealth</title>
+      <link>https://compoundingjourney.com/en/blog/pay-yourself-first-the-simple-habit-to-build-lasting-wealth/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/en/blog/pay-yourself-first-the-simple-habit-to-build-lasting-wealth/</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+      <category>Money habits</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>Learn how saving a fixed percentage before spending can break the paycheck-to-paycheck cycle and help you easily build an emergency fund.</description>
+    </item>
+    <item>
+      <title>The slow money system: a calmer way to build wealth</title>
+      <link>https://compoundingjourney.com/en/blog/slow-money-system/</link>
+      <guid isPermaLink="true">https://compoundingjourney.com/en/blog/slow-money-system/</guid>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+      <category>Money habits</category>
+      <dc:creator>Sandy Bradbury</dc:creator>
+      <description>A practical weekly rhythm that replaces financial urgency with a small set of repeatable decisions.</description>
+    </item>
+  </channel>
+</rss>

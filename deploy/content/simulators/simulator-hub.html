@@ -104,7 +104,7 @@
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">{{siteReturnLinkText}}</span>
                 </a>
-                <button id="resetBtn" onclick="resetGame()" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-cream-300 text-espresso-800 hover:bg-cream-200 transition-colors flex items-center gap-1.5">
+                <button id="resetBtn" data-onclick="resetGame()" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-cream-300 text-espresso-800 hover:bg-cream-200 transition-colors flex items-center gap-1.5">
                     <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
                     <span>{{resetbtn}}</span>
                 </button>
@@ -216,7 +216,7 @@
 
             <p id="debriefLesson" class="text-base text-espresso-900 leading-relaxed bg-cream-100 p-4 rounded-xl border border-cream-300 mb-6"></p>
 
-            <button onclick="nextScenario()" class="w-full sm:w-auto px-8 py-3.5 bg-forest-800 hover:bg-forest-900 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+            <button data-onclick="nextScenario()" class="w-full sm:w-auto px-8 py-3.5 bg-forest-800 hover:bg-forest-900 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
                 <span>{{wFull}}</span>
                 <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
             </button>
@@ -267,7 +267,7 @@
                 
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <input type="text" id="playerNameInput" placeholder="{{playernameinputPlaceholder}}" aria-label="{{playernameinputPlaceholder}}" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
-                    <button onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors">
+                    <button data-onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors">
 {{px6}}                    </button>
                 </div>
 
