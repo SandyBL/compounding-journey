@@ -1,0 +1,1217 @@
+{
+  "title": {
+    "en": "Personal Finance & Wealth Simulator | Compounding Journey",
+    "es": "Simulador de Finanzas Personales y Riqueza | Compounding Journey",
+    "pt": "Simulador de Finanças Pessoais e Riqueza | Compounding Journey"
+  },
+  "metaContent": {
+    "en": "Practice everyday money decisions and discover how they affect your wealth, cash flow, happiness, and financial intelligence.",
+    "es": "Practica decisiones financieras cotidianas y descubre cómo afectan a tu patrimonio, flujo de caja, felicidad e inteligencia financiera.",
+    "pt": "Pratica decisões financeiras do dia a dia e descobre como afetam o teu património, fluxo de caixa, felicidade e inteligência financeira."
+  },
+  "script": {
+    "en": "      \"@id\": \"https://compoundingjourney.com/en/simulator.html#app\",\n      \"name\": \"Personal Finance & Wealth Simulator\",\n      \"url\": \"https://compoundingjourney.com/en/simulator.html\",\n      \"description\": \"Practice everyday money decisions and discover how they affect your wealth, cash flow, happiness, and financial intelligence.\",\n      \"inLanguage\": \"en\",\n",
+    "es": "      \"@id\": \"https://compoundingjourney.com/es/simulator.html#app\",\n      \"name\": \"Simulador de Finanzas Personales y Riqueza\",\n      \"url\": \"https://compoundingjourney.com/es/simulator.html\",\n      \"description\": \"Practica decisiones financieras cotidianas y descubre cómo afectan a tu patrimonio, flujo de caja, felicidad e inteligencia financiera.\",\n      \"inLanguage\": \"es\",\n",
+    "pt": "      \"@id\": \"https://compoundingjourney.com/pt/simulator.html#app\",\n      \"name\": \"Simulador de Finanças Pessoais e Riqueza\",\n      \"url\": \"https://compoundingjourney.com/pt/simulator.html\",\n      \"description\": \"Pratica decisões financeiras do dia a dia e descobre como afetam o teu património, fluxo de caixa, felicidade e inteligência financeira.\",\n      \"inLanguage\": \"pt\",\n"
+  },
+  "script3": {
+    "en": "          \"name\": \"Home\",\n          \"item\": \"https://compoundingjourney.com/en/\"\n",
+    "es": "          \"name\": \"Inicio\",\n          \"item\": \"https://compoundingjourney.com/\"\n",
+    "pt": "          \"name\": \"Início\",\n          \"item\": \"https://compoundingjourney.com/pt/\"\n"
+  },
+  "script4": {
+    "en": "          \"name\": \"Personal Finance & Wealth Simulator\",\n          \"item\": \"https://compoundingjourney.com/en/simulator.html\"\n",
+    "es": "          \"name\": \"Simulador de Finanzas Personales y Riqueza\",\n          \"item\": \"https://compoundingjourney.com/es/simulator.html\"\n",
+    "pt": "          \"name\": \"Simulador de Finanças Pessoais e Riqueza\",\n          \"item\": \"https://compoundingjourney.com/pt/simulator.html\"\n"
+  },
+  "head": {
+    "en": "    <!-- Chart.js for Trajectory Visuals -->\n",
+    "es": "    <!-- Chart.js para gráficos de trayectoria -->\n",
+    "pt": "    <!-- Chart.js para gráficos de trajetória -->\n"
+  },
+  "skipLink": {
+    "en": "Skip to main content",
+    "es": "Saltar al contenido principal",
+    "pt": "Saltar para o conteúdo principal"
+  },
+  "minHScreen": {
+    "en": "    <!-- HEADER BRANDING -->\n",
+    "es": "    <!-- CABECERA Y MARCA -->\n",
+    "pt": "    <!-- CABEÇALHO E MARCA -->\n"
+  },
+  "headerBrandAriaLabel": {
+    "en": "Return to Compounding Journey",
+    "es": "Volver a Compounding Journey",
+    "pt": "Voltar ao Compounding Journey"
+  },
+  "headerBrandTagline": {
+    "en": "Your map to freedom",
+    "es": "Tu mapa hacia la libertad",
+    "pt": "O teu mapa para a liberdade"
+  },
+  "headerShell": {
+    "en": "            <!-- Restart Toolbar -->\n",
+    "es": "            <!-- Botón de Reinicio -->\n",
+    "pt": "            <!-- Botão de Reinício -->\n"
+  },
+  "siteReturnLinkAriaLabel": {
+    "en": "Back to the website",
+    "es": "Volver al sitio web",
+    "pt": "Voltar ao site"
+  },
+  "siteReturnLinkText": {
+    "en": "Website",
+    "es": "Sitio web",
+    "pt": "Site"
+  },
+  "resetbtn": {
+    "en": "Restart",
+    "es": "Reiniciar",
+    "pt": "Recomeçar"
+  },
+  "minHScreen2": {
+    "en": "    <!-- COMPACT TOP METRICS TRACKER TOOLBAR -->\n",
+    "es": "    <!-- BARRA DE MÉTRICAS EN UNA SOLA LÍNEA -->\n",
+    "pt": "    <!-- BARRA DE MÉTRICAS EM LINHA ÚNICA -->\n"
+  },
+  "maxW6xl": {
+    "en": "            <!-- Net Worth -->\n",
+    "es": "            <!-- Patrimonio Neto -->\n",
+    "pt": "            <!-- Patrimônio Líquido -->\n"
+  },
+  "text10px": {
+    "en": "Net Worth",
+    "es": "Patrimonio Neto",
+    "pt": "Patrimônio Líquido"
+  },
+  "networthdisplay": {
+    "en": "$10,000",
+    "es": "$10,000",
+    "pt": "$10.000"
+  },
+  "maxW6xl2": {
+    "en": "            <!-- Monthly Cash Flow -->\n",
+    "es": "            <!-- Flujo de Caja Mensual -->\n",
+    "pt": "            <!-- Fluxo de Caixa Mensal -->\n"
+  },
+  "text10px2": {
+    "en": "Cash Flow",
+    "es": "Flujo de Caja",
+    "pt": "Fluxo de Caixa"
+  },
+  "cashflowdisplay": {
+    "en": "+$500/mo",
+    "es": "+$500/mes",
+    "pt": "+$500/mês"
+  },
+  "maxW6xl3": {
+    "en": "            <!-- Happiness -->\n",
+    "es": "            <!-- Felicidad -->\n",
+    "pt": "            <!-- Felicidade -->\n"
+  },
+  "text10px3": {
+    "en": "Happiness",
+    "es": "Felicidad",
+    "pt": "Felicidade"
+  },
+  "maxW6xl4": {
+    "en": "            <!-- Literacy IQ -->\n",
+    "es": "            <!-- IQ Financiero -->\n",
+    "pt": "            <!-- IQ Financeiro -->\n"
+  },
+  "text10px4": {
+    "en": "Literacy IQ",
+    "es": "IQ Financiero",
+    "pt": "IQ Financeiro"
+  },
+  "minHScreen3": {
+    "en": "    <!-- MAIN CONTAINER -->\n",
+    "es": "    <!-- CONTENEDOR PRINCIPAL -->\n",
+    "pt": "    <!-- CONTAINER PRINCIPAL -->\n"
+  },
+  "textXs": {
+    "en": "Free interactive tool",
+    "es": "Herramienta interactiva gratuita",
+    "pt": "Ferramenta interativa gratuita"
+  },
+  "text2xl": {
+    "en": "Personal Finance & Wealth Simulator",
+    "es": "Simulador de Finanzas Personales y Riqueza",
+    "pt": "Simulador de Finanças Pessoais e Riqueza"
+  },
+  "mt3": {
+    "en": "Play through fifteen everyday money decisions ",
+    "es": "Recorre quince decisiones financieras cotidianas ",
+    "pt": "Percorre quinze decisões financeiras do dia a dia "
+  },
+  "mt32": {
+    "en": "saving, investing, borrowing, spending ",
+    "es": "ahorrar, invertir, endeudarte, gastar ",
+    "pt": "poupar, investir, endividar-te, gastar "
+  },
+  "mt33": {
+    "en": "and watch each choice move your net worth, monthly cash flow, happiness and financial intelligence. At the end you get ",
+    "es": "y observa cómo cada elección mueve tu patrimonio, tu flujo de caja mensual, tu felicidad y tu inteligencia financiera. Al final obtienes un perfil financiero que muestra qué hábitos suman ",
+    "pt": "e vê como cada escolha move o teu património, o teu fluxo de caixa mensal, "
+  },
+  "mt34": {
+    "en": "financial profile that shows which habits are compounding in your favour and which are quietly working against you.",
+    "es": "tu favor y cuáles trabajan en tu contra.",
+    "pt": "tua felicidade e a tua inteligência financeira. No fim recebes um perfil financeiro que mostra que hábitos jogam a teu favor e quais trabalham contra ti."
+  },
+  "mt4AriaLabel": {
+    "en": "Other simulators",
+    "es": "Otros simuladores",
+    "pt": "Outros simuladores"
+  },
+  "textEspresso80060": {
+    "en": "Other simulators:",
+    "es": "Otros simuladores:",
+    "pt": "Outros simuladores:"
+  },
+  "px25": {
+    "en": "Freedom Calendar",
+    "es": "Calendario de la Libertad",
+    "pt": "Calendário da Liberdade"
+  },
+  "px252": {
+    "en": "Market Time Machine",
+    "es": "Máquina del Tiempo del Mercado",
+    "pt": "Máquina do Tempo do Mercado"
+  },
+  "px253": {
+    "en": "Passive Income Engine",
+    "es": "Motor de Ingresos Pasivos",
+    "pt": "Motor de Rendimento Passivo"
+  },
+  "main": {
+    "en": "        <!-- STEPPER PROGRESS DOTS -->\n",
+    "es": "        <!-- PUNTOS DE PROGRESO (STEPPER) -->\n",
+    "pt": "        <!-- PONTOS DE PROGRESSO (STEPPER) -->\n"
+  },
+  "scenarioprogresstext": {
+    "en": "Phase 1 of 15",
+    "es": "Fase 1 de 15",
+    "pt": "Fase 1 de 15"
+  },
+  "scenariocategorybadge": {
+    "en": "Investing & Asset Allocation",
+    "es": "Inversión y Asignación de Activos",
+    "pt": "Investimentos e Alocação de Ativos"
+  },
+  "main2": {
+    "en": "        <!-- ACTIVE SCENARIO CARD -->\n",
+    "es": "        <!-- CARD DEL ESCENARIO ACTIVO -->\n",
+    "pt": "        <!-- CARD DO CENÁRIO ATIVO -->\n"
+  },
+  "scenariotitle": {
+    "en": "Loading scenario...",
+    "es": "Cargando escenario...",
+    "pt": "Carregando cenário..."
+  },
+  "scenariocard": {
+    "en": "            <!-- 3 OPTIONS LIST -->\n",
+    "es": "            <!-- LISTA DE 3 OPCIONES -->\n",
+    "pt": "            <!-- LISTA DE 3 OPÇÕES -->\n"
+  },
+  "optionscontainer": {
+    "en": "                <!-- Dynamic choices injected here -->\n",
+    "es": "                <!-- Opções dinâmicas injetadas via JS -->\n",
+    "pt": "                <!-- Opções dinâmicas injetadas via JS -->\n"
+  },
+  "main3": {
+    "en": "        <!-- FINANCIAL DEBRIEF CARD (HIDDEN BY DEFAULT) -->\n",
+    "es": "        <!-- CARD DE ANÁLISIS FINANCIERO (OCULTO POR DEFECTO) -->\n",
+    "pt": "        <!-- CARD DE ANÁLISE FINANCEIRA (OCULTO POR PADRÃO) -->\n"
+  },
+  "flex": {
+    "en": "Financial Debrief & Economics",
+    "es": "Análisis Financiero y Lección Económica",
+    "pt": "Análise Financeira & Lição Econômica"
+  },
+  "wFull": {
+    "en": "Advance to Next Phase",
+    "es": "Avanzar a la Siguiente Fase",
+    "pt": "Avançar para a Próxima Fase"
+  },
+  "main4": {
+    "en": "        <!-- FINAL RESULTS & EVALUATION SCREEN (HIDDEN BY DEFAULT) -->\n",
+    "es": "        <!-- PANTALLA DE RESULTADOS FINALES Y EVALUACIÓN (OCULTA POR DEFECTO) -->\n",
+    "pt": "        <!-- TELA DE RESULTADOS FINAIS & AVALIAÇÃO (OCULTA POR PADRÃO) -->\n"
+  },
+  "textXs2": {
+    "en": "Simulation Complete",
+    "es": "Simulación Concluida",
+    "pt": "Simulação Concluída"
+  },
+  "archetypetitle": {
+    "en": "Your Financial Profile",
+    "es": "Tu Perfil Financiero",
+    "pt": "Seu Perfil Financeiro"
+  },
+  "bgCream50": {
+    "en": "                <!-- FINAL STATS GRID -->\n",
+    "es": "                <!-- GRID DE ESTADÍSTICAS FINALES -->\n",
+    "pt": "                <!-- GRID DE ESTATÍSTICAS FINAIS -->\n"
+  },
+  "textXs3": {
+    "en": "Final Net Worth",
+    "es": "Patrimonio Final",
+    "pt": "Patrimônio Final"
+  },
+  "textXs4": {
+    "en": "Monthly Cash Flow",
+    "es": "Flujo de Caja Mensual",
+    "pt": "Fluxo de Caixa Mensal"
+  },
+  "textXs5": {
+    "en": "Final Happiness",
+    "es": "Felicidad Final",
+    "pt": "Felicidade Final"
+  },
+  "resultsscreen": {
+    "en": "            <!-- CATEGORY STRENGTHS & WEAKNESSES -->\n",
+    "es": "            <!-- ANÁLISIS DE PUNTOS FUERTES Y OPORTUNIDADES POR CATEGORÍA -->\n",
+    "pt": "            <!-- ANÁLISE DE PONTOS FORTES E OPORTUNIDADES POR CATEGORIA -->\n"
+  },
+  "textXl": {
+    "en": " Category Strengths & Diagnostic Advice\n",
+    "es": " Rendimiento por Categoría y Diagnóstico\n",
+    "pt": " Desempenho por Categoria & Diagnóstico\n"
+  },
+  "resultsscreen2": {
+    "en": "            <!-- WEALTH TRAJECTORY CHART -->\n",
+    "es": "            <!-- GRÁFICO DE TRAYECTORIA DE LA RIQUEZA -->\n",
+    "pt": "            <!-- GRÁFICO DE TRAJETÓRIA DA RIQUEZA -->\n"
+  },
+  "textXl2": {
+    "en": "Net Worth Trajectory",
+    "es": "Trayectoria del Patrimonio Neto",
+    "pt": "Trajetória do Patrimônio Líquido"
+  },
+  "trajectorychartAriaLabel": {
+    "en": "Chart: projected net worth over the simulated years. The same figures appear as text in the results panel above.",
+    "es": "Gráfico: patrimonio neto proyectado a lo largo de los años simulados. Las mismas cifras aparecen como texto en el panel de resultados.",
+    "pt": "Gráfico: património líquido projetado ao longo dos anos simulados. Os mesmos valores aparecem como texto no painel de resultados."
+  },
+  "resultsscreen3": {
+    "en": "            <!-- LEADERBOARD & SAVE SCORE -->\n",
+    "es": "            <!-- TABLA DE CLASIFICACIÓN DE LA COMUNIDAD -->\n",
+    "pt": "            <!-- PLACAR DA COMUNIDADE -->\n"
+  },
+  "textXl3": {
+    "en": "Community Leaderboard",
+    "es": "Tabla de Clasificación de la Comunidad",
+    "pt": "Placar da Comunidade"
+  },
+  "textSm": {
+    "en": "Save your profile to compare your financial literacy score with other investors.",
+    "es": "Guarda tu resultado para comparar tu nivel de IQ financiero con otros inversores.",
+    "pt": "Salve o seu perfil para comparar sua pontuação de conhecimento financeiro com outros investidores."
+  },
+  "playernameinputPlaceholder": {
+    "en": "Enter your name or initials",
+    "es": "Escribe tu nombre o iniciales",
+    "pt": "Digite seu nome ou iniciais"
+  },
+  "px6": {
+    "en": "                        Save Result\n",
+    "es": "                        Guardar Resultado\n",
+    "pt": "                        Salvar Resultado\n"
+  },
+  "resultsscreen4": {
+    "en": "            <!-- COMPOUNDING JOURNEY CTA BOX -->\n",
+    "es": "            <!-- CARD DE LLAMADO A LA ACCIÓN (CTA) DE COMPOUNDING JOURNEY -->\n",
+    "pt": "            <!-- CARD DE CHAMADA PARA AÇÃO (CTA) DO COMPOUNDING JOURNEY -->\n"
+  },
+  "text2xl2": {
+    "en": "Ready to Build Your Personal Map to Freedom?",
+    "es": "¿Listo para Construir tu Mapa Hacia la Libertad?",
+    "pt": "Pronto para Construir o Seu Mapa Para a Liberdade?"
+  },
+  "textCream200": {
+    "en": "                    Fill in our brief assessment form to understand exactly where you stand today, receive tailored financial guidance, and take your next steps with total confidence.\n",
+    "es": "                    Completa nuestro formulario de evaluación para entender exactamente dónde estás hoy, recibir orientación financiera personalizada y tomar tus próximos pasos con total confianza.\n",
+    "pt": "                    Preencha nosso formulário de avaliação para entender exatamente onde você está hoje, receber orientação financeira personalizada e tomar seus próximos passos com total confiança.\n"
+  },
+  "inlineFlex": {
+    "en": "Get Initial Guidance at Compounding Journey",
+    "es": "Recibir Orientación en Compounding Journey",
+    "pt": "Receber Orientação no Compounding Journey"
+  },
+  "minHScreen4": {
+    "en": "    <!-- FOOTER -->\n",
+    "es": "    <!-- PIE DE PÁGINA -->\n",
+    "pt": "    <!-- RODAPÉ -->\n"
+  },
+  "bgCream100": {
+    "en": " Compounding Journey. Educational simulation only. Not formal financial advice.",
+    "es": " Compounding Journey. Solo para fines educativos. No constituye una recomendación formal de inversión.",
+    "pt": " Compounding Journey. Apenas para fins educacionais. Não constitui recomendação formal de investimentos."
+  },
+  "langSwitchAriaLabel": {
+    "en": "Language",
+    "es": "Idioma",
+    "pt": "Idioma"
+  },
+  "langLinkTagEs": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/es/simulator.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/es/simulator.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\" aria-current=\"page\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/es/simulator.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\">"
+  },
+  "langLinkTagEn": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/en/simulator.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\" aria-current=\"page\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/en/simulator.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/en/simulator.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\">"
+  },
+  "langLinkTagPt": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/pt/simulator.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/pt/simulator.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/pt/simulator.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\" aria-current=\"page\">"
+  },
+  "minHScreen5": {
+    "en": "        // Number Highlighting Helper Function\n",
+    "es": "        // Resaltado de Números Clave y Términos Financieros\n",
+    "pt": "        // Destaque de Números-Chave e Termos Financeiros\n"
+  },
+  "minHScreen6": {
+    "en": "            const pattern = /(\\$\\d+[\\d,]*k?|\\d+(\\.\\d+)?%|\\d+\\s*(hours|months|years|working weeks)|24-month|84-month|6-month|3x|AUM)/gi;\n",
+    "es": "            const pattern = /(\\$\\d+[\\d,.]*k?|\\d+([.,]\\d+)?%|\\d+\\s*(horas|meses|años|semanas de trabajo)|24 meses|84 meses|6 meses|3x|AUM)/gi;\n",
+    "pt": "            const pattern = /(\\$\\d+[\\d,.]*k?|\\d+([.,]\\d+)?%|\\d+\\s*(horas|meses|anos|semanas de trabalho)|24 meses|84 meses|6 meses|3x|AUM)/gi;\n"
+  },
+  "minHScreen7": {
+    "en": "        // INITIAL STATE\n",
+    "es": "        // ESTADO INICIAL\n",
+    "pt": "        // ESTADO INICIAL\n"
+  },
+  "minHScreen8": {
+    "en": "            happiness: 50, // Initial Happiness at 50%\n            literacyScore: 50 // Initial Literacy IQ set to 50%\n",
+    "es": "            happiness: 50, // Felicidad inicial al 50%\n            literacyScore: 50 // IQ Financiero inicial en 50%\n",
+    "pt": "            happiness: 50, // Felicidade inicial a 50%\n            literacyScore: 50 // IQ Financeiro inicial em 50%\n"
+  },
+  "minHScreen9": {
+    "en": "        // 5 SCENARIO CATEGORIES\n",
+    "es": "        // CATEGORÍAS DE ESCENARIOS\n",
+    "pt": "        // CATEGORIAS DE CENÁRIOS\n"
+  },
+  "minHScreen10": {
+    "en": "            INVESTING: \"Investing & Asset Allocation\",\n            DEBT: \"Debt & Leverage Management\",\n            SPENDING: \"Conscious Spending & Habits\",\n            TAX: \"Tax & Retirement Planning\",\n            RISK: \"Risk & Protection Strategy\"\n",
+    "es": "            INVESTING: \"Inversión y Asignación de Activos\",\n            DEBT: \"Gestión de Deudas y Apalancamiento\",\n            SPENDING: \"Consumo Consciente y Hábitos\",\n            TAX: \"Planificación Fiscal y Retiro\",\n            RISK: \"Gestión de Riesgos y Protección\"\n",
+    "pt": "            INVESTING: \"Investimentos e Alocação de Ativos\",\n            DEBT: \"Gestão de Dívidas e Alavancagem\",\n            SPENDING: \"Consumo Consciente e Hábitos\",\n            TAX: \"Planejamento Tributário e Aposentadoria\",\n            RISK: \"Gestão de Riscos e Proteção\"\n"
+  },
+  "minHScreen11": {
+    "en": "        // Category Scores (30 points max per question)\n",
+    "es": "        // Puntuación por Categoría (máximo de 30 puntos por pregunta)\n",
+    "pt": "        // Pontuação por Categoria (máximo de 30 pontos por pergunta)\n"
+  },
+  "minHScreen12": {
+    "en": "        // 15 SEQUENTIAL SCENARIOS WITH REVISED LITERACY DELTAS & HAPPINESS DELTAS\n",
+    "es": "        // 15 ESCENARIOS EN ESPAÑOL\n",
+    "pt": "        // 15 CENÁRIOS EM PORTUGUÊS\n"
+  },
+  "minHScreen13": {
+    "en": "                title: \"1. The Idle Cash Dilemma\",\n                description: \"You receive a $5,000 work bonus. You do not need this liquid cash immediately. Annual inflation rate is 3.5%. How do you deploy this capital?\",\n",
+    "es": "                title: \"1. El Dilema del Dinero Estancado\",\n                description: \"Recibes un bono de trabajo de $5,000. No necesitas este dinero de inmediato. La tasa de inflación anual es de 3.5%. ¿Cómo asignas este capital?\",\n",
+    "pt": "                title: \"1. O Dilema do Dinheiro Parado\",\n                description: \"Você recebe um bônus de trabalho de $5.000. Você não precisa desse dinheiro imediatamente. A taxa de inflação anual é de 3,5%. Como você aloca esse capital?\",\n"
+  },
+  "minHScreen14": {
+    "en": "                    title: \"Leave all $5,000 in a 0.01% standard checking account.\",\n                    desc: \"Keeps 100% liquid cash in checking for emotional peace of mind.\",\n",
+    "es": "                    title: \"Dejar los $5,000 completos en la cuenta corriente común al 0.01%.\",\n                    desc: \"Mantiene el 100% del dinero líquido en la cuenta corriente para tranquilidad emocional.\",\n",
+    "pt": "                    title: \"Deixar todos os $5.000 na conta corrente comum a 0,01%.\",\n                    desc: \"Mantém 100% do dinheiro líquido na conta corrente para tranquilidade emocional.\",\n"
+  },
+  "minHScreen15": {
+    "en": "                    lesson: \"Money left idle in checking feels safe, but silently shrinks in real purchasing power due to inflation.\"\n",
+    "es": "                    lesson: \"El dinero estancado en la cuenta corriente parece seguro, pero pierde poder adquisitivo silenciosamente todos los años debido a la inflación.\"\n",
+    "pt": "                    lesson: \"Dinheiro parado na conta corrente parece seguro, mas perde poder de compra silenciosamente todos os anos devido à inflação.\"\n"
+  },
+  "minHScreen16": {
+    "en": "                    title: \"Put the $5,000 into a High-Yield Savings (HYSA) / Money Market Fund.\",\n                    desc: \"Earns competitive short-term interest while remaining liquid.\",\n",
+    "es": "                    title: \"Poner los $5,000 en una Cuenta de Alto Rendimiento / Fondo de Liquidez.\",\n                    desc: \"Genera intereses competitivos a corto plazo sin perder la liquidez inmediata.\",\n",
+    "pt": "                    title: \"Colocar os $5.000 em uma Conta de Alto Rendimento / Fundo de Liquidez.\",\n                    desc: \"Rende juros competitivos de curto prazo sem perder a liquidez.\",\n"
+  },
+  "minHScreen17": {
+    "en": "                    lesson: \"High-yield savings or money market funds shield cash reserves against inflation and build risk-free yield without sacrificing short-term liquidity.\"\n",
+    "es": "                    lesson: \"Las cuentas de alto rendimiento o fondos de liquidez protegen tus reservas contra la inflación y generan ingresos pasivos sin comprometer la liquidez.\"\n",
+    "pt": "                    lesson: \"Contas de alto rendimento ou fundos de liquidez protegem suas reservas contra a inflação e geram renda passiva sem comprometer a liquidez imediata.\"\n"
+  },
+  "minHScreen18": {
+    "en": "                    title: \"Put 100% of the $5,000 into a volatile speculative memecoin.\",\n                    desc: \"Chases ultra-high quick gains with extreme loss probability.\",\n",
+    "es": "                    title: \"Invertir el 100% de los $5,000 en una memecoin altamente especulativa.\",\n                    desc: \"Busca ganancias astronómicas rápidas con probabilidad extrema de pérdida.\",\n",
+    "pt": "                    title: \"Investir 100% dos $5.000 em uma memecoin altamente especulativa.\",\n                    desc: \"Busca ganhos astronômicos rápidos com probabilidade extrema de perda.\",\n"
+  },
+  "minHScreen19": {
+    "en": "                    lesson: \"Speculation is not investing. Putting liquid funds into hype-driven volatile assets risks total drawdown and high financial stress.\"\n",
+    "es": "                    lesson: \"Especular no es invertir. Asignar fondos esenciales a activos volátiles por impulso aumenta el estrés financiero y el riesgo de ruina.\"\n",
+    "pt": "                    lesson: \"Especulação não é investimento. Alocar fundos essenciais em ativos voláteis por impulso aumenta o estresse financeiro e o risco de ruína.\"\n"
+  },
+  "minHScreen20": {
+    "en": "                title: \"2. Beach House: Buy vs. Rent vs. Core Assets\",\n                description: \"You dream of spending summer months near the ocean. You have saved $60,000 for a down payment or investment.\",\n",
+    "es": "                title: \"2. Casa en la Playa: Comprar vs. Alquilar vs. Activos Productivos\",\n                description: \"Deseas pasar los meses de verano cerca del mar y has juntado $60,000 para una entrada o inversión.\",\n",
+    "pt": "                title: \"2. Casa na Praia: Comprar vs. Alugar vs. Ativos Produtivos\",\n                description: \"Você deseja passar os meses de verão perto do mar e juntou $60.000 para uma entrada ou investimento.\",\n"
+  },
+  "minHScreen21": {
+    "en": "                    title: \"Buy a beach house with a heavy mortgage and high HOA/maintenance fees.\",\n                    desc: \"Commits to high monthly debt service and localized coastal property risk.\",\n",
+    "es": "                    title: \"Comprar la casa en la playa con una hipoteca elevada y altos costos de mantenimiento.\",\n                    desc: \"Compromete el flujo de caja mensual y concentra riesgo inmobiliario en una sola región.\",\n",
+    "pt": "                    title: \"Comprar a casa na praia com um financiamento alto e custos elevados de condomínio/manutenção.\",\n                    desc: \"Compromete o fluxo de caixa mensal e concentra risco imobiliário em uma única região.\",\n"
+  },
+  "minHScreen22": {
+    "en": "                    lesson: \"Vacation properties are frequently lifestyle expenses masked as investments. Maintenance, insurance, and taxes can drain cash flow.\"\n",
+    "es": "                    lesson: \"Las casas de vacaciones frecuentemente son gastos de estilo de vida disfrazados de inversiones. Mantenimiento e impuestos consumen caja.\"\n",
+    "pt": "                    lesson: \"Imóveis de férias frequentemente são despesas de estilo de vida disfarçadas de investimentos. Manutenção e impostos consomem caixa.\"\n"
+  },
+  "minHScreen23": {
+    "en": "                    title: \"Rent a beach house for 2-4 weeks each summer & invest the $60k in global index funds.\",\n                    desc: \"Enjoys the beach lifestyle flexibly while keeping capital compounding in liquid assets.\",\n",
+    "es": "                    title: \"Alquilar una casa en la playa por 2-4 semanas en verano e invertir los $60k en índices globales.\",\n                    desc: \"Disfruta el estilo de vida de forma flexible mientras el capital se multiplica en activos líquidos.\",\n",
+    "pt": "                    title: \"Alugar uma casa na praia por 2-4 semanas no verão e investir os $60k em índices globais.\",\n                    desc: \"Desfruta o estilo de vida de forma flexível enquanto o capital multiplica em ativos líquidos.\",\n"
+  },
+  "minHScreen24": {
+    "en": "                    lesson: \"Renting luxury assets while owning income-producing productive assets maximizes both personal happiness and compounding speed.\"\n",
+    "es": "                    lesson: \"Alquilar bienes de lujo y poseer activos productivos generadores de renta maximiza la felicidad personal y la velocidad de acumulación.\"\n",
+    "pt": "                    lesson: \"Alugar ativos de luxo e possuir ativos produtivos geradores de renda maximiza a felicidade pessoal e a velocidade de multiplicação de capital.\"\n"
+  },
+  "minHScreen25": {
+    "en": "                    title: \"Keep the $60,000 sitting in a 0% interest checking account indefinitely.\",\n                    desc: \"Keeps capital uninvested out of fear of real estate or stock markets.\",\n",
+    "es": "                    title: \"Dejar los $60,000 paralizados en la cuenta corriente sin rendimiento por tiempo indefinido.\",\n                    desc: \"Mantiene el capital sin invertir por temor al mercado inmobiliario o de acciones.\",\n",
+    "pt": "                    title: \"Deixar os $60.000 parados na conta corrente sem rendimento por tempo indeterminado.\",\n                    desc: \"Mantém o capital sem investir por medo do mercado imobiliário ou de ações.\",\n"
+  },
+  "minHScreen26": {
+    "en": "                    lesson: \"Opportunity cost is massive. Hoarding uninvested capital starves your future self from long-term compound growth.\"\n",
+    "es": "                    lesson: \"El costo de oportunidad es enorme. Mantener el capital inmóvil impide que el poder del interés compuesto trabaje a tu favor.\"\n",
+    "pt": "                    lesson: \"O custo de oportunidade é enorme. Manter o capital parado impede que o poder dos juros compostos trabalhe ao seu favor.\"\n"
+  },
+  "minHScreen27": {
+    "en": "                title: \"3. Choosing Financial Advice & Guidance\",\n                description: \"You want a professional to help organize your investments and long-term financial roadmap.\",\n",
+    "es": "                title: \"3. Elección de Asesoría Financiera\",\n                description: \"Deseas contratar a un profesional para organizar tus inversiones y tu plan financiero a largo plazo.\",\n",
+    "pt": "                title: \"3. Escolhendo Assessoria Financeira\",\n                description: \"Você deseja contratar um profissional para organizar seus investimentos e seu plano financeiro de longo prazo.\",\n"
+  },
+  "minHScreen28": {
+    "en": "                    title: \"Hire a fee-only, fiduciary planner paying a transparent hourly rate.\",\n                    desc: \"Receives conflict-free advice without recurring percentage drag.\",\n",
+    "es": "                    title: \"Contratar a un planificador fiduciario independiente por hora o tarifa fija transparente.\",\n                    desc: \"Recibe orientación libre de conflictos de interés sin tarifas porcentuales recurrentes.\",\n",
+    "pt": "                    title: \"Contratar um planejador fiduciário independente por hora ou taxa fixa transparente.\",\n                    desc: \"Recebe orientações isentas de conflito de interesses sem taxas percentuais recorrentes.\",\n"
+  },
+  "minHScreen29": {
+    "en": "                    lesson: \"Fee-only fiduciary planners charge for time or flat advice—not commissions—aligning their recommendations directly with your best interest.\"\n",
+    "es": "                    lesson: \"Los planificadores fiduciarios cobran por tiempo o consultoría puntual (no comisiones por producto), alineando sus consejos directamente a tus intereses.\"\n",
+    "pt": "                    lesson: \"Planejadores fiduciários cobram pelo tempo ou consultoria pontual — e não comissões por produto —, alinhando os conselhos diretamente aos seus interesses.\"\n"
+  },
+  "minHScreen30": {
+    "en": "                    title: \"Use an advisor charging a 1.5% annual Asset Under Management (AUM) fee + product sales.\",\n                    desc: \"Pays an ongoing percentage fee that compounds against your portfolio.\",\n",
+    "es": "                    title: \"Usar un asesor que cobra un 1.5% anual de comisión sobre tu patrimonio (AUM) + comisión de ventas.\",\n                    desc: \"Paga una tarifa porcentual continua que erosiona el rendimiento compuesto de tu portafolio.\",\n",
+    "pt": "                    title: \"Usar um assessor que cobra 1,5% ao ano de taxa sobre o patrimônio (AUM) + comissão de vendas.\",\n                    desc: \"Paga uma taxa percentual contínua que reduz o rendimento composto do seu portfólio.\",\n"
+  },
+  "minHScreen31": {
+    "en": "                    lesson: \"A 1.5% annual AUM fee sounds small, but over 30 years it can strip away over 30% of your net terminal portfolio growth.\"\n",
+    "es": "                    lesson: \"Una comisión del 1.5% anual parece pequeña, pero a lo largo de 30 años puede consumir más del 30% del crecimiento total de tu riqueza.\"\n",
+    "pt": "                    lesson: \"Uma taxa de 1,5% ao ano parece pequena, mas ao longo de 30 anos pode consumir mais de 30% do crescimento total do seu patrimônio.\"\n"
+  },
+  "minHScreen32": {
+    "en": "                    title: \"Follow financial advice exclusively from social media influencers & viral threads.\",\n                    desc: \"Trades based on short-term hype, sponsored posts, and unverified credentials.\",\n",
+    "es": "                    title: \"Seguir consejos financieros exclusivamente de influencers en redes sociales.\",\n                    desc: \"Realiza operaciones basadas en modas pasajeras sin verificación técnica.\",\n",
+    "pt": "                    title: \"Seguir conselhos financeiros exclusivamente de influenciadores de redes sociais.\",\n                    desc: \"Realiza operações baseadas em modismos sem verificação técnica.\",\n"
+  },
+  "minHScreen33": {
+    "en": "                    lesson: \"Social media trends incentivize sensationalism over sound financial planning. Tailored personal strategy requires fiduciary thinking.\"\n",
+    "es": "                    lesson: \"Las tendencias en redes sociales priorizan el sensacionalismo en lugar de una planificación estratégica sólida.\"\n",
+    "pt": "                    lesson: \"Tendências em redes sociais priorizam o sensacionalismo em vez do planejamento estratégico sólido.\"\n"
+  },
+  "minHScreen34": {
+    "en": "                title: \"4. Life Insurance Strategy for Dependents\",\n                description: \"You have dependents relying on your income. You need to protect your family's future security.\",\n",
+    "es": "                title: \"4. Seguro de Vida para Dependientes\",\n                description: \"Tienes personas que dependen de tus ingresos y necesitas proteger el futuro financiero de tu familia.\",\n",
+    "pt": "                title: \"4. Seguro de Vida para Dependentes\",\n                description: \"Você possui pessoas dependentes da sua renda e precisa proteger o futuro financeiro da sua família.\",\n"
+  },
+  "minHScreen35": {
+    "en": "                    title: \"Buy an inexpensive Term Life policy and invest the cost difference in index funds.\",\n                    desc: \"Separates pure insurance protection from investing for maximum efficiency.\",\n",
+    "es": "                    title: \"Contratar un Seguro de Vida a Término asequible e invertir la diferencia en fondos de índice.\",\n                    desc: \"Separa la protección pura de la inversión para lograr la máxima eficiencia.\",\n",
+    "pt": "                    title: \"Contratar um Seguro de Vida Resgatável/Termo acessível e investir a diferença em fundos de índice.\",\n                    desc: \"Separa a proteção pura do investimento para obter máxima eficiência.\",\n"
+  },
+  "minHScreen36": {
+    "en": "                    lesson: \"'Buy term and invest the difference' provides high insurance coverage during working years while keeping investment returns flexible.\"\n",
+    "es": "                    lesson: \"Proteger tus ingresos con coberturas directas e invertir la diferencia garantiza alta protección manteniendo la flexibilidad del capital.\"\n",
+    "pt": "                    lesson: \"Proteger a renda com coberturas diretas e investir a diferença garante proteção elevada mantendo a flexibilidade dos investimentos.\"\n"
+  },
+  "minHScreen37": {
+    "en": "                    title: \"Buy a complex Whole Life / Permanent policy with high commissions.\",\n                    desc: \"Bundles insurance with low-yield internal cash value and high fee drag.\",\n",
+    "es": "                    title: \"Contratar un seguro de vida entero o mixto complejo con altas comisiones administrativas.\",\n                    desc: \"Combina protección con un bajo rendimiento interno y pesadas cargas.\",\n",
+    "pt": "                    title: \"Contratar um seguro de vida vitalício misto e complexo com altas taxas administrativas.\",\n                    desc: \"Combina proteção com baixo rendimento interno e pesadas comissões.\",\n"
+  },
+  "minHScreen38": {
+    "en": "                    lesson: \"Permanent/Whole life insurance policies carry heavy upfront agent commissions and sub-optimal surrender values for average families.\"\n",
+    "es": "                    lesson: \"Los seguros con componentes de ahorro suelen acarrear elevadas comisiones de gestión y bajos rendimientos para familias comunes.\"\n",
+    "pt": "                    lesson: \"Seguros de vida que prometem acumulação de capital carregam pesadas taxas de carregamento e baixo rendimento para famílias comuns.\"\n"
+  },
+  "minHScreen39": {
+    "en": "                    title: \"Buy zero life insurance despite having multiple young dependents.\",\n                    desc: \"Exposes your family to catastrophic financial collapse if something happens.\",\n",
+    "es": "                    title: \"No contratar ningún seguro de vida, aun teniendo hijos y dependientes.\",\n                    desc: \"Expone a la familia al riesgo de un colapso financiero ante un imprevisto grave.\",\n",
+    "pt": "                    title: \"Não contratar nenhum seguro de vida, mesmo tendo filhos e dependentes.\",\n                    desc: \"Expõe a família ao risco de colapso financeiro em caso de imprevisto grave.\",\n"
+  },
+  "minHScreen40": {
+    "en": "                    lesson: \"Skipping essential risk protection leaves your loved ones vulnerable to total financial devastation and ongoing anxiety.\"\n",
+    "es": "                    lesson: \"Ignorar la protección de riesgos esenciales deja a tus seres queridos extremadamente vulnerables a la devastación financiera.\"\n",
+    "pt": "                    lesson: \"Ignorar a proteção de riscos essenciais deixa seus entes queridos vulneráveis à devastação financeira.\"\n"
+  },
+  "minHScreen41": {
+    "en": "                title: \"5. Managing Debt: Mortgage vs. Market Yields\",\n                description: \"You have $20,000 extra cash. You have a fixed low-rate mortgage at 3.0%, while safe short-term bonds yield 5.2%.\",\n",
+    "es": "                title: \"5. Gestión de Deudas: Hipoteca vs. Renta Fija\",\n                description: \"Tienes $20,000 en efectivo y una hipoteca con tasa fija baja del 3.0% anual, mientras que bonos seguros rinden el 5.2% anual.\",\n",
+    "pt": "                title: \"5. Gestão de Dívidas: Financiamento vs. Renda Fixa\",\n                description: \"Você possui $20.000 em dinheiro e um financiamento imobiliário com taxa fixa baixa de 3,0% ao ano, enquanto títulos seguros rendem 5,2% ao ano.\",\n"
+  },
+  "minHScreen42": {
+    "en": "                    title: \"Rush to prepay the 3% fixed mortgage as fast as possible.\",\n                    desc: \"Pours liquid cash into non-liquid home equity to eliminate low-rate debt.\",\n",
+    "es": "                    title: \"Liquidar de forma anticipada la hipoteca del 3% lo antes posible.\",\n                    desc: \"Aplica liquidez en patrimonio inmovilizado para eliminar la deuda a baja tasa.\",\n",
+    "pt": "                    title: \"Quitar antecipadamente o financiamento de 3% o mais rápido possível.\",\n                    desc: \"Aplica liquidez em patrimônio imobilizado para eliminar a dívida de baixa taxa.\",\n"
+  },
+  "minHScreen43": {
+    "en": "                    lesson: \"Paying down low-interest debt guarantees a 3% return. While psychologically satisfying (+Happiness), it yields less than higher risk-free bond returns.\"\n",
+    "es": "                    lesson: \"Amortizar deuda barata garantiza un 3% de retorno. Brinda alivio psicológico (+Felicidad), pero rinde menos que inversiones seguras con mayor tasa.\"\n",
+    "pt": "                    lesson: \"Amortizar dívidas baratas garante 3% de retorno. Traz alívio psicológico (+Felicidade), mas rende menos do que investimentos seguros com retorno maior.\"\n"
+  },
+  "minHScreen44": {
+    "en": "                    title: \"Keep the 3% mortgage and invest $20k in high-grade short term yields/index funds.\",\n                    desc: \"Arbitrages the interest spread (5.2% yield vs 3.0% mortgage cost).\",\n",
+    "es": "                    title: \"Mantener la deuda al 3% e invertir los $20k en bonos/índices que rinden más.\",\n                    desc: \"Aprovecha el diferencial de tasas (5.2% de rendimiento vs. 3.0% de costo de la deuda).\",\n",
+    "pt": "                    title: \"Manter a dívida de 3% e investir os $20k em títulos/índices que rendem mais.\",\n                    desc: \"Aproveita o diferencial de juros (5,2% de rendimento vs. 3,0% de custo da dívida).\",\n"
+  },
+  "minHScreen45": {
+    "en": "                    lesson: \"Good debt is low-rate fixed leverage. When risk-free investment returns exceed your debt cost, maintaining low-rate debt builds wealth faster.\"\n",
+    "es": "                    lesson: \"La deuda buena es apalancamiento fijo a tasas bajas. Cuando el rendimiento de activos seguros supera el costo de la deuda, invertir acelera la riqueza.\"\n",
+    "pt": "                    lesson: \"Dívida boa é alavancagem fixa a juros baixos. Quando o rendimento de ativos seguros supera o custo da dívida, investir acelera a riqueza.\"\n"
+  },
+  "minHScreen46": {
+    "en": "                    title: \"Take out an additional high-interest personal loan for a luxury holiday.\",\n                    desc: \"Piles on high-rate consumer debt for short-term gratification.\",\n",
+    "es": "                    title: \"Solicitar un préstamo personal a tasa alta para financiar unas vacaciones de lujo.\",\n                    desc: \"Acumula deuda de consumo costosa para satisfacción de muy corto plazo.\",\n",
+    "pt": "                    title: \"Fazer um empréstimo pessoal com juros altos para financiar férias luxuosas.\",\n                    desc: \"Acumula dívida de consumo cara para satisfação de curto prazo.\",\n"
+  },
+  "minHScreen47": {
+    "en": "                    lesson: \"Taking high-interest debt for non-essential consumables drains future cash flow, causing stress once the holiday ends.\"\n",
+    "es": "                    lesson: \"Adquirir deudas de interés alto para bienes de consumo destruye el flujo de caja futuro y genera estrés financiero constante.\"\n",
+    "pt": "                    lesson: \"Contrair dívidas de juros altos para bens de consumo consome o fluxo de caixa futuro e gera estresse financeiro.\"\n"
+  },
+  "minHScreen48": {
+    "en": "                title: \"6. Conscious Spending & Value Alignment\",\n                description: \"You earned a $300 monthly income raise. How do you integrate this into your lifestyle?\",\n",
+    "es": "                title: \"6. Consumo Consciente y Alineación de Valores\",\n                description: \"Has recibido un aumento salarial de $300 mensuales. ¿Cómo integras este nuevo monto a tu estilo de vida?\",\n",
+    "pt": "                title: \"6. Consumo Consciente e Alinhamento de Valores\",\n                description: \"Você recebeu um aumento de renda de $300 mensais. Como integra esse novo valor ao seu estilo de vida?\",\n"
+  },
+  "minHScreen49": {
+    "en": "                    title: \"Spend with purpose: Allocate $150 to meaningful passions & invest $150.\",\n                    desc: \"Balances conscious enjoyment of today with compounding wealth for tomorrow.\",\n",
+    "es": "                    title: \"Gasto con propósito: Asignar $150 a experiencias/pasiones e invertir $150.\",\n                    desc: \"Equilibra la satisfacción presente con el crecimiento del capital futuro.\",\n",
+    "pt": "                    title: \"Gasto com propósito: Alocar $150 para experiências/paixões e investir $150.\",\n                    desc: \"Equilibra a satisfação presente com a multiplicação do capital futuro.\",\n"
+  },
+  "minHScreen50": {
+    "en": "                    lesson: \"Money is a tool for fulfillment. Spending intentionally on things you truly value while saving the rest maximizes long-term happiness.\"\n",
+    "es": "                    lesson: \"El dinero es una herramienta para el bienestar. Gastar intencionadamente en lo que valoras mientras inviertes el resto maximiza la felicidad sostenible.\"\n",
+    "pt": "                    lesson: \"O dinheiro é uma ferramenta para o bem-estar. Gastar intencionalmente no que importa para você enquanto investe o restante maximiza a felicidade.\"\n"
+  },
+  "minHScreen51": {
+    "en": "                    title: \"Unconscious lifestyle creep: Upgrade dining, apparel & status flexes immediately.\",\n                    desc: \"Absorbs the entire raise in inflated baseline living expenses.\",\n",
+    "es": "                    title: \"Inflación de estilo de vida: Aumentar gastos en restaurantes y compras de estatus de inmediato.\",\n                    desc: \"Absorbe todo el incremento elevando automáticamente el costo de vida base.\",\n",
+    "pt": "                    title: \"Inflação de estilo de vida: Aumentar gastos com restaurantes e bens de status imediatamente.\",\n                    desc: \"Absorve todo o aumento na elevação do custo de vida básico.\",\n"
+  },
+  "minHScreen52": {
+    "en": "                    lesson: \"Lifestyle creep occurs when spending rises automatically with income, leaving your net savings rate stagnant.\"\n",
+    "es": "                    lesson: \"La inflación del estilo de vida ocurre cuando los gastos suben a la par de los ingresos, estancando tu capacidad real de ahorro.\"\n",
+    "pt": "                    lesson: \"A inflação do estilo de vida ocorre quando os gastos sobem automaticamente com a renda, mantendo sua taxa de poupança estagnada.\"\n"
+  },
+  "minHScreen53": {
+    "en": "                    title: \"Extreme frugality: Save 100% and cut out all fun, socializing, and hobbies.\",\n                    desc: \"Eliminates all personal joy in pursuit of numerical net worth metrics.\",\n",
+    "es": "                    title: \"Austeridad extrema: Ahorrar el 100% y eliminar todo el ocio, vida social y pasatiempos.\",\n                    desc: \"Elimina toda alegría personal en busca de metas numéricas frías.\",\n",
+    "pt": "                    title: \"Austeridade extrema: Poupar 100% e cortar todo o lazer, vida social e hobbies.\",\n                    desc: \"Elimina toda a alegria pessoal em busca de metas numéricas frias.\",\n"
+  },
+  "minHScreen54": {
+    "en": "                    lesson: \"Extreme austerity often leads to burnout and unhappiness. Sustainable wealth requires balancing future freedom and current joy.\"\n",
+    "es": "                    lesson: \"La frugalidad extrema conduce al agotamiento mental. La verdadera riqueza requiere un equilibrio entre libertad futura y disfrute presente.\"\n",
+    "pt": "                    lesson: \"Frugalidade extrema leva ao esgotamento mental. A riqueza sustentável exige equilíbrio entre liberdade futura e alegria no presente.\"\n"
+  },
+  "minHScreen55": {
+    "en": "                title: \"7. Thinking in 'Hours of Work'\",\n                description: \"You are eyeing a new flagship $1,500 smartphone. You earn $25/hour post-tax.\",\n",
+    "es": "                title: \"7. Pensando en 'Horas de Trabajo'\",\n                description: \"Quieres comprar un teléfono inteligente de última generación de $1,500. Tu ingreso neto por hora es de $25.\",\n",
+    "pt": "                title: \"7. Pensando em 'Horas de Trabalho'\",\n                description: \"Você quer comprar um smartphone de última geração de $1.500. Seu ganho líquido por hora é de $25.\",\n"
+  },
+  "minHScreen56": {
+    "en": "                    title: \"Calculate the time-cost (60 hours of work) and keep your current working phone.\",\n                    desc: \"Realizes the purchase costs 1.5 full working weeks of labor.\",\n",
+    "es": "                    title: \"Calcular el costo en tiempo (60 horas de trabajo) y conservar tu equipo actual funcional.\",\n                    desc: \"Reconoce que la compra equivale a 1.5 semanas completas de trabajo.\",\n",
+    "pt": "                    title: \"Calcular o custo em tempo (60 horas de trabalho) e manter seu aparelho funcional.\",\n                    desc: \"Reconhece que a compra custa 1,5 semanas inteiras de trabalho.\",\n"
+  },
+  "minHScreen57": {
+    "en": "                    lesson: \"Translating price tags into 'hours of life traded' exposes the true cost of purchases and curbs impulse spending.\"\n",
+    "es": "                    lesson: \"Convertir precios a 'horas de vida trabajadas' revela el costo real de las compras y evita gastos por impulso.\"\n",
+    "pt": "                    lesson: \"Converter preços em 'horas de vida trabalhadas' revela o custo real das compras e evita gastos por impulso.\"\n"
+  },
+  "minHScreen58": {
+    "en": "                    title: \"Buy the phone immediately on a 24-month high-interest installment plan.\",\n                    desc: \"Masks the true price through small monthly debt payments.\",\n",
+    "es": "                    title: \"Comprar el teléfono financiado a 24 meses con intereses implícitos.\",\n                    desc: \"Oculta el precio total a través de pequeñas cuotas mensuales.\",\n",
+    "pt": "                    title: \"Comprar o telefone parcelado em 24 meses com juros embutidos.\",\n                    desc: \"Oculta o valor total por meio de pequenas parcelas diárias.\",\n"
+  },
+  "minHScreen59": {
+    "en": "                    lesson: \"Installment plans hide total costs and lock you into debt, reducing future peace of mind.\"\n",
+    "es": "                    lesson: \"Los financiamientos a largo plazo enmascaran el costo real y restan flexibilidad a tus finanzas futuras.\"\n",
+    "pt": "                    lesson: \"Parcelamentos longos mascaram o custo real e reduzem sua margem de manobra financeira no futuro.\"\n"
+  },
+  "minHScreen60": {
+    "en": "                    title: \"Buy a reliable refurbished model for $400 and invest the $1,100 difference.\",\n                    desc: \"Meets operational tech needs while saving major capital.\",\n",
+    "es": "                    title: \"Comprar un modelo reacondicionado excelente por $400 e invertir la diferencia de $1,100.\",\n                    desc: \"Satisface perfectamente la necesidad funcional ahorrando un capital significativo.\",\n",
+    "pt": "                    title: \"Comprar um modelo seminovo excelente por $400 e investir a diferença de $1.100.\",\n                    desc: \"Atende perfeitamente à necessidade funcional economizando capital significativo.\",\n"
+  },
+  "minHScreen61": {
+    "en": "                    lesson: \"Seeking utility over status flexes provides tech functionality while preserving capital to build true wealth.\"\n",
+    "es": "                    lesson: \"Priorizar la utilidad real sobre el estatus garantiza funcionalidad tecnológica preservando capital para construir patrimonio.\"\n",
+    "pt": "                    lesson: \"Priorizar a utilidade real em vez do status garante funcionalidade tecnológica enquanto preserva o capital para construir riqueza.\"\n"
+  },
+  "minHScreen62": {
+    "en": "                title: \"8. Tax-Advantaged Retirement & Pensions\",\n                description: \"Your employer offers a pension/401k match (50% match up to 6% of salary).\",\n",
+    "es": "                title: \"8. Jubilación y Beneficios Fiscales\",\n                description: \"Tu empresa ofrece un plan de pensiones corporativo con aportación equivalente del 50% hasta el 6% de tu salario.\",\n",
+    "pt": "                title: \"8. Aposentadoria e Benefícios Fiscais\",\n                description: \"Sua empresa oferece um plano de previdência corporativa com contrapartida de 50% até 6% do seu salário.\",\n"
+  },
+  "minHScreen63": {
+    "en": "                    title: \"Contribute up to 6% to capture 100% of the free employer match and tax deduction.\",\n                    desc: \"Claims instant 50% guaranteed return + tax-deferred growth.\",\n",
+    "es": "                    title: \"Aportar el 6% para obtener el 100% de la aportación gratuita de la empresa y beneficio fiscal.\",\n                    desc: \"Garantiza un retorno inmediato del 50% sobre tu capital más diferimiento impositivo.\",\n",
+    "pt": "                    title: \"Contribuir com 6% para obter 100% da contrapartida gratuita da empresa e benefício fiscal.\",\n                    desc: \"Garante um retorno imediato de 50% sobre a aplicação mais diferimento fiscal.\",\n"
+  },
+  "minHScreen64": {
+    "en": "                    lesson: \"An employer match is an immediate 50-100% return on investment. Tax-advantaged accounts eliminate annual tax drag.\"\n",
+    "es": "                    lesson: \"La aportación de la empresa es dinero gratuito con retorno inmediato. Aprovechar los incentivos fiscales acelera la acumulación.\"\n",
+    "pt": "                    lesson: \"A contrapartida da empresa é dinheiro gratuito com retorno imediato. Aproveitar benefícios fiscais acelera a acumulação.\"\n"
+  },
+  "minHScreen65": {
+    "en": "                    title: \"Ignore the pension plan and invest only in standard taxable brokerage accounts.\",\n                    desc: \"Misses out on free match money and exposes dividends to annual tax drag.\",\n",
+    "es": "                    title: \"Ignorar el plan corporativo e invertir únicamente en cuentas imponibles ordinarias.\",\n                    desc: \"Pierde el aporte de la empresa y expone los rendimientos a impuestos anuales.\",\n",
+    "pt": "                    title: \"Ignorar o plano corporativo e investir apenas em contas tributáveis comuns.\",\n                    desc: \"Perde o aporte da empresa e expõe os rendimentos ao imposto anual.\",\n"
+  },
+  "minHScreen66": {
+    "en": "                    lesson: \"Investing outside tax shelters exposes your returns to annual dividend taxes, slowing wealth accumulation.\"\n",
+    "es": "                    lesson: \"Invertir fuera de planes con ventajas fiscales expone innecesariamente tu capital al impacto de los impuestos sobre rendimientos.\"\n",
+    "pt": "                    lesson: \"Investir fora de incentivos fiscais expõe seu capital a impostos desnecessários sobre rendimentos.\"\n"
+  },
+  "minHScreen67": {
+    "en": "                    title: \"Opt out of pension/savings completely to maximize take-home pay for current spending.\",\n                    desc: \"Leaves free money on the table to fund higher monthly consumption.\",\n",
+    "es": "                    title: \"Optar por no ahorrar nada para maximizar el salario neto diario.\",\n                    desc: \"Renuncia a remuneración extra gratuita para incrementar el consumo diario.\",\n",
+    "pt": "                    title: \"Opção por não poupar nada para maximizar o salário líquido diário.\",\n                    desc: \"Abre mão de remuneração extra gratuita para aumentar o consumo diário.\",\n"
+  },
+  "minHScreen68": {
+    "en": "                    lesson: \"Leaving employer matches unclaimed is rejecting free compensation and forfeiting long-term financial security.\"\n",
+    "es": "                    lesson: \"Rechazar la aportación de la empresa equivale a rechazar una parte de tu propio sueldo.\"\n",
+    "pt": "                    lesson: \"Recusar a contrapartida da empresa é o mesmo que rejeitar parte do seu próprio salário.\"\n"
+  },
+  "minHScreen69": {
+    "en": "                title: \"9. Eliminating Toxic Credit Card Debt\",\n                description: \"You have $4,000 in credit card debt charging 22% annual interest, and $4,000 in savings.\",\n",
+    "es": "                title: \"9. Eliminando Deudas Tóxicas de Tarjeta de Crédito\",\n                description: \"Tienes $4,000 en deudas de tarjeta de crédito al 22% de interés anual y $4,000 guardados en ahorros.\",\n",
+    "pt": "                title: \"9. Eliminando Dívidas Tóxicas de Cartão de Crédito\",\n                description: \"Você possui $4.000 em dívidas no cartão de crédito a 22% de juros ao ano e $4.000 guardados na poupança.\",\n"
+  },
+  "minHScreen70": {
+    "en": "                    title: \"Use savings to pay off the 22% credit card debt immediately.\",\n                    desc: \"Eliminates a high-rate financial drain and secures a guaranteed 22% return.\",\n",
+    "es": "                    title: \"Usar los ahorros para pagar la tarjeta de crédito de inmediato.\",\n                    desc: \"Elimina una fuga financiera severa y obtiene un retorno garantizado del 22%.\",\n",
+    "pt": "                    title: \"Usar a poupança para quitar a dívida do cartão de crédito imediatamente.\",\n                    desc: \"Elimina um dreno financeiro severo e obtém um retorno garantido de 22%.\",\n"
+  },
+  "minHScreen71": {
+    "en": "                    lesson: \"Paying off 22% credit card debt is equivalent to earning a risk-free, tax-free 22% return while lifting monthly debt anxiety.\"\n",
+    "es": "                    lesson: \"Pagar una deuda del 22% equivale a una inversión sin riesgo y libre de impuestos con un retorno del 22% anual.\"\n",
+    "pt": "                    lesson: \"Pagar uma dívida de 22% equivale a um investimento sem risco e isento de impostos com retorno de 22% ao ano.\"\n"
+  },
+  "minHScreen72": {
+    "en": "                    title: \"Pay minimum monthly balance while investing $4,000 in stocks expected to yield 8%.\",\n                    desc: \"Loses money mathematically by earning 8% while paying 22%.\",\n",
+    "es": "                    title: \"Pagar el mínimo mensual mientras mantienes los $4,000 invertidos en acciones rindiendo el 8%.\",\n                    desc: \"Pierde dinero matemáticamente al pagar el 22% para ganar solo el 8%.\",\n",
+    "pt": "                    title: \"Pagar o mínimo mensal enquanto mantém os $4.000 aplicados em ações rendendo 8%.\",\n                    desc: \"Perde dinheiro matematicamente ao pagar 22% de juros para ganhar 8%.\",\n"
+  },
+  "minHScreen73": {
+    "en": "                    lesson: \"Paying 22% interest to earn 8% returns destroys net worth and creates constant debt drag.\"\n",
+    "es": "                    lesson: \"Pagar un 22% de interés para intentar ganar un 8% destruye tu patrimonio neto y mantiene el estrés constante.\"\n",
+    "pt": "                    lesson: \"Pagar 22% de juros para tentar ganhar 8% destrói o patrimônio líquido e mantém o estresse constante.\"\n"
+  },
+  "minHScreen74": {
+    "en": "                    title: \"Ignore the credit card balance and use available limit for new luxury purchases.\",\n                    desc: \"Triggers compounding interest penalty cycles and credit score destruction.\",\n",
+    "es": "                    title: \"Ignorar la deuda y utilizar el límite restante para nuevas compras.\",\n                    desc: \"Activa la espiral del interés compuesto negativo y destruye tu historial crediticio.\",\n",
+    "pt": "                    title: \"Ignorar a dívida e utilizar o limite restante para novas compras.\",\n                    desc: \"Ativa a espiral de juros compostos negativos e destrói o histórico de crédito.\",\n"
+  },
+  "minHScreen75": {
+    "en": "                    lesson: \"Toxic high-interest debt compounds exponentially against you. It is a primary source of severe financial anxiety.\"\n",
+    "es": "                    lesson: \"Las deudas de interés alto crecen exponencialmente en tu contra y son la mayor fuente de ansiedad financiera.\"\n",
+    "pt": "                    lesson: \"Dívidas de juros altos crescem exponencialmente contra você e são a maior fonte de ansiedade financeira.\"\n"
+  },
+  "minHScreen76": {
+    "en": "                title: \"10. Assets vs. Consumables (Vehicle Choice)\",\n                description: \"You need reliable transportation for work. You have cash flow to support options.\",\n",
+    "es": "                title: \"10. Activos vs. Bienes de Consumo (Elección de Vehículo)\",\n                description: \"Necesitas un transporte confiable para ir a trabajar y dispones de presupuesto.\",\n",
+    "pt": "                title: \"10. Ativos vs. Bens de Consumo (Escolha de Veículo)\",\n                description: \"Você precisa de um transporte confiável para trabalhar e tem orçamento disponível.\",\n"
+  },
+  "minHScreen77": {
+    "en": "                    title: \"Buy a reliable, slightly used vehicle with cash / low-rate loan and invest surplus.\",\n                    desc: \"Minimizes depreciation losses and keeps cash flow free for assets.\",\n",
+    "es": "                    title: \"Comprar un auto seminuevo confiable al contado o financiamiento bajo e invertir el resto.\",\n                    desc: \"Minimiza las pérdidas por depreciación y mantiene libre el flujo de caja.\",\n",
+    "pt": "                    title: \"Comprar um carro seminovo confiável à vista ou com financiamento baixo e investir a sobra.\",\n                    desc: \"Minimiza as perdas com depreciação e mantém o fluxo de caixa livre.\",\n"
+  },
+  "minHScreen78": {
+    "en": "                    lesson: \"Vehicles are depreciating tools. Keeping vehicle costs sensible unlocks capital for true wealth-generating assets.\"\n",
+    "es": "                    lesson: \"Los autos son herramientas que se deprecian. Mantener los costos de transporte bajo control libera capital para activos reales.\"\n",
+    "pt": "                    lesson: \"Carros são ferramentas que desvalorizam. Manter custos com veículos sob controle libera capital para ativos reais.\"\n"
+  },
+  "minHScreen79": {
+    "en": "                    title: \"Lease a brand-new luxury automobile for $600/month.\",\n                    desc: \"Pays peak depreciation cost with 0 equity retention.\",\n",
+    "es": "                    title: \"Hacer un leasing de un auto de lujo 0 km por $600/mes.\",\n                    desc: \"Paga la fase más pronunciada de depreciación sin acumular patrimonio.\",\n",
+    "pt": "                    title: \"Fazer leasing de um carro de luxo zero km por $600/mês.\",\n                    desc: \"Paga a maior fase de desvalorização sem acumular patrimônio.\",\n"
+  },
+  "minHScreen80": {
+    "en": "                    lesson: \"Leasing brand new luxury cars means paying for peak depreciation, creating a permanent heavy drain on monthly cash flow.\"\n",
+    "es": "                    lesson: \"Arrendar vehículos de lujo implica asumir el pico de desvalorización del bien, drenando continuamente tu caja.\"\n",
+    "pt": "                    lesson: \"Fazer leasing de carros de luxo significa arcar com o topo da depreciação, drenando continuamente o caixa mensal.\"\n"
+  },
+  "minHScreen81": {
+    "en": "                    title: \"Take out an expensive 84-month auto loan for a top-spec sports truck.\",\n                    desc: \"Locks into multi-year interest costs on a rapidly depreciating asset.\",\n",
+    "es": "                    title: \"Financiar una camioneta deportiva a 84 meses.\",\n                    desc: \"Se compromete a pagar intereses prolongados sobre un bien que pierde valor rápidamente.\",\n",
+    "pt": "                    title: \"Financiar uma picape esportiva em 84 meses.\",\n                    desc: \"Compromete-se com juros longos sobre um bem que perde valor rapidamente.\",\n"
+  },
+  "minHScreen82": {
+    "en": "                    lesson: \"Long-term auto loans force you to pay interest on an asset losing value every single day.\"\n",
+    "es": "                    lesson: \"Los financiamientos de plazos muy largos te hacen pagar altos intereses por un activo que pierde valor cada día.\"\n",
+    "pt": "                    lesson: \"Financiamentos de prazos muito longos fazem você pagar juros altos por um bem que se desvaloriza a cada dia.\"\n"
+  },
+  "minHScreen83": {
+    "en": "                title: \"11. Investment Style: Quality & Low-Cost Indexing\",\n                description: \"You are selecting your core portfolio strategy for the next 20 years.\",\n",
+    "es": "                title: \"11. Estilo de Inversión: Calidad e Índices de Bajo Costo\",\n                description: \"Estás definiendo la estrategia central de tu portafolio para los próximos 20 años.\",\n",
+    "pt": "                title: \"11. Estilo de Investimento: Qualidade e Índices de Baixo Custo\",\n                description: \"Você está definindo a estratégia central do seu portfólio para os próximos 20 anos.\",\n"
+  },
+  "minHScreen84": {
+    "en": "                    title: \"Broad Total Market Index Fund (0.03% Fee) covering Quality, Growth & Value.\",\n                    desc: \"Captures total stock market returns with near-zero fee drag.\",\n",
+    "es": "                    title: \"Fondo de Índice Global diversificado (Comisión de 0.03%) que cubra empresas de Calidad y Crecimiento.\",\n                    desc: \"Captura el retorno global del mercado con un costo operativo cercano a cero.\",\n",
+    "pt": "                    title: \"Fundo de Índice Global diversificado (Taxa de 0,03%) cobrindo empresas de Qualidade e Crescimento.\",\n                    desc: \"Captura o retorno global do mercado com custo operacional quase zero.\",\n"
+  },
+  "minHScreen85": {
+    "en": "                    lesson: \"Low-cost index funds guarantee you capture total market returns without the high risk of individual company failures.\"\n",
+    "es": "                    lesson: \"Los fondos indexados globales de bajo costo garantizan el rendimiento del mercado sin los riesgos de quiebra individual.\"\n",
+    "pt": "                    lesson: \"Fundos de índice globais de baixo custo garantem o retorno do mercado sem os riscos de falência de empresas individuais.\"\n"
+  },
+  "minHScreen86": {
+    "en": "                    title: \"Actively pick 3 viral penny stocks recommended on internet forums.\",\n                    desc: \"Takes unhedged concentration risk in unproven businesses.\",\n",
+    "es": "                    title: \"Tratar de acertar 3 acciones altamente especulativas recomendadas en foros de internet.\",\n                    desc: \"Asume un riesgo concentrado elevado en empresas sin solidez financiera.\",\n",
+    "pt": "                    title: \"Tentar acertar 3 ações micos (penny stocks) recomendadas em fóruns de internet.\",\n                    desc: \"Assume risco concentrado elevado em empresas sem histórico financeiro.\",\n"
+  },
+  "minHScreen87": {
+    "en": "                    lesson: \"Concentrated stock picking without research often results in severe losses compared to broad market indexing.\"\n",
+    "es": "                    lesson: \"Especular en acciones sin fundamentos suele resultar en pérdidas severas comparadas con el rendimiento de índices amplios.\"\n",
+    "pt": "                    lesson: \"Especular em ações sem fundamentos costuma resultar em perdas severas quando comparado aos índices amplos.\"\n"
+  },
+  "minHScreen88": {
+    "en": "                    title: \"Store 100% of long-term investments in physical cash under a mattress.\",\n                    desc: \"Protects nominal value while guaranteeing loss to inflation.\",\n",
+    "es": "                    title: \"Guardar el 100% de los ahorros en dinero en efectivo debajo del colchón.\",\n                    desc: \"Protege el valor nominal, pero garantiza la pérdida continua frente a la inflación.\",\n",
+    "pt": "                    title: \"Guardar 100% dos investimentos em dinheiro físico debaixo do colchão.\",\n                    desc: \"Protege o valor nominal, mas garante perda contínua para a inflação.\",\n"
+  },
+  "minHScreen89": {
+    "en": "                    lesson: \"Physical cash hoarding avoids market swings but guarantees loss of purchasing power over long horizons.\"\n",
+    "es": "                    lesson: \"Guardar efectivo evita oscilaciones del mercado, pero asegura la pérdida sistemática de tu poder adquisitivo en el tiempo.\"\n",
+    "pt": "                    lesson: \"Guardar papel moeda evita oscilações do mercado, mas garante a perda sistemática do poder de compra no longo prazo.\"\n"
+  },
+  "minHScreen90": {
+    "en": "                title: \"12. Asset Class Diversification\",\n                description: \"You want to construct a resilient multi-asset portfolio.\",\n",
+    "es": "                title: \"12. Diversificación de Clases de Activos\",\n                description: \"Deseas construir un portafolio de inversión resiliente.\",\n",
+    "pt": "                title: \"12. Diversificação de Classes de Ativos\",\n                description: \"Você deseja construir um portfólio de investimentos resiliente.\",\n"
+  },
+  "minHScreen91": {
+    "en": "                    title: \"Balanced Asset Allocation: Stocks, Global Real Estate, Short Bonds & Gold.\",\n                    desc: \"Diversifies across non-correlated asset classes for smooth growth.\",\n",
+    "es": "                    title: \"Asignación Equilibrada: Acciones Globales, Bienes Raíces, Renta Fija y Oro.\",\n                    desc: \"Diversifica entre diferentes clases no correlacionadas para un crecimiento constante.\",\n",
+    "pt": "                    title: \"Alocação Equilibrada: Ações Globais, Imóveis, Títulos Renda Fixa e Ouro.\",\n                    desc: \"Diversifica entre classes não correlacionadas para um crescimento consistente.\",\n"
+  },
+  "minHScreen92": {
+    "en": "                    lesson: \"True diversification across asset classes reduces portfolio volatility without sacrificing long-term growth potential.\"\n",
+    "es": "                    lesson: \"La verdadera diversificación reduce la volatilidad del portafolio sin sacrificar el potencial de crecimiento a largo plazo.\"\n",
+    "pt": "                    lesson: \"A verdadeira diversificação reduz a volatilidade da carteira sem sacrificar o potencial de crescimento de longo prazo.\"\n"
+  },
+  "minHScreen93": {
+    "en": "                    title: \"Put 100% of total liquid net worth into Bitcoin & altcoins.\",\n                    desc: \"Exposes entire capital base to extreme regulatory & sentiment swings.\",\n",
+    "es": "                    title: \"Colocar el 100% de tu patrimonio en Bitcoin y altcoins.\",\n                    desc: \"Expone todo tu capital a fluctuaciones regulatorias y sentimiento extremo.\",\n",
+    "pt": "                    title: \"Colocar 100% do seu patrimônio em Bitcoin e altcoins.\",\n                    desc: \"Expõe todo o seu capital a oscilações regulatórias e de sentimento extremo.\",\n"
+  },
+  "minHScreen94": {
+    "en": "                    lesson: \"Crypto can be a small satellite asset, but putting 100% into speculative crypto creates extreme anxiety and risk.\"\n",
+    "es": "                    lesson: \"Los criptoactivos pueden tener un rol complementario, pero concentrar el 100% genera volatilidad extrema y riesgo excesivo.\"\n",
+    "pt": "                    lesson: \"Criptoativos podem ter papel complementar, mas concentrar 100% em ativos voláteis gera ansiedade e risco excessivo.\"\n"
+  },
+  "minHScreen95": {
+    "en": "                    title: \"Keep 100% of wealth in traditional low-yielding bank CDs.\",\n                    desc: \"Avoids stock market completely at the cost of slow wealth building.\",\n",
+    "es": "                    title: \"Mantener el 100% de la riqueza en depósitos bancarios de bajo rendimiento.\",\n                    desc: \"Evita el mercado de acciones a costa de un crecimiento muy lento.\",\n",
+    "pt": "                    title: \"Manter 100% da riqueza em certificados bancários de baixo rendimento.\",\n                    desc: \"Evita o mercado de ações às custas de um crescimento lento da riqueza.\",\n"
+  },
+  "minHScreen96": {
+    "en": "                    lesson: \"Bank CDs offer principal safety, but lack the equity growth necessary to build long-term generational wealth.\"\n",
+    "es": "                    lesson: \"La renta fija tradicional ofrece seguridad nominal, pero carece del impulso necesario para crear patrimonio significativo.\"\n",
+    "pt": "                    lesson: \"A renda fixa tradicional oferece segurança nominal, mas carece do potencial de valorização necessário para criar patrimônio relevante.\"\n"
+  },
+  "minHScreen97": {
+    "en": "                title: \"13. Market Cap Focus: Blue Chips vs. Micro Caps\",\n                description: \"You are choosing stock market exposure for long-term compound growth.\",\n",
+    "es": "                title: \"13. Tamaño de Empresas: Blue Chips vs. Micro-Caps\",\n                description: \"Estás eligiendo el tipo de empresas para conformar tu asignación en renta variable.\",\n",
+    "pt": "                title: \"13. Porte de Empresas: Blue Chips vs. Micro-Caps\",\n                description: \"Você está escolhendo o tipo de empresas para compor sua parcela em renda variável.\",\n"
+  },
+  "minHScreen98": {
+    "en": "                    title: \"Core allocation in Large-Cap Quality Blue Chips / S&P 500 with small Mid-Cap blend.\",\n                    desc: \"Owns profitable market leaders with durable competitive moats.\",\n",
+    "es": "                    title: \"Asignación principal en Grandes Empresas Consolidadas (Blue Chips) y Mediana Capitalización.\",\n                    desc: \"Te conviertes en socio de empresas líderes mundiales y altamente rentables.\",\n",
+    "pt": "                    title: \"Alocação principal em Grandes Empresas Consolidadas (Blue Chips) e Média Capitalização.\",\n                    desc: \"Torna-se sócio de empresas líderes mundiais e altamente lucrativas.\",\n"
+  },
+  "minHScreen99": {
+    "en": "                    lesson: \"Large-cap quality blue chip companies have battle-tested business models and strong dividend compounding abilities.\"\n",
+    "es": "                    lesson: \"Las grandes empresas de calidad poseen modelos de negocio probados y sólida capacidad de pago de dividendos.\"\n",
+    "pt": "                    lesson: \"Grandes empresas de qualidade possuem modelos de negócios testados pelo tempo e forte capacidade de pagamento de dividendos.\"\n"
+  },
+  "minHScreen100": {
+    "en": "                    title: \"Put 100% into unproven speculative Micro-Cap biotech startups.\",\n                    desc: \"High risk of bankruptcy with occasional jackpot outcomes.\",\n",
+    "es": "                    title: \"Invertir el 100% en pequeñas empresas emergentes altamente especulativas.\",\n                    desc: \"Alto riesgo de liquidación total con raras posibilidades de retornos extraordinarios.\",\n",
+    "pt": "                    title: \"Investir 100% em pequenas startups especulativas de biotecnologia.\",\n                    desc: \"Alto risco de liquidação total com raras chances de ganhos extraordinários.\",\n"
+  },
+  "minHScreen101": {
+    "en": "                    lesson: \"Micro-caps carry high failure rates. They belong in small satellite portions of a portfolio, not as your core foundation.\"\n",
+    "es": "                    lesson: \"Las empresas de pequeña capitalización especulativa sufren elevadas tasas de fracaso. Deben ocupar solo un porcentaje marginal.\"\n",
+    "pt": "                    lesson: \"Micro-caps têm altas taxas de mortalidade. Devem ocupar apenas pequenas parcelas de uma estratégia diversificada.\"\n"
+  },
+  "minHScreen102": {
+    "en": "                    title: \"Trade daily leveraged 3x ETFs attempting to market-time short term news.\",\n                    desc: \"Suffer from volatility decay and emotional overtrading losses.\",\n",
+    "es": "                    title: \"Operar diariamente con ETFs apalancados 3x intentando adivinar las noticias.\",\n                    desc: \"Sufre por el desgaste de la volatilidad y los costos excesivos de transacción.\",\n",
+    "pt": "                    title: \"Operar diariamente com ETFs alavancados em 3x tentando adivinhar as notícias.\",\n                    desc: \"Sofre com a degradação da volatilidade e perdas por excesso de operações.\",\n"
+  },
+  "minHScreen103": {
+    "en": "                    lesson: \"Leveraged ETFs suffer from daily resetting decay and are designed for short-term hedging, causing heavy emotional stress.\"\n",
+    "es": "                    lesson: \"Los ETFs apalancados están diseñados para coberturas tácticas breves. Operar en exceso genera pérdidas severas y alto estrés.\"\n",
+    "pt": "                    lesson: \"ETFs alavancados são projetados para proteção de curto prazo. Tentar adivinhar o mercado gera perdas severas e alto estresse.\"\n"
+  },
+  "minHScreen104": {
+    "en": "                title: \"14. Emergency Reserves & Crisis Protection\",\n                description: \"Economic uncertainty is rising. How do you structure your safety moat?\",\n",
+    "es": "                title: \"14. Fondo de Emergencia y Protección contra Crisis\",\n                description: \"La incertidumbre económica está aumentando. ¿Cómo estructuras tu protección financiera?\",\n",
+    "pt": "                title: \"14. Reserva de Emergência e Proteção contra Crises\",\n                description: \"A incerteza econômica está aumentando. Como você estrutura sua proteção financeira?\",\n"
+  },
+  "minHScreen105": {
+    "en": "                    title: \"Maintain a 6-month liquid Emergency Fund in HYSA before investing aggressively.\",\n                    desc: \"Creates a defensive cash buffer so you never sell stocks during downturns.\",\n",
+    "es": "                    title: \"Mantener un Fondo de Emergencia de 6 meses en cuenta líquida antes de invertir agresivamente.\",\n                    desc: \"Crea un colchón de seguridad para nunca tener que vender inversiones en caídas de mercado.\",\n",
+    "pt": "                    title: \"Manter uma Reserva de Emergência de 6 meses em conta de alta liquidez antes de investir agressivamente.\",\n                    desc: \"Cria um colchão de segurança para nunca precisar vender investimentos durante baixas do mercado.\",\n"
+  },
+  "minHScreen106": {
+    "en": "                    lesson: \"An emergency buffer provides immense psychological peace of mind (+Happiness) and prevents forced liquidation of investments during crashes.\"\n",
+    "es": "                    lesson: \"Una reserva líquida aporta inmensa tranquilidad mental (+Felicidad) y evita la venta forzosa de activos en momentos desfavorables.\"\n",
+    "pt": "                    lesson: \"Uma reserva líquida traz enorme paz mental (+Felicidade) e evita o resgate forçado de investimentos em momentos desfavoráveis.\"\n"
+  },
+  "minHScreen107": {
+    "en": "                    title: \"Keep zero cash reserve; invest 100% of money into illiquid assets.\",\n                    desc: \"Forces high stress and potential loss if sudden unexpected cash is needed.\",\n",
+    "es": "                    title: \"No tener reserva en efectivo; invertir el 100% en activos ilíquidos.\",\n                    desc: \"Provoca alto estrés si surge una necesidad urgente de caja.\",\n",
+    "pt": "                    title: \"Não ter reserva em dinheiro; investir 100% em ativos sem liquidez.\",\n                    desc: \"Provoca alto estresse se surgir uma necessidade urgente de caixa.\",\n"
+  },
+  "minHScreen108": {
+    "en": "                    lesson: \"Without cash reserves, minor unexpected expenses force you to sell investments at market bottoms or take high-interest debt.\"\n",
+    "es": "                    lesson: \"Sin una reserva líquida, los imprevistos te obligan a liquidar inversiones con pérdida o a recurrir a créditos costosos.\"\n",
+    "pt": "                    lesson: \"Sem reserva em dinheiro, imprevistos forçam a venda de ativos na baixa ou o uso de empréstimos caros.\"\n"
+  },
+  "minHScreen109": {
+    "en": "                    title: \"Rely on credit cards as your sole emergency safety net.\",\n                    desc: \"Turns unexpected life events into high-interest debt traps.\",\n",
+    "es": "                    title: \"Usar la tarjeta de crédito como tu única red de seguridad.\",\n                    desc: \"Transforma los imprevistos de la vida en trampas de deuda con altos intereses.\",\n",
+    "pt": "                    title: \"Usar o limite do cartão de crédito como sua única rede de segurança.\",\n                    desc: \"Transforma imprevistos da vida em armadilhas de dívidas com juros altos.\",\n"
+  },
+  "minHScreen110": {
+    "en": "                    lesson: \"Credit cards are not an emergency fund. Relying on high-interest debt during emergencies compounds financial distress.\"\n",
+    "es": "                    lesson: \"La tarjeta de crédito no es un fondo de emergencia. Depender de deudas en momentos delicados agrava las crisis personales.\"\n",
+    "pt": "                    lesson: \"Cartão de crédito não é reserva de emergência. Depender de dívidas em momentos delicados agrava crises pessoais.\"\n"
+  },
+  "minHScreen111": {
+    "en": "                title: \"15. Day-to-Day Habits: 'Pay Yourself First'\",\n                description: \"Your monthly salary hits your account on the 1st of every month.\",\n",
+    "es": "                title: \"15. Hábitos Diarios: 'Págate a Ti Mismo Primero'\",\n                description: \"Tu salario se deposita en tu cuenta el primer día de cada mes.\",\n",
+    "pt": "                title: \"15. Hábitos Diários: 'Pague-se em Primeiro Lugar'\",\n                description: \"Seu salário cai na conta no primeiro dia de cada mês.\",\n"
+  },
+  "minHScreen112": {
+    "en": "                    title: \"Automate transfers to savings/investments on payday ('Pay Yourself First').\",\n                    desc: \"Ensures wealth building happens automatically before lifestyle spending.\",\n",
+    "es": "                    title: \"Automatizar transferencias a inversión el día del cobro ('Págate a Ti Mismo Primero').\",\n                    desc: \"Garantiza la construcción de riqueza de forma automática antes del consumo.\",\n",
+    "pt": "                    title: \"Automate transferências para investimentos no dia do pagamento ('Pague-se em Primeiro Lugar').\",\n                    desc: \"Garante a construção de riqueza de forma automática antes do consumo.\",\n"
+  },
+  "minHScreen113": {
+    "en": "                    lesson: \"Paying yourself first automates discipline. You adapt your lifestyle stress-free to what remains after savings.\"\n",
+    "es": "                    lesson: \"Pagarte a ti mismo primero automatiza la disciplina. Adaptas tu estilo de vida al saldo restante sin estrés.\"\n",
+    "pt": "                    lesson: \"Pagar-se em primeiro lugar automatiza a disciplina. Você adapta seu estilo de vida ao saldo restante sem estresse.\"\n"
+  },
+  "minHScreen114": {
+    "en": "                    title: \"Spend throughout the month and save whatever happens to be left over.\",\n                    desc: \"Usually results in zero savings due to parkinson's law of spending.\",\n",
+    "es": "                    title: \"Gastar a lo largo del mes y ahorrar lo que eventualmente sobre al final.\",\n                    desc: \"Generalmente resulta en cero ahorro debido a la tendencia natural de consumir el saldo disponible.\",\n",
+    "pt": "                    title: \"Gastar ao longo do mês e poupar o que eventualmente sobrar no final.\",\n                    desc: \"Geralmente resulta em poupança zero devido à tendência natural de gastar o saldo disponível.\",\n"
+  },
+  "minHScreen115": {
+    "en": "                    lesson: \"If you save only what is left after spending, you will rarely save anything. Expense expansion consumes unallocated balances.\"\n",
+    "es": "                    lesson: \"Si ahorras solo lo que sobra, raras veces ahorrarás. Los gastos tienden a expandirse hasta cubrir todo el dinero disponible.\"\n",
+    "pt": "                    lesson: \"Se você poupa apenas o que sobra, raramente poupará algo. Os gastos tendem a se expandir até ocupar todo o dinheiro livre.\"\n"
+  },
+  "minHScreen116": {
+    "en": "                    title: \"Constantly order food delivery and micro-subscriptions on impulse daily.\",\n                    desc: \"Drains hundreds of dollars monthly on forgotten digital subscriptions and convenience fees.\",\n",
+    "es": "                    title: \"Mantener suscripciones olvidadas y pedir comida por aplicación diariamente por impulso.\",\n                    desc: \"Drena cientos de dólares mensuales en costos innecesarios sin darte cuenta.\",\n",
+    "pt": "                    title: \"Manter assinaturas esquecidas e pedir comida por aplicativo diariamente por impulso.\",\n                    desc: \"Drena centenas de dólares mensais em taxas de conveniência sem perceber.\",\n"
+  },
+  "minHScreen117": {
+    "en": "                    lesson: \"Unmonitored micro-expenses quietly siphon away thousands in annual investment potential, producing little lasting satisfaction.\"\n",
+    "es": "                    lesson: \"Los pequeños goteos diarios y suscripciones no utilizadas consumen en silencio el equivalente a miles de dólares anuales.\"\n",
+    "pt": "                    lesson: \"Pequenos vazamentos diários e assinaturas não utilizadas consomem em silêncio o equivalente a milhares de dólares por ano.\"\n"
+  },
+  "minHScreen118": {
+    "en": "        // INIT STEPPER DOTS\n",
+    "es": "        // INICIALIZAR PASOS (STEPPER DOTS)\n",
+    "pt": "        // INICIALIZAR STEPPER DOTS\n"
+  },
+  "minHScreen119": {
+    "en": "        // UPDATE STEPPER DOTS\n",
+    "es": "        // ACTUALIZAR PUNTOS DEL STEPPER\n",
+    "pt": "        // ATUALIZAR PONTOS DO STEPPER\n"
+  },
+  "minHScreen120": {
+    "en": "        // RENDER CURRENT SCENARIO\n",
+    "es": "        // RENDERIZAR ESCENARIO ACTUAL\n",
+    "pt": "        // RENDERIZAR CENÁRIO ATUAL\n"
+  },
+  "minHScreen121": {
+    "en": "            // Progress text\n            document.getElementById('scenarioProgressText').innerText = `Phase ${currentScenarioIndex + 1} of ${SCENARIOS.length}`;\n",
+    "es": "            // Texto de progreso\n            document.getElementById('scenarioProgressText').innerText = `Fase ${currentScenarioIndex + 1} de ${SCENARIOS.length}`;\n",
+    "pt": "            // Texto de progresso\n            document.getElementById('scenarioProgressText').innerText = `Fase ${currentScenarioIndex + 1} de ${SCENARIOS.length}`;\n"
+  },
+  "minHScreen122": {
+    "en": "            // Scenario text with number highlighting\n",
+    "es": "            // Texto del escenario con resalte de números\n",
+    "pt": "            // Texto do cenário com destaques em números\n"
+  },
+  "minHScreen123": {
+    "en": "            // Container for 3 choices\n",
+    "es": "            // Contenedor de opciones\n",
+    "pt": "            // Container para as 3 opções\n"
+  },
+  "minHScreen124": {
+    "en": "                { key: 'optionA', label: 'Option A', data: current.optionA },\n                { key: 'optionB', label: 'Option B', data: current.optionB },\n                { key: 'optionC', label: 'Option C', data: current.optionC }\n",
+    "es": "                { key: 'optionA', label: 'Opción A', data: current.optionA },\n                { key: 'optionB', label: 'Opción B', data: current.optionB },\n                { key: 'optionC', label: 'Opción C', data: current.optionC }\n",
+    "pt": "                { key: 'optionA', label: 'Opção A', data: current.optionA },\n                { key: 'optionB', label: 'Opção B', data: current.optionB },\n                { key: 'optionC', label: 'Opção C', data: current.optionC }\n"
+  },
+  "minHScreen125": {
+    "en": "            // Ensure cards display correctly\n",
+    "es": "            // Muestra u oculta elementos correctamente\n",
+    "pt": "            // Exibição correta dos cards\n"
+  },
+  "minHScreen126": {
+    "en": "        // SELECT OPTION HANDLER\n",
+    "es": "        // SELECCIÓN DE OPCIÓN\n",
+    "pt": "        // SELEÇÃO DE OPÇÃO\n"
+  },
+  "minHScreen127": {
+    "en": "            // Update Metrics\n",
+    "es": "            // Actualizar Métricas\n",
+    "pt": "            // Atualizar Métricas\n"
+  },
+  "minHScreen128": {
+    "en": "            // Update Happiness (Clamped 0% to 100%)\n",
+    "es": "            // Actualizar Felicidad (Limitada entre 0% y 100%)\n",
+    "pt": "            // Atualizar Felicidade (Limitada entre 0% e 100%)\n"
+  },
+  "minHScreen129": {
+    "en": "            // Update Literacy IQ (Starts at 50%, capped at 100%, can drop into negative numbers)\n",
+    "es": "            // Actualizar IQ Financiero (Empieza en 50%, máximo 100%, puede ser negativo)\n",
+    "pt": "            // Atualizar IQ Financeiro (Inicia em 50%, teto de 100%, pode assumir valores negativos)\n"
+  },
+  "minHScreen130": {
+    "en": "            // Update Quality Points & Category Score\n",
+    "es": "            // Actualizar Puntuación de la Categoría\n",
+    "pt": "            // Atualizar Pontuação da Categoria\n"
+  },
+  "minHScreen131": {
+    "en": "            // Record trajectory & history\n",
+    "es": "            // Guardar trayectoria e historial\n",
+    "pt": "            // Registrar trajetória e histórico\n"
+  },
+  "minHScreen132": {
+    "en": "            // Update Header Display\n",
+    "es": "            // Actualizar encabezado de métricas\n",
+    "pt": "            // Atualizar cabeçalho de métricas\n"
+  },
+  "minHScreen133": {
+    "en": "            // Show Debrief\n",
+    "es": "            // Mostrar Análisis\n",
+    "pt": "            // Exibir Análise\n"
+  },
+  "minHScreen134": {
+    "en": "        // UPDATE HEADER METRICS\n",
+    "es": "        // ACTUALIZAR PANTALLA DE MÉTRICAS\n",
+    "pt": "        // ATUALIZAR EXIBIÇÃO DAS MÉTRICAS\n"
+  },
+  "minHScreen135": {
+    "en": "            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString()}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mo`;\n",
+    "es": "            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString('es-ES')}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mes`;\n",
+    "pt": "            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString('pt-BR')}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mês`;\n"
+  },
+  "minHScreen136": {
+    "en": "        // SHOW DEBRIEF\n",
+    "es": "        // MOSTRAR ANÁLISIS FINANCIERO\n",
+    "pt": "        // EXIBIR ANÁLISE\n"
+  },
+  "minHScreen137": {
+    "en": "            // Construct impact tags\n",
+    "es": "            // Generar etiquetas de impacto\n",
+    "pt": "            // Criar tags de impacto\n"
+  },
+  "minHScreen138": {
+    "en": "                    Net Worth: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString()}\n",
+    "es": "                    Patrimonio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString('es-ES')}\n",
+    "pt": "                    Patrimônio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString('pt-BR')}\n"
+  },
+  "minHScreen139": {
+    "en": "                    Cash Flow: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mo\n",
+    "es": "                    Flujo de Caja: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mes\n",
+    "pt": "                    Fluxo de Caixa: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mês\n"
+  },
+  "minHScreen140": {
+    "en": "                    Happiness: ${hDelta >= 0 ? '+' : ''}${hDelta}%\n",
+    "es": "                    Felicidad: ${hDelta >= 0 ? '+' : ''}${hDelta}%\n",
+    "pt": "                    Felicidade: ${hDelta >= 0 ? '+' : ''}${hDelta}%\n"
+  },
+  "minHScreen141": {
+    "en": "                    IQ Impact: ${option.impact.literacyDeltaText}\n",
+    "es": "                    Impacto en IQ: ${option.impact.literacyDeltaText}\n",
+    "pt": "                    Impacto no IQ: ${option.impact.literacyDeltaText}\n"
+  },
+  "minHScreen142": {
+    "en": "            // Debrief text lesson\n",
+    "es": "            // Lección económica\n",
+    "pt": "            // Lição econômica\n"
+  },
+  "minHScreen143": {
+    "en": "        // NEXT SCENARIO\n",
+    "es": "        // SIGUIENTE ESCENARIO\n",
+    "pt": "        // PRÓXIMO CENÁRIO\n"
+  },
+  "minHScreen144": {
+    "en": "        // SHOW FINAL RESULTS\n",
+    "es": "        // MOSTRAR RESULTADOS FINALES\n",
+    "pt": "        // EXIBIR RESULTADOS FINAIS\n"
+  },
+  "minHScreen145": {
+    "en": "            // Populate final stats\n            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString()}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mo`;\n",
+    "es": "            // Llenar estadísticas finales\n            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString('es-ES')}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mes`;\n",
+    "pt": "            // Preencher estatísticas finais\n            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString('pt-BR')}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mês`;\n"
+  },
+  "minHScreen146": {
+    "en": "            // ARCHETYPE & EVALUATION LOGIC\n",
+    "es": "            // LÓGICA DE ARQUETIPO Y EVALUACIÓN\n",
+    "pt": "            // LÓGICA DE ARQUÉTIPO E AVALIAÇÃO\n"
+  },
+  "minHScreen147": {
+    "en": "                archetype = \"The Freedom Strategist\";\n                archetypeDescription = \"Exemplary financial literacy! You systematically prioritize cash-generating assets, avoid high-fee traps, optimize leverage, and balance current happiness with future compounding.\";\n",
+    "es": "                archetype = \"El Estratega de la Libertad\";\n                archetypeDescription = \"¡Excelente nivel de conocimiento financiero! Priorizas de forma sistemática los activos generadores de caja, evitas comisiones abusivas, optimizas el uso de deudas y equilibras la felicidad presente con el crecimiento futuro.\";\n",
+    "pt": "                archetype = \"O Estrategista da Liberdade\";\n                archetypeDescription = \"Excelente nível de conhecimento financeiro! Você prioriza de forma sistemática ativos geradores de caixa, evita taxas abusivas, otimiza o uso de dívidas e equilibra a felicidade presente com o crescimento futuro.\";\n"
+  },
+  "minHScreen148": {
+    "en": "                archetype = \"The Conscious Accumulator\";\n                archetypeDescription = \"Solid financial foundation! You understand key wealth concepts well, though minor leaks in investment fees, debt timing, or lifestyle spending could be refined.\";\n",
+    "es": "                archetype = \"El Acumulador Consciente\";\n                archetypeDescription = \"¡Buena base financiera! Comprendes los conceptos clave para generar riqueza, aunque pequeños goteos en comisiones de inversión o decisiones puntuales de consumo pueden optimizarse.\";\n",
+    "pt": "                archetype = \"O Acumulador Consciente\";\n                archetypeDescription = \"Boa base financeira! Você compreende bem os conceitos essenciais de riqueza, embora pequenos vazamentos em taxas de investimento ou decisões pontuais de consumo possam ser aprimorados.\";\n"
+  },
+  "minHScreen149": {
+    "en": "                archetype = \"The Wealth Apprentice\";\n                archetypeDescription = \"You have basic financial awareness, but frequently expose your wealth to inflation drag, unhedged liabilities, or suboptimal debt decisions.\";\n",
+    "es": "                archetype = \"El Aprendiz de Riqueza\";\n                archetypeDescription = \"Posees una conciencia financiera básica, pero expones tu patrimonio con frecuencia a la inflación, pasivos de costo elevado o créditos desfavorables.\";\n",
+    "pt": "                archetype = \"O Aprendiz de Riqueza\";\n                archetypeDescription = \"Você possui consciência financeira básica, mas expõe seu patrimônio com frequência à inflação, passivos de custos elevados ou decisões de crédito desfavoráveis.\";\n"
+  },
+  "minHScreen150": {
+    "en": "                archetype = \"The Vulnerable Consumer\";\n                archetypeDescription = \"High financial risk profile! Your decisions currently favor short-term consumption, high-interest liabilities, and idle cash reserves that erode your future wealth.\";\n",
+    "es": "                archetype = \"El Consumidor Vulnerable\";\n                archetypeDescription = \"¡Perfil con alto riesgo financiero! Tus decisiones actuales priorizan el consumo de corto plazo, deudas de interés alto y dinero estancado que erosiona tu patrimonio futuro.\";\n",
+    "pt": "                archetype = \"O Consumidor Vulnerável\";\n                archetypeDescription = \"Perfil com alto risco financeiro! Suas decisões atuais priorizam o consumo de curto prazo, dívidas com juros altos e dinheiro parado que corrói seu patrimônio futuro.\";\n"
+  },
+  "minHScreen151": {
+    "en": "            // RENDER CATEGORY DIAGNOSTICS\n",
+    "es": "            // RENDERIZAR DIAGNÓSTICO POR CATEGORÍA\n",
+    "pt": "            // RENDERIZAR DIAGNÓSTICO POR CATEGORIA\n"
+  },
+  "minHScreen152": {
+    "en": "            // RENDER CHART\n",
+    "es": "            // RENDERIZAR GRÁFICO\n",
+    "pt": "            // RENDERIZAR GRÁFICO\n"
+  },
+  "minHScreen153": {
+    "en": "            // RENDER LEADERBOARD\n",
+    "es": "            // RENDERIZAR TABLA DE CLASIFICACIÓN\n",
+    "pt": "            // RENDERIZAR PLACAR\n"
+  },
+  "minHScreen154": {
+    "en": "        // RENDER CATEGORY BREAKDOWN\n",
+    "es": "        // RENDERIZAR DETALLE POR CATEGORÍA\n",
+    "pt": "        // RENDERIZAR DETALHAMENTO POR CATEGORIA\n"
+  },
+  "minHScreen155": {
+    "en": "                let statusText = \"Strong Mastery\";\n",
+    "es": "                let statusText = \"Dominio Elevado\";\n",
+    "pt": "                let statusText = \"Domínio Elevado\";\n"
+  },
+  "minHScreen156": {
+    "en": "                    statusText = \"Needs Urgent Focus\";\n",
+    "es": "                    statusText = \"Atención Prioritaria\";\n",
+    "pt": "                    statusText = \"Atenção Prioritária\";\n"
+  },
+  "minHScreen157": {
+    "en": "                    statusText = \"Moderate Understanding\";\n",
+    "es": "                    statusText = \"Comprensión Moderada\";\n",
+    "pt": "                    statusText = \"Compreensão Moderada\";\n"
+  },
+  "minHScreen158": {
+    "en": "        // RENDER TRAJECTORY CHART\n",
+    "es": "        // RENDERIZAR GRÁFICO DE TRAYECTORIA\n",
+    "pt": "        // RENDERIZAR GRÁFICO DE TRAJETÓRIA\n"
+  },
+  "minHScreen159": {
+    "en": "                    note.textContent = 'The chart could not be drawn. Every figure it would show is also listed as text on this page.';\n",
+    "es": "                    note.textContent = 'No se pudo dibujar el gráfico. Todas las cifras que mostraría también aparecen como texto en esta página.';\n",
+    "pt": "                    note.textContent = 'Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página.';\n"
+  },
+  "minHScreen160": {
+    "en": "            const labels = trajectoryData.map((_, i) => i === 0 ? 'Start' : `Phase ${i}`);\n",
+    "es": "            const labels = trajectoryData.map((_, i) => i === 0 ? 'Inicio' : `Fase ${i}`);\n",
+    "pt": "            const labels = trajectoryData.map((_, i) => i === 0 ? 'Início' : `Fase ${i}`);\n"
+  },
+  "minHScreen161": {
+    "en": "                        label: 'Net Worth ($)',\n",
+    "es": "                        label: 'Patrimonio Neto ($)',\n",
+    "pt": "                        label: 'Patrimônio Líquido ($)',\n"
+  },
+  "minHScreen162": {
+    "en": "                                callback: value => '$' + value.toLocaleString()\n",
+    "es": "                                callback: value => '$' + value.toLocaleString('es-ES')\n",
+    "pt": "                                callback: value => '$' + value.toLocaleString('pt-BR')\n"
+  },
+  "minHScreen163": {
+    "en": "        // LEADERBOARD LOCAL STORAGE\n",
+    "es": "        // GESTIÓN DE LA TABLA DE CLASIFICACIÓN EN LOCAL STORAGE\n",
+    "pt": "        // GERENCIAMENTO DO PLACAR NO LOCAL STORAGE\n"
+  },
+  "minHScreen164": {
+    "en": "            const stored = localStorage.getItem('compounding_journey_leaderboard');\n",
+    "es": "            const stored = localStorage.getItem('compounding_journey_leaderboard_es');\n",
+    "pt": "            const stored = localStorage.getItem('compounding_journey_leaderboard_pt');\n"
+  },
+  "minHScreen165": {
+    "en": "                { name: \"Sophia M.\", iq: 93, netWorth: 34500, date: \"Recent\" },\n                { name: \"Marcus T.\", iq: 80, netWorth: 28000, date: \"Recent\" },\n                { name: \"Elena R.\", iq: 67, netWorth: 18500, date: \"Recent\" }\n",
+    "es": "                { name: \"Sofía M.\", iq: 93, netWorth: 34500, date: \"Reciente\" },\n                { name: \"Marcos T.\", iq: 80, netWorth: 28000, date: \"Reciente\" },\n                { name: \"Elena R.\", iq: 67, netWorth: 18500, date: \"Reciente\" }\n",
+    "pt": "                { name: \"Sofia M.\", iq: 93, netWorth: 34500, date: \"Recente\" },\n                { name: \"Marcos T.\", iq: 80, netWorth: 28000, date: \"Recente\" },\n                { name: \"Helena R.\", iq: 67, netWorth: 18500, date: \"Recente\" }\n"
+  },
+  "minHScreen166": {
+    "en": "                        <span class=\"text-forest-800 font-bold\">$${entry.netWorth.toLocaleString()}</span>\n",
+    "es": "                        <span class=\"text-forest-800 font-bold\">$${entry.netWorth.toLocaleString('es-ES')}</span>\n",
+    "pt": "                        <span class=\"text-forest-800 font-bold\">$${entry.netWorth.toLocaleString('pt-BR')}</span>\n"
+  },
+  "minHScreen167": {
+    "en": "                alert(\"Please enter a name or initials to save your score.\");\n",
+    "es": "                alert(\"Por favor, escribe tu nombre o iniciales para guardar tu resultado.\");\n",
+    "pt": "                alert(\"Por favor, digite seu nome ou iniciais para salvar seu resultado.\");\n"
+  },
+  "minHScreen168": {
+    "en": "                date: \"Today\"\n",
+    "es": "                date: \"Hoy\"\n",
+    "pt": "                date: \"Hoje\"\n"
+  },
+  "minHScreen169": {
+    "en": "            localStorage.setItem('compounding_journey_leaderboard', JSON.stringify(list));\n",
+    "es": "            localStorage.setItem('compounding_journey_leaderboard_es', JSON.stringify(list));\n",
+    "pt": "            localStorage.setItem('compounding_journey_leaderboard_pt', JSON.stringify(list));\n"
+  },
+  "minHScreen170": {
+    "en": "            alert(\"Score saved successfully to local leaderboard!\");\n",
+    "es": "            alert(\"¡Resultado guardado con éxito en la tabla de clasificación!\");\n",
+    "pt": "            alert(\"Resultado salvo com sucesso no placar local!\");\n"
+  },
+  "minHScreen171": {
+    "en": "        // RESET GAME\n",
+    "es": "        // REINICIAR EL JUEGO\n",
+    "pt": "        // REINICIAR O JOGO\n"
+  },
+  "minHScreen172": {
+    "en": "            // Reset visibility of screens\n",
+    "es": "            // Redefinir visibilidad de pantallas\n",
+    "pt": "            // Redefinir visibilidade das telas\n"
+  },
+  "minHScreen173": {
+    "en": "        // INITIALIZE ON LOAD\n",
+    "es": "        // INICIALIZAR AL CARGAR LA PÁGINA\n",
+    "pt": "        // INICIALIZAR AO CARREGAR A PÁGINA\n"
+  }
+}

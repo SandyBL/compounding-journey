@@ -22,7 +22,7 @@
 # present. The only dependency is the CLI itself, pinned to an exact version in
 # package.json.
 [build]
-  command = "npm install --no-audit --no-fund && node scripts/generate-blog-catalog.mjs && node scripts/generate-home-pages.mjs && node scripts/generate-blog-pages.mjs && node scripts/generate-llms-txt.mjs && npm run css && node scripts/version-assets.mjs"
+  command = "npm install --no-audit --no-fund && node scripts/generate-blog-catalog.mjs && node scripts/generate-home-pages.mjs && node scripts/generate-blog-pages.mjs && node scripts/generate-simulator-pages.mjs && node scripts/generate-llms-txt.mjs && npm run css && node scripts/version-assets.mjs"
 
 # The generators are Node ESM. Pin the runtime so a change to the Netlify
 # default cannot alter the build without a commit saying so.

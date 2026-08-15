@@ -3,9 +3,13 @@ module.exports = {
     // scanning it alone would drop every utility that appears exclusively in the
     // English or Portuguese branches of the template. The trilingual source is
     // the authoritative entry; the generated pages are listed after it so a
-    // hand-edit to one of them is still covered.
+    // hand-edit to one of them is still covered. The simulator templates are
+    // listed for the same reason: their per-language text lives in .i18n.json
+    // sidecars, and a class name can appear inside a translated string.
     content: [
         './content/home/index.html',
+        './content/simulators/*.html',
+        './content/simulators/*.i18n.json',
         './404.html',
         './index.html',
         './{en,es,pt}/**/*.html',

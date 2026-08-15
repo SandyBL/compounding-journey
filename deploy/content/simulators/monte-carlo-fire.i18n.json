@@ -1,0 +1,1972 @@
+{
+  "hFullLang": {
+    "en": "en",
+    "es": "es",
+    "pt": "pt-BR"
+  },
+  "hFull": {
+    "en": "Monte Carlo FIRE Retirement Survival Simulator | Compounding Journey",
+    "es": "Simulador Monte Carlo de Supervivencia FIRE | Compounding Journey",
+    "pt": "Simulador Monte Carlo de Sobrevivência FIRE | Compounding Journey"
+  },
+  "metaContent": {
+    "en": "Stress-test a FIRE retirement plan across thousands of Monte Carlo market paths and estimate how likely a portfolio is to sustain withdrawals.",
+    "es": "Pon a prueba un plan de retiro FIRE en miles de escenarios Monte Carlo y estima la probabilidad de que la cartera sostenga tus retiradas.",
+    "pt": "Testa um plano de reforma FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar os levantamentos."
+  },
+  "metaContent3": {
+    "en": "Monte Carlo FIRE Retirement Survival Simulator",
+    "es": "Simulador Monte Carlo de Supervivencia FIRE",
+    "pt": "Simulador Monte Carlo de Sobrevivência FIRE"
+  },
+  "metaContent4": {
+    "en": "Estimate whether a retirement portfolio can survive thousands of possible market futures.",
+    "es": "Estima si una cartera de retiro puede sobrevivir miles de futuros de mercado posibles.",
+    "pt": "Estima se uma carteira de reforma pode sobreviver a milhares de futuros de mercado possíveis."
+  },
+  "hFull2": {
+    "en": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Monte Carlo ",
+    "es": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Vuelo de Supervivencia ",
+    "pt": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Voo de Sobrevivência "
+  },
+  "hFull3": {
+    "en": "Survival Flight\",\"url\":\"https://compoundingjourney.com/en/simulators/monte-carlo-fire.html\",\"description\":\"A ",
+    "es": "",
+    "pt": ""
+  },
+  "hFull4": {
+    "en": "",
+    "es": "Carlo\",\"url\":\"https://compoundingjourney.com/es/simulators/monte-carlo-fire.html\",\"description\":\"Un simulador Monte ",
+    "pt": "Carlo\",\"url\":\"https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html\",\"description\":\"Um simulador Monte "
+  },
+  "hFull5": {
+    "en": "simulator for estimating retirement portfolio survival under varied market returns and withdrawal assumptions.\",\"inLanguage\":\"en\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Any web browser\",\"browserRequirements\":\"Requires JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
+    "es": "para estimar la supervivencia de una cartera de retiro bajo distintos rendimientos y retiradas.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
+    "pt": "para estimar a sobrevivência de uma carteira de reforma sob diferentes retornos e levantamentos.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
+  },
+  "hFull6": {
+    "en": "    /* Custom Glassmorphism Panels */\n",
+    "es": "    /* Paneles Glassmorphism Personalizados */\n",
+    "pt": "    /* Painéis Glassmorphism Personalizados */\n"
+  },
+  "hFull7": {
+    "en": "    /* Canvas CRT Overlay Grid Effect */\n",
+    "es": "    /* Efecto CRT de Rejilla y Líneas de Escaneo */\n",
+    "pt": "    /* Efeito CRT de Grade e Linhas de Escaneamento */\n"
+  },
+  "hFull8": {
+    "en": "    /* Glowing accent lights */\n",
+    "es": "    /* Luces de Acento Brillantes */\n",
+    "pt": "    /* Efeitos de Luz de Acento */\n"
+  },
+  "hFull9": {
+    "en": "    /* Range slider custom thumb */\n",
+    "es": "    /* Selector de Rango Personalizado */\n",
+    "pt": "    /* Controle Deslizante Personalizado */\n"
+  },
+  "hFull10": {
+    "en": "    /* Custom Scrollbars */\n",
+    "es": "    /* Barras de Desplazamiento Personalizadas */\n",
+    "pt": "    /* Barras de Rolagem Personalizadas */\n"
+  },
+  "skipLink": {
+    "en": "Skip to main content",
+    "es": "Saltar al contenido principal",
+    "pt": "Saltar para o conteúdo principal"
+  },
+  "minHScreen": {
+    "en": "  <!-- HEADER & NAVIGATION -->\n",
+    "es": "  <!-- ENCABEZADO Y NAVEGACIÓN -->\n",
+    "pt": "  <!-- CABEÇALHO E NAVEGAÇÃO -->\n"
+  },
+  "headerBrandAriaLabel": {
+    "en": "Return to Compounding Journey",
+    "es": "Volver a Compounding Journey",
+    "pt": "Voltar ao Compounding Journey"
+  },
+  "headerBrandTagline": {
+    "en": "Your map to freedom",
+    "es": "Tu mapa hacia la libertad",
+    "pt": "O teu mapa para a liberdade"
+  },
+  "siteReturnLinkAriaLabel": {
+    "en": "Back to the website",
+    "es": "Volver al sitio web",
+    "pt": "Voltar ao site"
+  },
+  "siteReturnLinkText": {
+    "en": "Website",
+    "es": "Sitio web",
+    "pt": "Website"
+  },
+  "mt15": {
+    "en": "Stress-test a FIRE retirement plan across thousands of ",
+    "es": "Pon a prueba un plan de retiro FIRE en miles de escenarios ",
+    "pt": "Testa um plano de reforma FIRE em milhares de cenários "
+  },
+  "mt152": {
+    "en": "market paths and estimate how likely a portfolio is to sustain withdrawals.",
+    "es": "y estima la probabilidad de que la cartera sostenga tus retiradas.",
+    "pt": "e estima a probabilidade de a carteira sustentar os levantamentos."
+  },
+  "mt3AriaLabel": {
+    "en": "More simulators",
+    "es": "Más simuladores",
+    "pt": "Mais simuladores"
+  },
+  "textSlate500": {
+    "en": "More simulators:",
+    "es": "Más simuladores:",
+    "pt": "Mais simuladores:"
+  },
+  "px25": {
+    "en": "All simulators",
+    "es": "Todos los simuladores",
+    "pt": "Todos os simuladores"
+  },
+  "px252": {
+    "en": "Freedom Calendar",
+    "es": "Calendario de la Libertad",
+    "pt": "Calendário da Liberdade"
+  },
+  "px253": {
+    "en": "Market Time Machine",
+    "es": "Máquina del Tiempo del Mercado",
+    "pt": "Máquina do Tempo do Mercado"
+  },
+  "px254": {
+    "en": "Passive Income Engine",
+    "es": "Motor de Ingresos Pasivos",
+    "pt": "Motor de Rendimento Passivo"
+  },
+  "navBtnCockpit": {
+    "en": " COCKPIT\n",
+    "es": " CABINA\n",
+    "pt": " COCKPIT\n"
+  },
+  "navBtnLeaderboard": {
+    "en": " LEADERBOARD\n",
+    "es": " CLASIFICACIÓN\n",
+    "pt": " CLASSIFICAÇÃO\n"
+  },
+  "navBtnMontecarlo": {
+    "en": " 1,000 SIMS\n",
+    "es": " 1.000 SIMS\n",
+    "pt": " 1.000 SIMS\n"
+  },
+  "navBtnAcademy": {
+    "en": " ACADEMY\n",
+    "es": " ACADEMIA\n",
+    "pt": " ACADEMIA\n"
+  },
+  "minHScreen2": {
+    "en": "  <!-- MAIN CONTAINER -->\n",
+    "es": "  <!-- CONTENEDOR PRINCIPAL -->\n",
+    "pt": "  <!-- CONTÊINER PRINCIPAL -->\n"
+  },
+  "main": {
+    "en": "    <!-- TAB 1: INTERACTIVE FLIGHT COCKPIT -->\n",
+    "es": "    <!-- PESTAÑA 1: CABINA DE VUELO INTERACTIVA -->\n",
+    "pt": "    <!-- ABA 1: CABINE DE VOO INTERATIVA -->\n"
+  },
+  "tabCockpit": {
+    "en": "      <!-- MISSION BRIEFING & ONBOARDING -->\n",
+    "es": "      <!-- BRIEFING DE LA MISIÓN -->\n",
+    "pt": "      <!-- BRIEFING DA MISSÃO -->\n"
+  },
+  "px255": {
+    "en": "                🎯 MISSION OBJECTIVE\n",
+    "es": "                🎯 OBJETIVO DE LA MISIÓN\n",
+    "pt": "                🎯 OBJETIVO DA MISSÃO\n"
+  },
+  "textXs": {
+    "en": "Goal: Reach Age 100 with Minimal Years in Crashline!",
+    "es": "¡Llegar a los 100 Años con el Mínimo de Años en Desplome!",
+    "pt": "Chegar aos 100 Anos com o Mínimo de Anos em Colapso!"
+  },
+  "textBase": {
+    "en": "              PILOT YOUR RETIREMENT FLIGHT TO AGE 100\n",
+    "es": "              PILOTA TU VUELO DE JUBILACIÓN HASTA LOS 100 AÑOS\n",
+    "pt": "              PILOTE SEU VOO DE APOSENTADORIA ATÉ OS 100 ANOS\n"
+  },
+  "textCyan300": {
+    "en": "How Crashline Works:",
+    "es": "Cómo funciona la Zona de Desplome:",
+    "pt": "Como funciona a Zona de Colapso:"
+  },
+  "textXs2": {
+    "en": " If market drops or high spending drain your net worth to $0, you enter the ",
+    "es": " Si las caídas del mercado o los altos gastos agotan tu patrimonio neto a $0, entras en la ",
+    "pt": " Se as quedas do mercado ou os altos gastos reduzirem seu patrimônio líquido a $0, você entra na "
+  },
+  "textRed400": {
+    "en": "CRASHLINE ZONE",
+    "es": "ZONA CRASHLINE",
+    "pt": "ZONA DE COLAPSO"
+  },
+  "textXs3": {
+    "en": "              You get a ",
+    "es": "              Tienes un ",
+    "pt": "              Você tem um "
+  },
+  "textXs4": {
+    "en": "10-Year Grace Period",
+    "es": "Periodo de Gracia de 10 Años",
+    "pt": "Período de Graça de 10 Anos"
+  },
+  "textXs5": {
+    "en": " to adjust tactics (side job, spending cuts, cash buffers, downsizing) and bounce back. Stay in the crashline for 10 consecutive years and your flight is destroyed!\n",
+    "es": " para ajustar tácticas (trabajo parcial, recortes, colchón de efectivo, reducción de vivienda) y remontar. ¡Si permaneces 10 años consecutivos en desplome, tu vuelo se destruye!\n",
+    "pt": " para ajustar táticas (trabalho em meio período, cortes, reserva de caixa, redução de imóvel) e se recuperar. Se permanecer 10 anos consecutivos em colapso, seu voo é destruído!\n"
+  },
+  "flex": {
+    "en": "          <!-- Quick 3-Step Guide Badges -->\n",
+    "es": "          <!-- Guía Rápida de 3 Pasos -->\n",
+    "pt": "          <!-- Guia Rápido em 3 Passos -->\n"
+  },
+  "textCyan400": {
+    "en": "1. BALANCE ASSETS",
+    "es": "1. BALANCEA ACTIVOS",
+    "pt": "1. EQUILIBRE ATIVOS"
+  },
+  "text10px": {
+    "en": "Too many stocks = crash vulnerability!",
+    "es": "¡Demasiadas acciones = vulnerabilidad!",
+    "pt": "Ações demais = vulnerabilidade!"
+  },
+  "textEmerald400": {
+    "en": "2. LAUNCH FLIGHT",
+    "es": "2. DESPEGA EL VUELO",
+    "pt": "2. DECOLE O VOO"
+  },
+  "text10px2": {
+    "en": "Fly from Age 50 to 100",
+    "es": "Vuela de los 50 a 100 años",
+    "pt": "Voe dos 50 aos 100 anos"
+  },
+  "textAmber400": {
+    "en": "3. USE 6 TACTICS",
+    "es": "3. USA 6 TÁCTICAS",
+    "pt": "3. USE 6 TÁTICAS"
+  },
+  "text10px3": {
+    "en": "Climb out of crashline",
+    "es": "Sal de la zona de desplome",
+    "pt": "Saia da zona de colapso"
+  },
+  "tabCockpit2": {
+    "en": "      <!-- Top Presets & Quick Flight Scenarios -->\n",
+    "es": "      <!-- Escenarios Predefinidos de Retiro -->\n",
+    "pt": "      <!-- Cenários Predefinidos de Aposentadoria -->\n"
+  },
+  "fontHud": {
+    "en": " RETIREMENT SCENARIO PRESETS:\n",
+    "es": " ESCENARIOS PREDEFINIDOS DE RETIRO:\n",
+    "pt": " CENÁRIOS PREDEFINIDOS DE APOSENTADORIA:\n"
+  },
+  "px3": {
+    "en": " High Risk SWR ($850k / $45k)\n",
+    "es": " SWR de Alto Riesgo ($850k / $45k)\n",
+    "pt": " SWR de Alto Risco ($850k / $45k)\n"
+  },
+  "px32": {
+    "en": " Trinity Standard ($1M / $40k)\n",
+    "es": " Estándar Trinity ($1M / $40k)\n",
+    "pt": " Padrão Trinity ($1M / $40k)\n"
+  },
+  "px33": {
+    "en": " Tight Lean FIRE ($650k / $35k)\n",
+    "es": " Lean FIRE Ajustado ($650k / $35k)\n",
+    "pt": " Lean FIRE Ajustado ($650k / $35k)\n"
+  },
+  "px34": {
+    "en": " Fat FIRE ($1.5M / $75k)\n",
+    "es": " Fat FIRE Holgado ($1,5M / $75k)\n",
+    "pt": " Fat FIRE Amplo ($1,5M / $75k)\n"
+  },
+  "tabCockpit3": {
+    "en": "      <!-- MAIN COCKPIT GRID (Left Controls + Right Canvas Monitor) -->\n",
+    "es": "      <!-- PARRILLA PRINCIPAL DE LA CABINA (Controles + Visualizador HUD) -->\n",
+    "pt": "      <!-- GRADE PRINCIPAL DA CABINE (Controles + Visualizador HUD) -->\n"
+  },
+  "grid": {
+    "en": "        <!-- LEFT COLUMN: Flight Controls Deck (4 cols) -->\n",
+    "es": "        <!-- COLUMNA IZQUIERDA: Cubierta de Controles de Vuelo (4 cols) -->\n",
+    "pt": "        <!-- COLUNA ESQUERDA: Painel de Controles de Voo (4 cols) -->\n"
+  },
+  "lgColSpan4": {
+    "en": "          <!-- Flight Parameters Card -->\n",
+    "es": "          <!-- Tarjeta de Parámetros de Vuelo -->\n",
+    "pt": "          <!-- Cartão de Parâmetros de Voo -->\n"
+  },
+  "fontHud2": {
+    "en": " PILOT & FUEL PARAMETERS",
+    "es": " PILOTO Y COMBUSTIBLE",
+    "pt": " PILOTO E COMBUSTÍVEL"
+  },
+  "text10px4": {
+    "en": "Pre-Flight Deck",
+    "es": "Pre-Vuelo",
+    "pt": "Pré-Voo"
+  },
+  "hudGlass": {
+    "en": "            <!-- Pilot Name Input -->\n",
+    "es": "            <!-- Nombre o Caza del Piloto -->\n",
+    "pt": "            <!-- Nome ou Codinome do Piloto -->\n"
+  },
+  "textXs6": {
+    "en": " Pilot Callsign / Name\n",
+    "es": " Piloto / Nombre de Caza\n",
+    "pt": " Piloto / Codinome\n"
+  },
+  "inputPilotNameValue": {
+    "en": "Captain FIRE",
+    "es": "Capitán FIRE",
+    "pt": "Capitão FIRE"
+  },
+  "hudGlass2": {
+    "en": "            <!-- Nest Egg Input (Controlled Max: $2,000,000, Default: $850,000) -->\n",
+    "es": "            <!-- Entrada de Capital Inicial -->\n",
+    "pt": "            <!-- Entrada de Patrimônio Inicial -->\n"
+  },
+  "textSlate300": {
+    "en": "                  Starting Nest Egg ($)\n",
+    "es": "                  Capital Acumulado ($)\n",
+    "pt": "                  Patrimônio Acumulado ($)\n"
+  },
+  "text10px5": {
+    "en": " Estimate Required\n",
+    "es": " Estimar Requerido\n",
+    "pt": " Estimar Requerido\n"
+  },
+  "dispNestegg": {
+    "en": "$850,000",
+    "es": "$850,000",
+    "pt": "$850.000"
+  },
+  "hudGlass3": {
+    "en": "            <!-- Annual Spending Input (Controlled Min: $35,000, Default: $45,000) -->\n",
+    "es": "            <!-- Entrada de Gasto Anual -->\n",
+    "pt": "            <!-- Entrada de Gasto Anual -->\n"
+  },
+  "textSlate3002": {
+    "en": "                  Annual Living Spend ($)\n",
+    "es": "                  Gasto Anual de Vida ($)\n",
+    "pt": "                  Gasto Anual de Vida ($)\n"
+  },
+  "text10px6": {
+    "en": " Calculate Budget\n",
+    "es": " Presupuestar\n",
+    "pt": " Orçamento\n"
+  },
+  "dispSpending": {
+    "en": "$45,000",
+    "es": "$45,000",
+    "pt": "$45.000"
+  },
+  "flex2": {
+    "en": "Withdrawal Rate (SWR):",
+    "es": "Tasa de Retiro Anual (SWR):",
+    "pt": "Taxa Segura de Retirada (SWR):"
+  },
+  "dispSwrBadge": {
+    "en": "                  5.3% (HIGH RISK)\n",
+    "es": "                  5.3% (ALTO RIESGO)\n",
+    "pt": "                  5.3% (ALTO RISCO)\n"
+  },
+  "hudGlass4": {
+    "en": "            <!-- Age Range Inputs -->\n",
+    "es": "            <!-- Rangos de Edad -->\n",
+    "pt": "            <!-- Faixas de Idade -->\n"
+  },
+  "textSlate3003": {
+    "en": "FIRE Freedom Age",
+    "es": "Edad de Libertad FIRE",
+    "pt": "Idade de Liberdade FIRE"
+  },
+  "text9px": {
+    "en": "Target Start",
+    "es": "Inicio",
+    "pt": "Início"
+  },
+  "textSlate3004": {
+    "en": "Destination Age",
+    "es": "Edad Destino",
+    "pt": "Idade Destino"
+  },
+  "text9px2": {
+    "en": "Longevity",
+    "es": "Longevidad",
+    "pt": "Longevidade"
+  },
+  "hudGlass5": {
+    "en": "            <!-- Asset Allocation Strategy -->\n",
+    "es": "            <!-- Asignación de Portafolio -->\n",
+    "pt": "            <!-- Alocação de Ativos -->\n"
+  },
+  "textXs7": {
+    "en": "Asset Allocation Portfolio",
+    "es": "Asignación de Activos del Portafolio",
+    "pt": "Alocação de Ativos do Portfólio"
+  },
+  "flex3": {
+    "en": "                <!-- Target Date Fund Toggle -->\n",
+    "es": "                <!-- Interruptor Target Date Fund -->\n",
+    "pt": "                <!-- Interruptor Fundo Data-Alvo -->\n"
+  },
+  "ml2": {
+    "en": "Auto Target Date Fund",
+    "es": "Fondo Fecha Objetivo Auto",
+    "pt": "Fundo Data-Alvo Auto"
+  },
+  "spaceY2": {
+    "en": "              <!-- Allocation Sliders Container -->\n",
+    "es": "              <!-- Deslizadores de Asignación -->\n",
+    "pt": "              <!-- Controles Deslizantes de Alocação -->\n"
+  },
+  "lblAllocStocks": {
+    "en": "Stocks (High Volatility Growth)",
+    "es": "Acciones (Crecimiento y Volatilidad)",
+    "pt": "Ações (Crescimento e Volatilidade)"
+  },
+  "lblAllocBonds": {
+    "en": "Bonds (Stability & Yield)",
+    "es": "Bonos (Estabilidad y Renta)",
+    "pt": "Renda Fixa / Títulos (Estabilidade)"
+  },
+  "lblAllocCash": {
+    "en": "Cash Buffer",
+    "es": "Colchón de Efectivo",
+    "pt": "Reserva de Caixa (Caixa)"
+  },
+  "spaceY22": {
+    "en": "              <!-- Target Date Fund Glidepath Visual Progress Bar -->\n",
+    "es": "              <!-- Visualizador de Trayectoria Glidepath -->\n",
+    "pt": "              <!-- Visualizador de Trajetória Glidepath -->\n"
+  },
+  "fontBold": {
+    "en": " Dynamic TDF Glidepath",
+    "es": " Trayectoria Dinámica Glidepath",
+    "pt": " Trajetória Dinâmica Glidepath"
+  },
+  "tdfStatusText": {
+    "en": "De-risking active",
+    "es": "Reducción de riesgo activa",
+    "pt": "Redução de risco ativa"
+  },
+  "text10px7": {
+    "en": "                  Automatically shifts from growth stocks to conservative bonds as your age increases toward 100.\n",
+    "es": "                  Sustituye automáticamente acciones de crecimiento por bonos conservadores conforme aumenta tu edad hacia los 100 años.\n",
+    "pt": "                  Substitui automaticamente ações por renda fixa e reserva à medida que a idade avança em direção aos 100 anos.\n"
+  },
+  "hudGlass6": {
+    "en": "            <!-- Turbulence Sequence Selector -->\n",
+    "es": "            <!-- Secuencia de Turbulencia Mercado -->\n",
+    "pt": "            <!-- Sequência de Turbulência de Mercado -->\n"
+  },
+  "textXs8": {
+    "en": "Economic Turbulence Sequence",
+    "es": "Secuencia de Turbulencia Económica",
+    "pt": "Sequência de Turbulência Econômica"
+  },
+  "selectMarketSequence": {
+    "en": "🎲 High Volatility Monte Carlo (Random Turbulence)",
+    "es": "🎲 Monte Carlo de Alta Volatilidad (Turbulencia Aleatoria)",
+    "pt": "🎲 Monte Carlo de Alta Volatilidade (Turbulência Aleatória)"
+  },
+  "selectMarketSequence2": {
+    "en": "🔥 1970s Severe Inflation Spike & Bear Market",
+    "es": "🔥 Pico de Inflación Severo de 1970 y Mercado Bajista",
+    "pt": "🔥 Pico de Inflação Severo de 1970 e Mercado em Queda"
+  },
+  "selectMarketSequence3": {
+    "en": "💥 2000 Dot-Com Crash + 2008 Great Recession",
+    "es": "💥 Caída Dot-Com 2000 + Gran Recesión 2008",
+    "pt": "💥 Queda Dot-Com 2000 + Grande Recessão 2008"
+  },
+  "selectMarketSequence4": {
+    "en": "🚀 Extended Historical Bull Market",
+    "es": "🚀 Mercado Alcista Histórico Prolongado",
+    "pt": "🚀 Mercado de Alta Histórico Prolongado"
+  },
+  "hudGlass7": {
+    "en": "            <!-- Launch & Reset Controls -->\n",
+    "es": "            <!-- Botones de Despegue y Reinicio -->\n",
+    "pt": "            <!-- Botões de Decolagem e Reinício -->\n"
+  },
+  "btnLaunchText": {
+    "en": "LAUNCH FLIGHT",
+    "es": "DESPEGAR VUELO",
+    "pt": "INICIAR VOO"
+  },
+  "grid2": {
+    "en": "        <!-- RIGHT COLUMN: Visual HUD Monitor & 6 Mid-Flight Action Deck (8 cols) -->\n",
+    "es": "        <!-- COLUMNA DERECHA: Monitor HUD y 6 Ajustes de Cabina (8 cols) -->\n",
+    "pt": "        <!-- COLUNA DIREITA: Monitor HUD e 6 Ajustes de Cabine (8 cols) -->\n"
+  },
+  "lgColSpan8": {
+    "en": "          <!-- Cockpit Sky & Flight Path Visual Container -->\n",
+    "es": "          <!-- Contenedor Visual HUD del Cielo -->\n",
+    "pt": "          <!-- Contêiner Visual HUD do Céu -->\n"
+  },
+  "hudVisualContainer": {
+    "en": "            <!-- HUD Telemetry Header Overlay -->\n",
+    "es": "            <!-- Encabezado Telemetría HUD -->\n",
+    "pt": "            <!-- Cabeçalho Telemetria HUD -->\n"
+  },
+  "inlineFlex": {
+    "en": " AGE: ",
+    "es": " EDAD: ",
+    "pt": " IDADE: "
+  },
+  "hudFlightStatusBadge": {
+    "en": "                  Ready On Tarmac\n",
+    "es": "                  Listo en Pista\n",
+    "pt": "                  Pronto na Pista\n"
+  },
+  "flex4": {
+    "en": "              <!-- Flight Telemetry Counters -->\n",
+    "es": "              <!-- Telemetría de Vuelo -->\n",
+    "pt": "              <!-- Telemetria do Voo -->\n"
+  },
+  "textSlate400": {
+    "en": "Altitude",
+    "es": "Altitud",
+    "pt": "Altitude"
+  },
+  "textSlate4002": {
+    "en": "Current SWR",
+    "es": "SWR Actual",
+    "pt": "SWR Atual"
+  },
+  "textSlate4003": {
+    "en": "Crashline Yrs",
+    "es": "Años en Desplome",
+    "pt": "Anos em Colapso"
+  },
+  "hudCrashlineCounter": {
+    "en": "0 / 10 Yrs",
+    "es": "0 / 10 Años",
+    "pt": "0 / 10 Anos"
+  },
+  "hudVisualContainer2": {
+    "en": "            <!-- Canvas Flight Monitor Visualizer -->\n",
+    "es": "            <!-- Canvas Monitor del Vuelo -->\n",
+    "pt": "            <!-- Canvas Monitor do Voo -->\n"
+  },
+  "flightcanvasAriaLabel": {
+    "en": "Animated chart: the simulated portfolio path, drawn as a flight trajectory. Every value it plots is reported as text in the instrument panel above it.",
+    "es": "Gráfico animado: la trayectoria simulada de la cartera, dibujada como una ruta de vuelo. Todos los valores que representa se indican como texto en el panel de instrumentos superior.",
+    "pt": "Gráfico animado: a trajetória simulada da carteira, desenhada como uma rota de voo. Todos os valores que representa são indicados como texto no painel de instrumentos acima."
+  },
+  "relative": {
+    "en": "              <!-- Flight Pitch Legend Overlay -->\n",
+    "es": "              <!-- Leyenda de Inclinación de Vuelo -->\n",
+    "pt": "              <!-- Legenda de Inclinação do Voo -->\n"
+  },
+  "text10px8": {
+    "en": " FLIGHT PITCH\n",
+    "es": " INCLINACIÓN\n",
+    "pt": " INCLINAÇÃO\n"
+  },
+  "hudPitchBadge": {
+    "en": "🛫 PITCH: LEVEL CRUISE",
+    "es": "🛫 CRUCERO NIVELADO",
+    "pt": "🛫 CRUZEIRO NIVELADO"
+  },
+  "relative2": {
+    "en": "              <!-- Dynamic Co-pilot Educational Guidance Popup -->\n",
+    "es": "              <!-- Cartel Dinámico Educativo del Copiloto -->\n",
+    "pt": "              <!-- Cartaz Dinâmico Educativo do Copiloto -->\n"
+  },
+  "copilotTitle": {
+    "en": "CO-PILOT ALERT: MARKET TURBULENCE",
+    "es": "ALERTA DEL COPILOTO: TURBULENCIA DE MERCADO",
+    "pt": "ALERTA DO COPILOTO: TURBULÊNCIA NO MERCADO"
+  },
+  "copilotMessage": {
+    "en": "                    Market dropped -22% this year. Early retirement drops trigger Sequence of Returns Risk!\n",
+    "es": "                    El mercado cayó un -22% este año. ¡Las caídas al inicio del retiro activan el Riesgo de Secuencia de Rendimientos!\n",
+    "pt": "                    O mercado caiu -22% este ano. Quedas no início da aposentadoria ativam o Risco da Sequência de Retornos!\n"
+  },
+  "copilotTip": {
+    "en": "                    💡 Tip: Activate mid-flight adjustments below to stabilize pitch.\n",
+    "es": "                    💡 Consejo: Activa ajustes de cabina abajo para estabilizar la trayectoria.\n",
+    "pt": "                    💡 Dica: Ative os ajustes da cabine abaixo para estabilizar a trajetória.\n"
+  },
+  "relative3": {
+    "en": "              <!-- Atmospheric Indicator Footer Overlay -->\n",
+    "es": "              <!-- Indicador Atmosférico Inferior -->\n",
+    "pt": "              <!-- Indicador Atmosférico Inferior -->\n"
+  },
+  "canvasSkyStatusText": {
+    "en": "Atmosphere: Clear Skies & Safe Cruising Altitude",
+    "es": "Atmósfera: Cielos Despejados y Altitud Segura",
+    "pt": "Atmosfera: Céu Limpo e Altitude Segura"
+  },
+  "absolute": {
+    "en": "Target Horizon: Age 100",
+    "es": "Horizonte Objetivo: 100 Años",
+    "pt": "Horizonte Alvo: 100 Anos"
+  },
+  "lgColSpan82": {
+    "en": "          <!-- MID-FLIGHT 6 TACTICAL ADJUSTMENTS DECK -->\n",
+    "es": "          <!-- CUBIERTA DE 6 AJUSTES TÁCTICOS EN CABINA -->\n",
+    "pt": "          <!-- PAINEL DE 6 AJUSTES TÁTICOS NA CABINE -->\n"
+  },
+  "fontHud3": {
+    "en": " MID-FLIGHT COCKPIT ADJUSTMENTS (6 TACTICS)\n",
+    "es": " AJUSTES TÁCTICOS EN CABINA (6 OPCIONES)\n",
+    "pt": " AJUSTES TÁTICOS NA CABINE (6 OPÇÕES)\n"
+  },
+  "text11px": {
+    "en": "Toggle during flight to bounce back!",
+    "es": "¡Actívalas en vuelo para remontar!",
+    "pt": "Ative em voo para se recuperar!"
+  },
+  "hudGlass8": {
+    "en": "            <!-- 6 Tactical Adjustment Action Cards Grid -->\n",
+    "es": "            <!-- Parrilla de Tarjetas de Tácticas -->\n",
+    "pt": "            <!-- Grade de Cartões de Táticas -->\n"
+  },
+  "grid3": {
+    "en": "              <!-- Tactic 1: Part-Time Side Job -->\n",
+    "es": "              <!-- Táctica 1: Empleo a Tiempo Parcial -->\n",
+    "pt": "              <!-- Tática 1: Emprego em Meio Período -->\n"
+  },
+  "badgeActionJob": {
+    "en": "INACTIVE",
+    "es": "INACTIVO",
+    "pt": "INATIVO"
+  },
+  "textXs9": {
+    "en": "Part-Time Income",
+    "es": "Trabajo Parcial",
+    "pt": "Renda Extra / Meio Período"
+  },
+  "text10px9": {
+    "en": "Earn $15,000/yr part-time income to reduce portfolio withdrawals.",
+    "es": "Gana $15.000/año a tiempo parcial para reducir retiros del portafolio.",
+    "pt": "Ganhe $15.000/ano em meio período para reduzir retiradas do portfólio."
+  },
+  "textSlate4004": {
+    "en": "Impact:",
+    "es": "Impacto:",
+    "pt": "Impacto:"
+  },
+  "textEmerald4002": {
+    "en": "+$15k / Yr Buffer",
+    "es": "Colchón +$15k / Año",
+    "pt": "+$15k / Ano Proteção"
+  },
+  "grid4": {
+    "en": "              <!-- Tactic 2: Cut Spending 15% -->\n",
+    "es": "              <!-- Táctica 2: Recortar Gastos 15% -->\n",
+    "pt": "              <!-- Tática 2: Cortar Gastos 15% -->\n"
+  },
+  "textXs10": {
+    "en": "Cut Spending 15%",
+    "es": "Recortar Gastos 15%",
+    "pt": "Cortar Gastos em 15%"
+  },
+  "text10px10": {
+    "en": "Trim living expenses during market downturn years.",
+    "es": "Reduce gastos de vida durante los años de caída de mercado.",
+    "pt": "Reduza despesas durante os anos de baixa no mercado."
+  },
+  "textAmber4002": {
+    "en": "Saves ~$6.7k / Yr",
+    "es": "Ahorra ~$6,7k / Año",
+    "pt": "Econ. ~$6,7k / Ano"
+  },
+  "grid5": {
+    "en": "              <!-- Tactic 3: Draw From Cash Bucket -->\n",
+    "es": "              <!-- Táctica 3: Escudo Colchón de Efectivo -->\n",
+    "pt": "              <!-- Tática 3: Escudo da Reserva de Caixa -->\n"
+  },
+  "textXs11": {
+    "en": "Cash Bucket Shield",
+    "es": "Escudo de Efectivo",
+    "pt": "Escudo de Caixa"
+  },
+  "text10px11": {
+    "en": "Draw from cash buffer to avoid selling stocks in down years.",
+    "es": "Usa el colchón de efectivo para no vender acciones en caídas.",
+    "pt": "Use a reserva de caixa para evitar vender ações na baixa."
+  },
+  "textCyan3002": {
+    "en": "Protects Principal",
+    "es": "Protege Capital Principal",
+    "pt": "Protege o Capital"
+  },
+  "grid6": {
+    "en": "              <!-- Tactic 4: Dynamic Spending Guardrails -->\n",
+    "es": "              <!-- Táctica 4: Reglas de Control Dinámico (Guardrails) -->\n",
+    "pt": "              <!-- Tática 4: Proteção Dinâmica (Guardrails) -->\n"
+  },
+  "textXs12": {
+    "en": "Dynamic Guardrails",
+    "es": "Guardrails Dinámicos",
+    "pt": "Regras Dinâmicas"
+  },
+  "text10px12": {
+    "en": "Guyton-Klinger rule: auto-cuts spending 10% when portfolio drops &gt;15%.",
+    "es": "Regla Guyton-Klinger: recorta gasto 10% si el portafolio cae &gt;15%.",
+    "pt": "Regra Guyton-Klinger: corta 10% do gasto se o portfólio cair &gt;15%."
+  },
+  "textPurple300": {
+    "en": "Auto Drawdown Stop",
+    "es": "Frena Caída Anual",
+    "pt": "Freia a Desvalorização"
+  },
+  "grid7": {
+    "en": "              <!-- Tactic 5: Downsize / Equity Inflow -->\n",
+    "es": "              <!-- Táctica 5: Reducción de Vivienda -->\n",
+    "pt": "              <!-- Tática 5: Redução de Imóvel -->\n"
+  },
+  "textXs13": {
+    "en": "Downsize Real Estate",
+    "es": "Reducir Vivienda",
+    "pt": "Redução de Imóvel"
+  },
+  "text10px13": {
+    "en": "One-time equity cash-in of +$100,000 emergency fuel injection.",
+    "es": "Inyección única de +$100.000 por venta o alquiler de patrimonio inmobiliario.",
+    "pt": "Injeção única de +$100.000 por venda/aluguel de patrimônio imobiliário."
+  },
+  "textBlue300": {
+    "en": "+$100k Instant Fuel",
+    "es": "+$100k Inyección",
+    "pt": "+$100k Injeção Direta"
+  },
+  "grid8": {
+    "en": "              <!-- Tactic 6: Social Security / Pension -->\n",
+    "es": "              <!-- Táctica 6: Pensión o Seguridad Social -->\n",
+    "pt": "              <!-- Tática 6: Pensão ou Aposentadoria Pública -->\n"
+  },
+  "textXs14": {
+    "en": "Social Security Benefit",
+    "es": "Cobro de Pensión",
+    "pt": "Pensão / Aposentadoria"
+  },
+  "text10px14": {
+    "en": "Claim guaranteed +$20,000/yr annuity income starting at Age 62+.",
+    "es": "Ingreso de renta garantizada de +$20.000/año a partir de los 62 años.",
+    "pt": "Entrada de renda garantida de +$20.000/ano a partir dos 62 anos."
+  },
+  "textPink300": {
+    "en": "+$20k / Yr Guaranteed",
+    "es": "+$20k / Año Garantizados",
+    "pt": "+$20k / Ano Garantidos"
+  },
+  "main2": {
+    "en": "    <!-- TAB 2: PILOT LEADERBOARD & FLIGHT LOGS -->\n",
+    "es": "    <!-- PESTAÑA 2: CLASIFICACIÓN DE PILOTOS Y REGISTRO -->\n",
+    "pt": "    <!-- ABA 2: CLASSIFICAÇÃO DE PILOTOS E REGISTRO DE VOO -->\n"
+  },
+  "textBase2": {
+    "en": " RETIREMENT FLIGHT LEADERBOARD\n",
+    "es": " TABLA DE CLASIFICACIÓN DE VUELO RETIRO\n",
+    "pt": " TABELA DE CLASSIFICAÇÃO DE VOO FIRE\n"
+  },
+  "textXs15": {
+    "en": "              Pilots ranked by category starting line: ",
+    "es": "              Pilotos clasificados por categoría: ",
+    "pt": "              Pilotos classificados por categoria: "
+  },
+  "textXs16": {
+    "en": "1st: Reaching Age 100",
+    "es": "1º Llegar a los 100 Años",
+    "pt": "1º Chegar aos 100 Anos"
+  },
+  "textXs17": {
+    "en": "2nd: Fewest Crashline Years",
+    "es": "2º Mínimo de Años en Desplome",
+    "pt": "2º Mínimo de Anos em Colapso"
+  },
+  "textXs18": {
+    "en": ", and ",
+    "es": ", y ",
+    "pt": ", e "
+  },
+  "textXs19": {
+    "en": "3rd: Ending Nest Egg",
+    "es": "3º Capital Final Conservado",
+    "pt": "3º Patrimônio Final Conservado"
+  },
+  "px35": {
+    "en": " Reset Board\n",
+    "es": " Reiniciar Tabla\n",
+    "pt": " Reiniciar Placar\n"
+  },
+  "hudGlass9": {
+    "en": "        <!-- Leaderboard Category Filter Tabs -->\n",
+    "es": "        <!-- Filtros por Categoría de Escenario -->\n",
+    "pt": "        <!-- Filtros por Categoria de Cenário -->\n"
+  },
+  "textSlate4005": {
+    "en": " Scenario Category:",
+    "es": " Filtrar Categoría:",
+    "pt": " Filtrar Categoria:"
+  },
+  "lbFilterAll": {
+    "en": "ALL CATEGORIES",
+    "es": "TODAS LAS CATEGORÍAS",
+    "pt": "TODAS AS CATEGORIAS"
+  },
+  "lbFilterHighRiskSwrId": {
+    "en": "lb-filter-High Risk SWR",
+    "es": "lb-filter-High Risk SWR",
+    "pt": "lb-filter-SWR de Alto Risco"
+  },
+  "lbFilterHighRiskSwrOnclick": {
+    "en": "filterLeaderboard('High Risk SWR')",
+    "es": "filterLeaderboard('High Risk SWR')",
+    "pt": "filterLeaderboard('SWR de Alto Risco')"
+  },
+  "lbFilterHighRiskSwr": {
+    "en": "High Risk SWR",
+    "es": "SWR Alto Riesgo",
+    "pt": "SWR Alto Risco"
+  },
+  "lbFilterTrinityStandardId": {
+    "en": "lb-filter-Trinity Standard",
+    "es": "lb-filter-Trinity Standard",
+    "pt": "lb-filter-Padrão Trinity"
+  },
+  "lbFilterTrinityStandardOnclick": {
+    "en": "filterLeaderboard('Trinity Standard')",
+    "es": "filterLeaderboard('Trinity Standard')",
+    "pt": "filterLeaderboard('Padrão Trinity')"
+  },
+  "lbFilterTrinityStandard": {
+    "en": "Trinity Standard",
+    "es": "Estándar Trinity",
+    "pt": "Padrão Trinity"
+  },
+  "lbFilterTightLeanFireId": {
+    "en": "lb-filter-Tight Lean FIRE",
+    "es": "lb-filter-Tight Lean FIRE",
+    "pt": "lb-filter-Lean FIRE Ajustado"
+  },
+  "lbFilterTightLeanFireOnclick": {
+    "en": "filterLeaderboard('Tight Lean FIRE')",
+    "es": "filterLeaderboard('Tight Lean FIRE')",
+    "pt": "filterLeaderboard('Lean FIRE Ajustado')"
+  },
+  "lbFilterTightLeanFire": {
+    "en": "Tight Lean FIRE",
+    "es": "Lean FIRE Ajustado",
+    "pt": "Lean FIRE Ajustado"
+  },
+  "lbFilterFatFireId": {
+    "en": "lb-filter-Fat FIRE",
+    "es": "lb-filter-Fat FIRE",
+    "pt": "lb-filter-Fat FIRE Amplo"
+  },
+  "lbFilterFatFireOnclick": {
+    "en": "filterLeaderboard('Fat FIRE')",
+    "es": "filterLeaderboard('Fat FIRE')",
+    "pt": "filterLeaderboard('Fat FIRE Amplo')"
+  },
+  "lbFilterFatFire": {
+    "en": "Fat FIRE",
+    "es": "Fat FIRE Holgado",
+    "pt": "Fat FIRE Amplo"
+  },
+  "lbFilterCustomScenarioId": {
+    "en": "lb-filter-Custom Scenario",
+    "es": "lb-filter-Custom Scenario",
+    "pt": "lb-filter-Cenário Personalizado"
+  },
+  "lbFilterCustomScenarioOnclick": {
+    "en": "filterLeaderboard('Custom Scenario')",
+    "es": "filterLeaderboard('Custom Scenario')",
+    "pt": "filterLeaderboard('Cenário Personalizado')"
+  },
+  "lbFilterCustomScenario": {
+    "en": "Custom Scenario",
+    "es": "Escenario Personalizado",
+    "pt": "Cenário Personalizado"
+  },
+  "hudGlass10": {
+    "en": "        <!-- Leaderboard Table -->\n",
+    "es": "        <!-- Tabla de Clasificación -->\n",
+    "pt": "        <!-- Tabela de Classificação -->\n"
+  },
+  "py25": {
+    "en": "Rank",
+    "es": "Rango",
+    "pt": "Posição"
+  },
+  "py252": {
+    "en": "Pilot Callsign",
+    "es": "Piloto",
+    "pt": "Piloto"
+  },
+  "py253": {
+    "en": "Scenario Preset Category",
+    "es": "Categoría del Escenario",
+    "pt": "Categoria do Cenário"
+  },
+  "py254": {
+    "en": "Reached Age 100?",
+    "es": "¿Llegó a 100?",
+    "pt": "Chegou aos 100?"
+  },
+  "py255": {
+    "en": "Crashline Years",
+    "es": "Años en Desplome",
+    "pt": "Anos em Colapso"
+  },
+  "py256": {
+    "en": "Tactics Used (Penalty)",
+    "es": "Tácticas (Penalización)",
+    "pt": "Táticas (Penalidade)"
+  },
+  "py257": {
+    "en": "Ending Nest Egg",
+    "es": "Capital Final",
+    "pt": "Patrimônio Final"
+  },
+  "py258": {
+    "en": "Flight Score",
+    "es": "Puntuación",
+    "pt": "Pontuação"
+  },
+  "leaderboardTableBody": {
+    "en": "              <!-- Dynamically populated -->\n",
+    "es": "              <!-- Rellenado dinámicamente -->\n",
+    "pt": "              <!-- Preenchido dinamicamente -->\n"
+  },
+  "main3": {
+    "en": "    <!-- TAB 3: 1,000 MONTE CARLO BATCH ENGINE -->\n",
+    "es": "    <!-- PESTAÑA 3: MOTOR MONTE CARLO DE 1.000 SIMULACIONES -->\n",
+    "pt": "    <!-- ABA 3: MOTOR MONTE CARLO DE 1.000 SIMULAÇÕES -->\n"
+  },
+  "tabMontecarlo": {
+    "en": "      <!-- Monte Carlo Header Card -->\n",
+    "es": "      <!-- Tarjeta Encabezado Monte Carlo -->\n",
+    "pt": "      <!-- Cartão Cabeçalho Monte Carlo -->\n"
+  },
+  "textBase3": {
+    "en": " 1,000 MONTE CARLO STRESS-TEST ENGINE\n",
+    "es": " MOTOR DE PRUEBAS DE ESTRÉS MONTE CARLO (1.000 CORRIDAS)\n",
+    "pt": " MOTOR DE TESTE DE ESTRESSE MONTE CARLO (1.000 EXECUÇÕES)\n"
+  },
+  "textXs20": {
+    "en": "              Simulates 1,000 randomized retirement flight paths over a 50-year horizon (Age 50 to Age 100) using high volatility historical distributions.\n",
+    "es": "              Simula 1.000 trayectorias de vuelo aleatorias durante un horizonte de 50 años (Edad 50 a 100) aplicando distribuciones históricas de alta volatilidad.\n",
+    "pt": "              Simula 1.000 trajetórias de voo aleatórias em um horizonte de 50 anos (Idade 50 aos 100) aplicando distribuições históricas de alta volatilidade.\n"
+  },
+  "shrink0": {
+    "en": " RUN 1,000 SIMULATIONS\n",
+    "es": " EJECUTAR 1.000 SIMULACIONES\n",
+    "pt": " EXECUTAR 1.000 SIMULAÇÕES\n"
+  },
+  "tabMontecarlo2": {
+    "en": "      <!-- Monte Carlo Key Metrics Cards -->\n",
+    "es": "      <!-- Tarjetas Métricas Clave Monte Carlo -->\n",
+    "pt": "      <!-- Cartões de Métricas Chave Monte Carlo -->\n"
+  },
+  "text10px15": {
+    "en": "Flight Success Rate",
+    "es": "Tasa de Éxito de Vuelo",
+    "pt": "Taxa de Sucesso do Voo"
+  },
+  "text10px16": {
+    "en": "Paths reaching Age 100 safely.",
+    "es": "Rutas que llegaron a los 100 años.",
+    "pt": "Rotas que chegaram aos 100 anos."
+  },
+  "text10px17": {
+    "en": "Median Ending Wealth",
+    "es": "Patrimonio Mediano Final",
+    "pt": "Patrimônio Mediano Final"
+  },
+  "text10px18": {
+    "en": "50th percentile nest egg at Age 100.",
+    "es": "Percentil 50 a los 100 años.",
+    "pt": "Percentil 50 aos 100 anos."
+  },
+  "text10px19": {
+    "en": "Worst 10% Outcome",
+    "es": "Peor Resultado 10%",
+    "pt": "Pior Resultado 10%"
+  },
+  "text10px20": {
+    "en": "10th percentile stress test outcome.",
+    "es": "Percentil 10 en estrés adverso.",
+    "pt": "Percentil 10 em estresse adverso."
+  },
+  "text10px21": {
+    "en": "Best 10% Outcome",
+    "es": "Mejor Resultado 10%",
+    "pt": "Melhor Resultado 10%"
+  },
+  "text10px22": {
+    "en": "90th percentile top tier growth.",
+    "es": "Percentil 90 de crecimiento máximo.",
+    "pt": "Percentil 90 de crescimento máximo."
+  },
+  "tabMontecarlo3": {
+    "en": "      <!-- Monte Carlo Outcome Percentiles Table -->\n",
+    "es": "      <!-- Tabla de Distribución por Percentiles -->\n",
+    "pt": "      <!-- Tabela de Distribuição por Percentis -->\n"
+  },
+  "fontHud4": {
+    "en": "Percentile Wealth Distribution Over Time",
+    "es": "Distribución Percentil de Patrimonio en el Tiempo",
+    "pt": "Distribuição de Patrimônio por Percentis ao Longo do Tempo"
+  },
+  "py2": {
+    "en": "Retirement Age",
+    "es": "Edad de Retiro",
+    "pt": "Idade de Aposentadoria"
+  },
+  "py22": {
+    "en": "10th Percentile (Worst Case)",
+    "es": "Percentil 10 (Peor Caso)",
+    "pt": "Percentil 10 (Pior Caso)"
+  },
+  "py23": {
+    "en": "25th Percentile",
+    "es": "Percentil 25",
+    "pt": "Percentil 25"
+  },
+  "py24": {
+    "en": "50th Percentile (Median)",
+    "es": "Percentil 50 (Mediana)",
+    "pt": "Percentil 50 (Mediana)"
+  },
+  "py26": {
+    "en": "75th Percentile",
+    "es": "Percentil 75",
+    "pt": "Percentil 75"
+  },
+  "py27": {
+    "en": "90th Percentile (Best Case)",
+    "es": "Percentil 90 (Mejor Caso)",
+    "pt": "Percentil 90 (Melhor Caso)"
+  },
+  "py6": {
+    "en": "                  Click \"Run 1,000 Simulations\" to generate Monte Carlo trajectory data.\n",
+    "es": "                  Haz clic en \"Ejecutar 1.000 Simulaciones\" para generar los datos de trayectoria Monte Carlo.\n",
+    "pt": "                  Clique em \"Executar 1.000 Simulações\" para gerar os dados de trajetória Monte Carlo.\n"
+  },
+  "main4": {
+    "en": "    <!-- TAB 4: FIRE FLIGHT ACADEMY -->\n",
+    "es": "    <!-- PESTAÑA 4: ACADEMIA DE VUELO FIRE -->\n",
+    "pt": "    <!-- ABA 4: ACADEMIA DE VOO FIRE -->\n"
+  },
+  "textBase4": {
+    "en": " FIRE FLIGHT ACADEMY: CORE RETIREMENT LESSONS\n",
+    "es": " ACADEMIA DE VUELO FIRE: LECCIONES CLAVE DE RETIRO\n",
+    "pt": " ACADEMIA DE VOO FIRE: LIÇÕES FUNDAMENTAIS\n"
+  },
+  "textXs21": {
+    "en": "          Master the financial science of wealth decumulation, asset allocation balancing, and longevity protection.\n",
+    "es": "          Domina la ciencia financiera de desacumulación de riqueza, equilibrio de activos y protección contra el riesgo de longevidad.\n",
+    "pt": "          Domine a ciência financeira da desacumulação de riqueza, equilíbrio de ativos e proteção contra o risco de longevidade.\n"
+  },
+  "grid9": {
+    "en": "        <!-- Module 1: SWR -->\n",
+    "es": "        <!-- Módulo 1: SWR -->\n",
+    "pt": "        <!-- Módulo 1: SWR -->\n"
+  },
+  "fontHud5": {
+    "en": "The 4% Safe Withdrawal Rate Rule",
+    "es": "La Regla del 4% de Tasa Segura de Retiro",
+    "pt": "A Regra dos 4% de Taxa Segura de Retirada"
+  },
+  "textSlate3005": {
+    "en": "            Derived from the landmark 1998 Trinity Study, the 4% rule states that withdrawing 4% of your initial portfolio in year one (adjusted for inflation each subsequent year) historically provided a 95%+ success rate over 30-year retirement periods.\n",
+    "es": "            Derivada del famoso Estudio Trinity de 1998, la regla del 4% establece que retirar el 4% de tu portafolio inicial el primer año (ajustado por inflación en los siguientes) ofreció históricamente una tasa de éxito superior al 95% en periodos de 30 años.\n",
+    "pt": "            Derivada do famoso Estudo Trinity de 1998, a regra dos 4% estabelece que retirar 4% do seu portfólio inicial no primeiro ano (ajustado pela inflação nos anos seguintes) ofereceu historicamente uma taxa de sucesso superior a 95% em períodos de 30 anos.\n"
+  },
+  "p3": {
+    "en": "            Formula: Required Nest Egg = Annual Spending × 25\n",
+    "es": "            Fórmula: Capital Requerido = Gasto Anual × 25\n",
+    "pt": "            Fórmula: Patrimônio Requerido = Gasto Anual × 25\n"
+  },
+  "grid10": {
+    "en": "        <!-- Module 2: SORR -->\n",
+    "es": "        <!-- Módulo 2: SORR -->\n",
+    "pt": "        <!-- Módulo 2: SORR -->\n"
+  },
+  "fontHud6": {
+    "en": "Sequence of Returns Risk (SORR)",
+    "es": "Riesgo de Secuencia de Rendimientos (SORR)",
+    "pt": "Risco da Sequência de Retornos (SORR)"
+  },
+  "textSlate3006": {
+    "en": "            Market timing matters tremendously once you enter decumulation! A severe stock market crash in the first 5 years of retirement forces you to sell stocks at bottom-barrel prices, sending your flight into the crashline zone.\n",
+    "es": "            ¡El momento del mercado importa enormemente al comenzar a retirar dinero! Una caída severa en los primeros 5 años te obliga a vender acciones a precios mínimos, llevando tu vuelo a la zona de desplome.\n",
+    "pt": "            O momento do mercado importa enormemente ao começar a retirar dinheiro! Uma queda severa nos primeiros 5 anos força você a vender ações a preços baixos, levando seu voo para a zona de colapso.\n"
+  },
+  "p32": {
+    "en": "            Defense: Shift asset allocation toward bonds/cash to cushion early crashes.\n",
+    "es": "            Defensa: Ajusta la asignación hacia bonos/efectivo para amortiguar caídas tempranas.\n",
+    "pt": "            Defesa: Ajuste a alocação para renda fixa/caixa para amortecer quedas iniciais.\n"
+  },
+  "grid11": {
+    "en": "        <!-- Module 3: TDF Glidepaths -->\n",
+    "es": "        <!-- Módulo 3: TDF Glidepaths -->\n",
+    "pt": "        <!-- Módulo 3: TDF Glidepaths -->\n"
+  },
+  "fontHud7": {
+    "en": "Target Date Funds & De-Risking Glidepaths",
+    "es": "Fondos Fecha Objetivo y Glidepaths de Des-Riesgo",
+    "pt": "Fundos Data-Alvo e Glidepaths de Redução de Risco"
+  },
+  "textSlate3007": {
+    "en": "            As retirement progresses, holding 100% aggressive equities increases crash exposure. Target Date Funds automatically shift asset allocation toward fixed income (bonds/cash) over time to lock in gains and buffer volatility.\n",
+    "es": "            Mantener un 100% en renta variable durante el retiro aumenta la exposición a caídas. Los fondos Target Date reequilibran automáticamente hacia renta fija (bonos/efectivo) para asegurar ganancias y amortiguar volatilidad.\n",
+    "pt": "            Manter 100% em renda variável durante a aposentadoria aumenta a exposição a quedas. Os fundos Data-Alvo reequilibram automaticamente para renda fixa (títulos/caixa) ao longo do tempo para consolidar ganhos e suavizar a volatilidade.\n"
+  },
+  "p33": {
+    "en": "            Rule of Thumb: % Bonds = Age minus 10 (e.g. at Age 60, ~50% Bonds/Cash).\n",
+    "es": "            Regla General: % Bonos = Edad menos 10 (ej. a los 60 Años, ~50% Bonos/Efectivo).\n",
+    "pt": "            Regra Prática: % Renda Fixa = Idade menos 10 (ex: aos 60 Anos, ~50% Renda Fixa/Caixa).\n"
+  },
+  "grid12": {
+    "en": "        <!-- Module 4: Dynamic Adjustments -->\n",
+    "es": "        <!-- Módulo 4: Guardrails Dinámicos -->\n",
+    "pt": "        <!-- Módulo 4: Guardrails Dinâmicos -->\n"
+  },
+  "fontHud8": {
+    "en": "Dynamic Spending Guardrails & Part-Time Work",
+    "es": "Ajustes Dinámicos y Empleo a Tiempo Parcial",
+    "pt": "Ajustes Dinâmicos e Trabalho em Meio Período"
+  },
+  "textSlate3008": {
+    "en": "            Flexible retirees don't rigidly withdraw fixed amounts during severe bear markets. Taking a part-time job, cutting spending by 15%, or tapping cash buckets lets your stock portfolio recover without forcing liquidations.\n",
+    "es": "            Los jubilados flexibles no retiran montos fijos rígidamente durante mercados bajistas. Trabajar a tiempo parcial, recortar el gasto un 15% o usar fondos en efectivo permite que las acciones se recuperen sin liquidar en mínimos.\n",
+    "pt": "            Aposentados flexíveis não retiram valores fixos rigidamente durante mercados em queda. Trabalhar em meio período, cortar gastos em 15% ou usar reservas de caixa permite que as ações se recuperem sem liquidações forçadas nas mínimas.\n"
+  },
+  "p34": {
+    "en": "            Guyton-Klinger Rule: Cut spending by 10% when portfolio drops >15%.\n",
+    "es": "            Regla Guyton-Klinger: Recorta el gasto un 10% cuando el portafolio cae >15%.\n",
+    "pt": "            Regra Guyton-Klinger: Corte os gastos em 10% quando o portfólio cair >15%.\n"
+  },
+  "minHScreen3": {
+    "en": "  <!-- FOOTER -->\n",
+    "es": "  <!-- PIE DE PÁGINA -->\n",
+    "pt": "  <!-- RODAPÉ -->\n"
+  },
+  "flex5": {
+    "en": "FIRE Retirement Longevity Simulator (Age 50-100)",
+    "es": "Simulador de Longevidad de Retiro FIRE (Edad 50-100)",
+    "pt": "Simulador de Longevidade na Aposentadoria FIRE (Idade 50-100)"
+  },
+  "text11px2": {
+    "en": "        Educational simulator for modeling retirement decumulation & Sequence of Returns Risk.\n",
+    "es": "        Simulador educativo para modelar desacumulación de riqueza y Riesgo de Secuencia de Rendimientos.\n",
+    "pt": "        Simulador educativo para modelar desacumulação de riqueza e Risco da Sequência de Retornos.\n"
+  },
+  "langSwitchAriaLabel": {
+    "en": "Language",
+    "es": "Idioma",
+    "pt": "Idioma"
+  },
+  "langLinkTagEs": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/monte-carlo-fire.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/monte-carlo-fire.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\" aria-current=\"page\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/monte-carlo-fire.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\">"
+  },
+  "langLinkTagEn": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/monte-carlo-fire.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\" aria-current=\"page\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/monte-carlo-fire.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/monte-carlo-fire.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\">"
+  },
+  "langLinkTagPt": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/monte-carlo-fire.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/monte-carlo-fire.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/monte-carlo-fire.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\" aria-current=\"page\">"
+  },
+  "minHScreen4": {
+    "en": "  <!-- MODAL 1: ANNUAL RETIREMENT SPEND CALCULATOR -->\n",
+    "es": "  <!-- MODAL 1: CALCULADORA DE PRESUPUESTO DE RETIRO -->\n",
+    "pt": "  <!-- MODAL 1: CALCULADORA DE ORÇAMENTO ANUAL -->\n"
+  },
+  "fontHud9": {
+    "en": " RETIREMENT ANNUAL BUDGET CALCULATOR\n",
+    "es": " CALCULADORA DE PRESUPUESTO ANUAL DE RETIRO\n",
+    "pt": " CALCULADORA DE ORÇAMENTO ANUAL DE APOSENTADORIA\n"
+  },
+  "textXs22": {
+    "en": "        Estimate your annual retirement spending by filling in estimated monthly expenses below:\n",
+    "es": "        Estima tus gastos de retiro ingresando los costos mensuales proyectados:\n",
+    "pt": "        Estime seus gastos anuais de aposentadoria preenchendo os custos mensais projetados:\n"
+  },
+  "textSlate3009": {
+    "en": "Housing & Utilities ($/mo):",
+    "es": "Vivienda y Servicios ($/mes):",
+    "pt": "Moradia e Contas ($/mês):"
+  },
+  "textSlate30010": {
+    "en": "Food, Groceries & Dining ($/mo):",
+    "es": "Comida y Alimentación ($/mes):",
+    "pt": "Alimentação e Mercado ($/mês):"
+  },
+  "textSlate30011": {
+    "en": "Healthcare & Insurance ($/mo):",
+    "es": "Salud y Seguros ($/mes):",
+    "pt": "Saúde e Seguros ($/mês):"
+  },
+  "textSlate30012": {
+    "en": "Travel, Hobbies & Leisure ($/mo):",
+    "es": "Viajes y Ocio ($/mes):",
+    "pt": "Viagens e Lazer ($/mês):"
+  },
+  "textSlate30013": {
+    "en": "Misc & Emergency Buffer ($/mo):",
+    "es": "Varios y Fondo Emergencia ($/mes):",
+    "pt": "Diversos e Reserva ($/mês):"
+  },
+  "fontSans": {
+    "en": "Total Calculated Annual Spend:",
+    "es": "Gasto Anual Calculado:",
+    "pt": "Gasto Anual Calculado:"
+  },
+  "calcSpendTotal": {
+    "en": "$45,000 / yr",
+    "es": "$45.000 / año",
+    "pt": "$45.000 / ano"
+  },
+  "flex1": {
+    "en": "          Cancel\n",
+    "es": "          Cancelar\n",
+    "pt": "          Cancelar\n"
+  },
+  "flex12": {
+    "en": "          Apply to Cockpit Spend\n",
+    "es": "          Aplicar a la Cabina\n",
+    "pt": "          Aplicar à Cabine\n"
+  },
+  "minHScreen5": {
+    "en": "  <!-- MODAL 2: NEST EGG TARGET CALCULATOR -->\n",
+    "es": "  <!-- MODAL 2: CALCULADORA DE CAPITAL OBJETIVO -->\n",
+    "pt": "  <!-- MODAL 2: CALCULADORA DE PATRIMÔNIO ALVO -->\n"
+  },
+  "fontHud10": {
+    "en": " NEST EGG TARGET CALCULATOR\n",
+    "es": " CALCULADORA DE CAPITAL OBJETIVO\n",
+    "pt": " CALCULADORA DE PATRIMÔNIO ALVO\n"
+  },
+  "textXs23": {
+    "en": "        Calculate your target nest egg using your annual retirement spend and target Safe Withdrawal Rate (SWR):\n",
+    "es": "        Calcula el capital acumulado requerido en función de tus gastos anuales y la Tasa Segura de Retiro (SWR):\n",
+    "pt": "        Calcule o patrimônio acumulado necessário com base no seu gasto anual e na Taxa Segura de Retirada (SWR):\n"
+  },
+  "textSlate30014": {
+    "en": "Annual Living Spend ($):",
+    "es": "Gasto Anual de Vida ($):",
+    "pt": "Gasto Anual de Vida ($):"
+  },
+  "textSlate30015": {
+    "en": "Target Safe Withdrawal Rate (%):",
+    "es": "Tasa Segura de Retiro Objetivo (%):",
+    "pt": "Taxa Segura de Retirada Alvo (%):"
+  },
+  "calcEggSwr": {
+    "en": "4.0% (Trinity Standard)",
+    "es": "4,0% (Estándar Trinity)",
+    "pt": "4,0% (Padrão Trinity)"
+  },
+  "calcEggSwr2": {
+    "en": "3.5% (Conservative FIRE)",
+    "es": "3,5% (FIRE Conservador)",
+    "pt": "3,5% (FIRE Conservador)"
+  },
+  "calcEggSwr3": {
+    "en": "3.0% (Ultra Safe / Perpetual)",
+    "es": "3,0% (Ultra Seguro / Perpetuo)",
+    "pt": "3,0% (Ultra Seguro / Perpétuo)"
+  },
+  "calcEggSwr4": {
+    "en": "5.3% (Aggressive SWR)",
+    "es": "5,3% (SWR Agresivo)",
+    "pt": "5,3% (SWR Agressivo)"
+  },
+  "text11px3": {
+    "en": "FIRE Multiplier Formula:",
+    "es": "Fórmula Multiplicadora FIRE:",
+    "pt": "Fórmula Multiplicadora FIRE:"
+  },
+  "calcEggFormula": {
+    "en": "$45,000 × 25 = $1,125,000 (25x Rule)",
+    "es": "$45.000 × 25 = $1.125.000 (Regla del 25x)",
+    "pt": "$45.000 × 25 = $1.125.000 (Regra dos 25x)"
+  },
+  "fontSans2": {
+    "en": "Required Starting Nest Egg:",
+    "es": "Capital Inicial Requerido:",
+    "pt": "Patrimônio Inicial Requerido:"
+  },
+  "calcEggTotal": {
+    "en": "$1,125,000",
+    "es": "$1.125.000",
+    "pt": "$1.125.000"
+  },
+  "flex13": {
+    "en": "          Apply to Cockpit Nest Egg\n",
+    "es": "          Aplicar a la Cabina\n",
+    "pt": "          Aplicar à Cabine\n"
+  },
+  "minHScreen6": {
+    "en": "  <!-- FLIGHT DEBRIEF / OUTCOME MODAL -->\n",
+    "es": "  <!-- MODAL DE RESUMEN Y RESULTADO DE VUELO -->\n",
+    "pt": "  <!-- MODAL DE RESUMO E RESULTADO DO VOO -->\n"
+  },
+  "debriefTitle": {
+    "en": "FLIGHT SUCCESSFUL!",
+    "es": "¡MISIÓN CUMPLIDA!",
+    "pt": "MISSÃO CUMPRIDA!"
+  },
+  "debriefMsg": {
+    "en": "        You successfully reached Age 100 with $1,240,000 remaining in portfolio fuel!\n",
+    "es": "        ¡Llegaste con éxito a los 100 años con $1.240.000 restantes en el tanque de combustible de tu portafolio!\n",
+    "pt": "        Você chegou com sucesso aos 100 anos com $1.240.000 restantes no tanque do seu portfólio!\n"
+  },
+  "textSlate4006": {
+    "en": "Pilot Callsign:",
+    "es": "Piloto:",
+    "pt": "Piloto:"
+  },
+  "textSlate4007": {
+    "en": "Scenario Category:",
+    "es": "Categoría Escenario:",
+    "pt": "Categoria do Cenário:"
+  },
+  "textSlate4008": {
+    "en": "Final Nest Egg:",
+    "es": "Capital Final:",
+    "pt": "Patrimônio Final:"
+  },
+  "debriefFinalBal": {
+    "en": "$1,240,000",
+    "es": "$1.240.000",
+    "pt": "$1.240.000"
+  },
+  "textSlate4009": {
+    "en": "Total Years Survived:",
+    "es": "Años Sobrevividos:",
+    "pt": "Anos Sobrevividos:"
+  },
+  "debriefYears": {
+    "en": "50 Years",
+    "es": "50 Años",
+    "pt": "50 Anos"
+  },
+  "textSlate40010": {
+    "en": "Years in Crashline Zone:",
+    "es": "Años en Zona Desplome:",
+    "pt": "Anos na Zona de Colapso:"
+  },
+  "debriefCrashlineYrs": {
+    "en": "0 Years",
+    "es": "0 Años",
+    "pt": "0 Anos"
+  },
+  "textSlate40011": {
+    "en": "Tactical Adjustments:",
+    "es": "Tácticas Usadas:",
+    "pt": "Táticas Utilizadas:"
+  },
+  "debriefTacticYrs": {
+    "en": "0 Tactic-Yrs (-0 pts)",
+    "es": "0 Años-Táctica (-0 pts)",
+    "pt": "0 Anos-Tática (-0 pts)"
+  },
+  "flex14": {
+    "en": "          VIEW LEADERBOARD\n",
+    "es": "          VER CLASIFICACIÓN\n",
+    "pt": "          VER CLASSIFICAÇÃO\n"
+  },
+  "flex15": {
+    "en": "          RETRY FLIGHT\n",
+    "es": "          REINTENTAR VUELO\n",
+    "pt": "          TENTAR NOVAMENTE\n"
+  },
+  "minHScreen7": {
+    "en": "  <!-- JAVASCRIPT ENGINE & SIMULATION LOGIC -->\n",
+    "es": "  <!-- MOTOR JAVASCRIPT Y LÓGICA DE SIMULACIÓN -->\n",
+    "pt": "  <!-- JAVASCRIPT: LÓGICA DO SIMULADOR E MOTOR DE VOO -->\n"
+  },
+  "minHScreen8": {
+    "en": "    /* =================================================================\n       GLOBAL STATE & CONFIGURATION\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       ESTADO GLOBAL Y CONFIGURACIÓN\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen9": {
+    "en": "      { pilot: 'Captain FIRE', category: 'High Risk SWR', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },\n      { pilot: 'FatCat Captain', category: 'Fat FIRE', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },\n      { pilot: 'Trinity Ace', category: 'Trinity Standard', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },\n      { pilot: 'Lean Flyer', category: 'Tight Lean FIRE', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },\n      { pilot: 'Wingman FIRE', category: 'High Risk SWR', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }\n",
+    "es": "      { pilot: 'Capitán FIRE', category: 'High Risk SWR', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },\n      { pilot: 'Piloto FatCat', category: 'Fat FIRE', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },\n      { pilot: 'As Trinity', category: 'Trinity Standard', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },\n      { pilot: 'Volador Lean', category: 'Tight Lean FIRE', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },\n      { pilot: 'Caza Wingman', category: 'High Risk SWR', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }\n",
+    "pt": "      { pilot: 'Capitão FIRE', category: 'SWR de Alto Risco', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },\n      { pilot: 'Piloto FatCat', category: 'Fat FIRE Amplo', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },\n      { pilot: 'Ás Trinity', category: 'Padrão Trinity', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },\n      { pilot: 'Apoiador Lean', category: 'Lean FIRE Ajustado', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },\n      { pilot: 'Caça Wingman', category: 'SWR de Alto Risco', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }\n"
+  },
+  "minHScreen10": {
+    "en": "      pilotName: 'Captain FIRE',\n      activePreset: 'High Risk SWR',\n",
+    "es": "      pilotName: 'Capitán FIRE',\n      activePreset: 'High Risk SWR',\n",
+    "pt": "      pilotName: 'Capitão FIRE',\n      activePreset: 'SWR de Alto Risco',\n"
+  },
+  "minHScreen11": {
+    "en": "      // Flight setup\n",
+    "es": "      // Configuración de Vuelo\n",
+    "pt": "      // Configurações do Voo\n"
+  },
+  "minHScreen12": {
+    "en": "      // Allocation\n",
+    "es": "      // Asignación\n",
+    "pt": "      // Alocação\n"
+  },
+  "minHScreen13": {
+    "en": "      // 6 Mid-flight tactics\n",
+    "es": "      // 6 Tácticas en Cabina\n",
+    "pt": "      // 6 Táticas na Cabine\n"
+  },
+  "minHScreen14": {
+    "en": "      // Live simulation telemetry\n",
+    "es": "      // Telemetría de Simulación\n",
+    "pt": "      // Telemetria da Simulação\n"
+  },
+  "minHScreen15": {
+    "en": "    // Calibration for market benchmarks\n",
+    "es": "    // Calibración de Referencias de Mercado\n",
+    "pt": "    // Referências de Mercado\n"
+  },
+  "minHScreen16": {
+    "en": "      stocks: { mean: 0.082, stdDev: 0.24 }, // Higher equity dispersion & volatility drag\n      bonds: { mean: 0.035, stdDev: 0.06 },  // Bond yield\n      cash: { mean: 0.015, stdDev: 0.01 },   // Cash yield\n      inflation: { mean: 0.035, stdDev: 0.025 } // CPI inflation\n",
+    "es": "      stocks: { mean: 0.082, stdDev: 0.24 }, // Mayor dispersión y volatilidad de acciones\n      bonds: { mean: 0.035, stdDev: 0.06 },  // Rendimiento de bonos\n      cash: { mean: 0.015, stdDev: 0.01 },   // Rendimiento de efectivo\n      inflation: { mean: 0.035, stdDev: 0.025 } // Inflación IPC\n",
+    "pt": "      stocks: { mean: 0.082, stdDev: 0.24 }, // Alta volatilidade de ações\n      bonds: { mean: 0.035, stdDev: 0.06 },  // Renda fixa\n      cash: { mean: 0.015, stdDev: 0.01 },   // Reserva em caixa\n      inflation: { mean: 0.035, stdDev: 0.025 } // Inflação\n"
+  },
+  "minHScreen17": {
+    "en": "    // Historical crash sequences\n",
+    "es": "    // Secuencias Históricas de Caída\n",
+    "pt": "    // Sequências Históricas\n"
+  },
+  "minHScreen18": {
+    "en": "        { stock: -0.40, bond: 0.18, infl: 0.00 } // 2008 Crash\n",
+    "es": "        { stock: -0.40, bond: 0.18, infl: 0.00 } // Caída 2008\n",
+    "pt": "        { stock: -0.40, bond: 0.18, infl: 0.00 } // Queda de 2008\n"
+  },
+  "minHScreen19": {
+    "en": "    /* =================================================================\n       INITIALIZATION & UI CONTROLS\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       INICIALIZACIÓN Y CONTROLES DE INTERFAZ\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen20": {
+    "en": "        state.activePreset = 'High Risk SWR';\n",
+    "es": "        state.activePreset = 'High Risk SWR';\n",
+    "pt": "        state.activePreset = 'SWR de Alto Risco';\n"
+  },
+  "minHScreen21": {
+    "en": "        state.activePreset = 'Trinity Standard';\n",
+    "es": "        state.activePreset = 'Trinity Standard';\n",
+    "pt": "        state.activePreset = 'Padrão Trinity';\n"
+  },
+  "minHScreen22": {
+    "en": "        state.activePreset = 'Tight Lean FIRE';\n",
+    "es": "        state.activePreset = 'Tight Lean FIRE';\n",
+    "pt": "        state.activePreset = 'Lean FIRE Ajustado';\n"
+  },
+  "minHScreen23": {
+    "en": "        state.activePreset = 'Fat FIRE';\n",
+    "es": "        state.activePreset = 'Fat FIRE';\n",
+    "pt": "        state.activePreset = 'Fat FIRE Amplo';\n"
+  },
+  "minHScreen24": {
+    "en": "        state.activePreset = 'Custom Scenario';\n",
+    "es": "        state.activePreset = 'Custom Scenario';\n",
+    "pt": "        state.activePreset = 'Cenário Personalizado';\n"
+  },
+  "minHScreen25": {
+    "en": "      // Auto-detect if current parameters match a preset or represent a custom scenario\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen26": {
+    "en": "      // Update text displays safely\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen27": {
+    "en": "      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString());\n",
+    "es": "      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString());\n",
+    "pt": "      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString('pt-BR');\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString('pt-BR'));\n"
+  },
+  "minHScreen28": {
+    "en": "      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString());\n",
+    "es": "      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString());\n",
+    "pt": "      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString('pt-BR');\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString('pt-BR'));\n"
+  },
+  "minHScreen29": {
+    "en": "          badgeSwr.innerText = `${swrStr} (HIGH RISK)`;\n",
+    "es": "          badgeSwr.innerText = `${swrStr} (ALTO RIESGO)`;\n",
+    "pt": "          badgeSwr.innerText = `${swrStr} (ALTO RISCO)`;\n"
+  },
+  "minHScreen30": {
+    "en": "          badgeSwr.innerText = `${swrStr} (MODERATE RISK)`;\n",
+    "es": "          badgeSwr.innerText = `${swrStr} (RIESGO MODERADO)`;\n",
+    "pt": "          badgeSwr.innerText = `${swrStr} (RISCO MODERADO)`;\n"
+  },
+  "minHScreen31": {
+    "en": "          badgeSwr.innerText = `${swrStr} (SAFE SWR)`;\n",
+    "es": "          badgeSwr.innerText = `${swrStr} (SWR SEGURO)`;\n",
+    "pt": "          badgeSwr.innerText = `${swrStr} (SWR SEGURO)`;\n"
+  },
+  "minHScreen32": {
+    "en": "        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
+    "es": "        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
+    "pt": "        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString('pt-BR');\n"
+  },
+  "minHScreen33": {
+    "en": "          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Yrs`;\n",
+    "es": "          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Años`;\n",
+    "pt": "          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Anos`;\n"
+  },
+  "minHScreen34": {
+    "en": "    /* =================================================================\n       ASSET ALLOCATION & TARGET DATE FUND\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       ASIGNACIÓN DE ACTIVOS Y FONDO FECHA OBJETIVO\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen35": {
+    "en": "      if (tdfText) tdfText.innerText = `Age ${age}: ${stocks}% Stocks / ${bonds}% Bonds / ${cash}% Cash`;\n",
+    "es": "      if (tdfText) tdfText.innerText = `Edad ${age}: ${stocks}% Acciones / ${bonds}% Bonos / ${cash}% Efectivo`;\n",
+    "pt": "      if (tdfText) tdfText.innerText = `Idade ${age}: ${stocks}% Ações / ${bonds}% Renda Fixa / ${cash}% Caixa`;\n"
+  },
+  "minHScreen36": {
+    "en": "    /* =================================================================\n       MID-FLIGHT 6 TACTICAL ADJUSTMENTS\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       AJUSTES TÁCTICOS EN CABINA DE VUELO\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen37": {
+    "en": "          state.currentNestEgg += 100000; // Instant emergency lump-sum injection\n",
+    "es": "          state.currentNestEgg += 100000;\n",
+    "pt": "          state.currentNestEgg += 100000;\n"
+  },
+  "minHScreen38": {
+    "en": "            '🏠 REAL ESTATE DOWNSIZING INJECTION',\n            'You injected +$100,000 emergency fuel from downsizing your home into your retirement portfolio!',\n            '💡 Tip: Real estate equity acts as a powerful last-resort longevity buffer.',\n",
+    "es": "            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVENDA',\n            '¡Inyectaste +$100.000 de combustible de emergencia tras vender o reducir tu vivienda!',\n            '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',\n",
+    "pt": "            '🏠 INJEÇÃO POR REDUÇÃO DE IMÓVEL',\n            'Você injetou +$100.000 de combustível de emergência após vender ou reduzir seu imóvel!',\n            '💡 Dica: O patrimônio imobiliário atua como um excelente colchão de segurança.',\n"
+  },
+  "minHScreen39": {
+    "en": "        badge.innerText = 'ACTIVE';\n",
+    "es": "        badge.innerText = 'ACTIVO';\n",
+    "pt": "        badge.innerText = 'ATIVO';\n"
+  },
+  "minHScreen40": {
+    "en": "        badge.innerText = 'INACTIVE';\n",
+    "es": "        badge.innerText = 'INACTIVO';\n",
+    "pt": "        badge.innerText = 'INATIVO';\n"
+  },
+  "minHScreen41": {
+    "en": "    /* =================================================================\n       SIMULATION ENGINE (STEP BY STEP FLIGHT & CRASHLINE LOGIC)\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       MOTOR DE SIMULACIÓN (PASO A PASO Y LÓGICA CRASHLINE)\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen42": {
+    "en": "      if (launchBtnText) launchBtnText.innerText = 'PAUSE FLIGHT';\n",
+    "es": "      if (launchBtnText) launchBtnText.innerText = 'PAUSAR VUELO';\n",
+    "pt": "      if (launchBtnText) launchBtnText.innerText = 'PAUSAR VOO';\n"
+  },
+  "minHScreen43": {
+    "en": "        badge.innerText = '✈️ IN FLIGHT (AIRBORNE)';\n",
+    "es": "        badge.innerText = '✈️ EN VUELO (EN EL AIRE)';\n",
+    "pt": "        badge.innerText = '✈️ EM VOO (NO AR)';\n"
+  },
+  "minHScreen44": {
+    "en": "      if (launchBtnText) launchBtnText.innerText = 'RESUME FLIGHT';\n",
+    "es": "      if (launchBtnText) launchBtnText.innerText = 'REANUDAR VUELO';\n",
+    "pt": "      if (launchBtnText) launchBtnText.innerText = 'RETOMAR VOO';\n"
+  },
+  "minHScreen45": {
+    "en": "        badge.innerText = '⏸️ FLIGHT PAUSED';\n",
+    "es": "        badge.innerText = '⏸️ VUELO EN PAUSA';\n",
+    "pt": "        badge.innerText = '⏸️ VOO EM PAUSA';\n"
+  },
+  "minHScreen46": {
+    "en": "      if (launchBtnText) launchBtnText.innerText = 'LAUNCH FLIGHT';\n",
+    "es": "      if (launchBtnText) launchBtnText.innerText = 'DESPEGAR VUELO';\n",
+    "pt": "      if (launchBtnText) launchBtnText.innerText = 'INICIAR VOO';\n"
+  },
+  "minHScreen47": {
+    "en": "        badge.innerText = 'Ready On Tarmac';\n",
+    "es": "        badge.innerText = 'Listo en Pista';\n",
+    "pt": "        badge.innerText = 'Pronto na Pista';\n"
+  },
+  "minHScreen48": {
+    "en": "      // Track active tactics penalty (1 Tactic-Year per active tactic per year)\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen49": {
+    "en": "      // Calculate annual living spending\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen50": {
+    "en": "      // Apply mid-flight tactical adjustments\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen51": {
+    "en": "      // Generate annual market returns with Sequence of Returns Risk (SORR) stress testing\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen52": {
+    "en": "        // Inject periodic bear market shocks during early retirement decades (Ages 50 - 65)\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen53": {
+    "en": "          stockRet -= 0.18; // -18% market shock to enforce early SORR vulnerability\n",
+    "es": "          stockRet -= 0.18;\n",
+    "pt": "          stockRet -= 0.18;\n"
+  },
+  "minHScreen54": {
+    "en": "      // Apply Dynamic Guardrails rule\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen55": {
+    "en": "      // Adjust spending for inflation\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen56": {
+    "en": "      // Weighted portfolio return\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen57": {
+    "en": "      // Cash Buffer tactic protects stock liquidation in down years\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen58": {
+    "en": "      // Calculate ending balance\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen59": {
+    "en": "      // Crashline Check ($0 or below)\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen60": {
+    "en": "          '🚨 CRASHLINE EMERGENCY: PORTFOLIO STALL',\n          `Your net worth hit $0 at Age ${state.currentAge}! You have ${10 - state.yearsInCrashlineConsecutive} year(s) remaining in the crashline before game over. Activate side income, downsizing, or spending cuts to bounce back!`,\n          '💡 Tip: Turn on Part-Time Income, Real Estate Downsizing, or Cut Spending to climb out of $0 bankruptcy.',\n",
+    "es": "          '🚨 EMERGENCIA EN DESPLOME: PERDIDA DE SUSTENTACIÓN',\n          `¡Tu patrimonio neto cayó a $0 a los ${state.currentAge} Años! Te quedan ${10 - state.yearsInCrashlineConsecutive} año(s) en la zona de desplome antes del fin de juego. ¡Activa empleo parcial, reducción o recortes!`,\n          '💡 Consejo: Activa Trabajo Parcial, Reducción de Vivienda o Recorte de Gastos para salir de la bancarrota $0.',\n",
+    "pt": "          '🚨 EMERGÊNCIA EM QUEDA: PERDA DE SUSTENTAÇÃO',\n          `Seu patrimônio líquido caiu para $0 aos ${state.currentAge} Anos! Restam ${10 - state.yearsInCrashlineConsecutive} ano(s) na zona de colapso antes do fim do voo. Ative renda extra, redução de imóvel ou cortes!`,\n          '💡 Dica: Ative Trabalho em Meio Período, Redução de Imóvel ou Cortar Gastos para sair da falência.',\n"
+  },
+  "minHScreen61": {
+    "en": "        state.yearsInCrashlineConsecutive = 0; // Reset consecutive counter if balance climbs back > $0\n",
+    "es": "        state.yearsInCrashlineConsecutive = 0;\n",
+    "pt": "        state.yearsInCrashlineConsecutive = 0;\n"
+  },
+  "minHScreen62": {
+    "en": "      // Record log entry\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen63": {
+    "en": "      // Update Telemetry Displays\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen64": {
+    "en": "      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
+    "es": "      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
+    "pt": "      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString('pt-BR');\n"
+  },
+  "minHScreen65": {
+    "en": "      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'CRASH';\n",
+    "es": "      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'CAÍDA';\n",
+    "pt": "      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'COLAPSO';\n"
+  },
+  "minHScreen66": {
+    "en": "        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Yrs`;\n",
+    "es": "        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Años`;\n",
+    "pt": "        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Anos`;\n"
+  },
+  "minHScreen67": {
+    "en": "      // Check if player failed 10-year crashline limit\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen68": {
+    "en": "            '🚨 MARKET DROP: SEQUENCE OF RETURNS RISK',\n            `Equities dropped ${(stockRet * 100).toFixed(1)}% at Age ${state.currentAge}. High stock exposure during bear markets causes steep drawdowns!`,\n            '💡 Tip: Rebalance into bonds or activate \"Cash Bucket Shield\" and \"Side Income\".',\n",
+    "es": "            '🚨 CAÍDA DE MERCADO: RIESGO DE SECUENCIA DE RENDIMIENTOS',\n            `Las acciones cayeron un ${(stockRet * 100).toFixed(1)}% a los ${state.currentAge} años. ¡La alta exposición a acciones en mercados bajistas causa fuertes caídas!`,\n            '💡 Consejo: Reequilibra hacia bonos o activa \"Escudo de Efectivo\" y \"Trabajo Parcial\".',\n",
+    "pt": "            '🚨 QUEDA NO MERCADO: RISCO DA SEQUÊNCIA DE RETORNOS',\n            `As ações caíram ${(stockRet * 100).toFixed(1)}% aos ${state.currentAge} anos. A alta exposição a ações em períodos de queda causa grandes perdas!`,\n            '💡 Dica: Reequilibre para renda fixa ou ative \"Escudo de Caixa\" e \"Renda Extra\".',\n"
+  },
+  "minHScreen69": {
+    "en": "            '🔥 INFLATION SURGE SHOCK',\n            `Inflation jumped to ${(infl * 100).toFixed(1)}%, driving up living costs.`,\n            '💡 Tip: Keep some equity growth in your portfolio long-term to outpace inflation.',\n",
+    "es": "            '🔥 PICO DE INFLACIÓN SHOCK',\n            `La inflación saltó al ${(infl * 100).toFixed(1)}%, aumentando los costos de vida.`,\n            '💡 Consejo: Mantén cierto crecimiento en acciones a largo plazo para superar la inflación.',\n",
+    "pt": "            '🔥 SURTO DE INFLAÇÃO',\n            `A inflação subiu para ${(infl * 100).toFixed(1)}%, aumentando o custo de vida.`,\n            '💡 Dica: Mantenha parte do patrimônio em ações para superar a inflação a longo prazo.',\n"
+  },
+  "minHScreen70": {
+    "en": "        title.innerText = 'MISSION ACCOMPLISHED!';\n",
+    "es": "        title.innerText = '¡MISIÓN CUMPLIDA!';\n",
+    "pt": "        title.innerText = 'MISSÃO CUMPRIDA!';\n"
+  },
+  "minHScreen71": {
+    "en": "        msg.innerText = `Congratulations Pilot ${state.pilotName}! You successfully landed at Age 100 with $${state.currentNestEgg.toLocaleString()} in remaining nest egg altitude!`;\n",
+    "es": "        msg.innerText = `¡Felicitaciones Piloto ${state.pilotName}! ¡Aterrizaste con éxito a los 100 Años con $${state.currentNestEgg.toLocaleString()} en altitud de combustible restante!`;\n",
+    "pt": "        msg.innerText = `Parabéns Piloto ${state.pilotName}! Você chegou com sucesso aos 100 Anos com $${state.currentNestEgg.toLocaleString('pt-BR')} restantes em altitude de combustível no portfólio!`;\n"
+  },
+  "minHScreen72": {
+    "en": "        title.innerText = 'FLIGHT DESTROYED: CRASHLINE ENGINE FAILURE';\n",
+    "es": "        title.innerText = '¡VUELO DESTRUIDO: BANCARROTA EN DESPLOME!';\n",
+    "pt": "        title.innerText = 'VOO DESTRUÍDO: FALÊNCIA NA ZONA DE COLAPSO!';\n"
+  },
+  "minHScreen73": {
+    "en": "        msg.innerText = `Pilot ${state.pilotName}, your flight remained in the $0 crashline zone for 10 consecutive years at Age ${state.currentAge}. Your retirement portfolio ran out of fuel!`;\n",
+    "es": "        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de $0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu portafolio se quedó sin combustible!`;\n",
+    "pt": "        msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de $0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;\n"
+  },
+  "minHScreen74": {
+    "en": "      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();\n      if (years) years.innerText = survivedYears + ' Years (Age ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Year(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Tactic-Yrs (-${state.totalTacticYears * 75} pts)`;\n",
+    "es": "      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();\n      if (years) years.innerText = survivedYears + ' Años (Edad ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Año(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Años-Táctica (-${state.totalTacticYears * 75} pts)`;\n",
+    "pt": "      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString('pt-BR');\n      if (years) years.innerText = survivedYears + ' Anos (Idade ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Ano(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Anos-Tática (-${state.totalTacticYears * 75} pts)`;\n"
+  },
+  "minHScreen75": {
+    "en": "      // Register score on Leaderboard under the active preset category\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen76": {
+    "en": "    /* =================================================================\n       LEADERBOARD SYSTEM BY CATEGORY\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       SISTEMA DE CLASIFICACIÓN POR CATEGORÍA\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen77": {
+    "en": "      if (category === 'Tight Lean FIRE') return 2000;\n      if (category === 'High Risk SWR') return 1500;\n      if (category === 'Custom Scenario') return 1000;\n      if (category === 'Trinity Standard') return 800;\n      if (category === 'Fat FIRE') return 200;\n",
+    "es": "      if (category === 'Tight Lean FIRE') return 2000;\n      if (category === 'High Risk SWR') return 1500;\n      if (category === 'Custom Scenario') return 1000;\n      if (category === 'Trinity Standard') return 800;\n      if (category === 'Fat FIRE') return 200;\n",
+    "pt": "      if (category === 'Lean FIRE Ajustado' || category === 'Tight Lean FIRE') return 2000;\n      if (category === 'SWR de Alto Risco' || category === 'High Risk SWR') return 1500;\n      if (category === 'Cenário Personalizado' || category === 'Custom Scenario') return 1000;\n      if (category === 'Padrão Trinity' || category === 'Trinity Standard') return 800;\n      if (category === 'Fat FIRE Amplo' || category === 'Fat FIRE') return 200;\n"
+  },
+  "minHScreen78": {
+    "en": "      // Score formula: \n      // Base score (5000 pts for reaching 100, 1000 pts baseline)\n      // + Scenario Difficulty Bonus (Lean FIRE +2000, High Risk SWR +1500, Trinity +800, Fat FIRE +200)\n      // - (crashYears * 500 pts penalty) \n      // - (tacticYears * 75 pts penalty per active tactic-year) \n      // + (finalBalance / 2500 pts wealth bonus)\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen79": {
+    "en": "        category: category || 'Custom Scenario',\n",
+    "es": "        category: category || 'Custom Scenario',\n",
+    "pt": "        category: category || 'Cenário Personalizado',\n"
+  },
+  "minHScreen80": {
+    "en": "      // Sort global leaderboard array by total score\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen81": {
+    "en": "      const categories = ['ALL', 'High Risk SWR', 'Trinity Standard', 'Tight Lean FIRE', 'Fat FIRE', 'Custom Scenario'];\n",
+    "es": "      const categories = ['ALL', 'High Risk SWR', 'Trinity Standard', 'Tight Lean FIRE', 'Fat FIRE', 'Custom Scenario'];\n",
+    "pt": "      const categories = ['ALL', 'SWR de Alto Risco', 'Padrão Trinity', 'Lean FIRE Ajustado', 'Fat FIRE Amplo', 'Cenário Personalizado'];\n"
+  },
+  "minHScreen82": {
+    "en": "      if (cat === 'High Risk SWR') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800\"><i class=\"fa-solid fa-fire text-red-400 mr-1\"></i>High Risk SWR</span>`;\n      } else if (cat === 'Trinity Standard') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800\"><i class=\"fa-solid fa-shield-halved text-cyan-400 mr-1\"></i>Trinity Standard</span>`;\n      } else if (cat === 'Tight Lean FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800\"><i class=\"fa-solid fa-leaf text-emerald-400 mr-1\"></i>Tight Lean FIRE</span>`;\n      } else if (cat === 'Fat FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800\"><i class=\"fa-solid fa-crown text-purple-400 mr-1\"></i>Fat FIRE</span>`;\n",
+    "es": "      if (cat === 'High Risk SWR') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800\"><i class=\"fa-solid fa-fire text-red-400 mr-1\"></i>SWR Alto Riesgo</span>`;\n      } else if (cat === 'Trinity Standard') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800\"><i class=\"fa-solid fa-shield-halved text-cyan-400 mr-1\"></i>Estándar Trinity</span>`;\n      } else if (cat === 'Tight Lean FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800\"><i class=\"fa-solid fa-leaf text-emerald-400 mr-1\"></i>Lean FIRE Ajustado</span>`;\n      } else if (cat === 'Fat FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800\"><i class=\"fa-solid fa-crown text-purple-400 mr-1\"></i>Fat FIRE Holgado</span>`;\n",
+    "pt": "      if (cat === 'SWR de Alto Risco' || cat === 'High Risk SWR') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800\"><i class=\"fa-solid fa-fire text-red-400 mr-1\"></i>SWR Alto Risco</span>`;\n      } else if (cat === 'Padrão Trinity' || cat === 'Trinity Standard') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800\"><i class=\"fa-solid fa-shield-halved text-cyan-400 mr-1\"></i>Padrão Trinity</span>`;\n      } else if (cat === 'Lean FIRE Ajustado' || cat === 'Tight Lean FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800\"><i class=\"fa-solid fa-leaf text-emerald-400 mr-1\"></i>Lean FIRE Ajustado</span>`;\n      } else if (cat === 'Fat FIRE Amplo' || cat === 'Fat FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800\"><i class=\"fa-solid fa-crown text-purple-400 mr-1\"></i>Fat FIRE Amplo</span>`;\n"
+  },
+  "minHScreen83": {
+    "en": "        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700\"><i class=\"fa-solid fa-sliders mr-1\"></i>Custom Scenario</span>`;\n",
+    "es": "        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700\"><i class=\"fa-solid fa-sliders mr-1\"></i>Escenario Personalizado</span>`;\n",
+    "pt": "        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700\"><i class=\"fa-solid fa-sliders mr-1\"></i>Cenário Personalizado</span>`;\n"
+  },
+  "minHScreen84": {
+    "en": "      // Filter entries by category if activeLeaderboardFilter !== 'ALL'\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen85": {
+    "en": "              No flight logs registered yet for <strong>${activeLeaderboardFilter}</strong>. Fly this preset to set the first score!\n",
+    "es": "              No hay registros de vuelo para <strong>${activeLeaderboardFilter}</strong>. ¡Vuela este escenario para marcar la primera puntuación!\n",
+    "pt": "              Nenhum registro de voo para <strong>${activeLeaderboardFilter}</strong>. Voe este cenário para definir a primeira pontuação!\n"
+  },
+  "minHScreen86": {
+    "en": "          <td class=\"py-3 px-3 font-bold\">${entry.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> YES</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${entry.crashYears} Year(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${entry.tacticYears || 0} Tactic-Yrs</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${entry.finalBalance.toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
+    "es": "          <td class=\"py-3 px-3 font-bold\">${entry.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SÍ</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${entry.crashYears} Año(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${entry.tacticYears || 0} Años-Táctica</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${entry.finalBalance.toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
+    "pt": "          <td class=\"py-3 px-3 font-bold\">${entry.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SIM</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NÃO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${entry.crashYears} Ano(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${entry.tacticYears || 0} Anos-Tática</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${entry.finalBalance.toLocaleString('pt-BR')}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString('pt-BR')} pts</td>\n"
+  },
+  "minHScreen87": {
+    "en": "    /* =================================================================\n       ENHANCED CANVAS HUD VISUALIZER & CRASHLINE RENDERING\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       VISUALIZADOR HUD EN CANVAS Y DIBUJO DE TRAYECTORIA\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen88": {
+    "en": "          canvasStatusText.innerText = `CRASHLINE EMERGENCY: ${state.yearsInCrashlineConsecutive}/10 Years in $0 Bankruptcy Zone!`;\n",
+    "es": "          canvasStatusText.innerText = `EMERGENCIA EN DESPLOME: ¡${state.yearsInCrashlineConsecutive}/10 Años en Bancarrota $0!`;\n",
+    "pt": "          canvasStatusText.innerText = `EMERGÊNCIA EM QUEDA: ${state.yearsInCrashlineConsecutive}/10 Anos na Zona de Colapso $0!`;\n"
+  },
+  "minHScreen89": {
+    "en": "          canvasStatusText.innerText = 'Atmosphere: Clear Skies & Safe Cruising Altitude';\n",
+    "es": "          canvasStatusText.innerText = 'Atmósfera: Cielos Despejados y Altitud Segura';\n",
+    "pt": "          canvasStatusText.innerText = 'Atmosfera: Céu Limpo e Altitude Segura';\n"
+  },
+  "minHScreen90": {
+    "en": "          canvasStatusText.innerText = 'Atmosphere: Mild Turbulence / Altitude Caution';\n",
+    "es": "          canvasStatusText.innerText = 'Atmósfera: Turbulencia Leve / Precaución de Altitud';\n",
+    "pt": "          canvasStatusText.innerText = 'Atmosfera: Turbulência Leve / Cuidado com a Altitude';\n"
+  },
+  "minHScreen91": {
+    "en": "      // Bounds\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen92": {
+    "en": "      // Draw Grid Lines & Y-Axis Dollar Labels\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen93": {
+    "en": "      // X-Axis Age Labels\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen94": {
+    "en": "        ctx.fillText(`Age ${age}`, x - 18, H - 12);\n",
+    "es": "        ctx.fillText(`Edad ${age}`, x - 18, H - 12);\n",
+    "pt": "        ctx.fillText(`Idade ${age}`, x - 18, H - 12);\n"
+  },
+  "minHScreen95": {
+    "en": "      // Trajectory Pitch Status\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen96": {
+    "en": "            pitchBadge.innerHTML = `<span class=\"text-red-400 font-bold animate-pulse\"><i class=\"fa-solid fa-plane-circle-exclamation\"></i> 🚨 CRASHLINE STALL</span>`;\n",
+    "es": "            pitchBadge.innerHTML = `<span class=\"text-red-400 font-bold animate-pulse\"><i class=\"fa-solid fa-plane-circle-exclamation\"></i> 🚨 PERDIDA SUSTENTACIÓN</span>`;\n",
+    "pt": "            pitchBadge.innerHTML = `<span class=\"text-red-400 font-bold animate-pulse\"><i class=\"fa-solid fa-plane-circle-exclamation\"></i> 🚨 RISCO DE QUEDA</span>`;\n"
+  },
+  "minHScreen97": {
+    "en": "            pitchBadge.innerHTML = `<span class=\"text-emerald-400\"><i class=\"fa-solid fa-arrow-trend-up\"></i> 🛫 CLIMBING</span>`;\n",
+    "es": "            pitchBadge.innerHTML = `<span class=\"text-emerald-400\"><i class=\"fa-solid fa-arrow-trend-up\"></i> 🛫 ASCENDIENDO</span>`;\n",
+    "pt": "            pitchBadge.innerHTML = `<span class=\"text-emerald-400\"><i class=\"fa-solid fa-arrow-trend-up\"></i> 🛫 SUBINDO</span>`;\n"
+  },
+  "minHScreen98": {
+    "en": "            pitchBadge.innerHTML = `<span class=\"text-cyan-300\"><i class=\"fa-solid fa-arrow-right\"></i> ✈️ LEVEL CRUISE</span>`;\n",
+    "es": "            pitchBadge.innerHTML = `<span class=\"text-cyan-300\"><i class=\"fa-solid fa-arrow-right\"></i> ✈️ CRUCERO NIVELADO</span>`;\n",
+    "pt": "            pitchBadge.innerHTML = `<span class=\"text-cyan-300\"><i class=\"fa-solid fa-arrow-right\"></i> ✈️ CRUZEIRO NIVELADO</span>`;\n"
+  },
+  "minHScreen99": {
+    "en": "            pitchBadge.innerHTML = `<span class=\"text-amber-400\"><i class=\"fa-solid fa-arrow-trend-down\"></i> 📉 DESCENDING</span>`;\n",
+    "es": "            pitchBadge.innerHTML = `<span class=\"text-amber-400\"><i class=\"fa-solid fa-arrow-trend-down\"></i> 📉 DESCENDIENDO</span>`;\n",
+    "pt": "            pitchBadge.innerHTML = `<span class=\"text-amber-400\"><i class=\"fa-solid fa-arrow-trend-down\"></i> 📉 DESCENDO</span>`;\n"
+  },
+  "minHScreen100": {
+    "en": "        // Draw Curve\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen101": {
+    "en": "        // Area fill\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen102": {
+    "en": "        // Draw Airplane\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen103": {
+    "en": "          pitchBadge.innerHTML = `<span class=\"text-emerald-400\">🛫 READY ON TARMAC</span>`;\n",
+    "es": "          pitchBadge.innerHTML = `<span class=\"text-emerald-400\">🛫 LISTO EN PISTA</span>`;\n",
+    "pt": "          pitchBadge.innerHTML = `<span class=\"text-emerald-400\">🛫 PRONTO NA PISTA</span>`;\n"
+  },
+  "minHScreen104": {
+    "en": "      // Ground Crashline ($0 Bankruptcy)\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen105": {
+    "en": "      ctx.fillText('CRASHLINE ZONE ($0 BANKRUPTCY)', 65, bottomY - 6);\n",
+    "es": "      ctx.fillText('ZONA CRASHLINE (BANCARROTA $0)', 65, bottomY - 6);\n",
+    "pt": "      ctx.fillText('ZONA DE COLAPSO (FALÊNCIA $0)', 65, bottomY - 6);\n"
+  },
+  "minHScreen106": {
+    "en": "      ctx.moveTo(16, 0); // Nose\n      ctx.lineTo(-12, -10); // Left wing\n",
+    "es": "      ctx.moveTo(16, 0);\n      ctx.lineTo(-12, -10);\n",
+    "pt": "      ctx.moveTo(16, 0);\n      ctx.lineTo(-12, -10);\n"
+  },
+  "minHScreen107": {
+    "en": "      ctx.lineTo(-12, 10); // Right wing\n",
+    "es": "      ctx.lineTo(-12, 10);\n",
+    "pt": "      ctx.lineTo(-12, 10);\n"
+  },
+  "minHScreen108": {
+    "en": "      // Thrust flame\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen109": {
+    "en": "    /* =================================================================\n       CALCULATORS HANDLERS\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       MANEJADORES DE CALCULADORAS\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen110": {
+    "en": "      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString() + ' / yr';\n",
+    "es": "      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString() + ' / año';\n",
+    "pt": "      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString('pt-BR') + ' / ano';\n"
+  },
+  "minHScreen111": {
+    "en": "        formulaEl.innerText = `$${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString()} (${multiplier.toFixed(1)}x Rule)`;\n",
+    "es": "        formulaEl.innerText = `$${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString()} (Regla del ${multiplier.toFixed(1)}x)`;\n",
+    "pt": "        formulaEl.innerText = `$${Math.round(spend).toLocaleString('pt-BR')} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString('pt-BR')} (Regla de ${multiplier.toFixed(1)}x)`;\n"
+  },
+  "minHScreen112": {
+    "en": "      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString();\n",
+    "es": "      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString();\n",
+    "pt": "      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString('pt-BR');\n"
+  },
+  "minHScreen113": {
+    "en": "    /* =================================================================\n       TAB 3: 1,000 MONTE CARLO BATCH SIMULATOR\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       PESTAÑA 3: SIMULADOR MONTE CARLO DE 1.000 CORRIDAS\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen114": {
+    "en": "      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString();\n      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString();\n      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString();\n",
+    "es": "      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString();\n      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString();\n      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString();\n",
+    "pt": "      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString('pt-BR');\n      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString('pt-BR');\n      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString('pt-BR');\n"
+  },
+  "minHScreen115": {
+    "en": "      // Render percentile table\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen116": {
+    "en": "              <td class=\"py-2.5 px-3 font-bold text-white\">Age ${state.startAge + y} (${y} Yrs)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
+    "es": "              <td class=\"py-2.5 px-3 font-bold text-white\">Edad ${state.startAge + y} (${y} Años)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
+    "pt": "              <td class=\"py-2.5 px-3 font-bold text-white\">Idade ${state.startAge + y} (${y} Anos)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>\n"
+  },
+  "minHScreen117": {
+    "en": "    /* =================================================================\n       MATH HELPERS & TAB SWITCHING\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       FUNCIONES MATEMÁTICAS Y NAVEGACIÓN DE PESTAÑAS\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen118": {
+    "en": "    /* =================================================================\n       WEBAUDIO SOUND SYNTHESIS\n       ================================================================= */\n",
+    "es": "    /* =================================================================\n       SINTETIZADOR DE SONIDO WEBAUDIO\n       ================================================================= */\n",
+    "pt": ""
+  },
+  "minHScreen119": {
+    "en": "        // AudioContext disabled or blocked by browser policy\n",
+    "es": "        // AudioContext no disponible o bloqueado por navegador\n",
+    "pt": "        // AudioContext não disponível ou bloqueado pelo navegador\n"
+  },
+  "a11yResetSimulation": {
+    "en": "Reset simulation",
+    "es": "Reiniciar la simulación",
+    "pt": "Reiniciar a simulação"
+  },
+  "a11yDismissBanner": {
+    "en": "Dismiss this notice",
+    "es": "Descartar este aviso",
+    "pt": "Dispensar este aviso"
+  },
+  "a11yCloseCalculator": {
+    "en": "Close calculator",
+    "es": "Cerrar la calculadora",
+    "pt": "Fechar a calculadora"
+  }
+}

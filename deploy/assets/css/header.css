@@ -169,6 +169,86 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   outline-offset: 2px;
 }
 
+/* The language switcher, which used to sit in the simulator footers and now
+   sits in the header alongside it, matching the main site.
+
+   The home and journal headers draw the same control with Tailwind utilities
+   out of assets/styles.css; the simulator pages are served a precompiled
+   subset of that bundle instead, so the appearance is written out longhand
+   here. The class names are deliberately not the `.header-language-switcher`
+   and `.lang-btn` those pages use: this file is linked after home.css, so
+   reusing the names would let these rules win over the home page's own
+   responsive sizes. */
+.site-header .simulator-language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  padding: 4px;
+  border: 1px solid #efeae0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 2px rgba(45, 36, 27, 0.08);
+}
+
+.site-header .simulator-lang-btn {
+  display: inline-flex;
+  width: 40px;
+  height: 32px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.site-header .simulator-lang-btn:hover {
+  background: rgba(30, 70, 32, 0.08);
+  transform: translateY(-1px);
+}
+
+.site-header .simulator-lang-btn[aria-current='page'] {
+  background: rgba(197, 155, 39, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.28);
+}
+
+.site-header .simulator-lang-btn:focus-visible {
+  outline: 3px solid rgba(197, 155, 39, 0.35);
+  outline-offset: 2px;
+}
+
+.site-header .simulator-lang-btn svg {
+  display: block;
+  width: 24px;
+  height: 16px;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(45, 36, 27, 0.2);
+}
+
+/* Three flags is roughly 110px that this row did not carry before, and the
+   busiest simulator header — Passive Income Engine, with four controls and the
+   return link — already ran close to the edge of a 360px screen. Rather than
+   pick something to hide, the row is allowed to become two: the fixed 5rem
+   height from `h-20` becomes a floor instead, and the brand and the controls
+   wrap apart only at the widths where they genuinely do not fit. Nothing moves
+   where the row already fits, which is every desktop and most tablets. Scoped
+   to the simulator shell, so the home and journal headers are untouched. */
+.site-header .simulator-header-shell {
+  height: auto;
+  min-height: 5rem;
+  padding-block: 8px;
+  flex-wrap: wrap;
+}
+
+.site-header .simulator-header-shell .header-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 6px;
+}
+
 .site-simulator-nav {
   position: relative;
   z-index: 40;
@@ -239,6 +319,20 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
     min-height: 32px;
   }
 
+  /* Square targets on a phone: 36x36 clears WCAG 2.2 SC 2.5.8 with room to
+     spare, and dropping the gap keeps three flags plus the return link and the
+     simulator's own buttons on one row. */
+  .site-header .simulator-language-switcher {
+    gap: 0;
+    padding: 3px;
+  }
+
+  .site-header .simulator-lang-btn {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
+
   .site-simulator-nav {
     padding-inline: 8px;
   }
@@ -254,11 +348,11 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
    Simulator footer
 
    Six of the fifteen simulator documents ended at </main> with no footer, so
-   they were the only pages on the site with no exit route, no educational
-   disclaimer and no way to reach the other two translations. The markup added
-   there uses these classes; the nine pages that already had a Tailwind-styled
-   footer only received the language switcher, which is styled in a11y.css.
-   --------------------------------------------------------------------------- */
+   they were the only pages on the site with no exit route and no educational
+   disclaimer. The markup added there uses these classes. The footer link row
+   that accompanied them on the two game simulators has since been removed at
+   the site owner's request, and the language switcher these footers carried
+   has moved up into the header. */
 .simulator-footer {
   margin-top: 48px;
   padding: 28px 24px 32px;
@@ -271,31 +365,6 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   text-align: center;
 }
 
-.simulator-footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 8px 24px;
-}
-
-.simulator-footer__links a {
-  min-height: 24px;
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 4px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #1e4620;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.simulator-footer__links a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .simulator-footer__note {
   max-width: 60ch;
   margin: 0;
@@ -303,12 +372,6 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   line-height: 1.6;
   /* rgba(42,36,30,.78) on #faf6ed clears 4.5:1 at this size. */
   color: rgba(42, 36, 30, 0.78);
-}
-
-/* The nine pre-existing footers are centred blocks of Tailwind utilities; the
-   switcher needs its own breathing room inside them. */
-footer .lang-switch {
-  margin-top: 12px;
 }
 
 /* The Spanish home page is the site's x-default, so it no longer redirects a

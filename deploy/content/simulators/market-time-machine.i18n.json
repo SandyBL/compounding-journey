@@ -1,0 +1,787 @@
+{
+  "hFullLang": {
+    "en": "en",
+    "es": "es",
+    "pt": "pt-BR"
+  },
+  "hFull": {
+    "en": "Market Time Machine: Historical Portfolio Simulator | Compounding Journey",
+    "es": "Máquina del Tiempo del Mercado: Simulador Histórico | Compounding Journey",
+    "pt": "Máquina do Tempo do Mercado: Simulador Histórico | Compounding Journey"
+  },
+  "metaContent": {
+    "en": "Compare portfolios through market cycles and historic crises from 1920 onward to explore risk, recovery, diversification, and long-term returns.",
+    "es": "Compara carteras durante ciclos y crisis desde 1920 para explorar riesgo, recuperación, diversificación y rentabilidad a largo plazo.",
+    "pt": "Compara carteiras durante ciclos e crises desde 1920 para explorar risco, recuperação, diversificação e rentabilidade a longo prazo."
+  },
+  "metaContent3": {
+    "en": "Market Time Machine: Historical Portfolio Simulator",
+    "es": "Máquina del Tiempo del Mercado",
+    "pt": "Máquina do Tempo do Mercado"
+  },
+  "metaContent4": {
+    "en": "Compare portfolios across historic market cycles and crises.",
+    "es": "Compara carteras a través de ciclos y crisis históricas.",
+    "pt": "Compara carteiras através de ciclos e crises históricas."
+  },
+  "hFull2": {
+    "en": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Market Time Machine\",\"url\":\"https://compoundingjourney.com/en/simulators/market-time-machine.html\",\"description\":\"An interactive historical portfolio comparison simulator covering market cycles from 1920 onward.\",\"inLanguage\":\"en\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Any web browser\",\"browserRequirements\":\"Requires JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
+    "es": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Máquina del Tiempo del Mercado\",\"url\":\"https://compoundingjourney.com/es/simulators/market-time-machine.html\",\"description\":\"Un simulador interactivo para comparar carteras durante ciclos de mercado desde 1920.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
+    "pt": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Máquina do Tempo do Mercado\",\"url\":\"https://compoundingjourney.com/pt/simulators/market-time-machine.html\",\"description\":\"Um simulador interativo para comparar carteiras durante ciclos de mercado desde 1920.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
+  },
+  "skipLink": {
+    "en": "Skip to main content",
+    "es": "Saltar al contenido principal",
+    "pt": "Saltar para o conteúdo principal"
+  },
+  "fontSans": {
+    "en": "    <!-- HEADER BAR -->\n",
+    "es": "    <!-- HEADER BAR -->\n",
+    "pt": ""
+  },
+  "headerBrandAriaLabel": {
+    "en": "Return to Compounding Journey",
+    "es": "Volver a Compounding Journey",
+    "pt": "Voltar ao Compounding Journey"
+  },
+  "headerBrandTagline": {
+    "en": "Your map to freedom",
+    "es": "Tu mapa hacia la libertad",
+    "pt": "O teu mapa para a liberdade"
+  },
+  "siteReturnLinkAriaLabel": {
+    "en": "Back to the website",
+    "es": "Volver al sitio web",
+    "pt": "Voltar ao site"
+  },
+  "siteReturnLinkText": {
+    "en": "Website",
+    "es": "Sitio web",
+    "pt": "Website"
+  },
+  "px3": {
+    "en": "How It Works",
+    "es": "Cómo Funciona",
+    "pt": "Como Funciona"
+  },
+  "px32": {
+    "en": "Reset",
+    "es": "Reiniciar",
+    "pt": "Reiniciar"
+  },
+  "textXl": {
+    "en": "Market Time Machine: Historical Portfolio Simulator",
+    "es": "Máquina del Tiempo del Mercado: Simulador Histórico de Carteras",
+    "pt": "Máquina do Tempo do Mercado: Simulador Histórico de Carteiras"
+  },
+  "mt15": {
+    "en": "Compare portfolios through market cycles and historic crises from ",
+    "es": "Compara carteras durante ciclos y crisis desde ",
+    "pt": "Compara carteiras durante ciclos e crises desde "
+  },
+  "mt152": {
+    "en": "onward to explore risk, recovery, diversification, and long-term returns.",
+    "es": "para explorar riesgo, recuperación, diversificación y rentabilidad a largo plazo.",
+    "pt": "para explorar risco, recuperação, diversificação e rentabilidade a longo prazo."
+  },
+  "mt3AriaLabel": {
+    "en": "More simulators",
+    "es": "Más simuladores",
+    "pt": "Mais simuladores"
+  },
+  "textEspresso80060": {
+    "en": "More simulators:",
+    "es": "Más simuladores:",
+    "pt": "Mais simuladores:"
+  },
+  "px25": {
+    "en": "All simulators",
+    "es": "Todos los simuladores",
+    "pt": "Todos os simuladores"
+  },
+  "px252": {
+    "en": "Freedom Calendar",
+    "es": "Calendario de la Libertad",
+    "pt": "Calendário da Liberdade"
+  },
+  "px253": {
+    "en": "Passive Income Engine",
+    "es": "Motor de Ingresos Pasivos",
+    "pt": "Motor de Rendimento Passivo"
+  },
+  "fontSans2": {
+    "en": "    <!-- MAIN APP CONTAINER -->\n",
+    "es": "    <!-- MAIN APP CONTAINER -->\n",
+    "pt": ""
+  },
+  "main": {
+    "en": "        <!-- INTRO BANNER & PRESET SELECTOR -->\n",
+    "es": "        <!-- INTRO BANNER & PRESET SELECTOR -->\n",
+    "pt": ""
+  },
+  "bgGold500": {
+    "en": "Allocation Simulator",
+    "es": "Simulador de Asignación",
+    "pt": "Simulador de Alocação"
+  },
+  "textBase": {
+    "en": "Compare Your Custom Portfolio with Famous Market Models",
+    "es": "Compara tu Portafolio Personalizado con Modelos Famosos",
+    "pt": "Compare seu Portfólio Personalizado com Modelos Famosos"
+  },
+  "textXs": {
+    "en": "Build your strategy using the sliders and track in real-time how your portfolio would have performed alongside ",
+    "es": "¡Crea tu estrategia utilizando los deslizadores y sigue en tiempo real cómo habría rendido tu portafolio junto a ",
+    "pt": "Monte a sua estratégia utilizando os sliders e acompanhe em tempo real como o seu portfólio teria perfomado lado a lado com "
+  },
+  "textXs2": {
+    "en": "5 benchmark models",
+    "es": "5 referencias famosas del mercado",
+    "pt": "5 referências famosas do mercado"
+  },
+  "textXs3": {
+    "en": " since 1920!\n",
+    "es": " desde 1920!\n",
+    "pt": " desde 1920!\n"
+  },
+  "text10px": {
+    "en": "Load Preset into Sliders:",
+    "es": "Cargar Modelo en los Deslizadores:",
+    "pt": "Carregar Modelo nos Sliders:"
+  },
+  "faSolidTitle": {
+    "en": "Hover over the legend below to inspect detailed composition",
+    "es": "Pasa el cursor sobre la leyenda a continuación para ver la composición detallada",
+    "pt": "Passe o mouse na legenda abaixo para ver a composição detalhada"
+  },
+  "presetselect": {
+    "en": "Classic 60/40 (60% Stocks / 40% Bonds)",
+    "es": "Clásico (60% Acciones / 40% Bonos)",
+    "pt": "Clássico (60% Ações / 40% Títulos)"
+  },
+  "presetselect2": {
+    "en": "Ray Dalio's All-Weather (30% Stocks, 55% Bonds, 15% Gold)",
+    "es": "All-Weather de Ray Dalio (30% Acciones, 55% Bonos, 15% Oro)",
+    "pt": "All-Weather de Ray Dalio (30% Ações, 55% Títulos, 15% Ouro)"
+  },
+  "presetselect3": {
+    "en": "Permanent Portfolio (25% Stocks, 25% Bonds, 25% Gold, 25% Cash)",
+    "es": "Portafolio Permanente (25% Acciones, 25% Bonos, 25% Oro, 25% Efectivo)",
+    "pt": "Portfólio Permanente (25% Ações, 25% Títulos, 25% Ouro, 25% Caixa)"
+  },
+  "presetselect4": {
+    "en": "100% Stocks (Aggressive Growth)",
+    "es": "100% Acciones (Crecimiento Agresivo)",
+    "pt": "100% Ações (Crescimento Agressivo)"
+  },
+  "presetselect5": {
+    "en": "Conservative (20% Stocks, 60% Bonds, 20% Cash)",
+    "es": "Conservador (20% Acciones, 60% Bonos, 20% Efectivo)",
+    "pt": "Conservador (20% Ações, 60% Títulos, 20% Caixa)"
+  },
+  "presetselect6": {
+    "en": "Custom (Edit sliders below)",
+    "es": "Personalizado (Edita los deslizadores)",
+    "pt": "Personalizado (Edite os sliders)"
+  },
+  "main2": {
+    "en": "        <!-- TOP CONTROLS GRID -->\n",
+    "es": "        <!-- TOP CONTROLS GRID -->\n",
+    "pt": ""
+  },
+  "grid": {
+    "en": "            <!-- PORTFOLIO BUILDER (SLIDERS) -->\n",
+    "es": "            <!-- PORTFOLIO BUILDER (SLIDERS) -->\n",
+    "pt": ""
+  },
+  "textXs4": {
+    "en": " Portfolio Construction\n",
+    "es": " Construcción de tu Portafolio\n",
+    "pt": " Construção do Seu Portfólio\n"
+  },
+  "text11px": {
+    "en": "Adjust the asset sliders below (Total must equal 100%)",
+    "es": "Ajusta la asignación de los deslizadores (Suma: 100%)",
+    "pt": "Ajuste a alocação dos sliders (Soma: 100%)"
+  },
+  "lblStocks": {
+    "en": " Global / US Equities (S&P 500)\n",
+    "es": " Acciones Globales / EE.UU. (S&P 500)\n",
+    "pt": " Ações Globais / EUA (S&P 500)\n"
+  },
+  "lblBonds": {
+    "en": " Treasury Bonds (10-Year)\n",
+    "es": " Bonos del Tesoro (10 Años)\n",
+    "pt": " Títulos do Tesouro (10 Anos)\n"
+  },
+  "lblReits": {
+    "en": " Real Estate & REITs\n",
+    "es": " Bienes Raíces & REITs\n",
+    "pt": " Imóveis & REITs\n"
+  },
+  "lblGold": {
+    "en": " Gold & Commodities\n",
+    "es": " Oro & Commodities\n",
+    "pt": " Ouro & Commodities\n"
+  },
+  "lblCash": {
+    "en": " Cash / T-Bills (Short Term)\n",
+    "es": " Efectivo / T-Bills (Corto Plazo)\n",
+    "pt": " Caixa / T-Bills (Curto Prazo)\n"
+  },
+  "normalizebtn": {
+    "en": "                    ⚡ Auto-Adjust to 100%\n",
+    "es": "                    ⚡ Ajustar Automáticamente a 100%\n",
+    "pt": "                    ⚡ Ajustar Automaticamente para 100%\n"
+  },
+  "grid2": {
+    "en": "            <!-- TIME TRAVEL CONTROLS & BENCHMARKS LEGEND -->\n",
+    "es": "            <!-- TIME TRAVEL CONTROLS & BENCHMARKS LEGEND -->\n",
+    "pt": ""
+  },
+  "textXs5": {
+    "en": " Time Travel Controls\n",
+    "es": " Controles del Viaje\n",
+    "pt": " Controles da Viagem\n"
+  },
+  "currentyeardisplay": {
+    "en": "                            YEAR: 1920\n",
+    "es": "                            AÑO: 1920\n",
+    "pt": "                            ANO: 1920\n"
+  },
+  "textEspresso800": {
+    "en": "Starting Capital:",
+    "es": "Capital Inicial:",
+    "pt": "Capital Inicial:"
+  },
+  "textEspresso8002": {
+    "en": "Starting Year:",
+    "es": "Año de Inicio:",
+    "pt": "Ano de Início:"
+  },
+  "startyearselect": {
+    "en": "1929 (Great Depression)",
+    "es": "1929 (Gran Depresión)",
+    "pt": "1929 (Grande Depressão)"
+  },
+  "startyearselect2": {
+    "en": "1970 (Stagflation)",
+    "es": "1970 (Estagflación)",
+    "pt": "1970 (Estagflação)"
+  },
+  "startyearselect3": {
+    "en": "1990 (The 1990s)",
+    "es": "1990 (Década de los 90)",
+    "pt": "1990 (Década de 90)"
+  },
+  "startyearselect4": {
+    "en": "2000 (Dot-Com Bubble)",
+    "es": "2000 (Burbuja Dot-Com)",
+    "pt": "2000 (Bolha Dot-Com)"
+  },
+  "startyearselect5": {
+    "en": "2008 (Subprime Crisis)",
+    "es": "2008 (Crisis Subprime)",
+    "pt": "2008 (Crise Subprime)"
+  },
+  "playpausetext": {
+    "en": "Start Journey",
+    "es": "Iniciar Viaje",
+    "pt": "Iniciar Viagem"
+  },
+  "nextyearbtn": {
+    "en": "+1 Year",
+    "es": "+1 Año",
+    "pt": "+1 Ano"
+  },
+  "textXs6": {
+    "en": "Portfolios Compared on Chart:",
+    "es": "Portafolios Comparados en el Gráfico:",
+    "pt": "Portfólios Comparados no Gráfico:"
+  },
+  "text10px2": {
+    "en": " Hover to view composition",
+    "es": " Pasa el cursor para ver la composición",
+    "pt": " Passe o mouse para ver a composição"
+  },
+  "hasTooltip": {
+    "en": "Your Portfolio (Sliders)",
+    "es": "Tu Portafolio (Deslizadores)",
+    "pt": "Seu Portfólio (Sliders)"
+  },
+  "fontBold": {
+    "en": "🟢 Your Current Portfolio:",
+    "es": "🟢 Tu Portafolio Actual:",
+    "pt": "🟢 Seu Portfólio Atual:"
+  },
+  "hasTooltip2": {
+    "en": "Classic 60/40",
+    "es": "Clásico 60/40",
+    "pt": "Clássico 60/40"
+  },
+  "fontBold2": {
+    "en": "🔵 Classic 60/40:",
+    "es": "🔵 Clásico 60/40:",
+    "pt": "🔵 Clássico 60/40:"
+  },
+  "tooltipBox": {
+    "en": "• 60% Stocks (S&P 500)",
+    "es": "• 60% Acciones (S&P 500)",
+    "pt": "• 60% Ações (S&P 500)"
+  },
+  "tooltipBox2": {
+    "en": "• 40% Treasury Bonds",
+    "es": "• 40% Bonos del Tesoro",
+    "pt": "• 40% Títulos do Tesouro"
+  },
+  "tooltipBox3": {
+    "en": "• 30% Stocks (S&P 500)",
+    "es": "• 30% Acciones (S&P 500)",
+    "pt": "• 30% Ações (S&P 500)"
+  },
+  "tooltipBox4": {
+    "en": "• 55% Treasury Bonds (Long/Intermediate)",
+    "es": "• 55% Bonos del Tesoro (Largo/Medio)",
+    "pt": "• 55% Títulos do Tesouro (Longo/Médio)"
+  },
+  "tooltipBox5": {
+    "en": "• 15% Gold & Commodities",
+    "es": "• 15% Oro & Commodities",
+    "pt": "• 15% Ouro & Commodities"
+  },
+  "hasTooltip3": {
+    "en": "Permanent (Browne)",
+    "es": "Permanente (Browne)",
+    "pt": "Permanente (Browne)"
+  },
+  "fontBold3": {
+    "en": "🟠 Permanent Portfolio (Harry Browne):",
+    "es": "🟠 Portafolio Permanente (Harry Browne):",
+    "pt": "🟠 Portfólio Permanente (Harry Browne):"
+  },
+  "tooltipBox6": {
+    "en": "• 25% Stocks (S&P 500)",
+    "es": "• 25% Acciones (S&P 500)",
+    "pt": "• 25% Ações (S&P 500)"
+  },
+  "tooltipBox7": {
+    "en": "• 25% Treasury Bonds",
+    "es": "• 25% Bonos del Tesoro",
+    "pt": "• 25% Títulos do Tesouro"
+  },
+  "tooltipBox8": {
+    "en": "• 25% Physical Gold",
+    "es": "• 25% Oro Físico",
+    "pt": "• 25% Ouro Fisico"
+  },
+  "tooltipBox9": {
+    "en": "• 25% Cash / T-Bills",
+    "es": "• 25% Efectivo / T-Bills",
+    "pt": "• 25% Caixa / T-Bills"
+  },
+  "hasTooltip4": {
+    "en": "100% Stocks",
+    "es": "100% Acciones",
+    "pt": "100% Ações"
+  },
+  "fontBold4": {
+    "en": "🔴 100% Equities (Aggressive):",
+    "es": "🔴 100% Acciones (Agresivo):",
+    "pt": "🔴 100% Ações (Agressivo):"
+  },
+  "tooltipBox10": {
+    "en": "• 100% Global / US Stocks",
+    "es": "• 100% Acciones Globales / EE.UU.",
+    "pt": "• 100% Ações Globais / EUA"
+  },
+  "hasTooltip5": {
+    "en": "Conservative (20/80)",
+    "es": "Conservador (20/80)",
+    "pt": "Conservador (20/80)"
+  },
+  "fontBold5": {
+    "en": "🟢 Conservative (20/80):",
+    "es": "🟢 Conservador (20/80):",
+    "pt": "🟢 Conservador (20/80):"
+  },
+  "tooltipBox11": {
+    "en": "• 20% Stocks",
+    "es": "• 20% Acciones",
+    "pt": "• 20% Ações"
+  },
+  "tooltipBox12": {
+    "en": "• 60% Treasury Bonds",
+    "es": "• 60% Bonos del Tesoro",
+    "pt": "• 60% Títulos do Tesouro"
+  },
+  "tooltipBox13": {
+    "en": "• 20% Cash / T-Bills",
+    "es": "• 20% Efectivo / T-Bills",
+    "pt": "• 20% Caixa / T-Bills"
+  },
+  "main3": {
+    "en": "        <!-- FULL-WIDTH CHART & METRICS SECTION -->\n",
+    "es": "        <!-- FULL-WIDTH CHART & METRICS SECTION -->\n",
+    "pt": ""
+  },
+  "textSm": {
+    "en": " Net Worth Trajectory (Your Portfolio vs. Benchmarks)\n",
+    "es": " Trayectoria del Patrimonio (Tu Portafolio vs. Referencias)\n",
+    "pt": " Trajetória do Patrimônio (Sua Carteira vs. Referências)\n"
+  },
+  "chartsubtext": {
+    "en": "Track net worth growth and strategy resilience across the decades",
+    "es": "Sigue el crecimiento y la resiliencia de las estrategias a lo largo de las décadas",
+    "pt": "Acompanhe o crescimento e a resiliência das estratégias ao longo das décadas"
+  },
+  "text10px3": {
+    "en": "🟢 Your Portfolio",
+    "es": "🟢 Tu Portafolio",
+    "pt": "🟢 Seu Portfólio"
+  },
+  "statcustomval": {
+    "en": "$100,000",
+    "es": "$100.000",
+    "pt": "$100.000"
+  },
+  "text10px4": {
+    "en": "🔵 Classic 60/40",
+    "es": "🔵 Clásico 60/40",
+    "pt": "🔵 Clássico 60/40"
+  },
+  "text10px5": {
+    "en": "🟠 Permanent",
+    "es": "🟠 Permanente",
+    "pt": "🟠 Permanente"
+  },
+  "text10px6": {
+    "en": "🔴 100% Stocks",
+    "es": "🔴 100% Acciones",
+    "pt": "🔴 100% Ações"
+  },
+  "text10px7": {
+    "en": "🟢 Conservative",
+    "es": "🟢 Conservador",
+    "pt": "🟢 Conservador"
+  },
+  "timemachinechartAriaLabel": {
+    "en": "Chart: portfolio value across the simulated historical period for each strategy. The final value and CAGR of every strategy are stated as text in the stat cards above.",
+    "es": "Gráfico: valor de la cartera durante el periodo histórico simulado para cada estrategia. El valor final y la TCAC de cada estrategia aparecen como texto en las tarjetas superiores.",
+    "pt": "Gráfico: valor da carteira ao longo do período histórico simulado para cada estratégia. O valor final e o CAGR de cada estratégia aparecem como texto nos cartões acima."
+  },
+  "text10px8": {
+    "en": "Historical Events Encountered:",
+    "es": "Eventos Históricos Atravesados:",
+    "pt": "Eventos Historicamente Atravessados:"
+  },
+  "eventmodalyear": {
+    "en": "HISTORICAL EVENT (1929)",
+    "es": "EVENTO HISTÓRICO (1929)",
+    "pt": "EVENTO HISTÓRICO (1929)"
+  },
+  "eventmodaltitle": {
+    "en": "The Great Crash",
+    "es": "La Gran Depresión",
+    "pt": "A Grande Depressão"
+  },
+  "eventmodaldesc": {
+    "en": "                    Detailed description of the historical event and financial market shocks...\n",
+    "es": "                    Descripción detallada del evento histórico y los choques en el mercado financiero...\n",
+    "pt": "                    Descrição detalhada do evento histórico e dos choques no mercado financeiro...\n"
+  },
+  "textForest800": {
+    "en": " What Does the Chart Show?\n",
+    "es": " ¿Qué Muestra el Gráfico?\n",
+    "pt": " O que o Gráfico Está Mostrando?\n"
+  },
+  "text11px2": {
+    "en": "                    Observe how 🔴 (100% Stocks) suffers sharp drawdowns during crashes, while diversified strategies like 🟣 (All-Weather) and 🟢 (Your Portfolio) cushion volatility through fixed income and gold!\n",
+    "es": "                    ¡Observa cómo el portafolio 🔴 (100% Acciones) sufre caídas acentuadas en la crisis, mientras que estrategias diversificadas como 🟣 (All-Weather) y 🟢 (Tu Portafolio) suavizan la volatilidad a través de la renta fija y el oro!\n",
+    "pt": "                    Observe como o portfólio 🔴 (100% Ações) sofre quedas acentuadas na crise, enquanto estratégias diversificadas como 🟣 (All-Weather) e 🟢 (Seu Portfólio) suavizam a volatilidade através da renda fixa e ouro!\n"
+  },
+  "py25": {
+    "en": "Resume Journey",
+    "es": "Continuar Viaje",
+    "pt": "Continuar Viagem"
+  },
+  "py252": {
+    "en": "Pause & Analyze",
+    "es": "Pausar y Analizar",
+    "pt": "Pausar & Analisar"
+  },
+  "textBase2": {
+    "en": "How The Time Machine Works",
+    "es": "Cómo Funciona la Máquina del Tiempo",
+    "pt": "Como Funciona a Máquina do Tempo"
+  },
+  "text10px9": {
+    "en": "Historical Simulation from 1920 to 2026",
+    "es": "Simulación Histórica de 1920 a 2026",
+    "pt": "Simulação Histórica de 1920 a 2026"
+  },
+  "textForest8002": {
+    "en": " Simulator Goals:\n",
+    "es": " Objetivos del Simulador:\n",
+    "pt": " Objetivos do Simulador:\n"
+  },
+  "listDisc": {
+    "en": "Custom Allocation:",
+    "es": "Asignación Personalizada:",
+    "pt": "Alocação Personalizada:"
+  },
+  "listDisc2": {
+    "en": " Build your portfolio and test the power of diversification.",
+    "es": " Crea tu portafolio y prueba la eficiencia de la diversificación.",
+    "pt": " Crie seu portfólio e teste a eficiência da diversificação."
+  },
+  "listDisc3": {
+    "en": "Real-Time Benchmarking:",
+    "es": "Comparación en Tiempo Real:",
+    "pt": "Comparação em Tempo Real:"
+  },
+  "listDisc4": {
+    "en": " See how your portfolio holds up against 5 renowned model portfolios.",
+    "es": " Observa cómo rinde tu portafolio frente a 5 modelos de referencia consagrados.",
+    "pt": " Veja como sua carteira performa contra 5 modelos de referência consagrados."
+  },
+  "listDisc5": {
+    "en": "Financial History Lessons:",
+    "es": "Lecciones de Historia Financiera:",
+    "pt": "Aulas de História Financeira:"
+  },
+  "listDisc6": {
+    "en": " Interactive pop-ups explain how asset classes behaved during major 20th and 21st century crises.",
+    "es": " Pop-ups explicativos destacan cómo reaccionó cada clase de activo a las mayores crisis de los siglos XX y XXI.",
+    "pt": " Pop-ups explicativos destacam como cada classe de ativo reagiu às maiores crises do século XX e XXI."
+  },
+  "fontBold6": {
+    "en": "Instructions:",
+    "es": "Instrucciones:",
+    "pt": "Instruções:"
+  },
+  "listDecimal": {
+    "en": "Adjust asset sliders to build your target allocation.",
+    "es": "Ajusta la asignación de activos utilizando los deslizadores para armar tu estrategia.",
+    "pt": "Ajuste a alocação de ativos utilizando os sliders para montar a sua estratégia."
+  },
+  "listDecimal2": {
+    "en": "Click ",
+    "es": "Presiona ",
+    "pt": "Pressione "
+  },
+  "listDecimal3": {
+    "en": "\"Start Journey\"",
+    "es": "\"Iniciar Viaje\"",
+    "pt": "\"Iniciar Viagem\""
+  },
+  "listDecimal4": {
+    "en": " to advance through the years from 1920 to today.",
+    "es": " para avanzar los años desde 1920 hasta hoy.",
+    "pt": " para avançar os anos de 1920 até hoje."
+  },
+  "listDecimal5": {
+    "en": "Analyze cumulative return curves on the chart and discover which model delivered the highest risk-adjusted resilience!",
+    "es": "¡Analiza el rendimiento acumulado en el gráfico y descubre qué modelo presentó la mayor resiliencia!",
+    "pt": "Analise o retorno acumulado no gráfico e descubra qual modelo apresentou a maior resiliência!"
+  },
+  "wFull": {
+    "en": "                Got It! Let's Get Started\n",
+    "es": "                ¡Entendido! Vamos a Empezar\n",
+    "pt": "                Entendido! Vamos Iniciar\n"
+  },
+  "fontSans3": {
+    "en": "    <!-- JAVASCRIPT SIMULATION ENGINE -->\n",
+    "es": "    <!-- JAVASCRIPT SIMULATION ENGINE -->\n",
+    "pt": ""
+  },
+  "fontSans4": {
+    "en": "                title: 'The Great Crash of 1929',\n",
+    "es": "                title: 'El Gran Colapso de 1929',\n",
+    "pt": "                title: 'O Grande Colapso de 1929',\n"
+  },
+  "fontSans5": {
+    "en": "                desc: 'Black Tuesday marks the start of the Great Depression. Unchecked speculation sparked massive stock market sell-offs and systemic bank failures.',\n                impact: 'Stocks dropped -8.4% in 1929 and kept falling for years. Treasury bonds provided positive downside protection (+4.2%).'\n",
+    "es": "                desc: 'Martes Negro e inicio de la Gran Depresión. El mercado bursátil colapsó tras años de especulación desmedida, desencadenando quiebras bancarias masivas.',\n                impact: 'Las acciones cayeron -8.4% en 1929 y continuaron cayendo en los años siguientes. Los bonos del tesoro ofrecieron protección positiva (+4.2%).'\n",
+    "pt": "                desc: 'Terça-Feira Negra e início da Grande Depressão. O mercado de ações colapsou após anos de especulação desenfreada, desencadeando falências bancárias em massa.',\n                impact: 'Ações caíram -8.4% em 1929 e continuaram caindo nos anos seguintes. Títulos do tesouro ofereceram proteção positiva (+4.2%).'\n"
+  },
+  "fontSans6": {
+    "en": "                title: 'Bottom of the Great Depression (1931)',\n",
+    "es": "                title: 'Fondo de la Gran Depresión (1931)',\n",
+    "pt": "                title: 'Fundo da Grande Depressão (1931)',\n"
+  },
+  "fontSans7": {
+    "en": "                desc: 'The single worst year in Wall Street history. Widespread panic led millions of investors to lock in ruinous losses.',\n                impact: 'Devastating -43.3% plunge in equities. Portfolios holding gold and treasury bonds drastically cushioned overall capital destruction.'\n",
+    "es": "                desc: 'El peor año en la historia de Wall Street. La desesperación hizo que millones de inversionistas realizaran todas sus pérdidas y juraran no volver a las acciones.',\n                impact: 'Caída devastadora del -43.3% en acciones. Portafolios con oro y bonos amortiguaron la caída drásticamente.'\n",
+    "pt": "                desc: 'Pior ano da história de Wall Street. O desespero fez milhões de investidores realizarem todas as suas perdas e jurarem nunca mais voltar às ações.',\n                impact: 'Queda devastadora de -43.3% nas ações. Portfólios com ouro e títulos amorteceram a queda drasticamente.'\n"
+  },
+  "fontSans8": {
+    "en": "                title: 'Secondary Recession of 1937',\n",
+    "es": "                title: 'Recesión Secundaria de 1937',\n",
+    "pt": "                title: 'Recessão Secundária de 1937',\n"
+  },
+  "fontSans9": {
+    "en": "                desc: 'Premature monetary tightening by the Fed and public spending cuts triggered a sharp relapse mid-recovery.',\n                impact: 'Equities crashed -35.0%, testing the emotional discipline of investors who had survived the 1929 crash.'\n",
+    "es": "                desc: 'El ajuste monetario de la Fed y los recortes de gasto público resultaron en una recaída violenta en medio de la recuperación.',\n                impact: 'Las acciones se desplomaron -35.0%, poniendo a prueba la disciplina de quienes habían sobrevivido a la crisis de 1929.'\n",
+    "pt": "                desc: 'Aperto monetário do Fed e cortes de gastos públicos resultaram em uma recaída violenta no meio da recuperação.',\n                impact: 'Ações despencaram -35.0%, testando a disciplina de quem havia sobrevivido à crise de 1929.'\n"
+  },
+  "fontSans10": {
+    "en": "                title: 'Oil Shock & Stagflation (1974)',\n",
+    "es": "                title: 'Choque del Petróleo y Estagflación (1974)',\n",
+    "pt": "                title: 'Choque do Petróleo e Estagflação (1974)',\n"
+  },
+  "fontSans11": {
+    "en": "                desc: 'OPEC oil embargo, double-digit inflation, and severe recession. Gold surged as a premier inflation hedge asset.',\n                impact: 'Stocks fell -26.5% and Real Estate -28.0%. In contrast, Gold exploded by an astounding +66.0%!'\n",
+    "es": "                desc: 'Embargo petrolero de la OPEP, inflación de dos dígitos y desaceleración económica severa. El oro explotó como activo de protección.',\n                impact: 'Las acciones cayeron -26.5% y Bienes Raíces -28.0%. ¡En cambio, el Oro subió un impresionante +66.0%!'\n",
+    "pt": "                desc: 'Embargo de petróleo da OPEP, inflação de dois dígitos e desaceleração econômica severa. O ouro explodiu como ativo de proteção.',\n                impact: 'Ações caíram -26.5% e Imóveis -28.0%. Em contrapartida, o Ouro subiu impressionantes +66.0%!'\n"
+  },
+  "fontSans12": {
+    "en": "                title: 'Black Monday (1987)',\n",
+    "es": "                title: 'Lunes Negro (1987)',\n",
+    "pt": "                title: 'Segunda-Feira Negra (1987)',\n"
+  },
+  "fontSans13": {
+    "en": "                desc: 'Largest single-day percentage crash in Dow Jones history (-22.6%). Computerized trading algorithms sparked systemic cascades.',\n                impact: 'Despite October panic, markets recovered to close the year up +5.3% overall for equities.'\n",
+    "es": "                desc: 'La mayor caída porcentual en un solo día en la historia del Dow Jones (-22.6%). Fallos en modelos computarizados provocaron ventas en cascada.',\n                impact: 'A pesar del pánico en octubre, el mercado se recuperó y cerró el año con saldo positivo de +5.3% en acciones.'\n",
+    "pt": "                desc: 'Maior queda percentual em um único dia da história do Dow Jones (-22.6%). Falhas em modelos computadorizados provocaram vendas em cascata.',\n                impact: 'Apesar do pânico em outubro, o mercado recuperou-se e encerrou o ano com saldo positivo de +5.3% nas ações.'\n"
+  },
+  "fontSans14": {
+    "en": "                title: 'Dot-Com Bubble Burst (2000)',\n",
+    "es": "                title: 'Estallido de la Burbuja Dot-Com (2000)',\n",
+    "pt": "                title: 'Estouro da Bolha Dot-Com (2000)',\n"
+  },
+  "fontSans15": {
+    "en": "                desc: 'Collapse of euphoric valuations in unprofitable internet startups. Triggered a 3-year bear market in equities.',\n                impact: 'Stocks crashed -9.1%, while Treasury Bonds (+11.6%) and Real Estate/REITs (+26.8%) served as outstanding buffers.'\n",
+    "es": "                desc: 'Colapso de valuaciones eufóricas de empresas tecnológicas sin ganancias. Inicio de un mercado bajista de 3 años en acciones.',\n                impact: 'Las acciones se desplomaron -9.1%, mientras que los Bonos (+11.6%) y Bienes Raíces/REITs (+26.8%) actuaron como excelentes amortiguadores.'\n",
+    "pt": "                desc: 'Colapso de valuations eufóricos de empresas de tecnologia sem lucro. Início de um bear market de 3 anos nas ações.',\n                impact: 'Ações despencaram -9.1%, enquanto Títulos (+11.6%) e Imóveis/REITs (+26.8%) atuaram como excelentes amortecedores.'\n"
+  },
+  "fontSans16": {
+    "en": "                title: '2008 Global Financial Crisis',\n",
+    "es": "                title: 'Crisis Financiera Global de 2008',\n",
+    "pt": "                title: 'Crise Financeira Global de 2008',\n"
+  },
+  "fontSans17": {
+    "en": "                desc: 'Lehman Brothers bankruptcy and global subprime credit collapse. The deepest market slump since 1929.',\n                impact: 'Stocks fell -37.0% and REITs -37.7%. However, Treasury Bonds surged +20.1%, proving the power of portfolio diversification!'\n",
+    "es": "                desc: 'Quiebra de Lehman Brothers y colapso del sistema de crédito subprime mundial. La peor caída desde 1929.',\n                impact: 'Las acciones cayeron -37.0% y los REITs -37.7%. Sin embargo, ¡los Bonos del Tesoro subieron +20.1%, demostrando el poder de la diversificación!'\n",
+    "pt": "                desc: 'Falência do Lehman Brothers e colapso do sistema de crédito subprime mundial. A pior queda desde 1929.',\n                impact: 'Ações caíram -37.0% e REITs -37.7%. No entanto, Títulos do Tesouro subiram +20.1%, provando o poder da diversificação!'\n"
+  },
+  "fontSans18": {
+    "en": "                title: 'Pandemic & Global Lockdowns (2020)',\n",
+    "es": "                title: 'Pandemia y Lockdowns Globales (2020)',\n",
+    "pt": "                title: 'Pandemia & Lockdowns Globais (2020)',\n"
+  },
+  "fontSans19": {
+    "en": "                desc: 'Instant economic freeze followed by unprecedented multi-trillion dollar fiscal and central bank stimulus.',\n                impact: 'After a -34% flash crash, markets rebounded to end up +18.4% for the year powered by massive liquidity.'\n",
+    "es": "                desc: 'Paralización económica global relámpago seguida por estímulos fiscales y monetarios billonarios sin precedentes.',\n                impact: 'Tras un crash del -34% en pocas semanas, el mercado cerró el año con un fuerte alza del +18.4% impulsado por la liquidez.'\n",
+    "pt": "                desc: 'Paralisação econômica global relâmpago seguida por estímulos fiscais e monetários trilionários sem precedentes.',\n                impact: 'Após um crash de -34% em poucas semanas, o mercado encerrou o ano em alta forte de +18.4% impulsionado por liquidez.'\n"
+  },
+  "fontSans20": {
+    "en": "                title: 'Monetary Tightening & Inflation (2022)',\n",
+    "es": "                title: 'Ajuste Monetario e Inflación (2022)',\n",
+    "pt": "                title: 'Aperto Monetário & Inflação (2022)',\n"
+  },
+  "fontSans21": {
+    "en": "                desc: 'Aggressive Fed rate hikes to combat inflation. Worst simultaneous decline in stocks and bonds in 50 years!',\n                impact: 'Stocks lost -18.1% and Bonds dropped -13.0%, testing investors who relied solely on bonds for safety.'\n",
+    "es": "                desc: 'La Fed subió los tipos de interés agresivamente para combatir la inflación. ¡La peor caída simultánea en acciones y bonos en 50 años!',\n                impact: 'Las acciones cayeron -18.1% y los Bonos cayeron -13.0%, poniendo a prueba a inversionistas que dependían solo de bonos como protección.'\n",
+    "pt": "                desc: 'O Fed elevou os juros agressivamente para combater a inflação. Pior queda simultânea em ações e títulos em 50 anos!',\n                impact: 'Ações caíram -18.1% e Títulos caíram -13.0%, testando investidores que dependiam apenas de títulos como proteção.'\n"
+  },
+  "fontSans22": {
+    "en": "            classic6040: { name: 'Classic (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0, color: '#2563eb' },\n",
+    "es": "            classic6040: { name: 'Clásico (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0, color: '#2563eb' },\n",
+    "pt": "            classic6040: { name: 'Clássico (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0, color: '#2563eb' },\n"
+  },
+  "fontSans23": {
+    "en": "            permanent: { name: 'Permanent (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25, color: '#d97706' },\n            aggressive: { name: '100% Stocks', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0, color: '#e11d48' },\n            conservative: { name: 'Conservative (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20, color: '#0d9488' }\n",
+    "es": "            permanent: { name: 'Permanente (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25, color: '#d97706' },\n            aggressive: { name: '100% Acciones', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0, color: '#e11d48' },\n            conservative: { name: 'Conservador (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20, color: '#0d9488' }\n",
+    "pt": "            permanent: { name: 'Permanente (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25, color: '#d97706' },\n            aggressive: { name: '100% Ações', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0, color: '#e11d48' },\n            conservative: { name: 'Conservador (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20, color: '#0d9488' }\n"
+  },
+  "fontSans24": {
+    "en": "                <div>• ${state.allocation.stocks}% Stocks</div>\n                <div>• ${state.allocation.bonds}% Bonds</div>\n                <div>• ${state.allocation.reits}% Real Estate/REITs</div>\n                <div>• ${state.allocation.gold}% Gold</div>\n                <div>• ${state.allocation.cash}% Cash</div>\n",
+    "es": "                <div>• ${state.allocation.stocks}% Acciones</div>\n                <div>• ${state.allocation.bonds}% Bonos</div>\n                <div>• ${state.allocation.reits}% Bienes Raíces/REITs</div>\n                <div>• ${state.allocation.gold}% Oro</div>\n                <div>• ${state.allocation.cash}% Efectivo</div>\n",
+    "pt": "                <div>• ${state.allocation.stocks}% Ações</div>\n                <div>• ${state.allocation.bonds}% Títulos</div>\n                <div>• ${state.allocation.reits}% Imóveis/REITs</div>\n                <div>• ${state.allocation.gold}% Ouro</div>\n                <div>• ${state.allocation.cash}% Caixa</div>\n"
+  },
+  "fontSans25": {
+    "en": "                    note.textContent = 'The chart could not be drawn. Every figure it would show is also listed as text on this page.';\n",
+    "es": "                    note.textContent = 'No se pudo dibujar el gráfico. Todas las cifras que mostraría también aparecen como texto en esta página.';\n",
+    "pt": "                    note.textContent = 'Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página.';\n"
+  },
+  "fontSans26": {
+    "en": "                            label: '🟢 Your Custom Portfolio',\n",
+    "es": "                            label: '🟢 Tu Portafolio Personalizado',\n",
+    "pt": "                            label: '🟢 Seu Portfólio Personalizado',\n"
+  },
+  "fontSans27": {
+    "en": "                            label: '🔵 Classic 60/40',\n",
+    "es": "                            label: '🔵 Clásico 60/40',\n",
+    "pt": "                            label: '🔵 Clássico 60/40',\n"
+  },
+  "fontSans28": {
+    "en": "                            label: '🟠 Permanent (Browne)',\n",
+    "es": "                            label: '🟠 Permanente (Browne)',\n",
+    "pt": "                            label: '🟠 Permanente (Browne)',\n"
+  },
+  "fontSans29": {
+    "en": "                            label: '🔴 100% Stocks (Aggressive)',\n",
+    "es": "                            label: '🔴 100% Acciones (Agresivo)',\n",
+    "pt": "                            label: '🔴 100% Ações (Agressivo)',\n"
+  },
+  "fontSans30": {
+    "en": "                            label: '🟢 Conservative (20/80)',\n",
+    "es": "                            label: '🟢 Conservador (20/80)',\n",
+    "pt": "                            label: '🟢 Conservador (20/80)',\n"
+  },
+  "fontSans31": {
+    "en": "            document.getElementById('currentYearDisplay').innerText = `YEAR: ${currentYear}`;\n",
+    "es": "            document.getElementById('currentYearDisplay').innerText = `AÑO: ${currentYear}`;\n",
+    "pt": "            document.getElementById('currentYearDisplay').innerText = `ANO: ${currentYear}`;\n"
+  },
+  "fontSans32": {
+    "en": "                        <span class=\"font-mono text-[10px] text-amber-800 font-bold\">VIEW EVENT</span>\n",
+    "es": "                        <span class=\"font-mono text-[10px] text-amber-800 font-bold\">VER EVENTO</span>\n",
+    "pt": "                        <span class=\"font-mono text-[10px] text-amber-800 font-bold\">VER EVENTO</span>\n"
+  },
+  "fontSans33": {
+    "en": "            document.getElementById('playPauseText').innerText = 'Pause Journey';\n",
+    "es": "            document.getElementById('playPauseText').innerText = 'Pausar Viaje';\n",
+    "pt": "            document.getElementById('playPauseText').innerText = 'Pausar Viagem';\n"
+  },
+  "fontSans34": {
+    "en": "            document.getElementById('playPauseText').innerText = 'Start Journey';\n",
+    "es": "            document.getElementById('playPauseText').innerText = 'Iniciar Viaje';\n",
+    "pt": "            document.getElementById('playPauseText').innerText = 'Iniciar Viagem';\n"
+  },
+  "fontSans35": {
+    "en": "            document.getElementById('eventModalYear').innerText = `HISTORICAL EVENT (${year})`;\n",
+    "es": "            document.getElementById('eventModalYear').innerText = `EVENTO HISTÓRICO (${year})`;\n",
+    "pt": "            document.getElementById('eventModalYear').innerText = `EVENTO HISTÓRICO (${year})`;\n"
+  },
+  "langSwitchAriaLabel": {
+    "en": "Language",
+    "es": "Idioma",
+    "pt": "Idioma"
+  },
+  "langLinkTagEs": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/market-time-machine.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/market-time-machine.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\" aria-current=\"page\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/market-time-machine.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\">"
+  },
+  "langLinkTagEn": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/market-time-machine.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\" aria-current=\"page\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/market-time-machine.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/market-time-machine.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\">"
+  },
+  "langLinkTagPt": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/market-time-machine.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/market-time-machine.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/market-time-machine.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\" aria-current=\"page\">"
+  },
+  "simulatorFooterNote": {
+    "en": "&copy; 2026 Compounding Journey. For educational purposes only. Not formal financial advice.",
+    "es": "&copy; 2026 Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero.",
+    "pt": "&copy; 2026 Compounding Journey. Apenas para fins educativos. Não constitui aconselhamento financeiro."
+  },
+  "a11yCloseDialog": {
+    "en": "Close",
+    "es": "Cerrar",
+    "pt": "Fechar"
+  }
+}

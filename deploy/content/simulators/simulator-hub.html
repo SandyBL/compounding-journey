@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="{{lang.code}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <meta name="description" content="{{metaContent}}">
+    <link rel="canonical" href="https://compoundingjourney.com{{lang.dir}}simulator.html">
+    <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulator.html">
+    <link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulator.html">
+    <link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulator.html">
+    <link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulator.html">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Compounding Journey">
+    <meta property="og:locale" content="{{lang.locale}}">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{metaContent}}">
+    <meta property="og:url" content="https://compoundingjourney.com{{lang.dir}}simulator.html">
+    <meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{metaContent}}">
+    <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+{{script}}      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@id": "https://compoundingjourney.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compoundingjourney.com{{lang.dir}}simulator.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+{{script3}}        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+{{script4}}        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="icon" type="image/png" sizes="64x64" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=64&amp;h=64&amp;fit=cover&amp;fm=png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=180&amp;h=180&amp;fit=cover&amp;fm=png">
+{{head}}    <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
+    <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/sim-simulator-hub.css?v=source">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=source">
+    
+    <style>
+        body {
+            background-color: #f8f4ed;
+            color: #2c1d11;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(44, 29, 17, 0.08);
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/css/header.css?v=source">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
+
+    <a class="skip-link" href="#main">{{skipLink}}</a>
+
+{{minHScreen}}    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+        <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+            <a href="{{lang.home}}#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="{{headerBrandAriaLabel}}">
+                <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
+                    <img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="header-brand-copy">
+                    <span class="header-brand-name">Compounding Journey</span>
+                    <span class="header-brand-tagline">{{headerBrandTagline}}</span>
+                </div>
+            </a>
+
+{{headerShell}}            <div class="header-actions flex items-center gap-2 shrink-0">
+                <!-- The three translations, as flag links, in the same place and the
+                     same order as the main site header. Real links, not buttons:
+                     each language is a distinct pre-rendered document, so switching
+                     is a navigation, and the alternates stay crawlable. The
+                     generator writes aria-current="page" onto the current one. -->
+                <nav class="simulator-language-switcher" aria-label="{{langSwitchAriaLabel}}">
+                    {{langLinkTagEn}}
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#fff"/>
+                            <path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0z"/>
+                            <path fill="#B22234" d="M0 19h28v1H0z"/>
+                            <rect width="12" height="11" fill="#3C3B6E"/>
+                            <path fill="#fff" d="M2 2h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 4h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1zM2 6h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 8h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1z"/>
+                        </svg>
+                    </a>
+                    {{langLinkTagEs}}
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#AA151B"/>
+                            <rect y="5" width="28" height="10" fill="#F1BF00"/>
+                            <rect x="7" y="8" width="2" height="5" rx="0.5" fill="#AA151B" opacity="0.85"/>
+                        </svg>
+                    </a>
+                    {{langLinkTagPt}}
+                        <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="28" height="20" fill="#009B3A"/>
+                            <path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/>
+                            <circle cx="14" cy="10" r="4" fill="#002776"/>
+                            <path d="M10.5 9.3c2.3-.7 4.8-.3 7 1" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        </svg>
+                    </a>
+                </nav>
+                <a href="{{lang.home}}#simulador" class="site-return-link" aria-label="{{siteReturnLinkAriaLabel}}">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    <span class="site-return-link__text">{{siteReturnLinkText}}</span>
+                </a>
+                <button id="resetBtn" onclick="resetGame()" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-cream-300 text-espresso-800 hover:bg-cream-200 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                    <span>{{resetbtn}}</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+{{minHScreen2}}    <section class="bg-espresso-950 text-cream-50 py-3 px-4 shadow-md sticky top-20 z-40">
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 text-center">
+            
+{{maxW6xl}}            <div class="bg-espresso-900/80 rounded-xl p-2 border border-espresso-800 flex flex-col justify-center">
+                <span class="text-[10px] sm:text-xs text-cream-300 uppercase tracking-wider font-semibold">{{text10px}}</span>
+                <span id="netWorthDisplay" class="text-base sm:text-xl font-extrabold text-emerald-400 font-mono mt-0.5">{{networthdisplay}}</span>
+            </div>
+
+{{maxW6xl2}}            <div class="bg-espresso-900/80 rounded-xl p-2 border border-espresso-800 flex flex-col justify-center">
+                <span class="text-[10px] sm:text-xs text-cream-300 uppercase tracking-wider font-semibold">{{text10px2}}</span>
+                <span id="cashFlowDisplay" class="text-base sm:text-xl font-extrabold text-gold-500 font-mono mt-0.5">{{cashflowdisplay}}</span>
+            </div>
+
+{{maxW6xl3}}            <div class="bg-espresso-900/80 rounded-xl p-2 border border-espresso-800 flex flex-col justify-center">
+                <span class="text-[10px] sm:text-xs text-cream-300 uppercase tracking-wider font-semibold">{{text10px3}}</span>
+                <span id="powerDisplay" class="text-base sm:text-xl font-extrabold text-sky-400 font-mono mt-0.5">50%</span>
+            </div>
+
+{{maxW6xl4}}            <div class="bg-espresso-900/80 rounded-xl p-2 border border-espresso-800 flex flex-col justify-center">
+                <span class="text-[10px] sm:text-xs text-cream-300 uppercase tracking-wider font-semibold">{{text10px4}}</span>
+                <span id="literacyDisplay" class="text-base sm:text-xl font-extrabold text-amber-300 font-mono mt-0.5">50%</span>
+            </div>
+
+        </div>
+    </section>
+
+{{minHScreen3}}    <main id="main" tabindex="-1" class="max-w-4xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
+
+        <!-- PAGE HEADING -->
+        <div class="mb-8">
+            <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-forest-700 mb-2">{{textXs}}</p>
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-espresso-950 leading-tight">{{text2xl}}</h1>
+            <p class="mt-3 text-sm sm:text-base text-espresso-800/85 leading-relaxed max-w-2xl">{{mt3}}— {{mt32}}— {{mt33}}a {{mt34}}</p>
+            <!-- The hub described itself but never linked down to the four
+                 standalone simulators, leaving them orphaned in the crawl. -->
+            <nav aria-label="{{mt4AriaLabel}}" class="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
+                <span class="text-espresso-800/60">{{textEspresso80060}}</span>
+                <a href="{{lang.dir}}simulators/freedom-calendar.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px25}}</a>
+                <a href="{{lang.dir}}simulators/market-time-machine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px252}}</a>
+                <a href="{{lang.dir}}simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px253}}</a>
+                <a href="{{lang.dir}}simulators/monte-carlo-fire.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">Monte Carlo FIRE</a>
+            </nav>
+        </div>
+        
+{{main}}        <div class="mb-6">
+            <div class="flex items-center justify-between mb-2">
+                <span id="scenarioProgressText" class="text-xs font-bold uppercase tracking-wider text-forest-800">{{scenarioprogresstext}}</span>
+                <span id="scenarioCategoryBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-forest-800/10 text-forest-800">{{scenariocategorybadge}}</span>
+            </div>
+            <div id="stepperDotsContainer" class="flex gap-1.5 w-full"></div>
+        </div>
+
+{{main2}}        <div id="scenarioCard" class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow transition-all duration-300">
+            <h2 id="scenarioTitle" class="text-xl sm:text-2xl font-bold text-espresso-900 mb-3 font-serif">{{scenariotitle}}</h2>
+            <p id="scenarioDescription" class="text-base sm:text-lg text-espresso-800/90 mb-6 leading-relaxed"></p>
+
+{{scenariocard}}            <div id="optionsContainer" class="space-y-4">
+{{optionscontainer}}            </div>
+        </div>
+
+{{main3}}        <div id="debriefCard" class="hidden bg-cream-50 rounded-2xl p-6 sm:p-8 border-2 border-forest-600 custom-shadow animate-fade-in">
+            <div class="flex items-center gap-2 text-forest-800 font-bold text-lg mb-2">
+                <i class="fa-solid fa-compass text-gold-600" aria-hidden="true"></i>
+                <span>{{flex}}</span>
+            </div>
+            
+            <div id="debriefImpacts" class="flex flex-wrap gap-2 my-3"></div>
+
+            <p id="debriefLesson" class="text-base text-espresso-900 leading-relaxed bg-cream-100 p-4 rounded-xl border border-cream-300 mb-6"></p>
+
+            <button onclick="nextScenario()" class="w-full sm:w-auto px-8 py-3.5 bg-forest-800 hover:bg-forest-900 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                <span>{{wFull}}</span>
+                <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+            </button>
+        </div>
+
+{{main4}}        <div id="resultsScreen" class="hidden space-y-8">
+            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-600">{{textXs2}}</span>
+                <h2 id="archetypeTitle" class="text-2xl sm:text-4xl font-extrabold text-forest-800 font-serif my-2">{{archetypetitle}}</h2>
+                <p id="archetypeDesc" class="text-espresso-800 text-base sm:text-lg max-w-2xl mx-auto mb-6 leading-relaxed"></p>
+
+{{bgCream50}}                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto my-6 text-left">
+                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300">
+                        <span class="text-xs text-espresso-800/70 font-medium block">{{textXs3}}</span>
+                        <span id="finalNetWorth" class="text-xl font-bold text-forest-800 font-mono">--</span>
+                    </div>
+                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300">
+                        <span class="text-xs text-espresso-800/70 font-medium block">{{textXs4}}</span>
+                        <span id="finalCashFlow" class="text-xl font-bold text-gold-600 font-mono">--</span>
+                    </div>
+                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300">
+                        <span class="text-xs text-espresso-800/70 font-medium block">{{textXs5}}</span>
+                        <span id="finalPower" class="text-xl font-bold text-sky-700 font-mono">--</span>
+                    </div>
+                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300">
+                        <span class="text-xs text-espresso-800/70 font-medium block">{{text10px4}}</span>
+                        <span id="finalLiteracy" class="text-xl font-bold text-amber-600 font-mono">--</span>
+                    </div>
+                </div>
+            </div>
+
+{{resultsscreen}}            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
+                <h3 class="text-xl font-bold text-espresso-900 mb-4 font-serif flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-forest-800" aria-hidden="true"></i>{{textXl}}                </h3>
+                <div id="categoryBreakdown" class="space-y-4"></div>
+            </div>
+
+{{resultsscreen2}}            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
+                <h3 class="text-xl font-bold text-espresso-900 mb-4 font-serif">{{textXl2}}</h3>
+                <div class="h-64 sm:h-80 w-full">
+                    <canvas id="trajectoryChart" role="img" aria-label="{{trajectorychartAriaLabel}}"></canvas>
+                </div>
+            </div>
+
+{{resultsscreen3}}            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
+                <h3 class="text-xl font-bold text-espresso-900 mb-2 font-serif">{{textXl3}}</h3>
+                <p class="text-sm text-espresso-800/80 mb-4">{{textSm}}</p>
+                
+                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                    <input type="text" id="playerNameInput" placeholder="{{playernameinputPlaceholder}}" aria-label="{{playernameinputPlaceholder}}" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
+                    <button onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors">
+{{px6}}                    </button>
+                </div>
+
+                <div id="leaderboardList" class="divide-y divide-cream-200"></div>
+            </div>
+
+{{resultsscreen4}}            <div class="bg-gradient-to-br from-forest-800 to-forest-900 text-cream-50 rounded-2xl p-8 custom-shadow text-center">
+                <div class="w-16 h-16 mx-auto mb-4">
+                    <svg viewBox="0 0 200 200" class="w-full h-full">
+                        <circle cx="100" cy="65" r="50" fill="#2e6f40"/>
+                        <path d="M92 180 L92 120 Q80 100 65 95 Q85 85 96 60 Q104 60 115 85 Q135 100 108 120 L108 180 Z" fill="#ffffff"/>
+                        <circle cx="100" cy="45" r="35" fill="#388e3c"/>
+                        <circle cx="75" cy="55" r="7" fill="#d4a338"/>
+                        <circle cx="125" cy="55" r="7" fill="#d4a338"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-bold font-serif mb-3">{{text2xl2}}</h3>
+                <p class="text-cream-200 max-w-xl mx-auto mb-6 leading-relaxed">
+{{textCream200}}                </p>
+                <a href="https://compoundingjourney.com{{lang.home}}#assessment" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gold-600 hover:bg-gold-500 text-espresso-950 font-extrabold text-base rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                    <span>{{inlineFlex}}</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+{{minHScreen4}}    <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
+        <p>© <script>document.write(new Date().getFullYear())</script>{{bgCream100}}</p>
+    </footer>
+
+    <script>
+{{minHScreen5}}        function highlightNumbers(text) {
+            if (!text) return '';
+{{minHScreen6}}            return text.replace(pattern, '<span class="font-bold text-espresso-950 bg-amber-200/90 px-1.5 py-0.5 rounded font-mono text-[0.88em] border border-amber-300/80">$1</span>');
+        }
+
+{{minHScreen7}}        const INITIAL_STATE = {
+            netWorth: 10000,
+            cashFlow: 500,
+{{minHScreen8}}        };
+
+{{minHScreen9}}        const CATEGORIES = {
+{{minHScreen10}}        };
+
+        let currentState = { ...INITIAL_STATE };
+        let currentScenarioIndex = 0;
+        let decisionHistory = [];
+        let trajectoryData = [INITIAL_STATE.netWorth];
+
+{{minHScreen11}}        let categoryScores = {
+            [CATEGORIES.INVESTING]: { points: 0, max: 0 },
+            [CATEGORIES.DEBT]: { points: 0, max: 0 },
+            [CATEGORIES.SPENDING]: { points: 0, max: 0 },
+            [CATEGORIES.TAX]: { points: 0, max: 0 },
+            [CATEGORIES.RISK]: { points: 0, max: 0 }
+        };
+
+{{minHScreen12}}        const SCENARIOS = [
+            {
+                id: 1,
+                category: CATEGORIES.INVESTING,
+{{minHScreen13}}                optionA: {
+{{minHScreen14}}                    qualityScore: 10,
+                    impact: { netWorthDelta: 5000, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen15}}                },
+                optionB: {
+{{minHScreen16}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 5250, cashFlowDelta: 20, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen17}}                },
+                optionC: {
+{{minHScreen18}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -3000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+{{minHScreen19}}                }
+            },
+            {
+                id: 2,
+                category: CATEGORIES.INVESTING,
+{{minHScreen20}}                optionA: {
+{{minHScreen21}}                    qualityScore: 10,
+                    impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10, literacyDelta: -3.0, literacyDeltaText: "-3%" },
+{{minHScreen22}}                },
+                optionB: {
+{{minHScreen23}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen24}}                },
+                optionC: {
+{{minHScreen25}}                    qualityScore: 0,
+                    impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+{{minHScreen26}}                }
+            },
+            {
+                id: 3,
+                category: CATEGORIES.TAX,
+{{minHScreen27}}                optionA: {
+{{minHScreen28}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 3500, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen29}}                },
+                optionB: {
+{{minHScreen30}}                    qualityScore: 10,
+                    impact: { netWorthDelta: -1500, cashFlowDelta: -50, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen31}}                },
+                optionC: {
+{{minHScreen32}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -4000, cashFlowDelta: -100, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+{{minHScreen33}}                }
+            },
+            {
+                id: 4,
+                category: CATEGORIES.RISK,
+{{minHScreen34}}                optionA: {
+{{minHScreen35}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 4000, cashFlowDelta: -20, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen36}}                },
+                optionB: {
+{{minHScreen37}}                    qualityScore: 10,
+                    impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: 5, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen38}}                },
+                optionC: {
+{{minHScreen39}}                    qualityScore: 0,
+                    impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -20, literacyDelta: -10.0, literacyDeltaText: "-10%" },
+{{minHScreen40}}                }
+            },
+            {
+                id: 5,
+                category: CATEGORIES.DEBT,
+{{minHScreen41}}                optionA: {
+{{minHScreen42}}                    qualityScore: 15,
+                    impact: { netWorthDelta: 1000, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 1.0, literacyDeltaText: "+1%" },
+{{minHScreen43}}                },
+                optionB: {
+{{minHScreen44}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 3500, cashFlowDelta: 40, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen45}}                },
+                optionC: {
+{{minHScreen46}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -5000, cashFlowDelta: -250, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+{{minHScreen47}}                }
+            },
+            {
+                id: 6,
+                category: CATEGORIES.SPENDING,
+{{minHScreen48}}                optionA: {
+{{minHScreen49}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 2000, cashFlowDelta: 150, happinessDelta: 25, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen50}}                },
+                optionB: {
+{{minHScreen51}}                    qualityScore: 5,
+                    impact: { netWorthDelta: -1500, cashFlowDelta: -100, happinessDelta: 5, literacyDelta: -3.0, literacyDeltaText: "-3%" },
+{{minHScreen52}}                },
+                optionC: {
+{{minHScreen53}}                    qualityScore: 10,
+                    impact: { netWorthDelta: 3000, cashFlowDelta: 300, happinessDelta: -20, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen54}}                }
+            },
+            {
+                id: 7,
+                category: CATEGORIES.SPENDING,
+{{minHScreen55}}                optionA: {
+{{minHScreen56}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 1500, cashFlowDelta: 0, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen57}}                },
+                optionB: {
+{{minHScreen58}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -2000, cashFlowDelta: -85, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
+{{minHScreen59}}                },
+                optionC: {
+{{minHScreen60}}                    qualityScore: 25,
+                    impact: { netWorthDelta: 1100, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 2.5, literacyDeltaText: "+2.5%" },
+{{minHScreen61}}                }
+            },
+            {
+                id: 8,
+                category: CATEGORIES.TAX,
+{{minHScreen62}}                optionA: {
+{{minHScreen63}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 4500, cashFlowDelta: 50, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen64}}                },
+                optionB: {
+{{minHScreen65}}                    qualityScore: 10,
+                    impact: { netWorthDelta: 1000, cashFlowDelta: 0, happinessDelta: 5, literacyDelta: -3.0, literacyDeltaText: "-3%" },
+{{minHScreen66}}                },
+                optionC: {
+{{minHScreen67}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -1000, cashFlowDelta: -100, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+{{minHScreen68}}                }
+            },
+            {
+                id: 9,
+                category: CATEGORIES.DEBT,
+{{minHScreen69}}                optionA: {
+{{minHScreen70}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 3000, cashFlowDelta: 120, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen71}}                },
+                optionB: {
+{{minHScreen72}}                    qualityScore: 5,
+                    impact: { netWorthDelta: -2000, cashFlowDelta: -80, happinessDelta: -10, literacyDelta: -5.0, literacyDeltaText: "-5%" },
+{{minHScreen73}}                },
+                optionC: {
+{{minHScreen74}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -5000, cashFlowDelta: -300, happinessDelta: -25, literacyDelta: -10.0, literacyDeltaText: "-10%" },
+{{minHScreen75}}                }
+            },
+            {
+                id: 10,
+                category: CATEGORIES.SPENDING,
+{{minHScreen76}}                optionA: {
+{{minHScreen77}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 3500, cashFlowDelta: 100, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen78}}                },
+                optionB: {
+{{minHScreen79}}                    qualityScore: 5,
+                    impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
+{{minHScreen80}}                },
+                optionC: {
+{{minHScreen81}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -7000, cashFlowDelta: -600, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+{{minHScreen82}}                }
+            },
+            {
+                id: 11,
+                category: CATEGORIES.INVESTING,
+{{minHScreen83}}                optionA: {
+{{minHScreen84}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 6000, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen85}}                },
+                optionB: {
+{{minHScreen86}}                    qualityScore: 5,
+                    impact: { netWorthDelta: -3000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -6.0, literacyDeltaText: "-6%" },
+{{minHScreen87}}                },
+                optionC: {
+{{minHScreen88}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -1500, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -7.0, literacyDeltaText: "-7%" },
+{{minHScreen89}}                }
+            },
+            {
+                id: 12,
+                category: CATEGORIES.INVESTING,
+{{minHScreen90}}                optionA: {
+{{minHScreen91}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 4500, cashFlowDelta: 30, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen92}}                },
+                optionB: {
+{{minHScreen93}}                    qualityScore: 10,
+                    impact: { netWorthDelta: -2000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -5.0, literacyDeltaText: "-5%" },
+{{minHScreen94}}                },
+                optionC: {
+{{minHScreen95}}                    qualityScore: 15,
+                    impact: { netWorthDelta: 1200, cashFlowDelta: 15, happinessDelta: 0, literacyDelta: -1.0, literacyDeltaText: "-1%" },
+{{minHScreen96}}                }
+            },
+            {
+                id: 13,
+                category: CATEGORIES.INVESTING,
+{{minHScreen97}}                optionA: {
+{{minHScreen98}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 5000, cashFlowDelta: 25, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen99}}                },
+                optionB: {
+{{minHScreen100}}                    qualityScore: 10,
+                    impact: { netWorthDelta: -2500, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
+{{minHScreen101}}                },
+                optionC: {
+{{minHScreen102}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -5000, cashFlowDelta: 0, happinessDelta: -20, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+{{minHScreen103}}                }
+            },
+            {
+                id: 14,
+                category: CATEGORIES.RISK,
+{{minHScreen104}}                optionA: {
+{{minHScreen105}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 3000, cashFlowDelta: 20, happinessDelta: 25, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen106}}                },
+                optionB: {
+{{minHScreen107}}                    qualityScore: 10,
+                    impact: { netWorthDelta: -1500, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
+{{minHScreen108}}                },
+                optionC: {
+{{minHScreen109}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -3500, cashFlowDelta: -150, happinessDelta: -20, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+{{minHScreen110}}                }
+            },
+            {
+                id: 15,
+                category: CATEGORIES.SPENDING,
+{{minHScreen111}}                optionA: {
+{{minHScreen112}}                    qualityScore: 30,
+                    impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+{{minHScreen113}}                },
+                optionB: {
+{{minHScreen114}}                    qualityScore: 10,
+                    impact: { netWorthDelta: 500, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen115}}                },
+                optionC: {
+{{minHScreen116}}                    qualityScore: 0,
+                    impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
+{{minHScreen117}}                }
+            }
+        ];
+
+{{minHScreen118}}        function initStepper() {
+            const container = document.getElementById('stepperDotsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            SCENARIOS.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.id = `stepDot_${idx}`;
+                dot.className = 'h-2 flex-1 rounded-full bg-cream-300 transition-all duration-300';
+                container.appendChild(dot);
+            });
+        }
+
+{{minHScreen119}}        function updateStepperDots() {
+            SCENARIOS.forEach((_, idx) => {
+                const dot = document.getElementById(`stepDot_${idx}`);
+                if (!dot) return;
+                if (idx < currentScenarioIndex) {
+                    dot.className = 'h-2 flex-1 rounded-full bg-forest-800 transition-all duration-300';
+                } else if (idx === currentScenarioIndex) {
+                    dot.className = 'h-2 flex-1 rounded-full bg-gold-500 ring-2 ring-gold-500/30 transition-all duration-300';
+                } else {
+                    dot.className = 'h-2 flex-1 rounded-full bg-cream-300 transition-all duration-300';
+                }
+            });
+        }
+
+{{minHScreen120}}        function renderCurrentScenario() {
+            if (currentScenarioIndex >= SCENARIOS.length) {
+                showFinalResults();
+                return;
+            }
+
+            const current = SCENARIOS[currentScenarioIndex];
+
+{{minHScreen121}}            document.getElementById('scenarioCategoryBadge').innerText = current.category;
+
+{{minHScreen122}}            document.getElementById('scenarioTitle').innerHTML = current.title;
+            document.getElementById('scenarioDescription').innerHTML = highlightNumbers(current.description);
+
+{{minHScreen123}}            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+
+            const options = [
+{{minHScreen124}}            ];
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left p-5 bg-cream-100 hover:bg-cream-200 border border-cream-300 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-forest-800 group custom-shadow hover:-translate-y-0.5';
+                btn.onclick = () => selectOption(opt.data, current);
+
+                btn.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <span class="px-2.5 py-1 bg-forest-800 text-white font-extrabold text-xs rounded-md uppercase tracking-wider group-hover:bg-forest-900 flex-shrink-0 mt-0.5">
+                            ${opt.label}
+                        </span>
+                        <div>
+                            <h3 class="text-base sm:text-lg font-bold text-espresso-950 group-hover:text-forest-800 mb-1">
+                                ${opt.data.title}
+                            </h3>
+                            <p class="text-sm text-espresso-800/80 leading-relaxed">
+                                ${highlightNumbers(opt.data.desc)}
+                            </p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(btn);
+            });
+
+{{minHScreen125}}            document.getElementById('scenarioCard').classList.remove('hidden');
+            document.getElementById('debriefCard').classList.add('hidden');
+
+            updateStepperDots();
+        }
+
+{{minHScreen126}}        function selectOption(option, scenario) {
+{{minHScreen127}}            currentState.netWorth += option.impact.netWorthDelta;
+            currentState.cashFlow += option.impact.cashFlowDelta;
+            
+{{minHScreen128}}            currentState.happiness = Math.max(0, Math.min(100, currentState.happiness + (option.impact.happinessDelta || 0)));
+
+{{minHScreen129}}            currentState.literacyScore = Math.min(100, currentState.literacyScore + option.impact.literacyDelta);
+
+{{minHScreen130}}            if (categoryScores[scenario.category]) {
+                categoryScores[scenario.category].points += option.qualityScore;
+                categoryScores[scenario.category].max += 30;
+            }
+
+{{minHScreen131}}            trajectoryData.push(currentState.netWorth);
+            decisionHistory.push({
+                scenarioId: scenario.id,
+                category: scenario.category,
+                selectedTitle: option.title,
+                qualityScore: option.qualityScore
+            });
+
+{{minHScreen132}}            updateMetricsDisplay();
+
+{{minHScreen133}}            showDebrief(option);
+        }
+
+{{minHScreen134}}        function updateMetricsDisplay() {
+{{minHScreen135}}            document.getElementById('powerDisplay').innerText = `${Math.round(currentState.happiness)}%`;
+            document.getElementById('literacyDisplay').innerText = `${Math.round(currentState.literacyScore)}%`;
+        }
+
+{{minHScreen136}}        function showDebrief(option) {
+            document.getElementById('scenarioCard').classList.add('hidden');
+            const debriefCard = document.getElementById('debriefCard');
+            debriefCard.classList.remove('hidden');
+
+            const hDelta = option.impact.happinessDelta || 0;
+
+{{minHScreen137}}            const impactsDiv = document.getElementById('debriefImpacts');
+            impactsDiv.innerHTML = `
+                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${option.impact.netWorthDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+{{minHScreen138}}                </span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${option.impact.cashFlowDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+{{minHScreen139}}                </span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${hDelta >= 0 ? 'bg-sky-100 text-sky-800' : 'bg-rose-100 text-rose-800'}">
+{{minHScreen140}}                </span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono bg-amber-100 text-amber-900">
+{{minHScreen141}}                </span>
+            `;
+
+{{minHScreen142}}            document.getElementById('debriefLesson').innerHTML = highlightNumbers(option.lesson);
+        }
+
+{{minHScreen143}}        function nextScenario() {
+            currentScenarioIndex++;
+            renderCurrentScenario();
+        }
+
+{{minHScreen144}}        function showFinalResults() {
+            document.getElementById('scenarioCard').classList.add('hidden');
+            document.getElementById('debriefCard').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.remove('hidden');
+
+{{minHScreen145}}            document.getElementById('finalPower').innerText = `${Math.round(currentState.happiness)}%`;
+            document.getElementById('finalLiteracy').innerText = `${Math.round(currentState.literacyScore)}%`;
+
+{{minHScreen146}}            const finalIQ = currentState.literacyScore;
+            let archetype = "";
+            let archetypeDescription = "";
+
+            if (finalIQ >= 80) {
+{{minHScreen147}}            } else if (finalIQ >= 50) {
+{{minHScreen148}}            } else if (finalIQ >= 20) {
+{{minHScreen149}}            } else {
+{{minHScreen150}}            }
+
+            document.getElementById('archetypeTitle').innerText = archetype;
+            document.getElementById('archetypeDesc').innerText = archetypeDescription;
+
+            // The scenario card the user was standing on is now hidden. Move focus to the
+            // results heading so the outcome is announced and the next Tab starts here.
+            const resultsHeading = document.getElementById('archetypeTitle');
+            resultsHeading.setAttribute('tabindex', '-1');
+            resultsHeading.focus({ preventScroll: true });
+
+{{minHScreen151}}            renderCategoryBreakdown();
+
+{{minHScreen152}}            renderTrajectoryChart();
+
+{{minHScreen153}}            renderLeaderboard();
+        }
+
+{{minHScreen154}}        function renderCategoryBreakdown() {
+            const container = document.getElementById('categoryBreakdown');
+            container.innerHTML = '';
+
+            for (const [catName, score] of Object.entries(categoryScores)) {
+                const pct = score.max > 0 ? Math.round((score.points / score.max) * 100) : 0;
+                let statusColor = "bg-emerald-600";
+{{minHScreen155}}
+                if (pct < 50) {
+                    statusColor = "bg-rose-600";
+{{minHScreen156}}                } else if (pct < 75) {
+                    statusColor = "bg-amber-500";
+{{minHScreen157}}                }
+
+                const item = document.createElement('div');
+                item.className = 'bg-cream-100 p-4 rounded-xl border border-cream-300';
+                item.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-espresso-900 text-sm sm:text-base">${catName}</span>
+                        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full text-white ${statusColor}">
+                            ${statusText} (${pct}%)
+                        </span>
+                    </div>
+                    <div class="w-full bg-cream-300 h-2.5 rounded-full overflow-hidden">
+                        <div class="${statusColor} h-2.5 rounded-full transition-all duration-500" style="width: ${Math.max(0, pct)}%"></div>
+                    </div>
+                `;
+                container.appendChild(item);
+            }
+        }
+
+{{minHScreen158}}        function renderTrajectoryChart() {
+            const ctx = document.getElementById('trajectoryChart');
+            if (!ctx) return;
+
+            // chart-4.4.1.umd.min.js is deferred and can fail to load. Every value
+            // the chart plots is already on the page as text, so the graceful path
+            // is to say so and stop; throwing here would take the rest of the
+            // render down with it.
+            if (typeof Chart === 'undefined') {
+                if (!ctx.dataset.fallbackShown) {
+                    ctx.dataset.fallbackShown = 'true';
+                    // The canvas is a blank box once the chart cannot draw, and its container
+                    // is height-constrained; hiding it lets the note take the same space.
+                    ctx.hidden = true;
+                    const note = document.createElement('p');
+                    note.className = 'chart-unavailable';
+{{minHScreen159}}                    ctx.insertAdjacentElement('afterend', note);
+                }
+                return;
+            }
+
+{{minHScreen160}}
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+{{minHScreen161}}                        data: trajectoryData,
+                        borderColor: '#2e6f40',
+                        backgroundColor: 'rgba(46, 111, 64, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.3,
+                        pointBackgroundColor: '#c3922e'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+{{minHScreen162}}                            }
+                        }
+                    }
+                }
+            });
+        }
+
+{{minHScreen163}}        function getLeaderboardData() {
+{{minHScreen164}}            if (stored) {
+                try { return JSON.parse(stored); } catch (e) {}
+            }
+            return [
+{{minHScreen165}}            ];
+        }
+
+        function renderLeaderboard() {
+            const list = getLeaderboardData();
+            const container = document.getElementById('leaderboardList');
+            if (!container) return;
+
+            list.sort((a, b) => b.iq - a.iq || b.netWorth - a.netWorth);
+
+            container.innerHTML = '';
+            list.slice(0, 5).forEach((entry, idx) => {
+                const row = document.createElement('div');
+                row.className = 'py-3 flex items-center justify-between text-sm';
+                row.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-6 h-6 flex items-center justify-center font-bold font-mono rounded-full bg-cream-200 text-espresso-900 text-xs">
+                            #${idx + 1}
+                        </span>
+                        <span class="font-bold text-espresso-950">${entry.name}</span>
+                    </div>
+                    <div class="flex items-center gap-4 font-mono text-xs sm:text-sm">
+                        <span class="text-amber-700 font-bold">IQ: ${entry.iq}%</span>
+{{minHScreen166}}                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function saveScoreToLeaderboard() {
+            const input = document.getElementById('playerNameInput');
+            const name = input ? input.value.trim() : '';
+            if (!name) {
+{{minHScreen167}}                return;
+            }
+
+            const list = getLeaderboardData();
+            list.push({
+                name: name,
+                iq: Math.round(currentState.literacyScore),
+                netWorth: currentState.netWorth,
+{{minHScreen168}}            });
+
+{{minHScreen169}}            renderLeaderboard();
+            if (input) input.value = '';
+{{minHScreen170}}        }
+
+{{minHScreen171}}        function resetGame() {
+            currentState = { ...INITIAL_STATE };
+            currentScenarioIndex = 0;
+            decisionHistory = [];
+            trajectoryData = [INITIAL_STATE.netWorth];
+
+            categoryScores = {
+                [CATEGORIES.INVESTING]: { points: 0, max: 0 },
+                [CATEGORIES.DEBT]: { points: 0, max: 0 },
+                [CATEGORIES.SPENDING]: { points: 0, max: 0 },
+                [CATEGORIES.TAX]: { points: 0, max: 0 },
+                [CATEGORIES.RISK]: { points: 0, max: 0 }
+            };
+
+{{minHScreen172}}            document.getElementById('resultsScreen').classList.add('hidden');
+            document.getElementById('debriefCard').classList.add('hidden');
+            document.getElementById('scenarioCard').classList.remove('hidden');
+
+            updateMetricsDisplay();
+            initStepper();
+            renderCurrentScenario();
+        }
+
+{{minHScreen173}}        window.onload = function() {
+            updateMetricsDisplay();
+            initStepper();
+            renderCurrentScenario();
+        };
+    </script>
+</body>
+</html>

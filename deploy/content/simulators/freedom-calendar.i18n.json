@@ -1,0 +1,687 @@
+{
+  "title": {
+    "en": "Freedom Calendar: Financial Independence Timeline | Compounding Journey",
+    "es": "Calendario de la Libertad Financiera | Compounding Journey",
+    "pt": "Calendário da Liberdade Financeira | Compounding Journey"
+  },
+  "metaContent": {
+    "en": "Turn savings, investments, and lifestyle goals into a visual timeline showing when each stage of financial freedom may become achievable.",
+    "es": "Convierte tus ahorros, inversiones y objetivos de vida en una línea de tiempo visual que muestra cuándo podrías alcanzar cada nivel de libertad financiera.",
+    "pt": "Transforma poupanças, investimentos e objetivos de vida numa linha temporal visual que mostra quando cada nível de liberdade financeira pode ficar ao teu alcance."
+  },
+  "head": {
+    "en": "\n    ",
+    "es": "",
+    "pt": ""
+  },
+  "metaContent3": {
+    "en": "Freedom Calendar: Financial Independence Timeline",
+    "es": "Calendario de la Libertad Financiera",
+    "pt": "Calendário da Liberdade Financeira"
+  },
+  "metaContent4": {
+    "en": "Visualize when your savings and investments may unlock each stage of financial freedom.",
+    "es": "Visualiza cuándo tus ahorros e inversiones pueden desbloquear cada etapa de libertad financiera.",
+    "pt": "Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."
+  },
+  "script": {
+    "en": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Freedom Calendar\",\"url\":\"https://compoundingjourney.com/en/simulators/freedom-calendar.html\",\"description\":\"A ",
+    "es": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Calendario de la Libertad\",\"url\":\"https://compoundingjourney.com/es/simulators/freedom-calendar.html\",\"description\":\"Una línea de tiempo ",
+    "pt": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Calendário da Liberdade\",\"url\":\"https://compoundingjourney.com/pt/simulators/freedom-calendar.html\",\"description\":\"Uma linha temporal "
+  },
+  "script2": {
+    "en": "financial independence timeline based on savings, investments, and lifestyle goals.\",\"inLanguage\":\"en\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Any web browser\",\"browserRequirements\":\"Requires JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
+    "es": "de independencia financiera basada en ahorros, inversiones y objetivos de vida.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
+    "pt": "de independência financeira baseada em poupanças, investimentos e objetivos de vida.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
+  },
+  "skipLink": {
+    "en": "Skip to main content",
+    "es": "Saltar al contenido principal",
+    "pt": "Saltar para o conteúdo principal"
+  },
+  "headerBrandAriaLabel": {
+    "en": "Return to Compounding Journey",
+    "es": "Volver a Compounding Journey",
+    "pt": "Voltar ao Compounding Journey"
+  },
+  "headerBrandTagline": {
+    "en": "Your map to freedom",
+    "es": "Tu mapa hacia la libertad",
+    "pt": "O teu mapa para a liberdade"
+  },
+  "siteReturnLinkAriaLabel": {
+    "en": "Back to the website",
+    "es": "Volver al sitio web",
+    "pt": "Voltar ao site"
+  },
+  "siteReturnLinkText": {
+    "en": "Website",
+    "es": "Sitio web",
+    "pt": "Website"
+  },
+  "px4": {
+    "en": "Customize Income & Age Settings",
+    "es": "Personalizar Ingresos y Edad",
+    "pt": "Personalizar Renda e Idade"
+  },
+  "textXl": {
+    "en": "Freedom Calendar: Your Financial Independence Timeline",
+    "es": "Calendario de la Libertad Financiera",
+    "pt": "Calendário da Liberdade Financeira"
+  },
+  "mt15": {
+    "en": "Turn savings, investments, and lifestyle goals into a ",
+    "es": "Convierte tus ahorros, inversiones y objetivos de vida en una línea de tiempo ",
+    "pt": "Transforma poupanças, investimentos e objetivos de vida numa linha temporal "
+  },
+  "mt152": {
+    "en": "timeline showing when each stage of financial freedom may become achievable.",
+    "es": "que muestra cuándo podrías alcanzar cada nivel de libertad financiera.",
+    "pt": "que mostra quando cada nível de liberdade financeira pode ficar ao teu alcance."
+  },
+  "mt3AriaLabel": {
+    "en": "More simulators",
+    "es": "Más simuladores",
+    "pt": "Mais simuladores"
+  },
+  "textEspresso80060": {
+    "en": "More simulators:",
+    "es": "Más simuladores:",
+    "pt": "Mais simuladores:"
+  },
+  "px25": {
+    "en": "All simulators",
+    "es": "Todos los simuladores",
+    "pt": "Todos os simuladores"
+  },
+  "px252": {
+    "en": "Market Time Machine",
+    "es": "Máquina del Tiempo del Mercado",
+    "pt": "Máquina do Tempo do Mercado"
+  },
+  "px253": {
+    "en": "Passive Income Engine",
+    "es": "Motor de Ingresos Pasivos",
+    "pt": "Motor de Rendimento Passivo"
+  },
+  "textBase": {
+    "en": " Your Baseline Financial Profile\n",
+    "es": " Tu Perfil Financiero Base\n",
+    "pt": " Seu Perfil Financeiro Base\n"
+  },
+  "textXs": {
+    "en": " Close\n",
+    "es": " Cerrar\n",
+    "pt": " Fechar\n"
+  },
+  "block": {
+    "en": "Current Age",
+    "es": "Edad Actual",
+    "pt": "Idade Atual"
+  },
+  "block2": {
+    "en": "Annual Net Salary ($)",
+    "es": "Salario Anual Neto ($)",
+    "pt": "Salário Anual Líquido ($)"
+  },
+  "block3": {
+    "en": "Weekly Work Hours",
+    "es": "Horas Semanales de Trabajo",
+    "pt": "Horas Semanais de Trabalho"
+  },
+  "block4": {
+    "en": "Starting Invested Net Worth ($)",
+    "es": "Patrimonio Invertido ($)",
+    "pt": "Patrimônio Investido ($)"
+  },
+  "block5": {
+    "en": "Essential Monthly Bills ($)",
+    "es": "Gastos Básicos Mensuales ($)",
+    "pt": "Gastos Básicos Mensais ($)"
+  },
+  "textXs2": {
+    "en": "                * Note: Your net hourly wage is calculated at ",
+    "es": "                * Nota: Tu salario neto por hora se calcula en ",
+    "pt": "                * Nota: Seu salário líquido por hora é calculado em "
+  },
+  "textXs3": {
+    "en": ". Assumes a 7% real investment return rate and 4% safe withdrawal rate (FIRE 25x rule).\n",
+    "es": ". Asume una tasa de retorno real del 7% y una tasa de retiro seguro del 4% (Regla del 25x de FIRE).\n",
+    "pt": ". Considera uma taxa de retorno real de 7% e uma taxa de retirada segura de 4% (Regra dos 25x do FIRE).\n"
+  },
+  "textXs4": {
+    "en": "The Opportunity Cost Converter",
+    "es": "El Convertidor de Costo de Oportunidad",
+    "pt": "O Conversor de Custo de Oportunidade"
+  },
+  "text2xl": {
+    "en": "What Is Your Everyday Spending Really Costing You?",
+    "es": "¿Cuánto te está costando realmente tu gasto diario?",
+    "pt": "Quanto seu gasto diário está realmente custando?"
+  },
+  "textSm": {
+    "en": "When you buy a ",
+    "es": "Cuando compras un almuerzo de ",
+    "pt": "Quando você compra um almoço de "
+  },
+  "textSm2": {
+    "en": "lunch or lease a luxury car, you aren't just spending dollars—you are spending ",
+    "es": "o arrendas un auto de lujo, no solo estás gastando dólares: estás gastando ",
+    "pt": "ou faz o leasing de um carro de luxo, não está apenas gastando dólares: está gastando "
+  },
+  "textForest800": {
+    "en": "hours of your life worked",
+    "es": "horas de vida trabajadas",
+    "pt": "horas de vida trabalhadas"
+  },
+  "textSm3": {
+    "en": " and ",
+    "es": " y ",
+    "pt": " e "
+  },
+  "textForest8002": {
+    "en": "years of future freedom",
+    "es": "años de libertad futura",
+    "pt": "anos de liberdade futura"
+  },
+  "textSm4": {
+    "en": ". Trim or eliminate habits below to see your Freedom Target Date pull forward instantly!\n",
+    "es": ". ¡Reduce o elimina hábitos a continuación para adelantar tu Fecha Objetivo de Libertad al instante!\n",
+    "pt": ". Reduza ou elimine hábitos abaixo para antecipar sua Data Alvo de Liberdade instantaneamente!\n"
+  },
+  "px42": {
+    "en": "                    ⚡ Eliminate All Habits (100% Trim)\n",
+    "es": "                    ⚡ Eliminar Todos los Hábitos (Recorte 100%)\n",
+    "pt": "                    ⚡ Eliminar Todos os Hábitos (Corte de 100%)\n"
+  },
+  "px43": {
+    "en": "                    ⚖️ Moderate Trim (50% Off All)\n",
+    "es": "                    ⚖️ Recorte Moderado (50% en Todos)\n",
+    "pt": "                    ⚖️ Corte Moderado (50% em Todos)\n"
+  },
+  "px44": {
+    "en": "                    🔄 Reset All Habits to 100%\n",
+    "es": "                    🔄 Restablecer Todos los Hábitos al 100%\n",
+    "pt": "                    🔄 Redefinir Todos os Hábitos para 100%\n"
+  },
+  "textLg": {
+    "en": " Your Micro-Spending & Lifestyle Habits\n",
+    "es": " Tus Micro-Gastos y Hábitos de Estilo de Vida\n",
+    "pt": " Seus Micro-Gastos e Hábitos de Estilo de Vida\n"
+  },
+  "px3": {
+    "en": " Add Custom Expense\n",
+    "es": " Agregar Gasto Personalizado\n",
+    "pt": " Adicionar Gasto Personalizado\n"
+  },
+  "text11px": {
+    "en": "Your Target Financial Freedom Age",
+    "es": "Tu Edad Objetivo de Libertad Financiera",
+    "pt": "Sua Idade Alvo de Liberdade Financeira"
+  },
+  "text10px": {
+    "en": "Baseline",
+    "es": "Línea Base",
+    "pt": "Linha de Base"
+  },
+  "baselineagedisplay": {
+    "en": "Age 65",
+    "es": "Edad 65",
+    "pt": "Idade 65"
+  },
+  "text10px2": {
+    "en": "New Target",
+    "es": "Nuevo Objetivo",
+    "pt": "Novo Alvo"
+  },
+  "optimizedagedisplay": {
+    "en": "Age 56",
+    "es": "Edad 56",
+    "pt": "Idade 56"
+  },
+  "yearssavedbadge": {
+    "en": "Freedom Pulled Forward 9 YEARS!",
+    "es": "¡Libertad Adelantada 9 AÑOS!",
+    "pt": "¡Liberdade Antecipada em 9 ANOS!"
+  },
+  "flex": {
+    "en": "Start: ",
+    "es": "Inicio: ",
+    "pt": "Início: "
+  },
+  "flex2": {
+    "en": "Target: ",
+    "es": "Objetivo: ",
+    "pt": "Alvo: "
+  },
+  "flex3": {
+    "en": "Standard: ",
+    "es": "Estándar: ",
+    "pt": "Padrão: "
+  },
+  "text11px2": {
+    "en": "Summary of Recovered Freedom",
+    "es": "Resumen de Libertad Recuperada",
+    "pt": "Resumo de Liberdade Recuperada"
+  },
+  "text10px3": {
+    "en": "Monthly Cash Saved",
+    "es": "Ahorro Mensual",
+    "pt": "Economia Mensal"
+  },
+  "statmonthlysaved": {
+    "en": "+$850/mo",
+    "es": "+$850/mes",
+    "pt": "+$850/mês"
+  },
+  "text10px4": {
+    "en": "Annual Work Time Saved",
+    "es": "Días Trabajados Ahorrados",
+    "pt": "Dias Trabalhados Economizados"
+  },
+  "statworkdayssaved": {
+    "en": "35.4 Days",
+    "es": "35.4 Días/Año",
+    "pt": "35.4 Dias/Ano"
+  },
+  "text10px5": {
+    "en": "30-Yr Wealth Gained",
+    "es": "Patrimonio Ganado a 30 Años",
+    "pt": "Patrimônio Ganho em 30 Anos"
+  },
+  "text9px": {
+    "en": "7% Real Return",
+    "es": "Retorno Real 7%",
+    "pt": "Retorno Real de 7%"
+  },
+  "text11px3": {
+    "en": "Wealth Trajectory Comparison",
+    "es": "Comparación de Trayectoria de Riqueza",
+    "pt": "Comparação da Trajetória de Riqueza"
+  },
+  "text9px2": {
+    "en": "30-Year Horizon",
+    "es": "Horizonte de 30 Años",
+    "pt": "Horizonte de 30 Anos"
+  },
+  "wealthchartAriaLabel": {
+    "en": "Chart: wealth trajectory over a thirty-year horizon, comparing the current path with the adjusted one. The end values are stated as text in the summary cards.",
+    "es": "Gráfico: trayectoria del patrimonio en un horizonte de treinta años, comparando la ruta actual con la ajustada. Los valores finales aparecen como texto en las tarjetas de resumen.",
+    "pt": "Gráfico: trajetória do património num horizonte de trinta anos, comparando o percurso atual com o ajustado. Os valores finais aparecem como texto nos cartões de resumo."
+  },
+  "text2xl2": {
+    "en": "Ready to Build Your Custom Map to Freedom?",
+    "es": "¿Listo para Construir tu Mapa Personalizado hacia la Libertad?",
+    "pt": "Pronto para Construir seu Mapa Personalizado para a Liberdade?"
+  },
+  "textCream200": {
+    "en": "                Understand where you stand today, eliminate silent wealth leaks, and take your next financial steps with total clarity and confidence.\n",
+    "es": "                Comprende dónde estás parado hoy, elimina las fugas silenciosas de riqueza y da tus próximos pasos financieros con total claridad y confianza.\n",
+    "pt": "                Entenda onde você está hoje, elimine os vazamentos silenciosos de riqueza e dê seus próximos passos financeiros com total clareza e confiança.\n"
+  },
+  "inlineFlex": {
+    "en": "Receive Initial Guidance at Compounding Journey",
+    "es": "Recibe Orientación Inicial en Compounding Journey",
+    "pt": "Receba Orientação Inicial na Compounding Journey"
+  },
+  "bgCream100": {
+    "en": " Compounding Journey. For educational purposes only. Not formal financial advice.",
+    "es": " Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
+    "pt": " Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
+  },
+  "langSwitchAriaLabel": {
+    "en": "Language",
+    "es": "Idioma",
+    "pt": "Idioma"
+  },
+  "langLinkTagEs": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/freedom-calendar.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/freedom-calendar.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\" aria-current=\"page\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/es/simulators/freedom-calendar.html\" hreflang=\"es\" lang=\"es\" aria-label=\"Español\">"
+  },
+  "langLinkTagEn": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/freedom-calendar.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\" aria-current=\"page\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/freedom-calendar.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/en/simulators/freedom-calendar.html\" hreflang=\"en\" lang=\"en\" aria-label=\"English\">"
+  },
+  "langLinkTagPt": {
+    "en": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/freedom-calendar.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\">",
+    "es": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/freedom-calendar.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\">",
+    "pt": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/freedom-calendar.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\" aria-current=\"page\">"
+  },
+  "minHScreen": {
+    "en": "        // HABIT DATABASE\n",
+    "es": "        // HABIT DATABASE IN SPANISH\n",
+    "pt": "        // HABIT DATABASE IN PORTUGUESE\n"
+  },
+  "minHScreen2": {
+    "en": "                title: 'Daily Specialty Coffee & Drinks',\n",
+    "es": "                title: 'Café Especial y Bebidas Diarias',\n",
+    "pt": "                title: 'Cafés Especiais e Bebidas Diárias',\n"
+  },
+  "minHScreen3": {
+    "en": "                category: 'Daily Micro-Habit',\n",
+    "es": "                category: 'Micro-Hábito Diario',\n",
+    "pt": "                category: 'Micro-Hábito Diário',\n"
+  },
+  "minHScreen4": {
+    "en": "                desc: 'Specialty lattes, energy drinks, or iced coffee purchased on the go.',\n                tip: 'Invest in a quality french press or espresso maker at home and a leakproof travel mug. You keep the daily ritual for under $0.50/cup!',\n",
+    "es": "                desc: 'Cafés especiales, bebidas energéticas o cafés helados comprados al paso.',\n                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de $0.50 por taza!',\n",
+    "pt": "                desc: 'Cafés especiais, energéticos ou cafés gelados comprados no dia a dia.',\n                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de $0.50 por xícara!',\n"
+  },
+  "minHScreen5": {
+    "en": "                title: 'Daily Restaurant & Lunch Delivery',\n",
+    "es": "                title: 'Restaurantes y Entregas de Almuerzo Diarias',\n",
+    "pt": "                title: 'Restaurantes e Delivery no Almoço',\n"
+  },
+  "minHScreen6": {
+    "en": "                desc: 'Ordering UberEats/DoorDash or eating out instead of packing lunch.',\n                tip: 'Prep meals in batch on Sundays or keep gourmet frozen meals at work to cut takeout down to 1 day per week as a true reward.',\n",
+    "es": "                desc: 'Pedir por UberEats/DoorDash o comer fuera en lugar de llevar almuerzo preparado.',\n                tip: 'Prepara comidas en lote los domingos o ten comidas congeladas gourmet en el trabajo para reducir el delivery a 1 día por semana como recompensa.',\n",
+    "pt": "                desc: 'Pedir por apps de entrega (UberEats/iFood) ou comer fora diariamente em vez de levar almoço.',\n                tip: 'Prepare refeições em lote nos fins de semana ou tenha refeições congeladas no trabalho para reduzir o delivery a 1 dia por semana como recompensa.',\n"
+  },
+  "minHScreen7": {
+    "en": "                title: 'Unused Streaming & App Subscriptions',\n",
+    "es": "                title: 'Suscripciones a Streaming y Apps No Utilizadas',\n",
+    "pt": "                title: 'Assinaturas de Streaming e Apps Não Utilizados',\n"
+  },
+  "minHScreen8": {
+    "en": "                category: 'Monthly Recurring',\n",
+    "es": "                category: 'Recurrente Mensual',\n",
+    "pt": "                category: 'Recurrente Mensal',\n"
+  },
+  "minHScreen9": {
+    "en": "                desc: 'Multiple streaming services, unused gym or app memberships.',\n                tip: 'Adopt the \"One-at-a-Time Rule\": subscribe to only 1 streaming service per month, binge what you want, cancel, and switch.',\n",
+    "es": "                desc: 'Múltiples servicios de streaming, membresías de gimnasio o aplicaciones sin uso.',\n                tip: 'Adopta la \"Regla de Una a la Vez\": suscríbete a solo 1 servicio de streaming al mes, mira lo que quieras, cancela y cambia.',\n",
+    "pt": "                desc: 'Múltiples serviços de streaming, academias ou aplicativos sem uso regular.',\n                tip: 'Adote a \"Regra de Uma por Vez\": assine apenas 1 serviço de streaming por mês, assista o que quiser, cancele e troque.',\n"
+  },
+  "minHScreen10": {
+    "en": "                title: 'Upgrading Car Lease Every 3 Years',\n",
+    "es": "                title: 'Renovar el Leasing del Auto Cada 3 Años',\n",
+    "pt": "                title: 'Renovar o Leasing do Carro a Cada 3 Anos',\n"
+  },
+  "minHScreen11": {
+    "en": "                category: 'Major Lifestyle',\n",
+    "es": "                category: 'Estilo de Vida Mayor',\n",
+    "pt": "                category: 'Estilo de Vida Maior',\n"
+  },
+  "minHScreen12": {
+    "en": "                desc: 'Always driving a new leased car vs keeping a paid-off reliable vehicle.',\n                tip: 'Buy a 3-year-old certified pre-owned car and keep it for 7–10 years. Redirect former lease payments straight into index funds.',\n",
+    "es": "                desc: 'Manejar siempre un auto arrendado nuevo en lugar de mantener un vehículo propio confiable y pagado.',\n                tip: 'Compra un auto seminuevo certificado de 3 años y mantenlo durante 7–10 años. Redirige las cuotas del leasing directamente a fondos indexados.',\n",
+    "pt": "                desc: 'Dirigir sempre um carro zero arrendado em vez de manter um veículo próprio confiável e quitado.',\n                tip: 'Compre um seminovo certificado de 3 anos e mantenha-o por 7–10 anos. Redirecione as parcelas do leasing diretamente para fundos de índice.',\n"
+  },
+  "minHScreen13": {
+    "en": "                title: 'Unplanned Clothes & Gadget Buying',\n",
+    "es": "                title: 'Compras Impulsivas de Ropa y Tecnología',\n",
+    "pt": "                title: 'Compras Impulsivas de Roupas e Tecnologia',\n"
+  },
+  "minHScreen14": {
+    "en": "                category: 'Impulse Spending',\n",
+    "es": "                category: 'Gasto Impulsivo',\n",
+    "pt": "                category: 'Gasto Impulsivo',\n"
+  },
+  "minHScreen15": {
+    "en": "                desc: 'Buying t-shirts, accessories, or tech deals you weren\\'t planning on.',\n                tip: 'Use the \"72-Hour Cooling Off Rule\" for non-essential buys. If you still want it 3 days later, consider its hourly work cost first.',\n",
+    "es": "                desc: 'Comprar camisetas, accesorios o ofertas tecnológicas que no tenías planeadas.',\n                tip: 'Aplica la \"Regla de Enfriamiento de 72 Horas\" para compras no esenciales. Si aún lo quieres 3 días después, evalúa primero su costo en horas de trabajo.',\n",
+    "pt": "                desc: 'Comprar roupas, acessórios ou ofertas de tecnologia não planejadas.',\n                tip: 'Aplique a \"Regra de Esfriamento de 72 Horas\" para compras não essenciais. Se ainda quiser após 3 dias, avalie primeiro o custo em horas de trabalho.',\n"
+  },
+  "minHScreen16": {
+    "en": "                title: 'Weekend Drinks & Premium Dining',\n",
+    "es": "                title: 'Salidas Fin de Semana y Cenas Premium',\n",
+    "pt": "                title: 'Saídas de Fim de Semana e Jantares Premium',\n"
+  },
+  "minHScreen17": {
+    "en": "                category: 'Social & Leisure',\n",
+    "es": "                category: 'Social y Ocio',\n",
+    "pt": "                category: 'Social e Lazer',\n"
+  },
+  "minHScreen18": {
+    "en": "                desc: 'Cocktails, takeout, and high-end weekend social dining.',\n                tip: 'Host potluck dinner parties with friends or switch to sparkling water after 1 cocktail when dining out to keep the fun without the huge bill.',\n",
+    "es": "                desc: 'Cócteles, comida para llevar y cenas sociales de alto nivel los fines de semana.',\n                tip: 'Organiza cenas comunitarias (\"potluck\") con amigos o cambia a agua con gas después de 1 cóctel cuando salgas a comer para mantener la diversión sin la gran cuenta.',\n",
+    "pt": "                desc: 'Drinks, delivery gourmet e jantares sociais de alto padrão nos fins de semana.',\n                tip: 'Organize jantares comunitários (\"potluck\") com amigos ou mude para água com gás após 1 drink ao sair para comer.',\n"
+  },
+  "minHScreen19": {
+    "en": "                title: 'Daily Convenience Snacks & Drinks',\n",
+    "es": "                title: 'Snacks y Bebidas de Conveniencia Diarios',\n",
+    "pt": "                title: 'Lanches e Bebidas de Conveniência',\n"
+  },
+  "minHScreen20": {
+    "en": "                desc: 'Gas station snacks, energy cans, and vending machine impulse grabs.',\n                tip: 'Buy bulk snacks and beverages at wholesale clubs and keep emergency packs in your car, backpack, or desk drawer.',\n",
+    "es": "                desc: 'Snacks de gasolinera, latas de energía y compras impulsivas en máquinas expendedoras.',\n                tip: 'Compra snacks y bebidas al por mayor en clubes de descuento y ten paquetes de emergencia en tu auto, mochila o escritorio.',\n",
+    "pt": "                desc: 'Lanches de posto de gasolina, energéticos e compras impulsivas em máquinas de venda.',\n                tip: 'Compre lanches e bebidas no atacado e mantenha pacotes de emergência no seu carro, mochila ou mesa de trabalho.',\n"
+  },
+  "minHScreen21": {
+    "en": "                title: 'Yearly Smartphone Upgrades',\n",
+    "es": "                title: 'Actualización Anual de Teléfono Inteligente',\n",
+    "pt": "                title: 'Troca Anual de Smartphone',\n"
+  },
+  "minHScreen22": {
+    "en": "                desc: 'Trading in your phone every single year for the newest model.',\n                tip: 'Upgrade your phone battery after 2 years instead of buying a whole new device. Aim for a 4-year phone lifecycle.',\n",
+    "es": "                desc: 'Cambiar tu teléfono cada año por el modelo más nuevo.',\n                tip: 'Cambia la batería de tu teléfono después de 2 años en lugar de comprar un dispositivo nuevo. Apunta a un ciclo de vida de 4 años por teléfono.',\n",
+    "pt": "                desc: 'Trocar de celular todo ano pelo modelo mais recente.',\n                tip: 'Troque a bateria do seu celular após 2 anos em vez de comprar um aparelho novo. Mire em um ciclo de uso de 4 anos por aparelho.',\n"
+  },
+  "minHScreen23": {
+    "en": "                title: 'Unused Gym & Fitness Memberships',\n",
+    "es": "                title: 'Membresías de Gimnasio y Fitness No Usadas',\n",
+    "pt": "                title: 'Mensalidades de Academia Não Utilizadas',\n"
+  },
+  "minHScreen24": {
+    "en": "                desc: 'Paying for boutique gym access or fitness apps you rarely use.',\n                tip: 'If you go less than twice a week, freeze the membership. Try outdoor running, bodyweight training, or pay-per-visit passes.',\n",
+    "es": "                desc: 'Pagar acceso a gimnasios boutique o apps de fitness que raras veces usas.',\n                tip: 'Si vas menos de dos veces por semana, congela la membresía. Intenta correr al aire libre, calistenia o pases por visita.',\n",
+    "pt": "                desc: 'Pagar mensalidade de academias boutique ou apps fitness que raramente utiliza.',\n                tip: 'Se você vai menos de duas vezes por semana, cancele ou pause a assinatura. Experimente corridas ao ar livre, calistenia ou passes avulsos.',\n"
+  },
+  "minHScreen25": {
+    "en": "                title: 'Storage Unit Rentals for Clutter',\n",
+    "es": "                title: 'Alquiler de Bodegas/Trasteros para Acumulación',\n",
+    "pt": "                title: 'Aluguel de Depósitos/Guarda-Móveis para Acúmulo',\n"
+  },
+  "minHScreen26": {
+    "en": "                desc: 'Renting off-site space to hold old furniture and extra items.',\n                tip: 'Host a weekend declutter garage sale or donate the items. If the contents aren\\'t worth 2 years of rent, liquidate them!',\n",
+    "es": "                desc: 'Alquilar un espacio fuera de casa para guardar muebles viejos y artículos extra.',\n                tip: 'Organiza una venta de garaje de fin de semana o dona los objetos. Si el contenido no vale 2 años de alquiler, ¡liquídalo!',\n",
+    "pt": "                desc: 'Alugar um espaço fora de casa para guardar móveis antigos e itens extras.',\n                tip: 'Faça um desapego ou venda os itens. Se o conteúdo não vale 2 anos de aluguel, desfaça-se dele!',\n"
+  },
+  "minHScreen27": {
+    "en": "                title: 'Food Waste & Expired Groceries',\n",
+    "es": "                title: 'Desperdicio de Comida y Comestibles Vencidos',\n",
+    "pt": "                title: 'Desperdício de Alimentos e Compras Vencidas',\n"
+  },
+  "minHScreen28": {
+    "en": "                desc: 'Groceries and fresh produce that spoil in the fridge before being eaten.',\n                tip: 'Shop with an exact meal plan list, do a \"fridge inventory\" before grocery shopping, and freeze fresh items before they spoil.',\n",
+    "es": "                desc: 'Comestibles y productos frescos que se echan a perder en el refrigerador antes de comerlos.',\n                tip: 'Compra con una lista exacta de comidas, haz un inventario antes de comprar y congela alimentos frescos antes de que se arruinen.',\n",
+    "pt": "                desc: 'Alimentos frescos e feira que estragam na geladeira antes de serem consumidos.',\n                tip: 'Compre com uma lista exata de refeições, faça um inventário antes de ir ao mercado e congele alimentos frescos antes que estraguem.',\n"
+  },
+  "minHScreen29": {
+    "en": "                title: 'Short Convenience Rideshares (Uber/Lyft)',\n",
+    "es": "                title: 'Viajes Cortos en Apps de Transporte (Uber/Lyft)',\n",
+    "pt": "                title: 'Viagens Curtas em Apps de Transporte (Uber/99)',\n"
+  },
+  "minHScreen30": {
+    "en": "                desc: 'Ordering rideshares for short distances you could walk or transit.',\n                tip: 'Set a rule to walk any trip under 15 minutes or keep a monthly public transit card handy. It doubles as free daily exercise!',\n",
+    "es": "                desc: 'Pedir viajes en app para distancias cortas que podrías caminar o hacer en transporte público.',\n                tip: 'Ponte la regla de caminar cualquier trayecto de menos de 15 minutos o mantén una tarjeta de transporte público a mano. ¡Sirve como ejercicio diario gratuito!',\n",
+    "pt": "                desc: 'Pedir corridas em aplicativos para distâncias curtas que poderiam ser feitas a pé ou de transporte público.',\n                tip: 'Crie a regra de caminhar qualquer trajeto menor que 15 minutos. Funciona como exercício diário gratuito!',\n"
+  },
+  "minHScreen31": {
+    "en": "                title: 'Single-Use Bottled Water & Drinks',\n",
+    "es": "                title: 'Agua Embotellada y Bebidas de Un Solo Uso',\n",
+    "pt": "                title: 'Garrafas de Água e Bebidas Descartáveis',\n"
+  },
+  "minHScreen32": {
+    "en": "                desc: 'Buying bottled water cases, sodas, or teas out of convenience.',\n                tip: 'Carry an insulated stainless steel water bottle with an inline filter. Saves money and reduces plastic waste instantly.',\n",
+    "es": "                desc: 'Comprar botellas de agua, gaseosas o tés por pura conveniencia.',\n                tip: 'Lleva una botella de agua de acero inoxidable reutilizable con filtro. Ahorras dinero y reduces el plástico al instante.',\n",
+    "pt": "                desc: 'Comprar garrafas de água, refrigerantes ou chás por pura conveniência.',\n                tip: 'Carregue uma garrafa de água reutilizável de aço inoxidável com filtro. Você economiza dinheiro e reduz o plástico instantaneamente.',\n"
+  },
+  "minHScreen33": {
+    "en": "        // HELPER CALCULATION FUNCTIONS\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen34": {
+    "en": "        // RENDER HABIT CARDS\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen35": {
+    "en": "",
+    "es": "                const unitLabel = habit.unit === 'day' ? 'día' : (habit.unit === 'week' ? 'sem' : 'mes');\n\n",
+    "pt": "                const unitLabel = habit.unit === 'day' ? 'dia' : (habit.unit === 'week' ? 'sem' : 'mês');\n\n"
+  },
+  "minHScreen36": {
+    "en": "                                    ${habit.category} • Baseline: $${habit.baseCost}/${habit.unit}\n",
+    "es": "                                    ${habit.category} • Base: $${habit.baseCost}/${unitLabel}\n",
+    "pt": "                                    ${habit.category} • Base: $${habit.baseCost}/${unitLabel}\n"
+  },
+  "minHScreen37": {
+    "en": "                                ${monthlySaved > 0 ? '+' + workDaysSavedPerYear.toFixed(1) + ' Work Days/Yr Saved' : 'Full Spending'}\n",
+    "es": "                                ${monthlySaved > 0 ? '+' + workDaysSavedPerYear.toFixed(1) + ' Días Trabajo/Año Ahorrados' : 'Gasto Total'}\n",
+    "pt": "                                ${monthlySaved > 0 ? '+' + workDaysSavedPerYear.toFixed(1) + ' Dias Trabalho/Ano Economizados' : 'Gasto Total'}\n"
+  },
+  "minHScreen38": {
+    "en": "                                <button onclick=\"deleteHabit(${idx})\" class=\"text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors\" title=\"Remove Habit\">\n",
+    "es": "                                <button onclick=\"deleteHabit(${idx})\" class=\"text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors\" title=\"Eliminar Gasto\">\n",
+    "pt": "                                <button onclick=\"deleteHabit(${idx})\" class=\"text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors\" title=\"Excluir Gasto\">\n"
+  },
+  "minHScreen39": {
+    "en": "                                <strong class=\"text-gold-700 font-bold block mb-0.5\">Smart Action Tip:</strong>\n",
+    "es": "                                <strong class=\"text-gold-700 font-bold block mb-0.5\">Consejo de Acción Inteligente:</strong>\n",
+    "pt": "                                <strong class=\"text-gold-700 font-bold block mb-0.5\">Dica de Ação Inteligente:</strong>\n"
+  },
+  "minHScreen40": {
+    "en": "                            <label class=\"text-xs font-bold text-espresso-900\">Base Expense ($):</label>\n",
+    "es": "                            <label class=\"text-xs font-bold text-espresso-900\">Gasto Base ($):</label>\n",
+    "pt": "                            <label class=\"text-xs font-bold text-espresso-900\">Gasto Base ($):</label>\n"
+  },
+  "minHScreen41": {
+    "en": "                            <label class=\"text-xs font-bold text-espresso-900\">Frequency:</label>\n",
+    "es": "                            <label class=\"text-xs font-bold text-espresso-900\">Frecuencia:</label>\n",
+    "pt": "                            <label class=\"text-xs font-bold text-espresso-900\">Frequência:</label>\n"
+  },
+  "minHScreen42": {
+    "en": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Daily ($/day)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Weekly ($/wk)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Monthly ($/mo)</option>\n",
+    "es": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Diario ($/día)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Semanal ($/sem)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Mensual ($/mes)</option>\n",
+    "pt": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Diário ($/dia)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Semanal ($/sem)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Mensal ($/mês)</option>\n"
+  },
+  "minHScreen43": {
+    "en": "                            <span class=\"text-espresso-900\">Spending Choice: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Actual: $${Math.round(currentMonthlyCost)}/mo <span class=\"text-[10px] font-normal text-espresso-800/70\">(Full: $${Math.round(fullMonthlyCost)}/mo)</span></span>\n",
+    "es": "                            <span class=\"text-espresso-900\">Opción de Gasto: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Actual: $${Math.round(currentMonthlyCost)}/mes <span class=\"text-[10px] font-normal text-espresso-800/70\">(Total: $${Math.round(fullMonthlyCost)}/mes)</span></span>\n",
+    "pt": "                            <span class=\"text-espresso-900\">Opção de Gasto: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Atual: $${Math.round(currentMonthlyCost)}/mês <span class=\"text-[10px] font-normal text-espresso-800/70\">(Total: $${Math.round(fullMonthlyCost)}/mês)</span></span>\n"
+  },
+  "minHScreen44": {
+    "en": "                            <span>0% (Eliminated)</span>\n                            <span>50% (Trimmed)</span>\n                            <span>100% (Keep All)</span>\n",
+    "es": "                            <span>0% (Eliminado)</span>\n                            <span>50% (Recortado)</span>\n                            <span>100% (Mantener Todo)</span>\n",
+    "pt": "                            <span>0% (Eliminado)</span>\n                            <span>50% (Reduzido)</span>\n                            <span>100% (Manter Tudo)</span>\n"
+  },
+  "minHScreen45": {
+    "en": "        // UPDATE HABIT BASE COST\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen46": {
+    "en": "        // UPDATE HABIT FREQUENCY UNIT\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen47": {
+    "en": "        // UPDATE CUSTOM HABIT TITLE\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen48": {
+    "en": "            habits[index].title = title || 'Custom Expense';\n",
+    "es": "            habits[index].title = title || 'Gasto Personalizado';\n",
+    "pt": "            habits[index].title = title || 'Gasto Personalizado';\n"
+  },
+  "minHScreen49": {
+    "en": "        // ADD CUSTOM HABIT\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen50": {
+    "en": "                title: 'New Custom Expense',\n",
+    "es": "                title: 'Nuevo Gasto Personalizado',\n",
+    "pt": "                title: 'Novo Gasto Personalizado',\n"
+  },
+  "minHScreen51": {
+    "en": "                category: 'Custom Expense',\n",
+    "es": "                category: 'Gasto Personalizado',\n",
+    "pt": "                category: 'Gasto Personalizado',\n"
+  },
+  "minHScreen52": {
+    "en": "                desc: 'Enter your custom recurring expense cost and frequency above.',\n",
+    "es": "                desc: 'Ingresa el costo y la frecuencia de tu gasto recurrente personalizado.',\n                tip: 'Analiza si este gasto te aporta verdadero valor o si puede ser optimizado sin afectar tu calidad de vida.',\n",
+    "pt": "                desc: 'Insira o custo e a frequência do seu gasto recorrente personalizado.',\n                tip: 'Analise se este gasto traz valor real para você ou se pode ser otimizado sem afetar sua qualidade de vida.',\n"
+  },
+  "minHScreen53": {
+    "en": "        // DELETE HABIT\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen54": {
+    "en": "        // UPDATE INDIVIDUAL HABIT CHOICE\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen55": {
+    "en": "        // SET GLOBAL PRESET (0%, 50%, 100%)\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen56": {
+    "en": "        // TOGGLE PROFILE DRAWER\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen57": {
+    "en": "        // UPDATE PROFILE SETTINGS FROM INPUTS\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen58": {
+    "en": "        // RECALCULATE ALL METRICS & UPDATE UI\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen59": {
+    "en": "            document.getElementById('baselineAgeDisplay').innerText = `Age ${baselineFreedomAge}`;\n            document.getElementById('optimizedAgeDisplay').innerText = `Age ${optimizedFreedomAge}`;\n",
+    "es": "            document.getElementById('baselineAgeDisplay').innerText = `Edad ${baselineFreedomAge}`;\n            document.getElementById('optimizedAgeDisplay').innerText = `Edad ${optimizedFreedomAge}`;\n",
+    "pt": "            document.getElementById('baselineAgeDisplay').innerText = `Idade ${baselineFreedomAge}`;\n            document.getElementById('optimizedAgeDisplay').innerText = `Idade ${optimizedFreedomAge}`;\n"
+  },
+  "minHScreen60": {
+    "en": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>Freedom Pulled Forward ${yearsPulledForward} YEARS!</span>`;\n",
+    "es": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>¡Libertad Adelantada ${yearsPulledForward} AÑOS!</span>`;\n",
+    "pt": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>¡Liberdade Antecipada em ${yearsPulledForward} ANOS!</span>`;\n"
+  },
+  "minHScreen61": {
+    "en": "            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('en-US')}/mo`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Days/Yr`;\n            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('en-US')}`;\n",
+    "es": "            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('es-ES')}/mes`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Días/Año`;\n            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('es-ES')}`;\n",
+    "pt": "            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('pt-BR')}/mês`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Dias/Ano`;\n            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('pt-BR')}`;\n"
+  },
+  "minHScreen62": {
+    "en": "        // RENDER / UPDATE CHART\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen63": {
+    "en": "                    note.textContent = 'The chart could not be drawn. Every figure it would show is also listed as text on this page.';\n",
+    "es": "                    note.textContent = 'No se pudo dibujar el gráfico. Todas las cifras que mostraría también aparecen como texto en esta página.';\n",
+    "pt": "                    note.textContent = 'Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página.';\n"
+  },
+  "minHScreen64": {
+    "en": "            let baselineNW = profile.startingNetWorth;\n            let optimizedNW = profile.startingNetWorth;\n\n",
+    "es": "",
+    "pt": ""
+  },
+  "minHScreen65": {
+    "en": "                labels.push(`Year ${i}`);\n",
+    "es": "                labels.push(`Año ${i}`);\n",
+    "pt": "                labels.push(`Ano ${i}`);\n"
+  },
+  "minHScreen66": {
+    "en": "                            label: 'Optimized Habits Strategy',\n",
+    "es": "                            label: 'Estrategia de Hábitos Optimizada',\n",
+    "pt": "                            label: 'Estratégia de Hábitos Otimizada',\n"
+  },
+  "minHScreen67": {
+    "en": "                            label: 'Baseline Habits (Uncut)',\n",
+    "es": "                            label: 'Hábitos Base (Sin Recortes)',\n",
+    "pt": "                            label: 'Hábitos de Base (Sem Cortes)',\n"
+  }
+}

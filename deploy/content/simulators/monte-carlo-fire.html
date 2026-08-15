@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="h-full bg-slate-950">
+<html lang="{{hFullLang}}" class="h-full bg-slate-950">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simulador Monte Carlo de Sobrevivência FIRE | Compounding Journey</title>
-  <meta name="description" content="Testa um plano de reforma FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar os levantamentos.">
-  <link rel="canonical" href="https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html">
+  <title>{{hFull}}</title>
+  <meta name="description" content="{{metaContent}}">
+  <link rel="canonical" href="https://compoundingjourney.com{{lang.dir}}simulators/monte-carlo-fire.html">
   <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/monte-carlo-fire.html">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-  <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Simulador Monte Carlo de Sobrevivência FIRE"><meta property="og:description" content="Estima se uma carteira de reforma pode sobreviver a milhares de futuros de mercado possíveis."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Simulador Monte Carlo de Sobrevivência FIRE"><meta name="twitter:description" content="Estima se uma carteira de reforma pode sobreviver a milhares de futuros de mercado possíveis."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Voo de Sobrevivência FIRE Monte Carlo","url":"https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html","description":"Um simulador Monte Carlo para estimar a sobrevivência de uma carteira de reforma sob diferentes retornos e levantamentos.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="{{lang.locale}}"><meta property="og:title" content="{{metaContent3}}"><meta property="og:description" content="{{metaContent4}}"><meta property="og:url" content="https://compoundingjourney.com{{lang.dir}}simulators/monte-carlo-fire.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{metaContent3}}"><meta name="twitter:description" content="{{metaContent4}}"><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
+  <script type="application/ld+json">{{hFull2}}FIRE {{hFull3}}Monte {{hFull4}}Carlo {{hFull5}}</script>
   
   
   <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=cd10a121cda1">
-  <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
+  <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=source">
+  <link rel="stylesheet" href="/assets/css/icons.css?v=source">
   
 
   <style>
@@ -30,16 +30,14 @@
       font-family: 'Orbitron', monospace;
     }
 
-    /* Painéis Glassmorphism Personalizados */
-    .hud-glass {
+{{hFull6}}    .hud-glass {
       background: rgba(15, 23, 42, 0.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(56, 189, 248, 0.18);
     }
 
-    /* Efeito CRT de Grade e Linhas de Escaneamento */
-    .scanlines {
+{{hFull7}}    .scanlines {
       background: linear-gradient(
         rgba(18, 16, 16, 0) 50%, 
         rgba(0, 0, 0, 0.3) 50%
@@ -47,8 +45,7 @@
       background-size: 100% 4px;
     }
 
-    /* Efeitos de Luz de Acento */
-    .glow-cyan {
+{{hFull8}}    .glow-cyan {
       box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
     }
     .glow-green {
@@ -61,8 +58,7 @@
       box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
     }
 
-    /* Controle Deslizante Personalizado */
-    input[type=range]::-webkit-slider-thumb {
+{{hFull9}}    input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
       height: 18px;
       width: 18px;
@@ -72,8 +68,7 @@
       box-shadow: 0 0 10px #0284c7;
     }
 
-    /* Barras de Rolagem Personalizadas */
-    ::-webkit-scrollbar {
+{{hFull10}}    ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
@@ -96,23 +91,22 @@
       animation: warningPulse 1s infinite;
     }
   </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
+    <link rel="stylesheet" href="/assets/css/header.css?v=source">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-100">
 
-    <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
+    <a class="skip-link" href="#main">{{skipLink}}</a>
 
-  <!-- CABEÇALHO E NAVEGAÇÃO -->
-    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+{{minHScreen}}    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
         <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
-            <a href="/pt/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Voltar ao Compounding Journey">
+            <a href="{{lang.home}}#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="{{headerBrandAriaLabel}}">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
                     <img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
                 </div>
                 <div class="header-brand-copy">
                     <span class="header-brand-name">Compounding Journey</span>
-                    <span class="header-brand-tagline">O teu mapa para a liberdade</span>
+                    <span class="header-brand-tagline">{{headerBrandTagline}}</span>
                 </div>
             </a>
 
@@ -122,8 +116,8 @@
                      each language is a distinct pre-rendered document, so switching
                      is a navigation, and the alternates stay crawlable. The
                      generator writes aria-current="page" onto the current one. -->
-                <nav class="simulator-language-switcher" aria-label="Idioma">
-                    <a class="simulator-lang-btn" href="/en/simulators/monte-carlo-fire.html" hreflang="en" lang="en" aria-label="English">
+                <nav class="simulator-language-switcher" aria-label="{{langSwitchAriaLabel}}">
+                    {{langLinkTagEn}}
                         <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="20" fill="#fff"/>
                             <path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0z"/>
@@ -132,14 +126,14 @@
                             <path fill="#fff" d="M2 2h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 4h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1zM2 6h1v1H2zm3 0h1v1H5zm3 0h1v1H8zm2 0h1v1h-1zM1 8h1v1H1zm3 0h1v1H4zm3 0h1v1H7zm3 0h1v1h-1z"/>
                         </svg>
                     </a>
-                    <a class="simulator-lang-btn" href="/es/simulators/monte-carlo-fire.html" hreflang="es" lang="es" aria-label="Español">
+                    {{langLinkTagEs}}
                         <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="20" fill="#AA151B"/>
                             <rect y="5" width="28" height="10" fill="#F1BF00"/>
                             <rect x="7" y="8" width="2" height="5" rx="0.5" fill="#AA151B" opacity="0.85"/>
                         </svg>
                     </a>
-                    <a class="simulator-lang-btn" href="/pt/simulators/monte-carlo-fire.html" hreflang="pt" lang="pt" aria-label="Português" aria-current="page">
+                    {{langLinkTagPt}}
                         <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="20" fill="#009B3A"/>
                             <path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/>
@@ -148,9 +142,9 @@
                         </svg>
                     </a>
                 </nav>
-                <a href="/pt/#simulador" class="site-return-link" aria-label="Voltar ao site">
+                <a href="{{lang.home}}#simulador" class="site-return-link" aria-label="{{siteReturnLinkAriaLabel}}">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                    <span class="site-return-link__text">Website</span>
+                    <span class="site-return-link__text">{{siteReturnLinkText}}</span>
                 </a>
             </div>
         </div>
@@ -161,14 +155,14 @@
          and assistants had nothing to read and no way to crawl between them. -->
     <section class="bg-slate-950 border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <h1 class="text-xl sm:text-2xl font-extrabold text-white font-hud">Simulador Monte Carlo de Sobrevivência FIRE</h1>
-            <p class="mt-1.5 max-w-3xl text-sm leading-relaxed text-slate-300">Testa um plano de reforma FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar os levantamentos.</p>
-            <nav aria-label="Mais simuladores" class="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
-                <span class="text-slate-500">Mais simuladores:</span>
-                <a href="/pt/simulator.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Todos os simuladores</a>
-                <a href="/pt/simulators/freedom-calendar.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Calendário da Liberdade</a>
-                <a href="/pt/simulators/market-time-machine.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Máquina do Tempo do Mercado</a>
-                <a href="/pt/simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Motor de Rendimento Passivo</a>
+            <h1 class="text-xl sm:text-2xl font-extrabold text-white font-hud">{{metaContent3}}</h1>
+            <p class="mt-1.5 max-w-3xl text-sm leading-relaxed text-slate-300">{{mt15}}Monte Carlo {{mt152}}</p>
+            <nav aria-label="{{mt3AriaLabel}}" class="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
+                <span class="text-slate-500">{{textSlate500}}</span>
+                <a href="{{lang.dir}}simulator.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">{{px25}}</a>
+                <a href="{{lang.dir}}simulators/freedom-calendar.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">{{px252}}</a>
+                <a href="{{lang.dir}}simulators/market-time-machine.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">{{px253}}</a>
+                <a href="{{lang.dir}}simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">{{px254}}</a>
             </nav>
         </div>
     </section>
@@ -176,209 +170,175 @@
   <div class="site-simulator-nav bg-slate-950 border-b border-slate-800">
     <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
             <button id="nav-btn-cockpit" onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
-              <i class="fa-solid fa-gauge-high mr-1" aria-hidden="true"></i> COCKPIT
-            </button>
+              <i class="fa-solid fa-gauge-high mr-1" aria-hidden="true"></i>{{navBtnCockpit}}            </button>
             <button id="nav-btn-leaderboard" onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
-              <i class="fa-solid fa-trophy mr-1 text-amber-400" aria-hidden="true"></i> CLASSIFICAÇÃO
-            </button>
+              <i class="fa-solid fa-trophy mr-1 text-amber-400" aria-hidden="true"></i>{{navBtnLeaderboard}}            </button>
             <button id="nav-btn-montecarlo" onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
-              <i class="fa-solid fa-chart-line mr-1" aria-hidden="true"></i> 1.000 SIMS
-            </button>
+              <i class="fa-solid fa-chart-line mr-1" aria-hidden="true"></i>{{navBtnMontecarlo}}            </button>
             <button id="nav-btn-academy" onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
-              <i class="fa-solid fa-graduation-cap mr-1" aria-hidden="true"></i> ACADEMIA
-            </button>
+              <i class="fa-solid fa-graduation-cap mr-1" aria-hidden="true"></i>{{navBtnAcademy}}            </button>
           </nav>
   </div>
 
-  <!-- CONTÊINER PRINCIPAL -->
-  <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
+{{minHScreen2}}  <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
 
     <!-- ================================================================= -->
-    <!-- ABA 1: CABINE DE VOO INTERATIVA -->
-    <!-- ================================================================= -->
+{{main}}    <!-- ================================================================= -->
     <div id="tab-cockpit" class="space-y-6">
 
-      <!-- BRIEFING DA MISSÃO -->
-      <div class="hud-glass p-5 rounded-2xl border border-cyan-500/40 relative overflow-hidden shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-950/30 to-slate-900">
+{{tabCockpit}}      <div class="hud-glass p-5 rounded-2xl border border-cyan-500/40 relative overflow-hidden shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-950/30 to-slate-900">
         <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div class="space-y-1.5 max-w-3xl">
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-md bg-cyan-500 text-slate-950 font-hud font-bold text-[11px] uppercase tracking-wider">
-                🎯 OBJETIVO DA MISSÃO
-              </span>
-              <span class="text-xs text-cyan-300 font-mono font-semibold">Chegar aos 100 Anos com o Mínimo de Anos em Colapso!</span>
+{{px255}}              </span>
+              <span class="text-xs text-cyan-300 font-mono font-semibold">{{textXs}}</span>
             </div>
             <h2 class="text-base sm:text-lg font-bold text-white font-hud">
-              PILOTE SEU VOO DE APOSENTADORIA ATÉ OS 100 ANOS
-            </h2>
+{{textBase}}            </h2>
             <p class="text-xs text-slate-300 leading-relaxed">
-              <strong class="text-cyan-300">Como funciona a Zona de Colapso:</strong> Se as quedas do mercado ou os altos gastos reduzirem seu patrimônio líquido a $0, você entra na <strong class="text-red-400">ZONA DE COLAPSO</strong>. 
-              Você tem um <strong>Período de Graça de 10 Anos</strong> para ajustar táticas (trabalho em meio período, cortes, reserva de caixa, redução de imóvel) e se recuperar. Se permanecer 10 anos consecutivos em colapso, seu voo é destruído!
-            </p>
+              <strong class="text-cyan-300">{{textCyan300}}</strong>{{textXs2}}<strong class="text-red-400">{{textRed400}}</strong>. 
+{{textXs3}}<strong>{{textXs4}}</strong>{{textXs5}}            </p>
           </div>
 
-          <!-- Guia Rápido em 3 Passos -->
-          <div class="grid grid-cols-3 gap-2 w-full lg:w-auto text-[11px] shrink-0 font-mono">
+{{flex}}          <div class="grid grid-cols-3 gap-2 w-full lg:w-auto text-[11px] shrink-0 font-mono">
             <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
-              <span class="text-cyan-400 font-bold block">1. EQUILIBRE ATIVOS</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Ações demais = vulnerabilidade!</span>
+              <span class="text-cyan-400 font-bold block">{{textCyan400}}</span>
+              <span class="text-[10px] text-slate-400 block leading-tight">{{text10px}}</span>
             </div>
             <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
-              <span class="text-emerald-400 font-bold block">2. DECOLE O VOO</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Voe dos 50 aos 100 anos</span>
+              <span class="text-emerald-400 font-bold block">{{textEmerald400}}</span>
+              <span class="text-[10px] text-slate-400 block leading-tight">{{text10px2}}</span>
             </div>
             <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
-              <span class="text-amber-400 font-bold block">3. USE 6 TÁTICAS</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Saia da zona de colapso</span>
+              <span class="text-amber-400 font-bold block">{{textAmber400}}</span>
+              <span class="text-[10px] text-slate-400 block leading-tight">{{text10px3}}</span>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- Cenários Predefinidos de Aposentadoria -->
-      <div class="hud-glass p-4 rounded-2xl border border-slate-800 shadow-xl">
+{{tabCockpit2}}      <div class="hud-glass p-4 rounded-2xl border border-slate-800 shadow-xl">
         <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
           <div class="flex items-center gap-2">
             <span class="font-hud font-bold text-cyan-400 uppercase text-[11px] flex items-center gap-1.5">
-              <i class="fa-solid fa-sliders text-cyan-400" aria-hidden="true"></i> CENÁRIOS PREDEFINIDOS DE APOSENTADORIA:
-            </span>
+              <i class="fa-solid fa-sliders text-cyan-400" aria-hidden="true"></i>{{fontHud}}            </span>
           </div>
           <div class="flex flex-wrap gap-2">
             <button onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
-              <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i> SWR de Alto Risco ($850k / $45k)
-            </button>
+              <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i>{{px3}}            </button>
             <button onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Padrão Trinity ($1M / $40k)
-            </button>
+              <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i>{{px32}}            </button>
             <button onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i> Lean FIRE Ajustado ($650k / $35k)
-            </button>
+              <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i>{{px33}}            </button>
             <button onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i> Fat FIRE Amplo ($1,5M / $75k)
-            </button>
+              <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i>{{px34}}            </button>
           </div>
         </div>
       </div>
 
-      <!-- GRADE PRINCIPAL DA CABINE (Controles + Visualizador HUD) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+{{tabCockpit3}}      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-        <!-- COLUNA ESQUERDA: Painel de Controles de Voo (4 cols) -->
-        <div class="lg:col-span-4 space-y-5">
+{{grid}}        <div class="lg:col-span-4 space-y-5">
           
-          <!-- Cartão de Parâmetros de Voo -->
-          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
+{{lgColSpan4}}          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
             <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-2.5 flex items-center justify-between">
-              <span><i class="fa-solid fa-gears mr-1.5" aria-hidden="true"></i> PILOTO E COMBUSTÍVEL</span>
-              <span class="text-[10px] text-slate-400 font-sans font-normal">Pré-Voo</span>
+              <span><i class="fa-solid fa-gears mr-1.5" aria-hidden="true"></i>{{fontHud2}}</span>
+              <span class="text-[10px] text-slate-400 font-sans font-normal">{{text10px4}}</span>
             </h3>
 
-            <!-- Nome ou Codinome do Piloto -->
-            <div class="space-y-1">
+{{hudGlass}}            <div class="space-y-1">
               <label for="input-pilot-name" class="text-xs font-medium text-slate-300 flex items-center gap-1.5">
-                <i class="fa-solid fa-id-card text-amber-400" aria-hidden="true"></i> Piloto / Codinome
-              </label>
-              <input type="text" id="input-pilot-name" value="Capitão FIRE" onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
+                <i class="fa-solid fa-id-card text-amber-400" aria-hidden="true"></i>{{textXs6}}              </label>
+              <input type="text" id="input-pilot-name" value="{{inputPilotNameValue}}" onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
             </div>
 
-            <!-- Entrada de Patrimônio Inicial -->
-            <div class="space-y-1.5">
+{{hudGlass2}}            <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
                 <label class="text-slate-300 font-medium flex items-center gap-1.5">
-                  Patrimônio Acumulado ($)
-                </label>
+{{textSlate300}}                </label>
                 <div class="flex items-center gap-2">
                   <button onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
-                    <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Estimar Requerido
-                  </button>
-                  <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">$850.000</span>
+                    <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i>{{text10px5}}                  </button>
+                  <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">{{dispNestegg}}</span>
                 </div>
               </div>
               <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
             </div>
 
-            <!-- Entrada de Gasto Anual -->
-            <div class="space-y-1.5">
+{{hudGlass3}}            <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
                 <label class="text-slate-300 font-medium flex items-center gap-1.5">
-                  Gasto Anual de Vida ($)
-                </label>
+{{textSlate3002}}                </label>
                 <div class="flex items-center gap-2">
                   <button onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
-                    <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Orçamento
-                  </button>
-                  <span id="disp-spending" class="font-mono text-emerald-300 font-bold">$45.000</span>
+                    <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i>{{text10px6}}                  </button>
+                  <span id="disp-spending" class="font-mono text-emerald-300 font-bold">{{dispSpending}}</span>
                 </div>
               </div>
               <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
               <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1">
-                <span>Taxa Segura de Retirada (SWR):</span>
+                <span>{{flex2}}</span>
                 <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800">
-                  5.3% (ALTO RISCO)
-                </span>
+{{dispSwrBadge}}                </span>
               </div>
             </div>
 
-            <!-- Faixas de Idade -->
-            <div class="grid grid-cols-2 gap-3 pt-1">
+{{hudGlass4}}            <div class="grid grid-cols-2 gap-3 pt-1">
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
-                  <label for="input-startage" class="text-slate-300 font-medium">Idade de Liberdade FIRE</label>
-                  <span class="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 rounded font-mono">Início</span>
+                  <label for="input-startage" class="text-slate-300 font-medium">{{textSlate3003}}</label>
+                  <span class="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 rounded font-mono">{{text9px}}</span>
                 </div>
                 <input type="number" id="input-startage" min="30" max="85" value="50" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
               </div>
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
-                  <label for="input-endage" class="text-slate-300 font-medium">Idade Destino</label>
-                  <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded font-mono">Longevidade</span>
+                  <label for="input-endage" class="text-slate-300 font-medium">{{textSlate3004}}</label>
+                  <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded font-mono">{{text9px2}}</span>
                 </div>
                 <input type="number" id="input-endage" min="70" max="110" value="100" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
               </div>
             </div>
 
-            <!-- Alocação de Ativos -->
-            <div class="space-y-2 pt-2 border-t border-slate-800">
+{{hudGlass5}}            <div class="space-y-2 pt-2 border-t border-slate-800">
               <div class="flex justify-between items-center">
-                <label for="toggle-tdf" class="text-xs font-bold text-slate-200">Alocação de Ativos do Portfólio</label>
-                <!-- Interruptor Fundo Data-Alvo -->
-                <label class="inline-flex items-center cursor-pointer">
+                <label for="toggle-tdf" class="text-xs font-bold text-slate-200">{{textXs7}}</label>
+{{flex3}}                <label class="inline-flex items-center cursor-pointer">
                   <input type="checkbox" id="toggle-tdf" onchange="toggleTargetDateFund()" class="sr-only peer">
                   <div class="w-8 h-4 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-cyan-500 relative"></div>
-                  <span class="ml-2 text-[11px] font-mono text-cyan-400">Fundo Data-Alvo Auto</span>
+                  <span class="ml-2 text-[11px] font-mono text-cyan-400">{{ml2}}</span>
                 </label>
               </div>
 
-              <!-- Controles Deslizantes de Alocação -->
-              <div id="allocation-sliders-container" class="space-y-2 pt-1">
+{{spaceY2}}              <div id="allocation-sliders-container" class="space-y-2 pt-1">
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
-                    <span id="lbl-alloc-stocks" class="text-cyan-400 font-bold">Ações (Crescimento e Volatilidade)</span>
+                    <span id="lbl-alloc-stocks" class="text-cyan-400 font-bold">{{lblAllocStocks}}</span>
                     <span id="disp-pct-stocks">80%</span>
                   </div>
                   <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
-                    <span id="lbl-alloc-bonds" class="text-emerald-400 font-bold">Renda Fixa / Títulos (Estabilidade)</span>
+                    <span id="lbl-alloc-bonds" class="text-emerald-400 font-bold">{{lblAllocBonds}}</span>
                     <span id="disp-pct-bonds">15%</span>
                   </div>
                   <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
-                    <span id="lbl-alloc-cash" class="text-amber-400 font-bold">Reserva de Caixa (Caixa)</span>
+                    <span id="lbl-alloc-cash" class="text-amber-400 font-bold">{{lblAllocCash}}</span>
                     <span id="disp-pct-cash">5%</span>
                   </div>
                   <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
               </div>
 
-              <!-- Visualizador de Trajetória Glidepath -->
-              <div id="tdf-glidepath-card" class="hidden p-3 rounded-xl bg-cyan-950/40 border border-cyan-800/80 space-y-2">
+{{spaceY22}}              <div id="tdf-glidepath-card" class="hidden p-3 rounded-xl bg-cyan-950/40 border border-cyan-800/80 space-y-2">
                 <div class="flex justify-between items-center text-[11px]">
-                  <span class="font-bold text-cyan-300 font-mono"><i class="fa-solid fa-route text-cyan-400" aria-hidden="true"></i> Trajetória Dinâmica Glidepath</span>
-                  <span id="tdf-status-text" class="text-[10px] text-slate-400">Redução de risco ativa</span>
+                  <span class="font-bold text-cyan-300 font-mono"><i class="fa-solid fa-route text-cyan-400" aria-hidden="true"></i>{{fontBold}}</span>
+                  <span id="tdf-status-text" class="text-[10px] text-slate-400">{{tdfStatusText}}</span>
                 </div>
                 <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden flex border border-slate-700">
                   <div id="tdf-bar-stocks" class="bg-cyan-500 h-full transition-all duration-300" style="width: 80%"></div>
@@ -386,28 +346,25 @@
                   <div id="tdf-bar-cash" class="bg-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
                 </div>
                 <p class="text-[10px] text-slate-300 leading-tight">
-                  Substitui automaticamente ações por renda fixa e reserva à medida que a idade avança em direção aos 100 anos.
-                </p>
+{{text10px7}}                </p>
               </div>
             </div>
 
-            <!-- Sequência de Turbulência de Mercado -->
-            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <label for="select-market-sequence" class="text-xs font-bold text-slate-200">Sequência de Turbulência Econômica</label>
+{{hudGlass6}}            <div class="space-y-1.5 pt-2 border-t border-slate-800">
+              <label for="select-market-sequence" class="text-xs font-bold text-slate-200">{{textXs8}}</label>
               <select id="select-market-sequence" onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
-                <option value="simulated">🎲 Monte Carlo de Alta Volatilidade (Turbulência Aleatória)</option>
-                <option value="1970s">🔥 Pico de Inflação Severo de 1970 e Mercado em Queda</option>
-                <option value="2000s">💥 Queda Dot-Com 2000 + Grande Recessão 2008</option>
-                <option value="bull">🚀 Mercado de Alta Histórico Prolongado</option>
+                <option value="simulated">{{selectMarketSequence}}</option>
+                <option value="1970s">{{selectMarketSequence2}}</option>
+                <option value="2000s">{{selectMarketSequence3}}</option>
+                <option value="bull">{{selectMarketSequence4}}</option>
               </select>
             </div>
 
-            <!-- Botões de Decolagem e Reinício -->
-            <div class="pt-3 flex gap-2">
+{{hudGlass7}}            <div class="pt-3 flex gap-2">
               <button id="btn-launch-flight" onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plane-departure text-sm" aria-hidden="true"></i> <span id="btn-launch-text">INICIAR VOO</span>
+                <i class="fa-solid fa-plane-departure text-sm" aria-hidden="true"></i> <span id="btn-launch-text">{{btnLaunchText}}</span>
               </button>
-              <button onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="Reiniciar a simulação">
+              <button onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="{{a11yResetSimulation}}">
                 <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
               </button>
             </div>
@@ -415,211 +372,190 @@
 
         </div>
 
-        <!-- COLUNA DIREITA: Monitor HUD e 6 Ajustes de Cabine (8 cols) -->
-        <div class="lg:col-span-8 space-y-5">
+{{grid2}}        <div class="lg:col-span-8 space-y-5">
           
-          <!-- Contêiner Visual HUD do Céu -->
-          <div id="hud-visual-container" class="hud-glass p-4 rounded-2xl border border-slate-800 relative overflow-hidden shadow-2xl transition-all duration-300">
+{{lgColSpan8}}          <div id="hud-visual-container" class="hud-glass p-4 rounded-2xl border border-slate-800 relative overflow-hidden shadow-2xl transition-all duration-300">
             
-            <!-- Cabeçalho Telemetria HUD -->
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-800/80">
+{{hudVisualContainer}}            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-800/80">
               <div class="flex items-center space-x-3">
                 <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-hud font-semibold bg-slate-900 border border-slate-700 text-cyan-300">
-                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i> IDADE: <span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
+                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i>{{inlineFlex}}<span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
                 </span>
                 <span id="hud-flight-status-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
-                  Pronto na Pista
-                </span>
+{{hudFlightStatusBadge}}                </span>
               </div>
 
-              <!-- Telemetria do Voo -->
-              <div class="flex items-center gap-3 sm:gap-4 text-xs font-mono">
+{{flex4}}              <div class="flex items-center gap-3 sm:gap-4 text-xs font-mono">
                 <div>
-                  <span class="text-slate-400 text-[10px] block uppercase">Altitude</span>
-                  <span id="hud-portfolio-val" class="text-emerald-400 font-bold text-sm">$850.000</span>
+                  <span class="text-slate-400 text-[10px] block uppercase">{{textSlate400}}</span>
+                  <span id="hud-portfolio-val" class="text-emerald-400 font-bold text-sm">{{dispNestegg}}</span>
                 </div>
                 <div class="border-l border-slate-800 pl-3">
-                  <span class="text-slate-400 text-[10px] block uppercase">SWR Atual</span>
+                  <span class="text-slate-400 text-[10px] block uppercase">{{textSlate4002}}</span>
                   <span id="hud-current-swr" class="text-amber-300 font-bold text-sm">5.3%</span>
                 </div>
                 <div class="border-l border-slate-800 pl-3">
-                  <span class="text-slate-400 text-[10px] block uppercase">Anos em Colapso</span>
-                  <span id="hud-crashline-counter" class="text-emerald-400 font-bold text-sm">0 / 10 Anos</span>
+                  <span class="text-slate-400 text-[10px] block uppercase">{{textSlate4003}}</span>
+                  <span id="hud-crashline-counter" class="text-emerald-400 font-bold text-sm">{{hudCrashlineCounter}}</span>
                 </div>
               </div>
             </div>
 
-            <!-- Canvas Monitor do Voo -->
-            <div class="relative w-full h-[290px] sm:h-[340px] bg-slate-950 rounded-xl overflow-hidden border border-slate-800/80 group">
-              <canvas id="flightCanvas" role="img" aria-label="Gráfico animado: a trajetória simulada da carteira, desenhada como uma rota de voo. Todos os valores que representa são indicados como texto no painel de instrumentos acima." class="w-full h-full block"></canvas>
+{{hudVisualContainer2}}            <div class="relative w-full h-[290px] sm:h-[340px] bg-slate-950 rounded-xl overflow-hidden border border-slate-800/80 group">
+              <canvas id="flightCanvas" role="img" aria-label="{{flightcanvasAriaLabel}}" class="w-full h-full block"></canvas>
               <div class="scanlines absolute inset-0 pointer-events-none opacity-40"></div>
 
-              <!-- Legenda de Inclinação do Voo -->
-              <div class="absolute top-3 right-3 px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 backdrop-blur-md text-[11px] font-mono space-y-1 shadow-lg pointer-events-none hidden sm:block">
+{{relative}}              <div class="absolute top-3 right-3 px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 backdrop-blur-md text-[11px] font-mono space-y-1 shadow-lg pointer-events-none hidden sm:block">
                 <div class="text-[10px] text-slate-400 uppercase font-bold border-b border-slate-800 pb-1 flex items-center gap-1.5">
-                  <i class="fa-solid fa-compass text-cyan-400" aria-hidden="true"></i> INCLINAÇÃO
-                </div>
+                  <i class="fa-solid fa-compass text-cyan-400" aria-hidden="true"></i>{{text10px8}}                </div>
                 <div id="hud-pitch-badge" class="flex items-center gap-1.5 font-bold text-emerald-400">
-                  <span>🛫 CRUZEIRO NIVELADO</span>
+                  <span>{{hudPitchBadge}}</span>
                 </div>
               </div>
 
-              <!-- Cartaz Dinâmico Educativo do Copiloto -->
-              <div id="copilot-banner" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
+{{relative2}}              <div id="copilot-banner" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
                 <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 text-base">
                   <i id="copilot-icon" class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
                 </div>
                 <div class="space-y-1 flex-1">
                   <div class="flex justify-between items-center">
-                    <span id="copilot-title" class="font-hud font-bold text-amber-400 text-xs uppercase">ALERTA DO COPILOTO: TURBULÊNCIA NO MERCADO</span>
-                    <button onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="Dispensar este aviso">
+                    <span id="copilot-title" class="font-hud font-bold text-amber-400 text-xs uppercase">{{copilotTitle}}</span>
+                    <button onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="{{a11yDismissBanner}}">
                       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                   </div>
                   <p id="copilot-message" class="text-slate-200 text-xs leading-relaxed">
-                    O mercado caiu -22% este ano. Quedas no início da aposentadoria ativam o Risco da Sequência de Retornos!
-                  </p>
+{{copilotMessage}}                  </p>
                   <div id="copilot-tip" class="text-[11px] text-cyan-300 font-mono pt-1 border-t border-slate-800/80">
-                    💡 Dica: Ative os ajustes da cabine abaixo para estabilizar a trajetória.
-                  </div>
+{{copilotTip}}                  </div>
                 </div>
               </div>
 
-              <!-- Indicador Atmosférico Inferior -->
-              <div class="absolute bottom-2 left-3 right-3 flex justify-between items-center pointer-events-none text-[10px] font-mono text-slate-400">
+{{relative3}}              <div class="absolute bottom-2 left-3 right-3 flex justify-between items-center pointer-events-none text-[10px] font-mono text-slate-400">
                 <div class="flex items-center gap-2">
                   <span id="canvas-sky-status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span id="canvas-sky-status-text">Atmosfera: Céu Limpo e Altitude Segura</span>
+                  <span id="canvas-sky-status-text">{{canvasSkyStatusText}}</span>
                 </div>
-                <span>Horizonte Alvo: 100 Anos</span>
+                <span>{{absolute}}</span>
               </div>
             </div>
 
           </div>
 
-          <!-- PAINEL DE 6 AJUSTES TÁTICOS NA CABINE -->
-          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3.5 shadow-xl">
+{{lgColSpan82}}          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3.5 shadow-xl">
             <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
               <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 flex items-center gap-2">
-                <i class="fa-solid fa-gamepad text-cyan-400" aria-hidden="true"></i> AJUSTES TÁTICOS NA CABINE (6 OPÇÕES)
-              </h3>
-              <span class="text-[11px] font-mono text-slate-400">Ative em voo para se recuperar!</span>
+                <i class="fa-solid fa-gamepad text-cyan-400" aria-hidden="true"></i>{{fontHud3}}              </h3>
+              <span class="text-[11px] font-mono text-slate-400">{{text11px}}</span>
             </div>
 
-            <!-- Grade de Cartões de Táticas -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+{{hudGlass8}}            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               
-              <!-- Tática 1: Emprego em Meio Período -->
-              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('job')">
+{{grid3}}              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('job')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-job" class="sr-only" aria-labelledby="title-action-job">
-                  <span id="badge-action-job" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-job" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">{{badgeActionJob}}</span>
                 </div>
                 <div>
-                  <h4 id="title-action-job" class="text-xs font-bold text-white">Renda Extra / Meio Período</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Ganhe $15.000/ano em meio período para reduzir retiradas do portfólio.</p>
+                  <h4 id="title-action-job" class="text-xs font-bold text-white">{{textXs9}}</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">{{text10px9}}</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
-                  <span class="text-emerald-400 font-bold">+$15k / Ano Proteção</span>
+                  <span class="text-slate-400">{{textSlate4004}}</span>
+                  <span class="text-emerald-400 font-bold">{{textEmerald4002}}</span>
                 </div>
               </div>
 
-              <!-- Tática 2: Cortar Gastos 15% -->
-              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cutspend')">
+{{grid4}}              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cutspend')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-scissors" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-cutspend" class="sr-only" aria-labelledby="title-action-cutspend">
-                  <span id="badge-action-cutspend" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-cutspend" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">{{badgeActionJob}}</span>
                 </div>
                 <div>
-                  <h4 id="title-action-cutspend" class="text-xs font-bold text-white">Cortar Gastos em 15%</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Reduza despesas durante os anos de baixa no mercado.</p>
+                  <h4 id="title-action-cutspend" class="text-xs font-bold text-white">{{textXs10}}</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">{{text10px10}}</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
-                  <span class="text-amber-400 font-bold">Econ. ~$6,7k / Ano</span>
+                  <span class="text-slate-400">{{textSlate4004}}</span>
+                  <span class="text-amber-400 font-bold">{{textAmber4002}}</span>
                 </div>
               </div>
 
-              <!-- Tática 3: Escudo da Reserva de Caixa -->
-              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cashbuffer')">
+{{grid5}}              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('cashbuffer')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-vault" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-cashbuffer" class="sr-only" aria-labelledby="title-action-cashbuffer">
-                  <span id="badge-action-cashbuffer" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-cashbuffer" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">{{badgeActionJob}}</span>
                 </div>
                 <div>
-                  <h4 id="title-action-cashbuffer" class="text-xs font-bold text-white">Escudo de Caixa</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Use a reserva de caixa para evitar vender ações na baixa.</p>
+                  <h4 id="title-action-cashbuffer" class="text-xs font-bold text-white">{{textXs11}}</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">{{text10px11}}</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
-                  <span class="text-cyan-300 font-bold">Protege o Capital</span>
+                  <span class="text-slate-400">{{textSlate4004}}</span>
+                  <span class="text-cyan-300 font-bold">{{textCyan3002}}</span>
                 </div>
               </div>
 
-              <!-- Tática 4: Proteção Dinâmica (Guardrails) -->
-              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('guardrails')">
+{{grid6}}              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('guardrails')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-guardrails" class="sr-only" aria-labelledby="title-action-guardrails">
-                  <span id="badge-action-guardrails" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-guardrails" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">{{badgeActionJob}}</span>
                 </div>
                 <div>
-                  <h4 id="title-action-guardrails" class="text-xs font-bold text-white">Regras Dinâmicas</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Regra Guyton-Klinger: corta 10% do gasto se o portfólio cair &gt;15%.</p>
+                  <h4 id="title-action-guardrails" class="text-xs font-bold text-white">{{textXs12}}</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">{{text10px12}}</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
-                  <span class="text-purple-300 font-bold">Freia a Desvalorização</span>
+                  <span class="text-slate-400">{{textSlate4004}}</span>
+                  <span class="text-purple-300 font-bold">{{textPurple300}}</span>
                 </div>
               </div>
 
-              <!-- Tática 5: Redução de Imóvel -->
-              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('downsize')">
+{{grid7}}              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('downsize')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-blue-950 text-blue-400 border border-blue-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-downsize" class="sr-only" aria-labelledby="title-action-downsize">
-                  <span id="badge-action-downsize" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-downsize" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">{{badgeActionJob}}</span>
                 </div>
                 <div>
-                  <h4 id="title-action-downsize" class="text-xs font-bold text-white">Redução de Imóvel</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Injeção única de +$100.000 por venda/aluguel de patrimônio imobiliário.</p>
+                  <h4 id="title-action-downsize" class="text-xs font-bold text-white">{{textXs13}}</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">{{text10px13}}</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
-                  <span class="text-blue-300 font-bold">+$100k Injeção Direta</span>
+                  <span class="text-slate-400">{{textSlate4004}}</span>
+                  <span class="text-blue-300 font-bold">{{textBlue300}}</span>
                 </div>
               </div>
 
-              <!-- Tática 6: Pensão ou Aposentadoria Pública -->
-              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('pension')">
+{{grid8}}              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" onclick="toggleAction('pension')">
                 <div class="flex justify-between items-start">
                   <div class="w-7 h-7 rounded-lg bg-pink-950 text-pink-400 border border-pink-800 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-pension" class="sr-only" aria-labelledby="title-action-pension">
-                  <span id="badge-action-pension" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-pension" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">{{badgeActionJob}}</span>
                 </div>
                 <div>
-                  <h4 id="title-action-pension" class="text-xs font-bold text-white">Pensão / Aposentadoria</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Entrada de renda garantida de +$20.000/ano a partir dos 62 anos.</p>
+                  <h4 id="title-action-pension" class="text-xs font-bold text-white">{{textXs14}}</h4>
+                  <p class="text-[10px] text-slate-400 leading-tight">{{text10px14}}</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
-                  <span class="text-pink-300 font-bold">+$20k / Ano Garantidos</span>
+                  <span class="text-slate-400">{{textSlate4004}}</span>
+                  <span class="text-pink-300 font-bold">{{textPink300}}</span>
                 </div>
               </div>
 
@@ -633,54 +569,48 @@
     </div>
 
     <!-- ================================================================= -->
-    <!-- ABA 2: CLASSIFICAÇÃO DE PILOTOS E REGISTRO DE VOO -->
-    <!-- ================================================================= -->
+{{main2}}    <!-- ================================================================= -->
     <div id="tab-leaderboard" class="hidden space-y-6">
 
       <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3 shadow-xl">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
           <div>
             <h2 class="text-base sm:text-lg font-bold font-hud text-amber-400 flex items-center gap-2">
-              <i class="fa-solid fa-trophy text-amber-400" aria-hidden="true"></i> TABELA DE CLASSIFICAÇÃO DE VOO FIRE
-            </h2>
+              <i class="fa-solid fa-trophy text-amber-400" aria-hidden="true"></i>{{textBase2}}            </h2>
             <p class="text-xs text-slate-300">
-              Pilotos classificados por categoria: <strong>1º Chegar aos 100 Anos</strong>, <strong>2º Mínimo de Anos em Colapso</strong>, e <strong>3º Patrimônio Final Conservado</strong>.
+{{textXs15}}<strong>{{textXs16}}</strong>, <strong>{{textXs17}}</strong>{{textXs18}}<strong>{{textXs19}}</strong>.
             </p>
           </div>
           <button onclick="clearLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
-            <i class="fa-solid fa-trash mr-1" aria-hidden="true"></i> Reiniciar Placar
-          </button>
+            <i class="fa-solid fa-trash mr-1" aria-hidden="true"></i>{{px35}}          </button>
         </div>
 
-        <!-- Filtros por Categoria de Cenário -->
-        <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
-          <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i> Filtrar Categoria:</span>
-          <button id="lb-filter-ALL" onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">TODAS AS CATEGORIAS</button>
-          <button id="lb-filter-SWR de Alto Risco" onclick="filterLeaderboard('SWR de Alto Risco')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">SWR Alto Risco</button>
-          <button id="lb-filter-Padrão Trinity" onclick="filterLeaderboard('Padrão Trinity')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Padrão Trinity</button>
-          <button id="lb-filter-Lean FIRE Ajustado" onclick="filterLeaderboard('Lean FIRE Ajustado')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Lean FIRE Ajustado</button>
-          <button id="lb-filter-Fat FIRE Amplo" onclick="filterLeaderboard('Fat FIRE Amplo')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Fat FIRE Amplo</button>
-          <button id="lb-filter-Cenário Personalizado" onclick="filterLeaderboard('Cenário Personalizado')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Cenário Personalizado</button>
+{{hudGlass9}}        <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
+          <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i>{{textSlate4005}}</span>
+          <button id="lb-filter-ALL" onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">{{lbFilterAll}}</button>
+          <button id="{{lbFilterHighRiskSwrId}}" onclick="{{lbFilterHighRiskSwrOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterHighRiskSwr}}</button>
+          <button id="{{lbFilterTrinityStandardId}}" onclick="{{lbFilterTrinityStandardOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterTrinityStandard}}</button>
+          <button id="{{lbFilterTightLeanFireId}}" onclick="{{lbFilterTightLeanFireOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterTightLeanFire}}</button>
+          <button id="{{lbFilterFatFireId}}" onclick="{{lbFilterFatFireOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterFatFire}}</button>
+          <button id="{{lbFilterCustomScenarioId}}" onclick="{{lbFilterCustomScenarioOnclick}}" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">{{lbFilterCustomScenario}}</button>
         </div>
 
-        <!-- Tabela de Classificação -->
-        <div class="overflow-x-auto">
+{{hudGlass10}}        <div class="overflow-x-auto">
           <table class="w-full text-left text-xs font-mono">
             <thead>
               <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]">
-                <th class="py-2.5 px-3">Posição</th>
-                <th class="py-2.5 px-3">Piloto</th>
-                <th class="py-2.5 px-3 text-cyan-400">Categoria do Cenário</th>
-                <th class="py-2.5 px-3">Chegou aos 100?</th>
-                <th class="py-2.5 px-3 text-red-400">Anos em Colapso</th>
-                <th class="py-2.5 px-3 text-amber-300">Táticas (Penalidade)</th>
-                <th class="py-2.5 px-3 text-emerald-400">Patrimônio Final</th>
-                <th class="py-2.5 px-3 text-amber-400">Pontuação</th>
+                <th class="py-2.5 px-3">{{py25}}</th>
+                <th class="py-2.5 px-3">{{py252}}</th>
+                <th class="py-2.5 px-3 text-cyan-400">{{py253}}</th>
+                <th class="py-2.5 px-3">{{py254}}</th>
+                <th class="py-2.5 px-3 text-red-400">{{py255}}</th>
+                <th class="py-2.5 px-3 text-amber-300">{{py256}}</th>
+                <th class="py-2.5 px-3 text-emerald-400">{{py257}}</th>
+                <th class="py-2.5 px-3 text-amber-400">{{py258}}</th>
               </tr>
             </thead>
             <tbody id="leaderboard-table-body" class="divide-y divide-slate-800/60 text-slate-200">
-              <!-- Preenchido dinamicamente -->
-            </tbody>
+{{leaderboardTableBody}}            </tbody>
           </table>
         </div>
       </div>
@@ -688,76 +618,68 @@
     </div>
 
     <!-- ================================================================= -->
-    <!-- ABA 3: MOTOR MONTE CARLO DE 1.000 SIMULAÇÕES -->
-    <!-- ================================================================= -->
+{{main3}}    <!-- ================================================================= -->
     <div id="tab-montecarlo" class="hidden space-y-6">
 
-      <!-- Cartão Cabeçalho Monte Carlo -->
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
+{{tabMontecarlo}}      <div class="hud-glass p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
-              <i class="fa-solid fa-network-wired text-cyan-400" aria-hidden="true"></i> MOTOR DE TESTE DE ESTRESSE MONTE CARLO (1.000 EXECUÇÕES)
-            </h2>
+              <i class="fa-solid fa-network-wired text-cyan-400" aria-hidden="true"></i>{{textBase3}}            </h2>
             <p class="text-xs text-slate-300 leading-relaxed">
-              Simula 1.000 trajetórias de voo aleatórias em um horizonte de 50 anos (Idade 50 aos 100) aplicando distribuições históricas de alta volatilidade.
-            </p>
+{{textXs20}}            </p>
           </div>
           <button onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
-            <i class="fa-solid fa-play mr-1.5" aria-hidden="true"></i> EXECUTAR 1.000 SIMULAÇÕES
-          </button>
+            <i class="fa-solid fa-play mr-1.5" aria-hidden="true"></i>{{shrink0}}          </button>
         </div>
       </div>
 
-      <!-- Cartões de Métricas Chave Monte Carlo -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono">
+{{tabMontecarlo2}}      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono">
         
         <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Taxa de Sucesso do Voo</span>
+          <span class="text-[10px] text-slate-400 uppercase">{{text10px15}}</span>
           <div id="mc-metric-success" class="text-2xl font-bold font-hud text-emerald-400">-- %</div>
-          <p class="text-[10px] text-slate-400">Rotas que chegaram aos 100 anos.</p>
+          <p class="text-[10px] text-slate-400">{{text10px16}}</p>
         </div>
 
         <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Patrimônio Mediano Final</span>
+          <span class="text-[10px] text-slate-400 uppercase">{{text10px17}}</span>
           <div id="mc-metric-median" class="text-2xl font-bold font-hud text-cyan-300">--</div>
-          <p class="text-[10px] text-slate-400">Percentil 50 aos 100 anos.</p>
+          <p class="text-[10px] text-slate-400">{{text10px18}}</p>
         </div>
 
         <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Pior Resultado 10%</span>
+          <span class="text-[10px] text-slate-400 uppercase">{{text10px19}}</span>
           <div id="mc-metric-p10" class="text-2xl font-bold font-hud text-amber-400">--</div>
-          <p class="text-[10px] text-slate-400">Percentil 10 em estresse adverso.</p>
+          <p class="text-[10px] text-slate-400">{{text10px20}}</p>
         </div>
 
         <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Melhor Resultado 10%</span>
+          <span class="text-[10px] text-slate-400 uppercase">{{text10px21}}</span>
           <div id="mc-metric-p90" class="text-2xl font-bold font-hud text-purple-400">--</div>
-          <p class="text-[10px] text-slate-400">Percentil 90 de crescimento máximo.</p>
+          <p class="text-[10px] text-slate-400">{{text10px22}}</p>
         </div>
 
       </div>
 
-      <!-- Tabela de Distribuição por Percentis -->
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4">
-        <h3 class="font-hud font-bold text-xs uppercase text-slate-200">Distribuição de Patrimônio por Percentis ao Longo do Tempo</h3>
+{{tabMontecarlo3}}      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4">
+        <h3 class="font-hud font-bold text-xs uppercase text-slate-200">{{fontHud4}}</h3>
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs font-mono">
             <thead>
               <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]">
-                <th class="py-2 px-3">Idade de Aposentadoria</th>
-                <th class="py-2 px-3 text-red-400">Percentil 10 (Pior Caso)</th>
-                <th class="py-2 px-3 text-amber-400">Percentil 25</th>
-                <th class="py-2 px-3 text-cyan-300">Percentil 50 (Mediana)</th>
-                <th class="py-2 px-3 text-emerald-400">Percentil 75</th>
-                <th class="py-2 px-3 text-purple-400">Percentil 90 (Melhor Caso)</th>
+                <th class="py-2 px-3">{{py2}}</th>
+                <th class="py-2 px-3 text-red-400">{{py22}}</th>
+                <th class="py-2 px-3 text-amber-400">{{py23}}</th>
+                <th class="py-2 px-3 text-cyan-300">{{py24}}</th>
+                <th class="py-2 px-3 text-emerald-400">{{py26}}</th>
+                <th class="py-2 px-3 text-purple-400">{{py27}}</th>
               </tr>
             </thead>
             <tbody id="mc-table-body" class="divide-y divide-slate-800/60 text-slate-300">
               <tr>
                 <td colspan="6" class="py-6 text-center text-slate-400 font-sans">
-                  Clique em "Executar 1.000 Simulações" para gerar os dados de trajetória Monte Carlo.
-                </td>
+{{py6}}                </td>
               </tr>
             </tbody>
           </table>
@@ -767,75 +689,60 @@
     </div>
 
     <!-- ================================================================= -->
-    <!-- ABA 4: ACADEMIA DE VOO FIRE -->
-    <!-- ================================================================= -->
+{{main4}}    <!-- ================================================================= -->
     <div id="tab-academy" class="hidden space-y-6">
 
       <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-2">
         <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-cyan-400" aria-hidden="true"></i> ACADEMIA DE VOO FIRE: LIÇÕES FUNDAMENTAIS
-        </h2>
+          <i class="fa-solid fa-graduation-cap text-cyan-400" aria-hidden="true"></i>{{textBase4}}        </h2>
         <p class="text-xs text-slate-300 leading-relaxed">
-          Domine a ciência financeira da desacumulação de riqueza, equilíbrio de ativos e proteção contra o risco de longevidade.
-        </p>
+{{textXs21}}        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
 
-        <!-- Módulo 1: SWR -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
+{{grid9}}        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-lg font-bold">
             01
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">A Regra dos 4% de Taxa Segura de Retirada</h3>
+          <h3 class="font-hud font-bold text-sm text-white">{{fontHud5}}</h3>
           <p class="text-slate-300 leading-relaxed">
-            Derivada do famoso Estudo Trinity de 1998, a regra dos 4% estabelece que retirar 4% do seu portfólio inicial no primeiro ano (ajustado pela inflação nos anos seguintes) ofereceu historicamente uma taxa de sucesso superior a 95% em períodos de 30 anos.
-          </p>
+{{textSlate3005}}          </p>
           <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-cyan-300">
-            Fórmula: Patrimônio Requerido = Gasto Anual × 25
-          </div>
+{{p3}}          </div>
         </div>
 
-        <!-- Módulo 2: SORR -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
+{{grid10}}        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-red-950 text-red-400 border border-red-800 flex items-center justify-center text-lg font-bold">
             02
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Risco da Sequência de Retornos (SORR)</h3>
+          <h3 class="font-hud font-bold text-sm text-white">{{fontHud6}}</h3>
           <p class="text-slate-300 leading-relaxed">
-            O momento do mercado importa enormemente ao começar a retirar dinheiro! Uma queda severa nos primeiros 5 anos força você a vender ações a preços baixos, levando seu voo para a zona de colapso.
-          </p>
+{{textSlate3006}}          </p>
           <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-red-300">
-            Defesa: Ajuste a alocação para renda fixa/caixa para amortecer quedas iniciais.
-          </div>
+{{p32}}          </div>
         </div>
 
-        <!-- Módulo 3: TDF Glidepaths -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
+{{grid11}}        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-lg font-bold">
             03
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Fundos Data-Alvo e Glidepaths de Redução de Risco</h3>
+          <h3 class="font-hud font-bold text-sm text-white">{{fontHud7}}</h3>
           <p class="text-slate-300 leading-relaxed">
-            Manter 100% em renda variável durante a aposentadoria aumenta a exposição a quedas. Os fundos Data-Alvo reequilibram automaticamente para renda fixa (títulos/caixa) ao longo do tempo para consolidar ganhos e suavizar a volatilidade.
-          </p>
+{{textSlate3007}}          </p>
           <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-emerald-300">
-            Regra Prática: % Renda Fixa = Idade menos 10 (ex: aos 60 Anos, ~50% Renda Fixa/Caixa).
-          </div>
+{{p33}}          </div>
         </div>
 
-        <!-- Módulo 4: Guardrails Dinâmicos -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
+{{grid12}}        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-lg font-bold">
             04
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Ajustes Dinâmicos e Trabalho em Meio Período</h3>
+          <h3 class="font-hud font-bold text-sm text-white">{{fontHud8}}</h3>
           <p class="text-slate-300 leading-relaxed">
-            Aposentados flexíveis não retiram valores fixos rigidamente durante mercados em queda. Trabalhar em meio período, cortar gastos em 15% ou usar reservas de caixa permite que as ações se recuperem sem liquidações forçadas nas mínimas.
-          </p>
+{{textSlate3008}}          </p>
           <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-amber-300">
-            Regra Guyton-Klinger: Corte os gastos em 10% quando o portfólio cair >15%.
-          </div>
+{{p34}}          </div>
         </div>
 
       </div>
@@ -844,214 +751,186 @@
 
   </main>
 
-  <!-- RODAPÉ -->
-  <footer class="hud-glass border-t border-slate-800 py-3 px-4 text-center text-xs text-slate-500">
+{{minHScreen3}}  <footer class="hud-glass border-t border-slate-800 py-3 px-4 text-center text-xs text-slate-500">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
       <div class="flex items-center gap-2">
-        <span class="font-hud text-cyan-400">SURVIVAL FLIGHT</span> &bull; <span>Simulador de Longevidade na Aposentadoria FIRE (Idade 50-100)</span>
+        <span class="font-hud text-cyan-400">SURVIVAL FLIGHT</span> &bull; <span>{{flex5}}</span>
       </div>
       <div class="text-[11px] text-slate-500">
-        Simulador educativo para modelar desacumulação de riqueza e Risco da Sequência de Retornos.
-      </div>
+{{text11px2}}      </div>
     </div>
   </footer>
 
-  <!-- MODAL 1: CALCULADORA DE ORÇAMENTO ANUAL -->
-  <div id="modal-calc-spend" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+{{minHScreen4}}  <div id="modal-calc-spend" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
     <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-emerald-600/60 space-y-5 shadow-2xl relative">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="font-hud font-bold text-sm text-emerald-400 flex items-center gap-2">
-          <i class="fa-solid fa-calculator text-emerald-400" aria-hidden="true"></i> CALCULADORA DE ORÇAMENTO ANUAL DE APOSENTADORIA
-        </h3>
-        <button onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Fechar a calculadora">
+          <i class="fa-solid fa-calculator text-emerald-400" aria-hidden="true"></i>{{fontHud9}}        </h3>
+        <button onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="{{a11yCloseCalculator}}">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
 
       <p class="text-xs text-slate-300">
-        Estime seus gastos anuais de aposentadoria preenchendo os custos mensais projetados:
-      </p>
+{{textXs22}}      </p>
 
       <div class="space-y-3 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label for="calc-spend-housing" class="text-slate-300">Moradia e Contas ($/mês):</label>
+          <label for="calc-spend-housing" class="text-slate-300">{{textSlate3009}}</label>
           <input type="number" id="calc-spend-housing" value="1500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-food" class="text-slate-300">Alimentação e Mercado ($/mês):</label>
+          <label for="calc-spend-food" class="text-slate-300">{{textSlate30010}}</label>
           <input type="number" id="calc-spend-food" value="800" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-health" class="text-slate-300">Saúde e Seguros ($/mês):</label>
+          <label for="calc-spend-health" class="text-slate-300">{{textSlate30011}}</label>
           <input type="number" id="calc-spend-health" value="500" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-travel" class="text-slate-300">Viagens e Lazer ($/mês):</label>
+          <label for="calc-spend-travel" class="text-slate-300">{{textSlate30012}}</label>
           <input type="number" id="calc-spend-travel" value="400" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-misc" class="text-slate-300">Diversos e Reserva ($/mês):</label>
+          <label for="calc-spend-misc" class="text-slate-300">{{textSlate30013}}</label>
           <input type="number" id="calc-spend-misc" value="550" oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
 
         <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-sm">
-          <span class="font-sans font-bold text-slate-200">Gasto Anual Calculado:</span>
-          <span id="calc-spend-total" class="font-hud font-bold text-emerald-400 text-base">$45.000 / ano</span>
+          <span class="font-sans font-bold text-slate-200">{{fontSans}}</span>
+          <span id="calc-spend-total" class="font-hud font-bold text-emerald-400 text-base">{{calcSpendTotal}}</span>
         </div>
       </div>
 
       <div class="flex gap-3 pt-2">
         <button onclick="closeSpendCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
-          Cancelar
-        </button>
+{{flex1}}        </button>
         <button onclick="applyCalculatedSpend()" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow glow-green">
-          Aplicar à Cabine
-        </button>
+{{flex12}}        </button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 2: CALCULADORA DE PATRIMÔNIO ALVO -->
-  <div id="modal-calc-nestegg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+{{minHScreen5}}  <div id="modal-calc-nestegg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
     <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-cyan-600/60 space-y-5 shadow-2xl relative">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="font-hud font-bold text-sm text-cyan-400 flex items-center gap-2">
-          <i class="fa-solid fa-calculator text-cyan-400" aria-hidden="true"></i> CALCULADORA DE PATRIMÔNIO ALVO
-        </h3>
-        <button onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Fechar a calculadora">
+          <i class="fa-solid fa-calculator text-cyan-400" aria-hidden="true"></i>{{fontHud10}}        </h3>
+        <button onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="{{a11yCloseCalculator}}">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
 
       <p class="text-xs text-slate-300">
-        Calcule o patrimônio acumulado necessário com base no seu gasto anual e na Taxa Segura de Retirada (SWR):
-      </p>
+{{textXs23}}      </p>
 
       <div class="space-y-4 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label for="calc-egg-spend" class="text-slate-300">Gasto Anual de Vida ($):</label>
+          <label for="calc-egg-spend" class="text-slate-300">{{textSlate30014}}</label>
           <input type="number" id="calc-egg-spend" value="45000" step="1000" oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-egg-swr" class="text-slate-300">Taxa Segura de Retirada Alvo (%):</label>
+          <label for="calc-egg-swr" class="text-slate-300">{{textSlate30015}}</label>
           <select id="calc-egg-swr" onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
-            <option value="4.0" selected>4,0% (Padrão Trinity)</option>
-            <option value="3.5">3,5% (FIRE Conservador)</option>
-            <option value="3.0">3,0% (Ultra Seguro / Perpétuo)</option>
-            <option value="5.3">5,3% (SWR Agressivo)</option>
+            <option value="4.0" selected>{{calcEggSwr}}</option>
+            <option value="3.5">{{calcEggSwr2}}</option>
+            <option value="3.0">{{calcEggSwr3}}</option>
+            <option value="5.3">{{calcEggSwr4}}</option>
           </select>
         </div>
 
         <div class="p-3 rounded-xl bg-cyan-950/60 border border-cyan-800 space-y-1">
-          <div class="text-[11px] text-cyan-300">Fórmula Multiplicadora FIRE:</div>
-          <div id="calc-egg-formula" class="text-xs text-slate-300">$45.000 × 25 = $1.125.000 (Regra dos 25x)</div>
+          <div class="text-[11px] text-cyan-300">{{text11px3}}</div>
+          <div id="calc-egg-formula" class="text-xs text-slate-300">{{calcEggFormula}}</div>
         </div>
 
         <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-sm">
-          <span class="font-sans font-bold text-slate-200">Patrimônio Inicial Requerido:</span>
-          <span id="calc-egg-total" class="font-hud font-bold text-cyan-400 text-base">$1.125.000</span>
+          <span class="font-sans font-bold text-slate-200">{{fontSans2}}</span>
+          <span id="calc-egg-total" class="font-hud font-bold text-cyan-400 text-base">{{calcEggTotal}}</span>
         </div>
       </div>
 
       <div class="flex gap-3 pt-2">
         <button onclick="closeNestEggCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
-          Cancelar
-        </button>
+{{flex1}}        </button>
         <button onclick="applyCalculatedEgg()" class="flex-1 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow glow-cyan">
-          Aplicar à Cabine
-        </button>
+{{flex13}}        </button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL DE RESUMO E RESULTADO DO VOO -->
-  <div id="modal-flight-debrief" role="dialog" aria-modal="true" aria-labelledby="debrief-title" aria-describedby="debrief-msg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+{{minHScreen6}}  <div id="modal-flight-debrief" role="dialog" aria-modal="true" aria-labelledby="debrief-title" aria-describedby="debrief-msg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
     <div class="hud-glass max-w-md w-full p-6 rounded-2xl border border-slate-700 space-y-4 shadow-2xl text-center">
       <div id="debrief-icon-box" class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl">
         <i id="debrief-icon" class="fa-solid fa-trophy" aria-hidden="true"></i>
       </div>
-      <h3 id="debrief-title" class="text-lg font-hud font-bold text-white">MISSÃO CUMPRIDA!</h3>
+      <h3 id="debrief-title" class="text-lg font-hud font-bold text-white">{{debriefTitle}}</h3>
       <p id="debrief-msg" class="text-xs text-slate-300 leading-relaxed">
-        Você chegou com sucesso aos 100 anos com $1.240.000 restantes no tanque do seu portfólio!
-      </p>
+{{debriefMsg}}      </p>
 
       <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-left space-y-1.5 font-mono text-xs">
         <div class="flex justify-between">
-          <span class="text-slate-400">Piloto:</span>
-          <span id="debrief-pilot-name" class="text-amber-300 font-bold">Capitão FIRE</span>
+          <span class="text-slate-400">{{textSlate4006}}</span>
+          <span id="debrief-pilot-name" class="text-amber-300 font-bold">{{inputPilotNameValue}}</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Categoria do Cenário:</span>
-          <span id="debrief-scenario-cat" class="text-cyan-300 font-bold">SWR Alto Risco</span>
+          <span class="text-slate-400">{{textSlate4007}}</span>
+          <span id="debrief-scenario-cat" class="text-cyan-300 font-bold">{{lbFilterHighRiskSwr}}</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Patrimônio Final:</span>
-          <span id="debrief-final-bal" class="text-emerald-400 font-bold">$1.240.000</span>
+          <span class="text-slate-400">{{textSlate4008}}</span>
+          <span id="debrief-final-bal" class="text-emerald-400 font-bold">{{debriefFinalBal}}</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Anos Sobrevividos:</span>
-          <span id="debrief-years" class="text-cyan-300 font-bold">50 Anos</span>
+          <span class="text-slate-400">{{textSlate4009}}</span>
+          <span id="debrief-years" class="text-cyan-300 font-bold">{{debriefYears}}</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Anos na Zona de Colapso:</span>
-          <span id="debrief-crashline-yrs" class="text-red-400 font-bold">0 Anos</span>
+          <span class="text-slate-400">{{textSlate40010}}</span>
+          <span id="debrief-crashline-yrs" class="text-red-400 font-bold">{{debriefCrashlineYrs}}</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Táticas Utilizadas:</span>
-          <span id="debrief-tactic-yrs" class="text-amber-300 font-bold">0 Anos-Tática (-0 pts)</span>
+          <span class="text-slate-400">{{textSlate40011}}</span>
+          <span id="debrief-tactic-yrs" class="text-amber-300 font-bold">{{debriefTacticYrs}}</span>
         </div>
       </div>
 
       <div class="flex gap-2">
         <button onclick="closeDebriefModal(); switchTab('leaderboard');" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
-          VER CLASSIFICAÇÃO
-        </button>
+{{flex14}}        </button>
         <button onclick="closeDebriefModal()" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-hud font-bold text-xs uppercase shadow glow-cyan">
-          TENTAR NOVAMENTE
-        </button>
+{{flex15}}        </button>
       </div>
     </div>
   </div>
 
   <!-- ================================================================= -->
-  <!-- JAVASCRIPT: LÓGICA DO SIMULADOR E MOTOR DE VOO -->
-  <!-- ================================================================= -->
+{{minHScreen7}}  <!-- ================================================================= -->
   <script>
-    let leaderboardScores = [
-      { pilot: 'Capitão FIRE', category: 'SWR de Alto Risco', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },
-      { pilot: 'Piloto FatCat', category: 'Fat FIRE Amplo', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },
-      { pilot: 'Ás Trinity', category: 'Padrão Trinity', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },
-      { pilot: 'Apoiador Lean', category: 'Lean FIRE Ajustado', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },
-      { pilot: 'Caça Wingman', category: 'SWR de Alto Risco', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }
-    ];
+{{minHScreen8}}    let leaderboardScores = [
+{{minHScreen9}}    ];
     let activeLeaderboardFilter = 'ALL';
 
     const state = {
-      pilotName: 'Capitão FIRE',
-      activePreset: 'SWR de Alto Risco',
-
-      // Configurações do Voo
-      nestEgg: 850000,
+{{minHScreen10}}
+{{minHScreen11}}      nestEgg: 850000,
       annualSpending: 45000,
       startAge: 50,
       targetAge: 100,
       
-      // Alocação
-      pctStocks: 80,
+{{minHScreen12}}      pctStocks: 80,
       pctBonds: 15,
       pctCash: 5,
       useTargetDateFund: false,
 
-      // 6 Táticas na Cabine
-      actJob: false,
+{{minHScreen13}}      actJob: false,
       actCutSpend: false,
       actCashBuffer: false,
       actGuardrails: false,
       actDownsize: false,
       actPension: false,
 
-      // Telemetria da Simulação
-      isSimulating: false,
+{{minHScreen14}}      isSimulating: false,
       currentAge: 50,
       currentNestEgg: 850000,
       peakNestEgg: 850000,
@@ -1063,16 +942,10 @@
       historyLogs: []
     };
 
-    // Referências de Mercado
-    const MARKET_BENCHMARKS = {
-      stocks: { mean: 0.082, stdDev: 0.24 }, // Alta volatilidade de ações
-      bonds: { mean: 0.035, stdDev: 0.06 },  // Renda fixa
-      cash: { mean: 0.015, stdDev: 0.01 },   // Reserva em caixa
-      inflation: { mean: 0.035, stdDev: 0.025 } // Inflação
-    };
+{{minHScreen15}}    const MARKET_BENCHMARKS = {
+{{minHScreen16}}    };
 
-    // Sequências Históricas
-    const PRESET_HISTORICAL_SEQUENCES = {
+{{minHScreen17}}    const PRESET_HISTORICAL_SEQUENCES = {
       '1970s': [
         { stock: -0.18, bond: -0.03, infl: 0.07 },
         { stock: -0.28, bond: 0.01, infl: 0.12 },
@@ -1087,8 +960,7 @@
         { stock: -0.25, bond: 0.09, infl: 0.01 },
         { stock: 0.26, bond: 0.02, infl: 0.02 },
         { stock: 0.08, bond: 0.04, infl: 0.03 },
-        { stock: -0.40, bond: 0.18, infl: 0.00 } // Queda de 2008
-      ],
+{{minHScreen18}}      ],
       'bull': [
         { stock: 0.16, bond: 0.04, infl: 0.02 },
         { stock: 0.19, bond: 0.03, infl: 0.02 },
@@ -1098,7 +970,7 @@
       ]
     };
 
-    window.onload = function() {
+{{minHScreen19}}    window.onload = function() {
       updatePilotName();
       updateControlsUI();
       renderLeaderboardTable();
@@ -1116,16 +988,11 @@
 
     function checkAndDetectPresetCategory() {
       if (state.nestEgg === 850000 && state.annualSpending === 45000) {
-        state.activePreset = 'SWR de Alto Risco';
-      } else if (state.nestEgg === 1000000 && state.annualSpending === 40000) {
-        state.activePreset = 'Padrão Trinity';
-      } else if (state.nestEgg === 650000 && state.annualSpending === 35000) {
-        state.activePreset = 'Lean FIRE Ajustado';
-      } else if (state.nestEgg === 1500000 && state.annualSpending === 75000) {
-        state.activePreset = 'Fat FIRE Amplo';
-      } else {
-        state.activePreset = 'Cenário Personalizado';
-      }
+{{minHScreen20}}      } else if (state.nestEgg === 1000000 && state.annualSpending === 40000) {
+{{minHScreen21}}      } else if (state.nestEgg === 650000 && state.annualSpending === 35000) {
+{{minHScreen22}}      } else if (state.nestEgg === 1500000 && state.annualSpending === 75000) {
+{{minHScreen23}}      } else {
+{{minHScreen24}}      }
     }
 
     function updateControlsUI() {
@@ -1139,33 +1006,26 @@
       if (startAgeEl) state.startAge = parseInt(startAgeEl.value) || 50;
       if (endAgeEl) state.targetAge = parseInt(endAgeEl.value) || 100;
 
-      checkAndDetectPresetCategory();
+{{minHScreen25}}      checkAndDetectPresetCategory();
 
       const seqEl = document.getElementById('select-market-sequence');
       if (seqEl) state.marketSequence = seqEl.value;
 
-      const dispEgg = document.getElementById('disp-nestegg');
-      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString('pt-BR');
-      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString('pt-BR'));
-
+{{minHScreen26}}      const dispEgg = document.getElementById('disp-nestegg');
+{{minHScreen27}}
       const dispSpend = document.getElementById('disp-spending');
-      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString('pt-BR');
-      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString('pt-BR'));
-
+{{minHScreen28}}
       const swrVal = (state.annualSpending / state.nestEgg) * 100;
       const swrStr = swrVal.toFixed(1) + '%';
       
       const badgeSwr = document.getElementById('disp-swr-badge');
       if (badgeSwr) {
         if (swrVal > 4.5) {
-          badgeSwr.innerText = `${swrStr} (ALTO RISCO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800 animate-pulse';
+{{minHScreen29}}          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800 animate-pulse';
         } else if (swrVal > 3.8) {
-          badgeSwr.innerText = `${swrStr} (RISCO MODERADO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950 text-amber-400 border border-amber-800';
+{{minHScreen30}}          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950 text-amber-400 border border-amber-800';
         } else {
-          badgeSwr.innerText = `${swrStr} (SWR SEGURO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800';
+{{minHScreen31}}          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800';
         }
       }
 
@@ -1178,15 +1038,13 @@
         if (hudAge) hudAge.innerText = state.currentAge;
 
         const hudVal = document.getElementById('hud-portfolio-val');
-        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString('pt-BR');
-
+{{minHScreen32}}
         const hudSwr = document.getElementById('hud-current-swr');
         if (hudSwr) hudSwr.innerText = swrStr;
 
         const crashCounter = document.getElementById('hud-crashline-counter');
         if (crashCounter) {
-          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Anos`;
-          crashCounter.className = 'text-emerald-400 font-bold text-sm';
+{{minHScreen33}}          crashCounter.className = 'text-emerald-400 font-bold text-sm';
         }
       }
 
@@ -1200,17 +1058,13 @@
     function loadPreset(type) {
       playSound('click');
       if (type === 'highrisk') {
-        state.activePreset = 'SWR de Alto Risco';
-        setControlValues(850000, 45000, 50, 100, 80, 15, 5);
+{{minHScreen20}}        setControlValues(850000, 45000, 50, 100, 80, 15, 5);
       } else if (type === 'trinity') {
-        state.activePreset = 'Padrão Trinity';
-        setControlValues(1000000, 40000, 50, 100, 70, 20, 10);
+{{minHScreen21}}        setControlValues(1000000, 40000, 50, 100, 70, 20, 10);
       } else if (type === 'leanfire') {
-        state.activePreset = 'Lean FIRE Ajustado';
-        setControlValues(650000, 35000, 50, 100, 85, 10, 5);
+{{minHScreen22}}        setControlValues(650000, 35000, 50, 100, 85, 10, 5);
       } else if (type === 'fatfire') {
-        state.activePreset = 'Fat FIRE Amplo';
-        setControlValues(1500000, 75000, 50, 100, 75, 20, 5);
+{{minHScreen23}}        setControlValues(1500000, 75000, 50, 100, 75, 20, 5);
       }
     }
 
@@ -1235,7 +1089,7 @@
       updateControlsUI();
     }
 
-    function adjustAssetAllocation(changed) {
+{{minHScreen34}}    function adjustAssetAllocation(changed) {
       if (state.useTargetDateFund) return;
 
       let s = parseInt(document.getElementById('input-stocks').value) || 0;
@@ -1315,10 +1169,9 @@
       if (barC) barC.style.width = cash + '%';
 
       const tdfText = document.getElementById('tdf-status-text');
-      if (tdfText) tdfText.innerText = `Idade ${age}: ${stocks}% Ações / ${bonds}% Renda Fixa / ${cash}% Caixa`;
-    }
+{{minHScreen35}}    }
 
-    function toggleAction(action) {
+{{minHScreen36}}    function toggleAction(action) {
       playSound('click');
       if (action === 'job') {
         state.actJob = !state.actJob;
@@ -1336,12 +1189,8 @@
         state.actDownsize = !state.actDownsize;
         updateActionCardUI('downsize', state.actDownsize, 'glow-cyan', 'border-blue-500');
         if (state.actDownsize && state.isSimulating) {
-          state.currentNestEgg += 100000;
-          showCopilotBanner(
-            '🏠 INJEÇÃO POR REDUÇÃO DE IMÓVEL',
-            'Você injetou +$100.000 de combustível de emergência após vender ou reduzir seu imóvel!',
-            '💡 Dica: O patrimônio imobiliário atua como um excelente colchão de segurança.',
-            'info'
+{{minHScreen37}}          showCopilotBanner(
+{{minHScreen38}}            'info'
           );
         }
       } else if (action === 'pension') {
@@ -1360,18 +1209,16 @@
 
       if (isActive) {
         card.classList.add(glowClass, borderClass, 'bg-slate-900/90');
-        badge.innerText = 'ATIVO';
-        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 font-bold';
+{{minHScreen39}}        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 font-bold';
         if (check) check.checked = true;
       } else {
         card.classList.remove(glowClass, borderClass, 'bg-slate-900/90');
-        badge.innerText = 'INATIVO';
-        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700';
+{{minHScreen40}}        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700';
         if (check) check.checked = false;
       }
     }
 
-    function toggleFlightSimulation() {
+{{minHScreen41}}    function toggleFlightSimulation() {
       if (state.isSimulating) {
         pauseFlightSimulation();
       } else {
@@ -1388,12 +1235,10 @@
       playSound('engine');
 
       const launchBtnText = document.getElementById('btn-launch-text');
-      if (launchBtnText) launchBtnText.innerText = 'PAUSAR VOO';
-
+{{minHScreen42}}
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
-        badge.innerText = '✈️ EM VOO (NO AR)';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cyan-950 text-cyan-400 border border-cyan-700 animate-pulse';
+{{minHScreen43}}        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cyan-950 text-cyan-400 border border-cyan-700 animate-pulse';
       }
 
       state.simulationInterval = setInterval(simulateOneYearStep, 800);
@@ -1404,12 +1249,10 @@
       if (state.simulationInterval) clearInterval(state.simulationInterval);
 
       const launchBtnText = document.getElementById('btn-launch-text');
-      if (launchBtnText) launchBtnText.innerText = 'RETOMAR VOO';
-
+{{minHScreen44}}
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
-        badge.innerText = '⏸️ VOO EM PAUSA';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-amber-950 text-amber-400 border border-amber-800';
+{{minHScreen45}}        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-amber-950 text-amber-400 border border-amber-800';
       }
     }
 
@@ -1429,12 +1272,10 @@
       if (container) container.classList.remove('crash-warning');
 
       const launchBtnText = document.getElementById('btn-launch-text');
-      if (launchBtnText) launchBtnText.innerText = 'INICIAR VOO';
-
+{{minHScreen46}}
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
-        badge.innerText = 'Pronto na Pista';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800';
+{{minHScreen47}}        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800';
       }
 
       updateControlsUI();
@@ -1449,7 +1290,7 @@
 
       state.currentAge++;
 
-      let activeTacticsThisYear = 0;
+{{minHScreen48}}      let activeTacticsThisYear = 0;
       if (state.actJob) activeTacticsThisYear++;
       if (state.actCutSpend) activeTacticsThisYear++;
       if (state.actCashBuffer) activeTacticsThisYear++;
@@ -1462,9 +1303,9 @@
         updateTargetDateGlidepath(state.currentAge);
       }
 
-      let effectiveSpend = state.annualSpending;
+{{minHScreen49}}      let effectiveSpend = state.annualSpending;
 
-      if (state.actJob) {
+{{minHScreen50}}      if (state.actJob) {
         effectiveSpend = Math.max(0, effectiveSpend - 15000);
       }
       if (state.actCutSpend) {
@@ -1474,7 +1315,7 @@
         effectiveSpend = Math.max(0, effectiveSpend - 20000);
       }
 
-      let stockRet = 0, bondRet = 0, infl = 0;
+{{minHScreen51}}      let stockRet = 0, bondRet = 0, infl = 0;
 
       if (state.marketSequence !== 'simulated' && PRESET_HISTORICAL_SEQUENCES[state.marketSequence]) {
         const seq = PRESET_HISTORICAL_SEQUENCES[state.marketSequence];
@@ -1487,27 +1328,26 @@
         bondRet = randomGaussian(MARKET_BENCHMARKS.bonds.mean, MARKET_BENCHMARKS.bonds.stdDev);
         infl = randomGaussian(MARKET_BENCHMARKS.inflation.mean, MARKET_BENCHMARKS.inflation.stdDev);
 
-        const yearsElapsed = state.currentAge - state.startAge;
+{{minHScreen52}}        const yearsElapsed = state.currentAge - state.startAge;
         if (yearsElapsed <= 15 && (yearsElapsed % 5 === 2 || yearsElapsed === 3)) {
-          stockRet -= 0.18;
-        }
+{{minHScreen53}}        }
       }
 
-      if (state.actGuardrails && stockRet < -0.15) {
+{{minHScreen54}}      if (state.actGuardrails && stockRet < -0.15) {
         effectiveSpend = effectiveSpend * 0.90;
       }
 
-      effectiveSpend = effectiveSpend * (1 + Math.max(0, infl));
+{{minHScreen55}}      effectiveSpend = effectiveSpend * (1 + Math.max(0, infl));
 
-      let weightedReturn = (stockRet * (state.pctStocks / 100)) + 
+{{minHScreen56}}      let weightedReturn = (stockRet * (state.pctStocks / 100)) + 
                          (bondRet * (state.pctBonds / 100)) + 
                          (MARKET_BENCHMARKS.cash.mean * (state.pctCash / 100));
 
-      if (state.actCashBuffer && stockRet < 0) {
+{{minHScreen57}}      if (state.actCashBuffer && stockRet < 0) {
         weightedReturn += 0.035;
       }
 
-      let startBal = state.currentNestEgg;
+{{minHScreen58}}      let startBal = state.currentNestEgg;
       let afterSpend = startBal - effectiveSpend;
       let endBal = afterSpend * (1 + weightedReturn);
 
@@ -1516,25 +1356,21 @@
         state.peakNestEgg = state.currentNestEgg;
       }
 
-      const container = document.getElementById('hud-visual-container');
+{{minHScreen59}}      const container = document.getElementById('hud-visual-container');
       if (state.currentNestEgg <= 0) {
         state.yearsInCrashlineConsecutive++;
         state.totalCrashlineYears++;
         if (container) container.classList.add('crash-warning');
 
         showCopilotBanner(
-          '🚨 EMERGÊNCIA EM QUEDA: PERDA DE SUSTENTAÇÃO',
-          `Seu patrimônio líquido caiu para $0 aos ${state.currentAge} Anos! Restam ${10 - state.yearsInCrashlineConsecutive} ano(s) na zona de colapso antes do fim do voo. Ative renda extra, redução de imóvel ou cortes!`,
-          '💡 Dica: Ative Trabalho em Meio Período, Redução de Imóvel ou Cortar Gastos para sair da falência.',
-          'danger'
+{{minHScreen60}}          'danger'
         );
         playSound('alert');
       } else {
-        state.yearsInCrashlineConsecutive = 0;
-        if (container) container.classList.remove('crash-warning');
+{{minHScreen61}}        if (container) container.classList.remove('crash-warning');
       }
 
-      state.historyLogs.push({
+{{minHScreen62}}      state.historyLogs.push({
         age: state.currentAge,
         startBal: startBal,
         spend: effectiveSpend,
@@ -1543,20 +1379,17 @@
         inCrashline: state.currentNestEgg <= 0
       });
 
-      const hudAge = document.getElementById('hud-current-age');
+{{minHScreen63}}      const hudAge = document.getElementById('hud-current-age');
       if (hudAge) hudAge.innerText = state.currentAge;
 
       const hudVal = document.getElementById('hud-portfolio-val');
-      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString('pt-BR');
-
+{{minHScreen64}}
       const curSwr = ((effectiveSpend / Math.max(1, state.currentNestEgg)) * 100).toFixed(1);
       const hudSwr = document.getElementById('hud-current-swr');
-      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'COLAPSO';
-
+{{minHScreen65}}
       const crashCounter = document.getElementById('hud-crashline-counter');
       if (crashCounter) {
-        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Anos`;
-        if (state.yearsInCrashlineConsecutive > 0) {
+{{minHScreen66}}        if (state.yearsInCrashlineConsecutive > 0) {
           crashCounter.className = 'text-red-400 font-bold text-sm animate-pulse';
         } else {
           crashCounter.className = 'text-emerald-400 font-bold text-sm';
@@ -1567,7 +1400,7 @@
 
       renderCanvas();
 
-      if (state.yearsInCrashlineConsecutive >= 10) {
+{{minHScreen67}}      if (state.yearsInCrashlineConsecutive >= 10) {
         finishFlightSimulation();
       }
     }
@@ -1576,17 +1409,11 @@
       if (state.currentNestEgg > 0) {
         if (stockRet < -0.15) {
           showCopilotBanner(
-            '🚨 QUEDA NO MERCADO: RISCO DA SEQUÊNCIA DE RETORNOS',
-            `As ações caíram ${(stockRet * 100).toFixed(1)}% aos ${state.currentAge} anos. A alta exposição a ações em períodos de queda causa grandes perdas!`,
-            '💡 Dica: Reequilibre para renda fixa ou ative "Escudo de Caixa" e "Renda Extra".',
-            'warning'
+{{minHScreen68}}            'warning'
           );
         } else if (infl > 0.05) {
           showCopilotBanner(
-            '🔥 SURTO DE INFLAÇÃO',
-            `A inflação subiu para ${(infl * 100).toFixed(1)}%, aumentando o custo de vida.`,
-            '💡 Dica: Mantenha parte do patrimônio em ações para superar a inflação a longo prazo.',
-            'warning'
+{{minHScreen69}}            'warning'
           );
         }
       }
@@ -1645,29 +1472,21 @@
       const reachedTarget = state.currentAge >= state.targetAge && state.currentNestEgg > 0;
 
       if (reachedTarget) {
-        title.innerText = 'MISSÃO CUMPRIDA!';
-        title.className = 'text-lg font-hud font-bold text-emerald-400';
-        msg.innerText = `Parabéns Piloto ${state.pilotName}! Você chegou com sucesso aos 100 Anos com $${state.currentNestEgg.toLocaleString('pt-BR')} restantes em altitude de combustível no portfólio!`;
-        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-950 text-emerald-400 border border-emerald-700 shadow-lg glow-green';
+{{minHScreen70}}        title.className = 'text-lg font-hud font-bold text-emerald-400';
+{{minHScreen71}}        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-950 text-emerald-400 border border-emerald-700 shadow-lg glow-green';
         icon.className = 'fa-solid fa-trophy';
         playSound('success');
       } else {
-        title.innerText = 'VOO DESTRUÍDO: FALÊNCIA NA ZONA DE COLAPSO!';
-        title.className = 'text-lg font-hud font-bold text-red-400';
-        msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de $0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;
-        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-950 text-red-400 border border-red-700 shadow-lg glow-red';
+{{minHScreen72}}        title.className = 'text-lg font-hud font-bold text-red-400';
+{{minHScreen73}}        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-950 text-red-400 border border-red-700 shadow-lg glow-red';
         icon.className = 'fa-solid fa-plane-slash';
         playSound('crash');
       }
 
       if (pilotName) pilotName.innerText = state.pilotName;
       if (debriefCat) debriefCat.innerText = state.activePreset;
-      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString('pt-BR');
-      if (years) years.innerText = survivedYears + ' Anos (Idade ' + state.currentAge + ')';
-      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Ano(s)';
-      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Anos-Tática (-${state.totalTacticYears * 75} pts)`;
-
-      registerScoreToLeaderboard(state.pilotName, state.activePreset, reachedTarget, state.totalCrashlineYears, state.totalTacticYears, Math.max(0, state.currentNestEgg));
+{{minHScreen74}}
+{{minHScreen75}}      registerScoreToLeaderboard(state.pilotName, state.activePreset, reachedTarget, state.totalCrashlineYears, state.totalTacticYears, Math.max(0, state.currentNestEgg));
 
       modal.classList.remove('hidden');
 
@@ -1687,17 +1506,12 @@
       if (debriefReturnFocus) debriefReturnFocus.focus({ preventScroll: true });
     }
 
-    function getCategoryBonus(category) {
-      if (category === 'Lean FIRE Ajustado' || category === 'Tight Lean FIRE') return 2000;
-      if (category === 'SWR de Alto Risco' || category === 'High Risk SWR') return 1500;
-      if (category === 'Cenário Personalizado' || category === 'Custom Scenario') return 1000;
-      if (category === 'Padrão Trinity' || category === 'Trinity Standard') return 800;
-      if (category === 'Fat FIRE Amplo' || category === 'Fat FIRE') return 200;
-      return 1000;
+{{minHScreen76}}    function getCategoryBonus(category) {
+{{minHScreen77}}      return 1000;
     }
 
     function registerScoreToLeaderboard(pilot, category, reached100, crashYears, tacticYears, finalBalance) {
-      let baseScore = reached100 ? 5000 : 1000;
+{{minHScreen78}}      let baseScore = reached100 ? 5000 : 1000;
       let catBonus = getCategoryBonus(category);
       let crashPenalty = crashYears * 500;
       let tacticPenalty = (tacticYears || 0) * 75;
@@ -1708,23 +1522,21 @@
 
       leaderboardScores.push({
         pilot: pilot,
-        category: category || 'Cenário Personalizado',
-        reached100: reached100,
+{{minHScreen79}}        reached100: reached100,
         crashYears: crashYears,
         tacticYears: tacticYears || 0,
         finalBalance: finalBalance,
         score: score
       });
 
-      leaderboardScores.sort((a, b) => b.score - a.score);
+{{minHScreen80}}      leaderboardScores.sort((a, b) => b.score - a.score);
 
       renderLeaderboardTable();
     }
 
     function filterLeaderboard(cat) {
       activeLeaderboardFilter = cat;
-      const categories = ['ALL', 'SWR de Alto Risco', 'Padrão Trinity', 'Lean FIRE Ajustado', 'Fat FIRE Amplo', 'Cenário Personalizado'];
-      categories.forEach(c => {
+{{minHScreen81}}      categories.forEach(c => {
         const btn = document.getElementById('lb-filter-' + c);
         if (btn) {
           if (c === cat) {
@@ -1739,17 +1551,8 @@
     }
 
     function getCategoryBadgeHTML(cat) {
-      if (cat === 'SWR de Alto Risco' || cat === 'High Risk SWR') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800"><i class="fa-solid fa-fire text-red-400 mr-1"></i>SWR Alto Risco</span>`;
-      } else if (cat === 'Padrão Trinity' || cat === 'Trinity Standard') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800"><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i>Padrão Trinity</span>`;
-      } else if (cat === 'Lean FIRE Ajustado' || cat === 'Tight Lean FIRE') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800"><i class="fa-solid fa-leaf text-emerald-400 mr-1"></i>Lean FIRE Ajustado</span>`;
-      } else if (cat === 'Fat FIRE Amplo' || cat === 'Fat FIRE') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800"><i class="fa-solid fa-crown text-purple-400 mr-1"></i>Fat FIRE Amplo</span>`;
-      } else {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700"><i class="fa-solid fa-sliders mr-1"></i>Cenário Personalizado</span>`;
-      }
+{{minHScreen82}}      } else {
+{{minHScreen83}}      }
     }
 
     function renderLeaderboardTable() {
@@ -1758,7 +1561,7 @@
 
       tbody.innerHTML = '';
 
-      const filtered = activeLeaderboardFilter === 'ALL'
+{{minHScreen84}}      const filtered = activeLeaderboardFilter === 'ALL'
         ? leaderboardScores
         : leaderboardScores.filter(e => e.category === activeLeaderboardFilter);
 
@@ -1766,8 +1569,7 @@
         tbody.innerHTML = `
           <tr>
             <td colspan="8" class="py-6 text-center text-slate-400 font-sans">
-              Nenhum registro de voo para <strong>${activeLeaderboardFilter}</strong>. Voe este cenário para definir a primeira pontuação!
-            </td>
+{{minHScreen85}}            </td>
           </tr>
         `;
         return;
@@ -1786,12 +1588,7 @@
           <td class="py-3 px-3 font-hud">${rankBadge}</td>
           <td class="py-3 px-3 font-bold text-white">${entry.pilot}</td>
           <td class="py-3 px-3">${getCategoryBadgeHTML(entry.category)}</td>
-          <td class="py-3 px-3 font-bold">${entry.reached100 ? '<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> SIM</span>' : '<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> NÃO</span>'}</td>
-          <td class="py-3 px-3 text-red-400 font-bold">${entry.crashYears} Ano(s)</td>
-          <td class="py-3 px-3 text-amber-300 font-bold">${entry.tacticYears || 0} Anos-Tática</td>
-          <td class="py-3 px-3 text-emerald-400 font-bold">$${entry.finalBalance.toLocaleString('pt-BR')}</td>
-          <td class="py-3 px-3 text-amber-400 font-bold font-hud">${entry.score.toLocaleString('pt-BR')} pts</td>
-        `;
+{{minHScreen86}}        `;
         tbody.appendChild(row);
       });
     }
@@ -1802,7 +1599,7 @@
       playSound('click');
     }
 
-    function renderCanvas() {
+{{minHScreen87}}    function renderCanvas() {
       const canvas = document.getElementById('flightCanvas');
       if (!canvas || !canvas.parentElement) return;
 
@@ -1824,33 +1621,30 @@
         skyGrad.addColorStop(0, '#7f1d1d');
         skyGrad.addColorStop(1, '#020617');
         if (canvasStatusText) {
-          canvasStatusText.innerText = `EMERGÊNCIA EM QUEDA: ${state.yearsInCrashlineConsecutive}/10 Anos na Zona de Colapso $0!`;
-          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
+{{minHScreen88}}          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
         }
       } else if (healthRatio > 0.8) {
         skyGrad.addColorStop(0, '#0a192f');
         skyGrad.addColorStop(1, '#020c1b');
         if (canvasStatusText) {
-          canvasStatusText.innerText = 'Atmosfera: Céu Limpo e Altitude Segura';
-          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+{{minHScreen89}}          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
         }
       } else {
         skyGrad.addColorStop(0, '#1e1b4b');
         skyGrad.addColorStop(1, '#0f172a');
         if (canvasStatusText) {
-          canvasStatusText.innerText = 'Atmosfera: Turbulência Leve / Cuidado com a Altitude';
-          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-pulse';
+{{minHScreen90}}          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-pulse';
         }
       }
 
       ctx.fillStyle = skyGrad;
       ctx.fillRect(0, 0, W, H);
 
-      const maxVal = Math.max(state.nestEgg * 2.2, state.peakNestEgg * 1.2);
+{{minHScreen91}}      const maxVal = Math.max(state.nestEgg * 2.2, state.peakNestEgg * 1.2);
       const topY = 40;
       const bottomY = H - 35;
 
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+{{minHScreen92}}      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
       ctx.lineWidth = 1;
 
       const numGridLines = 4;
@@ -1868,7 +1662,7 @@
         ctx.fillText('$' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
       }
 
-      const totalYears = Math.max(1, state.targetAge - state.startAge);
+{{minHScreen93}}      const totalYears = Math.max(1, state.targetAge - state.startAge);
       const startX = 60;
       const endX = W - 30;
 
@@ -1877,27 +1671,22 @@
       for (let age = state.startAge; age <= state.targetAge; age += 10) {
         const pct = (age - state.startAge) / totalYears;
         const x = startX + pct * (endX - startX);
-        ctx.fillText(`Idade ${age}`, x - 18, H - 12);
-      }
+{{minHScreen94}}      }
 
-      if (state.historyLogs.length > 0) {
+{{minHScreen95}}      if (state.historyLogs.length > 0) {
         const lastLog = state.historyLogs[state.historyLogs.length - 1];
         const prevBal = state.historyLogs.length > 1 ? state.historyLogs[state.historyLogs.length - 2].endBal : state.nestEgg;
         const deltaBal = lastLog.endBal - prevBal;
 
         if (pitchBadge) {
           if (state.yearsInCrashlineConsecutive > 0) {
-            pitchBadge.innerHTML = `<span class="text-red-400 font-bold animate-pulse"><i class="fa-solid fa-plane-circle-exclamation"></i> 🚨 RISCO DE QUEDA</span>`;
-          } else if (deltaBal > 10000) {
-            pitchBadge.innerHTML = `<span class="text-emerald-400"><i class="fa-solid fa-arrow-trend-up"></i> 🛫 SUBINDO</span>`;
-          } else if (deltaBal >= -5000) {
-            pitchBadge.innerHTML = `<span class="text-cyan-300"><i class="fa-solid fa-arrow-right"></i> ✈️ CRUZEIRO NIVELADO</span>`;
-          } else {
-            pitchBadge.innerHTML = `<span class="text-amber-400"><i class="fa-solid fa-arrow-trend-down"></i> 📉 DESCENDO</span>`;
-          }
+{{minHScreen96}}          } else if (deltaBal > 10000) {
+{{minHScreen97}}          } else if (deltaBal >= -5000) {
+{{minHScreen98}}          } else {
+{{minHScreen99}}          }
         }
 
-        ctx.beginPath();
+{{minHScreen100}}        ctx.beginPath();
         ctx.strokeStyle = state.yearsInCrashlineConsecutive > 0 ? '#ef4444' : '#06b6d4';
         ctx.lineWidth = 3;
 
@@ -1912,7 +1701,7 @@
 
         ctx.stroke();
 
-        const lastIdx = state.historyLogs.length - 1;
+{{minHScreen101}}        const lastIdx = state.historyLogs.length - 1;
         const lastX = startX + ((lastIdx + 1) / totalYears) * (endX - startX);
         const lastY = bottomY - (Math.max(0, state.historyLogs[lastIdx].endBal) / maxVal) * (bottomY - topY);
 
@@ -1926,16 +1715,15 @@
         ctx.fillStyle = fillGrad;
         ctx.fill();
 
-        drawAirplane(ctx, lastX, lastY, state.yearsInCrashlineConsecutive > 0 ? 0.1 : healthRatio);
+{{minHScreen102}}        drawAirplane(ctx, lastX, lastY, state.yearsInCrashlineConsecutive > 0 ? 0.1 : healthRatio);
       } else {
         const startY = bottomY - ((state.nestEgg / maxVal) * (bottomY - topY));
         drawAirplane(ctx, startX, startY, 1.0);
         if (pitchBadge) {
-          pitchBadge.innerHTML = `<span class="text-emerald-400">🛫 PRONTO NA PISTA</span>`;
-        }
+{{minHScreen103}}        }
       }
 
-      ctx.setLineDash([4, 4]);
+{{minHScreen104}}      ctx.setLineDash([4, 4]);
       ctx.strokeStyle = '#ef4444';
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -1946,8 +1734,7 @@
 
       ctx.fillStyle = '#ef4444';
       ctx.font = '10px Orbitron';
-      ctx.fillText('ZONA DE COLAPSO (FALÊNCIA $0)', 65, bottomY - 6);
-    }
+{{minHScreen105}}    }
 
     function drawAirplane(ctx, x, y, healthRatio) {
       ctx.save();
@@ -1958,14 +1745,11 @@
 
       ctx.fillStyle = healthRatio > 0.3 ? '#38bdf8' : '#f87171';
       ctx.beginPath();
-      ctx.moveTo(16, 0);
-      ctx.lineTo(-12, -10);
-      ctx.lineTo(-6, 0);
-      ctx.lineTo(-12, 10);
-      ctx.closePath();
+{{minHScreen106}}      ctx.lineTo(-6, 0);
+{{minHScreen107}}      ctx.closePath();
       ctx.fill();
 
-      ctx.fillStyle = '#f59e0b';
+{{minHScreen108}}      ctx.fillStyle = '#f59e0b';
       ctx.beginPath();
       ctx.moveTo(-6, 0);
       ctx.lineTo(-18, -3);
@@ -1977,7 +1761,7 @@
       ctx.restore();
     }
 
-    function openSpendCalculator() {
+{{minHScreen109}}    function openSpendCalculator() {
       const modal = document.getElementById('modal-calc-spend');
       if (modal) modal.classList.remove('hidden');
       computeCalculatedSpend();
@@ -1998,8 +1782,7 @@
       const totalAnnual = totalMonthly * 12;
 
       const totalEl = document.getElementById('calc-spend-total');
-      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString('pt-BR') + ' / ano';
-      return totalAnnual;
+{{minHScreen110}}      return totalAnnual;
     }
     function applyCalculatedSpend() {
       const annualSpend = computeCalculatedSpend();
@@ -2031,11 +1814,9 @@
 
       const formulaEl = document.getElementById('calc-egg-formula');
       if (formulaEl) {
-        formulaEl.innerText = `$${Math.round(spend).toLocaleString('pt-BR')} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString('pt-BR')} (Regla de ${multiplier.toFixed(1)}x)`;
-      }
+{{minHScreen111}}      }
       const totalEl = document.getElementById('calc-egg-total');
-      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString('pt-BR');
-      return requiredEgg;
+{{minHScreen112}}      return requiredEgg;
     }
     function applyCalculatedEgg() {
       const reqEgg = computeCalculatedEgg();
@@ -2046,7 +1827,7 @@
       playSound('success');
     }
 
-    function runMonteCarloBatch() {
+{{minHScreen113}}    function runMonteCarloBatch() {
       playSound('click');
 
       const numSims = 1000;
@@ -2106,11 +1887,8 @@
       const p90El = document.getElementById('mc-metric-p90');
 
       if (succEl) succEl.innerText = successRate + '%';
-      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString('pt-BR');
-      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString('pt-BR');
-      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString('pt-BR');
-
-      const tbody = document.getElementById('mc-table-body');
+{{minHScreen114}}
+{{minHScreen115}}      const tbody = document.getElementById('mc-table-body');
       if (tbody) {
         tbody.innerHTML = '';
         [10, 20, 30, 40, 50].forEach(y => {
@@ -2120,13 +1898,7 @@
             let row = document.createElement('tr');
             row.className = 'hover:bg-slate-900/60 transition';
             row.innerHTML = `
-              <td class="py-2.5 px-3 font-bold text-white">Idade ${state.startAge + y} (${y} Anos)</td>
-              <td class="py-2.5 px-3 text-red-400 font-bold">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>
-              <td class="py-2.5 px-3 text-amber-400">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>
-              <td class="py-2.5 px-3 text-cyan-300 font-bold">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>
-              <td class="py-2.5 px-3 text-emerald-400">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>
-              <td class="py-2.5 px-3 text-purple-400 font-bold">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>
-            `;
+{{minHScreen116}}            `;
             tbody.appendChild(row);
           }
         });
@@ -2135,7 +1907,7 @@
       playSound('success');
     }
 
-    function randomGaussian(mean, stdDev) {
+{{minHScreen117}}    function randomGaussian(mean, stdDev) {
       let u = 0, v = 0;
       while (u === 0) u = Math.random();
       while (v === 0) v = Math.random();
@@ -2172,7 +1944,7 @@
       }
     }
 
-    function playSound(type) {
+{{minHScreen118}}    function playSound(type) {
       try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
@@ -2223,8 +1995,7 @@
           osc.stop(now + 0.4);
         }
       } catch (e) {
-        // AudioContext não disponível ou bloqueado pelo navegador
-      }
+{{minHScreen119}}      }
     }
   </script>
 </body>

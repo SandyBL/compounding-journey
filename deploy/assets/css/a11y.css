@@ -105,7 +105,6 @@ footer.bg-darkbark :focus-visible {
    4. Target size — WCAG 2.2 SC 2.5.8 (Target Size, Minimum, 24x24 CSS px).
    -------------------------------------------------------------------------- */
 
-.lang-switch-link,
 .footer-link,
 .pagination-btn {
     min-width: 24px;
@@ -116,45 +115,7 @@ footer.bg-darkbark :focus-visible {
 }
 
 /* --------------------------------------------------------------------------
-   5. Language switcher shared between the home page and the simulator pages.
-      Real links, not buttons, so they are crawlable and work without JS.
-   -------------------------------------------------------------------------- */
-
-.lang-switch {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    padding: 3px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, .7);
-    border: 1px solid #efeae0;
-}
-
-.lang-switch-link {
-    min-width: 34px;
-    height: 28px;
-    padding: 0 8px;
-    border-radius: 7px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    color: #2a241e;
-    text-decoration: none;
-    transition: background-color .15s ease, color .15s ease;
-}
-
-.lang-switch-link:hover {
-    background: #efeae0;
-}
-
-.lang-switch-link[aria-current='page'] {
-    background: #1e4620;
-    color: #ffffff;
-}
-
-/* --------------------------------------------------------------------------
-   6. Contrast remediation — WCAG 2.2 SC 1.4.3 (Contrast Minimum, 4.5:1).
+   5. Contrast remediation — WCAG 2.2 SC 1.4.3 (Contrast Minimum, 4.5:1).
 
    assets/styles.css is compiled Tailwind output, so the palette is corrected
    here instead of in the generated bundle. The brand gold #C59B27 measures
@@ -232,7 +193,7 @@ footer.bg-darkbark :focus-visible {
 }
 
 /* --------------------------------------------------------------------------
-   7. Motion — WCAG SC 2.3.3. The compiled Tailwind bundle applies
+   6. Motion — WCAG SC 2.3.3. The compiled Tailwind bundle applies
       `transition-all`, `animate-ping` and `animate-spin` broadly; this reset
       neutralises all of it in one place. JS-driven smooth scrolling is gated
       separately in script (CSS cannot override `scrollIntoView` options).
@@ -256,7 +217,7 @@ footer.bg-darkbark :focus-visible {
 }
 
 /* --------------------------------------------------------------------------
-   8. Forced-colors / Windows High Contrast support.
+   7. Forced-colors / Windows High Contrast support.
    -------------------------------------------------------------------------- */
 
 @media (forced-colors: active) {
