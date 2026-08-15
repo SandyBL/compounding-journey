@@ -44,6 +44,7 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
@@ -64,11 +65,22 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
-                <!-- The three translations, as flag links, in the same place and the
-                     same order as the main site header. Real links, not buttons:
-                     each language is a distinct pre-rendered document, so switching
-                     is a navigation, and the alternates stay crawlable. The
-                     generator writes aria-current="page" onto the current one. -->
+                <a href="/#simulador" class="site-return-link" aria-label="Volver al sitio web">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    <span class="site-return-link__text">Sitio web</span>
+                </a>
+                <button onclick="toggleProfileDrawer()" class="px-4 py-2 rounded-xl bg-forest-800 hover:bg-forest-900 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md">
+                                <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                                <span>Personalizar Ingresos y Edad</span>
+                            </button>
+                <!-- The three translations, as flag links, and deliberately the
+                     last thing in this row on every simulator: the tools each
+                     carry a different set of controls, so anchoring the flags to
+                     the far right is what puts them in the same place on all of
+                     them. Real links, not buttons: each language is a distinct
+                     pre-rendered document, so switching is a navigation, and the
+                     alternates stay crawlable. The generator writes
+                     aria-current="page" onto the current one. -->
                 <nav class="simulator-language-switcher" aria-label="Idioma">
                     <a class="simulator-lang-btn" href="/en/simulators/freedom-calendar.html" hreflang="en" lang="en" aria-label="English">
                         <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -95,14 +107,6 @@
                         </svg>
                     </a>
                 </nav>
-                <a href="/#simulador" class="site-return-link" aria-label="Volver al sitio web">
-                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                    <span class="site-return-link__text">Sitio web</span>
-                </a>
-                <button onclick="toggleProfileDrawer()" class="px-4 py-2 rounded-xl bg-forest-800 hover:bg-forest-900 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md">
-                                <i class="fa-solid fa-sliders" aria-hidden="true"></i>
-                                <span>Personalizar Ingresos y Edad</span>
-                            </button>
             </div>
         </div>
     </header>
@@ -305,26 +309,25 @@
 
         </div>
 
-        <!-- CALL-TO-ACTION (CTA) SECTION -->
-        <div class="bg-gradient-to-br from-forest-800 to-forest-900 text-cream-50 rounded-2xl p-8 custom-shadow text-center mt-12">
-            <div class="w-16 h-16 mx-auto mb-4">
-                <svg viewBox="0 0 200 200" class="w-full h-full">
-                    <circle cx="100" cy="65" r="50" fill="#2e6f40"/>
-                    <path d="M92 180 L92 120 Q80 100 65 95 Q85 85 96 60 Q104 60 115 85 Q135 100 108 120 L108 180 Z" fill="#ffffff"/>
-                    <circle cx="100" cy="45" r="35" fill="#388e3c"/>
-                    <circle cx="75" cy="55" r="7" fill="#d4a338"/>
-                    <circle cx="125" cy="55" r="7" fill="#d4a338"/>
-                </svg>
+        <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
+             panel, down to the markup: whichever door a reader comes in through -
+             an article or a simulator - the page ends on the same offer, in the
+             same shape, and the assessment is the action it leads with. Styled by
+             assets/css/simulator-cta.css, which is where the differences from
+             blog.css are explained. -->
+        <section class="simulator-cta" aria-labelledby="closing-cta-title">
+            <div class="simulator-cta__panel">
+                <div>
+                    <p class="simulator-cta__eyebrow">Continúa el viaje</p>
+                    <h2 id="closing-cta-title" class="simulator-cta__title">¿Listo para Construir tu Mapa Personalizado hacia la Libertad?</h2>
+                    <p class="simulator-cta__body">Comprende dónde estás parado hoy, elimina las fugas silenciosas de riqueza y da tus próximos pasos financieros con total claridad y confianza.</p>
+                </div>
+                <div class="simulator-cta__actions">
+                    <a class="simulator-cta__button" href="/#assessment">Hacer el diagnóstico</a>
+                    <a class="simulator-cta__button simulator-cta__button--secondary" href="/#herramientas">Explorar las herramientas</a>
+                </div>
             </div>
-            <h3 class="text-2xl sm:text-3xl font-bold font-serif mb-3">¿Listo para Construir tu Mapa Personalizado hacia la Libertad?</h3>
-            <p class="text-cream-200 max-w-xl mx-auto mb-6 leading-relaxed text-sm sm:text-base">
-                Comprende dónde estás parado hoy, elimina las fugas silenciosas de riqueza y da tus próximos pasos financieros con total claridad y confianza.
-            </p>
-            <a href="https://compoundingjourney.com/#assessment" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gold-600 hover:bg-gold-500 text-espresso-950 font-extrabold text-base rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
-                <span>Recibe Orientación Inicial en Compounding Journey</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
-            </a>
-        </div>
+        </section>
 
     </main>
 

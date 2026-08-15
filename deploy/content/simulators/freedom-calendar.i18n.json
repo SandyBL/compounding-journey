@@ -309,21 +309,6 @@
     "es": "Gráfico: trayectoria del patrimonio en un horizonte de treinta años, comparando la ruta actual con la ajustada. Los valores finales aparecen como texto en las tarjetas de resumen.",
     "pt": "Gráfico: trajetória do património num horizonte de trinta anos, comparando o percurso atual com o ajustado. Os valores finais aparecem como texto nos cartões de resumo."
   },
-  "text2xl2": {
-    "en": "Ready to Build Your Custom Map to Freedom?",
-    "es": "¿Listo para Construir tu Mapa Personalizado hacia la Libertad?",
-    "pt": "Pronto para Construir seu Mapa Personalizado para a Liberdade?"
-  },
-  "textCream200": {
-    "en": "                Understand where you stand today, eliminate silent wealth leaks, and take your next financial steps with total clarity and confidence.\n",
-    "es": "                Comprende dónde estás parado hoy, elimina las fugas silenciosas de riqueza y da tus próximos pasos financieros con total claridad y confianza.\n",
-    "pt": "                Entenda onde você está hoje, elimine os vazamentos silenciosos de riqueza e dê seus próximos passos financeiros com total clareza e confiança.\n"
-  },
-  "inlineFlex": {
-    "en": "Receive Initial Guidance at Compounding Journey",
-    "es": "Recibe Orientación Inicial en Compounding Journey",
-    "pt": "Receba Orientação Inicial na Compounding Journey"
-  },
   "bgCream100": {
     "en": " Compounding Journey. For educational purposes only. Not formal financial advice.",
     "es": " Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
@@ -683,5 +668,30 @@
     "en": "                            label: 'Baseline Habits (Uncut)',\n",
     "es": "                            label: 'Hábitos Base (Sin Recortes)',\n",
     "pt": "                            label: 'Hábitos de Base (Sem Cortes)',\n"
+  },
+  "ctaEyebrow": {
+    "en": "Continue the Journey",
+    "es": "Continúa el viaje",
+    "pt": "Continua a jornada"
+  },
+  "ctaAssessment": {
+    "en": "Take the assessment",
+    "es": "Hacer el diagnóstico",
+    "pt": "Fazer o diagnóstico"
+  },
+  "ctaTools": {
+    "en": "Explore the tools",
+    "es": "Explorar las herramientas",
+    "pt": "Explorar as ferramentas"
+  },
+  "ctaTitle": {
+    "en": "Ready to Build Your Custom Map to Freedom?",
+    "es": "¿Listo para Construir tu Mapa Personalizado hacia la Libertad?",
+    "pt": "Pronto para Construir o teu Mapa Personalizado para a Liberdade?"
+  },
+  "ctaBody": {
+    "en": "Understand where you stand today, eliminate silent wealth leaks, and take your next financial steps with total clarity and confidence.",
+    "es": "Comprende dónde estás parado hoy, elimina las fugas silenciosas de riqueza y da tus próximos pasos financieros con total claridad y confianza.",
+    "pt": "Entende onde estás hoje, elimina as fugas silenciosas de riqueza e dá os teus próximos passos financeiros com total clareza e confiança."
   }
 }

@@ -63,6 +63,7 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
 </head>
 <body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
@@ -82,11 +83,26 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
-                <!-- The three translations, as flag links, in the same place and the
-                     same order as the main site header. Real links, not buttons:
-                     each language is a distinct pre-rendered document, so switching
-                     is a navigation, and the alternates stay crawlable. The
-                     generator writes aria-current="page" onto the current one. -->
+                <a href="/pt/#simulador" class="site-return-link" aria-label="Voltar ao site">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    <span class="site-return-link__text">Website</span>
+                </a>
+                <button onclick="toggleHowToPlayModal()" class="px-3 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+                                    <span>Como Funciona</span>
+                                </button>
+                <button onclick="resetSimulation()" class="px-3 py-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1">
+                                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                                    <span>Reiniciar</span>
+                                </button>
+                <!-- The three translations, as flag links, and deliberately the
+                     last thing in this row on every simulator: the tools each
+                     carry a different set of controls, so anchoring the flags to
+                     the far right is what puts them in the same place on all of
+                     them. Real links, not buttons: each language is a distinct
+                     pre-rendered document, so switching is a navigation, and the
+                     alternates stay crawlable. The generator writes
+                     aria-current="page" onto the current one. -->
                 <nav class="simulator-language-switcher" aria-label="Idioma">
                     <a class="simulator-lang-btn" href="/en/simulators/market-time-machine.html" hreflang="en" lang="en" aria-label="English">
                         <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -113,18 +129,6 @@
                         </svg>
                     </a>
                 </nav>
-                <a href="/pt/#simulador" class="site-return-link" aria-label="Voltar ao site">
-                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                    <span class="site-return-link__text">Website</span>
-                </a>
-                <button onclick="toggleHowToPlayModal()" class="px-3 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
-                                    <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
-                                    <span>Como Funciona</span>
-                                </button>
-                <button onclick="resetSimulation()" class="px-3 py-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1">
-                                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
-                                    <span>Reiniciar</span>
-                                </button>
             </div>
         </div>
     </header>
@@ -465,6 +469,26 @@
                 </div>
             </div>
         </div>
+        <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
+             panel, down to the markup: whichever door a reader comes in through -
+             an article or a simulator - the page ends on the same offer, in the
+             same shape, and the assessment is the action it leads with. Styled by
+             assets/css/simulator-cta.css, which is where the differences from
+             blog.css are explained. -->
+        <section class="simulator-cta" aria-labelledby="closing-cta-title">
+            <div class="simulator-cta__panel">
+                <div>
+                    <p class="simulator-cta__eyebrow">Continua a jornada</p>
+                    <h2 id="closing-cta-title" class="simulator-cta__title">Transforma um século de história do mercado na tua próxima decisão.</h2>
+                    <p class="simulator-cta__body">Já viste como as carteiras caem e recuperam ao longo de um século de ciclos. O diagnóstico financeiro transforma essa perspetiva num plano feito com os teus próprios números.</p>
+                </div>
+                <div class="simulator-cta__actions">
+                    <a class="simulator-cta__button" href="/pt/#assessment">Fazer o diagnóstico</a>
+                    <a class="simulator-cta__button simulator-cta__button--secondary" href="/pt/#herramientas">Explorar as ferramentas</a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- EVENT EXPLANATION MODAL -->

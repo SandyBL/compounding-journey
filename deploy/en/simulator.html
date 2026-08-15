@@ -90,6 +90,7 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
@@ -111,11 +112,22 @@
 
             <!-- Restart Toolbar -->
             <div class="header-actions flex items-center gap-2 shrink-0">
-                <!-- The three translations, as flag links, in the same place and the
-                     same order as the main site header. Real links, not buttons:
-                     each language is a distinct pre-rendered document, so switching
-                     is a navigation, and the alternates stay crawlable. The
-                     generator writes aria-current="page" onto the current one. -->
+                <a href="/en/#simulador" class="site-return-link" aria-label="Back to the website">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    <span class="site-return-link__text">Website</span>
+                </a>
+                <button id="resetBtn" onclick="resetGame()" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-cream-300 text-espresso-800 hover:bg-cream-200 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                    <span>Restart</span>
+                </button>
+                <!-- The three translations, as flag links, and deliberately the
+                     last thing in this row on every simulator: the tools each
+                     carry a different set of controls, so anchoring the flags to
+                     the far right is what puts them in the same place on all of
+                     them. Real links, not buttons: each language is a distinct
+                     pre-rendered document, so switching is a navigation, and the
+                     alternates stay crawlable. The generator writes
+                     aria-current="page" onto the current one. -->
                 <nav class="simulator-language-switcher" aria-label="Language">
                     <a class="simulator-lang-btn" href="/en/simulator.html" hreflang="en" lang="en" aria-label="English" aria-current="page">
                         <svg aria-hidden="true" viewBox="0 0 28 20" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -142,14 +154,6 @@
                         </svg>
                     </a>
                 </nav>
-                <a href="/en/#simulador" class="site-return-link" aria-label="Back to the website">
-                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                    <span class="site-return-link__text">Website</span>
-                </a>
-                <button id="resetBtn" onclick="resetGame()" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-cream-300 text-espresso-800 hover:bg-cream-200 transition-colors flex items-center gap-1.5">
-                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
-                    <span>Restart</span>
-                </button>
             </div>
         </div>
     </header>
@@ -300,28 +304,26 @@
                 <div id="leaderboardList" class="divide-y divide-cream-200"></div>
             </div>
 
-            <!-- COMPOUNDING JOURNEY CTA BOX -->
-            <div class="bg-gradient-to-br from-forest-800 to-forest-900 text-cream-50 rounded-2xl p-8 custom-shadow text-center">
-                <div class="w-16 h-16 mx-auto mb-4">
-                    <svg viewBox="0 0 200 200" class="w-full h-full">
-                        <circle cx="100" cy="65" r="50" fill="#2e6f40"/>
-                        <path d="M92 180 L92 120 Q80 100 65 95 Q85 85 96 60 Q104 60 115 85 Q135 100 108 120 L108 180 Z" fill="#ffffff"/>
-                        <circle cx="100" cy="45" r="35" fill="#388e3c"/>
-                        <circle cx="75" cy="55" r="7" fill="#d4a338"/>
-                        <circle cx="125" cy="55" r="7" fill="#d4a338"/>
-                    </svg>
-                </div>
-                <h3 class="text-2xl sm:text-3xl font-bold font-serif mb-3">Ready to Build Your Personal Map to Freedom?</h3>
-                <p class="text-cream-200 max-w-xl mx-auto mb-6 leading-relaxed">
-                    Fill in our brief assessment form to understand exactly where you stand today, receive tailored financial guidance, and take your next steps with total confidence.
-                </p>
-                <a href="https://compoundingjourney.com/en/#assessment" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gold-600 hover:bg-gold-500 text-espresso-950 font-extrabold text-base rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
-                    <span>Get Initial Guidance at Compounding Journey</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
-                </a>
-            </div>
-
         </div>
+
+        <!-- CLOSING CALL TO ACTION. The same panel the journal articles and the
+             other four simulators end on, in the same place they all put it: the
+             end of the page. It sat inside #resultsScreen before, which is
+             hidden until a run is finished, so this was the one simulator where
+             the panel could not be seen. Styled by assets/css/simulator-cta.css. -->
+        <section class="simulator-cta" aria-labelledby="closing-cta-title">
+            <div class="simulator-cta__panel">
+                <div>
+                    <p class="simulator-cta__eyebrow">Continue the Journey</p>
+                    <h2 id="closing-cta-title" class="simulator-cta__title">Ready to Build Your Personal Map to Freedom?</h2>
+                    <p class="simulator-cta__body">The decisions in this game are the ones a real plan is made of. The financial assessment looks at where you actually stand today and turns it into tailored next steps.</p>
+                </div>
+                <div class="simulator-cta__actions">
+                    <a class="simulator-cta__button" href="/en/#assessment">Take the assessment</a>
+                    <a class="simulator-cta__button simulator-cta__button--secondary" href="/en/#herramientas">Explore the tools</a>
+                </div>
+            </div>
+        </section>
 
     </main>
 
