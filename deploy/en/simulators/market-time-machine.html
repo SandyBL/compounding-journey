@@ -63,8 +63,11 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
+
+    <a class="skip-link" href="#main">Skip to main content</a>
 
     <!-- HEADER BAR -->
     <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
@@ -80,9 +83,9 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
-                <a href="/en/#simulador" class="site-return-link hidden sm:inline-flex">
+                <a href="/en/#simulador" class="site-return-link" aria-label="Back to the website">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                    <span>Website</span>
+                    <span class="site-return-link__text">Website</span>
                 </a>
                 <button onclick="toggleHowToPlayModal()" class="px-3 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
                                     <i class="fa-solid fa-circle-question"></i>
@@ -114,7 +117,7 @@
     </section>
 
     <!-- MAIN APP CONTAINER -->
-    <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-1 space-y-4">
+    <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-1 space-y-4">
 
         <!-- INTRO BANNER & PRESET SELECTOR -->
         <div class="bg-gradient-to-r from-forest-900 via-forest-800 to-espresso-900 rounded-2xl p-4 sm:p-5 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -167,56 +170,56 @@
                     <!-- 1. Equities / Stocks -->
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
-                            <span class="text-espresso-950 flex items-center gap-1.5">
+                            <span id="lbl_stocks" class="text-espresso-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-chart-line text-blue-600"></i> Global / US Equities (S&P 500)
                             </span>
                             <span id="val_stocks" class="font-mono text-blue-700">60%</span>
                         </div>
-                        <input type="range" id="slider_stocks" min="0" max="100" value="60" oninput="onSliderChange('stocks', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_stocks" aria-labelledby="lbl_stocks" aria-valuetext="60%" min="0" max="100" value="60" oninput="onSliderChange('stocks', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <!-- 2. Government Bonds -->
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
-                            <span class="text-espresso-950 flex items-center gap-1.5">
+                            <span id="lbl_bonds" class="text-espresso-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-building-columns text-emerald-700"></i> Treasury Bonds (10-Year)
                             </span>
                             <span id="val_bonds" class="font-mono text-emerald-800">40%</span>
                         </div>
-                        <input type="range" id="slider_bonds" min="0" max="100" value="40" oninput="onSliderChange('bonds', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_bonds" aria-labelledby="lbl_bonds" aria-valuetext="40%" min="0" max="100" value="40" oninput="onSliderChange('bonds', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <!-- 3. Real Estate / REITs -->
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
-                            <span class="text-espresso-950 flex items-center gap-1.5">
+                            <span id="lbl_reits" class="text-espresso-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-city text-amber-700"></i> Real Estate & REITs
                             </span>
                             <span id="val_reits" class="font-mono text-amber-800">0%</span>
                         </div>
-                        <input type="range" id="slider_reits" min="0" max="100" value="0" oninput="onSliderChange('reits', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_reits" aria-labelledby="lbl_reits" aria-valuetext="0%" min="0" max="100" value="0" oninput="onSliderChange('reits', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <!-- 4. Gold & Commodities -->
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
-                            <span class="text-espresso-950 flex items-center gap-1.5">
+                            <span id="lbl_gold" class="text-espresso-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-coins text-gold-600"></i> Gold & Commodities
                             </span>
                             <span id="val_gold" class="font-mono text-gold-600">0%</span>
                         </div>
-                        <input type="range" id="slider_gold" min="0" max="100" value="0" oninput="onSliderChange('gold', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_gold" aria-labelledby="lbl_gold" aria-valuetext="0%" min="0" max="100" value="0" oninput="onSliderChange('gold', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <!-- 5. Cash & T-Bills -->
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
-                            <span class="text-espresso-950 flex items-center gap-1.5">
+                            <span id="lbl_cash" class="text-espresso-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-wallet text-slate-600"></i> Cash / T-Bills (Short Term)
                             </span>
                             <span id="val_cash" class="font-mono text-slate-700">0%</span>
                         </div>
-                        <input type="range" id="slider_cash" min="0" max="100" value="0" oninput="onSliderChange('cash', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_cash" aria-labelledby="lbl_cash" aria-valuetext="0%" min="0" max="100" value="0" oninput="onSliderChange('cash', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
                     </div>
                 </div>
 
@@ -383,7 +386,7 @@
             <!-- STAT COMPARISON CARDS FOR ALL 6 PORTFOLIOS -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
                 <!-- 1. Custom Portfolio -->
-                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-0.5 shadow-sm">
+                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-0.5 shadow-sm" role="status" aria-live="polite" aria-atomic="true">
                     <span class="text-[10px] font-bold uppercase text-emerald-800 block truncate">🟢 Your Portfolio</span>
                     <div id="statCustomVal" class="text-xs sm:text-sm font-extrabold font-mono text-emerald-900">$100,000</div>
                     <div id="statCustomCagr" class="text-[11px] font-mono text-emerald-700">CAGR: 0.0%</div>
@@ -427,7 +430,7 @@
 
             <!-- CANVAS CHART WITH EXPANDED HEIGHT -->
             <div class="h-80 sm:h-[480px] w-full relative pt-2">
-                <canvas id="timeMachineChart"></canvas>
+                <canvas id="timeMachineChart" role="img" aria-label="Chart: portfolio value across the simulated historical period for each strategy. The final value and CAGR of every strategy are stated as text in the stat cards above."></canvas>
             </div>
 
             <!-- LOG TIMELINE SUMMARY -->
@@ -723,6 +726,8 @@
         function onSliderChange(assetKey, val) {
             state.allocation[assetKey] = parseInt(val, 10);
             document.getElementById(`val_${assetKey}`).innerText = `${state.allocation[assetKey]}%`;
+            // Without aria-valuetext the slider is announced as "60", not "60 percent".
+            document.getElementById(`slider_${assetKey}`).setAttribute('aria-valuetext', `${state.allocation[assetKey]}%`);
             document.getElementById('presetSelect').value = 'custom';
             checkTotalAllocation();
             updateTooltipComposition();
@@ -1151,5 +1156,18 @@
             recalculateSimulation();
         };
     </script>
+    <footer class="simulator-footer">
+      <nav class="simulator-footer__links" aria-label="Simulator links">
+        <a href="/en/">Compounding Journey</a>
+        <a href="/en/simulator.html">All simulators</a>
+        <a href="/en/blog/">Journal</a>
+      </nav>
+      <nav class="lang-switch" aria-label="Language">
+        <a class="lang-switch-link" href="/es/simulators/market-time-machine.html" hreflang="es" lang="es" aria-label="Español">ES</a>
+        <a class="lang-switch-link" href="/en/simulators/market-time-machine.html" hreflang="en" lang="en" aria-label="English" aria-current="page">EN</a>
+        <a class="lang-switch-link" href="/pt/simulators/market-time-machine.html" hreflang="pt" lang="pt" aria-label="Português">PT</a>
+      </nav>
+      <p class="simulator-footer__note">&copy; 2026 Compounding Journey. For educational purposes only. Not formal financial advice.</p>
+    </footer>
 </body>
 </html>

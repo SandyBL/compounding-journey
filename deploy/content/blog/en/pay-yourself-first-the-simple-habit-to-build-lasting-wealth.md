@@ -6,8 +6,6 @@ summary: Learn how saving a fixed percentage before spending can break the
  paycheck-to-paycheck cycle and help you easily build an emergency fund.
 translation_key: pay-yourself-first-power-of-saving
 author: Sandy Bradbury
-hero: /assets/img/articles/pay-yourself-first-power-of-saving.svg
-hero_alt: "Nine rising bars, each with its lowest portion set aside in gold before the rest."
 ---
 When it comes to managing your money, there’s one simple rule that can change everything: **Pay Yourself First**. This means putting a portion of your income into savings *before* paying bills, buying groceries, or spending on discretionary items.
 

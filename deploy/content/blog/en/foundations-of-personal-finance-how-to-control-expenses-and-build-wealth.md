@@ -7,8 +7,6 @@ summary: Discover simple tips for budgeting, tracking expenses, and making
  makes you happy.
 translation_key: foundations-personal-finance-controlling-expenses
 author: Sandy Bradbury
-hero: /assets/img/articles/foundations-personal-finance-controlling-expenses.svg
-hero_alt: "Six stacked layers narrowing as they rise, widest and darkest at the base, topped by a gold circle."
 ---
 Achieving financial growth and independence starts with a simple yet powerful principle: controlling your expenses. Think of expense management as the foundation of your financial house—without control over where your cash goes, it is nearly impossible to build lasting wealth or unlock the power of compounding.
 

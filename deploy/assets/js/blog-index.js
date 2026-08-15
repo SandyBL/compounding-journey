@@ -53,6 +53,8 @@
     });
   }
 
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   function renderPagination(totalPages) {
     pagination.innerHTML = '';
     pagination.hidden = totalPages <= 1;
@@ -61,14 +63,24 @@
     const addButton = (label, page, options = {}) => {
       const button = document.createElement('button');
       button.type = 'button';
+      button.className = 'pagination-btn';
       button.textContent = label;
-      button.disabled = options.disabled;
+      // aria-disabled rather than disabled: a disabled control drops out of the
+      // tab order, so a keyboard reader who lands on "Previous" at page 1 is
+      // silently skipped past the whole pagination bar.
+      if (options.disabled) button.setAttribute('aria-disabled', 'true');
       if (options.current) button.setAttribute('aria-current', 'page');
       button.setAttribute('aria-label', options.ariaLabel || label);
       button.addEventListener('click', () => {
+        if (options.disabled) return;
         currentPage = page;
         render();
-        document.querySelector('.catalog-toolbar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const toolbar = document.querySelector('.catalog-toolbar');
+        toolbar.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
+        // Scrolling alone leaves focus on a button that has just been replaced,
+        // which sends focus back to the top of the document.
+        const firstLink = grid.querySelector('h3 a');
+        if (firstLink) firstLink.focus({ preventScroll: true });
       });
       pagination.appendChild(button);
     };
@@ -125,8 +137,25 @@
       });
   }
 
+  // Every keystroke rebuilt the whole grid and rewrote the live region, so a
+  // screen reader announced a new count per character typed. Debouncing gives
+  // the reader one announcement per pause in typing.
+  function debounce(callback, wait) {
+    let timer;
+    return (...parameters) => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => callback(...parameters), wait);
+    };
+  }
+
+  const debouncedReset = debounce(resetAndRender, 250);
+
   [searchInput, categorySelect, sortSelect, orderSelect].forEach((control) => {
-    control.addEventListener(control === searchInput ? 'input' : 'change', resetAndRender);
+    if (control === searchInput) {
+      control.addEventListener('input', debouncedReset);
+    } else {
+      control.addEventListener('change', resetAndRender);
+    }
   });
 
   clearButton.addEventListener('click', () => {

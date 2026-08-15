@@ -152,6 +152,7 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
 }
 
 .site-header .site-return-link {
+  display: inline-flex;
   min-height: 32px;
   padding: 6px 12px;
   align-items: center;
@@ -223,7 +224,26 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   }
 
   .site-header .site-return-link {
-    display: none;
+    /* Previously `display: none`, which removed the only way back to the main
+       site from a simulator on a phone. Kept visible as a 40x40 icon target
+       (WCAG 2.2 SC 2.5.8); the accessible name comes from aria-label. */
+    min-width: 40px;
+    min-height: 40px;
+    padding: 6px;
+    gap: 0;
+  }
+
+  .site-header .site-return-link__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
   }
 
   .site-header .simulator-header-actions button {
@@ -239,4 +259,65 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   .site-header .header-shell {
     padding-inline: 24px;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Simulator footer
+
+   Six of the fifteen simulator documents ended at </main> with no footer, so
+   they were the only pages on the site with no exit route, no educational
+   disclaimer and no way to reach the other two translations. The markup added
+   there uses these classes; the nine pages that already had a Tailwind-styled
+   footer only received the language switcher, which is styled in a11y.css.
+   --------------------------------------------------------------------------- */
+.simulator-footer {
+  margin-top: 48px;
+  padding: 28px 24px 32px;
+  border-top: 1px solid #efeae0;
+  background: #faf6ed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.simulator-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 24px;
+}
+
+.simulator-footer__links a {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e4620;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.simulator-footer__links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.simulator-footer__note {
+  max-width: 60ch;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  /* rgba(42,36,30,.78) on #faf6ed clears 4.5:1 at this size. */
+  color: rgba(42, 36, 30, 0.78);
+}
+
+/* The nine pre-existing footers are centred blocks of Tailwind utilities; the
+   switcher needs its own breathing room inside them. */
+footer .lang-switch {
+  margin-top: 12px;
 }

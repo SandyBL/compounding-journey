@@ -6,8 +6,6 @@ summary: Descubra como poupar uma percentagem fixa antes de gastar pode romper o
  ciclo de viver de salário em salário e construir o seu fundo de emergência.
 translation_key: pay-yourself-first-power-of-saving
 author: Sandy Bradbury
-hero: /assets/img/articles/pay-yourself-first-power-of-saving.svg
-hero_alt: "Nove barras crescentes, cada uma com a sua parte inferior reservada a dourado antes do resto."
 ---
 Quando se trata de gerir o seu dinheiro, existe uma regra simples capaz de transformar a sua vida financeira: **Pague-se a Si Mesmo Primeiro**. Isto significa colocar uma parte do seu rendimento na poupança *antes* de pagar contas, fazer compras ou gastar em lazer.
 

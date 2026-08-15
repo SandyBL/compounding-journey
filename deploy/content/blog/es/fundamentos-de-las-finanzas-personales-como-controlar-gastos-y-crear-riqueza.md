@@ -7,8 +7,6 @@ summary: Descubre consejos simples para presupuestar, rastrear tus gastos y
  renunciar a lo que te hace feliz.
 translation_key: foundations-personal-finance-controlling-expenses
 author: Sandy Bradbury
-hero: /assets/img/articles/foundations-personal-finance-controlling-expenses.svg
-hero_alt: "Seis capas apiladas que se estrechan al subir, más anchas y oscuras en la base, coronadas por un círculo dorado."
 ---
 Alcanzar el crecimiento e independencia financiera comienza con un principio simple pero poderoso: controlar tus gastos. Piensa en el control de gastos como los cimientos de tu casa financiera; sin control sobre a dónde va tu dinero, es casi imposible construir riqueza a largo plazo o aprovechar el poder del interés compuesto.
 

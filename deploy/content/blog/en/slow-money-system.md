@@ -6,8 +6,6 @@ summary: A practical weekly rhythm that replaces financial urgency with a small
  set of repeatable decisions.
 translation_key: slow-money-system
 author: Sandy Bradbury
-hero: /assets/img/articles/slow-money-system.svg
-hero_alt: "Concentric rings widening outward from a single point, with evenly spaced gold markers along one radius."
 ---
 
 ## Why speed is not the same as progress

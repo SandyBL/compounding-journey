@@ -97,8 +97,11 @@
     }
   </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=20260810-4">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=20260815-1">
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-100">
+
+    <a class="skip-link" href="#main">Saltar al contenido principal</a>
 
   <!-- ENCABEZADO Y NAVEGACIÓN -->
     <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
@@ -114,9 +117,9 @@
             </a>
 
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
-                <a href="/#simulador" class="site-return-link hidden sm:inline-flex">
+                <a href="/#simulador" class="site-return-link" aria-label="Volver al sitio web">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                    <span>Sitio web</span>
+                    <span class="site-return-link__text">Sitio web</span>
                 </a>
             </div>
         </div>
@@ -157,7 +160,7 @@
   </div>
 
   <!-- CONTENEDOR PRINCIPAL -->
-  <main class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
+  <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
 
     <!-- ================================================================= -->
     <!-- PESTAÑA 1: CABINA DE VUELO INTERACTIVA -->
@@ -260,7 +263,7 @@
                   <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">$850,000</span>
                 </div>
               </div>
-              <input type="range" id="input-nestegg" min="200000" max="2000000" step="25000" value="850000" oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
             </div>
 
             <!-- Entrada de Gasto Anual -->
@@ -276,7 +279,7 @@
                   <span id="disp-spending" class="font-mono text-emerald-300 font-bold">$45,000</span>
                 </div>
               </div>
-              <input type="range" id="input-spending" min="35000" max="150000" step="2500" value="45000" oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
               <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1">
                 <span>Tasa de Retiro Anual (SWR):</span>
                 <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800">
@@ -319,24 +322,24 @@
               <div id="allocation-sliders-container" class="space-y-2 pt-1">
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
-                    <span class="text-cyan-400 font-bold">Acciones (Crecimiento y Volatilidad)</span>
+                    <span id="lbl-alloc-stocks" class="text-cyan-400 font-bold">Acciones (Crecimiento y Volatilidad)</span>
                     <span id="disp-pct-stocks">80%</span>
                   </div>
-                  <input type="range" id="input-stocks" min="0" max="100" value="80" oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
-                    <span class="text-emerald-400 font-bold">Bonos (Estabilidad y Renta)</span>
+                    <span id="lbl-alloc-bonds" class="text-emerald-400 font-bold">Bonos (Estabilidad y Renta)</span>
                     <span id="disp-pct-bonds">15%</span>
                   </div>
-                  <input type="range" id="input-bonds" min="0" max="100" value="15" oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
-                    <span class="text-amber-400 font-bold">Colchón de Efectivo</span>
+                    <span id="lbl-alloc-cash" class="text-amber-400 font-bold">Colchón de Efectivo</span>
                     <span id="disp-pct-cash">5%</span>
                   </div>
-                  <input type="range" id="input-cash" min="0" max="100" value="5" oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
                 </div>
               </div>
 
@@ -417,7 +420,7 @@
 
             <!-- Canvas Monitor del Vuelo -->
             <div class="relative w-full h-[290px] sm:h-[340px] bg-slate-950 rounded-xl overflow-hidden border border-slate-800/80 group">
-              <canvas id="flightCanvas" class="w-full h-full block"></canvas>
+              <canvas id="flightCanvas" role="img" aria-label="Gráfico animado: la trayectoria simulada de la cartera, dibujada como una ruta de vuelo. Todos los valores que representa se indican como texto en el panel de instrumentos superior." class="w-full h-full block"></canvas>
               <div class="scanlines absolute inset-0 pointer-events-none opacity-40"></div>
 
               <!-- Leyenda de Inclinación de Vuelo -->
@@ -820,6 +823,11 @@
         Simulador educativo para modelar desacumulación de riqueza y Riesgo de Secuencia de Rendimientos.
       </div>
     </div>
+  <nav class="lang-switch" aria-label="Idioma">
+        <a class="lang-switch-link" href="/es/simulators/monte-carlo-fire.html" hreflang="es" lang="es" aria-label="Español" aria-current="page">ES</a>
+        <a class="lang-switch-link" href="/en/simulators/monte-carlo-fire.html" hreflang="en" lang="en" aria-label="English">EN</a>
+        <a class="lang-switch-link" href="/pt/simulators/monte-carlo-fire.html" hreflang="pt" lang="pt" aria-label="Português">PT</a>
+      </nav>
   </footer>
 
   <!-- MODAL 1: CALCULADORA DE PRESUPUESTO DE RETIRO -->
@@ -931,7 +939,7 @@
   </div>
 
   <!-- MODAL DE RESUMEN Y RESULTADO DE VUELO -->
-  <div id="modal-flight-debrief" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+  <div id="modal-flight-debrief" role="dialog" aria-modal="true" aria-labelledby="debrief-title" aria-describedby="debrief-msg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
     <div class="hud-glass max-w-md w-full p-6 rounded-2xl border border-slate-700 space-y-4 shadow-2xl text-center">
       <div id="debrief-icon-box" class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl">
         <i id="debrief-icon" class="fa-solid fa-trophy"></i>
@@ -1118,9 +1126,11 @@
 
       const dispEgg = document.getElementById('disp-nestegg');
       if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();
+      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString());
 
       const dispSpend = document.getElementById('disp-spending');
       if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();
+      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString());
 
       const swrVal = (state.annualSpending / state.nestEgg) * 100;
       const swrStr = swrVal.toFixed(1) + '%';
@@ -1240,6 +1250,12 @@
       document.getElementById('disp-pct-stocks').innerText = s + '%';
       document.getElementById('disp-pct-bonds').innerText = b + '%';
       document.getElementById('disp-pct-cash').innerText = c + '%';
+
+      // A range input announces its raw value, so an allocation slider read
+      // out as "80" rather than "80 percent".
+      document.getElementById('input-stocks').setAttribute('aria-valuetext', s + '%');
+      document.getElementById('input-bonds').setAttribute('aria-valuetext', b + '%');
+      document.getElementById('input-cash').setAttribute('aria-valuetext', c + '%');
     }
 
     function toggleTargetDateFund() {
@@ -1643,11 +1659,21 @@
       registerScoreToLeaderboard(state.pilotName, state.activePreset, reachedTarget, state.totalCrashlineYears, state.totalTacticYears, Math.max(0, state.currentNestEgg));
 
       modal.classList.remove('hidden');
+
+      // The run is over and the button that started it is now behind a
+      // full-screen overlay, so focus has to follow the debrief.
+      title.setAttribute('tabindex', '-1');
+      title.focus({ preventScroll: true });
     }
 
     function closeDebriefModal() {
       const modal = document.getElementById('modal-flight-debrief');
+      // Focus is inside the overlay that is about to be hidden, so it has to
+      // be handed back to the control that opened the run.
+      const debriefReturnFocus = document.getElementById('btn-launch-flight')
+        || document.getElementById('input-nestegg');
       if (modal) modal.classList.add('hidden');
+      if (debriefReturnFocus) debriefReturnFocus.focus({ preventScroll: true });
     }
 
     /* =================================================================

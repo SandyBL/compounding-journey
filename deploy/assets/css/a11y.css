@@ -1,0 +1,271 @@
+/* ==========================================================================
+   a11y.css — global accessibility layer
+   Loaded by every page family (home, blog, simulators, 404).
+   Kept separate from assets/styles.css because that file is compiled Tailwind
+   output and would be overwritten by a future `tailwindcss` run.
+   ========================================================================== */
+
+:root {
+    /* Focus ring tuned for >=3:1 against the light cream/white surfaces. */
+    --a11y-focus-ring: #7a5f12;
+    --a11y-focus-ring-inverse: #fcf1db;
+    /* Accessible gold for text: 6.54:1 on #FFFFFF, 6.03:1 on #FAF6ED.
+       The brand gold #C59B27 stays in use for borders, icons and fills. */
+    --gold-text: #7a5f12;
+}
+
+/* --------------------------------------------------------------------------
+   1. Focus visibility — WCAG 2.2 SC 2.4.7 (Focus Visible) and SC 2.4.11
+      (Focus Appearance). A single global rule so no interactive element can
+      ship without an indicator.
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+    outline: 3px solid var(--a11y-focus-ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Dark surfaces need the inverse ring to stay above 3:1. */
+.bg-forestgreen :focus-visible,
+.bg-darkbark :focus-visible,
+.bg-slate-900 :focus-visible,
+.bg-slate-950 :focus-visible,
+[data-theme='dark'] :focus-visible,
+.hud-glass :focus-visible,
+footer.bg-darkbark :focus-visible {
+    outline-color: var(--a11y-focus-ring-inverse);
+}
+
+/* Tailwind's `focus:outline-none` sets a transparent outline, which erases the
+   ring above. Re-assert it for keyboard focus only; pointer focus stays clean. */
+.focus\:outline-none:focus-visible {
+    outline: 3px solid var(--a11y-focus-ring) !important;
+    outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Skip link — first tab stop on every page.
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 200;
+    transform: translateY(-160%);
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1e4620;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(42, 36, 30, .25);
+    transition: transform .15s ease;
+}
+
+.skip-link:focus {
+    transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Screen-reader-only utility. `assets/styles.css` (compiled Tailwind) does
+      not include `.sr-only`, so it is defined here for all page families.
+   -------------------------------------------------------------------------- */
+
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. Target size — WCAG 2.2 SC 2.5.8 (Target Size, Minimum, 24x24 CSS px).
+   -------------------------------------------------------------------------- */
+
+.lang-switch-link,
+.footer-link,
+.pagination-btn {
+    min-width: 24px;
+    min-height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   5. Language switcher shared between the home page and the simulator pages.
+      Real links, not buttons, so they are crawlable and work without JS.
+   -------------------------------------------------------------------------- */
+
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .7);
+    border: 1px solid #efeae0;
+}
+
+.lang-switch-link {
+    min-width: 34px;
+    height: 28px;
+    padding: 0 8px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #2a241e;
+    text-decoration: none;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.lang-switch-link:hover {
+    background: #efeae0;
+}
+
+.lang-switch-link[aria-current='page'] {
+    background: #1e4620;
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   6. Contrast remediation — WCAG 2.2 SC 1.4.3 (Contrast Minimum, 4.5:1).
+
+   assets/styles.css is compiled Tailwind output, so the palette is corrected
+   here instead of in the generated bundle. The brand gold #C59B27 measures
+   only 2.60:1 on white and 4.15:1 on forest green, which fails for body copy
+   at either size. Two replacements are used:
+
+     light surfaces -> #7A5F12  (6.54:1 on #FFFFFF, 6.03:1 on #FAF6ED)
+     dark surfaces  -> #E3BC5A  (5.95:1 on #1E4620, 8.47:1 on #2A241E)
+
+   The original #C59B27 is untouched for borders, rules, icon fills and
+   backgrounds, where SC 1.4.11 (3:1) applies rather than SC 1.4.3.
+   -------------------------------------------------------------------------- */
+
+.text-warmgold {
+    color: var(--gold-text);
+}
+
+/* Gold sitting on the dark brand surfaces: hero gradient, forest-green cards,
+   numbered step badges and the footer. Higher specificity than the rule above,
+   so it wins wherever the surface is actually dark. */
+.bg-darkbark .text-warmgold,
+.bg-darkbark.text-warmgold,
+.bg-forestgreen .text-warmgold,
+.bg-forestgreen.text-warmgold,
+.from-forestgreen .text-warmgold,
+.from-darkbark .text-warmgold,
+.via-forestgreen .text-warmgold,
+.to-darkbark .text-warmgold {
+    color: #e3bc5a;
+}
+
+.bg-darkbark .hover\:text-warmgold:hover,
+.bg-forestgreen .hover\:text-warmgold:hover,
+.from-forestgreen .hover\:text-warmgold:hover,
+.to-darkbark .hover\:text-warmgold:hover {
+    color: #e3bc5a;
+}
+
+/* Muted body tints. Tailwind's alpha shorthands land between 2.4:1 and 3.1:1
+   on white, which is below the floor for any text size. */
+.text-darkbark\/40 {
+    color: rgba(42, 36, 30, .72);
+}
+
+.text-darkbark\/45 {
+    color: rgba(42, 36, 30, .74);
+}
+
+.text-darkbark\/50 {
+    color: rgba(42, 36, 30, .76);
+}
+
+.text-darkbark\/55,
+.text-darkbark\/60 {
+    color: rgba(42, 36, 30, .78);
+}
+
+.placeholder-darkbark\/40::placeholder,
+.placeholder-darkbark\/50::placeholder {
+    color: rgba(42, 36, 30, .72);
+    opacity: 1;
+}
+
+/* Footer meta text on #2A241E. */
+.text-creamsoft\/40 {
+    color: rgba(250, 246, 237, .78);
+}
+
+.text-creamsoft\/50 {
+    color: rgba(250, 246, 237, .8);
+}
+
+.text-creamsoft\/60 {
+    color: rgba(250, 246, 237, .85);
+}
+
+/* --------------------------------------------------------------------------
+   7. Motion — WCAG SC 2.3.3. The compiled Tailwind bundle applies
+      `transition-all`, `animate-ping` and `animate-spin` broadly; this reset
+      neutralises all of it in one place. JS-driven smooth scrolling is gated
+      separately in script (CSS cannot override `scrollIntoView` options).
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html:focus-within {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        transition-delay: 0ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   8. Forced-colors / Windows High Contrast support.
+   -------------------------------------------------------------------------- */
+
+@media (forced-colors: active) {
+
+    :focus-visible {
+        outline: 3px solid Highlight;
+    }
+
+    .skip-link {
+        border: 2px solid ButtonText;
+    }
+}

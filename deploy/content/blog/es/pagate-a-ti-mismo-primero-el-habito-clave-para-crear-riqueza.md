@@ -6,8 +6,6 @@ summary: Descubre cómo ahorrar un porcentaje fijo antes de gastar romperá el
  ciclo de vivir al día y te ayudará a construir tu fondo de emergencia.
 translation_key: pay-yourself-first-power-of-saving
 author: Sandy Bradbury
-hero: /assets/img/articles/pay-yourself-first-power-of-saving.svg
-hero_alt: "Nueve barras crecientes, cada una con su parte inferior reservada en dorado antes que el resto."
 ---
 Cuando se trata de administrar tu dinero, existe una regla fundamental que puede transformarlo todo: **Págate a Ti Mismo Primero**. Esto significa destinar una parte de tus ingresos al ahorro *antes* de pagar facturas, hacer compras o gastar en entretenimiento.
 
