@@ -21,6 +21,7 @@ import vm from 'node:vm';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { jsonLdScript } from './markdown.mjs';
+import { readSharedCatalog } from './shared-catalog.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -53,6 +54,17 @@ function outputFile(language) {
 
 function escapeAttribute(value) {
   return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+// Article titles and summaries are author-written Markdown front matter, so an
+// ampersand or an angle bracket in one of them is ordinary text rather than
+// markup. Everything rendered from the catalog goes through here.
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 // --- template HTML scanner -------------------------------------------------
@@ -546,6 +558,103 @@ function rewriteLocalizedLinks(html, language, config) {
   return { html: output, rewritten };
 }
 
+// --- latest journal articles -------------------------------------------------
+
+// The three cards in the "From the blog" section. They are written here, at
+// build time, from the same catalog the journal itself is built from, so
+// publishing an article stays one Markdown file: the home page follows on the
+// next deploy rather than becoming a fourth place somebody has to remember to
+// edit.
+
+const LATEST_ARTICLE_COUNT = 3;
+const LATEST_ARTICLES_BLOCK = /<!--latest-articles:start-->[\s\S]*?<!--latest-articles:end-->/;
+
+const latestArticleLabels = {
+  es: { read: 'Leer el artículo', empty: 'Pronto habrá artículos aquí.' },
+  en: { read: 'Read the article', empty: 'Articles are on their way.' },
+  pt: { read: 'Ler o artigo', empty: 'Em breve haverá artigos aqui.' }
+};
+
+function articlePath(language, slug) {
+  return `/${language}/blog/${slug}/`;
+}
+
+function formatDate(language, date) {
+  if (!date) return '';
+  return new Intl.DateTimeFormat(language, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+    .format(new Date(`${date}T12:00:00Z`));
+}
+
+const TEASER_LIMIT = 140;
+
+// The first sentence of the article's own summary, clipped on a word boundary
+// if that sentence runs long, so a card never ends mid-word or on a comma.
+function teaser(summary) {
+  const text = String(summary ?? '').trim();
+  if (!text) return '';
+
+  const sentence = text.match(/^[\s\S]*?[.!?…](?=\s|$)/);
+  const first = (sentence ? sentence[0] : text).trim();
+  if (first.length <= TEASER_LIMIT) return first;
+
+  const cut = first.slice(0, TEASER_LIMIT + 1);
+  const lastSpace = cut.lastIndexOf(' ');
+  const clipped = lastSpace > 0 ? cut.slice(0, lastSpace) : cut.slice(0, TEASER_LIMIT);
+  return `${clipped.replace(/[\s,;:.–—-]+$/, '')}…`;
+}
+
+function articleCard(language, labels, article) {
+  const href = articlePath(language, article.slug);
+  const title = escapeHtml(article.title);
+  const summary = escapeHtml(teaser(article.summary));
+  const category = escapeHtml(article.category ?? '');
+  const date = escapeHtml(formatDate(language, article.date));
+
+  return `                    <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">${category}</span>
+                            <span class="h-px w-8 bg-warmgold/50"></span>
+                            <time datetime="${escapeAttribute(article.date ?? '')}" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">${date}</time>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
+                                <a href="${href}" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">${title}</a>
+                            </h3>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">${summary}</p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="${href}" aria-label="${escapeAttribute(`${labels.read}: ${article.title}`)}" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                                ${escapeHtml(labels.read)}
+                                <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>`;
+}
+
+// Throws rather than leaving the grid empty. A missing marker would otherwise
+// build clean and ship a section that is a heading and a button with a gap
+// between them, which is a failure nobody sees until it is live.
+function renderLatestArticles(html, language, catalog) {
+  if (!LATEST_ARTICLES_BLOCK.test(html)) {
+    throw new Error(
+      'The latest-articles markers are missing from content/home/index.html. '
+      + 'The three journal cards on the home page are written between them.'
+    );
+  }
+
+  const labels = latestArticleLabels[language];
+  const articles = catalog
+    .filter((article) => article.language === language && article.slug && article.title)
+    .sort((first, second) => String(second.date).localeCompare(String(first.date)))
+    .slice(0, LATEST_ARTICLE_COUNT);
+
+  const cards = articles.length > 0
+    ? articles.map((article) => articleCard(language, labels, article)).join('\n')
+    : `                    <p class="text-sm text-darkbark/70">${escapeHtml(labels.empty)}</p>`;
+
+  return { html: html.replace(LATEST_ARTICLES_BLOCK, `\n${cards}\n                `), count: articles.length };
+}
+
 // --- inline asset extraction ------------------------------------------------
 
 // The template keeps its CSS and JavaScript inline, which is the right place to
@@ -718,6 +827,11 @@ function tidyOutput(html) {
 // --- run -------------------------------------------------------------------
 
 const template = await fs.readFile(templateFile, 'utf8');
+
+// Written by generate-blog-catalog.mjs, which runs first in the build chain.
+// Reading it here is what lets the home page carry the newest three articles
+// without a second copy of their titles living in the template.
+const blogCatalog = await readSharedCatalog();
 const extractedAssets = await extractInlineAssets(template);
 
 const config = {
@@ -746,6 +860,9 @@ for (const language of languages) {
 
   page = await rewriteTemplateMeta(page, language, config);
 
+  const latest = renderLatestArticles(page, language, blogCatalog);
+  page = latest.html;
+
   page = replaceInlineAssets(page, extractedAssets, language);
   page = hoistToHead(page, extractedAssets, language);
 
@@ -759,7 +876,8 @@ for (const language of languages) {
 
   console.log(
     `Wrote ${languagePath(language)} — kept ${split.kept} blocks, dropped ${split.removed}, `
-    + `localized ${links.rewritten} links, ${Math.round(page.length / 1024)} KB.`
+    + `localized ${links.rewritten} links, ${latest.count} journal cards, `
+    + `${Math.round(page.length / 1024)} KB.`
   );
 }
 

@@ -17,15 +17,15 @@
         };
 
         const pageTitles = {
-            es: "El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad",
-            en: "Compounding Journey - Your Map to Freedom",
-            pt: "A Jornada de Crescimento Composto - O Teu Mapa para a Liberdade"
+            es: "Compounding Journey — El viaje del Crecimiento Compuesto",
+            en: "Compounding Journey — Your Map to Freedom",
+            pt: "Compounding Journey — A Jornada de Crescimento Composto"
         };
 
         const pageDescriptions = {
-            es: "Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.",
-            en: "Money psychology, purposeful investing, and practical tools for building financial freedom around your values.",
-            pt: "Psicologia do dinheiro, investimento com propósito e ferramentas para construir liberdade financeira segundo os teus valores."
+            es: "Compounding Journey — psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.",
+            en: "Compounding Journey — money psychology, purposeful investing, and practical tools for building financial freedom around your values.",
+            pt: "Compounding Journey — psicologia do dinheiro, investimento com propósito e ferramentas para construir liberdade financeira segundo os teus valores."
         };
 
         const openGraphLocales = {
