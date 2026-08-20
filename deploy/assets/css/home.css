@@ -4,14 +4,37 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Two selectors for the same elements, because this file is read in two
+           states. In this template every string is present in all three
+           languages at once, tagged lang-content, and the rules below hide two
+           of them so the template can be opened and read as one page. In the
+           three documents the generator writes, only one language survives the
+           split and the attribute is rewritten to a bare data-i18n: the value
+           was the language, and a page that is entirely one language has no use
+           for a per-element claim about which language it is.
+
+           The data-i18n rules restate the display values the lang-content rules
+           resolve to, so the rendered result is identical either way. They are
+           not conditional on a body class, which also closes a trap: the class
+           is what the old client-side switcher toggled, and on a pre-rendered
+           page swapping it would have matched none of the language rules and
+           left the page blank. */
         [lang-content] {
             display: none !important;
+        }
+        [data-i18n] {
+            display: block !important;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        span[data-i18n],
+        inline[data-i18n] {
+            display: inline-block !important;
         }
         body.lang-es [lang-content="es"] {
             display: block !important;
             animation: fadeIn 0.4s ease-out forwards;
         }
-        body.lang-es span[lang-content="es"], 
+        body.lang-es span[lang-content="es"],
         body.lang-es inline[lang-content="es"] {
             display: inline-block !important;
         }
@@ -20,7 +43,7 @@
             display: block !important;
             animation: fadeIn 0.4s ease-out forwards;
         }
-        body.lang-en span[lang-content="en"], 
+        body.lang-en span[lang-content="en"],
         body.lang-en inline[lang-content="en"] {
             display: inline-block !important;
         }
@@ -29,7 +52,7 @@
             display: block !important;
             animation: fadeIn 0.4s ease-out forwards;
         }
-        body.lang-pt span[lang-content="pt"], 
+        body.lang-pt span[lang-content="pt"],
         body.lang-pt inline[lang-content="pt"] {
             display: inline-block !important;
         }
@@ -714,12 +737,41 @@
         }
 
         .identity-callback__card {
+            position: relative;
             width: min(100%, 28rem);
             padding: 2rem;
             border: 1px solid rgba(197, 155, 39, 0.35);
             border-radius: 1.5rem;
             background: #fffdf8;
             box-shadow: 0 24px 80px rgba(24, 58, 37, 0.28);
+        }
+
+        .identity-callback__close {
+            position: absolute;
+            top: 0.85rem;
+            right: 0.85rem;
+            display: grid;
+            place-items: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            padding: 0;
+            border: 1px solid #cfc6b5;
+            border-radius: 999px;
+            background: white;
+            color: #5d665e;
+            font-size: 1.4rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .identity-callback__close:hover {
+            border-color: #c59b27;
+            color: #243c2b;
+        }
+
+        .identity-callback__close:focus-visible {
+            outline: 3px solid rgba(197, 155, 39, 0.45);
+            outline-offset: 3px;
         }
 
         .identity-callback__logo {

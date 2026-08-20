@@ -11,6 +11,7 @@
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="en_US"><meta property="og:title" content="Passive Income Engine Simulator"><meta property="og:description" content="Build assets and explore the path from active income to financial independence."><meta property="og:url" content="https://compoundingjourney.com/en/simulators/passive-income-engine.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Passive Income Engine Simulator"><meta name="twitter:description" content="Build assets and explore the path from active income to financial independence."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Passive Income Engine","url":"https://compoundingjourney.com/en/simulators/passive-income-engine.html","description":"An interactive simulator for building income-producing assets and tracking passive cash flow over time.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://compoundingjourney.com/en/"},{"@type":"ListItem","position":2,"name":"Simulators","item":"https://compoundingjourney.com/en/simulator.html"},{"@type":"ListItem","position":3,"name":"Passive Income Engine"}]}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=cf36153ed998">
@@ -34,8 +35,9 @@
             box-shadow: 0 10px 25px -5px rgba(44, 29, 17, 0.05), 0 8px 10px -6px rgba(44, 29, 17, 0.03);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.en.webmanifest">
@@ -135,6 +137,16 @@
     </section>
 
     <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-1 space-y-4">
+        <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
+             so each tool page looked like an orphan at the top level of the site. -->
+        <nav class="sim-crumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/simulator.html">Simulators</a></li>
+                <li><span aria-current="page">Passive Income Engine</span></li>
+            </ol>
+        </nav>
+
         
         <!-- DASHBOARD TOP STATS BAR (6 CARDS) -->
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
@@ -463,6 +475,71 @@
                 </div>
             </div>
         </div>
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">What the Passive Income Engine is for</h2>
+                <p class="sim-explainer__lede">Passive income is usually sold as a single idea, as though a dividend fund and a rental flat and an online business were the same thing in different clothes. They are not. This tool makes you build an income stream out of six of them and then live on it, so that the differences — in yield, in effort, in how badly each one can go wrong — become something you have felt rather than read.</p>
+
+                <h3 class="sim-explainer__heading">How it works</h3>
+                <p>You allocate capital across six sources: a dividend ETF, treasury bonds, a rental condo, a REIT index, an online business and bitcoin. Each pays a different yield, and each carries a different amount of the thing the word "passive" quietly omits — the rental needs a tenant found and a boiler fixed, the online business needs someone to run it, and neither of them pays while you are ill.</p>
+                <p>The other half is the spending side. You set your housing, transport and dining choices, and the tool tracks a Life Joy meter alongside your income. This is the part most passive-income content leaves out: the target is not a number, it is covering a life you would actually want to live. Cutting your lifestyle to the bone makes the income target trivially easy and the result worthless, and the meter is there to make that trade explicit rather than letting you quietly optimise your way into a life you would hate.</p>
+
+                <h3 class="sim-explainer__heading">What it assumes</h3>
+                <ul class="sim-explainer__list">
+                    <li>Yields are steady averages. Dividends get cut, tenants leave, and an online business can lose most of its revenue to a single change in someone else's algorithm.</li>
+                    <li>The rental figure is rent, not profit. Real property costs you management, maintenance, insurance, taxes and the months it sits empty — commonly a third of the headline number.</li>
+                    <li>Income is shown before tax, and passive income is often taxed less favourably than the salary it is meant to replace.</li>
+                    <li>Bitcoin produces no income at all. It is in the list because people hold it expecting one, and seeing a large allocation contribute nothing to the monthly figure is the point.</li>
+                </ul>
+                <p class="sim-explainer__note">Nothing here is a recommendation to hold any of these six assets. They are in the tool because they behave differently from each other, which is what makes the comparison teach anything.</p>
+
+                <h3 class="sim-explainer__heading">A worked example</h3>
+                <p>Put everything into the dividend ETF and the monthly income is modest, entirely hands-off, and arrives whether or not you get out of bed. Move half into the rental condo and the income jumps — and you have quietly acquired a part-time job, an illiquid asset, and a single tenant whose departure removes a large share of your income at once.</p>
+                <p>Now cover the same monthly target while keeping Life Joy high. The cheapest housing option makes the target reachable with far less capital and costs you something the income was supposed to buy. There is no arrangement that maximises income, minimises effort and preserves the life at the same time — and finding out where you personally want to sit in that triangle is worth more than any single yield figure the tool prints.</p>
+
+                <h3 class="sim-explainer__heading">Common questions</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>Is any of this actually passive?</dt>
+                    <dd>Two of the six are: the dividend ETF and the treasury bonds. The REIT index is close. The rental and the online business are businesses, and the simulator is at its most useful when it shows you how much of your income depends on ones that need you.</dd>
+                    <dt>Why is spending part of an income tool?</dt>
+                    <dd>Because the finish line is defined by it. Lowering your monthly costs by 300 is worth the same as finding 90,000 of capital paying 4%, and one of those is available this month.</dd>
+                    <dt>Should I diversify across all six?</dt>
+                    <dd>That is not a question a simulator can answer for you, and spreading capital across things you do not understand is not diversification. What the tool can show is how much a single source dominating your income changes what one piece of bad luck does to you.</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">Keep reading</h3>
+                    <p>The journal covers the ideas behind this tool at greater length.</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="/en/blog/spending-with-purpose-how-to-align-your-money-with-what-truly-matters/">Spending with Purpose: How to Align Your Money with What Truly Matters</a></li>
+                        <li><a href="/en/blog/building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad/">Building Wealth Through Good Financial Habits</a></li>
+                        <li><a href="/en/blog/">All journal entries</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
         <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
              panel, down to the markup: whichever door a reader comes in through -
              an article or a simulator - the page ends on the same offer, in the

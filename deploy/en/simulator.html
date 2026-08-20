@@ -89,8 +89,9 @@
             box-shadow: 0 10px 30px -5px rgba(44, 29, 17, 0.08);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.en.webmanifest">
@@ -309,6 +310,71 @@
             </div>
 
         </div>
+
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">What this simulator is for</h2>
+                <p class="sim-explainer__lede">The simulator is a decision trainer, not a calculator. It puts you in front of the ordinary money choices a person actually faces — a raise, a car, a holiday, an unexpected bill — and shows what each one does to four things at once: your wealth, your monthly cash flow, your day-to-day happiness, and your financial intelligence. The point is not to reach a number. The point is to feel how choices interact before you make them with real money.</p>
+
+                <h3 class="sim-explainer__heading">How it works</h3>
+                <p>You are dealt a sequence of scenarios. Each one offers two or more responses, and none of them is marked correct — because none of them is. Buying the cheaper car protects your cash flow and costs you something you wanted; taking the second job raises your income and spends the one resource you cannot buy back. Every choice moves all four meters, and the trade-off is the lesson.</p>
+                <p>The meters carry forward. A decision made early changes what the later scenarios can do to you, which is the closest a short session can get to showing how compounding actually behaves — slowly, and then all at once. At the end the simulator names the pattern your choices formed, as an archetype. That label is a summary of what you did, not a verdict on who you are.</p>
+
+                <h3 class="sim-explainer__heading">What it assumes</h3>
+                <ul class="sim-explainer__list">
+                    <li>The four meters are relative, not denominated in any currency. They exist to be compared with each other and with where they were a decision ago.</li>
+                    <li>Scenarios are written to be recognisable, not to match any one country's tax code, benefits system or cost of living.</li>
+                    <li>Happiness is modelled as something money can move in both directions. Spending nothing is not treated as the winning strategy.</li>
+                    <li>A session is short by design. It compresses years of decisions into minutes, so the timing of consequences is illustrative rather than literal.</li>
+                </ul>
+                <p class="sim-explainer__note">This is an educational tool. Nothing it shows is financial advice, and no result should be read as a prediction about your own finances.</p>
+
+                <h3 class="sim-explainer__heading">A worked example</h3>
+                <p>A scenario offers a promotion that raises your income by a fifth but adds an hour of commuting each way. Taking it lifts wealth and cash flow immediately and pushes happiness down. Declining it holds happiness and leaves the other two flat.</p>
+                <p>Neither is the right answer on its own. What decides it is the state you are already in: with no emergency fund, the income is what buys you the ability to survive the next scenario, and the happiness cost is temporary. With a cushion already built, spending an extra ten hours a week to grow a number you are not using is the more expensive choice. Run the same scenario twice from different starting states and the meters make that argument for you.</p>
+
+                <h3 class="sim-explainer__heading">Common questions</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>Is there a way to win?</dt>
+                    <dd>No, and that is deliberate. A run that maximises wealth while flattening happiness is not a better outcome than one that balances them — it is a different set of trade-offs, and seeing that clearly is the whole exercise.</dd>
+                    <dt>Does it store anything I enter?</dt>
+                    <dd>No. The simulator runs entirely in your browser. Nothing you choose is sent anywhere, and closing the tab ends the session.</dd>
+                    <dt>Which of the other tools should I use next?</dt>
+                    <dd>If you want a date rather than a pattern, the Freedom Calendar turns savings into a timeline. If you want to know whether a plan survives bad luck, the Monte Carlo simulator is the one that answers that.</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">Keep reading</h3>
+                    <p>The journal covers the ideas behind this tool at greater length.</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="/en/blog/slow-money-system/">The slow money system: a calmer way to build wealth</a></li>
+                        <li><a href="/en/blog/spending-with-purpose-how-to-align-your-money-with-what-truly-matters/">Spending with Purpose: How to Align Your Money with What Truly Matters</a></li>
+                        <li><a href="/en/blog/">All journal entries</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
         <!-- CLOSING CALL TO ACTION. The same panel the journal articles and the
              other four simulators end on, in the same place they all put it: the

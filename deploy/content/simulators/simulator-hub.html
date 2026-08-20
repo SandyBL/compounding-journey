@@ -81,6 +81,7 @@
     </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
@@ -275,6 +276,71 @@
             </div>
 
         </div>
+
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">{{explTitle}}</h2>
+                <p class="sim-explainer__lede">{{explLede}}</p>
+
+                <h3 class="sim-explainer__heading">{{explHowTitle}}</h3>
+                <p>{{explHow1}}</p>
+                <p>{{explHow2}}</p>
+
+                <h3 class="sim-explainer__heading">{{explAssumptionsTitle}}</h3>
+                <ul class="sim-explainer__list">
+                    <li>{{explAssumption1}}</li>
+                    <li>{{explAssumption2}}</li>
+                    <li>{{explAssumption3}}</li>
+                    <li>{{explAssumption4}}</li>
+                </ul>
+                <p class="sim-explainer__note">{{explAssumptionsNote}}</p>
+
+                <h3 class="sim-explainer__heading">{{explExampleTitle}}</h3>
+                <p>{{explExample1}}</p>
+                <p>{{explExample2}}</p>
+
+                <h3 class="sim-explainer__heading">{{explFaqTitle}}</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>{{explFaqQ1}}</dt>
+                    <dd>{{explFaqA1}}</dd>
+                    <dt>{{explFaqQ2}}</dt>
+                    <dd>{{explFaqA2}}</dd>
+                    <dt>{{explFaqQ3}}</dt>
+                    <dd>{{explFaqA3}}</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">{{explReadingTitle}}</h3>
+                    <p>{{explReadingIntro}}</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="{{lang.dir}}blog/{{explReadingSlug1}}/">{{explReadingLabel1}}</a></li>
+                        <li><a href="{{lang.dir}}blog/{{explReadingSlug2}}/">{{explReadingLabel2}}</a></li>
+                        <li><a href="{{lang.dir}}blog/">{{explReadingAll}}</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
         <!-- CLOSING CALL TO ACTION. The same panel the journal articles and the
              other four simulators end on, in the same place they all put it: the

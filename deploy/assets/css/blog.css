@@ -27,7 +27,7 @@
   font-style: normal;
   font-weight: 400 800;
   font-display: swap;
-  src: url("/assets/fonts/dm-sans-latin.woff2?v=source") format("woff2");
+  src: url("/assets/fonts/dm-sans-latin.woff2?v=afe60f961555") format("woff2");
 }
 
 @font-face {
@@ -35,7 +35,7 @@
   font-style: normal;
   font-weight: 500 700;
   font-display: swap;
-  src: url("/assets/fonts/newsreader-latin.woff2?v=source") format("woff2");
+  src: url("/assets/fonts/newsreader-latin.woff2?v=79cb53cedc3d") format("woff2");
 }
 
 :root {
@@ -191,6 +191,12 @@ button, input { font: inherit; }
 .cta-panel::after { content: "CJ"; position: absolute; right: 5%; bottom: -72%; color: rgba(255,255,255,.035); font-family: var(--serif); font-size: 16rem; line-height: 1; pointer-events: none; }
 .cta-panel h2 { position: relative; z-index: 1; max-width: 720px; margin: 0; color: white; font-family: var(--serif); font-size: clamp(1.65rem, 2.5vw, 2.35rem); font-weight: 600; line-height: 1.05; }
 .cta-panel p { position: relative; z-index: 1; max-width: 620px; margin: 10px 0 0; color: rgba(255,255,255,.72); font-size: .88rem; line-height: 1.55; }
+/* The two simulator links in the closing panel. They sit on the forest panel,
+   where .text-link would be dark green on dark green, so they are underlined
+   white instead - and inherit .cta-panel p for everything else. */
+.cta-simulators a { color: white; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.cta-simulators a:hover { color: var(--gold); }
+.cta-simulators a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .journey-actions { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 .button { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; min-width: 164px; padding: 14px 18px; border: 1px solid var(--gold); background: var(--gold); color: #1b2b20; font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; transition: transform .25s ease, background .25s ease; }
 .button:hover { transform: translateY(-3px); background: #e1bd62; }

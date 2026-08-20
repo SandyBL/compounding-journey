@@ -5,11 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="E4KLrkhNpy-EpIG1IRxGICciCHV-9Trc6WycFxr4RGg" />
-    <!-- The brand mark is a 2048px master used for social cards and structured
-         data. Browsers only ever paint it at 64px, so the page itself asks the
-         Netlify Image CDN for that size and leaves the master to the scrapers
-         that actually want it. Keep this URL byte-identical to the header <img>
-         below or the preload fetches a second copy. -->
     <link rel="preload" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" as="image" fetchpriority="high">
     <title>Compounding Journey - Your Map to Freedom</title>
     <meta id="meta-description" name="description" content="Money psychology, purposeful investing, and practical tools for building financial freedom around your values.">
@@ -21,7 +16,7 @@
     <link id="alternate-es" rel="alternate" hreflang="es" href="https://compoundingjourney.com/">
     <link id="alternate-pt" rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/">
     <link id="alternate-default" rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/">
-
+    <link rel="alternate" type="text/plain" href="https://compoundingjourney.com/llms.txt" title="llms.txt">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Compounding Journey">
     <meta id="og-title" property="og:title" content="Compounding Journey - Your Map to Freedom">
@@ -35,27 +30,14 @@
     <meta id="og-locale" property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="pt_PT">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta id="twitter-title" name="twitter:title" content="Compounding Journey - Your Map to Freedom">
     <meta id="twitter-description" name="twitter:description" content="Money psychology, purposeful investing, and practical tools for building financial freedom around your values.">
     <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
-    <!-- The body font is declared in header.css, the third stylesheet the parser
-         reaches, so the browser only discovers it once two other sheets have
-         downloaded and parsed. Preloading it starts the fetch with the first
-         bytes of the document instead. Font Awesome needs no such hint: its
-         @font-face lives in icons.css, which is linked immediately below. -->
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
-    <!-- Compiled production styles. Tailwind emits this file during the build,
-         after the page generators have run, so its contents are not knowable
-         when this markup is written. The ?v=source token below is a placeholder:
-         scripts/version-assets.mjs is the last step of the build and replaces it
-         with a hash of the bundle it just compiled. That makes a rebuilt bundle a
-         new URL, which is what lets _headers cache it immutably instead of
-         asking every returning visitor to revalidate it. -->
     <link rel="stylesheet" href="/assets/styles.css?v=ce072382c104">
     <script type="application/ld+json">
     {
@@ -249,24 +231,23 @@
   ]
 }
     </script>
-    <link rel="stylesheet" href="/assets/css/home.css?v=66d88134c6cc">
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/home.css?v=bca503c1604d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
+    <script defer src="/assets/js/home.js?v=83687ac5f5b1"></script>
+    <script type="module" src="/assets/js/home-identity.js?v=f1beb1512497"></script>
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.en.webmanifest">
     <meta name="theme-color" content="#1E4620">
     <!--manifest:end-->
 </head>
 <body class="lang-en bg-creamsoft font-sans text-darkbark/90 antialiased scroll-smooth">
-
     <a class="skip-link" href="#main">
-        
-        <span lang-content="en">Skip to main content</span>
-        
+        <span data-i18n>Skip to main content</span>
     </a>
-
     <div id="identity-callback" class="identity-callback" role="dialog" aria-modal="true" aria-labelledby="identity-callback-title" hidden>
         <div class="identity-callback__card">
+            <button id="identity-callback-close" class="identity-callback__close" type="button" aria-label="Close">&times;</button>
             <img class="identity-callback__logo" src="/.netlify/images?url=/sandy-bradbury-portrait.png&amp;w=128&amp;h=128&amp;fit=cover" alt="" width="64" height="64" decoding="async">
             <h2 id="identity-callback-title" class="identity-callback__title">Set your password</h2>
             <p id="identity-callback-copy" class="identity-callback__copy">Choose a secure password to continue to the Content Studio.</p>
@@ -280,11 +261,9 @@
             <p id="identity-callback-status" class="identity-callback__status" role="alert" aria-live="polite"></p>
         </div>
     </div>
-
     <!-- NAVIGATION HEADER -->
     <header class="site-header sticky top-0 z-50 bg-[#FCF1DB]/95 backdrop-blur border-b border-creamborder shadow-sm">
         <div class="header-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-            
             <!-- Brand Logotype & Dynamic Typography Integration -->
             <a href="/en/" data-home-link class="header-brand flex items-center gap-3 group">
                 <!-- Compounding Journey Substack Logo Image - Direct Load -->
@@ -301,56 +280,38 @@
                 <!-- Fixed brand name with a localized tagline -->
                 <div class="header-brand-copy flex flex-col justify-center">
                     <span class="header-brand-name">Compounding Journey</span>
-                    
-                    <span lang-content="en" class="header-brand-tagline">YOUR MAP TO FREEDOM</span>
-                    
+                    <span data-i18n class="header-brand-tagline">YOUR MAP TO FREEDOM</span>
                 </div>
             </a>
-
             <!-- Desktop Section Navigation -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
                 <a href="#pilares" data-site-route="/pillars" data-section="pilares">
-                    
-                    <span lang-content="en">Pillars</span>
-                    
+                    <span data-i18n>Pillars</span>
                 </a>
                 <a href="#simulador" data-site-route="/simulators" data-section="simulador">
-                    
-                    <span lang-content="en">Simulators</span>
-                    
+                    <span data-i18n>Simulators</span>
                 </a>
                 <div class="desktop-resources" data-resources-dropdown>
                     <button type="button" class="desktop-resources-toggle" aria-expanded="false" aria-controls="desktop-resources-menu">
-                        
-                        <span lang-content="en">Resources</span>
-                        
+                        <span data-i18n>Resources</span>
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="desktop-resources-menu" class="desktop-resources-menu">
                         <a href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            
-                            <span lang-content="en">Tools</span>
-                            
+                            <span data-i18n>Tools</span>
                         </a>
                         <a href="#plantillas" data-site-route="/templates" data-section="plantillas">
-                            
-                            <span lang-content="en">Templates</span>
-                            
+                            <span data-i18n>Templates</span>
                         </a>
                     </div>
                 </div>
                 <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
-                    
-                    <span lang-content="en">FAQ</span>
-                    
+                    <span data-i18n>FAQ</span>
                 </a>
                 <a href="#assessment" data-site-route="/assessment" data-section="assessment" class="desktop-nav-cta">
-                    
-                    <span lang-content="en">Freedom Compass</span>
-                    
+                    <span data-i18n>Freedom Compass</span>
                 </a>
             </nav>
-
             <!-- Navigation Links & Flags -->
             <div class="header-actions flex items-center gap-1 sm:gap-2 shrink-0">
                 <!-- Trilingual Flag Language Selectors.
@@ -360,9 +321,7 @@
                      behaviour match the blog header. The generator marks the
                      current one with aria-current="page". -->
                 <span id="language-switcher-label" class="sr-only">
-                    
-                    <span lang-content="en">Language</span>
-                    
+                    <span data-i18n>Language</span>
                 </span>
                 <nav class="header-language-switcher flex items-center gap-1 bg-white/80 p-1 rounded-full border border-creamborder shadow-sm" aria-labelledby="language-switcher-label">
                     <a aria-current="page" href="/en/" id="btn-en" data-lang-switch="en" hreflang="en" lang="en" aria-label="View site in English" class="lang-btn flex h-8 w-10 items-center justify-center rounded-full p-1.5 hover:text-forestgreen transition-all active">
@@ -390,7 +349,6 @@
                         </svg>
                     </a>
                 </nav>
-
                 <!-- Publication Links -->
                 <div class="header-publication-switcher" aria-label="Publications">
                     <a href="/en/blog/" data-blog-link class="header-publication-button" aria-label="Blog">
@@ -405,45 +363,40 @@
                 </button>
             </div>
         </div>
-
     </header>
-
         <div id="mobile-menu" class="mobile-menu" hidden>
             <button type="button" class="mobile-menu__backdrop" data-mobile-menu-close aria-label="Close navigation menu"></button>
             <div class="mobile-menu__drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
                 <p class="mobile-menu__label">
-                    
-                    <span lang-content="en">Navigation</span>
-                    
+                    <span data-i18n>Navigation</span>
                 </p>
                 <nav class="mobile-nav" aria-label="Mobile section navigation">
                     <a class="mobile-nav-link" href="#pilares" data-site-route="/pillars" data-section="pilares">
-                        <span lang-content="en">Pillars</span>
+                        <span data-i18n>Pillars</span>
                     </a>
                     <a class="mobile-nav-link" href="#simulador" data-site-route="/simulators" data-section="simulador">
-                        <span lang-content="en">Simulators</span>
+                        <span data-i18n>Simulators</span>
                     </a>
                     <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-resources-panel">
-                        <span><span lang-content="en">Resources</span></span>
+                        <span><span data-i18n>Resources</span></span>
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="mobile-resources-panel" class="mobile-resources-panel" hidden>
                         <a class="mobile-nav-link" href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span lang-content="en">Tools</span>
+                            <span data-i18n>Tools</span>
                         </a>
                         <a class="mobile-nav-link" href="#plantillas" data-site-route="/templates" data-section="plantillas">
-                            <span lang-content="en">Templates</span>
+                            <span data-i18n>Templates</span>
                         </a>
                     </div>
                     <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
                 </nav>
                 <a class="mobile-nav-cta" href="#assessment" data-site-route="/assessment" data-section="assessment">
-                    <span lang-content="en">Freedom Compass</span>
+                    <span data-i18n>Freedom Compass</span>
                     <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M4 10h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
             </div>
         </div>
-
     <main id="main" tabindex="-1">
     <!-- HERO SECTION -->
     <section class="relative overflow-hidden bg-gradient-to-br from-forestgreen via-forestgreen to-darkbark text-white py-20 lg:py-28">
@@ -458,283 +411,184 @@
                 <rect width="100%" height="100%" fill="url(#grid-pattern)" />
             </svg>
         </div>
-
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
                 <span class="w-2 h-2 rounded-full bg-warmgold animate-ping"></span>
-                
-                <span lang-content="en" class="text-xs uppercase tracking-widest font-semibold text-warmgold">Your journey to freedom</span>
-                
+                <span data-i18n class="text-xs uppercase tracking-widest font-semibold text-warmgold">Your journey to freedom</span>
             </div>
-
             <!-- Dynamic Trilingual Hero Title -->
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                
-                <span lang-content="en">Design a life with purpose <br><span class="text-warmgold">Let your money buy freedom</span></span>
-                
+                <span data-i18n>Design a life with purpose <br><span class="text-warmgold">Let your money buy freedom</span></span>
             </h1>
-
             <!-- Subtitle -->
-            
-            <p lang-content="en" class="text-lg sm:text-xl text-creamsoft/85 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+            <p data-i18n class="text-lg sm:text-xl text-creamsoft/85 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
                 Design your freedom. Invest and live according to your values. Financial strategy with purpose and discipline.
             </p>
-            
-
             <!-- Newsletter Mantra / Slogan Card -->
             <div class="bg-white/5 border border-white/15 rounded-2xl p-6 max-w-xl mx-auto backdrop-blur-md shadow-xl mb-10">
                 <p class="text-[10px] uppercase tracking-widest text-warmgold font-bold mb-1">
-                    
-                    <span lang-content="en">Newsletter Mantra</span>
-                    
+                    <span data-i18n>Newsletter Mantra</span>
                 </p>
                 <p class="text-lg sm:text-xl font-medium tracking-wide italic text-creamsoft">
-                    
-                    <span lang-content="en">"Make your money work for your happiness"</span>
-                    
+                    <span data-i18n>"Make your money work for your happiness"</span>
                 </p>
             </div>
-
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="https://compoundingjourney.substack.com/" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 bg-warmgold hover:bg-warmgold/95 text-darkbark font-bold rounded-lg shadow-lg hover:shadow-warmgold/20 hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
-                    
-                    <span lang-content="en">Join the Newsletter</span>
-                    
+                    <span data-i18n>Join the Newsletter</span>
                     <i class="fa-solid fa-paper-plane text-sm"></i>
                 </a>
                 <a href="#herramientas" class="inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/35 text-white font-semibold rounded-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
-                    
-                    <span lang-content="en">Financial Calculators</span>
-                    
+                    <span data-i18n>Financial Calculators</span>
                     <i class="fa-solid fa-calculator text-sm text-warmgold"></i>
                 </a>
             </div>
         </div>
     </section>
-
     <!-- METHODOLOGY INTRO -->
     <section class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-extrabold text-forestgreen tracking-tight mb-4">
-                
-                <span lang-content="en">Your money is a tool for a better life</span>
-                
+                <span data-i18n>Your money is a tool for a better life</span>
             </h2>
             <div class="w-16 h-1 bg-warmgold mx-auto mb-8 rounded-full"></div>
-
             <div class="text-lg text-darkbark/80 leading-relaxed font-light space-y-4">
-                
-                <p lang-content="en">
+                <p data-i18n>
                     This is not about accumulating for its own sake. It is about turning financial decisions into more time, peace of mind, and freedom to live by your values. Compound growth is the tool; a purposeful life is the destination. We build it through quality investments, mindful costs, and sustainable discipline without sacrificing the present.
                 </p>
-                
             </div>
         </div>
     </section>
-
     <!-- METHODOLOGY THREE PILLARS -->
     <section id="pilares" class="scroll-mt-20 py-16 bg-creamsoft border-t border-b border-creamborder">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                    
-                    <span lang-content="en">Your map to freedom</span>
-                    
+                    <span data-i18n>Your map to freedom</span>
                 </p>
                 <h2 class="text-3xl font-extrabold text-forestgreen">
-                    
-                    <span lang-content="en">Three pillars to design your freedom</span>
-                    
+                    <span data-i18n>Three pillars to design your freedom</span>
                 </h2>
             </div>
-
             <!-- Content Grid for the 3 Pillars -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
                 <!-- Pillar 1: The Operating System -->
                 <div class="bg-white rounded-3xl border border-creamborder shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden flex flex-col">
                     <div class="p-8 flex-grow">
                         <div class="w-14 h-14 rounded-2xl bg-forestgreen/5 border border-forestgreen/10 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-gauge-high text-2xl text-forestgreen"></i>
                         </div>
-                        
                         <span class="text-xs font-bold text-warmgold uppercase tracking-wider block mb-2">
-                            
-                            <span lang-content="en">Pillar 1</span>
-                            
+                            <span data-i18n>Pillar 1</span>
                         </span>
                         <h3 class="text-xl font-bold text-forestgreen mb-4">
-                            
-                            <span lang-content="en">Habits that protect your future</span>
-                            
+                            <span data-i18n>Habits that protect your future</span>
                         </h3>
-                        
-                        
-                        <p lang-content="en" class="text-darkbark/70 text-sm mb-6">
+                        <p data-i18n class="text-darkbark/70 text-sm mb-6">
                             Your freedom begins before you invest: with habits that reduce stress, protect your priorities, and make room for the future you want to live.
                         </p>
-                        
-
                         <!-- Items List -->
                         <div class="space-y-4 border-t border-creamborder pt-6">
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Set freedom aside for your future</span>
-                                    
+                                    <span data-i18n>Set freedom aside for your future</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">Set aside a sustainable amount when you get paid. It is not about deprivation today; it is about giving your future self more choices.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Set aside a sustainable amount when you get paid. It is not about deprivation today; it is about giving your future self more choices.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Automate your peace of mind</span>
-                                    
+                                    <span data-i18n>Automate your peace of mind</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">Automating saving and investing reduces impulsive decisions and turns discipline into a simple habit.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Automating saving and investing reduces impulsive decisions and turns discipline into a simple habit.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Spend with intention</span>
-                                    
+                                    <span data-i18n>Spend with intention</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">Measure purchases in hours of life. Spend joyfully when they add value and say no when they pull you away from what matters.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Measure purchases in hours of life. Spend joyfully when they add value and say no when they pull you away from what matters.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Pillar 2: Horizon Asset Allocation -->
                 <div class="bg-white rounded-3xl border border-creamborder shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden flex flex-col">
                     <div class="p-8 flex-grow">
                         <div class="w-14 h-14 rounded-2xl bg-forestgreen/5 border border-forestgreen/10 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-chart-pie text-2xl text-forestgreen"></i>
                         </div>
-                        
                         <span class="text-xs font-bold text-warmgold uppercase tracking-wider block mb-2">
-                            
-                            <span lang-content="en">Pillar 2</span>
-                            
+                            <span data-i18n>Pillar 2</span>
                         </span>
                         <h3 class="text-xl font-bold text-forestgreen mb-4">
-                            
-                            <span lang-content="en">A strategy built around your life</span>
-                            
+                            <span data-i18n>A strategy built around your life</span>
                         </h3>
-                        
-                        
-                        <p lang-content="en" class="text-darkbark/70 text-sm mb-6">
+                        <p data-i18n class="text-darkbark/70 text-sm mb-6">
                             Your portfolio should fit your goals, your stage of life, and the peace of mind you need to stay the course.
                         </p>
-                        
-
                         <!-- Items List -->
                         <div class="space-y-4 border-t border-creamborder pt-6">
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Growth with a long horizon</span>
-                                    
+                                    <span data-i18n>Growth with a long horizon</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">More exposure to quality global assets when time is on your side, allowing you to ride out volatility and grow future choices.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">More exposure to quality global assets when time is on your side, allowing you to ride out volatility and grow future choices.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Balance for steady progress</span>
-                                    
+                                    <span data-i18n>Balance for steady progress</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">Combine growth and protection so you can move forward without taking on stress that keeps you awake or makes you abandon the plan.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Combine growth and protection so you can move forward without taking on stress that keeps you awake or makes you abandon the plan.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Peace of mind for near-term goals</span>
-                                    
+                                    <span data-i18n>Peace of mind for near-term goals</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">Prioritize stability and liquidity when your money has a near-term purpose: a break, a project, or a new chapter.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Prioritize stability and liquidity when your money has a near-term purpose: a break, a project, or a new chapter.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Pillar 3: Philosophy & Mindset -->
                 <div class="bg-white rounded-3xl border border-creamborder shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden flex flex-col">
                     <div class="p-8 flex-grow">
                         <div class="w-14 h-14 rounded-2xl bg-forestgreen/5 border border-forestgreen/10 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-brain text-2xl text-forestgreen"></i>
                         </div>
-                        
                         <span class="text-xs font-bold text-warmgold uppercase tracking-wider block mb-2">
-                            
-                            <span lang-content="en">Pillar 3</span>
-                            
+                            <span data-i18n>Pillar 3</span>
                         </span>
                         <h3 class="text-xl font-bold text-forestgreen mb-4">
-                            
-                            <span lang-content="en">A mindset for enjoying the journey</span>
-                            
+                            <span data-i18n>A mindset for enjoying the journey</span>
                         </h3>
-                        
-                        
-                        <p lang-content="en" class="text-darkbark/70 text-sm mb-6">
+                        <p data-i18n class="text-darkbark/70 text-sm mb-6">
                             Investing well also means managing emotions: choosing quality, accepting uncertainty, and remembering why you are building freedom.
                         </p>
-                        
-
                         <!-- Items List -->
                         <div class="space-y-4 border-t border-creamborder pt-6">
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Protect the process</span>
-                                    
+                                    <span data-i18n>Protect the process</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">Discipline protects your time. Do not let today’s fear sabotage the freedom you are building for the long term.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Discipline protects your time. Do not let today’s fear sabotage the freedom you are building for the long term.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Quality over noise</span>
-                                    
+                                    <span data-i18n>Quality over noise</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">Choose solid, diversified, efficient assets that do not require turning your life into constant market monitoring.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Choose solid, diversified, efficient assets that do not require turning your life into constant market monitoring.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Measure freedom, not only returns</span>
-                                    
+                                    <span data-i18n>Measure freedom, not only returns</span>
                                 </h4>
-                                
-                                <p lang-content="en" class="text-darkbark/80 text-sm">Progress is also measured in peaceful nights, independent choices, and time for the people and experiences you value.</p>
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Progress is also measured in peaceful nights, independent choices, and time for the people and experiences you value.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-
     <!-- NEWSLETTER CTA BANNER -->
     <section class="py-16 bg-white border-b border-creamborder">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -742,45 +596,33 @@
                 <div class="space-y-4 max-w-xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-forestgreen/5 border border-forestgreen/10 rounded-full text-xs font-semibold text-forestgreen">
                         <i class="fa-solid fa-newspaper text-warmgold"></i>
-                        
-                        <span lang-content="en">Official Newsletter</span>
-                        
+                        <span data-i18n>Official Newsletter</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-extrabold text-forestgreen leading-tight">
-                        
-                        <span lang-content="en">Ideas for purposeful investing and a freer life</span>
-                        
+                        <span data-i18n>Ideas for purposeful investing and a freer life</span>
                     </h3>
                     <p class="text-sm text-darkbark/80 leading-relaxed">
-                        
-                        <span lang-content="en">Money psychology, mindful habits, and quality investment strategies to turn your resources into time, peace of mind, and meaningful experiences.</span>
-                        
+                        <span data-i18n>Money psychology, mindful habits, and quality investment strategies to turn your resources into time, peace of mind, and meaningful experiences.</span>
                     </p>
                 </div>
                 <div class="w-full md:w-auto shrink-0">
                     <a href="https://compoundingjourney.substack.com/" data-newsletter-link target="_blank" rel="noopener noreferrer" class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all">
-                        
-                        <span lang-content="en">Subscribe for free</span>
-                        
+                        <span data-i18n>Subscribe for free</span>
                         <i class="fa-solid fa-arrow-right text-warmgold"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- TOOLS FOR THE STRATEGY -->
     <section class="py-16 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h3 class="text-2xl font-extrabold text-forestgreen">
-                    
-                    <span lang-content="en">A portfolio that serves your life</span>
-                    
+                    <span data-i18n>A portfolio that serves your life</span>
                 </h3>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-3 rounded-full"></div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="p-6 bg-creamsoft rounded-2xl border border-creamborder">
                     <div class="flex items-start gap-4">
@@ -789,17 +631,12 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-forestgreen text-lg">
-                                
-                                <span lang-content="en">Purposeful global growth</span>
-                                
+                                <span data-i18n>Purposeful global growth</span>
                             </h4>
-                            
-                            <p lang-content="en" class="text-sm text-darkbark/80 mt-2">Diversified, quality global assets let you participate in worldwide growth without spending your time chasing every opportunity.</p>
-                            
+                            <p data-i18n class="text-sm text-darkbark/80 mt-2">Diversified, quality global assets let you participate in worldwide growth without spending your time chasing every opportunity.</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="p-6 bg-creamsoft rounded-2xl border border-creamborder">
                     <div class="flex items-start gap-4">
                         <div class="p-3 bg-forestgreen/10 rounded-xl text-forestgreen">
@@ -807,105 +644,75 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-forestgreen text-lg">
-                                
-                                <span lang-content="en">Discipline that brings peace of mind</span>
-                                
+                                <span data-i18n>Discipline that brings peace of mind</span>
                             </h4>
-                            
-                            <p lang-content="en" class="text-sm text-darkbark/80 mt-2">A simple, efficient, maintainable strategy prevents emotional decisions and lets you spend your energy living instead of watching markets.</p>
-                            
+                            <p data-i18n class="text-sm text-darkbark/80 mt-2">A simple, efficient, maintainable strategy prevents emotional decisions and lets you spend your energy living instead of watching markets.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- INTERACTIVE SIMULATOR SUITE -->
     <section id="simulador" aria-labelledby="simulator-heading" class="simulator-stage scroll-mt-20 py-20 text-white border-b border-creamborder">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <p class="simulator-stage-eyebrow text-xs font-bold uppercase tracking-widest mb-3"><span lang-content="en">Learn by experimenting</span></p>
-                <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4"><span lang-content="en">Five simulators to design your freedom</span></h2>
-                <p class="text-base text-creamsoft/80 leading-relaxed"><span lang-content="en">Explore decisions, time, markets, passive income, and the resilience of your FIRE plan through free hands-on experiences.</span></p>
+                <p class="simulator-stage-eyebrow text-xs font-bold uppercase tracking-widest mb-3"><span data-i18n>Learn by experimenting</span></p>
+                <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4"><span data-i18n>Five simulators to design your freedom</span></h2>
+                <p class="text-base text-creamsoft/80 leading-relaxed"><span data-i18n>Explore decisions, time, markets, passive income, and the resilience of your FIRE plan through free hands-on experiences.</span></p>
             </div>
-
             <div class="simulator-grid">
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">Financial Decisions</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Navigate 15 everyday scenarios and see how each choice changes your wealth, well-being, and financial knowledge.</span></p>
-                    
-                    <a lang-content="en" href="/en/simulator.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Financial Decisions</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Navigate 15 everyday scenarios and see how each choice changes your wealth, well-being, and financial knowledge.</span></p>
+                    <a data-i18n href="/en/simulator.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
-
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">Freedom Calendar</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Turn financial goals into a visual timeline and discover when each level of freedom may come within reach.</span></p>
-                    
-                    <a lang-content="en" href="/en/simulators/freedom-calendar.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Freedom Calendar</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Turn financial goals into a visual timeline and discover when each level of freedom may come within reach.</span></p>
+                    <a data-i18n href="/en/simulators/freedom-calendar.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
-
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">Market Time Machine</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Compare portfolios across historic crises and cycles to understand risk, recovery, and the power of staying invested.</span></p>
-                    
-                    <a lang-content="en" href="/en/simulators/market-time-machine.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Market Time Machine</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Compare portfolios across historic crises and cycles to understand risk, recovery, and the power of staying invested.</span></p>
+                    <a data-i18n href="/en/simulators/market-time-machine.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
-
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">Passive Income Engine</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Build an asset mix, advance through time, and watch cash flow grow toward covering your living expenses.</span></p>
-                    
-                    <a lang-content="en" href="/en/simulators/passive-income-engine.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Passive Income Engine</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Build an asset mix, advance through time, and watch cash flow grow toward covering your living expenses.</span></p>
+                    <a data-i18n href="/en/simulators/passive-income-engine.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
-
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-plane-up" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="en">FIRE Survival Flight</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="en">Stress-test retirement across thousands of possible futures with Monte Carlo and measure your portfolio's survival odds.</span></p>
-                    
-                    <a lang-content="en" href="/en/simulators/monte-carlo-fire.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>FIRE Survival Flight</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Stress-test retirement across thousands of possible futures with Monte Carlo and measure your portfolio's survival odds.</span></p>
+                    <a data-i18n href="/en/simulators/monte-carlo-fire.html" class="simulator-play-link"><span>Open simulator</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
             </div>
         </div>
     </section>
-
     <!-- INTERACTIVE CALCULATORS SUITE SECTION -->
     <section id="herramientas" class="scroll-mt-20 py-16 bg-creamsoft border-t border-b border-creamborder" aria-labelledby="calculators-heading">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-1">
-                    
-                    <span lang-content="en">Financial Tools</span>
-                    
+                    <span data-i18n>Financial Tools</span>
                 </p>
                 <h2 id="calculators-heading" class="text-3xl font-extrabold text-forestgreen">
-                    
-                    <span lang-content="en">Tools that turn money into freedom</span>
-                    
+                    <span data-i18n>Tools that turn money into freedom</span>
                 </h2>
                 <p class="text-sm text-darkbark/70 mt-2 max-w-lg mx-auto">
-                    
-                    <span lang-content="en">Put numbers behind your dreams: see how money grows, what greater autonomy requires, and how many hours of life each purchase costs.</span>
-                    
+                    <span data-i18n>Put numbers behind your dreams: see how money grows, what greater autonomy requires, and how many hours of life each purchase costs.</span>
                 </p>
             </div>
-
             <div class="flex justify-center mb-6">
                 <div class="inline-flex items-center gap-3 rounded-full border border-creamborder bg-white px-4 py-2 shadow-sm">
                     <label for="calculator-currency" class="text-[10px] font-extrabold uppercase tracking-widest text-forestgreen">
-                        
-                        <span lang-content="en">Currency</span>
-                        
+                        <span data-i18n>Currency</span>
                     </label>
                     <select id="calculator-currency" class="cursor-pointer rounded-lg border border-creamborder bg-creamsoft px-3 py-1.5 text-xs font-bold text-darkbark outline-none transition focus:border-forestgreen focus:ring-2 focus:ring-forestgreen/20">
                         <option value="EUR">EUR · €</option>
@@ -914,7 +721,6 @@
                     </select>
                 </div>
             </div>
-
             <!-- Tab Switching Nav Capsules.
                  WAI-ARIA Authoring Practices tabs pattern: roving tabindex, so
                  the tablist is a single tab stop and Left/Right/Home/End move
@@ -924,27 +730,20 @@
                     <!-- Tab Button 1: Compound Interest -->
                     <button type="button" role="tab" id="tab-btn-compound" aria-selected="true" aria-controls="panel-compound" tabindex="0" data-tab="compound" class="tab-btn active inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
                         <i class="fa-solid fa-chart-line text-sm" aria-hidden="true"></i>
-                        
-                        <span lang-content="en">Compound Interest</span>
-                        
+                        <span data-i18n>Compound Interest</span>
                     </button>
                     <!-- Tab Button 2: Financial Freedom -->
                     <button type="button" role="tab" id="tab-btn-freedom" aria-selected="false" aria-controls="panel-freedom" tabindex="-1" data-tab="freedom" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
                         <i class="fa-solid fa-crown text-sm" aria-hidden="true"></i>
-                        
-                        <span lang-content="en">Financial Freedom</span>
-                        
+                        <span data-i18n>Financial Freedom</span>
                     </button>
                     <!-- Tab Button 3: Life Cost -->
                     <button type="button" role="tab" id="tab-btn-life-cost" aria-selected="false" aria-controls="panel-life-cost" tabindex="-1" data-tab="life-cost" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
                         <i class="fa-solid fa-hourglass-half text-sm" aria-hidden="true"></i>
-                        
-                        <span lang-content="en">Cost in Hours</span>
-                        
+                        <span data-i18n>Cost in Hours</span>
                     </button>
                 </div>
             </div>
-
             <!-- PANEL 1: COMPOUND INTEREST CALCULATOR -->
             <div id="panel-compound" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-compound" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -953,9 +752,7 @@
                         <!-- Initial Capital -->
                         <div>
                             <label for="calc-initial" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Initial Investment</span>
-                                
+                                <span data-i18n>Initial Investment</span>
                             </label>
                             <input 
                                 type="number" 
@@ -965,13 +762,10 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <!-- Monthly Savings Contribution -->
                         <div>
                             <label for="calc-monthly" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Monthly Savings</span>
-                                
+                                <span data-i18n>Monthly Savings</span>
                             </label>
                             <input 
                                 type="number" 
@@ -981,13 +775,10 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <!-- Horizon Years -->
                         <div>
                             <label for="calc-years-range" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Time Horizon (Years)</span>
-                                
+                                <span data-i18n>Time Horizon (Years)</span>
                             </label>
                             <div class="flex items-start gap-4">
                                 <div class="flex-1 min-w-0 pt-1">
@@ -1001,24 +792,17 @@
                                         class="w-full accent-forestgreen"
                                     >
                                     <div class="flex justify-between mt-1 px-0.5 text-[10px] font-bold text-darkbark/55" aria-hidden="true">
-                                        
-                                        <span lang-content="en">1 yr</span>
-                                        
-                                        
-                                        <span lang-content="en">40 yrs</span>
-                                        
+                                        <span data-i18n>1 yr</span>
+                                        <span data-i18n>40 yrs</span>
                                     </div>
                                 </div>
                                 <span id="calc-years-display" class="font-extrabold text-forestgreen bg-creamsoft px-4 py-2 rounded-lg border border-creamborder min-w-[60px] text-center">25</span>
                             </div>
                         </div>
-
                         <!-- Interest Return Rate -->
                         <div>
                             <label for="calc-rate" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Expected Annual Return (%)</span>
-                                
+                                <span data-i18n>Expected Annual Return (%)</span>
                             </label>
                             <input 
                                 type="number" 
@@ -1030,27 +814,21 @@
                             >
                         </div>
                     </div>
-
                     <!-- Results Column -->
                     <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-6">
                             <div>
                                 <p class="text-xs font-bold text-forestgreen/75 uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Total Final Balance</span>
-                                    
+                                    <span data-i18n>Total Final Balance</span>
                                 </p>
                                 <p id="result-total" class="text-3xl sm:text-4xl font-extrabold text-forestgreen">
                                     $0.00
                                 </p>
                             </div>
-
                             <div class="border-t border-creamborder pt-4 grid grid-cols-2 gap-4">
                                 <div>
                                     <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
-                                        
-                                        <span lang-content="en">Total Invested</span>
-                                        
+                                        <span data-i18n>Total Invested</span>
                                     </p>
                                     <p id="result-invested" class="text-lg font-bold text-darkbark">
                                         $0.00
@@ -1058,70 +836,53 @@
                                 </div>
                                 <div>
                                     <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
-                                        
-                                        <span lang-content="en">Compound Earned</span>
-                                        
+                                        <span data-i18n>Compound Earned</span>
                                     </p>
                                     <p id="result-interest" class="text-lg font-bold text-warmgold">
                                         $0.00
                                     </p>
                                 </div>
                             </div>
-
                             <div id="compound-ratio" class="compound-ratio border-t border-creamborder pt-4" role="img" aria-label="Total invested: 100%. Compound earned: 0%.">
                                 <div class="flex items-end justify-between gap-4 mb-3">
                                     <p class="text-[10px] font-bold text-forestgreen/75 uppercase tracking-widest">
-                                        
-                                        <span lang-content="en">Balance breakdown</span>
-                                        
+                                        <span data-i18n>Balance breakdown</span>
                                     </p>
                                     <p class="text-[10px] font-semibold text-darkbark/50 text-right">
-                                        
-                                        <span lang-content="en">Savings vs. growth</span>
-                                        
+                                        <span data-i18n>Savings vs. growth</span>
                                     </p>
                                 </div>
-
                                 <div class="compound-ratio__track" aria-hidden="true">
                                     <span class="compound-ratio__segment compound-ratio__segment--invested"></span>
                                     <span class="compound-ratio__segment compound-ratio__segment--earned"></span>
                                 </div>
-
                                 <div class="grid grid-cols-2 gap-4 mt-3">
                                     <div class="flex items-center gap-2 min-w-0">
                                         <span class="compound-ratio__key compound-ratio__key--invested" aria-hidden="true"></span>
                                         <p class="text-[10px] font-bold text-darkbark/65 uppercase tracking-wider truncate">
-                                            
-                                            <span lang-content="en">Invested</span>
-                                            
+                                            <span data-i18n>Invested</span>
                                             <span id="ratio-invested-percent" class="text-darkbark ml-1">100%</span>
                                         </p>
                                     </div>
                                     <div class="flex items-center justify-end gap-2 min-w-0 text-right">
                                         <span class="compound-ratio__key compound-ratio__key--earned" aria-hidden="true"></span>
                                         <p class="text-[10px] font-bold text-darkbark/65 uppercase tracking-wider truncate">
-                                            
-                                            <span lang-content="en">Earned</span>
-                                            
+                                            <span data-i18n>Earned</span>
                                             <span id="ratio-earned-percent" class="text-warmgold ml-1">0%</span>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <!-- Encouragement Mantra Box -->
                         <div class="mt-6 p-4 bg-white rounded-xl border border-creamborder">
                             <p class="text-[11px] leading-relaxed text-darkbark/80 italic">
-                                
-                                <span lang-content="en">"Every contribution today can become time, choice, and peace of mind for your future."</span>
-                                
+                                <span data-i18n>"Every contribution today can become time, choice, and peace of mind for your future."</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- PANEL 2: FINANCIAL FREEDOM CALCULATOR (4% RULE) -->
             <div id="panel-freedom" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-freedom" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -1130,9 +891,7 @@
                         <!-- Current Age -->
                         <div>
                             <label for="freedom-current-age" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Current Age</span>
-                                
+                                <span data-i18n>Current Age</span>
                             </label>
                             <input 
                                 type="number" 
@@ -1144,13 +903,10 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <!-- Target Retirement Age -->
                         <div>
                             <label for="freedom-target-age" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Target Retirement Age</span>
-                                
+                                <span data-i18n>Target Retirement Age</span>
                             </label>
                             <input 
                                 type="number" 
@@ -1162,13 +918,10 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <!-- Desired Monthly Pension -->
                         <div>
                             <label for="freedom-desired-income" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Desired Monthly Pension</span>
-                                
+                                <span data-i18n>Desired Monthly Pension</span>
                             </label>
                             <input 
                                 type="number" 
@@ -1179,32 +932,24 @@
                             >
                         </div>
                     </div>
-
                     <!-- Results Column (Rule of 4%) -->
                     <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-6">
                             <div>
                                 <p class="text-xs font-bold text-forestgreen/75 uppercase tracking-wider mb-1">
-                                    
-                                    <span lang-content="en">Total Target Fund Needed</span>
-                                    
+                                    <span data-i18n>Total Target Fund Needed</span>
                                 </p>
                                 <p id="freedom-result-target" class="text-3xl sm:text-4xl font-extrabold text-forestgreen">
                                     $0.00
                                 </p>
                                 <span class="text-[10px] text-darkbark/50 font-semibold uppercase tracking-wider mt-1 block">
-                                    
-                                    <span lang-content="en">Based on the safe 4% annual withdrawal rule</span>
-                                    
+                                    <span data-i18n>Based on the safe 4% annual withdrawal rule</span>
                                 </span>
                             </div>
-
                             <div class="border-t border-creamborder pt-4 grid grid-cols-2 gap-4">
                                 <div>
                                     <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
-                                        
-                                        <span lang-content="en">Years to Accumulate</span>
-                                        
+                                        <span data-i18n>Years to Accumulate</span>
                                     </p>
                                     <p id="freedom-result-years" class="text-lg font-bold text-darkbark">
                                         30
@@ -1212,9 +957,7 @@
                                 </div>
                                 <div>
                                     <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
-                                        
-                                        <span lang-content="en">Est. Monthly Savings</span>
-                                        
+                                        <span data-i18n>Est. Monthly Savings</span>
                                     </p>
                                     <p id="freedom-result-savings" class="text-lg font-bold text-warmgold">
                                         $0.00
@@ -1222,46 +965,33 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Technical explanation box -->
                         <div class="mt-6 p-4 bg-white rounded-xl border border-creamborder">
                             <p class="text-[10px] leading-relaxed text-darkbark/70">
-                                
-                                <span lang-content="en">* The monthly contribution calculation assumes an average annual growth of 8% (inflation-adjusted) starting from zero.</span>
-                                
+                                <span data-i18n>* The monthly contribution calculation assumes an average annual growth of 8% (inflation-adjusted) starting from zero.</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- PANEL 3: LIFE COST CALCULATOR -->
             <div id="panel-life-cost" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-life-cost" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-6">
                         <div>
                             <p class="text-warmgold text-[10px] font-bold uppercase tracking-widest mb-1">
-                                
-                                <span lang-content="en">The real price of your decisions</span>
-                                
+                                <span data-i18n>The real price of your decisions</span>
                             </p>
                             <h3 class="text-2xl font-extrabold text-forestgreen leading-tight">
-                                
-                                <span lang-content="en">How much of your life does it cost?</span>
-                                
+                                <span data-i18n>How much of your life does it cost?</span>
                             </h3>
                             <p class="text-sm text-darkbark/70 mt-2 leading-relaxed">
-                                
-                                <span lang-content="en">Calculate your net hourly pay and turn any purchase into real working time.</span>
-                                
+                                <span data-i18n>Calculate your net hourly pay and turn any purchase into real working time.</span>
                             </p>
                         </div>
-
                         <div>
                             <label for="life-monthly-salary" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Net monthly salary</span>
-                                
+                                <span data-i18n>Net monthly salary</span>
                             </label>
                             <input
                                 type="number"
@@ -1273,12 +1003,9 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <div>
                             <label for="life-monthly-hours" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Hours worked per month</span>
-                                
+                                <span data-i18n>Hours worked per month</span>
                             </label>
                             <input
                                 type="number"
@@ -1290,12 +1017,9 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <div class="pt-5 border-t border-creamborder">
                             <label for="life-purchase-cost" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                
-                                <span lang-content="en">Purchase cost</span>
-                                
+                                <span data-i18n>Purchase cost</span>
                             </label>
                             <input
                                 type="number"
@@ -1307,101 +1031,71 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                             <p class="text-[10px] text-darkbark/50 mt-2">
-                                
-                                <span lang-content="en">For example: a new phone, dinner, or a holiday.</span>
-                                
+                                <span data-i18n>For example: a new phone, dinner, or a holiday.</span>
                             </p>
                         </div>
                     </div>
-
                     <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-7">
                             <div>
                                 <p class="text-[10px] font-bold text-forestgreen/75 uppercase tracking-widest mb-2">
-                                    
-                                    <span lang-content="en">My hourly rate is</span>
-                                    
+                                    <span data-i18n>My hourly rate is</span>
                                 </p>
                                 <p id="life-result-hourly-rate" class="text-3xl sm:text-4xl font-extrabold text-warmgold">€0,00</p>
                                 <p class="text-[10px] text-darkbark/50 mt-1">
-                                    
-                                    <span lang-content="en">Net monthly salary ÷ hours worked</span>
-                                    
+                                    <span data-i18n>Net monthly salary ÷ hours worked</span>
                                 </p>
                             </div>
-
                             <div class="border-t border-creamborder pt-6">
                                 <p class="text-[10px] font-bold text-forestgreen/75 uppercase tracking-widest mb-2">
-                                    
-                                    <span lang-content="en">This purchase costs</span>
-                                    
+                                    <span data-i18n>This purchase costs</span>
                                 </p>
                                 <div class="flex items-end gap-2 flex-wrap">
                                     <p id="life-result-hours" class="text-5xl sm:text-6xl font-extrabold tracking-tight text-forestgreen">0</p>
                                     <p class="text-lg font-bold text-warmgold mb-1.5">
-                                        
-                                        <span lang-content="en">hours of life</span>
-                                        
+                                        <span data-i18n>hours of life</span>
                                     </p>
                                 </div>
                                 <p class="text-[10px] text-darkbark/50 mt-2">
-                                    
-                                    <span lang-content="en">Purchase cost ÷ real hourly value</span>
-                                    
+                                    <span data-i18n>Purchase cost ÷ real hourly value</span>
                                 </p>
                             </div>
-
                             <div id="life-cost-warning" class="hidden rounded-xl border border-warmgold/40 bg-warmgold/10 px-4 py-3 text-xs text-darkbark/75">
-                                
-                                <span lang-content="en">Enter a monthly salary and monthly hours greater than zero.</span>
-                                
+                                <span data-i18n>Enter a monthly salary and monthly hours greater than zero.</span>
                             </div>
                         </div>
-
                         <div class="mt-8 p-4 rounded-xl bg-white border border-creamborder">
                             <p class="text-xs leading-relaxed text-darkbark/80 italic">
-                                
-                                <span lang-content="en">“You do not just spend money: you choose how much of your life you exchange for every purchase.”</span>
-                                
+                                <span data-i18n>“You do not just spend money: you choose how much of your life you exchange for every purchase.”</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-
     <!-- DOWNLOADABLE EXCEL TEMPLATES -->
     <section id="plantillas" class="scroll-mt-20 relative overflow-hidden py-20 bg-white border-b border-creamborder">
         <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div class="absolute -top-28 -right-24 w-80 h-80 rounded-full bg-warmgold/10 blur-3xl"></div>
             <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-warmgold/40 to-transparent"></div>
         </div>
-
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12">
                 <div class="lg:col-span-7">
                     <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                        
-                        <span lang-content="en">Resources to take action</span>
-                        
+                        <span data-i18n>Resources to take action</span>
                     </p>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-forestgreen leading-tight">
-                        
-                        <span lang-content="en">Templates to understand and direct your money</span>
-                        
+                        <span data-i18n>Templates to understand and direct your money</span>
                     </h2>
                 </div>
                 <div class="lg:col-span-5 lg:border-l lg:border-creamborder lg:pl-8">
                     <p class="text-sm text-darkbark/70 leading-relaxed">
-                        
-                        <span lang-content="en">Download the Excel files and use them as a practical system: first understand your position, then track your spending, and finally adjust your budget.</span>
-                        
+                        <span data-i18n>Download the Excel files and use them as a practical system: first understand your position, then track your spending, and finally adjust your budget.</span>
                     </p>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <article class="group flex flex-col bg-creamsoft border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex mb-6">
@@ -1416,33 +1110,24 @@
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
                             <span class="ml-auto rounded-full bg-forestgreen px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                                
-                                <span lang-content="en">Free</span>
-                                
+                                <span data-i18n>Free</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
-                            
-                            <span lang-content="en">Personal Budget</span>
-                            
+                            <span data-i18n>Personal Budget</span>
                         </h3>
                         <p class="text-sm text-darkbark/70 leading-relaxed">
-                            
-                            <span lang-content="en">Compare how your money is actually allocated with the budget it should follow based on your priorities and current financial situation. Use it with the monthly analysis template to set realistic targets and adjust course.</span>
-                            
+                            <span data-i18n>Compare how your money is actually allocated with the budget it should follow based on your priorities and current financial situation. Use it with the monthly analysis template to set realistic targets and adjust course.</span>
                         </p>
                     </div>
                     <div class="mt-6">
                         <a href="/assets/templates/en/personal-budget.xlsx" download="Template Personal Budget.xlsx" data-template-download="personalBudget" aria-describedby="template-meta-personalBudget" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            
-                            <span lang-content="en">Download template</span>
-                            
+                            <span data-i18n>Download template</span>
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
                         <p id="template-meta-personalBudget" data-template-meta="personalBudget" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">XLSX · 10 KB</p>
                     </div>
                 </article>
-
                 <article class="group flex flex-col bg-creamsoft border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex mb-6">
                         <div class="relative w-20 h-20 rounded-2xl bg-warmgold text-darkbark flex items-center justify-center shadow-lg overflow-hidden">
@@ -1456,33 +1141,24 @@
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
                             <span class="ml-auto rounded-full bg-forestgreen px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                                
-                                <span lang-content="en">Free</span>
-                                
+                                <span data-i18n>Free</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
-                            
-                            <span lang-content="en">Expense Management</span>
-                            
+                            <span data-i18n>Expense Management</span>
                         </h3>
                         <p class="text-sm text-darkbark/70 leading-relaxed">
-                            
-                            <span lang-content="en">Record every expense for 15 days or a full month—every single one. At the end, you can clearly see where your money goes and identify the habits that need attention.</span>
-                            
+                            <span data-i18n>Record every expense for 15 days or a full month—every single one. At the end, you can clearly see where your money goes and identify the habits that need attention.</span>
                         </p>
                     </div>
                     <div class="mt-6">
                         <a href="/assets/templates/en/expense-management.xlsx" download="Template Expense Management.xlsx" data-template-download="expenseManagement" aria-describedby="template-meta-expenseManagement" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            
-                            <span lang-content="en">Download template</span>
-                            
+                            <span data-i18n>Download template</span>
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
                         <p id="template-meta-expenseManagement" data-template-meta="expenseManagement" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">XLSX · 9 KB</p>
                     </div>
                 </article>
-
                 <article class="group flex flex-col bg-creamsoft border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex mb-6">
                         <div class="relative w-20 h-20 rounded-2xl bg-forestgreen text-white flex items-center justify-center shadow-lg overflow-hidden">
@@ -1496,320 +1172,219 @@
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
                             <span class="ml-auto rounded-full bg-warmgold px-3 py-1 text-[10px] font-extrabold tracking-wider text-darkbark">
-                                
-                                <span lang-content="en">R$ 25 (approx. US$ 5)</span>
-                                
+                                <span data-i18n>R$ 25 (approx. US$ 5)</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
-                            
-                            <span lang-content="en">Monthly Personal Finances Analysis</span>
-                            
+                            <span data-i18n>Monthly Personal Finances Analysis</span>
                         </h3>
                         <p class="text-sm text-darkbark/70 leading-relaxed">
-                            
-                            <span lang-content="en">Get a complete monthly view of your income, expenses, assets, and liabilities. Like a company balance sheet, this snapshot helps you spot patterns and plan budgets and financial decisions with greater clarity.</span>
-                            
+                            <span data-i18n>Get a complete monthly view of your income, expenses, assets, and liabilities. Like a company balance sheet, this snapshot helps you spot patterns and plan budgets and financial decisions with greater clarity.</span>
                         </p>
                     </div>
                     <div class="mt-6">
                         <a href="https://pay.kiwify.com.br/1K9syUk" data-template-download="monthlyAnalysis" aria-describedby="template-meta-monthlyAnalysis" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            
-                            <span lang-content="en">Download template</span>
-                            
+                            <span data-i18n>Download template</span>
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
                         <p id="template-meta-monthlyAnalysis" data-template-meta="monthlyAnalysis" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">External page</p>
                     </div>
                 </article>
             </div>
-
             <div class="mt-10 bg-forestgreen rounded-3xl p-7 md:p-9 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div class="max-w-2xl">
                     <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-[0.2em] mb-2">
-                        
-                        <span lang-content="en">You do not have to do it alone</span>
-                        
+                        <span data-i18n>You do not have to do it alone</span>
                     </p>
                     <h3 class="text-xl md:text-2xl font-extrabold mb-2">
-                        
-                        <span lang-content="en">Want help completing or using the templates?</span>
-                        
+                        <span data-i18n>Want help completing or using the templates?</span>
                     </h3>
                     <p class="text-sm text-creamsoft/75 leading-relaxed">
-                        
-                        <span lang-content="en">Contact me and we can review how to adapt them to your priorities, your numbers, and your current financial situation.</span>
-                        
+                        <span data-i18n>Contact me and we can review how to adapt them to your priorities, your numbers, and your current financial situation.</span>
                     </p>
                 </div>
                 <a href="#contacto" class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-warmgold text-darkbark text-xs font-extrabold hover:bg-white focus:ring-4 focus:ring-white/30 transition-all">
-                    
-                    <span lang-content="en">Contact me</span>
-                    
+                    <span data-i18n>Contact me</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
-
     <!-- ASSESSMENT SECTION -->
     <section id="assessment" aria-labelledby="assessment-heading" class="scroll-mt-20 py-20 bg-white border-b border-creamborder">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                    
-                    <span lang-content="en">Financial assessment</span>
-                    
+                    <span data-i18n>Financial assessment</span>
                 </p>
                 <h2 id="assessment-heading" class="text-3xl font-extrabold text-forestgreen">
-                    
-                    <span lang-content="en">Turn your numbers into a clear plan</span>
-                    
+                    <span data-i18n>Turn your numbers into a clear plan</span>
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    
-                    <span lang-content="en">A simple journey to understand where you stand, receive initial guidance, and decide your next step with greater confidence.</span>
-                    
+                    <span data-i18n>A simple journey to understand where you stand, receive initial guidance, and decide your next step with greater confidence.</span>
                 </p>
             </div>
-
             <!-- Stage 1: Diagnostic card -->
             <div class="relative overflow-hidden rounded-3xl bg-forestgreen p-6 sm:p-8 shadow-xl">
                 <div class="absolute -right-12 -top-12 w-40 h-40 rounded-full bg-warmgold/10 pointer-events-none"></div>
-
                 <div class="diagnostic-stage-header relative flex flex-col gap-5 sm:flex-row mb-8">
                     <div class="max-w-2xl">
                         <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                            
-                            <span lang-content="en">Stage 01 · Assessment</span>
-                            
+                            <span data-i18n>Stage 01 · Assessment</span>
                         </p>
                         <h3 class="text-2xl font-extrabold text-white leading-tight">
-                            
-                            <span lang-content="en">Start by understanding your financial position</span>
-                            
+                            <span data-i18n>Start by understanding your financial position</span>
                         </h3>
                         <p class="diagnostic-copy-light text-sm leading-relaxed mt-3">
-                            
-                            <span lang-content="en">Complete one or both assessments. Together, they provide a fuller view of your current reality and your relationship with risk.</span>
-                            
+                            <span data-i18n>Complete one or both assessments. Together, they provide a fuller view of your current reality and your relationship with risk.</span>
                         </p>
                     </div>
-
                     <div class="inline-flex items-start gap-3 rounded-2xl border border-warmgold/40 bg-white/10 px-4 py-3 text-white shadow-sm backdrop-blur">
                         <span class="diagnostic-status-dot mt-1" aria-hidden="true"></span>
                         <p class="text-xs font-semibold leading-relaxed max-w-md">
-                            
-                            <span lang-content="en">Results and reports are generated and emailed automatically when you finish.</span>
-                            
+                            <span data-i18n>Results and reports are generated and emailed automatically when you finish.</span>
                         </p>
                     </div>
                 </div>
-
                 <div class="relative grid grid-cols-1 md:grid-cols-2 gap-4">
                     <article class="group rounded-2xl border border-white/20 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col">
                         <div class="flex items-start gap-4">
                             <div class="shrink-0 w-12 h-12 rounded-2xl bg-creamsoft text-forestgreen flex items-center justify-center">
-                                
-                                <span lang-content="en" aria-hidden="true"><i class="fa-solid fa-scale-balanced text-lg"></i></span>
-                                
+                                <span data-i18n aria-hidden="true"><i class="fa-solid fa-scale-balanced text-lg"></i></span>
                             </div>
                             <div>
                                 <p class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold mb-1">
-                                    
-                                    <span lang-content="en">Your financial snapshot</span>
-                                    
+                                    <span data-i18n>Your financial snapshot</span>
                                 </p>
                                 <h4 class="text-lg font-extrabold text-forestgreen leading-snug">
-                                    
-                                    <span lang-content="en">Personal Financial Balance</span>
-                                    
+                                    <span data-i18n>Personal Financial Balance</span>
                                 </h4>
                             </div>
                         </div>
                         <p class="text-sm text-darkbark/70 leading-relaxed mt-4 mb-5 flex-1">
-                            
-                            <span lang-content="en">Review income, expenses, assets, and debts to get an organized view of your starting point.</span>
-                            
+                            <span data-i18n>Review income, expenses, assets, and debts to get an organized view of your starting point.</span>
                         </p>
                         <a href="https://forms.gle/krYTH3FLmy3mat2h7" data-assessment-link="financialSnapshot" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            
-                            <span lang-content="en">Open Financial Form</span>
-                            
-                            
-                            <span lang-content="en" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square text-warmgold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
-                            
+                            <span data-i18n>Open Financial Form</span>
+                            <span data-i18n aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square text-warmgold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
                         </a>
                     </article>
-
                     <article class="group rounded-2xl border border-white/20 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col">
                         <div class="flex items-start gap-4">
                             <div class="shrink-0 w-12 h-12 rounded-2xl bg-warmgold/10 text-darkbark flex items-center justify-center">
-                                
-                                <span lang-content="en" aria-hidden="true"><i class="fa-solid fa-gauge-high text-lg"></i></span>
-                                
+                                <span data-i18n aria-hidden="true"><i class="fa-solid fa-gauge-high text-lg"></i></span>
                             </div>
                             <div>
                                 <p class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold mb-1">
-                                    
-                                    <span lang-content="en">Your relationship with risk</span>
-                                    
+                                    <span data-i18n>Your relationship with risk</span>
                                 </p>
                                 <h4 class="text-lg font-extrabold text-forestgreen leading-snug">
-                                    
-                                    <span lang-content="en">Investment Profile</span>
-                                    
+                                    <span data-i18n>Investment Profile</span>
                                 </h4>
                             </div>
                         </div>
                         <p class="text-sm text-darkbark/70 leading-relaxed mt-4 mb-5 flex-1">
-                            
-                            <span lang-content="en">Explore your goals, time horizon, experience, and emotional tolerance for market fluctuations.</span>
-                            
+                            <span data-i18n>Explore your goals, time horizon, experience, and emotional tolerance for market fluctuations.</span>
                         </p>
                         <a href="https://forms.gle/RvyqqxLazobUWuM58" data-assessment-link="riskRelationship" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            
-                            <span lang-content="en">Open Profile Form</span>
-                            
-                            
-                            <span lang-content="en" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square text-warmgold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
-                            
+                            <span data-i18n>Open Profile Form</span>
+                            <span data-i18n aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square text-warmgold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
                         </a>
                     </article>
                 </div>
             </div>
-
             <!-- Stage 2: Deliverables -->
             <div class="rounded-3xl border border-creamborder bg-creamsoft p-6 sm:p-8 mt-6 shadow-sm">
                 <div class="deliverables-header flex flex-col gap-3 sm:flex-row mb-6">
                     <div>
                         <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                            
-                            <span lang-content="en">Stage 02 · Deliverables</span>
-                            
+                            <span data-i18n>Stage 02 · Deliverables</span>
                         </p>
                         <h3 class="text-2xl font-extrabold text-forestgreen">
-                            
-                            <span lang-content="en">What do you receive after completing the journey?</span>
-                            
+                            <span data-i18n>What do you receive after completing the journey?</span>
                         </h3>
                     </div>
                     <p class="text-sm text-darkbark/65 max-w-md leading-relaxed">
-                        
-                        <span lang-content="en">Three layers of clarity to move from scattered data to more intentional financial decisions.</span>
-                        
+                        <span data-i18n>Three layers of clarity to move from scattered data to more intentional financial decisions.</span>
                     </p>
                 </div>
-
                 <ol class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                     <li class="relative rounded-2xl border border-creamborder bg-white p-6">
                         <div class="flex items-center justify-between mb-5">
                             <span class="w-10 h-10 rounded-full bg-forestgreen text-warmgold flex items-center justify-center text-sm font-extrabold">
-                                <span lang-content="en">1</span>
+                                <span data-i18n>1</span>
                             </span>
                             <span class="deliverable-icon text-2xl" aria-hidden="true">
-                                
-                                <span lang-content="en"><i class="fa-solid fa-chart-pie"></i></span>
-                                
+                                <span data-i18n><i class="fa-solid fa-chart-pie"></i></span>
                             </span>
                         </div>
                         <h4 class="font-extrabold text-forestgreen mb-2">
-                            
-                            <span lang-content="en">Personal financial snapshot</span>
-                            
+                            <span data-i18n>Personal financial snapshot</span>
                         </h4>
                         <p class="text-sm text-darkbark/65 leading-relaxed">
-                            
-                            <span lang-content="en">A structured reading of your current balance, habits, and financial capacity.</span>
-                            
+                            <span data-i18n>A structured reading of your current balance, habits, and financial capacity.</span>
                         </p>
                     </li>
-
                     <li class="relative rounded-2xl border border-creamborder bg-white p-6">
                         <div class="flex items-center justify-between mb-5">
                             <span class="w-10 h-10 rounded-full bg-forestgreen text-warmgold flex items-center justify-center text-sm font-extrabold">
-                                <span lang-content="en">2</span>
+                                <span data-i18n>2</span>
                             </span>
                             <span class="deliverable-icon text-2xl" aria-hidden="true">
-                                
-                                <span lang-content="en"><i class="fa-solid fa-compass"></i></span>
-                                
+                                <span data-i18n><i class="fa-solid fa-compass"></i></span>
                             </span>
                         </div>
                         <h4 class="font-extrabold text-forestgreen mb-2">
-                            
-                            <span lang-content="en">Risk profile and tolerance</span>
-                            
+                            <span data-i18n>Risk profile and tolerance</span>
                         </h4>
                         <p class="text-sm text-darkbark/65 leading-relaxed">
-                            
-                            <span lang-content="en">A reference for the level of risk aligned with your goals and behavior.</span>
-                            
+                            <span data-i18n>A reference for the level of risk aligned with your goals and behavior.</span>
                         </p>
                     </li>
-
                     <li class="relative rounded-2xl border border-creamborder bg-white p-6">
                         <div class="flex items-center justify-between mb-5">
                             <span class="w-10 h-10 rounded-full bg-forestgreen text-warmgold flex items-center justify-center text-sm font-extrabold">
-                                <span lang-content="en">3</span>
+                                <span data-i18n>3</span>
                             </span>
                             <span class="deliverable-icon text-2xl" aria-hidden="true">
-                                
-                                <span lang-content="en"><i class="fa-solid fa-route"></i></span>
-                                
+                                <span data-i18n><i class="fa-solid fa-route"></i></span>
                             </span>
                         </div>
                         <h4 class="font-extrabold text-forestgreen mb-2">
-                            
-                            <span lang-content="en">Recommended roadmap</span>
-                            
+                            <span data-i18n>Recommended roadmap</span>
                         </h4>
                         <p class="text-sm text-darkbark/65 leading-relaxed">
-                            
-                            <span lang-content="en">Prioritized next steps to turn your assessment into concrete actions.</span>
-                            
+                            <span data-i18n>Prioritized next steps to turn your assessment into concrete actions.</span>
                         </p>
                     </li>
                 </ol>
             </div>
-
         </div>
     </section>
-
     <!-- FREQUENTLY ASKED QUESTIONS -->
     <section id="preguntas-frecuentes" class="scroll-mt-20 relative overflow-hidden py-20 bg-creamsoft border-b border-creamborder">
         <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div class="absolute -top-24 left-1/3 w-80 h-80 rounded-full bg-warmgold/10 blur-3xl"></div>
             <div class="absolute -bottom-32 -right-20 w-96 h-96 rounded-full bg-forestgreen/5 blur-3xl"></div>
         </div>
-
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-10">
                 <div class="md:col-span-5">
                     <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                        
-                        <span lang-content="en">Direct answers</span>
-                        
+                        <span data-i18n>Direct answers</span>
                     </p>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-forestgreen leading-tight">
-                        
-                        <span lang-content="en">Frequently asked questions</span>
-                        
+                        <span data-i18n>Frequently asked questions</span>
                     </h2>
                 </div>
                 <div class="md:col-span-7 md:border-l md:border-creamborder md:pl-8 flex items-end">
                     <p class="text-sm text-darkbark/70 leading-relaxed">
-                        
-                        <span lang-content="en">Essential context for using the site's tools and making more informed decisions.</span>
-                        
+                        <span data-i18n>Essential context for using the site's tools and making more informed decisions.</span>
                     </p>
                 </div>
             </div>
-
-            
-
-            <div lang-content="en" class="space-y-4">
+            <div data-i18n class="space-y-4">
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">What is the 4% rule for financial freedom?</h3>
@@ -1865,74 +1440,53 @@
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. All tools, calculators, and templates on Compounding Journey are strictly educational and illustrative. They do not constitute formal financial, investment, or tax advice. For tailored recommendations based on your personal context, goals, and risk tolerance, you can complete our financial diagnostic forms or send a direct message through our contact section.</p>
                 </details>
             </div>
-
-            
         </div>
     </section>
-
     <!-- CONTACT SECTION -->
     <section id="contacto" aria-labelledby="contact-heading" class="scroll-mt-20 py-20 bg-creamsoft">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                    
-                    <span lang-content="en">Contact and guidance</span>
-                    
+                    <span data-i18n>Contact and guidance</span>
                 </p>
                 <h2 id="contact-heading" class="text-3xl font-extrabold text-forestgreen">
-                    
-                    <span lang-content="en">Three ways to stay connected</span>
-                    
+                    <span data-i18n>Three ways to stay connected</span>
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    
-                    <span lang-content="en">Meet the advisor, follow the newsletter, or tell us directly about your financial situation.</span>
-                    
+                    <span data-i18n>Meet the advisor, follow the newsletter, or tell us directly about your financial situation.</span>
                 </p>
-
                 <nav class="contact-path-nav" aria-labelledby="contact-heading">
                     <a href="#biografia" class="contact-path-link">
                         <i class="fa-solid fa-user-tie text-warmgold" aria-hidden="true"></i>
-                        
-                        <span lang-content="en">Meet the Advisor</span>
-                        
+                        <span data-i18n>Meet the Advisor</span>
                     </a>
                     <a href="#contact-newsletter" class="contact-path-link">
                         <i class="fa-regular fa-newspaper text-warmgold" aria-hidden="true"></i>
-                        
-                        <span lang-content="en">Follow the Newsletter</span>
-                        
+                        <span data-i18n>Follow the Newsletter</span>
                     </a>
                     <a href="#contact-form" class="contact-path-link">
                         <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
-                        
-                        <span lang-content="en">Send an Inquiry</span>
-                        
+                        <span data-i18n>Send an Inquiry</span>
                     </a>
                 </nav>
             </div>
-
             <section id="biografia" aria-labelledby="about-heading" class="scroll-mt-20 mb-12 pb-12 border-b border-creamborder">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-
                         <!-- Profile Image Frame / Adaptive Card Layout -->
                         <div class="md:col-span-5 flex justify-center">
                             <div class="relative group w-full max-w-[320px]">
                                 <!-- Decorative natural green/warm gold glow -->
                                 <div class="absolute -inset-1.5 bg-gradient-to-r from-forestgreen to-warmgold rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-
                                 <div class="relative bg-white p-5 rounded-[2rem] border border-creamborder shadow-xl flex flex-col items-center">
                                     <!-- Circular photo element containing user assets -->
                                     <div class="w-48 h-48 rounded-full overflow-hidden bg-gradient-to-br from-forestgreen to-warmgold relative border-4 border-white shadow-inner flex items-center justify-center">
-
                                         <!-- Premium Fallback Graphic (shows only if photo is offline/blocked) -->
                                         <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 select-none">
                                             <span class="text-4xl font-extrabold tracking-wider leading-none">SB</span>
                                             <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Wealth Planner</span>
                                         </div>
-
                                         <!-- Actual Image Tag with fallback failure support -->
                                     <img
                                         id="advisor-portrait"
@@ -1945,35 +1499,24 @@
                                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-10"
                                     >
                                 </div>
-
                                 <div class="mt-5 text-center">
                                     <p class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</p>
                                     <p class="text-xs text-warmgold font-bold uppercase tracking-widest mt-1">
-                                        
-                                        <span lang-content="en">Financial Advisor</span>
-                                        
+                                        <span data-i18n>Financial Advisor</span>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- Biography content translated directly -->
                     <div class="md:col-span-7 space-y-6">
                         <p class="text-warmgold text-xs font-bold uppercase tracking-widest">
-                            
-                            <span lang-content="en">About</span>
-                            
+                            <span data-i18n>About</span>
                         </p>
                         <h2 id="about-heading" class="text-3xl font-extrabold text-forestgreen tracking-tight">
-                            
-                            <span lang-content="en">Finance for an intentional life</span>
-                            
+                            <span data-i18n>Finance for an intentional life</span>
                         </h2>
-
-                        
-
-                        <div lang-content="en" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
+                        <div data-i18n class="space-y-4 text-darkbark/80 font-light leading-relaxed">
                             <p>
                                 Hello, I’m <strong>Sandy Bradbury</strong>. I help individuals and families organize money around what truly matters: greater peace of mind today and more freedom tomorrow. My approach combines money psychology, sustainable habits, and diversified quality investments.
                             </p>
@@ -1981,9 +1524,6 @@
                                 In <strong>Compounding Journey</strong>, I go beyond returns. I explore how compound growth can buy time, reduce dependency, and help you design a purposeful life. You are the protagonist of the journey: strategy provides the map, discipline keeps you moving, and your values choose the destination.
                             </p>
                         </div>
-
-                        
-
                         <div class="pt-4 flex flex-wrap gap-4">
                                 <a
                                     href="https://www.linkedin.com/in/sandy-bradbury"
@@ -1992,12 +1532,9 @@
                                     class="inline-flex items-center gap-3 px-6 py-3.5 bg-[#0077B5] hover:bg-[#0077B5]/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
                                 >
                                     <i class="fa-brands fa-linkedin text-lg"></i>
-                                    
-                                    <span lang-content="en">Connect on LinkedIn</span>
-                                    
+                                    <span data-i18n>Connect on LinkedIn</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                                 </a>
-
                                 <a
                                     href="https://compoundingjourney.substack.com/"
                                     data-newsletter-link
@@ -2006,18 +1543,14 @@
                                     class="inline-flex items-center gap-3 px-6 py-3.5 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
                                 >
                                     <i class="fa-solid fa-bookmark text-warmgold text-lg"></i>
-                                    
-                                    <span lang-content="en">Read on Substack</span>
-                                    
+                                    <span data-i18n>Read on Substack</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                                 </a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
-
             <section id="contact-newsletter" aria-labelledby="contact-newsletter-heading" class="scroll-mt-20 mb-12">
                 <div class="relative overflow-hidden rounded-3xl border border-creamborder bg-white p-8 sm:p-12 shadow-sm">
                     <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-warmgold/10 blur-2xl pointer-events-none" aria-hidden="true"></div>
@@ -2027,137 +1560,93 @@
                                 <i class="fa-regular fa-newspaper text-lg" aria-hidden="true"></i>
                             </div>
                             <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                                
-                                <span lang-content="en">A conversation that continues</span>
-                                
+                                <span data-i18n>A conversation that continues</span>
                             </p>
                             <h3 id="contact-newsletter-heading" class="text-2xl font-extrabold text-forestgreen leading-tight">
-                                
-                                <span lang-content="en">Follow the newsletter in your language</span>
-                                
+                                <span data-i18n>Follow the newsletter in your language</span>
                             </h3>
                             <p class="mt-3 text-sm text-darkbark/70 leading-relaxed">
-                                
-                                <span lang-content="en">Receive practical ideas on money psychology, purposeful investing, and financial decisions that reflect your values.</span>
-                                
+                                <span data-i18n>Receive practical ideas on money psychology, purposeful investing, and financial decisions that reflect your values.</span>
                             </p>
                         </div>
-
                         <div class="md:col-span-5 rounded-2xl bg-creamsoft border border-creamborder p-6">
                             <p class="text-sm font-semibold text-darkbark/75 leading-relaxed mb-5">
-                                
-                                <span lang-content="en">The button automatically opens the English edition selected for this page.</span>
-                                
+                                <span data-i18n>The button automatically opens the English edition selected for this page.</span>
                             </p>
                             <a href="https://compoundingjourney.substack.com/" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:ring-4 focus:ring-warmgold/30 transition-all">
-                                
-                                <span lang-content="en">Follow the Newsletter</span>
-                                
+                                <span data-i18n>Follow the Newsletter</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-warmgold" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
-
-
             <!-- Transition to contact -->
             <div class="relative overflow-hidden rounded-3xl bg-forestgreen p-8 sm:p-12 text-white shadow-lg">
                 <div class="absolute -right-12 -top-12 w-40 h-40 bg-warmgold/10 rounded-full blur-2xl pointer-events-none"></div>
                 <div class="contact-transition-layout relative flex flex-col gap-6 md:flex-row md:items-center">
                     <div class="flex items-start gap-4 max-w-2xl">
                         <div class="shrink-0 w-12 h-12 rounded-2xl bg-warmgold text-darkbark flex items-center justify-center shadow-md">
-                            
-                            <span lang-content="en" aria-hidden="true"><i class="fa-regular fa-envelope text-lg"></i></span>
-                            
+                            <span data-i18n aria-hidden="true"><i class="fa-regular fa-envelope text-lg"></i></span>
                         </div>
                         <div>
                             <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                                
-                                <span lang-content="en">Direct inquiry · Your next step</span>
-                                
+                                <span data-i18n>Direct inquiry · Your next step</span>
                             </p>
                             <h3 class="text-2xl font-extrabold leading-tight">
-                                
-                                <span lang-content="en">When you’re ready, let’s take the next step.</span>
-                                
+                                <span data-i18n>When you’re ready, let’s take the next step.</span>
                             </h3>
                             <p class="diagnostic-copy-light text-sm leading-relaxed mt-3">
-                                
-                                <span lang-content="en">Tell me what you discovered, which questions came up, and which decision you want to work through more clearly.</span>
-                                
+                                <span data-i18n>Tell me what you discovered, which questions came up, and which decision you want to work through more clearly.</span>
                             </p>
                         </div>
                     </div>
                     <a href="#contact-form" class="inline-flex shrink-0 items-center justify-center gap-3 rounded-xl bg-warmgold px-6 py-3.5 text-sm font-extrabold text-darkbark hover:bg-warmgold/95 focus:ring-4 focus:ring-white/30 transition-all">
-                        
-                        <span lang-content="en">Open the inquiry form</span>
-                        
-                        
-                        <span lang-content="en" aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></span>
-                        
+                        <span data-i18n>Open the inquiry form</span>
+                        <span data-i18n aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></span>
                     </a>
                 </div>
             </div>
-
             <!-- Form Container Card -->
             <div class="bg-white rounded-3xl border border-creamborder p-8 sm:p-12 mt-6 shadow-sm relative overflow-hidden">
                 <div class="absolute -top-12 -right-12 w-40 h-40 bg-forestgreen/5 rounded-full blur-2xl pointer-events-none"></div>
-
                 <div class="relative z-10 mb-8 text-center">
                     <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                        
-                        <span lang-content="en">Contact form</span>
-                        
+                        <span data-i18n>Contact form</span>
                     </p>
                     <h3 class="text-2xl font-extrabold text-forestgreen">
-                        
-                        <span lang-content="en">Tell me what you’d like to clarify</span>
-                        
+                        <span data-i18n>Tell me what you’d like to clarify</span>
                     </h3>
                     <p class="mt-3 text-sm text-darkbark/65 leading-relaxed max-w-2xl mx-auto">
-                        
-                        <span lang-content="en">Include any context that matters so we can begin with a useful, focused conversation.</span>
-                        
+                        <span data-i18n>Include any context that matters so we can begin with a useful, focused conversation.</span>
                     </p>
                 </div>
-
                 <form id="contact-form" name="contact" method="POST" autocomplete="on" novalidate data-netlify="true" netlify-honeypot="bot-field" class="space-y-6 relative z-10">
                     <input type="hidden" name="form-name" value="contact">
                     <input type="hidden" name="subject" data-form-copy="subject" value="New contact - Compounding Journey">
                     <p class="hidden" aria-hidden="true">
                         <label>
-                            
-                            <span lang-content="en">Do not fill in:</span>
-                            
+                            <span data-i18n>Do not fill in:</span>
                             <input name="bot-field" tabindex="-1" autocomplete="off">
                         </label>
                     </p>
-
                     <!-- Error summary. Announced on a failed submit and given focus
                          so the reader is told what went wrong instead of being
                          dropped back into the form with no explanation. -->
                     <div id="form-error-summary" class="hidden rounded-xl border-2 border-[#B3261E] bg-[#FDF2F1] px-4 py-3" role="alert" tabindex="-1">
                         <p class="text-sm font-bold text-[#8C1D18]">
-                            
-                            <span lang-content="en">Please review the highlighted fields before sending.</span>
-                            
+                            <span data-i18n>Please review the highlighted fields before sending.</span>
                         </p>
                         <ul id="form-error-list" class="mt-2 list-disc pl-5 text-sm text-[#8C1D18] space-y-1"></ul>
                     </div>
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <!-- Field: Name -->
                         <div>
                             <label class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2" for="form-name">
-                                
-                                <span lang-content="en">Full Name</span>
-                                
+                                <span data-i18n>Full Name</span>
                                 <span class="text-[#8C1D18]" aria-hidden="true">*</span>
                                 <span class="sr-only">
-                                    
-                                    <span lang-content="en">(required)</span>
-                                    
+                                    <span data-i18n>(required)</span>
                                 </span>
                             </label>
                             <input
@@ -2172,18 +1661,13 @@
                             >
                             <p id="form-name-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                         </div>
-
                         <!-- Field: Email -->
                         <div>
                             <label class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2" for="form-email">
-                                
-                                <span lang-content="en">Email Address</span>
-                                
+                                <span data-i18n>Email Address</span>
                                 <span class="text-[#8C1D18]" aria-hidden="true">*</span>
                                 <span class="sr-only">
-                                    
-                                    <span lang-content="en">(required)</span>
-                                    
+                                    <span data-i18n>(required)</span>
                                 </span>
                             </label>
                             <input
@@ -2201,18 +1685,13 @@
                             <p id="form-email-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                         </div>
                     </div>
-
                     <!-- Field: Project Description -->
                     <div>
                         <label class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2" for="form-message">
-                            
-                            <span lang-content="en">How can we help you?</span>
-                            
+                            <span data-i18n>How can we help you?</span>
                             <span class="text-[#8C1D18]" aria-hidden="true">*</span>
                             <span class="sr-only">
-                                
-                                <span lang-content="en">(required)</span>
-                                
+                                <span data-i18n>(required)</span>
                             </span>
                         </label>
                         <textarea
@@ -2224,13 +1703,10 @@
                             class="w-full bg-white border border-creamborder rounded-xl px-4 py-3 text-darkbark text-sm placeholder-darkbark/40 focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen transition-all resize-y"
                         ></textarea>
                         <p id="form-message-hint" class="mt-2 text-xs text-darkbark/60">
-                            
-                            <span lang-content="en">The more context you share, the more concrete the first reply will be.</span>
-                            
+                            <span data-i18n>The more context you share, the more concrete the first reply will be.</span>
                         </p>
                         <p id="form-message-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                     </div>
-
                     <!-- Submit Button -->
                     <div class="text-center pt-2">
                         <button
@@ -2239,51 +1715,38 @@
                             class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-lg shadow-forestgreen/10 hover:shadow-forestgreen/25 hover:-translate-y-0.5 transition-all min-w-[200px]"
                         >
                             <i id="submit-spinner" class="fa-solid fa-circle-notch animate-spin text-warmgold hidden" aria-hidden="true"></i>
-
-                            
-                            <span id="submit-text-en" lang-content="en">Send Message</span>
-                            
-
+                            <span id="submit-text-en" data-i18n>Send Message</span>
                             <i class="fa-solid fa-paper-plane text-sm text-warmgold" aria-hidden="true"></i>
                         </button>
                         <p id="form-submit-status" class="sr-only" role="status" aria-live="polite"></p>
                     </div>
                 </form>
-
                 <!-- SUCCESS MODAL (Inside Box Layout) -->
                 <div id="success-card" role="status" aria-live="polite" class="hidden absolute inset-0 bg-white/95 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-center p-8 transition-all">
                     <div class="w-20 h-20 bg-forestgreen/10 border border-forestgreen/25 rounded-full flex items-center justify-center text-forestgreen text-3xl mb-6">
                         <i class="fa-solid fa-check"></i>
                     </div>
                     <h3 class="text-2xl font-extrabold text-forestgreen mb-3">
-                        
-                        <span lang-content="en">Message Received!</span>
-                        
+                        <span data-i18n>Message Received!</span>
                     </h3>
                     <p class="text-darkbark/75 text-sm max-w-md mb-8">
-                        
-                        <span lang-content="en">Your message was saved successfully. We will be in touch to discuss your goals and next steps.</span>
-                        
+                        <span data-i18n>Your message was saved successfully. We will be in touch to discuss your goals and next steps.</span>
                     </p>
                     <button
                         id="feedback-reset"
                         type="button"
                         class="px-6 py-2.5 bg-creamsoft hover:bg-creamborder text-darkbark/80 font-semibold text-xs rounded-lg border border-creamborder transition-all"
                     >
-                        
-                        <span lang-content="en">Send another message</span>
-                        
+                        <span data-i18n>Send another message</span>
                     </button>
                 </div>
             </div>
         </div>
     </section>
     </main>
-
     <!-- FOOTER -->
     <footer class="bg-darkbark text-white py-16 border-t border-creamborder/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-            
             <div class="mb-6 flex flex-col items-center">
                 <!-- Newsletter Minimalistic Brand Tree Vector mimicking original logo structure -->
                 <div class="h-16 w-16 mb-4 filter brightness-125">
@@ -2297,30 +1760,22 @@
                     />
                 </div>
                 <p class="text-xs font-bold uppercase tracking-widest text-warmgold">
-                    
-                    <span lang-content="en">Make your money work for your happiness</span>
-                    
+                    <span data-i18n>Make your money work for your happiness</span>
                 </p>
             </div>
-
             <p class="text-creamsoft/60 text-sm mb-8 max-w-md">
-                
-                <span lang-content="en">Money psychology, purposeful investing, and freedom to live by your values</span>
-                
+                <span data-i18n>Money psychology, purposeful investing, and freedom to live by your values</span>
             </p>
-            
             <div class="w-full border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-creamsoft/40 gap-4">
                 <p>
-                    
-                    <span lang-content="en">&copy; 2026 Compounding Journey. All rights reserved.</span>
-                    
+                    <!-- "Compounding Journey" is the brand name and is never translated, in any
+                         language. Only the sentence around it changes. -->
+                    <span data-i18n>&copy; 2026 Compounding Journey. All rights reserved.</span>
                 </p>
                 <div class="flex gap-4">
                     <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes" class="hover:text-warmgold transition-colors">FAQ</a>
                     <a href="#contacto" class="hover:text-warmgold transition-colors">
-                        
-                        <span lang-content="en">Contact</span>
-                        
+                        <span data-i18n>Contact</span>
                     </a>
                     <a href="https://www.linkedin.com/in/sandy-bradbury" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">LinkedIn</a>
                     <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Substack</a>
@@ -2329,9 +1784,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- SCRIPTS -->
-    <script type="module" src="/assets/js/home-identity.js?v=3936f458c90d"></script>
-    <script src="/assets/js/home.js?v=83687ac5f5b1"></script>
 </body>
 </html>

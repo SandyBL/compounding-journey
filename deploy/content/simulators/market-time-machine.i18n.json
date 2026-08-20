@@ -803,5 +803,165 @@
     "en": "You have watched portfolios fall and recover across a hundred years of cycles. The financial assessment turns that perspective into a plan built around your own numbers.",
     "es": "Ya viste cómo las carteras caen y se recuperan a lo largo de un siglo de ciclos. El diagnóstico financiero convierte esa perspectiva en un plan hecho con tus propios números.",
     "pt": "Já viste como as carteiras caem e recuperam ao longo de um século de ciclos. O diagnóstico financeiro transforma essa perspetiva num plano feito com os teus próprios números."
+  },
+  "explTitle": {
+    "en": "What the Market Time Machine shows",
+    "es": "Qué muestra la Máquina del Tiempo del Mercado",
+    "pt": "O que a Máquina do Tempo do Mercado mostra"
+  },
+  "explLede": {
+    "en": "This tool takes a portfolio you design and runs it through the actual returns of the last hundred years — the Great Depression, the war years, the 1970s inflation, the dot-com collapse, 2008, the pandemic. You are not looking at a projection. You are looking at what your allocation would have done to real money through the worst decades on record, next to the benchmarks it is usually compared against.",
+    "es": "Esta herramienta toma una cartera que tú diseñas y la hace atravesar las rentabilidades reales de los últimos cien años: la Gran Depresión, los años de guerra, la inflación de los setenta, el estallido de las puntocom, 2008, la pandemia. No estás viendo una proyección. Estás viendo qué le habría hecho tu asignación a dinero real a lo largo de las peores décadas registradas, junto a las referencias con las que se suele comparar.",
+    "pt": "Esta ferramenta pega numa carteira que desenha e fá-la atravessar as rentabilidades reais dos últimos cem anos: a Grande Depressão, os anos da guerra, a inflação dos anos setenta, o rebentamento das dot-com, 2008, a pandemia. Não está a ver uma projeção. Está a ver o que a sua alocação teria feito a dinheiro real ao longo das piores décadas registadas, ao lado das referências com que costuma ser comparada."
+  },
+  "explHowTitle": {
+    "en": "How it works",
+    "es": "Cómo funciona",
+    "pt": "Como funciona"
+  },
+  "explHow1": {
+    "en": "You set the percentage of your portfolio in five asset classes — stocks, bonds, real estate, gold and cash — and pick a start year. For every year from then to now, the tool takes that year's actual return for each asset class, weights them by your allocation, and applies the combined figure to your running balance. It does the same for five reference portfolios at once: a classic 60/40, Ray Dalio's All Weather, Harry Browne's Permanent Portfolio, and an aggressive and a conservative mix.",
+    "es": "Fijas el porcentaje de tu cartera en cinco clases de activos —acciones, bonos, inmobiliario, oro y efectivo— y eliges un año de inicio. Para cada año desde entonces hasta hoy, la herramienta toma la rentabilidad real de ese año para cada clase, la pondera según tu asignación y aplica la cifra combinada a tu saldo. Hace lo mismo con cinco carteras de referencia a la vez: un 60/40 clásico, la All Weather de Ray Dalio, la Cartera Permanente de Harry Browne, y una mezcla agresiva y otra conservadora.",
+    "pt": "Define a percentagem da sua carteira em cinco classes de ativos — ações, obrigações, imobiliário, ouro e liquidez — e escolhe um ano de início. Para cada ano desde então até hoje, a ferramenta pega na rentabilidade real desse ano para cada classe, pondera-a segundo a sua alocação e aplica o número combinado ao seu saldo. Faz o mesmo com cinco carteiras de referência ao mesmo tempo: um 60/40 clássico, a All Weather de Ray Dalio, a Carteira Permanente de Harry Browne, e uma mistura agressiva e outra conservadora."
+  },
+  "explHow2": {
+    "en": "Because your target weights are re-applied to every single year, the model is doing something specific: it rebalances back to your target allocation annually. That is not a neutral detail. Rebalancing is what forces you to sell whatever just went up and buy whatever just fell, and over a century it is responsible for a meaningful share of the difference between a mixed portfolio and the sum of its parts. The events overlaid on the chart are there so a number has a story attached to it — a 43% fall is abstract until it is labelled 1931.",
+    "es": "Como tus pesos objetivo se vuelven a aplicar a cada año, el modelo hace algo concreto: reequilibra anualmente hasta tu asignación objetivo. No es un detalle neutro. Reequilibrar es lo que te obliga a vender lo que acaba de subir y comprar lo que acaba de caer, y a lo largo de un siglo explica una parte importante de la diferencia entre una cartera mixta y la suma de sus partes. Los eventos superpuestos en el gráfico están ahí para que cada número lleve una historia: una caída del 43% es abstracta hasta que lleva la etiqueta de 1931.",
+    "pt": "Como os seus pesos-alvo são reaplicados a cada ano, o modelo faz algo concreto: reequilibra anualmente até à sua alocação-alvo. Não é um detalhe neutro. Reequilibrar é o que o obriga a vender o que acabou de subir e comprar o que acabou de cair, e ao longo de um século explica uma parte importante da diferença entre uma carteira mista e a soma das suas partes. Os eventos sobrepostos no gráfico estão lá para que cada número tenha uma história: uma queda de 43% é abstrata até levar a etiqueta de 1931."
+  },
+  "explAssumptionsTitle": {
+    "en": "What it assumes",
+    "es": "Qué supone",
+    "pt": "O que pressupõe"
+  },
+  "explAssumption1": {
+    "en": "Returns are nominal, not inflation-adjusted. A portfolio that grew 8% in 1979 lost purchasing power that year; the chart will not show that, and the 1970s are where this matters most.",
+    "es": "Las rentabilidades son nominales, no ajustadas por inflación. Una cartera que creció un 8% en 1979 perdió poder adquisitivo ese año; el gráfico no lo mostrará, y los setenta son donde más importa.",
+    "pt": "As rentabilidades são nominais, não ajustadas pela inflação. Uma carteira que cresceu 8% em 1979 perdeu poder de compra nesse ano; o gráfico não o mostrará, e os anos setenta são onde isso mais importa."
+  },
+  "explAssumption2": {
+    "en": "Rebalancing back to target happens every year, free and instantly. In a taxable account, rebalancing realises gains and costs money.",
+    "es": "El reequilibrio hasta el objetivo ocurre cada año, gratis y al instante. En una cuenta sujeta a impuestos, reequilibrar realiza plusvalías y cuesta dinero.",
+    "pt": "O reequilíbrio até ao alvo acontece todos os anos, grátis e instantaneamente. Numa conta sujeita a impostos, reequilibrar realiza mais-valias e custa dinheiro."
+  },
+  "explAssumption3": {
+    "en": "No fund fees, no trading costs, no taxes and no dividend withholding. A single percentage point of annual cost compounds to roughly a quarter of the final balance over forty years.",
+    "es": "Sin comisiones de fondos, sin costes de operación, sin impuestos y sin retención sobre dividendos. Un solo punto porcentual de coste anual se acumula hasta cerca de una cuarta parte del saldo final en cuarenta años.",
+    "pt": "Sem comissões de fundos, sem custos de transação, sem impostos e sem retenção sobre dividendos. Um único ponto percentual de custo anual acumula-se até cerca de um quarto do saldo final em quarenta anos."
+  },
+  "explAssumption4": {
+    "en": "The asset classes are broad indices. \"Stocks\" is a whole market, not the shares you actually own, and no index existed to buy for most of the period being modelled.",
+    "es": "Las clases de activos son índices amplios. «Acciones» es un mercado entero, no las que tú posees, y durante buena parte del periodo modelado no existía ningún índice que se pudiera comprar.",
+    "pt": "As classes de ativos são índices amplos. «Ações» é um mercado inteiro, não as que possui, e durante boa parte do período modelado não existia nenhum índice que se pudesse comprar."
+  },
+  "explAssumptionsNote": {
+    "en": "History is a sample of one. That a portfolio survived every crisis in this dataset is evidence about its character, not a guarantee about the next crisis, which will be shaped differently.",
+    "es": "La historia es una muestra de uno. Que una cartera sobreviviera a todas las crisis de este conjunto de datos dice algo sobre su carácter, no garantiza nada sobre la próxima crisis, que tendrá otra forma.",
+    "pt": "A história é uma amostra de um. Que uma carteira tenha sobrevivido a todas as crises deste conjunto de dados diz algo sobre o seu caráter, não garante nada sobre a próxima crise, que terá outra forma."
+  },
+  "explExampleTitle": {
+    "en": "A worked example",
+    "es": "Un ejemplo resuelto",
+    "pt": "Um exemplo resolvido"
+  },
+  "explExample1": {
+    "en": "Put 100% in stocks and start in 1929. The balance falls by roughly two thirds within three years and does not return to its starting value for well over a decade. Put the same money in the Permanent Portfolio — a quarter each in stocks, long bonds, gold and cash — and the same three years cost you a fraction of that.",
+    "es": "Pon el 100% en acciones y empieza en 1929. El saldo cae cerca de dos tercios en tres años y no vuelve a su valor inicial hasta bastante más de una década después. Pon el mismo dinero en la Cartera Permanente —un cuarto en acciones, un cuarto en bonos largos, un cuarto en oro y un cuarto en efectivo— y esos mismos tres años te cuestan una fracción de eso.",
+    "pt": "Ponha 100% em ações e comece em 1929. O saldo cai cerca de dois terços em três anos e não volta ao valor inicial senão bastante mais de uma década depois. Ponha o mesmo dinheiro na Carteira Permanente — um quarto em ações, um quarto em obrigações longas, um quarto em ouro e um quarto em liquidez — e esses mesmos três anos custam-lhe uma fração disso."
+  },
+  "explExample2": {
+    "en": "Then run both to the present day. The all-stock portfolio ends far ahead. Both facts are true at once, and the useful question is not which number is bigger but whether you would have held the first one through 1932 — because an allocation you abandon at the bottom returns nothing at all. That is what the tool is really testing.",
+    "es": "Ahora lleva ambas hasta hoy. La cartera 100% acciones termina muy por delante. Los dos hechos son ciertos a la vez, y la pregunta útil no es qué número es mayor, sino si habrías aguantado la primera durante 1932: porque una asignación que abandonas en el suelo no rinde nada. Eso es lo que la herramienta está poniendo a prueba en realidad.",
+    "pt": "Agora leve ambas até hoje. A carteira 100% ações termina muito à frente. Os dois factos são verdadeiros ao mesmo tempo, e a pergunta útil não é qual o número maior, mas se teria aguentado a primeira durante 1932: porque uma alocação que abandona no fundo não rende nada. É isso que a ferramenta está realmente a testar."
+  },
+  "explFaqQ1": {
+    "en": "Are the returns adjusted for inflation?",
+    "es": "¿Las rentabilidades están ajustadas por inflación?",
+    "pt": "As rentabilidades estão ajustadas pela inflação?"
+  },
+  "explFaqA1": {
+    "en": "No — they are nominal total returns. Read the long-run results as bigger than they were in purchasing power, especially any window that includes the 1940s or the 1970s.",
+    "es": "No: son rentabilidades totales nominales. Lee los resultados a largo plazo como mayores de lo que fueron en poder adquisitivo, sobre todo en cualquier ventana que incluya los años cuarenta o los setenta.",
+    "pt": "Não: são rentabilidades totais nominais. Leia os resultados de longo prazo como maiores do que foram em poder de compra, sobretudo em qualquer janela que inclua os anos quarenta ou setenta."
+  },
+  "explFaqQ2": {
+    "en": "Does it rebalance?",
+    "es": "¿Reequilibra?",
+    "pt": "Reequilibra?"
+  },
+  "explFaqA2": {
+    "en": "Yes, once a year, back to the exact weights you set. If you want to know what buy-and-never-touch would have done instead, set a single asset class to 100% — that is the only allocation rebalancing cannot change.",
+    "es": "Sí, una vez al año, hasta los pesos exactos que fijaste. Si quieres saber qué habría hecho comprar y no tocar nunca, pon una sola clase de activo al 100%: es la única asignación que el reequilibrio no puede alterar.",
+    "pt": "Sim, uma vez por ano, até aos pesos exatos que definiu. Se quiser saber o que teria feito comprar e nunca mexer, ponha uma única classe de ativos a 100%: é a única alocação que o reequilíbrio não pode alterar."
+  },
+  "explFaqQ3": {
+    "en": "Why does the start year change the answer so much?",
+    "es": "¿Por qué el año de inicio cambia tanto el resultado?",
+    "pt": "Porque é que o ano de início muda tanto o resultado?"
+  },
+  "explFaqA3": {
+    "en": "Because the order of returns matters as much as their average. Starting a year before a crash and a year after it produces very different balances from identical average returns — which is the single strongest argument for not putting a lifetime of savings in on one day.",
+    "es": "Porque el orden de las rentabilidades importa tanto como su media. Empezar un año antes de una caída o un año después produce saldos muy distintos con rentabilidades medias idénticas, que es el argumento más fuerte para no meter el ahorro de toda una vida en un solo día.",
+    "pt": "Porque a ordem das rentabilidades importa tanto como a sua média. Começar um ano antes de uma queda ou um ano depois produz saldos muito diferentes com rentabilidades médias idênticas, que é o argumento mais forte para não colocar a poupança de uma vida inteira num só dia."
+  },
+  "explFaqTitle": {
+    "en": "Common questions",
+    "es": "Preguntas frecuentes",
+    "pt": "Perguntas frequentes"
+  },
+  "explReadingTitle": {
+    "en": "Keep reading",
+    "es": "Sigue leyendo",
+    "pt": "Continue a ler"
+  },
+  "explReadingIntro": {
+    "en": "The journal covers the ideas behind this tool at greater length.",
+    "es": "El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.",
+    "pt": "O diário desenvolve com mais calma as ideias por trás desta ferramenta."
+  },
+  "explReadingAll": {
+    "en": "All journal entries",
+    "es": "Todas las entradas del diario",
+    "pt": "Todas as entradas do diário"
+  },
+  "explCrumbHome": {
+    "en": "Home",
+    "es": "Inicio",
+    "pt": "Início"
+  },
+  "explCrumbSimulators": {
+    "en": "Simulators",
+    "es": "Simuladores",
+    "pt": "Simuladores"
+  },
+  "explReadingSlug1": {
+    "en": "slow-money-system",
+    "es": "sistema-dinero-lento",
+    "pt": "sistema-dinheiro-lento"
+  },
+  "explReadingLabel1": {
+    "en": "The slow money system: a calmer way to build wealth",
+    "es": "El sistema de dinero lento: una forma más tranquila de crear patrimonio",
+    "pt": "O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio"
+  },
+  "explReadingSlug2": {
+    "en": "foundations-of-personal-finance-how-to-control-expenses-and-build-wealth",
+    "es": "fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza",
+    "pt": "fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza"
+  },
+  "explReadingLabel2": {
+    "en": "Foundations of Personal Finance: How to Control Expenses and Build Wealth",
+    "es": "Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza",
+    "pt": "Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza"
+  },
+  "explCrumbSelf": {
+    "en": "Market Time Machine",
+    "es": "Máquina del Tiempo del Mercado",
+    "pt": "Máquina do Tempo do Mercado"
+  },
+  "explCrumbLabel": {
+    "en": "Breadcrumb",
+    "es": "Ruta de navegación",
+    "pt": "Trilho de navegação"
   }
 }

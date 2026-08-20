@@ -15,6 +15,7 @@
     <meta property="og:title" content="Freedom Calendar: Financial Independence Timeline"><meta property="og:description" content="Visualize when your savings and investments may unlock each stage of financial freedom."><meta property="og:url" content="https://compoundingjourney.com/en/simulators/freedom-calendar.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Freedom Calendar: Financial Independence Timeline"><meta name="twitter:description" content="Visualize when your savings and investments may unlock each stage of financial freedom."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Freedom Calendar","url":"https://compoundingjourney.com/en/simulators/freedom-calendar.html","description":"A visual financial independence timeline based on savings, investments, and lifestyle goals.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://compoundingjourney.com/en/"},{"@type":"ListItem","position":2,"name":"Simulators","item":"https://compoundingjourney.com/en/simulator.html"},{"@type":"ListItem","position":3,"name":"Freedom Calendar"}]}</script>
     <!-- Chart.js for trajectory visualization -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
@@ -47,8 +48,9 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.en.webmanifest">
@@ -183,6 +185,16 @@
 
     <!-- MAIN CONTENT CONTAINER -->
     <main id="main" tabindex="-1" class="max-w-6xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
+        <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
+             so each tool page looked like an orphan at the top level of the site. -->
+        <nav class="sim-crumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/simulator.html">Simulators</a></li>
+                <li><span aria-current="page">Freedom Calendar</span></li>
+            </ol>
+        </nav>
+
 
         <!-- INTRO BANNER -->
         <div class="mb-8 text-center sm:text-left bg-cream-50 rounded-2xl p-6 border border-cream-300 custom-shadow flex flex-col md:flex-row items-center justify-between gap-6">
@@ -316,6 +328,71 @@
             </div>
 
         </div>
+
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">What the Freedom Calendar measures</h2>
+                <p class="sim-explainer__lede">Most savings calculators answer the question "how much will I have?" This one answers a different one: "when do I stop needing a salary?" It converts your income, your spending and your existing investments into a single date, and then re-states the same arithmetic in a unit that is harder to ignore — the hours of your life that each expense costs you.</p>
+
+                <h3 class="sim-explainer__heading">How the date is calculated</h3>
+                <p>Your target is the amount that can fund your annual spending indefinitely at a 4% withdrawal rate — twenty-five times what you spend in a year. That figure comes from research on how long a diversified portfolio survives being drawn down, and 4% is the rate at which it survived essentially every historical starting year over a thirty-year retirement. The calendar then grows your current investments and adds your monthly surplus month by month at a 7% annual real return, and reports the month the balance first reaches the target.</p>
+                <p>The 7% is a real return — already net of inflation — which is why the target does not need to be inflated year by year. Both sides of the comparison are in today's money, so the date they meet at is meaningful without any further adjustment. The second half of the tool divides your take-home pay by the hours you actually work to get a net hourly wage, then prices your recurring expenses in that unit. A subscription is no longer three euros a month; it is the number of working hours a year it takes to pay for it.</p>
+
+                <h3 class="sim-explainer__heading">What it assumes</h3>
+                <ul class="sim-explainer__list">
+                    <li>A 7% annual real return, applied evenly every month. Real markets do not deliver 7% evenly; they deliver something between −40% and +30% in any given year and average out over decades.</li>
+                    <li>A 4% withdrawal rate, and therefore a 25× target. Lower it to 3.5% and the target becomes 28.6× — a change of a few years for most people.</li>
+                    <li>Your income and your spending stay where you put them. No raises, no children, no move to a cheaper city, no new mortgage.</li>
+                    <li>No taxes on investment gains, no fund fees, and no state pension arriving later to lower the amount you need from your own portfolio.</li>
+                </ul>
+                <p class="sim-explainer__note">Because of those four, the date is a direction rather than an appointment. Its value is in what happens when you change one input: the difference between two dates is far more trustworthy than either date on its own.</p>
+
+                <h3 class="sim-explainer__heading">A worked example</h3>
+                <p>Take someone earning 3,000 a month after tax, spending 2,200, with 20,000 already invested. Annual spending is 26,400, so the target is 660,000. The monthly surplus is 800. Starting from 20,000 and adding 800 a month at 7% real, the balance crosses 660,000 in roughly twenty-six years.</p>
+                <p>Now cut spending to 2,000. The target falls to 600,000 and the monthly surplus rises to 1,000, because every euro not spent is a euro invested. The date moves in by about five years. That is the asymmetry the calendar exists to make visible: a change in spending moves both sides of the equation at once, while a raise of the same size moves only one.</p>
+
+                <h3 class="sim-explainer__heading">Common questions</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>Why 4% and not something else?</dt>
+                    <dd>It is the rate that survived nearly every thirty-year window in the historical record for a stock-and-bond portfolio. It is a rule of thumb, not a law — it assumes a thirty-year horizon and a particular asset mix, and retiring at forty means planning for considerably longer than thirty years.</dd>
+                    <dt>Does the date account for a market crash?</dt>
+                    <dd>No. It applies the same return every month, which is the one thing markets never do. If you want to see what a bad decade does to the same plan, the Monte Carlo simulator runs a thousand versions of it with the volatility left in.</dd>
+                    <dt>Is the hourly wage figure the same as my salary divided by my hours?</dt>
+                    <dd>Close, but it uses take-home pay rather than gross, so it reflects what an hour actually puts in your account. Adding commuting time to your hours makes it more honest still, and usually lowers it more than people expect.</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">Keep reading</h3>
+                    <p>The journal covers the ideas behind this tool at greater length.</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="/en/blog/pay-yourself-first-the-simple-habit-to-build-lasting-wealth/">Pay Yourself First: The Simple Habit to Build Lasting Wealth</a></li>
+                        <li><a href="/en/blog/slow-money-system/">The slow money system: a calmer way to build wealth</a></li>
+                        <li><a href="/en/blog/">All journal entries</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
         <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
              panel, down to the markup: whichever door a reader comes in through -

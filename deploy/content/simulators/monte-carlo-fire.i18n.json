@@ -1988,5 +1988,165 @@
     "en": "Thousands of simulated futures show how fragile, or how resilient, a retirement plan is. The financial assessment helps you turn that number into the next concrete step.",
     "es": "Miles de futuros simulados muestran qué tan frágil o resistente es un plan de retiro. El diagnóstico financiero te ayuda a convertir ese número en el siguiente paso concreto.",
     "pt": "Milhares de futuros simulados mostram o quão frágil ou resistente é um plano de reforma. O diagnóstico financeiro ajuda-te a transformar esse número no próximo passo concreto."
+  },
+  "explTitle": {
+    "en": "What a Monte Carlo simulation tells you",
+    "es": "Qué te dice una simulación de Monte Carlo",
+    "pt": "O que uma simulação de Monte Carlo lhe diz"
+  },
+  "explLede": {
+    "en": "Every other retirement calculator gives you one number, produced by assuming the market returns the same amount every year. It never does. This simulator runs your plan a thousand times over, drawing a different sequence of market years each time, and reports not a number but a probability: the share of those thousand lives in which your money outlasted you.",
+    "es": "Cualquier otra calculadora de jubilación te da un número, obtenido suponiendo que el mercado rinde lo mismo todos los años. Nunca lo hace. Este simulador ejecuta tu plan mil veces, extrayendo cada vez una secuencia distinta de años de mercado, y no informa de un número sino de una probabilidad: la proporción de esas mil vidas en las que tu dinero te sobrevivió.",
+    "pt": "Qualquer outra calculadora de reforma dá-lhe um número, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro lhe sobreviveu."
+  },
+  "explHowTitle": {
+    "en": "How the thousand runs work",
+    "es": "Cómo funcionan las mil simulaciones",
+    "pt": "Como funcionam as mil simulações"
+  },
+  "explHow1": {
+    "en": "For each of the 1,000 runs and each year within it, the simulator draws a random return for stocks, bonds and cash, and a random rate of inflation, from distributions calibrated to long-run history: stocks average 8.2% a year with a standard deviation of 24%, bonds 3.5% with 6%, cash 1.5% with 1%, and inflation 3.5% with 2.5%. Your portfolio grows by the weighted result, your withdrawal is taken out, and the withdrawal is inflated for the following year.",
+    "es": "Para cada una de las 1.000 simulaciones y cada año dentro de ella, el simulador extrae una rentabilidad aleatoria para acciones, bonos y efectivo, y una tasa aleatoria de inflación, de distribuciones calibradas con la historia a largo plazo: las acciones promedian un 8,2% anual con una desviación típica del 24%, los bonos un 3,5% con un 6%, el efectivo un 1,5% con un 1%, y la inflación un 3,5% con un 2,5%. Tu cartera crece según el resultado ponderado, se retira tu gasto, y ese gasto se infla para el año siguiente.",
+    "pt": "Para cada uma das 1.000 simulações e cada ano dentro dela, o simulador sorteia uma rentabilidade aleatória para ações, obrigações e liquidez, e uma taxa aleatória de inflação, a partir de distribuições calibradas com a história de longo prazo: as ações têm média de 8,2% ao ano com um desvio-padrão de 24%, as obrigações 3,5% com 6%, a liquidez 1,5% com 1%, e a inflação 3,5% com 2,5%. A sua carteira cresce segundo o resultado ponderado, é levantada a sua despesa, e essa despesa é inflacionada para o ano seguinte."
+  },
+  "explHow2": {
+    "en": "The thousand results are then sorted, and three of them are shown: the 10th percentile, the median and the 90th. The median is the ordinary outcome. The 10th percentile is the one that matters — it is what happens when the draws go against you, and a plan that only works at the median is a plan that fails one time in two. A run in which the balance sits at zero for ten consecutive years is counted as ruined, not as recovered.",
+    "es": "Los mil resultados se ordenan y se muestran tres: el percentil 10, la mediana y el percentil 90. La mediana es el desenlace corriente. El percentil 10 es el que importa: es lo que ocurre cuando los sorteos van en tu contra, y un plan que solo funciona en la mediana es un plan que falla una vez de cada dos. Una simulación en la que el saldo se queda a cero durante diez años seguidos se cuenta como arruinada, no como recuperada.",
+    "pt": "Os mil resultados são ordenados e são mostrados três: o percentil 10, a mediana e o percentil 90. A mediana é o desfecho corrente. O percentil 10 é o que importa: é o que acontece quando os sorteios correm contra si, e um plano que só funciona na mediana é um plano que falha uma vez em cada duas. Uma simulação em que o saldo fica a zero durante dez anos seguidos conta como arruinada, não como recuperada."
+  },
+  "explAssumptionsTitle": {
+    "en": "What it assumes",
+    "es": "Qué supone",
+    "pt": "O que pressupõe"
+  },
+  "explAssumption1": {
+    "en": "Returns are drawn independently each year from a normal distribution. Real markets have fat tails — extreme years happen more often than a bell curve predicts — and they cluster, so a bad year is more likely to be followed by another.",
+    "es": "Las rentabilidades se extraen de forma independiente cada año de una distribución normal. Los mercados reales tienen colas gruesas —los años extremos ocurren más de lo que predice una campana— y se agrupan, así que un mal año tiene más probabilidad de ir seguido de otro.",
+    "pt": "As rentabilidades são sorteadas de forma independente em cada ano a partir de uma distribuição normal. Os mercados reais têm caudas grossas — os anos extremos acontecem mais do que uma curva de sino prevê — e agrupam-se, pelo que um mau ano tem mais probabilidade de ser seguido de outro."
+  },
+  "explAssumption2": {
+    "en": "Asset classes are drawn independently of each other. In a real crisis correlations rise towards one, which is precisely when diversification is supposed to help.",
+    "es": "Las clases de activos se extraen independientemente entre sí. En una crisis real las correlaciones suben hacia uno, que es justo cuando se supone que la diversificación ayuda.",
+    "pt": "As classes de ativos são sorteadas independentemente umas das outras. Numa crise real as correlações sobem para perto de um, que é precisamente quando a diversificação deveria ajudar."
+  },
+  "explAssumption3": {
+    "en": "Your withdrawal rises with inflation regardless of what the portfolio did. Real retirees spend less after a bad year, which is the single most effective defence available and is not modelled here.",
+    "es": "Tu retirada sube con la inflación pase lo que pase con la cartera. Los jubilados reales gastan menos tras un mal año, que es la defensa más eficaz disponible y aquí no está modelada.",
+    "pt": "O seu levantamento sobe com a inflação independentemente do que a carteira fez. Os reformados reais gastam menos depois de um mau ano, que é a defesa mais eficaz disponível e aqui não está modelada."
+  },
+  "explAssumption4": {
+    "en": "No taxes, no fund fees, no state pension and no other income. Each of those shifts the result, and not all of them in the same direction.",
+    "es": "Sin impuestos, sin comisiones de fondos, sin pensión pública y sin otros ingresos. Cada uno de esos factores mueve el resultado, y no todos en la misma dirección.",
+    "pt": "Sem impostos, sem comissões de fundos, sem pensão pública e sem outros rendimentos. Cada um desses fatores move o resultado, e não todos na mesma direção."
+  },
+  "explAssumptionsNote": {
+    "en": "Read the success rate as a comparison tool, not as a forecast. Ninety per cent here does not mean a nine-in-ten chance in the world; it means this plan failed a tenth of the time under these assumptions, and you can see exactly which change makes that number move.",
+    "es": "Lee la tasa de éxito como herramienta de comparación, no como pronóstico. Un noventa por ciento aquí no significa nueve posibilidades de cada diez en el mundo real: significa que este plan falló una décima parte de las veces bajo estos supuestos, y puedes ver exactamente qué cambio mueve esa cifra.",
+    "pt": "Leia a taxa de sucesso como ferramenta de comparação, não como previsão. Noventa por cento aqui não significa nove hipóteses em dez no mundo real: significa que este plano falhou um décimo das vezes sob estes pressupostos, e pode ver exatamente que alteração move esse número."
+  },
+  "explExampleTitle": {
+    "en": "A worked example",
+    "es": "Un ejemplo resuelto",
+    "pt": "Um exemplo resolvido"
+  },
+  "explExample1": {
+    "en": "A portfolio of 800,000, 70% in stocks, drawn down at 4% a year over thirty years, comes back with a success rate in the low nineties. The median run ends with more money than it started with — often several times more — which is the counter-intuitive part: the typical outcome of a sustainable withdrawal plan is dying rich.",
+    "es": "Una cartera de 800.000, con un 70% en acciones, consumida al 4% anual durante treinta años, devuelve una tasa de éxito en los noventa y pocos. La simulación mediana termina con más dinero del que empezó, a menudo varias veces más, que es la parte contraintuitiva: el desenlace típico de un plan de retirada sostenible es morir rico.",
+    "pt": "Uma carteira de 800.000, com 70% em ações, consumida a 4% ao ano durante trinta anos, devolve uma taxa de sucesso nos noventa e poucos. A simulação mediana termina com mais dinheiro do que começou, muitas vezes várias vezes mais, que é a parte contraintuitiva: o desfecho típico de um plano de levantamento sustentável é morrer rico."
+  },
+  "explExample2": {
+    "en": "Now raise the withdrawal rate to 5%. The median barely moves — but the success rate falls by more than twenty points and the 10th percentile run runs out of money in the mid-twenties. That gap is the entire argument for looking at the bottom decile: the typical outcome of the riskier plan looks fine, and the risk is all hiding in the tail you were not shown.",
+    "es": "Ahora sube la tasa de retirada al 5%. La mediana apenas se mueve, pero la tasa de éxito cae más de veinte puntos y la simulación del percentil 10 se queda sin dinero a mitad de los veintitantos años. Esa brecha es todo el argumento para mirar el decil inferior: el desenlace típico del plan más arriesgado parece correcto, y el riesgo está escondido entero en la cola que no te enseñaron.",
+    "pt": "Agora suba a taxa de levantamento para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro a meio dos vinte e tal anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que não lhe mostraram."
+  },
+  "explFaqQ1": {
+    "en": "Why a thousand runs and not more?",
+    "es": "¿Por qué mil simulaciones y no más?",
+    "pt": "Porquê mil simulações e não mais?"
+  },
+  "explFaqA1": {
+    "en": "A thousand is enough for the success rate to be stable to about a percentage point, and few enough to finish instantly in your browser. Running ten thousand would move the second decimal place, not the decision.",
+    "es": "Mil bastan para que la tasa de éxito sea estable con un margen de cerca de un punto porcentual, y son pocas para terminar al instante en tu navegador. Ejecutar diez mil movería el segundo decimal, no la decisión.",
+    "pt": "Mil bastam para que a taxa de sucesso seja estável com uma margem de cerca de um ponto percentual, e são poucas para terminar instantaneamente no seu navegador. Executar dez mil moveria a segunda casa decimal, não a decisão."
+  },
+  "explFaqQ2": {
+    "en": "Why does the result change each time I run it?",
+    "es": "¿Por qué el resultado cambia cada vez que lo ejecuto?",
+    "pt": "Porque é que o resultado muda de cada vez que o executo?"
+  },
+  "explFaqA2": {
+    "en": "Because the draws are random. A success rate that swings by a point or two between runs is normal; one that swings by ten is telling you the plan is sitting on a knife edge, which is itself the answer.",
+    "es": "Porque los sorteos son aleatorios. Que la tasa de éxito oscile uno o dos puntos entre ejecuciones es normal; que oscile diez te está diciendo que el plan está en el filo, y eso ya es la respuesta.",
+    "pt": "Porque os sorteios são aleatórios. Que a taxa de sucesso oscile um ou dois pontos entre execuções é normal; que oscile dez está a dizer-lhe que o plano está no fio da navalha, e isso já é a resposta."
+  },
+  "explFaqQ3": {
+    "en": "What success rate should I aim for?",
+    "es": "¿A qué tasa de éxito debería aspirar?",
+    "pt": "A que taxa de sucesso devo aspirar?"
+  },
+  "explFaqA3": {
+    "en": "There is no correct threshold, and chasing 100% usually means working years longer for protection against scenarios in which you would have cut your spending anyway. What matters more is knowing which lever — spending, allocation, or one more year of saving — moves your number the most.",
+    "es": "No hay un umbral correcto, y perseguir el 100% suele significar trabajar años de más para protegerte de escenarios en los que de todos modos habrías recortado el gasto. Importa más saber qué palanca —gasto, asignación o un año más de ahorro— mueve más tu cifra.",
+    "pt": "Não há um limiar correto, e perseguir 100% costuma significar trabalhar anos a mais para se proteger de cenários em que teria cortado a despesa de qualquer forma. Importa mais saber que alavanca — despesa, alocação ou mais um ano de poupança — move mais o seu número."
+  },
+  "explFaqTitle": {
+    "en": "Common questions",
+    "es": "Preguntas frecuentes",
+    "pt": "Perguntas frequentes"
+  },
+  "explReadingTitle": {
+    "en": "Keep reading",
+    "es": "Sigue leyendo",
+    "pt": "Continue a ler"
+  },
+  "explReadingIntro": {
+    "en": "The journal covers the ideas behind this tool at greater length.",
+    "es": "El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.",
+    "pt": "O diário desenvolve com mais calma as ideias por trás desta ferramenta."
+  },
+  "explReadingAll": {
+    "en": "All journal entries",
+    "es": "Todas las entradas del diario",
+    "pt": "Todas as entradas do diário"
+  },
+  "explCrumbHome": {
+    "en": "Home",
+    "es": "Inicio",
+    "pt": "Início"
+  },
+  "explCrumbSimulators": {
+    "en": "Simulators",
+    "es": "Simuladores",
+    "pt": "Simuladores"
+  },
+  "explReadingSlug1": {
+    "en": "pay-yourself-first-the-simple-habit-to-build-lasting-wealth",
+    "es": "pagate-a-ti-mismo-primero-el-habito-clave-para-crear-riqueza",
+    "pt": "pague-se-a-si-mesmo-primeiro-o-habito-chave-para-criar-riqueza"
+  },
+  "explReadingLabel1": {
+    "en": "Pay Yourself First: The Simple Habit to Build Lasting Wealth",
+    "es": "Págate a Ti Mismo Primero: El Hábito Clave para Crear Riqueza",
+    "pt": "Pague-se a Si Mesmo Primeiro: O Hábito Chave para Criar Riqueza"
+  },
+  "explReadingSlug2": {
+    "en": "foundations-of-personal-finance-how-to-control-expenses-and-build-wealth",
+    "es": "fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza",
+    "pt": "fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza"
+  },
+  "explReadingLabel2": {
+    "en": "Foundations of Personal Finance: How to Control Expenses and Build Wealth",
+    "es": "Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza",
+    "pt": "Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza"
+  },
+  "explCrumbSelf": {
+    "en": "Monte Carlo FIRE",
+    "es": "Monte Carlo FIRE",
+    "pt": "Monte Carlo FIRE"
+  },
+  "explCrumbLabel": {
+    "en": "Breadcrumb",
+    "es": "Ruta de navegación",
+    "pt": "Trilho de navegação"
   }
 }

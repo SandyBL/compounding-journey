@@ -1,0 +1,201 @@
+/* The prose block every simulator ends on, above the closing call to action.
+
+   Why it exists: a calculator is a page with no readable text on it. Every
+   string above this section is a label on a control, and the numbers that make
+   the tool worth visiting only exist after somebody has moved a slider. Google
+   crawled all fifteen simulator pages and indexed none of them - "crawled,
+   currently not indexed", which is the verdict a page gets when there is
+   nothing on it to read. This section is the page explaining, in words, what
+   it models, what it assumes, and how to read what it returns.
+
+   Why it draws its own panel: the five simulators do not share a palette. The
+   hub and the Freedom Calendar are cream, the Market Time Machine and the
+   Passive Income Engine sit on #fbf8f3, and the Monte Carlo cockpit is near
+   black. A section styled to inherit would need three sets of rules and would
+   still be wrong on the next simulator. So this paints its own paper surface
+   and sets its own text colour, exactly as simulator-cta.css paints its own
+   forest panel, and reads identically on all five.
+
+   The heading font is a stack rather than a named family, for the reason given
+   at length in simulator-cta.css: each simulator group loads a different serif,
+   and the stack resolves to whichever one the page already has. No page
+   downloads a font for this. */
+
+.sim-explainer {
+  padding-top: 40px;
+}
+
+.sim-explainer__inner {
+  padding: 34px 38px;
+  background: #fdf8ec;
+  border: 1px solid #e8dcc2;
+  color: #2c231b;
+  text-align: left;
+}
+
+.sim-explainer__title {
+  margin: 0;
+  color: #1f1913;
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.sim-explainer__lede {
+  max-width: 68ch;
+  margin: 14px 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.sim-explainer__heading {
+  margin: 30px 0 0;
+  color: #1f1913;
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.sim-explainer p {
+  max-width: 68ch;
+  margin: 12px 0 0;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.sim-explainer__list {
+  max-width: 68ch;
+  margin: 12px 0 0;
+  padding-left: 1.15em;
+  list-style: disc;
+}
+
+.sim-explainer__list li {
+  margin-top: 7px;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+/* The assumptions are the part a reader is most likely to quote back at the
+   tool when the answer surprises them, so the note that bounds them is set
+   apart rather than left as one more paragraph. */
+.sim-explainer__note {
+  max-width: 68ch;
+  margin: 16px 0 0;
+  padding-left: 14px;
+  border-left: 3px solid #c89a32;
+  color: #574838;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.sim-explainer__faq {
+  max-width: 68ch;
+  margin: 8px 0 0;
+}
+
+.sim-explainer__faq dt {
+  margin-top: 20px;
+  color: #1f1913;
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.sim-explainer__faq dd {
+  margin: 7px 0 0;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.sim-explainer__reading {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid #e8dcc2;
+}
+
+/* The reading list is the only route from a simulator into the journal. Its
+   links are underlined rather than coloured alone, because colour on this
+   surface is doing enough work already and an underline is the one affordance
+   that survives a reader who cannot separate the two. */
+.sim-explainer a {
+  color: #2c231b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sim-explainer a:hover {
+  color: #7a5c1c;
+}
+
+.sim-explainer a:focus-visible {
+  outline: 3px solid rgba(200, 154, 50, 0.6);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .sim-explainer__inner {
+    padding: 26px 22px;
+  }
+}
+
+/*
+ * The breadcrumb above the tool itself.
+ *
+ * Deliberately quiet: it exists so the four tool pages declare where they sit
+ * in the site the way the hub already did, and a reader who does not need it
+ * should be able to ignore it entirely. Inherits the page's own background
+ * rather than painting one, because unlike the explainer panel it sits inside
+ * whatever <main> already looks like - and the three palettes only conflict
+ * over large filled areas, not over a line of small text.
+ */
+.sim-crumbs {
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.8125rem;
+  margin: 0 0 1rem;
+}
+
+.sim-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+ * The separator is a pseudo-element rather than a character in the markup, so
+ * it is never read out, never copied with the text, and never ends up in the
+ * accessible name of the link it follows.
+ */
+.sim-crumbs li + li::before {
+  content: "/";
+  margin-right: 0.5rem;
+  opacity: 0.45;
+}
+
+.sim-crumbs a {
+  color: currentColor;
+  opacity: 0.7;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.sim-crumbs a:hover {
+  opacity: 1;
+}
+
+.sim-crumbs a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* The current page is not a link, and should not look like one. */
+.sim-crumbs [aria-current="page"] {
+  opacity: 0.55;
+}
