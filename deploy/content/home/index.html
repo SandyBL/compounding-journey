@@ -10,8 +10,8 @@
          that actually want it. Keep this URL byte-identical to the header <img>
          below or the preload fetches a second copy. -->
     <link rel="preload" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" as="image" fetchpriority="high">
-    <title>El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad</title>
-    <meta id="meta-description" name="description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
+    <title>Compounding Journey — El viaje del Crecimiento Compuesto</title>
+    <meta id="meta-description" name="description" content="Compounding Journey — psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="icon" type="image/png" sizes="64x64" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=64&amp;h=64&amp;fit=cover&amp;fm=png">
     <link rel="apple-touch-icon" sizes="180x180" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=180&amp;h=180&amp;fit=cover&amp;fm=png">
@@ -33,8 +33,8 @@
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Compounding Journey">
-    <meta id="og-title" property="og:title" content="El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad">
-    <meta id="og-description" property="og:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
+    <meta id="og-title" property="og:title" content="Compounding Journey — El viaje del Crecimiento Compuesto">
+    <meta id="og-description" property="og:description" content="Compounding Journey — psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
     <meta id="og-url" property="og:url" content="https://compoundingjourney.com/">
     <meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <meta property="og:image:width" content="1200">
@@ -46,8 +46,8 @@
     <meta property="og:locale:alternate" content="pt_PT">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta id="twitter-title" name="twitter:title" content="El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad">
-    <meta id="twitter-description" name="twitter:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
+    <meta id="twitter-title" name="twitter:title" content="Compounding Journey — El viaje del Crecimiento Compuesto">
+    <meta id="twitter-description" name="twitter:description" content="Compounding Journey — psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
     <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
     <!-- build: The body font is declared in header.css, the third stylesheet the parser
@@ -919,14 +919,54 @@
                 padding: 0.2rem;
             }
 
+            /* Previously `display: none`, which left a phone with no route to
+               the journal or the newsletter anywhere on the site: neither link
+               is in the drawer either, so both publications were desktop-only.
+               The row has room for them once the two pills drop to the compact
+               sizes here - three flags and two icons together are narrower than
+               the brand lockup they sit beside. */
             .header-publication-switcher {
-                display: none;
+                gap: 0;
+                padding: 0.2rem;
+            }
+
+            .header-publication-button {
+                width: 2.25rem;
+                height: 2.25rem;
             }
 
             .lang-btn {
                 width: 2.25rem;
                 height: 2.25rem;
                 padding: 0.375rem;
+            }
+        }
+
+        /* 320px is the narrowest viewport this site is built for, and the logo
+           plus five controls do not fit there at the sizes above. Only the slack
+           between them goes: every target stays square and well clear of the
+           24x24 minimum in WCAG 2.2 SC 2.5.8. */
+        @media (max-width: 374px) {
+            .header-language-switcher,
+            .header-publication-switcher {
+                padding: 0.15rem;
+            }
+
+            .lang-btn,
+            .header-publication-button {
+                width: 2rem;
+                height: 2rem;
+                padding: 0.3rem;
+            }
+
+            .lang-btn svg {
+                width: 1.25rem;
+                height: 0.85rem;
+            }
+
+            .mobile-menu-toggle {
+                width: 2.5rem;
+                height: 2.5rem;
             }
         }
 
@@ -2691,6 +2731,57 @@
         </div>
     </section>
 
+    <!-- FROM THE BLOG SECTION -->
+    <section id="blog" aria-labelledby="blog-heading" class="scroll-mt-20 relative overflow-hidden py-20 bg-creamsoft border-b border-creamborder">
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div class="absolute -top-28 -left-24 w-80 h-80 rounded-full bg-forestgreen/5 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-warmgold/40 to-transparent"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12">
+                <div class="lg:col-span-7">
+                    <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
+                        <span lang-content="es">Desde el blog</span>
+                        <span lang-content="en">From the blog</span>
+                        <span lang-content="pt">Do blog</span>
+                    </p>
+                    <h2 id="blog-heading" class="text-3xl sm:text-4xl font-extrabold text-forestgreen leading-tight">
+                        <span lang-content="es">Lo último escrito en Compounding Journey</span>
+                        <span lang-content="en">Latest thinking from Compounding Journey</span>
+                        <span lang-content="pt">O mais recente escrito na Compounding Journey</span>
+                    </h2>
+                </div>
+                <div class="lg:col-span-5 lg:border-l lg:border-creamborder lg:pl-8">
+                    <p class="text-sm text-darkbark/70 leading-relaxed">
+                        <span lang-content="es">Tres lecturas recientes sobre psicología del dinero, hábitos financieros y decisiones que se sostienen en el tiempo. Cortas, y pensadas para aplicarse.</span>
+                        <span lang-content="en">Three recent reads on money psychology, financial habits, and decisions that hold up over time. Short, and written to be acted on.</span>
+                        <span lang-content="pt">Três leituras recentes sobre psicologia do dinheiro, hábitos financeiros e decisões que se sustentam ao longo do tempo. Curtas, e pensadas para aplicar.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- build: The three cards below are written by
+                 scripts/generate-home-pages.mjs, from the same Markdown front matter
+                 the journal itself is built from. Publishing an article stays one
+                 Markdown file: the home page follows on the next deploy rather than
+                 becoming a fourth place somebody has to remember to edit. Everything
+                 between the markers is replaced, so the markers have to survive. -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" data-latest-articles>
+                <!--latest-articles:start--><!--latest-articles:end-->
+            </div>
+
+            <div class="mt-10 flex justify-center">
+                <a href="/es/blog/" data-blog-link class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
+                    <span lang-content="es">Ver todos los artículos</span>
+                    <span lang-content="en">See every article</span>
+                    <span lang-content="pt">Ver todos os artigos</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- ASSESSMENT SECTION -->
     <section id="assessment" aria-labelledby="assessment-heading" class="scroll-mt-20 py-20 bg-white border-b border-creamborder">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -3782,15 +3873,15 @@
         };
 
         const pageTitles = {
-            es: "El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad",
-            en: "Compounding Journey - Your Map to Freedom",
-            pt: "A Jornada de Crescimento Composto - O Teu Mapa para a Liberdade"
+            es: "Compounding Journey — El viaje del Crecimiento Compuesto",
+            en: "Compounding Journey — Your Map to Freedom",
+            pt: "Compounding Journey — A Jornada de Crescimento Composto"
         };
 
         const pageDescriptions = {
-            es: "Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.",
-            en: "Money psychology, purposeful investing, and practical tools for building financial freedom around your values.",
-            pt: "Psicologia do dinheiro, investimento com propósito e ferramentas para construir liberdade financeira segundo os teus valores."
+            es: "Compounding Journey — psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.",
+            en: "Compounding Journey — money psychology, purposeful investing, and practical tools for building financial freedom around your values.",
+            pt: "Compounding Journey — psicologia do dinheiro, investimento com propósito e ferramentas para construir liberdade financeira segundo os teus valores."
         };
 
         const openGraphLocales = {
