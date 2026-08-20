@@ -31,15 +31,24 @@
  * it must never be cached as a property of the URL - a permanent redirect here
  * would be the kind of mistake that outlives the deploy that caused it.
  *
- * Scoped to `/` alone. Nothing else on the site runs at the edge, which matters
- * because a path served by an edge function does not get the headers from
- * _headers - see SECURITY_HEADERS below.
+ * Scoped to `/` alone, and it also answers `/?lang=` on that path - see the
+ * branch at the top of the handler for why that moved here out of _redirects.
+ * A path served by an edge function does not get the headers from _headers, so
+ * every response constructed here restates them - see SECURITY_HEADERS below.
  */
 import type { Config, Context } from '@netlify/edge-functions';
 
 /** The three published languages. The apex is Spanish, so only two are targets. */
 const REDIRECTS: Record<string, string> = { en: '/en/', pt: '/pt/' };
 const SUPPORTED = new Set(['en', 'es', 'pt']);
+
+/**
+ * Where `?lang=` points. Spanish is included and maps to the apex, because the
+ * job of this table is to get the parameter out of the URL as much as it is to
+ * route: `/?lang=es` is a second address for a page that already exists at `/`,
+ * and redirecting it to `/` retires it.
+ */
+const EXPLICIT: Record<string, string> = { en: '/en/', es: '/', pt: '/pt/' };
 
 /** Set once and read for a year. Its presence, not its value, ends the negotiation. */
 const COOKIE = 'lang';
@@ -93,12 +102,41 @@ function negotiate(header: string | null): string | null {
 export default async (request: Request, context: Context) => {
   const url = new URL(request.url);
 
-  // `/?lang=en` and `/?lang=pt` are already redirected by _redirects, and the
-  // parameter is an explicit request for a language - it beats anything guessed
-  // from a header. This has to be checked here rather than left to the redirect
-  // rules, because a response returned from an edge function skips them: without
-  // this branch, `/?lang=en` from a Portuguese browser would land on /pt/.
-  if (url.searchParams.has('lang')) return;
+  // `?lang=` is an explicit request for a language, so it beats anything guessed
+  // from a header and is answered before the negotiation below runs.
+  //
+  // This used to be two rules in _redirects. They worked, but the redirect
+  // engine forwards the parameters it matched on to the destination, so
+  // `/?lang=en` arrived at `/en/?lang=en` - a second 200 URL for a page that
+  // already had one, carrying a parameter the page does not read. There is no
+  // syntax for dropping a parameter in a redirect rule; there is here.
+  //
+  // Every other parameter is kept. A campaign tag belongs to the visit and has
+  // to survive the hop, which is also why this rebuilds the URL rather than
+  // constructing a bare path.
+  const requested = url.searchParams.get('lang');
+  if (requested !== null) {
+    const destination = EXPLICIT[requested.trim().toLowerCase()];
+    // Not a language this site publishes. Serve the apex as published rather
+    // than guessing at what was meant.
+    if (!destination) return;
+
+    const target = new URL(url);
+    target.pathname = destination;
+    target.searchParams.delete('lang');
+
+    // 301, unlike the negotiated redirect below: this one is a property of the
+    // URL and nothing else, so it is the same answer for every visitor and is
+    // safe to cache. No cookie is set with it for the same reason - a permanent
+    // redirect is served from the browser's own cache on the second visit, so a
+    // Set-Cookie here would only ever reach the first one.
+    const response = new Response(null, { status: 301 });
+    response.headers.set('Location', target.toString());
+    for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+      response.headers.set(name, value);
+    }
+    return response;
+  }
 
   // Been here before. Nothing to decide.
   if (context.cookies.get(COOKIE)) return;

@@ -11,6 +11,7 @@
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="en_US"><meta property="og:title" content="Market Time Machine: Historical Portfolio Simulator"><meta property="og:description" content="Compare portfolios across historic market cycles and crises."><meta property="og:url" content="https://compoundingjourney.com/en/simulators/market-time-machine.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Market Time Machine: Historical Portfolio Simulator"><meta name="twitter:description" content="Compare portfolios across historic market cycles and crises."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Market Time Machine","url":"https://compoundingjourney.com/en/simulators/market-time-machine.html","description":"An interactive historical portfolio comparison simulator covering market cycles from 1920 onward.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://compoundingjourney.com/en/"},{"@type":"ListItem","position":2,"name":"Simulators","item":"https://compoundingjourney.com/en/simulator.html"},{"@type":"ListItem","position":3,"name":"Market Time Machine"}]}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=cf36153ed998">
@@ -62,8 +63,9 @@
             opacity: 1;
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.en.webmanifest">
@@ -157,6 +159,16 @@
 
     <!-- MAIN APP CONTAINER -->
     <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-1 space-y-4">
+        <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
+             so each tool page looked like an orphan at the top level of the site. -->
+        <nav class="sim-crumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/simulator.html">Simulators</a></li>
+                <li><span aria-current="page">Market Time Machine</span></li>
+            </ol>
+        </nav>
+
 
         <!-- INTRO BANNER & PRESET SELECTOR -->
         <div class="bg-gradient-to-r from-forest-900 via-forest-800 to-espresso-900 rounded-2xl p-4 sm:p-5 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -480,6 +492,71 @@
                 </div>
             </div>
         </div>
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">What the Market Time Machine shows</h2>
+                <p class="sim-explainer__lede">This tool takes a portfolio you design and runs it through the actual returns of the last hundred years — the Great Depression, the war years, the 1970s inflation, the dot-com collapse, 2008, the pandemic. You are not looking at a projection. You are looking at what your allocation would have done to real money through the worst decades on record, next to the benchmarks it is usually compared against.</p>
+
+                <h3 class="sim-explainer__heading">How it works</h3>
+                <p>You set the percentage of your portfolio in five asset classes — stocks, bonds, real estate, gold and cash — and pick a start year. For every year from then to now, the tool takes that year's actual return for each asset class, weights them by your allocation, and applies the combined figure to your running balance. It does the same for five reference portfolios at once: a classic 60/40, Ray Dalio's All Weather, Harry Browne's Permanent Portfolio, and an aggressive and a conservative mix.</p>
+                <p>Because your target weights are re-applied to every single year, the model is doing something specific: it rebalances back to your target allocation annually. That is not a neutral detail. Rebalancing is what forces you to sell whatever just went up and buy whatever just fell, and over a century it is responsible for a meaningful share of the difference between a mixed portfolio and the sum of its parts. The events overlaid on the chart are there so a number has a story attached to it — a 43% fall is abstract until it is labelled 1931.</p>
+
+                <h3 class="sim-explainer__heading">What it assumes</h3>
+                <ul class="sim-explainer__list">
+                    <li>Returns are nominal, not inflation-adjusted. A portfolio that grew 8% in 1979 lost purchasing power that year; the chart will not show that, and the 1970s are where this matters most.</li>
+                    <li>Rebalancing back to target happens every year, free and instantly. In a taxable account, rebalancing realises gains and costs money.</li>
+                    <li>No fund fees, no trading costs, no taxes and no dividend withholding. A single percentage point of annual cost compounds to roughly a quarter of the final balance over forty years.</li>
+                    <li>The asset classes are broad indices. "Stocks" is a whole market, not the shares you actually own, and no index existed to buy for most of the period being modelled.</li>
+                </ul>
+                <p class="sim-explainer__note">History is a sample of one. That a portfolio survived every crisis in this dataset is evidence about its character, not a guarantee about the next crisis, which will be shaped differently.</p>
+
+                <h3 class="sim-explainer__heading">A worked example</h3>
+                <p>Put 100% in stocks and start in 1929. The balance falls by roughly two thirds within three years and does not return to its starting value for well over a decade. Put the same money in the Permanent Portfolio — a quarter each in stocks, long bonds, gold and cash — and the same three years cost you a fraction of that.</p>
+                <p>Then run both to the present day. The all-stock portfolio ends far ahead. Both facts are true at once, and the useful question is not which number is bigger but whether you would have held the first one through 1932 — because an allocation you abandon at the bottom returns nothing at all. That is what the tool is really testing.</p>
+
+                <h3 class="sim-explainer__heading">Common questions</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>Are the returns adjusted for inflation?</dt>
+                    <dd>No — they are nominal total returns. Read the long-run results as bigger than they were in purchasing power, especially any window that includes the 1940s or the 1970s.</dd>
+                    <dt>Does it rebalance?</dt>
+                    <dd>Yes, once a year, back to the exact weights you set. If you want to know what buy-and-never-touch would have done instead, set a single asset class to 100% — that is the only allocation rebalancing cannot change.</dd>
+                    <dt>Why does the start year change the answer so much?</dt>
+                    <dd>Because the order of returns matters as much as their average. Starting a year before a crash and a year after it produces very different balances from identical average returns — which is the single strongest argument for not putting a lifetime of savings in on one day.</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">Keep reading</h3>
+                    <p>The journal covers the ideas behind this tool at greater length.</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="/en/blog/slow-money-system/">The slow money system: a calmer way to build wealth</a></li>
+                        <li><a href="/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/">Foundations of Personal Finance: How to Control Expenses and Build Wealth</a></li>
+                        <li><a href="/en/blog/">All journal entries</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
         <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
              panel, down to the markup: whichever door a reader comes in through -
              an article or a simulator - the page ends on the same offer, in the

@@ -6,8 +6,13 @@ https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 3
 # one with JavaScript, so "/", "/?lang=en" and "/?lang=pt" were the same bytes
 # under three addresses. Each language now has its own pre-rendered page, and
 # the query-string addresses are folded into it so their history is not lost.
-/ lang=en /en/ 301!
-/ lang=pt /pt/ 301!
+# `/?lang=en` and `/?lang=pt` are handled by the language-preference edge
+# function instead. The redirect engine forwards every query parameter it
+# matched on to the destination, so these two rules sent /?lang=en to
+# /en/?lang=en - a second 200 URL for the English home page, carrying a
+# parameter that means nothing to the page that received it. The syntax has no
+# way to drop a parameter, and the edge function already runs on this exact
+# path for language negotiation, so doing it there costs no extra request.
 
 # Spanish lives at the apex URL. /es/ is the address people guess from the
 # other two, so it points there rather than 404ing.
@@ -16,12 +21,57 @@ https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 3
 # The journal used to render every article from one client-side shell, so each
 # translation shared a URL, a canonical and an empty document. Those addresses
 # now point at the pre-rendered page for the requested slug.
-/en/blog/article.html post=:slug /en/blog/:slug/ 301
-/es/blog/article.html post=:slug /es/blog/:slug/ 301
-/pt/blog/article.html post=:slug /pt/blog/:slug/ 301
+# The `post=` form is handled by the legacy-article-url edge function, for the
+# same reason as the language parameter above: matching on `post` and then
+# forwarding it produced /en/blog/slow-money-system/?post=slow-money-system,
+# which is a duplicate of the article for every one of the fifteen articles.
+#
+# The bare form stays here. It is a plain path-to-path redirect with no
+# parameter to lose, and keeping it in the redirect engine means these URLs
+# still resolve if the edge function ever bypasses on error.
 /en/blog/article.html /en/blog/ 301
 /es/blog/article.html /es/blog/ 301
 /pt/blog/article.html /pt/blog/ 301
+
+# One page, one URL.
+#
+# Netlify serves a directory and the index.html inside it as two separate 200s,
+# and serves a .html file with and without its extension as two more. Nothing
+# links to the second form of either, but Google had found 36 of them - exactly
+# as many as the site has real pages - and was spending half its crawl budget
+# confirming that each one is a copy of a page it already had. The canonical
+# tags were right, which is why none of this ever surfaced as an error; it
+# surfaced as "alternate page with proper canonical tag" against half the site
+# and as pages that never got crawled often enough to be indexed at all.
+#
+# These are forced. Without the `!` a rule loses to a file that exists at the
+# same path, which is every path listed here.
+#
+# Spanish is first because its home page is the apex rather than /es/. Left to
+# the language rule below it, /es/index.html would redirect to /es/ and then be
+# redirected a second time by the /es/ rule at the top of this file; a chain is
+# a slower crawl and one more hop for the equity to leak through.
+/es/index.html / 301!
+/index.html / 301!
+/:lang/index.html /:lang/ 301!
+/:lang/blog/index.html /:lang/blog/ 301!
+/:lang/blog/:slug/index.html /:lang/blog/:slug/ 301!
+
+# The extensionless twin of every generated .html page. The canonical form keeps
+# the extension because that is what the sitemap, the hreflang clusters and the
+# pages' own canonical tags have always declared - changing the canonical form
+# would mean re-earning 15 URLs, while redirecting the twin costs nothing.
+#
+# The four tool slugs are written out rather than matched with a placeholder.
+# A destination that concatenates a placeholder with a literal extension
+# (/:lang/simulators/:slug.html) is not something the redirect syntax documents,
+# and the failure mode if it is read as a placeholder named "slug.html" is all
+# twelve tool pages redirecting to a 404.
+/:lang/simulator /:lang/simulator.html 301!
+/:lang/simulators/freedom-calendar /:lang/simulators/freedom-calendar.html 301!
+/:lang/simulators/market-time-machine /:lang/simulators/market-time-machine.html 301!
+/:lang/simulators/monte-carlo-fire /:lang/simulators/monte-carlo-fire.html 301!
+/:lang/simulators/passive-income-engine /:lang/simulators/passive-income-engine.html 301!
 
 # Navigation shortcuts. These used to rewrite to index.html with a 200, which
 # served six byte-identical copies of the home page under different URLs.

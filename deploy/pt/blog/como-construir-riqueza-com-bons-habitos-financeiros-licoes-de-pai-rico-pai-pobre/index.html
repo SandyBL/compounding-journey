@@ -35,14 +35,19 @@
   <meta name="twitter:description" content="Aprenda a construir riqueza de longo prazo com bons hábitos financeiros. Entenda a diferença entre ativos, passivos, dívida boa e fluxo de caixa." />
   <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png" />
   <meta name="twitter:image:alt" content="Compounding Journey logo" />
-  <link rel="preload" href="/assets/css/blog.css?v=598f27c97d22" as="style" />
-  <!-- The serif sets the h1 and the whole article body, so it is on the LCP
-       path. Fonts are always fetched in CORS mode, hence crossorigin even
-       though this one is same-origin - without it the preload is discarded and
-       the font downloads twice. -->
-  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/assets/css/blog.css?v=598f27c97d22" />
-  <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d" />
+  <link rel="preload" href="/assets/css/blog.css?v=2b67b442125a" as="style" />
+  <!-- Both faces paint above the fold - the serif sets the headline and the
+       article body, the sans the header and the byline around it - and both are
+       discovered three levels down a waterfall the browser cannot see past:
+       HTML, then blog.css, then the @font-face inside it. Fonts are always
+       fetched in CORS mode, hence crossorigin even though these are
+       same-origin: without it the preload is discarded and the font downloads
+       twice. The version has to match the one blog.css asks for, or it downloads
+       twice for that reason instead. -->
+  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2?v=79cb53cedc3d" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2?v=afe60f961555" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/blog.css?v=2b67b442125a" />
+  <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e" />
   <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda" />
   <script type="application/ld+json">
 {
@@ -187,7 +192,7 @@
       </div>
       <a class="read-next-all text-link" href="/pt/blog/">Ver todos os artigos</a>
     </div></section>
-    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">Continua a jornada</p><h2>Transforma a ideia no teu próximo passo claro.</h2><p>Usa as ferramentas práticas ou completa o diagnóstico financeiro para perceber para onde pode seguir a tua jornada.</p></div><div class="journey-actions"><a class="button" href="/pt/#herramientas">Explorar as ferramentas</a><a class="button button-secondary" href="/pt/#assessment">Fazer o diagnóstico</a></div></div></div></section>
+    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">Continua a jornada</p><h2>Transforma a ideia no teu próximo passo claro.</h2><p>Usa as ferramentas práticas ou completa o diagnóstico financeiro para perceber para onde pode seguir a tua jornada.</p><p class="cta-simulators">Ponha isto em prática: <a href="/pt/simulators/passive-income-engine.html">Motor de Rendimento Passivo</a> · <a href="/pt/simulators/market-time-machine.html">Máquina do Tempo do Mercado</a></p></div><div class="journey-actions"><a class="button" href="/pt/simulator.html">Explorar as ferramentas</a><a class="button button-secondary" href="/pt/#assessment">Fazer o diagnóstico</a></div></div></div></section>
   </main>
   <footer class="site-footer"><div class="container footer-row"><a href="/pt/blog/">← Voltar ao diário</a><span>© 2026 Compounding Journey</span></div></footer>
 </div><script src="/assets/js/article-view.js?v=af44832a5d13" defer></script></body>

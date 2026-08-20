@@ -55,6 +55,80 @@ const simulatorSlugs = [
   'monte-carlo-fire'
 ];
 
+// What each simulator is called, in each language. The pages themselves get
+// these from their i18n sidecars; an article linking to one has to name it too,
+// and there is nowhere else in this script that already knows.
+const simulatorNames = {
+  en: {
+    'freedom-calendar': 'Freedom Calendar',
+    'market-time-machine': 'Market Time Machine',
+    'monte-carlo-fire': 'Monte Carlo FIRE',
+    'passive-income-engine': 'Passive Income Engine'
+  },
+  es: {
+    'freedom-calendar': 'Calendario de la Libertad',
+    'market-time-machine': 'Máquina del Tiempo del Mercado',
+    'monte-carlo-fire': 'Monte Carlo FIRE',
+    'passive-income-engine': 'Motor de Ingresos Pasivos'
+  },
+  pt: {
+    'freedom-calendar': 'Calendário da Liberdade',
+    'market-time-machine': 'Máquina do Tempo do Mercado',
+    'monte-carlo-fire': 'Monte Carlo FIRE',
+    'passive-income-engine': 'Motor de Rendimento Passivo'
+  }
+};
+
+// The two simulators each article sends a reader to, keyed by slug because the
+// slugs are the only per-language identifier an article has.
+//
+// The journal and the simulators were built as separate halves of the site and
+// linked like it: an article's closing panel pointed at an anchor on the home
+// page, so no article linked to any simulator and no simulator linked to any
+// article. Both halves were reachable only through the pages above them, which
+// is most of the reason Search Console had crawled the simulators and then
+// declined to index them - a page nothing links to from a page with text on it
+// reads as a page nobody needed.
+//
+// Every simulator appears in this table at least twice, so none of the four is
+// left with the hub as its only inbound link. A slug that is missing from it
+// simply gets the hub link and the assessment, which is what every article had
+// before - so adding an article without touching this file degrades quietly
+// rather than failing the build.
+const articleSimulators = {
+  'slow-money-system': ['market-time-machine', 'monte-carlo-fire'],
+  'sistema-dinero-lento': ['market-time-machine', 'monte-carlo-fire'],
+  'sistema-dinheiro-lento': ['market-time-machine', 'monte-carlo-fire'],
+
+  'pay-yourself-first-the-simple-habit-to-build-lasting-wealth': ['freedom-calendar', 'monte-carlo-fire'],
+  'pagate-a-ti-mismo-primero-el-habito-clave-para-crear-riqueza': ['freedom-calendar', 'monte-carlo-fire'],
+  'pague-se-a-si-mesmo-primeiro-o-habito-chave-para-criar-riqueza': ['freedom-calendar', 'monte-carlo-fire'],
+
+  'foundations-of-personal-finance-how-to-control-expenses-and-build-wealth': ['freedom-calendar', 'passive-income-engine'],
+  'fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza': ['freedom-calendar', 'passive-income-engine'],
+  'fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza': ['freedom-calendar', 'passive-income-engine'],
+
+  'building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad': ['passive-income-engine', 'market-time-machine'],
+  'como-crear-riqueza-con-buenos-habitos-financieros-lecciones-de-padre-rico-padre-pobre': ['passive-income-engine', 'market-time-machine'],
+  'como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre': ['passive-income-engine', 'market-time-machine'],
+
+  'spending-with-purpose-how-to-align-your-money-with-what-truly-matters': ['passive-income-engine', 'freedom-calendar'],
+  'gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa': ['passive-income-engine', 'freedom-calendar'],
+  'gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa': ['passive-income-engine', 'freedom-calendar']
+};
+
+// The sentence of simulator links inside the closing panel, or nothing at all
+// when the article is not in the table above.
+function simulatorLinks(article, labels) {
+  const matched = articleSimulators[article.slug] || [];
+  const names = simulatorNames[article.language] || {};
+  const links = matched
+    .filter((slug) => names[slug])
+    .map((slug) => `<a href="/${article.language}/simulators/${slug}.html">${escapeHtml(names[slug])}</a>`);
+  if (!links.length) return '';
+  return `<p class="cta-simulators">${escapeHtml(labels.ctaSimulatorsLead)} ${links.join(' · ')}</p>`;
+}
+
 const copy = {
   en: {
     locale: 'en_US',
@@ -73,6 +147,7 @@ const copy = {
     ctaTitle: 'Turn insight into your next clear step.',
     ctaBody: 'Use the practical tools or complete the financial assessment to understand where your journey can go next.',
     ctaTools: 'Explore the tools',
+    ctaSimulatorsLead: 'Put this into practice:',
     ctaAssessment: 'Take the assessment',
     readNextEyebrow: 'Keep reading',
     readNextTitle: 'Three more from the journal',
@@ -116,6 +191,7 @@ const copy = {
     ctaTitle: 'Convierte la idea en tu siguiente paso claro.',
     ctaBody: 'Usa las herramientas prácticas o completa el diagnóstico financiero para saber hacia dónde puede seguir tu viaje.',
     ctaTools: 'Explorar las herramientas',
+    ctaSimulatorsLead: 'Ponlo en práctica:',
     ctaAssessment: 'Hacer el diagnóstico',
     readNextEyebrow: 'Sigue leyendo',
     readNextTitle: 'Tres lecturas más del diario',
@@ -153,6 +229,7 @@ const copy = {
     ctaTitle: 'Transforma a ideia no teu próximo passo claro.',
     ctaBody: 'Usa as ferramentas práticas ou completa o diagnóstico financeiro para perceber para onde pode seguir a tua jornada.',
     ctaTools: 'Explorar as ferramentas',
+    ctaSimulatorsLead: 'Ponha isto em prática:',
     ctaAssessment: 'Fazer o diagnóstico',
     readNextEyebrow: 'Continua a ler',
     readNextTitle: 'Mais três leituras do diário',
@@ -394,7 +471,7 @@ ${structuredData(article, labels, body)}
 ${body}
     </div><footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
   </article>${readNextSection(article, labels, related)}
-    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p></div><div class="journey-actions"><a class="button" href="${homeHref(article.language)}#herramientas">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
+    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p>${simulatorLinks(article, labels)}</div><div class="journey-actions"><a class="button" href="/${article.language}/simulator.html">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
   <footer class="site-footer"><div class="container footer-row"><a href="/${article.language}/blog/">${escapeHtml(labels.backFooter)}</a><span>© 2026 Compounding Journey</span></div></footer>
 </div><script src="/assets/js/article-view.js?v=source" defer></script></body>

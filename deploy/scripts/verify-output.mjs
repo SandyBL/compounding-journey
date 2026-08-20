@@ -15,8 +15,14 @@
  * instead, and fails when it finds them - which is the only difference between
  * a convention and a rule.
  *
- * It runs last, after version-assets.mjs, because two of the three checks are
- * about what that step produced.
+ * It runs last, after version-assets.mjs, because two of the checks are about
+ * what that step produced.
+ *
+ * The duplicate-URL check was added after Search Console reported 39 URLs it
+ * had declined to index. Half of them were the same pages twice: Netlify serves
+ * a directory and the index.html inside it as two separate 200s, and a .html
+ * file with and without its extension as two more, so all 36 published pages
+ * had a second address that nothing linked and nothing forbade.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -69,6 +75,48 @@ async function headerPatterns() {
     }));
 }
 
+/**
+ * The source paths of every forced permanent redirect in _redirects.
+ *
+ * Only forced 301s count. An unforced rule loses to a file that exists at the
+ * same path, and every path this check cares about is one where a file does
+ * exist - so an unforced rule there is a rule that never fires, which is
+ * exactly the kind of silently-inert config this script exists to catch.
+ *
+ * A rule line is `from [conditions] to [status]`. Conditions are `key=value`
+ * pairs and the destination is the first token after them, so the source is
+ * simply the first token and the status is the last.
+ */
+async function forcedRedirectSources() {
+  const source = await fs.readFile(path.join(root, '_redirects'), 'utf8');
+  return source
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith('/'))
+    .map((line) => line.split(/\s+/))
+    .filter((tokens) => tokens.length >= 2 && tokens[tokens.length - 1] === '301!')
+    .map(([from]) => ({
+      rule: from,
+      matcher: new RegExp(`^${from
+        .replace(/[.+?^${}()|[\]\\]/g, '\\$&')
+        .replace(/\*/g, '.*')
+        .replace(/:[A-Za-z_][A-Za-z0-9_]*/g, '[^/]+')}$`)
+    }));
+}
+
+/**
+ * The second URL Netlify will serve a published file at, or null when it has
+ * none. `<dir>/index.html` is also reachable as `/<dir>/index.html`, and
+ * `<name>.html` is also reachable as `/<name>` - in both cases the first form
+ * is the one the sitemap and the canonical tags declare.
+ */
+function duplicateUrlOf(page) {
+  if (page === 'index.html') return '/index.html';
+  if (page.endsWith('/index.html')) return `/${page}`;
+  if (page.endsWith('.html')) return `/${page.slice(0, -'.html'.length)}`;
+  return null;
+}
+
 /** The language a page's URL says it is in. */
 function languageOfPage(page) {
   const first = page.split('/')[0];
@@ -77,6 +125,7 @@ function languageOfPage(page) {
 
 async function main() {
   const patterns = await headerPatterns();
+  const redirects = await forcedRedirectSources();
   const problems = [];
   const declarations = new Map();
   let pages = 0;
@@ -139,6 +188,24 @@ async function main() {
       problems.push(`${page}: declares hreflang ${hreflangs.join(', ')} but not its own language "${declared}".`);
     }
 
+    // 4. The page has one URL, not two.
+    //
+    // Netlify serves `/en/blog/` and `/en/blog/index.html` as two separate
+    // 200s, and `/en/simulator.html` and `/en/simulator` as two more. Nothing
+    // links the second form of either and the canonical tags point at the
+    // first, so this never looked like a bug - it looked like Search Console
+    // reporting half the site as "alternate page with proper canonical tag"
+    // and crawling the real pages half as often as it otherwise would.
+    //
+    // A page carrying `noindex` is exempt: a second address for a document no
+    // index will ever hold costs nothing. That covers 404.html, which is the
+    // fallback document rather than a page anybody navigates to.
+    const duplicate = duplicateUrlOf(page);
+    const indexable = !/<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i.test(markup);
+    if (duplicate && indexable && !redirects.some(({ matcher }) => matcher.test(duplicate))) {
+      problems.push(`${page}: also served at ${duplicate}, which no forced 301 in _redirects collapses.`);
+    }
+
     if (declared) {
       const seen = declarations.get(expected) || new Map();
       seen.set(declared, [...(seen.get(declared) || []), page]);
@@ -146,7 +213,7 @@ async function main() {
     }
   }
 
-  // 4. One language, one declaration.
+  // 5. One language, one declaration.
   //
   // "pt" and "pt-BR" are both valid, and a site is free to pick either. What it
   // cannot do is pick both: three of the five simulator pages said pt-BR and
@@ -168,7 +235,7 @@ async function main() {
     throw new Error('The published output does not hold the invariants the generators are supposed to maintain.');
   }
 
-  console.log(`verify-output: ${pages} pages, ${references} asset references. Versions, caching rules and language declarations all check out.`);
+  console.log(`verify-output: ${pages} pages, ${references} asset references, ${redirects.length} forced redirects. Versions, caching rules, canonical URLs and language declarations all check out.`);
 }
 
 main().catch((error) => {

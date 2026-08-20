@@ -89,8 +89,9 @@
             box-shadow: 0 10px 30px -5px rgba(44, 29, 17, 0.08);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.es.webmanifest">
@@ -309,6 +310,71 @@
             </div>
 
         </div>
+
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">Para qué sirve este simulador</h2>
+                <p class="sim-explainer__lede">El simulador es un entrenador de decisiones, no una calculadora. Te pone delante de las elecciones de dinero que cualquiera enfrenta — un aumento, un coche, unas vacaciones, una factura inesperada — y muestra qué le hace cada una a cuatro cosas a la vez: tu patrimonio, tu flujo de caja mensual, tu bienestar diario y tu inteligencia financiera. El objetivo no es llegar a una cifra, sino notar cómo interactúan las decisiones antes de tomarlas con dinero real.</p>
+
+                <h3 class="sim-explainer__heading">Cómo funciona</h3>
+                <p>Recibes una secuencia de escenarios. Cada uno ofrece dos o más respuestas, y ninguna está marcada como correcta, porque ninguna lo es. Comprar el coche más barato protege tu flujo de caja y te cuesta algo que querías; aceptar el segundo trabajo sube tus ingresos y gasta el único recurso que no puedes recomprar. Cada elección mueve los cuatro indicadores, y esa tensión es la lección.</p>
+                <p>Los indicadores se arrastran. Una decisión tomada al principio cambia lo que los escenarios posteriores pueden hacerte, que es lo más cerca que una sesión corta puede estar de mostrar cómo se comporta el interés compuesto: despacio, y luego de golpe. Al final el simulador nombra el patrón que formaron tus elecciones, como un arquetipo. Esa etiqueta resume lo que hiciste, no dictamina quién eres.</p>
+
+                <h3 class="sim-explainer__heading">Qué supone</h3>
+                <ul class="sim-explainer__list">
+                    <li>Los cuatro indicadores son relativos, no están expresados en ninguna moneda. Existen para compararse entre sí y con el punto donde estaban una decisión antes.</li>
+                    <li>Los escenarios están escritos para resultar reconocibles, no para ajustarse al sistema fiscal, las prestaciones o el coste de vida de ningún país concreto.</li>
+                    <li>El bienestar se modela como algo que el dinero puede mover en ambas direcciones. No gastar nada no se trata como la estrategia ganadora.</li>
+                    <li>Una sesión es corta a propósito. Comprime años de decisiones en minutos, así que el momento en que llegan las consecuencias es ilustrativo, no literal.</li>
+                </ul>
+                <p class="sim-explainer__note">Esta es una herramienta educativa. Nada de lo que muestra es asesoramiento financiero, y ningún resultado debe leerse como una predicción sobre tus finanzas.</p>
+
+                <h3 class="sim-explainer__heading">Un ejemplo resuelto</h3>
+                <p>Un escenario ofrece un ascenso que sube tus ingresos una quinta parte pero añade una hora de trayecto en cada sentido. Aceptarlo eleva de inmediato el patrimonio y el flujo de caja, y baja el bienestar. Rechazarlo mantiene el bienestar y deja los otros dos planos.</p>
+                <p>Ninguna es la respuesta correcta por sí sola. Lo que decide es el estado del que partes: sin fondo de emergencia, esos ingresos son lo que te compra la capacidad de sobrevivir al siguiente escenario, y el coste en bienestar es temporal. Con un colchón ya construido, gastar diez horas más a la semana para hacer crecer una cifra que no estás usando es la opción más cara. Ejecuta el mismo escenario dos veces desde estados distintos y los indicadores te harán ese argumento.</p>
+
+                <h3 class="sim-explainer__heading">Preguntas frecuentes</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>¿Hay forma de ganar?</dt>
+                    <dd>No, y es deliberado. Una partida que maximiza el patrimonio aplanando el bienestar no es mejor resultado que otra que los equilibra: es un conjunto distinto de compromisos, y verlo con claridad es todo el ejercicio.</dd>
+                    <dt>¿Guarda algo de lo que introduzco?</dt>
+                    <dd>No. El simulador se ejecuta enteramente en tu navegador. Nada de lo que eliges se envía a ningún sitio, y cerrar la pestaña termina la sesión.</dd>
+                    <dt>¿Cuál de las otras herramientas debería usar después?</dt>
+                    <dd>Si quieres una fecha en lugar de un patrón, el Calendario de la Libertad convierte el ahorro en una línea temporal. Si quieres saber si un plan sobrevive a la mala suerte, el simulador de Monte Carlo es el que responde a eso.</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">Sigue leyendo</h3>
+                    <p>El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="/es/blog/sistema-dinero-lento/">El sistema de dinero lento: una forma más tranquila de crear patrimonio</a></li>
+                        <li><a href="/es/blog/gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa/">Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa</a></li>
+                        <li><a href="/es/blog/">Todas las entradas del diario</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
         <!-- CLOSING CALL TO ACTION. The same panel the journal articles and the
              other four simulators end on, in the same place they all put it: the

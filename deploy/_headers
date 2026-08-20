@@ -338,6 +338,9 @@
 /assets/css/simulator-cta.css
   Cache-Control: public, max-age=31536000, immutable
 
+/assets/css/simulator-explainer.css
+  Cache-Control: public, max-age=31536000, immutable
+
 /assets/css/icons.css
   Cache-Control: public, max-age=31536000, immutable
 

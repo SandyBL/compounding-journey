@@ -11,6 +11,7 @@
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Calendário da Liberdade Financeira"><meta property="og:description" content="Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/freedom-calendar.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Calendário da Liberdade Financeira"><meta name="twitter:description" content="Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calendário da Liberdade","url":"https://compoundingjourney.com/pt/simulators/freedom-calendar.html","description":"Uma linha temporal visual de independência financeira baseada em poupanças, investimentos e objetivos de vida.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://compoundingjourney.com/pt/"},{"@type":"ListItem","position":2,"name":"Simuladores","item":"https://compoundingjourney.com/pt/simulator.html"},{"@type":"ListItem","position":3,"name":"Calendário da Liberdade"}]}</script>
     <!-- Chart.js for trajectory visualization -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
@@ -43,8 +44,9 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.pt.webmanifest">
@@ -179,6 +181,16 @@
 
     <!-- MAIN CONTENT CONTAINER -->
     <main id="main" tabindex="-1" class="max-w-6xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
+        <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
+             so each tool page looked like an orphan at the top level of the site. -->
+        <nav class="sim-crumbs" aria-label="Trilho de navegação">
+            <ol>
+                <li><a href="/pt/">Início</a></li>
+                <li><a href="/pt/simulator.html">Simuladores</a></li>
+                <li><span aria-current="page">Calendário da Liberdade</span></li>
+            </ol>
+        </nav>
+
 
         <!-- INTRO BANNER -->
         <div class="mb-8 text-center sm:text-left bg-cream-50 rounded-2xl p-6 border border-cream-300 custom-shadow flex flex-col md:flex-row items-center justify-between gap-6">
@@ -312,6 +324,71 @@
             </div>
 
         </div>
+
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">O que o Calendário da Liberdade mede</h2>
+                <p class="sim-explainer__lede">A maioria das calculadoras de poupança responde à pergunta «quanto vou ter?». Esta responde a outra: «quando deixo de precisar de um salário?». Converte o seu rendimento, as suas despesas e os seus investimentos atuais numa única data, e depois repete a mesma aritmética numa unidade mais difícil de ignorar: as horas da sua vida que cada despesa custa.</p>
+
+                <h3 class="sim-explainer__heading">Como a data é calculada</h3>
+                <p>O seu objetivo é o montante que consegue financiar a sua despesa anual indefinidamente com uma taxa de levantamento de 4%: vinte e cinco vezes o que gasta num ano. Esse número vem da investigação sobre quanto tempo uma carteira diversificada sobrevive a ser consumida, e 4% é a taxa à qual sobreviveu praticamente em todos os anos de início históricos ao longo de uma reforma de trinta anos. O calendário faz crescer os seus investimentos atuais e soma o seu excedente mensal mês a mês com 7% de rentabilidade real anual, e indica o mês em que o saldo atinge pela primeira vez o objetivo.</p>
+                <p>Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa de ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, pelo que a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma subscrição deixa de ser três euros por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la.</p>
+
+                <h3 class="sim-explainer__heading">O que pressupõe</h3>
+                <ul class="sim-explainer__list">
+                    <li>Uma rentabilidade real anual de 7%, aplicada de forma uniforme todos os meses. Os mercados reais não entregam 7% de forma uniforme: entregam algo entre −40% e +30% num ano qualquer e fazem média ao longo de décadas.</li>
+                    <li>Uma taxa de levantamento de 4%, e portanto um objetivo de 25×. Baixe-a para 3,5% e o objetivo passa a 28,6×, uma diferença de vários anos para a maioria das pessoas.</li>
+                    <li>O seu rendimento e as suas despesas ficam onde os colocar. Sem aumentos, sem filhos, sem mudança para uma cidade mais barata, sem crédito à habitação novo.</li>
+                    <li>Sem impostos sobre mais-valias, sem comissões de fundos e sem uma pensão pública que chegue mais tarde a reduzir o que precisa da sua própria carteira.</li>
+                </ul>
+                <p class="sim-explainer__note">Por essas quatro razões, a data é uma direção, não um compromisso marcado. O seu valor está no que acontece quando muda uma entrada: a diferença entre duas datas é muito mais fiável do que qualquer uma delas isoladamente.</p>
+
+                <h3 class="sim-explainer__heading">Um exemplo resolvido</h3>
+                <p>Considere alguém que ganha 3.000 por mês depois de impostos, gasta 2.200 e tem 20.000 já investidos. A despesa anual é 26.400, pelo que o objetivo é 660.000. O excedente mensal é 800. Partindo de 20.000 e acrescentando 800 por mês a 7% real, o saldo cruza os 660.000 em cerca de vinte e seis anos.</p>
+                <p>Agora reduza a despesa para 2.000. O objetivo desce para 600.000 e o excedente mensal sobe para 1.000, porque cada euro não gasto é um euro investido. A data antecipa-se cerca de cinco anos. É esta a assimetria que o calendário existe para tornar visível: uma alteração na despesa move os dois lados da equação ao mesmo tempo, enquanto um aumento do mesmo valor move apenas um.</p>
+
+                <h3 class="sim-explainer__heading">Perguntas frequentes</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>Porquê 4% e não outro valor?</dt>
+                    <dd>É a taxa que sobreviveu a quase todas as janelas de trinta anos do registo histórico para uma carteira de ações e obrigações. É uma regra prática, não uma lei: pressupõe um horizonte de trinta anos e uma mistura de ativos concreta, e reformar-se aos quarenta significa planear bastante mais do que trinta anos.</dd>
+                    <dt>A data tem em conta uma queda do mercado?</dt>
+                    <dd>Não. Aplica a mesma rentabilidade todos os meses, que é precisamente o que os mercados nunca fazem. Se quiser ver o que uma má década faz ao mesmo plano, o simulador de Monte Carlo executa mil versões com a volatilidade incluída.</dd>
+                    <dt>O salário por hora é o meu vencimento dividido pelas minhas horas?</dt>
+                    <dd>Quase: usa o salário líquido em vez do bruto, pelo que reflete o que uma hora coloca realmente na sua conta. Acrescentar o tempo de deslocação às suas horas torna-o ainda mais honesto, e costuma baixá-lo mais do que as pessoas esperam.</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">Continue a ler</h3>
+                    <p>O diário desenvolve com mais calma as ideias por trás desta ferramenta.</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="/pt/blog/pague-se-a-si-mesmo-primeiro-o-habito-chave-para-criar-riqueza/">Pague-se a Si Mesmo Primeiro: O Hábito Chave para Criar Riqueza</a></li>
+                        <li><a href="/pt/blog/sistema-dinheiro-lento/">O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio</a></li>
+                        <li><a href="/pt/blog/">Todas as entradas do diário</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
         <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
              panel, down to the markup: whichever door a reader comes in through -

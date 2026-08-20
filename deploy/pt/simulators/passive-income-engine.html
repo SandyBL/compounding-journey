@@ -11,6 +11,7 @@
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Motor de Rendimento Passivo"><meta property="og:description" content="Constrói ativos e explora o caminho até à independência financeira."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/passive-income-engine.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Motor de Rendimento Passivo"><meta name="twitter:description" content="Constrói ativos e explora o caminho até à independência financeira."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Motor de Rendimento Passivo","url":"https://compoundingjourney.com/pt/simulators/passive-income-engine.html","description":"Um simulador interativo para construir ativos produtivos e acompanhar o rendimento passivo ao longo do tempo.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://compoundingjourney.com/pt/"},{"@type":"ListItem","position":2,"name":"Simuladores","item":"https://compoundingjourney.com/pt/simulator.html"},{"@type":"ListItem","position":3,"name":"Motor de Rendimento Passivo"}]}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=cf36153ed998">
@@ -34,8 +35,9 @@
             box-shadow: 0 10px 25px -5px rgba(44, 29, 17, 0.05), 0 8px 10px -6px rgba(44, 29, 17, 0.03);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.pt.webmanifest">
@@ -135,6 +137,16 @@
     </section>
 
     <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-1 space-y-4">
+        <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
+             so each tool page looked like an orphan at the top level of the site. -->
+        <nav class="sim-crumbs" aria-label="Trilho de navegação">
+            <ol>
+                <li><a href="/pt/">Início</a></li>
+                <li><a href="/pt/simulator.html">Simuladores</a></li>
+                <li><span aria-current="page">Motor de Rendimento Passivo</span></li>
+            </ol>
+        </nav>
+
         
         <!-- DASHBOARD TOP STATS BAR (6 CARDS) -->
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
@@ -463,6 +475,71 @@
                 </div>
             </div>
         </div>
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">Para que serve o Motor de Rendimento Passivo</h2>
+                <p class="sim-explainer__lede">O rendimento passivo costuma ser vendido como uma ideia única, como se um fundo de dividendos, um apartamento arrendado e um negócio online fossem a mesma coisa com roupa diferente. Não são. Esta ferramenta obriga-o a construir uma corrente de rendimento com seis deles e depois a viver dela, para que as diferenças — em rendimento, em esforço, em quão mal cada um pode correr — sejam algo que sentiu e não algo que leu.</p>
+
+                <h3 class="sim-explainer__heading">Como funciona</h3>
+                <p>Distribui capital por seis fontes: um ETF de dividendos, obrigações do Tesouro, um apartamento arrendado, um índice de REITs, um negócio online e bitcoin. Cada uma paga um rendimento diferente, e cada uma carrega uma dose diferente daquilo que a palavra «passivo» cala: o arrendamento precisa de encontrar inquilino e arranjar a caldeira, o negócio online precisa de alguém que o conduza, e nenhum dos dois paga enquanto está doente.</p>
+                <p>A outra metade é a despesa. Define as suas escolhas de habitação, transporte e refeições fora, e a ferramenta acompanha um indicador de Alegria de Viver ao lado do seu rendimento. Esta é a parte que a maioria do conteúdo sobre rendimento passivo omite: o objetivo não é um número, é cobrir uma vida que realmente queira viver. Cortar o seu estilo de vida até ao osso torna o objetivo trivialmente fácil e o resultado inútil, e o indicador existe para tornar essa troca explícita em vez de o deixar otimizar-se em silêncio até uma vida que detestaria.</p>
+
+                <h3 class="sim-explainer__heading">O que pressupõe</h3>
+                <ul class="sim-explainer__list">
+                    <li>Os rendimentos são médias estáveis. Os dividendos são cortados, os inquilinos saem, e um negócio online pode perder a maior parte da sua receita por uma única alteração no algoritmo de outra pessoa.</li>
+                    <li>O número do arrendamento é a renda, não o lucro. Um imóvel real custa-lhe gestão, manutenção, seguro, impostos e os meses em que está vazio: habitualmente um terço do número anunciado.</li>
+                    <li>O rendimento é mostrado antes de impostos, e o rendimento passivo é frequentemente tributado de forma menos favorável do que o salário que pretende substituir.</li>
+                    <li>A bitcoin não produz rendimento nenhum. Está na lista porque há quem a mantenha à espera dele, e ver que uma alocação grande não contribui em nada para o número mensal é precisamente a ideia.</li>
+                </ul>
+                <p class="sim-explainer__note">Nada disto é uma recomendação para deter nenhum destes seis ativos. Estão na ferramenta porque se comportam de forma diferente entre si, que é o que faz com que a comparação ensine alguma coisa.</p>
+
+                <h3 class="sim-explainer__heading">Um exemplo resolvido</h3>
+                <p>Ponha tudo no ETF de dividendos e o rendimento mensal é modesto, completamente passivo, e chega quer se levante da cama quer não. Mova metade para o apartamento arrendado e o rendimento dá um salto — e ao mesmo tempo adquiriu em silêncio um trabalho a tempo parcial, um ativo ilíquido e um único inquilino cuja saída lhe retira de uma só vez uma parte grande do rendimento.</p>
+                <p>Agora cubra o mesmo objetivo mensal mantendo alta a Alegria de Viver. A opção de habitação mais barata torna o objetivo alcançável com muito menos capital e custa-lhe algo que o rendimento supostamente iria comprar. Não existe uma combinação que maximize o rendimento, minimize o esforço e preserve a vida ao mesmo tempo, e descobrir onde quer situar-se nesse triângulo vale mais do que qualquer número de rendimento que a ferramenta imprima.</p>
+
+                <h3 class="sim-explainer__heading">Perguntas frequentes</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>Alguma coisa disto é realmente passiva?</dt>
+                    <dd>Duas das seis são: o ETF de dividendos e as obrigações do Tesouro. O índice de REITs aproxima-se. O arrendamento e o negócio online são negócios, e o simulador é mais útil precisamente quando lhe mostra que parte do seu rendimento depende dos que precisam de si.</dd>
+                    <dt>Porque é que a despesa faz parte de uma ferramenta de rendimento?</dt>
+                    <dd>Porque a meta é definida por ela. Baixar os seus custos mensais em 300 equivale a encontrar 90.000 de capital a 4%, e uma dessas duas coisas está disponível este mês.</dd>
+                    <dt>Devo diversificar pelas seis?</dt>
+                    <dd>Essa não é uma pergunta que um simulador possa responder por si, e espalhar capital por coisas que não compreende não é diversificar. O que a ferramenta pode mostrar é quanto muda, se uma única fonte dominar o seu rendimento, aquilo que um só golpe de azar lhe faz.</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">Continue a ler</h3>
+                    <p>O diário desenvolve com mais calma as ideias por trás desta ferramenta.</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="/pt/blog/gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa/">Gastar com Propósito: Como Alinhar o Seu Dinheiro com o Que Realmente Importa</a></li>
+                        <li><a href="/pt/blog/como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre/">Como Construir Riqueza com Bons Hábitos Financeiros</a></li>
+                        <li><a href="/pt/blog/">Todas as entradas do diário</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
         <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
              panel, down to the markup: whichever door a reader comes in through -
              an article or a simulator - the page ends on the same offer, in the

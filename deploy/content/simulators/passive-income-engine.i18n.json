@@ -1123,5 +1123,165 @@
     "en": "Building the engine here takes minutes. The financial assessment looks at where your money is today, and at what it would take to grow passive income for real.",
     "es": "Construir el motor aquí toma minutos. El diagnóstico financiero mira dónde está tu dinero hoy y qué haría falta para hacer crecer tus ingresos pasivos de verdad.",
     "pt": "Construir o motor aqui demora minutos. O diagnóstico financeiro olha para onde está o teu dinheiro hoje e para o que seria preciso para fazer crescer o rendimento passivo a sério."
+  },
+  "explTitle": {
+    "en": "What the Passive Income Engine is for",
+    "es": "Para qué sirve el Motor de Ingresos Pasivos",
+    "pt": "Para que serve o Motor de Rendimento Passivo"
+  },
+  "explLede": {
+    "en": "Passive income is usually sold as a single idea, as though a dividend fund and a rental flat and an online business were the same thing in different clothes. They are not. This tool makes you build an income stream out of six of them and then live on it, so that the differences — in yield, in effort, in how badly each one can go wrong — become something you have felt rather than read.",
+    "es": "Los ingresos pasivos se suelen vender como una sola idea, como si un fondo de dividendos, un piso en alquiler y un negocio online fueran lo mismo con distinta ropa. No lo son. Esta herramienta te obliga a construir una corriente de ingresos con seis de ellos y luego a vivir de ella, para que las diferencias —en rendimiento, en esfuerzo, en lo mal que puede salir cada uno— sean algo que has sentido y no algo que has leído.",
+    "pt": "O rendimento passivo costuma ser vendido como uma ideia única, como se um fundo de dividendos, um apartamento arrendado e um negócio online fossem a mesma coisa com roupa diferente. Não são. Esta ferramenta obriga-o a construir uma corrente de rendimento com seis deles e depois a viver dela, para que as diferenças — em rendimento, em esforço, em quão mal cada um pode correr — sejam algo que sentiu e não algo que leu."
+  },
+  "explHowTitle": {
+    "en": "How it works",
+    "es": "Cómo funciona",
+    "pt": "Como funciona"
+  },
+  "explHow1": {
+    "en": "You allocate capital across six sources: a dividend ETF, treasury bonds, a rental condo, a REIT index, an online business and bitcoin. Each pays a different yield, and each carries a different amount of the thing the word \"passive\" quietly omits — the rental needs a tenant found and a boiler fixed, the online business needs someone to run it, and neither of them pays while you are ill.",
+    "es": "Repartes capital entre seis fuentes: un ETF de dividendos, bonos del Tesoro, un piso en alquiler, un índice de REITs, un negocio online y bitcoin. Cada una paga un rendimiento distinto, y cada una carga con una dosis distinta de eso que la palabra «pasivo» calla: el alquiler necesita encontrar inquilino y arreglar la caldera, el negocio online necesita a alguien que lo lleve, y ninguno de los dos paga mientras estás enfermo.",
+    "pt": "Distribui capital por seis fontes: um ETF de dividendos, obrigações do Tesouro, um apartamento arrendado, um índice de REITs, um negócio online e bitcoin. Cada uma paga um rendimento diferente, e cada uma carrega uma dose diferente daquilo que a palavra «passivo» cala: o arrendamento precisa de encontrar inquilino e arranjar a caldeira, o negócio online precisa de alguém que o conduza, e nenhum dos dois paga enquanto está doente."
+  },
+  "explHow2": {
+    "en": "The other half is the spending side. You set your housing, transport and dining choices, and the tool tracks a Life Joy meter alongside your income. This is the part most passive-income content leaves out: the target is not a number, it is covering a life you would actually want to live. Cutting your lifestyle to the bone makes the income target trivially easy and the result worthless, and the meter is there to make that trade explicit rather than letting you quietly optimise your way into a life you would hate.",
+    "es": "La otra mitad es el gasto. Fijas tus decisiones de vivienda, transporte y comidas fuera, y la herramienta sigue un indicador de Disfrute Vital junto a tus ingresos. Esta es la parte que la mayoría del contenido sobre ingresos pasivos omite: el objetivo no es una cifra, es cubrir una vida que de verdad querrías vivir. Recortar tu estilo de vida al hueso hace el objetivo trivialmente fácil y el resultado inútil, y el indicador existe para hacer explícito ese canje en lugar de dejar que te optimices en silencio hacia una vida que odiarías.",
+    "pt": "A outra metade é a despesa. Define as suas escolhas de habitação, transporte e refeições fora, e a ferramenta acompanha um indicador de Alegria de Viver ao lado do seu rendimento. Esta é a parte que a maioria do conteúdo sobre rendimento passivo omite: o objetivo não é um número, é cobrir uma vida que realmente queira viver. Cortar o seu estilo de vida até ao osso torna o objetivo trivialmente fácil e o resultado inútil, e o indicador existe para tornar essa troca explícita em vez de o deixar otimizar-se em silêncio até uma vida que detestaria."
+  },
+  "explAssumptionsTitle": {
+    "en": "What it assumes",
+    "es": "Qué supone",
+    "pt": "O que pressupõe"
+  },
+  "explAssumption1": {
+    "en": "Yields are steady averages. Dividends get cut, tenants leave, and an online business can lose most of its revenue to a single change in someone else's algorithm.",
+    "es": "Los rendimientos son medias estables. Los dividendos se recortan, los inquilinos se van, y un negocio online puede perder la mayor parte de sus ingresos por un solo cambio en el algoritmo de otro.",
+    "pt": "Os rendimentos são médias estáveis. Os dividendos são cortados, os inquilinos saem, e um negócio online pode perder a maior parte da sua receita por uma única alteração no algoritmo de outra pessoa."
+  },
+  "explAssumption2": {
+    "en": "The rental figure is rent, not profit. Real property costs you management, maintenance, insurance, taxes and the months it sits empty — commonly a third of the headline number.",
+    "es": "La cifra del alquiler es la renta, no el beneficio. Un inmueble real te cuesta gestión, mantenimiento, seguro, impuestos y los meses que está vacío: habitualmente un tercio de la cifra que se anuncia.",
+    "pt": "O número do arrendamento é a renda, não o lucro. Um imóvel real custa-lhe gestão, manutenção, seguro, impostos e os meses em que está vazio: habitualmente um terço do número anunciado."
+  },
+  "explAssumption3": {
+    "en": "Income is shown before tax, and passive income is often taxed less favourably than the salary it is meant to replace.",
+    "es": "Los ingresos se muestran antes de impuestos, y los ingresos pasivos suelen tributar de forma menos favorable que el sueldo al que pretenden sustituir.",
+    "pt": "O rendimento é mostrado antes de impostos, e o rendimento passivo é frequentemente tributado de forma menos favorável do que o salário que pretende substituir."
+  },
+  "explAssumption4": {
+    "en": "Bitcoin produces no income at all. It is in the list because people hold it expecting one, and seeing a large allocation contribute nothing to the monthly figure is the point.",
+    "es": "Bitcoin no produce ingresos en absoluto. Está en la lista porque hay quien lo mantiene esperándolos, y ver que una asignación grande no aporta nada a la cifra mensual es precisamente la idea.",
+    "pt": "A bitcoin não produz rendimento nenhum. Está na lista porque há quem a mantenha à espera dele, e ver que uma alocação grande não contribui em nada para o número mensal é precisamente a ideia."
+  },
+  "explAssumptionsNote": {
+    "en": "Nothing here is a recommendation to hold any of these six assets. They are in the tool because they behave differently from each other, which is what makes the comparison teach anything.",
+    "es": "Nada de esto es una recomendación de mantener ninguno de estos seis activos. Están en la herramienta porque se comportan de forma distinta entre sí, que es lo que hace que la comparación enseñe algo.",
+    "pt": "Nada disto é uma recomendação para deter nenhum destes seis ativos. Estão na ferramenta porque se comportam de forma diferente entre si, que é o que faz com que a comparação ensine alguma coisa."
+  },
+  "explExampleTitle": {
+    "en": "A worked example",
+    "es": "Un ejemplo resuelto",
+    "pt": "Um exemplo resolvido"
+  },
+  "explExample1": {
+    "en": "Put everything into the dividend ETF and the monthly income is modest, entirely hands-off, and arrives whether or not you get out of bed. Move half into the rental condo and the income jumps — and you have quietly acquired a part-time job, an illiquid asset, and a single tenant whose departure removes a large share of your income at once.",
+    "es": "Pon todo en el ETF de dividendos y el ingreso mensual es modesto, completamente pasivo, y llega te levantes o no de la cama. Mueve la mitad al piso en alquiler y el ingreso da un salto, y a la vez has adquirido en silencio un trabajo a tiempo parcial, un activo ilíquido y un único inquilino cuya marcha te quita de golpe una parte grande de los ingresos.",
+    "pt": "Ponha tudo no ETF de dividendos e o rendimento mensal é modesto, completamente passivo, e chega quer se levante da cama quer não. Mova metade para o apartamento arrendado e o rendimento dá um salto — e ao mesmo tempo adquiriu em silêncio um trabalho a tempo parcial, um ativo ilíquido e um único inquilino cuja saída lhe retira de uma só vez uma parte grande do rendimento."
+  },
+  "explExample2": {
+    "en": "Now cover the same monthly target while keeping Life Joy high. The cheapest housing option makes the target reachable with far less capital and costs you something the income was supposed to buy. There is no arrangement that maximises income, minimises effort and preserves the life at the same time — and finding out where you personally want to sit in that triangle is worth more than any single yield figure the tool prints.",
+    "es": "Ahora cubre el mismo objetivo mensual manteniendo alto el Disfrute Vital. La opción de vivienda más barata hace el objetivo alcanzable con mucho menos capital y te cuesta algo que se suponía que los ingresos iban a comprar. No existe una combinación que maximice los ingresos, minimice el esfuerzo y preserve la vida a la vez, y descubrir dónde quieres situarte tú en ese triángulo vale más que cualquier cifra de rendimiento que la herramienta imprima.",
+    "pt": "Agora cubra o mesmo objetivo mensal mantendo alta a Alegria de Viver. A opção de habitação mais barata torna o objetivo alcançável com muito menos capital e custa-lhe algo que o rendimento supostamente iria comprar. Não existe uma combinação que maximize o rendimento, minimize o esforço e preserve a vida ao mesmo tempo, e descobrir onde quer situar-se nesse triângulo vale mais do que qualquer número de rendimento que a ferramenta imprima."
+  },
+  "explFaqQ1": {
+    "en": "Is any of this actually passive?",
+    "es": "¿Algo de esto es realmente pasivo?",
+    "pt": "Alguma coisa disto é realmente passiva?"
+  },
+  "explFaqA1": {
+    "en": "Two of the six are: the dividend ETF and the treasury bonds. The REIT index is close. The rental and the online business are businesses, and the simulator is at its most useful when it shows you how much of your income depends on ones that need you.",
+    "es": "Dos de las seis lo son: el ETF de dividendos y los bonos del Tesoro. El índice de REITs se acerca. El alquiler y el negocio online son negocios, y el simulador es más útil justamente cuando te muestra qué parte de tus ingresos depende de los que te necesitan.",
+    "pt": "Duas das seis são: o ETF de dividendos e as obrigações do Tesouro. O índice de REITs aproxima-se. O arrendamento e o negócio online são negócios, e o simulador é mais útil precisamente quando lhe mostra que parte do seu rendimento depende dos que precisam de si."
+  },
+  "explFaqQ2": {
+    "en": "Why is spending part of an income tool?",
+    "es": "¿Por qué el gasto forma parte de una herramienta de ingresos?",
+    "pt": "Porque é que a despesa faz parte de uma ferramenta de rendimento?"
+  },
+  "explFaqA2": {
+    "en": "Because the finish line is defined by it. Lowering your monthly costs by 300 is worth the same as finding 90,000 of capital paying 4%, and one of those is available this month.",
+    "es": "Porque la meta la define él. Bajar tus costes mensuales en 300 equivale a encontrar 90.000 de capital al 4%, y una de las dos cosas está disponible este mes.",
+    "pt": "Porque a meta é definida por ela. Baixar os seus custos mensais em 300 equivale a encontrar 90.000 de capital a 4%, e uma dessas duas coisas está disponível este mês."
+  },
+  "explFaqQ3": {
+    "en": "Should I diversify across all six?",
+    "es": "¿Debería diversificar entre las seis?",
+    "pt": "Devo diversificar pelas seis?"
+  },
+  "explFaqA3": {
+    "en": "That is not a question a simulator can answer for you, and spreading capital across things you do not understand is not diversification. What the tool can show is how much a single source dominating your income changes what one piece of bad luck does to you.",
+    "es": "Esa no es una pregunta que un simulador pueda responder por ti, y repartir capital entre cosas que no entiendes no es diversificar. Lo que la herramienta sí puede mostrar es cuánto cambia, si una sola fuente domina tus ingresos, lo que un solo golpe de mala suerte te hace.",
+    "pt": "Essa não é uma pergunta que um simulador possa responder por si, e espalhar capital por coisas que não compreende não é diversificar. O que a ferramenta pode mostrar é quanto muda, se uma única fonte dominar o seu rendimento, aquilo que um só golpe de azar lhe faz."
+  },
+  "explFaqTitle": {
+    "en": "Common questions",
+    "es": "Preguntas frecuentes",
+    "pt": "Perguntas frequentes"
+  },
+  "explReadingTitle": {
+    "en": "Keep reading",
+    "es": "Sigue leyendo",
+    "pt": "Continue a ler"
+  },
+  "explReadingIntro": {
+    "en": "The journal covers the ideas behind this tool at greater length.",
+    "es": "El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.",
+    "pt": "O diário desenvolve com mais calma as ideias por trás desta ferramenta."
+  },
+  "explReadingAll": {
+    "en": "All journal entries",
+    "es": "Todas las entradas del diario",
+    "pt": "Todas as entradas do diário"
+  },
+  "explCrumbHome": {
+    "en": "Home",
+    "es": "Inicio",
+    "pt": "Início"
+  },
+  "explCrumbSimulators": {
+    "en": "Simulators",
+    "es": "Simuladores",
+    "pt": "Simuladores"
+  },
+  "explReadingSlug1": {
+    "en": "spending-with-purpose-how-to-align-your-money-with-what-truly-matters",
+    "es": "gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa",
+    "pt": "gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa"
+  },
+  "explReadingLabel1": {
+    "en": "Spending with Purpose: How to Align Your Money with What Truly Matters",
+    "es": "Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa",
+    "pt": "Gastar com Propósito: Como Alinhar o Seu Dinheiro com o Que Realmente Importa"
+  },
+  "explReadingSlug2": {
+    "en": "building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad",
+    "es": "como-crear-riqueza-con-buenos-habitos-financieros-lecciones-de-padre-rico-padre-pobre",
+    "pt": "como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre"
+  },
+  "explReadingLabel2": {
+    "en": "Building Wealth Through Good Financial Habits",
+    "es": "Cómo Crear Riqueza con Buenos Hábitos Financieros",
+    "pt": "Como Construir Riqueza com Bons Hábitos Financeiros"
+  },
+  "explCrumbSelf": {
+    "en": "Passive Income Engine",
+    "es": "Motor de Ingresos Pasivos",
+    "pt": "Motor de Rendimento Passivo"
+  },
+  "explCrumbLabel": {
+    "en": "Breadcrumb",
+    "es": "Ruta de navegación",
+    "pt": "Trilho de navegação"
   }
 }

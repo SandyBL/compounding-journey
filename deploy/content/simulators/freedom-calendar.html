@@ -11,6 +11,7 @@
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="{{lang.locale}}">{{head}}<meta property="og:title" content="{{metaContent3}}"><meta property="og:description" content="{{metaContent4}}"><meta property="og:url" content="https://compoundingjourney.com{{lang.dir}}simulators/freedom-calendar.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{metaContent3}}"><meta name="twitter:description" content="{{metaContent4}}"><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{{script}}visual {{script2}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"{{explCrumbHome}}","item":"https://compoundingjourney.com{{lang.home}}"},{"@type":"ListItem","position":2,"name":"{{explCrumbSimulators}}","item":"https://compoundingjourney.com{{lang.dir}}simulator.html"},{"@type":"ListItem","position":3,"name":"{{explCrumbSelf}}"}]}</script>
     <!-- Chart.js for trajectory visualization -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
@@ -45,6 +46,7 @@
     </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
@@ -172,6 +174,16 @@
 
     <!-- MAIN CONTENT CONTAINER -->
     <main id="main" tabindex="-1" class="max-w-6xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
+        <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
+             so each tool page looked like an orphan at the top level of the site. -->
+        <nav class="sim-crumbs" aria-label="{{explCrumbLabel}}">
+            <ol>
+                <li><a href="{{lang.home}}">{{explCrumbHome}}</a></li>
+                <li><a href="{{lang.dir}}simulator.html">{{explCrumbSimulators}}</a></li>
+                <li><span aria-current="page">{{explCrumbSelf}}</span></li>
+            </ol>
+        </nav>
+
 
         <!-- INTRO BANNER -->
         <div class="mb-8 text-center sm:text-left bg-cream-50 rounded-2xl p-6 border border-cream-300 custom-shadow flex flex-col md:flex-row items-center justify-between gap-6">
@@ -299,6 +311,71 @@
             </div>
 
         </div>
+
+        <!-- The explainer below is the answer to a Search Console report: these pages
+                     were being crawled and then not indexed, which is what Google does with a
+                     page that is almost entirely interface. A calculator has nothing to read -
+                     the numbers only exist after somebody types into it - so there was no text
+                     on which to judge the page useful, and the three language versions looked
+                     more like each other than like anything else.
+
+                     So this states, in prose, what the tool models, what it assumes, and where
+                     those assumptions break. That is not filler written for a crawler: the
+                     assumptions are the part of any financial model that decides whether its
+                     output means anything, and every figure quoted here was read out of the
+                     behaviour block at the bottom of this file rather than estimated. The
+                     translations are written rather than converted, for the same reason the
+                     pages exist in three languages at all.
+
+                     Styled by assets/css/simulator-explainer.css, which paints its own
+                     background: the five simulators use three different palettes and this
+                     section has to read identically on all of them. -->
+        <section class="sim-explainer" aria-labelledby="explainer-title">
+            <div class="sim-explainer__inner">
+                <h2 class="sim-explainer__title" id="explainer-title">{{explTitle}}</h2>
+                <p class="sim-explainer__lede">{{explLede}}</p>
+
+                <h3 class="sim-explainer__heading">{{explHowTitle}}</h3>
+                <p>{{explHow1}}</p>
+                <p>{{explHow2}}</p>
+
+                <h3 class="sim-explainer__heading">{{explAssumptionsTitle}}</h3>
+                <ul class="sim-explainer__list">
+                    <li>{{explAssumption1}}</li>
+                    <li>{{explAssumption2}}</li>
+                    <li>{{explAssumption3}}</li>
+                    <li>{{explAssumption4}}</li>
+                </ul>
+                <p class="sim-explainer__note">{{explAssumptionsNote}}</p>
+
+                <h3 class="sim-explainer__heading">{{explExampleTitle}}</h3>
+                <p>{{explExample1}}</p>
+                <p>{{explExample2}}</p>
+
+                <h3 class="sim-explainer__heading">{{explFaqTitle}}</h3>
+                <dl class="sim-explainer__faq">
+                    <dt>{{explFaqQ1}}</dt>
+                    <dd>{{explFaqA1}}</dd>
+                    <dt>{{explFaqQ2}}</dt>
+                    <dd>{{explFaqA2}}</dd>
+                    <dt>{{explFaqQ3}}</dt>
+                    <dd>{{explFaqA3}}</dd>
+                </dl>
+
+                <!-- The journal and the simulators were two separate islands: nothing on a
+                     simulator linked to an article, so the articles were reachable only from
+                     the blog index and the crawler had no reason to treat the two as one site. -->
+                <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                    <h3 class="sim-explainer__heading" id="reading-title">{{explReadingTitle}}</h3>
+                    <p>{{explReadingIntro}}</p>
+                    <ul class="sim-explainer__list">
+                        <li><a href="{{lang.dir}}blog/{{explReadingSlug1}}/">{{explReadingLabel1}}</a></li>
+                        <li><a href="{{lang.dir}}blog/{{explReadingSlug2}}/">{{explReadingLabel2}}</a></li>
+                        <li><a href="{{lang.dir}}blog/">{{explReadingAll}}</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
         <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
              panel, down to the markup: whichever door a reader comes in through -

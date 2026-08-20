@@ -693,5 +693,165 @@
     "en": "Understand where you stand today, eliminate silent wealth leaks, and take your next financial steps with total clarity and confidence.",
     "es": "Comprende dónde estás parado hoy, elimina las fugas silenciosas de riqueza y da tus próximos pasos financieros con total claridad y confianza.",
     "pt": "Entende onde estás hoje, elimina as fugas silenciosas de riqueza e dá os teus próximos passos financeiros com total clareza e confiança."
+  },
+  "explTitle": {
+    "en": "What the Freedom Calendar measures",
+    "es": "Qué mide el Calendario de la Libertad",
+    "pt": "O que o Calendário da Liberdade mede"
+  },
+  "explLede": {
+    "en": "Most savings calculators answer the question \"how much will I have?\" This one answers a different one: \"when do I stop needing a salary?\" It converts your income, your spending and your existing investments into a single date, and then re-states the same arithmetic in a unit that is harder to ignore — the hours of your life that each expense costs you.",
+    "es": "La mayoría de las calculadoras de ahorro responden a la pregunta «¿cuánto tendré?». Esta responde a otra distinta: «¿cuándo dejo de necesitar un sueldo?». Convierte tus ingresos, tus gastos y tus inversiones actuales en una única fecha, y luego repite la misma aritmética en una unidad más difícil de ignorar: las horas de tu vida que cuesta cada gasto.",
+    "pt": "A maioria das calculadoras de poupança responde à pergunta «quanto vou ter?». Esta responde a outra: «quando deixo de precisar de um salário?». Converte o seu rendimento, as suas despesas e os seus investimentos atuais numa única data, e depois repete a mesma aritmética numa unidade mais difícil de ignorar: as horas da sua vida que cada despesa custa."
+  },
+  "explHowTitle": {
+    "en": "How the date is calculated",
+    "es": "Cómo se calcula la fecha",
+    "pt": "Como a data é calculada"
+  },
+  "explHow1": {
+    "en": "Your target is the amount that can fund your annual spending indefinitely at a 4% withdrawal rate — twenty-five times what you spend in a year. That figure comes from research on how long a diversified portfolio survives being drawn down, and 4% is the rate at which it survived essentially every historical starting year over a thirty-year retirement. The calendar then grows your current investments and adds your monthly surplus month by month at a 7% annual real return, and reports the month the balance first reaches the target.",
+    "es": "Tu objetivo es la cantidad que puede financiar tu gasto anual de forma indefinida con una tasa de retirada del 4%: veinticinco veces lo que gastas en un año. Esa cifra viene de la investigación sobre cuánto sobrevive una cartera diversificada mientras se consume, y el 4% es la tasa a la que sobrevivió prácticamente en todos los años de inicio históricos durante una jubilación de treinta años. El calendario hace crecer tus inversiones actuales y suma tu excedente mensual mes a mes con un 7% de rentabilidad real anual, y señala el mes en que el saldo alcanza por primera vez el objetivo.",
+    "pt": "O seu objetivo é o montante que consegue financiar a sua despesa anual indefinidamente com uma taxa de levantamento de 4%: vinte e cinco vezes o que gasta num ano. Esse número vem da investigação sobre quanto tempo uma carteira diversificada sobrevive a ser consumida, e 4% é a taxa à qual sobreviveu praticamente em todos os anos de início históricos ao longo de uma reforma de trinta anos. O calendário faz crescer os seus investimentos atuais e soma o seu excedente mensal mês a mês com 7% de rentabilidade real anual, e indica o mês em que o saldo atinge pela primeira vez o objetivo."
+  },
+  "explHow2": {
+    "en": "The 7% is a real return — already net of inflation — which is why the target does not need to be inflated year by year. Both sides of the comparison are in today's money, so the date they meet at is meaningful without any further adjustment. The second half of the tool divides your take-home pay by the hours you actually work to get a net hourly wage, then prices your recurring expenses in that unit. A subscription is no longer three euros a month; it is the number of working hours a year it takes to pay for it.",
+    "es": "El 7% es una rentabilidad real, ya descontada la inflación, y por eso el objetivo no necesita inflarse año a año. Ambos lados de la comparación están en dinero de hoy, así que la fecha en la que se encuentran es significativa sin más ajustes. La segunda mitad de la herramienta divide tu sueldo neto entre las horas que realmente trabajas para obtener un salario neto por hora, y luego valora tus gastos recurrentes en esa unidad. Una suscripción deja de ser tres euros al mes: pasa a ser el número de horas de trabajo al año que cuesta pagarla.",
+    "pt": "Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa de ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, pelo que a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma subscrição deixa de ser três euros por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la."
+  },
+  "explAssumptionsTitle": {
+    "en": "What it assumes",
+    "es": "Qué supone",
+    "pt": "O que pressupõe"
+  },
+  "explAssumption1": {
+    "en": "A 7% annual real return, applied evenly every month. Real markets do not deliver 7% evenly; they deliver something between −40% and +30% in any given year and average out over decades.",
+    "es": "Una rentabilidad real anual del 7%, aplicada de forma uniforme cada mes. Los mercados reales no entregan un 7% uniforme: entregan algo entre −40% y +30% en un año cualquiera y promedian a lo largo de décadas.",
+    "pt": "Uma rentabilidade real anual de 7%, aplicada de forma uniforme todos os meses. Os mercados reais não entregam 7% de forma uniforme: entregam algo entre −40% e +30% num ano qualquer e fazem média ao longo de décadas."
+  },
+  "explAssumption2": {
+    "en": "A 4% withdrawal rate, and therefore a 25× target. Lower it to 3.5% and the target becomes 28.6× — a change of a few years for most people.",
+    "es": "Una tasa de retirada del 4%, y por tanto un objetivo de 25×. Bájala al 3,5% y el objetivo pasa a 28,6×, una diferencia de varios años para la mayoría.",
+    "pt": "Uma taxa de levantamento de 4%, e portanto um objetivo de 25×. Baixe-a para 3,5% e o objetivo passa a 28,6×, uma diferença de vários anos para a maioria das pessoas."
+  },
+  "explAssumption3": {
+    "en": "Your income and your spending stay where you put them. No raises, no children, no move to a cheaper city, no new mortgage.",
+    "es": "Tus ingresos y tus gastos se quedan donde los pongas. Sin aumentos, sin hijos, sin mudanza a una ciudad más barata, sin hipoteca nueva.",
+    "pt": "O seu rendimento e as suas despesas ficam onde os colocar. Sem aumentos, sem filhos, sem mudança para uma cidade mais barata, sem crédito à habitação novo."
+  },
+  "explAssumption4": {
+    "en": "No taxes on investment gains, no fund fees, and no state pension arriving later to lower the amount you need from your own portfolio.",
+    "es": "Sin impuestos sobre las plusvalías, sin comisiones de fondos y sin una pensión pública que llegue más tarde a reducir lo que necesitas de tu propia cartera.",
+    "pt": "Sem impostos sobre mais-valias, sem comissões de fundos e sem uma pensão pública que chegue mais tarde a reduzir o que precisa da sua própria carteira."
+  },
+  "explAssumptionsNote": {
+    "en": "Because of those four, the date is a direction rather than an appointment. Its value is in what happens when you change one input: the difference between two dates is far more trustworthy than either date on its own.",
+    "es": "Por esas cuatro razones, la fecha es una dirección, no una cita. Su valor está en lo que ocurre cuando cambias una entrada: la diferencia entre dos fechas es mucho más fiable que cualquiera de las dos por separado.",
+    "pt": "Por essas quatro razões, a data é uma direção, não um compromisso marcado. O seu valor está no que acontece quando muda uma entrada: a diferença entre duas datas é muito mais fiável do que qualquer uma delas isoladamente."
+  },
+  "explExampleTitle": {
+    "en": "A worked example",
+    "es": "Un ejemplo resuelto",
+    "pt": "Um exemplo resolvido"
+  },
+  "explExample1": {
+    "en": "Take someone earning 3,000 a month after tax, spending 2,200, with 20,000 already invested. Annual spending is 26,400, so the target is 660,000. The monthly surplus is 800. Starting from 20,000 and adding 800 a month at 7% real, the balance crosses 660,000 in roughly twenty-six years.",
+    "es": "Toma a alguien que gana 3.000 al mes después de impuestos, gasta 2.200 y tiene 20.000 ya invertidos. El gasto anual es 26.400, así que el objetivo es 660.000. El excedente mensual es 800. Partiendo de 20.000 y añadiendo 800 al mes al 7% real, el saldo cruza los 660.000 en unos veintiséis años.",
+    "pt": "Considere alguém que ganha 3.000 por mês depois de impostos, gasta 2.200 e tem 20.000 já investidos. A despesa anual é 26.400, pelo que o objetivo é 660.000. O excedente mensal é 800. Partindo de 20.000 e acrescentando 800 por mês a 7% real, o saldo cruza os 660.000 em cerca de vinte e seis anos."
+  },
+  "explExample2": {
+    "en": "Now cut spending to 2,000. The target falls to 600,000 and the monthly surplus rises to 1,000, because every euro not spent is a euro invested. The date moves in by about five years. That is the asymmetry the calendar exists to make visible: a change in spending moves both sides of the equation at once, while a raise of the same size moves only one.",
+    "es": "Ahora reduce el gasto a 2.000. El objetivo baja a 600.000 y el excedente mensual sube a 1.000, porque cada euro no gastado es un euro invertido. La fecha se adelanta unos cinco años. Esa es la asimetría que el calendario existe para hacer visible: un cambio en el gasto mueve los dos lados de la ecuación a la vez, mientras que un aumento del mismo tamaño solo mueve uno.",
+    "pt": "Agora reduza a despesa para 2.000. O objetivo desce para 600.000 e o excedente mensal sobe para 1.000, porque cada euro não gasto é um euro investido. A data antecipa-se cerca de cinco anos. É esta a assimetria que o calendário existe para tornar visível: uma alteração na despesa move os dois lados da equação ao mesmo tempo, enquanto um aumento do mesmo valor move apenas um."
+  },
+  "explFaqQ1": {
+    "en": "Why 4% and not something else?",
+    "es": "¿Por qué el 4% y no otra cifra?",
+    "pt": "Porquê 4% e não outro valor?"
+  },
+  "explFaqA1": {
+    "en": "It is the rate that survived nearly every thirty-year window in the historical record for a stock-and-bond portfolio. It is a rule of thumb, not a law — it assumes a thirty-year horizon and a particular asset mix, and retiring at forty means planning for considerably longer than thirty years.",
+    "es": "Es la tasa que sobrevivió a casi todas las ventanas de treinta años del registro histórico para una cartera de acciones y bonos. Es una regla práctica, no una ley: supone un horizonte de treinta años y una mezcla de activos concreta, y jubilarse a los cuarenta significa planificar bastante más de treinta años.",
+    "pt": "É a taxa que sobreviveu a quase todas as janelas de trinta anos do registo histórico para uma carteira de ações e obrigações. É uma regra prática, não uma lei: pressupõe um horizonte de trinta anos e uma mistura de ativos concreta, e reformar-se aos quarenta significa planear bastante mais do que trinta anos."
+  },
+  "explFaqQ2": {
+    "en": "Does the date account for a market crash?",
+    "es": "¿La fecha tiene en cuenta una caída del mercado?",
+    "pt": "A data tem em conta uma queda do mercado?"
+  },
+  "explFaqA2": {
+    "en": "No. It applies the same return every month, which is the one thing markets never do. If you want to see what a bad decade does to the same plan, the Monte Carlo simulator runs a thousand versions of it with the volatility left in.",
+    "es": "No. Aplica la misma rentabilidad todos los meses, que es justo lo que los mercados nunca hacen. Si quieres ver qué le hace una mala década al mismo plan, el simulador de Monte Carlo ejecuta mil versiones con la volatilidad incluida.",
+    "pt": "Não. Aplica a mesma rentabilidade todos os meses, que é precisamente o que os mercados nunca fazem. Se quiser ver o que uma má década faz ao mesmo plano, o simulador de Monte Carlo executa mil versões com a volatilidade incluída."
+  },
+  "explFaqQ3": {
+    "en": "Is the hourly wage figure the same as my salary divided by my hours?",
+    "es": "¿El salario por hora es mi sueldo dividido entre mis horas?",
+    "pt": "O salário por hora é o meu vencimento dividido pelas minhas horas?"
+  },
+  "explFaqA3": {
+    "en": "Close, but it uses take-home pay rather than gross, so it reflects what an hour actually puts in your account. Adding commuting time to your hours makes it more honest still, and usually lowers it more than people expect.",
+    "es": "Casi: usa el sueldo neto en lugar del bruto, así que refleja lo que una hora deja realmente en tu cuenta. Añadir el tiempo de desplazamiento a tus horas lo hace aún más honesto, y suele bajarlo más de lo que la gente espera.",
+    "pt": "Quase: usa o salário líquido em vez do bruto, pelo que reflete o que uma hora coloca realmente na sua conta. Acrescentar o tempo de deslocação às suas horas torna-o ainda mais honesto, e costuma baixá-lo mais do que as pessoas esperam."
+  },
+  "explReadingSlug1": {
+    "en": "pay-yourself-first-the-simple-habit-to-build-lasting-wealth",
+    "es": "pagate-a-ti-mismo-primero-el-habito-clave-para-crear-riqueza",
+    "pt": "pague-se-a-si-mesmo-primeiro-o-habito-chave-para-criar-riqueza"
+  },
+  "explReadingLabel1": {
+    "en": "Pay Yourself First: The Simple Habit to Build Lasting Wealth",
+    "es": "Págate a Ti Mismo Primero: El Hábito Clave para Crear Riqueza",
+    "pt": "Pague-se a Si Mesmo Primeiro: O Hábito Chave para Criar Riqueza"
+  },
+  "explReadingSlug2": {
+    "en": "slow-money-system",
+    "es": "sistema-dinero-lento",
+    "pt": "sistema-dinheiro-lento"
+  },
+  "explReadingLabel2": {
+    "en": "The slow money system: a calmer way to build wealth",
+    "es": "El sistema de dinero lento: una forma más tranquila de crear patrimonio",
+    "pt": "O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio"
+  },
+  "explFaqTitle": {
+    "en": "Common questions",
+    "es": "Preguntas frecuentes",
+    "pt": "Perguntas frequentes"
+  },
+  "explReadingTitle": {
+    "en": "Keep reading",
+    "es": "Sigue leyendo",
+    "pt": "Continue a ler"
+  },
+  "explReadingIntro": {
+    "en": "The journal covers the ideas behind this tool at greater length.",
+    "es": "El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.",
+    "pt": "O diário desenvolve com mais calma as ideias por trás desta ferramenta."
+  },
+  "explReadingAll": {
+    "en": "All journal entries",
+    "es": "Todas las entradas del diario",
+    "pt": "Todas as entradas do diário"
+  },
+  "explCrumbHome": {
+    "en": "Home",
+    "es": "Inicio",
+    "pt": "Início"
+  },
+  "explCrumbSimulators": {
+    "en": "Simulators",
+    "es": "Simuladores",
+    "pt": "Simuladores"
+  },
+  "explCrumbSelf": {
+    "en": "Freedom Calendar",
+    "es": "Calendario de la Libertad",
+    "pt": "Calendário da Liberdade"
+  },
+  "explCrumbLabel": {
+    "en": "Breadcrumb",
+    "es": "Ruta de navegación",
+    "pt": "Trilho de navegação"
   }
 }

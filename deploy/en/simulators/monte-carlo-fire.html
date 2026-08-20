@@ -11,6 +11,7 @@
   <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="en_US"><meta property="og:title" content="Monte Carlo FIRE Retirement Survival Simulator"><meta property="og:description" content="Estimate whether a retirement portfolio can survive thousands of possible market futures."><meta property="og:url" content="https://compoundingjourney.com/en/simulators/monte-carlo-fire.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Monte Carlo FIRE Retirement Survival Simulator"><meta name="twitter:description" content="Estimate whether a retirement portfolio can survive thousands of possible market futures."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Monte Carlo FIRE Survival Flight","url":"https://compoundingjourney.com/en/simulators/monte-carlo-fire.html","description":"A Monte Carlo simulator for estimating retirement portfolio survival under varied market returns and withdrawal assumptions.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://compoundingjourney.com/en/"},{"@type":"ListItem","position":2,"name":"Simulators","item":"https://compoundingjourney.com/en/simulator.html"},{"@type":"ListItem","position":3,"name":"Monte Carlo FIRE"}]}</script>
   
   
   <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
@@ -96,8 +97,9 @@
       animation: warningPulse 1s infinite;
     }
   </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.en.webmanifest">
@@ -200,6 +202,16 @@
 
   <!-- MAIN CONTAINER -->
   <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
+        <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
+             so each tool page looked like an orphan at the top level of the site. -->
+        <nav class="sim-crumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/simulator.html">Simulators</a></li>
+                <li><span aria-current="page">Monte Carlo FIRE</span></li>
+            </ol>
+        </nav>
+
 
     <!-- ================================================================= -->
     <!-- TAB 1: INTERACTIVE FLIGHT COCKPIT -->
@@ -849,6 +861,71 @@
       </div>
 
     </div>
+
+    <!-- The explainer below is the answer to a Search Console report: these pages
+                 were being crawled and then not indexed, which is what Google does with a
+                 page that is almost entirely interface. A calculator has nothing to read -
+                 the numbers only exist after somebody types into it - so there was no text
+                 on which to judge the page useful, and the three language versions looked
+                 more like each other than like anything else.
+
+                 So this states, in prose, what the tool models, what it assumes, and where
+                 those assumptions break. That is not filler written for a crawler: the
+                 assumptions are the part of any financial model that decides whether its
+                 output means anything, and every figure quoted here was read out of the
+                 behaviour block at the bottom of this file rather than estimated. The
+                 translations are written rather than converted, for the same reason the
+                 pages exist in three languages at all.
+
+                 Styled by assets/css/simulator-explainer.css, which paints its own
+                 background: the five simulators use three different palettes and this
+                 section has to read identically on all of them. -->
+    <section class="sim-explainer" aria-labelledby="explainer-title">
+        <div class="sim-explainer__inner">
+            <h2 class="sim-explainer__title" id="explainer-title">What a Monte Carlo simulation tells you</h2>
+            <p class="sim-explainer__lede">Every other retirement calculator gives you one number, produced by assuming the market returns the same amount every year. It never does. This simulator runs your plan a thousand times over, drawing a different sequence of market years each time, and reports not a number but a probability: the share of those thousand lives in which your money outlasted you.</p>
+
+            <h3 class="sim-explainer__heading">How the thousand runs work</h3>
+            <p>For each of the 1,000 runs and each year within it, the simulator draws a random return for stocks, bonds and cash, and a random rate of inflation, from distributions calibrated to long-run history: stocks average 8.2% a year with a standard deviation of 24%, bonds 3.5% with 6%, cash 1.5% with 1%, and inflation 3.5% with 2.5%. Your portfolio grows by the weighted result, your withdrawal is taken out, and the withdrawal is inflated for the following year.</p>
+            <p>The thousand results are then sorted, and three of them are shown: the 10th percentile, the median and the 90th. The median is the ordinary outcome. The 10th percentile is the one that matters — it is what happens when the draws go against you, and a plan that only works at the median is a plan that fails one time in two. A run in which the balance sits at zero for ten consecutive years is counted as ruined, not as recovered.</p>
+
+            <h3 class="sim-explainer__heading">What it assumes</h3>
+            <ul class="sim-explainer__list">
+                <li>Returns are drawn independently each year from a normal distribution. Real markets have fat tails — extreme years happen more often than a bell curve predicts — and they cluster, so a bad year is more likely to be followed by another.</li>
+                <li>Asset classes are drawn independently of each other. In a real crisis correlations rise towards one, which is precisely when diversification is supposed to help.</li>
+                <li>Your withdrawal rises with inflation regardless of what the portfolio did. Real retirees spend less after a bad year, which is the single most effective defence available and is not modelled here.</li>
+                <li>No taxes, no fund fees, no state pension and no other income. Each of those shifts the result, and not all of them in the same direction.</li>
+            </ul>
+            <p class="sim-explainer__note">Read the success rate as a comparison tool, not as a forecast. Ninety per cent here does not mean a nine-in-ten chance in the world; it means this plan failed a tenth of the time under these assumptions, and you can see exactly which change makes that number move.</p>
+
+            <h3 class="sim-explainer__heading">A worked example</h3>
+            <p>A portfolio of 800,000, 70% in stocks, drawn down at 4% a year over thirty years, comes back with a success rate in the low nineties. The median run ends with more money than it started with — often several times more — which is the counter-intuitive part: the typical outcome of a sustainable withdrawal plan is dying rich.</p>
+            <p>Now raise the withdrawal rate to 5%. The median barely moves — but the success rate falls by more than twenty points and the 10th percentile run runs out of money in the mid-twenties. That gap is the entire argument for looking at the bottom decile: the typical outcome of the riskier plan looks fine, and the risk is all hiding in the tail you were not shown.</p>
+
+            <h3 class="sim-explainer__heading">Common questions</h3>
+            <dl class="sim-explainer__faq">
+                <dt>Why a thousand runs and not more?</dt>
+                <dd>A thousand is enough for the success rate to be stable to about a percentage point, and few enough to finish instantly in your browser. Running ten thousand would move the second decimal place, not the decision.</dd>
+                <dt>Why does the result change each time I run it?</dt>
+                <dd>Because the draws are random. A success rate that swings by a point or two between runs is normal; one that swings by ten is telling you the plan is sitting on a knife edge, which is itself the answer.</dd>
+                <dt>What success rate should I aim for?</dt>
+                <dd>There is no correct threshold, and chasing 100% usually means working years longer for protection against scenarios in which you would have cut your spending anyway. What matters more is knowing which lever — spending, allocation, or one more year of saving — moves your number the most.</dd>
+            </dl>
+
+            <!-- The journal and the simulators were two separate islands: nothing on a
+                 simulator linked to an article, so the articles were reachable only from
+                 the blog index and the crawler had no reason to treat the two as one site. -->
+            <nav class="sim-explainer__reading" aria-labelledby="reading-title">
+                <h3 class="sim-explainer__heading" id="reading-title">Keep reading</h3>
+                <p>The journal covers the ideas behind this tool at greater length.</p>
+                <ul class="sim-explainer__list">
+                    <li><a href="/en/blog/pay-yourself-first-the-simple-habit-to-build-lasting-wealth/">Pay Yourself First: The Simple Habit to Build Lasting Wealth</a></li>
+                    <li><a href="/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/">Foundations of Personal Finance: How to Control Expenses and Build Wealth</a></li>
+                    <li><a href="/en/blog/">All journal entries</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
 
     <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
          panel, down to the markup: whichever door a reader comes in through -

@@ -5,11 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="E4KLrkhNpy-EpIG1IRxGICciCHV-9Trc6WycFxr4RGg" />
-    <!-- The brand mark is a 2048px master used for social cards and structured
-         data. Browsers only ever paint it at 64px, so the page itself asks the
-         Netlify Image CDN for that size and leaves the master to the scrapers
-         that actually want it. Keep this URL byte-identical to the header <img>
-         below or the preload fetches a second copy. -->
     <link rel="preload" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" as="image" fetchpriority="high">
     <title>El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad</title>
     <meta id="meta-description" name="description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
@@ -21,7 +16,7 @@
     <link id="alternate-es" rel="alternate" hreflang="es" href="https://compoundingjourney.com/">
     <link id="alternate-pt" rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/">
     <link id="alternate-default" rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/">
-
+    <link rel="alternate" type="text/plain" href="https://compoundingjourney.com/llms.txt" title="llms.txt">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Compounding Journey">
     <meta id="og-title" property="og:title" content="El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad">
@@ -35,27 +30,14 @@
     <meta id="og-locale" property="og:locale" content="es_ES">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="pt_PT">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta id="twitter-title" name="twitter:title" content="El viaje del Crecimiento Compuesto - Tu mapa hacia la libertad">
     <meta id="twitter-description" name="twitter:description" content="Psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.">
     <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
-    <!-- The body font is declared in header.css, the third stylesheet the parser
-         reaches, so the browser only discovers it once two other sheets have
-         downloaded and parsed. Preloading it starts the fetch with the first
-         bytes of the document instead. Font Awesome needs no such hint: its
-         @font-face lives in icons.css, which is linked immediately below. -->
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
-    <!-- Compiled production styles. Tailwind emits this file during the build,
-         after the page generators have run, so its contents are not knowable
-         when this markup is written. The ?v=source token below is a placeholder:
-         scripts/version-assets.mjs is the last step of the build and replaces it
-         with a hash of the bundle it just compiled. That makes a rebuilt bundle a
-         new URL, which is what lets _headers cache it immutably instead of
-         asking every returning visitor to revalidate it. -->
     <link rel="stylesheet" href="/assets/styles.css?v=ce072382c104">
     <script type="application/ld+json">
     {
@@ -249,24 +231,23 @@
   ]
 }
     </script>
-    <link rel="stylesheet" href="/assets/css/home.css?v=66d88134c6cc">
-    <link rel="stylesheet" href="/assets/css/header.css?v=e448eb2e115d">
+    <link rel="stylesheet" href="/assets/css/home.css?v=bca503c1604d">
+    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
+    <script defer src="/assets/js/home.js?v=83687ac5f5b1"></script>
+    <script type="module" src="/assets/js/home-identity.js?v=f1beb1512497"></script>
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.es.webmanifest">
     <meta name="theme-color" content="#1E4620">
     <!--manifest:end-->
 </head>
 <body class="lang-es bg-creamsoft font-sans text-darkbark/90 antialiased scroll-smooth">
-
     <a class="skip-link" href="#main">
-        <span lang-content="es">Saltar al contenido principal</span>
-        
-        
+        <span data-i18n>Saltar al contenido principal</span>
     </a>
-
     <div id="identity-callback" class="identity-callback" role="dialog" aria-modal="true" aria-labelledby="identity-callback-title" hidden>
         <div class="identity-callback__card">
+            <button id="identity-callback-close" class="identity-callback__close" type="button" aria-label="Close">&times;</button>
             <img class="identity-callback__logo" src="/.netlify/images?url=/sandy-bradbury-portrait.png&amp;w=128&amp;h=128&amp;fit=cover" alt="" width="64" height="64" decoding="async">
             <h2 id="identity-callback-title" class="identity-callback__title">Set your password</h2>
             <p id="identity-callback-copy" class="identity-callback__copy">Choose a secure password to continue to the Content Studio.</p>
@@ -280,11 +261,9 @@
             <p id="identity-callback-status" class="identity-callback__status" role="alert" aria-live="polite"></p>
         </div>
     </div>
-
     <!-- NAVIGATION HEADER -->
     <header class="site-header sticky top-0 z-50 bg-[#FCF1DB]/95 backdrop-blur border-b border-creamborder shadow-sm">
         <div class="header-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-            
             <!-- Brand Logotype & Dynamic Typography Integration -->
             <a href="/" data-home-link class="header-brand flex items-center gap-3 group">
                 <!-- Compounding Journey Substack Logo Image - Direct Load -->
@@ -301,56 +280,38 @@
                 <!-- Fixed brand name with a localized tagline -->
                 <div class="header-brand-copy flex flex-col justify-center">
                     <span class="header-brand-name">Compounding Journey</span>
-                    <span lang-content="es" class="header-brand-tagline">TU MAPA HACIA LA LIBERTAD</span>
-                    
-                    
+                    <span data-i18n class="header-brand-tagline">TU MAPA HACIA LA LIBERTAD</span>
                 </div>
             </a>
-
             <!-- Desktop Section Navigation -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
                 <a href="#pilares" data-site-route="/pillars" data-section="pilares">
-                    <span lang-content="es">Pilares</span>
-                    
-                    
+                    <span data-i18n>Pilares</span>
                 </a>
                 <a href="#simulador" data-site-route="/simulators" data-section="simulador">
-                    <span lang-content="es">Simuladores</span>
-                    
-                    
+                    <span data-i18n>Simuladores</span>
                 </a>
                 <div class="desktop-resources" data-resources-dropdown>
                     <button type="button" class="desktop-resources-toggle" aria-expanded="false" aria-controls="desktop-resources-menu">
-                        <span lang-content="es">Recursos</span>
-                        
-                        
+                        <span data-i18n>Recursos</span>
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="desktop-resources-menu" class="desktop-resources-menu">
                         <a href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span lang-content="es">Herramientas</span>
-                            
-                            
+                            <span data-i18n>Herramientas</span>
                         </a>
                         <a href="#plantillas" data-site-route="/templates" data-section="plantillas">
-                            <span lang-content="es">Plantillas</span>
-                            
-                            
+                            <span data-i18n>Plantillas</span>
                         </a>
                     </div>
                 </div>
                 <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
-                    <span lang-content="es">FAQ</span>
-                    
-                    
+                    <span data-i18n>FAQ</span>
                 </a>
                 <a href="#assessment" data-site-route="/assessment" data-section="assessment" class="desktop-nav-cta">
-                    <span lang-content="es">Freedom Compass</span>
-                    
-                    
+                    <span data-i18n>Freedom Compass</span>
                 </a>
             </nav>
-
             <!-- Navigation Links & Flags -->
             <div class="header-actions flex items-center gap-1 sm:gap-2 shrink-0">
                 <!-- Trilingual Flag Language Selectors.
@@ -360,9 +321,7 @@
                      behaviour match the blog header. The generator marks the
                      current one with aria-current="page". -->
                 <span id="language-switcher-label" class="sr-only">
-                    <span lang-content="es">Idioma</span>
-                    
-                    
+                    <span data-i18n>Idioma</span>
                 </span>
                 <nav class="header-language-switcher flex items-center gap-1 bg-white/80 p-1 rounded-full border border-creamborder shadow-sm" aria-labelledby="language-switcher-label">
                     <a href="/en/" id="btn-en" data-lang-switch="en" hreflang="en" lang="en" aria-label="View site in English" class="lang-btn flex h-8 w-10 items-center justify-center rounded-full p-1.5 hover:text-forestgreen transition-all">
@@ -390,7 +349,6 @@
                         </svg>
                     </a>
                 </nav>
-
                 <!-- Publication Links -->
                 <div class="header-publication-switcher" aria-label="Publications">
                     <a href="/es/blog/" data-blog-link class="header-publication-button" aria-label="Blog">
@@ -405,45 +363,40 @@
                 </button>
             </div>
         </div>
-
     </header>
-
         <div id="mobile-menu" class="mobile-menu" hidden>
             <button type="button" class="mobile-menu__backdrop" data-mobile-menu-close aria-label="Close navigation menu"></button>
             <div class="mobile-menu__drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
                 <p class="mobile-menu__label">
-                    <span lang-content="es">Navegación</span>
-                    
-                    
+                    <span data-i18n>Navegación</span>
                 </p>
                 <nav class="mobile-nav" aria-label="Mobile section navigation">
                     <a class="mobile-nav-link" href="#pilares" data-site-route="/pillars" data-section="pilares">
-                        <span lang-content="es">Pilares</span>
+                        <span data-i18n>Pilares</span>
                     </a>
                     <a class="mobile-nav-link" href="#simulador" data-site-route="/simulators" data-section="simulador">
-                        <span lang-content="es">Simuladores</span>
+                        <span data-i18n>Simuladores</span>
                     </a>
                     <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-resources-panel">
-                        <span><span lang-content="es">Recursos</span></span>
+                        <span><span data-i18n>Recursos</span></span>
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="mobile-resources-panel" class="mobile-resources-panel" hidden>
                         <a class="mobile-nav-link" href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span lang-content="es">Herramientas</span>
+                            <span data-i18n>Herramientas</span>
                         </a>
                         <a class="mobile-nav-link" href="#plantillas" data-site-route="/templates" data-section="plantillas">
-                            <span lang-content="es">Plantillas</span>
+                            <span data-i18n>Plantillas</span>
                         </a>
                     </div>
                     <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
                 </nav>
                 <a class="mobile-nav-cta" href="#assessment" data-site-route="/assessment" data-section="assessment">
-                    <span lang-content="es">Freedom Compass</span>
+                    <span data-i18n>Freedom Compass</span>
                     <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M4 10h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
             </div>
         </div>
-
     <main id="main" tabindex="-1">
     <!-- HERO SECTION -->
     <section class="relative overflow-hidden bg-gradient-to-br from-forestgreen via-forestgreen to-darkbark text-white py-20 lg:py-28">
@@ -458,283 +411,184 @@
                 <rect width="100%" height="100%" fill="url(#grid-pattern)" />
             </svg>
         </div>
-
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
                 <span class="w-2 h-2 rounded-full bg-warmgold animate-ping"></span>
-                <span lang-content="es" class="text-xs uppercase tracking-widest font-semibold text-warmgold">Tu viaje hacia la libertad</span>
-                
-                
+                <span data-i18n class="text-xs uppercase tracking-widest font-semibold text-warmgold">Tu viaje hacia la libertad</span>
             </div>
-
             <!-- Dynamic Trilingual Hero Title -->
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                <span lang-content="es">Diseña una vida con propósito <br><span class="text-warmgold">Haz que tu dinero compre libertad</span></span>
-                
-                
+                <span data-i18n>Diseña una vida con propósito <br><span class="text-warmgold">Haz que tu dinero compre libertad</span></span>
             </h1>
-
             <!-- Subtitle -->
-            <p lang-content="es" class="text-lg sm:text-xl text-creamsoft/85 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+            <p data-i18n class="text-lg sm:text-xl text-creamsoft/85 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
                 Diseña tu libertad. Invierte y vive según tus valores. Estrategia financiera con propósito y disciplina.
             </p>
-            
-            
-
             <!-- Newsletter Mantra / Slogan Card -->
             <div class="bg-white/5 border border-white/15 rounded-2xl p-6 max-w-xl mx-auto backdrop-blur-md shadow-xl mb-10">
                 <p class="text-[10px] uppercase tracking-widest text-warmgold font-bold mb-1">
-                    <span lang-content="es">Mantra de la Newsletter</span>
-                    
-                    
+                    <span data-i18n>Mantra de la Newsletter</span>
                 </p>
                 <p class="text-lg sm:text-xl font-medium tracking-wide italic text-creamsoft">
-                    <span lang-content="es">"Haz que tu dinero trabaje para tu felicidad"</span>
-                    
-                    
+                    <span data-i18n>"Haz que tu dinero trabaje para tu felicidad"</span>
                 </p>
             </div>
-
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="https://preview.mailerlite.io/forms/2524111/193713027715958521/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 bg-warmgold hover:bg-warmgold/95 text-darkbark font-bold rounded-lg shadow-lg hover:shadow-warmgold/20 hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
-                    <span lang-content="es">Unirse al Newsletter</span>
-                    
-                    
+                    <span data-i18n>Unirse al Newsletter</span>
                     <i class="fa-solid fa-paper-plane text-sm"></i>
                 </a>
                 <a href="#herramientas" class="inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/35 text-white font-semibold rounded-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
-                    <span lang-content="es">Calculadoras Financieras</span>
-                    
-                    
+                    <span data-i18n>Calculadoras Financieras</span>
                     <i class="fa-solid fa-calculator text-sm text-warmgold"></i>
                 </a>
             </div>
         </div>
     </section>
-
     <!-- METHODOLOGY INTRO -->
     <section class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-extrabold text-forestgreen tracking-tight mb-4">
-                <span lang-content="es">Tu dinero es una herramienta para vivir mejor</span>
-                
-                
+                <span data-i18n>Tu dinero es una herramienta para vivir mejor</span>
             </h2>
             <div class="w-16 h-1 bg-warmgold mx-auto mb-8 rounded-full"></div>
-
             <div class="text-lg text-darkbark/80 leading-relaxed font-light space-y-4">
-                <p lang-content="es">
+                <p data-i18n>
                     No se trata de acumular por acumular. Se trata de convertir tus decisiones financieras en más tiempo, tranquilidad y opciones para vivir según tus valores. El interés compuesto es la herramienta; una vida con propósito es el destino. Lo construimos con inversiones de calidad, costes conscientes y una disciplina sostenible que puedas mantener sin dejar de disfrutar el presente.
                 </p>
-                
-                
             </div>
         </div>
     </section>
-
     <!-- METHODOLOGY THREE PILLARS -->
     <section id="pilares" class="scroll-mt-20 py-16 bg-creamsoft border-t border-b border-creamborder">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                    <span lang-content="es">Tu mapa hacia la libertad</span>
-                    
-                    
+                    <span data-i18n>Tu mapa hacia la libertad</span>
                 </p>
                 <h2 class="text-3xl font-extrabold text-forestgreen">
-                    <span lang-content="es">Tres pilares para diseñar tu libertad</span>
-                    
-                    
+                    <span data-i18n>Tres pilares para diseñar tu libertad</span>
                 </h2>
             </div>
-
             <!-- Content Grid for the 3 Pillars -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
                 <!-- Pillar 1: The Operating System -->
                 <div class="bg-white rounded-3xl border border-creamborder shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden flex flex-col">
                     <div class="p-8 flex-grow">
                         <div class="w-14 h-14 rounded-2xl bg-forestgreen/5 border border-forestgreen/10 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-gauge-high text-2xl text-forestgreen"></i>
                         </div>
-                        
                         <span class="text-xs font-bold text-warmgold uppercase tracking-wider block mb-2">
-                            <span lang-content="es">Pilar 1</span>
-                            
-                            
+                            <span data-i18n>Pilar 1</span>
                         </span>
                         <h3 class="text-xl font-bold text-forestgreen mb-4">
-                            <span lang-content="es">Hábitos que cuidan de tu futuro</span>
-                            
-                            
+                            <span data-i18n>Hábitos que cuidan de tu futuro</span>
                         </h3>
-                        
-                        <p lang-content="es" class="text-darkbark/70 text-sm mb-6">
+                        <p data-i18n class="text-darkbark/70 text-sm mb-6">
                             Tu libertad empieza antes de invertir: en hábitos que reducen el estrés, protegen tus prioridades y reservan espacio para el futuro que quieres vivir.
                         </p>
-                        
-                        
-
                         <!-- Items List -->
                         <div class="space-y-4 border-t border-creamborder pt-6">
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Reserva libertad para tu futuro</span>
-                                    
-                                    
+                                    <span data-i18n>Reserva libertad para tu futuro</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">Separa una cantidad sostenible al cobrar. No es privarte hoy: es darle opciones a tu yo de mañana.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Separa una cantidad sostenible al cobrar. No es privarte hoy: es darle opciones a tu yo de mañana.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Automatiza tu tranquilidad</span>
-                                    
-                                    
+                                    <span data-i18n>Automatiza tu tranquilidad</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">Automatizar ahorro e inversión reduce decisiones impulsivas y convierte la disciplina en un hábito sencillo.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Automatizar ahorro e inversión reduce decisiones impulsivas y convierte la disciplina en un hábito sencillo.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Compra con intención</span>
-                                    
-                                    
+                                    <span data-i18n>Compra con intención</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">Mide cada compra en horas de vida. Gasta con alegría cuando aporte valor y di no cuando te aleje de lo importante.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Mide cada compra en horas de vida. Gasta con alegría cuando aporte valor y di no cuando te aleje de lo importante.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Pillar 2: Horizon Asset Allocation -->
                 <div class="bg-white rounded-3xl border border-creamborder shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden flex flex-col">
                     <div class="p-8 flex-grow">
                         <div class="w-14 h-14 rounded-2xl bg-forestgreen/5 border border-forestgreen/10 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-chart-pie text-2xl text-forestgreen"></i>
                         </div>
-                        
                         <span class="text-xs font-bold text-warmgold uppercase tracking-wider block mb-2">
-                            <span lang-content="es">Pilar 2</span>
-                            
-                            
+                            <span data-i18n>Pilar 2</span>
                         </span>
                         <h3 class="text-xl font-bold text-forestgreen mb-4">
-                            <span lang-content="es">Una estrategia para tu vida</span>
-                            
-                            
+                            <span data-i18n>Una estrategia para tu vida</span>
                         </h3>
-                        
-                        <p lang-content="es" class="text-darkbark/70 text-sm mb-6">
+                        <p data-i18n class="text-darkbark/70 text-sm mb-6">
                             Tu cartera debe adaptarse a tus metas, tu etapa vital y la tranquilidad que necesitas para mantener el rumbo.
                         </p>
-                        
-                        
-
                         <!-- Items List -->
                         <div class="space-y-4 border-t border-creamborder pt-6">
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Crecimiento con horizonte largo</span>
-                                    
-                                    
+                                    <span data-i18n>Crecimiento con horizonte largo</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">Más exposición a activos globales de calidad cuando tienes tiempo para atravesar la volatilidad y dejar crecer tus opciones futuras.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Más exposición a activos globales de calidad cuando tienes tiempo para atravesar la volatilidad y dejar crecer tus opciones futuras.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Equilibrio para avanzar con calma</span>
-                                    
-                                    
+                                    <span data-i18n>Equilibrio para avanzar con calma</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">Combina crecimiento y protección para progresar sin asumir una tensión que te impida dormir o abandonar el plan.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Combina crecimiento y protección para progresar sin asumir una tensión que te impida dormir o abandonar el plan.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Tranquilidad para metas cercanas</span>
-                                    
-                                    
+                                    <span data-i18n>Tranquilidad para metas cercanas</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">Prioriza estabilidad y liquidez cuando el dinero tiene una misión próxima: una pausa, un proyecto o una nueva etapa.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Prioriza estabilidad y liquidez cuando el dinero tiene una misión próxima: una pausa, un proyecto o una nueva etapa.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Pillar 3: Philosophy & Mindset -->
                 <div class="bg-white rounded-3xl border border-creamborder shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden flex flex-col">
                     <div class="p-8 flex-grow">
                         <div class="w-14 h-14 rounded-2xl bg-forestgreen/5 border border-forestgreen/10 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-brain text-2xl text-forestgreen"></i>
                         </div>
-                        
                         <span class="text-xs font-bold text-warmgold uppercase tracking-wider block mb-2">
-                            <span lang-content="es">Pilar 3</span>
-                            
-                            
+                            <span data-i18n>Pilar 3</span>
                         </span>
                         <h3 class="text-xl font-bold text-forestgreen mb-4">
-                            <span lang-content="es">Mentalidad para disfrutar el viaje</span>
-                            
-                            
+                            <span data-i18n>Mentalidad para disfrutar el viaje</span>
                         </h3>
-                        
-                        <p lang-content="es" class="text-darkbark/70 text-sm mb-6">
+                        <p data-i18n class="text-darkbark/70 text-sm mb-6">
                             Invertir bien también es gestionar emociones: elegir calidad, aceptar la incertidumbre y recordar para qué estás construyendo libertad.
                         </p>
-                        
-                        
-
                         <!-- Items List -->
                         <div class="space-y-4 border-t border-creamborder pt-6">
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Protege el proceso</span>
-                                    
-                                    
+                                    <span data-i18n>Protege el proceso</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">La disciplina protege tu tiempo. Evita que el miedo del presente sabotee la libertad que estás construyendo a largo plazo.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">La disciplina protege tu tiempo. Evita que el miedo del presente sabotee la libertad que estás construyendo a largo plazo.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Calidad sobre ruido</span>
-                                    
-                                    
+                                    <span data-i18n>Calidad sobre ruido</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">Elige activos sólidos, diversificados y eficientes que no exijan convertir tu vida en una vigilancia constante del mercado.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Elige activos sólidos, diversificados y eficientes que no exijan convertir tu vida en una vigilancia constante del mercado.</p>
                             </div>
                             <div>
                                 <h4 class="text-xs font-extrabold text-forestgreen uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Mide libertad, no solo rentabilidad</span>
-                                    
-                                    
+                                    <span data-i18n>Mide libertad, no solo rentabilidad</span>
                                 </h4>
-                                <p lang-content="es" class="text-darkbark/80 text-sm">Tu progreso también se mide en noches tranquilas, decisiones con autonomía y tiempo para las personas y experiencias que valoras.</p>
-                                
-                                
+                                <p data-i18n class="text-darkbark/80 text-sm">Tu progreso también se mide en noches tranquilas, decisiones con autonomía y tiempo para las personas y experiencias que valoras.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-
     <!-- NEWSLETTER CTA BANNER -->
     <section class="py-16 bg-white border-b border-creamborder">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -742,45 +596,33 @@
                 <div class="space-y-4 max-w-xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-forestgreen/5 border border-forestgreen/10 rounded-full text-xs font-semibold text-forestgreen">
                         <i class="fa-solid fa-newspaper text-warmgold"></i>
-                        <span lang-content="es">Newsletter Oficial</span>
-                        
-                        
+                        <span data-i18n>Newsletter Oficial</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-extrabold text-forestgreen leading-tight">
-                        <span lang-content="es">Ideas para invertir con propósito y vivir con más libertad</span>
-                        
-                        
+                        <span data-i18n>Ideas para invertir con propósito y vivir con más libertad</span>
                     </h3>
                     <p class="text-sm text-darkbark/80 leading-relaxed">
-                        <span lang-content="es">Psicología del dinero, hábitos conscientes y estrategias de inversión de calidad para convertir tus recursos en tiempo, tranquilidad y experiencias que importan.</span>
-                        
-                        
+                        <span data-i18n>Psicología del dinero, hábitos conscientes y estrategias de inversión de calidad para convertir tus recursos en tiempo, tranquilidad y experiencias que importan.</span>
                     </p>
                 </div>
                 <div class="w-full md:w-auto shrink-0">
                     <a href="https://preview.mailerlite.io/forms/2524111/193713027715958521/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all">
-                        <span lang-content="es">Suscribirse gratis</span>
-                        
-                        
+                        <span data-i18n>Suscribirse gratis</span>
                         <i class="fa-solid fa-arrow-right text-warmgold"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- TOOLS FOR THE STRATEGY -->
     <section class="py-16 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h3 class="text-2xl font-extrabold text-forestgreen">
-                    <span lang-content="es">Una cartera al servicio de tu vida</span>
-                    
-                    
+                    <span data-i18n>Una cartera al servicio de tu vida</span>
                 </h3>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-3 rounded-full"></div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="p-6 bg-creamsoft rounded-2xl border border-creamborder">
                     <div class="flex items-start gap-4">
@@ -789,17 +631,12 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-forestgreen text-lg">
-                                <span lang-content="es">Crecimiento global con propósito</span>
-                                
-                                
+                                <span data-i18n>Crecimiento global con propósito</span>
                             </h4>
-                            <p lang-content="es" class="text-sm text-darkbark/80 mt-2">Activos globales diversificados y de calidad permiten participar en el crecimiento del mundo sin dedicar tu tiempo a perseguir cada oportunidad.</p>
-                            
-                            
+                            <p data-i18n class="text-sm text-darkbark/80 mt-2">Activos globales diversificados y de calidad permiten participar en el crecimiento del mundo sin dedicar tu tiempo a perseguir cada oportunidad.</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="p-6 bg-creamsoft rounded-2xl border border-creamborder">
                     <div class="flex items-start gap-4">
                         <div class="p-3 bg-forestgreen/10 rounded-xl text-forestgreen">
@@ -807,105 +644,75 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-forestgreen text-lg">
-                                <span lang-content="es">Disciplina que aporta tranquilidad</span>
-                                
-                                
+                                <span data-i18n>Disciplina que aporta tranquilidad</span>
                             </h4>
-                            <p lang-content="es" class="text-sm text-darkbark/80 mt-2">Una estrategia sencilla, eficiente y fácil de mantener evita decisiones emocionales y te permite dedicar energía a vivir, no a vigilar mercados.</p>
-                            
-                            
+                            <p data-i18n class="text-sm text-darkbark/80 mt-2">Una estrategia sencilla, eficiente y fácil de mantener evita decisiones emocionales y te permite dedicar energía a vivir, no a vigilar mercados.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- INTERACTIVE SIMULATOR SUITE -->
     <section id="simulador" aria-labelledby="simulator-heading" class="simulator-stage scroll-mt-20 py-20 text-white border-b border-creamborder">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <p class="simulator-stage-eyebrow text-xs font-bold uppercase tracking-widest mb-3"><span lang-content="es">Aprende experimentando</span></p>
-                <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4"><span lang-content="es">Cinco simuladores para diseñar tu libertad</span></h2>
-                <p class="text-base text-creamsoft/80 leading-relaxed"><span lang-content="es">Explora decisiones, tiempo, mercados, ingresos pasivos y la resiliencia de tu plan FIRE con experiencias prácticas y gratuitas.</span></p>
+                <p class="simulator-stage-eyebrow text-xs font-bold uppercase tracking-widest mb-3"><span data-i18n>Aprende experimentando</span></p>
+                <h2 id="simulator-heading" class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4"><span data-i18n>Cinco simuladores para diseñar tu libertad</span></h2>
+                <p class="text-base text-creamsoft/80 leading-relaxed"><span data-i18n>Explora decisiones, tiempo, mercados, ingresos pasivos y la resiliencia de tu plan FIRE con experiencias prácticas y gratuitas.</span></p>
             </div>
-
             <div class="simulator-grid">
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Decisiones financieras</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Vive 15 situaciones cotidianas y observa cómo cada elección cambia tu patrimonio, bienestar y conocimiento financiero.</span></p>
-                    <a lang-content="es" href="/es/simulator.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Decisiones financieras</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Vive 15 situaciones cotidianas y observa cómo cada elección cambia tu patrimonio, bienestar y conocimiento financiero.</span></p>
+                    <a data-i18n href="/es/simulator.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
-
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Calendario de la Libertad</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Convierte tus metas financieras en una línea de tiempo visual y descubre cuándo cada nivel de libertad puede estar a tu alcance.</span></p>
-                    <a lang-content="es" href="/es/simulators/freedom-calendar.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Calendario de la Libertad</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Convierte tus metas financieras en una línea de tiempo visual y descubre cuándo cada nivel de libertad puede estar a tu alcance.</span></p>
+                    <a data-i18n href="/es/simulators/freedom-calendar.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
-
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Máquina del Tiempo del Mercado</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Compara carteras a través de crisis y ciclos históricos para entender el riesgo, la recuperación y el poder de mantener el rumbo.</span></p>
-                    <a lang-content="es" href="/es/simulators/market-time-machine.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Máquina del Tiempo del Mercado</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Compara carteras a través de crisis y ciclos históricos para entender el riesgo, la recuperación y el poder de mantener el rumbo.</span></p>
+                    <a data-i18n href="/es/simulators/market-time-machine.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
-
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Motor de Ingresos Pasivos</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Construye una combinación de activos, adelanta el tiempo y observa cómo el flujo de caja puede crecer hasta cubrir tus gastos.</span></p>
-                    <a lang-content="es" href="/es/simulators/passive-income-engine.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Motor de Ingresos Pasivos</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Construye una combinación de activos, adelanta el tiempo y observa cómo el flujo de caja puede crecer hasta cubrir tus gastos.</span></p>
+                    <a data-i18n href="/es/simulators/passive-income-engine.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
-
                 <article class="simulator-card">
                     <div class="simulator-card-icon"><i class="fa-solid fa-plane-up" aria-hidden="true"></i></div>
-                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span lang-content="es">Vuelo de Supervivencia FIRE</span></h3>
-                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span lang-content="es">Somete tu retiro a miles de futuros posibles con Monte Carlo y mide la probabilidad de que tu cartera sobreviva.</span></p>
-                    <a lang-content="es" href="/es/simulators/monte-carlo-fire.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    
-                    
+                    <h3 class="text-lg font-extrabold leading-snug mb-3"><span data-i18n>Vuelo de Supervivencia FIRE</span></h3>
+                    <p class="text-sm text-creamsoft/75 leading-relaxed mb-6"><span data-i18n>Somete tu retiro a miles de futuros posibles con Monte Carlo y mide la probabilidad de que tu cartera sobreviva.</span></p>
+                    <a data-i18n href="/es/simulators/monte-carlo-fire.html" class="simulator-play-link"><span>Abrir simulador</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </article>
             </div>
         </div>
     </section>
-
     <!-- INTERACTIVE CALCULATORS SUITE SECTION -->
     <section id="herramientas" class="scroll-mt-20 py-16 bg-creamsoft border-t border-b border-creamborder" aria-labelledby="calculators-heading">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-1">
-                    <span lang-content="es">Simulaciones Financieras</span>
-                    
-                    
+                    <span data-i18n>Simulaciones Financieras</span>
                 </p>
                 <h2 id="calculators-heading" class="text-3xl font-extrabold text-forestgreen">
-                    <span lang-content="es">Herramientas para convertir dinero en libertad</span>
-                    
-                    
+                    <span data-i18n>Herramientas para convertir dinero en libertad</span>
                 </h2>
                 <p class="text-sm text-darkbark/70 mt-2 max-w-lg mx-auto">
-                    <span lang-content="es">Pon números a tus sueños: visualiza cómo crece tu dinero, qué necesitas para ganar autonomía y cuántas horas de vida cuesta cada compra.</span>
-                    
-                    
+                    <span data-i18n>Pon números a tus sueños: visualiza cómo crece tu dinero, qué necesitas para ganar autonomía y cuántas horas de vida cuesta cada compra.</span>
                 </p>
             </div>
-
             <div class="flex justify-center mb-6">
                 <div class="inline-flex items-center gap-3 rounded-full border border-creamborder bg-white px-4 py-2 shadow-sm">
                     <label for="calculator-currency" class="text-[10px] font-extrabold uppercase tracking-widest text-forestgreen">
-                        <span lang-content="es">Moneda</span>
-                        
-                        
+                        <span data-i18n>Moneda</span>
                     </label>
                     <select id="calculator-currency" class="cursor-pointer rounded-lg border border-creamborder bg-creamsoft px-3 py-1.5 text-xs font-bold text-darkbark outline-none transition focus:border-forestgreen focus:ring-2 focus:ring-forestgreen/20">
                         <option value="EUR">EUR · €</option>
@@ -914,7 +721,6 @@
                     </select>
                 </div>
             </div>
-
             <!-- Tab Switching Nav Capsules.
                  WAI-ARIA Authoring Practices tabs pattern: roving tabindex, so
                  the tablist is a single tab stop and Left/Right/Home/End move
@@ -924,27 +730,20 @@
                     <!-- Tab Button 1: Compound Interest -->
                     <button type="button" role="tab" id="tab-btn-compound" aria-selected="true" aria-controls="panel-compound" tabindex="0" data-tab="compound" class="tab-btn active inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
                         <i class="fa-solid fa-chart-line text-sm" aria-hidden="true"></i>
-                        <span lang-content="es">Interés Compuesto</span>
-                        
-                        
+                        <span data-i18n>Interés Compuesto</span>
                     </button>
                     <!-- Tab Button 2: Financial Freedom -->
                     <button type="button" role="tab" id="tab-btn-freedom" aria-selected="false" aria-controls="panel-freedom" tabindex="-1" data-tab="freedom" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
                         <i class="fa-solid fa-crown text-sm" aria-hidden="true"></i>
-                        <span lang-content="es">Libertad Financiera</span>
-                        
-                        
+                        <span data-i18n>Libertad Financiera</span>
                     </button>
                     <!-- Tab Button 3: Life Cost -->
                     <button type="button" role="tab" id="tab-btn-life-cost" aria-selected="false" aria-controls="panel-life-cost" tabindex="-1" data-tab="life-cost" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
                         <i class="fa-solid fa-hourglass-half text-sm" aria-hidden="true"></i>
-                        <span lang-content="es">Coste en Horas</span>
-                        
-                        
+                        <span data-i18n>Coste en Horas</span>
                     </button>
                 </div>
             </div>
-
             <!-- PANEL 1: COMPOUND INTEREST CALCULATOR -->
             <div id="panel-compound" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-compound" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -953,9 +752,7 @@
                         <!-- Initial Capital -->
                         <div>
                             <label for="calc-initial" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Inversión Inicial</span>
-                                
-                                
+                                <span data-i18n>Inversión Inicial</span>
                             </label>
                             <input 
                                 type="number" 
@@ -965,13 +762,10 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <!-- Monthly Savings Contribution -->
                         <div>
                             <label for="calc-monthly" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Aportación Mensual</span>
-                                
-                                
+                                <span data-i18n>Aportación Mensual</span>
                             </label>
                             <input 
                                 type="number" 
@@ -981,13 +775,10 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <!-- Horizon Years -->
                         <div>
                             <label for="calc-years-range" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Horizonte Temporal (Años)</span>
-                                
-                                
+                                <span data-i18n>Horizonte Temporal (Años)</span>
                             </label>
                             <div class="flex items-start gap-4">
                                 <div class="flex-1 min-w-0 pt-1">
@@ -1001,24 +792,17 @@
                                         class="w-full accent-forestgreen"
                                     >
                                     <div class="flex justify-between mt-1 px-0.5 text-[10px] font-bold text-darkbark/55" aria-hidden="true">
-                                        <span lang-content="es">1 año</span>
-                                        
-                                        
-                                        <span lang-content="es">40 años</span>
-                                        
-                                        
+                                        <span data-i18n>1 año</span>
+                                        <span data-i18n>40 años</span>
                                     </div>
                                 </div>
                                 <span id="calc-years-display" class="font-extrabold text-forestgreen bg-creamsoft px-4 py-2 rounded-lg border border-creamborder min-w-[60px] text-center">25</span>
                             </div>
                         </div>
-
                         <!-- Interest Return Rate -->
                         <div>
                             <label for="calc-rate" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Rentabilidad Anual Esperada (%)</span>
-                                
-                                
+                                <span data-i18n>Rentabilidad Anual Esperada (%)</span>
                             </label>
                             <input 
                                 type="number" 
@@ -1030,27 +814,21 @@
                             >
                         </div>
                     </div>
-
                     <!-- Results Column -->
                     <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-6">
                             <div>
                                 <p class="text-xs font-bold text-forestgreen/75 uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Capital Final Acumulado</span>
-                                    
-                                    
+                                    <span data-i18n>Capital Final Acumulado</span>
                                 </p>
                                 <p id="result-total" class="text-3xl sm:text-4xl font-extrabold text-forestgreen">
                                     $0.00
                                 </p>
                             </div>
-
                             <div class="border-t border-creamborder pt-4 grid grid-cols-2 gap-4">
                                 <div>
                                     <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
-                                        <span lang-content="es">Total Ahorrado</span>
-                                        
-                                        
+                                        <span data-i18n>Total Ahorrado</span>
                                     </p>
                                     <p id="result-invested" class="text-lg font-bold text-darkbark">
                                         $0.00
@@ -1058,70 +836,53 @@
                                 </div>
                                 <div>
                                     <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
-                                        <span lang-content="es">Intereses Generados</span>
-                                        
-                                        
+                                        <span data-i18n>Intereses Generados</span>
                                     </p>
                                     <p id="result-interest" class="text-lg font-bold text-warmgold">
                                         $0.00
                                     </p>
                                 </div>
                             </div>
-
                             <div id="compound-ratio" class="compound-ratio border-t border-creamborder pt-4" role="img" aria-label="Total invested: 100%. Compound earned: 0%.">
                                 <div class="flex items-end justify-between gap-4 mb-3">
                                     <p class="text-[10px] font-bold text-forestgreen/75 uppercase tracking-widest">
-                                        <span lang-content="es">Composición del capital</span>
-                                        
-                                        
+                                        <span data-i18n>Composición del capital</span>
                                     </p>
                                     <p class="text-[10px] font-semibold text-darkbark/50 text-right">
-                                        <span lang-content="es">Ahorro vs. crecimiento</span>
-                                        
-                                        
+                                        <span data-i18n>Ahorro vs. crecimiento</span>
                                     </p>
                                 </div>
-
                                 <div class="compound-ratio__track" aria-hidden="true">
                                     <span class="compound-ratio__segment compound-ratio__segment--invested"></span>
                                     <span class="compound-ratio__segment compound-ratio__segment--earned"></span>
                                 </div>
-
                                 <div class="grid grid-cols-2 gap-4 mt-3">
                                     <div class="flex items-center gap-2 min-w-0">
                                         <span class="compound-ratio__key compound-ratio__key--invested" aria-hidden="true"></span>
                                         <p class="text-[10px] font-bold text-darkbark/65 uppercase tracking-wider truncate">
-                                            <span lang-content="es">Ahorrado</span>
-                                            
-                                            
+                                            <span data-i18n>Ahorrado</span>
                                             <span id="ratio-invested-percent" class="text-darkbark ml-1">100%</span>
                                         </p>
                                     </div>
                                     <div class="flex items-center justify-end gap-2 min-w-0 text-right">
                                         <span class="compound-ratio__key compound-ratio__key--earned" aria-hidden="true"></span>
                                         <p class="text-[10px] font-bold text-darkbark/65 uppercase tracking-wider truncate">
-                                            <span lang-content="es">Intereses</span>
-                                            
-                                            
+                                            <span data-i18n>Intereses</span>
                                             <span id="ratio-earned-percent" class="text-warmgold ml-1">0%</span>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <!-- Encouragement Mantra Box -->
                         <div class="mt-6 p-4 bg-white rounded-xl border border-creamborder">
                             <p class="text-[11px] leading-relaxed text-darkbark/80 italic">
-                                <span lang-content="es">"Cada aportación de hoy puede convertirse en tiempo, opciones y tranquilidad para tu futuro."</span>
-                                
-                                
+                                <span data-i18n>"Cada aportación de hoy puede convertirse en tiempo, opciones y tranquilidad para tu futuro."</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- PANEL 2: FINANCIAL FREEDOM CALCULATOR (4% RULE) -->
             <div id="panel-freedom" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-freedom" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -1130,9 +891,7 @@
                         <!-- Current Age -->
                         <div>
                             <label for="freedom-current-age" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Edad Actual</span>
-                                
-                                
+                                <span data-i18n>Edad Actual</span>
                             </label>
                             <input 
                                 type="number" 
@@ -1144,13 +903,10 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <!-- Target Retirement Age -->
                         <div>
                             <label for="freedom-target-age" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Edad de Jubilación Deseada</span>
-                                
-                                
+                                <span data-i18n>Edad de Jubilación Deseada</span>
                             </label>
                             <input 
                                 type="number" 
@@ -1162,13 +918,10 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <!-- Desired Monthly Pension -->
                         <div>
                             <label for="freedom-desired-income" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Renta Mensual Esperada</span>
-                                
-                                
+                                <span data-i18n>Renta Mensual Esperada</span>
                             </label>
                             <input 
                                 type="number" 
@@ -1179,32 +932,24 @@
                             >
                         </div>
                     </div>
-
                     <!-- Results Column (Rule of 4%) -->
                     <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-6">
                             <div>
                                 <p class="text-xs font-bold text-forestgreen/75 uppercase tracking-wider mb-1">
-                                    <span lang-content="es">Patrimonio Total Necesario</span>
-                                    
-                                    
+                                    <span data-i18n>Patrimonio Total Necesario</span>
                                 </p>
                                 <p id="freedom-result-target" class="text-3xl sm:text-4xl font-extrabold text-forestgreen">
                                     $0.00
                                 </p>
                                 <span class="text-[10px] text-darkbark/50 font-semibold uppercase tracking-wider mt-1 block">
-                                    <span lang-content="es">Basado en la regla de retiro del 4% anual</span>
-                                    
-                                    
+                                    <span data-i18n>Basado en la regla de retiro del 4% anual</span>
                                 </span>
                             </div>
-
                             <div class="border-t border-creamborder pt-4 grid grid-cols-2 gap-4">
                                 <div>
                                     <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
-                                        <span lang-content="es">Años para Acumular</span>
-                                        
-                                        
+                                        <span data-i18n>Años para Acumular</span>
                                     </p>
                                     <p id="freedom-result-years" class="text-lg font-bold text-darkbark">
                                         30
@@ -1212,9 +957,7 @@
                                 </div>
                                 <div>
                                     <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
-                                        <span lang-content="es">Aporte Mensual Estimado</span>
-                                        
-                                        
+                                        <span data-i18n>Aporte Mensual Estimado</span>
                                     </p>
                                     <p id="freedom-result-savings" class="text-lg font-bold text-warmgold">
                                         $0.00
@@ -1222,46 +965,33 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Technical explanation box -->
                         <div class="mt-6 p-4 bg-white rounded-xl border border-creamborder">
                             <p class="text-[10px] leading-relaxed text-darkbark/70">
-                                <span lang-content="es">* El aporte mensual asume un crecimiento de cartera promedio del 8% anual (ajustado por inflación) partiendo desde cero.</span>
-                                
-                                
+                                <span data-i18n>* El aporte mensual asume un crecimiento de cartera promedio del 8% anual (ajustado por inflación) partiendo desde cero.</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- PANEL 3: LIFE COST CALCULATOR -->
             <div id="panel-life-cost" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-life-cost" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-6">
                         <div>
                             <p class="text-warmgold text-[10px] font-bold uppercase tracking-widest mb-1">
-                                <span lang-content="es">El precio real de tus decisiones</span>
-                                
-                                
+                                <span data-i18n>El precio real de tus decisiones</span>
                             </p>
                             <h3 class="text-2xl font-extrabold text-forestgreen leading-tight">
-                                <span lang-content="es">¿Cuánta vida te cuesta?</span>
-                                
-                                
+                                <span data-i18n>¿Cuánta vida te cuesta?</span>
                             </h3>
                             <p class="text-sm text-darkbark/70 mt-2 leading-relaxed">
-                                <span lang-content="es">Calcula tu salario neto por hora y convierte cualquier compra en tiempo real de trabajo.</span>
-                                
-                                
+                                <span data-i18n>Calcula tu salario neto por hora y convierte cualquier compra en tiempo real de trabajo.</span>
                             </p>
                         </div>
-
                         <div>
                             <label for="life-monthly-salary" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Salario mensual neto</span>
-                                
-                                
+                                <span data-i18n>Salario mensual neto</span>
                             </label>
                             <input
                                 type="number"
@@ -1273,12 +1003,9 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <div>
                             <label for="life-monthly-hours" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Horas trabajadas al mes</span>
-                                
-                                
+                                <span data-i18n>Horas trabajadas al mes</span>
                             </label>
                             <input
                                 type="number"
@@ -1290,12 +1017,9 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                         </div>
-
                         <div class="pt-5 border-t border-creamborder">
                             <label for="life-purchase-cost" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
-                                <span lang-content="es">Coste de la compra</span>
-                                
-                                
+                                <span data-i18n>Coste de la compra</span>
                             </label>
                             <input
                                 type="number"
@@ -1307,101 +1031,71 @@
                                 class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
                             >
                             <p class="text-[10px] text-darkbark/50 mt-2">
-                                <span lang-content="es">Por ejemplo: un teléfono nuevo, una cena o unas vacaciones.</span>
-                                
-                                
+                                <span data-i18n>Por ejemplo: un teléfono nuevo, una cena o unas vacaciones.</span>
                             </p>
                         </div>
                     </div>
-
                     <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
                         <div class="space-y-7">
                             <div>
                                 <p class="text-[10px] font-bold text-forestgreen/75 uppercase tracking-widest mb-2">
-                                    <span lang-content="es">Mi tasa horaria es</span>
-                                    
-                                    
+                                    <span data-i18n>Mi tasa horaria es</span>
                                 </p>
                                 <p id="life-result-hourly-rate" class="text-3xl sm:text-4xl font-extrabold text-warmgold">€0,00</p>
                                 <p class="text-[10px] text-darkbark/50 mt-1">
-                                    <span lang-content="es">Salario mensual neto ÷ horas trabajadas</span>
-                                    
-                                    
+                                    <span data-i18n>Salario mensual neto ÷ horas trabajadas</span>
                                 </p>
                             </div>
-
                             <div class="border-t border-creamborder pt-6">
                                 <p class="text-[10px] font-bold text-forestgreen/75 uppercase tracking-widest mb-2">
-                                    <span lang-content="es">Esta compra cuesta</span>
-                                    
-                                    
+                                    <span data-i18n>Esta compra cuesta</span>
                                 </p>
                                 <div class="flex items-end gap-2 flex-wrap">
                                     <p id="life-result-hours" class="text-5xl sm:text-6xl font-extrabold tracking-tight text-forestgreen">0</p>
                                     <p class="text-lg font-bold text-warmgold mb-1.5">
-                                        <span lang-content="es">horas de vida</span>
-                                        
-                                        
+                                        <span data-i18n>horas de vida</span>
                                     </p>
                                 </div>
                                 <p class="text-[10px] text-darkbark/50 mt-2">
-                                    <span lang-content="es">Coste de la compra ÷ valor real por hora</span>
-                                    
-                                    
+                                    <span data-i18n>Coste de la compra ÷ valor real por hora</span>
                                 </p>
                             </div>
-
                             <div id="life-cost-warning" class="hidden rounded-xl border border-warmgold/40 bg-warmgold/10 px-4 py-3 text-xs text-darkbark/75">
-                                <span lang-content="es">Introduce un salario y unas horas mensuales mayores que cero.</span>
-                                
-                                
+                                <span data-i18n>Introduce un salario y unas horas mensuales mayores que cero.</span>
                             </div>
                         </div>
-
                         <div class="mt-8 p-4 rounded-xl bg-white border border-creamborder">
                             <p class="text-xs leading-relaxed text-darkbark/80 italic">
-                                <span lang-content="es">“No solo gastas dinero: también eliges cuánto tiempo de tu vida intercambias por cada compra.”</span>
-                                
-                                
+                                <span data-i18n>“No solo gastas dinero: también eliges cuánto tiempo de tu vida intercambias por cada compra.”</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-
     <!-- DOWNLOADABLE EXCEL TEMPLATES -->
     <section id="plantillas" class="scroll-mt-20 relative overflow-hidden py-20 bg-white border-b border-creamborder">
         <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div class="absolute -top-28 -right-24 w-80 h-80 rounded-full bg-warmgold/10 blur-3xl"></div>
             <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-warmgold/40 to-transparent"></div>
         </div>
-
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12">
                 <div class="lg:col-span-7">
                     <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                        <span lang-content="es">Recursos para pasar a la acción</span>
-                        
-                        
+                        <span data-i18n>Recursos para pasar a la acción</span>
                     </p>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-forestgreen leading-tight">
-                        <span lang-content="es">Plantillas para entender y dirigir mejor tu dinero</span>
-                        
-                        
+                        <span data-i18n>Plantillas para entender y dirigir mejor tu dinero</span>
                     </h2>
                 </div>
                 <div class="lg:col-span-5 lg:border-l lg:border-creamborder lg:pl-8">
                     <p class="text-sm text-darkbark/70 leading-relaxed">
-                        <span lang-content="es">Descarga los archivos en Excel y úsalos como un sistema práctico: primero observa tu situación, después sigue tus gastos y finalmente ajusta tu presupuesto.</span>
-                        
-                        
+                        <span data-i18n>Descarga los archivos en Excel y úsalos como un sistema práctico: primero observa tu situación, después sigue tus gastos y finalmente ajusta tu presupuesto.</span>
                     </p>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <article class="group flex flex-col bg-creamsoft border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex mb-6">
@@ -1416,33 +1110,24 @@
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
                             <span class="ml-auto rounded-full bg-forestgreen px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                                <span lang-content="es">Gratis</span>
-                                
-                                
+                                <span data-i18n>Gratis</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
-                            <span lang-content="es">Presupuesto personal</span>
-                            
-                            
+                            <span data-i18n>Presupuesto personal</span>
                         </h3>
                         <p class="text-sm text-darkbark/70 leading-relaxed">
-                            <span lang-content="es">Compara la distribución real de tu dinero con el presupuesto ideal según tus prioridades y tu situación financiera actual. Úsala junto con la plantilla de análisis mensual para definir objetivos realistas y ajustar el rumbo.</span>
-                            
-                            
+                            <span data-i18n>Compara la distribución real de tu dinero con el presupuesto ideal según tus prioridades y tu situación financiera actual. Úsala junto con la plantilla de análisis mensual para definir objetivos realistas y ajustar el rumbo.</span>
                         </p>
                     </div>
                     <div class="mt-6">
                         <a href="/assets/templates/es/presupuesto-personal.xlsx" download="Plantilla de Presupuesto Personal.xlsx" data-template-download="personalBudget" aria-describedby="template-meta-personalBudget" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            <span lang-content="es">Descargar plantilla</span>
-                            
-                            
+                            <span data-i18n>Descargar plantilla</span>
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
                         <p id="template-meta-personalBudget" data-template-meta="personalBudget" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">XLSX · 13 KB</p>
                     </div>
                 </article>
-
                 <article class="group flex flex-col bg-creamsoft border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex mb-6">
                         <div class="relative w-20 h-20 rounded-2xl bg-warmgold text-darkbark flex items-center justify-center shadow-lg overflow-hidden">
@@ -1456,33 +1141,24 @@
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
                             <span class="ml-auto rounded-full bg-forestgreen px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                                <span lang-content="es">Gratis</span>
-                                
-                                
+                                <span data-i18n>Gratis</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
-                            <span lang-content="es">Gestión de gastos</span>
-                            
-                            
+                            <span data-i18n>Gestión de gastos</span>
                         </h3>
                         <p class="text-sm text-darkbark/70 leading-relaxed">
-                            <span lang-content="es">Registra cada gasto durante 15 días o un mes, sin excepciones. Al terminar, podrás ver con claridad adónde se va tu dinero e identificar los hábitos que necesitan atención.</span>
-                            
-                            
+                            <span data-i18n>Registra cada gasto durante 15 días o un mes, sin excepciones. Al terminar, podrás ver con claridad adónde se va tu dinero e identificar los hábitos que necesitan atención.</span>
                         </p>
                     </div>
                     <div class="mt-6">
                         <a href="/assets/templates/es/gestion-de-gastos.xlsx" download="Plantilla de Gestion de Gastos.xlsx" data-template-download="expenseManagement" aria-describedby="template-meta-expenseManagement" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            <span lang-content="es">Descargar plantilla</span>
-                            
-                            
+                            <span data-i18n>Descargar plantilla</span>
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
                         <p id="template-meta-expenseManagement" data-template-meta="expenseManagement" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">XLSX · 12 KB</p>
                     </div>
                 </article>
-
                 <article class="group flex flex-col bg-creamsoft border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex mb-6">
                         <div class="relative w-20 h-20 rounded-2xl bg-forestgreen text-white flex items-center justify-center shadow-lg overflow-hidden">
@@ -1496,318 +1172,219 @@
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
                             <span class="ml-auto rounded-full bg-warmgold px-3 py-1 text-[10px] font-extrabold tracking-wider text-darkbark">
-                                <span lang-content="es">R$ 25 (aprox. US$ 5)</span>
-                                
-                                
+                                <span data-i18n>R$ 25 (aprox. US$ 5)</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
-                            <span lang-content="es">Análisis financiero personal mensual</span>
-                            
-                            
+                            <span data-i18n>Análisis financiero personal mensual</span>
                         </h3>
                         <p class="text-sm text-darkbark/70 leading-relaxed">
-                            <span lang-content="es">Obtén una visión completa de tu situación mensual: ingresos, gastos, activos y pasivos. Como el balance de una empresa, esta fotografía te ayuda a detectar patrones y planificar mejor tus presupuestos y decisiones.</span>
-                            
-                            
+                            <span data-i18n>Obtén una visión completa de tu situación mensual: ingresos, gastos, activos y pasivos. Como el balance de una empresa, esta fotografía te ayuda a detectar patrones y planificar mejor tus presupuestos y decisiones.</span>
                         </p>
                     </div>
                     <div class="mt-6">
                         <a href="https://pay.kiwify.com.br/RyUPxbu" data-template-download="monthlyAnalysis" aria-describedby="template-meta-monthlyAnalysis" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            <span lang-content="es">Descargar plantilla</span>
-                            
-                            
+                            <span data-i18n>Descargar plantilla</span>
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
                         <p id="template-meta-monthlyAnalysis" data-template-meta="monthlyAnalysis" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">Página externa</p>
                     </div>
                 </article>
             </div>
-
             <div class="mt-10 bg-forestgreen rounded-3xl p-7 md:p-9 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div class="max-w-2xl">
                     <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-[0.2em] mb-2">
-                        <span lang-content="es">No tienes que hacerlo a solas</span>
-                        
-                        
+                        <span data-i18n>No tienes que hacerlo a solas</span>
                     </p>
                     <h3 class="text-xl md:text-2xl font-extrabold mb-2">
-                        <span lang-content="es">¿Quieres ayuda para completar o utilizar las plantillas?</span>
-                        
-                        
+                        <span data-i18n>¿Quieres ayuda para completar o utilizar las plantillas?</span>
                     </h3>
                     <p class="text-sm text-creamsoft/75 leading-relaxed">
-                        <span lang-content="es">Escríbeme y revisaremos juntos cómo adaptarlas a tus prioridades, tus números y tu momento financiero actual.</span>
-                        
-                        
+                        <span data-i18n>Escríbeme y revisaremos juntos cómo adaptarlas a tus prioridades, tus números y tu momento financiero actual.</span>
                     </p>
                 </div>
                 <a href="#contacto" class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-warmgold text-darkbark text-xs font-extrabold hover:bg-white focus:ring-4 focus:ring-white/30 transition-all">
-                    <span lang-content="es">Contactar conmigo</span>
-                    
-                    
+                    <span data-i18n>Contactar conmigo</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
-
     <!-- ASSESSMENT SECTION -->
     <section id="assessment" aria-labelledby="assessment-heading" class="scroll-mt-20 py-20 bg-white border-b border-creamborder">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                    <span lang-content="es">Diagnóstico financiero</span>
-                    
-                    
+                    <span data-i18n>Diagnóstico financiero</span>
                 </p>
                 <h2 id="assessment-heading" class="text-3xl font-extrabold text-forestgreen">
-                    <span lang-content="es">Convierte tus números en un plan claro</span>
-                    
-                    
+                    <span data-i18n>Convierte tus números en un plan claro</span>
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    <span lang-content="es">Un recorrido sencillo para entender dónde estás, recibir una orientación inicial y decidir con más confianza cuál debe ser tu siguiente paso.</span>
-                    
-                    
+                    <span data-i18n>Un recorrido sencillo para entender dónde estás, recibir una orientación inicial y decidir con más confianza cuál debe ser tu siguiente paso.</span>
                 </p>
             </div>
-
             <!-- Stage 1: Diagnostic card -->
             <div class="relative overflow-hidden rounded-3xl bg-forestgreen p-6 sm:p-8 shadow-xl">
                 <div class="absolute -right-12 -top-12 w-40 h-40 rounded-full bg-warmgold/10 pointer-events-none"></div>
-
                 <div class="diagnostic-stage-header relative flex flex-col gap-5 sm:flex-row mb-8">
                     <div class="max-w-2xl">
                         <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                            <span lang-content="es">Etapa 01 · Diagnóstico</span>
-                            
-                            
+                            <span data-i18n>Etapa 01 · Diagnóstico</span>
                         </p>
                         <h3 class="text-2xl font-extrabold text-white leading-tight">
-                            <span lang-content="es">Empieza por conocer tu situación financiera</span>
-                            
-                            
+                            <span data-i18n>Empieza por conocer tu situación financiera</span>
                         </h3>
                         <p class="diagnostic-copy-light text-sm leading-relaxed mt-3">
-                            <span lang-content="es">Completa uno o ambos diagnósticos. Juntos ofrecen una visión más completa de tu realidad actual y de tu relación con el riesgo.</span>
-                            
-                            
+                            <span data-i18n>Completa uno o ambos diagnósticos. Juntos ofrecen una visión más completa de tu realidad actual y de tu relación con el riesgo.</span>
                         </p>
                     </div>
-
                     <div class="inline-flex items-start gap-3 rounded-2xl border border-warmgold/40 bg-white/10 px-4 py-3 text-white shadow-sm backdrop-blur">
                         <span class="diagnostic-status-dot mt-1" aria-hidden="true"></span>
                         <p class="text-xs font-semibold leading-relaxed max-w-md">
-                            <span lang-content="es">Los resultados e informes se generan y envían automáticamente por correo al finalizar.</span>
-                            
-                            
+                            <span data-i18n>Los resultados e informes se generan y envían automáticamente por correo al finalizar.</span>
                         </p>
                     </div>
                 </div>
-
                 <div class="relative grid grid-cols-1 md:grid-cols-2 gap-4">
                     <article class="group rounded-2xl border border-white/20 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col">
                         <div class="flex items-start gap-4">
                             <div class="shrink-0 w-12 h-12 rounded-2xl bg-creamsoft text-forestgreen flex items-center justify-center">
-                                <span lang-content="es" aria-hidden="true"><i class="fa-solid fa-scale-balanced text-lg"></i></span>
-                                
-                                
+                                <span data-i18n aria-hidden="true"><i class="fa-solid fa-scale-balanced text-lg"></i></span>
                             </div>
                             <div>
                                 <p class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold mb-1">
-                                    <span lang-content="es">Tu fotografía financiera</span>
-                                    
-                                    
+                                    <span data-i18n>Tu fotografía financiera</span>
                                 </p>
                                 <h4 class="text-lg font-extrabold text-forestgreen leading-snug">
-                                    <span lang-content="es">Balance Financiero Personal</span>
-                                    
-                                    
+                                    <span data-i18n>Balance Financiero Personal</span>
                                 </h4>
                             </div>
                         </div>
                         <p class="text-sm text-darkbark/70 leading-relaxed mt-4 mb-5 flex-1">
-                            <span lang-content="es">Revisa ingresos, gastos, activos y deudas para obtener una visión ordenada de tu punto de partida.</span>
-                            
-                            
+                            <span data-i18n>Revisa ingresos, gastos, activos y deudas para obtener una visión ordenada de tu punto de partida.</span>
                         </p>
                         <a href="https://forms.gle/JBNEUfAsCptJW8k47" data-assessment-link="financialSnapshot" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            <span lang-content="es">Acceder al balance financiero</span>
-                            
-                            
-                            <span lang-content="es" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square text-warmgold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
-                            
-                            
+                            <span data-i18n>Acceder al balance financiero</span>
+                            <span data-i18n aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square text-warmgold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
                         </a>
                     </article>
-
                     <article class="group rounded-2xl border border-white/20 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col">
                         <div class="flex items-start gap-4">
                             <div class="shrink-0 w-12 h-12 rounded-2xl bg-warmgold/10 text-darkbark flex items-center justify-center">
-                                <span lang-content="es" aria-hidden="true"><i class="fa-solid fa-gauge-high text-lg"></i></span>
-                                
-                                
+                                <span data-i18n aria-hidden="true"><i class="fa-solid fa-gauge-high text-lg"></i></span>
                             </div>
                             <div>
                                 <p class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold mb-1">
-                                    <span lang-content="es">Tu relación con el riesgo</span>
-                                    
-                                    
+                                    <span data-i18n>Tu relación con el riesgo</span>
                                 </p>
                                 <h4 class="text-lg font-extrabold text-forestgreen leading-snug">
-                                    <span lang-content="es">Perfil de Inversión</span>
-                                    
-                                    
+                                    <span data-i18n>Perfil de Inversión</span>
                                 </h4>
                             </div>
                         </div>
                         <p class="text-sm text-darkbark/70 leading-relaxed mt-4 mb-5 flex-1">
-                            <span lang-content="es">Explora objetivos, horizonte temporal, experiencia y tolerancia emocional ante las fluctuaciones.</span>
-                            
-                            
+                            <span data-i18n>Explora objetivos, horizonte temporal, experiencia y tolerancia emocional ante las fluctuaciones.</span>
                         </p>
                         <a href="https://forms.gle/W3pfmhuaSaAUufu76" data-assessment-link="riskRelationship" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-between gap-3 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
-                            <span lang-content="es">Acceder al perfil de inversión</span>
-                            
-                            
-                            <span lang-content="es" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square text-warmgold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
-                            
-                            
+                            <span data-i18n>Acceder al perfil de inversión</span>
+                            <span data-i18n aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square text-warmgold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
                         </a>
                     </article>
                 </div>
             </div>
-
             <!-- Stage 2: Deliverables -->
             <div class="rounded-3xl border border-creamborder bg-creamsoft p-6 sm:p-8 mt-6 shadow-sm">
                 <div class="deliverables-header flex flex-col gap-3 sm:flex-row mb-6">
                     <div>
                         <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                            <span lang-content="es">Etapa 02 · Entregables</span>
-                            
-                            
+                            <span data-i18n>Etapa 02 · Entregables</span>
                         </p>
                         <h3 class="text-2xl font-extrabold text-forestgreen">
-                            <span lang-content="es">¿Qué obtienes al completar el recorrido?</span>
-                            
-                            
+                            <span data-i18n>¿Qué obtienes al completar el recorrido?</span>
                         </h3>
                     </div>
                     <p class="text-sm text-darkbark/65 max-w-md leading-relaxed">
-                        <span lang-content="es">Tres capas de claridad para pasar de datos dispersos a decisiones financieras más conscientes.</span>
-                        
-                        
+                        <span data-i18n>Tres capas de claridad para pasar de datos dispersos a decisiones financieras más conscientes.</span>
                     </p>
                 </div>
-
                 <ol class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                     <li class="relative rounded-2xl border border-creamborder bg-white p-6">
                         <div class="flex items-center justify-between mb-5">
                             <span class="w-10 h-10 rounded-full bg-forestgreen text-warmgold flex items-center justify-center text-sm font-extrabold">
-                                <span lang-content="es">1</span>
+                                <span data-i18n>1</span>
                             </span>
                             <span class="deliverable-icon text-2xl" aria-hidden="true">
-                                <span lang-content="es"><i class="fa-solid fa-chart-pie"></i></span>
-                                
-                                
+                                <span data-i18n><i class="fa-solid fa-chart-pie"></i></span>
                             </span>
                         </div>
                         <h4 class="font-extrabold text-forestgreen mb-2">
-                            <span lang-content="es">Fotografía financiera personal</span>
-                            
-                            
+                            <span data-i18n>Fotografía financiera personal</span>
                         </h4>
                         <p class="text-sm text-darkbark/65 leading-relaxed">
-                            <span lang-content="es">Una lectura estructurada de tu balance actual, hábitos y capacidad financiera.</span>
-                            
-                            
+                            <span data-i18n>Una lectura estructurada de tu balance actual, hábitos y capacidad financiera.</span>
                         </p>
                     </li>
-
                     <li class="relative rounded-2xl border border-creamborder bg-white p-6">
                         <div class="flex items-center justify-between mb-5">
                             <span class="w-10 h-10 rounded-full bg-forestgreen text-warmgold flex items-center justify-center text-sm font-extrabold">
-                                <span lang-content="es">2</span>
+                                <span data-i18n>2</span>
                             </span>
                             <span class="deliverable-icon text-2xl" aria-hidden="true">
-                                <span lang-content="es"><i class="fa-solid fa-compass"></i></span>
-                                
-                                
+                                <span data-i18n><i class="fa-solid fa-compass"></i></span>
                             </span>
                         </div>
                         <h4 class="font-extrabold text-forestgreen mb-2">
-                            <span lang-content="es">Perfil de riesgo y tolerancia</span>
-                            
-                            
+                            <span data-i18n>Perfil de riesgo y tolerancia</span>
                         </h4>
                         <p class="text-sm text-darkbark/65 leading-relaxed">
-                            <span lang-content="es">Una referencia sobre el nivel de riesgo coherente con tus objetivos y comportamiento.</span>
-                            
-                            
+                            <span data-i18n>Una referencia sobre el nivel de riesgo coherente con tus objetivos y comportamiento.</span>
                         </p>
                     </li>
-
                     <li class="relative rounded-2xl border border-creamborder bg-white p-6">
                         <div class="flex items-center justify-between mb-5">
                             <span class="w-10 h-10 rounded-full bg-forestgreen text-warmgold flex items-center justify-center text-sm font-extrabold">
-                                <span lang-content="es">3</span>
+                                <span data-i18n>3</span>
                             </span>
                             <span class="deliverable-icon text-2xl" aria-hidden="true">
-                                <span lang-content="es"><i class="fa-solid fa-route"></i></span>
-                                
-                                
+                                <span data-i18n><i class="fa-solid fa-route"></i></span>
                             </span>
                         </div>
                         <h4 class="font-extrabold text-forestgreen mb-2">
-                            <span lang-content="es">Hoja de ruta recomendada</span>
-                            
-                            
+                            <span data-i18n>Hoja de ruta recomendada</span>
                         </h4>
                         <p class="text-sm text-darkbark/65 leading-relaxed">
-                            <span lang-content="es">Próximos pasos priorizados para convertir el diagnóstico en acciones concretas.</span>
-                            
-                            
+                            <span data-i18n>Próximos pasos priorizados para convertir el diagnóstico en acciones concretas.</span>
                         </p>
                     </li>
                 </ol>
             </div>
-
         </div>
     </section>
-
     <!-- FREQUENTLY ASKED QUESTIONS -->
     <section id="preguntas-frecuentes" class="scroll-mt-20 relative overflow-hidden py-20 bg-creamsoft border-b border-creamborder">
         <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div class="absolute -top-24 left-1/3 w-80 h-80 rounded-full bg-warmgold/10 blur-3xl"></div>
             <div class="absolute -bottom-32 -right-20 w-96 h-96 rounded-full bg-forestgreen/5 blur-3xl"></div>
         </div>
-
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-10">
                 <div class="md:col-span-5">
                     <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                        <span lang-content="es">Respuestas directas</span>
-                        
-                        
+                        <span data-i18n>Respuestas directas</span>
                     </p>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-forestgreen leading-tight">
-                        <span lang-content="es">Preguntas frecuentes</span>
-                        
-                        
+                        <span data-i18n>Preguntas frecuentes</span>
                     </h2>
                 </div>
                 <div class="md:col-span-7 md:border-l md:border-creamborder md:pl-8 flex items-end">
                     <p class="text-sm text-darkbark/70 leading-relaxed">
-                        <span lang-content="es">Conceptos esenciales para usar las herramientas de la página con contexto y tomar decisiones más informadas.</span>
-                        
-                        
+                        <span data-i18n>Conceptos esenciales para usar las herramientas de la página con contexto y tomar decisiones más informadas.</span>
                     </p>
                 </div>
             </div>
-
-            <div lang-content="es" class="space-y-4">
+            <div data-i18n class="space-y-4">
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">¿Qué es la regla del 4% para la libertad financiera?</h3>
@@ -1863,76 +1440,53 @@
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son estrictamente educativas e ilustrativas. No constituyen asesoramiento financiero, de inversión o fiscal formal. Para recibir recomendaciones adaptadas a tu contexto, objetivos y tolerancia al riesgo, puedes completar los formularios de diagnóstico o enviarme un mensaje directo.</p>
                 </details>
             </div>
-
-            
-
-            
         </div>
     </section>
-
     <!-- CONTACT SECTION -->
     <section id="contacto" aria-labelledby="contact-heading" class="scroll-mt-20 py-20 bg-creamsoft">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-2">
-                    <span lang-content="es">Contacto y acompañamiento</span>
-                    
-                    
+                    <span data-i18n>Contacto y acompañamiento</span>
                 </p>
                 <h2 id="contact-heading" class="text-3xl font-extrabold text-forestgreen">
-                    <span lang-content="es">Tres formas de seguir en contacto</span>
-                    
-                    
+                    <span data-i18n>Tres formas de seguir en contacto</span>
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    <span lang-content="es">Conoce al asesor, sigue la newsletter o cuéntanos directamente tu situación financiera.</span>
-                    
-                    
+                    <span data-i18n>Conoce al asesor, sigue la newsletter o cuéntanos directamente tu situación financiera.</span>
                 </p>
-
                 <nav class="contact-path-nav" aria-labelledby="contact-heading">
                     <a href="#biografia" class="contact-path-link">
                         <i class="fa-solid fa-user-tie text-warmgold" aria-hidden="true"></i>
-                        <span lang-content="es">Conoce al asesor</span>
-                        
-                        
+                        <span data-i18n>Conoce al asesor</span>
                     </a>
                     <a href="#contact-newsletter" class="contact-path-link">
                         <i class="fa-regular fa-newspaper text-warmgold" aria-hidden="true"></i>
-                        <span lang-content="es">Sigue la Newsletter</span>
-                        
-                        
+                        <span data-i18n>Sigue la Newsletter</span>
                     </a>
                     <a href="#contact-form" class="contact-path-link">
                         <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
-                        <span lang-content="es">Envía una consulta</span>
-                        
-                        
+                        <span data-i18n>Envía una consulta</span>
                     </a>
                 </nav>
             </div>
-
             <section id="biografia" aria-labelledby="about-heading" class="scroll-mt-20 mb-12 pb-12 border-b border-creamborder">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-
                         <!-- Profile Image Frame / Adaptive Card Layout -->
                         <div class="md:col-span-5 flex justify-center">
                             <div class="relative group w-full max-w-[320px]">
                                 <!-- Decorative natural green/warm gold glow -->
                                 <div class="absolute -inset-1.5 bg-gradient-to-r from-forestgreen to-warmgold rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-
                                 <div class="relative bg-white p-5 rounded-[2rem] border border-creamborder shadow-xl flex flex-col items-center">
                                     <!-- Circular photo element containing user assets -->
                                     <div class="w-48 h-48 rounded-full overflow-hidden bg-gradient-to-br from-forestgreen to-warmgold relative border-4 border-white shadow-inner flex items-center justify-center">
-
                                         <!-- Premium Fallback Graphic (shows only if photo is offline/blocked) -->
                                         <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 select-none">
                                             <span class="text-4xl font-extrabold tracking-wider leading-none">SB</span>
                                             <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Wealth Planner</span>
                                         </div>
-
                                         <!-- Actual Image Tag with fallback failure support -->
                                     <img
                                         id="advisor-portrait"
@@ -1945,33 +1499,24 @@
                                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-10"
                                     >
                                 </div>
-
                                 <div class="mt-5 text-center">
                                     <p class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</p>
                                     <p class="text-xs text-warmgold font-bold uppercase tracking-widest mt-1">
-                                        <span lang-content="es">Asesor Financiero</span>
-                                        
-                                        
+                                        <span data-i18n>Asesor Financiero</span>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- Biography content translated directly -->
                     <div class="md:col-span-7 space-y-6">
                         <p class="text-warmgold text-xs font-bold uppercase tracking-widest">
-                            <span lang-content="es">Sobre mí</span>
-                            
-                            
+                            <span data-i18n>Sobre mí</span>
                         </p>
                         <h2 id="about-heading" class="text-3xl font-extrabold text-forestgreen tracking-tight">
-                            <span lang-content="es">Finanzas para una vida con intención</span>
-                            
-                            
+                            <span data-i18n>Finanzas para una vida con intención</span>
                         </h2>
-
-                        <div lang-content="es" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
+                        <div data-i18n class="space-y-4 text-darkbark/80 font-light leading-relaxed">
                             <p>
                                 Hola, soy <strong>Sandy Bradbury</strong>. Ayudo a personas y familias a ordenar su dinero alrededor de lo que realmente importa: ganar tranquilidad hoy y construir libertad para mañana. Mi enfoque combina psicología del dinero, hábitos sostenibles e inversiones diversificadas de calidad.
                             </p>
@@ -1979,11 +1524,6 @@
                                 En <strong>El viaje del Crecimiento Compuesto</strong> no hablo solo de rentabilidad. Exploro cómo usar el interés compuesto para comprar tiempo, reducir dependencias y diseñar una vida con propósito. Tú eres el protagonista del viaje: la estrategia pone el mapa, la disciplina mantiene el rumbo y tus valores deciden el destino.
                             </p>
                         </div>
-
-                        
-
-                        
-
                         <div class="pt-4 flex flex-wrap gap-4">
                                 <a
                                     href="https://www.linkedin.com/in/sandy-bradbury"
@@ -1992,12 +1532,9 @@
                                     class="inline-flex items-center gap-3 px-6 py-3.5 bg-[#0077B5] hover:bg-[#0077B5]/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
                                 >
                                     <i class="fa-brands fa-linkedin text-lg"></i>
-                                    <span lang-content="es">Conectar en LinkedIn</span>
-                                    
-                                    
+                                    <span data-i18n>Conectar en LinkedIn</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                                 </a>
-
                                 <a
                                     href="https://preview.mailerlite.io/forms/2524111/193713027715958521/share"
                                     data-newsletter-link
@@ -2006,18 +1543,14 @@
                                     class="inline-flex items-center gap-3 px-6 py-3.5 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
                                 >
                                     <i class="fa-solid fa-bookmark text-warmgold text-lg"></i>
-                                    <span lang-content="es">Leer en Substack</span>
-                                    
-                                    
+                                    <span data-i18n>Leer en Substack</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                                 </a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
-
             <section id="contact-newsletter" aria-labelledby="contact-newsletter-heading" class="scroll-mt-20 mb-12">
                 <div class="relative overflow-hidden rounded-3xl border border-creamborder bg-white p-8 sm:p-12 shadow-sm">
                     <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-warmgold/10 blur-2xl pointer-events-none" aria-hidden="true"></div>
@@ -2027,137 +1560,93 @@
                                 <i class="fa-regular fa-newspaper text-lg" aria-hidden="true"></i>
                             </div>
                             <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                                <span lang-content="es">Una conversación que continúa</span>
-                                
-                                
+                                <span data-i18n>Una conversación que continúa</span>
                             </p>
                             <h3 id="contact-newsletter-heading" class="text-2xl font-extrabold text-forestgreen leading-tight">
-                                <span lang-content="es">Sigue la newsletter en tu idioma</span>
-                                
-                                
+                                <span data-i18n>Sigue la newsletter en tu idioma</span>
                             </h3>
                             <p class="mt-3 text-sm text-darkbark/70 leading-relaxed">
-                                <span lang-content="es">Recibe ideas prácticas sobre psicología del dinero, inversión con propósito y decisiones financieras que respetan tus valores.</span>
-                                
-                                
+                                <span data-i18n>Recibe ideas prácticas sobre psicología del dinero, inversión con propósito y decisiones financieras que respetan tus valores.</span>
                             </p>
                         </div>
-
                         <div class="md:col-span-5 rounded-2xl bg-creamsoft border border-creamborder p-6">
                             <p class="text-sm font-semibold text-darkbark/75 leading-relaxed mb-5">
-                                <span lang-content="es">El botón abre automáticamente la edición en español seleccionada para esta página.</span>
-                                
-                                
+                                <span data-i18n>El botón abre automáticamente la edición en español seleccionada para esta página.</span>
                             </p>
                             <a href="https://preview.mailerlite.io/forms/2524111/193713027715958521/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:ring-4 focus:ring-warmgold/30 transition-all">
-                                <span lang-content="es">Seguir la Newsletter</span>
-                                
-                                
+                                <span data-i18n>Seguir la Newsletter</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-warmgold" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
-
-
             <!-- Transition to contact -->
             <div class="relative overflow-hidden rounded-3xl bg-forestgreen p-8 sm:p-12 text-white shadow-lg">
                 <div class="absolute -right-12 -top-12 w-40 h-40 bg-warmgold/10 rounded-full blur-2xl pointer-events-none"></div>
                 <div class="contact-transition-layout relative flex flex-col gap-6 md:flex-row md:items-center">
                     <div class="flex items-start gap-4 max-w-2xl">
                         <div class="shrink-0 w-12 h-12 rounded-2xl bg-warmgold text-darkbark flex items-center justify-center shadow-md">
-                            <span lang-content="es" aria-hidden="true"><i class="fa-regular fa-envelope text-lg"></i></span>
-                            
-                            
+                            <span data-i18n aria-hidden="true"><i class="fa-regular fa-envelope text-lg"></i></span>
                         </div>
                         <div>
                             <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                                <span lang-content="es">Consulta directa · Tu siguiente paso</span>
-                                
-                                
+                                <span data-i18n>Consulta directa · Tu siguiente paso</span>
                             </p>
                             <h3 class="text-2xl font-extrabold leading-tight">
-                                <span lang-content="es">Cuando estés listo, demos el siguiente paso.</span>
-                                
-                                
+                                <span data-i18n>Cuando estés listo, demos el siguiente paso.</span>
                             </h3>
                             <p class="diagnostic-copy-light text-sm leading-relaxed mt-3">
-                                <span lang-content="es">Cuéntame qué descubriste, qué dudas aparecieron y qué decisión quieres trabajar con mayor claridad.</span>
-                                
-                                
+                                <span data-i18n>Cuéntame qué descubriste, qué dudas aparecieron y qué decisión quieres trabajar con mayor claridad.</span>
                             </p>
                         </div>
                     </div>
                     <a href="#contact-form" class="inline-flex shrink-0 items-center justify-center gap-3 rounded-xl bg-warmgold px-6 py-3.5 text-sm font-extrabold text-darkbark hover:bg-warmgold/95 focus:ring-4 focus:ring-white/30 transition-all">
-                        <span lang-content="es">Abrir el formulario</span>
-                        
-                        
-                        <span lang-content="es" aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></span>
-                        
-                        
+                        <span data-i18n>Abrir el formulario</span>
+                        <span data-i18n aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></span>
                     </a>
                 </div>
             </div>
-
             <!-- Form Container Card -->
             <div class="bg-white rounded-3xl border border-creamborder p-8 sm:p-12 mt-6 shadow-sm relative overflow-hidden">
                 <div class="absolute -top-12 -right-12 w-40 h-40 bg-forestgreen/5 rounded-full blur-2xl pointer-events-none"></div>
-
                 <div class="relative z-10 mb-8 text-center">
                     <p class="text-warmgold text-[10px] font-extrabold uppercase tracking-widest mb-2">
-                        <span lang-content="es">Formulario de contacto</span>
-                        
-                        
+                        <span data-i18n>Formulario de contacto</span>
                     </p>
                     <h3 class="text-2xl font-extrabold text-forestgreen">
-                        <span lang-content="es">Cuéntame qué necesitas aclarar</span>
-                        
-                        
+                        <span data-i18n>Cuéntame qué necesitas aclarar</span>
                     </h3>
                     <p class="mt-3 text-sm text-darkbark/65 leading-relaxed max-w-2xl mx-auto">
-                        <span lang-content="es">Incluye el contexto que consideres importante para que podamos empezar con una conversación útil y concreta.</span>
-                        
-                        
+                        <span data-i18n>Incluye el contexto que consideres importante para que podamos empezar con una conversación útil y concreta.</span>
                     </p>
                 </div>
-
                 <form id="contact-form" name="contact" method="POST" autocomplete="on" novalidate data-netlify="true" netlify-honeypot="bot-field" class="space-y-6 relative z-10">
                     <input type="hidden" name="form-name" value="contact">
                     <input type="hidden" name="subject" data-form-copy="subject" value="Nuevo contacto - Compounding Journey">
                     <p class="hidden" aria-hidden="true">
                         <label>
-                            <span lang-content="es">No rellenar:</span>
-                            
-                            
+                            <span data-i18n>No rellenar:</span>
                             <input name="bot-field" tabindex="-1" autocomplete="off">
                         </label>
                     </p>
-
                     <!-- Error summary. Announced on a failed submit and given focus
                          so the reader is told what went wrong instead of being
                          dropped back into the form with no explanation. -->
                     <div id="form-error-summary" class="hidden rounded-xl border-2 border-[#B3261E] bg-[#FDF2F1] px-4 py-3" role="alert" tabindex="-1">
                         <p class="text-sm font-bold text-[#8C1D18]">
-                            <span lang-content="es">Revisa los campos marcados antes de enviar.</span>
-                            
-                            
+                            <span data-i18n>Revisa los campos marcados antes de enviar.</span>
                         </p>
                         <ul id="form-error-list" class="mt-2 list-disc pl-5 text-sm text-[#8C1D18] space-y-1"></ul>
                     </div>
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <!-- Field: Name -->
                         <div>
                             <label class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2" for="form-name">
-                                <span lang-content="es">Nombre Completo</span>
-                                
-                                
+                                <span data-i18n>Nombre Completo</span>
                                 <span class="text-[#8C1D18]" aria-hidden="true">*</span>
                                 <span class="sr-only">
-                                    <span lang-content="es">(obligatorio)</span>
-                                    
-                                    
+                                    <span data-i18n>(obligatorio)</span>
                                 </span>
                             </label>
                             <input
@@ -2172,18 +1661,13 @@
                             >
                             <p id="form-name-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                         </div>
-
                         <!-- Field: Email -->
                         <div>
                             <label class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2" for="form-email">
-                                <span lang-content="es">Correo Electrónico</span>
-                                
-                                
+                                <span data-i18n>Correo Electrónico</span>
                                 <span class="text-[#8C1D18]" aria-hidden="true">*</span>
                                 <span class="sr-only">
-                                    <span lang-content="es">(obligatorio)</span>
-                                    
-                                    
+                                    <span data-i18n>(obligatorio)</span>
                                 </span>
                             </label>
                             <input
@@ -2201,18 +1685,13 @@
                             <p id="form-email-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                         </div>
                     </div>
-
                     <!-- Field: Project Description -->
                     <div>
                         <label class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2" for="form-message">
-                            <span lang-content="es">¿En qué te podemos ayudar?</span>
-                            
-                            
+                            <span data-i18n>¿En qué te podemos ayudar?</span>
                             <span class="text-[#8C1D18]" aria-hidden="true">*</span>
                             <span class="sr-only">
-                                <span lang-content="es">(obligatorio)</span>
-                                
-                                
+                                <span data-i18n>(obligatorio)</span>
                             </span>
                         </label>
                         <textarea
@@ -2224,13 +1703,10 @@
                             class="w-full bg-white border border-creamborder rounded-xl px-4 py-3 text-darkbark text-sm placeholder-darkbark/40 focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen transition-all resize-y"
                         ></textarea>
                         <p id="form-message-hint" class="mt-2 text-xs text-darkbark/60">
-                            <span lang-content="es">Cuanto más contexto compartas, más concreta será la primera respuesta.</span>
-                            
-                            
+                            <span data-i18n>Cuanto más contexto compartas, más concreta será la primera respuesta.</span>
                         </p>
                         <p id="form-message-error" class="form-field-error mt-2 text-xs font-semibold text-[#8C1D18]" hidden></p>
                     </div>
-
                     <!-- Submit Button -->
                     <div class="text-center pt-2">
                         <button
@@ -2239,51 +1715,38 @@
                             class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-lg shadow-forestgreen/10 hover:shadow-forestgreen/25 hover:-translate-y-0.5 transition-all min-w-[200px]"
                         >
                             <i id="submit-spinner" class="fa-solid fa-circle-notch animate-spin text-warmgold hidden" aria-hidden="true"></i>
-
-                            <span id="submit-text" lang-content="es">Enviar Mensaje</span>
-                            
-                            
-
+                            <span id="submit-text" data-i18n>Enviar Mensaje</span>
                             <i class="fa-solid fa-paper-plane text-sm text-warmgold" aria-hidden="true"></i>
                         </button>
                         <p id="form-submit-status" class="sr-only" role="status" aria-live="polite"></p>
                     </div>
                 </form>
-
                 <!-- SUCCESS MODAL (Inside Box Layout) -->
                 <div id="success-card" role="status" aria-live="polite" class="hidden absolute inset-0 bg-white/95 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-center p-8 transition-all">
                     <div class="w-20 h-20 bg-forestgreen/10 border border-forestgreen/25 rounded-full flex items-center justify-center text-forestgreen text-3xl mb-6">
                         <i class="fa-solid fa-check"></i>
                     </div>
                     <h3 class="text-2xl font-extrabold text-forestgreen mb-3">
-                        <span lang-content="es">¡Mensaje Recibido!</span>
-                        
-                        
+                        <span data-i18n>¡Mensaje Recibido!</span>
                     </h3>
                     <p class="text-darkbark/75 text-sm max-w-md mb-8">
-                        <span lang-content="es">Tu mensaje se ha guardado correctamente. Nos pondremos en contacto contigo para conversar sobre tus objetivos y próximos pasos.</span>
-                        
-                        
+                        <span data-i18n>Tu mensaje se ha guardado correctamente. Nos pondremos en contacto contigo para conversar sobre tus objetivos y próximos pasos.</span>
                     </p>
                     <button
                         id="feedback-reset"
                         type="button"
                         class="px-6 py-2.5 bg-creamsoft hover:bg-creamborder text-darkbark/80 font-semibold text-xs rounded-lg border border-creamborder transition-all"
                     >
-                        <span lang-content="es">Enviar otro mensaje</span>
-                        
-                        
+                        <span data-i18n>Enviar otro mensaje</span>
                     </button>
                 </div>
             </div>
         </div>
     </section>
     </main>
-
     <!-- FOOTER -->
     <footer class="bg-darkbark text-white py-16 border-t border-creamborder/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-            
             <div class="mb-6 flex flex-col items-center">
                 <!-- Newsletter Minimalistic Brand Tree Vector mimicking original logo structure -->
                 <div class="h-16 w-16 mb-4 filter brightness-125">
@@ -2297,30 +1760,22 @@
                     />
                 </div>
                 <p class="text-xs font-bold uppercase tracking-widest text-warmgold">
-                    <span lang-content="es">Haz que tu dinero trabaje para tu felicidad</span>
-                    
-                    
+                    <span data-i18n>Haz que tu dinero trabaje para tu felicidad</span>
                 </p>
             </div>
-
             <p class="text-creamsoft/60 text-sm mb-8 max-w-md">
-                <span lang-content="es">Psicología del dinero, inversión con propósito y libertad para vivir según tus valores</span>
-                
-                
+                <span data-i18n>Psicología del dinero, inversión con propósito y libertad para vivir según tus valores</span>
             </p>
-            
             <div class="w-full border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-creamsoft/40 gap-4">
                 <p>
-                    <span lang-content="es">&copy; 2026 Compounding Journey. Todos los derechos reservados.</span>
-                    
-                    
+                    <!-- "Compounding Journey" is the brand name and is never translated, in any
+                         language. Only the sentence around it changes. -->
+                    <span data-i18n>&copy; 2026 Compounding Journey. Todos los derechos reservados.</span>
                 </p>
                 <div class="flex gap-4">
                     <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes" class="hover:text-warmgold transition-colors">FAQ</a>
                     <a href="#contacto" class="hover:text-warmgold transition-colors">
-                        <span lang-content="es">Contacto</span>
-                        
-                        
+                        <span data-i18n>Contacto</span>
                     </a>
                     <a href="https://www.linkedin.com/in/sandy-bradbury" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">LinkedIn</a>
                     <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Substack</a>
@@ -2329,9 +1784,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- SCRIPTS -->
-    <script type="module" src="/assets/js/home-identity.js?v=3936f458c90d"></script>
-    <script src="/assets/js/home.js?v=83687ac5f5b1"></script>
 </body>
 </html>

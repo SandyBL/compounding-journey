@@ -1218,5 +1218,145 @@
     "en": "Explore the tools",
     "es": "Explorar las herramientas",
     "pt": "Explorar as ferramentas"
+  },
+  "explTitle": {
+    "en": "What this simulator is for",
+    "es": "Para qué sirve este simulador",
+    "pt": "Para que serve este simulador"
+  },
+  "explLede": {
+    "en": "The simulator is a decision trainer, not a calculator. It puts you in front of the ordinary money choices a person actually faces — a raise, a car, a holiday, an unexpected bill — and shows what each one does to four things at once: your wealth, your monthly cash flow, your day-to-day happiness, and your financial intelligence. The point is not to reach a number. The point is to feel how choices interact before you make them with real money.",
+    "es": "El simulador es un entrenador de decisiones, no una calculadora. Te pone delante de las elecciones de dinero que cualquiera enfrenta — un aumento, un coche, unas vacaciones, una factura inesperada — y muestra qué le hace cada una a cuatro cosas a la vez: tu patrimonio, tu flujo de caja mensual, tu bienestar diario y tu inteligencia financiera. El objetivo no es llegar a una cifra, sino notar cómo interactúan las decisiones antes de tomarlas con dinero real.",
+    "pt": "O simulador é um treinador de decisões, não uma calculadora. Coloca-o perante as escolhas de dinheiro que qualquer pessoa enfrenta — um aumento, um carro, umas férias, uma despesa inesperada — e mostra o que cada uma faz a quatro coisas ao mesmo tempo: o seu património, o seu fluxo de caixa mensal, o seu bem-estar diário e a sua inteligência financeira. O objetivo não é chegar a um número, mas sentir como as decisões interagem antes de as tomar com dinheiro real."
+  },
+  "explHowTitle": {
+    "en": "How it works",
+    "es": "Cómo funciona",
+    "pt": "Como funciona"
+  },
+  "explHow1": {
+    "en": "You are dealt a sequence of scenarios. Each one offers two or more responses, and none of them is marked correct — because none of them is. Buying the cheaper car protects your cash flow and costs you something you wanted; taking the second job raises your income and spends the one resource you cannot buy back. Every choice moves all four meters, and the trade-off is the lesson.",
+    "es": "Recibes una secuencia de escenarios. Cada uno ofrece dos o más respuestas, y ninguna está marcada como correcta, porque ninguna lo es. Comprar el coche más barato protege tu flujo de caja y te cuesta algo que querías; aceptar el segundo trabajo sube tus ingresos y gasta el único recurso que no puedes recomprar. Cada elección mueve los cuatro indicadores, y esa tensión es la lección.",
+    "pt": "Recebe uma sequência de cenários. Cada um oferece duas ou mais respostas, e nenhuma está marcada como correta, porque nenhuma o é. Comprar o carro mais barato protege o seu fluxo de caixa e custa-lhe algo que queria; aceitar o segundo emprego aumenta o rendimento e gasta o único recurso que não pode comprar de volta. Cada escolha move os quatro indicadores, e essa tensão é a lição."
+  },
+  "explHow2": {
+    "en": "The meters carry forward. A decision made early changes what the later scenarios can do to you, which is the closest a short session can get to showing how compounding actually behaves — slowly, and then all at once. At the end the simulator names the pattern your choices formed, as an archetype. That label is a summary of what you did, not a verdict on who you are.",
+    "es": "Los indicadores se arrastran. Una decisión tomada al principio cambia lo que los escenarios posteriores pueden hacerte, que es lo más cerca que una sesión corta puede estar de mostrar cómo se comporta el interés compuesto: despacio, y luego de golpe. Al final el simulador nombra el patrón que formaron tus elecciones, como un arquetipo. Esa etiqueta resume lo que hiciste, no dictamina quién eres.",
+    "pt": "Os indicadores acumulam-se. Uma decisão tomada no início muda o que os cenários seguintes lhe podem fazer, que é o mais perto que uma sessão curta consegue estar de mostrar como os juros compostos se comportam: devagar, e depois de repente. No fim, o simulador nomeia o padrão que as suas escolhas formaram, como um arquétipo. Esse rótulo resume o que fez, não determina quem é."
+  },
+  "explAssumptionsTitle": {
+    "en": "What it assumes",
+    "es": "Qué supone",
+    "pt": "O que pressupõe"
+  },
+  "explAssumption1": {
+    "en": "The four meters are relative, not denominated in any currency. They exist to be compared with each other and with where they were a decision ago.",
+    "es": "Los cuatro indicadores son relativos, no están expresados en ninguna moneda. Existen para compararse entre sí y con el punto donde estaban una decisión antes.",
+    "pt": "Os quatro indicadores são relativos, não estão expressos em nenhuma moeda. Existem para serem comparados entre si e com o ponto onde estavam uma decisão antes."
+  },
+  "explAssumption2": {
+    "en": "Scenarios are written to be recognisable, not to match any one country's tax code, benefits system or cost of living.",
+    "es": "Los escenarios están escritos para resultar reconocibles, no para ajustarse al sistema fiscal, las prestaciones o el coste de vida de ningún país concreto.",
+    "pt": "Os cenários foram escritos para serem reconhecíveis, não para corresponder ao sistema fiscal, aos apoios sociais ou ao custo de vida de nenhum país específico."
+  },
+  "explAssumption3": {
+    "en": "Happiness is modelled as something money can move in both directions. Spending nothing is not treated as the winning strategy.",
+    "es": "El bienestar se modela como algo que el dinero puede mover en ambas direcciones. No gastar nada no se trata como la estrategia ganadora.",
+    "pt": "O bem-estar é modelado como algo que o dinheiro pode mover nos dois sentidos. Não gastar nada não é tratado como a estratégia vencedora."
+  },
+  "explAssumption4": {
+    "en": "A session is short by design. It compresses years of decisions into minutes, so the timing of consequences is illustrative rather than literal.",
+    "es": "Una sesión es corta a propósito. Comprime años de decisiones en minutos, así que el momento en que llegan las consecuencias es ilustrativo, no literal.",
+    "pt": "Uma sessão é curta de propósito. Comprime anos de decisões em minutos, pelo que o momento em que as consequências chegam é ilustrativo, não literal."
+  },
+  "explAssumptionsNote": {
+    "en": "This is an educational tool. Nothing it shows is financial advice, and no result should be read as a prediction about your own finances.",
+    "es": "Esta es una herramienta educativa. Nada de lo que muestra es asesoramiento financiero, y ningún resultado debe leerse como una predicción sobre tus finanzas.",
+    "pt": "Esta é uma ferramenta educativa. Nada do que mostra é aconselhamento financeiro, e nenhum resultado deve ser lido como uma previsão sobre as suas finanças."
+  },
+  "explExampleTitle": {
+    "en": "A worked example",
+    "es": "Un ejemplo resuelto",
+    "pt": "Um exemplo resolvido"
+  },
+  "explExample1": {
+    "en": "A scenario offers a promotion that raises your income by a fifth but adds an hour of commuting each way. Taking it lifts wealth and cash flow immediately and pushes happiness down. Declining it holds happiness and leaves the other two flat.",
+    "es": "Un escenario ofrece un ascenso que sube tus ingresos una quinta parte pero añade una hora de trayecto en cada sentido. Aceptarlo eleva de inmediato el patrimonio y el flujo de caja, y baja el bienestar. Rechazarlo mantiene el bienestar y deja los otros dos planos.",
+    "pt": "Um cenário oferece uma promoção que aumenta o rendimento num quinto mas acrescenta uma hora de trajeto em cada sentido. Aceitar eleva de imediato o património e o fluxo de caixa, e baixa o bem-estar. Recusar mantém o bem-estar e deixa os outros dois planos."
+  },
+  "explExample2": {
+    "en": "Neither is the right answer on its own. What decides it is the state you are already in: with no emergency fund, the income is what buys you the ability to survive the next scenario, and the happiness cost is temporary. With a cushion already built, spending an extra ten hours a week to grow a number you are not using is the more expensive choice. Run the same scenario twice from different starting states and the meters make that argument for you.",
+    "es": "Ninguna es la respuesta correcta por sí sola. Lo que decide es el estado del que partes: sin fondo de emergencia, esos ingresos son lo que te compra la capacidad de sobrevivir al siguiente escenario, y el coste en bienestar es temporal. Con un colchón ya construido, gastar diez horas más a la semana para hacer crecer una cifra que no estás usando es la opción más cara. Ejecuta el mismo escenario dos veces desde estados distintos y los indicadores te harán ese argumento.",
+    "pt": "Nenhuma é a resposta certa por si só. O que decide é o estado de que parte: sem fundo de emergência, esse rendimento é o que lhe compra a capacidade de sobreviver ao cenário seguinte, e o custo em bem-estar é temporário. Com uma almofada já construída, gastar mais dez horas por semana para fazer crescer um número que não está a usar é a opção mais cara. Corra o mesmo cenário duas vezes a partir de estados diferentes e os indicadores farão esse argumento por si."
+  },
+  "explFaqQ1": {
+    "en": "Is there a way to win?",
+    "es": "¿Hay forma de ganar?",
+    "pt": "Há forma de ganhar?"
+  },
+  "explFaqA1": {
+    "en": "No, and that is deliberate. A run that maximises wealth while flattening happiness is not a better outcome than one that balances them — it is a different set of trade-offs, and seeing that clearly is the whole exercise.",
+    "es": "No, y es deliberado. Una partida que maximiza el patrimonio aplanando el bienestar no es mejor resultado que otra que los equilibra: es un conjunto distinto de compromisos, y verlo con claridad es todo el ejercicio.",
+    "pt": "Não, e é deliberado. Uma sessão que maximiza o património achatando o bem-estar não é melhor resultado do que outra que os equilibra: é um conjunto diferente de compromissos, e vê-lo com clareza é todo o exercício."
+  },
+  "explFaqQ2": {
+    "en": "Does it store anything I enter?",
+    "es": "¿Guarda algo de lo que introduzco?",
+    "pt": "Guarda alguma coisa do que introduzo?"
+  },
+  "explFaqA2": {
+    "en": "No. The simulator runs entirely in your browser. Nothing you choose is sent anywhere, and closing the tab ends the session.",
+    "es": "No. El simulador se ejecuta enteramente en tu navegador. Nada de lo que eliges se envía a ningún sitio, y cerrar la pestaña termina la sesión.",
+    "pt": "Não. O simulador corre inteiramente no seu navegador. Nada do que escolhe é enviado para lado nenhum, e fechar o separador termina a sessão."
+  },
+  "explFaqQ3": {
+    "en": "Which of the other tools should I use next?",
+    "es": "¿Cuál de las otras herramientas debería usar después?",
+    "pt": "Qual das outras ferramentas devo usar a seguir?"
+  },
+  "explFaqA3": {
+    "en": "If you want a date rather than a pattern, the Freedom Calendar turns savings into a timeline. If you want to know whether a plan survives bad luck, the Monte Carlo simulator is the one that answers that.",
+    "es": "Si quieres una fecha en lugar de un patrón, el Calendario de la Libertad convierte el ahorro en una línea temporal. Si quieres saber si un plan sobrevive a la mala suerte, el simulador de Monte Carlo es el que responde a eso.",
+    "pt": "Se quer uma data em vez de um padrão, o Calendário da Liberdade transforma a poupança numa linha temporal. Se quer saber se um plano sobrevive ao azar, o simulador de Monte Carlo é o que responde a isso."
+  },
+  "explReadingSlug1": {
+    "en": "slow-money-system",
+    "es": "sistema-dinero-lento",
+    "pt": "sistema-dinheiro-lento"
+  },
+  "explReadingLabel1": {
+    "en": "The slow money system: a calmer way to build wealth",
+    "es": "El sistema de dinero lento: una forma más tranquila de crear patrimonio",
+    "pt": "O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio"
+  },
+  "explReadingSlug2": {
+    "en": "spending-with-purpose-how-to-align-your-money-with-what-truly-matters",
+    "es": "gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa",
+    "pt": "gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa"
+  },
+  "explReadingLabel2": {
+    "en": "Spending with Purpose: How to Align Your Money with What Truly Matters",
+    "es": "Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa",
+    "pt": "Gastar com Propósito: Como Alinhar o Seu Dinheiro com o Que Realmente Importa"
+  },
+  "explFaqTitle": {
+    "en": "Common questions",
+    "es": "Preguntas frecuentes",
+    "pt": "Perguntas frequentes"
+  },
+  "explReadingTitle": {
+    "en": "Keep reading",
+    "es": "Sigue leyendo",
+    "pt": "Continue a ler"
+  },
+  "explReadingIntro": {
+    "en": "The journal covers the ideas behind this tool at greater length.",
+    "es": "El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.",
+    "pt": "O diário desenvolve com mais calma as ideias por trás desta ferramenta."
+  },
+  "explReadingAll": {
+    "en": "All journal entries",
+    "es": "Todas las entradas del diario",
+    "pt": "Todas as entradas do diário"
   }
 }
