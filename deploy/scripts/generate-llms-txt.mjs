@@ -115,7 +115,7 @@ ${languages.map((code) => `- [${languageNames[code]}](${homeUrl(code)})`).join('
 - [Financial calculators](${origin}/#herramientas): compound interest, financial freedom, and purchase cost in working hours.
 - [Excel templates](${origin}/#plantillas): free personal budgeting and expense-management resources.
 - [Financial assessment](${origin}/#assessment): the personal financial balance and investment profile questionnaires, and the snapshot, risk profile, and recommended roadmap they produce.
-- [Frequently asked questions](${origin}/#preguntas-frecuentes): direct answers about the 4% rule, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
+- [Frequently asked questions](${origin}/#preguntas-frecuentes): direct answers about the 4% rule, what FIRE means and its variants, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
 - [About Sandy Bradbury](${origin}/#biografia): the creator's approach to money psychology, financial habits, and diversified investing.
 - [Contact](${origin}/#contacto): the newsletter and a direct contact form.
 

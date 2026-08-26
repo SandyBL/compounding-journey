@@ -570,9 +570,9 @@ const LATEST_ARTICLE_COUNT = 3;
 const LATEST_ARTICLES_BLOCK = /<!--latest-articles:start-->[\s\S]*?<!--latest-articles:end-->/;
 
 const latestArticleLabels = {
-  es: { read: 'Leer el artículo', empty: 'Pronto habrá artículos aquí.' },
-  en: { read: 'Read the article', empty: 'Articles are on their way.' },
-  pt: { read: 'Ler o artigo', empty: 'Em breve haverá artigos aqui.' }
+  es: { read: 'Leer el artículo', empty: 'Pronto habrá artículos aquí.', published: 'Publicado el' },
+  en: { read: 'Read the article', empty: 'Articles are on their way.', published: 'Published' },
+  pt: { read: 'Ler o artigo', empty: 'Em breve haverá artigos aqui.', published: 'Publicado em' }
 };
 
 function articlePath(language, slug) {
@@ -603,18 +603,30 @@ function teaser(summary) {
   return `${clipped.replace(/[\s,;:.–—-]+$/, '')}…`;
 }
 
+// The date on a card is the day the article was published, and only ever that.
+// `article.date` is the `date:` field of the article's own front matter - the one
+// the CMS labels "Publication date" - and the catalog carries nothing else that
+// looks like a date, so there is no `updated` or `dateModified` here to reach for
+// by accident. If one is ever added, it belongs in the article's structured data
+// and not in this card: a reader scanning the blog section wants to know when a
+// piece was written, not when a typo in it was corrected.
+//
+// The visible text is the date alone, because three cards in a row that each
+// repeat the word "Published" read as noise. The label is there for anyone
+// listening to the page instead of looking at it, where "12 August 2026" next to
+// a category and a headline carries no clue about what it is a date of.
 function articleCard(language, labels, article) {
   const href = articlePath(language, article.slug);
   const title = escapeHtml(article.title);
   const summary = escapeHtml(teaser(article.summary));
   const category = escapeHtml(article.category ?? '');
-  const date = escapeHtml(formatDate(language, article.date));
+  const publishedOn = escapeHtml(formatDate(language, article.date));
 
   return `                    <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                         <div class="flex items-center gap-2 mb-3">
                             <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">${category}</span>
                             <span class="h-px w-8 bg-warmgold/50"></span>
-                            <time datetime="${escapeAttribute(article.date ?? '')}" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">${date}</time>
+                            <time datetime="${escapeAttribute(article.date ?? '')}" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45"><span class="sr-only">${escapeHtml(labels.published)} </span>${publishedOn}</time>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
