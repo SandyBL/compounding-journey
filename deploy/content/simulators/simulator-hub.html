@@ -268,7 +268,7 @@
                 
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <input type="text" id="playerNameInput" placeholder="{{playernameinputPlaceholder}}" aria-label="{{playernameinputPlaceholder}}" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
-                    <button data-onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors">
+                    <button id="saveScoreButton" data-onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
 {{px6}}                    </button>
                 </div>
 
@@ -800,7 +800,7 @@
 
 {{minHScreen152}}            renderTrajectoryChart();
 
-{{minHScreen153}}            renderLeaderboard();
+{{minHScreen153}}            loadLeaderboard();
         }
 
 {{minHScreen154}}        function renderCategoryBreakdown() {
@@ -886,35 +886,69 @@
             });
         }
 
-{{minHScreen163}}        function getLeaderboardData() {
-{{minHScreen164}}            if (stored) {
-                try { return JSON.parse(stored); } catch (e) {}
-            }
-            return [
-{{minHScreen165}}            ];
+{{lbSectionComment}}        const LEADERBOARD_SIMULATOR = 'simulator-hub';
+
+        // What the board is showing right now: 'loading' while the request is in
+        // flight, 'error' when it failed, 'ready' otherwise. The three are kept
+        // apart because an empty board and an unreachable one look identical if
+        // both render as no rows, and they mean opposite things - one is an
+        // invitation to be first, the other is a fault to report.
+        let leaderboardEntries = [];
+        let leaderboardState = 'loading';
+
+        function loadLeaderboard() {
+            leaderboardState = 'loading';
+            renderLeaderboard();
+
+            window.SimLeaderboard.load(LEADERBOARD_SIMULATOR, 'ALL')
+                .then((entries) => {
+                    leaderboardEntries = entries;
+                    leaderboardState = 'ready';
+                    renderLeaderboard();
+                })
+                .catch(() => {
+                    leaderboardState = 'error';
+                    renderLeaderboard();
+                });
+        }
+
+        function leaderboardNotice(message) {
+            return `<p class="py-4 text-sm text-espresso-800/70">${message}</p>`;
         }
 
         function renderLeaderboard() {
-            const list = getLeaderboardData();
             const container = document.getElementById('leaderboardList');
             if (!container) return;
 
-            list.sort((a, b) => b.iq - a.iq || b.netWorth - a.netWorth);
+            if (leaderboardState === 'loading') {
+{{lbLoading}}                return;
+            }
+            if (leaderboardState === 'error') {
+{{lbError}}                return;
+            }
+            if (leaderboardEntries.length === 0) {
+{{lbEmpty}}                return;
+            }
 
             container.innerHTML = '';
-            list.slice(0, 5).forEach((entry, idx) => {
+            leaderboardEntries.slice(0, 5).forEach((entry, idx) => {
                 const row = document.createElement('div');
-                row.className = 'py-3 flex items-center justify-between text-sm';
+                // The visitor's own line is marked rather than moved: the board is
+                // a ranking, so the row stays where the score put it.
+                const isMine = window.SimLeaderboard.isMine(LEADERBOARD_SIMULATOR, entry.id);
+                row.className = isMine
+                    ? 'py-3 flex items-center justify-between text-sm bg-forest-800/5 -mx-2 px-2 rounded-lg'
+                    : 'py-3 flex items-center justify-between text-sm';
                 row.innerHTML = `
                     <div class="flex items-center gap-3">
                         <span class="w-6 h-6 flex items-center justify-center font-bold font-mono rounded-full bg-cream-200 text-espresso-900 text-xs">
                             #${idx + 1}
                         </span>
-                        <span class="font-bold text-espresso-950">${entry.name}</span>
-                    </div>
+                        <span class="font-bold text-espresso-950">${window.SimLeaderboard.escapeHtml(entry.name)}</span>
+{{lbYouBadge}}                    </div>
                     <div class="flex items-center gap-4 font-mono text-xs sm:text-sm">
-                        <span class="text-amber-700 font-bold">IQ: ${entry.iq}%</span>
-{{minHScreen166}}                    </div>
+                        <span class="text-amber-700 font-bold">IQ: ${entry.score}%</span>
+{{lbNetWorthCell}}                    </div>
                 `;
                 container.appendChild(row);
             });
@@ -922,21 +956,36 @@
 
         function saveScoreToLeaderboard() {
             const input = document.getElementById('playerNameInput');
+            const button = document.getElementById('saveScoreButton');
             const name = input ? input.value.trim() : '';
             if (!name) {
-{{minHScreen167}}                return;
+{{lbNameRequired}}                return;
             }
 
-            const list = getLeaderboardData();
-            list.push({
-                name: name,
-                iq: Math.round(currentState.literacyScore),
-                netWorth: currentState.netWorth,
-{{minHScreen168}}            });
+            // Disabled for the duration of the request. The button posts a row to
+            // a table everybody reads, and a second click while the first was in
+            // flight used to be free; now it is a duplicate entry.
+            if (button) button.disabled = true;
 
-{{minHScreen169}}            renderLeaderboard();
-            if (input) input.value = '';
-{{minHScreen170}}        }
+            window.SimLeaderboard.submit({
+                simulator: LEADERBOARD_SIMULATOR,
+                board: 'ALL',
+                name: name,
+                score: Math.round(currentState.literacyScore),
+                tiebreak: Math.round(currentState.netWorth)
+            })
+                .then((result) => {
+                    leaderboardEntries = result.entries;
+                    leaderboardState = 'ready';
+                    renderLeaderboard();
+                    if (input) input.value = '';
+{{lbSaved}}                })
+                .catch(() => {
+{{lbSaveFailed}}                })
+                .finally(() => {
+                    if (button) button.disabled = false;
+                });
+        }
 
 {{minHScreen171}}        function resetGame() {
             currentState = { ...INITIAL_STATE };

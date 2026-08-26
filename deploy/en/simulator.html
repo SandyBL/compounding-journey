@@ -76,8 +76,8 @@
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/css/sim-simulator-hub.css?v=372e18c710b8">
-    <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
+    <link rel="stylesheet" href="/assets/css/sim-simulator-hub.css?v=source">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=source">
     
     <style>
         body {
@@ -89,14 +89,10 @@
             box-shadow: 0 10px 30px -5px rgba(44, 29, 17, 0.08);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
-    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
-    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
-    <!--manifest:start-->
-    <link rel="manifest" href="/manifest.en.webmanifest">
-    <meta name="theme-color" content="#1E4620">
-    <!--manifest:end-->
+    <link rel="stylesheet" href="/assets/css/header.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
 
@@ -296,13 +292,13 @@
 
             <!-- LEADERBOARD & SAVE SCORE -->
             <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
-                <h3 class="text-xl font-bold text-espresso-900 mb-2 font-serif">Community Leaderboard</h3>
-                <p class="text-sm text-espresso-800/80 mb-4">Save your profile to compare your financial literacy score with other investors.</p>
+                <h3 class="text-xl font-bold text-espresso-900 mb-2 font-serif">Global Leaderboard</h3>
+                <p class="text-sm text-espresso-800/80 mb-4">One leaderboard, shared by everyone who plays. Save your result under a name and it joins the ranking every other visitor sees — in English, Spanish and Portuguese alike.</p>
                 
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
-                    <input type="text" id="playerNameInput" placeholder="Enter your name or initials" aria-label="Enter your name or initials" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
-                    <button data-onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors">
-                        Save Result
+                    <input type="text" id="playerNameInput" placeholder="The name others will see" aria-label="The name others will see" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
+                    <button id="saveScoreButton" data-onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                        Save to Leaderboard
                     </button>
                 </div>
 
@@ -356,7 +352,7 @@
                     <dt>Is there a way to win?</dt>
                     <dd>No, and that is deliberate. A run that maximises wealth while flattening happiness is not a better outcome than one that balances them — it is a different set of trade-offs, and seeing that clearly is the whole exercise.</dd>
                     <dt>Does it store anything I enter?</dt>
-                    <dd>No. The simulator runs entirely in your browser. Nothing you choose is sent anywhere, and closing the tab ends the session.</dd>
+                    <dd>The scenario run itself does not: every choice you make is evaluated in your browser and nothing about it is sent anywhere. The one exception is the leaderboard, and only if you ask for it — pressing Save sends the name you typed, your literacy score and your closing net worth to a shared table, because a ranking other people can see is the whole point of it. Nothing identifies you beyond the name you chose, and skipping the save button leaves no trace at all.</dd>
                     <dt>Which of the other tools should I use next?</dt>
                     <dd>If you want a date rather than a pattern, the Freedom Calendar turns savings into a timeline. If you want to know whether a plan survives bad luck, the Monte Carlo simulator is the one that answers that.</dd>
                 </dl>
@@ -402,7 +398,8 @@
         <p>© 2026 Compounding Journey. Educational simulation only. Not formal financial advice.</p>
     </footer>
 
-    <script src="/assets/js/sim-actions.js?v=e0c8b11598c9" defer></script>
-    <script src="/assets/js/sim-simulator-hub.en.js?v=ead630663465" defer></script>
+    <script src="/assets/js/sim-actions.js?v=source" defer></script>
+    <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
+    <script src="/assets/js/sim-simulator-hub.en.js?v=source" defer></script>
 </body>
 </html>

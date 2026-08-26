@@ -655,19 +655,19 @@
     "pt": "Construtor Equilibrado"
   },
   "textXs11": {
-    "en": " Submit to Freedom Hall of Fame\n",
-    "es": " Unirse al Salón de la Fama\n",
-    "pt": " Entrar no Salão da Fama\n"
+    "en": " Add your run to the global Hall of Fame\n",
+    "es": " Añade tu partida al Salón de la Fama global\n",
+    "pt": " Adicione sua partida ao Salão da Fama global\n"
   },
   "text10px2": {
-    "en": "Ranked by fewest years",
-    "es": "Clasificado por menos años",
-    "pt": "Rank por menor número de anos"
+    "en": "Everyone competes on fewest years",
+    "es": "Todos compiten por menos años",
+    "pt": "Todos competem por menos anos"
   },
   "playernameinputPlaceholder": {
-    "en": "Enter your name or nickname...",
-    "es": "Ingresa tu nombre o apodo...",
-    "pt": "Digite seu nome ou apelido..."
+    "en": "The name others will see...",
+    "es": "El nombre que verán los demás...",
+    "pt": "O nome que os outros verão..."
   },
   "px35": {
     "en": " Save Score\n",
@@ -690,9 +690,9 @@
     "pt": "Salão da Fama da Liberdade"
   },
   "text10px3": {
-    "en": "Top Performers • Shortest Time to Freedom",
-    "es": "Mejores Inversores • Menor Tiempo a la Libertad",
-    "pt": "Melhores Investidores • Menor Tempo até a Liberdade"
+    "en": "Every player, every language • Shortest Time to Freedom",
+    "es": "Todos los jugadores, todos los idiomas • Menor Tiempo a la Libertad",
+    "pt": "Todos os jogadores, todos os idiomas • Menor Tempo até a Liberdade"
   },
   "p25": {
     "en": "Investor Name",
@@ -715,14 +715,14 @@
     "pt": "                        <!-- Dynamic Injection -->\n"
   },
   "flex7": {
-    "en": "Reach financial independence in the shortest time!",
-    "es": "¡Alcanza la independencia en el menor tiempo!",
-    "pt": "Alcance a independência em tempo recorde!"
+    "en": "Shared by every player of this simulator.",
+    "es": "Compartido por todos los jugadores de este simulador.",
+    "pt": "Compartilhado por todos os jogadores deste simulador."
   },
   "textRose7002": {
-    "en": "Reset Scores",
-    "es": "Reiniciar Puntuaciones",
-    "pt": "Resetar Pontuações"
+    "en": "Refresh",
+    "es": "Actualizar",
+    "pt": "Atualizar"
   },
   "wFull4": {
     "en": "                Back to Game\n",
@@ -738,16 +738,6 @@
     "en": "            { id: 'dividend_etf', name: 'Dividend ETF', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Broad market dividend index. Payouts compound & grow organically over time.', riskText: 'Low Risk / Compounding Growth' },\n            { id: 'bonds', name: 'Treasury Bonds', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Government backed. High yields during rate hike cycles.', riskText: 'Guaranteed / Safe' },\n            { id: 'rental_property', name: 'Rental Condo', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Real estate cash flow. Subject to occasional repair shocks.', riskText: 'Medium Risk / Cash Flow' },\n            { id: 'reit_index', name: 'REIT Index', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Real Estate Investment Trust pool. Consistent monthly payouts.', riskText: 'Moderate Risk / Real Estate' },\n            { id: 'digital_business', name: 'Online Business', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'Digital asset ecommerce. High yield, subject to ad cost shifts.', riskText: 'High Yield / Volatile' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Crypto asset. Huge surge during bull markets, yield drag in bear cycles.', riskText: 'High Volatility / Speculative' }\n",
     "es": "            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos del mercado. Los pagos se componen y crecen orgánicamente.', riskText: 'Bajo Riesgo / Crecimiento Cts.' },\n            { id: 'bonds', name: 'Bonos del Tesoro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Respaldados por el gobierno. Rinde más en ciclos de altas tasas.', riskText: 'Garantizado / Seguro' },\n            { id: 'rental_property', name: 'Condominio Alquiler', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Flujo inmobiliario. Sujeto a costos ocasionales de reparación.', riskText: 'Riesgo Medio / Flujo Caja' },\n            { id: 'reit_index', name: 'Índice REIT', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fondo de inversión inmobiliaria. Pagos mensuales constantes.', riskText: 'Riesgo Moderado / Bienes Raíces' },\n            { id: 'digital_business', name: 'Negocio en Línea', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimiento, sensible a costos publicitarios.', riskText: 'Alto Rendimiento / Volátil' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoactivo. Grandes auges alcistas, presión en ciclos bajistas.', riskText: 'Alta Volatilidad / Especulativo' }\n",
     "pt": "            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos do mercado. Os pagamentos se multiplicam e crescem organicamente.', riskText: 'Baixo Risco / Crescimento Contínuo' },\n            { id: 'bonds', name: 'Títulos do Tesouro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Garantidos pelo governo. Rendem mais em ciclos de juros altos.', riskText: 'Garantido / Seguro' },\n            { id: 'rental_property', name: 'Imóvel para Aluguel', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Fluxo imobiliário. Sujeito a custos ocasionais de reforma.', riskText: 'Risco Médio / Fluxo de Caixa' },\n            { id: 'reit_index', name: 'Fundos Imobiliários (REITs)', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fundo de investimento imobiliário. Pagamentos mensais constantes.', riskText: 'Risco Moderado / Imóveis' },\n            { id: 'digital_business', name: 'Negócio Digital', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimento, sensível a custos de anúncios.', riskText: 'Alto Rendimento / Volátil' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoativo. Grandes ciclos de alta, pressão em ciclos de baixa.', riskText: 'Alta Volatilidade / Especulativo' }\n"
-  },
-  "fontSans3": {
-    "en": "            { name: \"Sophia Chen (FIRE Guru)\", months: 264, netWorth: 680000 },\n            { name: \"Marcus Vance\", months: 288, netWorth: 590000 },\n",
-    "es": "            { name: \"Sofía Chen (Gurú FIRE)\", months: 264, netWorth: 680000 },\n            { name: \"Marcos Vance\", months: 288, netWorth: 590000 },\n",
-    "pt": "            { name: \"Sofia Chen (Gurus do FIRE)\", months: 264, netWorth: 680000 },\n            { name: \"Marcos Vance\", months: 288, netWorth: 590000 },\n"
-  },
-  "fontSans4": {
-    "en": "            { name: \"Sarah & Alex\", months: 384, netWorth: 390000 }\n",
-    "es": "            { name: \"Sara y Alejandro\", months: 384, netWorth: 390000 }\n",
-    "pt": "            { name: \"Sara e Alexandre\", months: 384, netWorth: 390000 }\n"
   },
   "fontSans5": {
     "en": "        // TIME ADVANCEMENT & ANNUAL SIMULATION LOOP\n",
@@ -885,24 +875,24 @@
     "pt": "                const yearsPassedStr = `Ano ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Período Avançado (${yearsPassedStr})`;\n                toastText.innerHTML = `Superávit líquido acumulado: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}$${Math.round(netMonthly).toLocaleString()}/mês x 12 meses somados ao Caixa).`;\n"
   },
   "fontSans32": {
-    "en": "            const saved = localStorage.getItem('compounding_journey_leaderboard');\n",
-    "es": "            const saved = localStorage.getItem('compounding_journey_leaderboard_es');\n",
-    "pt": "            const saved = localStorage.getItem('compounding_journey_leaderboard_pt');\n"
+    "en": "                container.innerHTML = leaderboardNoticeRow('Loading the global Hall of Fame…');\n",
+    "es": "                container.innerHTML = leaderboardNoticeRow('Cargando el Salón de la Fama global…');\n",
+    "pt": "                container.innerHTML = leaderboardNoticeRow('Carregando o Salão da Fama global…');\n"
   },
   "fontSans33": {
-    "en": "            localStorage.setItem('compounding_journey_leaderboard', JSON.stringify(data));\n",
-    "es": "            localStorage.setItem('compounding_journey_leaderboard_es', JSON.stringify(data));\n",
-    "pt": "            localStorage.setItem('compounding_journey_leaderboard_pt', JSON.stringify(data));\n"
+    "en": "                container.innerHTML = leaderboardNoticeRow('The Hall of Fame could not be reached. Try again in a moment.');\n",
+    "es": "                container.innerHTML = leaderboardNoticeRow('No se pudo acceder al Salón de la Fama. Inténtalo de nuevo en un momento.');\n",
+    "pt": "                container.innerHTML = leaderboardNoticeRow('Não foi possível acessar o Salão da Fama. Tente novamente em instantes.');\n"
   },
   "fontSans34": {
-    "en": "                const timeStr = yrs > 0 ? `${yrs} Years (${entry.months}m)` : `${entry.months} Months`;\n",
-    "es": "                const timeStr = yrs > 0 ? `${yrs} Años (${entry.months}m)` : `${entry.months} Meses`;\n",
-    "pt": "                const timeStr = yrs > 0 ? `${yrs} Anos (${entry.months}m)` : `${entry.months} Meses`;\n"
+    "en": "                const timeStr = yrs > 0 ? `${yrs} Years (${entry.score}m)` : `${entry.score} Months`;\n",
+    "es": "                const timeStr = yrs > 0 ? `${yrs} Años (${entry.score}m)` : `${entry.score} Meses`;\n",
+    "pt": "                const timeStr = yrs > 0 ? `${yrs} Anos (${entry.score}m)` : `${entry.score} Meses`;\n"
   },
   "fontSans35": {
-    "en": "                        Score saved to Hall of Fame!\n",
-    "es": "                        ¡Puntuación guardada en el Salón de la Fama!\n",
-    "pt": "                        Pontuação salva no Salão da Fama!\n"
+    "en": "                                Your run is on the global Hall of Fame!\n",
+    "es": "                                ¡Tu partida ya está en el Salón de la Fama global!\n",
+    "pt": "                                Sua partida já está no Salão da Fama global!\n"
   },
   "fontSans36": {
     "en": "            document.getElementById('victoryPassive').innerText = `+$${Math.round(pass).toLocaleString()}/mo`;\n            document.getElementById('victoryExpenses').innerText = `$${exp.toLocaleString()}/mo`;\n",
@@ -1283,5 +1273,25 @@
     "en": "Breadcrumb",
     "es": "Ruta de navegación",
     "pt": "Trilho de navegação"
+  },
+  "lbSectionComment": {
+    "en": "        /* =================================================================\n           GLOBAL LEADERBOARD (one board, every visitor, every language)\n           Read from and written to /api/simulator-leaderboard.\n           ================================================================= */\n",
+    "es": "        /* =================================================================\n           CLASIFICACIÓN GLOBAL (una sola tabla, todos los visitantes, todos\n           los idiomas). Se lee y se escribe en /api/simulator-leaderboard.\n           ================================================================= */\n",
+    "pt": "        /* =================================================================\n           PLACAR GLOBAL (uma única tabela, todos os visitantes, todos os\n           idiomas). Lido e gravado em /api/simulator-leaderboard.\n           ================================================================= */\n"
+  },
+  "lbEmpty": {
+    "en": "                container.innerHTML = leaderboardNoticeRow('Nobody has reached crossover yet. Get there and the first line is yours.');\n",
+    "es": "                container.innerHTML = leaderboardNoticeRow('Todavía nadie ha alcanzado el cruce. Llega tú y la primera línea será tuya.');\n",
+    "pt": "                container.innerHTML = leaderboardNoticeRow('Ninguém alcançou o cruzamento ainda. Chegue lá e a primeira linha será sua.');\n"
+  },
+  "lbYouBadge": {
+    "en": "${isMine ? ' <span class=\"text-[9px] font-bold uppercase tracking-wide text-gold-600\">You</span>' : ''}",
+    "es": "${isMine ? ' <span class=\"text-[9px] font-bold uppercase tracking-wide text-gold-600\">Tú</span>' : ''}",
+    "pt": "${isMine ? ' <span class=\"text-[9px] font-bold uppercase tracking-wide text-gold-600\">Você</span>' : ''}"
+  },
+  "lbSaveFailed": {
+    "en": "                        warning.textContent = 'Your run could not be sent to the Hall of Fame. Check your connection and press Save Score again.';\n",
+    "es": "                        warning.textContent = 'No se pudo enviar tu partida al Salón de la Fama. Comprueba tu conexión y vuelve a pulsar Guardar.';\n",
+    "pt": "                        warning.textContent = 'Não foi possível enviar sua partida ao Salão da Fama. Verifique sua conexão e toque em Salvar novamente.';\n"
   }
 }

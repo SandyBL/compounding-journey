@@ -654,7 +654,7 @@
             renderTrajectoryChart();
 
             // RENDERIZAR TABLA DE CLASIFICACIÓN
-            renderLeaderboard();
+            loadLeaderboard();
         }
 
         // RENDERIZAR DETALLE POR CATEGORÍA
@@ -749,40 +749,78 @@
             });
         }
 
-        // GESTIÓN DE LA TABLA DE CLASIFICACIÓN EN LOCAL STORAGE
-        function getLeaderboardData() {
-            const stored = localStorage.getItem('compounding_journey_leaderboard_es');
-            if (stored) {
-                try { return JSON.parse(stored); } catch (e) {}
-            }
-            return [
-                { name: "Sofía M.", iq: 93, netWorth: 34500, date: "Reciente" },
-                { name: "Marcos T.", iq: 80, netWorth: 28000, date: "Reciente" },
-                { name: "Elena R.", iq: 67, netWorth: 18500, date: "Reciente" }
-            ];
+        /* =================================================================
+           TABLA DE CLASIFICACIÓN GLOBAL (compartida por todos los visitantes,
+           en todos los idiomas). Se lee y se escribe en
+           /api/simulator-leaderboard.
+           ================================================================= */
+        const LEADERBOARD_SIMULATOR = 'simulator-hub';
+
+        // What the board is showing right now: 'loading' while the request is in
+        // flight, 'error' when it failed, 'ready' otherwise. The three are kept
+        // apart because an empty board and an unreachable one look identical if
+        // both render as no rows, and they mean opposite things - one is an
+        // invitation to be first, the other is a fault to report.
+        let leaderboardEntries = [];
+        let leaderboardState = 'loading';
+
+        function loadLeaderboard() {
+            leaderboardState = 'loading';
+            renderLeaderboard();
+
+            window.SimLeaderboard.load(LEADERBOARD_SIMULATOR, 'ALL')
+                .then((entries) => {
+                    leaderboardEntries = entries;
+                    leaderboardState = 'ready';
+                    renderLeaderboard();
+                })
+                .catch(() => {
+                    leaderboardState = 'error';
+                    renderLeaderboard();
+                });
+        }
+
+        function leaderboardNotice(message) {
+            return `<p class="py-4 text-sm text-espresso-800/70">${message}</p>`;
         }
 
         function renderLeaderboard() {
-            const list = getLeaderboardData();
             const container = document.getElementById('leaderboardList');
             if (!container) return;
 
-            list.sort((a, b) => b.iq - a.iq || b.netWorth - a.netWorth);
+            if (leaderboardState === 'loading') {
+                container.innerHTML = leaderboardNotice('Cargando la clasificación global…');
+                return;
+            }
+            if (leaderboardState === 'error') {
+                container.innerHTML = leaderboardNotice('No se pudo conectar con la clasificación global. Tu resultado sigue en esta página: vuelve a intentar guardarlo en un momento.');
+                return;
+            }
+            if (leaderboardEntries.length === 0) {
+                container.innerHTML = leaderboardNotice('Todavía no hay resultados en la clasificación global. Guarda el tuyo y serás el primero.');
+                return;
+            }
 
             container.innerHTML = '';
-            list.slice(0, 5).forEach((entry, idx) => {
+            leaderboardEntries.slice(0, 5).forEach((entry, idx) => {
                 const row = document.createElement('div');
-                row.className = 'py-3 flex items-center justify-between text-sm';
+                // The visitor's own line is marked rather than moved: the board is
+                // a ranking, so the row stays where the score put it.
+                const isMine = window.SimLeaderboard.isMine(LEADERBOARD_SIMULATOR, entry.id);
+                row.className = isMine
+                    ? 'py-3 flex items-center justify-between text-sm bg-forest-800/5 -mx-2 px-2 rounded-lg'
+                    : 'py-3 flex items-center justify-between text-sm';
                 row.innerHTML = `
                     <div class="flex items-center gap-3">
                         <span class="w-6 h-6 flex items-center justify-center font-bold font-mono rounded-full bg-cream-200 text-espresso-900 text-xs">
                             #${idx + 1}
                         </span>
-                        <span class="font-bold text-espresso-950">${entry.name}</span>
+                        <span class="font-bold text-espresso-950">${window.SimLeaderboard.escapeHtml(entry.name)}</span>
+                        ${isMine ? '<span class="text-[10px] font-bold uppercase tracking-wide text-forest-800 bg-forest-800/10 px-2 py-0.5 rounded-full">Tú</span>' : ''}
                     </div>
                     <div class="flex items-center gap-4 font-mono text-xs sm:text-sm">
-                        <span class="text-amber-700 font-bold">IQ: ${entry.iq}%</span>
-                        <span class="text-forest-800 font-bold">$${entry.netWorth.toLocaleString('es-ES')}</span>
+                        <span class="text-amber-700 font-bold">IQ: ${entry.score}%</span>
+                        <span class="text-forest-800 font-bold">$${entry.tiebreak.toLocaleString('es-ES')}</span>
                     </div>
                 `;
                 container.appendChild(row);
@@ -791,24 +829,38 @@
 
         function saveScoreToLeaderboard() {
             const input = document.getElementById('playerNameInput');
+            const button = document.getElementById('saveScoreButton');
             const name = input ? input.value.trim() : '';
             if (!name) {
-                alert("Por favor, escribe tu nombre o iniciales para guardar tu resultado.");
+                alert("Escribe un nombre o unas iniciales: es lo que verán los demás visitantes en la clasificación.");
                 return;
             }
 
-            const list = getLeaderboardData();
-            list.push({
-                name: name,
-                iq: Math.round(currentState.literacyScore),
-                netWorth: currentState.netWorth,
-                date: "Hoy"
-            });
+            // Disabled for the duration of the request. The button posts a row to
+            // a table everybody reads, and a second click while the first was in
+            // flight used to be free; now it is a duplicate entry.
+            if (button) button.disabled = true;
 
-            localStorage.setItem('compounding_journey_leaderboard_es', JSON.stringify(list));
-            renderLeaderboard();
-            if (input) input.value = '';
-            alert("¡Resultado guardado con éxito en la tabla de clasificación!");
+            window.SimLeaderboard.submit({
+                simulator: LEADERBOARD_SIMULATOR,
+                board: 'ALL',
+                name: name,
+                score: Math.round(currentState.literacyScore),
+                tiebreak: Math.round(currentState.netWorth)
+            })
+                .then((result) => {
+                    leaderboardEntries = result.entries;
+                    leaderboardState = 'ready';
+                    renderLeaderboard();
+                    if (input) input.value = '';
+                    alert("Guardado. Tu resultado ya está en la clasificación global, visible para todos los visitantes.");
+                })
+                .catch(() => {
+                    alert("No se pudo enviar tu resultado a la clasificación global. Comprueba tu conexión e inténtalo de nuevo.");
+                })
+                .finally(() => {
+                    if (button) button.disabled = false;
+                });
         }
 
         // REINICIAR EL JUEGO

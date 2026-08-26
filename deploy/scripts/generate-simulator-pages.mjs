@@ -47,13 +47,20 @@ const languageMeta = {
   pt: { code: 'pt', locale: 'pt_PT', home: '/pt/', dir: '/pt/' }
 };
 
-/** Template name -> output path, with `{lang}` standing in for the language. */
+/**
+ * Template name -> output path, with `{lang}` standing in for the language.
+ *
+ * `leaderboard` marks the three tools that rank a score, and so the three that
+ * link assets/js/sim-leaderboard.js - the shared client for the board every
+ * visitor sees. The Freedom Calendar and the Market Time Machine produce no
+ * score to rank, so they do not carry the request.
+ */
 const simulators = [
-  { name: 'simulator-hub', output: '{lang}/simulator.html' },
+  { name: 'simulator-hub', output: '{lang}/simulator.html', leaderboard: true },
   { name: 'freedom-calendar', output: '{lang}/simulators/freedom-calendar.html' },
   { name: 'market-time-machine', output: '{lang}/simulators/market-time-machine.html' },
-  { name: 'monte-carlo-fire', output: '{lang}/simulators/monte-carlo-fire.html' },
-  { name: 'passive-income-engine', output: '{lang}/simulators/passive-income-engine.html' }
+  { name: 'monte-carlo-fire', output: '{lang}/simulators/monte-carlo-fire.html', leaderboard: true },
+  { name: 'passive-income-engine', output: '{lang}/simulators/passive-income-engine.html', leaderboard: true }
 ];
 
 const placeholderPattern = /\{\{([^{}]+)\}\}/g;
@@ -175,8 +182,16 @@ function behaviourFileName(name, language) {
  * in source order - the dispatcher only ever looks a function up at the moment
  * an event fires, so the order between them does not actually matter, but
  * declaring the shared piece first is how the pages read.
+ *
+ * sim-leaderboard.js joins them on the three tools that rank a score. It is
+ * shared for the same reason sim-actions.js is - it carries no translated
+ * string, only the calls to /api/simulator-leaderboard - and it is deferred
+ * ahead of the behaviour bundle because that bundle calls into it. Ordering is
+ * again not load-critical: nothing runs at parse time, and the first call comes
+ * from a click or from the end of a run.
  */
-function liftBehaviour(page, name, language, context) {
+function liftBehaviour(page, simulator, language, context) {
+  const { name } = simulator;
   const blocks = [...page.matchAll(BEHAVIOUR_BLOCK)];
   if (blocks.length !== 1) {
     throw new Error(
@@ -189,6 +204,9 @@ function liftBehaviour(page, name, language, context) {
   const [block] = blocks;
   const tag =
     `\n    <script src="/assets/js/sim-actions.js?v=source" defer></script>` +
+    (simulator.leaderboard
+      ? `\n    <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>`
+      : '') +
     `\n    <script src="/assets/js/${behaviourFileName(name, language)}?v=source" defer></script>`;
   const markup = page
     .replace(BEHAVIOUR_BLOCK, tag)
@@ -225,7 +243,7 @@ async function main() {
       const context = `content/simulators/${simulator.name}.html (${language})`;
       const page = render(template, language, strings, context);
 
-      const { markup, behaviour } = liftBehaviour(page, simulator.name, language, context);
+      const { markup, behaviour } = liftBehaviour(page, simulator, language, context);
 
       const scriptFile = path.join(root, 'assets', 'js', behaviourFileName(simulator.name, language));
       await fs.mkdir(path.dirname(scriptFile), { recursive: true });

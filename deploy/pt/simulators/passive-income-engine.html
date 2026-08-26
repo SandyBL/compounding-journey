@@ -14,8 +14,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://compoundingjourney.com/pt/"},{"@type":"ListItem","position":2,"name":"Simuladores","item":"https://compoundingjourney.com/pt/simulator.html"},{"@type":"ListItem","position":3,"name":"Motor de Rendimento Passivo"}]}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=cf36153ed998">
-    <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
+    <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=source">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=source">
     <!-- Chart.js -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     
@@ -35,14 +35,10 @@
             box-shadow: 0 10px 25px -5px rgba(44, 29, 17, 0.05), 0 8px 10px -6px rgba(44, 29, 17, 0.03);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
-    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
-    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
-    <!--manifest:start-->
-    <link rel="manifest" href="/manifest.pt.webmanifest">
-    <meta name="theme-color" content="#1E4620">
-    <!--manifest:end-->
+    <link rel="stylesheet" href="/assets/css/header.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
 </head>
 <body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
 
@@ -659,13 +655,13 @@
             <div id="victoryLeaderboardSubmit" class="bg-amber-50 border border-gold-400 p-3.5 rounded-xl text-left space-y-2.5">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-espresso-950 flex items-center gap-1.5">
-                        <i class="fa-solid fa-award text-gold-600" aria-hidden="true"></i> Entrar no Salão da Fama
+                        <i class="fa-solid fa-award text-gold-600" aria-hidden="true"></i> Adicione sua partida ao Salão da Fama global
                     </span>
-                    <span class="text-[10px] text-espresso-800/70 font-mono">Rank por menor número de anos</span>
+                    <span class="text-[10px] text-espresso-800/70 font-mono">Todos competem por menos anos</span>
                 </div>
                 <div class="flex gap-2">
-                    <input type="text" id="playerNameInput" placeholder="Digite seu nome ou apelido..." aria-label="Digite seu nome ou apelido..." class="flex-1 text-xs px-3 py-2 rounded-lg border border-cream-300 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500 text-espresso-950">
-                    <button data-onclick="submitPlayerScore()" class="px-3.5 py-2 rounded-lg bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs transition flex items-center gap-1 shrink-0">
+                    <input type="text" id="playerNameInput" placeholder="O nome que os outros verão..." aria-label="O nome que os outros verão..." class="flex-1 text-xs px-3 py-2 rounded-lg border border-cream-300 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500 text-espresso-950">
+                    <button id="submitScoreButton" data-onclick="submitPlayerScore()" class="px-3.5 py-2 rounded-lg bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs transition flex items-center gap-1 shrink-0 disabled:opacity-60 disabled:cursor-not-allowed">
                         <i class="fa-solid fa-check" aria-hidden="true"></i> Salvar
                     </button>
                 </div>
@@ -693,7 +689,7 @@
                     </div>
                     <div>
                         <h3 class="text-base font-serif font-bold text-espresso-950 leading-tight">Salão da Fama da Liberdade</h3>
-                        <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">Melhores Investidores • Menor Tempo até a Liberdade</p>
+                        <p class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">Todos os jogadores, todos os idiomas • Menor Tempo até a Liberdade</p>
                     </div>
                 </div>
                 <button data-onclick="toggleLeaderboardModal()" class="text-espresso-800/60 hover:text-espresso-950 text-lg" aria-label="Fechar">
@@ -719,8 +715,8 @@
             </div>
 
             <div class="flex justify-between items-center pt-1 text-[11px] text-espresso-800/70">
-                <span>Alcance a independência em tempo recorde!</span>
-                <button data-onclick="resetLeaderboard()" class="text-rose-700 hover:underline text-[10px]">Resetar Pontuações</button>
+                <span>Compartilhado por todos os jogadores deste simulador.</span>
+                <button data-onclick="refreshLeaderboard()" class="text-forest-800 hover:underline text-[10px]">Atualizar</button>
             </div>
 
             <button data-onclick="toggleLeaderboardModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
@@ -729,8 +725,9 @@
         </div>
     </div>
 
-    <script src="/assets/js/sim-actions.js?v=e0c8b11598c9" defer></script>
-    <script src="/assets/js/sim-passive-income-engine.pt.js?v=a6d6b93affdf" defer></script>
+    <script src="/assets/js/sim-actions.js?v=source" defer></script>
+    <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
+    <script src="/assets/js/sim-passive-income-engine.pt.js?v=source" defer></script>
     <footer class="simulator-footer">
       <p class="simulator-footer__note">&copy; 2026 Compounding Journey. Apenas para fins educativos. Não constitui aconselhamento financeiro.</p>
     </footer>

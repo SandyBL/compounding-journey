@@ -76,8 +76,8 @@
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/css/sim-simulator-hub.css?v=372e18c710b8">
-    <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
+    <link rel="stylesheet" href="/assets/css/sim-simulator-hub.css?v=source">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=source">
     
     <style>
         body {
@@ -89,14 +89,10 @@
             box-shadow: 0 10px 30px -5px rgba(44, 29, 17, 0.08);
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
-    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
-    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
-    <!--manifest:start-->
-    <link rel="manifest" href="/manifest.es.webmanifest">
-    <meta name="theme-color" content="#1E4620">
-    <!--manifest:end-->
+    <link rel="stylesheet" href="/assets/css/header.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
 
@@ -296,13 +292,13 @@
 
             <!-- TABLA DE CLASIFICACIÓN DE LA COMUNIDAD -->
             <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
-                <h3 class="text-xl font-bold text-espresso-900 mb-2 font-serif">Tabla de Clasificación de la Comunidad</h3>
-                <p class="text-sm text-espresso-800/80 mb-4">Guarda tu resultado para comparar tu nivel de IQ financiero con otros inversores.</p>
+                <h3 class="text-xl font-bold text-espresso-900 mb-2 font-serif">Clasificación Global</h3>
+                <p class="text-sm text-espresso-800/80 mb-4">Una sola clasificación, compartida por todos los que juegan. Guarda tu resultado con un nombre y entrará en el ranking que ven los demás visitantes, tanto en español como en inglés o portugués.</p>
                 
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
-                    <input type="text" id="playerNameInput" placeholder="Escribe tu nombre o iniciales" aria-label="Escribe tu nombre o iniciales" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
-                    <button data-onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors">
-                        Guardar Resultado
+                    <input type="text" id="playerNameInput" placeholder="El nombre que verán los demás" aria-label="El nombre que verán los demás" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
+                    <button id="saveScoreButton" data-onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                        Guardar en la Clasificación
                     </button>
                 </div>
 
@@ -356,7 +352,7 @@
                     <dt>¿Hay forma de ganar?</dt>
                     <dd>No, y es deliberado. Una partida que maximiza el patrimonio aplanando el bienestar no es mejor resultado que otra que los equilibra: es un conjunto distinto de compromisos, y verlo con claridad es todo el ejercicio.</dd>
                     <dt>¿Guarda algo de lo que introduzco?</dt>
-                    <dd>No. El simulador se ejecuta enteramente en tu navegador. Nada de lo que eliges se envía a ningún sitio, y cerrar la pestaña termina la sesión.</dd>
+                    <dd>La partida en sí no: cada decisión se evalúa en tu navegador y nada de ello se envía a ningún sitio. La única excepción es la clasificación, y sólo si tú lo pides: al pulsar Guardar se envían el nombre que escribiste, tu puntuación de IQ financiero y tu patrimonio final a una tabla compartida, porque un ranking que otros puedan ver es precisamente su razón de ser. Nada te identifica más allá del nombre que elijas, y si no pulsas Guardar no queda ningún rastro.</dd>
                     <dt>¿Cuál de las otras herramientas debería usar después?</dt>
                     <dd>Si quieres una fecha en lugar de un patrón, el Calendario de la Libertad convierte el ahorro en una línea temporal. Si quieres saber si un plan sobrevive a la mala suerte, el simulador de Monte Carlo es el que responde a eso.</dd>
                 </dl>
@@ -402,7 +398,8 @@
         <p>© 2026 Compounding Journey. Solo para fines educativos. No constituye una recomendación formal de inversión.</p>
     </footer>
 
-    <script src="/assets/js/sim-actions.js?v=e0c8b11598c9" defer></script>
-    <script src="/assets/js/sim-simulator-hub.es.js?v=caf6e750c1ca" defer></script>
+    <script src="/assets/js/sim-actions.js?v=source" defer></script>
+    <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
+    <script src="/assets/js/sim-simulator-hub.es.js?v=source" defer></script>
 </body>
 </html>

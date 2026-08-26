@@ -300,24 +300,24 @@
     "pt": "            <!-- PLACAR DA COMUNIDADE -->\n"
   },
   "textXl3": {
-    "en": "Community Leaderboard",
-    "es": "Tabla de Clasificación de la Comunidad",
-    "pt": "Placar da Comunidade"
+    "en": "Global Leaderboard",
+    "es": "Clasificación Global",
+    "pt": "Placar Global"
   },
   "textSm": {
-    "en": "Save your profile to compare your financial literacy score with other investors.",
-    "es": "Guarda tu resultado para comparar tu nivel de IQ financiero con otros inversores.",
-    "pt": "Salve o seu perfil para comparar sua pontuação de conhecimento financeiro com outros investidores."
+    "en": "One leaderboard, shared by everyone who plays. Save your result under a name and it joins the ranking every other visitor sees — in English, Spanish and Portuguese alike.",
+    "es": "Una sola clasificación, compartida por todos los que juegan. Guarda tu resultado con un nombre y entrará en el ranking que ven los demás visitantes, tanto en español como en inglés o portugués.",
+    "pt": "Um único placar, compartilhado por todos os que jogam. Salve seu resultado com um nome e ele entra no ranking que todos os outros visitantes veem, em português, inglês ou espanhol."
   },
   "playernameinputPlaceholder": {
-    "en": "Enter your name or initials",
-    "es": "Escribe tu nombre o iniciales",
-    "pt": "Digite seu nome ou iniciais"
+    "en": "The name others will see",
+    "es": "El nombre que verán los demás",
+    "pt": "O nome que os outros verão"
   },
   "px6": {
-    "en": "                        Save Result\n",
-    "es": "                        Guardar Resultado\n",
-    "pt": "                        Salvar Resultado\n"
+    "en": "                        Save to Leaderboard\n",
+    "es": "                        Guardar en la Clasificación\n",
+    "pt": "                        Salvar no Placar\n"
   },
   "minHScreen4": {
     "en": "    <!-- FOOTER -->\n",
@@ -1139,46 +1139,6 @@
     "es": "                                callback: value => '$' + value.toLocaleString('es-ES')\n",
     "pt": "                                callback: value => '$' + value.toLocaleString('pt-BR')\n"
   },
-  "minHScreen163": {
-    "en": "        // LEADERBOARD LOCAL STORAGE\n",
-    "es": "        // GESTIÓN DE LA TABLA DE CLASIFICACIÓN EN LOCAL STORAGE\n",
-    "pt": "        // GERENCIAMENTO DO PLACAR NO LOCAL STORAGE\n"
-  },
-  "minHScreen164": {
-    "en": "            const stored = localStorage.getItem('compounding_journey_leaderboard');\n",
-    "es": "            const stored = localStorage.getItem('compounding_journey_leaderboard_es');\n",
-    "pt": "            const stored = localStorage.getItem('compounding_journey_leaderboard_pt');\n"
-  },
-  "minHScreen165": {
-    "en": "                { name: \"Sophia M.\", iq: 93, netWorth: 34500, date: \"Recent\" },\n                { name: \"Marcus T.\", iq: 80, netWorth: 28000, date: \"Recent\" },\n                { name: \"Elena R.\", iq: 67, netWorth: 18500, date: \"Recent\" }\n",
-    "es": "                { name: \"Sofía M.\", iq: 93, netWorth: 34500, date: \"Reciente\" },\n                { name: \"Marcos T.\", iq: 80, netWorth: 28000, date: \"Reciente\" },\n                { name: \"Elena R.\", iq: 67, netWorth: 18500, date: \"Reciente\" }\n",
-    "pt": "                { name: \"Sofia M.\", iq: 93, netWorth: 34500, date: \"Recente\" },\n                { name: \"Marcos T.\", iq: 80, netWorth: 28000, date: \"Recente\" },\n                { name: \"Helena R.\", iq: 67, netWorth: 18500, date: \"Recente\" }\n"
-  },
-  "minHScreen166": {
-    "en": "                        <span class=\"text-forest-800 font-bold\">$${entry.netWorth.toLocaleString()}</span>\n",
-    "es": "                        <span class=\"text-forest-800 font-bold\">$${entry.netWorth.toLocaleString('es-ES')}</span>\n",
-    "pt": "                        <span class=\"text-forest-800 font-bold\">$${entry.netWorth.toLocaleString('pt-BR')}</span>\n"
-  },
-  "minHScreen167": {
-    "en": "                alert(\"Please enter a name or initials to save your score.\");\n",
-    "es": "                alert(\"Por favor, escribe tu nombre o iniciales para guardar tu resultado.\");\n",
-    "pt": "                alert(\"Por favor, digite seu nome ou iniciais para salvar seu resultado.\");\n"
-  },
-  "minHScreen168": {
-    "en": "                date: \"Today\"\n",
-    "es": "                date: \"Hoy\"\n",
-    "pt": "                date: \"Hoje\"\n"
-  },
-  "minHScreen169": {
-    "en": "            localStorage.setItem('compounding_journey_leaderboard', JSON.stringify(list));\n",
-    "es": "            localStorage.setItem('compounding_journey_leaderboard_es', JSON.stringify(list));\n",
-    "pt": "            localStorage.setItem('compounding_journey_leaderboard_pt', JSON.stringify(list));\n"
-  },
-  "minHScreen170": {
-    "en": "            alert(\"Score saved successfully to local leaderboard!\");\n",
-    "es": "            alert(\"¡Resultado guardado con éxito en la tabla de clasificación!\");\n",
-    "pt": "            alert(\"Resultado salvo com sucesso no placar local!\");\n"
-  },
   "minHScreen171": {
     "en": "        // RESET GAME\n",
     "es": "        // REINICIAR EL JUEGO\n",
@@ -1302,12 +1262,12 @@
   "explFaqQ2": {
     "en": "Does it store anything I enter?",
     "es": "¿Guarda algo de lo que introduzco?",
-    "pt": "Guarda alguma coisa do que introduzo?"
+    "pt": "A ferramenta guarda algo do que eu insiro?"
   },
   "explFaqA2": {
-    "en": "No. The simulator runs entirely in your browser. Nothing you choose is sent anywhere, and closing the tab ends the session.",
-    "es": "No. El simulador se ejecuta enteramente en tu navegador. Nada de lo que eliges se envía a ningún sitio, y cerrar la pestaña termina la sesión.",
-    "pt": "Não. O simulador corre inteiramente no seu navegador. Nada do que escolhe é enviado para lado nenhum, e fechar o separador termina a sessão."
+    "en": "The scenario run itself does not: every choice you make is evaluated in your browser and nothing about it is sent anywhere. The one exception is the leaderboard, and only if you ask for it — pressing Save sends the name you typed, your literacy score and your closing net worth to a shared table, because a ranking other people can see is the whole point of it. Nothing identifies you beyond the name you chose, and skipping the save button leaves no trace at all.",
+    "es": "La partida en sí no: cada decisión se evalúa en tu navegador y nada de ello se envía a ningún sitio. La única excepción es la clasificación, y sólo si tú lo pides: al pulsar Guardar se envían el nombre que escribiste, tu puntuación de IQ financiero y tu patrimonio final a una tabla compartida, porque un ranking que otros puedan ver es precisamente su razón de ser. Nada te identifica más allá del nombre que elijas, y si no pulsas Guardar no queda ningún rastro.",
+    "pt": "A partida em si não: cada decisão é avaliada no seu navegador e nada disso é enviado a lugar algum. A única exceção é o placar, e somente se você pedir: ao tocar em Salvar, o nome que você digitou, sua pontuação de conhecimento financeiro e seu patrimônio final vão para uma tabela compartilhada, porque um ranking que outras pessoas possam ver é justamente o objetivo dele. Nada o identifica além do nome escolhido, e se você não salvar, não fica nenhum rastro."
   },
   "explFaqQ3": {
     "en": "Which of the other tools should I use next?",
@@ -1358,5 +1318,50 @@
     "en": "All journal entries",
     "es": "Todas las entradas del diario",
     "pt": "Todas as entradas do diário"
+  },
+  "lbSectionComment": {
+    "en": "        /* =================================================================\n           GLOBAL LEADERBOARD (shared by every visitor, in every language)\n           Read from and written to /api/simulator-leaderboard.\n           ================================================================= */\n",
+    "es": "        /* =================================================================\n           TABLA DE CLASIFICACIÓN GLOBAL (compartida por todos los visitantes,\n           en todos los idiomas). Se lee y se escribe en\n           /api/simulator-leaderboard.\n           ================================================================= */\n",
+    "pt": "        /* =================================================================\n           PLACAR GLOBAL (compartilhado por todos os visitantes, em todos os\n           idiomas). Lido e gravado em /api/simulator-leaderboard.\n           ================================================================= */\n"
+  },
+  "lbLoading": {
+    "en": "                container.innerHTML = leaderboardNotice('Loading the global leaderboard…');\n",
+    "es": "                container.innerHTML = leaderboardNotice('Cargando la clasificación global…');\n",
+    "pt": "                container.innerHTML = leaderboardNotice('Carregando o placar global…');\n"
+  },
+  "lbError": {
+    "en": "                container.innerHTML = leaderboardNotice('The global leaderboard could not be reached. Your result is safe on this page — try saving it again in a moment.');\n",
+    "es": "                container.innerHTML = leaderboardNotice('No se pudo conectar con la clasificación global. Tu resultado sigue en esta página: vuelve a intentar guardarlo en un momento.');\n",
+    "pt": "                container.innerHTML = leaderboardNotice('Não foi possível acessar o placar global. Seu resultado continua nesta página: tente salvá-lo novamente em instantes.');\n"
+  },
+  "lbNetWorthCell": {
+    "en": "                        <span class=\"text-forest-800 font-bold\">$${entry.tiebreak.toLocaleString()}</span>\n",
+    "es": "                        <span class=\"text-forest-800 font-bold\">$${entry.tiebreak.toLocaleString('es-ES')}</span>\n",
+    "pt": "                        <span class=\"text-forest-800 font-bold\">$${entry.tiebreak.toLocaleString('pt-BR')}</span>\n"
+  },
+  "lbNameRequired": {
+    "en": "                alert(\"Please enter a name or initials — it is what other visitors will see on the leaderboard.\");\n",
+    "es": "                alert(\"Escribe un nombre o unas iniciales: es lo que verán los demás visitantes en la clasificación.\");\n",
+    "pt": "                alert(\"Digite um nome ou iniciais: é o que os outros visitantes verão no placar.\");\n"
+  },
+  "lbSaved": {
+    "en": "                    alert(\"Saved. Your result is now on the global leaderboard for every visitor to see.\");\n",
+    "es": "                    alert(\"Guardado. Tu resultado ya está en la clasificación global, visible para todos los visitantes.\");\n",
+    "pt": "                    alert(\"Salvo. Seu resultado já está no placar global, visível para todos os visitantes.\");\n"
+  },
+  "lbSaveFailed": {
+    "en": "                    alert(\"Your result could not be sent to the global leaderboard. Check your connection and try again.\");\n",
+    "es": "                    alert(\"No se pudo enviar tu resultado a la clasificación global. Comprueba tu conexión e inténtalo de nuevo.\");\n",
+    "pt": "                    alert(\"Não foi possível enviar seu resultado ao placar global. Verifique sua conexão e tente novamente.\");\n"
+  },
+  "lbEmpty": {
+    "en": "                container.innerHTML = leaderboardNotice('No results on the global leaderboard yet. Save yours and you will be the first.');\n",
+    "es": "                container.innerHTML = leaderboardNotice('Todavía no hay resultados en la clasificación global. Guarda el tuyo y serás el primero.');\n",
+    "pt": "                container.innerHTML = leaderboardNotice('Ainda não há resultados no placar global. Salve o seu e você será o primeiro.');\n"
+  },
+  "lbYouBadge": {
+    "en": "                        ${isMine ? '<span class=\"text-[10px] font-bold uppercase tracking-wide text-forest-800 bg-forest-800/10 px-2 py-0.5 rounded-full\">You</span>' : ''}\n",
+    "es": "                        ${isMine ? '<span class=\"text-[10px] font-bold uppercase tracking-wide text-forest-800 bg-forest-800/10 px-2 py-0.5 rounded-full\">Tú</span>' : ''}\n",
+    "pt": "                        ${isMine ? '<span class=\"text-[10px] font-bold uppercase tracking-wide text-forest-800 bg-forest-800/10 px-2 py-0.5 rounded-full\">Você</span>' : ''}\n"
   }
 }

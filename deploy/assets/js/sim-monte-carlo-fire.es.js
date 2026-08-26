@@ -1,19 +1,51 @@
 /* =================================================================
        ESTADO GLOBAL Y CONFIGURACIÓN
        ================================================================= */
-    let leaderboardScores = [
-      { pilot: 'Capitán FIRE', category: 'High Risk SWR', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },
-      { pilot: 'Piloto FatCat', category: 'Fat FIRE', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },
-      { pilot: 'As Trinity', category: 'Trinity Standard', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },
-      { pilot: 'Volador Lean', category: 'Tight Lean FIRE', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },
-      { pilot: 'Caza Wingman', category: 'High Risk SWR', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }
-    ];
+    const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
+
+    /* The five scenario presets, as the keys their boards are addressed by.
+       The board is one table shared by the English, Spanish and Portuguese
+       pages, so what identifies a preset cannot be its name: "High Risk SWR"
+       is "SWR de Alto Risco" on /pt/, and keying a board on the label would
+       have split one ranking into three that could not see each other. The
+       key is what travels; the label is looked up for display. */
+    const PRESET_KEYS = ['highrisk', 'trinity', 'leanfire', 'fatfire', 'custom'];
+
+    const PRESET_LABELS = {
+      highrisk: 'SWR Alto Riesgo',
+      trinity: 'Estándar Trinity',
+      leanfire: 'Lean FIRE Ajustado',
+      fatfire: 'Fat FIRE Holgado',
+      custom: 'Escenario Personalizado'
+    };
+
+    /* What the category badge in the board is drawn from - the same five keys,
+       and the classes the badge used to repeat once per language. */
+    const PRESET_BADGES = {
+      highrisk: { classes: 'bg-red-950 text-red-300 border border-red-800', icon: 'fa-fire text-red-400' },
+      trinity: { classes: 'bg-cyan-950 text-cyan-300 border border-cyan-800', icon: 'fa-shield-halved text-cyan-400' },
+      leanfire: { classes: 'bg-emerald-950 text-emerald-300 border border-emerald-800', icon: 'fa-leaf text-emerald-400' },
+      fatfire: { classes: 'bg-purple-950 text-purple-300 border border-purple-800', icon: 'fa-crown text-purple-400' },
+      custom: { classes: 'bg-slate-800 text-slate-300 border border-slate-700', icon: 'fa-sliders' }
+    };
+
+    /* The board as last read from /api/simulator-leaderboard, and which of
+       three things the table is showing: the rows, the fact that they are on
+       their way, or the fact that they could not be fetched. An empty board
+       and an unreachable one are the same list of no rows, and only one of
+       them means nobody has flown this preset yet. */
+    let leaderboardEntries = [];
+    let leaderboardState = 'loading';
     let activeLeaderboardFilter = 'ALL';
+
+    /* Which read is the current one. Clicking along the category filters
+       starts a request per click and they can land out of order, so a
+       response that is no longer the newest is dropped instead of drawn. */
+    let leaderboardRequest = 0;
 
     const state = {
       pilotName: 'Capitán FIRE',
-      activePreset: 'High Risk SWR',
-
+      activePresetKey: 'highrisk',
       // Configuración de Vuelo
       nestEgg: 850000,
       annualSpending: 45000,
@@ -88,7 +120,7 @@
     window.onload = function() {
       updatePilotName();
       updateControlsUI();
-      renderLeaderboardTable();
+      loadLeaderboard();
       renderCanvas();
     };
 
@@ -103,15 +135,15 @@
 
     function checkAndDetectPresetCategory() {
       if (state.nestEgg === 850000 && state.annualSpending === 45000) {
-        state.activePreset = 'High Risk SWR';
+        state.activePresetKey = 'highrisk';
       } else if (state.nestEgg === 1000000 && state.annualSpending === 40000) {
-        state.activePreset = 'Trinity Standard';
+        state.activePresetKey = 'trinity';
       } else if (state.nestEgg === 650000 && state.annualSpending === 35000) {
-        state.activePreset = 'Tight Lean FIRE';
+        state.activePresetKey = 'leanfire';
       } else if (state.nestEgg === 1500000 && state.annualSpending === 75000) {
-        state.activePreset = 'Fat FIRE';
+        state.activePresetKey = 'fatfire';
       } else {
-        state.activePreset = 'Custom Scenario';
+        state.activePresetKey = 'custom';
       }
     }
 
@@ -187,16 +219,16 @@
     function loadPreset(type) {
       playSound('click');
       if (type === 'highrisk') {
-        state.activePreset = 'High Risk SWR';
+        state.activePresetKey = 'highrisk';
         setControlValues(850000, 45000, 50, 100, 80, 15, 5);
       } else if (type === 'trinity') {
-        state.activePreset = 'Trinity Standard';
+        state.activePresetKey = 'trinity';
         setControlValues(1000000, 40000, 50, 100, 70, 20, 10);
       } else if (type === 'leanfire') {
-        state.activePreset = 'Tight Lean FIRE';
+        state.activePresetKey = 'leanfire';
         setControlValues(650000, 35000, 50, 100, 85, 10, 5);
       } else if (type === 'fatfire') {
-        state.activePreset = 'Fat FIRE';
+        state.activePresetKey = 'fatfire';
         setControlValues(1500000, 75000, 50, 100, 75, 20, 5);
       }
     }
@@ -657,13 +689,13 @@
       }
 
       if (pilotName) pilotName.innerText = state.pilotName;
-      if (debriefCat) debriefCat.innerText = state.activePreset;
+      if (debriefCat) debriefCat.innerText = presetLabel(state.activePresetKey);
       if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();
       if (years) years.innerText = survivedYears + ' Años (Edad ' + state.currentAge + ')';
       if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Año(s)';
       if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Años-Táctica (-${state.totalTacticYears * 75} pts)`;
 
-      registerScoreToLeaderboard(state.pilotName, state.activePreset, reachedTarget, state.totalCrashlineYears, state.totalTacticYears, Math.max(0, state.currentNestEgg));
+      registerScoreToLeaderboard(state.pilotName, state.activePresetKey, reachedTarget, state.totalCrashlineYears, state.totalTacticYears, Math.max(0, state.currentNestEgg));
 
       modal.classList.remove('hidden');
 
@@ -727,95 +759,179 @@
     /* =================================================================
        SISTEMA DE CLASIFICACIÓN POR CATEGORÍA
        ================================================================= */
-    function getCategoryBonus(category) {
-      if (category === 'Tight Lean FIRE') return 2000;
-      if (category === 'High Risk SWR') return 1500;
-      if (category === 'Custom Scenario') return 1000;
-      if (category === 'Trinity Standard') return 800;
-      if (category === 'Fat FIRE') return 200;
+    /** The display name of a preset, in the language of this page. */
+    function presetLabel(key) {
+      return PRESET_LABELS[key] || PRESET_LABELS.custom;
+    }
+
+    /** Which board is on screen, named the way the empty state reads it. */
+    function boardLabel() {
+      return activeLeaderboardFilter === 'ALL' ? 'TODAS LAS CATEGORÍAS' : presetLabel(activeLeaderboardFilter);
+    }
+
+    function getCategoryBonus(key) {
+      if (key === 'leanfire') return 2000;
+      if (key === 'highrisk') return 1500;
+      if (key === 'custom') return 1000;
+      if (key === 'trinity') return 800;
+      if (key === 'fatfire') return 200;
       return 1000;
     }
 
-    function registerScoreToLeaderboard(pilot, category, reached100, crashYears, tacticYears, finalBalance) {
+    function registerScoreToLeaderboard(pilot, boardKey, reached100, crashYears, tacticYears, finalBalance) {
       let baseScore = reached100 ? 5000 : 1000;
-      let catBonus = getCategoryBonus(category);
+      let catBonus = getCategoryBonus(boardKey);
       let crashPenalty = crashYears * 500;
       let tacticPenalty = (tacticYears || 0) * 75;
       let wealthBonus = Math.round(finalBalance / 2500);
 
       let score = baseScore + catBonus - crashPenalty - tacticPenalty + wealthBonus;
-      score = Math.max(100, score);
+      // Clamped at both ends, and to the range the endpoint accepts. A flight
+      // that ends with a nine-figure portfolio is a real flight, and losing
+      // its score to a rejected write would be a worse outcome than a score
+      // that stops climbing.
+      score = Math.min(100000, Math.max(100, score));
 
-      leaderboardScores.push({
-        pilot: pilot,
-        category: category || 'Custom Scenario',
-        reached100: reached100,
-        crashYears: crashYears,
-        tacticYears: tacticYears || 0,
-        finalBalance: finalBalance,
-        score: score
-      });
+      const board = PRESET_LABELS[boardKey] ? boardKey : 'custom';
+      const nestEgg = Math.min(1000000000, Math.max(0, Math.round(finalBalance)));
 
-      leaderboardScores.sort((a, b) => b.score - a.score);
-
+      // The board is switched to the one the flight was on before the write is
+      // sent, so the pilot watches their own run arrive rather than being left
+      // on whichever filter they had open.
+      activeLeaderboardFilter = board;
+      syncFilterButtons();
+      leaderboardState = 'loading';
       renderLeaderboardTable();
-    }
 
-    function filterLeaderboard(cat) {
-      activeLeaderboardFilter = cat;
-      const categories = ['ALL', 'High Risk SWR', 'Trinity Standard', 'Tight Lean FIRE', 'Fat FIRE', 'Custom Scenario'];
-      categories.forEach(c => {
-        const btn = document.getElementById('lb-filter-' + c);
-        if (btn) {
-          if (c === cat) {
-            btn.className = 'px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition';
-          } else {
-            btn.className = 'px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition';
-          }
+      const token = ++leaderboardRequest;
+      window.SimLeaderboard.submit({
+        simulator: LEADERBOARD_SIMULATOR,
+        board: board,
+        name: pilot,
+        score: score,
+        // Ranked on score; equal scores settled by the bigger nest egg. The
+        // remaining columns are carried as details because the board displays
+        // them and does not rank on them.
+        tiebreak: nestEgg,
+        details: {
+          reached100: !!reached100,
+          crashYears: crashYears || 0,
+          tacticYears: tacticYears || 0,
+          finalBalance: nestEgg
         }
-      });
-      renderLeaderboardTable();
-      playSound('click');
+      })
+        .then(function (result) {
+          if (token !== leaderboardRequest) return;
+          leaderboardEntries = result.entries;
+          leaderboardState = 'ready';
+          renderLeaderboardTable();
+        })
+        .catch(function () {
+          if (token !== leaderboardRequest) return;
+          leaderboardEntries = [];
+          leaderboardState = 'error';
+          renderLeaderboardTable();
+        });
     }
 
-    function getCategoryBadgeHTML(cat) {
-      if (cat === 'High Risk SWR') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800"><i class="fa-solid fa-fire text-red-400 mr-1"></i>SWR Alto Riesgo</span>`;
-      } else if (cat === 'Trinity Standard') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800"><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i>Estándar Trinity</span>`;
-      } else if (cat === 'Tight Lean FIRE') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800"><i class="fa-solid fa-leaf text-emerald-400 mr-1"></i>Lean FIRE Ajustado</span>`;
-      } else if (cat === 'Fat FIRE') {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800"><i class="fa-solid fa-crown text-purple-400 mr-1"></i>Fat FIRE Holgado</span>`;
-      } else {
-        return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700"><i class="fa-solid fa-sliders mr-1"></i>Escenario Personalizado</span>`;
-      }
+    /**
+     * Reads one board and draws it.
+     *
+     * Called on load, on every filter click and from the refresh button, so
+     * the table is the board as it stands rather than the board as it stood
+     * when the page opened - somebody else's flight can land while this one is
+     * still being flown.
+     */
+    function loadLeaderboard() {
+      const token = ++leaderboardRequest;
+      leaderboardState = 'loading';
+      renderLeaderboardTable();
+
+      window.SimLeaderboard.load(LEADERBOARD_SIMULATOR, activeLeaderboardFilter)
+        .then(function (entries) {
+          if (token !== leaderboardRequest) return;
+          leaderboardEntries = entries;
+          leaderboardState = 'ready';
+          renderLeaderboardTable();
+        })
+        .catch(function () {
+          if (token !== leaderboardRequest) return;
+          leaderboardEntries = [];
+          leaderboardState = 'error';
+          renderLeaderboardTable();
+        });
+    }
+
+    function refreshLeaderboard() {
+      playSound('click');
+      loadLeaderboard();
+    }
+
+    function syncFilterButtons() {
+      ['ALL'].concat(PRESET_KEYS).forEach(function (key) {
+        const btn = document.getElementById('lb-filter-' + key);
+        if (!btn) return;
+        btn.className = key === activeLeaderboardFilter
+          ? 'px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition'
+          : 'px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition';
+      });
+    }
+
+    function filterLeaderboard(board) {
+      // 'ALL' is every preset ranked together, which the endpoint reads as one
+      // board and nothing ever writes to.
+      activeLeaderboardFilter = PRESET_LABELS[board] ? board : 'ALL';
+      syncFilterButtons();
+      playSound('click');
+      loadLeaderboard();
+    }
+
+    function getCategoryBadgeHTML(key) {
+      const badge = PRESET_BADGES[key] || PRESET_BADGES.custom;
+      return `<span class="px-2 py-0.5 rounded text-[10px] font-bold ${badge.classes}"><i class="fa-solid ${badge.icon} mr-1" aria-hidden="true"></i>${presetLabel(key)}</span>`;
+    }
+
+    function leaderboardNoticeRow(message) {
+      return `
+          <tr>
+            <td colspan="8" class="py-6 text-center text-slate-400 font-sans">
+              ${message}
+            </td>
+          </tr>
+        `;
     }
 
     function renderLeaderboardTable() {
       const tbody = document.getElementById('leaderboard-table-body');
       if (!tbody) return;
 
-      tbody.innerHTML = '';
-
-      const filtered = activeLeaderboardFilter === 'ALL'
-        ? leaderboardScores
-        : leaderboardScores.filter(e => e.category === activeLeaderboardFilter);
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="8" class="py-6 text-center text-slate-400 font-sans">
-              No hay registros de vuelo para <strong>${activeLeaderboardFilter}</strong>. ¡Vuela este escenario para marcar la primera puntuación!
-            </td>
-          </tr>
-        `;
+      if (leaderboardState === 'loading') {
+        tbody.innerHTML = leaderboardNoticeRow('Cargando la tabla global…');
         return;
       }
 
-      filtered.forEach((entry, idx) => {
+      if (leaderboardState === 'error') {
+        tbody.innerHTML = leaderboardNoticeRow('No se pudo conectar con la tabla global. Revisa tu conexión y pulsa Actualizar.');
+        return;
+      }
+
+      if (leaderboardEntries.length === 0) {
+        tbody.innerHTML = leaderboardNoticeRow(`              Todavía no hay registros de vuelo en la tabla global para <strong>${boardLabel()}</strong>. Vuela este escenario y tu puntuación será la primera que vean los demás pilotos.
+`);
+        return;
+      }
+
+      tbody.innerHTML = '';
+
+      // Already ranked and already filtered - the endpoint returns the top of
+      // one board, best first, so there is nothing to sort here.
+      leaderboardEntries.forEach((entry, idx) => {
+        const details = entry.details || {};
+        const isMine = window.SimLeaderboard.isMine(LEADERBOARD_SIMULATOR, entry.id);
         const row = document.createElement('tr');
-        row.className = 'hover:bg-slate-900/80 transition';
+        row.className = isMine
+          ? 'bg-amber-500/10 hover:bg-slate-900/80 transition'
+          : 'hover:bg-slate-900/80 transition';
         
         let rankBadge = `<span class="font-bold text-slate-400">#${idx + 1}</span>`;
         if (idx === 0) rankBadge = `<span class="font-bold text-amber-400"><i class="fa-solid fa-crown mr-1" aria-hidden="true"></i> #1</span>`;
@@ -824,22 +940,16 @@
 
         row.innerHTML = `
           <td class="py-3 px-3 font-hud">${rankBadge}</td>
-          <td class="py-3 px-3 font-bold text-white">${entry.pilot}</td>
-          <td class="py-3 px-3">${getCategoryBadgeHTML(entry.category)}</td>
-          <td class="py-3 px-3 font-bold">${entry.reached100 ? '<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> SÍ</span>' : '<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> NO</span>'}</td>
-          <td class="py-3 px-3 text-red-400 font-bold">${entry.crashYears} Año(s)</td>
-          <td class="py-3 px-3 text-amber-300 font-bold">${entry.tacticYears || 0} Años-Táctica</td>
-          <td class="py-3 px-3 text-emerald-400 font-bold">$${entry.finalBalance.toLocaleString()}</td>
+          <td class="py-3 px-3 font-bold text-white">${window.SimLeaderboard.escapeHtml(entry.name)}${isMine ? ' <span class="text-[10px] text-amber-400 font-bold">(TÚ)</span>' : ''}</td>
+          <td class="py-3 px-3">${getCategoryBadgeHTML(entry.board)}</td>
+          <td class="py-3 px-3 font-bold">${details.reached100 ? '<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> SÍ</span>' : '<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> NO</span>'}</td>
+          <td class="py-3 px-3 text-red-400 font-bold">${details.crashYears || 0} Año(s)</td>
+          <td class="py-3 px-3 text-amber-300 font-bold">${details.tacticYears || 0} Años-Táctica</td>
+          <td class="py-3 px-3 text-emerald-400 font-bold">$${(details.finalBalance || 0).toLocaleString()}</td>
           <td class="py-3 px-3 text-amber-400 font-bold font-hud">${entry.score.toLocaleString()} pts</td>
         `;
         tbody.appendChild(row);
       });
-    }
-
-    function clearLeaderboard() {
-      leaderboardScores = [];
-      renderLeaderboardTable();
-      playSound('click');
     }
 
     /* =================================================================
@@ -1234,7 +1344,7 @@
       if (tabKey === 'cockpit') {
         renderCanvas();
       } else if (tabKey === 'leaderboard') {
-        renderLeaderboardTable();
+        loadLeaderboard();
       } else if (tabKey === 'montecarlo') {
         runMonteCarloBatch();
       }

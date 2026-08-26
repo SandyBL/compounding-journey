@@ -760,39 +760,39 @@
     "pt": "    <!-- ABA 2: CLASSIFICAÇÃO DE PILOTOS E REGISTRO DE VOO -->\n"
   },
   "textBase2": {
-    "en": " RETIREMENT FLIGHT LEADERBOARD\n",
-    "es": " TABLA DE CLASIFICACIÓN DE VUELO RETIRO\n",
-    "pt": " TABELA DE CLASSIFICAÇÃO DE VOO FIRE\n"
+    "en": " GLOBAL RETIREMENT FLIGHT LEADERBOARD\n",
+    "es": " CLASIFICACIÓN GLOBAL DE VUELO RETIRO\n",
+    "pt": " CLASSIFICAÇÃO GLOBAL DE VOO FIRE\n"
   },
   "textXs15": {
-    "en": "              Pilots ranked by category starting line: ",
-    "es": "              Pilotos clasificados por categoría: ",
-    "pt": "              Pilotos classificados por categoria: "
+    "en": "              Every flight flown by every pilot, on one shared board — filter it by scenario. Flight score rewards ",
+    "es": "              Todos los vuelos de todos los pilotos, en una sola tabla compartida: fíltrala por escenario. La puntuación premia ",
+    "pt": "              Todos os voos de todos os pilotos, em uma única tabela compartilhada: filtre por cenário. A pontuação premia "
   },
   "textXs16": {
-    "en": "1st: Reaching Age 100",
-    "es": "1º Llegar a los 100 Años",
-    "pt": "1º Chegar aos 100 Anos"
+    "en": "reaching age 100",
+    "es": "llegar a los 100 años",
+    "pt": "chegar aos 100 anos"
   },
   "textXs17": {
-    "en": "2nd: Fewest Crashline Years",
-    "es": "2º Mínimo de Años en Desplome",
-    "pt": "2º Mínimo de Anos em Colapso"
+    "en": "the fewest crashline years",
+    "es": "el mínimo de años en desplome",
+    "pt": "o mínimo de anos em colapso"
   },
   "textXs18": {
-    "en": ", and ",
-    "es": ", y ",
-    "pt": ", e "
+    "en": " and ",
+    "es": " y ",
+    "pt": " e "
   },
   "textXs19": {
-    "en": "3rd: Ending Nest Egg",
-    "es": "3º Capital Final Conservado",
-    "pt": "3º Patrimônio Final Conservado"
+    "en": "the biggest ending nest egg",
+    "es": "el mayor capital final conservado",
+    "pt": "o maior patrimônio final conservado"
   },
   "px35": {
-    "en": " Reset Board\n",
-    "es": " Reiniciar Tabla\n",
-    "pt": " Reiniciar Placar\n"
+    "en": " Refresh Board\n",
+    "es": " Actualizar Tabla\n",
+    "pt": " Atualizar Placar\n"
   },
   "hudGlass9": {
     "en": "        <!-- Leaderboard Category Filter Tabs -->\n",
@@ -809,75 +809,25 @@
     "es": "TODAS LAS CATEGORÍAS",
     "pt": "TODAS AS CATEGORIAS"
   },
-  "lbFilterHighRiskSwrId": {
-    "en": "lb-filter-High Risk SWR",
-    "es": "lb-filter-High Risk SWR",
-    "pt": "lb-filter-SWR de Alto Risco"
-  },
-  "lbFilterHighRiskSwrOnclick": {
-    "en": "filterLeaderboard('High Risk SWR')",
-    "es": "filterLeaderboard('High Risk SWR')",
-    "pt": "filterLeaderboard('SWR de Alto Risco')"
-  },
   "lbFilterHighRiskSwr": {
     "en": "High Risk SWR",
     "es": "SWR Alto Riesgo",
     "pt": "SWR Alto Risco"
-  },
-  "lbFilterTrinityStandardId": {
-    "en": "lb-filter-Trinity Standard",
-    "es": "lb-filter-Trinity Standard",
-    "pt": "lb-filter-Padrão Trinity"
-  },
-  "lbFilterTrinityStandardOnclick": {
-    "en": "filterLeaderboard('Trinity Standard')",
-    "es": "filterLeaderboard('Trinity Standard')",
-    "pt": "filterLeaderboard('Padrão Trinity')"
   },
   "lbFilterTrinityStandard": {
     "en": "Trinity Standard",
     "es": "Estándar Trinity",
     "pt": "Padrão Trinity"
   },
-  "lbFilterTightLeanFireId": {
-    "en": "lb-filter-Tight Lean FIRE",
-    "es": "lb-filter-Tight Lean FIRE",
-    "pt": "lb-filter-Lean FIRE Ajustado"
-  },
-  "lbFilterTightLeanFireOnclick": {
-    "en": "filterLeaderboard('Tight Lean FIRE')",
-    "es": "filterLeaderboard('Tight Lean FIRE')",
-    "pt": "filterLeaderboard('Lean FIRE Ajustado')"
-  },
   "lbFilterTightLeanFire": {
     "en": "Tight Lean FIRE",
     "es": "Lean FIRE Ajustado",
     "pt": "Lean FIRE Ajustado"
   },
-  "lbFilterFatFireId": {
-    "en": "lb-filter-Fat FIRE",
-    "es": "lb-filter-Fat FIRE",
-    "pt": "lb-filter-Fat FIRE Amplo"
-  },
-  "lbFilterFatFireOnclick": {
-    "en": "filterLeaderboard('Fat FIRE')",
-    "es": "filterLeaderboard('Fat FIRE')",
-    "pt": "filterLeaderboard('Fat FIRE Amplo')"
-  },
   "lbFilterFatFire": {
     "en": "Fat FIRE",
     "es": "Fat FIRE Holgado",
     "pt": "Fat FIRE Amplo"
-  },
-  "lbFilterCustomScenarioId": {
-    "en": "lb-filter-Custom Scenario",
-    "es": "lb-filter-Custom Scenario",
-    "pt": "lb-filter-Cenário Personalizado"
-  },
-  "lbFilterCustomScenarioOnclick": {
-    "en": "filterLeaderboard('Custom Scenario')",
-    "es": "filterLeaderboard('Custom Scenario')",
-    "pt": "filterLeaderboard('Cenário Personalizado')"
   },
   "lbFilterCustomScenario": {
     "en": "Custom Scenario",
@@ -1394,15 +1344,10 @@
     "es": "    /* =================================================================\n       ESTADO GLOBAL Y CONFIGURACIÓN\n       ================================================================= */\n",
     "pt": ""
   },
-  "minHScreen9": {
-    "en": "      { pilot: 'Captain FIRE', category: 'High Risk SWR', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },\n      { pilot: 'FatCat Captain', category: 'Fat FIRE', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },\n      { pilot: 'Trinity Ace', category: 'Trinity Standard', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },\n      { pilot: 'Lean Flyer', category: 'Tight Lean FIRE', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },\n      { pilot: 'Wingman FIRE', category: 'High Risk SWR', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }\n",
-    "es": "      { pilot: 'Capitán FIRE', category: 'High Risk SWR', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },\n      { pilot: 'Piloto FatCat', category: 'Fat FIRE', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },\n      { pilot: 'As Trinity', category: 'Trinity Standard', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },\n      { pilot: 'Volador Lean', category: 'Tight Lean FIRE', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },\n      { pilot: 'Caza Wingman', category: 'High Risk SWR', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }\n",
-    "pt": "      { pilot: 'Capitão FIRE', category: 'SWR de Alto Risco', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 1250000, score: 7000 },\n      { pilot: 'Piloto FatCat', category: 'Fat FIRE Amplo', reached100: true, crashYears: 0, tacticYears: 0, finalBalance: 3100000, score: 6440 },\n      { pilot: 'Ás Trinity', category: 'Padrão Trinity', reached100: true, crashYears: 0, tacticYears: 2, finalBalance: 1850000, score: 6390 },\n      { pilot: 'Apoiador Lean', category: 'Lean FIRE Ajustado', reached100: true, crashYears: 1, tacticYears: 12, finalBalance: 420000, score: 5768 },\n      { pilot: 'Caça Wingman', category: 'SWR de Alto Risco', reached100: false, crashYears: 10, tacticYears: 25, finalBalance: 0, score: 100 }\n"
-  },
   "minHScreen10": {
-    "en": "      pilotName: 'Captain FIRE',\n      activePreset: 'High Risk SWR',\n",
-    "es": "      pilotName: 'Capitán FIRE',\n      activePreset: 'High Risk SWR',\n",
-    "pt": "      pilotName: 'Capitão FIRE',\n      activePreset: 'SWR de Alto Risco',\n"
+    "en": "      pilotName: 'Captain FIRE',\n",
+    "es": "      pilotName: 'Capitán FIRE',\n",
+    "pt": "      pilotName: 'Capitão FIRE',\n"
   },
   "minHScreen11": {
     "en": "      // Flight setup\n",
@@ -1448,31 +1393,6 @@
     "en": "    /* =================================================================\n       INITIALIZATION & UI CONTROLS\n       ================================================================= */\n",
     "es": "    /* =================================================================\n       INICIALIZACIÓN Y CONTROLES DE INTERFAZ\n       ================================================================= */\n",
     "pt": ""
-  },
-  "minHScreen20": {
-    "en": "        state.activePreset = 'High Risk SWR';\n",
-    "es": "        state.activePreset = 'High Risk SWR';\n",
-    "pt": "        state.activePreset = 'SWR de Alto Risco';\n"
-  },
-  "minHScreen21": {
-    "en": "        state.activePreset = 'Trinity Standard';\n",
-    "es": "        state.activePreset = 'Trinity Standard';\n",
-    "pt": "        state.activePreset = 'Padrão Trinity';\n"
-  },
-  "minHScreen22": {
-    "en": "        state.activePreset = 'Tight Lean FIRE';\n",
-    "es": "        state.activePreset = 'Tight Lean FIRE';\n",
-    "pt": "        state.activePreset = 'Lean FIRE Ajustado';\n"
-  },
-  "minHScreen23": {
-    "en": "        state.activePreset = 'Fat FIRE';\n",
-    "es": "        state.activePreset = 'Fat FIRE';\n",
-    "pt": "        state.activePreset = 'Fat FIRE Amplo';\n"
-  },
-  "minHScreen24": {
-    "en": "        state.activePreset = 'Custom Scenario';\n",
-    "es": "        state.activePreset = 'Custom Scenario';\n",
-    "pt": "        state.activePreset = 'Cenário Personalizado';\n"
   },
   "minHScreen25": {
     "en": "      // Auto-detect if current parameters match a preset or represent a custom scenario\n",
@@ -1725,7 +1645,7 @@
     "pt": "      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString('pt-BR');\n      if (years) years.innerText = survivedYears + ' Anos (Idade ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Ano(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Anos-Tática (-${state.totalTacticYears * 75} pts)`;\n"
   },
   "minHScreen75": {
-    "en": "      // Register score on Leaderboard under the active preset category\n",
+    "en": "      // The flight is over, so its score goes to the shared board under the\n      // preset it was flown on.\n",
     "es": "",
     "pt": ""
   },
@@ -1734,55 +1654,20 @@
     "es": "    /* =================================================================\n       SISTEMA DE CLASIFICACIÓN POR CATEGORÍA\n       ================================================================= */\n",
     "pt": ""
   },
-  "minHScreen77": {
-    "en": "      if (category === 'Tight Lean FIRE') return 2000;\n      if (category === 'High Risk SWR') return 1500;\n      if (category === 'Custom Scenario') return 1000;\n      if (category === 'Trinity Standard') return 800;\n      if (category === 'Fat FIRE') return 200;\n",
-    "es": "      if (category === 'Tight Lean FIRE') return 2000;\n      if (category === 'High Risk SWR') return 1500;\n      if (category === 'Custom Scenario') return 1000;\n      if (category === 'Trinity Standard') return 800;\n      if (category === 'Fat FIRE') return 200;\n",
-    "pt": "      if (category === 'Lean FIRE Ajustado' || category === 'Tight Lean FIRE') return 2000;\n      if (category === 'SWR de Alto Risco' || category === 'High Risk SWR') return 1500;\n      if (category === 'Cenário Personalizado' || category === 'Custom Scenario') return 1000;\n      if (category === 'Padrão Trinity' || category === 'Trinity Standard') return 800;\n      if (category === 'Fat FIRE Amplo' || category === 'Fat FIRE') return 200;\n"
-  },
   "minHScreen78": {
     "en": "      // Score formula: \n      // Base score (5000 pts for reaching 100, 1000 pts baseline)\n      // + Scenario Difficulty Bonus (Lean FIRE +2000, High Risk SWR +1500, Trinity +800, Fat FIRE +200)\n      // - (crashYears * 500 pts penalty) \n      // - (tacticYears * 75 pts penalty per active tactic-year) \n      // + (finalBalance / 2500 pts wealth bonus)\n",
     "es": "",
     "pt": ""
   },
-  "minHScreen79": {
-    "en": "        category: category || 'Custom Scenario',\n",
-    "es": "        category: category || 'Custom Scenario',\n",
-    "pt": "        category: category || 'Cenário Personalizado',\n"
-  },
-  "minHScreen80": {
-    "en": "      // Sort global leaderboard array by total score\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen81": {
-    "en": "      const categories = ['ALL', 'High Risk SWR', 'Trinity Standard', 'Tight Lean FIRE', 'Fat FIRE', 'Custom Scenario'];\n",
-    "es": "      const categories = ['ALL', 'High Risk SWR', 'Trinity Standard', 'Tight Lean FIRE', 'Fat FIRE', 'Custom Scenario'];\n",
-    "pt": "      const categories = ['ALL', 'SWR de Alto Risco', 'Padrão Trinity', 'Lean FIRE Ajustado', 'Fat FIRE Amplo', 'Cenário Personalizado'];\n"
-  },
-  "minHScreen82": {
-    "en": "      if (cat === 'High Risk SWR') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800\"><i class=\"fa-solid fa-fire text-red-400 mr-1\"></i>High Risk SWR</span>`;\n      } else if (cat === 'Trinity Standard') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800\"><i class=\"fa-solid fa-shield-halved text-cyan-400 mr-1\"></i>Trinity Standard</span>`;\n      } else if (cat === 'Tight Lean FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800\"><i class=\"fa-solid fa-leaf text-emerald-400 mr-1\"></i>Tight Lean FIRE</span>`;\n      } else if (cat === 'Fat FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800\"><i class=\"fa-solid fa-crown text-purple-400 mr-1\"></i>Fat FIRE</span>`;\n",
-    "es": "      if (cat === 'High Risk SWR') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800\"><i class=\"fa-solid fa-fire text-red-400 mr-1\"></i>SWR Alto Riesgo</span>`;\n      } else if (cat === 'Trinity Standard') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800\"><i class=\"fa-solid fa-shield-halved text-cyan-400 mr-1\"></i>Estándar Trinity</span>`;\n      } else if (cat === 'Tight Lean FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800\"><i class=\"fa-solid fa-leaf text-emerald-400 mr-1\"></i>Lean FIRE Ajustado</span>`;\n      } else if (cat === 'Fat FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800\"><i class=\"fa-solid fa-crown text-purple-400 mr-1\"></i>Fat FIRE Holgado</span>`;\n",
-    "pt": "      if (cat === 'SWR de Alto Risco' || cat === 'High Risk SWR') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-300 border border-red-800\"><i class=\"fa-solid fa-fire text-red-400 mr-1\"></i>SWR Alto Risco</span>`;\n      } else if (cat === 'Padrão Trinity' || cat === 'Trinity Standard') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800\"><i class=\"fa-solid fa-shield-halved text-cyan-400 mr-1\"></i>Padrão Trinity</span>`;\n      } else if (cat === 'Lean FIRE Ajustado' || cat === 'Tight Lean FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800\"><i class=\"fa-solid fa-leaf text-emerald-400 mr-1\"></i>Lean FIRE Ajustado</span>`;\n      } else if (cat === 'Fat FIRE Amplo' || cat === 'Fat FIRE') {\n        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950 text-purple-300 border border-purple-800\"><i class=\"fa-solid fa-crown text-purple-400 mr-1\"></i>Fat FIRE Amplo</span>`;\n"
-  },
-  "minHScreen83": {
-    "en": "        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700\"><i class=\"fa-solid fa-sliders mr-1\"></i>Custom Scenario</span>`;\n",
-    "es": "        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700\"><i class=\"fa-solid fa-sliders mr-1\"></i>Escenario Personalizado</span>`;\n",
-    "pt": "        return `<span class=\"px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700\"><i class=\"fa-solid fa-sliders mr-1\"></i>Cenário Personalizado</span>`;\n"
-  },
-  "minHScreen84": {
-    "en": "      // Filter entries by category if activeLeaderboardFilter !== 'ALL'\n",
-    "es": "",
-    "pt": ""
-  },
   "minHScreen85": {
-    "en": "              No flight logs registered yet for <strong>${activeLeaderboardFilter}</strong>. Fly this preset to set the first score!\n",
-    "es": "              No hay registros de vuelo para <strong>${activeLeaderboardFilter}</strong>. ¡Vuela este escenario para marcar la primera puntuación!\n",
-    "pt": "              Nenhum registro de voo para <strong>${activeLeaderboardFilter}</strong>. Voe este cenário para definir a primeira pontuação!\n"
+    "en": "              No flight logs on the global board yet for <strong>${boardLabel()}</strong>. Fly this preset and yours is the first score every other pilot sees.\n",
+    "es": "              Todavía no hay registros de vuelo en la tabla global para <strong>${boardLabel()}</strong>. Vuela este escenario y tu puntuación será la primera que vean los demás pilotos.\n",
+    "pt": "              Ainda não há registros de voo na tabela global para <strong>${boardLabel()}</strong>. Voe este cenário e a sua pontuação será a primeira que os outros pilotos verão.\n"
   },
   "minHScreen86": {
-    "en": "          <td class=\"py-3 px-3 font-bold\">${entry.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> YES</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${entry.crashYears} Year(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${entry.tacticYears || 0} Tactic-Yrs</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${entry.finalBalance.toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
-    "es": "          <td class=\"py-3 px-3 font-bold\">${entry.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SÍ</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${entry.crashYears} Año(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${entry.tacticYears || 0} Años-Táctica</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${entry.finalBalance.toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
-    "pt": "          <td class=\"py-3 px-3 font-bold\">${entry.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SIM</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NÃO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${entry.crashYears} Ano(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${entry.tacticYears || 0} Anos-Tática</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${entry.finalBalance.toLocaleString('pt-BR')}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString('pt-BR')} pts</td>\n"
+    "en": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> YES</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Year(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Tactic-Yrs</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${(details.finalBalance || 0).toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
+    "es": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SÍ</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Año(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Años-Táctica</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${(details.finalBalance || 0).toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
+    "pt": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SIM</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NÃO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Ano(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Anos-Tática</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${(details.finalBalance || 0).toLocaleString('pt-BR')}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString('pt-BR')} pts</td>\n"
   },
   "minHScreen87": {
     "en": "    /* =================================================================\n       ENHANCED CANVAS HUD VISUALIZER & CRASHLINE RENDERING\n       ================================================================= */\n",
@@ -2148,5 +2033,25 @@
     "en": "Breadcrumb",
     "es": "Ruta de navegación",
     "pt": "Trilho de navegação"
+  },
+  "lbLoading": {
+    "en": "Loading the global board…",
+    "es": "Cargando la tabla global…",
+    "pt": "Carregando a tabela global…"
+  },
+  "lbError": {
+    "en": "The global board could not be reached. Check your connection and press Refresh.",
+    "es": "No se pudo conectar con la tabla global. Revisa tu conexión y pulsa Actualizar.",
+    "pt": "Não foi possível acessar a tabela global. Verifique sua conexão e toque em Atualizar."
+  },
+  "lbYouBadge": {
+    "en": " <span class=\"text-[10px] text-amber-400 font-bold\">(YOU)</span>",
+    "es": " <span class=\"text-[10px] text-amber-400 font-bold\">(TÚ)</span>",
+    "pt": " <span class=\"text-[10px] text-amber-400 font-bold\">(VOCÊ)</span>"
+  },
+  "lbCallsignNote": {
+    "en": "Every completed flight is posted to the global leaderboard under this callsign, where other pilots can see it.",
+    "es": "Cada vuelo completado se publica en la clasificación global con este nombre, a la vista de los demás pilotos.",
+    "pt": "Cada voo concluído é publicado na classificação global com este codinome, à vista dos outros pilotos."
   }
 }
