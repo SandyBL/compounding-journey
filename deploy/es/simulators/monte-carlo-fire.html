@@ -16,8 +16,8 @@
   
   <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=cd10a121cda1">
-  <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
+  <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=source">
+  <link rel="stylesheet" href="/assets/css/icons.css?v=source">
   
 
   <style>
@@ -97,14 +97,10 @@
       animation: warningPulse 1s infinite;
     }
   </style>
-    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
-    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=ef670d7a5c74">
-    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=b935e94bda0c">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
-    <!--manifest:start-->
-    <link rel="manifest" href="/manifest.es.webmanifest">
-    <meta name="theme-color" content="#1E4620">
-    <!--manifest:end-->
+    <link rel="stylesheet" href="/assets/css/header.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
+    <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-100">
 
@@ -299,6 +295,7 @@
                 <i class="fa-solid fa-id-card text-amber-400" aria-hidden="true"></i> Piloto / Nombre de Caza
               </label>
               <input type="text" id="input-pilot-name" value="Capitán FIRE" data-onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
+              <p class="text-[10px] text-slate-400 font-sans">Cada vuelo completado se publica en la clasificación global con este nombre, a la vista de los demás pilotos.</p>
             </div>
 
             <!-- Entrada de Capital Inicial -->
@@ -661,14 +658,14 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
           <div>
             <h2 class="text-base sm:text-lg font-bold font-hud text-amber-400 flex items-center gap-2">
-              <i class="fa-solid fa-trophy text-amber-400" aria-hidden="true"></i> TABLA DE CLASIFICACIÓN DE VUELO RETIRO
+              <i class="fa-solid fa-trophy text-amber-400" aria-hidden="true"></i> CLASIFICACIÓN GLOBAL DE VUELO RETIRO
             </h2>
             <p class="text-xs text-slate-300">
-              Pilotos clasificados por categoría: <strong>1º Llegar a los 100 Años</strong>, <strong>2º Mínimo de Años en Desplome</strong>, y <strong>3º Capital Final Conservado</strong>.
+              Todos los vuelos de todos los pilotos, en una sola tabla compartida: fíltrala por escenario. La puntuación premia <strong>llegar a los 100 años</strong>, <strong>el mínimo de años en desplome</strong> y <strong>el mayor capital final conservado</strong>.
             </p>
           </div>
-          <button data-onclick="clearLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
-            <i class="fa-solid fa-trash mr-1" aria-hidden="true"></i> Reiniciar Tabla
+          <button data-onclick="refreshLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
+            <i class="fa-solid fa-rotate-right mr-1" aria-hidden="true"></i> Actualizar Tabla
           </button>
         </div>
 
@@ -676,11 +673,11 @@
         <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
           <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i> Filtrar Categoría:</span>
           <button id="lb-filter-ALL" data-onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">TODAS LAS CATEGORÍAS</button>
-          <button id="lb-filter-High Risk SWR" data-onclick="filterLeaderboard('High Risk SWR')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">SWR Alto Riesgo</button>
-          <button id="lb-filter-Trinity Standard" data-onclick="filterLeaderboard('Trinity Standard')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Estándar Trinity</button>
-          <button id="lb-filter-Tight Lean FIRE" data-onclick="filterLeaderboard('Tight Lean FIRE')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Lean FIRE Ajustado</button>
-          <button id="lb-filter-Fat FIRE" data-onclick="filterLeaderboard('Fat FIRE')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Fat FIRE Holgado</button>
-          <button id="lb-filter-Custom Scenario" data-onclick="filterLeaderboard('Custom Scenario')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Escenario Personalizado</button>
+          <button id="lb-filter-highrisk" data-onclick="filterLeaderboard('highrisk')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">SWR Alto Riesgo</button>
+          <button id="lb-filter-trinity" data-onclick="filterLeaderboard('trinity')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Estándar Trinity</button>
+          <button id="lb-filter-leanfire" data-onclick="filterLeaderboard('leanfire')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Lean FIRE Ajustado</button>
+          <button id="lb-filter-fatfire" data-onclick="filterLeaderboard('fatfire')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Fat FIRE Holgado</button>
+          <button id="lb-filter-custom" data-onclick="filterLeaderboard('custom')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Escenario Personalizado</button>
         </div>
 
         <!-- Tabla de Clasificación -->
@@ -1121,7 +1118,8 @@
   <!-- ================================================================= -->
   <!-- MOTOR JAVASCRIPT Y LÓGICA DE SIMULACIÓN -->
   <!-- ================================================================= -->
-    <script src="/assets/js/sim-actions.js?v=e0c8b11598c9" defer></script>
-    <script src="/assets/js/sim-monte-carlo-fire.es.js?v=fdce6ba12a71" defer></script>
+    <script src="/assets/js/sim-actions.js?v=source" defer></script>
+    <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
+    <script src="/assets/js/sim-monte-carlo-fire.es.js?v=source" defer></script>
 </body>
 </html>

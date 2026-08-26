@@ -14,13 +14,17 @@
             { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoativo. Grandes ciclos de alta, pressão em ciclos de baixa.', riskText: 'Alta Volatilidade / Especulativo' }
         ];
 
-        const DEFAULT_LEADERBOARD = [
-            { name: "Sofia Chen (Gurus do FIRE)", months: 264, netWorth: 680000 },
-            { name: "Marcos Vance", months: 288, netWorth: 590000 },
-            { name: "Elena Rostova", months: 312, netWorth: 510000 },
-            { name: "David K.", months: 348, netWorth: 440000 },
-            { name: "Sara e Alexandre", months: 384, netWorth: 390000 }
-        ];
+        /* =================================================================
+           PLACAR GLOBAL (uma única tabela, todos os visitantes, todos os
+           idiomas). Lido e gravado em /api/simulator-leaderboard.
+           ================================================================= */
+        const LEADERBOARD_SIMULATOR = 'passive-income-engine';
+
+        // 'loading' while the request is in flight, 'error' when it failed,
+        // 'ready' otherwise. An empty board and an unreachable one both draw no
+        // rows and mean opposite things, so they are not the same state.
+        let leaderboardEntries = [];
+        let leaderboardState = 'loading';
 
         // FAMILY & LIFE CYCLE STATE
         let familyState = {
@@ -360,46 +364,76 @@
             if (modal) {
                 modal.classList.toggle('hidden');
                 if (!modal.classList.contains('hidden')) {
-                    renderLeaderboardTable();
+                    loadLeaderboard();
                 }
             }
         }
 
-        function getLeaderboard() {
-            const saved = localStorage.getItem('compounding_journey_leaderboard_pt');
-            if (saved) {
-                try { return JSON.parse(saved); } catch(e) {}
-            }
-            return DEFAULT_LEADERBOARD;
+        function loadLeaderboard() {
+            leaderboardState = 'loading';
+            renderLeaderboardTable();
+
+            window.SimLeaderboard.load(LEADERBOARD_SIMULATOR, 'ALL')
+                .then((entries) => {
+                    leaderboardEntries = entries;
+                    leaderboardState = 'ready';
+                    renderLeaderboardTable();
+                })
+                .catch(() => {
+                    leaderboardState = 'error';
+                    renderLeaderboardTable();
+                });
         }
 
-        function saveLeaderboard(data) {
-            localStorage.setItem('compounding_journey_leaderboard_pt', JSON.stringify(data));
+        function leaderboardNoticeRow(message) {
+            return `
+                <tr>
+                    <td colspan="4" class="p-4 text-center text-espresso-800/70 font-medium">${message}</td>
+                </tr>
+            `;
         }
 
         function renderLeaderboardTable() {
             const container = document.getElementById('leaderboardTableBody');
             if (!container) return;
-            const list = getLeaderboard();
-            list.sort((a, b) => a.months - b.months);
+
+            if (leaderboardState === 'loading') {
+                container.innerHTML = leaderboardNoticeRow('Carregando o Salão da Fama global…');
+                return;
+            }
+            if (leaderboardState === 'error') {
+                container.innerHTML = leaderboardNoticeRow('Não foi possível acessar o Salão da Fama. Tente novamente em instantes.');
+                return;
+            }
+            if (leaderboardEntries.length === 0) {
+                container.innerHTML = leaderboardNoticeRow('Ninguém alcançou o cruzamento ainda. Chegue lá e a primeira linha será sua.');
+                return;
+            }
 
             container.innerHTML = '';
-            list.forEach((entry, idx) => {
-                const yrs = Math.floor(entry.months / 12);
-                const timeStr = yrs > 0 ? `${yrs} Anos (${entry.months}m)` : `${entry.months} Meses`;
+            // The list arrives ranked by the endpoint - fewest months first, and
+            // the larger net worth ahead where two runs took the same time - so
+            // there is nothing to sort here. Sorting a second time on the client
+            // is how the page and the board start disagreeing about who won.
+            leaderboardEntries.forEach((entry, idx) => {
+                const yrs = Math.floor(entry.score / 12);
+                const timeStr = yrs > 0 ? `${yrs} Anos (${entry.score}m)` : `${entry.score} Meses`;
 
                 let rankBadge = `<span class="font-bold font-mono text-espresso-800">${idx + 1}</span>`;
                 if (idx === 0) rankBadge = `<i class="fa-solid fa-crown text-amber-500 text-sm" aria-hidden="true"></i>`;
                 else if (idx === 1) rankBadge = `<i class="fa-solid fa-medal text-slate-400 text-sm" aria-hidden="true"></i>`;
                 else if (idx === 2) rankBadge = `<i class="fa-solid fa-medal text-amber-700 text-sm" aria-hidden="true"></i>`;
 
+                const isMine = window.SimLeaderboard.isMine(LEADERBOARD_SIMULATOR, entry.id);
                 const tr = document.createElement('tr');
-                tr.className = idx % 2 === 0 ? 'bg-cream-50/50 hover:bg-cream-100' : 'bg-cream-100/40 hover:bg-cream-100';
+                tr.className = isMine
+                    ? 'bg-gold-500/15 hover:bg-gold-500/25'
+                    : (idx % 2 === 0 ? 'bg-cream-50/50 hover:bg-cream-100' : 'bg-cream-100/40 hover:bg-cream-100');
                 tr.innerHTML = `
                     <td class="p-2.5 text-center">${rankBadge}</td>
-                    <td class="p-2.5 font-semibold text-espresso-950">${entry.name}</td>
+                    <td class="p-2.5 font-semibold text-espresso-950">${window.SimLeaderboard.escapeHtml(entry.name)}${isMine ? ' <span class="text-[9px] font-bold uppercase tracking-wide text-gold-600">Você</span>' : ''}</td>
                     <td class="p-2.5 text-center font-mono font-bold text-forest-800">${timeStr}</td>
-                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">$${entry.netWorth.toLocaleString()}</td>
+                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">$${entry.tiebreak.toLocaleString()}</td>
                 `;
                 container.appendChild(tr);
             });
@@ -407,37 +441,64 @@
 
         function submitPlayerScore() {
             const nameInput = document.getElementById('playerNameInput');
+            const button = document.getElementById('submitScoreButton');
             const name = nameInput ? nameInput.value.trim() : '';
             if (!name) return;
 
-            const list = getLeaderboard();
-            list.push({
+            // One row per crossover. The button is a write to a table everybody
+            // reads, so a second click while the first request is open is a
+            // duplicate entry rather than a no-op.
+            if (button) button.disabled = true;
+
+            window.SimLeaderboard.submit({
+                simulator: LEADERBOARD_SIMULATOR,
+                board: 'ALL',
                 name: name,
-                months: monthsPassed,
-                netWorth: Math.round(getNetWorth())
-            });
+                score: monthsPassed,
+                tiebreak: Math.round(getNetWorth())
+            })
+                .then((result) => {
+                    leaderboardEntries = result.entries;
+                    leaderboardState = 'ready';
+                    renderLeaderboardTable();
 
-            saveLeaderboard(list);
+                    const submitBox = document.getElementById('victoryLeaderboardSubmit');
+                    if (submitBox) {
+                        submitBox.innerHTML = `
+                            <div class="text-center py-1 text-emerald-800 font-bold text-xs flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-circle-check text-emerald-600" aria-hidden="true"></i>
+                                Sua partida já está no Salão da Fama global!
+                            </div>
+                        `;
+                    }
 
-            const submitBox = document.getElementById('victoryLeaderboardSubmit');
-            if (submitBox) {
-                submitBox.innerHTML = `
-                    <div class="text-center py-1 text-emerald-800 font-bold text-xs flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-circle-check text-emerald-600" aria-hidden="true"></i>
-                        Pontuação salva no Salão da Fama!
-                    </div>
-                `;
-            }
-
-            setTimeout(() => {
-                closeVictoryModal();
-                toggleLeaderboardModal();
-            }, 800);
+                    setTimeout(() => {
+                        closeVictoryModal();
+                        toggleLeaderboardModal();
+                    }, 800);
+                })
+                .catch(() => {
+                    // The run is not lost, only unsent. Saying so in the box the
+                    // button lived in keeps the offer on screen to try again.
+                    const submitBox = document.getElementById('victoryLeaderboardSubmit');
+                    if (submitBox) {
+                        const warning = document.createElement('p');
+                        warning.className = 'text-[11px] font-bold text-rose-700';
+                        warning.textContent = 'Não foi possível enviar sua partida ao Salão da Fama. Verifique sua conexão e toque em Salvar novamente.';
+                        submitBox.appendChild(warning);
+                    }
+                })
+                .finally(() => {
+                    if (button) button.disabled = false;
+                });
         }
 
-        function resetLeaderboard() {
-            saveLeaderboard(DEFAULT_LEADERBOARD);
-            renderLeaderboardTable();
+        // The board is shared, so the only sensible thing this button can do is
+        // fetch it again. It used to overwrite the local copy with the seeded
+        // one, which is a reset nobody else could see; wiping a table other
+        // people are ranked in from a browser is not a reset, it is vandalism.
+        function refreshLeaderboard() {
+            loadLeaderboard();
         }
 
         function triggerCrossoverVictory() {
