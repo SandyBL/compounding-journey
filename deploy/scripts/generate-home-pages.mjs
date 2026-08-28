@@ -569,10 +569,12 @@ function rewriteLocalizedLinks(html, language, config) {
 const LATEST_ARTICLE_COUNT = 3;
 const LATEST_ARTICLES_BLOCK = /<!--latest-articles:start-->[\s\S]*?<!--latest-articles:end-->/;
 
+// `reading` is worded exactly as the journal words it, because a reader who
+// follows a card sees the same phrase again in the article's own header.
 const latestArticleLabels = {
-  es: { read: 'Leer el artículo', empty: 'Pronto habrá artículos aquí.', published: 'Publicado el' },
-  en: { read: 'Read the article', empty: 'Articles are on their way.', published: 'Published' },
-  pt: { read: 'Ler o artigo', empty: 'Em breve haverá artigos aqui.', published: 'Publicado em' }
+  es: { read: 'Leer el artículo', empty: 'Pronto habrá artículos aquí.', published: 'Publicado el', reading: 'min de lectura' },
+  en: { read: 'Read the article', empty: 'Articles are on their way.', published: 'Published', reading: 'min read' },
+  pt: { read: 'Ler o artigo', empty: 'Em breve haverá artigos aqui.', published: 'Publicado em', reading: 'min de leitura' }
 };
 
 function articlePath(language, slug) {
@@ -615,18 +617,34 @@ function teaser(summary) {
 // repeat the word "Published" read as noise. The label is there for anyone
 // listening to the page instead of looking at it, where "12 August 2026" next to
 // a category and a headline carries no clue about what it is a date of.
+//
+// The reading time next to the date is the same figure the article's own header
+// states, taken from the catalog rather than counted again here: a card that
+// promised four minutes and opened onto a five-minute article would be a small
+// lie, and the kind that only shows up once it is live. It sits with the date
+// because both answer the same question - is this worth opening now - and the
+// meta row wraps rather than shrinking, so three items still fit on a narrow
+// card. An article whose reading time is missing renders the row as it was.
 function articleCard(language, labels, article) {
   const href = articlePath(language, article.slug);
   const title = escapeHtml(article.title);
   const summary = escapeHtml(teaser(article.summary));
   const category = escapeHtml(article.category ?? '');
   const publishedOn = escapeHtml(formatDate(language, article.date));
+  const minutes = Number(article.readingTime);
+  const readingTime = Number.isFinite(minutes) && minutes > 0
+    ? `
+                                <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
+                                <span>${minutes} ${escapeHtml(labels.reading)}</span>`
+    : '';
 
   return `                    <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="flex items-center gap-2 mb-3">
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
                             <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">${category}</span>
-                            <span class="h-px w-8 bg-warmgold/50"></span>
-                            <time datetime="${escapeAttribute(article.date ?? '')}" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45"><span class="sr-only">${escapeHtml(labels.published)} </span>${publishedOn}</time>
+                            <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
+                            <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
+                                <time datetime="${escapeAttribute(article.date ?? '')}"><span class="sr-only">${escapeHtml(labels.published)} </span>${publishedOn}</time>${readingTime}
+                            </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">

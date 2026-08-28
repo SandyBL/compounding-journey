@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { writeSharedCatalog } from './shared-catalog.mjs';
+import { readingMinutes } from './markdown.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -71,6 +72,9 @@ for (const language of languages) {
       summary: attributes.summary || '',
       author: attributes.author || defaultAuthor,
       translationKey: attributes.translation_key || path.basename(file, '.md'),
+      // Computed here rather than by each generator that shows it, so the number
+      // on a home page card is the same number the article's own header states.
+      readingTime: readingMinutes(body),
       searchText: searchableText(body)
     });
   }

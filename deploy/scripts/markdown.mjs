@@ -112,6 +112,19 @@ export function normalizeMarkdown(markdown) {
   return normalized.join('\n').replace(/\n{3,}/g, '\n\n').trim();
 }
 
+// Minutes of reading, from the article's own Markdown. 210 words a minute is the
+// figure the journal has always used; it is stated once here because the number
+// appears in three places - the article header, the read-next cards, and the
+// "From the blog" cards on the home page - and three copies of the arithmetic
+// would be three chances for them to disagree about the same article.
+//
+// Normalizing first is what makes the count the words a reader actually reads:
+// the citation markers and escape backslashes some drafts arrive with are not
+// words, and they are gone by the time the page is rendered.
+export function readingMinutes(markdown) {
+  return Math.max(1, Math.ceil(normalizeMarkdown(String(markdown ?? '')).split(/\s+/).filter(Boolean).length / 210));
+}
+
 function renderInline(text, options) {
   // Code spans are lifted out before escaping and emphasis run, then put
   // back at the end, so that neither pass can reach inside them. The marker

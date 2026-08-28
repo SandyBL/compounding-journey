@@ -12,7 +12,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { renderMarkdown, collectHeadings, escapeHtml, normalizeMarkdown, jsonLdScript } from './markdown.mjs';
+import { renderMarkdown, collectHeadings, escapeHtml, jsonLdScript } from './markdown.mjs';
 import { readViewCounts, readRecentViewCounts, totalsByTranslation, chooseFeatured, recentlyRead, translationPriorities } from './article-popularity.mjs';
 import { readSharedCatalog } from './shared-catalog.mjs';
 
@@ -296,10 +296,6 @@ function formatDate(language, date) {
   if (!date) return '';
   return new Intl.DateTimeFormat(language, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
     .format(new Date(`${date}T12:00:00Z`));
-}
-
-function readingTime(markdown) {
-  return Math.max(1, Math.ceil(markdown.trim().split(/\s+/).length / 210));
 }
 
 function languageSwitcher(article, current) {
@@ -917,10 +913,10 @@ for (const entry of catalog) {
   const source = await fs.readFile(path.join(contentRoot, entry.language, `${entry.slug}.md`), 'utf8');
   const { body: rawMarkdown } = parseFrontMatter(source);
   const labels = copy[entry.language] || copy.en;
-  const markdown = normalizeMarkdown(rawMarkdown);
   const html = renderMarkdown(rawMarkdown, { origin }, labels);
   const headings = collectHeadings(html);
-  const article = { ...entry, readingTime: readingTime(markdown) };
+  // readingTime comes from the catalog, which the home page cards read too.
+  const article = { ...entry };
 
   prepared.push({ article, labels, html, headings });
 }
