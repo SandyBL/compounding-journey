@@ -262,6 +262,60 @@
                 </div>
             </div>
 
+            <!-- RESULT-AWARE CALL TO ACTION.
+                 The panel below is hidden until a run produces an outcome. The simulator
+                 classifies its own result into a named bucket, hands it to
+                 assets/js/sim-cta.js with the numbers behind it, and that fills this in
+                 from assets/js/sim-cta.<language>.js.
+
+                 There is deliberately not one translation placeholder in it. Every sentence a
+                 visitor reads here is chosen by the outcome, so carrying the copy in this
+                 template would mean roughly thirty new sidecar keys per simulator and a
+                 hundred and fifty across the five - and it would put prose that has to be
+                 written for a specific moment into a string table. The per-language copy
+                 file is hand-authored for the same reason the behaviour bundles are
+                 generated per language.
+
+                 The form itself is static because Netlify's form detection reads the built
+                 HTML: the <form> and its field names have to exist at build time. Only the
+                 values, the labels and the destination are written at runtime. -->
+            <section id="sim-cta-result" class="sim-result-cta" data-simulator="simulator-hub" data-home="{{lang.home}}" aria-labelledby="sim-cta-title" hidden>
+                <div class="sim-result-cta__panel">
+                    <div class="sim-result-cta__inner">
+                        <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                        <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                        <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                        <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                        <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                            <input type="hidden" name="form-name" value="simulator-result">
+                            <input type="hidden" name="simulator" value="simulator-hub">
+                            <input type="hidden" name="language" value="{{lang.code}}">
+                            <input type="hidden" name="outcome" value="">
+                            <input type="hidden" name="headline" value="">
+                            <input type="hidden" name="detail" value="">
+                            <input type="hidden" name="routed_to" value="">
+                            <input type="hidden" name="subject" value="">
+                            <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                            <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                            <div class="sim-result-cta__row">
+                                <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                                <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                            </div>
+                            <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                            <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                        </form>
+
+                        <div class="sim-result-cta__actions">
+                            <a class="sim-result-cta__primary" id="sim-cta-primary" href="{{lang.home}}#assessment"></a>
+                            <a class="sim-result-cta__link" id="sim-cta-secondary" href="{{lang.home}}#herramientas"></a>
+                        </div>
+
+                        <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+                    </div>
+                </div>
+            </section>
+
 {{resultsscreen3}}            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
                 <h3 class="text-xl font-bold text-espresso-900 mb-2 font-serif">{{textXl3}}</h3>
                 <p class="text-sm text-espresso-800/80 mb-4">{{textSm}}</p>
@@ -367,6 +421,11 @@
         <p>© <script>document.write(new Date().getFullYear())</script>{{bgCream100}}</p>
     </footer>
 
+    <!-- The result-aware call to action: the machinery, then the prose it reads.
+         Both are deferred, so both have run by the time the behaviour bundle below
+         looks for window.SimCta. -->
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.{{lang.code}}.js?v=source" defer></script>
     <script>
 {{minHScreen5}}        function highlightNumbers(text) {
             if (!text) return '';
@@ -801,6 +860,57 @@
 {{minHScreen152}}            renderTrajectoryChart();
 
 {{minHScreen153}}            loadLeaderboard();
+
+            updateResultCta(archetype);
+        }
+
+        /**
+         * Classifies the finished run for the result-aware panel.
+         *
+         * The archetype is the headline the visitor already has, and on its own
+         * it is not actionable: "The Wealth Apprentice" does not tell anybody
+         * which of fifteen decisions to look at. The weakest of the five
+         * categories does, and it is also what decides which of the two forms
+         * is the right one to ask for - the balance sheet for a run that leaked
+         * through debt or spending, the investment profile for one that leaked
+         * through allocation, tax or protection. That mapping lives next to the
+         * sentence that asks, in the copy file.
+         *
+         * categoryScores is keyed by the category's *translated* label, so the
+         * stable key has to be recovered from CATEGORIES rather than read off
+         * the score object; the label is then what gets quoted back, because
+         * that is the name the visitor has just seen in the breakdown above.
+         */
+        function updateResultCta(archetype) {
+            if (!window.SimCta) return;
+
+            const rows = Object.keys(CATEGORIES).map((key) => {
+                const score = categoryScores[CATEGORIES[key]] || { points: 0, max: 0 };
+                return {
+                    bucket: key.toLowerCase(),
+                    label: CATEGORIES[key],
+                    pct: score.max > 0 ? Math.round((score.points / score.max) * 100) : 0
+                };
+            });
+
+            const weakest = rows.reduce((low, row) => (row.pct < low.pct ? row : low));
+            const strongest = rows.reduce((high, row) => (row.pct > high.pct ? row : high));
+
+            // A run with no weak category is a different conversation: the
+            // knowledge is not the constraint, so pointing at a "weakest" area
+            // at 80% would be inventing a problem to sell against.
+            const bucket = weakest.pct >= 75 ? 'allStrong' : weakest.bucket;
+
+            window.SimCta.show(bucket, {
+                archetype,
+                score: Math.round(currentState.literacyScore),
+                weakest: weakest.label,
+                weakestPct: weakest.pct,
+                strongest: strongest.label,
+                strongestPct: strongest.pct,
+                netWorth: window.SimCta.money(currentState.netWorth),
+                cashFlow: window.SimCta.money(currentState.cashFlow)
+            });
         }
 
 {{minHScreen154}}        function renderCategoryBreakdown() {

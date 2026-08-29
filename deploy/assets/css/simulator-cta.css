@@ -166,3 +166,293 @@
     min-width: 0;
   }
 }
+
+/* ------------------------------------------------------------------------- */
+
+/* The result panel: the same forest card as above, but written by the tool
+   rather than by the template.
+
+   The panel above is one sentence per simulator, fixed at build time, and it
+   sits below the explainer at the very bottom of the page. That is the wrong
+   place and the wrong sentence: the moment a visitor is most interested in what
+   these numbers mean about them is the second the numbers appear, and what they
+   are interested in is their own result, not the tool's. This block is what the
+   simulators reveal in place when a run produces an outcome - the same
+   component, in the reader's own numbers.
+
+   It reuses `.simulator-cta__*` where the rule is identical (the gold action,
+   the serif title stack, the two breakpoints) and only adds what the static
+   panel has no equivalent of: the single-column stack, the email capture, and
+   the "lever" line that carries the one thing to do next.
+
+   Kept in this file rather than a new one because these are two states of one
+   component, and because a new stylesheet is a new caching rule in _headers -
+   see the note above this file's own rule for what happens when that is
+   forgotten. */
+
+.sim-result-cta {
+  padding-top: 40px;
+}
+
+.sim-result-cta[hidden] {
+  display: none;
+}
+
+.sim-result-cta__panel {
+  position: relative;
+  padding: 30px 34px;
+  overflow: hidden;
+  background: #173d2a;
+  color: #fff;
+  text-align: left;
+}
+
+/* The same barely-there monogram as the static panel, at the same size. */
+.sim-result-cta__panel::after {
+  content: "CJ";
+  position: absolute;
+  right: 5%;
+  bottom: -72%;
+  color: rgba(255, 255, 255, 0.035);
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: 16rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.sim-result-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+}
+
+.sim-result-cta__eyebrow {
+  margin: 0 0 12px;
+  color: #e0b95c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sim-result-cta__title {
+  margin: 0;
+  color: #fff;
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: clamp(1.5rem, 2.2vw, 2.05rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.sim-result-cta__body {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* The one thing to do next, set apart from the reading of the result so the
+   two are not skimmed as one paragraph. */
+.sim-result-cta__lever {
+  margin: 16px 0 0;
+  padding: 12px 16px;
+  border-left: 3px solid #c89a32;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.sim-result-cta__form {
+  margin: 22px 0 0;
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.sim-result-cta__form-heading {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.sim-result-cta__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sim-result-cta__input {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: #fff;
+  color: #1b2b20;
+  font: inherit;
+  font-size: 0.88rem;
+}
+
+.sim-result-cta__input:focus-visible {
+  outline: 3px solid rgba(200, 154, 50, 0.6);
+  outline-offset: 2px;
+}
+
+.sim-result-cta__submit {
+  flex: 0 0 auto;
+  padding: 13px 20px;
+  border: 1px solid #c89a32;
+  background: #c89a32;
+  color: #1b2b20;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.sim-result-cta__submit:hover:not(:disabled) {
+  background: #e1bd62;
+}
+
+.sim-result-cta__submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.sim-result-cta__submit:focus-visible {
+  outline: 3px solid rgba(200, 154, 50, 0.6);
+  outline-offset: 3px;
+}
+
+/* What happens to the address, next to the field that asks for it rather than
+   behind a link to a policy. */
+.sim-result-cta__note {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+.sim-result-cta__status {
+  margin: 10px 0 0;
+  color: #e0b95c;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.sim-result-cta__status:empty {
+  display: none;
+}
+
+.sim-result-cta__status--error {
+  color: #ffb4a8;
+}
+
+.sim-result-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+/* One primary action and one text link, deliberately not two buttons: the
+   static panel above offers two of equal weight, which is the shape that makes
+   a reader pick neither. */
+.sim-result-cta__primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #f4ede1;
+  color: #173d2a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.sim-result-cta__primary:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.sim-result-cta__primary:focus-visible {
+  outline: 3px solid #e0b95c;
+  outline-offset: 3px;
+}
+
+.sim-result-cta__link {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sim-result-cta__link:hover {
+  color: #fff;
+}
+
+.sim-result-cta__link:focus-visible {
+  outline: 3px solid rgba(200, 154, 50, 0.6);
+  outline-offset: 3px;
+}
+
+.sim-result-cta__disclaimer {
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .sim-result-cta__panel {
+    padding: 28px 22px;
+  }
+
+  .sim-result-cta__row {
+    display: grid;
+  }
+
+  .sim-result-cta__submit {
+    width: 100%;
+  }
+
+  .sim-result-cta__actions {
+    display: grid;
+  }
+
+  .sim-result-cta__link {
+    text-align: center;
+  }
+}
+
+/* The reveal is a state change a visitor did not navigate to, so it is
+   animated - and the animation is the whole of what this rule does, which is
+   why removing it for a reduced-motion preference leaves the panel intact. */
+@media (prefers-reduced-motion: no-preference) {
+  .sim-result-cta__panel {
+    animation: sim-result-cta-in 0.45s ease-out both;
+  }
+}
+
+@keyframes sim-result-cta-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

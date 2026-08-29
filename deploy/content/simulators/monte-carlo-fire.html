@@ -766,6 +766,60 @@
 
     </div>
 
+    <!-- RESULT-AWARE CALL TO ACTION.
+         The panel below is hidden until a run produces an outcome. The simulator
+         classifies its own result into a named bucket, hands it to
+         assets/js/sim-cta.js with the numbers behind it, and that fills this in
+         from assets/js/sim-cta.<language>.js.
+
+         There is deliberately not one translation placeholder in it. Every sentence a
+         visitor reads here is chosen by the outcome, so carrying the copy in this
+         template would mean roughly thirty new sidecar keys per simulator and a
+         hundred and fifty across the five - and it would put prose that has to be
+         written for a specific moment into a string table. The per-language copy
+         file is hand-authored for the same reason the behaviour bundles are
+         generated per language.
+
+         The form itself is static because Netlify's form detection reads the built
+         HTML: the <form> and its field names have to exist at build time. Only the
+         values, the labels and the destination are written at runtime. -->
+    <section id="sim-cta-result" class="sim-result-cta" data-simulator="monte-carlo-fire" data-home="{{lang.home}}" aria-labelledby="sim-cta-title" hidden>
+        <div class="sim-result-cta__panel">
+            <div class="sim-result-cta__inner">
+                <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="simulator-result">
+                    <input type="hidden" name="simulator" value="monte-carlo-fire">
+                    <input type="hidden" name="language" value="{{lang.code}}">
+                    <input type="hidden" name="outcome" value="">
+                    <input type="hidden" name="headline" value="">
+                    <input type="hidden" name="detail" value="">
+                    <input type="hidden" name="routed_to" value="">
+                    <input type="hidden" name="subject" value="">
+                    <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                    <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                    <div class="sim-result-cta__row">
+                        <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                        <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                    </div>
+                    <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                    <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="sim-result-cta__actions">
+                    <a class="sim-result-cta__primary" id="sim-cta-primary" href="{{lang.home}}#assessment"></a>
+                    <a class="sim-result-cta__link" id="sim-cta-secondary" href="{{lang.home}}#herramientas"></a>
+                </div>
+
+                <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+            </div>
+        </div>
+    </section>
+
     <!-- The explainer below is the answer to a Search Console report: these pages
                  were being crawled and then not indexed, which is what Google does with a
                  page that is almost entirely interface. A calculator has nothing to read -
@@ -997,6 +1051,13 @@
         </div>
       </div>
 
+      <!-- The debrief is a full-screen overlay, so the panel this flight just
+           filled in is behind it. This is the way through: one button, above
+           the two that were already here and wider than either, because the
+           reading of the flight is the thing a pilot who has just crashed is
+           most likely to want next. -->
+      <button data-onclick="openSimCta()" class="w-full mb-2 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">{{ctaModalButton}}</button>
+
       <div class="flex gap-2">
         <button data-onclick="closeDebriefAndShowLeaderboard()" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
 {{flex14}}        </button>
@@ -1008,6 +1069,11 @@
 
   <!-- ================================================================= -->
 {{minHScreen7}}  <!-- ================================================================= -->
+  <!-- The result-aware call to action: the machinery, then the prose it reads.
+       Both are deferred, so both have run by the time the behaviour bundle below
+       looks for window.SimCta. -->
+  <script src="/assets/js/sim-cta.js?v=source" defer></script>
+  <script src="/assets/js/sim-cta.{{lang.code}}.js?v=source" defer></script>
   <script>
 {{minHScreen8}}    const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
@@ -1643,6 +1709,57 @@
       // full-screen overlay, so focus has to follow the debrief.
       title.setAttribute('tabindex', '-1');
       title.focus({ preventScroll: true });
+
+      updateResultCta(reachedTarget, survivedYears);
+    }
+
+    /**
+     * Classifies the finished flight for the result-aware panel.
+     *
+     * The panel is filled in behind the debrief overlay rather than after it,
+     * so it is already there whichever way the pilot leaves the modal - and
+     * openSimCta() below is the direct route to it.
+     *
+     * Four outcomes, and the two that are not obvious are the interesting
+     * ones. A flight that survived after ten years at zero altitude is not
+     * the same result as one that never got near the floor, because the
+     * number a survival probability reports is not the thing that makes
+     * somebody abandon a plan. And a flight that ended with three times what
+     * it started with is not simply a better win: it is a plan that was
+     * over-funded, which was paid for with working years nobody gets back.
+     */
+    function updateResultCta(reachedTarget, survivedYears) {
+      if (!window.SimCta) return;
+
+      const finalBalance = Math.max(0, state.currentNestEgg);
+      const swr = state.nestEgg > 0 ? ((state.annualSpending / state.nestEgg) * 100).toFixed(1) : '0.0';
+      const multiple = state.nestEgg > 0 ? (finalBalance / state.nestEgg).toFixed(1) : '0.0';
+
+      let bucket;
+      if (!reachedTarget) bucket = 'crashed';
+      else if (state.totalCrashlineYears >= 3) bucket = 'fragile';
+      else if (finalBalance > state.nestEgg * 2) bucket = 'comfortable';
+      else bucket = 'landed';
+
+      window.SimCta.show(bucket, {
+        age: state.currentAge,
+        years: survivedYears,
+        crashYears: state.totalCrashlineYears,
+        finalBalance: window.SimCta.money(finalBalance),
+        nestEgg: window.SimCta.money(state.nestEgg),
+        spending: window.SimCta.money(state.annualSpending),
+        swr,
+        multiple
+      });
+    }
+
+    // The debrief's route to the panel. Closing the modal first is what makes
+    // the panel reachable at all - it is behind a full-screen overlay - and
+    // SimCta.focus() moves focus onto it, which is only correct because a
+    // pilot pressed a button asking to go there.
+    function openSimCta() {
+      closeDebriefModal();
+      if (window.SimCta) window.SimCta.focus();
     }
 
     function closeDebriefModal() {

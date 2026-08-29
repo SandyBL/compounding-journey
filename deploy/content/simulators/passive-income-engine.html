@@ -455,6 +455,60 @@
                 </div>
             </div>
         </div>
+        <!-- RESULT-AWARE CALL TO ACTION.
+             The panel below is hidden until a run produces an outcome. The simulator
+             classifies its own result into a named bucket, hands it to
+             assets/js/sim-cta.js with the numbers behind it, and that fills this in
+             from assets/js/sim-cta.<language>.js.
+
+             There is deliberately not one translation placeholder in it. Every sentence a
+             visitor reads here is chosen by the outcome, so carrying the copy in this
+             template would mean roughly thirty new sidecar keys per simulator and a
+             hundred and fifty across the five - and it would put prose that has to be
+             written for a specific moment into a string table. The per-language copy
+             file is hand-authored for the same reason the behaviour bundles are
+             generated per language.
+
+             The form itself is static because Netlify's form detection reads the built
+             HTML: the <form> and its field names have to exist at build time. Only the
+             values, the labels and the destination are written at runtime. -->
+        <section id="sim-cta-result" class="sim-result-cta" data-simulator="passive-income-engine" data-home="{{lang.home}}" aria-labelledby="sim-cta-title" hidden>
+            <div class="sim-result-cta__panel">
+                <div class="sim-result-cta__inner">
+                    <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                    <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                    <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                    <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                    <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="simulator-result">
+                        <input type="hidden" name="simulator" value="passive-income-engine">
+                        <input type="hidden" name="language" value="{{lang.code}}">
+                        <input type="hidden" name="outcome" value="">
+                        <input type="hidden" name="headline" value="">
+                        <input type="hidden" name="detail" value="">
+                        <input type="hidden" name="routed_to" value="">
+                        <input type="hidden" name="subject" value="">
+                        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                        <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                        <div class="sim-result-cta__row">
+                            <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                            <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                        </div>
+                        <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                        <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <div class="sim-result-cta__actions">
+                        <a class="sim-result-cta__primary" id="sim-cta-primary" href="{{lang.home}}#assessment"></a>
+                        <a class="sim-result-cta__link" id="sim-cta-secondary" href="{{lang.home}}#herramientas"></a>
+                    </div>
+
+                    <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+                </div>
+            </div>
+        </section>
+
         <!-- The explainer below is the answer to a Search Console report: these pages
                      were being crawled and then not indexed, which is what Google does with a
                      page that is almost entirely interface. A calculator has nothing to read -
@@ -646,10 +700,17 @@
             </div>
 
             <div class="space-y-3 pt-2">
-                <a href="https://compoundingjourney.com{{lang.home}}#assessment" target="_blank" rel="noopener noreferrer" class="block w-full py-3 px-4 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-sm shadow transition flex items-center justify-center gap-2">
-                    <span>{{block5}}</span>
+                <!-- This was a link to the assessment on the home page, opening in
+                     a new tab, and it said the same thing to somebody who reached
+                     crossover in nine years living well as to somebody who got
+                     there in six by giving up everything. It now goes to the panel
+                     this run has already filled in, which is on this page and says
+                     something about the run - and the assessment is still one press
+                     further on, when it is the right thing to offer. -->
+                <button data-onclick="openSimCta()" class="w-full py-3 px-4 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-sm shadow transition flex items-center justify-center gap-2">
+                    <span>{{ctaModalButton}}</span>
                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </a>
+                </button>
                 <button data-onclick="closeVictoryModal()" class="w-full py-2.5 px-4 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 font-medium text-xs transition">
 {{wFull3}}                </button>
             </div>
@@ -700,6 +761,11 @@
         </div>
     </div>
 
+    <!-- The result-aware call to action: the machinery, then the prose it reads.
+         Both are deferred, so both have run by the time the behaviour bundle below
+         looks for window.SimCta. -->
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.{{lang.code}}.js?v=source" defer></script>
     <script>
         // GAME STATE
         let monthsPassed = 0; // Increments in steps of 12 (Years)
@@ -1185,6 +1251,62 @@
             if (modal) modal.classList.add('hidden');
         }
 
+        // The victory modal's route to the panel. Closing it first is what makes
+        // the panel reachable, and SimCta.focus() moves focus onto it - correct
+        // only because somebody pressed a button asking to go there.
+        function openSimCta() {
+            closeVictoryModal();
+            if (window.SimCta) window.SimCta.focus();
+        }
+
+        /**
+         * Classifies the run for the result-aware panel.
+         *
+         * Called from renderUI(), so once per simulated year rather than only
+         * at crossover - and it says nothing for the first ten of them. Before
+         * year ten the coverage percentage is mostly the starting salary, and
+         * there is no result yet to read back.
+         *
+         * The joy score is what splits crossover into three, and it is the
+         * whole reason this tool has one. Reaching financial independence in
+         * six years by cutting everything that makes a life is not a better
+         * outcome than reaching it in eleven while living, and it is the run
+         * least likely to be finished in real life. It gets warmth and a
+         * conversation, not a questionnaire.
+         */
+        function updateResultCta() {
+            if (!window.SimCta) return;
+
+            const years = Math.floor(monthsPassed / 12);
+            const coverage = getFreedomCoveragePct();
+            if (coverage < 100 && years < 10) return;
+
+            const exp = getMonthlyExpenses();
+            const pass = getTotalMonthlyPassiveIncome();
+            const joy = getHappinessScore();
+
+            let bucket;
+            if (coverage >= 100) {
+                if (joy >= 75) bucket = 'crossoverJoyful';
+                else if (joy < 45) bucket = 'crossoverAscetic';
+                else bucket = 'crossoverBalanced';
+            } else if (coverage >= 75) {
+                bucket = 'close';
+            } else {
+                bucket = 'far';
+            }
+
+            window.SimCta.show(bucket, {
+                years,
+                joy,
+                coverage: Math.round(coverage),
+                passive: window.SimCta.money(pass),
+                expenses: window.SimCta.money(exp),
+                gap: window.SimCta.money(Math.max(0, exp - pass)),
+                netWorth: window.SimCta.money(getNetWorth())
+            });
+        }
+
         function renderUI() {
             const exp = getMonthlyExpenses();
             const pass = getTotalMonthlyPassiveIncome();
@@ -1247,6 +1369,7 @@
 
             renderMarketplace();
             renderHoldingsSidebar();
+            updateResultCta();
         }
 
         function renderMarketplace() {

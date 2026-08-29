@@ -312,6 +312,60 @@
 
         </div>
 
+        <!-- RESULT-AWARE CALL TO ACTION.
+             The panel below is hidden until a run produces an outcome. The simulator
+             classifies its own result into a named bucket, hands it to
+             assets/js/sim-cta.js with the numbers behind it, and that fills this in
+             from assets/js/sim-cta.<language>.js.
+
+             There is deliberately not one translation placeholder in it. Every sentence a
+             visitor reads here is chosen by the outcome, so carrying the copy in this
+             template would mean roughly thirty new sidecar keys per simulator and a
+             hundred and fifty across the five - and it would put prose that has to be
+             written for a specific moment into a string table. The per-language copy
+             file is hand-authored for the same reason the behaviour bundles are
+             generated per language.
+
+             The form itself is static because Netlify's form detection reads the built
+             HTML: the <form> and its field names have to exist at build time. Only the
+             values, the labels and the destination are written at runtime. -->
+        <section id="sim-cta-result" class="sim-result-cta" data-simulator="freedom-calendar" data-home="{{lang.home}}" aria-labelledby="sim-cta-title" hidden>
+            <div class="sim-result-cta__panel">
+                <div class="sim-result-cta__inner">
+                    <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                    <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                    <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                    <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                    <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="simulator-result">
+                        <input type="hidden" name="simulator" value="freedom-calendar">
+                        <input type="hidden" name="language" value="{{lang.code}}">
+                        <input type="hidden" name="outcome" value="">
+                        <input type="hidden" name="headline" value="">
+                        <input type="hidden" name="detail" value="">
+                        <input type="hidden" name="routed_to" value="">
+                        <input type="hidden" name="subject" value="">
+                        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                        <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                        <div class="sim-result-cta__row">
+                            <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                            <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                        </div>
+                        <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                        <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <div class="sim-result-cta__actions">
+                        <a class="sim-result-cta__primary" id="sim-cta-primary" href="{{lang.home}}#assessment"></a>
+                        <a class="sim-result-cta__link" id="sim-cta-secondary" href="{{lang.home}}#herramientas"></a>
+                    </div>
+
+                    <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+                </div>
+            </div>
+        </section>
+
         <!-- The explainer below is the answer to a Search Console report: these pages
                      were being crawled and then not indexed, which is what Google does with a
                      page that is almost entirely interface. A calculator has nothing to read -
@@ -403,6 +457,12 @@
     <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
         <p>© <script>document.write(new Date().getFullYear())</script>{{bgCream100}}</p>
     </footer>
+
+    <!-- The result-aware call to action: the machinery, then the prose it reads.
+         Both are deferred, so both have run by the time the behaviour bundle below
+         looks for window.SimCta. -->
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.{{lang.code}}.js?v=source" defer></script>
 
     <script>
 {{minHScreen}}        const HABITS_DATA = [
@@ -761,6 +821,72 @@
 {{minHScreen61}}
             // Update Chart
             updateWealthChart(baselineMonthlyHabits, optimizedMonthlyHabits);
+
+            updateResultCta({
+                monthlySaved,
+                annualWorkDaysSaved,
+                wealthGained30Yr,
+                baselineFreedomAge,
+                optimizedFreedomAge,
+                yearsPulledForward
+            });
+        }
+
+        /**
+         * Classifies the run for the result-aware panel, and hands it the
+         * numbers the copy quotes back.
+         *
+         * recalculateAll() runs on every slider movement, including the first
+         * render, so the interesting part of this is when it says nothing. A
+         * visitor who has not moved anything yet has told the tool nothing
+         * about themselves, and a panel that appears before they have touched a
+         * habit is an offer attached to no result. `monthlySaved > 0` is the
+         * cheapest honest signal that a choice has been made.
+         *
+         * The outcome is deliberately not "how much did you save" but "what
+         * kind of situation is this". A visitor who found nine years and one
+         * who found one year need different next steps; a visitor whose plan
+         * never reaches independence however hard they cut needs a different
+         * conversation altogether, and asking them to fill in a long
+         * questionnaire is the wrong response to it.
+         */
+        function updateResultCta(result) {
+            if (!window.SimCta) return;
+            if (result.monthlySaved <= 0) return;
+
+            // The tool caps its own projection at 85, which is how it says
+            // "not within a working life". Asked with every habit at zero,
+            // that answer is about the shape of the plan rather than about
+            // spending, and no slider on this page moves it.
+            const cannotGetThereAtAll = simulateFreedomAge(0) >= 85;
+
+            const years = result.yearsPulledForward;
+            let bucket;
+            if (cannotGetThereAtAll) bucket = 'stalled';
+            else if (years < 1) return; // real money, not yet a whole year of life
+            else if (years >= 6) bucket = 'major';
+            else if (years >= 3) bucket = 'strong';
+            else bucket = 'modest';
+
+            // The single habit carrying the most of the saving. Named rather
+            // than ranked, because the point being made is that the easiest
+            // slider to move and the largest leak are often not the same one.
+            let top = null;
+            habits.forEach((habit) => {
+                const saved = getHabitMonthlyCost(habit, 100) - getHabitMonthlyCost(habit);
+                if (!top || saved > top.saved) top = { title: habit.title, saved };
+            });
+
+            window.SimCta.show(bucket, {
+                years,
+                age: result.optimizedFreedomAge,
+                baselineAge: result.baselineFreedomAge,
+                monthly: window.SimCta.money(result.monthlySaved),
+                workDays: window.SimCta.integer(result.annualWorkDaysSaved),
+                wealth: window.SimCta.money(result.wealthGained30Yr),
+                topHabit: top ? top.title : '',
+                topHabitMonthly: top ? window.SimCta.money(top.saved) : ''
+            });
         }
 
 {{minHScreen62}}        function updateWealthChart(baselineHabitsMonthly, optimizedHabitsMonthly) {
