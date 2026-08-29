@@ -586,6 +586,132 @@
             return 'es';
         }
 
+        /* ===================================================================
+           THE HANDOFF FROM A SIMULATOR RESULT
+           ===================================================================
+
+           A simulator can route a visitor here instead of to one of the Google
+           Forms - see assets/js/sim-cta.js, which does it for the outcomes where
+           a long questionnaire is the wrong response to what just happened: a
+           retirement plan that ran out of money, or one that only works if the
+           visitor lives a life they would not choose.
+
+           Somebody arriving that way has already read a paragraph about their
+           own numbers. Asking them to summarise it again, from memory, into an
+           empty textarea is how a warm moment becomes a blank page - so the
+           result is carried across and the message starts written, with the
+           cursor on the one thing only they can add.
+
+           The numbers travel in sessionStorage rather than in the URL. They are
+           a stranger's finances, and a link carrying them is a link that gets
+           pasted into a chat window or logged by whatever sits in front of the
+           site. `?from=simulator` is the only thing in the address bar, and it
+           is removed once it has been acted on. */
+        const simulatorHandoffCopy = {
+            es: {
+                subject: 'Resultado del simulador',
+                intro: 'Acabo de terminar el simulador {simulator}.',
+                resultLabel: 'Mi resultado',
+                questionLabel: 'Mi pregunta',
+                names: {
+                    'simulator-hub': 'Decisiones financieras',
+                    'freedom-calendar': 'Calendario de la Libertad',
+                    'market-time-machine': 'Máquina del Tiempo del Mercado',
+                    'monte-carlo-fire': 'Vuelo de Supervivencia FIRE',
+                    'passive-income-engine': 'Motor de Ingresos Pasivos'
+                }
+            },
+            en: {
+                subject: 'Simulator result',
+                intro: 'I have just finished the {simulator} simulator.',
+                resultLabel: 'My result',
+                questionLabel: 'My question',
+                names: {
+                    'simulator-hub': 'Financial Decisions',
+                    'freedom-calendar': 'Freedom Calendar',
+                    'market-time-machine': 'Market Time Machine',
+                    'monte-carlo-fire': 'FIRE Survival Flight',
+                    'passive-income-engine': 'Passive Income Engine'
+                }
+            },
+            pt: {
+                subject: 'Resultado do simulador',
+                intro: 'Acabei de terminar o simulador {simulator}.',
+                resultLabel: 'O meu resultado',
+                questionLabel: 'A minha pergunta',
+                names: {
+                    'simulator-hub': 'Decisões Financeiras',
+                    'freedom-calendar': 'Calendário da Liberdade',
+                    'market-time-machine': 'Máquina do Tempo do Mercado',
+                    'monte-carlo-fire': 'Voo de Sobrevivência FIRE',
+                    'passive-income-engine': 'Motor de Rendimento Passivo'
+                }
+            }
+        };
+
+        function readSimulatorContext() {
+            try {
+                const raw = sessionStorage.getItem('cj:simulator:context');
+                if (!raw) return null;
+                const context = JSON.parse(raw);
+                // Anything could be under that key by the time this runs - a stale
+                // entry from an older shape of the panel, or a tab somebody left
+                // open across a deploy. A headline is the one field the message
+                // cannot be written without.
+                if (!context || typeof context.headline !== 'string' || !context.headline) return null;
+                return context;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function applySimulatorHandoff() {
+            const url = new URL(window.location.href);
+            if (url.searchParams.get('from') !== 'simulator') return;
+
+            // Read before the prefill, and clear either way: the marker has been
+            // acted on, and leaving it in the address bar means a reload or a
+            // shared link rewrites a message the visitor may have since edited.
+            const context = readSimulatorContext();
+            url.searchParams.delete('from');
+            window.history.replaceState(window.history.state, '', url);
+            if (!context) return;
+
+            const copy = simulatorHandoffCopy[currentLanguage()];
+            const name = (copy.names[context.simulator] || context.simulator || '').trim();
+            const messageField = document.getElementById('form-message');
+            const subjectField = document.querySelector('#contact-form [name="subject"]');
+
+            // Never overwrite something the visitor has already written. They may
+            // have come back to this tab with a message half-typed.
+            if (messageField && !messageField.value.trim()) {
+                const lines = [];
+                if (name) lines.push(copy.intro.replace('{simulator}', name));
+                lines.push('');
+                lines.push(copy.resultLabel + ': ' + context.headline);
+                if (context.detail) {
+                    lines.push('');
+                    lines.push(context.detail);
+                }
+                lines.push('');
+                lines.push(copy.questionLabel + ': ');
+                messageField.value = lines.join('\n');
+
+                // The one thing only they can add goes at the end, so that is
+                // where the cursor belongs. Focus is not taken - they navigated
+                // here, they have not asked to be put inside a textarea yet.
+                messageField.setSelectionRange(messageField.value.length, messageField.value.length);
+            }
+
+            // The notification this produces is now distinguishable from a
+            // general enquiry at a glance, which is the whole point of routing
+            // these outcomes to a person rather than to a form.
+            if (subjectField) {
+                subjectField.value = copy.subject + (name ? ' - ' + name : '') +
+                    (context.outcome ? ' (' + context.outcome + ')' : '');
+            }
+        }
+
         function setFieldError(fieldId, message) {
             const field = document.getElementById(fieldId);
             const error = document.getElementById(`${fieldId}-error`);
@@ -1186,6 +1312,9 @@
         // make the canonical depend on the visitor's browser locale.
         stripLanguageQuery();
         setLanguage(detectInitialLanguage(), false);
+        // After setLanguage, because the prefilled message has to be written in
+        // the language the page has settled on rather than the one it loaded in.
+        applySimulatorHandoff();
         initializeNavigationMenus();
         initializeCalculatorTabs();
         annotateExternalLinks();

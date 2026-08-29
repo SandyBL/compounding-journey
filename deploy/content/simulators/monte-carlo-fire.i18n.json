@@ -2053,5 +2053,10 @@
     "en": "Every completed flight is posted to the global leaderboard under this callsign, where other pilots can see it.",
     "es": "Cada vuelo completado se publica en la clasificación global con este nombre, a la vista de los demás pilotos.",
     "pt": "Cada voo concluído é publicado na classificação global com este codinome, à vista dos outros pilotos."
+  },
+  "ctaModalButton": {
+    "en": "See what this flight means",
+    "es": "Ver qué significa este vuelo",
+    "pt": "Ver o que este voo significa"
   }
 }

@@ -674,11 +674,6 @@
     "es": " Guardar\n",
     "pt": " Salvar\n"
   },
-  "block5": {
-    "en": "Map Your Real-Life Freedom Plan",
-    "es": "Diseña tu Plan Real de Libertad",
-    "pt": "Monte seu Plano Real de Liberdade"
-  },
   "wFull3": {
     "en": "                    Continue Playing & Building Wealth\n",
     "es": "                    Continuar Jugando y Creando Riqueza\n",
@@ -1293,5 +1288,10 @@
     "en": "                        warning.textContent = 'Your run could not be sent to the Hall of Fame. Check your connection and press Save Score again.';\n",
     "es": "                        warning.textContent = 'No se pudo enviar tu partida al Salón de la Fama. Comprueba tu conexión y vuelve a pulsar Guardar.';\n",
     "pt": "                        warning.textContent = 'Não foi possível enviar sua partida ao Salão da Fama. Verifique sua conexão e toque em Salvar novamente.';\n"
+  },
+  "ctaModalButton": {
+    "en": "See what this run means",
+    "es": "Ver qué significa esta partida",
+    "pt": "Ver o que esta partida significa"
   }
 }
