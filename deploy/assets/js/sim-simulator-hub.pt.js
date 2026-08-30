@@ -1,7 +1,7 @@
 // Destaque de Números-Chave e Termos Financeiros
         function highlightNumbers(text) {
             if (!text) return '';
-            const pattern = /(\$\d+[\d,.]*k?|\d+([.,]\d+)?%|\d+\s*(horas|meses|anos|semanas de trabalho)|24 meses|84 meses|6 meses|3x|AUM)/gi;
+            const pattern = /(R\$\d+[\d,.]*k?|\d+([.,]\d+)?%|\d+\s*(horas|meses|anos|semanas de trabalho)|24 meses|84 meses|6 meses|3x|\bAUM\b)/gi;
             return text.replace(pattern, '<span class="font-bold text-espresso-950 bg-amber-200/90 px-1.5 py-0.5 rounded font-mono text-[0.88em] border border-amber-300/80">$1</span>');
         }
 
@@ -42,23 +42,23 @@
                 id: 1,
                 category: CATEGORIES.INVESTING,
                 title: "1. O Dilema do Dinheiro Parado",
-                description: "Você recebe um bônus de trabalho de $5.000. Você não precisa desse dinheiro imediatamente. A taxa de inflação anual é de 3,5%. Como você aloca esse capital?",
+                description: "Você recebe um bônus de trabalho de R$5.000. Você não precisa desse dinheiro imediatamente. A taxa de inflação anual é de 3,5%. Como você aloca esse capital?",
                 optionA: {
-                    title: "Deixar todos os $5.000 na conta corrente comum a 0,01%.",
+                    title: "Deixar todos os R$5.000 na conta corrente comum a 0,01%.",
                     desc: "Mantém 100% do dinheiro líquido na conta corrente para tranquilidade emocional.",
                     qualityScore: 10,
                     impact: { netWorthDelta: 5000, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
                     lesson: "Dinheiro parado na conta corrente parece seguro, mas perde poder de compra silenciosamente todos os anos devido à inflação."
                 },
                 optionB: {
-                    title: "Colocar os $5.000 em uma Conta de Alto Rendimento / Fundo de Liquidez.",
+                    title: "Colocar os R$5.000 em uma Conta de Alto Rendimento / Fundo de Liquidez.",
                     desc: "Rende juros competitivos de curto prazo sem perder a liquidez.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 5250, cashFlowDelta: 20, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
                     lesson: "Contas de alto rendimento ou fundos de liquidez protegem suas reservas contra a inflação e geram renda passiva sem comprometer a liquidez imediata."
                 },
                 optionC: {
-                    title: "Investir 100% dos $5.000 em uma memecoin altamente especulativa.",
+                    title: "Investir 100% dos R$5.000 em uma memecoin altamente especulativa.",
                     desc: "Busca ganhos astronômicos rápidos com probabilidade extrema de perda.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -3000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
@@ -69,7 +69,7 @@
                 id: 2,
                 category: CATEGORIES.INVESTING,
                 title: "2. Casa na Praia: Comprar vs. Alugar vs. Ativos Produtivos",
-                description: "Você deseja passar os meses de verão perto do mar e juntou $60.000 para uma entrada ou investimento.",
+                description: "Você deseja passar os meses de verão perto do mar e juntou R$60.000 para uma entrada ou investimento.",
                 optionA: {
                     title: "Comprar a casa na praia com um financiamento alto e custos elevados de condomínio/manutenção.",
                     desc: "Compromete o fluxo de caixa mensal e concentra risco imobiliário em uma única região.",
@@ -78,14 +78,14 @@
                     lesson: "Imóveis de férias frequentemente são despesas de estilo de vida disfarçadas de investimentos. Manutenção e impostos consomem caixa."
                 },
                 optionB: {
-                    title: "Alugar uma casa na praia por 2-4 semanas no verão e investir os $60k em índices globais.",
+                    title: "Alugar uma casa na praia por 2-4 semanas no verão e investir os R$60k em índices globais.",
                     desc: "Desfruta o estilo de vida de forma flexível enquanto o capital multiplica em ativos líquidos.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
                     lesson: "Alugar ativos de luxo e possuir ativos produtivos geradores de renda maximiza a felicidade pessoal e a velocidade de multiplicação de capital."
                 },
                 optionC: {
-                    title: "Deixar os $60.000 parados na conta corrente sem rendimento por tempo indeterminado.",
+                    title: "Deixar os R$60.000 parados na conta corrente sem rendimento por tempo indeterminado.",
                     desc: "Mantém o capital sem investir por medo do mercado imobiliário ou de ações.",
                     qualityScore: 0,
                     impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
@@ -150,7 +150,7 @@
                 id: 5,
                 category: CATEGORIES.DEBT,
                 title: "5. Gestão de Dívidas: Financiamento vs. Renda Fixa",
-                description: "Você possui $20.000 em dinheiro e um financiamento imobiliário com taxa fixa baixa de 3,0% ao ano, enquanto títulos seguros rendem 5,2% ao ano.",
+                description: "Você possui R$20.000 em dinheiro e um financiamento imobiliário com taxa fixa baixa de 3,0% ao ano, enquanto títulos seguros rendem 5,2% ao ano.",
                 optionA: {
                     title: "Quitar antecipadamente o financiamento de 3% o mais rápido possível.",
                     desc: "Aplica liquidez em patrimônio imobilizado para eliminar a dívida de baixa taxa.",
@@ -159,7 +159,7 @@
                     lesson: "Amortizar dívidas baratas garante 3% de retorno. Traz alívio psicológico (+Felicidade), mas rende menos do que investimentos seguros com retorno maior."
                 },
                 optionB: {
-                    title: "Manter a dívida de 3% e investir os $20k em títulos/índices que rendem mais.",
+                    title: "Manter a dívida de 3% e investir os R$20k em títulos/índices que rendem mais.",
                     desc: "Aproveita o diferencial de juros (5,2% de rendimento vs. 3,0% de custo da dívida).",
                     qualityScore: 30,
                     impact: { netWorthDelta: 3500, cashFlowDelta: 40, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
@@ -177,9 +177,9 @@
                 id: 6,
                 category: CATEGORIES.SPENDING,
                 title: "6. Consumo Consciente e Alinhamento de Valores",
-                description: "Você recebeu um aumento de renda de $300 mensais. Como integra esse novo valor ao seu estilo de vida?",
+                description: "Você recebeu um aumento de renda de R$300 mensais. Como integra esse novo valor ao seu estilo de vida?",
                 optionA: {
-                    title: "Gasto com propósito: Alocar $150 para experiências/paixões e investir $150.",
+                    title: "Gasto com propósito: Alocar R$150 para experiências/paixões e investir R$150.",
                     desc: "Equilibra a satisfação presente com a multiplicação do capital futuro.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 2000, cashFlowDelta: 150, happinessDelta: 25, literacyDelta: 3.33, literacyDeltaText: "+3%" },
@@ -204,7 +204,7 @@
                 id: 7,
                 category: CATEGORIES.SPENDING,
                 title: "7. Pensando em 'Horas de Trabalho'",
-                description: "Você quer comprar um smartphone de última geração de $1.500. Seu ganho líquido por hora é de $25.",
+                description: "Você quer comprar um smartphone de última geração de R$1.500. Seu ganho líquido por hora é de R$25.",
                 optionA: {
                     title: "Calcular o custo em tempo (60 horas de trabalho) e manter seu aparelho funcional.",
                     desc: "Reconhece que a compra custa 1,5 semanas inteiras de trabalho.",
@@ -220,7 +220,7 @@
                     lesson: "Parcelamentos longos mascaram o custo real e reduzem sua margem de manobra financeira no futuro."
                 },
                 optionC: {
-                    title: "Comprar um modelo seminovo excelente por $400 e investir a diferença de $1.100.",
+                    title: "Comprar um modelo seminovo excelente por R$400 e investir a diferença de R$1.100.",
                     desc: "Atende perfeitamente à necessidade funcional economizando capital significativo.",
                     qualityScore: 25,
                     impact: { netWorthDelta: 1100, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 2.5, literacyDeltaText: "+2.5%" },
@@ -258,7 +258,7 @@
                 id: 9,
                 category: CATEGORIES.DEBT,
                 title: "9. Eliminando Dívidas Tóxicas de Cartão de Crédito",
-                description: "Você possui $4.000 em dívidas no cartão de crédito a 22% de juros ao ano e $4.000 guardados na poupança.",
+                description: "Você possui R$4.000 em dívidas no cartão de crédito a 22% de juros ao ano e R$4.000 guardados na poupança.",
                 optionA: {
                     title: "Usar a poupança para quitar a dívida do cartão de crédito imediatamente.",
                     desc: "Elimina um dreno financeiro severo e obtém um retorno garantido de 22%.",
@@ -267,7 +267,7 @@
                     lesson: "Pagar uma dívida de 22% equivale a um investimento sem risco e isento de impostos com retorno de 22% ao ano."
                 },
                 optionB: {
-                    title: "Pagar o mínimo mensal enquanto mantém os $4.000 aplicados em ações rendendo 8%.",
+                    title: "Pagar o mínimo mensal enquanto mantém os R$4.000 aplicados em ações rendendo 8%.",
                     desc: "Perde dinheiro matematicamente ao pagar 22% de juros para ganhar 8%.",
                     qualityScore: 5,
                     impact: { netWorthDelta: -2000, cashFlowDelta: -80, happinessDelta: -10, literacyDelta: -5.0, literacyDeltaText: "-5%" },
@@ -294,7 +294,7 @@
                     lesson: "Carros são ferramentas que desvalorizam. Manter custos com veículos sob controle libera capital para ativos reais."
                 },
                 optionB: {
-                    title: "Fazer leasing de um carro de luxo zero km por $600/mês.",
+                    title: "Fazer leasing de um carro de luxo zero km por R$600/mês.",
                     desc: "Paga a maior fase de desvalorização sem acumular patrimônio.",
                     qualityScore: 5,
                     impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
@@ -437,10 +437,10 @@
                 },
                 optionC: {
                     title: "Manter assinaturas esquecidas e pedir comida por aplicativo diariamente por impulso.",
-                    desc: "Drena centenas de dólares mensais em taxas de conveniência sem perceber.",
+                    desc: "Drena centenas de reais mensais em taxas de conveniência sem perceber.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
-                    lesson: "Pequenos vazamentos diários e assinaturas não utilizadas consomem em silêncio o equivalente a milhares de dólares por ano."
+                    lesson: "Pequenos vazamentos diários e assinaturas não utilizadas consomem em silêncio o equivalente a milhares de reais por ano."
                 }
             }
         ];
@@ -566,8 +566,8 @@
 
         // ATUALIZAR EXIBIÇÃO DAS MÉTRICAS
         function updateMetricsDisplay() {
-            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString('pt-BR')}`;
-            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mês`;
+            document.getElementById('netWorthDisplay').innerText = `R$${currentState.netWorth.toLocaleString('pt-BR')}`;
+            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}R$${currentState.cashFlow}/mês`;
             document.getElementById('powerDisplay').innerText = `${Math.round(currentState.happiness)}%`;
             document.getElementById('literacyDisplay').innerText = `${Math.round(currentState.literacyScore)}%`;
         }
@@ -584,10 +584,10 @@
             const impactsDiv = document.getElementById('debriefImpacts');
             impactsDiv.innerHTML = `
                 <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${option.impact.netWorthDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
-                    Patrimônio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString('pt-BR')}
+                    Patrimônio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}R$${option.impact.netWorthDelta.toLocaleString('pt-BR')}
                 </span>
                 <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${option.impact.cashFlowDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
-                    Fluxo de Caixa: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mês
+                    Fluxo de Caixa: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}R$${option.impact.cashFlowDelta}/mês
                 </span>
                 <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${hDelta >= 0 ? 'bg-sky-100 text-sky-800' : 'bg-rose-100 text-rose-800'}">
                     Felicidade: ${hDelta >= 0 ? '+' : ''}${hDelta}%
@@ -614,8 +614,8 @@
             document.getElementById('resultsScreen').classList.remove('hidden');
 
             // Preencher estatísticas finais
-            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString('pt-BR')}`;
-            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mês`;
+            document.getElementById('finalNetWorth').innerText = `R$${currentState.netWorth.toLocaleString('pt-BR')}`;
+            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}R$${currentState.cashFlow}/mês`;
             document.getElementById('finalPower').innerText = `${Math.round(currentState.happiness)}%`;
             document.getElementById('finalLiteracy').innerText = `${Math.round(currentState.literacyScore)}%`;
 
@@ -655,6 +655,57 @@
 
             // RENDERIZAR PLACAR
             loadLeaderboard();
+
+            updateResultCta(archetype);
+        }
+
+        /**
+         * Classifies the finished run for the result-aware panel.
+         *
+         * The archetype is the headline the visitor already has, and on its own
+         * it is not actionable: "The Wealth Apprentice" does not tell anybody
+         * which of fifteen decisions to look at. The weakest of the five
+         * categories does, and it is also what decides which of the two forms
+         * is the right one to ask for - the balance sheet for a run that leaked
+         * through debt or spending, the investment profile for one that leaked
+         * through allocation, tax or protection. That mapping lives next to the
+         * sentence that asks, in the copy file.
+         *
+         * categoryScores is keyed by the category's *translated* label, so the
+         * stable key has to be recovered from CATEGORIES rather than read off
+         * the score object; the label is then what gets quoted back, because
+         * that is the name the visitor has just seen in the breakdown above.
+         */
+        function updateResultCta(archetype) {
+            if (!window.SimCta) return;
+
+            const rows = Object.keys(CATEGORIES).map((key) => {
+                const score = categoryScores[CATEGORIES[key]] || { points: 0, max: 0 };
+                return {
+                    bucket: key.toLowerCase(),
+                    label: CATEGORIES[key],
+                    pct: score.max > 0 ? Math.round((score.points / score.max) * 100) : 0
+                };
+            });
+
+            const weakest = rows.reduce((low, row) => (row.pct < low.pct ? row : low));
+            const strongest = rows.reduce((high, row) => (row.pct > high.pct ? row : high));
+
+            // A run with no weak category is a different conversation: the
+            // knowledge is not the constraint, so pointing at a "weakest" area
+            // at 80% would be inventing a problem to sell against.
+            const bucket = weakest.pct >= 75 ? 'allStrong' : weakest.bucket;
+
+            window.SimCta.show(bucket, {
+                archetype,
+                score: Math.round(currentState.literacyScore),
+                weakest: weakest.label,
+                weakestPct: weakest.pct,
+                strongest: strongest.label,
+                strongestPct: strongest.pct,
+                netWorth: window.SimCta.money(currentState.netWorth),
+                cashFlow: window.SimCta.money(currentState.cashFlow)
+            });
         }
 
         // RENDERIZAR DETALHAMENTO POR CATEGORIA
@@ -722,7 +773,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Patrimônio Líquido ($)',
+                        label: 'Patrimônio Líquido (R$)',
                         data: trajectoryData,
                         borderColor: '#2e6f40',
                         backgroundColor: 'rgba(46, 111, 64, 0.1)',
@@ -741,7 +792,7 @@
                     scales: {
                         y: {
                             ticks: {
-                                callback: value => '$' + value.toLocaleString('pt-BR')
+                                callback: value => 'R$' + value.toLocaleString('pt-BR')
                             }
                         }
                     }
@@ -819,7 +870,7 @@
                     </div>
                     <div class="flex items-center gap-4 font-mono text-xs sm:text-sm">
                         <span class="text-amber-700 font-bold">IQ: ${entry.score}%</span>
-                        <span class="text-forest-800 font-bold">$${entry.tiebreak.toLocaleString('pt-BR')}</span>
+                        <span class="text-forest-800 font-bold">R$${entry.tiebreak.toLocaleString('pt-BR')}</span>
                     </div>
                 `;
                 container.appendChild(row);

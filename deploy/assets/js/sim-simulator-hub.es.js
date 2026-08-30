@@ -1,7 +1,7 @@
 // Resaltado de Números Clave y Términos Financieros
         function highlightNumbers(text) {
             if (!text) return '';
-            const pattern = /(\$\d+[\d,.]*k?|\d+([.,]\d+)?%|\d+\s*(horas|meses|años|semanas de trabajo)|24 meses|84 meses|6 meses|3x|AUM)/gi;
+            const pattern = /(€\d+[\d,.]*k?|\d+([.,]\d+)?%|\d+\s*(horas|meses|años|semanas de trabajo)|24 meses|84 meses|6 meses|3x|\bAUM\b)/gi;
             return text.replace(pattern, '<span class="font-bold text-espresso-950 bg-amber-200/90 px-1.5 py-0.5 rounded font-mono text-[0.88em] border border-amber-300/80">$1</span>');
         }
 
@@ -42,23 +42,23 @@
                 id: 1,
                 category: CATEGORIES.INVESTING,
                 title: "1. El Dilema del Dinero Estancado",
-                description: "Recibes un bono de trabajo de $5,000. No necesitas este dinero de inmediato. La tasa de inflación anual es de 3.5%. ¿Cómo asignas este capital?",
+                description: "Recibes un bono de trabajo de €5,000. No necesitas este dinero de inmediato. La tasa de inflación anual es de 3.5%. ¿Cómo asignas este capital?",
                 optionA: {
-                    title: "Dejar los $5,000 completos en la cuenta corriente común al 0.01%.",
+                    title: "Dejar los €5,000 completos en la cuenta corriente común al 0.01%.",
                     desc: "Mantiene el 100% del dinero líquido en la cuenta corriente para tranquilidad emocional.",
                     qualityScore: 10,
                     impact: { netWorthDelta: 5000, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
                     lesson: "El dinero estancado en la cuenta corriente parece seguro, pero pierde poder adquisitivo silenciosamente todos los años debido a la inflación."
                 },
                 optionB: {
-                    title: "Poner los $5,000 en una Cuenta de Alto Rendimiento / Fondo de Liquidez.",
+                    title: "Poner los €5,000 en una Cuenta de Alto Rendimiento / Fondo de Liquidez.",
                     desc: "Genera intereses competitivos a corto plazo sin perder la liquidez inmediata.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 5250, cashFlowDelta: 20, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
                     lesson: "Las cuentas de alto rendimiento o fondos de liquidez protegen tus reservas contra la inflación y generan ingresos pasivos sin comprometer la liquidez."
                 },
                 optionC: {
-                    title: "Invertir el 100% de los $5,000 en una memecoin altamente especulativa.",
+                    title: "Invertir el 100% de los €5,000 en una memecoin altamente especulativa.",
                     desc: "Busca ganancias astronómicas rápidas con probabilidad extrema de pérdida.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -3000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
@@ -69,7 +69,7 @@
                 id: 2,
                 category: CATEGORIES.INVESTING,
                 title: "2. Casa en la Playa: Comprar vs. Alquilar vs. Activos Productivos",
-                description: "Deseas pasar los meses de verano cerca del mar y has juntado $60,000 para una entrada o inversión.",
+                description: "Deseas pasar los meses de verano cerca del mar y has juntado €60,000 para una entrada o inversión.",
                 optionA: {
                     title: "Comprar la casa en la playa con una hipoteca elevada y altos costos de mantenimiento.",
                     desc: "Compromete el flujo de caja mensual y concentra riesgo inmobiliario en una sola región.",
@@ -78,14 +78,14 @@
                     lesson: "Las casas de vacaciones frecuentemente son gastos de estilo de vida disfrazados de inversiones. Mantenimiento e impuestos consumen caja."
                 },
                 optionB: {
-                    title: "Alquilar una casa en la playa por 2-4 semanas en verano e invertir los $60k en índices globales.",
+                    title: "Alquilar una casa en la playa por 2-4 semanas en verano e invertir los €60k en índices globales.",
                     desc: "Disfruta el estilo de vida de forma flexible mientras el capital se multiplica en activos líquidos.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
                     lesson: "Alquilar bienes de lujo y poseer activos productivos generadores de renta maximiza la felicidad personal y la velocidad de acumulación."
                 },
                 optionC: {
-                    title: "Dejar los $60,000 paralizados en la cuenta corriente sin rendimiento por tiempo indefinido.",
+                    title: "Dejar los €60,000 paralizados en la cuenta corriente sin rendimiento por tiempo indefinido.",
                     desc: "Mantiene el capital sin invertir por temor al mercado inmobiliario o de acciones.",
                     qualityScore: 0,
                     impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
@@ -150,7 +150,7 @@
                 id: 5,
                 category: CATEGORIES.DEBT,
                 title: "5. Gestión de Deudas: Hipoteca vs. Renta Fija",
-                description: "Tienes $20,000 en efectivo y una hipoteca con tasa fija baja del 3.0% anual, mientras que bonos seguros rinden el 5.2% anual.",
+                description: "Tienes €20,000 en efectivo y una hipoteca con tasa fija baja del 3.0% anual, mientras que bonos seguros rinden el 5.2% anual.",
                 optionA: {
                     title: "Liquidar de forma anticipada la hipoteca del 3% lo antes posible.",
                     desc: "Aplica liquidez en patrimonio inmovilizado para eliminar la deuda a baja tasa.",
@@ -159,7 +159,7 @@
                     lesson: "Amortizar deuda barata garantiza un 3% de retorno. Brinda alivio psicológico (+Felicidad), pero rinde menos que inversiones seguras con mayor tasa."
                 },
                 optionB: {
-                    title: "Mantener la deuda al 3% e invertir los $20k en bonos/índices que rinden más.",
+                    title: "Mantener la deuda al 3% e invertir los €20k en bonos/índices que rinden más.",
                     desc: "Aprovecha el diferencial de tasas (5.2% de rendimiento vs. 3.0% de costo de la deuda).",
                     qualityScore: 30,
                     impact: { netWorthDelta: 3500, cashFlowDelta: 40, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
@@ -177,9 +177,9 @@
                 id: 6,
                 category: CATEGORIES.SPENDING,
                 title: "6. Consumo Consciente y Alineación de Valores",
-                description: "Has recibido un aumento salarial de $300 mensuales. ¿Cómo integras este nuevo monto a tu estilo de vida?",
+                description: "Has recibido un aumento salarial de €300 mensuales. ¿Cómo integras este nuevo monto a tu estilo de vida?",
                 optionA: {
-                    title: "Gasto con propósito: Asignar $150 a experiencias/pasiones e invertir $150.",
+                    title: "Gasto con propósito: Asignar €150 a experiencias/pasiones e invertir €150.",
                     desc: "Equilibra la satisfacción presente con el crecimiento del capital futuro.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 2000, cashFlowDelta: 150, happinessDelta: 25, literacyDelta: 3.33, literacyDeltaText: "+3%" },
@@ -204,7 +204,7 @@
                 id: 7,
                 category: CATEGORIES.SPENDING,
                 title: "7. Pensando en 'Horas de Trabajo'",
-                description: "Quieres comprar un teléfono inteligente de última generación de $1,500. Tu ingreso neto por hora es de $25.",
+                description: "Quieres comprar un teléfono inteligente de última generación de €1,500. Tu ingreso neto por hora es de €25.",
                 optionA: {
                     title: "Calcular el costo en tiempo (60 horas de trabajo) y conservar tu equipo actual funcional.",
                     desc: "Reconoce que la compra equivale a 1.5 semanas completas de trabajo.",
@@ -220,7 +220,7 @@
                     lesson: "Los financiamientos a largo plazo enmascaran el costo real y restan flexibilidad a tus finanzas futuras."
                 },
                 optionC: {
-                    title: "Comprar un modelo reacondicionado excelente por $400 e invertir la diferencia de $1,100.",
+                    title: "Comprar un modelo reacondicionado excelente por €400 e invertir la diferencia de €1,100.",
                     desc: "Satisface perfectamente la necesidad funcional ahorrando un capital significativo.",
                     qualityScore: 25,
                     impact: { netWorthDelta: 1100, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 2.5, literacyDeltaText: "+2.5%" },
@@ -258,7 +258,7 @@
                 id: 9,
                 category: CATEGORIES.DEBT,
                 title: "9. Eliminando Deudas Tóxicas de Tarjeta de Crédito",
-                description: "Tienes $4,000 en deudas de tarjeta de crédito al 22% de interés anual y $4,000 guardados en ahorros.",
+                description: "Tienes €4,000 en deudas de tarjeta de crédito al 22% de interés anual y €4,000 guardados en ahorros.",
                 optionA: {
                     title: "Usar los ahorros para pagar la tarjeta de crédito de inmediato.",
                     desc: "Elimina una fuga financiera severa y obtiene un retorno garantizado del 22%.",
@@ -267,7 +267,7 @@
                     lesson: "Pagar una deuda del 22% equivale a una inversión sin riesgo y libre de impuestos con un retorno del 22% anual."
                 },
                 optionB: {
-                    title: "Pagar el mínimo mensual mientras mantienes los $4,000 invertidos en acciones rindiendo el 8%.",
+                    title: "Pagar el mínimo mensual mientras mantienes los €4,000 invertidos en acciones rindiendo el 8%.",
                     desc: "Pierde dinero matemáticamente al pagar el 22% para ganar solo el 8%.",
                     qualityScore: 5,
                     impact: { netWorthDelta: -2000, cashFlowDelta: -80, happinessDelta: -10, literacyDelta: -5.0, literacyDeltaText: "-5%" },
@@ -294,7 +294,7 @@
                     lesson: "Los autos son herramientas que se deprecian. Mantener los costos de transporte bajo control libera capital para activos reales."
                 },
                 optionB: {
-                    title: "Hacer un leasing de un auto de lujo 0 km por $600/mes.",
+                    title: "Hacer un leasing de un auto de lujo 0 km por €600/mes.",
                     desc: "Paga la fase más pronunciada de depreciación sin acumular patrimonio.",
                     qualityScore: 5,
                     impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
@@ -437,10 +437,10 @@
                 },
                 optionC: {
                     title: "Mantener suscripciones olvidadas y pedir comida por aplicación diariamente por impulso.",
-                    desc: "Drena cientos de dólares mensuales en costos innecesarios sin darte cuenta.",
+                    desc: "Drena cientos de euros mensuales en costos innecesarios sin darte cuenta.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
-                    lesson: "Los pequeños goteos diarios y suscripciones no utilizadas consumen en silencio el equivalente a miles de dólares anuales."
+                    lesson: "Los pequeños goteos diarios y suscripciones no utilizadas consumen en silencio el equivalente a miles de euros anuales."
                 }
             }
         ];
@@ -566,8 +566,8 @@
 
         // ACTUALIZAR PANTALLA DE MÉTRICAS
         function updateMetricsDisplay() {
-            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString('es-ES')}`;
-            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mes`;
+            document.getElementById('netWorthDisplay').innerText = `€${currentState.netWorth.toLocaleString('es-ES')}`;
+            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}€${currentState.cashFlow}/mes`;
             document.getElementById('powerDisplay').innerText = `${Math.round(currentState.happiness)}%`;
             document.getElementById('literacyDisplay').innerText = `${Math.round(currentState.literacyScore)}%`;
         }
@@ -584,10 +584,10 @@
             const impactsDiv = document.getElementById('debriefImpacts');
             impactsDiv.innerHTML = `
                 <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${option.impact.netWorthDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
-                    Patrimonio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString('es-ES')}
+                    Patrimonio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}€${option.impact.netWorthDelta.toLocaleString('es-ES')}
                 </span>
                 <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${option.impact.cashFlowDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
-                    Flujo de Caja: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mes
+                    Flujo de Caja: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}€${option.impact.cashFlowDelta}/mes
                 </span>
                 <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${hDelta >= 0 ? 'bg-sky-100 text-sky-800' : 'bg-rose-100 text-rose-800'}">
                     Felicidad: ${hDelta >= 0 ? '+' : ''}${hDelta}%
@@ -614,8 +614,8 @@
             document.getElementById('resultsScreen').classList.remove('hidden');
 
             // Llenar estadísticas finales
-            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString('es-ES')}`;
-            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mes`;
+            document.getElementById('finalNetWorth').innerText = `€${currentState.netWorth.toLocaleString('es-ES')}`;
+            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}€${currentState.cashFlow}/mes`;
             document.getElementById('finalPower').innerText = `${Math.round(currentState.happiness)}%`;
             document.getElementById('finalLiteracy').innerText = `${Math.round(currentState.literacyScore)}%`;
 
@@ -655,6 +655,57 @@
 
             // RENDERIZAR TABLA DE CLASIFICACIÓN
             loadLeaderboard();
+
+            updateResultCta(archetype);
+        }
+
+        /**
+         * Classifies the finished run for the result-aware panel.
+         *
+         * The archetype is the headline the visitor already has, and on its own
+         * it is not actionable: "The Wealth Apprentice" does not tell anybody
+         * which of fifteen decisions to look at. The weakest of the five
+         * categories does, and it is also what decides which of the two forms
+         * is the right one to ask for - the balance sheet for a run that leaked
+         * through debt or spending, the investment profile for one that leaked
+         * through allocation, tax or protection. That mapping lives next to the
+         * sentence that asks, in the copy file.
+         *
+         * categoryScores is keyed by the category's *translated* label, so the
+         * stable key has to be recovered from CATEGORIES rather than read off
+         * the score object; the label is then what gets quoted back, because
+         * that is the name the visitor has just seen in the breakdown above.
+         */
+        function updateResultCta(archetype) {
+            if (!window.SimCta) return;
+
+            const rows = Object.keys(CATEGORIES).map((key) => {
+                const score = categoryScores[CATEGORIES[key]] || { points: 0, max: 0 };
+                return {
+                    bucket: key.toLowerCase(),
+                    label: CATEGORIES[key],
+                    pct: score.max > 0 ? Math.round((score.points / score.max) * 100) : 0
+                };
+            });
+
+            const weakest = rows.reduce((low, row) => (row.pct < low.pct ? row : low));
+            const strongest = rows.reduce((high, row) => (row.pct > high.pct ? row : high));
+
+            // A run with no weak category is a different conversation: the
+            // knowledge is not the constraint, so pointing at a "weakest" area
+            // at 80% would be inventing a problem to sell against.
+            const bucket = weakest.pct >= 75 ? 'allStrong' : weakest.bucket;
+
+            window.SimCta.show(bucket, {
+                archetype,
+                score: Math.round(currentState.literacyScore),
+                weakest: weakest.label,
+                weakestPct: weakest.pct,
+                strongest: strongest.label,
+                strongestPct: strongest.pct,
+                netWorth: window.SimCta.money(currentState.netWorth),
+                cashFlow: window.SimCta.money(currentState.cashFlow)
+            });
         }
 
         // RENDERIZAR DETALLE POR CATEGORÍA
@@ -722,7 +773,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Patrimonio Neto ($)',
+                        label: 'Patrimonio Neto (€)',
                         data: trajectoryData,
                         borderColor: '#2e6f40',
                         backgroundColor: 'rgba(46, 111, 64, 0.1)',
@@ -741,7 +792,7 @@
                     scales: {
                         y: {
                             ticks: {
-                                callback: value => '$' + value.toLocaleString('es-ES')
+                                callback: value => '€' + value.toLocaleString('es-ES')
                             }
                         }
                     }
@@ -820,7 +871,7 @@
                     </div>
                     <div class="flex items-center gap-4 font-mono text-xs sm:text-sm">
                         <span class="text-amber-700 font-bold">IQ: ${entry.score}%</span>
-                        <span class="text-forest-800 font-bold">$${entry.tiebreak.toLocaleString('es-ES')}</span>
+                        <span class="text-forest-800 font-bold">€${entry.tiebreak.toLocaleString('es-ES')}</span>
                     </div>
                 `;
                 container.appendChild(row);

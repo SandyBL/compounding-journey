@@ -278,7 +278,7 @@
                         <div class="space-y-1">
                             <label for="initialCapitalInput" class="text-espresso-800 font-semibold block">{{textEspresso800}}</label>
                             <div class="relative w-full">
-                                <span class="absolute left-2.5 top-1.5 text-espresso-800 font-mono font-bold">$</span>
+                                <span class="absolute left-2.5 top-1.5 text-espresso-800 font-mono font-bold">{{lang.currency}}</span>
                                 <input type="number" id="initialCapitalInput" value="100000" step="10000" min="1000" data-onchange="recalculateSimulation()" class="w-full pl-6 pr-2 py-1 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950 focus:ring-1 focus:ring-forest-800">
                             </div>
                         </div>
@@ -1109,7 +1109,7 @@
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return ` ${context.dataset.label}: $${context.raw.toLocaleString()}`;
+                                    return ` ${context.dataset.label}: {{lang.currency}}${context.raw.toLocaleString()}`;
                                 }
                             }
                         }
@@ -1118,10 +1118,10 @@
                         y: {
                             ticks: {
                                 callback: function(val) {
-                                    if (val >= 1e9) return '$' + (val / 1e9).toFixed(1) + 'B';
-                                    if (val >= 1e6) return '$' + (val / 1e6).toFixed(1) + 'M';
-                                    if (val >= 1e3) return '$' + (val / 1e3).toFixed(0) + 'k';
-                                    return '$' + val;
+                                    if (val >= 1e9) return '{{lang.currency}}' + (val / 1e9).toFixed(1) + 'B';
+                                    if (val >= 1e6) return '{{lang.currency}}' + (val / 1e6).toFixed(1) + 'M';
+                                    if (val >= 1e3) return '{{lang.currency}}' + (val / 1e3).toFixed(0) + 'k';
+                                    return '{{lang.currency}}' + val;
                                 },
                                 font: { size: 10, family: 'Inter' }
                             },
@@ -1154,27 +1154,27 @@
             const calcCagr = (val) => yearsCount > 0 ? ((Math.pow(val / state.initialCapital, 1 / yearsCount) - 1) * 100).toFixed(1) : '0.0';
 
             // 1. Custom Stat
-            document.getElementById('statCustomVal').innerText = `$${latestCustom.val.toLocaleString()}`;
+            document.getElementById('statCustomVal').innerText = `{{lang.currency}}${latestCustom.val.toLocaleString()}`;
             document.getElementById('statCustomCagr').innerText = `CAGR: ${calcCagr(latestCustom.val)}%`;
 
             // 2. Classic Stat
-            document.getElementById('statClassicVal').innerText = `$${latestClassic.val.toLocaleString()}`;
+            document.getElementById('statClassicVal').innerText = `{{lang.currency}}${latestClassic.val.toLocaleString()}`;
             document.getElementById('statClassicCagr').innerText = `CAGR: ${calcCagr(latestClassic.val)}%`;
 
             // 3. All-Weather Stat
-            document.getElementById('statWeatherVal').innerText = `$${latestWeather.val.toLocaleString()}`;
+            document.getElementById('statWeatherVal').innerText = `{{lang.currency}}${latestWeather.val.toLocaleString()}`;
             document.getElementById('statWeatherCagr').innerText = `CAGR: ${calcCagr(latestWeather.val)}%`;
 
             // 4. Permanent Stat
-            document.getElementById('statPermanentVal').innerText = `$${latestPermanent.val.toLocaleString()}`;
+            document.getElementById('statPermanentVal').innerText = `{{lang.currency}}${latestPermanent.val.toLocaleString()}`;
             document.getElementById('statPermanentCagr').innerText = `CAGR: ${calcCagr(latestPermanent.val)}%`;
 
             // 5. Aggressive Stat
-            document.getElementById('statAggressiveVal').innerText = `$${latestAggressive.val.toLocaleString()}`;
+            document.getElementById('statAggressiveVal').innerText = `{{lang.currency}}${latestAggressive.val.toLocaleString()}`;
             document.getElementById('statAggressiveCagr').innerText = `CAGR: ${calcCagr(latestAggressive.val)}%`;
 
             // 6. Conservative Stat
-            document.getElementById('statConservativeVal').innerText = `$${latestConservative.val.toLocaleString()}`;
+            document.getElementById('statConservativeVal').innerText = `{{lang.currency}}${latestConservative.val.toLocaleString()}`;
             document.getElementById('statConservativeCagr').innerText = `CAGR: ${calcCagr(latestConservative.val)}%`;
 
             updateResultCta({

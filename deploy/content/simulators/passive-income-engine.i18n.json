@@ -22,7 +22,7 @@
   "hFull2": {
     "en": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Passive Income Engine\",\"url\":\"https://compoundingjourney.com/en/simulators/passive-income-engine.html\",\"description\":\"An interactive simulator for building income-producing assets and tracking passive cash flow over time.\",\"inLanguage\":\"en\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Any web browser\",\"browserRequirements\":\"Requires JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
     "es": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Motor de Ingresos Pasivos\",\"url\":\"https://compoundingjourney.com/es/simulators/passive-income-engine.html\",\"description\":\"Un simulador interactivo para construir activos productivos y seguir los ingresos pasivos a lo largo del tiempo.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
-    "pt": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Motor de Rendimento Passivo\",\"url\":\"https://compoundingjourney.com/pt/simulators/passive-income-engine.html\",\"description\":\"Um simulador interativo para construir ativos produtivos e acompanhar o rendimento passivo ao longo do tempo.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
+    "pt": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Motor de Rendimento Passivo\",\"url\":\"https://compoundingjourney.com/pt/simulators/passive-income-engine.html\",\"description\":\"Um simulador interativo para construir ativos produtivos e acompanhar o rendimento passivo ao longo do tempo.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"BRL\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
   },
   "skipLink": {
     "en": "Skip to main content",
@@ -116,8 +116,8 @@
   },
   "cashdisplay": {
     "en": "$10,000",
-    "es": "$10,000",
-    "pt": "$10.000"
+    "es": "€10,000",
+    "pt": "R$10.000"
   },
   "block": {
     "en": "Capital for assets",
@@ -131,8 +131,8 @@
   },
   "activedisplay": {
     "en": "$3,200/mo",
-    "es": "$3,200/mes",
-    "pt": "$3.200/mês"
+    "es": "€3,200/mes",
+    "pt": "R$3.200/mês"
   },
   "block2": {
     "en": "Household labor income",
@@ -146,8 +146,8 @@
   },
   "passivedisplay": {
     "en": "+$0/mo",
-    "es": "+$0/mes",
-    "pt": "+$0/mês"
+    "es": "+€0/mes",
+    "pt": "+R$0/mês"
   },
   "block3": {
     "en": "Cash flow from assets",
@@ -161,8 +161,8 @@
   },
   "expensesdisplay": {
     "en": "$2,670/mo",
-    "es": "$2,670/mes",
-    "pt": "$2.670/mês"
+    "es": "€2,670/mes",
+    "pt": "R$2.670/mês"
   },
   "block4": {
     "en": "Baseline lifestyle cost",
@@ -206,8 +206,8 @@
   },
   "projectedmonthlysavings": {
     "en": "+$530/mo",
-    "es": "+$530/mes",
-    "pt": "+$530/mês"
+    "es": "+€530/mes",
+    "pt": "+R$530/mês"
   },
   "textXs2": {
     "en": " net surplus added to cash balance every year.\n",
@@ -276,23 +276,23 @@
   },
   "housingselect": {
     "en": "Modest Shared ($800)",
-    "es": "Modesta Compartida ($800)",
-    "pt": "Modesta Div. ($800)"
+    "es": "Modesta Compartida (€800)",
+    "pt": "Modesta Div. (R$800)"
   },
   "housingselect2": {
     "en": "Standard Apt ($1,200)",
-    "es": "Apto. Estándar ($1,200)",
-    "pt": "Ap. Padrão ($1.200)"
+    "es": "Apto. Estándar (€1,200)",
+    "pt": "Ap. Padrão (R$1.200)"
   },
   "housingselect3": {
     "en": "Luxury Penthouse ($2,200)",
-    "es": "Penthouse Lujo ($2,200)",
-    "pt": "Cobertura Luxo ($2.200)"
+    "es": "Penthouse Lujo (€2,200)",
+    "pt": "Cobertura Luxo (R$2.200)"
   },
   "housingcostbadge": {
     "en": "$1,200/mo",
-    "es": "$1,200/mes",
-    "pt": "$1.200/mês"
+    "es": "€1,200/mes",
+    "pt": "R$1.200/mês"
   },
   "grid2": {
     "en": "                        <!-- Transport Option -->\n",
@@ -306,23 +306,23 @@
   },
   "transportselect": {
     "en": "Public Transit ($100)",
-    "es": "Tránsito Público ($100)",
-    "pt": "Transp. Público ($100)"
+    "es": "Tránsito Público (€100)",
+    "pt": "Transp. Público (R$100)"
   },
   "transportselect2": {
     "en": "Reliable Used ($300)",
-    "es": "Usado Confiable ($300)",
-    "pt": "Usado Confiável ($300)"
+    "es": "Usado Confiable (€300)",
+    "pt": "Usado Confiável (R$300)"
   },
   "transportselect3": {
     "en": "Luxury SUV Lease ($800)",
-    "es": "SUV Lujo Arriendo ($800)",
-    "pt": "SUV de Luxo ($800)"
+    "es": "SUV Lujo Arriendo (€800)",
+    "pt": "SUV de Luxo (R$800)"
   },
   "transportcostbadge": {
     "en": "$300/mo",
-    "es": "$300/mes",
-    "pt": "$300/mês"
+    "es": "€300/mes",
+    "pt": "R$300/mês"
   },
   "grid3": {
     "en": "                        <!-- Dining & Lifestyle -->\n",
@@ -336,23 +336,23 @@
   },
   "lifestyleselect": {
     "en": "Frugal / Home ($300)",
-    "es": "Frugal / En Casa ($300)",
-    "pt": "Frugal / Em Casa ($300)"
+    "es": "Frugal / En Casa (€300)",
+    "pt": "Frugal / Em Casa (R$300)"
   },
   "lifestyleselect2": {
     "en": "Balanced Dining ($500)",
-    "es": "Restaurantes / Bal. ($500)",
-    "pt": "Restaurantes / Eq. ($500)"
+    "es": "Restaurantes / Bal. (€500)",
+    "pt": "Restaurantes / Eq. (R$500)"
   },
   "lifestyleselect3": {
     "en": "Lavish Fine Dining ($1,100)",
-    "es": "Cenas Elegantes ($1,100)",
-    "pt": "Jantares Finos ($1.100)"
+    "es": "Cenas Elegantes (€1,100)",
+    "pt": "Jantares Finos (R$1.100)"
   },
   "lifestylecostbadge": {
     "en": "$500/mo",
-    "es": "$500/mes",
-    "pt": "$500/mês"
+    "es": "€500/mes",
+    "pt": "R$500/mês"
   },
   "grid4": {
     "en": "                        <!-- Subscriptions & Tech -->\n",
@@ -366,23 +366,23 @@
   },
   "subscriptionsselect": {
     "en": "Minimal & Free ($30)",
-    "es": "Mínimo y Gratis ($30)",
-    "pt": "Mínimo e Grátis ($30)"
+    "es": "Mínimo y Gratis (€30)",
+    "pt": "Mínimo e Grátis (R$30)"
   },
   "subscriptionsselect2": {
     "en": "Standard Subs ($120)",
-    "es": "Subs Estándar ($120)",
-    "pt": "Assinaturas Padrão ($120)"
+    "es": "Subs Estándar (€120)",
+    "pt": "Assinaturas Padrão (R$120)"
   },
   "subscriptionsselect3": {
     "en": "Premium Tech ($350)",
-    "es": "Tech Premium ($350)",
-    "pt": "Tech Premium ($350)"
+    "es": "Tech Premium (€350)",
+    "pt": "Tech Premium (R$350)"
   },
   "subscriptionscostbadge": {
     "en": "$120/mo",
-    "es": "$120/mes",
-    "pt": "$120/mês"
+    "es": "€120/mes",
+    "pt": "R$120/mês"
   },
   "grid5": {
     "en": "                        <!-- Travel & Vacations -->\n",
@@ -396,18 +396,18 @@
   },
   "travelselect": {
     "en": "Staycations ($100)",
-    "es": "Locales ($100)",
-    "pt": "Passeios Locais ($100)"
+    "es": "Locales (€100)",
+    "pt": "Passeios Locais (R$100)"
   },
   "travelselect2": {
     "en": "Annual Trip ($300)",
-    "es": "Viaje Anual ($300)",
-    "pt": "Viagem Anual ($300)"
+    "es": "Viaje Anual (€300)",
+    "pt": "Viagem Anual (R$300)"
   },
   "travelselect3": {
     "en": "Luxury Travel ($750)",
-    "es": "Viajes Lujo ($750)",
-    "pt": "Viagens de Luxo ($750)"
+    "es": "Viajes Lujo (€750)",
+    "pt": "Viagens de Luxo (R$750)"
   },
   "grid6": {
     "en": "                        <!-- Shopping & Apparel -->\n",
@@ -421,23 +421,23 @@
   },
   "shoppingselect": {
     "en": "Thrift / Minimal ($100)",
-    "es": "Segunda Mano ($100)",
-    "pt": "Brechó / Mínimo ($100)"
+    "es": "Segunda Mano (€100)",
+    "pt": "Brechó / Mínimo (R$100)"
   },
   "shoppingselect2": {
     "en": "Standard Wardrobe ($250)",
-    "es": "Ropa Estándar ($250)",
-    "pt": "Vestuário Padrão ($250)"
+    "es": "Ropa Estándar (€250)",
+    "pt": "Vestuário Padrão (R$250)"
   },
   "shoppingselect3": {
     "en": "Designer Apparel ($650)",
-    "es": "Diseñador ($650)",
-    "pt": "Roupas de Grife ($650)"
+    "es": "Diseñador (€650)",
+    "pt": "Roupas de Grife (R$650)"
   },
   "shoppingcostbadge": {
     "en": "$250/mo",
-    "es": "$250/mes",
-    "pt": "$250/mês"
+    "es": "€250/mes",
+    "pt": "R$250/mês"
   },
   "textXs5": {
     "en": "                                Crossover Point Race\n",
@@ -466,8 +466,8 @@
   },
   "barpassiveval": {
     "en": "$0/mo",
-    "es": "$0/mes",
-    "pt": "$0/mês"
+    "es": "€0/mes",
+    "pt": "R$0/mês"
   },
   "crossovergapnotice": {
     "en": "                            Gap: ",
@@ -741,88 +741,88 @@
   },
   "fontSans6": {
     "en": "                eventLogs.push(`💸 <strong>Inflation Creep (+4%):</strong> Macro inflation increased general household living expenses by <strong>+$${expDiff.toLocaleString()}/mo</strong> (New Monthly Expenses: $${newExpenses.toLocaleString()}/mo).`);\n",
-    "es": "                eventLogs.push(`💸 <strong>Inflación Progresiva (+4%):</strong> La inflación macroeconómica aumentó los gastos del hogar en <strong>+$${expDiff.toLocaleString()}/mes</strong> (Nuevos Gastos: $${newExpenses.toLocaleString()}/mes).`);\n",
-    "pt": "                eventLogs.push(`💸 <strong>Inflação Progressiva (+4%):</strong> A inflação macroeconômica aumentou as despesas da família em <strong>+$${expDiff.toLocaleString()}/mês</strong> (Novas Despesas: $${newExpenses.toLocaleString()}/mês).`);\n"
+    "es": "                eventLogs.push(`💸 <strong>Inflación Progresiva (+4%):</strong> La inflación macroeconómica aumentó los gastos del hogar en <strong>+€${expDiff.toLocaleString()}/mes</strong> (Nuevos Gastos: €${newExpenses.toLocaleString()}/mes).`);\n",
+    "pt": "                eventLogs.push(`💸 <strong>Inflação Progressiva (+4%):</strong> A inflação macroeconômica aumentou as despesas da família em <strong>+R$${expDiff.toLocaleString()}/mês</strong> (Novas Despesas: R$${newExpenses.toLocaleString()}/mês).`);\n"
   },
   "fontSans7": {
     "en": "                    eventLogs.push(`🌟 <strong>High Life Joy Boost!</strong> Your high well-being and positive energy at work earned you an annual Performance Bonus of <strong>+$${bonus.toLocaleString()}</strong> added to Available Cash!`);\n",
-    "es": "                    eventLogs.push(`🌟 <strong>¡Impulso por Alta Alegría de Vivir!</strong> Tu alto bienestar y buena energía en el trabajo te valieron un Bono de Rendimiento de <strong>+$${bonus.toLocaleString()}</strong> al Efectivo Disponible.`);\n",
-    "pt": "                    eventLogs.push(`🌟 <strong>Bônus de Alta Alegria de Viver!</strong> Sua ótima energia e bem-estar no trabalho renderam um Bônus de Desempenho de <strong>+$${bonus.toLocaleString()}</strong> no Saldo de Caixa.`);\n"
+    "es": "                    eventLogs.push(`🌟 <strong>¡Impulso por Alta Alegría de Vivir!</strong> Tu alto bienestar y buena energía en el trabajo te valieron un Bono de Rendimiento de <strong>+€${bonus.toLocaleString()}</strong> al Efectivo Disponible.`);\n",
+    "pt": "                    eventLogs.push(`🌟 <strong>Bônus de Alta Alegria de Viver!</strong> Sua ótima energia e bem-estar no trabalho renderam um Bônus de Desempenho de <strong>+R$${bonus.toLocaleString()}</strong> no Saldo de Caixa.`);\n"
   },
   "fontSans8": {
     "en": "                    eventLogs.push(`😫 <strong>Frugality Burnout:</strong> Severe lifestyle deprivation caused exhaustion. Spent <strong>-$${burnoutCost.toLocaleString()}</strong> on health, wellness & stress recovery.`);\n",
-    "es": "                    eventLogs.push(`😫 <strong>Agotamiento por Frugalidad:</strong> La privación excesiva generó estrés acumulado. Gastaste <strong>-$${burnoutCost.toLocaleString()}</strong> en salud, terapias y descanso.`);\n",
-    "pt": "                    eventLogs.push(`😫 <strong>Esgotamento por Frugalidade Extrema:</strong> O estresse acumulado exigiu gastos de <strong>-$${burnoutCost.toLocaleString()}</strong> em saúde e descanso.`);\n"
+    "es": "                    eventLogs.push(`😫 <strong>Agotamiento por Frugalidad:</strong> La privación excesiva generó estrés acumulado. Gastaste <strong>-€${burnoutCost.toLocaleString()}</strong> en salud, terapias y descanso.`);\n",
+    "pt": "                    eventLogs.push(`😫 <strong>Esgotamento por Frugalidade Extrema:</strong> O estresse acumulado exigiu gastos de <strong>-R$${burnoutCost.toLocaleString()}</strong> em saúde e descanso.`);\n"
   },
   "fontSans9": {
     "en": "                    eventLogs.push(`🍼 <strong>Life Event: Baby Born!</strong> Added <strong>+$500/mo</strong> living expense for nursery, diapers & childcare.`);\n",
-    "es": "                    eventLogs.push(`🍼 <strong>Evento de Vida: ¡Nació un Bebé!</strong> Se añadieron <strong>+$500/mes</strong> en gastos por guardería, pañales y cuidado infantil.`);\n",
-    "pt": "                    eventLogs.push(`🍼 <strong>Evento de Vida: Nascimento de um Bebê!</strong> Adicionados <strong>+$500/mês</strong> em custos de fraldas, berçário e cuidados.`);\n"
+    "es": "                    eventLogs.push(`🍼 <strong>Evento de Vida: ¡Nació un Bebé!</strong> Se añadieron <strong>+€500/mes</strong> en gastos por guardería, pañales y cuidado infantil.`);\n",
+    "pt": "                    eventLogs.push(`🍼 <strong>Evento de Vida: Nascimento de um Bebê!</strong> Adicionados <strong>+R$500/mês</strong> em custos de fraldas, berçário e cuidados.`);\n"
   },
   "fontSans10": {
     "en": "                    eventLogs.push(`🎓 <strong>Empty Nest!</strong> Child turned 18 and moved out to college. Childcare expenses decreased by <strong>-$1,000/mo</strong>!`);\n",
-    "es": "                    eventLogs.push(`🎓 <strong>¡Nido Vacío!</strong> Tu hijo cumplió 18 años y se mudó a la universidad. ¡Los gastos cayeron <strong>-$1,000/mes</strong>!`);\n",
-    "pt": "                    eventLogs.push(`🎓 <strong>Ninho Vazio!</strong> Seu filho completou 18 anos e foi para a faculdade. As despesas caíram em <strong>-$1.000/mês</strong>!`);\n"
+    "es": "                    eventLogs.push(`🎓 <strong>¡Nido Vacío!</strong> Tu hijo cumplió 18 años y se mudó a la universidad. ¡Los gastos cayeron <strong>-€1,000/mes</strong>!`);\n",
+    "pt": "                    eventLogs.push(`🎓 <strong>Ninho Vazio!</strong> Seu filho completou 18 anos e foi para a faculdade. As despesas caíram em <strong>-R$1.000/mês</strong>!`);\n"
   },
   "fontSans11": {
     "en": "                    eventLogs.push(`🎒 <strong>School Age Upgrade:</strong> Child entered primary school! Expenses increased by <strong>+$250/mo</strong> (+$750/mo total child budget) for gear, activities & tuition.`);\n",
-    "es": "                    eventLogs.push(`🎒 <strong>Etapa Escolar:</strong> Tu hijo ingresó a la escuela primaria. Los gastos aumentaron <strong>+$250/mes</strong> (+$750/mes presupuesto total hijo) en útiles y deportes.`);\n",
-    "pt": "                    eventLogs.push(`🎒 <strong>Fase Escolar:</strong> Seu filho entrou no ensino fundamental. Custos aumentaram em <strong>+$250/mês</strong> (+$750/mês total do filho) em material e esportes.`);\n"
+    "es": "                    eventLogs.push(`🎒 <strong>Etapa Escolar:</strong> Tu hijo ingresó a la escuela primaria. Los gastos aumentaron <strong>+€250/mes</strong> (+€750/mes presupuesto total hijo) en útiles y deportes.`);\n",
+    "pt": "                    eventLogs.push(`🎒 <strong>Fase Escolar:</strong> Seu filho entrou no ensino fundamental. Custos aumentaram em <strong>+R$250/mês</strong> (+R$750/mês total do filho) em material e esportes.`);\n"
   },
   "fontSans12": {
     "en": "                    eventLogs.push(`🎧 <strong>Teenager Stage:</strong> Teenager hobbies, tech, apparel, and appetite increased childcare costs by <strong>+$250/mo</strong> (+$1,000/mo total child budget).`);\n",
-    "es": "                    eventLogs.push(`🎧 <strong>Etapa Adolescente:</strong> Pasatiempos, tecnología y ropa aumentaron los gastos del hijo en <strong>+$250/mes</strong> (+$1,000/mes presupuesto total).`);\n",
-    "pt": "                    eventLogs.push(`🎧 <strong>Fase Adolescente:</strong> Atividades, tecnologia e roupas elevaram os gastos do filho em <strong>+$250/mês</strong> (+$1.000/mês total).`);\n"
+    "es": "                    eventLogs.push(`🎧 <strong>Etapa Adolescente:</strong> Pasatiempos, tecnología y ropa aumentaron los gastos del hijo en <strong>+€250/mes</strong> (+€1,000/mes presupuesto total).`);\n",
+    "pt": "                    eventLogs.push(`🎧 <strong>Fase Adolescente:</strong> Atividades, tecnologia e roupas elevaram os gastos do filho em <strong>+R$250/mês</strong> (+R$1.000/mês total).`);\n"
   },
   "fontSans13": {
     "en": "                eventLogs.push(`💼 <strong>Career Promotion & Raise!</strong> Earned a promotion! Active household salary increased by <strong>+$${raiseAmount}/mo</strong> (New Active Salary: $${baseMonthlySalary.toLocaleString()}/mo).`);\n",
-    "es": "                eventLogs.push(`💼 <strong>¡Promoción Profesional!</strong> ¡Aumento de sueldo! El salario activo del hogar subió <strong>+$${raiseAmount}/mes</strong> (Nuevo Salario: $${baseMonthlySalary.toLocaleString()}/mes).`);\n",
-    "pt": "                eventLogs.push(`💼 <strong>Promoção de Carreira!</strong> Aumento salarial! O salário ativo da família subiu <strong>+$${raiseAmount}/mês</strong> (Novo Salário: $${baseMonthlySalary.toLocaleString()}/mês).`);\n"
+    "es": "                eventLogs.push(`💼 <strong>¡Promoción Profesional!</strong> ¡Aumento de sueldo! El salario activo del hogar subió <strong>+€${raiseAmount}/mes</strong> (Nuevo Salario: €${baseMonthlySalary.toLocaleString()}/mes).`);\n",
+    "pt": "                eventLogs.push(`💼 <strong>Promoção de Carreira!</strong> Aumento salarial! O salário ativo da família subiu <strong>+R$${raiseAmount}/mês</strong> (Novo Salário: R$${baseMonthlySalary.toLocaleString()}/mês).`);\n"
   },
   "fontSans14": {
     "en": "                eventLogs.push(`🐶 <strong>Life Event: Adopted a Pet!</strong> Added <strong>+$120/mo</strong> ongoing expenses for vet care, food, and pet insurance.`);\n",
-    "es": "                eventLogs.push(`🐶 <strong>¡Adoptaste una Mascota!</strong> Se añadieron <strong>+$120/mes</strong> en comida, veterinario y seguro de mascota.`);\n",
-    "pt": "                eventLogs.push(`🐶 <strong>Adoção de um Pet!</strong> Adicionados <strong>+$120/mês</strong> em ração, veterinário e plano de saúde animal.`);\n"
+    "es": "                eventLogs.push(`🐶 <strong>¡Adoptaste una Mascota!</strong> Se añadieron <strong>+€120/mes</strong> en comida, veterinario y seguro de mascota.`);\n",
+    "pt": "                eventLogs.push(`🐶 <strong>Adoção de um Pet!</strong> Adicionados <strong>+R$120/mês</strong> em ração, veterinário e plano de saúde animal.`);\n"
   },
   "fontSans15": {
     "en": "                eventLogs.push(`👴 <strong>Aging Parents Healthcare Support:</strong> Assumed monthly medical caregiving support for aging parents, adding <strong>+$250/mo</strong> to living expenses.`);\n",
-    "es": "                eventLogs.push(`👴 <strong>Apoyo a Padres Mayores:</strong> Asumiste apoyo médico mensual para tus padres, añadiendo <strong>+$250/mes</strong> a los gastos.`);\n",
-    "pt": "                eventLogs.push(`👴 <strong>Apoio a Pais Idosos:</strong> Você assumiu suporte médico mensal para seus pais, adicionando <strong>+$250/mês</strong> às despesas.`);\n"
+    "es": "                eventLogs.push(`👴 <strong>Apoyo a Padres Mayores:</strong> Asumiste apoyo médico mensual para tus padres, añadiendo <strong>+€250/mes</strong> a los gastos.`);\n",
+    "pt": "                eventLogs.push(`👴 <strong>Apoio a Pais Idosos:</strong> Você assumiu suporte médico mensal para seus pais, adicionando <strong>+R$250/mês</strong> às despesas.`);\n"
   },
   "fontSans16": {
     "en": "                eventLogs.push(`🏥 <strong>Medical / Dental Emergency:</strong> Unexpected health bill deducted <strong>-$${cost.toLocaleString()}</strong> from Available Cash.`);\n",
-    "es": "                eventLogs.push(`🏥 <strong>Emergencia Médica / Dental:</strong> Factura de salud inesperada descontó <strong>-$${cost.toLocaleString()}</strong> del Efectivo.`);\n",
-    "pt": "                eventLogs.push(`🏥 <strong>Emergência Médica / Odontológica:</strong> Despesa de saúde inesperada de <strong>-$${cost.toLocaleString()}</strong> no Caixa.`);\n"
+    "es": "                eventLogs.push(`🏥 <strong>Emergencia Médica / Dental:</strong> Factura de salud inesperada descontó <strong>-€${cost.toLocaleString()}</strong> del Efectivo.`);\n",
+    "pt": "                eventLogs.push(`🏥 <strong>Emergência Médica / Odontológica:</strong> Despesa de saúde inesperada de <strong>-R$${cost.toLocaleString()}</strong> no Caixa.`);\n"
   },
   "fontSans17": {
     "en": "                eventLogs.push(`🚗 <strong>Major Vehicle Transmission Repair:</strong> Deducted <strong>-$${cost.toLocaleString()}</strong> from Available Cash.`);\n",
-    "es": "                eventLogs.push(`🚗 <strong>Reparación Mecánica Mayor:</strong> Se descontaron <strong>-$${cost.toLocaleString()}</strong> del Efectivo por el vehículo.`);\n",
-    "pt": "                eventLogs.push(`🚗 <strong>Manutenção do Veículo:</strong> Conserto do carro exigiu <strong>-$${cost.toLocaleString()}</strong> do Caixa.`);\n"
+    "es": "                eventLogs.push(`🚗 <strong>Reparación Mecánica Mayor:</strong> Se descontaron <strong>-€${cost.toLocaleString()}</strong> del Efectivo por el vehículo.`);\n",
+    "pt": "                eventLogs.push(`🚗 <strong>Manutenção do Veículo:</strong> Conserto do carro exigiu <strong>-R$${cost.toLocaleString()}</strong> do Caixa.`);\n"
   },
   "fontSans18": {
     "en": "                eventLogs.push(`🏛️ <strong>Property Tax & Escrow Hike:</strong> Annual escrow shortfall deducted <strong>-$${cost.toLocaleString()}</strong> from Available Cash.`);\n",
-    "es": "                eventLogs.push(`🏛️ <strong>Aumento de Impuestos de Propiedad:</strong> Ajuste anual de impuestos descontó <strong>-$${cost.toLocaleString()}</strong> del Efectivo.`);\n",
-    "pt": "                eventLogs.push(`🏛️ <strong>Aumento de IPTU / Seguros:</strong> Reajuste anual de impostos descontou <strong>-$${cost.toLocaleString()}</strong> do Caixa.`);\n"
+    "es": "                eventLogs.push(`🏛️ <strong>Aumento de Impuestos de Propiedad:</strong> Ajuste anual de impuestos descontó <strong>-€${cost.toLocaleString()}</strong> del Efectivo.`);\n",
+    "pt": "                eventLogs.push(`🏛️ <strong>Aumento de IPTU / Seguros:</strong> Reajuste anual de impostos descontou <strong>-R$${cost.toLocaleString()}</strong> do Caixa.`);\n"
   },
   "fontSans19": {
     "en": "                eventLogs.push(`💻 <strong>Side Hustle Windfall!</strong> Freelance gig added <strong>+$${bonus.toLocaleString()}</strong> bonus cash!`);\n",
-    "es": "                eventLogs.push(`💻 <strong>¡Ingreso Extra por Proyecto Freelance!</strong> Sumaste un bono de <strong>+$${bonus.toLocaleString()}</strong> en efectivo.`);\n",
-    "pt": "                eventLogs.push(`💻 <strong>Projeto Freelance Extra!</strong> Você ganhou um extra de <strong>+$${bonus.toLocaleString()}</strong> em dinheiro.`);\n"
+    "es": "                eventLogs.push(`💻 <strong>¡Ingreso Extra por Proyecto Freelance!</strong> Sumaste un bono de <strong>+€${bonus.toLocaleString()}</strong> en efectivo.`);\n",
+    "pt": "                eventLogs.push(`💻 <strong>Projeto Freelance Extra!</strong> Você ganhou um extra de <strong>+R$${bonus.toLocaleString()}</strong> em dinheiro.`);\n"
   },
   "fontSans20": {
     "en": "                eventLogs.push(`🎁 <strong>Family Inheritance / Financial Gift!</strong> Received a surprise lump sum inheritance of <strong>+$${inheritance.toLocaleString()}</strong> added to Available Cash!`);\n",
-    "es": "                eventLogs.push(`🎁 <strong>¡Herencia o Regalo Familiar!</strong> Recibiste una suma de <strong>+$${inheritance.toLocaleString()}</strong> a tu Efectivo Disponible.`);\n",
-    "pt": "                eventLogs.push(`🎁 <strong>Herança ou Presente Familiar!</strong> Você recebeu uma quantia de <strong>+$${inheritance.toLocaleString()}</strong> no Caixa.`);\n"
+    "es": "                eventLogs.push(`🎁 <strong>¡Herencia o Regalo Familiar!</strong> Recibiste una suma de <strong>+€${inheritance.toLocaleString()}</strong> a tu Efectivo Disponible.`);\n",
+    "pt": "                eventLogs.push(`🎁 <strong>Herança ou Presente Familiar!</strong> Você recebeu uma quantia de <strong>+R$${inheritance.toLocaleString()}</strong> no Caixa.`);\n"
   },
   "fontSans21": {
     "en": "                eventLogs.push(`🧾 <strong>Tax Refund & Performance Bonus:</strong> Work annual review & tax return credited <strong>+$${taxBonus.toLocaleString()}</strong> to Available Cash.`);\n",
-    "es": "                eventLogs.push(`🧾 <strong>Reembolso de Impuestos y Bono:</strong> Retorno fiscal y evaluación anual acreditaron <strong>+$${taxBonus.toLocaleString()}</strong> en efectivo.`);\n",
-    "pt": "                eventLogs.push(`🧾 <strong>Restituição de Imposto de Renda:</strong> O retorno fiscal adicionou <strong>+$${taxBonus.toLocaleString()}</strong> ao Caixa.`);\n"
+    "es": "                eventLogs.push(`🧾 <strong>Reembolso de Impuestos y Bono:</strong> Retorno fiscal y evaluación anual acreditaron <strong>+€${taxBonus.toLocaleString()}</strong> en efectivo.`);\n",
+    "pt": "                eventLogs.push(`🧾 <strong>Restituição de Imposto de Renda:</strong> O retorno fiscal adicionou <strong>+R$${taxBonus.toLocaleString()}</strong> ao Caixa.`);\n"
   },
   "fontSans22": {
     "en": "                    eventLogs.push(`📈 <strong>Dividend Organic Growth!</strong> Corporate payouts raised dividend payouts by +${((compoundRate - 1)*100).toFixed(1)}%. Per unit yield rose +$${yieldDiff}/mo (Total portfolio boost: <strong>+$${totalEtfBoost}/mo</strong>).`);\n",
-    "es": "                    eventLogs.push(`📈 <strong>¡Crecimiento de Dividendos!</strong> Las empresas aumentaron pagos (+${((compoundRate - 1)*100).toFixed(1)}%). El rendimiento subió +$${yieldDiff}/mes por unidad (Impulso total: <strong>+$${totalEtfBoost}/mes</strong>).`);\n",
-    "pt": "                    eventLogs.push(`📈 <strong>Crescimento de Dividendos!</strong> As empresas aumentaram os proventos (+${((compoundRate - 1)*100).toFixed(1)}%). O rendimento subiu +$${yieldDiff}/mês por unidade (Ganho total: <strong>+$${totalEtfBoost}/mês</strong>).`);\n"
+    "es": "                    eventLogs.push(`📈 <strong>¡Crecimiento de Dividendos!</strong> Las empresas aumentaron pagos (+${((compoundRate - 1)*100).toFixed(1)}%). El rendimiento subió +€${yieldDiff}/mes por unidad (Impulso total: <strong>+€${totalEtfBoost}/mes</strong>).`);\n",
+    "pt": "                    eventLogs.push(`📈 <strong>Crescimento de Dividendos!</strong> As empresas aumentaram os proventos (+${((compoundRate - 1)*100).toFixed(1)}%). O rendimento subiu +R$${yieldDiff}/mês por unidade (Ganho total: <strong>+R$${totalEtfBoost}/mês</strong>).`);\n"
   },
   "fontSans23": {
     "en": "                    bonds.riskText = 'High Rate Era (7.7% APY)';\n",
@@ -831,8 +831,8 @@
   },
   "fontSans24": {
     "en": "                        eventLogs.push(`🏦 <strong>Central Bank Rate Hike:</strong> Treasury Bonds yield spiked to <strong>+$3.2/unit</strong> (7.7% APY). Added <strong>+$${bondBoost}/mo</strong> to bond cash flow.`);\n",
-    "es": "                        eventLogs.push(`🏦 <strong>Alza de Tasas del Banco Central:</strong> El rendimiento de los Bonos subió a <strong>+$3.2/unidad</strong> (7.7% APY). Añadió <strong>+$${bondBoost}/mes</strong> al flujo pasivo.`);\n",
-    "pt": "                        eventLogs.push(`🏦 <strong>Alta de Juros pelo Banco Central:</strong> O rendimento dos Títulos subiu para <strong>+$3.2/unidade</strong> (7.7% ao ano). Adicionou <strong>+$${bondBoost}/mês</strong> à renda passiva.`);\n"
+    "es": "                        eventLogs.push(`🏦 <strong>Alza de Tasas del Banco Central:</strong> El rendimiento de los Bonos subió a <strong>+€3.2/unidad</strong> (7.7% APY). Añadió <strong>+€${bondBoost}/mes</strong> al flujo pasivo.`);\n",
+    "pt": "                        eventLogs.push(`🏦 <strong>Alta de Juros pelo Banco Central:</strong> O rendimento dos Títulos subiu para <strong>+R$3.2/unidade</strong> (7.7% ao ano). Adicionou <strong>+R$${bondBoost}/mês</strong> à renda passiva.`);\n"
   },
   "fontSans25": {
     "en": "                bonds.riskText = 'Guaranteed / Safe';\n",
@@ -841,33 +841,33 @@
   },
   "fontSans26": {
     "en": "                        eventLogs.push(`🚀 <strong>Bitcoin Bull Market:</strong> Crypto rally surged cash flow yield to +$65/unit/mo! Added <strong>+$${btcGain}/mo</strong> to passive cash flow.`);\n",
-    "es": "                        eventLogs.push(`🚀 <strong>Mercado Alcista en Bitcoin:</strong> ¡El rally elevó el flujo a +$65/unidad/mes! Añadió <strong>+$${btcGain}/mes</strong> a tu ingreso pasivo.`);\n",
-    "pt": "                        eventLogs.push(`🚀 <strong>Ciclo de Alta no Bitcoin:</strong> O rally impulsionou o fluxo para +$65/unidade/mês! Somou <strong>+$${btcGain}/mês</strong> à sua renda passiva.`);\n"
+    "es": "                        eventLogs.push(`🚀 <strong>Mercado Alcista en Bitcoin:</strong> ¡El rally elevó el flujo a +€65/unidad/mes! Añadió <strong>+€${btcGain}/mes</strong> a tu ingreso pasivo.`);\n",
+    "pt": "                        eventLogs.push(`🚀 <strong>Ciclo de Alta no Bitcoin:</strong> O rally impulsionou o fluxo para +R$65/unidade/mês! Somou <strong>+R$${btcGain}/mês</strong> à sua renda passiva.`);\n"
   },
   "fontSans27": {
     "en": "                        eventLogs.push(`📉 <strong>Bitcoin Bear Market:</strong> Price correction caused temporary yield drag (-$15/unit/mo). Reduced passive cash flow by <strong>-$${btcLoss}/mo</strong>.`);\n",
-    "es": "                        eventLogs.push(`📉 <strong>Mercado Bajista en Bitcoin:</strong> Corrección temporal de precio (-$15/unidad/mes). Redujo el flujo pasivo en <strong>-$${btcLoss}/mes</strong>.`);\n",
-    "pt": "                        eventLogs.push(`📉 <strong>Ciclo de Baixa no Bitcoin:</strong> Correção temporária de preço (-$15/unidade/mês). Reduziu a renda passiva em <strong>-$${btcLoss}/mês</strong>.`);\n"
+    "es": "                        eventLogs.push(`📉 <strong>Mercado Bajista en Bitcoin:</strong> Corrección temporal de precio (-€15/unidad/mes). Redujo el flujo pasivo en <strong>-€${btcLoss}/mes</strong>.`);\n",
+    "pt": "                        eventLogs.push(`📉 <strong>Ciclo de Baixa no Bitcoin:</strong> Correção temporária de preço (-R$15/unidade/mês). Reduziu a renda passiva em <strong>-R$${btcLoss}/mês</strong>.`);\n"
   },
   "fontSans28": {
     "en": "                        eventLogs.push(`🚀 <strong>Online Business Boom:</strong> Product launch raised yield to +$120/unit/mo for the year.`);\n",
-    "es": "                        eventLogs.push(`🚀 <strong>Auge en Negocio Digital:</strong> Lanzamiento exitoso elevó el rendimiento a +$120/unidad/mes este año.`);\n",
-    "pt": "                        eventLogs.push(`🚀 <strong>Expansão do Negócio Digital:</strong> Novo produto elevou o rendimento para +$120/unidade/mês este ano.`);\n"
+    "es": "                        eventLogs.push(`🚀 <strong>Auge en Negocio Digital:</strong> Lanzamiento exitoso elevó el rendimiento a +€120/unidad/mes este año.`);\n",
+    "pt": "                        eventLogs.push(`🚀 <strong>Expansão do Negócio Digital:</strong> Novo produto elevou o rendimento para +R$120/unidade/mês este ano.`);\n"
   },
   "fontSans29": {
     "en": "                        eventLogs.push(`⚠️ <strong>Digital Ad Cost Hike:</strong> Increased ad competition reduced business yield to +$35/unit/mo for the year.`);\n",
-    "es": "                        eventLogs.push(`⚠️ <strong>Aumento de Costos Publicitarios:</strong> Mayor competencia redujo el rendimiento del negocio a +$35/unidad/mes este año.`);\n",
-    "pt": "                        eventLogs.push(`⚠️ <strong>Aumento de Custos com Anúncios:</strong> Maior concorrência reduziu o rendimento do negócio digital para +$35/unidade/mês este ano.`);\n"
+    "es": "                        eventLogs.push(`⚠️ <strong>Aumento de Costos Publicitarios:</strong> Mayor competencia redujo el rendimiento del negocio a +€35/unidad/mes este año.`);\n",
+    "pt": "                        eventLogs.push(`⚠️ <strong>Aumento de Custos com Anúncios:</strong> Maior concorrência reduziu o rendimento do negócio digital para +R$35/unidade/mês este ano.`);\n"
   },
   "fontSans30": {
     "en": "                    eventLogs.push(`🛠️ <strong>Condo Maintenance Repair:</strong> Paid emergency HVAC & roof repair out-of-pocket: <strong>-$${repairCost.toLocaleString()}</strong> from Available Cash.`);\n",
-    "es": "                    eventLogs.push(`🛠️ <strong>Reparación en Condominio:</strong> Pago de mantenimiento de emergencia: <strong>-$${repairCost.toLocaleString()}</strong> del Efectivo Disponible.`);\n",
-    "pt": "                    eventLogs.push(`🛠️ <strong>Reforma no Imóvel:</strong> Despesa emergencial de manutenção: <strong>-$${repairCost.toLocaleString()}</strong> do Caixa.`);\n"
+    "es": "                    eventLogs.push(`🛠️ <strong>Reparación en Condominio:</strong> Pago de mantenimiento de emergencia: <strong>-€${repairCost.toLocaleString()}</strong> del Efectivo Disponible.`);\n",
+    "pt": "                    eventLogs.push(`🛠️ <strong>Reforma no Imóvel:</strong> Despesa emergencial de manutenção: <strong>-R$${repairCost.toLocaleString()}</strong> do Caixa.`);\n"
   },
   "fontSans31": {
     "en": "                const yearsPassedStr = `Year ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Advanced +1 Year (${yearsPassedStr})`;\n                toastText.innerHTML = `Net annual cash surplus collected: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}$${Math.round(netMonthly).toLocaleString()}/mo x 12 months added to Available Cash).`;\n",
-    "es": "                const yearsPassedStr = `Año ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Período Avanzado (${yearsPassedStr})`;\n                toastText.innerHTML = `Superávit neto acumulado: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}$${Math.round(netMonthly).toLocaleString()}/mes x 12 meses sumados al Efectivo).`;\n",
-    "pt": "                const yearsPassedStr = `Ano ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Período Avançado (${yearsPassedStr})`;\n                toastText.innerHTML = `Superávit líquido acumulado: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}$${Math.round(netMonthly).toLocaleString()}/mês x 12 meses somados ao Caixa).`;\n"
+    "es": "                const yearsPassedStr = `Año ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Período Avanzado (${yearsPassedStr})`;\n                toastText.innerHTML = `Superávit neto acumulado: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}€${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}€${Math.round(netMonthly).toLocaleString()}/mes x 12 meses sumados al Efectivo).`;\n",
+    "pt": "                const yearsPassedStr = `Ano ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Período Avançado (${yearsPassedStr})`;\n                toastText.innerHTML = `Superávit líquido acumulado: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}R$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}R$${Math.round(netMonthly).toLocaleString()}/mês x 12 meses somados ao Caixa).`;\n"
   },
   "fontSans32": {
     "en": "                container.innerHTML = leaderboardNoticeRow('Loading the global Hall of Fame…');\n",
@@ -891,8 +891,8 @@
   },
   "fontSans36": {
     "en": "            document.getElementById('victoryPassive').innerText = `+$${Math.round(pass).toLocaleString()}/mo`;\n            document.getElementById('victoryExpenses').innerText = `$${exp.toLocaleString()}/mo`;\n",
-    "es": "            document.getElementById('victoryPassive').innerText = `+$${Math.round(pass).toLocaleString()}/mes`;\n            document.getElementById('victoryExpenses').innerText = `$${exp.toLocaleString()}/mes`;\n",
-    "pt": "            document.getElementById('victoryPassive').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;\n            document.getElementById('victoryExpenses').innerText = `$${exp.toLocaleString()}/mês`;\n"
+    "es": "            document.getElementById('victoryPassive').innerText = `+€${Math.round(pass).toLocaleString()}/mes`;\n            document.getElementById('victoryExpenses').innerText = `€${exp.toLocaleString()}/mes`;\n",
+    "pt": "            document.getElementById('victoryPassive').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;\n            document.getElementById('victoryExpenses').innerText = `R$${exp.toLocaleString()}/mês`;\n"
   },
   "fontSans37": {
     "en": "            document.getElementById('victoryTime').innerText = `${yrs} Years (${monthsPassed} Months)`;\n",
@@ -916,8 +916,8 @@
   },
   "fontSans41": {
     "en": "            document.getElementById('activeDisplay').innerText = `$${baseMonthlySalary.toLocaleString()}/mo`;\n            document.getElementById('expensesDisplay').innerText = `$${exp.toLocaleString()}/mo`;\n            document.getElementById('passiveDisplay').innerText = `+$${Math.round(pass).toLocaleString()}/mo`;\n",
-    "es": "            document.getElementById('activeDisplay').innerText = `$${baseMonthlySalary.toLocaleString()}/mes`;\n            document.getElementById('expensesDisplay').innerText = `$${exp.toLocaleString()}/mes`;\n            document.getElementById('passiveDisplay').innerText = `+$${Math.round(pass).toLocaleString()}/mes`;\n",
-    "pt": "            document.getElementById('activeDisplay').innerText = `$${baseMonthlySalary.toLocaleString()}/mês`;\n            document.getElementById('expensesDisplay').innerText = `$${exp.toLocaleString()}/mês`;\n            document.getElementById('passiveDisplay').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;\n"
+    "es": "            document.getElementById('activeDisplay').innerText = `€${baseMonthlySalary.toLocaleString()}/mes`;\n            document.getElementById('expensesDisplay').innerText = `€${exp.toLocaleString()}/mes`;\n            document.getElementById('passiveDisplay').innerText = `+€${Math.round(pass).toLocaleString()}/mes`;\n",
+    "pt": "            document.getElementById('activeDisplay').innerText = `R$${baseMonthlySalary.toLocaleString()}/mês`;\n            document.getElementById('expensesDisplay').innerText = `R$${exp.toLocaleString()}/mês`;\n            document.getElementById('passiveDisplay').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;\n"
   },
   "fontSans42": {
     "en": "                    joySubtext.innerText = 'High energy • Bonus & raise boost!';\n",
@@ -936,13 +936,13 @@
   },
   "fontSans45": {
     "en": "                let stageLabel = \"Baby/Toddler (+$500/mo)\";\n                if (yrs >= 13) stageLabel = \"Teenager (+$1,000/mo)\";\n                else if (yrs >= 6) stageLabel = \"Primary School (+$750/mo)\";\n                familyText.innerText = `Child Age ${yrs} • ${stageLabel}`;\n",
-    "es": "                let stageLabel = \"Bebé/Párvulo (+$500/mes)\";\n                if (yrs >= 13) stageLabel = \"Adolescente (+$1,000/mes)\";\n                else if (yrs >= 6) stageLabel = \"Escuela Primaria (+$750/mes)\";\n                familyText.innerText = `Hijo Edad ${yrs} • ${stageLabel}`;\n",
-    "pt": "                let stageLabel = \"Bebé (+$500/mês)\";\n                if (yrs >= 13) stageLabel = \"Adolescente (+$1.000/mês)\";\n                else if (yrs >= 6) stageLabel = \"Ensino Fundamental (+$750/mês)\";\n                familyText.innerText = `Filho ${yrs} Anos • ${stageLabel}`;\n"
+    "es": "                let stageLabel = \"Bebé/Párvulo (+€500/mes)\";\n                if (yrs >= 13) stageLabel = \"Adolescente (+€1,000/mes)\";\n                else if (yrs >= 6) stageLabel = \"Escuela Primaria (+€750/mes)\";\n                familyText.innerText = `Hijo Edad ${yrs} • ${stageLabel}`;\n",
+    "pt": "                let stageLabel = \"Bebé (+R$500/mês)\";\n                if (yrs >= 13) stageLabel = \"Adolescente (+R$1.000/mês)\";\n                else if (yrs >= 6) stageLabel = \"Ensino Fundamental (+R$750/mês)\";\n                familyText.innerText = `Filho ${yrs} Anos • ${stageLabel}`;\n"
   },
   "fontSans46": {
     "en": "                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}$${Math.round(netSurplus).toLocaleString()}/mo`;\n",
-    "es": "                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}$${Math.round(netSurplus).toLocaleString()}/mes`;\n",
-    "pt": "                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}$${Math.round(netSurplus).toLocaleString()}/mês`;\n"
+    "es": "                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}€${Math.round(netSurplus).toLocaleString()}/mes`;\n",
+    "pt": "                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}R$${Math.round(netSurplus).toLocaleString()}/mês`;\n"
   },
   "fontSans47": {
     "en": "            document.getElementById('monthsPassedBadge').innerText = `Year ${years}`;\n",
@@ -951,8 +951,8 @@
   },
   "fontSans48": {
     "en": "            document.getElementById('barExpenseVal').innerText = `$${exp.toLocaleString()}/mo`;\n            document.getElementById('barPassiveVal').innerText = `+$${Math.round(pass).toLocaleString()}/mo`;\n",
-    "es": "            document.getElementById('barExpenseVal').innerText = `$${exp.toLocaleString()}/mes`;\n            document.getElementById('barPassiveVal').innerText = `+$${Math.round(pass).toLocaleString()}/mes`;\n",
-    "pt": "            document.getElementById('barExpenseVal').innerText = `$${exp.toLocaleString()}/mês`;\n            document.getElementById('barPassiveVal').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;\n"
+    "es": "            document.getElementById('barExpenseVal').innerText = `€${exp.toLocaleString()}/mes`;\n            document.getElementById('barPassiveVal').innerText = `+€${Math.round(pass).toLocaleString()}/mes`;\n",
+    "pt": "            document.getElementById('barExpenseVal').innerText = `R$${exp.toLocaleString()}/mês`;\n            document.getElementById('barPassiveVal').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;\n"
   },
   "fontSans49": {
     "en": "                gapElem.innerHTML = `<i class=\"fa-solid fa-circle-check text-emerald-600 mr-1\"></i> CROSSOVER ACHIEVED!`;\n",
@@ -961,13 +961,13 @@
   },
   "fontSans50": {
     "en": "                gapElem.innerHTML = `Gap: <span class=\"font-bold text-rose-700\">$${Math.round(gap).toLocaleString()}/mo</span> to freedom.`;\n",
-    "es": "                gapElem.innerHTML = `Brecha: <span class=\"font-bold text-rose-700\">$${Math.round(gap).toLocaleString()}/mes</span> para la libertad.`;\n",
-    "pt": "                gapElem.innerHTML = `Falta: <span class=\"font-bold text-rose-700\">$${Math.round(gap).toLocaleString()}/mês</span> para a liberdade.`;\n"
+    "es": "                gapElem.innerHTML = `Brecha: <span class=\"font-bold text-rose-700\">€${Math.round(gap).toLocaleString()}/mes</span> para la libertad.`;\n",
+    "pt": "                gapElem.innerHTML = `Falta: <span class=\"font-bold text-rose-700\">R$${Math.round(gap).toLocaleString()}/mês</span> para a liberdade.`;\n"
   },
   "fontSans51": {
     "en": "                            <span class=\"text-espresso-800/70\">Cost: <strong class=\"text-espresso-950 font-mono\">$${asset.unitCost.toLocaleString()}</strong></span>\n                            <span class=\"${yieldColor} font-bold font-mono\">${yieldSign}$${asset.monthlyYieldPerUnit}/mo</span>\n",
-    "es": "                            <span class=\"text-espresso-800/70\">Costo: <strong class=\"text-espresso-950 font-mono\">$${asset.unitCost.toLocaleString()}</strong></span>\n                            <span class=\"${yieldColor} font-bold font-mono\">${yieldSign}$${asset.monthlyYieldPerUnit}/mes</span>\n",
-    "pt": "                            <span class=\"text-espresso-800/70\">Preço: <strong class=\"text-espresso-950 font-mono\">$${asset.unitCost.toLocaleString()}</strong></span>\n                            <span class=\"${yieldColor} font-bold font-mono\">${yieldSign}$${asset.monthlyYieldPerUnit}/mês</span>\n"
+    "es": "                            <span class=\"text-espresso-800/70\">Costo: <strong class=\"text-espresso-950 font-mono\">€${asset.unitCost.toLocaleString()}</strong></span>\n                            <span class=\"${yieldColor} font-bold font-mono\">${yieldSign}€${asset.monthlyYieldPerUnit}/mes</span>\n",
+    "pt": "                            <span class=\"text-espresso-800/70\">Preço: <strong class=\"text-espresso-950 font-mono\">R$${asset.unitCost.toLocaleString()}</strong></span>\n                            <span class=\"${yieldColor} font-bold font-mono\">${yieldSign}R$${asset.monthlyYieldPerUnit}/mês</span>\n"
   },
   "fontSans52": {
     "en": "                                Buy 1\n",
@@ -996,8 +996,8 @@
   },
   "fontSans57": {
     "en": "            document.getElementById('sidebarTotalPassive').innerText = `+$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mo`;\n",
-    "es": "            document.getElementById('sidebarTotalPassive').innerText = `+$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mes`;\n",
-    "pt": "            document.getElementById('sidebarTotalPassive').innerText = `+$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mês`;\n"
+    "es": "            document.getElementById('sidebarTotalPassive').innerText = `+€${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mes`;\n",
+    "pt": "            document.getElementById('sidebarTotalPassive').innerText = `+R$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mês`;\n"
   },
   "fontSans58": {
     "en": "                        No cash-flow assets owned yet. Buy units in the marketplace!\n",
@@ -1006,13 +1006,13 @@
   },
   "fontSans59": {
     "en": "                                <span class=\"text-[9px] text-espresso-800/70 font-mono\">${asset.ownedUnits} Units ($${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>\n",
-    "es": "                                <span class=\"text-[9px] text-espresso-800/70 font-mono\">${asset.ownedUnits} Unid. ($${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>\n",
-    "pt": "                                <span class=\"text-[9px] text-espresso-800/70 font-mono\">${asset.ownedUnits} Unid. ($${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>\n"
+    "es": "                                <span class=\"text-[9px] text-espresso-800/70 font-mono\">${asset.ownedUnits} Unid. (€${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>\n",
+    "pt": "                                <span class=\"text-[9px] text-espresso-800/70 font-mono\">${asset.ownedUnits} Unid. (R$${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>\n"
   },
   "fontSans60": {
     "en": "                        <span class=\"font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}\">${totalIncome >= 0 ? '+' : ''}$${Math.round(totalIncome)}/mo</span>\n",
-    "es": "                        <span class=\"font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}\">${totalIncome >= 0 ? '+' : ''}$${Math.round(totalIncome)}/mes</span>\n",
-    "pt": "                        <span class=\"font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}\">${totalIncome >= 0 ? '+' : ''}$${Math.round(totalIncome)}/mês</span>\n"
+    "es": "                        <span class=\"font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}\">${totalIncome >= 0 ? '+' : ''}€${Math.round(totalIncome)}/mes</span>\n",
+    "pt": "                        <span class=\"font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}\">${totalIncome >= 0 ? '+' : ''}R$${Math.round(totalIncome)}/mês</span>\n"
   },
   "fontSans61": {
     "en": "                            Sell 1\n",
@@ -1046,8 +1046,8 @@
   },
   "fontSans67": {
     "en": "            document.getElementById('housingCostBadge').innerText = `$${lifestyleCosts.housing[currentLifestyle.housing]}/mo`;\n            document.getElementById('transportCostBadge').innerText = `$${lifestyleCosts.transport[currentLifestyle.transport]}/mo`;\n            document.getElementById('lifestyleCostBadge').innerText = `$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mo`;\n            document.getElementById('subscriptionsCostBadge').innerText = `$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mo`;\n            document.getElementById('travelCostBadge').innerText = `$${lifestyleCosts.travel[currentLifestyle.travel]}/mo`;\n            document.getElementById('shoppingCostBadge').innerText = `$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mo`;\n",
-    "es": "            document.getElementById('housingCostBadge').innerText = `$${lifestyleCosts.housing[currentLifestyle.housing]}/mes`;\n            document.getElementById('transportCostBadge').innerText = `$${lifestyleCosts.transport[currentLifestyle.transport]}/mes`;\n            document.getElementById('lifestyleCostBadge').innerText = `$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mes`;\n            document.getElementById('subscriptionsCostBadge').innerText = `$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mes`;\n            document.getElementById('travelCostBadge').innerText = `$${lifestyleCosts.travel[currentLifestyle.travel]}/mes`;\n            document.getElementById('shoppingCostBadge').innerText = `$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mes`;\n",
-    "pt": "            document.getElementById('housingCostBadge').innerText = `$${lifestyleCosts.housing[currentLifestyle.housing]}/mês`;\n            document.getElementById('transportCostBadge').innerText = `$${lifestyleCosts.transport[currentLifestyle.transport]}/mês`;\n            document.getElementById('lifestyleCostBadge').innerText = `$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mês`;\n            document.getElementById('subscriptionsCostBadge').innerText = `$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mês`;\n            document.getElementById('travelCostBadge').innerText = `$${lifestyleCosts.travel[currentLifestyle.travel]}/mês`;\n            document.getElementById('shoppingCostBadge').innerText = `$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mês`;\n"
+    "es": "            document.getElementById('housingCostBadge').innerText = `€${lifestyleCosts.housing[currentLifestyle.housing]}/mes`;\n            document.getElementById('transportCostBadge').innerText = `€${lifestyleCosts.transport[currentLifestyle.transport]}/mes`;\n            document.getElementById('lifestyleCostBadge').innerText = `€${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mes`;\n            document.getElementById('subscriptionsCostBadge').innerText = `€${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mes`;\n            document.getElementById('travelCostBadge').innerText = `€${lifestyleCosts.travel[currentLifestyle.travel]}/mes`;\n            document.getElementById('shoppingCostBadge').innerText = `€${lifestyleCosts.shopping[currentLifestyle.shopping]}/mes`;\n",
+    "pt": "            document.getElementById('housingCostBadge').innerText = `R$${lifestyleCosts.housing[currentLifestyle.housing]}/mês`;\n            document.getElementById('transportCostBadge').innerText = `R$${lifestyleCosts.transport[currentLifestyle.transport]}/mês`;\n            document.getElementById('lifestyleCostBadge').innerText = `R$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mês`;\n            document.getElementById('subscriptionsCostBadge').innerText = `R$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mês`;\n            document.getElementById('travelCostBadge').innerText = `R$${lifestyleCosts.travel[currentLifestyle.travel]}/mês`;\n            document.getElementById('shoppingCostBadge').innerText = `R$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mês`;\n"
   },
   "langSwitchAriaLabel": {
     "en": "Language",

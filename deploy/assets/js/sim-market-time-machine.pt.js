@@ -444,7 +444,7 @@
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return ` ${context.dataset.label}: $${context.raw.toLocaleString()}`;
+                                    return ` ${context.dataset.label}: R$${context.raw.toLocaleString()}`;
                                 }
                             }
                         }
@@ -453,10 +453,10 @@
                         y: {
                             ticks: {
                                 callback: function(val) {
-                                    if (val >= 1e9) return '$' + (val / 1e9).toFixed(1) + 'B';
-                                    if (val >= 1e6) return '$' + (val / 1e6).toFixed(1) + 'M';
-                                    if (val >= 1e3) return '$' + (val / 1e3).toFixed(0) + 'k';
-                                    return '$' + val;
+                                    if (val >= 1e9) return 'R$' + (val / 1e9).toFixed(1) + 'B';
+                                    if (val >= 1e6) return 'R$' + (val / 1e6).toFixed(1) + 'M';
+                                    if (val >= 1e3) return 'R$' + (val / 1e3).toFixed(0) + 'k';
+                                    return 'R$' + val;
                                 },
                                 font: { size: 10, family: 'Inter' }
                             },
@@ -490,28 +490,79 @@
             const calcCagr = (val) => yearsCount > 0 ? ((Math.pow(val / state.initialCapital, 1 / yearsCount) - 1) * 100).toFixed(1) : '0.0';
 
             // 1. Custom Stat
-            document.getElementById('statCustomVal').innerText = `$${latestCustom.val.toLocaleString()}`;
+            document.getElementById('statCustomVal').innerText = `R$${latestCustom.val.toLocaleString()}`;
             document.getElementById('statCustomCagr').innerText = `CAGR: ${calcCagr(latestCustom.val)}%`;
 
             // 2. Classic Stat
-            document.getElementById('statClassicVal').innerText = `$${latestClassic.val.toLocaleString()}`;
+            document.getElementById('statClassicVal').innerText = `R$${latestClassic.val.toLocaleString()}`;
             document.getElementById('statClassicCagr').innerText = `CAGR: ${calcCagr(latestClassic.val)}%`;
 
             // 3. All-Weather Stat
-            document.getElementById('statWeatherVal').innerText = `$${latestWeather.val.toLocaleString()}`;
+            document.getElementById('statWeatherVal').innerText = `R$${latestWeather.val.toLocaleString()}`;
             document.getElementById('statWeatherCagr').innerText = `CAGR: ${calcCagr(latestWeather.val)}%`;
 
             // 4. Permanent Stat
-            document.getElementById('statPermanentVal').innerText = `$${latestPermanent.val.toLocaleString()}`;
+            document.getElementById('statPermanentVal').innerText = `R$${latestPermanent.val.toLocaleString()}`;
             document.getElementById('statPermanentCagr').innerText = `CAGR: ${calcCagr(latestPermanent.val)}%`;
 
             // 5. Aggressive Stat
-            document.getElementById('statAggressiveVal').innerText = `$${latestAggressive.val.toLocaleString()}`;
+            document.getElementById('statAggressiveVal').innerText = `R$${latestAggressive.val.toLocaleString()}`;
             document.getElementById('statAggressiveCagr').innerText = `CAGR: ${calcCagr(latestAggressive.val)}%`;
 
             // 6. Conservative Stat
-            document.getElementById('statConservativeVal').innerText = `$${latestConservative.val.toLocaleString()}`;
+            document.getElementById('statConservativeVal').innerText = `R$${latestConservative.val.toLocaleString()}`;
             document.getElementById('statConservativeCagr').innerText = `CAGR: ${calcCagr(latestConservative.val)}%`;
+
+            updateResultCta({
+                yearsCount,
+                currentYear,
+                customVal: latestCustom.val,
+                classicVal: latestClassic.val,
+                customCagr: calcCagr(latestCustom.val),
+                classicCagr: calcCagr(latestClassic.val)
+            });
+        }
+
+        /**
+         * Classifies the run for the result-aware panel.
+         *
+         * updateMetrics() is called once per simulated year, so this is called
+         * once per simulated year too, and the panel's text is rewritten each
+         * time. That is deliberate: the visitor is watching a portfolio move
+         * through history, and a reading of it that froze at year ten would be
+         * describing a chart that is no longer on screen.
+         *
+         * Ten years is where it starts speaking. Before that the gap between
+         * any two allocations is mostly which year the simulation happened to
+         * begin in, and a confident sentence about a three-year backtest is the
+         * kind of thing this tool exists to argue against.
+         */
+        function updateResultCta(result) {
+            if (!window.SimCta) return;
+            if (result.yearsCount < 10) return;
+
+            const gap = result.customVal - result.classicVal;
+            const cashGold = (state.allocation.cash || 0) + (state.allocation.gold || 0);
+
+            // An allocation held mostly in cash and gold is a different result
+            // from simply losing to the benchmark, and it is the one worth
+            // naming: it loses slowly, comfortably, and for a reason the
+            // visitor chose on purpose.
+            let bucket;
+            if (gap > 0) bucket = 'beat';
+            else if (cashGold > 50) bucket = 'inflationExposed';
+            else bucket = 'lagged';
+
+            window.SimCta.show(bucket, {
+                years: result.yearsCount,
+                startYear: state.startYear,
+                endYear: result.currentYear,
+                customVal: window.SimCta.money(result.customVal),
+                diff: window.SimCta.money(Math.abs(gap)),
+                customCagr: result.customCagr,
+                classicCagr: result.classicCagr,
+                cashGold
+            });
         }
 
         function renderLogList() {

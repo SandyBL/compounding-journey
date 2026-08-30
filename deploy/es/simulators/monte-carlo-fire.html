@@ -228,7 +228,7 @@
               PILOTA TU VUELO DE JUBILACIÓN HASTA LOS 100 AÑOS
             </h2>
             <p class="text-xs text-slate-300 leading-relaxed">
-              <strong class="text-cyan-300">Cómo funciona la Zona de Desplome:</strong> Si las caídas del mercado o los altos gastos agotan tu patrimonio neto a $0, entras en la <strong class="text-red-400">ZONA CRASHLINE</strong>. 
+              <strong class="text-cyan-300">Cómo funciona la Zona de Desplome:</strong> Si las caídas del mercado o los altos gastos agotan tu patrimonio neto a €0, entras en la <strong class="text-red-400">ZONA CRASHLINE</strong>. 
               Tienes un <strong>Periodo de Gracia de 10 Años</strong> para ajustar tácticas (trabajo parcial, recortes, colchón de efectivo, reducción de vivienda) y remontar. ¡Si permaneces 10 años consecutivos en desplome, tu vuelo se destruye!
             </p>
           </div>
@@ -261,16 +261,16 @@
           </div>
           <div class="flex flex-wrap gap-2">
             <button data-onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
-              <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i> SWR de Alto Riesgo ($850k / $45k)
+              <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i> SWR de Alto Riesgo (€850k / €45k)
             </button>
             <button data-onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Estándar Trinity ($1M / $40k)
+              <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Estándar Trinity (€1M / €40k)
             </button>
             <button data-onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i> Lean FIRE Ajustado ($650k / $35k)
+              <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i> Lean FIRE Ajustado (€650k / €35k)
             </button>
             <button data-onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-              <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i> Fat FIRE Holgado ($1,5M / $75k)
+              <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i> Fat FIRE Holgado (€1,5M / €75k)
             </button>
           </div>
         </div>
@@ -302,13 +302,13 @@
             <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
                 <label class="text-slate-300 font-medium flex items-center gap-1.5">
-                  Capital Acumulado ($)
+                  Capital Acumulado (€)
                 </label>
                 <div class="flex items-center gap-2">
                   <button data-onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Estimar Requerido
                   </button>
-                  <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">$850,000</span>
+                  <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">€850,000</span>
                 </div>
               </div>
               <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" data-oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
@@ -318,13 +318,13 @@
             <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
                 <label class="text-slate-300 font-medium flex items-center gap-1.5">
-                  Gasto Anual de Vida ($)
+                  Gasto Anual de Vida (€)
                 </label>
                 <div class="flex items-center gap-2">
                   <button data-onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Presupuestar
                   </button>
-                  <span id="disp-spending" class="font-mono text-emerald-300 font-bold">$45,000</span>
+                  <span id="disp-spending" class="font-mono text-emerald-300 font-bold">€45,000</span>
                 </div>
               </div>
               <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" data-oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
@@ -453,7 +453,7 @@
               <div class="flex items-center gap-3 sm:gap-4 text-xs font-mono">
                 <div>
                   <span class="text-slate-400 text-[10px] block uppercase">Altitud</span>
-                  <span id="hud-portfolio-val" class="text-emerald-400 font-bold text-sm">$850,000</span>
+                  <span id="hud-portfolio-val" class="text-emerald-400 font-bold text-sm">€850,000</span>
                 </div>
                 <div class="border-l border-slate-800 pl-3">
                   <span class="text-slate-400 text-[10px] block uppercase">SWR Actual</span>
@@ -537,11 +537,11 @@
                 </div>
                 <div>
                   <h4 id="title-action-job" class="text-xs font-bold text-white">Trabajo Parcial</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Gana $15.000/año a tiempo parcial para reducir retiros del portafolio.</p>
+                  <p class="text-[10px] text-slate-400 leading-tight">Gana €15.000/año a tiempo parcial para reducir retiros del portafolio.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
                   <span class="text-slate-400">Impacto:</span>
-                  <span class="text-emerald-400 font-bold">Colchón +$15k / Año</span>
+                  <span class="text-emerald-400 font-bold">Colchón +€15k / Año</span>
                 </div>
               </div>
 
@@ -560,7 +560,7 @@
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
                   <span class="text-slate-400">Impacto:</span>
-                  <span class="text-amber-400 font-bold">Ahorra ~$6,7k / Año</span>
+                  <span class="text-amber-400 font-bold">Ahorra ~€6,7k / Año</span>
                 </div>
               </div>
 
@@ -613,11 +613,11 @@
                 </div>
                 <div>
                   <h4 id="title-action-downsize" class="text-xs font-bold text-white">Reducir Vivienda</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Inyección única de +$100.000 por venta o alquiler de patrimonio inmobiliario.</p>
+                  <p class="text-[10px] text-slate-400 leading-tight">Inyección única de +€100.000 por venta o alquiler de patrimonio inmobiliario.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
                   <span class="text-slate-400">Impacto:</span>
-                  <span class="text-blue-300 font-bold">+$100k Inyección</span>
+                  <span class="text-blue-300 font-bold">+€100k Inyección</span>
                 </div>
               </div>
 
@@ -632,11 +632,11 @@
                 </div>
                 <div>
                   <h4 id="title-action-pension" class="text-xs font-bold text-white">Cobro de Pensión</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Ingreso de renta garantizada de +$20.000/año a partir de los 62 años.</p>
+                  <p class="text-[10px] text-slate-400 leading-tight">Ingreso de renta garantizada de +€20.000/año a partir de los 62 años.</p>
                 </div>
                 <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
                   <span class="text-slate-400">Impacto:</span>
-                  <span class="text-pink-300 font-bold">+$20k / Año Garantizados</span>
+                  <span class="text-pink-300 font-bold">+€20k / Año Garantizados</span>
                 </div>
               </div>
 
@@ -859,6 +859,60 @@
 
     </div>
 
+    <!-- RESULT-AWARE CALL TO ACTION.
+         The panel below is hidden until a run produces an outcome. The simulator
+         classifies its own result into a named bucket, hands it to
+         assets/js/sim-cta.js with the numbers behind it, and that fills this in
+         from assets/js/sim-cta.<language>.js.
+
+         There is deliberately not one translation placeholder in it. Every sentence a
+         visitor reads here is chosen by the outcome, so carrying the copy in this
+         template would mean roughly thirty new sidecar keys per simulator and a
+         hundred and fifty across the five - and it would put prose that has to be
+         written for a specific moment into a string table. The per-language copy
+         file is hand-authored for the same reason the behaviour bundles are
+         generated per language.
+
+         The form itself is static because Netlify's form detection reads the built
+         HTML: the <form> and its field names have to exist at build time. Only the
+         values, the labels and the destination are written at runtime. -->
+    <section id="sim-cta-result" class="sim-result-cta" data-simulator="monte-carlo-fire" data-home="/" aria-labelledby="sim-cta-title" hidden>
+        <div class="sim-result-cta__panel">
+            <div class="sim-result-cta__inner">
+                <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="simulator-result">
+                    <input type="hidden" name="simulator" value="monte-carlo-fire">
+                    <input type="hidden" name="language" value="es">
+                    <input type="hidden" name="outcome" value="">
+                    <input type="hidden" name="headline" value="">
+                    <input type="hidden" name="detail" value="">
+                    <input type="hidden" name="routed_to" value="">
+                    <input type="hidden" name="subject" value="">
+                    <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                    <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                    <div class="sim-result-cta__row">
+                        <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                        <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                    </div>
+                    <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                    <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="sim-result-cta__actions">
+                    <a class="sim-result-cta__primary" id="sim-cta-primary" href="/#assessment"></a>
+                    <a class="sim-result-cta__link" id="sim-cta-secondary" href="/#herramientas"></a>
+                </div>
+
+                <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+            </div>
+        </div>
+    </section>
+
     <!-- The explainer below is the answer to a Search Console report: these pages
                  were being crawled and then not indexed, which is what Google does with a
                  page that is almost entirely interface. A calculator has nothing to read -
@@ -976,29 +1030,29 @@
 
       <div class="space-y-3 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label for="calc-spend-housing" class="text-slate-300">Vivienda y Servicios ($/mes):</label>
+          <label for="calc-spend-housing" class="text-slate-300">Vivienda y Servicios (€/mes):</label>
           <input type="number" id="calc-spend-housing" value="1500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-food" class="text-slate-300">Comida y Alimentación ($/mes):</label>
+          <label for="calc-spend-food" class="text-slate-300">Comida y Alimentación (€/mes):</label>
           <input type="number" id="calc-spend-food" value="800" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-health" class="text-slate-300">Salud y Seguros ($/mes):</label>
+          <label for="calc-spend-health" class="text-slate-300">Salud y Seguros (€/mes):</label>
           <input type="number" id="calc-spend-health" value="500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-travel" class="text-slate-300">Viajes y Ocio ($/mes):</label>
+          <label for="calc-spend-travel" class="text-slate-300">Viajes y Ocio (€/mes):</label>
           <input type="number" id="calc-spend-travel" value="400" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-misc" class="text-slate-300">Varios y Fondo Emergencia ($/mes):</label>
+          <label for="calc-spend-misc" class="text-slate-300">Varios y Fondo Emergencia (€/mes):</label>
           <input type="number" id="calc-spend-misc" value="550" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
         </div>
 
         <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-sm">
           <span class="font-sans font-bold text-slate-200">Gasto Anual Calculado:</span>
-          <span id="calc-spend-total" class="font-hud font-bold text-emerald-400 text-base">$45.000 / año</span>
+          <span id="calc-spend-total" class="font-hud font-bold text-emerald-400 text-base">€45.000 / año</span>
         </div>
       </div>
 
@@ -1031,7 +1085,7 @@
 
       <div class="space-y-4 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label for="calc-egg-spend" class="text-slate-300">Gasto Anual de Vida ($):</label>
+          <label for="calc-egg-spend" class="text-slate-300">Gasto Anual de Vida (€):</label>
           <input type="number" id="calc-egg-spend" value="45000" step="1000" data-oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
         </div>
         <div class="flex justify-between items-center">
@@ -1046,12 +1100,12 @@
 
         <div class="p-3 rounded-xl bg-cyan-950/60 border border-cyan-800 space-y-1">
           <div class="text-[11px] text-cyan-300">Fórmula Multiplicadora FIRE:</div>
-          <div id="calc-egg-formula" class="text-xs text-slate-300">$45.000 × 25 = $1.125.000 (Regla del 25x)</div>
+          <div id="calc-egg-formula" class="text-xs text-slate-300">€45.000 × 25 = €1.125.000 (Regla del 25x)</div>
         </div>
 
         <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-sm">
           <span class="font-sans font-bold text-slate-200">Capital Inicial Requerido:</span>
-          <span id="calc-egg-total" class="font-hud font-bold text-cyan-400 text-base">$1.125.000</span>
+          <span id="calc-egg-total" class="font-hud font-bold text-cyan-400 text-base">€1.125.000</span>
         </div>
       </div>
 
@@ -1074,7 +1128,7 @@
       </div>
       <h3 id="debrief-title" class="text-lg font-hud font-bold text-white">¡MISIÓN CUMPLIDA!</h3>
       <p id="debrief-msg" class="text-xs text-slate-300 leading-relaxed">
-        ¡Llegaste con éxito a los 100 años con $1.240.000 restantes en el tanque de combustible de tu portafolio!
+        ¡Llegaste con éxito a los 100 años con €1.240.000 restantes en el tanque de combustible de tu portafolio!
       </p>
 
       <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-left space-y-1.5 font-mono text-xs">
@@ -1088,7 +1142,7 @@
         </div>
         <div class="flex justify-between">
           <span class="text-slate-400">Capital Final:</span>
-          <span id="debrief-final-bal" class="text-emerald-400 font-bold">$1.240.000</span>
+          <span id="debrief-final-bal" class="text-emerald-400 font-bold">€1.240.000</span>
         </div>
         <div class="flex justify-between">
           <span class="text-slate-400">Años Sobrevividos:</span>
@@ -1104,6 +1158,13 @@
         </div>
       </div>
 
+      <!-- The debrief is a full-screen overlay, so the panel this flight just
+           filled in is behind it. This is the way through: one button, above
+           the two that were already here and wider than either, because the
+           reading of the flight is the thing a pilot who has just crashed is
+           most likely to want next. -->
+      <button data-onclick="openSimCta()" class="w-full mb-2 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">Ver qué significa este vuelo</button>
+
       <div class="flex gap-2">
         <button data-onclick="closeDebriefAndShowLeaderboard()" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
           VER CLASIFICACIÓN
@@ -1118,6 +1179,11 @@
   <!-- ================================================================= -->
   <!-- MOTOR JAVASCRIPT Y LÓGICA DE SIMULACIÓN -->
   <!-- ================================================================= -->
+  <!-- The result-aware call to action: the machinery, then the prose it reads.
+       Both are deferred, so both have run by the time the behaviour bundle below
+       looks for window.SimCta. -->
+  <script src="/assets/js/sim-cta.js?v=source" defer></script>
+  <script src="/assets/js/sim-cta.es.js?v=source" defer></script>
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
     <script src="/assets/js/sim-monte-carlo-fire.es.js?v=source" defer></script>

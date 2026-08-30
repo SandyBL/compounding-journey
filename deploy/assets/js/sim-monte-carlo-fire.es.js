@@ -164,12 +164,12 @@
       if (seqEl) state.marketSequence = seqEl.value;
 
       const dispEgg = document.getElementById('disp-nestegg');
-      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();
-      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString());
+      if (dispEgg) dispEgg.innerText = '€' + state.nestEgg.toLocaleString();
+      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '€' + state.nestEgg.toLocaleString());
 
       const dispSpend = document.getElementById('disp-spending');
-      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();
-      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString());
+      if (dispSpend) dispSpend.innerText = '€' + state.annualSpending.toLocaleString();
+      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '€' + state.annualSpending.toLocaleString());
 
       const swrVal = (state.annualSpending / state.nestEgg) * 100;
       const swrStr = swrVal.toFixed(1) + '%';
@@ -197,7 +197,7 @@
         if (hudAge) hudAge.innerText = state.currentAge;
 
         const hudVal = document.getElementById('hud-portfolio-val');
-        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();
+        if (hudVal) hudVal.innerText = '€' + state.currentNestEgg.toLocaleString();
 
         const hudSwr = document.getElementById('hud-current-swr');
         if (hudSwr) hudSwr.innerText = swrStr;
@@ -364,7 +364,7 @@
           state.currentNestEgg += 100000;
           showCopilotBanner(
             '🏠 INYECCIÓN POR REDUCCIÓN DE VIVENDA',
-            '¡Inyectaste +$100.000 de combustible de emergencia tras vender o reducir tu vivienda!',
+            '¡Inyectaste +€100.000 de combustible de emergencia tras vender o reducir tu vivienda!',
             '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',
             'info'
           );
@@ -552,8 +552,8 @@
 
         showCopilotBanner(
           '🚨 EMERGENCIA EN DESPLOME: PERDIDA DE SUSTENTACIÓN',
-          `¡Tu patrimonio neto cayó a $0 a los ${state.currentAge} Años! Te quedan ${10 - state.yearsInCrashlineConsecutive} año(s) en la zona de desplome antes del fin de juego. ¡Activa empleo parcial, reducción o recortes!`,
-          '💡 Consejo: Activa Trabajo Parcial, Reducción de Vivienda o Recorte de Gastos para salir de la bancarrota $0.',
+          `¡Tu patrimonio neto cayó a €0 a los ${state.currentAge} Años! Te quedan ${10 - state.yearsInCrashlineConsecutive} año(s) en la zona de desplome antes del fin de juego. ¡Activa empleo parcial, reducción o recortes!`,
+          '💡 Consejo: Activa Trabajo Parcial, Reducción de Vivienda o Recorte de Gastos para salir de la bancarrota €0.',
           'danger'
         );
         playSound('alert');
@@ -575,7 +575,7 @@
       if (hudAge) hudAge.innerText = state.currentAge;
 
       const hudVal = document.getElementById('hud-portfolio-val');
-      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();
+      if (hudVal) hudVal.innerText = '€' + state.currentNestEgg.toLocaleString();
 
       const curSwr = ((effectiveSpend / Math.max(1, state.currentNestEgg)) * 100).toFixed(1);
       const hudSwr = document.getElementById('hud-current-swr');
@@ -675,14 +675,14 @@
       if (reachedTarget) {
         title.innerText = '¡MISIÓN CUMPLIDA!';
         title.className = 'text-lg font-hud font-bold text-emerald-400';
-        msg.innerText = `¡Felicitaciones Piloto ${state.pilotName}! ¡Aterrizaste con éxito a los 100 Años con $${state.currentNestEgg.toLocaleString()} en altitud de combustible restante!`;
+        msg.innerText = `¡Felicitaciones Piloto ${state.pilotName}! ¡Aterrizaste con éxito a los 100 Años con €${state.currentNestEgg.toLocaleString()} en altitud de combustible restante!`;
         iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-950 text-emerald-400 border border-emerald-700 shadow-lg glow-green';
         icon.className = 'fa-solid fa-trophy';
         playSound('success');
       } else {
         title.innerText = '¡VUELO DESTRUIDO: BANCARROTA EN DESPLOME!';
         title.className = 'text-lg font-hud font-bold text-red-400';
-        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de $0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu portafolio se quedó sin combustible!`;
+        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de €0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu portafolio se quedó sin combustible!`;
         iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-950 text-red-400 border border-red-700 shadow-lg glow-red';
         icon.className = 'fa-solid fa-plane-slash';
         playSound('crash');
@@ -690,7 +690,7 @@
 
       if (pilotName) pilotName.innerText = state.pilotName;
       if (debriefCat) debriefCat.innerText = presetLabel(state.activePresetKey);
-      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();
+      if (finalBal) finalBal.innerText = '€' + Math.max(0, state.currentNestEgg).toLocaleString();
       if (years) years.innerText = survivedYears + ' Años (Edad ' + state.currentAge + ')';
       if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Año(s)';
       if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Años-Táctica (-${state.totalTacticYears * 75} pts)`;
@@ -703,6 +703,57 @@
       // full-screen overlay, so focus has to follow the debrief.
       title.setAttribute('tabindex', '-1');
       title.focus({ preventScroll: true });
+
+      updateResultCta(reachedTarget, survivedYears);
+    }
+
+    /**
+     * Classifies the finished flight for the result-aware panel.
+     *
+     * The panel is filled in behind the debrief overlay rather than after it,
+     * so it is already there whichever way the pilot leaves the modal - and
+     * openSimCta() below is the direct route to it.
+     *
+     * Four outcomes, and the two that are not obvious are the interesting
+     * ones. A flight that survived after ten years at zero altitude is not
+     * the same result as one that never got near the floor, because the
+     * number a survival probability reports is not the thing that makes
+     * somebody abandon a plan. And a flight that ended with three times what
+     * it started with is not simply a better win: it is a plan that was
+     * over-funded, which was paid for with working years nobody gets back.
+     */
+    function updateResultCta(reachedTarget, survivedYears) {
+      if (!window.SimCta) return;
+
+      const finalBalance = Math.max(0, state.currentNestEgg);
+      const swr = state.nestEgg > 0 ? ((state.annualSpending / state.nestEgg) * 100).toFixed(1) : '0.0';
+      const multiple = state.nestEgg > 0 ? (finalBalance / state.nestEgg).toFixed(1) : '0.0';
+
+      let bucket;
+      if (!reachedTarget) bucket = 'crashed';
+      else if (state.totalCrashlineYears >= 3) bucket = 'fragile';
+      else if (finalBalance > state.nestEgg * 2) bucket = 'comfortable';
+      else bucket = 'landed';
+
+      window.SimCta.show(bucket, {
+        age: state.currentAge,
+        years: survivedYears,
+        crashYears: state.totalCrashlineYears,
+        finalBalance: window.SimCta.money(finalBalance),
+        nestEgg: window.SimCta.money(state.nestEgg),
+        spending: window.SimCta.money(state.annualSpending),
+        swr,
+        multiple
+      });
+    }
+
+    // The debrief's route to the panel. Closing the modal first is what makes
+    // the panel reachable at all - it is behind a full-screen overlay - and
+    // SimCta.focus() moves focus onto it, which is only correct because a
+    // pilot pressed a button asking to go there.
+    function openSimCta() {
+      closeDebriefModal();
+      if (window.SimCta) window.SimCta.focus();
     }
 
     function closeDebriefModal() {
@@ -945,7 +996,7 @@
           <td class="py-3 px-3 font-bold">${details.reached100 ? '<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> SÍ</span>' : '<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> NO</span>'}</td>
           <td class="py-3 px-3 text-red-400 font-bold">${details.crashYears || 0} Año(s)</td>
           <td class="py-3 px-3 text-amber-300 font-bold">${details.tacticYears || 0} Años-Táctica</td>
-          <td class="py-3 px-3 text-emerald-400 font-bold">$${(details.finalBalance || 0).toLocaleString()}</td>
+          <td class="py-3 px-3 text-emerald-400 font-bold">€${(details.finalBalance || 0).toLocaleString()}</td>
           <td class="py-3 px-3 text-amber-400 font-bold font-hud">${entry.score.toLocaleString()} pts</td>
         `;
         tbody.appendChild(row);
@@ -977,7 +1028,7 @@
         skyGrad.addColorStop(0, '#7f1d1d');
         skyGrad.addColorStop(1, '#020617');
         if (canvasStatusText) {
-          canvasStatusText.innerText = `EMERGENCIA EN DESPLOME: ¡${state.yearsInCrashlineConsecutive}/10 Años en Bancarrota $0!`;
+          canvasStatusText.innerText = `EMERGENCIA EN DESPLOME: ¡${state.yearsInCrashlineConsecutive}/10 Años en Bancarrota €0!`;
           if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
         }
       } else if (healthRatio > 0.8) {
@@ -1018,7 +1069,7 @@
 
         ctx.fillStyle = '#64748b';
         ctx.font = '9px Orbitron';
-        ctx.fillText('$' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
+        ctx.fillText('€' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
       }
 
       const totalYears = Math.max(1, state.targetAge - state.startAge);
@@ -1099,7 +1150,7 @@
 
       ctx.fillStyle = '#ef4444';
       ctx.font = '10px Orbitron';
-      ctx.fillText('ZONA CRASHLINE (BANCARROTA $0)', 65, bottomY - 6);
+      ctx.fillText('ZONA CRASHLINE (BANCARROTA €0)', 65, bottomY - 6);
     }
 
     function drawAirplane(ctx, x, y, healthRatio) {
@@ -1154,7 +1205,7 @@
       const totalAnnual = totalMonthly * 12;
 
       const totalEl = document.getElementById('calc-spend-total');
-      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString() + ' / año';
+      if (totalEl) totalEl.innerText = '€' + Math.round(totalAnnual).toLocaleString() + ' / año';
       return totalAnnual;
     }
     function applyCalculatedSpend() {
@@ -1187,10 +1238,10 @@
 
       const formulaEl = document.getElementById('calc-egg-formula');
       if (formulaEl) {
-        formulaEl.innerText = `$${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString()} (Regla del ${multiplier.toFixed(1)}x)`;
+        formulaEl.innerText = `€${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = €${Math.round(requiredEgg).toLocaleString()} (Regla del ${multiplier.toFixed(1)}x)`;
       }
       const totalEl = document.getElementById('calc-egg-total');
-      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString();
+      if (totalEl) totalEl.innerText = '€' + Math.round(requiredEgg).toLocaleString();
       return requiredEgg;
     }
     function applyCalculatedEgg() {
@@ -1265,9 +1316,9 @@
       const p90El = document.getElementById('mc-metric-p90');
 
       if (succEl) succEl.innerText = successRate + '%';
-      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString();
-      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString();
-      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString();
+      if (medEl) medEl.innerText = '€' + Math.round(medianEnd).toLocaleString();
+      if (p10El) p10El.innerText = '€' + Math.round(p10).toLocaleString();
+      if (p90El) p90El.innerText = '€' + Math.round(p90).toLocaleString();
 
       const tbody = document.getElementById('mc-table-body');
       if (tbody) {
@@ -1280,11 +1331,11 @@
             row.className = 'hover:bg-slate-900/60 transition';
             row.innerHTML = `
               <td class="py-2.5 px-3 font-bold text-white">Edad ${state.startAge + y} (${y} Años)</td>
-              <td class="py-2.5 px-3 text-red-400 font-bold">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-amber-400">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-cyan-300 font-bold">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-emerald-400">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-purple-400 font-bold">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-red-400 font-bold">€${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-amber-400">€${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-cyan-300 font-bold">€${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-emerald-400">€${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-purple-400 font-bold">€${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>
             `;
             tbody.appendChild(row);
           }

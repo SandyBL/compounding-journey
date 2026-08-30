@@ -721,6 +721,57 @@
       // full-screen overlay, so focus has to follow the debrief.
       title.setAttribute('tabindex', '-1');
       title.focus({ preventScroll: true });
+
+      updateResultCta(reachedTarget, survivedYears);
+    }
+
+    /**
+     * Classifies the finished flight for the result-aware panel.
+     *
+     * The panel is filled in behind the debrief overlay rather than after it,
+     * so it is already there whichever way the pilot leaves the modal - and
+     * openSimCta() below is the direct route to it.
+     *
+     * Four outcomes, and the two that are not obvious are the interesting
+     * ones. A flight that survived after ten years at zero altitude is not
+     * the same result as one that never got near the floor, because the
+     * number a survival probability reports is not the thing that makes
+     * somebody abandon a plan. And a flight that ended with three times what
+     * it started with is not simply a better win: it is a plan that was
+     * over-funded, which was paid for with working years nobody gets back.
+     */
+    function updateResultCta(reachedTarget, survivedYears) {
+      if (!window.SimCta) return;
+
+      const finalBalance = Math.max(0, state.currentNestEgg);
+      const swr = state.nestEgg > 0 ? ((state.annualSpending / state.nestEgg) * 100).toFixed(1) : '0.0';
+      const multiple = state.nestEgg > 0 ? (finalBalance / state.nestEgg).toFixed(1) : '0.0';
+
+      let bucket;
+      if (!reachedTarget) bucket = 'crashed';
+      else if (state.totalCrashlineYears >= 3) bucket = 'fragile';
+      else if (finalBalance > state.nestEgg * 2) bucket = 'comfortable';
+      else bucket = 'landed';
+
+      window.SimCta.show(bucket, {
+        age: state.currentAge,
+        years: survivedYears,
+        crashYears: state.totalCrashlineYears,
+        finalBalance: window.SimCta.money(finalBalance),
+        nestEgg: window.SimCta.money(state.nestEgg),
+        spending: window.SimCta.money(state.annualSpending),
+        swr,
+        multiple
+      });
+    }
+
+    // The debrief's route to the panel. Closing the modal first is what makes
+    // the panel reachable at all - it is behind a full-screen overlay - and
+    // SimCta.focus() moves focus onto it, which is only correct because a
+    // pilot pressed a button asking to go there.
+    function openSimCta() {
+      closeDebriefModal();
+      if (window.SimCta) window.SimCta.focus();
     }
 
     function closeDebriefModal() {

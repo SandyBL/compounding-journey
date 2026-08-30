@@ -168,7 +168,7 @@
             </div>
             
             <p class="text-xs text-espresso-800/80 mt-3 italic">
-{{textXs2}}<span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">$28.85/hr</span>{{textXs3}}            </p>
+{{textXs2}}<span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">{{lang.currency}}28.85/hr</span>{{textXs3}}            </p>
         </div>
     </section>
 
@@ -191,7 +191,7 @@
                 <span class="text-xs font-extrabold uppercase tracking-widest text-gold-600">{{textXs4}}</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-espresso-900 font-serif mt-1">{{text2xl}}</h2>
                 <p class="text-sm sm:text-base text-espresso-800/90 mt-2 leading-relaxed">
-                    {{textSm}}$15 {{textSm2}}<strong class="text-forest-800">{{textForest800}}</strong>{{textSm3}}<strong class="text-forest-800">{{textForest8002}}</strong>{{textSm4}}                </p>
+                    {{textSm}}{{lang.currency}}15 {{textSm2}}<strong class="text-forest-800">{{textForest800}}</strong>{{textSm3}}<strong class="text-forest-800">{{textForest8002}}</strong>{{textSm4}}                </p>
             </div>
 
             <!-- Quick Action Preset Buttons -->
@@ -287,7 +287,7 @@
                         <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300 flex justify-between items-center">
                             <div>
                                 <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">{{text10px5}}</span>
-                                <span id="stat30YearWealth" class="text-lg font-extrabold text-emerald-700 font-mono">$1,036,400</span>
+                                <span id="stat30YearWealth" class="text-lg font-extrabold text-emerald-700 font-mono">{{lang.currency}}1,036,400</span>
                             </div>
                             <div class="text-right">
                                 <span class="text-[9px] text-espresso-800/60 block">{{text9px}}</span>
@@ -678,7 +678,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 p-3 bg-cream-100/90 rounded-xl border border-cream-300">
                         <div class="flex items-center justify-between gap-2">
 {{minHScreen40}}                            <div class="relative flex items-center">
-                                <span class="absolute left-2.5 text-xs text-espresso-800 font-bold">$</span>
+                                <span class="absolute left-2.5 text-xs text-espresso-800 font-bold">{{lang.currency}}</span>
                                 <input type="number" min="0" step="1" value="${habit.baseCost}" 
                                     data-onchange="updateHabitBaseCost(${idx}, this.value)" 
                                     class="w-28 pl-6 pr-2 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold font-mono text-forest-800 focus:ring-2 focus:ring-forest-800">
@@ -770,7 +770,7 @@
             profile.basicMonthlyExpenses = parseFloat(document.getElementById('inputBasicExpenses').value) || 2500;
 
             const wage = getHourlyWage();
-            document.getElementById('computedHourlyWage').innerText = `$${wage.toFixed(2)}/hr`;
+            document.getElementById('computedHourlyWage').innerText = `{{lang.currency}}${wage.toFixed(2)}/hr`;
 
             renderHabitCards();
             recalculateAll();
@@ -976,7 +976,7 @@
                     scales: {
                         y: {
                             ticks: {
-                                callback: val => '$' + (val / 1000).toFixed(0) + 'k',
+                                callback: val => '{{lang.currency}}' + (val / 1000).toFixed(0) + 'k',
                                 font: { size: 10 }
                             }
                         },

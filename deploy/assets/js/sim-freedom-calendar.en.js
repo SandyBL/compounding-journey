@@ -443,6 +443,72 @@
 
             // Update Chart
             updateWealthChart(baselineMonthlyHabits, optimizedMonthlyHabits);
+
+            updateResultCta({
+                monthlySaved,
+                annualWorkDaysSaved,
+                wealthGained30Yr,
+                baselineFreedomAge,
+                optimizedFreedomAge,
+                yearsPulledForward
+            });
+        }
+
+        /**
+         * Classifies the run for the result-aware panel, and hands it the
+         * numbers the copy quotes back.
+         *
+         * recalculateAll() runs on every slider movement, including the first
+         * render, so the interesting part of this is when it says nothing. A
+         * visitor who has not moved anything yet has told the tool nothing
+         * about themselves, and a panel that appears before they have touched a
+         * habit is an offer attached to no result. `monthlySaved > 0` is the
+         * cheapest honest signal that a choice has been made.
+         *
+         * The outcome is deliberately not "how much did you save" but "what
+         * kind of situation is this". A visitor who found nine years and one
+         * who found one year need different next steps; a visitor whose plan
+         * never reaches independence however hard they cut needs a different
+         * conversation altogether, and asking them to fill in a long
+         * questionnaire is the wrong response to it.
+         */
+        function updateResultCta(result) {
+            if (!window.SimCta) return;
+            if (result.monthlySaved <= 0) return;
+
+            // The tool caps its own projection at 85, which is how it says
+            // "not within a working life". Asked with every habit at zero,
+            // that answer is about the shape of the plan rather than about
+            // spending, and no slider on this page moves it.
+            const cannotGetThereAtAll = simulateFreedomAge(0) >= 85;
+
+            const years = result.yearsPulledForward;
+            let bucket;
+            if (cannotGetThereAtAll) bucket = 'stalled';
+            else if (years < 1) return; // real money, not yet a whole year of life
+            else if (years >= 6) bucket = 'major';
+            else if (years >= 3) bucket = 'strong';
+            else bucket = 'modest';
+
+            // The single habit carrying the most of the saving. Named rather
+            // than ranked, because the point being made is that the easiest
+            // slider to move and the largest leak are often not the same one.
+            let top = null;
+            habits.forEach((habit) => {
+                const saved = getHabitMonthlyCost(habit, 100) - getHabitMonthlyCost(habit);
+                if (!top || saved > top.saved) top = { title: habit.title, saved };
+            });
+
+            window.SimCta.show(bucket, {
+                years,
+                age: result.optimizedFreedomAge,
+                baselineAge: result.baselineFreedomAge,
+                monthly: window.SimCta.money(result.monthlySaved),
+                workDays: window.SimCta.integer(result.annualWorkDaysSaved),
+                wealth: window.SimCta.money(result.wealthGained30Yr),
+                topHabit: top ? top.title : '',
+                topHabitMonthly: top ? window.SimCta.money(top.saved) : ''
+            });
         }
 
         // RENDER / UPDATE CHART

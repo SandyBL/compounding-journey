@@ -91,15 +91,20 @@
   }
 
   /**
-   * The simulators all label money with a dollar sign in all three languages -
-   * the amounts are illustrative and the tools never claim a jurisdiction - so
-   * this matches them rather than introducing a fourth convention.
+   * The symbol each language's simulators label money with. The amounts are
+   * illustrative and identical in all three languages, so this is a label and
+   * not a conversion - it matches what the simulator pages themselves print,
+   * which generate-simulator-pages.mjs resolves from the same three symbols.
    */
+  var CURRENCY = { en: '$', es: '€', pt: 'R$' };
+
   function money(value) {
+    var symbol = CURRENCY[language()];
     var number = Number(value);
-    if (!isFinite(number)) return '$0';
-    // A monthly cash flow can be negative, and "$-300" reads as a typo.
-    return (number < 0 ? '-$' : '$') + integer(Math.abs(number));
+    if (!isFinite(number)) return symbol + '0';
+    // A monthly cash flow can be negative, and a sign after the symbol
+    // ("$-300") reads as a typo, so it goes in front of it.
+    return (number < 0 ? '-' + symbol : symbol) + integer(Math.abs(number));
   }
 
   function fillTokens(text, tokens) {

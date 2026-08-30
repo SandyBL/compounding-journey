@@ -86,8 +86,8 @@
   },
   "networthdisplay": {
     "en": "$10,000",
-    "es": "$10,000",
-    "pt": "$10.000"
+    "es": "€10,000",
+    "pt": "R$10.000"
   },
   "maxW6xl2": {
     "en": "            <!-- Monthly Cash Flow -->\n",
@@ -101,8 +101,8 @@
   },
   "cashflowdisplay": {
     "en": "+$500/mo",
-    "es": "+$500/mes",
-    "pt": "+$500/mês"
+    "es": "+€500/mes",
+    "pt": "+R$500/mês"
   },
   "maxW6xl3": {
     "en": "            <!-- Happiness -->\n",
@@ -355,9 +355,9 @@
     "pt": "        // Destaque de Números-Chave e Termos Financeiros\n"
   },
   "minHScreen6": {
-    "en": "            const pattern = /(\\$\\d+[\\d,]*k?|\\d+(\\.\\d+)?%|\\d+\\s*(hours|months|years|working weeks)|24-month|84-month|6-month|3x|AUM)/gi;\n",
-    "es": "            const pattern = /(\\$\\d+[\\d,.]*k?|\\d+([.,]\\d+)?%|\\d+\\s*(horas|meses|años|semanas de trabajo)|24 meses|84 meses|6 meses|3x|AUM)/gi;\n",
-    "pt": "            const pattern = /(\\$\\d+[\\d,.]*k?|\\d+([.,]\\d+)?%|\\d+\\s*(horas|meses|anos|semanas de trabalho)|24 meses|84 meses|6 meses|3x|AUM)/gi;\n"
+    "en": "            const pattern = /(\\$\\d+[\\d,]*k?|\\d+(\\.\\d+)?%|\\d+\\s*(hours|months|years|working weeks)|24-month|84-month|6-month|3x|\\bAUM\\b)/gi;\n",
+    "es": "            const pattern = /(€\\d+[\\d,.]*k?|\\d+([.,]\\d+)?%|\\d+\\s*(horas|meses|años|semanas de trabajo)|24 meses|84 meses|6 meses|3x|\\bAUM\\b)/gi;\n",
+    "pt": "            const pattern = /(R\\$\\d+[\\d,.]*k?|\\d+([.,]\\d+)?%|\\d+\\s*(horas|meses|anos|semanas de trabalho)|24 meses|84 meses|6 meses|3x|\\bAUM\\b)/gi;\n"
   },
   "minHScreen7": {
     "en": "        // INITIAL STATE\n",
@@ -391,13 +391,13 @@
   },
   "minHScreen13": {
     "en": "                title: \"1. The Idle Cash Dilemma\",\n                description: \"You receive a $5,000 work bonus. You do not need this liquid cash immediately. Annual inflation rate is 3.5%. How do you deploy this capital?\",\n",
-    "es": "                title: \"1. El Dilema del Dinero Estancado\",\n                description: \"Recibes un bono de trabajo de $5,000. No necesitas este dinero de inmediato. La tasa de inflación anual es de 3.5%. ¿Cómo asignas este capital?\",\n",
-    "pt": "                title: \"1. O Dilema do Dinheiro Parado\",\n                description: \"Você recebe um bônus de trabalho de $5.000. Você não precisa desse dinheiro imediatamente. A taxa de inflação anual é de 3,5%. Como você aloca esse capital?\",\n"
+    "es": "                title: \"1. El Dilema del Dinero Estancado\",\n                description: \"Recibes un bono de trabajo de €5,000. No necesitas este dinero de inmediato. La tasa de inflación anual es de 3.5%. ¿Cómo asignas este capital?\",\n",
+    "pt": "                title: \"1. O Dilema do Dinheiro Parado\",\n                description: \"Você recebe um bônus de trabalho de R$5.000. Você não precisa desse dinheiro imediatamente. A taxa de inflação anual é de 3,5%. Como você aloca esse capital?\",\n"
   },
   "minHScreen14": {
     "en": "                    title: \"Leave all $5,000 in a 0.01% standard checking account.\",\n                    desc: \"Keeps 100% liquid cash in checking for emotional peace of mind.\",\n",
-    "es": "                    title: \"Dejar los $5,000 completos en la cuenta corriente común al 0.01%.\",\n                    desc: \"Mantiene el 100% del dinero líquido en la cuenta corriente para tranquilidad emocional.\",\n",
-    "pt": "                    title: \"Deixar todos os $5.000 na conta corrente comum a 0,01%.\",\n                    desc: \"Mantém 100% do dinheiro líquido na conta corrente para tranquilidade emocional.\",\n"
+    "es": "                    title: \"Dejar los €5,000 completos en la cuenta corriente común al 0.01%.\",\n                    desc: \"Mantiene el 100% del dinero líquido en la cuenta corriente para tranquilidad emocional.\",\n",
+    "pt": "                    title: \"Deixar todos os R$5.000 na conta corrente comum a 0,01%.\",\n                    desc: \"Mantém 100% do dinheiro líquido na conta corrente para tranquilidade emocional.\",\n"
   },
   "minHScreen15": {
     "en": "                    lesson: \"Money left idle in checking feels safe, but silently shrinks in real purchasing power due to inflation.\"\n",
@@ -406,8 +406,8 @@
   },
   "minHScreen16": {
     "en": "                    title: \"Put the $5,000 into a High-Yield Savings (HYSA) / Money Market Fund.\",\n                    desc: \"Earns competitive short-term interest while remaining liquid.\",\n",
-    "es": "                    title: \"Poner los $5,000 en una Cuenta de Alto Rendimiento / Fondo de Liquidez.\",\n                    desc: \"Genera intereses competitivos a corto plazo sin perder la liquidez inmediata.\",\n",
-    "pt": "                    title: \"Colocar os $5.000 em uma Conta de Alto Rendimento / Fundo de Liquidez.\",\n                    desc: \"Rende juros competitivos de curto prazo sem perder a liquidez.\",\n"
+    "es": "                    title: \"Poner los €5,000 en una Cuenta de Alto Rendimiento / Fondo de Liquidez.\",\n                    desc: \"Genera intereses competitivos a corto plazo sin perder la liquidez inmediata.\",\n",
+    "pt": "                    title: \"Colocar os R$5.000 em uma Conta de Alto Rendimento / Fundo de Liquidez.\",\n                    desc: \"Rende juros competitivos de curto prazo sem perder a liquidez.\",\n"
   },
   "minHScreen17": {
     "en": "                    lesson: \"High-yield savings or money market funds shield cash reserves against inflation and build risk-free yield without sacrificing short-term liquidity.\"\n",
@@ -416,8 +416,8 @@
   },
   "minHScreen18": {
     "en": "                    title: \"Put 100% of the $5,000 into a volatile speculative memecoin.\",\n                    desc: \"Chases ultra-high quick gains with extreme loss probability.\",\n",
-    "es": "                    title: \"Invertir el 100% de los $5,000 en una memecoin altamente especulativa.\",\n                    desc: \"Busca ganancias astronómicas rápidas con probabilidad extrema de pérdida.\",\n",
-    "pt": "                    title: \"Investir 100% dos $5.000 em uma memecoin altamente especulativa.\",\n                    desc: \"Busca ganhos astronômicos rápidos com probabilidade extrema de perda.\",\n"
+    "es": "                    title: \"Invertir el 100% de los €5,000 en una memecoin altamente especulativa.\",\n                    desc: \"Busca ganancias astronómicas rápidas con probabilidad extrema de pérdida.\",\n",
+    "pt": "                    title: \"Investir 100% dos R$5.000 em uma memecoin altamente especulativa.\",\n                    desc: \"Busca ganhos astronômicos rápidos com probabilidade extrema de perda.\",\n"
   },
   "minHScreen19": {
     "en": "                    lesson: \"Speculation is not investing. Putting liquid funds into hype-driven volatile assets risks total drawdown and high financial stress.\"\n",
@@ -426,8 +426,8 @@
   },
   "minHScreen20": {
     "en": "                title: \"2. Beach House: Buy vs. Rent vs. Core Assets\",\n                description: \"You dream of spending summer months near the ocean. You have saved $60,000 for a down payment or investment.\",\n",
-    "es": "                title: \"2. Casa en la Playa: Comprar vs. Alquilar vs. Activos Productivos\",\n                description: \"Deseas pasar los meses de verano cerca del mar y has juntado $60,000 para una entrada o inversión.\",\n",
-    "pt": "                title: \"2. Casa na Praia: Comprar vs. Alugar vs. Ativos Produtivos\",\n                description: \"Você deseja passar os meses de verão perto do mar e juntou $60.000 para uma entrada ou investimento.\",\n"
+    "es": "                title: \"2. Casa en la Playa: Comprar vs. Alquilar vs. Activos Productivos\",\n                description: \"Deseas pasar los meses de verano cerca del mar y has juntado €60,000 para una entrada o inversión.\",\n",
+    "pt": "                title: \"2. Casa na Praia: Comprar vs. Alugar vs. Ativos Produtivos\",\n                description: \"Você deseja passar os meses de verão perto do mar e juntou R$60.000 para uma entrada ou investimento.\",\n"
   },
   "minHScreen21": {
     "en": "                    title: \"Buy a beach house with a heavy mortgage and high HOA/maintenance fees.\",\n                    desc: \"Commits to high monthly debt service and localized coastal property risk.\",\n",
@@ -441,8 +441,8 @@
   },
   "minHScreen23": {
     "en": "                    title: \"Rent a beach house for 2-4 weeks each summer & invest the $60k in global index funds.\",\n                    desc: \"Enjoys the beach lifestyle flexibly while keeping capital compounding in liquid assets.\",\n",
-    "es": "                    title: \"Alquilar una casa en la playa por 2-4 semanas en verano e invertir los $60k en índices globales.\",\n                    desc: \"Disfruta el estilo de vida de forma flexible mientras el capital se multiplica en activos líquidos.\",\n",
-    "pt": "                    title: \"Alugar uma casa na praia por 2-4 semanas no verão e investir os $60k em índices globais.\",\n                    desc: \"Desfruta o estilo de vida de forma flexível enquanto o capital multiplica em ativos líquidos.\",\n"
+    "es": "                    title: \"Alquilar una casa en la playa por 2-4 semanas en verano e invertir los €60k en índices globales.\",\n                    desc: \"Disfruta el estilo de vida de forma flexible mientras el capital se multiplica en activos líquidos.\",\n",
+    "pt": "                    title: \"Alugar uma casa na praia por 2-4 semanas no verão e investir os R$60k em índices globais.\",\n                    desc: \"Desfruta o estilo de vida de forma flexível enquanto o capital multiplica em ativos líquidos.\",\n"
   },
   "minHScreen24": {
     "en": "                    lesson: \"Renting luxury assets while owning income-producing productive assets maximizes both personal happiness and compounding speed.\"\n",
@@ -451,8 +451,8 @@
   },
   "minHScreen25": {
     "en": "                    title: \"Keep the $60,000 sitting in a 0% interest checking account indefinitely.\",\n                    desc: \"Keeps capital uninvested out of fear of real estate or stock markets.\",\n",
-    "es": "                    title: \"Dejar los $60,000 paralizados en la cuenta corriente sin rendimiento por tiempo indefinido.\",\n                    desc: \"Mantiene el capital sin invertir por temor al mercado inmobiliario o de acciones.\",\n",
-    "pt": "                    title: \"Deixar os $60.000 parados na conta corrente sem rendimento por tempo indeterminado.\",\n                    desc: \"Mantém o capital sem investir por medo do mercado imobiliário ou de ações.\",\n"
+    "es": "                    title: \"Dejar los €60,000 paralizados en la cuenta corriente sin rendimiento por tiempo indefinido.\",\n                    desc: \"Mantiene el capital sin invertir por temor al mercado inmobiliario o de acciones.\",\n",
+    "pt": "                    title: \"Deixar os R$60.000 parados na conta corrente sem rendimento por tempo indeterminado.\",\n                    desc: \"Mantém o capital sem investir por medo do mercado imobiliário ou de ações.\",\n"
   },
   "minHScreen26": {
     "en": "                    lesson: \"Opportunity cost is massive. Hoarding uninvested capital starves your future self from long-term compound growth.\"\n",
@@ -531,8 +531,8 @@
   },
   "minHScreen41": {
     "en": "                title: \"5. Managing Debt: Mortgage vs. Market Yields\",\n                description: \"You have $20,000 extra cash. You have a fixed low-rate mortgage at 3.0%, while safe short-term bonds yield 5.2%.\",\n",
-    "es": "                title: \"5. Gestión de Deudas: Hipoteca vs. Renta Fija\",\n                description: \"Tienes $20,000 en efectivo y una hipoteca con tasa fija baja del 3.0% anual, mientras que bonos seguros rinden el 5.2% anual.\",\n",
-    "pt": "                title: \"5. Gestão de Dívidas: Financiamento vs. Renda Fixa\",\n                description: \"Você possui $20.000 em dinheiro e um financiamento imobiliário com taxa fixa baixa de 3,0% ao ano, enquanto títulos seguros rendem 5,2% ao ano.\",\n"
+    "es": "                title: \"5. Gestión de Deudas: Hipoteca vs. Renta Fija\",\n                description: \"Tienes €20,000 en efectivo y una hipoteca con tasa fija baja del 3.0% anual, mientras que bonos seguros rinden el 5.2% anual.\",\n",
+    "pt": "                title: \"5. Gestão de Dívidas: Financiamento vs. Renda Fixa\",\n                description: \"Você possui R$20.000 em dinheiro e um financiamento imobiliário com taxa fixa baixa de 3,0% ao ano, enquanto títulos seguros rendem 5,2% ao ano.\",\n"
   },
   "minHScreen42": {
     "en": "                    title: \"Rush to prepay the 3% fixed mortgage as fast as possible.\",\n                    desc: \"Pours liquid cash into non-liquid home equity to eliminate low-rate debt.\",\n",
@@ -546,8 +546,8 @@
   },
   "minHScreen44": {
     "en": "                    title: \"Keep the 3% mortgage and invest $20k in high-grade short term yields/index funds.\",\n                    desc: \"Arbitrages the interest spread (5.2% yield vs 3.0% mortgage cost).\",\n",
-    "es": "                    title: \"Mantener la deuda al 3% e invertir los $20k en bonos/índices que rinden más.\",\n                    desc: \"Aprovecha el diferencial de tasas (5.2% de rendimiento vs. 3.0% de costo de la deuda).\",\n",
-    "pt": "                    title: \"Manter a dívida de 3% e investir os $20k em títulos/índices que rendem mais.\",\n                    desc: \"Aproveita o diferencial de juros (5,2% de rendimento vs. 3,0% de custo da dívida).\",\n"
+    "es": "                    title: \"Mantener la deuda al 3% e invertir los €20k en bonos/índices que rinden más.\",\n                    desc: \"Aprovecha el diferencial de tasas (5.2% de rendimiento vs. 3.0% de costo de la deuda).\",\n",
+    "pt": "                    title: \"Manter a dívida de 3% e investir os R$20k em títulos/índices que rendem mais.\",\n                    desc: \"Aproveita o diferencial de juros (5,2% de rendimento vs. 3,0% de custo da dívida).\",\n"
   },
   "minHScreen45": {
     "en": "                    lesson: \"Good debt is low-rate fixed leverage. When risk-free investment returns exceed your debt cost, maintaining low-rate debt builds wealth faster.\"\n",
@@ -566,13 +566,13 @@
   },
   "minHScreen48": {
     "en": "                title: \"6. Conscious Spending & Value Alignment\",\n                description: \"You earned a $300 monthly income raise. How do you integrate this into your lifestyle?\",\n",
-    "es": "                title: \"6. Consumo Consciente y Alineación de Valores\",\n                description: \"Has recibido un aumento salarial de $300 mensuales. ¿Cómo integras este nuevo monto a tu estilo de vida?\",\n",
-    "pt": "                title: \"6. Consumo Consciente e Alinhamento de Valores\",\n                description: \"Você recebeu um aumento de renda de $300 mensais. Como integra esse novo valor ao seu estilo de vida?\",\n"
+    "es": "                title: \"6. Consumo Consciente y Alineación de Valores\",\n                description: \"Has recibido un aumento salarial de €300 mensuales. ¿Cómo integras este nuevo monto a tu estilo de vida?\",\n",
+    "pt": "                title: \"6. Consumo Consciente e Alinhamento de Valores\",\n                description: \"Você recebeu um aumento de renda de R$300 mensais. Como integra esse novo valor ao seu estilo de vida?\",\n"
   },
   "minHScreen49": {
     "en": "                    title: \"Spend with purpose: Allocate $150 to meaningful passions & invest $150.\",\n                    desc: \"Balances conscious enjoyment of today with compounding wealth for tomorrow.\",\n",
-    "es": "                    title: \"Gasto con propósito: Asignar $150 a experiencias/pasiones e invertir $150.\",\n                    desc: \"Equilibra la satisfacción presente con el crecimiento del capital futuro.\",\n",
-    "pt": "                    title: \"Gasto com propósito: Alocar $150 para experiências/paixões e investir $150.\",\n                    desc: \"Equilibra a satisfação presente com a multiplicação do capital futuro.\",\n"
+    "es": "                    title: \"Gasto con propósito: Asignar €150 a experiencias/pasiones e invertir €150.\",\n                    desc: \"Equilibra la satisfacción presente con el crecimiento del capital futuro.\",\n",
+    "pt": "                    title: \"Gasto com propósito: Alocar R$150 para experiências/paixões e investir R$150.\",\n                    desc: \"Equilibra a satisfação presente com a multiplicação do capital futuro.\",\n"
   },
   "minHScreen50": {
     "en": "                    lesson: \"Money is a tool for fulfillment. Spending intentionally on things you truly value while saving the rest maximizes long-term happiness.\"\n",
@@ -601,8 +601,8 @@
   },
   "minHScreen55": {
     "en": "                title: \"7. Thinking in 'Hours of Work'\",\n                description: \"You are eyeing a new flagship $1,500 smartphone. You earn $25/hour post-tax.\",\n",
-    "es": "                title: \"7. Pensando en 'Horas de Trabajo'\",\n                description: \"Quieres comprar un teléfono inteligente de última generación de $1,500. Tu ingreso neto por hora es de $25.\",\n",
-    "pt": "                title: \"7. Pensando em 'Horas de Trabalho'\",\n                description: \"Você quer comprar um smartphone de última geração de $1.500. Seu ganho líquido por hora é de $25.\",\n"
+    "es": "                title: \"7. Pensando en 'Horas de Trabajo'\",\n                description: \"Quieres comprar un teléfono inteligente de última generación de €1,500. Tu ingreso neto por hora es de €25.\",\n",
+    "pt": "                title: \"7. Pensando em 'Horas de Trabalho'\",\n                description: \"Você quer comprar um smartphone de última geração de R$1.500. Seu ganho líquido por hora é de R$25.\",\n"
   },
   "minHScreen56": {
     "en": "                    title: \"Calculate the time-cost (60 hours of work) and keep your current working phone.\",\n                    desc: \"Realizes the purchase costs 1.5 full working weeks of labor.\",\n",
@@ -626,8 +626,8 @@
   },
   "minHScreen60": {
     "en": "                    title: \"Buy a reliable refurbished model for $400 and invest the $1,100 difference.\",\n                    desc: \"Meets operational tech needs while saving major capital.\",\n",
-    "es": "                    title: \"Comprar un modelo reacondicionado excelente por $400 e invertir la diferencia de $1,100.\",\n                    desc: \"Satisface perfectamente la necesidad funcional ahorrando un capital significativo.\",\n",
-    "pt": "                    title: \"Comprar um modelo seminovo excelente por $400 e investir a diferença de $1.100.\",\n                    desc: \"Atende perfeitamente à necessidade funcional economizando capital significativo.\",\n"
+    "es": "                    title: \"Comprar un modelo reacondicionado excelente por €400 e invertir la diferencia de €1,100.\",\n                    desc: \"Satisface perfectamente la necesidad funcional ahorrando un capital significativo.\",\n",
+    "pt": "                    title: \"Comprar um modelo seminovo excelente por R$400 e investir a diferença de R$1.100.\",\n                    desc: \"Atende perfeitamente à necessidade funcional economizando capital significativo.\",\n"
   },
   "minHScreen61": {
     "en": "                    lesson: \"Seeking utility over status flexes provides tech functionality while preserving capital to build true wealth.\"\n",
@@ -671,8 +671,8 @@
   },
   "minHScreen69": {
     "en": "                title: \"9. Eliminating Toxic Credit Card Debt\",\n                description: \"You have $4,000 in credit card debt charging 22% annual interest, and $4,000 in savings.\",\n",
-    "es": "                title: \"9. Eliminando Deudas Tóxicas de Tarjeta de Crédito\",\n                description: \"Tienes $4,000 en deudas de tarjeta de crédito al 22% de interés anual y $4,000 guardados en ahorros.\",\n",
-    "pt": "                title: \"9. Eliminando Dívidas Tóxicas de Cartão de Crédito\",\n                description: \"Você possui $4.000 em dívidas no cartão de crédito a 22% de juros ao ano e $4.000 guardados na poupança.\",\n"
+    "es": "                title: \"9. Eliminando Deudas Tóxicas de Tarjeta de Crédito\",\n                description: \"Tienes €4,000 en deudas de tarjeta de crédito al 22% de interés anual y €4,000 guardados en ahorros.\",\n",
+    "pt": "                title: \"9. Eliminando Dívidas Tóxicas de Cartão de Crédito\",\n                description: \"Você possui R$4.000 em dívidas no cartão de crédito a 22% de juros ao ano e R$4.000 guardados na poupança.\",\n"
   },
   "minHScreen70": {
     "en": "                    title: \"Use savings to pay off the 22% credit card debt immediately.\",\n                    desc: \"Eliminates a high-rate financial drain and secures a guaranteed 22% return.\",\n",
@@ -686,8 +686,8 @@
   },
   "minHScreen72": {
     "en": "                    title: \"Pay minimum monthly balance while investing $4,000 in stocks expected to yield 8%.\",\n                    desc: \"Loses money mathematically by earning 8% while paying 22%.\",\n",
-    "es": "                    title: \"Pagar el mínimo mensual mientras mantienes los $4,000 invertidos en acciones rindiendo el 8%.\",\n                    desc: \"Pierde dinero matemáticamente al pagar el 22% para ganar solo el 8%.\",\n",
-    "pt": "                    title: \"Pagar o mínimo mensal enquanto mantém os $4.000 aplicados em ações rendendo 8%.\",\n                    desc: \"Perde dinheiro matematicamente ao pagar 22% de juros para ganhar 8%.\",\n"
+    "es": "                    title: \"Pagar el mínimo mensual mientras mantienes los €4,000 invertidos en acciones rindiendo el 8%.\",\n                    desc: \"Pierde dinero matemáticamente al pagar el 22% para ganar solo el 8%.\",\n",
+    "pt": "                    title: \"Pagar o mínimo mensal enquanto mantém os R$4.000 aplicados em ações rendendo 8%.\",\n                    desc: \"Perde dinheiro matematicamente ao pagar 22% de juros para ganhar 8%.\",\n"
   },
   "minHScreen73": {
     "en": "                    lesson: \"Paying 22% interest to earn 8% returns destroys net worth and creates constant debt drag.\"\n",
@@ -721,8 +721,8 @@
   },
   "minHScreen79": {
     "en": "                    title: \"Lease a brand-new luxury automobile for $600/month.\",\n                    desc: \"Pays peak depreciation cost with 0 equity retention.\",\n",
-    "es": "                    title: \"Hacer un leasing de un auto de lujo 0 km por $600/mes.\",\n                    desc: \"Paga la fase más pronunciada de depreciación sin acumular patrimonio.\",\n",
-    "pt": "                    title: \"Fazer leasing de um carro de luxo zero km por $600/mês.\",\n                    desc: \"Paga a maior fase de desvalorização sem acumular patrimônio.\",\n"
+    "es": "                    title: \"Hacer un leasing de un auto de lujo 0 km por €600/mes.\",\n                    desc: \"Paga la fase más pronunciada de depreciación sin acumular patrimonio.\",\n",
+    "pt": "                    title: \"Fazer leasing de um carro de luxo zero km por R$600/mês.\",\n                    desc: \"Paga a maior fase de desvalorização sem acumular patrimônio.\",\n"
   },
   "minHScreen80": {
     "en": "                    lesson: \"Leasing brand new luxury cars means paying for peak depreciation, creating a permanent heavy drain on monthly cash flow.\"\n",
@@ -906,13 +906,13 @@
   },
   "minHScreen116": {
     "en": "                    title: \"Constantly order food delivery and micro-subscriptions on impulse daily.\",\n                    desc: \"Drains hundreds of dollars monthly on forgotten digital subscriptions and convenience fees.\",\n",
-    "es": "                    title: \"Mantener suscripciones olvidadas y pedir comida por aplicación diariamente por impulso.\",\n                    desc: \"Drena cientos de dólares mensuales en costos innecesarios sin darte cuenta.\",\n",
-    "pt": "                    title: \"Manter assinaturas esquecidas e pedir comida por aplicativo diariamente por impulso.\",\n                    desc: \"Drena centenas de dólares mensais em taxas de conveniência sem perceber.\",\n"
+    "es": "                    title: \"Mantener suscripciones olvidadas y pedir comida por aplicación diariamente por impulso.\",\n                    desc: \"Drena cientos de euros mensuales en costos innecesarios sin darte cuenta.\",\n",
+    "pt": "                    title: \"Manter assinaturas esquecidas e pedir comida por aplicativo diariamente por impulso.\",\n                    desc: \"Drena centenas de reais mensais em taxas de conveniência sem perceber.\",\n"
   },
   "minHScreen117": {
     "en": "                    lesson: \"Unmonitored micro-expenses quietly siphon away thousands in annual investment potential, producing little lasting satisfaction.\"\n",
-    "es": "                    lesson: \"Los pequeños goteos diarios y suscripciones no utilizadas consumen en silencio el equivalente a miles de dólares anuales.\"\n",
-    "pt": "                    lesson: \"Pequenos vazamentos diários e assinaturas não utilizadas consomem em silêncio o equivalente a milhares de dólares por ano.\"\n"
+    "es": "                    lesson: \"Los pequeños goteos diarios y suscripciones no utilizadas consumen en silencio el equivalente a miles de euros anuales.\"\n",
+    "pt": "                    lesson: \"Pequenos vazamentos diários e assinaturas não utilizadas consomem em silêncio o equivalente a milhares de reais por ano.\"\n"
   },
   "minHScreen118": {
     "en": "        // INIT STEPPER DOTS\n",
@@ -1001,8 +1001,8 @@
   },
   "minHScreen135": {
     "en": "            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString()}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mo`;\n",
-    "es": "            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString('es-ES')}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mes`;\n",
-    "pt": "            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString('pt-BR')}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mês`;\n"
+    "es": "            document.getElementById('netWorthDisplay').innerText = `€${currentState.netWorth.toLocaleString('es-ES')}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}€${currentState.cashFlow}/mes`;\n",
+    "pt": "            document.getElementById('netWorthDisplay').innerText = `R$${currentState.netWorth.toLocaleString('pt-BR')}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}R$${currentState.cashFlow}/mês`;\n"
   },
   "minHScreen136": {
     "en": "        // SHOW DEBRIEF\n",
@@ -1016,13 +1016,13 @@
   },
   "minHScreen138": {
     "en": "                    Net Worth: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString()}\n",
-    "es": "                    Patrimonio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString('es-ES')}\n",
-    "pt": "                    Patrimônio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString('pt-BR')}\n"
+    "es": "                    Patrimonio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}€${option.impact.netWorthDelta.toLocaleString('es-ES')}\n",
+    "pt": "                    Patrimônio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}R$${option.impact.netWorthDelta.toLocaleString('pt-BR')}\n"
   },
   "minHScreen139": {
     "en": "                    Cash Flow: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mo\n",
-    "es": "                    Flujo de Caja: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mes\n",
-    "pt": "                    Fluxo de Caixa: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mês\n"
+    "es": "                    Flujo de Caja: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}€${option.impact.cashFlowDelta}/mes\n",
+    "pt": "                    Fluxo de Caixa: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}R$${option.impact.cashFlowDelta}/mês\n"
   },
   "minHScreen140": {
     "en": "                    Happiness: ${hDelta >= 0 ? '+' : ''}${hDelta}%\n",
@@ -1051,8 +1051,8 @@
   },
   "minHScreen145": {
     "en": "            // Populate final stats\n            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString()}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mo`;\n",
-    "es": "            // Llenar estadísticas finales\n            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString('es-ES')}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mes`;\n",
-    "pt": "            // Preencher estatísticas finais\n            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString('pt-BR')}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mês`;\n"
+    "es": "            // Llenar estadísticas finales\n            document.getElementById('finalNetWorth').innerText = `€${currentState.netWorth.toLocaleString('es-ES')}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}€${currentState.cashFlow}/mes`;\n",
+    "pt": "            // Preencher estatísticas finais\n            document.getElementById('finalNetWorth').innerText = `R$${currentState.netWorth.toLocaleString('pt-BR')}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}R$${currentState.cashFlow}/mês`;\n"
   },
   "minHScreen146": {
     "en": "            // ARCHETYPE & EVALUATION LOGIC\n",
@@ -1131,13 +1131,13 @@
   },
   "minHScreen161": {
     "en": "                        label: 'Net Worth ($)',\n",
-    "es": "                        label: 'Patrimonio Neto ($)',\n",
-    "pt": "                        label: 'Patrimônio Líquido ($)',\n"
+    "es": "                        label: 'Patrimonio Neto (€)',\n",
+    "pt": "                        label: 'Patrimônio Líquido (R$)',\n"
   },
   "minHScreen162": {
     "en": "                                callback: value => '$' + value.toLocaleString()\n",
-    "es": "                                callback: value => '$' + value.toLocaleString('es-ES')\n",
-    "pt": "                                callback: value => '$' + value.toLocaleString('pt-BR')\n"
+    "es": "                                callback: value => '€' + value.toLocaleString('es-ES')\n",
+    "pt": "                                callback: value => 'R$' + value.toLocaleString('pt-BR')\n"
   },
   "minHScreen171": {
     "en": "        // RESET GAME\n",
@@ -1336,8 +1336,8 @@
   },
   "lbNetWorthCell": {
     "en": "                        <span class=\"text-forest-800 font-bold\">$${entry.tiebreak.toLocaleString()}</span>\n",
-    "es": "                        <span class=\"text-forest-800 font-bold\">$${entry.tiebreak.toLocaleString('es-ES')}</span>\n",
-    "pt": "                        <span class=\"text-forest-800 font-bold\">$${entry.tiebreak.toLocaleString('pt-BR')}</span>\n"
+    "es": "                        <span class=\"text-forest-800 font-bold\">€${entry.tiebreak.toLocaleString('es-ES')}</span>\n",
+    "pt": "                        <span class=\"text-forest-800 font-bold\">R$${entry.tiebreak.toLocaleString('pt-BR')}</span>\n"
   },
   "lbNameRequired": {
     "en": "                alert(\"Please enter a name or initials — it is what other visitors will see on the leaderboard.\");\n",

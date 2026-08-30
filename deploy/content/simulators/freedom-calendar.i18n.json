@@ -32,7 +32,7 @@
   "script2": {
     "en": "financial independence timeline based on savings, investments, and lifestyle goals.\",\"inLanguage\":\"en\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Any web browser\",\"browserRequirements\":\"Requires JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
     "es": "de independencia financiera basada en ahorros, inversiones y objetivos de vida.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
-    "pt": "de independência financeira baseada em poupanças, investimentos e objetivos de vida.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
+    "pt": "de independência financeira baseada em poupanças, investimentos e objetivos de vida.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"BRL\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
   },
   "skipLink": {
     "en": "Skip to main content",
@@ -121,8 +121,8 @@
   },
   "block2": {
     "en": "Annual Net Salary ($)",
-    "es": "Salario Anual Neto ($)",
-    "pt": "Salário Anual Líquido ($)"
+    "es": "Salario Anual Neto (€)",
+    "pt": "Salário Anual Líquido (R$)"
   },
   "block3": {
     "en": "Weekly Work Hours",
@@ -131,13 +131,13 @@
   },
   "block4": {
     "en": "Starting Invested Net Worth ($)",
-    "es": "Patrimonio Invertido ($)",
-    "pt": "Patrimônio Investido ($)"
+    "es": "Patrimonio Invertido (€)",
+    "pt": "Patrimônio Investido (R$)"
   },
   "block5": {
     "en": "Essential Monthly Bills ($)",
-    "es": "Gastos Básicos Mensuales ($)",
-    "pt": "Gastos Básicos Mensais ($)"
+    "es": "Gastos Básicos Mensuales (€)",
+    "pt": "Gastos Básicos Mensais (R$)"
   },
   "textXs2": {
     "en": "                * Note: Your net hourly wage is calculated at ",
@@ -166,8 +166,8 @@
   },
   "textSm2": {
     "en": "lunch or lease a luxury car, you aren't just spending dollars—you are spending ",
-    "es": "o arrendas un auto de lujo, no solo estás gastando dólares: estás gastando ",
-    "pt": "ou faz o leasing de um carro de luxo, não está apenas gastando dólares: está gastando "
+    "es": "o arrendas un auto de lujo, no solo estás gastando euros: estás gastando ",
+    "pt": "ou faz o leasing de um carro de luxo, não está apenas gastando reais: está gastando "
   },
   "textForest800": {
     "en": "hours of your life worked",
@@ -271,8 +271,8 @@
   },
   "statmonthlysaved": {
     "en": "+$850/mo",
-    "es": "+$850/mes",
-    "pt": "+$850/mês"
+    "es": "+€850/mes",
+    "pt": "+R$850/mês"
   },
   "text10px4": {
     "en": "Annual Work Time Saved",
@@ -351,8 +351,8 @@
   },
   "minHScreen4": {
     "en": "                desc: 'Specialty lattes, energy drinks, or iced coffee purchased on the go.',\n                tip: 'Invest in a quality french press or espresso maker at home and a leakproof travel mug. You keep the daily ritual for under $0.50/cup!',\n",
-    "es": "                desc: 'Cafés especiales, bebidas energéticas o cafés helados comprados al paso.',\n                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de $0.50 por taza!',\n",
-    "pt": "                desc: 'Cafés especiais, energéticos ou cafés gelados comprados no dia a dia.',\n                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de $0.50 por xícara!',\n"
+    "es": "                desc: 'Cafés especiales, bebidas energéticas o cafés helados comprados al paso.',\n                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de €0.50 por taza!',\n",
+    "pt": "                desc: 'Cafés especiais, energéticos ou cafés gelados comprados no dia a dia.',\n                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de R$0.50 por xícara!',\n"
   },
   "minHScreen5": {
     "en": "                title: 'Daily Restaurant & Lunch Delivery',\n",
@@ -511,8 +511,8 @@
   },
   "minHScreen36": {
     "en": "                                    ${habit.category} • Baseline: $${habit.baseCost}/${habit.unit}\n",
-    "es": "                                    ${habit.category} • Base: $${habit.baseCost}/${unitLabel}\n",
-    "pt": "                                    ${habit.category} • Base: $${habit.baseCost}/${unitLabel}\n"
+    "es": "                                    ${habit.category} • Base: €${habit.baseCost}/${unitLabel}\n",
+    "pt": "                                    ${habit.category} • Base: R$${habit.baseCost}/${unitLabel}\n"
   },
   "minHScreen37": {
     "en": "                                ${monthlySaved > 0 ? '+' + workDaysSavedPerYear.toFixed(1) + ' Work Days/Yr Saved' : 'Full Spending'}\n",
@@ -531,8 +531,8 @@
   },
   "minHScreen40": {
     "en": "                            <label class=\"text-xs font-bold text-espresso-900\">Base Expense ($):</label>\n",
-    "es": "                            <label class=\"text-xs font-bold text-espresso-900\">Gasto Base ($):</label>\n",
-    "pt": "                            <label class=\"text-xs font-bold text-espresso-900\">Gasto Base ($):</label>\n"
+    "es": "                            <label class=\"text-xs font-bold text-espresso-900\">Gasto Base (€):</label>\n",
+    "pt": "                            <label class=\"text-xs font-bold text-espresso-900\">Gasto Base (R$):</label>\n"
   },
   "minHScreen41": {
     "en": "                            <label class=\"text-xs font-bold text-espresso-900\">Frequency:</label>\n",
@@ -541,13 +541,13 @@
   },
   "minHScreen42": {
     "en": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Daily ($/day)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Weekly ($/wk)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Monthly ($/mo)</option>\n",
-    "es": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Diario ($/día)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Semanal ($/sem)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Mensual ($/mes)</option>\n",
-    "pt": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Diário ($/dia)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Semanal ($/sem)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Mensal ($/mês)</option>\n"
+    "es": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Diario (€/día)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Semanal (€/sem)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Mensual (€/mes)</option>\n",
+    "pt": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Diário (R$/dia)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Semanal (R$/sem)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Mensal (R$/mês)</option>\n"
   },
   "minHScreen43": {
     "en": "                            <span class=\"text-espresso-900\">Spending Choice: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Actual: $${Math.round(currentMonthlyCost)}/mo <span class=\"text-[10px] font-normal text-espresso-800/70\">(Full: $${Math.round(fullMonthlyCost)}/mo)</span></span>\n",
-    "es": "                            <span class=\"text-espresso-900\">Opción de Gasto: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Actual: $${Math.round(currentMonthlyCost)}/mes <span class=\"text-[10px] font-normal text-espresso-800/70\">(Total: $${Math.round(fullMonthlyCost)}/mes)</span></span>\n",
-    "pt": "                            <span class=\"text-espresso-900\">Opção de Gasto: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Atual: $${Math.round(currentMonthlyCost)}/mês <span class=\"text-[10px] font-normal text-espresso-800/70\">(Total: $${Math.round(fullMonthlyCost)}/mês)</span></span>\n"
+    "es": "                            <span class=\"text-espresso-900\">Opción de Gasto: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Actual: €${Math.round(currentMonthlyCost)}/mes <span class=\"text-[10px] font-normal text-espresso-800/70\">(Total: €${Math.round(fullMonthlyCost)}/mes)</span></span>\n",
+    "pt": "                            <span class=\"text-espresso-900\">Opção de Gasto: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Atual: R$${Math.round(currentMonthlyCost)}/mês <span class=\"text-[10px] font-normal text-espresso-800/70\">(Total: R$${Math.round(fullMonthlyCost)}/mês)</span></span>\n"
   },
   "minHScreen44": {
     "en": "                            <span>0% (Eliminated)</span>\n                            <span>50% (Trimmed)</span>\n                            <span>100% (Keep All)</span>\n",
@@ -636,8 +636,8 @@
   },
   "minHScreen61": {
     "en": "            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('en-US')}/mo`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Days/Yr`;\n            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('en-US')}`;\n",
-    "es": "            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('es-ES')}/mes`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Días/Año`;\n            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('es-ES')}`;\n",
-    "pt": "            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('pt-BR')}/mês`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Dias/Ano`;\n            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('pt-BR')}`;\n"
+    "es": "            document.getElementById('statMonthlySaved').innerText = `+€${Math.round(monthlySaved).toLocaleString('es-ES')}/mes`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Días/Año`;\n            document.getElementById('stat30YearWealth').innerText = `€${Math.round(wealthGained30Yr).toLocaleString('es-ES')}`;\n",
+    "pt": "            document.getElementById('statMonthlySaved').innerText = `+R$${Math.round(monthlySaved).toLocaleString('pt-BR')}/mês`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Dias/Ano`;\n            document.getElementById('stat30YearWealth').innerText = `R$${Math.round(wealthGained30Yr).toLocaleString('pt-BR')}`;\n"
   },
   "minHScreen62": {
     "en": "        // RENDER / UPDATE CHART\n",
@@ -715,9 +715,9 @@
     "pt": "O seu objetivo é o montante que consegue financiar a sua despesa anual indefinidamente com uma taxa de levantamento de 4%: vinte e cinco vezes o que gasta num ano. Esse número vem da investigação sobre quanto tempo uma carteira diversificada sobrevive a ser consumida, e 4% é a taxa à qual sobreviveu praticamente em todos os anos de início históricos ao longo de uma reforma de trinta anos. O calendário faz crescer os seus investimentos atuais e soma o seu excedente mensal mês a mês com 7% de rentabilidade real anual, e indica o mês em que o saldo atinge pela primeira vez o objetivo."
   },
   "explHow2": {
-    "en": "The 7% is a real return — already net of inflation — which is why the target does not need to be inflated year by year. Both sides of the comparison are in today's money, so the date they meet at is meaningful without any further adjustment. The second half of the tool divides your take-home pay by the hours you actually work to get a net hourly wage, then prices your recurring expenses in that unit. A subscription is no longer three euros a month; it is the number of working hours a year it takes to pay for it.",
+    "en": "The 7% is a real return — already net of inflation — which is why the target does not need to be inflated year by year. Both sides of the comparison are in today's money, so the date they meet at is meaningful without any further adjustment. The second half of the tool divides your take-home pay by the hours you actually work to get a net hourly wage, then prices your recurring expenses in that unit. A subscription is no longer three dollars a month; it is the number of working hours a year it takes to pay for it.",
     "es": "El 7% es una rentabilidad real, ya descontada la inflación, y por eso el objetivo no necesita inflarse año a año. Ambos lados de la comparación están en dinero de hoy, así que la fecha en la que se encuentran es significativa sin más ajustes. La segunda mitad de la herramienta divide tu sueldo neto entre las horas que realmente trabajas para obtener un salario neto por hora, y luego valora tus gastos recurrentes en esa unidad. Una suscripción deja de ser tres euros al mes: pasa a ser el número de horas de trabajo al año que cuesta pagarla.",
-    "pt": "Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa de ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, pelo que a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma subscrição deixa de ser três euros por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la."
+    "pt": "Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa de ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, pelo que a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma subscrição deixa de ser três reais por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la."
   },
   "explAssumptionsTitle": {
     "en": "What it assumes",
@@ -760,9 +760,9 @@
     "pt": "Considere alguém que ganha 3.000 por mês depois de impostos, gasta 2.200 e tem 20.000 já investidos. A despesa anual é 26.400, pelo que o objetivo é 660.000. O excedente mensal é 800. Partindo de 20.000 e acrescentando 800 por mês a 7% real, o saldo cruza os 660.000 em cerca de vinte e seis anos."
   },
   "explExample2": {
-    "en": "Now cut spending to 2,000. The target falls to 600,000 and the monthly surplus rises to 1,000, because every euro not spent is a euro invested. The date moves in by about five years. That is the asymmetry the calendar exists to make visible: a change in spending moves both sides of the equation at once, while a raise of the same size moves only one.",
+    "en": "Now cut spending to 2,000. The target falls to 600,000 and the monthly surplus rises to 1,000, because every dollar not spent is a dollar invested. The date moves in by about five years. That is the asymmetry the calendar exists to make visible: a change in spending moves both sides of the equation at once, while a raise of the same size moves only one.",
     "es": "Ahora reduce el gasto a 2.000. El objetivo baja a 600.000 y el excedente mensual sube a 1.000, porque cada euro no gastado es un euro invertido. La fecha se adelanta unos cinco años. Esa es la asimetría que el calendario existe para hacer visible: un cambio en el gasto mueve los dos lados de la ecuación a la vez, mientras que un aumento del mismo tamaño solo mueve uno.",
-    "pt": "Agora reduza a despesa para 2.000. O objetivo desce para 600.000 e o excedente mensal sobe para 1.000, porque cada euro não gasto é um euro investido. A data antecipa-se cerca de cinco anos. É esta a assimetria que o calendário existe para tornar visível: uma alteração na despesa move os dois lados da equação ao mesmo tempo, enquanto um aumento do mesmo valor move apenas um."
+    "pt": "Agora reduza a despesa para 2.000. O objetivo desce para 600.000 e o excedente mensal sobe para 1.000, porque cada real não gasto é um real investido. A data antecipa-se cerca de cinco anos. É esta a assimetria que o calendário existe para tornar visível: uma alteração na despesa move os dois lados da equação ao mesmo tempo, enquanto um aumento do mesmo valor move apenas um."
   },
   "explFaqQ1": {
     "en": "Why 4% and not something else?",
