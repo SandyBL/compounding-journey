@@ -61,22 +61,22 @@
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">Sitio web</span>
                 </a>
-                <button data-onclick="toggleLeaderboardModal()" class="px-2.5 py-1.5 rounded-xl border border-gold-600 text-gold-600 hover:bg-gold-500 hover:text-espresso-950 font-semibold text-xs transition flex items-center gap-1.5" title="Ver Salón de la Fama">
-                                    <i class="fa-solid fa-trophy text-gold-500" aria-hidden="true"></i>
-                                    <span class="hidden sm:inline">Clasificación</span>
-                                </button>
-                <button data-onclick="toggleHowToPlayModal()" class="px-2.5 py-1.5 rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white font-semibold text-xs transition flex items-center gap-1.5">
-                                    <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
-                                    <span>Cómo Jugar</span>
-                                </button>
-                <button data-onclick="advanceTime(12)" class="px-3 py-1.5 rounded-xl bg-gold-600 hover:bg-gold-500 text-espresso-950 font-bold text-xs shadow transition flex items-center gap-1.5 active:scale-95">
-                                    <i class="fa-solid fa-angles-right text-[10px]" aria-hidden="true"></i>
-                                    <span>+1 Año</span>
-                                </button>
-                <button data-onclick="resetSimulation()" class="p-1.5 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition text-xs flex items-center gap-1" title="Reiniciar Simulación">
-                                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
-                                    <span class="hidden sm:inline text-xs">Reiniciar</span>
-                                </button>
+                <button data-onclick="toggleLeaderboardModal()" class="header-icon-btn rounded-xl border border-gold-600 text-gold-600 hover:bg-gold-500 hover:text-espresso-950 transition" title="Ver Salón de la Fama">
+                    <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+                    <span class="sr-only">Clasificación</span>
+                </button>
+                <button data-onclick="toggleHowToPlayModal()" class="header-icon-btn rounded-xl border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white transition" title="Cómo Jugar">
+                    <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+                    <span class="sr-only">Cómo Jugar</span>
+                </button>
+                <button data-onclick="advanceTime(12)" class="header-icon-btn rounded-xl bg-gold-600 hover:bg-gold-500 text-espresso-950 shadow transition active:scale-95" title="+1 Año">
+                    <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+                    <span class="sr-only">+1 Año</span>
+                </button>
+                <button data-onclick="resetSimulation()" class="header-icon-btn rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 transition" title="Reiniciar Simulación">
+                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                    <span class="sr-only">Reiniciar</span>
+                </button>
                 <!-- The three translations, as flag links, and deliberately the
                      last thing in this row on every simulator: the tools each
                      carry a different set of controls, so anchoring the flags to
@@ -485,9 +485,11 @@
              file is hand-authored for the same reason the behaviour bundles are
              generated per language.
 
-             The form itself is static because Netlify's form detection reads the built
-             HTML: the <form> and its field names have to exist at build time. Only the
-             values, the labels and the destination are written at runtime. -->
+             The panel asks for nothing. It used to carry a one-field form offering a
+             written-up reading of the result by email, which was a promise that had to be
+             kept by hand, one visitor at a time. Where the outcome routes to the contact
+             form, the result travels there in sessionStorage and the message arrives
+             already drafted instead. -->
         <section id="sim-cta-result" class="sim-result-cta" data-simulator="passive-income-engine" data-home="/" aria-labelledby="sim-cta-title" hidden>
             <div class="sim-result-cta__panel">
                 <div class="sim-result-cta__inner">
@@ -495,25 +497,6 @@
                     <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
                     <p class="sim-result-cta__body" id="sim-cta-body"></p>
                     <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
-
-                    <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="simulator-result">
-                        <input type="hidden" name="simulator" value="passive-income-engine">
-                        <input type="hidden" name="language" value="es">
-                        <input type="hidden" name="outcome" value="">
-                        <input type="hidden" name="headline" value="">
-                        <input type="hidden" name="detail" value="">
-                        <input type="hidden" name="routed_to" value="">
-                        <input type="hidden" name="subject" value="">
-                        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-                        <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
-                        <div class="sim-result-cta__row">
-                            <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
-                            <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
-                        </div>
-                        <p class="sim-result-cta__note" id="sim-cta-note"></p>
-                        <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
-                    </form>
 
                     <div class="sim-result-cta__actions">
                         <a class="sim-result-cta__primary" id="sim-cta-primary" href="/#assessment"></a>
@@ -786,11 +769,14 @@
         </div>
     </div>
 
-    <!-- The result-aware call to action: the machinery, then the prose it reads.
-         Both are deferred, so both have run by the time the behaviour bundle below
-         looks for window.SimCta. -->
-    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <!-- The result-aware call to action: the prose first, then the machinery that
+         reads it. The machinery reads the prose while it is itself executing, not
+         on some later event, so being the second tag is load-bearing for it - the
+         other order shipped and the panel never appeared once, on any page, in any
+         language. sim-cta.js recovers from that order now rather than trusting it,
+         and the tags still say which way round the dependency runs. -->
     <script src="/assets/js/sim-cta.es.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
     <script src="/assets/js/sim-passive-income-engine.es.js?v=source" defer></script>

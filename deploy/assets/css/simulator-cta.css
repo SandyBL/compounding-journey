@@ -264,97 +264,6 @@
   line-height: 1.5;
 }
 
-.sim-result-cta__form {
-  margin: 22px 0 0;
-  padding: 18px 18px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(0, 0, 0, 0.14);
-}
-
-.sim-result-cta__form-heading {
-  margin: 0 0 10px;
-  color: #fff;
-  font-size: 0.86rem;
-  font-weight: 700;
-  line-height: 1.4;
-}
-
-.sim-result-cta__row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.sim-result-cta__input {
-  flex: 1 1 220px;
-  min-width: 0;
-  padding: 13px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: #fff;
-  color: #1b2b20;
-  font: inherit;
-  font-size: 0.88rem;
-}
-
-.sim-result-cta__input:focus-visible {
-  outline: 3px solid rgba(200, 154, 50, 0.6);
-  outline-offset: 2px;
-}
-
-.sim-result-cta__submit {
-  flex: 0 0 auto;
-  padding: 13px 20px;
-  border: 1px solid #c89a32;
-  background: #c89a32;
-  color: #1b2b20;
-  font: inherit;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.25s ease;
-}
-
-.sim-result-cta__submit:hover:not(:disabled) {
-  background: #e1bd62;
-}
-
-.sim-result-cta__submit:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
-.sim-result-cta__submit:focus-visible {
-  outline: 3px solid rgba(200, 154, 50, 0.6);
-  outline-offset: 3px;
-}
-
-/* What happens to the address, next to the field that asks for it rather than
-   behind a link to a policy. */
-.sim-result-cta__note {
-  margin: 10px 0 0;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.74rem;
-  line-height: 1.5;
-}
-
-.sim-result-cta__status {
-  margin: 10px 0 0;
-  color: #e0b95c;
-  font-size: 0.8rem;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-.sim-result-cta__status:empty {
-  display: none;
-}
-
-.sim-result-cta__status--error {
-  color: #ffb4a8;
-}
-
 .sim-result-cta__actions {
   display: flex;
   flex-wrap: wrap;
@@ -418,14 +327,6 @@
 @media (max-width: 640px) {
   .sim-result-cta__panel {
     padding: 28px 22px;
-  }
-
-  .sim-result-cta__row {
-    display: grid;
-  }
-
-  .sim-result-cta__submit {
-    width: 100%;
   }
 
   .sim-result-cta__actions {

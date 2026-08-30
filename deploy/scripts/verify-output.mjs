@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Checks the three invariants the generators are supposed to maintain, against
- * the files they actually wrote.
+ * Checks the invariants the generators are supposed to maintain, against the
+ * files they actually wrote.
  *
  * Each of these has already been broken once. The journal indexes carried
  * hand-bumped `?v=20260815-1` tokens for months, because they are patched in
@@ -23,6 +23,15 @@
  * a directory and the index.html inside it as two separate 200s, and a .html
  * file with and without its extension as two more, so all 36 published pages
  * had a second address that nothing linked and nothing forbade.
+ *
+ * The result-panel check was added after the panel the five simulators end on
+ * shipped and never appeared, on any page, in any language. That particular
+ * cause was a script-ordering bug in sim-cta.js and is fixed in sim-cta.js;
+ * what this checks is the structural half of it, which nothing else would
+ * notice. The panel is markup containing no sentences - every word a visitor
+ * reads is written into it at runtime from a per-language copy bundle - so a
+ * page that ships the panel without linking the bundle is a page with a working,
+ * permanently empty call to action, and it looks completely fine in a diff.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -206,6 +215,20 @@ async function main() {
       problems.push(`${page}: also served at ${duplicate}, which no forced 301 in _redirects collapses.`);
     }
 
+    // 6. A page carrying the result panel links the copy it is made of.
+    //
+    // Both files are needed and they are needed together: sim-cta.js is the
+    // machinery and holds no prose, sim-cta.<language>.js is the prose and does
+    // nothing on its own. Missing either leaves the panel hidden, which is
+    // indistinguishable from a visitor who has not run the simulator yet.
+    if (markup.includes('id="sim-cta-result"')) {
+      for (const required of ['/assets/js/sim-cta.js', `/assets/js/sim-cta.${expected}.js`]) {
+        if (!markup.includes(`"${required}?v=`) && !markup.includes(`"${required}"`)) {
+          problems.push(`${page}: carries the result panel but does not link ${required}.`);
+        }
+      }
+    }
+
     if (declared) {
       const seen = declarations.get(expected) || new Map();
       seen.set(declared, [...(seen.get(declared) || []), page]);
@@ -235,7 +258,7 @@ async function main() {
     throw new Error('The published output does not hold the invariants the generators are supposed to maintain.');
   }
 
-  console.log(`verify-output: ${pages} pages, ${references} asset references, ${redirects.length} forced redirects. Versions, caching rules, canonical URLs and language declarations all check out.`);
+  console.log(`verify-output: ${pages} pages, ${references} asset references, ${redirects.length} forced redirects. Versions, caching rules, canonical URLs, language declarations and result-panel copy all check out.`);
 }
 
 main().catch((error) => {

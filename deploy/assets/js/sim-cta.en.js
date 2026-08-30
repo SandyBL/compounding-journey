@@ -36,17 +36,6 @@
  */
 window.SIM_CTA_COPY = {
   ui: {
-    formHeading: "Want your result read back to you, in writing?",
-    formLabel: "Email address",
-    formPlaceholder: "you@example.com",
-    formSubmit: "Send me my result",
-    formSubmitting: "Sending…",
-    formNote: "Leave your address and I’ll send your result with what it points to — written by me, not automated. Nothing else, and no newsletter sign-up unless you ask for one.",
-    formSuccessTitle: "Got it — thank you.",
-    formSuccessBody: "Your result has reached me and I’ll come back to you personally. If you’d rather not wait, the step below is the same one I’d point you to.",
-    formErrorInvalid: "That doesn’t look like an email address — could you check it?",
-    formErrorFailed: "That didn’t send. Please try again, or use the contact form on the home page.",
-    formSubject: "Simulator result",
     disclaimer: "These simulators are illustrations built on simplified assumptions. This is a reading of your result, not financial advice."
   },
 

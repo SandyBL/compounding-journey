@@ -328,7 +328,16 @@
             align-items: center;
             justify-content: center;
             gap: 0.6rem;
-            margin-top: auto;
+            /* Directly under the last nav item, not at the foot of the drawer.
+               `margin-top: auto` in the drawer's full-height flex column used to
+               push it there, which put a tall gap between the nav and the one
+               green button on the panel and, on a short phone in landscape,
+               parked it under the keyboard-safe inset where it read as part of
+               the page behind rather than as the end of the menu. It is the last
+               thing in the list, so it sits where the list ends; 0.55rem is a
+               little more than the 0.3rem between nav items, which is what marks
+               it as the call to action rather than a sixth link. */
+            margin-top: 0.55rem;
             padding: 1rem 1.25rem;
             border-radius: 0.95rem;
             background: #1E4620;
@@ -719,6 +728,42 @@
 
             .mobile-menu-toggle {
                 display: none;
+            }
+        }
+
+        /* The pill was full at five items.
+
+           At 1024px exactly - the width at which it replaces the hamburger - the
+           header has about 437px left for it once the logo and brand name, the
+           three flags, the two publication icons and the shell's own padding
+           have taken their share, and the five items plus the Freedom Compass
+           button measure about 439px in Spanish and Portuguese. Adding Contacto
+           costs another 73px, so between 1024 and roughly 1180px the nav would
+           have pushed the brand name into wrapping onto two lines.
+
+           So the type and the padding come down a little for that band only, and
+           are left alone from 1280px up where there is 180px of slack. The
+           padding-block is deliberately unchanged: it is what gives these
+           targets their height, and 24px is the floor WCAG 2.2 SC 2.5.8 asks
+           for. Measured with the real advances from the subsetted Plus Jakarta
+           Sans, the six items come to about 429px in Spanish and Portuguese and
+           416px in English, so the pill has a few pixels in hand at 1024px
+           rather than the nothing at all the five items had before. */
+        @media (min-width: 1024px) and (max-width: 1279px) {
+            .desktop-section-nav {
+                gap: 0.08rem;
+                padding: 0.2rem;
+            }
+
+            .desktop-section-nav > a,
+            .desktop-resources-toggle {
+                padding: 0.65rem 0.42rem;
+                font-size: 0.63rem;
+            }
+
+            .desktop-nav-cta {
+                margin-left: 0.12rem;
+                padding: 0.72rem 0.66rem !important;
             }
         }
 
