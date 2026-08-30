@@ -394,9 +394,10 @@ function removeAttribute(rawTag, attribute) {
 // English page, so the correct target is baked in per language instead.
 // A download link that does not say what it hands over is a leap of faith.
 // The size is read from the file on disk at build time so the label cannot
-// drift away from the artefact it describes. Entries that point at an external
-// page rather than a file (the monthly analysis template is sold off-site) are
-// labelled as such instead, so the button's "download" wording is qualified.
+// drift away from the artefact it describes. Every template is a free file on
+// disk today, but an entry pointing at an external page is still labelled as
+// such rather than sized, so the button's "download" wording stays honest if
+// one is ever hosted off-site again.
 const externalTemplateLabel = {
   es: 'Página externa',
   en: 'External page',
