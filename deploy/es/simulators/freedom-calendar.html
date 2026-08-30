@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label for="inputAnnualIncome" class="block text-xs font-bold text-espresso-900 mb-1">Salario Anual Neto ($)</label>
+                    <label for="inputAnnualIncome" class="block text-xs font-bold text-espresso-900 mb-1">Salario Anual Neto (€)</label>
                     <input type="number" id="inputAnnualIncome" value="60000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
@@ -159,18 +159,18 @@
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label for="inputNetWorth" class="block text-xs font-bold text-espresso-900 mb-1">Patrimonio Invertido ($)</label>
+                    <label for="inputNetWorth" class="block text-xs font-bold text-espresso-900 mb-1">Patrimonio Invertido (€)</label>
                     <input type="number" id="inputNetWorth" value="15000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label for="inputBasicExpenses" class="block text-xs font-bold text-espresso-900 mb-1">Gastos Básicos Mensuales ($)</label>
+                    <label for="inputBasicExpenses" class="block text-xs font-bold text-espresso-900 mb-1">Gastos Básicos Mensuales (€)</label>
                     <input type="number" id="inputBasicExpenses" value="2500" step="100" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
             </div>
             
             <p class="text-xs text-espresso-800/80 mt-3 italic">
-                * Nota: Tu salario neto por hora se calcula en <span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">$28.85/hr</span>. Asume una tasa de retorno real del 7% y una tasa de retiro seguro del 4% (Regla del 25x de FIRE).
+                * Nota: Tu salario neto por hora se calcula en <span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">€28.85/hr</span>. Asume una tasa de retorno real del 7% y una tasa de retiro seguro del 4% (Regla del 25x de FIRE).
             </p>
         </div>
     </section>
@@ -194,7 +194,7 @@
                 <span class="text-xs font-extrabold uppercase tracking-widest text-gold-600">El Convertidor de Costo de Oportunidad</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-espresso-900 font-serif mt-1">¿Cuánto te está costando realmente tu gasto diario?</h2>
                 <p class="text-sm sm:text-base text-espresso-800/90 mt-2 leading-relaxed">
-                    Cuando compras un almuerzo de $15 o arrendas un auto de lujo, no solo estás gastando dólares: estás gastando <strong class="text-forest-800">horas de vida trabajadas</strong> y <strong class="text-forest-800">años de libertad futura</strong>. ¡Reduce o elimina hábitos a continuación para adelantar tu Fecha Objetivo de Libertad al instante!
+                    Cuando compras un almuerzo de €15 o arrendas un auto de lujo, no solo estás gastando euros: estás gastando <strong class="text-forest-800">horas de vida trabajadas</strong> y <strong class="text-forest-800">años de libertad futura</strong>. ¡Reduce o elimina hábitos a continuación para adelantar tu Fecha Objetivo de Libertad al instante!
                 </p>
             </div>
 
@@ -284,7 +284,7 @@
                         <div class="grid grid-cols-2 gap-2.5">
                             <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300">
                                 <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">Ahorro Mensual</span>
-                                <span id="statMonthlySaved" class="text-base font-bold text-forest-800 font-mono">+$850/mes</span>
+                                <span id="statMonthlySaved" class="text-base font-bold text-forest-800 font-mono">+€850/mes</span>
                             </div>
 
                             <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300">
@@ -296,7 +296,7 @@
                         <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300 flex justify-between items-center">
                             <div>
                                 <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">Patrimonio Ganado a 30 Años</span>
-                                <span id="stat30YearWealth" class="text-lg font-extrabold text-emerald-700 font-mono">$1,036,400</span>
+                                <span id="stat30YearWealth" class="text-lg font-extrabold text-emerald-700 font-mono">€1,036,400</span>
                             </div>
                             <div class="text-right">
                                 <span class="text-[9px] text-espresso-800/60 block">Retorno Real 7%</span>
@@ -320,6 +320,60 @@
             </div>
 
         </div>
+
+        <!-- RESULT-AWARE CALL TO ACTION.
+             The panel below is hidden until a run produces an outcome. The simulator
+             classifies its own result into a named bucket, hands it to
+             assets/js/sim-cta.js with the numbers behind it, and that fills this in
+             from assets/js/sim-cta.<language>.js.
+
+             There is deliberately not one translation placeholder in it. Every sentence a
+             visitor reads here is chosen by the outcome, so carrying the copy in this
+             template would mean roughly thirty new sidecar keys per simulator and a
+             hundred and fifty across the five - and it would put prose that has to be
+             written for a specific moment into a string table. The per-language copy
+             file is hand-authored for the same reason the behaviour bundles are
+             generated per language.
+
+             The form itself is static because Netlify's form detection reads the built
+             HTML: the <form> and its field names have to exist at build time. Only the
+             values, the labels and the destination are written at runtime. -->
+        <section id="sim-cta-result" class="sim-result-cta" data-simulator="freedom-calendar" data-home="/" aria-labelledby="sim-cta-title" hidden>
+            <div class="sim-result-cta__panel">
+                <div class="sim-result-cta__inner">
+                    <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                    <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                    <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                    <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                    <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="simulator-result">
+                        <input type="hidden" name="simulator" value="freedom-calendar">
+                        <input type="hidden" name="language" value="es">
+                        <input type="hidden" name="outcome" value="">
+                        <input type="hidden" name="headline" value="">
+                        <input type="hidden" name="detail" value="">
+                        <input type="hidden" name="routed_to" value="">
+                        <input type="hidden" name="subject" value="">
+                        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                        <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                        <div class="sim-result-cta__row">
+                            <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                            <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                        </div>
+                        <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                        <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <div class="sim-result-cta__actions">
+                        <a class="sim-result-cta__primary" id="sim-cta-primary" href="/#assessment"></a>
+                        <a class="sim-result-cta__link" id="sim-cta-secondary" href="/#herramientas"></a>
+                    </div>
+
+                    <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+                </div>
+            </div>
+        </section>
 
         <!-- The explainer below is the answer to a Search Console report: these pages
                      were being crawled and then not indexed, which is what Google does with a
@@ -412,6 +466,12 @@
     <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
         <p>© 2026 Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.</p>
     </footer>
+
+    <!-- The result-aware call to action: the machinery, then the prose it reads.
+         Both are deferred, so both have run by the time the behaviour bundle below
+         looks for window.SimCta. -->
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.es.js?v=source" defer></script>
 
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-freedom-calendar.es.js?v=source" defer></script>

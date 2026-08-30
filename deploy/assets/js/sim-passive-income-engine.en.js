@@ -534,6 +534,62 @@
             if (modal) modal.classList.add('hidden');
         }
 
+        // The victory modal's route to the panel. Closing it first is what makes
+        // the panel reachable, and SimCta.focus() moves focus onto it - correct
+        // only because somebody pressed a button asking to go there.
+        function openSimCta() {
+            closeVictoryModal();
+            if (window.SimCta) window.SimCta.focus();
+        }
+
+        /**
+         * Classifies the run for the result-aware panel.
+         *
+         * Called from renderUI(), so once per simulated year rather than only
+         * at crossover - and it says nothing for the first ten of them. Before
+         * year ten the coverage percentage is mostly the starting salary, and
+         * there is no result yet to read back.
+         *
+         * The joy score is what splits crossover into three, and it is the
+         * whole reason this tool has one. Reaching financial independence in
+         * six years by cutting everything that makes a life is not a better
+         * outcome than reaching it in eleven while living, and it is the run
+         * least likely to be finished in real life. It gets warmth and a
+         * conversation, not a questionnaire.
+         */
+        function updateResultCta() {
+            if (!window.SimCta) return;
+
+            const years = Math.floor(monthsPassed / 12);
+            const coverage = getFreedomCoveragePct();
+            if (coverage < 100 && years < 10) return;
+
+            const exp = getMonthlyExpenses();
+            const pass = getTotalMonthlyPassiveIncome();
+            const joy = getHappinessScore();
+
+            let bucket;
+            if (coverage >= 100) {
+                if (joy >= 75) bucket = 'crossoverJoyful';
+                else if (joy < 45) bucket = 'crossoverAscetic';
+                else bucket = 'crossoverBalanced';
+            } else if (coverage >= 75) {
+                bucket = 'close';
+            } else {
+                bucket = 'far';
+            }
+
+            window.SimCta.show(bucket, {
+                years,
+                joy,
+                coverage: Math.round(coverage),
+                passive: window.SimCta.money(pass),
+                expenses: window.SimCta.money(exp),
+                gap: window.SimCta.money(Math.max(0, exp - pass)),
+                netWorth: window.SimCta.money(getNetWorth())
+            });
+        }
+
         function renderUI() {
             const exp = getMonthlyExpenses();
             const pass = getTotalMonthlyPassiveIncome();
@@ -612,6 +668,7 @@
 
             renderMarketplace();
             renderHoldingsSidebar();
+            updateResultCta();
         }
 
         function renderMarketplace() {

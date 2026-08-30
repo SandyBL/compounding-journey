@@ -142,7 +142,7 @@
                 familyState.inflationMultiplier *= 1.04; // +4% inflation
                 const newExpenses = getMonthlyExpenses();
                 const expDiff = newExpenses - oldExpenses;
-                eventLogs.push(`💸 <strong>Inflação Progressiva (+4%):</strong> A inflação macroeconômica aumentou as despesas da família em <strong>+$${expDiff.toLocaleString()}/mês</strong> (Novas Despesas: $${newExpenses.toLocaleString()}/mês).`);
+                eventLogs.push(`💸 <strong>Inflação Progressiva (+4%):</strong> A inflação macroeconômica aumentou as despesas da família em <strong>+R$${expDiff.toLocaleString()}/mês</strong> (Novas Despesas: R$${newExpenses.toLocaleString()}/mês).`);
             }
 
             // 2. HAPPINESS / LIFE JOY COMPENSATION EFFECTS
@@ -150,13 +150,13 @@
                 if (Math.random() < 0.40) {
                     const bonus = Math.floor(Math.random() * 2500) + 2000;
                     cash += bonus;
-                    eventLogs.push(`🌟 <strong>Bônus de Alta Alegria de Viver!</strong> Sua ótima energia e bem-estar no trabalho renderam um Bônus de Desempenho de <strong>+$${bonus.toLocaleString()}</strong> no Saldo de Caixa.`);
+                    eventLogs.push(`🌟 <strong>Bônus de Alta Alegria de Viver!</strong> Sua ótima energia e bem-estar no trabalho renderam um Bônus de Desempenho de <strong>+R$${bonus.toLocaleString()}</strong> no Saldo de Caixa.`);
                 }
             } else if (joyScore < 30) {
                 if (Math.random() < 0.30) {
                     const burnoutCost = 1200;
                     if (cash >= burnoutCost) cash -= burnoutCost;
-                    eventLogs.push(`😫 <strong>Esgotamento por Frugalidade Extrema:</strong> O estresse acumulado exigiu gastos de <strong>-$${burnoutCost.toLocaleString()}</strong> em saúde e descanso.`);
+                    eventLogs.push(`😫 <strong>Esgotamento por Frugalidade Extrema:</strong> O estresse acumulado exigiu gastos de <strong>-R$${burnoutCost.toLocaleString()}</strong> em saúde e descanso.`);
                 }
             }
 
@@ -172,7 +172,7 @@
                         document.getElementById('housingSelect').value = 'standard';
                     }
                     
-                    eventLogs.push(`🍼 <strong>Evento de Vida: Nascimento de um Bebê!</strong> Adicionados <strong>+$500/mês</strong> em custos de fraldas, berçário e cuidados.`);
+                    eventLogs.push(`🍼 <strong>Evento de Vida: Nascimento de um Bebê!</strong> Adicionados <strong>+R$500/mês</strong> em custos de fraldas, berçário e cuidados.`);
                 }
             } else if (familyState.hasKid) {
                 const prevAgeYears = Math.floor(familyState.kidAgeMonths / 12);
@@ -181,11 +181,11 @@
 
                 if (newAgeYears >= 18) {
                     familyState.hasKid = false;
-                    eventLogs.push(`🎓 <strong>Ninho Vazio!</strong> Seu filho completou 18 anos e foi para a faculdade. As despesas caíram em <strong>-$1.000/mês</strong>!`);
+                    eventLogs.push(`🎓 <strong>Ninho Vazio!</strong> Seu filho completou 18 anos e foi para a faculdade. As despesas caíram em <strong>-R$1.000/mês</strong>!`);
                 } else if (prevAgeYears < 6 && newAgeYears >= 6) {
-                    eventLogs.push(`🎒 <strong>Fase Escolar:</strong> Seu filho entrou no ensino fundamental. Custos aumentaram em <strong>+$250/mês</strong> (+$750/mês total do filho) em material e esportes.`);
+                    eventLogs.push(`🎒 <strong>Fase Escolar:</strong> Seu filho entrou no ensino fundamental. Custos aumentaram em <strong>+R$250/mês</strong> (+R$750/mês total do filho) em material e esportes.`);
                 } else if (prevAgeYears < 13 && newAgeYears >= 13) {
-                    eventLogs.push(`🎧 <strong>Fase Adolescente:</strong> Atividades, tecnologia e roupas elevaram os gastos do filho em <strong>+$250/mês</strong> (+$1.000/mês total).`);
+                    eventLogs.push(`🎧 <strong>Fase Adolescente:</strong> Atividades, tecnologia e roupas elevaram os gastos do filho em <strong>+R$250/mês</strong> (+R$1.000/mês total).`);
                 }
             }
 
@@ -195,19 +195,19 @@
                 familyState.promotionTriggered = true;
                 const raiseAmount = 400;
                 baseMonthlySalary += raiseAmount;
-                eventLogs.push(`💼 <strong>Promoção de Carreira!</strong> Aumento salarial! O salário ativo da família subiu <strong>+$${raiseAmount}/mês</strong> (Novo Salário: $${baseMonthlySalary.toLocaleString()}/mês).`);
+                eventLogs.push(`💼 <strong>Promoção de Carreira!</strong> Aumento salarial! O salário ativo da família subiu <strong>+R$${raiseAmount}/mês</strong> (Novo Salário: R$${baseMonthlySalary.toLocaleString()}/mês).`);
             }
 
             // Pet Adoption
             if (!familyState.hasPet && monthsPassed >= 60 && Math.random() < 0.15) {
                 familyState.hasPet = true;
-                eventLogs.push(`🐶 <strong>Adoção de um Pet!</strong> Adicionados <strong>+$120/mês</strong> em ração, veterinário e plano de saúde animal.`);
+                eventLogs.push(`🐶 <strong>Adoção de um Pet!</strong> Adicionados <strong>+R$120/mês</strong> em ração, veterinário e plano de saúde animal.`);
             }
 
             // Aging Parents Healthcare Support
             if (!familyState.hasElderCare && monthsPassed >= 120 && Math.random() < 0.20) {
                 familyState.hasElderCare = true;
-                eventLogs.push(`👴 <strong>Apoio a Pais Idosos:</strong> Você assumiu suporte médico mensal para seus pais, adicionando <strong>+$250/mês</strong> às despesas.`);
+                eventLogs.push(`👴 <strong>Apoio a Pais Idosos:</strong> Você assumiu suporte médico mensal para seus pais, adicionando <strong>+R$250/mês</strong> às despesas.`);
             }
 
             // 4. OUT-OF-POCKET EXPENSE SHOCKS & WINDFALLS
@@ -215,27 +215,27 @@
             if (shockRoll < 0.10 && cash >= 1000) {
                 const cost = Math.floor(Math.random() * 800) + 1000;
                 cash -= cost;
-                eventLogs.push(`🏥 <strong>Emergência Médica / Odontológica:</strong> Despesa de saúde inesperada de <strong>-$${cost.toLocaleString()}</strong> no Caixa.`);
+                eventLogs.push(`🏥 <strong>Emergência Médica / Odontológica:</strong> Despesa de saúde inesperada de <strong>-R$${cost.toLocaleString()}</strong> no Caixa.`);
             } else if (shockRoll >= 0.10 && shockRoll < 0.20 && cash >= 1200) {
                 const cost = Math.floor(Math.random() * 1000) + 1200;
                 cash -= cost;
-                eventLogs.push(`🚗 <strong>Manutenção do Veículo:</strong> Conserto do carro exigiu <strong>-$${cost.toLocaleString()}</strong> do Caixa.`);
+                eventLogs.push(`🚗 <strong>Manutenção do Veículo:</strong> Conserto do carro exigiu <strong>-R$${cost.toLocaleString()}</strong> do Caixa.`);
             } else if (shockRoll >= 0.20 && shockRoll < 0.28 && cash >= 1500) {
                 const cost = Math.floor(Math.random() * 1200) + 1600;
                 cash -= cost;
-                eventLogs.push(`🏛️ <strong>Aumento de IPTU / Seguros:</strong> Reajuste anual de impostos descontou <strong>-$${cost.toLocaleString()}</strong> do Caixa.`);
+                eventLogs.push(`🏛️ <strong>Aumento de IPTU / Seguros:</strong> Reajuste anual de impostos descontou <strong>-R$${cost.toLocaleString()}</strong> do Caixa.`);
             } else if (shockRoll >= 0.28 && shockRoll < 0.33) {
                 const bonus = Math.floor(Math.random() * 2000) + 1500;
                 cash += bonus;
-                eventLogs.push(`💻 <strong>Projeto Freelance Extra!</strong> Você ganhou um extra de <strong>+$${bonus.toLocaleString()}</strong> em dinheiro.`);
+                eventLogs.push(`💻 <strong>Projeto Freelance Extra!</strong> Você ganhou um extra de <strong>+R$${bonus.toLocaleString()}</strong> em dinheiro.`);
             } else if (shockRoll >= 0.33 && shockRoll < 0.38) {
                 const inheritance = Math.floor(Math.random() * 5000) + 6000;
                 cash += inheritance;
-                eventLogs.push(`🎁 <strong>Herança ou Presente Familiar!</strong> Você recebeu uma quantia de <strong>+$${inheritance.toLocaleString()}</strong> no Caixa.`);
+                eventLogs.push(`🎁 <strong>Herança ou Presente Familiar!</strong> Você recebeu uma quantia de <strong>+R$${inheritance.toLocaleString()}</strong> no Caixa.`);
             } else if (shockRoll >= 0.38 && shockRoll < 0.42) {
                 const taxBonus = Math.floor(Math.random() * 1500) + 1200;
                 cash += taxBonus;
-                eventLogs.push(`🧾 <strong>Restituição de Imposto de Renda:</strong> O retorno fiscal adicionou <strong>+$${taxBonus.toLocaleString()}</strong> ao Caixa.`);
+                eventLogs.push(`🧾 <strong>Restituição de Imposto de Renda:</strong> O retorno fiscal adicionou <strong>+R$${taxBonus.toLocaleString()}</strong> ao Caixa.`);
             }
 
             // 5. ASSET DYNAMICS
@@ -248,7 +248,7 @@
                 const yieldDiff = (divEtf.monthlyYieldPerUnit - oldYield).toFixed(1);
                 if (divEtf.ownedUnits > 0) {
                     const totalEtfBoost = (yieldDiff * divEtf.ownedUnits).toFixed(0);
-                    eventLogs.push(`📈 <strong>Crescimento de Dividendos!</strong> As empresas aumentaram os proventos (+${((compoundRate - 1)*100).toFixed(1)}%). O rendimento subiu +$${yieldDiff}/mês por unidade (Ganho total: <strong>+$${totalEtfBoost}/mês</strong>).`);
+                    eventLogs.push(`📈 <strong>Crescimento de Dividendos!</strong> As empresas aumentaram os proventos (+${((compoundRate - 1)*100).toFixed(1)}%). O rendimento subiu +R$${yieldDiff}/mês por unidade (Ganho total: <strong>+R$${totalEtfBoost}/mês</strong>).`);
                 }
             }
 
@@ -260,7 +260,7 @@
                     bonds.riskText = 'Alta dos Juros (7.7% ao ano)';
                     if (bonds.ownedUnits > 0) {
                         const bondBoost = ((3.2 - bonds.baseYield) * bonds.ownedUnits).toFixed(0);
-                        eventLogs.push(`🏦 <strong>Alta de Juros pelo Banco Central:</strong> O rendimento dos Títulos subiu para <strong>+$3.2/unidade</strong> (7.7% ao ano). Adicionou <strong>+$${bondBoost}/mês</strong> à renda passiva.`);
+                        eventLogs.push(`🏦 <strong>Alta de Juros pelo Banco Central:</strong> O rendimento dos Títulos subiu para <strong>+R$3.2/unidade</strong> (7.7% ao ano). Adicionou <strong>+R$${bondBoost}/mês</strong> à renda passiva.`);
                     }
                 }
             } else if (bonds) {
@@ -276,13 +276,13 @@
                     btc.monthlyYieldPerUnit = 65;
                     if (btc.ownedUnits > 0) {
                         const btcGain = ((65 - btc.baseYield) * btc.ownedUnits).toFixed(0);
-                        eventLogs.push(`🚀 <strong>Ciclo de Alta no Bitcoin:</strong> O rally impulsionou o fluxo para +$65/unidade/mês! Somou <strong>+$${btcGain}/mês</strong> à sua renda passiva.`);
+                        eventLogs.push(`🚀 <strong>Ciclo de Alta no Bitcoin:</strong> O rally impulsionou o fluxo para +R$65/unidade/mês! Somou <strong>+R$${btcGain}/mês</strong> à sua renda passiva.`);
                     }
                 } else if (btcRoll < 0.52) {
                     btc.monthlyYieldPerUnit = -15;
                     if (btc.ownedUnits > 0) {
                         const btcLoss = (Math.abs(-15 - btc.baseYield) * btc.ownedUnits).toFixed(0);
-                        eventLogs.push(`📉 <strong>Ciclo de Baixa no Bitcoin:</strong> Correção temporária de preço (-$15/unidade/mês). Reduziu a renda passiva em <strong>-$${btcLoss}/mês</strong>.`);
+                        eventLogs.push(`📉 <strong>Ciclo de Baixa no Bitcoin:</strong> Correção temporária de preço (-R$15/unidade/mês). Reduziu a renda passiva em <strong>-R$${btcLoss}/mês</strong>.`);
                     }
                 } else {
                     btc.monthlyYieldPerUnit = btc.baseYield;
@@ -296,12 +296,12 @@
                 if (bizRoll < 0.25) {
                     biz.monthlyYieldPerUnit = 120;
                     if (biz.ownedUnits > 0) {
-                        eventLogs.push(`🚀 <strong>Expansão do Negócio Digital:</strong> Novo produto elevou o rendimento para +$120/unidade/mês este ano.`);
+                        eventLogs.push(`🚀 <strong>Expansão do Negócio Digital:</strong> Novo produto elevou o rendimento para +R$120/unidade/mês este ano.`);
                     }
                 } else if (bizRoll < 0.45) {
                     biz.monthlyYieldPerUnit = 35;
                     if (biz.ownedUnits > 0) {
-                        eventLogs.push(`⚠️ <strong>Aumento de Custos com Anúncios:</strong> Maior concorrência reduziu o rendimento do negócio digital para +$35/unidade/mês este ano.`);
+                        eventLogs.push(`⚠️ <strong>Aumento de Custos com Anúncios:</strong> Maior concorrência reduziu o rendimento do negócio digital para +R$35/unidade/mês este ano.`);
                     }
                 } else {
                     biz.monthlyYieldPerUnit = biz.baseYield;
@@ -314,7 +314,7 @@
                 const repairCost = Math.floor(Math.random() * 1500) + 1000;
                 if (cash >= repairCost) {
                     cash -= repairCost;
-                    eventLogs.push(`🛠️ <strong>Reforma no Imóvel:</strong> Despesa emergencial de manutenção: <strong>-$${repairCost.toLocaleString()}</strong> do Caixa.`);
+                    eventLogs.push(`🛠️ <strong>Reforma no Imóvel:</strong> Despesa emergencial de manutenção: <strong>-R$${repairCost.toLocaleString()}</strong> do Caixa.`);
                 }
             }
 
@@ -332,7 +332,7 @@
             if (toast && toastText) {
                 const yearsPassedStr = `Ano ${Math.floor(monthsPassed / 12)}`;
                 toastTitle.innerText = `Período Avançado (${yearsPassedStr})`;
-                toastText.innerHTML = `Superávit líquido acumulado: <strong class="font-mono text-emerald-800">${annualNetAdded >= 0 ? '+' : ''}$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}$${Math.round(netMonthly).toLocaleString()}/mês x 12 meses somados ao Caixa).`;
+                toastText.innerHTML = `Superávit líquido acumulado: <strong class="font-mono text-emerald-800">${annualNetAdded >= 0 ? '+' : ''}R$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}R$${Math.round(netMonthly).toLocaleString()}/mês x 12 meses somados ao Caixa).`;
 
                 if (eventLogs.length > 0) {
                     eventLogList.classList.remove('hidden');
@@ -433,7 +433,7 @@
                     <td class="p-2.5 text-center">${rankBadge}</td>
                     <td class="p-2.5 font-semibold text-espresso-950">${window.SimLeaderboard.escapeHtml(entry.name)}${isMine ? ' <span class="text-[9px] font-bold uppercase tracking-wide text-gold-600">Você</span>' : ''}</td>
                     <td class="p-2.5 text-center font-mono font-bold text-forest-800">${timeStr}</td>
-                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">$${entry.tiebreak.toLocaleString()}</td>
+                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">R$${entry.tiebreak.toLocaleString()}</td>
                 `;
                 container.appendChild(tr);
             });
@@ -506,12 +506,12 @@
             const pass = getTotalMonthlyPassiveIncome();
             const joyScore = getHappinessScore();
             
-            document.getElementById('victoryPassive').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;
-            document.getElementById('victoryExpenses').innerText = `$${exp.toLocaleString()}/mês`;
+            document.getElementById('victoryPassive').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;
+            document.getElementById('victoryExpenses').innerText = `R$${exp.toLocaleString()}/mês`;
             
             const yrs = Math.floor(monthsPassed / 12);
             document.getElementById('victoryTime').innerText = `${yrs} Anos (${monthsPassed} Meses)`;
-            document.getElementById('victoryNetWorth').innerText = `$${Math.round(getNetWorth()).toLocaleString()}`;
+            document.getElementById('victoryNetWorth').innerText = `R$${Math.round(getNetWorth()).toLocaleString()}`;
 
             // Life Joy Title
             const joyTitleElem = document.getElementById('victoryJoyTitle');
@@ -533,6 +533,62 @@
             if (modal) modal.classList.add('hidden');
         }
 
+        // The victory modal's route to the panel. Closing it first is what makes
+        // the panel reachable, and SimCta.focus() moves focus onto it - correct
+        // only because somebody pressed a button asking to go there.
+        function openSimCta() {
+            closeVictoryModal();
+            if (window.SimCta) window.SimCta.focus();
+        }
+
+        /**
+         * Classifies the run for the result-aware panel.
+         *
+         * Called from renderUI(), so once per simulated year rather than only
+         * at crossover - and it says nothing for the first ten of them. Before
+         * year ten the coverage percentage is mostly the starting salary, and
+         * there is no result yet to read back.
+         *
+         * The joy score is what splits crossover into three, and it is the
+         * whole reason this tool has one. Reaching financial independence in
+         * six years by cutting everything that makes a life is not a better
+         * outcome than reaching it in eleven while living, and it is the run
+         * least likely to be finished in real life. It gets warmth and a
+         * conversation, not a questionnaire.
+         */
+        function updateResultCta() {
+            if (!window.SimCta) return;
+
+            const years = Math.floor(monthsPassed / 12);
+            const coverage = getFreedomCoveragePct();
+            if (coverage < 100 && years < 10) return;
+
+            const exp = getMonthlyExpenses();
+            const pass = getTotalMonthlyPassiveIncome();
+            const joy = getHappinessScore();
+
+            let bucket;
+            if (coverage >= 100) {
+                if (joy >= 75) bucket = 'crossoverJoyful';
+                else if (joy < 45) bucket = 'crossoverAscetic';
+                else bucket = 'crossoverBalanced';
+            } else if (coverage >= 75) {
+                bucket = 'close';
+            } else {
+                bucket = 'far';
+            }
+
+            window.SimCta.show(bucket, {
+                years,
+                joy,
+                coverage: Math.round(coverage),
+                passive: window.SimCta.money(pass),
+                expenses: window.SimCta.money(exp),
+                gap: window.SimCta.money(Math.max(0, exp - pass)),
+                netWorth: window.SimCta.money(getNetWorth())
+            });
+        }
+
         function renderUI() {
             const exp = getMonthlyExpenses();
             const pass = getTotalMonthlyPassiveIncome();
@@ -541,13 +597,13 @@
             const joyScore = getHappinessScore();
 
             // Header stats
-            document.getElementById('cashDisplay').innerText = `$${Math.round(cash).toLocaleString()}`;
-            document.getElementById('activeDisplay').innerText = `$${baseMonthlySalary.toLocaleString()}/mês`;
-            document.getElementById('expensesDisplay').innerText = `$${exp.toLocaleString()}/mês`;
-            document.getElementById('passiveDisplay').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;
+            document.getElementById('cashDisplay').innerText = `R$${Math.round(cash).toLocaleString()}`;
+            document.getElementById('activeDisplay').innerText = `R$${baseMonthlySalary.toLocaleString()}/mês`;
+            document.getElementById('expensesDisplay').innerText = `R$${exp.toLocaleString()}/mês`;
+            document.getElementById('passiveDisplay').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;
             document.getElementById('freedomPctDisplay').innerText = `${coverage.toFixed(1)}%`;
             document.getElementById('freedomProgressBar').style.width = `${coverage}%`;
-            document.getElementById('marketplaceCash').innerText = `$${Math.round(cash).toLocaleString()}`;
+            document.getElementById('marketplaceCash').innerText = `R$${Math.round(cash).toLocaleString()}`;
 
             // Life Joy Card Update
             const joyDisplay = document.getElementById('happinessDisplay');
@@ -572,9 +628,9 @@
             if (familyState.hasKid) {
                 familyBadge.classList.remove('hidden');
                 const yrs = Math.floor(familyState.kidAgeMonths / 12);
-                let stageLabel = "Bebé (+$500/mês)";
-                if (yrs >= 13) stageLabel = "Adolescente (+$1.000/mês)";
-                else if (yrs >= 6) stageLabel = "Ensino Fundamental (+$750/mês)";
+                let stageLabel = "Bebé (+R$500/mês)";
+                if (yrs >= 13) stageLabel = "Adolescente (+R$1.000/mês)";
+                else if (yrs >= 6) stageLabel = "Ensino Fundamental (+R$750/mês)";
                 familyText.innerText = `Filho ${yrs} Anos • ${stageLabel}`;
             } else {
                 familyBadge.classList.add('hidden');
@@ -583,7 +639,7 @@
             // Turn Action Projected Savings
             const projElem = document.getElementById('projectedMonthlySavings');
             if (projElem) {
-                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}$${Math.round(netSurplus).toLocaleString()}/mês`;
+                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}R$${Math.round(netSurplus).toLocaleString()}/mês`;
                 projElem.className = netSurplus >= 0 ? 'text-gold-400 font-mono font-bold' : 'text-rose-300 font-mono font-bold';
             }
 
@@ -591,8 +647,8 @@
             const years = Math.floor(monthsPassed / 12);
             document.getElementById('monthsPassedBadge').innerText = `Ano ${years}`;
 
-            document.getElementById('barExpenseVal').innerText = `$${exp.toLocaleString()}/mês`;
-            document.getElementById('barPassiveVal').innerText = `+$${Math.round(pass).toLocaleString()}/mês`;
+            document.getElementById('barExpenseVal').innerText = `R$${exp.toLocaleString()}/mês`;
+            document.getElementById('barPassiveVal').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;
 
             // Normalize racing bar scales
             const maxBarScale = Math.max(exp, pass, 3000);
@@ -606,11 +662,12 @@
                 gapElem.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> PONTO DE CRUZAMENTO ALCANÇADO!`;
             } else {
                 gapElem.className = 'text-center py-1 text-xs font-medium text-espresso-800/80 bg-cream-100 rounded-lg border border-cream-200';
-                gapElem.innerHTML = `Falta: <span class="font-bold text-rose-700">$${Math.round(gap).toLocaleString()}/mês</span> para a liberdade.`;
+                gapElem.innerHTML = `Falta: <span class="font-bold text-rose-700">R$${Math.round(gap).toLocaleString()}/mês</span> para a liberdade.`;
             }
 
             renderMarketplace();
             renderHoldingsSidebar();
+            updateResultCta();
         }
 
         function renderMarketplace() {
@@ -639,8 +696,8 @@
 
                     <div class="space-y-1.5 pt-1.5 border-t border-cream-200">
                         <div class="flex justify-between items-center text-[11px]">
-                            <span class="text-espresso-800/70">Preço: <strong class="text-espresso-950 font-mono">$${asset.unitCost.toLocaleString()}</strong></span>
-                            <span class="${yieldColor} font-bold font-mono">${yieldSign}$${asset.monthlyYieldPerUnit}/mês</span>
+                            <span class="text-espresso-800/70">Preço: <strong class="text-espresso-950 font-mono">R$${asset.unitCost.toLocaleString()}</strong></span>
+                            <span class="${yieldColor} font-bold font-mono">${yieldSign}R$${asset.monthlyYieldPerUnit}/mês</span>
                         </div>
                         <div class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-200 truncate">
                             <i class="fa-solid fa-shield-halved mr-0.5 text-amber-600" aria-hidden="true"></i>${asset.riskText}
@@ -676,8 +733,8 @@
             const totalHoldingsCount = assets.reduce((sum, a) => sum + a.ownedUnits, 0);
             
             document.getElementById('holdingsCountBadge').innerText = `${totalHoldingsCount} Ativos`;
-            document.getElementById('sidebarTotalInvested').innerText = `$${getTotalInvestedCapital().toLocaleString()}`;
-            document.getElementById('sidebarTotalPassive').innerText = `+$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mês`;
+            document.getElementById('sidebarTotalInvested').innerText = `R$${getTotalInvestedCapital().toLocaleString()}`;
+            document.getElementById('sidebarTotalPassive').innerText = `+R$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mês`;
 
             updateAssetPieChart();
 
@@ -706,10 +763,10 @@
                             <i class="fa-solid ${asset.icon} text-forest-800" aria-hidden="true"></i>
                             <div>
                                 <span class="font-bold text-espresso-950 block leading-tight text-[11px]">${asset.name}</span>
-                                <span class="text-[9px] text-espresso-800/70 font-mono">${asset.ownedUnits} Unid. ($${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>
+                                <span class="text-[9px] text-espresso-800/70 font-mono">${asset.ownedUnits} Unid. (R$${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>
                             </div>
                         </div>
-                        <span class="font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}">${totalIncome >= 0 ? '+' : ''}$${Math.round(totalIncome)}/mês</span>
+                        <span class="font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}">${totalIncome >= 0 ? '+' : ''}R$${Math.round(totalIncome)}/mês</span>
                     </div>
                     <div class="flex items-center justify-end gap-1.5 pt-1 border-t border-cream-200">
                         <button data-onclick="sellAsset('${asset.id}', 1)" class="px-2 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
@@ -808,7 +865,7 @@
                                     label: function(context) {
                                         const val = context.raw || 0;
                                         const pct = totalVal > 0 ? ((val / totalVal) * 100).toFixed(1) : 0;
-                                        return ` $${val.toLocaleString()} (${pct}%)`;
+                                        return ` R$${val.toLocaleString()} (${pct}%)`;
                                     }
                                 }
                             }
@@ -869,12 +926,12 @@
             currentLifestyle[type] = value;
             
             // Update cost badges
-            document.getElementById('housingCostBadge').innerText = `$${lifestyleCosts.housing[currentLifestyle.housing]}/mês`;
-            document.getElementById('transportCostBadge').innerText = `$${lifestyleCosts.transport[currentLifestyle.transport]}/mês`;
-            document.getElementById('lifestyleCostBadge').innerText = `$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mês`;
-            document.getElementById('subscriptionsCostBadge').innerText = `$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mês`;
-            document.getElementById('travelCostBadge').innerText = `$${lifestyleCosts.travel[currentLifestyle.travel]}/mês`;
-            document.getElementById('shoppingCostBadge').innerText = `$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mês`;
+            document.getElementById('housingCostBadge').innerText = `R$${lifestyleCosts.housing[currentLifestyle.housing]}/mês`;
+            document.getElementById('transportCostBadge').innerText = `R$${lifestyleCosts.transport[currentLifestyle.transport]}/mês`;
+            document.getElementById('lifestyleCostBadge').innerText = `R$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mês`;
+            document.getElementById('subscriptionsCostBadge').innerText = `R$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mês`;
+            document.getElementById('travelCostBadge').innerText = `R$${lifestyleCosts.travel[currentLifestyle.travel]}/mês`;
+            document.getElementById('shoppingCostBadge').innerText = `R$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mês`;
 
             renderUI();
         }

@@ -153,7 +153,7 @@
                     <i class="fa-solid fa-wallet text-amber-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
-                    <span id="cashDisplay" class="text-base sm:text-lg font-bold font-mono text-espresso-950">$10,000</span>
+                    <span id="cashDisplay" class="text-base sm:text-lg font-bold font-mono text-espresso-950">€10,000</span>
                     <span class="block text-[9px] text-espresso-800/60 mt-0.5">Capital para activos</span>
                 </div>
             </div>
@@ -166,7 +166,7 @@
                     <i class="fa-solid fa-briefcase text-blue-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
-                    <span id="activeDisplay" class="text-base sm:text-lg font-bold font-mono text-blue-800">$3,200/mes</span>
+                    <span id="activeDisplay" class="text-base sm:text-lg font-bold font-mono text-blue-800">€3,200/mes</span>
                     <span class="block text-[9px] text-espresso-800/60 mt-0.5">Ingreso laboral del hogar</span>
                 </div>
             </div>
@@ -179,7 +179,7 @@
                     <i class="fa-solid fa-arrow-trend-up text-emerald-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
-                    <span id="passiveDisplay" class="text-base sm:text-lg font-bold font-mono text-emerald-700">+$0/mes</span>
+                    <span id="passiveDisplay" class="text-base sm:text-lg font-bold font-mono text-emerald-700">+€0/mes</span>
                     <span class="block text-[9px] text-espresso-800/60 mt-0.5">Flujo de caja de activos</span>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                     <i class="fa-solid fa-arrow-trend-down text-rose-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
-                    <span id="expensesDisplay" class="text-base sm:text-lg font-bold font-mono text-rose-700">$2,670/mes</span>
+                    <span id="expensesDisplay" class="text-base sm:text-lg font-bold font-mono text-rose-700">€2,670/mes</span>
                     <span class="block text-[9px] text-espresso-800/60 mt-0.5">Costo de vida base</span>
                 </div>
             </div>
@@ -234,7 +234,7 @@
                     <h2 class="text-sm font-bold font-serif">1. Ajusta Gastos y Compra Activos  ➔  2. Avanza +1 Año</h2>
                 </div>
                 <p class="text-xs text-cream-200">
-                    Flujo de Caja Neto Mensual: <span class="font-mono text-cream-100">(Activo + Pasivo - Gastos)</span> = <strong id="projectedMonthlySavings" class="text-gold-400 font-mono">+$530/mes</strong> superávit neto añadido al saldo cada año.
+                    Flujo de Caja Neto Mensual: <span class="font-mono text-cream-100">(Activo + Pasivo - Gastos)</span> = <strong id="projectedMonthlySavings" class="text-gold-400 font-mono">+€530/mes</strong> superávit neto añadido al saldo cada año.
                 </p>
             </div>
 
@@ -279,7 +279,7 @@
                             <p class="text-[11px] text-espresso-800/70">Invierte el efectivo disponible en activos. ¡Equilibra rendimiento seguro con crecimiento y volatilidad!</p>
                         </div>
                         <span class="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                            Efectivo Disponible: <span id="marketplaceCash" class="font-mono">$10,000</span>
+                            Efectivo Disponible: <span id="marketplaceCash" class="font-mono">€10,000</span>
                         </span>
                     </div>
 
@@ -306,11 +306,11 @@
                                 <span id="label-housing" class="truncate"><i class="fa-solid fa-house text-amber-700 mr-1" aria-hidden="true"></i>Vivienda</span>
                             </div>
                             <select id="housingSelect" aria-labelledby="label-housing" data-onchange="updateLifestyle('housing', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
-                                <option value="modest">Modesta Compartida ($800)</option>
-                                <option value="standard" selected>Apto. Estándar ($1,200)</option>
-                                <option value="luxury">Penthouse Lujo ($2,200)</option>
+                                <option value="modest">Modesta Compartida (€800)</option>
+                                <option value="standard" selected>Apto. Estándar (€1,200)</option>
+                                <option value="luxury">Penthouse Lujo (€2,200)</option>
                             </select>
-                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="housingCostBadge">$1,200/mes</div>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="housingCostBadge">€1,200/mes</div>
                         </div>
 
                         <!-- Transporte -->
@@ -319,11 +319,11 @@
                                 <span id="label-transport" class="truncate"><i class="fa-solid fa-car text-amber-700 mr-1" aria-hidden="true"></i>Transporte</span>
                             </div>
                             <select id="transportSelect" aria-labelledby="label-transport" data-onchange="updateLifestyle('transport', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
-                                <option value="public">Tránsito Público ($100)</option>
-                                <option value="used" selected>Usado Confiable ($300)</option>
-                                <option value="lease">SUV Lujo Arriendo ($800)</option>
+                                <option value="public">Tránsito Público (€100)</option>
+                                <option value="used" selected>Usado Confiable (€300)</option>
+                                <option value="lease">SUV Lujo Arriendo (€800)</option>
                             </select>
-                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="transportCostBadge">$300/mes</div>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="transportCostBadge">€300/mes</div>
                         </div>
 
                         <!-- Comida -->
@@ -332,11 +332,11 @@
                                 <span id="label-lifestyle" class="truncate"><i class="fa-solid fa-utensils text-amber-700 mr-1" aria-hidden="true"></i>Comida</span>
                             </div>
                             <select id="lifestyleSelect" aria-labelledby="label-lifestyle" data-onchange="updateLifestyle('lifestyle', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
-                                <option value="frugal">Frugal / En Casa ($300)</option>
-                                <option value="balanced" selected>Restaurantes / Bal. ($500)</option>
-                                <option value="lavish">Cenas Elegantes ($1,100)</option>
+                                <option value="frugal">Frugal / En Casa (€300)</option>
+                                <option value="balanced" selected>Restaurantes / Bal. (€500)</option>
+                                <option value="lavish">Cenas Elegantes (€1,100)</option>
                             </select>
-                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="lifestyleCostBadge">$500/mes</div>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="lifestyleCostBadge">€500/mes</div>
                         </div>
 
                         <!-- Tecnología y Suscripciones -->
@@ -345,11 +345,11 @@
                                 <span id="label-subscriptions" class="truncate"><i class="fa-solid fa-mobile-screen text-amber-700 mr-1" aria-hidden="true"></i>Tecno/Subs</span>
                             </div>
                             <select id="subscriptionsSelect" aria-labelledby="label-subscriptions" data-onchange="updateLifestyle('subscriptions', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
-                                <option value="basic">Mínimo y Gratis ($30)</option>
-                                <option value="standard" selected>Subs Estándar ($120)</option>
-                                <option value="unlimited">Tech Premium ($350)</option>
+                                <option value="basic">Mínimo y Gratis (€30)</option>
+                                <option value="standard" selected>Subs Estándar (€120)</option>
+                                <option value="unlimited">Tech Premium (€350)</option>
                             </select>
-                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="subscriptionsCostBadge">$120/mes</div>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="subscriptionsCostBadge">€120/mes</div>
                         </div>
 
                         <!-- Viajes y Vacaciones -->
@@ -358,11 +358,11 @@
                                 <span id="label-travel" class="truncate"><i class="fa-solid fa-plane text-amber-700 mr-1" aria-hidden="true"></i>Viajes</span>
                             </div>
                             <select id="travelSelect" aria-labelledby="label-travel" data-onchange="updateLifestyle('travel', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
-                                <option value="staycation">Locales ($100)</option>
-                                <option value="annual" selected>Viaje Anual ($300)</option>
-                                <option value="luxury">Viajes Lujo ($750)</option>
+                                <option value="staycation">Locales (€100)</option>
+                                <option value="annual" selected>Viaje Anual (€300)</option>
+                                <option value="luxury">Viajes Lujo (€750)</option>
                             </select>
-                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="travelCostBadge">$300/mes</div>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="travelCostBadge">€300/mes</div>
                         </div>
 
                         <!-- Compras y Ropa -->
@@ -371,11 +371,11 @@
                                 <span id="label-shopping" class="truncate"><i class="fa-solid fa-bag-shopping text-amber-700 mr-1" aria-hidden="true"></i>Compras</span>
                             </div>
                             <select id="shoppingSelect" aria-labelledby="label-shopping" data-onchange="updateLifestyle('shopping', this.value)" class="w-full text-[11px] bg-cream-50 border border-cream-300 rounded-lg p-1.5 font-medium text-espresso-900 focus:ring-1 focus:ring-forest-800">
-                                <option value="minimal">Segunda Mano ($100)</option>
-                                <option value="standard" selected>Ropa Estándar ($250)</option>
-                                <option value="luxury">Diseñador ($650)</option>
+                                <option value="minimal">Segunda Mano (€100)</option>
+                                <option value="standard" selected>Ropa Estándar (€250)</option>
+                                <option value="luxury">Diseñador (€650)</option>
                             </select>
-                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="shoppingCostBadge">$250/mes</div>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="shoppingCostBadge">€250/mes</div>
                         </div>
                     </div>
                 </div>
@@ -409,7 +409,7 @@
                                         <span class="w-2 h-2 rounded-full bg-rose-600 inline-block"></span>
                                         Meta de Gastos
                                     </span>
-                                    <span id="barExpenseVal" class="font-mono text-rose-700">$2,670/mes</span>
+                                    <span id="barExpenseVal" class="font-mono text-rose-700">€2,670/mes</span>
                                 </div>
                                 <div class="w-full bg-cream-300 rounded-full h-2.5 overflow-hidden p-0.5">
                                     <div id="expensesBar" class="bg-rose-500 h-1.5 rounded-full transition-all duration-500" style="width: 100%"></div>
@@ -423,7 +423,7 @@
                                         <span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span>
                                         Ingreso Pasivo
                                     </span>
-                                    <span id="barPassiveVal" class="font-mono text-emerald-700">$0/mes</span>
+                                    <span id="barPassiveVal" class="font-mono text-emerald-700">€0/mes</span>
                                 </div>
                                 <div class="w-full bg-cream-300 rounded-full h-2.5 overflow-hidden p-0.5">
                                     <div id="passiveBar" class="bg-emerald-600 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -432,7 +432,7 @@
                         </div>
 
                         <div id="crossoverGapNotice" class="text-center py-1 text-[10px] font-medium text-espresso-800/80 bg-cream-100 rounded-lg border border-cream-200">
-                            Brecha: <span id="gapAmountDisplay" class="font-bold text-rose-700">$2,670/mes</span> para la libertad.
+                            Brecha: <span id="gapAmountDisplay" class="font-bold text-rose-700">€2,670/mes</span> para la libertad.
                         </div>
                     </div>
 
@@ -459,11 +459,11 @@
                         <div class="border-t border-cream-200 pt-1.5 text-[10px] space-y-0.5 text-espresso-800">
                             <div class="flex justify-between">
                                 <span class="text-espresso-800/70">Total Invertido:</span>
-                                <span id="sidebarTotalInvested" class="font-mono font-bold">$0</span>
+                                <span id="sidebarTotalInvested" class="font-mono font-bold">€0</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-espresso-800/70">Flujo Pasivo Total:</span>
-                                <span id="sidebarTotalPassive" class="font-mono font-bold text-emerald-700">+$0/mes</span>
+                                <span id="sidebarTotalPassive" class="font-mono font-bold text-emerald-700">+€0/mes</span>
                             </div>
                         </div>
                     </div>
@@ -471,6 +471,60 @@
                 </div>
             </div>
         </div>
+        <!-- RESULT-AWARE CALL TO ACTION.
+             The panel below is hidden until a run produces an outcome. The simulator
+             classifies its own result into a named bucket, hands it to
+             assets/js/sim-cta.js with the numbers behind it, and that fills this in
+             from assets/js/sim-cta.<language>.js.
+
+             There is deliberately not one translation placeholder in it. Every sentence a
+             visitor reads here is chosen by the outcome, so carrying the copy in this
+             template would mean roughly thirty new sidecar keys per simulator and a
+             hundred and fifty across the five - and it would put prose that has to be
+             written for a specific moment into a string table. The per-language copy
+             file is hand-authored for the same reason the behaviour bundles are
+             generated per language.
+
+             The form itself is static because Netlify's form detection reads the built
+             HTML: the <form> and its field names have to exist at build time. Only the
+             values, the labels and the destination are written at runtime. -->
+        <section id="sim-cta-result" class="sim-result-cta" data-simulator="passive-income-engine" data-home="/" aria-labelledby="sim-cta-title" hidden>
+            <div class="sim-result-cta__panel">
+                <div class="sim-result-cta__inner">
+                    <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                    <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                    <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                    <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                    <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="simulator-result">
+                        <input type="hidden" name="simulator" value="passive-income-engine">
+                        <input type="hidden" name="language" value="es">
+                        <input type="hidden" name="outcome" value="">
+                        <input type="hidden" name="headline" value="">
+                        <input type="hidden" name="detail" value="">
+                        <input type="hidden" name="routed_to" value="">
+                        <input type="hidden" name="subject" value="">
+                        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                        <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                        <div class="sim-result-cta__row">
+                            <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                            <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                        </div>
+                        <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                        <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <div class="sim-result-cta__actions">
+                        <a class="sim-result-cta__primary" id="sim-cta-primary" href="/#assessment"></a>
+                        <a class="sim-result-cta__link" id="sim-cta-secondary" href="/#herramientas"></a>
+                    </div>
+
+                    <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+                </div>
+            </div>
+        </section>
+
         <!-- The explainer below is the answer to a Search Console report: these pages
                      were being crawled and then not indexed, which is what Google does with a
                      page that is almost entirely interface. A calculator has nothing to read -
@@ -632,7 +686,7 @@
                 <span class="text-xs font-bold text-gold-600 tracking-widest uppercase">¡Independencia Financiera Alcanzada!</span>
                 <h2 class="text-2xl sm:text-3xl font-serif font-bold text-espresso-950 mt-1">¡Alcanzaste el Punto de Cruce!</h2>
                 <p class="text-xs sm:text-sm text-espresso-800/80 mt-2">
-                    Tu ingreso pasivo mensual (<span id="victoryPassive" class="font-bold text-emerald-700">$0</span>) cubre completamente tus gastos de vida (<span id="victoryExpenses" class="font-bold text-rose-700">$0</span>). ¡El trabajo es ahora 100% opcional!
+                    Tu ingreso pasivo mensual (<span id="victoryPassive" class="font-bold text-emerald-700">€0</span>) cubre completamente tus gastos de vida (<span id="victoryExpenses" class="font-bold text-rose-700">€0</span>). ¡El trabajo es ahora 100% opcional!
                 </p>
             </div>
 
@@ -643,7 +697,7 @@
                 </div>
                 <div>
                     <span class="text-espresso-800/70 block">Patrimonio Neto Total:</span>
-                    <span id="victoryNetWorth" class="font-bold text-sm text-forest-800 font-mono">$0</span>
+                    <span id="victoryNetWorth" class="font-bold text-sm text-forest-800 font-mono">€0</span>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
                     <span class="text-espresso-800/70 block">Alegría de Vivir:</span>
@@ -668,10 +722,17 @@
             </div>
 
             <div class="space-y-3 pt-2">
-                <a href="https://compoundingjourney.com/#assessment" target="_blank" rel="noopener noreferrer" class="block w-full py-3 px-4 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-sm shadow transition flex items-center justify-center gap-2">
-                    <span>Diseña tu Plan Real de Libertad</span>
+                <!-- This was a link to the assessment on the home page, opening in
+                     a new tab, and it said the same thing to somebody who reached
+                     crossover in nine years living well as to somebody who got
+                     there in six by giving up everything. It now goes to the panel
+                     this run has already filled in, which is on this page and says
+                     something about the run - and the assessment is still one press
+                     further on, when it is the right thing to offer. -->
+                <button data-onclick="openSimCta()" class="w-full py-3 px-4 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-sm shadow transition flex items-center justify-center gap-2">
+                    <span>Ver qué significa esta partida</span>
                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </a>
+                </button>
                 <button data-onclick="closeVictoryModal()" class="w-full py-2.5 px-4 rounded-xl border border-cream-300 hover:bg-cream-200 text-espresso-800 font-medium text-xs transition">
                     Continuar Jugando y Creando Riqueza
                 </button>
@@ -725,6 +786,11 @@
         </div>
     </div>
 
+    <!-- The result-aware call to action: the machinery, then the prose it reads.
+         Both are deferred, so both have run by the time the behaviour bundle below
+         looks for window.SimCta. -->
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.es.js?v=source" defer></script>
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
     <script src="/assets/js/sim-passive-income-engine.es.js?v=source" defer></script>

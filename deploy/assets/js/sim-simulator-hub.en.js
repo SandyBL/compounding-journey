@@ -1,7 +1,7 @@
 // Number Highlighting Helper Function
         function highlightNumbers(text) {
             if (!text) return '';
-            const pattern = /(\$\d+[\d,]*k?|\d+(\.\d+)?%|\d+\s*(hours|months|years|working weeks)|24-month|84-month|6-month|3x|AUM)/gi;
+            const pattern = /(\$\d+[\d,]*k?|\d+(\.\d+)?%|\d+\s*(hours|months|years|working weeks)|24-month|84-month|6-month|3x|\bAUM\b)/gi;
             return text.replace(pattern, '<span class="font-bold text-espresso-950 bg-amber-200/90 px-1.5 py-0.5 rounded font-mono text-[0.88em] border border-amber-300/80">$1</span>');
         }
 
@@ -655,6 +655,57 @@
 
             // RENDER LEADERBOARD
             loadLeaderboard();
+
+            updateResultCta(archetype);
+        }
+
+        /**
+         * Classifies the finished run for the result-aware panel.
+         *
+         * The archetype is the headline the visitor already has, and on its own
+         * it is not actionable: "The Wealth Apprentice" does not tell anybody
+         * which of fifteen decisions to look at. The weakest of the five
+         * categories does, and it is also what decides which of the two forms
+         * is the right one to ask for - the balance sheet for a run that leaked
+         * through debt or spending, the investment profile for one that leaked
+         * through allocation, tax or protection. That mapping lives next to the
+         * sentence that asks, in the copy file.
+         *
+         * categoryScores is keyed by the category's *translated* label, so the
+         * stable key has to be recovered from CATEGORIES rather than read off
+         * the score object; the label is then what gets quoted back, because
+         * that is the name the visitor has just seen in the breakdown above.
+         */
+        function updateResultCta(archetype) {
+            if (!window.SimCta) return;
+
+            const rows = Object.keys(CATEGORIES).map((key) => {
+                const score = categoryScores[CATEGORIES[key]] || { points: 0, max: 0 };
+                return {
+                    bucket: key.toLowerCase(),
+                    label: CATEGORIES[key],
+                    pct: score.max > 0 ? Math.round((score.points / score.max) * 100) : 0
+                };
+            });
+
+            const weakest = rows.reduce((low, row) => (row.pct < low.pct ? row : low));
+            const strongest = rows.reduce((high, row) => (row.pct > high.pct ? row : high));
+
+            // A run with no weak category is a different conversation: the
+            // knowledge is not the constraint, so pointing at a "weakest" area
+            // at 80% would be inventing a problem to sell against.
+            const bucket = weakest.pct >= 75 ? 'allStrong' : weakest.bucket;
+
+            window.SimCta.show(bucket, {
+                archetype,
+                score: Math.round(currentState.literacyScore),
+                weakest: weakest.label,
+                weakestPct: weakest.pct,
+                strongest: strongest.label,
+                strongestPct: strongest.pct,
+                netWorth: window.SimCta.money(currentState.netWorth),
+                cashFlow: window.SimCta.money(currentState.cashFlow)
+            });
         }
 
         // RENDER CATEGORY BREAKDOWN

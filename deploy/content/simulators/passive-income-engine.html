@@ -443,7 +443,7 @@
                         <div class="border-t border-cream-200 pt-1.5 text-[10px] space-y-0.5 text-espresso-800">
                             <div class="flex justify-between">
                                 <span class="text-espresso-800/70">{{textEspresso80070}}</span>
-                                <span id="sidebarTotalInvested" class="font-mono font-bold">$0</span>
+                                <span id="sidebarTotalInvested" class="font-mono font-bold">{{lang.currency}}0</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-espresso-800/70">{{textEspresso800702}}</span>
@@ -667,7 +667,7 @@
                 <span class="text-xs font-bold text-gold-600 tracking-widest uppercase">{{textXs7}}</span>
                 <h2 class="text-2xl sm:text-3xl font-serif font-bold text-espresso-950 mt-1">{{text2xl}}</h2>
                 <p class="text-xs sm:text-sm text-espresso-800/80 mt-2">
-{{textXs8}}<span id="victoryPassive" class="font-bold text-emerald-700">$0</span>{{textXs9}}<span id="victoryExpenses" class="font-bold text-rose-700">$0</span>{{textXs10}}                </p>
+{{textXs8}}<span id="victoryPassive" class="font-bold text-emerald-700">{{lang.currency}}0</span>{{textXs9}}<span id="victoryExpenses" class="font-bold text-rose-700">{{lang.currency}}0</span>{{textXs10}}                </p>
             </div>
 
             <div class="bg-cream-100 p-4 rounded-xl border border-cream-300 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left text-xs">
@@ -677,7 +677,7 @@
                 </div>
                 <div>
                     <span class="text-espresso-800/70 block">{{textEspresso800704}}</span>
-                    <span id="victoryNetWorth" class="font-bold text-sm text-forest-800 font-mono">$0</span>
+                    <span id="victoryNetWorth" class="font-bold text-sm text-forest-800 font-mono">{{lang.currency}}0</span>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
                     <span class="text-espresso-800/70 block">{{textEspresso800705}}</span>
@@ -1159,7 +1159,7 @@
                     <td class="p-2.5 text-center">${rankBadge}</td>
                     <td class="p-2.5 font-semibold text-espresso-950">${window.SimLeaderboard.escapeHtml(entry.name)}{{lbYouBadge}}</td>
                     <td class="p-2.5 text-center font-mono font-bold text-forest-800">${timeStr}</td>
-                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">$${entry.tiebreak.toLocaleString()}</td>
+                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">{{lang.currency}}${entry.tiebreak.toLocaleString()}</td>
                 `;
                 container.appendChild(tr);
             });
@@ -1232,7 +1232,7 @@
             
 {{fontSans36}}            
             const yrs = Math.floor(monthsPassed / 12);
-{{fontSans37}}            document.getElementById('victoryNetWorth').innerText = `$${Math.round(getNetWorth()).toLocaleString()}`;
+{{fontSans37}}            document.getElementById('victoryNetWorth').innerText = `{{lang.currency}}${Math.round(getNetWorth()).toLocaleString()}`;
 
             // Life Joy Title
             const joyTitleElem = document.getElementById('victoryJoyTitle');
@@ -1315,10 +1315,10 @@
             const joyScore = getHappinessScore();
 
             // Header stats
-            document.getElementById('cashDisplay').innerText = `$${Math.round(cash).toLocaleString()}`;
+            document.getElementById('cashDisplay').innerText = `{{lang.currency}}${Math.round(cash).toLocaleString()}`;
 {{fontSans41}}            document.getElementById('freedomPctDisplay').innerText = `${coverage.toFixed(1)}%`;
             document.getElementById('freedomProgressBar').style.width = `${coverage}%`;
-            document.getElementById('marketplaceCash').innerText = `$${Math.round(cash).toLocaleString()}`;
+            document.getElementById('marketplaceCash').innerText = `{{lang.currency}}${Math.round(cash).toLocaleString()}`;
 
             // Life Joy Card Update
             const joyDisplay = document.getElementById('happinessDisplay');
@@ -1428,7 +1428,7 @@
             const container = document.getElementById('holdingsContainer');
             const totalHoldingsCount = assets.reduce((sum, a) => sum + a.ownedUnits, 0);
             
-{{fontSans56}}            document.getElementById('sidebarTotalInvested').innerText = `$${getTotalInvestedCapital().toLocaleString()}`;
+{{fontSans56}}            document.getElementById('sidebarTotalInvested').innerText = `{{lang.currency}}${getTotalInvestedCapital().toLocaleString()}`;
 {{fontSans57}}
             updateAssetPieChart();
 
@@ -1548,7 +1548,7 @@
                                     label: function(context) {
                                         const val = context.raw || 0;
                                         const pct = totalVal > 0 ? ((val / totalVal) * 100).toFixed(1) : 0;
-                                        return ` $${val.toLocaleString()} (${pct}%)`;
+                                        return ` {{lang.currency}}${val.toLocaleString()} (${pct}%)`;
                                     }
                                 }
                             }

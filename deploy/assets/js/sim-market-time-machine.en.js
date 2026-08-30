@@ -512,6 +512,57 @@
             // 6. Conservative Stat
             document.getElementById('statConservativeVal').innerText = `$${latestConservative.val.toLocaleString()}`;
             document.getElementById('statConservativeCagr').innerText = `CAGR: ${calcCagr(latestConservative.val)}%`;
+
+            updateResultCta({
+                yearsCount,
+                currentYear,
+                customVal: latestCustom.val,
+                classicVal: latestClassic.val,
+                customCagr: calcCagr(latestCustom.val),
+                classicCagr: calcCagr(latestClassic.val)
+            });
+        }
+
+        /**
+         * Classifies the run for the result-aware panel.
+         *
+         * updateMetrics() is called once per simulated year, so this is called
+         * once per simulated year too, and the panel's text is rewritten each
+         * time. That is deliberate: the visitor is watching a portfolio move
+         * through history, and a reading of it that froze at year ten would be
+         * describing a chart that is no longer on screen.
+         *
+         * Ten years is where it starts speaking. Before that the gap between
+         * any two allocations is mostly which year the simulation happened to
+         * begin in, and a confident sentence about a three-year backtest is the
+         * kind of thing this tool exists to argue against.
+         */
+        function updateResultCta(result) {
+            if (!window.SimCta) return;
+            if (result.yearsCount < 10) return;
+
+            const gap = result.customVal - result.classicVal;
+            const cashGold = (state.allocation.cash || 0) + (state.allocation.gold || 0);
+
+            // An allocation held mostly in cash and gold is a different result
+            // from simply losing to the benchmark, and it is the one worth
+            // naming: it loses slowly, comfortably, and for a reason the
+            // visitor chose on purpose.
+            let bucket;
+            if (gap > 0) bucket = 'beat';
+            else if (cashGold > 50) bucket = 'inflationExposed';
+            else bucket = 'lagged';
+
+            window.SimCta.show(bucket, {
+                years: result.yearsCount,
+                startYear: state.startYear,
+                endYear: result.currentYear,
+                customVal: window.SimCta.money(result.customVal),
+                diff: window.SimCta.money(Math.abs(gap)),
+                customCagr: result.customCagr,
+                classicCagr: result.classicCagr,
+                cashGold
+            });
         }
 
         function renderLogList() {

@@ -37,7 +37,7 @@
   "hFull5": {
     "en": "simulator for estimating retirement portfolio survival under varied market returns and withdrawal assumptions.\",\"inLanguage\":\"en\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Any web browser\",\"browserRequirements\":\"Requires JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
     "es": "para estimar la supervivencia de una cartera de retiro bajo distintos rendimientos y retiradas.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
-    "pt": "para estimar a sobrevivência de uma carteira de reforma sob diferentes retornos e levantamentos.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
+    "pt": "para estimar a sobrevivência de uma carteira de reforma sob diferentes retornos e levantamentos.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"BRL\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
   },
   "hFull6": {
     "en": "    /* Custom Glassmorphism Panels */\n",
@@ -191,8 +191,8 @@
   },
   "textXs2": {
     "en": " If market drops or high spending drain your net worth to $0, you enter the ",
-    "es": " Si las caídas del mercado o los altos gastos agotan tu patrimonio neto a $0, entras en la ",
-    "pt": " Se as quedas do mercado ou os altos gastos reduzirem seu patrimônio líquido a $0, você entra na "
+    "es": " Si las caídas del mercado o los altos gastos agotan tu patrimonio neto a €0, entras en la ",
+    "pt": " Se as quedas do mercado ou os altos gastos reduzirem seu patrimônio líquido a R$0, você entra na "
   },
   "textRed400": {
     "en": "CRASHLINE ZONE",
@@ -261,23 +261,23 @@
   },
   "px3": {
     "en": " High Risk SWR ($850k / $45k)\n",
-    "es": " SWR de Alto Riesgo ($850k / $45k)\n",
-    "pt": " SWR de Alto Risco ($850k / $45k)\n"
+    "es": " SWR de Alto Riesgo (€850k / €45k)\n",
+    "pt": " SWR de Alto Risco (R$850k / R$45k)\n"
   },
   "px32": {
     "en": " Trinity Standard ($1M / $40k)\n",
-    "es": " Estándar Trinity ($1M / $40k)\n",
-    "pt": " Padrão Trinity ($1M / $40k)\n"
+    "es": " Estándar Trinity (€1M / €40k)\n",
+    "pt": " Padrão Trinity (R$1M / R$40k)\n"
   },
   "px33": {
     "en": " Tight Lean FIRE ($650k / $35k)\n",
-    "es": " Lean FIRE Ajustado ($650k / $35k)\n",
-    "pt": " Lean FIRE Ajustado ($650k / $35k)\n"
+    "es": " Lean FIRE Ajustado (€650k / €35k)\n",
+    "pt": " Lean FIRE Ajustado (R$650k / R$35k)\n"
   },
   "px34": {
     "en": " Fat FIRE ($1.5M / $75k)\n",
-    "es": " Fat FIRE Holgado ($1,5M / $75k)\n",
-    "pt": " Fat FIRE Amplo ($1,5M / $75k)\n"
+    "es": " Fat FIRE Holgado (€1,5M / €75k)\n",
+    "pt": " Fat FIRE Amplo (R$1,5M / R$75k)\n"
   },
   "tabCockpit3": {
     "en": "      <!-- MAIN COCKPIT GRID (Left Controls + Right Canvas Monitor) -->\n",
@@ -326,8 +326,8 @@
   },
   "textSlate300": {
     "en": "                  Starting Nest Egg ($)\n",
-    "es": "                  Capital Acumulado ($)\n",
-    "pt": "                  Patrimônio Acumulado ($)\n"
+    "es": "                  Capital Acumulado (€)\n",
+    "pt": "                  Patrimônio Acumulado (R$)\n"
   },
   "text10px5": {
     "en": " Estimate Required\n",
@@ -336,8 +336,8 @@
   },
   "dispNestegg": {
     "en": "$850,000",
-    "es": "$850,000",
-    "pt": "$850.000"
+    "es": "€850,000",
+    "pt": "R$850.000"
   },
   "hudGlass3": {
     "en": "            <!-- Annual Spending Input (Controlled Min: $35,000, Default: $45,000) -->\n",
@@ -346,8 +346,8 @@
   },
   "textSlate3002": {
     "en": "                  Annual Living Spend ($)\n",
-    "es": "                  Gasto Anual de Vida ($)\n",
-    "pt": "                  Gasto Anual de Vida ($)\n"
+    "es": "                  Gasto Anual de Vida (€)\n",
+    "pt": "                  Gasto Anual de Vida (R$)\n"
   },
   "text10px6": {
     "en": " Calculate Budget\n",
@@ -356,8 +356,8 @@
   },
   "dispSpending": {
     "en": "$45,000",
-    "es": "$45,000",
-    "pt": "$45.000"
+    "es": "€45,000",
+    "pt": "R$45.000"
   },
   "flex2": {
     "en": "Withdrawal Rate (SWR):",
@@ -641,8 +641,8 @@
   },
   "text10px9": {
     "en": "Earn $15,000/yr part-time income to reduce portfolio withdrawals.",
-    "es": "Gana $15.000/año a tiempo parcial para reducir retiros del portafolio.",
-    "pt": "Ganhe $15.000/ano em meio período para reduzir retiradas do portfólio."
+    "es": "Gana €15.000/año a tiempo parcial para reducir retiros del portafolio.",
+    "pt": "Ganhe R$15.000/ano em meio período para reduzir retiradas do portfólio."
   },
   "textSlate4004": {
     "en": "Impact:",
@@ -651,8 +651,8 @@
   },
   "textEmerald4002": {
     "en": "+$15k / Yr Buffer",
-    "es": "Colchón +$15k / Año",
-    "pt": "+$15k / Ano Proteção"
+    "es": "Colchón +€15k / Año",
+    "pt": "+R$15k / Ano Proteção"
   },
   "grid4": {
     "en": "              <!-- Tactic 2: Cut Spending 15% -->\n",
@@ -671,8 +671,8 @@
   },
   "textAmber4002": {
     "en": "Saves ~$6.7k / Yr",
-    "es": "Ahorra ~$6,7k / Año",
-    "pt": "Econ. ~$6,7k / Ano"
+    "es": "Ahorra ~€6,7k / Año",
+    "pt": "Econ. ~R$6,7k / Ano"
   },
   "grid5": {
     "en": "              <!-- Tactic 3: Draw From Cash Bucket -->\n",
@@ -726,13 +726,13 @@
   },
   "text10px13": {
     "en": "One-time equity cash-in of +$100,000 emergency fuel injection.",
-    "es": "Inyección única de +$100.000 por venta o alquiler de patrimonio inmobiliario.",
-    "pt": "Injeção única de +$100.000 por venda/aluguel de patrimônio imobiliário."
+    "es": "Inyección única de +€100.000 por venta o alquiler de patrimonio inmobiliario.",
+    "pt": "Injeção única de +R$100.000 por venda/aluguel de patrimônio imobiliário."
   },
   "textBlue300": {
     "en": "+$100k Instant Fuel",
-    "es": "+$100k Inyección",
-    "pt": "+$100k Injeção Direta"
+    "es": "+€100k Inyección",
+    "pt": "+R$100k Injeção Direta"
   },
   "grid8": {
     "en": "              <!-- Tactic 6: Social Security / Pension -->\n",
@@ -746,13 +746,13 @@
   },
   "text10px14": {
     "en": "Claim guaranteed +$20,000/yr annuity income starting at Age 62+.",
-    "es": "Ingreso de renta garantizada de +$20.000/año a partir de los 62 años.",
-    "pt": "Entrada de renda garantida de +$20.000/ano a partir dos 62 anos."
+    "es": "Ingreso de renta garantizada de +€20.000/año a partir de los 62 años.",
+    "pt": "Entrada de renda garantida de +R$20.000/ano a partir dos 62 anos."
   },
   "textPink300": {
     "en": "+$20k / Yr Guaranteed",
-    "es": "+$20k / Año Garantizados",
-    "pt": "+$20k / Ano Garantidos"
+    "es": "+€20k / Año Garantizados",
+    "pt": "+R$20k / Ano Garantidos"
   },
   "main2": {
     "en": "    <!-- TAB 2: PILOT LEADERBOARD & FLIGHT LOGS -->\n",
@@ -1146,28 +1146,28 @@
   },
   "textSlate3009": {
     "en": "Housing & Utilities ($/mo):",
-    "es": "Vivienda y Servicios ($/mes):",
-    "pt": "Moradia e Contas ($/mês):"
+    "es": "Vivienda y Servicios (€/mes):",
+    "pt": "Moradia e Contas (R$/mês):"
   },
   "textSlate30010": {
     "en": "Food, Groceries & Dining ($/mo):",
-    "es": "Comida y Alimentación ($/mes):",
-    "pt": "Alimentação e Mercado ($/mês):"
+    "es": "Comida y Alimentación (€/mes):",
+    "pt": "Alimentação e Mercado (R$/mês):"
   },
   "textSlate30011": {
     "en": "Healthcare & Insurance ($/mo):",
-    "es": "Salud y Seguros ($/mes):",
-    "pt": "Saúde e Seguros ($/mês):"
+    "es": "Salud y Seguros (€/mes):",
+    "pt": "Saúde e Seguros (R$/mês):"
   },
   "textSlate30012": {
     "en": "Travel, Hobbies & Leisure ($/mo):",
-    "es": "Viajes y Ocio ($/mes):",
-    "pt": "Viagens e Lazer ($/mês):"
+    "es": "Viajes y Ocio (€/mes):",
+    "pt": "Viagens e Lazer (R$/mês):"
   },
   "textSlate30013": {
     "en": "Misc & Emergency Buffer ($/mo):",
-    "es": "Varios y Fondo Emergencia ($/mes):",
-    "pt": "Diversos e Reserva ($/mês):"
+    "es": "Varios y Fondo Emergencia (€/mes):",
+    "pt": "Diversos e Reserva (R$/mês):"
   },
   "fontSans": {
     "en": "Total Calculated Annual Spend:",
@@ -1176,8 +1176,8 @@
   },
   "calcSpendTotal": {
     "en": "$45,000 / yr",
-    "es": "$45.000 / año",
-    "pt": "$45.000 / ano"
+    "es": "€45.000 / año",
+    "pt": "R$45.000 / ano"
   },
   "flex1": {
     "en": "          Cancel\n",
@@ -1206,8 +1206,8 @@
   },
   "textSlate30014": {
     "en": "Annual Living Spend ($):",
-    "es": "Gasto Anual de Vida ($):",
-    "pt": "Gasto Anual de Vida ($):"
+    "es": "Gasto Anual de Vida (€):",
+    "pt": "Gasto Anual de Vida (R$):"
   },
   "textSlate30015": {
     "en": "Target Safe Withdrawal Rate (%):",
@@ -1241,8 +1241,8 @@
   },
   "calcEggFormula": {
     "en": "$45,000 × 25 = $1,125,000 (25x Rule)",
-    "es": "$45.000 × 25 = $1.125.000 (Regla del 25x)",
-    "pt": "$45.000 × 25 = $1.125.000 (Regra dos 25x)"
+    "es": "€45.000 × 25 = €1.125.000 (Regla del 25x)",
+    "pt": "R$45.000 × 25 = R$1.125.000 (Regra dos 25x)"
   },
   "fontSans2": {
     "en": "Required Starting Nest Egg:",
@@ -1251,8 +1251,8 @@
   },
   "calcEggTotal": {
     "en": "$1,125,000",
-    "es": "$1.125.000",
-    "pt": "$1.125.000"
+    "es": "€1.125.000",
+    "pt": "R$1.125.000"
   },
   "flex13": {
     "en": "          Apply to Cockpit Nest Egg\n",
@@ -1271,8 +1271,8 @@
   },
   "debriefMsg": {
     "en": "        You successfully reached Age 100 with $1,240,000 remaining in portfolio fuel!\n",
-    "es": "        ¡Llegaste con éxito a los 100 años con $1.240.000 restantes en el tanque de combustible de tu portafolio!\n",
-    "pt": "        Você chegou com sucesso aos 100 anos com $1.240.000 restantes no tanque do seu portfólio!\n"
+    "es": "        ¡Llegaste con éxito a los 100 años con €1.240.000 restantes en el tanque de combustible de tu portafolio!\n",
+    "pt": "        Você chegou com sucesso aos 100 anos com R$1.240.000 restantes no tanque do seu portfólio!\n"
   },
   "textSlate4006": {
     "en": "Pilot Callsign:",
@@ -1291,8 +1291,8 @@
   },
   "debriefFinalBal": {
     "en": "$1,240,000",
-    "es": "$1.240.000",
-    "pt": "$1.240.000"
+    "es": "€1.240.000",
+    "pt": "R$1.240.000"
   },
   "textSlate4009": {
     "en": "Total Years Survived:",
@@ -1406,13 +1406,13 @@
   },
   "minHScreen27": {
     "en": "      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString());\n",
-    "es": "      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString());\n",
-    "pt": "      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString('pt-BR');\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString('pt-BR'));\n"
+    "es": "      if (dispEgg) dispEgg.innerText = '€' + state.nestEgg.toLocaleString();\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '€' + state.nestEgg.toLocaleString());\n",
+    "pt": "      if (dispEgg) dispEgg.innerText = 'R$' + state.nestEgg.toLocaleString('pt-BR');\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', 'R$' + state.nestEgg.toLocaleString('pt-BR'));\n"
   },
   "minHScreen28": {
     "en": "      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString());\n",
-    "es": "      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString());\n",
-    "pt": "      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString('pt-BR');\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString('pt-BR'));\n"
+    "es": "      if (dispSpend) dispSpend.innerText = '€' + state.annualSpending.toLocaleString();\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '€' + state.annualSpending.toLocaleString());\n",
+    "pt": "      if (dispSpend) dispSpend.innerText = 'R$' + state.annualSpending.toLocaleString('pt-BR');\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', 'R$' + state.annualSpending.toLocaleString('pt-BR'));\n"
   },
   "minHScreen29": {
     "en": "          badgeSwr.innerText = `${swrStr} (HIGH RISK)`;\n",
@@ -1431,8 +1431,8 @@
   },
   "minHScreen32": {
     "en": "        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
-    "es": "        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
-    "pt": "        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString('pt-BR');\n"
+    "es": "        if (hudVal) hudVal.innerText = '€' + state.currentNestEgg.toLocaleString();\n",
+    "pt": "        if (hudVal) hudVal.innerText = 'R$' + state.currentNestEgg.toLocaleString('pt-BR');\n"
   },
   "minHScreen33": {
     "en": "          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Yrs`;\n",
@@ -1461,8 +1461,8 @@
   },
   "minHScreen38": {
     "en": "            '🏠 REAL ESTATE DOWNSIZING INJECTION',\n            'You injected +$100,000 emergency fuel from downsizing your home into your retirement portfolio!',\n            '💡 Tip: Real estate equity acts as a powerful last-resort longevity buffer.',\n",
-    "es": "            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVENDA',\n            '¡Inyectaste +$100.000 de combustible de emergencia tras vender o reducir tu vivienda!',\n            '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',\n",
-    "pt": "            '🏠 INJEÇÃO POR REDUÇÃO DE IMÓVEL',\n            'Você injetou +$100.000 de combustível de emergência após vender ou reduzir seu imóvel!',\n            '💡 Dica: O patrimônio imobiliário atua como um excelente colchão de segurança.',\n"
+    "es": "            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVENDA',\n            '¡Inyectaste +€100.000 de combustible de emergencia tras vender o reducir tu vivienda!',\n            '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',\n",
+    "pt": "            '🏠 INJEÇÃO POR REDUÇÃO DE IMÓVEL',\n            'Você injetou +R$100.000 de combustível de emergência após vender ou reduzir seu imóvel!',\n            '💡 Dica: O patrimônio imobiliário atua como um excelente colchão de segurança.',\n"
   },
   "minHScreen39": {
     "en": "        badge.innerText = 'ACTIVE';\n",
@@ -1571,8 +1571,8 @@
   },
   "minHScreen60": {
     "en": "          '🚨 CRASHLINE EMERGENCY: PORTFOLIO STALL',\n          `Your net worth hit $0 at Age ${state.currentAge}! You have ${10 - state.yearsInCrashlineConsecutive} year(s) remaining in the crashline before game over. Activate side income, downsizing, or spending cuts to bounce back!`,\n          '💡 Tip: Turn on Part-Time Income, Real Estate Downsizing, or Cut Spending to climb out of $0 bankruptcy.',\n",
-    "es": "          '🚨 EMERGENCIA EN DESPLOME: PERDIDA DE SUSTENTACIÓN',\n          `¡Tu patrimonio neto cayó a $0 a los ${state.currentAge} Años! Te quedan ${10 - state.yearsInCrashlineConsecutive} año(s) en la zona de desplome antes del fin de juego. ¡Activa empleo parcial, reducción o recortes!`,\n          '💡 Consejo: Activa Trabajo Parcial, Reducción de Vivienda o Recorte de Gastos para salir de la bancarrota $0.',\n",
-    "pt": "          '🚨 EMERGÊNCIA EM QUEDA: PERDA DE SUSTENTAÇÃO',\n          `Seu patrimônio líquido caiu para $0 aos ${state.currentAge} Anos! Restam ${10 - state.yearsInCrashlineConsecutive} ano(s) na zona de colapso antes do fim do voo. Ative renda extra, redução de imóvel ou cortes!`,\n          '💡 Dica: Ative Trabalho em Meio Período, Redução de Imóvel ou Cortar Gastos para sair da falência.',\n"
+    "es": "          '🚨 EMERGENCIA EN DESPLOME: PERDIDA DE SUSTENTACIÓN',\n          `¡Tu patrimonio neto cayó a €0 a los ${state.currentAge} Años! Te quedan ${10 - state.yearsInCrashlineConsecutive} año(s) en la zona de desplome antes del fin de juego. ¡Activa empleo parcial, reducción o recortes!`,\n          '💡 Consejo: Activa Trabajo Parcial, Reducción de Vivienda o Recorte de Gastos para salir de la bancarrota €0.',\n",
+    "pt": "          '🚨 EMERGÊNCIA EM QUEDA: PERDA DE SUSTENTAÇÃO',\n          `Seu patrimônio líquido caiu para R$0 aos ${state.currentAge} Anos! Restam ${10 - state.yearsInCrashlineConsecutive} ano(s) na zona de colapso antes do fim do voo. Ative renda extra, redução de imóvel ou cortes!`,\n          '💡 Dica: Ative Trabalho em Meio Período, Redução de Imóvel ou Cortar Gastos para sair da falência.',\n"
   },
   "minHScreen61": {
     "en": "        state.yearsInCrashlineConsecutive = 0; // Reset consecutive counter if balance climbs back > $0\n",
@@ -1591,8 +1591,8 @@
   },
   "minHScreen64": {
     "en": "      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
-    "es": "      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
-    "pt": "      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString('pt-BR');\n"
+    "es": "      if (hudVal) hudVal.innerText = '€' + state.currentNestEgg.toLocaleString();\n",
+    "pt": "      if (hudVal) hudVal.innerText = 'R$' + state.currentNestEgg.toLocaleString('pt-BR');\n"
   },
   "minHScreen65": {
     "en": "      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'CRASH';\n",
@@ -1626,8 +1626,8 @@
   },
   "minHScreen71": {
     "en": "        msg.innerText = `Congratulations Pilot ${state.pilotName}! You successfully landed at Age 100 with $${state.currentNestEgg.toLocaleString()} in remaining nest egg altitude!`;\n",
-    "es": "        msg.innerText = `¡Felicitaciones Piloto ${state.pilotName}! ¡Aterrizaste con éxito a los 100 Años con $${state.currentNestEgg.toLocaleString()} en altitud de combustible restante!`;\n",
-    "pt": "        msg.innerText = `Parabéns Piloto ${state.pilotName}! Você chegou com sucesso aos 100 Anos com $${state.currentNestEgg.toLocaleString('pt-BR')} restantes em altitude de combustível no portfólio!`;\n"
+    "es": "        msg.innerText = `¡Felicitaciones Piloto ${state.pilotName}! ¡Aterrizaste con éxito a los 100 Años con €${state.currentNestEgg.toLocaleString()} en altitud de combustible restante!`;\n",
+    "pt": "        msg.innerText = `Parabéns Piloto ${state.pilotName}! Você chegou com sucesso aos 100 Anos com R$${state.currentNestEgg.toLocaleString('pt-BR')} restantes em altitude de combustível no portfólio!`;\n"
   },
   "minHScreen72": {
     "en": "        title.innerText = 'FLIGHT DESTROYED: CRASHLINE ENGINE FAILURE';\n",
@@ -1636,13 +1636,13 @@
   },
   "minHScreen73": {
     "en": "        msg.innerText = `Pilot ${state.pilotName}, your flight remained in the $0 crashline zone for 10 consecutive years at Age ${state.currentAge}. Your retirement portfolio ran out of fuel!`;\n",
-    "es": "        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de $0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu portafolio se quedó sin combustible!`;\n",
-    "pt": "        msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de $0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;\n"
+    "es": "        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de €0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu portafolio se quedó sin combustible!`;\n",
+    "pt": "        msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de R$0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;\n"
   },
   "minHScreen74": {
     "en": "      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();\n      if (years) years.innerText = survivedYears + ' Years (Age ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Year(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Tactic-Yrs (-${state.totalTacticYears * 75} pts)`;\n",
-    "es": "      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();\n      if (years) years.innerText = survivedYears + ' Años (Edad ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Año(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Años-Táctica (-${state.totalTacticYears * 75} pts)`;\n",
-    "pt": "      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString('pt-BR');\n      if (years) years.innerText = survivedYears + ' Anos (Idade ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Ano(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Anos-Tática (-${state.totalTacticYears * 75} pts)`;\n"
+    "es": "      if (finalBal) finalBal.innerText = '€' + Math.max(0, state.currentNestEgg).toLocaleString();\n      if (years) years.innerText = survivedYears + ' Años (Edad ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Año(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Años-Táctica (-${state.totalTacticYears * 75} pts)`;\n",
+    "pt": "      if (finalBal) finalBal.innerText = 'R$' + Math.max(0, state.currentNestEgg).toLocaleString('pt-BR');\n      if (years) years.innerText = survivedYears + ' Anos (Idade ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Ano(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Anos-Tática (-${state.totalTacticYears * 75} pts)`;\n"
   },
   "minHScreen75": {
     "en": "      // The flight is over, so its score goes to the shared board under the\n      // preset it was flown on.\n",
@@ -1666,8 +1666,8 @@
   },
   "minHScreen86": {
     "en": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> YES</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Year(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Tactic-Yrs</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${(details.finalBalance || 0).toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
-    "es": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SÍ</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Año(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Años-Táctica</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${(details.finalBalance || 0).toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
-    "pt": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SIM</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NÃO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Ano(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Anos-Tática</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${(details.finalBalance || 0).toLocaleString('pt-BR')}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString('pt-BR')} pts</td>\n"
+    "es": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SÍ</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Año(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Años-Táctica</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">€${(details.finalBalance || 0).toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
+    "pt": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SIM</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NÃO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Ano(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Anos-Tática</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">R$${(details.finalBalance || 0).toLocaleString('pt-BR')}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString('pt-BR')} pts</td>\n"
   },
   "minHScreen87": {
     "en": "    /* =================================================================\n       ENHANCED CANVAS HUD VISUALIZER & CRASHLINE RENDERING\n       ================================================================= */\n",
@@ -1676,8 +1676,8 @@
   },
   "minHScreen88": {
     "en": "          canvasStatusText.innerText = `CRASHLINE EMERGENCY: ${state.yearsInCrashlineConsecutive}/10 Years in $0 Bankruptcy Zone!`;\n",
-    "es": "          canvasStatusText.innerText = `EMERGENCIA EN DESPLOME: ¡${state.yearsInCrashlineConsecutive}/10 Años en Bancarrota $0!`;\n",
-    "pt": "          canvasStatusText.innerText = `EMERGÊNCIA EM QUEDA: ${state.yearsInCrashlineConsecutive}/10 Anos na Zona de Colapso $0!`;\n"
+    "es": "          canvasStatusText.innerText = `EMERGENCIA EN DESPLOME: ¡${state.yearsInCrashlineConsecutive}/10 Años en Bancarrota €0!`;\n",
+    "pt": "          canvasStatusText.innerText = `EMERGÊNCIA EM QUEDA: ${state.yearsInCrashlineConsecutive}/10 Anos na Zona de Colapso R$0!`;\n"
   },
   "minHScreen89": {
     "en": "          canvasStatusText.innerText = 'Atmosphere: Clear Skies & Safe Cruising Altitude';\n",
@@ -1761,8 +1761,8 @@
   },
   "minHScreen105": {
     "en": "      ctx.fillText('CRASHLINE ZONE ($0 BANKRUPTCY)', 65, bottomY - 6);\n",
-    "es": "      ctx.fillText('ZONA CRASHLINE (BANCARROTA $0)', 65, bottomY - 6);\n",
-    "pt": "      ctx.fillText('ZONA DE COLAPSO (FALÊNCIA $0)', 65, bottomY - 6);\n"
+    "es": "      ctx.fillText('ZONA CRASHLINE (BANCARROTA €0)', 65, bottomY - 6);\n",
+    "pt": "      ctx.fillText('ZONA DE COLAPSO (FALÊNCIA R$0)', 65, bottomY - 6);\n"
   },
   "minHScreen106": {
     "en": "      ctx.moveTo(16, 0); // Nose\n      ctx.lineTo(-12, -10); // Left wing\n",
@@ -1786,18 +1786,18 @@
   },
   "minHScreen110": {
     "en": "      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString() + ' / yr';\n",
-    "es": "      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString() + ' / año';\n",
-    "pt": "      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString('pt-BR') + ' / ano';\n"
+    "es": "      if (totalEl) totalEl.innerText = '€' + Math.round(totalAnnual).toLocaleString() + ' / año';\n",
+    "pt": "      if (totalEl) totalEl.innerText = 'R$' + Math.round(totalAnnual).toLocaleString('pt-BR') + ' / ano';\n"
   },
   "minHScreen111": {
     "en": "        formulaEl.innerText = `$${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString()} (${multiplier.toFixed(1)}x Rule)`;\n",
-    "es": "        formulaEl.innerText = `$${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString()} (Regla del ${multiplier.toFixed(1)}x)`;\n",
-    "pt": "        formulaEl.innerText = `$${Math.round(spend).toLocaleString('pt-BR')} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString('pt-BR')} (Regla de ${multiplier.toFixed(1)}x)`;\n"
+    "es": "        formulaEl.innerText = `€${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = €${Math.round(requiredEgg).toLocaleString()} (Regla del ${multiplier.toFixed(1)}x)`;\n",
+    "pt": "        formulaEl.innerText = `R$${Math.round(spend).toLocaleString('pt-BR')} × ${multiplier.toFixed(1)} = R$${Math.round(requiredEgg).toLocaleString('pt-BR')} (Regla de ${multiplier.toFixed(1)}x)`;\n"
   },
   "minHScreen112": {
     "en": "      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString();\n",
-    "es": "      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString();\n",
-    "pt": "      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString('pt-BR');\n"
+    "es": "      if (totalEl) totalEl.innerText = '€' + Math.round(requiredEgg).toLocaleString();\n",
+    "pt": "      if (totalEl) totalEl.innerText = 'R$' + Math.round(requiredEgg).toLocaleString('pt-BR');\n"
   },
   "minHScreen113": {
     "en": "    /* =================================================================\n       TAB 3: 1,000 MONTE CARLO BATCH SIMULATOR\n       ================================================================= */\n",
@@ -1806,8 +1806,8 @@
   },
   "minHScreen114": {
     "en": "      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString();\n      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString();\n      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString();\n",
-    "es": "      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString();\n      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString();\n      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString();\n",
-    "pt": "      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString('pt-BR');\n      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString('pt-BR');\n      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString('pt-BR');\n"
+    "es": "      if (medEl) medEl.innerText = '€' + Math.round(medianEnd).toLocaleString();\n      if (p10El) p10El.innerText = '€' + Math.round(p10).toLocaleString();\n      if (p90El) p90El.innerText = '€' + Math.round(p90).toLocaleString();\n",
+    "pt": "      if (medEl) medEl.innerText = 'R$' + Math.round(medianEnd).toLocaleString('pt-BR');\n      if (p10El) p10El.innerText = 'R$' + Math.round(p10).toLocaleString('pt-BR');\n      if (p90El) p90El.innerText = 'R$' + Math.round(p90).toLocaleString('pt-BR');\n"
   },
   "minHScreen115": {
     "en": "      // Render percentile table\n",
@@ -1816,8 +1816,8 @@
   },
   "minHScreen116": {
     "en": "              <td class=\"py-2.5 px-3 font-bold text-white\">Age ${state.startAge + y} (${y} Yrs)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
-    "es": "              <td class=\"py-2.5 px-3 font-bold text-white\">Edad ${state.startAge + y} (${y} Años)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
-    "pt": "              <td class=\"py-2.5 px-3 font-bold text-white\">Idade ${state.startAge + y} (${y} Anos)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>\n"
+    "es": "              <td class=\"py-2.5 px-3 font-bold text-white\">Edad ${state.startAge + y} (${y} Años)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">€${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">€${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">€${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">€${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">€${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
+    "pt": "              <td class=\"py-2.5 px-3 font-bold text-white\">Idade ${state.startAge + y} (${y} Anos)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">R$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">R$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">R$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">R$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">R$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>\n"
   },
   "minHScreen117": {
     "en": "    /* =================================================================\n       MATH HELPERS & TAB SWITCHING\n       ================================================================= */\n",

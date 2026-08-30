@@ -40,11 +40,23 @@ const languages = ['en', 'es', 'pt'];
  * site root for that language - Spanish is served from `/`, so it is the one
  * that is not simply `/<code>/` - while `dir` is the directory the simulator
  * pages themselves live in, which is `/es/` for Spanish.
+ *
+ * `currency` is the symbol every money figure in that language's simulators
+ * carries. The tools used to label all three languages in dollars, which read
+ * as a conversion the reader then had to do in their head before the number
+ * meant anything. It is a symbol, not a rate: the amounts are illustrative and
+ * are deliberately the same in all three languages, so a Spanish reader sees
+ * €5,000 where an English reader sees $5,000. It belongs here rather than in a
+ * sidecar because it follows from the language and nobody translates it.
+ *
+ * `priceCurrency` is the ISO code for the same thing, for the SoftwareApplication
+ * offer in each page's structured data. The tools are free, so the code only has
+ * to agree with the symbol the page prints.
  */
 const languageMeta = {
-  en: { code: 'en', locale: 'en_US', home: '/en/', dir: '/en/' },
-  es: { code: 'es', locale: 'es_ES', home: '/', dir: '/es/' },
-  pt: { code: 'pt', locale: 'pt_PT', home: '/pt/', dir: '/pt/' }
+  en: { code: 'en', locale: 'en_US', home: '/en/', dir: '/en/', currency: '$', priceCurrency: 'USD' },
+  es: { code: 'es', locale: 'es_ES', home: '/', dir: '/es/', currency: '€', priceCurrency: 'EUR' },
+  pt: { code: 'pt', locale: 'pt_PT', home: '/pt/', dir: '/pt/', currency: 'R$', priceCurrency: 'BRL' }
 };
 
 /**

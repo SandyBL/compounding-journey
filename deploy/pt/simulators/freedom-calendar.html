@@ -10,7 +10,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Calendário da Liberdade Financeira"><meta property="og:description" content="Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/freedom-calendar.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Calendário da Liberdade Financeira"><meta name="twitter:description" content="Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calendário da Liberdade","url":"https://compoundingjourney.com/pt/simulators/freedom-calendar.html","description":"Uma linha temporal visual de independência financeira baseada em poupanças, investimentos e objetivos de vida.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calendário da Liberdade","url":"https://compoundingjourney.com/pt/simulators/freedom-calendar.html","description":"Uma linha temporal visual de independência financeira baseada em poupanças, investimentos e objetivos de vida.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://compoundingjourney.com/pt/"},{"@type":"ListItem","position":2,"name":"Simuladores","item":"https://compoundingjourney.com/pt/simulator.html"},{"@type":"ListItem","position":3,"name":"Calendário da Liberdade"}]}</script>
     <!-- Chart.js for trajectory visualization -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label for="inputAnnualIncome" class="block text-xs font-bold text-espresso-900 mb-1">Salário Anual Líquido ($)</label>
+                    <label for="inputAnnualIncome" class="block text-xs font-bold text-espresso-900 mb-1">Salário Anual Líquido (R$)</label>
                     <input type="number" id="inputAnnualIncome" value="60000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
@@ -159,18 +159,18 @@
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label for="inputNetWorth" class="block text-xs font-bold text-espresso-900 mb-1">Patrimônio Investido ($)</label>
+                    <label for="inputNetWorth" class="block text-xs font-bold text-espresso-900 mb-1">Patrimônio Investido (R$)</label>
                     <input type="number" id="inputNetWorth" value="15000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
-                    <label for="inputBasicExpenses" class="block text-xs font-bold text-espresso-900 mb-1">Gastos Básicos Mensais ($)</label>
+                    <label for="inputBasicExpenses" class="block text-xs font-bold text-espresso-900 mb-1">Gastos Básicos Mensais (R$)</label>
                     <input type="number" id="inputBasicExpenses" value="2500" step="100" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
             </div>
             
             <p class="text-xs text-espresso-800/80 mt-3 italic">
-                * Nota: Seu salário líquido por hora é calculado em <span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">$28.85/hr</span>. Considera uma taxa de retorno real de 7% e uma taxa de retirada segura de 4% (Regra dos 25x do FIRE).
+                * Nota: Seu salário líquido por hora é calculado em <span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">R$28.85/hr</span>. Considera uma taxa de retorno real de 7% e uma taxa de retirada segura de 4% (Regra dos 25x do FIRE).
             </p>
         </div>
     </section>
@@ -194,7 +194,7 @@
                 <span class="text-xs font-extrabold uppercase tracking-widest text-gold-600">O Conversor de Custo de Oportunidade</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-espresso-900 font-serif mt-1">Quanto seu gasto diário está realmente custando?</h2>
                 <p class="text-sm sm:text-base text-espresso-800/90 mt-2 leading-relaxed">
-                    Quando você compra um almoço de $15 ou faz o leasing de um carro de luxo, não está apenas gastando dólares: está gastando <strong class="text-forest-800">horas de vida trabalhadas</strong> e <strong class="text-forest-800">anos de liberdade futura</strong>. Reduza ou elimine hábitos abaixo para antecipar sua Data Alvo de Liberdade instantaneamente!
+                    Quando você compra um almoço de R$15 ou faz o leasing de um carro de luxo, não está apenas gastando reais: está gastando <strong class="text-forest-800">horas de vida trabalhadas</strong> e <strong class="text-forest-800">anos de liberdade futura</strong>. Reduza ou elimine hábitos abaixo para antecipar sua Data Alvo de Liberdade instantaneamente!
                 </p>
             </div>
 
@@ -284,7 +284,7 @@
                         <div class="grid grid-cols-2 gap-2.5">
                             <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300">
                                 <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">Economia Mensal</span>
-                                <span id="statMonthlySaved" class="text-base font-bold text-forest-800 font-mono">+$850/mês</span>
+                                <span id="statMonthlySaved" class="text-base font-bold text-forest-800 font-mono">+R$850/mês</span>
                             </div>
 
                             <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300">
@@ -296,7 +296,7 @@
                         <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300 flex justify-between items-center">
                             <div>
                                 <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">Patrimônio Ganho em 30 Anos</span>
-                                <span id="stat30YearWealth" class="text-lg font-extrabold text-emerald-700 font-mono">$1,036,400</span>
+                                <span id="stat30YearWealth" class="text-lg font-extrabold text-emerald-700 font-mono">R$1,036,400</span>
                             </div>
                             <div class="text-right">
                                 <span class="text-[9px] text-espresso-800/60 block">Retorno Real de 7%</span>
@@ -320,6 +320,60 @@
             </div>
 
         </div>
+
+        <!-- RESULT-AWARE CALL TO ACTION.
+             The panel below is hidden until a run produces an outcome. The simulator
+             classifies its own result into a named bucket, hands it to
+             assets/js/sim-cta.js with the numbers behind it, and that fills this in
+             from assets/js/sim-cta.<language>.js.
+
+             There is deliberately not one translation placeholder in it. Every sentence a
+             visitor reads here is chosen by the outcome, so carrying the copy in this
+             template would mean roughly thirty new sidecar keys per simulator and a
+             hundred and fifty across the five - and it would put prose that has to be
+             written for a specific moment into a string table. The per-language copy
+             file is hand-authored for the same reason the behaviour bundles are
+             generated per language.
+
+             The form itself is static because Netlify's form detection reads the built
+             HTML: the <form> and its field names have to exist at build time. Only the
+             values, the labels and the destination are written at runtime. -->
+        <section id="sim-cta-result" class="sim-result-cta" data-simulator="freedom-calendar" data-home="/pt/" aria-labelledby="sim-cta-title" hidden>
+            <div class="sim-result-cta__panel">
+                <div class="sim-result-cta__inner">
+                    <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                    <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                    <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                    <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                    <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="simulator-result">
+                        <input type="hidden" name="simulator" value="freedom-calendar">
+                        <input type="hidden" name="language" value="pt">
+                        <input type="hidden" name="outcome" value="">
+                        <input type="hidden" name="headline" value="">
+                        <input type="hidden" name="detail" value="">
+                        <input type="hidden" name="routed_to" value="">
+                        <input type="hidden" name="subject" value="">
+                        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                        <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                        <div class="sim-result-cta__row">
+                            <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                            <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                        </div>
+                        <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                        <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <div class="sim-result-cta__actions">
+                        <a class="sim-result-cta__primary" id="sim-cta-primary" href="/pt/#assessment"></a>
+                        <a class="sim-result-cta__link" id="sim-cta-secondary" href="/pt/#herramientas"></a>
+                    </div>
+
+                    <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+                </div>
+            </div>
+        </section>
 
         <!-- The explainer below is the answer to a Search Console report: these pages
                      were being crawled and then not indexed, which is what Google does with a
@@ -346,7 +400,7 @@
 
                 <h3 class="sim-explainer__heading">Como a data é calculada</h3>
                 <p>O seu objetivo é o montante que consegue financiar a sua despesa anual indefinidamente com uma taxa de levantamento de 4%: vinte e cinco vezes o que gasta num ano. Esse número vem da investigação sobre quanto tempo uma carteira diversificada sobrevive a ser consumida, e 4% é a taxa à qual sobreviveu praticamente em todos os anos de início históricos ao longo de uma reforma de trinta anos. O calendário faz crescer os seus investimentos atuais e soma o seu excedente mensal mês a mês com 7% de rentabilidade real anual, e indica o mês em que o saldo atinge pela primeira vez o objetivo.</p>
-                <p>Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa de ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, pelo que a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma subscrição deixa de ser três euros por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la.</p>
+                <p>Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa de ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, pelo que a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma subscrição deixa de ser três reais por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la.</p>
 
                 <h3 class="sim-explainer__heading">O que pressupõe</h3>
                 <ul class="sim-explainer__list">
@@ -359,7 +413,7 @@
 
                 <h3 class="sim-explainer__heading">Um exemplo resolvido</h3>
                 <p>Considere alguém que ganha 3.000 por mês depois de impostos, gasta 2.200 e tem 20.000 já investidos. A despesa anual é 26.400, pelo que o objetivo é 660.000. O excedente mensal é 800. Partindo de 20.000 e acrescentando 800 por mês a 7% real, o saldo cruza os 660.000 em cerca de vinte e seis anos.</p>
-                <p>Agora reduza a despesa para 2.000. O objetivo desce para 600.000 e o excedente mensal sobe para 1.000, porque cada euro não gasto é um euro investido. A data antecipa-se cerca de cinco anos. É esta a assimetria que o calendário existe para tornar visível: uma alteração na despesa move os dois lados da equação ao mesmo tempo, enquanto um aumento do mesmo valor move apenas um.</p>
+                <p>Agora reduza a despesa para 2.000. O objetivo desce para 600.000 e o excedente mensal sobe para 1.000, porque cada real não gasto é um real investido. A data antecipa-se cerca de cinco anos. É esta a assimetria que o calendário existe para tornar visível: uma alteração na despesa move os dois lados da equação ao mesmo tempo, enquanto um aumento do mesmo valor move apenas um.</p>
 
                 <h3 class="sim-explainer__heading">Perguntas frequentes</h3>
                 <dl class="sim-explainer__faq">
@@ -412,6 +466,12 @@
     <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
         <p>© 2026 Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal.</p>
     </footer>
+
+    <!-- The result-aware call to action: the machinery, then the prose it reads.
+         Both are deferred, so both have run by the time the behaviour bundle below
+         looks for window.SimCta. -->
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.pt.js?v=source" defer></script>
 
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-freedom-calendar.pt.js?v=source" defer></script>

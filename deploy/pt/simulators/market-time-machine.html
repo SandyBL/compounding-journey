@@ -10,7 +10,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Máquina do Tempo do Mercado"><meta property="og:description" content="Compara carteiras através de ciclos e crises históricas."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/market-time-machine.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Máquina do Tempo do Mercado"><meta name="twitter:description" content="Compara carteiras através de ciclos e crises históricas."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Máquina do Tempo do Mercado","url":"https://compoundingjourney.com/pt/simulators/market-time-machine.html","description":"Um simulador interativo para comparar carteiras durante ciclos de mercado desde 1920.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Máquina do Tempo do Mercado","url":"https://compoundingjourney.com/pt/simulators/market-time-machine.html","description":"Um simulador interativo para comparar carteiras durante ciclos de mercado desde 1920.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://compoundingjourney.com/pt/"},{"@type":"ListItem","position":2,"name":"Simuladores","item":"https://compoundingjourney.com/pt/simulator.html"},{"@type":"ListItem","position":3,"name":"Máquina do Tempo do Mercado"}]}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -288,7 +288,7 @@
                         <div class="space-y-1">
                             <label for="initialCapitalInput" class="text-espresso-800 font-semibold block">Capital Inicial:</label>
                             <div class="relative w-full">
-                                <span class="absolute left-2.5 top-1.5 text-espresso-800 font-mono font-bold">$</span>
+                                <span class="absolute left-2.5 top-1.5 text-espresso-800 font-mono font-bold">R$</span>
                                 <input type="number" id="initialCapitalInput" value="100000" step="10000" min="1000" data-onchange="recalculateSimulation()" class="w-full pl-6 pr-2 py-1 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950 focus:ring-1 focus:ring-forest-800">
                             </div>
                         </div>
@@ -428,42 +428,42 @@
                 <!-- 1. Custom Portfolio -->
                 <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-0.5 shadow-sm" role="status" aria-live="polite" aria-atomic="true">
                     <span class="text-[10px] font-bold uppercase text-emerald-800 block truncate">🟢 Seu Portfólio</span>
-                    <div id="statCustomVal" class="text-xs sm:text-sm font-extrabold font-mono text-emerald-900">$100.000</div>
+                    <div id="statCustomVal" class="text-xs sm:text-sm font-extrabold font-mono text-emerald-900">R$100.000</div>
                     <div id="statCustomCagr" class="text-[11px] font-mono text-emerald-700">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 2. Classic 60/40 -->
                 <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-blue-50 border border-blue-200 space-y-0.5 shadow-sm">
                     <span class="text-[10px] font-bold uppercase text-blue-800 block truncate">🔵 Clássico 60/40</span>
-                    <div id="statClassicVal" class="text-xs sm:text-sm font-extrabold font-mono text-blue-900">$100.000</div>
+                    <div id="statClassicVal" class="text-xs sm:text-sm font-extrabold font-mono text-blue-900">R$100.000</div>
                     <div id="statClassicCagr" class="text-[11px] font-mono text-blue-700">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 3. All-Weather -->
                 <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-purple-50 border border-purple-200 space-y-0.5 shadow-sm">
                     <span class="text-[10px] font-bold uppercase text-purple-800 block truncate">🟣 All-Weather</span>
-                    <div id="statWeatherVal" class="text-xs sm:text-sm font-extrabold font-mono text-purple-900">$100.000</div>
+                    <div id="statWeatherVal" class="text-xs sm:text-sm font-extrabold font-mono text-purple-900">R$100.000</div>
                     <div id="statWeatherCagr" class="text-[11px] font-mono text-purple-700">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 4. Permanent Portfolio -->
                 <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-amber-50 border border-amber-200 space-y-0.5 shadow-sm">
                     <span class="text-[10px] font-bold uppercase text-amber-800 block truncate">🟠 Permanente</span>
-                    <div id="statPermanentVal" class="text-xs sm:text-sm font-extrabold font-mono text-amber-900">$100.000</div>
+                    <div id="statPermanentVal" class="text-xs sm:text-sm font-extrabold font-mono text-amber-900">R$100.000</div>
                     <div id="statPermanentCagr" class="text-[11px] font-mono text-amber-700">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 5. Aggressive Stocks -->
                 <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-rose-50 border border-rose-200 space-y-0.5 shadow-sm">
                     <span class="text-[10px] font-bold uppercase text-rose-800 block truncate">🔴 100% Ações</span>
-                    <div id="statAggressiveVal" class="text-xs sm:text-sm font-extrabold font-mono text-rose-900">$100.000</div>
+                    <div id="statAggressiveVal" class="text-xs sm:text-sm font-extrabold font-mono text-rose-900">R$100.000</div>
                     <div id="statAggressiveCagr" class="text-[11px] font-mono text-rose-700">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 6. Conservative Portfolio -->
                 <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-teal-50 border border-teal-200 space-y-0.5 shadow-sm">
                     <span class="text-[10px] font-bold uppercase text-teal-800 block truncate">🟢 Conservador</span>
-                    <div id="statConservativeVal" class="text-xs sm:text-sm font-extrabold font-mono text-teal-900">$100.000</div>
+                    <div id="statConservativeVal" class="text-xs sm:text-sm font-extrabold font-mono text-teal-900">R$100.000</div>
                     <div id="statConservativeCagr" class="text-[11px] font-mono text-teal-700">CAGR: 0.0%</div>
                 </div>
             </div>
@@ -481,6 +481,60 @@
                 </div>
             </div>
         </div>
+        <!-- RESULT-AWARE CALL TO ACTION.
+             The panel below is hidden until a run produces an outcome. The simulator
+             classifies its own result into a named bucket, hands it to
+             assets/js/sim-cta.js with the numbers behind it, and that fills this in
+             from assets/js/sim-cta.<language>.js.
+
+             There is deliberately not one translation placeholder in it. Every sentence a
+             visitor reads here is chosen by the outcome, so carrying the copy in this
+             template would mean roughly thirty new sidecar keys per simulator and a
+             hundred and fifty across the five - and it would put prose that has to be
+             written for a specific moment into a string table. The per-language copy
+             file is hand-authored for the same reason the behaviour bundles are
+             generated per language.
+
+             The form itself is static because Netlify's form detection reads the built
+             HTML: the <form> and its field names have to exist at build time. Only the
+             values, the labels and the destination are written at runtime. -->
+        <section id="sim-cta-result" class="sim-result-cta" data-simulator="market-time-machine" data-home="/pt/" aria-labelledby="sim-cta-title" hidden>
+            <div class="sim-result-cta__panel">
+                <div class="sim-result-cta__inner">
+                    <p class="sim-result-cta__eyebrow" id="sim-cta-eyebrow"></p>
+                    <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
+                    <p class="sim-result-cta__body" id="sim-cta-body"></p>
+                    <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
+
+                    <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="simulator-result">
+                        <input type="hidden" name="simulator" value="market-time-machine">
+                        <input type="hidden" name="language" value="pt">
+                        <input type="hidden" name="outcome" value="">
+                        <input type="hidden" name="headline" value="">
+                        <input type="hidden" name="detail" value="">
+                        <input type="hidden" name="routed_to" value="">
+                        <input type="hidden" name="subject" value="">
+                        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                        <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
+                        <div class="sim-result-cta__row">
+                            <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
+                            <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
+                        </div>
+                        <p class="sim-result-cta__note" id="sim-cta-note"></p>
+                        <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <div class="sim-result-cta__actions">
+                        <a class="sim-result-cta__primary" id="sim-cta-primary" href="/pt/#assessment"></a>
+                        <a class="sim-result-cta__link" id="sim-cta-secondary" href="/pt/#herramientas"></a>
+                    </div>
+
+                    <p class="sim-result-cta__disclaimer" id="sim-cta-disclaimer"></p>
+                </div>
+            </div>
+        </section>
+
         <!-- The explainer below is the answer to a Search Console report: these pages
                      were being crawled and then not indexed, which is what Google does with a
                      page that is almost entirely interface. A calculator has nothing to read -
@@ -661,6 +715,11 @@
         </div>
     </div>
 
+    <!-- The result-aware call to action: the machinery, then the prose it reads.
+         Both are deferred, so both have run by the time the behaviour bundle below
+         looks for window.SimCta. -->
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.pt.js?v=source" defer></script>
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-market-time-machine.pt.js?v=source" defer></script>
     <footer class="simulator-footer">

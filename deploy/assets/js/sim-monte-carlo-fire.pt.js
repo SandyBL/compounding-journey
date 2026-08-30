@@ -158,12 +158,12 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       if (seqEl) state.marketSequence = seqEl.value;
 
       const dispEgg = document.getElementById('disp-nestegg');
-      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString('pt-BR');
-      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString('pt-BR'));
+      if (dispEgg) dispEgg.innerText = 'R$' + state.nestEgg.toLocaleString('pt-BR');
+      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', 'R$' + state.nestEgg.toLocaleString('pt-BR'));
 
       const dispSpend = document.getElementById('disp-spending');
-      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString('pt-BR');
-      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString('pt-BR'));
+      if (dispSpend) dispSpend.innerText = 'R$' + state.annualSpending.toLocaleString('pt-BR');
+      if (spendingEl) spendingEl.setAttribute('aria-valuetext', 'R$' + state.annualSpending.toLocaleString('pt-BR'));
 
       const swrVal = (state.annualSpending / state.nestEgg) * 100;
       const swrStr = swrVal.toFixed(1) + '%';
@@ -191,7 +191,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
         if (hudAge) hudAge.innerText = state.currentAge;
 
         const hudVal = document.getElementById('hud-portfolio-val');
-        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString('pt-BR');
+        if (hudVal) hudVal.innerText = 'R$' + state.currentNestEgg.toLocaleString('pt-BR');
 
         const hudSwr = document.getElementById('hud-current-swr');
         if (hudSwr) hudSwr.innerText = swrStr;
@@ -352,7 +352,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
           state.currentNestEgg += 100000;
           showCopilotBanner(
             '🏠 INJEÇÃO POR REDUÇÃO DE IMÓVEL',
-            'Você injetou +$100.000 de combustível de emergência após vender ou reduzir seu imóvel!',
+            'Você injetou +R$100.000 de combustível de emergência após vender ou reduzir seu imóvel!',
             '💡 Dica: O patrimônio imobiliário atua como um excelente colchão de segurança.',
             'info'
           );
@@ -537,7 +537,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
         showCopilotBanner(
           '🚨 EMERGÊNCIA EM QUEDA: PERDA DE SUSTENTAÇÃO',
-          `Seu patrimônio líquido caiu para $0 aos ${state.currentAge} Anos! Restam ${10 - state.yearsInCrashlineConsecutive} ano(s) na zona de colapso antes do fim do voo. Ative renda extra, redução de imóvel ou cortes!`,
+          `Seu patrimônio líquido caiu para R$0 aos ${state.currentAge} Anos! Restam ${10 - state.yearsInCrashlineConsecutive} ano(s) na zona de colapso antes do fim do voo. Ative renda extra, redução de imóvel ou cortes!`,
           '💡 Dica: Ative Trabalho em Meio Período, Redução de Imóvel ou Cortar Gastos para sair da falência.',
           'danger'
         );
@@ -560,7 +560,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       if (hudAge) hudAge.innerText = state.currentAge;
 
       const hudVal = document.getElementById('hud-portfolio-val');
-      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString('pt-BR');
+      if (hudVal) hudVal.innerText = 'R$' + state.currentNestEgg.toLocaleString('pt-BR');
 
       const curSwr = ((effectiveSpend / Math.max(1, state.currentNestEgg)) * 100).toFixed(1);
       const hudSwr = document.getElementById('hud-current-swr');
@@ -660,14 +660,14 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       if (reachedTarget) {
         title.innerText = 'MISSÃO CUMPRIDA!';
         title.className = 'text-lg font-hud font-bold text-emerald-400';
-        msg.innerText = `Parabéns Piloto ${state.pilotName}! Você chegou com sucesso aos 100 Anos com $${state.currentNestEgg.toLocaleString('pt-BR')} restantes em altitude de combustível no portfólio!`;
+        msg.innerText = `Parabéns Piloto ${state.pilotName}! Você chegou com sucesso aos 100 Anos com R$${state.currentNestEgg.toLocaleString('pt-BR')} restantes em altitude de combustível no portfólio!`;
         iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-950 text-emerald-400 border border-emerald-700 shadow-lg glow-green';
         icon.className = 'fa-solid fa-trophy';
         playSound('success');
       } else {
         title.innerText = 'VOO DESTRUÍDO: FALÊNCIA NA ZONA DE COLAPSO!';
         title.className = 'text-lg font-hud font-bold text-red-400';
-        msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de $0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;
+        msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de R$0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;
         iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-950 text-red-400 border border-red-700 shadow-lg glow-red';
         icon.className = 'fa-solid fa-plane-slash';
         playSound('crash');
@@ -675,7 +675,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
       if (pilotName) pilotName.innerText = state.pilotName;
       if (debriefCat) debriefCat.innerText = presetLabel(state.activePresetKey);
-      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString('pt-BR');
+      if (finalBal) finalBal.innerText = 'R$' + Math.max(0, state.currentNestEgg).toLocaleString('pt-BR');
       if (years) years.innerText = survivedYears + ' Anos (Idade ' + state.currentAge + ')';
       if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Ano(s)';
       if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Anos-Tática (-${state.totalTacticYears * 75} pts)`;
@@ -688,6 +688,57 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       // full-screen overlay, so focus has to follow the debrief.
       title.setAttribute('tabindex', '-1');
       title.focus({ preventScroll: true });
+
+      updateResultCta(reachedTarget, survivedYears);
+    }
+
+    /**
+     * Classifies the finished flight for the result-aware panel.
+     *
+     * The panel is filled in behind the debrief overlay rather than after it,
+     * so it is already there whichever way the pilot leaves the modal - and
+     * openSimCta() below is the direct route to it.
+     *
+     * Four outcomes, and the two that are not obvious are the interesting
+     * ones. A flight that survived after ten years at zero altitude is not
+     * the same result as one that never got near the floor, because the
+     * number a survival probability reports is not the thing that makes
+     * somebody abandon a plan. And a flight that ended with three times what
+     * it started with is not simply a better win: it is a plan that was
+     * over-funded, which was paid for with working years nobody gets back.
+     */
+    function updateResultCta(reachedTarget, survivedYears) {
+      if (!window.SimCta) return;
+
+      const finalBalance = Math.max(0, state.currentNestEgg);
+      const swr = state.nestEgg > 0 ? ((state.annualSpending / state.nestEgg) * 100).toFixed(1) : '0.0';
+      const multiple = state.nestEgg > 0 ? (finalBalance / state.nestEgg).toFixed(1) : '0.0';
+
+      let bucket;
+      if (!reachedTarget) bucket = 'crashed';
+      else if (state.totalCrashlineYears >= 3) bucket = 'fragile';
+      else if (finalBalance > state.nestEgg * 2) bucket = 'comfortable';
+      else bucket = 'landed';
+
+      window.SimCta.show(bucket, {
+        age: state.currentAge,
+        years: survivedYears,
+        crashYears: state.totalCrashlineYears,
+        finalBalance: window.SimCta.money(finalBalance),
+        nestEgg: window.SimCta.money(state.nestEgg),
+        spending: window.SimCta.money(state.annualSpending),
+        swr,
+        multiple
+      });
+    }
+
+    // The debrief's route to the panel. Closing the modal first is what makes
+    // the panel reachable at all - it is behind a full-screen overlay - and
+    // SimCta.focus() moves focus onto it, which is only correct because a
+    // pilot pressed a button asking to go there.
+    function openSimCta() {
+      closeDebriefModal();
+      if (window.SimCta) window.SimCta.focus();
     }
 
     function closeDebriefModal() {
@@ -927,7 +978,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
           <td class="py-3 px-3 font-bold">${details.reached100 ? '<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> SIM</span>' : '<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> NÃO</span>'}</td>
           <td class="py-3 px-3 text-red-400 font-bold">${details.crashYears || 0} Ano(s)</td>
           <td class="py-3 px-3 text-amber-300 font-bold">${details.tacticYears || 0} Anos-Tática</td>
-          <td class="py-3 px-3 text-emerald-400 font-bold">$${(details.finalBalance || 0).toLocaleString('pt-BR')}</td>
+          <td class="py-3 px-3 text-emerald-400 font-bold">R$${(details.finalBalance || 0).toLocaleString('pt-BR')}</td>
           <td class="py-3 px-3 text-amber-400 font-bold font-hud">${entry.score.toLocaleString('pt-BR')} pts</td>
         `;
         tbody.appendChild(row);
@@ -956,7 +1007,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
         skyGrad.addColorStop(0, '#7f1d1d');
         skyGrad.addColorStop(1, '#020617');
         if (canvasStatusText) {
-          canvasStatusText.innerText = `EMERGÊNCIA EM QUEDA: ${state.yearsInCrashlineConsecutive}/10 Anos na Zona de Colapso $0!`;
+          canvasStatusText.innerText = `EMERGÊNCIA EM QUEDA: ${state.yearsInCrashlineConsecutive}/10 Anos na Zona de Colapso R$0!`;
           if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
         }
       } else if (healthRatio > 0.8) {
@@ -997,7 +1048,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
         ctx.fillStyle = '#64748b';
         ctx.font = '9px Orbitron';
-        ctx.fillText('$' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
+        ctx.fillText('R$' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
       }
 
       const totalYears = Math.max(1, state.targetAge - state.startAge);
@@ -1078,7 +1129,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
       ctx.fillStyle = '#ef4444';
       ctx.font = '10px Orbitron';
-      ctx.fillText('ZONA DE COLAPSO (FALÊNCIA $0)', 65, bottomY - 6);
+      ctx.fillText('ZONA DE COLAPSO (FALÊNCIA R$0)', 65, bottomY - 6);
     }
 
     function drawAirplane(ctx, x, y, healthRatio) {
@@ -1130,7 +1181,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       const totalAnnual = totalMonthly * 12;
 
       const totalEl = document.getElementById('calc-spend-total');
-      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString('pt-BR') + ' / ano';
+      if (totalEl) totalEl.innerText = 'R$' + Math.round(totalAnnual).toLocaleString('pt-BR') + ' / ano';
       return totalAnnual;
     }
     function applyCalculatedSpend() {
@@ -1163,10 +1214,10 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
       const formulaEl = document.getElementById('calc-egg-formula');
       if (formulaEl) {
-        formulaEl.innerText = `$${Math.round(spend).toLocaleString('pt-BR')} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString('pt-BR')} (Regla de ${multiplier.toFixed(1)}x)`;
+        formulaEl.innerText = `R$${Math.round(spend).toLocaleString('pt-BR')} × ${multiplier.toFixed(1)} = R$${Math.round(requiredEgg).toLocaleString('pt-BR')} (Regla de ${multiplier.toFixed(1)}x)`;
       }
       const totalEl = document.getElementById('calc-egg-total');
-      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString('pt-BR');
+      if (totalEl) totalEl.innerText = 'R$' + Math.round(requiredEgg).toLocaleString('pt-BR');
       return requiredEgg;
     }
     function applyCalculatedEgg() {
@@ -1238,9 +1289,9 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       const p90El = document.getElementById('mc-metric-p90');
 
       if (succEl) succEl.innerText = successRate + '%';
-      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString('pt-BR');
-      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString('pt-BR');
-      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString('pt-BR');
+      if (medEl) medEl.innerText = 'R$' + Math.round(medianEnd).toLocaleString('pt-BR');
+      if (p10El) p10El.innerText = 'R$' + Math.round(p10).toLocaleString('pt-BR');
+      if (p90El) p90El.innerText = 'R$' + Math.round(p90).toLocaleString('pt-BR');
 
       const tbody = document.getElementById('mc-table-body');
       if (tbody) {
@@ -1253,11 +1304,11 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
             row.className = 'hover:bg-slate-900/60 transition';
             row.innerHTML = `
               <td class="py-2.5 px-3 font-bold text-white">Idade ${state.startAge + y} (${y} Anos)</td>
-              <td class="py-2.5 px-3 text-red-400 font-bold">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>
-              <td class="py-2.5 px-3 text-amber-400">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>
-              <td class="py-2.5 px-3 text-cyan-300 font-bold">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>
-              <td class="py-2.5 px-3 text-emerald-400">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>
-              <td class="py-2.5 px-3 text-purple-400 font-bold">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>
+              <td class="py-2.5 px-3 text-red-400 font-bold">R$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>
+              <td class="py-2.5 px-3 text-amber-400">R$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>
+              <td class="py-2.5 px-3 text-cyan-300 font-bold">R$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>
+              <td class="py-2.5 px-3 text-emerald-400">R$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>
+              <td class="py-2.5 px-3 text-purple-400 font-bold">R$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>
             `;
             tbody.appendChild(row);
           }
