@@ -231,10 +231,10 @@
   ]
 }
     </script>
-    <link rel="stylesheet" href="/assets/css/home.css?v=9eabb1d3c0e3">
+    <link rel="stylesheet" href="/assets/css/home.css?v=50dc5202d9d9">
     <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
-    <script defer src="/assets/js/home.js?v=4d8a9ff133d6"></script>
+    <script defer src="/assets/js/home.js?v=50eebbddaa0a"></script>
     <script type="module" src="/assets/js/home-identity.js?v=f1beb1512497"></script>
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.en.webmanifest">
@@ -307,6 +307,19 @@
                 </div>
                 <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
                     <span data-i18n>FAQ</span>
+                </a>
+                <!-- No data-site-route, unlike its five neighbours. That attribute is
+                     the hook for the handler that turns a nav click into a smooth
+                     scroll, and it doubles as the key into `siteRoutes`, which
+                     exists so that arriving at one of the /pillars, /faq, ...
+                     shortcut redirects still lands on the right section. There is no
+                     /contact shortcut, so claiming one here would name a URL that
+                     does not resolve. The plain "#contacto" anchor is picked up by
+                     the fallback handler on the document instead, which gives this
+                     link the same smooth scroll, the same history entry and the same
+                     focus move as the rest of the nav. -->
+                <a href="#contacto" data-section="contacto">
+                    <span data-i18n>Contact</span>
                 </a>
                 <a href="#assessment" data-site-route="/assessment" data-section="assessment" class="desktop-nav-cta">
                     <span data-i18n>Freedom Compass</span>
@@ -390,6 +403,9 @@
                         </a>
                     </div>
                     <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
+                    <a class="mobile-nav-link" href="#contacto" data-section="contacto">
+                        <span data-i18n>Contact</span>
+                    </a>
                 </nav>
                 <a class="mobile-nav-cta" href="#assessment" data-site-route="/assessment" data-section="assessment">
                     <span data-i18n>Freedom Compass</span>

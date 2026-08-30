@@ -18,19 +18,23 @@
  * language: this is written prose, not a string table, and the Spanish reading
  * of a failed retirement plan is not a translation of the English one.
  *
- * Three things happen on a reveal, in this order, and the order is the point:
+ * Two things happen on a reveal, in this order, and the order is the point:
  *
  *   1. The result is read back in the visitor's own numbers. No ask attached.
- *   2. One field - an email address - offers the written-up version. This is
- *      the rung the site did not have: before it, the only route from a result
- *      to a conversation was a long form on another page in another tab, which
- *      is three commitments presented as one.
- *   3. One primary action, routed by outcome, and one text link. Not two
+ *   2. One primary action, routed by outcome, and one text link. Not two
  *      buttons of equal weight, which is the shape that gets neither pressed.
  *
- * The result itself is never gated. It is already on the screen and it is what
- * the visitor came for; charging for the interpretation after the fact would
- * cost more trust than the address is worth.
+ * Nothing here asks for an address. An earlier version of this panel collected
+ * one and offered a written-up reading of the result in return, which turned a
+ * finished interaction into a promise the site had no way to keep: the reply
+ * would have been hand-written, one visitor at a time, from numbers sitting in
+ * a form dashboard. So the panel asks for nothing and gives the visitor the
+ * next step directly instead.
+ *
+ * Where that step is the contact form, the numbers travel with them: the result
+ * is written to sessionStorage on the way out and home.js opens the form with
+ * the message already drafted. Same handoff the address was meant to buy, minus
+ * the wait and minus the address.
  */
 (function () {
   'use strict';
@@ -55,17 +59,12 @@
     investmentProfile: 'https://forms.gle/W3pfmhuaSaAUufu76'
   };
 
-  // Netlify Forms is reached by posting to a path the site actually serves; the
-  // panel is on fifteen of them, so the page's own URL is the one path that is
-  // always right. Same-origin, which is what `form-action 'self'` in _headers
-  // allows, and what `connect-src 'self'` allows this to fetch.
-  var SUBMIT_TIMEOUT_MS = 10000;
-
   var panel = null;
   var copy = null;
   var elements = {};
-  var current = null;
   var revealed = false;
+  var initialized = false;
+  var warnedMissingCopy = false;
 
   function byId(id) {
     return document.getElementById(id);
@@ -126,7 +125,13 @@
   function href(route) {
     var home = panel.getAttribute('data-home') || '/';
     if (FORMS[route]) return FORMS[route];
-    if (route === 'contact') return home + '?from=simulator#contacto';
+    // The form, not the section that contains it. #contacto is the top of a
+    // section that opens with a biography and a newsletter card, and the form is
+    // roughly two screens below that - so somebody sent here to talk about a
+    // result they had just been given arrived at an introduction and had to go
+    // looking. #contact-form is the anchor the page already uses for its own
+    // "open the inquiry form" button, and the prefilled message is waiting in it.
+    if (route === 'contact') return home + '?from=simulator#contact-form';
     if (route === 'tools') return home + '#herramientas';
     if (route === 'templates') return home + '#plantillas';
     return home + '#assessment';
@@ -174,14 +179,10 @@
         language: language()
       }));
     } catch (error) {
-      // Private windows and disabled storage. The link still works; the form on
-      // the other end simply opens empty, which is what it did before.
+      // Private windows and disabled storage. The link still works; the contact
+      // form on the other end simply opens empty, and the visitor writes their
+      // own opening line instead of editing one.
     }
-  }
-
-  function setHidden(name, value) {
-    var field = elements.form && elements.form.querySelector('[name="' + name + '"]');
-    if (field) field.value = value == null ? '' : String(value);
   }
 
   /* ===================================================================
@@ -194,14 +195,15 @@
    * Called on every recalculation in the two tools that have no ending - the
    * Freedom Calendar recomputes on each slider move - so it has to be cheap and
    * it has to stop re-announcing itself. The first call reveals and animates;
-   * later calls rewrite the text in place and leave the animation, the scroll
-   * position and any submitted state alone.
+   * later calls rewrite the text in place and leave the animation and the
+   * scroll position alone.
    *
    * A bucket the copy file does not define is a bucket somebody added to a
    * simulator and did not write copy for. Showing the panel with an empty
    * heading would be worse than not showing it, so it is skipped and reported.
    */
   function show(bucketKey, tokens) {
+    init();
     if (!panel || !copy) return;
 
     var buckets = copy.buckets[panel.getAttribute('data-simulator')] || {};
@@ -223,14 +225,14 @@
     applyLink(elements.primary, bucket.primaryLabel, bucket.primaryRoute);
     applyLink(elements.secondary, bucket.secondaryLabel, bucket.secondaryRoute);
 
-    setHidden('outcome', bucketKey);
-    setHidden('headline', title);
-    setHidden('detail', body);
-    setHidden('routed_to', bucket.primaryRoute || '');
-
-    if (bucket.primaryRoute === 'contact') rememberContext(bucketKey, title, body);
-
-    current = { bucket: bucketKey, title: title, body: body };
+    // Either slot, not just the primary one. "Or talk it through with me" is the
+    // secondary link in fourteen of the twenty-two outcomes and the primary in
+    // three, so keying this to the primary route meant the numbers travelled for
+    // the three and the other fourteen arrived at an empty form - which is the
+    // one thing routing an outcome to a person was supposed to avoid.
+    if (bucket.primaryRoute === 'contact' || bucket.secondaryRoute === 'contact') {
+      rememberContext(bucketKey, title, body);
+    }
 
     if (!revealed) {
       panel.hidden = false;
@@ -258,139 +260,73 @@
   }
 
   /* ===================================================================
-     THE ONE FIELD
-     =================================================================== */
-
-  function status(message, isError) {
-    if (!elements.status) return;
-    elements.status.textContent = message || '';
-    elements.status.className = 'sim-result-cta__status' + (isError ? ' sim-result-cta__status--error' : '');
-  }
-
-  /**
-   * Posted rather than navigated, so the result the visitor is reading stays on
-   * the screen behind the confirmation. Netlify Forms requires the urlencoded
-   * content type and a `form-name` field, both of which the markup carries.
-   */
-  function submit(event) {
-    event.preventDefault();
-    if (!elements.form || !elements.email) return;
-
-    var address = elements.email.value.trim();
-    // Deliberately the loosest possible check. The field is type="email" and
-    // the server is the only thing that can really tell; rejecting an unusual
-    // but valid address here would lose a lead to a regex.
-    if (address.indexOf('@') < 1 || address.lastIndexOf('.') < address.indexOf('@')) {
-      status(copy.ui.formErrorInvalid, true);
-      elements.email.focus();
-      return;
-    }
-
-    setHidden('subject', copy.ui.formSubject + ' — ' + (current ? current.title : ''));
-
-    elements.submit.disabled = true;
-    var restore = elements.submit.textContent;
-    elements.submit.textContent = copy.ui.formSubmitting;
-    status('');
-
-    var controller = typeof AbortController === 'function' ? new AbortController() : null;
-    var timer = setTimeout(function () {
-      if (controller) controller.abort();
-    }, SUBMIT_TIMEOUT_MS);
-
-    fetch(window.location.pathname, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(elements.form)).toString(),
-      signal: controller ? controller.signal : undefined
-    })
-      .then(function (response) {
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        succeed();
-      })
-      .catch(function () {
-        elements.submit.disabled = false;
-        elements.submit.textContent = restore;
-        status(copy.ui.formErrorFailed, true);
-      })
-      .then(function () {
-        clearTimeout(timer);
-      });
-  }
-
-  /**
-   * The field is replaced by the confirmation rather than cleared, so there is
-   * nothing left to submit twice, and the routed action below it stays exactly
-   * where it was - the address was the small step, and the next one is still on
-   * offer.
-   */
-  function succeed() {
-    if (!elements.form) return;
-    var confirmation = document.createElement('div');
-
-    var heading = document.createElement('p');
-    heading.className = 'sim-result-cta__form-heading';
-    heading.textContent = copy.ui.formSuccessTitle;
-
-    var note = document.createElement('p');
-    note.className = 'sim-result-cta__note';
-    note.textContent = copy.ui.formSuccessBody;
-
-    confirmation.appendChild(heading);
-    confirmation.appendChild(note);
-
-    elements.form.replaceChildren(confirmation);
-    elements.form.setAttribute('role', 'status');
-  }
-
-  /* ===================================================================
      WIRING
      =================================================================== */
 
+  /**
+   * Wire the panel. Safe to call as often as anything likes; wires once.
+   *
+   * This used to run behind `document.readyState === 'loading'`, and that guard
+   * is the reason the panel never appeared on a single page. Deferred scripts
+   * execute after the parse, when the readiness is already "interactive" and
+   * never "loading" - so the guard always took its else branch and ran this
+   * synchronously, from inside a file loaded *before* the copy bundle it reads.
+   * The bundle was never missing. It simply had not run yet, and the check for
+   * it reported a permanent failure over a race it had created itself.
+   *
+   * So the readiness of the document is no longer what this waits on, because
+   * it was never the thing that mattered. Two properties replace it:
+   *
+   *   - Calling twice is free, so both the bottom of this file and the first
+   *     result a simulator produces can call it, and whichever arrives first
+   *     does the work.
+   *   - An absent copy bundle does not latch. "Not loaded" and "will never
+   *     load" are indistinguishable from here, so this assumes the recoverable
+   *     one and tries again on the next call - by which point a simulator has a
+   *     result to show, and every deferred script on the page has run.
+   *
+   * The panel is hidden until a reveal, so wiring it late is not visible: what
+   * would be visible is wiring it never.
+   */
   function init() {
+    if (initialized) return;
+
     panel = byId('sim-cta-result');
     if (!panel) return;
 
     copy = window.SIM_CTA_COPY;
     if (!copy || !copy.ui || !copy.buckets) {
-      // The copy file failed to load. The panel has no sentences to show, so it
-      // stays hidden and the static one at the foot of the page is what the
-      // visitor gets - which is the behaviour these pages had before.
-      console.warn('sim-cta: the copy bundle for this language is missing.');
+      // Warned once rather than on every attempt, because this is now on a path
+      // that retries. If it is still showing by the time a simulator has a
+      // result, the bundle really is missing - a 404, or a file that threw on
+      // its way to assigning the global - and the panel stays hidden while the
+      // static one at the foot of the page does what it did before.
+      if (!warnedMissingCopy) {
+        console.warn('sim-cta: the copy bundle for this language has not loaded.');
+        warnedMissingCopy = true;
+      }
+      // Cleared rather than left as-is: a bundle that loaded but is malformed
+      // would otherwise leave a truthy `copy` that show() waves through.
       panel = null;
+      copy = null;
       return;
     }
+
+    initialized = true;
 
     elements = {
       eyebrow: byId('sim-cta-eyebrow'),
       title: byId('sim-cta-title'),
       body: byId('sim-cta-body'),
       lever: byId('sim-cta-lever'),
-      form: byId('sim-cta-form'),
-      email: byId('sim-cta-email'),
-      submit: byId('sim-cta-submit'),
-      status: byId('sim-cta-status'),
       primary: byId('sim-cta-primary'),
       secondary: byId('sim-cta-secondary')
     };
 
-    // The form's own labels come from the copy bundle rather than from a
-    // translated placeholder in each of the five templates. It is hidden until
-    // a reveal, so there is no flash: nobody sees the unlabelled state. What
-    // has to be in the markup at build time is the form element and its field
-    // names, which is all Netlify's form detection reads.
-    setText(byId('sim-cta-form-heading'), copy.ui.formHeading);
-    setText(byId('sim-cta-note'), copy.ui.formNote);
+    // The one line of standing text in the panel, from the copy bundle rather
+    // than a translated placeholder in each of the five templates. The panel is
+    // hidden until a reveal, so nobody sees the unlabelled state.
     setText(byId('sim-cta-disclaimer'), copy.ui.disclaimer);
-    if (elements.email) {
-      elements.email.setAttribute('placeholder', copy.ui.formPlaceholder);
-      elements.email.setAttribute('aria-label', copy.ui.formLabel);
-    }
-    if (elements.submit) elements.submit.textContent = copy.ui.formSubmit;
-
-    setHidden('language', language());
-
-    if (elements.form) elements.form.addEventListener('submit', submit);
   }
 
   window.SimCta = {
@@ -404,9 +340,10 @@
     }
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  // The first of the two chances this gets. The page's own scripts are deferred,
+  // so the DOM is parsed by the time this line runs and the copy bundle loaded
+  // just above it; when both hold, the panel is wired here and now. When they
+  // do not, show() wires it later. Neither route is load-bearing on its own,
+  // which is the point - the previous version had exactly one and it was wrong.
+  init();
 })();

@@ -37,17 +37,6 @@
  */
 window.SIM_CTA_COPY = {
   ui: {
-    formHeading: "¿Quieres que te devuelva tu resultado por escrito?",
-    formLabel: "Correo electrónico",
-    formPlaceholder: "tu@ejemplo.com",
-    formSubmit: "Envíame mi resultado",
-    formSubmitting: "Enviando…",
-    formNote: "Déjame tu correo y te mando tu resultado con lo que se deduce de él — escrito por mí, no automatizado. Nada más, y sin suscribirte a ninguna lista salvo que me lo pidas.",
-    formSuccessTitle: "Recibido — gracias.",
-    formSuccessBody: "Tu resultado ya me ha llegado y te contesto personalmente. Si prefieres no esperar, el paso que tienes abajo es el mismo que te indicaría yo.",
-    formErrorInvalid: "Eso no parece un correo electrónico, ¿lo revisas?",
-    formErrorFailed: "No se ha podido enviar. Inténtalo otra vez o usa el formulario de contacto de la página principal.",
-    formSubject: "Resultado del simulador",
     disclaimer: "Estos simuladores son ilustraciones construidas sobre supuestos simplificados. Esto es una lectura de tu resultado, no asesoramiento financiero."
   },
 

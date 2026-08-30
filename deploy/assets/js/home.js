@@ -158,6 +158,48 @@
             return /(?:^|;\s*)lang=/.test(document.cookie || "");
         }
 
+        // One deliberate choice, written to both stores at once. localStorage is
+        // what this script restores a preference from; the cookie is what the
+        // edge function reads before it decides whether to negotiate the apex at
+        // all. Anything that lets a reader pick a language goes through here, so
+        // that "explicit choice wins" is one rule rather than three copies of it.
+        function rememberLanguage(lang) {
+            try {
+                localStorage.setItem("preferredLanguage", lang);
+            } catch (error) {
+                console.warn("Language preference could not be saved to localStorage.", error);
+            }
+            rememberLanguageAtEdge(lang);
+        }
+
+        // The section the reader is actually looking at, or "" for the top of the
+        // page.
+        //
+        // location.hash answers it whenever they got there through the
+        // navigation, which pushes "#section" as it scrolls. When they simply
+        // scrolled the page themselves the hash is empty and the scroll spy is
+        // the only thing that knows, so its aria-current marker is the fallback.
+        function currentSectionId() {
+            const fromHash = decodeURIComponent(window.location.hash.slice(1));
+            if (fromHash && document.getElementById(fromHash)) return fromHash;
+
+            const spied = document.querySelector('[data-section][aria-current="location"]');
+            const spiedSection = spied?.dataset.section;
+            return spiedSection && document.getElementById(spiedSection) ? spiedSection : "";
+        }
+
+        // Where a language switch should land. Changing language is a navigation
+        // to a different document, so the reader's place in the page has to be
+        // carried over deliberately or they are dropped back at the hero of the
+        // translation and have to find their way down again.
+        //
+        // The three documents are generated from one template, so a section has
+        // the same id in all of them and the fragment travels unchanged.
+        function languageHref(lang) {
+            const sectionId = currentSectionId();
+            return sectionId ? `${languagePath(lang)}#${sectionId}` : languagePath(lang);
+        }
+
         function getLanguageUrl(lang) {
             return `${getSiteOrigin()}${languagePath(lang)}`;
         }
@@ -222,15 +264,12 @@
             const normalizedLanguage = supportedLanguages.includes(lang) ? lang : "es";
 
             // A pre-rendered page only contains its own language, so an explicit
-            // switch is a navigation to that language's URL rather than a class swap.
+            // switch is a navigation to that language's URL rather than a class
+            // swap - and it keeps the reader's place in the page rather than
+            // restarting them at the top of the translation.
             if (isPrerenderedPage && updateUrl && normalizedLanguage !== pinnedLanguage) {
-                try {
-                    localStorage.setItem("preferredLanguage", normalizedLanguage);
-                } catch (error) {
-                    console.warn("Language preference could not be saved to localStorage.", error);
-                }
-                rememberLanguageAtEdge(normalizedLanguage);
-                window.location.href = languagePath(normalizedLanguage);
+                rememberLanguage(normalizedLanguage);
+                window.location.href = languageHref(normalizedLanguage);
                 return;
             }
 
@@ -599,8 +638,9 @@
            Somebody arriving that way has already read a paragraph about their
            own numbers. Asking them to summarise it again, from memory, into an
            empty textarea is how a warm moment becomes a blank page - so the
-           result is carried across and the message starts written, with the
-           cursor on the one thing only they can add.
+           result is carried across and the message arrives already written: what
+           they ran, what it said, and that they would like to talk about it.
+           Sending it untouched is a complete request.
 
            The numbers travel in sessionStorage rather than in the URL. They are
            a stranger's finances, and a link carrying them is a link that gets
@@ -610,9 +650,9 @@
         const simulatorHandoffCopy = {
             es: {
                 subject: 'Resultado del simulador',
-                intro: 'Acabo de terminar el simulador {simulator}.',
+                intro: 'Acabo de hacer el simulador {simulator} y este es el resultado que me ha salido. Me gustaría comentarlo contigo.',
+                introGeneric: 'Acabo de hacer uno de los simuladores de la web y este es el resultado que me ha salido. Me gustaría comentarlo contigo.',
                 resultLabel: 'Mi resultado',
-                questionLabel: 'Mi pregunta',
                 names: {
                     'simulator-hub': 'Decisiones financieras',
                     'freedom-calendar': 'Calendario de la Libertad',
@@ -623,9 +663,9 @@
             },
             en: {
                 subject: 'Simulator result',
-                intro: 'I have just finished the {simulator} simulator.',
+                intro: 'I have just run the {simulator} simulator and this is the result I got. I would like to talk it through with you.',
+                introGeneric: 'I have just run one of the simulators on the site and this is the result I got. I would like to talk it through with you.',
                 resultLabel: 'My result',
-                questionLabel: 'My question',
                 names: {
                     'simulator-hub': 'Financial Decisions',
                     'freedom-calendar': 'Freedom Calendar',
@@ -636,9 +676,9 @@
             },
             pt: {
                 subject: 'Resultado do simulador',
-                intro: 'Acabei de terminar o simulador {simulator}.',
+                intro: 'Acabei de fazer o simulador {simulator} e este é o resultado que me saiu. Gostava de falar sobre isto contigo.',
+                introGeneric: 'Acabei de fazer um dos simuladores do site e este é o resultado que me saiu. Gostava de falar sobre isto contigo.',
                 resultLabel: 'O meu resultado',
-                questionLabel: 'A minha pergunta',
                 names: {
                     'simulator-hub': 'Decisões Financeiras',
                     'freedom-calendar': 'Calendário da Liberdade',
@@ -685,21 +725,27 @@
             // Never overwrite something the visitor has already written. They may
             // have come back to this tab with a message half-typed.
             if (messageField && !messageField.value.trim()) {
+                // Sendable as it stands, and that is the requirement. An earlier
+                // version opened with "I have just finished the X simulator" and
+                // closed with a bare "My question:" - a message that states no
+                // reason for writing and then leaves a colon hanging, which asks
+                // the visitor to compose the actual request themselves. The
+                // opening line now says what happened and what they want, so
+                // pressing send without touching it produces something whole.
+                // Anything they do add continues from the end.
                 const lines = [];
-                if (name) lines.push(copy.intro.replace('{simulator}', name));
+                lines.push(name ? copy.intro.replace('{simulator}', name) : copy.introGeneric);
                 lines.push('');
                 lines.push(copy.resultLabel + ': ' + context.headline);
                 if (context.detail) {
                     lines.push('');
                     lines.push(context.detail);
                 }
-                lines.push('');
-                lines.push(copy.questionLabel + ': ');
                 messageField.value = lines.join('\n');
 
-                // The one thing only they can add goes at the end, so that is
-                // where the cursor belongs. Focus is not taken - they navigated
-                // here, they have not asked to be put inside a textarea yet.
+                // Cursor at the end rather than focus in the field: they may want
+                // to keep writing, but they navigated here, they have not asked to
+                // be put inside a textarea.
                 messageField.setSelectionRange(messageField.value.length, messageField.value.length);
             }
 
@@ -913,6 +959,51 @@
             toggle?.setAttribute('aria-expanded', 'false');
         }
 
+        // The three flags in the header are ordinary links and they stay ordinary
+        // links: crawlable, openable in a new tab, and working with no script at
+        // all. This adds the two things a plain link cannot do for itself.
+        //
+        // It records the choice. The edge function negotiates the apex from
+        // Accept-Language and stops as soon as it sees the lang cookie - but
+        // nothing on a pre-rendered page ever wrote that cookie, because the
+        // switcher is markup and setLanguage's explicit branch is only ever
+        // reached from script. So a reader on an English browser who chose
+        // Spanish arrived at "/", where the edge negotiated all over again and
+        // sent them straight back to "/en/". A guess must not outrank a decision,
+        // so the decision is written before the navigation starts.
+        //
+        // And it carries the reader's place in the page across, so changing
+        // language reads on from the same section instead of restarting at the
+        // hero.
+        function initializeLanguageSwitcher() {
+            const switchers = [...document.querySelectorAll('[data-lang-switch]')]
+                .filter(link => supportedLanguages.includes(link.dataset.langSwitch));
+            if (!switchers.length) return;
+
+            // The fragment has to be on the href itself, not applied in a click
+            // handler: a middle click, a "copy link address" or Enter on a focused
+            // flag would otherwise carry the bare language path and lose the
+            // position anyway. So the hrefs are refreshed on the first sign that
+            // one of them is about to be used, rather than on every scroll - and
+            // they are left exactly as generated until then, which is what a
+            // crawler reads.
+            const syncHrefs = () => switchers.forEach(link => {
+                link.setAttribute('href', languageHref(link.dataset.langSwitch));
+            });
+
+            ['pointerdown', 'focusin', 'contextmenu'].forEach(type => {
+                document.addEventListener(type, event => {
+                    if (event.target?.closest?.('[data-lang-switch]')) syncHrefs();
+                }, true);
+            });
+            window.addEventListener('hashchange', syncHrefs);
+            window.addEventListener('popstate', syncHrefs);
+
+            switchers.forEach(link => {
+                link.addEventListener('click', () => rememberLanguage(link.dataset.langSwitch));
+            });
+        }
+
         function initializeNavigationMenus() {
             const dropdown = document.querySelector('[data-resources-dropdown]');
             const dropdownToggle = dropdown?.querySelector('.desktop-resources-toggle');
@@ -940,11 +1031,44 @@
                 mobileResourcesPanel.hidden = !open;
             };
 
-            const backgroundLayers = () => [
-                document.querySelector('header.site-header'),
-                document.getElementById('main'),
-                document.querySelector('footer')
-            ].filter(Boolean);
+            // What is made inert while the drawer is open. The drawer declares
+            // aria-modal, but that alone does not stop a screen reader's virtual
+            // cursor or the Tab key from reaching the page behind it; `inert`
+            // does both.
+            //
+            // The toggle is the one thing behind the drawer that must stay live.
+            // It sits in the sticky header, the header paints above the drawer,
+            // and its two bars rotate into an X when it is open - so it is the
+            // close button, and on a phone it is the only way out of the drawer
+            // that reads as one. This used to inert the whole header, which took
+            // the toggle with it: the X was still drawn, still labelled "close",
+            // and tapping it did nothing at all.
+            //
+            // So the header is inerted a level at a time instead. Walking from
+            // the toggle up to the header and inerting every sibling on the way
+            // covers the brand link, the section nav, the language switcher and
+            // the publication links, and leaves the toggle and its own ancestors
+            // interactive.
+            const layersToInert = () => {
+                const layers = [document.getElementById('main'), document.querySelector('footer')];
+                const header = document.querySelector('header.site-header');
+
+                if (header && mobileMenuToggle && header.contains(mobileMenuToggle)) {
+                    for (let node = mobileMenuToggle; node !== header; node = node.parentElement) {
+                        for (const sibling of node.parentElement.children) {
+                            if (sibling !== node) layers.push(sibling);
+                        }
+                    }
+                } else {
+                    layers.push(header);
+                }
+
+                return layers.filter(Boolean);
+            };
+
+            // Remembered rather than recomputed on close, so exactly what was
+            // made inert is what is released again.
+            let inertedLayers = [];
 
             const closeMobileMenu = (restoreFocus = true) => {
                 if (!mobileMenu || !mobileMenuToggle || mobileMenu.hidden) return;
@@ -952,7 +1076,8 @@
                 mobileMenuToggle.setAttribute('aria-expanded', 'false');
                 mobileMenuToggle.setAttribute('aria-label', getNavigationLabels().open);
                 document.body.style.overflow = previousBodyOverflow;
-                backgroundLayers().forEach(layer => { layer.inert = false; });
+                inertedLayers.forEach(layer => { layer.inert = false; });
+                inertedLayers = [];
                 setMobileResourcesOpen(false);
                 if (restoreFocus) mobileMenuToggle.focus();
             };
@@ -964,10 +1089,8 @@
                 mobileMenuToggle.setAttribute('aria-expanded', 'true');
                 mobileMenuToggle.setAttribute('aria-label', getNavigationLabels().close);
                 document.body.style.overflow = 'hidden';
-                // The drawer declares aria-modal, but that alone does not stop a
-                // screen reader's virtual cursor or the Tab key from reaching the
-                // page behind it. `inert` does both.
-                backgroundLayers().forEach(layer => { layer.inert = true; });
+                inertedLayers = layersToInert();
+                inertedLayers.forEach(layer => { layer.inert = true; });
                 mobileMenu.querySelector('.mobile-nav-link, .mobile-resources-toggle')?.focus();
             };
 
@@ -1011,8 +1134,12 @@
                 }
 
                 if (event.key !== 'Tab' || !mobileMenu || mobileMenu.hidden) return;
-                const focusableItems = [...mobileMenu.querySelectorAll('a[href], button:not([disabled])')]
-                    .filter(element => !element.hidden && element.getClientRects().length);
+                // The toggle is part of the cycle, not something Tab escapes to.
+                // It is the drawer's close button while the drawer is open, and it
+                // sits before the drawer in the document, so it belongs at the
+                // front of this list.
+                const focusableItems = [mobileMenuToggle, ...mobileMenu.querySelectorAll('a[href], button:not([disabled])')]
+                    .filter(element => element && !element.hidden && element.getClientRects().length);
                 if (!focusableItems.length) return;
                 const firstItem = focusableItems[0];
                 const lastItem = focusableItems[focusableItems.length - 1];
@@ -1193,9 +1320,20 @@
 
             const cta = document.createElement("a");
             cta.className = "language-suggestion__cta";
-            cta.href = languagePath(browserLanguage);
             cta.hreflang = browserLanguage;
             cta.textContent = copy.cta;
+            // Accepting the suggestion is as explicit a choice as using the
+            // switcher, so it is recorded the same way and keeps the reader's
+            // place in the page the same way. The href is set at the moment of
+            // use, because the bar is built on load - before the reader has
+            // scrolled anywhere.
+            const followSuggestion = () => {
+                cta.href = languageHref(browserLanguage);
+            };
+            cta.href = languagePath(browserLanguage);
+            cta.addEventListener("pointerdown", followSuggestion);
+            cta.addEventListener("focus", followSuggestion);
+            cta.addEventListener("click", () => rememberLanguage(browserLanguage));
 
             const close = document.createElement("button");
             close.className = "language-suggestion__close";
@@ -1316,6 +1454,7 @@
         // the language the page has settled on rather than the one it loaded in.
         applySimulatorHandoff();
         initializeNavigationMenus();
+        initializeLanguageSwitcher();
         initializeCalculatorTabs();
         annotateExternalLinks();
         initializeDesktopScrollSpy();

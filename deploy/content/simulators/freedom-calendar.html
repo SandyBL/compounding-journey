@@ -71,10 +71,10 @@
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     <span class="site-return-link__text">{{siteReturnLinkText}}</span>
                 </a>
-                <button data-onclick="toggleProfileDrawer()" class="px-4 py-2 rounded-xl bg-forest-800 hover:bg-forest-900 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md">
-                                <i class="fa-solid fa-sliders" aria-hidden="true"></i>
-                                <span>{{px4}}</span>
-                            </button>
+                <button data-onclick="toggleProfileDrawer()" class="header-icon-btn rounded-xl bg-forest-800 hover:bg-forest-900 text-white transition-all shadow-md" title="{{px4}}">
+                    <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                    <span class="sr-only">{{px4}}</span>
+                </button>
                 <!-- The three translations, as flag links, and deliberately the
                      last thing in this row on every simulator: the tools each
                      carry a different set of controls, so anchoring the flags to
@@ -326,9 +326,11 @@
              file is hand-authored for the same reason the behaviour bundles are
              generated per language.
 
-             The form itself is static because Netlify's form detection reads the built
-             HTML: the <form> and its field names have to exist at build time. Only the
-             values, the labels and the destination are written at runtime. -->
+             The panel asks for nothing. It used to carry a one-field form offering a
+             written-up reading of the result by email, which was a promise that had to be
+             kept by hand, one visitor at a time. Where the outcome routes to the contact
+             form, the result travels there in sessionStorage and the message arrives
+             already drafted instead. -->
         <section id="sim-cta-result" class="sim-result-cta" data-simulator="freedom-calendar" data-home="{{lang.home}}" aria-labelledby="sim-cta-title" hidden>
             <div class="sim-result-cta__panel">
                 <div class="sim-result-cta__inner">
@@ -336,25 +338,6 @@
                     <h2 class="sim-result-cta__title" id="sim-cta-title"></h2>
                     <p class="sim-result-cta__body" id="sim-cta-body"></p>
                     <p class="sim-result-cta__lever" id="sim-cta-lever" data-optional></p>
-
-                    <form id="sim-cta-form" class="sim-result-cta__form" name="simulator-result" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="simulator-result">
-                        <input type="hidden" name="simulator" value="freedom-calendar">
-                        <input type="hidden" name="language" value="{{lang.code}}">
-                        <input type="hidden" name="outcome" value="">
-                        <input type="hidden" name="headline" value="">
-                        <input type="hidden" name="detail" value="">
-                        <input type="hidden" name="routed_to" value="">
-                        <input type="hidden" name="subject" value="">
-                        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-                        <p class="sim-result-cta__form-heading" id="sim-cta-form-heading"></p>
-                        <div class="sim-result-cta__row">
-                            <input class="sim-result-cta__input" id="sim-cta-email" type="email" name="email" autocomplete="email" required>
-                            <button class="sim-result-cta__submit" id="sim-cta-submit" type="submit"></button>
-                        </div>
-                        <p class="sim-result-cta__note" id="sim-cta-note"></p>
-                        <p class="sim-result-cta__status" id="sim-cta-status" role="status" aria-live="polite"></p>
-                    </form>
 
                     <div class="sim-result-cta__actions">
                         <a class="sim-result-cta__primary" id="sim-cta-primary" href="{{lang.home}}#assessment"></a>
@@ -458,11 +441,14 @@
         <p>© <script>document.write(new Date().getFullYear())</script>{{bgCream100}}</p>
     </footer>
 
-    <!-- The result-aware call to action: the machinery, then the prose it reads.
-         Both are deferred, so both have run by the time the behaviour bundle below
-         looks for window.SimCta. -->
-    <script src="/assets/js/sim-cta.js?v=source" defer></script>
+    <!-- The result-aware call to action: the prose first, then the machinery that
+         reads it. The machinery reads the prose while it is itself executing, not
+         on some later event, so being the second tag is load-bearing for it - the
+         other order shipped and the panel never appeared once, on any page, in any
+         language. sim-cta.js recovers from that order now rather than trusting it,
+         and the tags still say which way round the dependency runs. -->
     <script src="/assets/js/sim-cta.{{lang.code}}.js?v=source" defer></script>
+    <script src="/assets/js/sim-cta.js?v=source" defer></script>
 
     <script>
 {{minHScreen}}        const HABITS_DATA = [
