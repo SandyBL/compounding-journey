@@ -1,5 +1,5 @@
 ---
-title: "Pôr Seu Dinheiro a Trabalhar: Faça Dinheiro Enquanto Dorme"
+title: "Faça Seu Dinheiro a Trabalhar: Ganhe Dinheiro Enquanto Dorme"
 date: 2026-09-01
 category: Investimentos
 summary: Poupar sozinho não constrói riqueza devido à inflação. Descubra como os
