@@ -1,15 +1,15 @@
 ---
-title: "Putting Your Money to Work: Make Money While You Sleep"
+title: "Put Your Money to Work: Make Money While You Sleep"
 date: 2026-09-01
 category: Investing
 summary: Saving alone won't build wealth due to inflation. Discover how compound
   growth, stocks, real estate, and passive streams let your money work while you
   sleep.
+translation_key: putting-your-money-to-work-make-money-while-you-sleep
 author: Sandy Bradbury
 translationKey: putting-your-money-to-work-make-money-while-you-sleep
 featuredImageAlt: A peaceful bedroom scene with a digital growth graph
   superimposed over a clock, symbolizing passive income compounding overnight.
-translation_key: putting-your-money-to-work-make-money-while-you-sleep
 ---
 
 When it comes to building wealth, the most crucial shift in mindset is realizing that earning money doesn’t have to be confined to the hours you’re actively working[cite: 1]. In fact, the wealthiest individuals understand that their money must work for them[cite: 1]. This concept, known as **making money while you sleep**, revolves around creating systems and strategies that generate income passively[cite: 1].
