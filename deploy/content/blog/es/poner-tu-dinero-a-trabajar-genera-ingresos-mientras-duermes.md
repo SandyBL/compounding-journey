@@ -1,16 +1,16 @@
 ---
-title: "Poner tu Dinero a Trabajar: Genera Ingresos Mientras Duermes"
+title: "Pon tu Dinero a Trabajar: Genera Ingresos Mientras Duermes"
 date: 2026-09-01
 category: Inversión
 summary: El ahorro solo no construye riqueza debido a la inflación. Descubre
   cómo el crecimiento compuesto y las inversiones generan ingresos mientras
   duermes.
+translation_key: putting-your-money-to-work-make-money-while-you-sleep
 author: Sandy Bradbury
 translationKey: putting-your-money-to-work-make-money-while-you-sleep
 featuredImageAlt: Escena tranquila de un dormitorio con un gráfico de
   crecimiento digital superpuesto a un reloj, simbolizando el interés compuesto
   nocturno.
-translation_key: putting-your-money-to-work-make-money-while-you-sleep
 ---
 
 Al construir riqueza, el cambio de mentalidad más importante es comprender que ganar dinero no tiene por qué limitarse a las horas en que estás trabajando activamente[cite: 1]. Quienes alcanzan la independencia financiera entienden que su dinero debe trabajar para ellos[cite: 1]. Este concepto, conocido como **generar ingresos mientras duermes**, consiste en estructurar sistemas que produzcan retornos de forma pasiva[cite: 1].
