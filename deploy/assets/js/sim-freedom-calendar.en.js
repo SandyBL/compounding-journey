@@ -267,21 +267,21 @@
                     ` : ''}
 
                     <!-- EDITABLE COST & FREQUENCY INPUT ROW -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 p-3 bg-cream-100/90 rounded-xl border border-cream-300">
+                    <div class="sim-inset grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 p-3">
                         <div class="flex items-center justify-between gap-2">
                             <label class="text-xs font-bold text-espresso-900">Base Expense ($):</label>
                             <div class="relative flex items-center">
                                 <span class="absolute left-2.5 text-xs text-espresso-800 font-bold">$</span>
                                 <input type="number" min="0" step="1" value="${habit.baseCost}" 
                                     data-onchange="updateHabitBaseCost(${idx}, this.value)" 
-                                    class="w-28 pl-6 pr-2 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold font-mono text-forest-800 focus:ring-2 focus:ring-forest-800">
+                                    class="sim-field sim-field--inline w-28 pl-6 pr-2 py-1">
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between gap-2">
                             <label class="text-xs font-bold text-espresso-900">Frequency:</label>
                             <select data-onchange="updateHabitUnit(${idx}, this.value)" 
-                                class="px-2.5 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold text-espresso-900 focus:ring-2 focus:ring-forest-800 cursor-pointer">
+                                class="sim-field px-2.5 py-1">
                                 <option value="day" ${habit.unit === 'day' ? 'selected' : ''}>Daily ($/day)</option>
                                 <option value="week" ${habit.unit === 'week' ? 'selected' : ''}>Weekly ($/wk)</option>
                                 <option value="month" ${habit.unit === 'month' ? 'selected' : ''}>Monthly ($/mo)</option>
@@ -290,7 +290,7 @@
                     </div>
 
                     <!-- Slider Control -->
-                    <div class="space-y-2 bg-cream-100 p-3.5 rounded-xl border border-cream-200">
+                    <div class="sim-inset space-y-2 p-3.5">
                         <div class="flex justify-between items-center text-xs font-bold">
                             <span class="text-espresso-900">Spending Choice: <strong class="text-forest-800 font-mono">${habit.choicePct}%</strong></span>
                             <span class="text-espresso-800 font-mono">Actual: $${Math.round(currentMonthlyCost)}/mo <span class="text-[10px] font-normal text-espresso-800/70">(Full: $${Math.round(fullMonthlyCost)}/mo)</span></span>
@@ -298,7 +298,7 @@
 
                         <input type="range" min="0" max="100" step="25" value="${habit.choicePct}" 
                             data-oninput="updateHabitChoice(${idx}, this.value)" 
-                            class="w-full accent-forest-800 bg-cream-300 h-2 rounded-lg cursor-pointer">
+                            class="w-full">
 
                         <div class="flex justify-between text-[10px] font-semibold text-espresso-800/70">
                             <span>0% (Eliminated)</span>
@@ -565,6 +565,12 @@
                 chartInstance.destroy();
             }
 
+            // The optimised path is the first series and the baseline it is
+            // measured against is the negative role, on all four tools that
+            // draw one. Typeface, ink, grid, legend, tooltip, line weight and
+            // tension come from assets/js/sim-chart-theme.js.
+            const theme = window.SimChartTheme;
+
             chartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -573,45 +579,28 @@
                         {
                             label: 'Optimized Habits Strategy',
                             data: optimizedData,
-                            borderColor: '#2e6f40',
-                            backgroundColor: 'rgba(46, 111, 64, 0.15)',
+                            borderColor: theme.line(0),
+                            backgroundColor: theme.fill(0, 0.14),
                             borderWidth: 3,
                             fill: true,
-                            tension: 0.3,
-                            pointBackgroundColor: '#2e6f40'
+                            pointBackgroundColor: theme.line(0)
                         },
                         {
                             label: 'Baseline Habits (Uncut)',
                             data: baselineData,
-                            borderColor: '#e11d48',
+                            borderColor: theme.role.negative,
                             backgroundColor: 'transparent',
-                            borderWidth: 2,
                             borderDash: [5, 5],
-                            pointBackgroundColor: '#e11d48'
+                            pointBackgroundColor: theme.role.negative
                         }
                     ]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                font: { size: 11, family: 'Inter' },
-                                boxWidth: 12
-                            }
-                        }
-                    },
                     scales: {
                         y: {
                             ticks: {
-                                callback: val => '$' + (val / 1000).toFixed(0) + 'k',
-                                font: { size: 10 }
+                                callback: val => '$' + (val / 1000).toFixed(0) + 'k'
                             }
-                        },
-                        x: {
-                            ticks: { font: { size: 10 } }
                         }
                     }
                 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-slate-950">
+<html lang="en" class="h-full bg-cream-100">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,99 +15,23 @@
   
   
   <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=source">
   <link rel="stylesheet" href="/assets/css/icons.css?v=source">
   
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #f1f5f9;
-      background-color: #020617;
-    }
-    
-    .font-hud {
-      font-family: 'Orbitron', monospace;
-    }
-
-    /* Custom Glassmorphism Panels */
-    .hud-glass {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(56, 189, 248, 0.18);
-    }
-
-    /* Canvas CRT Overlay Grid Effect */
-    .scanlines {
-      background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.3) 50%
-      );
-      background-size: 100% 4px;
-    }
-
-    /* Glowing accent lights */
-    .glow-cyan {
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
-    }
-    .glow-green {
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
-    }
-    .glow-amber {
-      box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
-    }
-    .glow-red {
-      box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
-    }
-
-    /* Range slider custom thumb */
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 18px;
-      width: 18px;
-      border-radius: 50%;
-      background: #38bdf8;
-      cursor: pointer;
-      box-shadow: 0 0 10px #0284c7;
-    }
-
-    /* Custom Scrollbars */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #020617;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
-    }
-
-    @keyframes warningPulse {
-      0%, 100% { border-color: rgba(239, 68, 68, 0.9); box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
-      50% { border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
-    }
-    .crash-warning {
-      animation: warningPulse 1s infinite;
-    }
-  </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
+    <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
 </head>
-<body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-100">
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden antialiased selection:bg-gold-500 selection:text-white">
 
     <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- HEADER & NAVIGATION -->
-    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+    <header class="site-header">
         <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="/en/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Return to Compounding Journey">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
@@ -164,40 +88,52 @@
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
-         and assistants had nothing to read and no way to crawl between them. -->
-    <section class="bg-slate-950 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <h1 class="text-xl sm:text-2xl font-extrabold text-white font-hud">Monte Carlo FIRE Retirement Survival Simulator</h1>
-            <p class="mt-1.5 max-w-3xl text-sm leading-relaxed text-slate-300">Stress-test a FIRE retirement plan across thousands of Monte Carlo market paths and estimate how likely a portfolio is to sustain withdrawals.</p>
-            <nav aria-label="More simulators" class="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
-                <span class="text-slate-500">More simulators:</span>
-                <a href="/en/simulator.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">All simulators</a>
-                <a href="/en/simulators/freedom-calendar.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Freedom Calendar</a>
-                <a href="/en/simulators/market-time-machine.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Market Time Machine</a>
-                <a href="/en/simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Passive Income Engine</a>
-            </nav>
+         and assistants had nothing to read and no way to crawl between them.
+
+         The band is the forest gradient from the home page's simulator section
+         (.simulator-stage in home.css), and the icon is that section's gold
+         chip carrying this tool's own icon from its card there. That is the
+         whole of what distinguishes the five tools from each other now: one
+         icon each, on one band. Before this, four of them opened on a cream
+         strip and the fifth on a near-black one, and none of them looked like
+         the panel the visitor had just clicked out of. -->
+    <section class="sim-intro">
+        <div class="sim-intro__inner">
+            <div class="sim-intro__icon" aria-hidden="true"><i class="fa-solid fa-plane-up"></i></div>
+            <div>
+                <p class="sim-intro__eyebrow">Free interactive tool</p>
+                <h1 class="sim-intro__title">Monte Carlo FIRE Retirement Survival Simulator</h1>
+                <p class="sim-intro__lede">Stress-test a FIRE retirement plan across thousands of Monte Carlo market paths and estimate how likely a portfolio is to sustain withdrawals.</p>
+                <nav aria-label="More simulators" class="sim-intro__nav">
+                    <span class="sim-intro__navlabel">More simulators:</span>
+                    <a href="/en/simulator.html" class="sim-intro__link">All simulators</a>
+                    <a href="/en/simulators/freedom-calendar.html" class="sim-intro__link">Freedom Calendar</a>
+                    <a href="/en/simulators/market-time-machine.html" class="sim-intro__link">Market Time Machine</a>
+                    <a href="/en/simulators/passive-income-engine.html" class="sim-intro__link">Passive Income Engine</a>
+                </nav>
+            </div>
         </div>
     </section>
 
-  <div class="site-simulator-nav bg-slate-950 border-b border-slate-800">
-    <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800" role="tablist">
-            <button id="nav-btn-cockpit" role="tab" aria-selected="true" aria-controls="tab-cockpit" tabindex="0" data-onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
+  <div class="site-simulator-nav">
+    <nav aria-label="Simulator sections" class="site-simulator-tabs sim-tabs" role="tablist">
+            <button id="nav-btn-cockpit" role="tab" aria-selected="true" aria-controls="tab-cockpit" tabindex="0" data-onclick="switchTab('cockpit')" class="sim-tab">
               <i class="fa-solid fa-gauge-high mr-1" aria-hidden="true"></i> COCKPIT
             </button>
-            <button id="nav-btn-leaderboard" role="tab" aria-selected="false" aria-controls="tab-leaderboard" tabindex="-1" data-onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-leaderboard" role="tab" aria-selected="false" aria-controls="tab-leaderboard" tabindex="-1" data-onclick="switchTab('leaderboard')" class="sim-tab">
               <i class="fa-solid fa-trophy mr-1 text-amber-400" aria-hidden="true"></i> LEADERBOARD
             </button>
-            <button id="nav-btn-montecarlo" role="tab" aria-selected="false" aria-controls="tab-montecarlo" tabindex="-1" data-onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-montecarlo" role="tab" aria-selected="false" aria-controls="tab-montecarlo" tabindex="-1" data-onclick="switchTab('montecarlo')" class="sim-tab">
               <i class="fa-solid fa-chart-line mr-1" aria-hidden="true"></i> 1,000 SIMS
             </button>
-            <button id="nav-btn-academy" role="tab" aria-selected="false" aria-controls="tab-academy" tabindex="-1" data-onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-academy" role="tab" aria-selected="false" aria-controls="tab-academy" tabindex="-1" data-onclick="switchTab('academy')" class="sim-tab">
               <i class="fa-solid fa-graduation-cap mr-1" aria-hidden="true"></i> ACADEMY
             </button>
           </nav>
   </div>
 
   <!-- MAIN CONTAINER -->
-  <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
+  <main id="main" tabindex="-1" class="sim-main">
         <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
              so each tool page looked like an orphan at the top level of the site. -->
         <nav class="sim-crumbs" aria-label="Breadcrumb">
@@ -215,19 +151,19 @@
     <div id="tab-cockpit" role="tabpanel" aria-labelledby="nav-btn-cockpit" class="space-y-6">
 
       <!-- MISSION BRIEFING & ONBOARDING -->
-      <div class="hud-glass p-5 rounded-2xl border border-cyan-500/40 relative overflow-hidden shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-950/30 to-slate-900">
+      <div class="sim-panel p-5 border border-cyan-200 relative overflow-hidden">
         <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div class="space-y-1.5 max-w-3xl">
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-md bg-cyan-500 text-slate-950 font-hud font-bold text-[11px] uppercase tracking-wider">
+              <span class="px-2.5 py-0.5 rounded-md bg-cyan-600 text-cream-50 font-bold text-[11px] uppercase tracking-wider">
                 🎯 MISSION OBJECTIVE
               </span>
               <span class="text-xs text-cyan-300 font-mono font-semibold">Goal: Reach Age 100 with Minimal Years in Crashline!</span>
             </div>
-            <h2 class="text-base sm:text-lg font-bold text-white font-hud">
+            <h2 class="text-base sm:text-lg font-bold text-espresso-900">
               PILOT YOUR RETIREMENT FLIGHT TO AGE 100
             </h2>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-espresso-900 leading-relaxed">
               <strong class="text-cyan-300">How Crashline Works:</strong> If market drops or high spending drain your net worth to $0, you enter the <strong class="text-red-400">CRASHLINE ZONE</strong>. 
               You get a <strong>10-Year Grace Period</strong> to adjust tactics (side job, spending cuts, cash buffers, downsizing) and bounce back. Stay in the crashline for 10 consecutive years and your flight is destroyed!
             </p>
@@ -235,41 +171,41 @@
 
           <!-- Quick 3-Step Guide Badges -->
           <div class="grid grid-cols-3 gap-2 w-full lg:w-auto text-[11px] shrink-0 font-mono">
-            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+            <div class="sim-inset p-2.5 text-center space-y-1">
               <span class="text-cyan-400 font-bold block">1. BALANCE ASSETS</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Too many stocks = crash vulnerability!</span>
+              <span class="text-[10px] text-espresso-800 block leading-tight">Too many stocks = crash vulnerability!</span>
             </div>
-            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+            <div class="sim-inset p-2.5 text-center space-y-1">
               <span class="text-emerald-400 font-bold block">2. LAUNCH FLIGHT</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Fly from Age 50 to 100</span>
+              <span class="text-[10px] text-espresso-800 block leading-tight">Fly from Age 50 to 100</span>
             </div>
-            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+            <div class="sim-inset p-2.5 text-center space-y-1">
               <span class="text-amber-400 font-bold block">3. USE 6 TACTICS</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Climb out of crashline</span>
+              <span class="text-[10px] text-espresso-800 block leading-tight">Climb out of crashline</span>
             </div>
           </div>
         </div>
       </div>
       
       <!-- Top Presets & Quick Flight Scenarios -->
-      <div class="hud-glass p-4 rounded-2xl border border-slate-800 shadow-xl">
+      <div class="sim-panel p-4 rounded-2xl border border-cream-300">
         <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
           <div class="flex items-center gap-2">
-            <span class="font-hud font-bold text-cyan-400 uppercase text-[11px] flex items-center gap-1.5">
+            <span class="font-bold text-cyan-400 uppercase text-[11px] flex items-center gap-1.5">
               <i class="fa-solid fa-sliders text-cyan-400" aria-hidden="true"></i> RETIREMENT SCENARIO PRESETS:
             </span>
           </div>
           <div class="flex flex-wrap gap-2">
-            <button data-onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
+            <button data-onclick="loadPreset('highrisk')" class="sim-btn sim-btn--quiet">
               <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i> High Risk SWR ($850k / $45k)
             </button>
-            <button data-onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('trinity')" class="sim-btn sim-btn--quiet">
               <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Trinity Standard ($1M / $40k)
             </button>
-            <button data-onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('leanfire')" class="sim-btn sim-btn--quiet">
               <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i> Tight Lean FIRE ($650k / $35k)
             </button>
-            <button data-onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('fatfire')" class="sim-btn sim-btn--quiet">
               <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i> Fat FIRE ($1.5M / $75k)
             </button>
           </div>
@@ -283,54 +219,54 @@
         <div class="lg:col-span-4 space-y-5">
           
           <!-- Flight Parameters Card -->
-          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
-            <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-2.5 flex items-center justify-between">
+          <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-4">
+            <h3 class="font-bold text-xs uppercase tracking-wider text-cyan-400 border-b border-cream-300 pb-2.5 flex items-center justify-between">
               <span><i class="fa-solid fa-gears mr-1.5" aria-hidden="true"></i> PILOT & FUEL PARAMETERS</span>
-              <span class="text-[10px] text-slate-400 font-sans font-normal">Pre-Flight Deck</span>
+              <span class="text-[10px] text-espresso-800 font-sans font-normal">Pre-Flight Deck</span>
             </h3>
 
             <!-- Pilot Name Input -->
             <div class="space-y-1">
-              <label for="input-pilot-name" class="text-xs font-medium text-slate-300 flex items-center gap-1.5">
+              <label for="input-pilot-name" class="text-xs font-medium text-espresso-900 flex items-center gap-1.5">
                 <i class="fa-solid fa-id-card text-amber-400" aria-hidden="true"></i> Pilot Callsign / Name
               </label>
-              <input type="text" id="input-pilot-name" value="Captain FIRE" data-onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
-              <p class="text-[10px] text-slate-400 font-sans">Every completed flight is posted to the global leaderboard under this callsign, where other pilots can see it.</p>
+              <input type="text" id="input-pilot-name" value="Captain FIRE" data-onchange="updatePilotName()" class="sim-field w-full px-3 py-1.5">
+              <p class="text-[10px] text-espresso-800 font-sans">Every completed flight is posted to the global leaderboard under this callsign, where other pilots can see it.</p>
             </div>
 
             <!-- Nest Egg Input (Controlled Max: $2,000,000, Default: $850,000) -->
             <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
-                <label class="text-slate-300 font-medium flex items-center gap-1.5">
+                <label class="text-espresso-900 font-medium flex items-center gap-1.5">
                   Starting Nest Egg ($)
                 </label>
                 <div class="flex items-center gap-2">
-                  <button data-onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-50 text-cyan-300 hover:bg-cream-200 border border-cyan-200 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Estimate Required
                   </button>
                   <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">$850,000</span>
                 </div>
               </div>
-              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" data-oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" data-oninput="updateControlsUI()" class="w-full">
             </div>
 
             <!-- Annual Spending Input (Controlled Min: $35,000, Default: $45,000) -->
             <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
-                <label class="text-slate-300 font-medium flex items-center gap-1.5">
+                <label class="text-espresso-900 font-medium flex items-center gap-1.5">
                   Annual Living Spend ($)
                 </label>
                 <div class="flex items-center gap-2">
-                  <button data-onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openSpendCalculator()" class="text-[10px] bg-emerald-50 text-emerald-300 hover:bg-cream-200 border border-emerald-200 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Calculate Budget
                   </button>
                   <span id="disp-spending" class="font-mono text-emerald-300 font-bold">$45,000</span>
                 </div>
               </div>
-              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" data-oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
-              <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1">
+              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" data-oninput="updateControlsUI()" class="w-full">
+              <div class="flex justify-between items-center text-[11px] text-espresso-800 pt-1">
                 <span>Withdrawal Rate (SWR):</span>
-                <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800">
+                <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-400 border border-red-200">
                   5.3% (HIGH RISK)
                 </span>
               </div>
@@ -340,28 +276,28 @@
             <div class="grid grid-cols-2 gap-3 pt-1">
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
-                  <label for="input-startage" class="text-slate-300 font-medium">FIRE Freedom Age</label>
-                  <span class="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 rounded font-mono">Target Start</span>
+                  <label for="input-startage" class="text-espresso-900 font-medium">FIRE Freedom Age</label>
+                  <span class="text-[9px] bg-cyan-50 text-cyan-400 px-1.5 rounded font-mono">Target Start</span>
                 </div>
-                <input type="number" id="input-startage" min="30" max="85" value="50" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+                <input type="number" id="input-startage" min="30" max="85" value="50" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-1.5">
               </div>
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
-                  <label for="input-endage" class="text-slate-300 font-medium">Destination Age</label>
-                  <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded font-mono">Longevity</span>
+                  <label for="input-endage" class="text-espresso-900 font-medium">Destination Age</label>
+                  <span class="text-[9px] bg-emerald-50 text-emerald-400 px-1.5 rounded font-mono">Longevity</span>
                 </div>
-                <input type="number" id="input-endage" min="70" max="110" value="100" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+                <input type="number" id="input-endage" min="70" max="110" value="100" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-1.5">
               </div>
             </div>
 
             <!-- Asset Allocation Strategy -->
-            <div class="space-y-2 pt-2 border-t border-slate-800">
+            <div class="space-y-2 pt-2 border-t border-cream-300">
               <div class="flex justify-between items-center">
-                <label for="toggle-tdf" class="text-xs font-bold text-slate-200">Asset Allocation Portfolio</label>
+                <label for="toggle-tdf" class="text-xs font-bold text-espresso-900">Asset Allocation Portfolio</label>
                 <!-- Target Date Fund Toggle -->
                 <label class="inline-flex items-center cursor-pointer">
                   <input type="checkbox" id="toggle-tdf" data-onchange="toggleTargetDateFund()" class="sr-only peer">
-                  <div class="w-8 h-4 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-cyan-500 relative"></div>
+                  <div class="w-8 h-4 bg-cream-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-cream-400 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-forest-800 relative"></div>
                   <span class="ml-2 text-[11px] font-mono text-cyan-400">Auto Target Date Fund</span>
                 </label>
               </div>
@@ -369,49 +305,49 @@
               <!-- Allocation Sliders Container -->
               <div id="allocation-sliders-container" class="space-y-2 pt-1">
                 <div>
-                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                  <div class="flex justify-between text-[11px] font-mono text-espresso-900 mb-0.5">
                     <span id="lbl-alloc-stocks" class="text-cyan-400 font-bold">Stocks (High Volatility Growth)</span>
                     <span id="disp-pct-stocks">80%</span>
                   </div>
-                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" data-oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" data-oninput="adjustAssetAllocation('stocks')" class="w-full">
                 </div>
                 <div>
-                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                  <div class="flex justify-between text-[11px] font-mono text-espresso-900 mb-0.5">
                     <span id="lbl-alloc-bonds" class="text-emerald-400 font-bold">Bonds (Stability & Yield)</span>
                     <span id="disp-pct-bonds">15%</span>
                   </div>
-                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" data-oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" data-oninput="adjustAssetAllocation('bonds')" class="w-full">
                 </div>
                 <div>
-                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                  <div class="flex justify-between text-[11px] font-mono text-espresso-900 mb-0.5">
                     <span id="lbl-alloc-cash" class="text-amber-400 font-bold">Cash Buffer</span>
                     <span id="disp-pct-cash">5%</span>
                   </div>
-                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" data-oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" data-oninput="adjustAssetAllocation('cash')" class="w-full">
                 </div>
               </div>
 
               <!-- Target Date Fund Glidepath Visual Progress Bar -->
-              <div id="tdf-glidepath-card" class="hidden p-3 rounded-xl bg-cyan-950/40 border border-cyan-800/80 space-y-2">
+              <div id="tdf-glidepath-card" class="hidden p-3 rounded-xl bg-cyan-50 border border-cyan-200 space-y-2">
                 <div class="flex justify-between items-center text-[11px]">
                   <span class="font-bold text-cyan-300 font-mono"><i class="fa-solid fa-route text-cyan-400" aria-hidden="true"></i> Dynamic TDF Glidepath</span>
-                  <span id="tdf-status-text" class="text-[10px] text-slate-400">De-risking active</span>
+                  <span id="tdf-status-text" class="text-[10px] text-espresso-800">De-risking active</span>
                 </div>
-                <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden flex border border-slate-700">
-                  <div id="tdf-bar-stocks" class="bg-cyan-500 h-full transition-all duration-300" style="width: 80%"></div>
+                <div class="w-full h-3 rounded-full bg-cream-50 overflow-hidden flex border border-cream-400">
+                  <div id="tdf-bar-stocks" class="bg-cyan-600 h-full transition-all duration-300" style="width: 80%"></div>
                   <div id="tdf-bar-bonds" class="bg-emerald-500 h-full transition-all duration-300" style="width: 15%"></div>
                   <div id="tdf-bar-cash" class="bg-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
                 </div>
-                <p class="text-[10px] text-slate-300 leading-tight">
+                <p class="text-[10px] text-espresso-900 leading-tight">
                   Automatically shifts from growth stocks to conservative bonds as your age increases toward 100.
                 </p>
               </div>
             </div>
 
             <!-- Turbulence Sequence Selector -->
-            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <label for="select-market-sequence" class="text-xs font-bold text-slate-200">Economic Turbulence Sequence</label>
-              <select id="select-market-sequence" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
+            <div class="space-y-1.5 pt-2 border-t border-cream-300">
+              <label for="select-market-sequence" class="text-xs font-bold text-espresso-900">Economic Turbulence Sequence</label>
+              <select id="select-market-sequence" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-2">
                 <option value="simulated">🎲 High Volatility Monte Carlo (Random Turbulence)</option>
                 <option value="1970s">🔥 1970s Severe Inflation Spike & Bear Market</option>
                 <option value="2000s">💥 2000 Dot-Com Crash + 2008 Great Recession</option>
@@ -421,10 +357,10 @@
 
             <!-- Launch & Reset Controls -->
             <div class="pt-3 flex gap-2">
-              <button id="btn-launch-flight" data-onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
+              <button id="btn-launch-flight" data-onclick="toggleFlightSimulation()" class="sim-btn sim-btn--primary sim-btn--lg flex-1 uppercase tracking-wider">
                 <i class="fa-solid fa-plane-departure text-sm" aria-hidden="true"></i> <span id="btn-launch-text">LAUNCH FLIGHT</span>
               </button>
-              <button data-onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="Reset simulation">
+              <button data-onclick="resetFlightSimulation()" class="sim-btn sim-btn--quiet" aria-label="Reset simulation">
                 <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
               </button>
             </div>
@@ -436,15 +372,15 @@
         <div class="lg:col-span-8 space-y-5">
           
           <!-- Cockpit Sky & Flight Path Visual Container -->
-          <div id="hud-visual-container" class="hud-glass p-4 rounded-2xl border border-slate-800 relative overflow-hidden shadow-2xl transition-all duration-300">
+          <div id="hud-visual-container" class="sim-panel p-4 rounded-2xl border border-cream-300 relative overflow-hidden transition-all duration-300">
             
             <!-- HUD Telemetry Header Overlay -->
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-800/80">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-cream-300">
               <div class="flex items-center space-x-3">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-hud font-semibold bg-slate-900 border border-slate-700 text-cyan-300">
-                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i> AGE: <span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
+                <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-cream-50 border border-cream-400 text-cyan-300">
+                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i> AGE: <span id="hud-current-age" class="ml-1 text-espresso-900 text-sm">50</span> / 100
                 </span>
-                <span id="hud-flight-status-badge" role="status" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
+                <span id="hud-flight-status-badge" role="status" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-50 text-emerald-400 border border-emerald-200">
                   Ready On Tarmac
                 </span>
               </div>
@@ -452,28 +388,27 @@
               <!-- Flight Telemetry Counters -->
               <div class="flex items-center gap-3 sm:gap-4 text-xs font-mono">
                 <div>
-                  <span class="text-slate-400 text-[10px] block uppercase">Altitude</span>
-                  <span id="hud-portfolio-val" class="text-emerald-400 font-bold text-sm">$850,000</span>
+                  <span class="sim-stat__label">Altitude</span>
+                  <span id="hud-portfolio-val" class="sim-stat__value sim-stat__value--series-1 text-sm">$850,000</span>
                 </div>
-                <div class="border-l border-slate-800 pl-3">
-                  <span class="text-slate-400 text-[10px] block uppercase">Current SWR</span>
-                  <span id="hud-current-swr" class="text-amber-300 font-bold text-sm">5.3%</span>
+                <div class="border-l border-cream-300 pl-3">
+                  <span class="sim-stat__label">Current SWR</span>
+                  <span id="hud-current-swr" class="sim-stat__value sim-stat__value--series-2 text-sm">5.3%</span>
                 </div>
-                <div class="border-l border-slate-800 pl-3">
-                  <span class="text-slate-400 text-[10px] block uppercase">Crashline Yrs</span>
-                  <span id="hud-crashline-counter" class="text-emerald-400 font-bold text-sm">0 / 10 Yrs</span>
+                <div class="border-l border-cream-300 pl-3">
+                  <span class="sim-stat__label">Crashline Yrs</span>
+                  <span id="hud-crashline-counter" class="sim-stat__value sim-stat__value--series-4 text-sm">0 / 10 Yrs</span>
                 </div>
               </div>
             </div>
 
             <!-- Canvas Flight Monitor Visualizer -->
-            <div class="relative w-full h-[290px] sm:h-[340px] bg-slate-950 rounded-xl overflow-hidden border border-slate-800/80 group">
+            <div class="sim-inset relative w-full h-[290px] sm:h-[340px] overflow-hidden group">
               <canvas id="flightCanvas" role="img" aria-label="Animated chart: the simulated portfolio path, drawn as a flight trajectory. Every value it plots is reported as text in the instrument panel above it." class="w-full h-full block"></canvas>
-              <div class="scanlines absolute inset-0 pointer-events-none opacity-40"></div>
 
               <!-- Flight Pitch Legend Overlay -->
-              <div class="absolute top-3 right-3 px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 backdrop-blur-md text-[11px] font-mono space-y-1 shadow-lg pointer-events-none hidden sm:block">
-                <div class="text-[10px] text-slate-400 uppercase font-bold border-b border-slate-800 pb-1 flex items-center gap-1.5">
+              <div class="sim-panel absolute top-3 right-3 px-3 py-2 backdrop-blur-md text-[11px] font-mono space-y-1 pointer-events-none hidden sm:block">
+                <div class="text-[10px] text-espresso-800 uppercase font-bold border-b border-cream-300 pb-1 flex items-center gap-1.5">
                   <i class="fa-solid fa-compass text-cyan-400" aria-hidden="true"></i> FLIGHT PITCH
                 </div>
                 <div id="hud-pitch-badge" class="flex items-center gap-1.5 font-bold text-emerald-400">
@@ -482,30 +417,30 @@
               </div>
 
               <!-- Dynamic Co-pilot Educational Guidance Popup -->
-              <div id="copilot-banner" role="status" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
-                <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 text-base">
+              <div id="copilot-banner" role="status" class="sim-inset hidden absolute top-3 left-3 right-3 p-3.5 border border-amber-300 text-xs backdrop-blur-md transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
+                <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-400 shrink-0 text-base">
                   <i id="copilot-icon" class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
                 </div>
                 <div class="space-y-1 flex-1">
                   <div class="flex justify-between items-center">
-                    <span id="copilot-title" class="font-hud font-bold text-amber-400 text-xs uppercase">CO-PILOT ALERT: MARKET TURBULENCE</span>
-                    <button data-onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="Dismiss this notice">
+                    <span id="copilot-title" class="font-bold text-amber-400 text-xs uppercase">CO-PILOT ALERT: MARKET TURBULENCE</span>
+                    <button data-onclick="hideCopilotBanner()" class="text-espresso-800 hover:text-espresso-950 text-xs" aria-label="Dismiss this notice">
                       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                   </div>
-                  <p id="copilot-message" class="text-slate-200 text-xs leading-relaxed">
+                  <p id="copilot-message" class="text-espresso-900 text-xs leading-relaxed">
                     Market dropped -22% this year. Early retirement drops trigger Sequence of Returns Risk!
                   </p>
-                  <div id="copilot-tip" class="text-[11px] text-cyan-300 font-mono pt-1 border-t border-slate-800/80">
+                  <div id="copilot-tip" class="text-[11px] text-cyan-300 font-mono pt-1 border-t border-cream-300">
                     💡 Tip: Activate mid-flight adjustments below to stabilize pitch.
                   </div>
                 </div>
               </div>
 
               <!-- Atmospheric Indicator Footer Overlay -->
-              <div class="absolute bottom-2 left-3 right-3 flex justify-between items-center pointer-events-none text-[10px] font-mono text-slate-400">
+              <div class="absolute bottom-2 left-3 right-3 flex justify-between items-center pointer-events-none text-[10px] font-mono text-espresso-800">
                 <div class="flex items-center gap-2">
-                  <span id="canvas-sky-status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span id="canvas-sky-status-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span id="canvas-sky-status-text">Atmosphere: Clear Skies & Safe Cruising Altitude</span>
                 </div>
                 <span>Target Horizon: Age 100</span>
@@ -515,127 +450,127 @@
           </div>
 
           <!-- MID-FLIGHT 6 TACTICAL ADJUSTMENTS DECK -->
-          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3.5 shadow-xl">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
-              <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+          <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3.5">
+            <div class="flex items-center justify-between border-b border-cream-300 pb-2.5">
+              <h3 class="font-bold text-xs uppercase tracking-wider text-cyan-400 flex items-center gap-2">
                 <i class="fa-solid fa-gamepad text-cyan-400" aria-hidden="true"></i> MID-FLIGHT COCKPIT ADJUSTMENTS (6 TACTICS)
               </h3>
-              <span class="text-[11px] font-mono text-slate-400">Toggle during flight to bounce back!</span>
+              <span class="text-[11px] font-mono text-espresso-800">Toggle during flight to bounce back!</span>
             </div>
 
             <!-- 6 Tactical Adjustment Action Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               
               <!-- Tactic 1: Part-Time Side Job -->
-              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('job')">
+              <div id="card-action-job" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('job')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-cyan-50 text-cyan-400 border border-cyan-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-job" class="sr-only" aria-labelledby="title-action-job">
-                  <span id="badge-action-job" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                  <span id="badge-action-job" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INACTIVE</span>
                 </div>
                 <div>
-                  <h4 id="title-action-job" class="text-xs font-bold text-white">Part-Time Income</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Earn $15,000/yr part-time income to reduce portfolio withdrawals.</p>
+                  <h4 id="title-action-job" class="text-xs font-bold text-espresso-900">Part-Time Income</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Earn $15,000/yr part-time income to reduce portfolio withdrawals.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impact:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impact:</span>
                   <span class="text-emerald-400 font-bold">+$15k / Yr Buffer</span>
                 </div>
               </div>
 
               <!-- Tactic 2: Cut Spending 15% -->
-              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cutspend')">
+              <div id="card-action-cutspend" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cutspend')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-400 border border-amber-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-scissors" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-cutspend" class="sr-only" aria-labelledby="title-action-cutspend">
-                  <span id="badge-action-cutspend" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                  <span id="badge-action-cutspend" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INACTIVE</span>
                 </div>
                 <div>
-                  <h4 id="title-action-cutspend" class="text-xs font-bold text-white">Cut Spending 15%</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Trim living expenses during market downturn years.</p>
+                  <h4 id="title-action-cutspend" class="text-xs font-bold text-espresso-900">Cut Spending 15%</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Trim living expenses during market downturn years.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impact:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impact:</span>
                   <span class="text-amber-400 font-bold">Saves ~$6.7k / Yr</span>
                 </div>
               </div>
 
               <!-- Tactic 3: Draw From Cash Bucket -->
-              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cashbuffer')">
+              <div id="card-action-cashbuffer" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cashbuffer')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-400 border border-emerald-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-vault" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-cashbuffer" class="sr-only" aria-labelledby="title-action-cashbuffer">
-                  <span id="badge-action-cashbuffer" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                  <span id="badge-action-cashbuffer" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INACTIVE</span>
                 </div>
                 <div>
-                  <h4 id="title-action-cashbuffer" class="text-xs font-bold text-white">Cash Bucket Shield</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Draw from cash buffer to avoid selling stocks in down years.</p>
+                  <h4 id="title-action-cashbuffer" class="text-xs font-bold text-espresso-900">Cash Bucket Shield</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Draw from cash buffer to avoid selling stocks in down years.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impact:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impact:</span>
                   <span class="text-cyan-300 font-bold">Protects Principal</span>
                 </div>
               </div>
 
               <!-- Tactic 4: Dynamic Spending Guardrails -->
-              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('guardrails')">
+              <div id="card-action-guardrails" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('guardrails')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-purple-50 text-purple-400 border border-purple-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-guardrails" class="sr-only" aria-labelledby="title-action-guardrails">
-                  <span id="badge-action-guardrails" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                  <span id="badge-action-guardrails" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INACTIVE</span>
                 </div>
                 <div>
-                  <h4 id="title-action-guardrails" class="text-xs font-bold text-white">Dynamic Guardrails</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Guyton-Klinger rule: auto-cuts spending 10% when portfolio drops &gt;15%.</p>
+                  <h4 id="title-action-guardrails" class="text-xs font-bold text-espresso-900">Dynamic Guardrails</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Guyton-Klinger rule: auto-cuts spending 10% when portfolio drops &gt;15%.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impact:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impact:</span>
                   <span class="text-purple-300 font-bold">Auto Drawdown Stop</span>
                 </div>
               </div>
 
               <!-- Tactic 5: Downsize / Equity Inflow -->
-              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('downsize')">
+              <div id="card-action-downsize" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('downsize')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-blue-950 text-blue-400 border border-blue-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-400 border border-blue-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-downsize" class="sr-only" aria-labelledby="title-action-downsize">
-                  <span id="badge-action-downsize" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                  <span id="badge-action-downsize" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INACTIVE</span>
                 </div>
                 <div>
-                  <h4 id="title-action-downsize" class="text-xs font-bold text-white">Downsize Real Estate</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">One-time equity cash-in of +$100,000 emergency fuel injection.</p>
+                  <h4 id="title-action-downsize" class="text-xs font-bold text-espresso-900">Downsize Real Estate</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">One-time equity cash-in of +$100,000 emergency fuel injection.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impact:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impact:</span>
                   <span class="text-blue-300 font-bold">+$100k Instant Fuel</span>
                 </div>
               </div>
 
               <!-- Tactic 6: Social Security / Pension -->
-              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('pension')">
+              <div id="card-action-pension" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('pension')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-pink-950 text-pink-400 border border-pink-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-pink-50 text-pink-400 border border-pink-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-pension" class="sr-only" aria-labelledby="title-action-pension">
-                  <span id="badge-action-pension" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INACTIVE</span>
+                  <span id="badge-action-pension" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INACTIVE</span>
                 </div>
                 <div>
-                  <h4 id="title-action-pension" class="text-xs font-bold text-white">Social Security Benefit</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Claim guaranteed +$20,000/yr annuity income starting at Age 62+.</p>
+                  <h4 id="title-action-pension" class="text-xs font-bold text-espresso-900">Social Security Benefit</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Claim guaranteed +$20,000/yr annuity income starting at Age 62+.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impact:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impact:</span>
                   <span class="text-pink-300 font-bold">+$20k / Yr Guaranteed</span>
                 </div>
               </div>
@@ -654,37 +589,37 @@
     <!-- ================================================================= -->
     <div id="tab-leaderboard" role="tabpanel" aria-labelledby="nav-btn-leaderboard" class="hidden space-y-6">
 
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3 shadow-xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-cream-300 pb-3">
           <div>
-            <h2 class="text-base sm:text-lg font-bold font-hud text-amber-400 flex items-center gap-2">
+            <h2 class="text-base sm:text-lg font-bold text-amber-400 flex items-center gap-2">
               <i class="fa-solid fa-trophy text-amber-400" aria-hidden="true"></i> GLOBAL RETIREMENT FLIGHT LEADERBOARD
             </h2>
-            <p class="text-xs text-slate-300">
+            <p class="text-xs text-espresso-900">
               Every flight flown by every pilot, on one shared board — filter it by scenario. Flight score rewards <strong>reaching age 100</strong>, <strong>the fewest crashline years</strong> and <strong>the biggest ending nest egg</strong>.
             </p>
           </div>
-          <button data-onclick="refreshLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
+          <button data-onclick="refreshLeaderboard()" class="sim-btn sim-btn--quiet">
             <i class="fa-solid fa-rotate-right mr-1" aria-hidden="true"></i> Refresh Board
           </button>
         </div>
 
         <!-- Leaderboard Category Filter Tabs -->
-        <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
-          <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i> Scenario Category:</span>
-          <button id="lb-filter-ALL" data-onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">ALL CATEGORIES</button>
-          <button id="lb-filter-highrisk" data-onclick="filterLeaderboard('highrisk')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">High Risk SWR</button>
-          <button id="lb-filter-trinity" data-onclick="filterLeaderboard('trinity')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Trinity Standard</button>
-          <button id="lb-filter-leanfire" data-onclick="filterLeaderboard('leanfire')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Tight Lean FIRE</button>
-          <button id="lb-filter-fatfire" data-onclick="filterLeaderboard('fatfire')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Fat FIRE</button>
-          <button id="lb-filter-custom" data-onclick="filterLeaderboard('custom')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Custom Scenario</button>
+        <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-cream-300 text-xs font-mono">
+          <span class="text-espresso-800 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i> Scenario Category:</span>
+          <button id="lb-filter-ALL" data-onclick="filterLeaderboard('ALL')" class="sim-tab" aria-pressed="true">ALL CATEGORIES</button>
+          <button id="lb-filter-highrisk" data-onclick="filterLeaderboard('highrisk')" class="sim-tab" aria-pressed="false">High Risk SWR</button>
+          <button id="lb-filter-trinity" data-onclick="filterLeaderboard('trinity')" class="sim-tab" aria-pressed="false">Trinity Standard</button>
+          <button id="lb-filter-leanfire" data-onclick="filterLeaderboard('leanfire')" class="sim-tab" aria-pressed="false">Tight Lean FIRE</button>
+          <button id="lb-filter-fatfire" data-onclick="filterLeaderboard('fatfire')" class="sim-tab" aria-pressed="false">Fat FIRE</button>
+          <button id="lb-filter-custom" data-onclick="filterLeaderboard('custom')" class="sim-tab" aria-pressed="false">Custom Scenario</button>
         </div>
 
         <!-- Leaderboard Table -->
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs font-mono">
             <thead>
-              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]">
+              <tr class="border-b border-cream-300 text-espresso-800 uppercase text-[10px]">
                 <th class="py-2.5 px-3">Rank</th>
                 <th class="py-2.5 px-3">Pilot Callsign</th>
                 <th class="py-2.5 px-3 text-cyan-400">Scenario Preset Category</th>
@@ -695,7 +630,7 @@
                 <th class="py-2.5 px-3 text-amber-400">Flight Score</th>
               </tr>
             </thead>
-            <tbody id="leaderboard-table-body" class="divide-y divide-slate-800/60 text-slate-200">
+            <tbody id="leaderboard-table-body" class="divide-y divide-cream-300 text-espresso-900">
               <!-- Dynamically populated -->
             </tbody>
           </table>
@@ -710,17 +645,17 @@
     <div id="tab-montecarlo" role="tabpanel" aria-labelledby="nav-btn-montecarlo" class="hidden space-y-6">
 
       <!-- Monte Carlo Header Card -->
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
+            <h2 class="text-base sm:text-lg font-bold text-espresso-900 flex items-center gap-2">
               <i class="fa-solid fa-network-wired text-cyan-400" aria-hidden="true"></i> 1,000 MONTE CARLO STRESS-TEST ENGINE
             </h2>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-espresso-900 leading-relaxed">
               Simulates 1,000 randomized retirement flight paths over a 50-year horizon (Age 50 to Age 100) using high volatility historical distributions.
             </p>
           </div>
-          <button data-onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
+          <button data-onclick="runMonteCarloBatch()" class="sim-btn sim-btn--primary shrink-0">
             <i class="fa-solid fa-play mr-1.5" aria-hidden="true"></i> RUN 1,000 SIMULATIONS
           </button>
         </div>
@@ -729,39 +664,39 @@
       <!-- Monte Carlo Key Metrics Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono" role="status" aria-atomic="true">
         
-        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Flight Success Rate</span>
-          <div id="mc-metric-success" class="text-2xl font-bold font-hud text-emerald-400">-- %</div>
-          <p class="text-[10px] text-slate-400">Paths reaching Age 100 safely.</p>
+        <div class="sim-panel p-4 space-y-1">
+          <span class="sim-stat__label">Flight Success Rate</span>
+          <div id="mc-metric-success" class="sim-stat__value sim-stat__value--series-1 text-2xl">-- %</div>
+          <p class="sim-stat__note">Paths reaching Age 100 safely.</p>
         </div>
 
-        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Median Ending Wealth</span>
-          <div id="mc-metric-median" class="text-2xl font-bold font-hud text-cyan-300">--</div>
-          <p class="text-[10px] text-slate-400">50th percentile nest egg at Age 100.</p>
+        <div class="sim-panel p-4 space-y-1">
+          <span class="sim-stat__label">Median Ending Wealth</span>
+          <div id="mc-metric-median" class="sim-stat__value sim-stat__value--series-3 text-2xl">--</div>
+          <p class="sim-stat__note">50th percentile nest egg at Age 100.</p>
         </div>
 
-        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Worst 10% Outcome</span>
-          <div id="mc-metric-p10" class="text-2xl font-bold font-hud text-amber-400">--</div>
-          <p class="text-[10px] text-slate-400">10th percentile stress test outcome.</p>
+        <div class="sim-panel p-4 space-y-1">
+          <span class="sim-stat__label">Worst 10% Outcome</span>
+          <div id="mc-metric-p10" class="sim-stat__value sim-stat__value--series-4 text-2xl">--</div>
+          <p class="sim-stat__note">10th percentile stress test outcome.</p>
         </div>
 
-        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Best 10% Outcome</span>
-          <div id="mc-metric-p90" class="text-2xl font-bold font-hud text-purple-400">--</div>
-          <p class="text-[10px] text-slate-400">90th percentile top tier growth.</p>
+        <div class="sim-panel p-4 space-y-1">
+          <span class="sim-stat__label">Best 10% Outcome</span>
+          <div id="mc-metric-p90" class="sim-stat__value sim-stat__value--series-2 text-2xl">--</div>
+          <p class="sim-stat__note">90th percentile top tier growth.</p>
         </div>
 
       </div>
 
       <!-- Monte Carlo Outcome Percentiles Table -->
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4">
-        <h3 class="font-hud font-bold text-xs uppercase text-slate-200">Percentile Wealth Distribution Over Time</h3>
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-4">
+        <h3 class="font-bold text-xs uppercase text-espresso-900">Percentile Wealth Distribution Over Time</h3>
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs font-mono">
             <thead>
-              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]">
+              <tr class="border-b border-cream-300 text-espresso-800 uppercase text-[10px]">
                 <th class="py-2 px-3">Retirement Age</th>
                 <th class="py-2 px-3 text-red-400">10th Percentile (Worst Case)</th>
                 <th class="py-2 px-3 text-amber-400">25th Percentile</th>
@@ -770,9 +705,9 @@
                 <th class="py-2 px-3 text-purple-400">90th Percentile (Best Case)</th>
               </tr>
             </thead>
-            <tbody id="mc-table-body" class="divide-y divide-slate-800/60 text-slate-300">
+            <tbody id="mc-table-body" class="divide-y divide-cream-300 text-espresso-900">
               <tr>
-                <td colspan="6" class="py-6 text-center text-slate-400 font-sans">
+                <td colspan="6" class="py-6 text-center text-espresso-800 font-sans">
                   Click "Run 1,000 Simulations" to generate Monte Carlo trajectory data.
                 </td>
               </tr>
@@ -788,11 +723,11 @@
     <!-- ================================================================= -->
     <div id="tab-academy" role="tabpanel" aria-labelledby="nav-btn-academy" class="hidden space-y-6">
 
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-2">
-        <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-2">
+        <h2 class="text-base sm:text-lg font-bold text-espresso-900 flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap text-cyan-400" aria-hidden="true"></i> FIRE FLIGHT ACADEMY: CORE RETIREMENT LESSONS
         </h2>
-        <p class="text-xs text-slate-300 leading-relaxed">
+        <p class="text-xs text-espresso-900 leading-relaxed">
           Master the financial science of wealth decumulation, asset allocation balancing, and longevity protection.
         </p>
       </div>
@@ -800,57 +735,57 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
 
         <!-- Module 1: SWR -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-lg font-bold">
+        <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-400 border border-cyan-200 flex items-center justify-center text-lg font-bold">
             01
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">The 4% Safe Withdrawal Rate Rule</h3>
-          <p class="text-slate-300 leading-relaxed">
+          <h3 class="font-bold text-sm text-espresso-900">The 4% Safe Withdrawal Rate Rule</h3>
+          <p class="text-espresso-900 leading-relaxed">
             Derived from the landmark 1998 Trinity Study, the 4% rule states that withdrawing 4% of your initial portfolio in year one (adjusted for inflation each subsequent year) historically provided a 95%+ success rate over 30-year retirement periods.
           </p>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-cyan-300">
+          <div class="sim-inset p-3 font-mono text-[11px] text-cyan-300">
             Formula: Required Nest Egg = Annual Spending × 25
           </div>
         </div>
 
         <!-- Module 2: SORR -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-red-950 text-red-400 border border-red-800 flex items-center justify-center text-lg font-bold">
+        <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-red-400 border border-red-200 flex items-center justify-center text-lg font-bold">
             02
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Sequence of Returns Risk (SORR)</h3>
-          <p class="text-slate-300 leading-relaxed">
+          <h3 class="font-bold text-sm text-espresso-900">Sequence of Returns Risk (SORR)</h3>
+          <p class="text-espresso-900 leading-relaxed">
             Market timing matters tremendously once you enter decumulation! A severe stock market crash in the first 5 years of retirement forces you to sell stocks at bottom-barrel prices, sending your flight into the crashline zone.
           </p>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-red-300">
+          <div class="sim-inset p-3 font-mono text-[11px] text-red-300">
             Defense: Shift asset allocation toward bonds/cash to cushion early crashes.
           </div>
         </div>
 
         <!-- Module 3: TDF Glidepaths -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-lg font-bold">
+        <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-400 border border-emerald-200 flex items-center justify-center text-lg font-bold">
             03
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Target Date Funds & De-Risking Glidepaths</h3>
-          <p class="text-slate-300 leading-relaxed">
+          <h3 class="font-bold text-sm text-espresso-900">Target Date Funds & De-Risking Glidepaths</h3>
+          <p class="text-espresso-900 leading-relaxed">
             As retirement progresses, holding 100% aggressive equities increases crash exposure. Target Date Funds automatically shift asset allocation toward fixed income (bonds/cash) over time to lock in gains and buffer volatility.
           </p>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-emerald-300">
+          <div class="sim-inset p-3 font-mono text-[11px] text-emerald-300">
             Rule of Thumb: % Bonds = Age minus 10 (e.g. at Age 60, ~50% Bonds/Cash).
           </div>
         </div>
 
         <!-- Module 4: Dynamic Adjustments -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-lg font-bold">
+        <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-400 border border-amber-200 flex items-center justify-center text-lg font-bold">
             04
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Dynamic Spending Guardrails & Part-Time Work</h3>
-          <p class="text-slate-300 leading-relaxed">
+          <h3 class="font-bold text-sm text-espresso-900">Dynamic Spending Guardrails & Part-Time Work</h3>
+          <p class="text-espresso-900 leading-relaxed">
             Flexible retirees don't rigidly withdraw fixed amounts during severe bear markets. Taking a part-time job, cutting spending by 15%, or tapping cash buckets lets your stock portfolio recover without forcing liquidations.
           </p>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-amber-300">
+          <div class="sim-inset p-3 font-mono text-[11px] text-amber-300">
             Guyton-Klinger Rule: Cut spending by 10% when portfolio drops >15%.
           </div>
         </div>
@@ -961,89 +896,114 @@
         </div>
     </section>
 
-    <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
-         panel, down to the markup: whichever door a reader comes in through -
-         an article or a simulator - the page ends on the same offer, in the
-         same shape, and the assessment is the action it leads with. Styled by
-         assets/css/simulator-cta.css, which is where the differences from
-         blog.css are explained. -->
-    <section class="simulator-cta" aria-labelledby="closing-cta-title">
-        <div class="simulator-cta__panel">
-            <div>
-                <p class="simulator-cta__eyebrow">Continue the Journey</p>
-                <h2 id="closing-cta-title" class="simulator-cta__title">Turn a survival probability into a plan you can act on.</h2>
-                <p class="simulator-cta__body">Thousands of simulated futures show how fragile, or how resilient, a retirement plan is. The financial assessment helps you turn that number into the next concrete step.</p>
-            </div>
-            <div class="simulator-cta__actions">
-                <a class="simulator-cta__button" href="/en/#assessment">Take the assessment</a>
-                <a class="simulator-cta__button simulator-cta__button--secondary" href="/en/#herramientas">Explore the tools</a>
-            </div>
-        </div>
-    </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="hud-glass border-t border-slate-800 py-3 px-4 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <span class="font-hud text-cyan-400">SURVIVAL FLIGHT</span> &bull; <span>FIRE Retirement Longevity Simulator (Age 50-100)</span>
+    <!-- The footer.
+
+         It was three different footers: a cream strip with a copyright line on
+         the hub and the Freedom Calendar, a `.simulator-footer` note on the
+         Market Time Machine and the Passive Income Engine, and a slate bar
+         reading "SURVIVAL FLIGHT" in cyan Orbitron on the Monte Carlo cockpit.
+         All three said the same thing, which is that this is educational and
+         not advice. One of them says it now.
+
+         It is also no longer in the flow. A simulator wants its sliders, its
+         chart and its figures on screen at once, and a disclaimer that is read
+         once was permanently holding the bottom of the document. It carries the
+         closing call to action as well now, which is the one thing on the page
+         that gains from arriving on a scroll rather than waiting at the end for
+         somebody to reach it. assets/js/
+         sim-footer.js docks it to the bottom of the viewport, shows it while
+         the visitor is scrolling, and hides it 2.5s after they stop - and adds
+         the class that does the docking, so without JavaScript this stays an
+         ordinary block at the end of the page. The spacer reserves its height
+         so nothing ends up underneath it; the script un-hides it and measures
+         it, for the same reason. -->
+    <div class="simulator-footer-spacer" aria-hidden="true" hidden></div>
+    <footer class="simulator-footer">
+      <div class="simulator-footer__inner">
+
+        <!-- CLOSING CALL TO ACTION. The journal's "Continue the Journey" offer,
+             which every article and all five simulators end on.
+
+             It used to be a forest slab at the very end of the document, which
+             is the right shape for an article and the wrong one for a tool: on
+             a simulator the end of the document is somewhere a visitor only
+             arrives by scrolling past the thing they came for, and most of them
+             never did. It rides in this bar now, so it arrives on the same
+             signal the bar does - a scroll, anywhere on the page - and leaves
+             with it.
+
+             Riding in a bar that appears over a tool in use sets the whole
+             budget, and the budget is height. The panel's paragraph is gone and
+             what is left is what a call to action actually is: the offer and
+             the two ways to take it. assets/css/simulator-cta.css has the
+             measurements. -->
+        <div class="simulator-cta">
+          <div class="simulator-cta__text">
+            <p class="simulator-cta__eyebrow">Continue the Journey</p>
+            <h2 id="closing-cta-title" class="simulator-cta__title">Turn a survival probability into a plan you can act on.</h2>
+          </div>
+          <div class="simulator-cta__actions">
+            <a class="simulator-cta__button" href="/en/#assessment">Take the assessment</a>
+            <a class="simulator-cta__button simulator-cta__button--secondary" href="/en/#herramientas">Explore the tools</a>
+          </div>
+        </div>
+
+        <p class="simulator-footer__note">&copy; 2026 Compounding Journey. For educational purposes only. Not formal financial advice.</p>
       </div>
-      <div class="text-[11px] text-slate-500">
-        Educational simulator for modeling retirement decumulation & Sequence of Returns Risk.
-      </div>
-    </div>
-  </footer>
+    </footer>
 
   <!-- MODAL 1: ANNUAL RETIREMENT SPEND CALCULATOR -->
-  <div id="modal-calc-spend" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-emerald-600/60 space-y-5 shadow-2xl relative">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-hud font-bold text-sm text-emerald-400 flex items-center gap-2">
+  <div id="modal-calc-spend" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/70 backdrop-blur-sm hidden">
+    <div class="sim-panel sim-enter max-w-lg w-full p-6 rounded-2xl border border-emerald-200 space-y-5 relative">
+      <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+        <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2">
           <i class="fa-solid fa-calculator text-emerald-400" aria-hidden="true"></i> RETIREMENT ANNUAL BUDGET CALCULATOR
         </h3>
-        <button data-onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Close calculator">
+        <button data-onclick="closeSpendCalculator()" class="text-espresso-800 hover:text-espresso-950 text-sm" aria-label="Close calculator">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
 
-      <p class="text-xs text-slate-300">
+      <p class="text-xs text-espresso-900">
         Estimate your annual retirement spending by filling in estimated monthly expenses below:
       </p>
 
       <div class="space-y-3 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label for="calc-spend-housing" class="text-slate-300">Housing & Utilities ($/mo):</label>
-          <input type="number" id="calc-spend-housing" value="1500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-housing" class="text-espresso-900">Housing & Utilities ($/mo):</label>
+          <input type="number" id="calc-spend-housing" value="1500" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-food" class="text-slate-300">Food, Groceries & Dining ($/mo):</label>
-          <input type="number" id="calc-spend-food" value="800" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-food" class="text-espresso-900">Food, Groceries & Dining ($/mo):</label>
+          <input type="number" id="calc-spend-food" value="800" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-health" class="text-slate-300">Healthcare & Insurance ($/mo):</label>
-          <input type="number" id="calc-spend-health" value="500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-health" class="text-espresso-900">Healthcare & Insurance ($/mo):</label>
+          <input type="number" id="calc-spend-health" value="500" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-travel" class="text-slate-300">Travel, Hobbies & Leisure ($/mo):</label>
-          <input type="number" id="calc-spend-travel" value="400" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-travel" class="text-espresso-900">Travel, Hobbies & Leisure ($/mo):</label>
+          <input type="number" id="calc-spend-travel" value="400" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-misc" class="text-slate-300">Misc & Emergency Buffer ($/mo):</label>
-          <input type="number" id="calc-spend-misc" value="550" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-misc" class="text-espresso-900">Misc & Emergency Buffer ($/mo):</label>
+          <input type="number" id="calc-spend-misc" value="550" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
 
-        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-sm">
-          <span class="font-sans font-bold text-slate-200">Total Calculated Annual Spend:</span>
-          <span id="calc-spend-total" class="font-hud font-bold text-emerald-400 text-base">$45,000 / yr</span>
+        <div class="pt-3 border-t border-cream-300 flex justify-between items-center text-sm">
+          <span class="font-sans font-bold text-espresso-900">Total Calculated Annual Spend:</span>
+          <span id="calc-spend-total" class="font-bold text-emerald-400 text-base">$45,000 / yr</span>
         </div>
       </div>
 
       <div class="flex gap-3 pt-2">
-        <button data-onclick="closeSpendCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+        <button data-onclick="closeSpendCalculator()" class="sim-btn sim-btn--quiet flex-1 py-2">
           Cancel
         </button>
-        <button data-onclick="applyCalculatedSpend()" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow glow-green">
+        <button data-onclick="applyCalculatedSpend()" class="sim-btn sim-btn--primary flex-1">
           Apply to Cockpit Spend
         </button>
       </div>
@@ -1051,29 +1011,29 @@
   </div>
 
   <!-- MODAL 2: NEST EGG TARGET CALCULATOR -->
-  <div id="modal-calc-nestegg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-cyan-600/60 space-y-5 shadow-2xl relative">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-hud font-bold text-sm text-cyan-400 flex items-center gap-2">
+  <div id="modal-calc-nestegg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/70 backdrop-blur-sm hidden">
+    <div class="sim-panel sim-enter max-w-lg w-full p-6 rounded-2xl border border-cyan-200 space-y-5 relative">
+      <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+        <h3 class="font-bold text-sm text-cyan-400 flex items-center gap-2">
           <i class="fa-solid fa-calculator text-cyan-400" aria-hidden="true"></i> NEST EGG TARGET CALCULATOR
         </h3>
-        <button data-onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Close calculator">
+        <button data-onclick="closeNestEggCalculator()" class="text-espresso-800 hover:text-espresso-950 text-sm" aria-label="Close calculator">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
 
-      <p class="text-xs text-slate-300">
+      <p class="text-xs text-espresso-900">
         Calculate your target nest egg using your annual retirement spend and target Safe Withdrawal Rate (SWR):
       </p>
 
       <div class="space-y-4 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label for="calc-egg-spend" class="text-slate-300">Annual Living Spend ($):</label>
-          <input type="number" id="calc-egg-spend" value="45000" step="1000" data-oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+          <label for="calc-egg-spend" class="text-espresso-900">Annual Living Spend ($):</label>
+          <input type="number" id="calc-egg-spend" value="45000" step="1000" data-oninput="computeCalculatedEgg()" class="sim-field sim-field--inline sim-field--figure w-32 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-egg-swr" class="text-slate-300">Target Safe Withdrawal Rate (%):</label>
-          <select id="calc-egg-swr" data-onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+          <label for="calc-egg-swr" class="text-espresso-900">Target Safe Withdrawal Rate (%):</label>
+          <select id="calc-egg-swr" data-onchange="computeCalculatedEgg()" class="sim-field sim-field--inline sim-field--figure w-32 px-2.5 py-1">
             <option value="4.0" selected>4.0% (Trinity Standard)</option>
             <option value="3.5">3.5% (Conservative FIRE)</option>
             <option value="3.0">3.0% (Ultra Safe / Perpetual)</option>
@@ -1081,22 +1041,22 @@
           </select>
         </div>
 
-        <div class="p-3 rounded-xl bg-cyan-950/60 border border-cyan-800 space-y-1">
+        <div class="p-3 rounded-xl bg-cyan-50 border border-cyan-200 space-y-1">
           <div class="text-[11px] text-cyan-300">FIRE Multiplier Formula:</div>
-          <div id="calc-egg-formula" class="text-xs text-slate-300">$45,000 × 25 = $1,125,000 (25x Rule)</div>
+          <div id="calc-egg-formula" class="text-xs text-espresso-900">$45,000 × 25 = $1,125,000 (25x Rule)</div>
         </div>
 
-        <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-sm">
-          <span class="font-sans font-bold text-slate-200">Required Starting Nest Egg:</span>
-          <span id="calc-egg-total" class="font-hud font-bold text-cyan-400 text-base">$1,125,000</span>
+        <div class="pt-2 border-t border-cream-300 flex justify-between items-center text-sm">
+          <span class="font-sans font-bold text-espresso-900">Required Starting Nest Egg:</span>
+          <span id="calc-egg-total" class="font-bold text-cyan-400 text-base">$1,125,000</span>
         </div>
       </div>
 
       <div class="flex gap-3 pt-2">
-        <button data-onclick="closeNestEggCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+        <button data-onclick="closeNestEggCalculator()" class="sim-btn sim-btn--quiet flex-1 py-2">
           Cancel
         </button>
-        <button data-onclick="applyCalculatedEgg()" class="flex-1 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow glow-cyan">
+        <button data-onclick="applyCalculatedEgg()" class="sim-btn sim-btn--primary flex-1">
           Apply to Cockpit Nest Egg
         </button>
       </div>
@@ -1104,39 +1064,39 @@
   </div>
 
   <!-- FLIGHT DEBRIEF / OUTCOME MODAL -->
-  <div id="modal-flight-debrief" role="dialog" aria-modal="true" aria-labelledby="debrief-title" aria-describedby="debrief-msg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="hud-glass max-w-md w-full p-6 rounded-2xl border border-slate-700 space-y-4 shadow-2xl text-center">
+  <div id="modal-flight-debrief" role="dialog" aria-modal="true" aria-labelledby="debrief-title" aria-describedby="debrief-msg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/70 backdrop-blur-sm hidden">
+    <div class="sim-panel sim-enter max-w-md w-full p-6 rounded-2xl border border-cream-400 space-y-4 text-center">
       <div id="debrief-icon-box" class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl">
         <i id="debrief-icon" class="fa-solid fa-trophy" aria-hidden="true"></i>
       </div>
-      <h3 id="debrief-title" class="text-lg font-hud font-bold text-white">FLIGHT SUCCESSFUL!</h3>
-      <p id="debrief-msg" class="text-xs text-slate-300 leading-relaxed">
+      <h3 id="debrief-title" class="text-lg font-bold text-espresso-900">FLIGHT SUCCESSFUL!</h3>
+      <p id="debrief-msg" class="text-xs text-espresso-900 leading-relaxed">
         You successfully reached Age 100 with $1,240,000 remaining in portfolio fuel!
       </p>
 
-      <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-left space-y-1.5 font-mono text-xs">
+      <div class="sim-inset p-3 text-left space-y-1.5 font-mono text-xs">
         <div class="flex justify-between">
-          <span class="text-slate-400">Pilot Callsign:</span>
+          <span class="text-espresso-800">Pilot Callsign:</span>
           <span id="debrief-pilot-name" class="text-amber-300 font-bold">Captain FIRE</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Scenario Category:</span>
+          <span class="text-espresso-800">Scenario Category:</span>
           <span id="debrief-scenario-cat" class="text-cyan-300 font-bold">High Risk SWR</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Final Nest Egg:</span>
+          <span class="text-espresso-800">Final Nest Egg:</span>
           <span id="debrief-final-bal" class="text-emerald-400 font-bold">$1,240,000</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Total Years Survived:</span>
+          <span class="text-espresso-800">Total Years Survived:</span>
           <span id="debrief-years" class="text-cyan-300 font-bold">50 Years</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Years in Crashline Zone:</span>
+          <span class="text-espresso-800">Years in Crashline Zone:</span>
           <span id="debrief-crashline-yrs" class="text-red-400 font-bold">0 Years</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Tactical Adjustments:</span>
+          <span class="text-espresso-800">Tactical Adjustments:</span>
           <span id="debrief-tactic-yrs" class="text-amber-300 font-bold">0 Tactic-Yrs (-0 pts)</span>
         </div>
       </div>
@@ -1146,13 +1106,13 @@
            the two that were already here and wider than either, because the
            reading of the flight is the thing a pilot who has just crashed is
            most likely to want next. -->
-      <button data-onclick="openSimCta()" class="w-full mb-2 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">See what this flight means</button>
+      <button data-onclick="openSimCta()" class="sim-btn sim-btn--primary sim-btn--block sim-btn--lg mb-3 uppercase">See what this flight means</button>
 
       <div class="flex gap-2">
-        <button data-onclick="closeDebriefAndShowLeaderboard()" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
+        <button data-onclick="closeDebriefAndShowLeaderboard()" class="sim-btn sim-btn--accent flex-1 uppercase">
           VIEW LEADERBOARD
         </button>
-        <button data-onclick="closeDebriefModal()" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-hud font-bold text-xs uppercase shadow glow-cyan">
+        <button data-onclick="closeDebriefModal()" class="sim-btn sim-btn--secondary flex-1 uppercase">
           RETRY FLIGHT
         </button>
       </div>
@@ -1171,7 +1131,9 @@
   <script src="/assets/js/sim-cta.en.js?v=source" defer></script>
   <script src="/assets/js/sim-cta.js?v=source" defer></script>
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
+    <script src="/assets/js/sim-footer.js?v=source" defer></script>
     <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
+    <script src="/assets/js/sim-chart-theme.js?v=source" defer></script>
     <script src="/assets/js/sim-monte-carlo-fire.en.js?v=source" defer></script>
 </body>
 </html>

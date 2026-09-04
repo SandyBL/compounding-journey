@@ -19,11 +19,11 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
     /* What the category badge in the board is drawn from - the same five keys,
        and the classes the badge used to repeat once per language. */
     const PRESET_BADGES = {
-      highrisk: { classes: 'bg-red-950 text-red-300 border border-red-800', icon: 'fa-fire text-red-400' },
-      trinity: { classes: 'bg-cyan-950 text-cyan-300 border border-cyan-800', icon: 'fa-shield-halved text-cyan-400' },
-      leanfire: { classes: 'bg-emerald-950 text-emerald-300 border border-emerald-800', icon: 'fa-leaf text-emerald-400' },
-      fatfire: { classes: 'bg-purple-950 text-purple-300 border border-purple-800', icon: 'fa-crown text-purple-400' },
-      custom: { classes: 'bg-slate-800 text-slate-300 border border-slate-700', icon: 'fa-sliders' }
+      highrisk: { classes: 'bg-red-50 text-red-300 border border-red-200', icon: 'fa-fire text-red-400' },
+      trinity: { classes: 'bg-cyan-50 text-cyan-300 border border-cyan-200', icon: 'fa-shield-halved text-cyan-400' },
+      leanfire: { classes: 'bg-emerald-50 text-emerald-300 border border-emerald-200', icon: 'fa-leaf text-emerald-400' },
+      fatfire: { classes: 'bg-purple-50 text-purple-300 border border-purple-200', icon: 'fa-crown text-purple-400' },
+      custom: { classes: 'bg-cream-200 text-espresso-900 border border-cream-400', icon: 'fa-sliders' }
     };
 
     /* The board as last read from /api/simulator-leaderboard, and which of
@@ -172,13 +172,13 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       if (badgeSwr) {
         if (swrVal > 4.5) {
           badgeSwr.innerText = `${swrStr} (ALTO RISCO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800 animate-pulse';
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-400 border border-red-200 animate-pulse';
         } else if (swrVal > 3.8) {
           badgeSwr.innerText = `${swrStr} (RISCO MODERADO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950 text-amber-400 border border-amber-800';
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-400 border border-amber-200';
         } else {
           badgeSwr.innerText = `${swrStr} (SWR SEGURO)`;
-          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800';
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-400 border border-emerald-200';
         }
       }
 
@@ -335,19 +335,19 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       playSound('click');
       if (action === 'job') {
         state.actJob = !state.actJob;
-        updateActionCardUI('job', state.actJob, 'glow-cyan', 'border-cyan-500');
+        updateActionCardUI('job', state.actJob, 'border-cyan-500');
       } else if (action === 'cutspend') {
         state.actCutSpend = !state.actCutSpend;
-        updateActionCardUI('cutspend', state.actCutSpend, 'glow-amber', 'border-amber-500');
+        updateActionCardUI('cutspend', state.actCutSpend, 'border-amber-500');
       } else if (action === 'cashbuffer') {
         state.actCashBuffer = !state.actCashBuffer;
-        updateActionCardUI('cashbuffer', state.actCashBuffer, 'glow-green', 'border-emerald-500');
+        updateActionCardUI('cashbuffer', state.actCashBuffer, 'border-emerald-500');
       } else if (action === 'guardrails') {
         state.actGuardrails = !state.actGuardrails;
-        updateActionCardUI('guardrails', state.actGuardrails, 'glow-cyan', 'border-purple-500');
+        updateActionCardUI('guardrails', state.actGuardrails, 'border-purple-500');
       } else if (action === 'downsize') {
         state.actDownsize = !state.actDownsize;
-        updateActionCardUI('downsize', state.actDownsize, 'glow-cyan', 'border-blue-500');
+        updateActionCardUI('downsize', state.actDownsize, 'border-blue-500');
         if (state.actDownsize && state.isSimulating) {
           state.currentNestEgg += 100000;
           showCopilotBanner(
@@ -359,12 +359,12 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
         }
       } else if (action === 'pension') {
         state.actPension = !state.actPension;
-        updateActionCardUI('pension', state.actPension, 'glow-cyan', 'border-pink-500');
+        updateActionCardUI('pension', state.actPension, 'border-pink-500');
       }
       renderCanvas();
     }
 
-    function updateActionCardUI(key, isActive, glowClass, borderClass) {
+    function updateActionCardUI(key, isActive, borderClass) {
       const card = document.getElementById('card-action-' + key);
       const badge = document.getElementById('badge-action-' + key);
       const check = document.getElementById('check-action-' + key);
@@ -372,14 +372,14 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       if (!card || !badge) return;
 
       if (isActive) {
-        card.classList.add(glowClass, borderClass, 'bg-slate-900/90');
+        card.classList.add('is-active', borderClass);
         badge.innerText = 'ATIVO';
-        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 font-bold';
+        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-50 text-cyan-300 border border-cyan-200 font-bold';
         if (check) check.checked = true;
       } else {
-        card.classList.remove(glowClass, borderClass, 'bg-slate-900/90');
+        card.classList.remove('is-active', borderClass);
         badge.innerText = 'INATIVO';
-        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700';
+        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400';
         if (check) check.checked = false;
       }
     }
@@ -406,7 +406,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
         badge.innerText = '✈️ EM VOO (NO AR)';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cyan-950 text-cyan-400 border border-cyan-700 animate-pulse';
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cyan-50 text-cyan-400 border border-cyan-200 animate-pulse';
       }
 
       state.simulationInterval = setInterval(simulateOneYearStep, 800);
@@ -422,7 +422,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
         badge.innerText = '⏸️ VOO EM PAUSA';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-amber-950 text-amber-400 border border-amber-800';
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-amber-50 text-amber-400 border border-amber-200';
       }
     }
 
@@ -447,7 +447,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
         badge.innerText = 'Pronto na Pista';
-        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800';
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-50 text-emerald-400 border border-emerald-200';
       }
 
       updateControlsUI();
@@ -619,13 +619,13 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       tipEl.innerText = tip;
 
       if (type === 'danger') {
-        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-red-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-red-500';
+        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-cream-50 border border-red-300 text-xs backdrop-blur-md transition-all duration-300 flex items-start gap-3 border-l-4 border-l-red-500';
         if (icon) icon.className = 'fa-solid fa-triangle-exclamation text-red-400';
       } else if (type === 'warning') {
-        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500';
+        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-cream-50 border border-amber-300 text-xs backdrop-blur-md transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500';
         if (icon) icon.className = 'fa-solid fa-fire text-amber-400';
       } else {
-        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-cyan-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-cyan-500';
+        banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-cream-50 border border-cyan-300 text-xs backdrop-blur-md transition-all duration-300 flex items-start gap-3 border-l-4 border-l-cyan-500';
         if (icon) icon.className = 'fa-solid fa-circle-info text-cyan-400';
       }
 
@@ -659,16 +659,16 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
       if (reachedTarget) {
         title.innerText = 'MISSÃO CUMPRIDA!';
-        title.className = 'text-lg font-hud font-bold text-emerald-400';
+        title.className = 'text-lg font-bold text-emerald-400';
         msg.innerText = `Parabéns Piloto ${state.pilotName}! Você chegou com sucesso aos 100 Anos com R$${state.currentNestEgg.toLocaleString('pt-BR')} restantes em altitude de combustível no portfólio!`;
-        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-950 text-emerald-400 border border-emerald-700 shadow-lg glow-green';
+        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-50 text-emerald-400 border border-emerald-200 shadow-lg';
         icon.className = 'fa-solid fa-trophy';
         playSound('success');
       } else {
         title.innerText = 'VOO DESTRUÍDO: FALÊNCIA NA ZONA DE COLAPSO!';
-        title.className = 'text-lg font-hud font-bold text-red-400';
+        title.className = 'text-lg font-bold text-red-400';
         msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de R$0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;
-        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-950 text-red-400 border border-red-700 shadow-lg glow-red';
+        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-50 text-red-400 border border-red-200 shadow-lg';
         icon.className = 'fa-solid fa-plane-slash';
         playSound('crash');
       }
@@ -904,9 +904,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       ['ALL'].concat(PRESET_KEYS).forEach(function (key) {
         const btn = document.getElementById('lb-filter-' + key);
         if (!btn) return;
-        btn.className = key === activeLeaderboardFilter
-          ? 'px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition'
-          : 'px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition';
+        btn.setAttribute('aria-pressed', key === activeLeaderboardFilter ? 'true' : 'false');
       });
     }
 
@@ -927,7 +925,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
     function leaderboardNoticeRow(message) {
       return `
           <tr>
-            <td colspan="8" class="py-6 text-center text-slate-400 font-sans">
+            <td colspan="8" class="py-6 text-center text-espresso-800 font-sans">
               ${message}
             </td>
           </tr>
@@ -963,17 +961,17 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
         const isMine = window.SimLeaderboard.isMine(LEADERBOARD_SIMULATOR, entry.id);
         const row = document.createElement('tr');
         row.className = isMine
-          ? 'bg-amber-500/10 hover:bg-slate-900/80 transition'
-          : 'hover:bg-slate-900/80 transition';
+          ? 'bg-amber-50 hover:bg-cream-100 transition'
+          : 'hover:bg-cream-100 transition';
         
-        let rankBadge = `<span class="font-bold text-slate-400">#${idx + 1}</span>`;
+        let rankBadge = `<span class="font-bold text-espresso-800">#${idx + 1}</span>`;
         if (idx === 0) rankBadge = `<span class="font-bold text-amber-400"><i class="fa-solid fa-crown mr-1" aria-hidden="true"></i> #1</span>`;
-        if (idx === 1) rankBadge = `<span class="font-bold text-slate-300"><i class="fa-solid fa-medal mr-1" aria-hidden="true"></i> #2</span>`;
+        if (idx === 1) rankBadge = `<span class="font-bold text-espresso-900"><i class="fa-solid fa-medal mr-1" aria-hidden="true"></i> #2</span>`;
         if (idx === 2) rankBadge = `<span class="font-bold text-amber-600"><i class="fa-solid fa-award mr-1" aria-hidden="true"></i> #3</span>`;
 
         row.innerHTML = `
-          <td class="py-3 px-3 font-hud">${rankBadge}</td>
-          <td class="py-3 px-3 font-bold text-white">${window.SimLeaderboard.escapeHtml(entry.name)}${isMine ? ' <span class="text-[10px] text-amber-400 font-bold">(VOCÊ)</span>' : ''}</td>
+          <td class="py-3 px-3">${rankBadge}</td>
+          <td class="py-3 px-3 font-bold text-espresso-900">${window.SimLeaderboard.escapeHtml(entry.name)}${isMine ? ' <span class="text-[10px] text-amber-400 font-bold">(VOCÊ)</span>' : ''}</td>
           <td class="py-3 px-3">${getCategoryBadgeHTML(entry.board)}</td>
           <td class="py-3 px-3 font-bold">${details.reached100 ? '<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> SIM</span>' : '<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> NÃO</span>'}</td>
           <td class="py-3 px-3 text-red-400 font-bold">${details.crashYears || 0} Ano(s)</td>
@@ -988,6 +986,17 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
     function renderCanvas() {
       const canvas = document.getElementById('flightCanvas');
       if (!canvas || !canvas.parentElement) return;
+
+      // The same palette assets/js/sim-chart-theme.js hands Chart.js on the
+      // other four tools. The fallbacks are there because this is the only
+      // drawing code on the site that would throw rather than merely look
+      // wrong if the file failed to load.
+      const theme = window.SimChartTheme || {};
+      const role = theme.role || {};
+      const paper = role.surface || '#fffdf8';
+      const line = theme.line ? theme.line(0) : '#1e4620';
+      const alarm = role.negative || '#a6402a';
+      const face = theme.font || 'ui-sans-serif, system-ui, sans-serif';
 
       const ctx = canvas.getContext('2d');
       canvas.width = canvas.parentElement.clientWidth;
@@ -1004,25 +1013,25 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       const pitchBadge = document.getElementById('hud-pitch-badge');
 
       if (state.yearsInCrashlineConsecutive > 0) {
-        skyGrad.addColorStop(0, '#7f1d1d');
-        skyGrad.addColorStop(1, '#020617');
+        skyGrad.addColorStop(0, 'rgba(166, 64, 42, 0.16)');
+        skyGrad.addColorStop(1, paper);
         if (canvasStatusText) {
           canvasStatusText.innerText = `EMERGÊNCIA EM QUEDA: ${state.yearsInCrashlineConsecutive}/10 Anos na Zona de Colapso R$0!`;
           if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
         }
       } else if (healthRatio > 0.8) {
-        skyGrad.addColorStop(0, '#0a192f');
-        skyGrad.addColorStop(1, '#020c1b');
+        skyGrad.addColorStop(0, 'rgba(30, 70, 32, 0.12)');
+        skyGrad.addColorStop(1, paper);
         if (canvasStatusText) {
           canvasStatusText.innerText = 'Atmosfera: Céu Limpo e Altitude Segura';
-          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
         }
       } else {
-        skyGrad.addColorStop(0, '#1e1b4b');
-        skyGrad.addColorStop(1, '#0f172a');
+        skyGrad.addColorStop(0, 'rgba(138, 90, 11, 0.14)');
+        skyGrad.addColorStop(1, paper);
         if (canvasStatusText) {
           canvasStatusText.innerText = 'Atmosfera: Turbulência Leve / Cuidado com a Altitude';
-          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-pulse';
+          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-amber-500 animate-pulse';
         }
       }
 
@@ -1033,7 +1042,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       const topY = 40;
       const bottomY = H - 35;
 
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.strokeStyle = role.grid || '#efeae0';
       ctx.lineWidth = 1;
 
       const numGridLines = 4;
@@ -1046,8 +1055,8 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
         ctx.lineTo(W, y);
         ctx.stroke();
 
-        ctx.fillStyle = '#64748b';
-        ctx.font = '9px Orbitron';
+        ctx.fillStyle = role.ink || '#574838';
+        ctx.font = '600 9px ' + face;
         ctx.fillText('R$' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
       }
 
@@ -1055,8 +1064,8 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       const startX = 60;
       const endX = W - 30;
 
-      ctx.fillStyle = '#64748b';
-      ctx.font = '10px Orbitron';
+      ctx.fillStyle = role.ink || '#574838';
+      ctx.font = '600 10px ' + face;
       for (let age = state.startAge; age <= state.targetAge; age += 10) {
         const pct = (age - state.startAge) / totalYears;
         const x = startX + pct * (endX - startX);
@@ -1081,7 +1090,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
         }
 
         ctx.beginPath();
-        ctx.strokeStyle = state.yearsInCrashlineConsecutive > 0 ? '#ef4444' : '#06b6d4';
+        ctx.strokeStyle = state.yearsInCrashlineConsecutive > 0 ? alarm : line;
         ctx.lineWidth = 3;
 
         const startY = bottomY - ((state.nestEgg / maxVal) * (bottomY - topY));
@@ -1104,8 +1113,8 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
         ctx.closePath();
 
         let fillGrad = ctx.createLinearGradient(0, 0, 0, H);
-        fillGrad.addColorStop(0, state.yearsInCrashlineConsecutive > 0 ? 'rgba(239, 68, 68, 0.35)' : 'rgba(6, 182, 212, 0.25)');
-        fillGrad.addColorStop(1, 'rgba(0, 0, 0, 0.0)');
+        fillGrad.addColorStop(0, state.yearsInCrashlineConsecutive > 0 ? 'rgba(166, 64, 42, 0.28)' : 'rgba(30, 70, 32, 0.22)');
+        fillGrad.addColorStop(1, 'rgba(255, 253, 248, 0)');
         ctx.fillStyle = fillGrad;
         ctx.fill();
 
@@ -1119,7 +1128,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       }
 
       ctx.setLineDash([4, 4]);
-      ctx.strokeStyle = '#ef4444';
+      ctx.strokeStyle = alarm;
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(50, bottomY);
@@ -1127,8 +1136,8 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       ctx.stroke();
       ctx.setLineDash([]);
 
-      ctx.fillStyle = '#ef4444';
-      ctx.font = '10px Orbitron';
+      ctx.fillStyle = alarm;
+      ctx.font = '700 10px ' + face;
       ctx.fillText('ZONA DE COLAPSO (FALÊNCIA R$0)', 65, bottomY - 6);
     }
 
@@ -1136,10 +1145,12 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       ctx.save();
       ctx.translate(x, y);
 
-      ctx.shadowColor = healthRatio > 0.3 ? '#06b6d4' : '#ef4444';
-      ctx.shadowBlur = 12;
+      const theme = window.SimChartTheme || {};
+      const role = theme.role || {};
 
-      ctx.fillStyle = healthRatio > 0.3 ? '#38bdf8' : '#f87171';
+      ctx.fillStyle = healthRatio > 0.3
+        ? (theme.line ? theme.line(0) : '#1e4620')
+        : (role.negative || '#a6402a');
       ctx.beginPath();
       ctx.moveTo(16, 0);
       ctx.lineTo(-12, -10);
@@ -1148,7 +1159,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
       ctx.closePath();
       ctx.fill();
 
-      ctx.fillStyle = '#f59e0b';
+      ctx.fillStyle = role.gold || '#c59b27';
       ctx.beginPath();
       ctx.moveTo(-6, 0);
       ctx.lineTo(-18, -3);
@@ -1301,9 +1312,9 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
             let arr = trajectorySnapshots[y].sort((a, b) => a - b);
             let n = arr.length;
             let row = document.createElement('tr');
-            row.className = 'hover:bg-slate-900/60 transition';
+            row.className = 'hover:bg-cream-100 transition';
             row.innerHTML = `
-              <td class="py-2.5 px-3 font-bold text-white">Idade ${state.startAge + y} (${y} Anos)</td>
+              <td class="py-2.5 px-3 font-bold text-espresso-900">Idade ${state.startAge + y} (${y} Anos)</td>
               <td class="py-2.5 px-3 text-red-400 font-bold">R$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>
               <td class="py-2.5 px-3 text-amber-400">R$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>
               <td class="py-2.5 px-3 text-cyan-300 font-bold">R$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>
@@ -1341,7 +1352,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
         const btnEl = document.getElementById('nav-btn-' + t);
         if (tabEl) tabEl.classList.add('hidden');
         if (btnEl) {
-          btnEl.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition';
+          btnEl.className = 'sim-tab';
           // The colour change above is the whole of what a sighted user gets.
           // These two attributes are the same information for everybody else:
           // which tab is current, and which single button the Tab key lands on
@@ -1356,7 +1367,7 @@ const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
       if (activeTab) activeTab.classList.remove('hidden');
       if (activeBtn) {
-        activeBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition';
+        activeBtn.className = 'sim-tab';
         activeBtn.setAttribute('aria-selected', 'true');
         activeBtn.setAttribute('tabindex', '0');
         if (focusTab) activeBtn.focus();

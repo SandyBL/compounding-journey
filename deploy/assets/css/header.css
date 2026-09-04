@@ -16,6 +16,10 @@
   --site-header-forest: #1e4620;
   --site-header-gold: #c59b27;
   --site-header-border: #efeae0;
+  /* The header's own cream, warmer than the page's. a11y.css names the same
+     value as --a11y-focus-ring-inverse, because a focus ring drawn on the
+     header has to be legible against exactly this. */
+  --site-header-cream: #fcf1db;
 }
 
 header.site-header {
@@ -23,7 +27,7 @@ header.site-header {
   top: 0;
   z-index: 50;
   border-bottom: 1px solid var(--site-header-border);
-  background: #fcf1db;
+  background: var(--site-header-cream);
   box-shadow: 0 1px 3px rgba(45, 36, 27, 0.1);
   backdrop-filter: none;
   transform: translateZ(0);
@@ -412,14 +416,24 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
    has moved up into the header. */
 .simulator-footer {
   margin-top: 48px;
-  padding: 28px 24px 32px;
+  padding: 20px 24px 22px;
   border-top: 1px solid #efeae0;
   background: #faf6ed;
+}
+
+/* The bar's contents, held to the same 80rem the header shell and `.sim-main`
+   use, so the closing offer starts on the same left edge as everything above
+   it. Left-aligned rather than centred: this footer used to be one short
+   sentence about being educational, which centres well, and it now leads with
+   a heading and two actions, which centred reads like a landing page. */
+.simulator-footer__inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  text-align: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  text-align: left;
 }
 
 .simulator-footer__note {

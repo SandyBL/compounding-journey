@@ -768,6 +768,11 @@
 
             const labels = trajectoryData.map((_, i) => i === 0 ? 'Início' : `Fase ${i}`);
 
+            // One series, so it is the first one - the same forest green the
+            // Freedom Calendar and the Passive Income Engine open with. The
+            // rest of the configuration is in sim-chart-theme.js.
+            const theme = window.SimChartTheme;
+
             new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -775,17 +780,14 @@
                     datasets: [{
                         label: 'Patrimônio Líquido (R$)',
                         data: trajectoryData,
-                        borderColor: '#2e6f40',
-                        backgroundColor: 'rgba(46, 111, 64, 0.1)',
+                        borderColor: theme.line(0),
+                        backgroundColor: theme.fill(0),
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.3,
-                        pointBackgroundColor: '#c3922e'
+                        pointBackgroundColor: theme.line(0)
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false }
                     },

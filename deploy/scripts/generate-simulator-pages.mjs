@@ -66,6 +66,13 @@ const languageMeta = {
  * link assets/js/sim-leaderboard.js - the shared client for the board every
  * visitor sees. The Freedom Calendar and the Market Time Machine produce no
  * score to rank, so they do not carry the request.
+ *
+ * There is deliberately no flag for charting. Four of the five draw with
+ * Chart.js and want assets/js/sim-chart-theme.js for the defaults it sets; the
+ * fifth, the Monte Carlo cockpit, draws on a raw canvas and loads no Chart.js
+ * at all, but reads the same series palette from the object that file
+ * publishes. So all five link it, and a flag distinguishing them would have to
+ * be true in every row.
  */
 const simulators = [
   { name: 'simulator-hub', output: '{lang}/simulator.html', leaderboard: true },
@@ -201,6 +208,21 @@ function behaviourFileName(name, language) {
  * ahead of the behaviour bundle because that bundle calls into it. Ordering is
  * again not load-critical: nothing runs at parse time, and the first call comes
  * from a click or from the end of a run.
+ *
+ * sim-footer.js and sim-chart-theme.js are linked on every page and on the four
+ * charting pages respectively, and here rather than in the templates because
+ * that is the whole point of the list above: a shared asset that five templates
+ * each have to remember to link is a shared asset that four of them will link.
+ *
+ * sim-chart-theme.js is the one link whose position matters. It sets defaults
+ * on `window.Chart`, so it has to run after the library, and the library is
+ * loaded `defer` from <head>. Deferred scripts run in document order regardless
+ * of where in the document they are, so a deferred tag at the end of <body>
+ * runs after a deferred tag in <head> - which is why it goes here and not in
+ * the head next to Chart.js, where it would have to be ordered by hand. It is
+ * emitted before the behaviour bundle because that bundle constructs the charts
+ * the defaults are meant to apply to, and Chart reads its defaults at
+ * construction time, not at draw time.
  */
 function liftBehaviour(page, simulator, language, context) {
   const { name } = simulator;
@@ -216,9 +238,11 @@ function liftBehaviour(page, simulator, language, context) {
   const [block] = blocks;
   const tag =
     `\n    <script src="/assets/js/sim-actions.js?v=source" defer></script>` +
+    `\n    <script src="/assets/js/sim-footer.js?v=source" defer></script>` +
     (simulator.leaderboard
       ? `\n    <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>`
       : '') +
+    `\n    <script src="/assets/js/sim-chart-theme.js?v=source" defer></script>` +
     `\n    <script src="/assets/js/${behaviourFileName(name, language)}?v=source" defer></script>`;
   const markup = page
     .replace(BEHAVIOUR_BLOCK, tag)

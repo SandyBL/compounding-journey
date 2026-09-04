@@ -39,31 +39,6 @@
     "es": "para estimar la supervivencia de una cartera de retiro bajo distintos rendimientos y retiradas.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
     "pt": "para estimar a sobrevivência de uma carteira de reforma sob diferentes retornos e levantamentos.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"BRL\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
   },
-  "hFull6": {
-    "en": "    /* Custom Glassmorphism Panels */\n",
-    "es": "    /* Paneles Glassmorphism Personalizados */\n",
-    "pt": "    /* Painéis Glassmorphism Personalizados */\n"
-  },
-  "hFull7": {
-    "en": "    /* Canvas CRT Overlay Grid Effect */\n",
-    "es": "    /* Efecto CRT de Rejilla y Líneas de Escaneo */\n",
-    "pt": "    /* Efeito CRT de Grade e Linhas de Escaneamento */\n"
-  },
-  "hFull8": {
-    "en": "    /* Glowing accent lights */\n",
-    "es": "    /* Luces de Acento Brillantes */\n",
-    "pt": "    /* Efeitos de Luz de Acento */\n"
-  },
-  "hFull9": {
-    "en": "    /* Range slider custom thumb */\n",
-    "es": "    /* Selector de Rango Personalizado */\n",
-    "pt": "    /* Controle Deslizante Personalizado */\n"
-  },
-  "hFull10": {
-    "en": "    /* Custom Scrollbars */\n",
-    "es": "    /* Barras de Desplazamiento Personalizadas */\n",
-    "pt": "    /* Barras de Rolagem Personalizadas */\n"
-  },
   "skipLink": {
     "en": "Skip to main content",
     "es": "Saltar al contenido principal",
@@ -1094,21 +1069,6 @@
     "es": "            Regla Guyton-Klinger: Recorta el gasto un 10% cuando el portafolio cae >15%.\n",
     "pt": "            Regra Guyton-Klinger: Corte os gastos em 10% quando o portfólio cair >15%.\n"
   },
-  "minHScreen3": {
-    "en": "  <!-- FOOTER -->\n",
-    "es": "  <!-- PIE DE PÁGINA -->\n",
-    "pt": "  <!-- RODAPÉ -->\n"
-  },
-  "flex5": {
-    "en": "FIRE Retirement Longevity Simulator (Age 50-100)",
-    "es": "Simulador de Longevidad de Retiro FIRE (Edad 50-100)",
-    "pt": "Simulador de Longevidade na Aposentadoria FIRE (Idade 50-100)"
-  },
-  "text11px2": {
-    "en": "        Educational simulator for modeling retirement decumulation & Sequence of Returns Risk.\n",
-    "es": "        Simulador educativo para modelar desacumulación de riqueza y Riesgo de Secuencia de Rendimientos.\n",
-    "pt": "        Simulador educativo para modelar desacumulação de riqueza e Risco da Sequência de Retornos.\n"
-  },
   "langSwitchAriaLabel": {
     "en": "Language",
     "es": "Idioma",
@@ -1815,9 +1775,9 @@
     "pt": ""
   },
   "minHScreen116": {
-    "en": "              <td class=\"py-2.5 px-3 font-bold text-white\">Age ${state.startAge + y} (${y} Yrs)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
-    "es": "              <td class=\"py-2.5 px-3 font-bold text-white\">Edad ${state.startAge + y} (${y} Años)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">€${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">€${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">€${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">€${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">€${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
-    "pt": "              <td class=\"py-2.5 px-3 font-bold text-white\">Idade ${state.startAge + y} (${y} Anos)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">R$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">R$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">R$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">R$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">R$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>\n"
+    "en": "              <td class=\"py-2.5 px-3 font-bold text-espresso-900\">Age ${state.startAge + y} (${y} Yrs)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
+    "es": "              <td class=\"py-2.5 px-3 font-bold text-espresso-900\">Edad ${state.startAge + y} (${y} Años)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">€${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">€${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">€${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">€${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">€${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
+    "pt": "              <td class=\"py-2.5 px-3 font-bold text-espresso-900\">Idade ${state.startAge + y} (${y} Anos)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">R$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">R$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">R$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">R$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">R$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>\n"
   },
   "minHScreen117": {
     "en": "    /* =================================================================\n       MATH HELPERS & TAB SWITCHING\n       ================================================================= */\n",
@@ -1868,11 +1828,6 @@
     "en": "Turn a survival probability into a plan you can act on.",
     "es": "Convierte una probabilidad de supervivencia en un plan que puedas ejecutar.",
     "pt": "Transforma uma probabilidade de sobrevivência num plano que consigas executar."
-  },
-  "ctaBody": {
-    "en": "Thousands of simulated futures show how fragile, or how resilient, a retirement plan is. The financial assessment helps you turn that number into the next concrete step.",
-    "es": "Miles de futuros simulados muestran qué tan frágil o resistente es un plan de retiro. El diagnóstico financiero te ayuda a convertir ese número en el siguiente paso concreto.",
-    "pt": "Milhares de futuros simulados mostram o quão frágil ou resistente é um plano de reforma. O diagnóstico financeiro ajuda-te a transformar esse número no próximo passo concreto."
   },
   "explTitle": {
     "en": "What a Monte Carlo simulation tells you",
@@ -2058,5 +2013,15 @@
     "en": "See what this flight means",
     "es": "Ver qué significa este vuelo",
     "pt": "Ver o que este voo significa"
+  },
+  "simIntroEyebrow": {
+    "en": "Free interactive tool",
+    "es": "Herramienta interactiva gratuita",
+    "pt": "Ferramenta interativa gratuita"
+  },
+  "simulatorFooterNote": {
+    "en": "Compounding Journey. For educational purposes only. Not formal financial advice.",
+    "es": "Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
+    "pt": "Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
   }
 }

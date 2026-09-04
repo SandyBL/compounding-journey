@@ -319,16 +319,6 @@
     "es": "                        Guardar en la Clasificación\n",
     "pt": "                        Salvar no Placar\n"
   },
-  "minHScreen4": {
-    "en": "    <!-- FOOTER -->\n",
-    "es": "    <!-- PIE DE PÁGINA -->\n",
-    "pt": "    <!-- RODAPÉ -->\n"
-  },
-  "bgCream100": {
-    "en": " Compounding Journey. Educational simulation only. Not formal financial advice.",
-    "es": " Compounding Journey. Solo para fines educativos. No constituye una recomendación formal de inversión.",
-    "pt": " Compounding Journey. Apenas para fins educacionais. Não constitui recomendação formal de investimentos."
-  },
   "langSwitchAriaLabel": {
     "en": "Language",
     "es": "Idioma",
@@ -1164,11 +1154,6 @@
     "es": "¿Listo para Construir tu Mapa Hacia la Libertad?",
     "pt": "Pronto para Construir o teu Mapa Para a Liberdade?"
   },
-  "ctaBody": {
-    "en": "The decisions in this game are the ones a real plan is made of. The financial assessment looks at where you actually stand today and turns it into tailored next steps.",
-    "es": "Las decisiones de este juego son las que forman un plan real. El diagnóstico financiero mira dónde estás hoy de verdad y lo convierte en próximos pasos hechos a tu medida.",
-    "pt": "As decisões deste jogo são as que formam um plano real. O diagnóstico financeiro olha para onde estás hoje na realidade e transforma isso em próximos passos à tua medida."
-  },
   "ctaAssessment": {
     "en": "Take the assessment",
     "es": "Hacer el diagnóstico",
@@ -1363,5 +1348,10 @@
     "en": "                        ${isMine ? '<span class=\"text-[10px] font-bold uppercase tracking-wide text-forest-800 bg-forest-800/10 px-2 py-0.5 rounded-full\">You</span>' : ''}\n",
     "es": "                        ${isMine ? '<span class=\"text-[10px] font-bold uppercase tracking-wide text-forest-800 bg-forest-800/10 px-2 py-0.5 rounded-full\">Tú</span>' : ''}\n",
     "pt": "                        ${isMine ? '<span class=\"text-[10px] font-bold uppercase tracking-wide text-forest-800 bg-forest-800/10 px-2 py-0.5 rounded-full\">Você</span>' : ''}\n"
+  },
+  "simulatorFooterNote": {
+    "en": "Compounding Journey. For educational purposes only. Not formal financial advice.",
+    "es": "Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
+    "pt": "Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
   }
 }
