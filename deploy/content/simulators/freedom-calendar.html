@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{lang.code}}">
+<html lang="{{lang.code}}" class="h-full bg-cream-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,46 +15,22 @@
     <!-- Chart.js for trajectory visualization -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/sim-freedom-calendar.css?v=source">
     <link rel="stylesheet" href="/assets/css/icons.css?v=source">
     
-    <style>
-        body {
-            background-color: #f8f4ed;
-            color: #2c1d11;
-            font-family: 'Inter', sans-serif;
-        }
-        .custom-shadow {
-            box-shadow: 0 10px 30px -5px rgba(44, 29, 17, 0.08);
-        }
-        .gradient-gold {
-            background: linear-gradient(135deg, #d4a338 0%, #c3922e 100%);
-        }
-        .gradient-forest {
-            background: linear-gradient(135deg, #2e6f40 0%, #134e2a 100%);
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: #1e532d;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-    </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
+    <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
 
     <a class="skip-link" href="#main">{{skipLink}}</a>
 
     <!-- HEADER & BRAND BAR -->
-    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+    <header class="site-header">
         <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="{{lang.home}}#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="{{headerBrandAriaLabel}}">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
@@ -115,24 +91,36 @@
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
-         and assistants had nothing to read and no way to crawl between them. -->
-    <section class="bg-cream-50 border-b border-cream-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <h1 class="text-xl sm:text-2xl font-extrabold text-espresso-950 font-serif">{{textXl}}</h1>
-            <p class="mt-1.5 max-w-3xl text-sm leading-relaxed text-espresso-800/90">{{mt15}}visual {{mt152}}</p>
-            <nav aria-label="{{mt3AriaLabel}}" class="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
-                <span class="text-espresso-800/60">{{textEspresso80060}}</span>
-                <a href="{{lang.dir}}simulator.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px25}}</a>
-                <a href="{{lang.dir}}simulators/market-time-machine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px252}}</a>
-                <a href="{{lang.dir}}simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px253}}</a>
-                <a href="{{lang.dir}}simulators/monte-carlo-fire.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">Monte Carlo FIRE</a>
-            </nav>
+         and assistants had nothing to read and no way to crawl between them.
+
+         The band is the forest gradient from the home page's simulator section
+         (.simulator-stage in home.css), and the icon is that section's gold
+         chip carrying this tool's own icon from its card there. That is the
+         whole of what distinguishes the five tools from each other now: one
+         icon each, on one band. Before this, four of them opened on a cream
+         strip and the fifth on a near-black one, and none of them looked like
+         the panel the visitor had just clicked out of. -->
+    <section class="sim-intro">
+        <div class="sim-intro__inner">
+            <div class="sim-intro__icon" aria-hidden="true"><i class="fa-solid fa-calendar-days"></i></div>
+            <div>
+                <p class="sim-intro__eyebrow">{{simIntroEyebrow}}</p>
+                <h1 class="sim-intro__title">{{textXl}}</h1>
+                <p class="sim-intro__lede">{{mt15}}visual {{mt152}}</p>
+                <nav aria-label="{{mt3AriaLabel}}" class="sim-intro__nav">
+                    <span class="sim-intro__navlabel">{{textEspresso80060}}</span>
+                    <a href="{{lang.dir}}simulator.html" class="sim-intro__link">{{px25}}</a>
+                    <a href="{{lang.dir}}simulators/market-time-machine.html" class="sim-intro__link">{{px252}}</a>
+                    <a href="{{lang.dir}}simulators/passive-income-engine.html" class="sim-intro__link">{{px253}}</a>
+                    <a href="{{lang.dir}}simulators/monte-carlo-fire.html" class="sim-intro__link">Monte Carlo FIRE</a>
+                </nav>
+            </div>
         </div>
     </section>
 
     <!-- PROFILE & PARAMETERS DRAWER (COLLAPSIBLE) -->
     <section id="profileDrawer" class="hidden bg-cream-200 border-b border-cream-300 py-6 px-4 transition-all">
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-7xl mx-auto">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
                     <i class="fa-solid fa-user-gear text-forest-800" aria-hidden="true"></i>{{textBase}}                </h2>
@@ -141,27 +129,27 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
-                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                <div class="sim-inset p-3.5">
                     <label for="inputCurrentAge" class="block text-xs font-bold text-espresso-900 mb-1">{{block}}</label>
                     <input type="number" id="inputCurrentAge" value="30" min="18" max="75" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
-                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                <div class="sim-inset p-3.5">
                     <label for="inputAnnualIncome" class="block text-xs font-bold text-espresso-900 mb-1">{{block2}}</label>
                     <input type="number" id="inputAnnualIncome" value="60000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
-                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                <div class="sim-inset p-3.5">
                     <label for="inputWorkHours" class="block text-xs font-bold text-espresso-900 mb-1">{{block3}}</label>
                     <input type="number" id="inputWorkHours" value="40" min="10" max="80" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
-                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                <div class="sim-inset p-3.5">
                     <label for="inputNetWorth" class="block text-xs font-bold text-espresso-900 mb-1">{{block4}}</label>
                     <input type="number" id="inputNetWorth" value="15000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
-                <div class="bg-cream-50 p-3.5 rounded-xl border border-cream-300">
+                <div class="sim-inset p-3.5">
                     <label for="inputBasicExpenses" class="block text-xs font-bold text-espresso-900 mb-1">{{block5}}</label>
                     <input type="number" id="inputBasicExpenses" value="2500" step="100" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
@@ -173,7 +161,7 @@
     </section>
 
     <!-- MAIN CONTENT CONTAINER -->
-    <main id="main" tabindex="-1" class="max-w-6xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
+    <main id="main" tabindex="-1" class="sim-main">
         <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
              so each tool page looked like an orphan at the top level of the site. -->
         <nav class="sim-crumbs" aria-label="{{explCrumbLabel}}">
@@ -186,7 +174,7 @@
 
 
         <!-- INTRO BANNER -->
-        <div class="mb-8 text-center sm:text-left bg-cream-50 rounded-2xl p-6 border border-cream-300 custom-shadow flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="sim-panel mb-8 text-center sm:text-left p-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="max-w-2xl">
                 <span class="text-xs font-extrabold uppercase tracking-widest text-gold-600">{{textXs4}}</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-espresso-900 font-serif mt-1">{{text2xl}}</h2>
@@ -200,7 +188,7 @@
 {{px42}}                </button>
                 <button data-onclick="setGlobalPreset(50)" class="px-4 py-2 bg-gold-600 hover:bg-gold-700 text-espresso-950 font-bold text-xs rounded-xl shadow transition-all">
 {{px43}}                </button>
-                <button data-onclick="setGlobalPreset(100)" class="px-4 py-2 bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs rounded-xl border border-cream-300 transition-all">
+                <button data-onclick="setGlobalPreset(100)" class="sim-btn sim-btn--quiet px-4 py-2">
 {{px44}}                </button>
             </div>
         </div>
@@ -266,28 +254,28 @@
                     </div>
 
                     <!-- IMPACT BREAKDOWN STATS GRID -->
-                    <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-2.5">
+                    <div class="sim-panel p-4 space-y-2.5">
                         <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-forest-800 border-b border-cream-200 pb-1.5 flex items-center justify-between">
                             <span>{{text11px2}}</span>
                             <i class="fa-solid fa-piggy-bank text-gold-600 text-xs" aria-hidden="true"></i>
                         </h4>
 
                         <div class="grid grid-cols-2 gap-2.5">
-                            <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300">
-                                <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">{{text10px3}}</span>
-                                <span id="statMonthlySaved" class="text-base font-bold text-forest-800 font-mono">{{statmonthlysaved}}</span>
+                            <div class="sim-stat">
+                                <span class="sim-stat__label">{{text10px3}}</span>
+                                <span id="statMonthlySaved" class="sim-stat__value sim-stat__value--series-1">{{statmonthlysaved}}</span>
                             </div>
 
-                            <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300">
-                                <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">{{text10px4}}</span>
-                                <span id="statWorkDaysSaved" class="text-base font-bold text-gold-600 font-mono">{{statworkdayssaved}}</span>
+                            <div class="sim-stat">
+                                <span class="sim-stat__label">{{text10px4}}</span>
+                                <span id="statWorkDaysSaved" class="sim-stat__value sim-stat__value--series-2">{{statworkdayssaved}}</span>
                             </div>
                         </div>
 
-                        <div class="bg-cream-100 p-2.5 rounded-xl border border-cream-300 flex justify-between items-center">
+                        <div class="sim-inset p-2.5 flex justify-between items-center">
                             <div>
-                                <span class="text-[10px] text-espresso-800/70 font-bold uppercase tracking-wider block">{{text10px5}}</span>
-                                <span id="stat30YearWealth" class="text-lg font-extrabold text-emerald-700 font-mono">{{lang.currency}}1,036,400</span>
+                                <span class="sim-stat__label">{{text10px5}}</span>
+                                <span id="stat30YearWealth" class="sim-stat__value sim-stat__value--positive text-lg">{{lang.currency}}1,036,400</span>
                             </div>
                             <div class="text-right">
                                 <span class="text-[9px] text-espresso-800/60 block">{{text9px}}</span>
@@ -297,7 +285,7 @@
                     </div>
 
                     <!-- CHART CARD -->
-                    <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow">
+                    <div class="sim-panel p-4">
                         <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-forest-800 mb-2 flex items-center justify-between">
                             <span>{{text11px3}}</span>
                             <span class="text-[9px] font-semibold text-espresso-800/60">{{text9px2}}</span>
@@ -414,31 +402,63 @@
             </div>
         </section>
 
-        <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
-             panel, down to the markup: whichever door a reader comes in through -
-             an article or a simulator - the page ends on the same offer, in the
-             same shape, and the assessment is the action it leads with. Styled by
-             assets/css/simulator-cta.css, which is where the differences from
-             blog.css are explained. -->
-        <section class="simulator-cta" aria-labelledby="closing-cta-title">
-            <div class="simulator-cta__panel">
-                <div>
-                    <p class="simulator-cta__eyebrow">{{ctaEyebrow}}</p>
-                    <h2 id="closing-cta-title" class="simulator-cta__title">{{ctaTitle}}</h2>
-                    <p class="simulator-cta__body">{{ctaBody}}</p>
-                </div>
-                <div class="simulator-cta__actions">
-                    <a class="simulator-cta__button" href="{{lang.home}}#assessment">{{ctaAssessment}}</a>
-                    <a class="simulator-cta__button simulator-cta__button--secondary" href="{{lang.home}}#herramientas">{{ctaTools}}</a>
-                </div>
-            </div>
-        </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
-        <p>© <script>document.write(new Date().getFullYear())</script>{{bgCream100}}</p>
+    <!-- The footer.
+
+         It was three different footers: a cream strip with a copyright line on
+         the hub and the Freedom Calendar, a `.simulator-footer` note on the
+         Market Time Machine and the Passive Income Engine, and a slate bar
+         reading "SURVIVAL FLIGHT" in cyan Orbitron on the Monte Carlo cockpit.
+         All three said the same thing, which is that this is educational and
+         not advice. One of them says it now.
+
+         It is also no longer in the flow. A simulator wants its sliders, its
+         chart and its figures on screen at once, and a disclaimer that is read
+         once was permanently holding the bottom of the document. It carries the
+         closing call to action as well now, which is the one thing on the page
+         that gains from arriving on a scroll rather than waiting at the end for
+         somebody to reach it. assets/js/
+         sim-footer.js docks it to the bottom of the viewport, shows it while
+         the visitor is scrolling, and hides it 2.5s after they stop - and adds
+         the class that does the docking, so without JavaScript this stays an
+         ordinary block at the end of the page. The spacer reserves its height
+         so nothing ends up underneath it; the script un-hides it and measures
+         it, for the same reason. -->
+    <div class="simulator-footer-spacer" aria-hidden="true" hidden></div>
+    <footer class="simulator-footer">
+      <div class="simulator-footer__inner">
+
+        <!-- CLOSING CALL TO ACTION. The journal's "Continue the Journey" offer,
+             which every article and all five simulators end on.
+
+             It used to be a forest slab at the very end of the document, which
+             is the right shape for an article and the wrong one for a tool: on
+             a simulator the end of the document is somewhere a visitor only
+             arrives by scrolling past the thing they came for, and most of them
+             never did. It rides in this bar now, so it arrives on the same
+             signal the bar does - a scroll, anywhere on the page - and leaves
+             with it.
+
+             Riding in a bar that appears over a tool in use sets the whole
+             budget, and the budget is height. The panel's paragraph is gone and
+             what is left is what a call to action actually is: the offer and
+             the two ways to take it. assets/css/simulator-cta.css has the
+             measurements. -->
+        <div class="simulator-cta">
+          <div class="simulator-cta__text">
+            <p class="simulator-cta__eyebrow">{{ctaEyebrow}}</p>
+            <h2 id="closing-cta-title" class="simulator-cta__title">{{ctaTitle}}</h2>
+          </div>
+          <div class="simulator-cta__actions">
+            <a class="simulator-cta__button" href="{{lang.home}}#assessment">{{ctaAssessment}}</a>
+            <a class="simulator-cta__button simulator-cta__button--secondary" href="{{lang.home}}#herramientas">{{ctaTools}}</a>
+          </div>
+        </div>
+
+        <p class="simulator-footer__note">&copy; <script>document.write(new Date().getFullYear())</script> {{simulatorFooterNote}}</p>
+      </div>
     </footer>
 
     <!-- The result-aware call to action: the prose first, then the machinery that
@@ -661,31 +681,31 @@
                     ` : ''}
 
                     <!-- EDITABLE COST & FREQUENCY INPUT ROW -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 p-3 bg-cream-100/90 rounded-xl border border-cream-300">
+                    <div class="sim-inset grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 p-3">
                         <div class="flex items-center justify-between gap-2">
 {{minHScreen40}}                            <div class="relative flex items-center">
                                 <span class="absolute left-2.5 text-xs text-espresso-800 font-bold">{{lang.currency}}</span>
                                 <input type="number" min="0" step="1" value="${habit.baseCost}" 
                                     data-onchange="updateHabitBaseCost(${idx}, this.value)" 
-                                    class="w-28 pl-6 pr-2 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold font-mono text-forest-800 focus:ring-2 focus:ring-forest-800">
+                                    class="sim-field sim-field--inline w-28 pl-6 pr-2 py-1">
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between gap-2">
 {{minHScreen41}}                            <select data-onchange="updateHabitUnit(${idx}, this.value)" 
-                                class="px-2.5 py-1 bg-cream-50 rounded-lg border border-cream-300 text-xs font-bold text-espresso-900 focus:ring-2 focus:ring-forest-800 cursor-pointer">
+                                class="sim-field px-2.5 py-1">
 {{minHScreen42}}                            </select>
                         </div>
                     </div>
 
                     <!-- Slider Control -->
-                    <div class="space-y-2 bg-cream-100 p-3.5 rounded-xl border border-cream-200">
+                    <div class="sim-inset space-y-2 p-3.5">
                         <div class="flex justify-between items-center text-xs font-bold">
 {{minHScreen43}}                        </div>
 
                         <input type="range" min="0" max="100" step="25" value="${habit.choicePct}" 
                             data-oninput="updateHabitChoice(${idx}, this.value)" 
-                            class="w-full accent-forest-800 bg-cream-300 h-2 rounded-lg cursor-pointer">
+                            class="w-full">
 
                         <div class="flex justify-between text-[10px] font-semibold text-espresso-800/70">
 {{minHScreen44}}                        </div>
@@ -923,6 +943,12 @@
                 chartInstance.destroy();
             }
 
+            // The optimised path is the first series and the baseline it is
+            // measured against is the negative role, on all four tools that
+            // draw one. Typeface, ink, grid, legend, tooltip, line weight and
+            // tension come from assets/js/sim-chart-theme.js.
+            const theme = window.SimChartTheme;
+
             chartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -930,44 +956,27 @@
                     datasets: [
                         {
 {{minHScreen66}}                            data: optimizedData,
-                            borderColor: '#2e6f40',
-                            backgroundColor: 'rgba(46, 111, 64, 0.15)',
+                            borderColor: theme.line(0),
+                            backgroundColor: theme.fill(0, 0.14),
                             borderWidth: 3,
                             fill: true,
-                            tension: 0.3,
-                            pointBackgroundColor: '#2e6f40'
+                            pointBackgroundColor: theme.line(0)
                         },
                         {
 {{minHScreen67}}                            data: baselineData,
-                            borderColor: '#e11d48',
+                            borderColor: theme.role.negative,
                             backgroundColor: 'transparent',
-                            borderWidth: 2,
                             borderDash: [5, 5],
-                            pointBackgroundColor: '#e11d48'
+                            pointBackgroundColor: theme.role.negative
                         }
                     ]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                font: { size: 11, family: 'Inter' },
-                                boxWidth: 12
-                            }
-                        }
-                    },
                     scales: {
                         y: {
                             ticks: {
-                                callback: val => '{{lang.currency}}' + (val / 1000).toFixed(0) + 'k',
-                                font: { size: 10 }
+                                callback: val => '{{lang.currency}}' + (val / 1000).toFixed(0) + 'k'
                             }
-                        },
-                        x: {
-                            ticks: { font: { size: 10 } }
                         }
                     }
                 }

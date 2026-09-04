@@ -822,14 +822,11 @@
             const dataValues = activeHoldings.map(a => a.ownedUnits * a.unitCost);
             const totalVal = dataValues.reduce((a, b) => a + b, 0);
 
-            const colorPalette = [
-                '#134e2a', // Verde Bosque
-                '#d4a338', // Oro
-                '#3a2719', // Espresso
-                '#10b981', // Esmeralda
-                '#2563eb', // Azul Real
-                '#9333ea'  // Púrpura
-            ];
+            // The six slice colours are the six series colours, in the same
+            // order, so a holding in the doughnut is the colour the same
+            // holding would be as a line on the chart above it.
+            const theme = window.SimChartTheme;
+            const colorPalette = theme.series.map(s => s.line);
 
             if (pieChartInstance) {
                 pieChartInstance.destroy();
@@ -843,19 +840,18 @@
                         labels: labels,
                         datasets: [{
                             data: dataValues,
-                            backgroundColor: colorPalette.slice(0, activeHoldings.length),
-                            borderWidth: 2,
-                            borderColor: '#fcfaf7'
+                            backgroundColor: colorPalette.slice(0, activeHoldings.length)
                         }]
                     },
                     options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
                         plugins: {
                             legend: {
-                                position: 'bottom',
+                                // The only legend that overrides the shared
+                                // one: this chart is 128px tall in a sidebar,
+                                // so the default 11px with 12px of padding
+                                // would take more room than the doughnut.
                                 labels: {
-                                    font: { size: 9, family: 'Inter' },
+                                    font: { size: 9 },
                                     boxWidth: 8,
                                     padding: 4
                                 }

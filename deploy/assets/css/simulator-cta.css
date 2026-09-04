@@ -1,6 +1,8 @@
-/* The closing call to action the simulators end on.
+/* The closing call to action the simulators end on, in two forms: the standing
+   offer that rides in the footer, and the result-aware panel a finished run
+   reveals in place. This file holds both.
 
-   This is the journal's "Continue the Journey" panel - `.tools-cta` /
+   The offer is the journal's "Continue the Journey" panel - `.tools-cta` /
    `.cta-panel` / `.journey-actions` in blog.css - rebuilt under its own class
    names. The rules are duplicated rather than shared because the two page
    groups do not share a stylesheet: the articles load blog.css, the simulators
@@ -10,139 +12,175 @@
    the file would have been worse still: a later edit to blog.css would move one
    of them and not the other.
 
-   The values below - the forest panel, the gold action, the 30px/34px padding,
-   the "CJ" watermark, the two breakpoints - are copied from blog.css so that
-   the two panels read as the same component. Two things are deliberately not
-   copies:
+   THE OFFER IS NO LONGER A PANEL.
 
-   - The heading font is a stack rather than the journal's Newsreader. Each
-     simulator group is served a different serif (Playfair Display on the
-     Freedom Calendar, Merriweather on the Market Time Machine and the Passive
-     Income Engine, none at all on the Monte Carlo cockpit, which is a sans-only
-     page), so the stack resolves to whichever one the page already loaded and
-     falls back to Georgia. No page pays for a new font file.
+   It used to be one: a full-width forest slab at the very end of the document,
+   34px of padding around a 2.35rem heading, a paragraph and two 48px blocks,
+   copied from blog.css so that an article and a simulator would end the same
+   way. That is the right shape for an article, where the end of the document is
+   where a reader arrives when they have finished reading. It is the wrong shape
+   for a tool, where the end of the document is somewhere a visitor only reaches
+   by scrolling past the thing they came for.
+
+   So it moved into the auto-hiding footer (assets/css/sim-system.css, section
+   5), which arrives on a scroll from anywhere on the page and leaves 2.5s
+   later. Everything below follows from where it now lives:
+
+   - The surface is the footer's cream, not forest. A dark slab across the
+     bottom of the viewport, over a tool somebody is using, is exactly the
+     intrusion a bar that hides itself is trying not to be.
+   - The paragraph is gone. It was two or three sentences - two lines at bar
+     width, which is a third of the bar's height for prose nobody reads at the
+     bottom of a screen. What is left is what a call to action is: the offer and
+     the two ways to take it.
+   - The heading is 1rem flat rather than clamp(1.65rem, 2.5vw, 2.35rem), the
+     eyebrow is 10px, and the actions are 32px pills rather than 48px blocks -
+     just under the 36px the page's own `.sim-btn` uses, and comfortably over
+     the 24px SC 2.5.8 asks for. The whole row comes to about 33px, so the bar
+     is roughly a heading taller than the disclaimer bar it replaced.
+   - The colours are the light-surface cuts. `gold-700` carries the eyebrow,
+     because `gold-500` is 2.4:1 on cream and cannot carry text; `forest-800`
+     carries the heading; the gold action keeps `gold-500` as a fill with dark
+     ink on it, which is the one thing about the panel that did not have to
+     change.
+   - There is no focus rule here. The panel needed one because its own gold ring
+     had to be visible on forest; on cream the site's own ring in a11y.css is
+     correct, and one fewer override is one fewer thing to keep in step.
+
+   The `.sim-result-cta` half of this file is still the forest panel, because
+   that one is revealed in the flow of the page at the moment it is relevant,
+   and has the room. Three things about it are deliberately not copies of
+   blog.css:
+
+   - The colours are the brand tokens, not the journal's. blog.css draws this
+     panel in #173d2a and #c89a32; the values here are #1e4620 and #c59b27,
+     which are `forestgreen` and `warmgold` in tailwind.config.js and what the
+     home page uses. The difference is small - both are dark forest greens -
+     and it was not small in context: a simulator page opens on a forest band
+     in the brand green and closes on this panel, so two greens a few points
+     apart sat at the top and bottom of the same screen. They are the same
+     green now. blog.css still has its own pair, which is a question about the
+     journal rather than about the tools.
+
+   - The heading is set in Plus Jakarta Sans, not the journal's Newsreader.
+
+     It used to be a fall-through stack - "Playfair Display", "Merriweather",
+     Georgia, serif - which resolved to whichever serif the page had already
+     downloaded for its own headings. That was a reasonable way to avoid a
+     second font file, and it had a consequence nobody chose: this panel was
+     set in Playfair on the Freedom Calendar, in Merriweather on the Market
+     Time Machine and the Passive Income Engine, and in Georgia on the Monte
+     Carlo cockpit, which loaded no serif at all. One component, four
+     typefaces, decided by which page it happened to be on.
+
+     The simulators now load one face, the site's, and no serif. The panel is
+     still not paying for a font file - Plus Jakarta Sans is already there for
+     the header on every page - and it is now the same panel everywhere.
 
    - The eyebrow is gold, where the journal's `.eyebrow` is rust. Rust on the
      forest panel is roughly 1.7:1, which is below any readable threshold; the
      lighter gold below is the same hue family the rest of the site labels
      sections with and clears 4.5:1 against this background. */
 
+/* The offer as it sits in the footer: the text on the left, the two actions on
+   the right, one row high. */
 .simulator-cta {
-  padding-top: 40px;
-}
-
-.simulator-cta__panel {
-  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 28px;
-  padding: 30px 34px;
-  overflow: hidden;
-  background: #173d2a;
-  color: #fff;
+  gap: 8px 24px;
   text-align: left;
 }
 
-/* The monogram the journal panel carries, at the same size and the same barely
-   there opacity. Decorative, so it is drawn from a pseudo-element and never
-   reaches the accessibility tree. */
-.simulator-cta__panel::after {
-  content: "CJ";
-  position: absolute;
-  right: 5%;
-  bottom: -72%;
-  color: rgba(255, 255, 255, 0.035);
-  font-family: "Playfair Display", "Merriweather", Georgia, serif;
-  font-size: 16rem;
-  line-height: 1;
-  pointer-events: none;
+/* Grids do not shrink their items below their content by default, so a long
+   title in one language would otherwise push the actions off the bar. */
+.simulator-cta__text {
+  min-width: 0;
 }
 
 .simulator-cta__eyebrow {
-  position: relative;
-  z-index: 1;
-  margin: 0 0 12px;
-  color: #e0b95c;
-  font-size: 0.72rem;
+  margin: 0 0 3px;
+  /* The only gold that carries text on a light surface - see the note at the
+     top of the file. */
+  color: var(--sim-gold-700, #7a5f12);
+  font-size: 0.625rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
 .simulator-cta__title {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
   margin: 0;
-  color: #fff;
-  font-family: "Playfair Display", "Merriweather", Georgia, serif;
-  font-size: clamp(1.65rem, 2.5vw, 2.35rem);
-  font-weight: 600;
-  line-height: 1.05;
-}
-
-.simulator-cta__body {
-  position: relative;
-  z-index: 1;
-  max-width: 620px;
-  margin: 10px 0 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.88rem;
-  line-height: 1.55;
+  color: var(--sim-forest-800, #1e4620);
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  /* 800 rather than the 600 this carried as a serif: at the same weight a
+     sans heading reads noticeably lighter, and 800 is what the home page
+     sets its headings at. */
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
 }
 
 .simulator-cta__actions {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 8px;
 }
 
 .simulator-cta__button {
-  position: relative;
-  z-index: 1;
   display: inline-flex;
-  min-width: 164px;
   align-items: center;
   justify-content: center;
-  padding: 14px 18px;
-  border: 1px solid #c89a32;
-  background: #c89a32;
-  color: #1b2b20;
-  font-size: 0.72rem;
+  /* 32px: under the 36px of the page's own buttons, because this one is in a
+     bar whose whole cost is its height, and well over the 24px minimum. */
+  min-height: 2rem;
+  padding: 0 0.875rem;
+  border: 1px solid var(--sim-gold-500, #c59b27);
+  border-radius: var(--sim-radius, 0.75rem);
+  background: var(--sim-gold-500, #c59b27);
+  color: var(--sim-espresso-950, #1f1913);
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.07em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: transform 0.25s ease, background 0.25s ease;
+  /* The offer is two or three words in English and can be five in Portuguese;
+     wrapping it inside a 32px pill is worse than letting the row wrap. */
+  white-space: nowrap;
+  /* Colour only. The panel's buttons lifted 3px on hover, which is a fine
+     thing for a block at the end of a document and a nervous one for a bar
+     that has just slid into view. */
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .simulator-cta__button:hover {
-  background: #e1bd62;
-  transform: translateY(-3px);
-}
-
-.simulator-cta__button:focus-visible {
-  outline: 3px solid rgba(200, 154, 50, 0.6);
-  outline-offset: 4px;
+  background: var(--sim-gold-400, #e0b95c);
+  border-color: var(--sim-gold-400, #e0b95c);
 }
 
 .simulator-cta__button--secondary {
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--sim-cream-400, #ded7c9);
   background: transparent;
-  color: #fff;
+  color: var(--sim-forest-800, #1e4620);
 }
 
 .simulator-cta__button--secondary:hover {
-  background: #fff;
-  color: #173d2a;
+  border-color: var(--sim-forest-800, #1e4620);
+  background: rgba(30, 70, 32, 0.06);
+  color: var(--sim-forest-800, #1e4620);
 }
 
+/* Below the two-column row the text and the actions stack, which costs a row
+   of height. The 900px breakpoint is where the longest title stops fitting
+   beside two buttons; 640px is where the buttons stop fitting beside each
+   other at their natural width, and they go to an even two rather than
+   stacking, because two rows of button is the one thing that would make this
+   bar tall. */
 @media (max-width: 900px) {
-  .simulator-cta__panel {
+  .simulator-cta {
     grid-template-columns: 1fr;
   }
 
@@ -152,18 +190,22 @@
 }
 
 @media (max-width: 640px) {
-  .simulator-cta__panel {
-    padding: 28px 22px;
+  .simulator-cta__title {
+    font-size: 0.9375rem;
   }
 
   .simulator-cta__actions {
     display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
   }
 
   .simulator-cta__button {
-    width: 100%;
-    min-width: 0;
+    padding: 0 0.5rem;
+    /* At two-up on a narrow screen the longer label has to be allowed to wrap
+       after all, and the pill grows a little rather than overflowing. */
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -181,7 +223,7 @@
    component, in the reader's own numbers.
 
    It reuses `.simulator-cta__*` where the rule is identical (the gold action,
-   the serif title stack, the two breakpoints) and only adds what the static
+   the title treatment, the two breakpoints) and only adds what the static
    panel has no equivalent of: the single-column stack, the email capture, and
    the "lever" line that carries the one thing to do next.
 
@@ -202,7 +244,7 @@
   position: relative;
   padding: 30px 34px;
   overflow: hidden;
-  background: #173d2a;
+  background: var(--sim-forest-800, #1e4620);
   color: #fff;
   text-align: left;
 }
@@ -214,7 +256,7 @@
   right: 5%;
   bottom: -72%;
   color: rgba(255, 255, 255, 0.035);
-  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   font-size: 16rem;
   line-height: 1;
   pointer-events: none;
@@ -228,7 +270,7 @@
 
 .sim-result-cta__eyebrow {
   margin: 0 0 12px;
-  color: #e0b95c;
+  color: var(--sim-gold-400, #e0b95c);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -238,9 +280,13 @@
 .sim-result-cta__title {
   margin: 0;
   color: #fff;
-  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(1.5rem, 2.2vw, 2.05rem);
-  font-weight: 600;
+  /* 800 rather than the 600 this carried as a serif: at the same weight a
+     sans heading reads noticeably lighter, and 800 is what the home page
+     sets its headings at. */
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
@@ -256,7 +302,7 @@
 .sim-result-cta__lever {
   margin: 16px 0 0;
   padding: 12px 16px;
-  border-left: 3px solid #c89a32;
+  border-left: 3px solid var(--sim-gold-500, #c59b27);
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
   font-size: 0.9rem;
@@ -281,8 +327,8 @@
   justify-content: center;
   padding: 12px 22px;
   border-radius: 999px;
-  background: #f4ede1;
-  color: #173d2a;
+  background: var(--sim-cream-200, #f4efe4);
+  color: var(--sim-forest-800, #1e4620);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -296,7 +342,7 @@
 }
 
 .sim-result-cta__primary:focus-visible {
-  outline: 3px solid #e0b95c;
+  outline: 3px solid var(--sim-gold-400, #e0b95c);
   outline-offset: 3px;
 }
 

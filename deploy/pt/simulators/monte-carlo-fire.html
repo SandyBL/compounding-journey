@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt" class="h-full bg-slate-950">
+<html lang="pt" class="h-full bg-cream-100">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,99 +15,23 @@
   
   
   <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=source">
   <link rel="stylesheet" href="/assets/css/icons.css?v=source">
   
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #f1f5f9;
-      background-color: #020617;
-    }
-    
-    .font-hud {
-      font-family: 'Orbitron', monospace;
-    }
-
-    /* Painéis Glassmorphism Personalizados */
-    .hud-glass {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(56, 189, 248, 0.18);
-    }
-
-    /* Efeito CRT de Grade e Linhas de Escaneamento */
-    .scanlines {
-      background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.3) 50%
-      );
-      background-size: 100% 4px;
-    }
-
-    /* Efeitos de Luz de Acento */
-    .glow-cyan {
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
-    }
-    .glow-green {
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
-    }
-    .glow-amber {
-      box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
-    }
-    .glow-red {
-      box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
-    }
-
-    /* Controle Deslizante Personalizado */
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 18px;
-      width: 18px;
-      border-radius: 50%;
-      background: #38bdf8;
-      cursor: pointer;
-      box-shadow: 0 0 10px #0284c7;
-    }
-
-    /* Barras de Rolagem Personalizadas */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #020617;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
-    }
-
-    @keyframes warningPulse {
-      0%, 100% { border-color: rgba(239, 68, 68, 0.9); box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
-      50% { border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
-    }
-    .crash-warning {
-      animation: warningPulse 1s infinite;
-    }
-  </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
+    <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
 </head>
-<body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-100">
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden antialiased selection:bg-gold-500 selection:text-white">
 
     <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <!-- CABEÇALHO E NAVEGAÇÃO -->
-    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+    <header class="site-header">
         <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="/pt/#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="Voltar ao Compounding Journey">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
@@ -164,40 +88,52 @@
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
-         and assistants had nothing to read and no way to crawl between them. -->
-    <section class="bg-slate-950 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <h1 class="text-xl sm:text-2xl font-extrabold text-white font-hud">Simulador Monte Carlo de Sobrevivência FIRE</h1>
-            <p class="mt-1.5 max-w-3xl text-sm leading-relaxed text-slate-300">Testa um plano de reforma FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar os levantamentos.</p>
-            <nav aria-label="Mais simuladores" class="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
-                <span class="text-slate-500">Mais simuladores:</span>
-                <a href="/pt/simulator.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Todos os simuladores</a>
-                <a href="/pt/simulators/freedom-calendar.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Calendário da Liberdade</a>
-                <a href="/pt/simulators/market-time-machine.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Máquina do Tempo do Mercado</a>
-                <a href="/pt/simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800 hover:bg-slate-800 transition">Motor de Rendimento Passivo</a>
-            </nav>
+         and assistants had nothing to read and no way to crawl between them.
+
+         The band is the forest gradient from the home page's simulator section
+         (.simulator-stage in home.css), and the icon is that section's gold
+         chip carrying this tool's own icon from its card there. That is the
+         whole of what distinguishes the five tools from each other now: one
+         icon each, on one band. Before this, four of them opened on a cream
+         strip and the fifth on a near-black one, and none of them looked like
+         the panel the visitor had just clicked out of. -->
+    <section class="sim-intro">
+        <div class="sim-intro__inner">
+            <div class="sim-intro__icon" aria-hidden="true"><i class="fa-solid fa-plane-up"></i></div>
+            <div>
+                <p class="sim-intro__eyebrow">Ferramenta interativa gratuita</p>
+                <h1 class="sim-intro__title">Simulador Monte Carlo de Sobrevivência FIRE</h1>
+                <p class="sim-intro__lede">Testa um plano de reforma FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar os levantamentos.</p>
+                <nav aria-label="Mais simuladores" class="sim-intro__nav">
+                    <span class="sim-intro__navlabel">Mais simuladores:</span>
+                    <a href="/pt/simulator.html" class="sim-intro__link">Todos os simuladores</a>
+                    <a href="/pt/simulators/freedom-calendar.html" class="sim-intro__link">Calendário da Liberdade</a>
+                    <a href="/pt/simulators/market-time-machine.html" class="sim-intro__link">Máquina do Tempo do Mercado</a>
+                    <a href="/pt/simulators/passive-income-engine.html" class="sim-intro__link">Motor de Rendimento Passivo</a>
+                </nav>
+            </div>
         </div>
     </section>
 
-  <div class="site-simulator-nav bg-slate-950 border-b border-slate-800">
-    <nav aria-label="Simulator sections" class="site-simulator-tabs flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800" role="tablist">
-            <button id="nav-btn-cockpit" role="tab" aria-selected="true" aria-controls="tab-cockpit" tabindex="0" data-onclick="switchTab('cockpit')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-cyan-400 bg-cyan-950/80 border border-cyan-800 transition">
+  <div class="site-simulator-nav">
+    <nav aria-label="Simulator sections" class="site-simulator-tabs sim-tabs" role="tablist">
+            <button id="nav-btn-cockpit" role="tab" aria-selected="true" aria-controls="tab-cockpit" tabindex="0" data-onclick="switchTab('cockpit')" class="sim-tab">
               <i class="fa-solid fa-gauge-high mr-1" aria-hidden="true"></i> COCKPIT
             </button>
-            <button id="nav-btn-leaderboard" role="tab" aria-selected="false" aria-controls="tab-leaderboard" tabindex="-1" data-onclick="switchTab('leaderboard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-leaderboard" role="tab" aria-selected="false" aria-controls="tab-leaderboard" tabindex="-1" data-onclick="switchTab('leaderboard')" class="sim-tab">
               <i class="fa-solid fa-trophy mr-1 text-amber-400" aria-hidden="true"></i> CLASSIFICAÇÃO
             </button>
-            <button id="nav-btn-montecarlo" role="tab" aria-selected="false" aria-controls="tab-montecarlo" tabindex="-1" data-onclick="switchTab('montecarlo')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-montecarlo" role="tab" aria-selected="false" aria-controls="tab-montecarlo" tabindex="-1" data-onclick="switchTab('montecarlo')" class="sim-tab">
               <i class="fa-solid fa-chart-line mr-1" aria-hidden="true"></i> 1.000 SIMS
             </button>
-            <button id="nav-btn-academy" role="tab" aria-selected="false" aria-controls="tab-academy" tabindex="-1" data-onclick="switchTab('academy')" class="px-3 py-1.5 rounded-lg text-xs font-semibold font-hud text-slate-400 hover:text-white transition">
+            <button id="nav-btn-academy" role="tab" aria-selected="false" aria-controls="tab-academy" tabindex="-1" data-onclick="switchTab('academy')" class="sim-tab">
               <i class="fa-solid fa-graduation-cap mr-1" aria-hidden="true"></i> ACADEMIA
             </button>
           </nav>
   </div>
 
   <!-- CONTÊINER PRINCIPAL -->
-  <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
+  <main id="main" tabindex="-1" class="sim-main">
         <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
              so each tool page looked like an orphan at the top level of the site. -->
         <nav class="sim-crumbs" aria-label="Trilho de navegação">
@@ -215,19 +151,19 @@
     <div id="tab-cockpit" role="tabpanel" aria-labelledby="nav-btn-cockpit" class="space-y-6">
 
       <!-- BRIEFING DA MISSÃO -->
-      <div class="hud-glass p-5 rounded-2xl border border-cyan-500/40 relative overflow-hidden shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-950/30 to-slate-900">
+      <div class="sim-panel p-5 border border-cyan-200 relative overflow-hidden">
         <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div class="space-y-1.5 max-w-3xl">
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-md bg-cyan-500 text-slate-950 font-hud font-bold text-[11px] uppercase tracking-wider">
+              <span class="px-2.5 py-0.5 rounded-md bg-cyan-600 text-cream-50 font-bold text-[11px] uppercase tracking-wider">
                 🎯 OBJETIVO DA MISSÃO
               </span>
               <span class="text-xs text-cyan-300 font-mono font-semibold">Chegar aos 100 Anos com o Mínimo de Anos em Colapso!</span>
             </div>
-            <h2 class="text-base sm:text-lg font-bold text-white font-hud">
+            <h2 class="text-base sm:text-lg font-bold text-espresso-900">
               PILOTE SEU VOO DE APOSENTADORIA ATÉ OS 100 ANOS
             </h2>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-espresso-900 leading-relaxed">
               <strong class="text-cyan-300">Como funciona a Zona de Colapso:</strong> Se as quedas do mercado ou os altos gastos reduzirem seu patrimônio líquido a R$0, você entra na <strong class="text-red-400">ZONA DE COLAPSO</strong>. 
               Você tem um <strong>Período de Graça de 10 Anos</strong> para ajustar táticas (trabalho em meio período, cortes, reserva de caixa, redução de imóvel) e se recuperar. Se permanecer 10 anos consecutivos em colapso, seu voo é destruído!
             </p>
@@ -235,41 +171,41 @@
 
           <!-- Guia Rápido em 3 Passos -->
           <div class="grid grid-cols-3 gap-2 w-full lg:w-auto text-[11px] shrink-0 font-mono">
-            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+            <div class="sim-inset p-2.5 text-center space-y-1">
               <span class="text-cyan-400 font-bold block">1. EQUILIBRE ATIVOS</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Ações demais = vulnerabilidade!</span>
+              <span class="text-[10px] text-espresso-800 block leading-tight">Ações demais = vulnerabilidade!</span>
             </div>
-            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+            <div class="sim-inset p-2.5 text-center space-y-1">
               <span class="text-emerald-400 font-bold block">2. DECOLE O VOO</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Voe dos 50 aos 100 anos</span>
+              <span class="text-[10px] text-espresso-800 block leading-tight">Voe dos 50 aos 100 anos</span>
             </div>
-            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-1">
+            <div class="sim-inset p-2.5 text-center space-y-1">
               <span class="text-amber-400 font-bold block">3. USE 6 TÁTICAS</span>
-              <span class="text-[10px] text-slate-400 block leading-tight">Saia da zona de colapso</span>
+              <span class="text-[10px] text-espresso-800 block leading-tight">Saia da zona de colapso</span>
             </div>
           </div>
         </div>
       </div>
       
       <!-- Cenários Predefinidos de Aposentadoria -->
-      <div class="hud-glass p-4 rounded-2xl border border-slate-800 shadow-xl">
+      <div class="sim-panel p-4 rounded-2xl border border-cream-300">
         <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
           <div class="flex items-center gap-2">
-            <span class="font-hud font-bold text-cyan-400 uppercase text-[11px] flex items-center gap-1.5">
+            <span class="font-bold text-cyan-400 uppercase text-[11px] flex items-center gap-1.5">
               <i class="fa-solid fa-sliders text-cyan-400" aria-hidden="true"></i> CENÁRIOS PREDEFINIDOS DE APOSENTADORIA:
             </span>
           </div>
           <div class="flex flex-wrap gap-2">
-            <button data-onclick="loadPreset('highrisk')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-red-800 hover:border-red-500 text-red-300 transition flex items-center gap-1.5 font-bold">
+            <button data-onclick="loadPreset('highrisk')" class="sim-btn sim-btn--quiet">
               <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i> SWR de Alto Risco (R$850k / R$45k)
             </button>
-            <button data-onclick="loadPreset('trinity')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('trinity')" class="sim-btn sim-btn--quiet">
               <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Padrão Trinity (R$1M / R$40k)
             </button>
-            <button data-onclick="loadPreset('leanfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('leanfire')" class="sim-btn sim-btn--quiet">
               <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i> Lean FIRE Ajustado (R$650k / R$35k)
             </button>
-            <button data-onclick="loadPreset('fatfire')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <button data-onclick="loadPreset('fatfire')" class="sim-btn sim-btn--quiet">
               <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i> Fat FIRE Amplo (R$1,5M / R$75k)
             </button>
           </div>
@@ -283,54 +219,54 @@
         <div class="lg:col-span-4 space-y-5">
           
           <!-- Cartão de Parâmetros de Voo -->
-          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
-            <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-2.5 flex items-center justify-between">
+          <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-4">
+            <h3 class="font-bold text-xs uppercase tracking-wider text-cyan-400 border-b border-cream-300 pb-2.5 flex items-center justify-between">
               <span><i class="fa-solid fa-gears mr-1.5" aria-hidden="true"></i> PILOTO E COMBUSTÍVEL</span>
-              <span class="text-[10px] text-slate-400 font-sans font-normal">Pré-Voo</span>
+              <span class="text-[10px] text-espresso-800 font-sans font-normal">Pré-Voo</span>
             </h3>
 
             <!-- Nome ou Codinome do Piloto -->
             <div class="space-y-1">
-              <label for="input-pilot-name" class="text-xs font-medium text-slate-300 flex items-center gap-1.5">
+              <label for="input-pilot-name" class="text-xs font-medium text-espresso-900 flex items-center gap-1.5">
                 <i class="fa-solid fa-id-card text-amber-400" aria-hidden="true"></i> Piloto / Codinome
               </label>
-              <input type="text" id="input-pilot-name" value="Capitão FIRE" data-onchange="updatePilotName()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-300 focus:border-amber-500 focus:outline-none">
-              <p class="text-[10px] text-slate-400 font-sans">Cada voo concluído é publicado na classificação global com este codinome, à vista dos outros pilotos.</p>
+              <input type="text" id="input-pilot-name" value="Capitão FIRE" data-onchange="updatePilotName()" class="sim-field w-full px-3 py-1.5">
+              <p class="text-[10px] text-espresso-800 font-sans">Cada voo concluído é publicado na classificação global com este codinome, à vista dos outros pilotos.</p>
             </div>
 
             <!-- Entrada de Patrimônio Inicial -->
             <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
-                <label class="text-slate-300 font-medium flex items-center gap-1.5">
+                <label class="text-espresso-900 font-medium flex items-center gap-1.5">
                   Patrimônio Acumulado (R$)
                 </label>
                 <div class="flex items-center gap-2">
-                  <button data-onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-950 text-cyan-300 hover:bg-cyan-900 border border-cyan-700 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-50 text-cyan-300 hover:bg-cream-200 border border-cyan-200 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Estimar Requerido
                   </button>
                   <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">R$850.000</span>
                 </div>
               </div>
-              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" data-oninput="updateControlsUI()" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2">
+              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" data-oninput="updateControlsUI()" class="w-full">
             </div>
 
             <!-- Entrada de Gasto Anual -->
             <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
-                <label class="text-slate-300 font-medium flex items-center gap-1.5">
+                <label class="text-espresso-900 font-medium flex items-center gap-1.5">
                   Gasto Anual de Vida (R$)
                 </label>
                 <div class="flex items-center gap-2">
-                  <button data-onclick="openSpendCalculator()" class="text-[10px] bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openSpendCalculator()" class="text-[10px] bg-emerald-50 text-emerald-300 hover:bg-cream-200 border border-emerald-200 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Orçamento
                   </button>
                   <span id="disp-spending" class="font-mono text-emerald-300 font-bold">R$45.000</span>
                 </div>
               </div>
-              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" data-oninput="updateControlsUI()" class="w-full accent-emerald-500 bg-slate-800 rounded-lg cursor-pointer h-2">
-              <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1">
+              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" data-oninput="updateControlsUI()" class="w-full">
+              <div class="flex justify-between items-center text-[11px] text-espresso-800 pt-1">
                 <span>Taxa Segura de Retirada (SWR):</span>
-                <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 text-red-400 border border-red-800">
+                <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-400 border border-red-200">
                   5.3% (ALTO RISCO)
                 </span>
               </div>
@@ -340,28 +276,28 @@
             <div class="grid grid-cols-2 gap-3 pt-1">
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
-                  <label for="input-startage" class="text-slate-300 font-medium">Idade de Liberdade FIRE</label>
-                  <span class="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 rounded font-mono">Início</span>
+                  <label for="input-startage" class="text-espresso-900 font-medium">Idade de Liberdade FIRE</label>
+                  <span class="text-[9px] bg-cyan-50 text-cyan-400 px-1.5 rounded font-mono">Início</span>
                 </div>
-                <input type="number" id="input-startage" min="30" max="85" value="50" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+                <input type="number" id="input-startage" min="30" max="85" value="50" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-1.5">
               </div>
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
-                  <label for="input-endage" class="text-slate-300 font-medium">Idade Destino</label>
-                  <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded font-mono">Longevidade</span>
+                  <label for="input-endage" class="text-espresso-900 font-medium">Idade Destino</label>
+                  <span class="text-[9px] bg-emerald-50 text-emerald-400 px-1.5 rounded font-mono">Longevidade</span>
                 </div>
-                <input type="number" id="input-endage" min="70" max="110" value="100" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-white focus:border-cyan-500 focus:outline-none">
+                <input type="number" id="input-endage" min="70" max="110" value="100" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-1.5">
               </div>
             </div>
 
             <!-- Alocação de Ativos -->
-            <div class="space-y-2 pt-2 border-t border-slate-800">
+            <div class="space-y-2 pt-2 border-t border-cream-300">
               <div class="flex justify-between items-center">
-                <label for="toggle-tdf" class="text-xs font-bold text-slate-200">Alocação de Ativos do Portfólio</label>
+                <label for="toggle-tdf" class="text-xs font-bold text-espresso-900">Alocação de Ativos do Portfólio</label>
                 <!-- Interruptor Fundo Data-Alvo -->
                 <label class="inline-flex items-center cursor-pointer">
                   <input type="checkbox" id="toggle-tdf" data-onchange="toggleTargetDateFund()" class="sr-only peer">
-                  <div class="w-8 h-4 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-cyan-500 relative"></div>
+                  <div class="w-8 h-4 bg-cream-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-cream-400 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-forest-800 relative"></div>
                   <span class="ml-2 text-[11px] font-mono text-cyan-400">Fundo Data-Alvo Auto</span>
                 </label>
               </div>
@@ -369,49 +305,49 @@
               <!-- Controles Deslizantes de Alocação -->
               <div id="allocation-sliders-container" class="space-y-2 pt-1">
                 <div>
-                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                  <div class="flex justify-between text-[11px] font-mono text-espresso-900 mb-0.5">
                     <span id="lbl-alloc-stocks" class="text-cyan-400 font-bold">Ações (Crescimento e Volatilidade)</span>
                     <span id="disp-pct-stocks">80%</span>
                   </div>
-                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" data-oninput="adjustAssetAllocation('stocks')" class="w-full accent-cyan-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" data-oninput="adjustAssetAllocation('stocks')" class="w-full">
                 </div>
                 <div>
-                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                  <div class="flex justify-between text-[11px] font-mono text-espresso-900 mb-0.5">
                     <span id="lbl-alloc-bonds" class="text-emerald-400 font-bold">Renda Fixa / Títulos (Estabilidade)</span>
                     <span id="disp-pct-bonds">15%</span>
                   </div>
-                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" data-oninput="adjustAssetAllocation('bonds')" class="w-full accent-emerald-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" data-oninput="adjustAssetAllocation('bonds')" class="w-full">
                 </div>
                 <div>
-                  <div class="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
+                  <div class="flex justify-between text-[11px] font-mono text-espresso-900 mb-0.5">
                     <span id="lbl-alloc-cash" class="text-amber-400 font-bold">Reserva de Caixa (Caixa)</span>
                     <span id="disp-pct-cash">5%</span>
                   </div>
-                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" data-oninput="adjustAssetAllocation('cash')" class="w-full accent-amber-500 bg-slate-800 rounded-lg h-1.5 cursor-pointer">
+                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" data-oninput="adjustAssetAllocation('cash')" class="w-full">
                 </div>
               </div>
 
               <!-- Visualizador de Trajetória Glidepath -->
-              <div id="tdf-glidepath-card" class="hidden p-3 rounded-xl bg-cyan-950/40 border border-cyan-800/80 space-y-2">
+              <div id="tdf-glidepath-card" class="hidden p-3 rounded-xl bg-cyan-50 border border-cyan-200 space-y-2">
                 <div class="flex justify-between items-center text-[11px]">
                   <span class="font-bold text-cyan-300 font-mono"><i class="fa-solid fa-route text-cyan-400" aria-hidden="true"></i> Trajetória Dinâmica Glidepath</span>
-                  <span id="tdf-status-text" class="text-[10px] text-slate-400">Redução de risco ativa</span>
+                  <span id="tdf-status-text" class="text-[10px] text-espresso-800">Redução de risco ativa</span>
                 </div>
-                <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden flex border border-slate-700">
-                  <div id="tdf-bar-stocks" class="bg-cyan-500 h-full transition-all duration-300" style="width: 80%"></div>
+                <div class="w-full h-3 rounded-full bg-cream-50 overflow-hidden flex border border-cream-400">
+                  <div id="tdf-bar-stocks" class="bg-cyan-600 h-full transition-all duration-300" style="width: 80%"></div>
                   <div id="tdf-bar-bonds" class="bg-emerald-500 h-full transition-all duration-300" style="width: 15%"></div>
                   <div id="tdf-bar-cash" class="bg-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
                 </div>
-                <p class="text-[10px] text-slate-300 leading-tight">
+                <p class="text-[10px] text-espresso-900 leading-tight">
                   Substitui automaticamente ações por renda fixa e reserva à medida que a idade avança em direção aos 100 anos.
                 </p>
               </div>
             </div>
 
             <!-- Sequência de Turbulência de Mercado -->
-            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <label for="select-market-sequence" class="text-xs font-bold text-slate-200">Sequência de Turbulência Econômica</label>
-              <select id="select-market-sequence" data-onchange="updateControlsUI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-cyan-300 focus:border-cyan-500 focus:outline-none">
+            <div class="space-y-1.5 pt-2 border-t border-cream-300">
+              <label for="select-market-sequence" class="text-xs font-bold text-espresso-900">Sequência de Turbulência Econômica</label>
+              <select id="select-market-sequence" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-2">
                 <option value="simulated">🎲 Monte Carlo de Alta Volatilidade (Turbulência Aleatória)</option>
                 <option value="1970s">🔥 Pico de Inflação Severo de 1970 e Mercado em Queda</option>
                 <option value="2000s">💥 Queda Dot-Com 2000 + Grande Recessão 2008</option>
@@ -421,10 +357,10 @@
 
             <!-- Botões de Decolagem e Reinício -->
             <div class="pt-3 flex gap-2">
-              <button id="btn-launch-flight" data-onclick="toggleFlightSimulation()" class="flex-1 py-3 px-4 rounded-xl font-hud font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition transform active:scale-95 flex items-center justify-center gap-2">
+              <button id="btn-launch-flight" data-onclick="toggleFlightSimulation()" class="sim-btn sim-btn--primary sim-btn--lg flex-1 uppercase tracking-wider">
                 <i class="fa-solid fa-plane-departure text-sm" aria-hidden="true"></i> <span id="btn-launch-text">INICIAR VOO</span>
               </button>
-              <button data-onclick="resetFlightSimulation()" class="px-3.5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition" aria-label="Reiniciar a simulação">
+              <button data-onclick="resetFlightSimulation()" class="sim-btn sim-btn--quiet" aria-label="Reiniciar a simulação">
                 <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
               </button>
             </div>
@@ -436,15 +372,15 @@
         <div class="lg:col-span-8 space-y-5">
           
           <!-- Contêiner Visual HUD do Céu -->
-          <div id="hud-visual-container" class="hud-glass p-4 rounded-2xl border border-slate-800 relative overflow-hidden shadow-2xl transition-all duration-300">
+          <div id="hud-visual-container" class="sim-panel p-4 rounded-2xl border border-cream-300 relative overflow-hidden transition-all duration-300">
             
             <!-- Cabeçalho Telemetria HUD -->
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-800/80">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-cream-300">
               <div class="flex items-center space-x-3">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-hud font-semibold bg-slate-900 border border-slate-700 text-cyan-300">
-                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i> IDADE: <span id="hud-current-age" class="ml-1 text-white text-sm">50</span> / 100
+                <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-cream-50 border border-cream-400 text-cyan-300">
+                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i> IDADE: <span id="hud-current-age" class="ml-1 text-espresso-900 text-sm">50</span> / 100
                 </span>
-                <span id="hud-flight-status-badge" role="status" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
+                <span id="hud-flight-status-badge" role="status" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-50 text-emerald-400 border border-emerald-200">
                   Pronto na Pista
                 </span>
               </div>
@@ -452,28 +388,27 @@
               <!-- Telemetria do Voo -->
               <div class="flex items-center gap-3 sm:gap-4 text-xs font-mono">
                 <div>
-                  <span class="text-slate-400 text-[10px] block uppercase">Altitude</span>
-                  <span id="hud-portfolio-val" class="text-emerald-400 font-bold text-sm">R$850.000</span>
+                  <span class="sim-stat__label">Altitude</span>
+                  <span id="hud-portfolio-val" class="sim-stat__value sim-stat__value--series-1 text-sm">R$850.000</span>
                 </div>
-                <div class="border-l border-slate-800 pl-3">
-                  <span class="text-slate-400 text-[10px] block uppercase">SWR Atual</span>
-                  <span id="hud-current-swr" class="text-amber-300 font-bold text-sm">5.3%</span>
+                <div class="border-l border-cream-300 pl-3">
+                  <span class="sim-stat__label">SWR Atual</span>
+                  <span id="hud-current-swr" class="sim-stat__value sim-stat__value--series-2 text-sm">5.3%</span>
                 </div>
-                <div class="border-l border-slate-800 pl-3">
-                  <span class="text-slate-400 text-[10px] block uppercase">Anos em Colapso</span>
-                  <span id="hud-crashline-counter" class="text-emerald-400 font-bold text-sm">0 / 10 Anos</span>
+                <div class="border-l border-cream-300 pl-3">
+                  <span class="sim-stat__label">Anos em Colapso</span>
+                  <span id="hud-crashline-counter" class="sim-stat__value sim-stat__value--series-4 text-sm">0 / 10 Anos</span>
                 </div>
               </div>
             </div>
 
             <!-- Canvas Monitor do Voo -->
-            <div class="relative w-full h-[290px] sm:h-[340px] bg-slate-950 rounded-xl overflow-hidden border border-slate-800/80 group">
+            <div class="sim-inset relative w-full h-[290px] sm:h-[340px] overflow-hidden group">
               <canvas id="flightCanvas" role="img" aria-label="Gráfico animado: a trajetória simulada da carteira, desenhada como uma rota de voo. Todos os valores que representa são indicados como texto no painel de instrumentos acima." class="w-full h-full block"></canvas>
-              <div class="scanlines absolute inset-0 pointer-events-none opacity-40"></div>
 
               <!-- Legenda de Inclinação do Voo -->
-              <div class="absolute top-3 right-3 px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 backdrop-blur-md text-[11px] font-mono space-y-1 shadow-lg pointer-events-none hidden sm:block">
-                <div class="text-[10px] text-slate-400 uppercase font-bold border-b border-slate-800 pb-1 flex items-center gap-1.5">
+              <div class="sim-panel absolute top-3 right-3 px-3 py-2 backdrop-blur-md text-[11px] font-mono space-y-1 pointer-events-none hidden sm:block">
+                <div class="text-[10px] text-espresso-800 uppercase font-bold border-b border-cream-300 pb-1 flex items-center gap-1.5">
                   <i class="fa-solid fa-compass text-cyan-400" aria-hidden="true"></i> INCLINAÇÃO
                 </div>
                 <div id="hud-pitch-badge" class="flex items-center gap-1.5 font-bold text-emerald-400">
@@ -482,30 +417,30 @@
               </div>
 
               <!-- Cartaz Dinâmico Educativo do Copiloto -->
-              <div id="copilot-banner" role="status" class="hidden absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-slate-900/95 border border-amber-500/80 text-xs backdrop-blur-md shadow-2xl transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
-                <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 text-base">
+              <div id="copilot-banner" role="status" class="sim-inset hidden absolute top-3 left-3 right-3 p-3.5 border border-amber-300 text-xs backdrop-blur-md transition-all duration-300 flex items-start gap-3 border-l-4 border-l-amber-500">
+                <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-400 shrink-0 text-base">
                   <i id="copilot-icon" class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
                 </div>
                 <div class="space-y-1 flex-1">
                   <div class="flex justify-between items-center">
-                    <span id="copilot-title" class="font-hud font-bold text-amber-400 text-xs uppercase">ALERTA DO COPILOTO: TURBULÊNCIA NO MERCADO</span>
-                    <button data-onclick="hideCopilotBanner()" class="text-slate-400 hover:text-white text-xs" aria-label="Dispensar este aviso">
+                    <span id="copilot-title" class="font-bold text-amber-400 text-xs uppercase">ALERTA DO COPILOTO: TURBULÊNCIA NO MERCADO</span>
+                    <button data-onclick="hideCopilotBanner()" class="text-espresso-800 hover:text-espresso-950 text-xs" aria-label="Dispensar este aviso">
                       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                   </div>
-                  <p id="copilot-message" class="text-slate-200 text-xs leading-relaxed">
+                  <p id="copilot-message" class="text-espresso-900 text-xs leading-relaxed">
                     O mercado caiu -22% este ano. Quedas no início da aposentadoria ativam o Risco da Sequência de Retornos!
                   </p>
-                  <div id="copilot-tip" class="text-[11px] text-cyan-300 font-mono pt-1 border-t border-slate-800/80">
+                  <div id="copilot-tip" class="text-[11px] text-cyan-300 font-mono pt-1 border-t border-cream-300">
                     💡 Dica: Ative os ajustes da cabine abaixo para estabilizar a trajetória.
                   </div>
                 </div>
               </div>
 
               <!-- Indicador Atmosférico Inferior -->
-              <div class="absolute bottom-2 left-3 right-3 flex justify-between items-center pointer-events-none text-[10px] font-mono text-slate-400">
+              <div class="absolute bottom-2 left-3 right-3 flex justify-between items-center pointer-events-none text-[10px] font-mono text-espresso-800">
                 <div class="flex items-center gap-2">
-                  <span id="canvas-sky-status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span id="canvas-sky-status-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span id="canvas-sky-status-text">Atmosfera: Céu Limpo e Altitude Segura</span>
                 </div>
                 <span>Horizonte Alvo: 100 Anos</span>
@@ -515,127 +450,127 @@
           </div>
 
           <!-- PAINEL DE 6 AJUSTES TÁTICOS NA CABINE -->
-          <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3.5 shadow-xl">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
-              <h3 class="font-hud font-bold text-xs uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+          <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3.5">
+            <div class="flex items-center justify-between border-b border-cream-300 pb-2.5">
+              <h3 class="font-bold text-xs uppercase tracking-wider text-cyan-400 flex items-center gap-2">
                 <i class="fa-solid fa-gamepad text-cyan-400" aria-hidden="true"></i> AJUSTES TÁTICOS NA CABINE (6 OPÇÕES)
               </h3>
-              <span class="text-[11px] font-mono text-slate-400">Ative em voo para se recuperar!</span>
+              <span class="text-[11px] font-mono text-espresso-800">Ative em voo para se recuperar!</span>
             </div>
 
             <!-- Grade de Cartões de Táticas -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               
               <!-- Tática 1: Emprego em Meio Período -->
-              <div id="card-action-job" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('job')">
+              <div id="card-action-job" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('job')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-cyan-50 text-cyan-400 border border-cyan-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-job" class="sr-only" aria-labelledby="title-action-job">
-                  <span id="badge-action-job" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-job" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INATIVO</span>
                 </div>
                 <div>
-                  <h4 id="title-action-job" class="text-xs font-bold text-white">Renda Extra / Meio Período</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Ganhe R$15.000/ano em meio período para reduzir retiradas do portfólio.</p>
+                  <h4 id="title-action-job" class="text-xs font-bold text-espresso-900">Renda Extra / Meio Período</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Ganhe R$15.000/ano em meio período para reduzir retiradas do portfólio.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impacto:</span>
                   <span class="text-emerald-400 font-bold">+R$15k / Ano Proteção</span>
                 </div>
               </div>
 
               <!-- Tática 2: Cortar Gastos 15% -->
-              <div id="card-action-cutspend" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cutspend')">
+              <div id="card-action-cutspend" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cutspend')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-400 border border-amber-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-scissors" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-cutspend" class="sr-only" aria-labelledby="title-action-cutspend">
-                  <span id="badge-action-cutspend" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-cutspend" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INATIVO</span>
                 </div>
                 <div>
-                  <h4 id="title-action-cutspend" class="text-xs font-bold text-white">Cortar Gastos em 15%</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Reduza despesas durante os anos de baixa no mercado.</p>
+                  <h4 id="title-action-cutspend" class="text-xs font-bold text-espresso-900">Cortar Gastos em 15%</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Reduza despesas durante os anos de baixa no mercado.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impacto:</span>
                   <span class="text-amber-400 font-bold">Econ. ~R$6,7k / Ano</span>
                 </div>
               </div>
 
               <!-- Tática 3: Escudo da Reserva de Caixa -->
-              <div id="card-action-cashbuffer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cashbuffer')">
+              <div id="card-action-cashbuffer" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('cashbuffer')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-400 border border-emerald-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-vault" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-cashbuffer" class="sr-only" aria-labelledby="title-action-cashbuffer">
-                  <span id="badge-action-cashbuffer" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-cashbuffer" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INATIVO</span>
                 </div>
                 <div>
-                  <h4 id="title-action-cashbuffer" class="text-xs font-bold text-white">Escudo de Caixa</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Use a reserva de caixa para evitar vender ações na baixa.</p>
+                  <h4 id="title-action-cashbuffer" class="text-xs font-bold text-espresso-900">Escudo de Caixa</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Use a reserva de caixa para evitar vender ações na baixa.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impacto:</span>
                   <span class="text-cyan-300 font-bold">Protege o Capital</span>
                 </div>
               </div>
 
               <!-- Tática 4: Proteção Dinâmica (Guardrails) -->
-              <div id="card-action-guardrails" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('guardrails')">
+              <div id="card-action-guardrails" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('guardrails')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-purple-50 text-purple-400 border border-purple-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-guardrails" class="sr-only" aria-labelledby="title-action-guardrails">
-                  <span id="badge-action-guardrails" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-guardrails" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INATIVO</span>
                 </div>
                 <div>
-                  <h4 id="title-action-guardrails" class="text-xs font-bold text-white">Regras Dinâmicas</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Regra Guyton-Klinger: corta 10% do gasto se o portfólio cair &gt;15%.</p>
+                  <h4 id="title-action-guardrails" class="text-xs font-bold text-espresso-900">Regras Dinâmicas</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Regra Guyton-Klinger: corta 10% do gasto se o portfólio cair &gt;15%.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impacto:</span>
                   <span class="text-purple-300 font-bold">Freia a Desvalorização</span>
                 </div>
               </div>
 
               <!-- Tática 5: Redução de Imóvel -->
-              <div id="card-action-downsize" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('downsize')">
+              <div id="card-action-downsize" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('downsize')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-blue-950 text-blue-400 border border-blue-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-400 border border-blue-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-downsize" class="sr-only" aria-labelledby="title-action-downsize">
-                  <span id="badge-action-downsize" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-downsize" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INATIVO</span>
                 </div>
                 <div>
-                  <h4 id="title-action-downsize" class="text-xs font-bold text-white">Redução de Imóvel</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Injeção única de +R$100.000 por venda/aluguel de patrimônio imobiliário.</p>
+                  <h4 id="title-action-downsize" class="text-xs font-bold text-espresso-900">Redução de Imóvel</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Injeção única de +R$100.000 por venda/aluguel de patrimônio imobiliário.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impacto:</span>
                   <span class="text-blue-300 font-bold">+R$100k Injeção Direta</span>
                 </div>
               </div>
 
               <!-- Tática 6: Pensão ou Aposentadoria Pública -->
-              <div id="card-action-pension" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('pension')">
+              <div id="card-action-pension" class="sim-inset p-3 hover:border-gold-500 transition cursor-pointer space-y-1.5" data-onclick="toggleAction('pension')">
                 <div class="flex justify-between items-start">
-                  <div class="w-7 h-7 rounded-lg bg-pink-950 text-pink-400 border border-pink-800 flex items-center justify-center text-xs">
+                  <div class="w-7 h-7 rounded-lg bg-pink-50 text-pink-400 border border-pink-200 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i>
                   </div>
                   <input type="checkbox" id="check-action-pension" class="sr-only" aria-labelledby="title-action-pension">
-                  <span id="badge-action-pension" class="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">INATIVO</span>
+                  <span id="badge-action-pension" class="text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400">INATIVO</span>
                 </div>
                 <div>
-                  <h4 id="title-action-pension" class="text-xs font-bold text-white">Pensão / Aposentadoria</h4>
-                  <p class="text-[10px] text-slate-400 leading-tight">Entrada de renda garantida de +R$20.000/ano a partir dos 62 anos.</p>
+                  <h4 id="title-action-pension" class="text-xs font-bold text-espresso-900">Pensão / Aposentadoria</h4>
+                  <p class="text-[10px] text-espresso-800 leading-tight">Entrada de renda garantida de +R$20.000/ano a partir dos 62 anos.</p>
                 </div>
-                <div class="pt-1 border-t border-slate-800 flex justify-between items-center text-[10px] font-mono">
-                  <span class="text-slate-400">Impacto:</span>
+                <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-espresso-800">Impacto:</span>
                   <span class="text-pink-300 font-bold">+R$20k / Ano Garantidos</span>
                 </div>
               </div>
@@ -654,37 +589,37 @@
     <!-- ================================================================= -->
     <div id="tab-leaderboard" role="tabpanel" aria-labelledby="nav-btn-leaderboard" class="hidden space-y-6">
 
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3 shadow-xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-cream-300 pb-3">
           <div>
-            <h2 class="text-base sm:text-lg font-bold font-hud text-amber-400 flex items-center gap-2">
+            <h2 class="text-base sm:text-lg font-bold text-amber-400 flex items-center gap-2">
               <i class="fa-solid fa-trophy text-amber-400" aria-hidden="true"></i> CLASSIFICAÇÃO GLOBAL DE VOO FIRE
             </h2>
-            <p class="text-xs text-slate-300">
+            <p class="text-xs text-espresso-900">
               Todos os voos de todos os pilotos, em uma única tabela compartilhada: filtre por cenário. A pontuação premia <strong>chegar aos 100 anos</strong>, <strong>o mínimo de anos em colapso</strong> e <strong>o maior patrimônio final conservado</strong>.
             </p>
           </div>
-          <button data-onclick="refreshLeaderboard()" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">
+          <button data-onclick="refreshLeaderboard()" class="sim-btn sim-btn--quiet">
             <i class="fa-solid fa-rotate-right mr-1" aria-hidden="true"></i> Atualizar Placar
           </button>
         </div>
 
         <!-- Filtros por Categoria de Cenário -->
-        <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-slate-800 text-xs font-mono">
-          <span class="text-slate-400 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i> Filtrar Categoria:</span>
-          <button id="lb-filter-ALL" data-onclick="filterLeaderboard('ALL')" class="px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold transition">TODAS AS CATEGORIAS</button>
-          <button id="lb-filter-highrisk" data-onclick="filterLeaderboard('highrisk')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">SWR Alto Risco</button>
-          <button id="lb-filter-trinity" data-onclick="filterLeaderboard('trinity')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Padrão Trinity</button>
-          <button id="lb-filter-leanfire" data-onclick="filterLeaderboard('leanfire')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Lean FIRE Ajustado</button>
-          <button id="lb-filter-fatfire" data-onclick="filterLeaderboard('fatfire')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Fat FIRE Amplo</button>
-          <button id="lb-filter-custom" data-onclick="filterLeaderboard('custom')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Cenário Personalizado</button>
+        <div class="flex flex-wrap items-center gap-1.5 pt-1 pb-1 border-b border-cream-300 text-xs font-mono">
+          <span class="text-espresso-800 mr-1.5 flex items-center gap-1"><i class="fa-solid fa-layer-group text-cyan-400" aria-hidden="true"></i> Filtrar Categoria:</span>
+          <button id="lb-filter-ALL" data-onclick="filterLeaderboard('ALL')" class="sim-tab" aria-pressed="true">TODAS AS CATEGORIAS</button>
+          <button id="lb-filter-highrisk" data-onclick="filterLeaderboard('highrisk')" class="sim-tab" aria-pressed="false">SWR Alto Risco</button>
+          <button id="lb-filter-trinity" data-onclick="filterLeaderboard('trinity')" class="sim-tab" aria-pressed="false">Padrão Trinity</button>
+          <button id="lb-filter-leanfire" data-onclick="filterLeaderboard('leanfire')" class="sim-tab" aria-pressed="false">Lean FIRE Ajustado</button>
+          <button id="lb-filter-fatfire" data-onclick="filterLeaderboard('fatfire')" class="sim-tab" aria-pressed="false">Fat FIRE Amplo</button>
+          <button id="lb-filter-custom" data-onclick="filterLeaderboard('custom')" class="sim-tab" aria-pressed="false">Cenário Personalizado</button>
         </div>
 
         <!-- Tabela de Classificação -->
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs font-mono">
             <thead>
-              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]">
+              <tr class="border-b border-cream-300 text-espresso-800 uppercase text-[10px]">
                 <th class="py-2.5 px-3">Posição</th>
                 <th class="py-2.5 px-3">Piloto</th>
                 <th class="py-2.5 px-3 text-cyan-400">Categoria do Cenário</th>
@@ -695,7 +630,7 @@
                 <th class="py-2.5 px-3 text-amber-400">Pontuação</th>
               </tr>
             </thead>
-            <tbody id="leaderboard-table-body" class="divide-y divide-slate-800/60 text-slate-200">
+            <tbody id="leaderboard-table-body" class="divide-y divide-cream-300 text-espresso-900">
               <!-- Preenchido dinamicamente -->
             </tbody>
           </table>
@@ -710,17 +645,17 @@
     <div id="tab-montecarlo" role="tabpanel" aria-labelledby="nav-btn-montecarlo" class="hidden space-y-6">
 
       <!-- Cartão Cabeçalho Monte Carlo -->
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
+            <h2 class="text-base sm:text-lg font-bold text-espresso-900 flex items-center gap-2">
               <i class="fa-solid fa-network-wired text-cyan-400" aria-hidden="true"></i> MOTOR DE TESTE DE ESTRESSE MONTE CARLO (1.000 EXECUÇÕES)
             </h2>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-espresso-900 leading-relaxed">
               Simula 1.000 trajetórias de voo aleatórias em um horizonte de 50 anos (Idade 50 aos 100) aplicando distribuições históricas de alta volatilidade.
             </p>
           </div>
-          <button data-onclick="runMonteCarloBatch()" class="shrink-0 py-2.5 px-5 rounded-xl font-hud font-bold text-xs bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg glow-cyan transition">
+          <button data-onclick="runMonteCarloBatch()" class="sim-btn sim-btn--primary shrink-0">
             <i class="fa-solid fa-play mr-1.5" aria-hidden="true"></i> EXECUTAR 1.000 SIMULAÇÕES
           </button>
         </div>
@@ -729,39 +664,39 @@
       <!-- Cartões de Métricas Chave Monte Carlo -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono" role="status" aria-atomic="true">
         
-        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Taxa de Sucesso do Voo</span>
-          <div id="mc-metric-success" class="text-2xl font-bold font-hud text-emerald-400">-- %</div>
-          <p class="text-[10px] text-slate-400">Rotas que chegaram aos 100 anos.</p>
+        <div class="sim-panel p-4 space-y-1">
+          <span class="sim-stat__label">Taxa de Sucesso do Voo</span>
+          <div id="mc-metric-success" class="sim-stat__value sim-stat__value--series-1 text-2xl">-- %</div>
+          <p class="sim-stat__note">Rotas que chegaram aos 100 anos.</p>
         </div>
 
-        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Patrimônio Mediano Final</span>
-          <div id="mc-metric-median" class="text-2xl font-bold font-hud text-cyan-300">--</div>
-          <p class="text-[10px] text-slate-400">Percentil 50 aos 100 anos.</p>
+        <div class="sim-panel p-4 space-y-1">
+          <span class="sim-stat__label">Patrimônio Mediano Final</span>
+          <div id="mc-metric-median" class="sim-stat__value sim-stat__value--series-3 text-2xl">--</div>
+          <p class="sim-stat__note">Percentil 50 aos 100 anos.</p>
         </div>
 
-        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Pior Resultado 10%</span>
-          <div id="mc-metric-p10" class="text-2xl font-bold font-hud text-amber-400">--</div>
-          <p class="text-[10px] text-slate-400">Percentil 10 em estresse adverso.</p>
+        <div class="sim-panel p-4 space-y-1">
+          <span class="sim-stat__label">Pior Resultado 10%</span>
+          <div id="mc-metric-p10" class="sim-stat__value sim-stat__value--series-4 text-2xl">--</div>
+          <p class="sim-stat__note">Percentil 10 em estresse adverso.</p>
         </div>
 
-        <div class="hud-glass p-4 rounded-xl border border-slate-800 space-y-1">
-          <span class="text-[10px] text-slate-400 uppercase">Melhor Resultado 10%</span>
-          <div id="mc-metric-p90" class="text-2xl font-bold font-hud text-purple-400">--</div>
-          <p class="text-[10px] text-slate-400">Percentil 90 de crescimento máximo.</p>
+        <div class="sim-panel p-4 space-y-1">
+          <span class="sim-stat__label">Melhor Resultado 10%</span>
+          <div id="mc-metric-p90" class="sim-stat__value sim-stat__value--series-2 text-2xl">--</div>
+          <p class="sim-stat__note">Percentil 90 de crescimento máximo.</p>
         </div>
 
       </div>
 
       <!-- Tabela de Distribuição por Percentis -->
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-4">
-        <h3 class="font-hud font-bold text-xs uppercase text-slate-200">Distribuição de Patrimônio por Percentis ao Longo do Tempo</h3>
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-4">
+        <h3 class="font-bold text-xs uppercase text-espresso-900">Distribuição de Patrimônio por Percentis ao Longo do Tempo</h3>
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs font-mono">
             <thead>
-              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]">
+              <tr class="border-b border-cream-300 text-espresso-800 uppercase text-[10px]">
                 <th class="py-2 px-3">Idade de Aposentadoria</th>
                 <th class="py-2 px-3 text-red-400">Percentil 10 (Pior Caso)</th>
                 <th class="py-2 px-3 text-amber-400">Percentil 25</th>
@@ -770,9 +705,9 @@
                 <th class="py-2 px-3 text-purple-400">Percentil 90 (Melhor Caso)</th>
               </tr>
             </thead>
-            <tbody id="mc-table-body" class="divide-y divide-slate-800/60 text-slate-300">
+            <tbody id="mc-table-body" class="divide-y divide-cream-300 text-espresso-900">
               <tr>
-                <td colspan="6" class="py-6 text-center text-slate-400 font-sans">
+                <td colspan="6" class="py-6 text-center text-espresso-800 font-sans">
                   Clique em "Executar 1.000 Simulações" para gerar os dados de trajetória Monte Carlo.
                 </td>
               </tr>
@@ -788,11 +723,11 @@
     <!-- ================================================================= -->
     <div id="tab-academy" role="tabpanel" aria-labelledby="nav-btn-academy" class="hidden space-y-6">
 
-      <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-2">
-        <h2 class="text-base sm:text-lg font-bold font-hud text-white flex items-center gap-2">
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-2">
+        <h2 class="text-base sm:text-lg font-bold text-espresso-900 flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap text-cyan-400" aria-hidden="true"></i> ACADEMIA DE VOO FIRE: LIÇÕES FUNDAMENTAIS
         </h2>
-        <p class="text-xs text-slate-300 leading-relaxed">
+        <p class="text-xs text-espresso-900 leading-relaxed">
           Domine a ciência financeira da desacumulação de riqueza, equilíbrio de ativos e proteção contra o risco de longevidade.
         </p>
       </div>
@@ -800,57 +735,57 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
 
         <!-- Módulo 1: SWR -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-lg font-bold">
+        <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-400 border border-cyan-200 flex items-center justify-center text-lg font-bold">
             01
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">A Regra dos 4% de Taxa Segura de Retirada</h3>
-          <p class="text-slate-300 leading-relaxed">
+          <h3 class="font-bold text-sm text-espresso-900">A Regra dos 4% de Taxa Segura de Retirada</h3>
+          <p class="text-espresso-900 leading-relaxed">
             Derivada do famoso Estudo Trinity de 1998, a regra dos 4% estabelece que retirar 4% do seu portfólio inicial no primeiro ano (ajustado pela inflação nos anos seguintes) ofereceu historicamente uma taxa de sucesso superior a 95% em períodos de 30 anos.
           </p>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-cyan-300">
+          <div class="sim-inset p-3 font-mono text-[11px] text-cyan-300">
             Fórmula: Patrimônio Requerido = Gasto Anual × 25
           </div>
         </div>
 
         <!-- Módulo 2: SORR -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-red-950 text-red-400 border border-red-800 flex items-center justify-center text-lg font-bold">
+        <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-red-400 border border-red-200 flex items-center justify-center text-lg font-bold">
             02
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Risco da Sequência de Retornos (SORR)</h3>
-          <p class="text-slate-300 leading-relaxed">
+          <h3 class="font-bold text-sm text-espresso-900">Risco da Sequência de Retornos (SORR)</h3>
+          <p class="text-espresso-900 leading-relaxed">
             O momento do mercado importa enormemente ao começar a retirar dinheiro! Uma queda severa nos primeiros 5 anos força você a vender ações a preços baixos, levando seu voo para a zona de colapso.
           </p>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-red-300">
+          <div class="sim-inset p-3 font-mono text-[11px] text-red-300">
             Defesa: Ajuste a alocação para renda fixa/caixa para amortecer quedas iniciais.
           </div>
         </div>
 
         <!-- Módulo 3: TDF Glidepaths -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-lg font-bold">
+        <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-400 border border-emerald-200 flex items-center justify-center text-lg font-bold">
             03
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Fundos Data-Alvo e Glidepaths de Redução de Risco</h3>
-          <p class="text-slate-300 leading-relaxed">
+          <h3 class="font-bold text-sm text-espresso-900">Fundos Data-Alvo e Glidepaths de Redução de Risco</h3>
+          <p class="text-espresso-900 leading-relaxed">
             Manter 100% em renda variável durante a aposentadoria aumenta a exposição a quedas. Os fundos Data-Alvo reequilibram automaticamente para renda fixa (títulos/caixa) ao longo do tempo para consolidar ganhos e suavizar a volatilidade.
           </p>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-emerald-300">
+          <div class="sim-inset p-3 font-mono text-[11px] text-emerald-300">
             Regra Prática: % Renda Fixa = Idade menos 10 (ex: aos 60 Anos, ~50% Renda Fixa/Caixa).
           </div>
         </div>
 
         <!-- Módulo 4: Guardrails Dinâmicos -->
-        <div class="hud-glass p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-lg font-bold">
+        <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-400 border border-amber-200 flex items-center justify-center text-lg font-bold">
             04
           </div>
-          <h3 class="font-hud font-bold text-sm text-white">Ajustes Dinâmicos e Trabalho em Meio Período</h3>
-          <p class="text-slate-300 leading-relaxed">
+          <h3 class="font-bold text-sm text-espresso-900">Ajustes Dinâmicos e Trabalho em Meio Período</h3>
+          <p class="text-espresso-900 leading-relaxed">
             Aposentados flexíveis não retiram valores fixos rigidamente durante mercados em queda. Trabalhar em meio período, cortar gastos em 15% ou usar reservas de caixa permite que as ações se recuperem sem liquidações forçadas nas mínimas.
           </p>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-amber-300">
+          <div class="sim-inset p-3 font-mono text-[11px] text-amber-300">
             Regra Guyton-Klinger: Corte os gastos em 10% quando o portfólio cair >15%.
           </div>
         </div>
@@ -961,89 +896,114 @@
         </div>
     </section>
 
-    <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
-         panel, down to the markup: whichever door a reader comes in through -
-         an article or a simulator - the page ends on the same offer, in the
-         same shape, and the assessment is the action it leads with. Styled by
-         assets/css/simulator-cta.css, which is where the differences from
-         blog.css are explained. -->
-    <section class="simulator-cta" aria-labelledby="closing-cta-title">
-        <div class="simulator-cta__panel">
-            <div>
-                <p class="simulator-cta__eyebrow">Continua a jornada</p>
-                <h2 id="closing-cta-title" class="simulator-cta__title">Transforma uma probabilidade de sobrevivência num plano que consigas executar.</h2>
-                <p class="simulator-cta__body">Milhares de futuros simulados mostram o quão frágil ou resistente é um plano de reforma. O diagnóstico financeiro ajuda-te a transformar esse número no próximo passo concreto.</p>
-            </div>
-            <div class="simulator-cta__actions">
-                <a class="simulator-cta__button" href="/pt/#assessment">Fazer o diagnóstico</a>
-                <a class="simulator-cta__button simulator-cta__button--secondary" href="/pt/#herramientas">Explorar as ferramentas</a>
-            </div>
-        </div>
-    </section>
 
   </main>
 
-  <!-- RODAPÉ -->
-  <footer class="hud-glass border-t border-slate-800 py-3 px-4 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <span class="font-hud text-cyan-400">SURVIVAL FLIGHT</span> &bull; <span>Simulador de Longevidade na Aposentadoria FIRE (Idade 50-100)</span>
+    <!-- The footer.
+
+         It was three different footers: a cream strip with a copyright line on
+         the hub and the Freedom Calendar, a `.simulator-footer` note on the
+         Market Time Machine and the Passive Income Engine, and a slate bar
+         reading "SURVIVAL FLIGHT" in cyan Orbitron on the Monte Carlo cockpit.
+         All three said the same thing, which is that this is educational and
+         not advice. One of them says it now.
+
+         It is also no longer in the flow. A simulator wants its sliders, its
+         chart and its figures on screen at once, and a disclaimer that is read
+         once was permanently holding the bottom of the document. It carries the
+         closing call to action as well now, which is the one thing on the page
+         that gains from arriving on a scroll rather than waiting at the end for
+         somebody to reach it. assets/js/
+         sim-footer.js docks it to the bottom of the viewport, shows it while
+         the visitor is scrolling, and hides it 2.5s after they stop - and adds
+         the class that does the docking, so without JavaScript this stays an
+         ordinary block at the end of the page. The spacer reserves its height
+         so nothing ends up underneath it; the script un-hides it and measures
+         it, for the same reason. -->
+    <div class="simulator-footer-spacer" aria-hidden="true" hidden></div>
+    <footer class="simulator-footer">
+      <div class="simulator-footer__inner">
+
+        <!-- CLOSING CALL TO ACTION. The journal's "Continue the Journey" offer,
+             which every article and all five simulators end on.
+
+             It used to be a forest slab at the very end of the document, which
+             is the right shape for an article and the wrong one for a tool: on
+             a simulator the end of the document is somewhere a visitor only
+             arrives by scrolling past the thing they came for, and most of them
+             never did. It rides in this bar now, so it arrives on the same
+             signal the bar does - a scroll, anywhere on the page - and leaves
+             with it.
+
+             Riding in a bar that appears over a tool in use sets the whole
+             budget, and the budget is height. The panel's paragraph is gone and
+             what is left is what a call to action actually is: the offer and
+             the two ways to take it. assets/css/simulator-cta.css has the
+             measurements. -->
+        <div class="simulator-cta">
+          <div class="simulator-cta__text">
+            <p class="simulator-cta__eyebrow">Continua a jornada</p>
+            <h2 id="closing-cta-title" class="simulator-cta__title">Transforma uma probabilidade de sobrevivência num plano que consigas executar.</h2>
+          </div>
+          <div class="simulator-cta__actions">
+            <a class="simulator-cta__button" href="/pt/#assessment">Fazer o diagnóstico</a>
+            <a class="simulator-cta__button simulator-cta__button--secondary" href="/pt/#herramientas">Explorar as ferramentas</a>
+          </div>
+        </div>
+
+        <p class="simulator-footer__note">&copy; 2026 Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal.</p>
       </div>
-      <div class="text-[11px] text-slate-500">
-        Simulador educativo para modelar desacumulação de riqueza e Risco da Sequência de Retornos.
-      </div>
-    </div>
-  </footer>
+    </footer>
 
   <!-- MODAL 1: CALCULADORA DE ORÇAMENTO ANUAL -->
-  <div id="modal-calc-spend" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-emerald-600/60 space-y-5 shadow-2xl relative">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-hud font-bold text-sm text-emerald-400 flex items-center gap-2">
+  <div id="modal-calc-spend" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/70 backdrop-blur-sm hidden">
+    <div class="sim-panel sim-enter max-w-lg w-full p-6 rounded-2xl border border-emerald-200 space-y-5 relative">
+      <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+        <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2">
           <i class="fa-solid fa-calculator text-emerald-400" aria-hidden="true"></i> CALCULADORA DE ORÇAMENTO ANUAL DE APOSENTADORIA
         </h3>
-        <button data-onclick="closeSpendCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Fechar a calculadora">
+        <button data-onclick="closeSpendCalculator()" class="text-espresso-800 hover:text-espresso-950 text-sm" aria-label="Fechar a calculadora">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
 
-      <p class="text-xs text-slate-300">
+      <p class="text-xs text-espresso-900">
         Estime seus gastos anuais de aposentadoria preenchendo os custos mensais projetados:
       </p>
 
       <div class="space-y-3 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label for="calc-spend-housing" class="text-slate-300">Moradia e Contas (R$/mês):</label>
-          <input type="number" id="calc-spend-housing" value="1500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-housing" class="text-espresso-900">Moradia e Contas (R$/mês):</label>
+          <input type="number" id="calc-spend-housing" value="1500" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-food" class="text-slate-300">Alimentação e Mercado (R$/mês):</label>
-          <input type="number" id="calc-spend-food" value="800" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-food" class="text-espresso-900">Alimentação e Mercado (R$/mês):</label>
+          <input type="number" id="calc-spend-food" value="800" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-health" class="text-slate-300">Saúde e Seguros (R$/mês):</label>
-          <input type="number" id="calc-spend-health" value="500" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-health" class="text-espresso-900">Saúde e Seguros (R$/mês):</label>
+          <input type="number" id="calc-spend-health" value="500" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-travel" class="text-slate-300">Viagens e Lazer (R$/mês):</label>
-          <input type="number" id="calc-spend-travel" value="400" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-travel" class="text-espresso-900">Viagens e Lazer (R$/mês):</label>
+          <input type="number" id="calc-spend-travel" value="400" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-spend-misc" class="text-slate-300">Diversos e Reserva (R$/mês):</label>
-          <input type="number" id="calc-spend-misc" value="550" data-oninput="computeCalculatedSpend()" class="w-28 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-emerald-300">
+          <label for="calc-spend-misc" class="text-espresso-900">Diversos e Reserva (R$/mês):</label>
+          <input type="number" id="calc-spend-misc" value="550" data-oninput="computeCalculatedSpend()" class="sim-field sim-field--inline sim-field--figure w-28 px-2.5 py-1">
         </div>
 
-        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-sm">
-          <span class="font-sans font-bold text-slate-200">Gasto Anual Calculado:</span>
-          <span id="calc-spend-total" class="font-hud font-bold text-emerald-400 text-base">R$45.000 / ano</span>
+        <div class="pt-3 border-t border-cream-300 flex justify-between items-center text-sm">
+          <span class="font-sans font-bold text-espresso-900">Gasto Anual Calculado:</span>
+          <span id="calc-spend-total" class="font-bold text-emerald-400 text-base">R$45.000 / ano</span>
         </div>
       </div>
 
       <div class="flex gap-3 pt-2">
-        <button data-onclick="closeSpendCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+        <button data-onclick="closeSpendCalculator()" class="sim-btn sim-btn--quiet flex-1 py-2">
           Cancelar
         </button>
-        <button data-onclick="applyCalculatedSpend()" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow glow-green">
+        <button data-onclick="applyCalculatedSpend()" class="sim-btn sim-btn--primary flex-1">
           Aplicar à Cabine
         </button>
       </div>
@@ -1051,29 +1011,29 @@
   </div>
 
   <!-- MODAL 2: CALCULADORA DE PATRIMÔNIO ALVO -->
-  <div id="modal-calc-nestegg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="hud-glass max-w-lg w-full p-6 rounded-2xl border border-cyan-600/60 space-y-5 shadow-2xl relative">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-hud font-bold text-sm text-cyan-400 flex items-center gap-2">
+  <div id="modal-calc-nestegg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/70 backdrop-blur-sm hidden">
+    <div class="sim-panel sim-enter max-w-lg w-full p-6 rounded-2xl border border-cyan-200 space-y-5 relative">
+      <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+        <h3 class="font-bold text-sm text-cyan-400 flex items-center gap-2">
           <i class="fa-solid fa-calculator text-cyan-400" aria-hidden="true"></i> CALCULADORA DE PATRIMÔNIO ALVO
         </h3>
-        <button data-onclick="closeNestEggCalculator()" class="text-slate-400 hover:text-white text-sm" aria-label="Fechar a calculadora">
+        <button data-onclick="closeNestEggCalculator()" class="text-espresso-800 hover:text-espresso-950 text-sm" aria-label="Fechar a calculadora">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </div>
 
-      <p class="text-xs text-slate-300">
+      <p class="text-xs text-espresso-900">
         Calcule o patrimônio acumulado necessário com base no seu gasto anual e na Taxa Segura de Retirada (SWR):
       </p>
 
       <div class="space-y-4 text-xs font-mono">
         <div class="flex justify-between items-center">
-          <label for="calc-egg-spend" class="text-slate-300">Gasto Anual de Vida (R$):</label>
-          <input type="number" id="calc-egg-spend" value="45000" step="1000" data-oninput="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+          <label for="calc-egg-spend" class="text-espresso-900">Gasto Anual de Vida (R$):</label>
+          <input type="number" id="calc-egg-spend" value="45000" step="1000" data-oninput="computeCalculatedEgg()" class="sim-field sim-field--inline sim-field--figure w-32 px-2.5 py-1">
         </div>
         <div class="flex justify-between items-center">
-          <label for="calc-egg-swr" class="text-slate-300">Taxa Segura de Retirada Alvo (%):</label>
-          <select id="calc-egg-swr" data-onchange="computeCalculatedEgg()" class="w-32 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-right text-cyan-300 font-bold">
+          <label for="calc-egg-swr" class="text-espresso-900">Taxa Segura de Retirada Alvo (%):</label>
+          <select id="calc-egg-swr" data-onchange="computeCalculatedEgg()" class="sim-field sim-field--inline sim-field--figure w-32 px-2.5 py-1">
             <option value="4.0" selected>4,0% (Padrão Trinity)</option>
             <option value="3.5">3,5% (FIRE Conservador)</option>
             <option value="3.0">3,0% (Ultra Seguro / Perpétuo)</option>
@@ -1081,22 +1041,22 @@
           </select>
         </div>
 
-        <div class="p-3 rounded-xl bg-cyan-950/60 border border-cyan-800 space-y-1">
+        <div class="p-3 rounded-xl bg-cyan-50 border border-cyan-200 space-y-1">
           <div class="text-[11px] text-cyan-300">Fórmula Multiplicadora FIRE:</div>
-          <div id="calc-egg-formula" class="text-xs text-slate-300">R$45.000 × 25 = R$1.125.000 (Regra dos 25x)</div>
+          <div id="calc-egg-formula" class="text-xs text-espresso-900">R$45.000 × 25 = R$1.125.000 (Regra dos 25x)</div>
         </div>
 
-        <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-sm">
-          <span class="font-sans font-bold text-slate-200">Patrimônio Inicial Requerido:</span>
-          <span id="calc-egg-total" class="font-hud font-bold text-cyan-400 text-base">R$1.125.000</span>
+        <div class="pt-2 border-t border-cream-300 flex justify-between items-center text-sm">
+          <span class="font-sans font-bold text-espresso-900">Patrimônio Inicial Requerido:</span>
+          <span id="calc-egg-total" class="font-bold text-cyan-400 text-base">R$1.125.000</span>
         </div>
       </div>
 
       <div class="flex gap-3 pt-2">
-        <button data-onclick="closeNestEggCalculator()" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+        <button data-onclick="closeNestEggCalculator()" class="sim-btn sim-btn--quiet flex-1 py-2">
           Cancelar
         </button>
-        <button data-onclick="applyCalculatedEgg()" class="flex-1 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow glow-cyan">
+        <button data-onclick="applyCalculatedEgg()" class="sim-btn sim-btn--primary flex-1">
           Aplicar à Cabine
         </button>
       </div>
@@ -1104,39 +1064,39 @@
   </div>
 
   <!-- MODAL DE RESUMO E RESULTADO DO VOO -->
-  <div id="modal-flight-debrief" role="dialog" aria-modal="true" aria-labelledby="debrief-title" aria-describedby="debrief-msg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="hud-glass max-w-md w-full p-6 rounded-2xl border border-slate-700 space-y-4 shadow-2xl text-center">
+  <div id="modal-flight-debrief" role="dialog" aria-modal="true" aria-labelledby="debrief-title" aria-describedby="debrief-msg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/70 backdrop-blur-sm hidden">
+    <div class="sim-panel sim-enter max-w-md w-full p-6 rounded-2xl border border-cream-400 space-y-4 text-center">
       <div id="debrief-icon-box" class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl">
         <i id="debrief-icon" class="fa-solid fa-trophy" aria-hidden="true"></i>
       </div>
-      <h3 id="debrief-title" class="text-lg font-hud font-bold text-white">MISSÃO CUMPRIDA!</h3>
-      <p id="debrief-msg" class="text-xs text-slate-300 leading-relaxed">
+      <h3 id="debrief-title" class="text-lg font-bold text-espresso-900">MISSÃO CUMPRIDA!</h3>
+      <p id="debrief-msg" class="text-xs text-espresso-900 leading-relaxed">
         Você chegou com sucesso aos 100 anos com R$1.240.000 restantes no tanque do seu portfólio!
       </p>
 
-      <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-left space-y-1.5 font-mono text-xs">
+      <div class="sim-inset p-3 text-left space-y-1.5 font-mono text-xs">
         <div class="flex justify-between">
-          <span class="text-slate-400">Piloto:</span>
+          <span class="text-espresso-800">Piloto:</span>
           <span id="debrief-pilot-name" class="text-amber-300 font-bold">Capitão FIRE</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Categoria do Cenário:</span>
+          <span class="text-espresso-800">Categoria do Cenário:</span>
           <span id="debrief-scenario-cat" class="text-cyan-300 font-bold">SWR Alto Risco</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Patrimônio Final:</span>
+          <span class="text-espresso-800">Patrimônio Final:</span>
           <span id="debrief-final-bal" class="text-emerald-400 font-bold">R$1.240.000</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Anos Sobrevividos:</span>
+          <span class="text-espresso-800">Anos Sobrevividos:</span>
           <span id="debrief-years" class="text-cyan-300 font-bold">50 Anos</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Anos na Zona de Colapso:</span>
+          <span class="text-espresso-800">Anos na Zona de Colapso:</span>
           <span id="debrief-crashline-yrs" class="text-red-400 font-bold">0 Anos</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Táticas Utilizadas:</span>
+          <span class="text-espresso-800">Táticas Utilizadas:</span>
           <span id="debrief-tactic-yrs" class="text-amber-300 font-bold">0 Anos-Tática (-0 pts)</span>
         </div>
       </div>
@@ -1146,13 +1106,13 @@
            the two that were already here and wider than either, because the
            reading of the flight is the thing a pilot who has just crashed is
            most likely to want next. -->
-      <button data-onclick="openSimCta()" class="w-full mb-2 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">Ver o que este voo significa</button>
+      <button data-onclick="openSimCta()" class="sim-btn sim-btn--primary sim-btn--block sim-btn--lg mb-3 uppercase">Ver o que este voo significa</button>
 
       <div class="flex gap-2">
-        <button data-onclick="closeDebriefAndShowLeaderboard()" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-hud font-bold text-xs uppercase shadow">
+        <button data-onclick="closeDebriefAndShowLeaderboard()" class="sim-btn sim-btn--accent flex-1 uppercase">
           VER CLASSIFICAÇÃO
         </button>
-        <button data-onclick="closeDebriefModal()" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-hud font-bold text-xs uppercase shadow glow-cyan">
+        <button data-onclick="closeDebriefModal()" class="sim-btn sim-btn--secondary flex-1 uppercase">
           TENTAR NOVAMENTE
         </button>
       </div>
@@ -1171,7 +1131,9 @@
   <script src="/assets/js/sim-cta.pt.js?v=source" defer></script>
   <script src="/assets/js/sim-cta.js?v=source" defer></script>
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
+    <script src="/assets/js/sim-footer.js?v=source" defer></script>
     <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
+    <script src="/assets/js/sim-chart-theme.js?v=source" defer></script>
     <script src="/assets/js/sim-monte-carlo-fire.pt.js?v=source" defer></script>
 </body>
 </html>

@@ -309,11 +309,6 @@
     "es": "Gráfico: trayectoria del patrimonio en un horizonte de treinta años, comparando la ruta actual con la ajustada. Los valores finales aparecen como texto en las tarjetas de resumen.",
     "pt": "Gráfico: trajetória do património num horizonte de trinta anos, comparando o percurso atual com o ajustado. Os valores finais aparecem como texto nos cartões de resumo."
   },
-  "bgCream100": {
-    "en": " Compounding Journey. For educational purposes only. Not formal financial advice.",
-    "es": " Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
-    "pt": " Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
-  },
   "langSwitchAriaLabel": {
     "en": "Language",
     "es": "Idioma",
@@ -689,11 +684,6 @@
     "es": "¿Listo para Construir tu Mapa Personalizado hacia la Libertad?",
     "pt": "Pronto para Construir o teu Mapa Personalizado para a Liberdade?"
   },
-  "ctaBody": {
-    "en": "Understand where you stand today, eliminate silent wealth leaks, and take your next financial steps with total clarity and confidence.",
-    "es": "Comprende dónde estás parado hoy, elimina las fugas silenciosas de riqueza y da tus próximos pasos financieros con total claridad y confianza.",
-    "pt": "Entende onde estás hoje, elimina as fugas silenciosas de riqueza e dá os teus próximos passos financeiros com total clareza e confiança."
-  },
   "explTitle": {
     "en": "What the Freedom Calendar measures",
     "es": "Qué mide el Calendario de la Libertad",
@@ -853,5 +843,15 @@
     "en": "Breadcrumb",
     "es": "Ruta de navegación",
     "pt": "Trilho de navegação"
+  },
+  "simIntroEyebrow": {
+    "en": "Free interactive tool",
+    "es": "Herramienta interactiva gratuita",
+    "pt": "Ferramenta interativa gratuita"
+  },
+  "simulatorFooterNote": {
+    "en": "Compounding Journey. For educational purposes only. Not formal financial advice.",
+    "es": "Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
+    "pt": "Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
   }
 }

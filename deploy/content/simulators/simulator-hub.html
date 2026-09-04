@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{lang.code}}">
+<html lang="{{lang.code}}" class="h-full bg-cream-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,26 +69,17 @@
     <link rel="stylesheet" href="/assets/css/sim-simulator-hub.css?v=source">
     <link rel="stylesheet" href="/assets/css/icons.css?v=source">
     
-    <style>
-        body {
-            background-color: #f8f4ed;
-            color: #2c1d11;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .custom-shadow {
-            box-shadow: 0 10px 30px -5px rgba(44, 29, 17, 0.08);
-        }
-    </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
+    <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
 
     <a class="skip-link" href="#main">{{skipLink}}</a>
 
-{{minHScreen}}    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+{{minHScreen}}    <header class="site-header">
         <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="{{lang.home}}#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="{{headerBrandAriaLabel}}">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
@@ -147,50 +138,72 @@
         </div>
     </header>
 
-{{minHScreen2}}    <section class="bg-espresso-950 text-cream-50 py-3 px-4 shadow-md sticky top-20 z-40">
-        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 text-center">
-            
-{{maxW6xl}}            <div class="bg-espresso-900/80 rounded-xl p-2 border border-espresso-800 flex flex-col justify-center">
-                <span class="text-[10px] sm:text-xs text-cream-300 uppercase tracking-wider font-semibold">{{text10px}}</span>
-                <span id="netWorthDisplay" class="text-base sm:text-xl font-extrabold text-emerald-400 font-mono mt-0.5">{{networthdisplay}}</span>
+    <!-- Page intro. The hub's heading used to be the first block inside <main>,
+         set on the page's own cream, while the four standalone tools opened on a
+         cream strip above <main> and the Monte Carlo cockpit on a near-black
+         one. It is the same band on all five now: the forest gradient from the
+         home page's simulator section (.simulator-stage in home.css), with that
+         section's gold chip carrying this tool's own icon from its card there.
+         A visitor clicking a card on the home page now lands on the panel they
+         clicked, rather than on a fourth shade of cream. -->
+    <section class="sim-intro">
+        <div class="sim-intro__inner">
+            <div class="sim-intro__icon" aria-hidden="true"><i class="fa-solid fa-compass"></i></div>
+            <div>
+                <p class="sim-intro__eyebrow">{{textXs}}</p>
+                <h1 class="sim-intro__title">{{text2xl}}</h1>
+                <p class="sim-intro__lede">{{mt3}}— {{mt32}}— {{mt33}}a {{mt34}}</p>
+                <!-- The hub described itself but never linked down to the four
+                     standalone simulators, leaving them orphaned in the crawl. -->
+                <nav aria-label="{{mt4AriaLabel}}" class="sim-intro__nav">
+                    <span class="sim-intro__navlabel">{{textEspresso80060}}</span>
+                    <a href="{{lang.dir}}simulators/freedom-calendar.html" class="sim-intro__link">{{px25}}</a>
+                    <a href="{{lang.dir}}simulators/market-time-machine.html" class="sim-intro__link">{{px252}}</a>
+                    <a href="{{lang.dir}}simulators/passive-income-engine.html" class="sim-intro__link">{{px253}}</a>
+                    <a href="{{lang.dir}}simulators/monte-carlo-fire.html" class="sim-intro__link">Monte Carlo FIRE</a>
+                </nav>
             </div>
-
-{{maxW6xl2}}            <div class="bg-espresso-900/80 rounded-xl p-2 border border-espresso-800 flex flex-col justify-center">
-                <span class="text-[10px] sm:text-xs text-cream-300 uppercase tracking-wider font-semibold">{{text10px2}}</span>
-                <span id="cashFlowDisplay" class="text-base sm:text-xl font-extrabold text-gold-500 font-mono mt-0.5">{{cashflowdisplay}}</span>
-            </div>
-
-{{maxW6xl3}}            <div class="bg-espresso-900/80 rounded-xl p-2 border border-espresso-800 flex flex-col justify-center">
-                <span class="text-[10px] sm:text-xs text-cream-300 uppercase tracking-wider font-semibold">{{text10px3}}</span>
-                <span id="powerDisplay" class="text-base sm:text-xl font-extrabold text-sky-400 font-mono mt-0.5">50%</span>
-            </div>
-
-{{maxW6xl4}}            <div class="bg-espresso-900/80 rounded-xl p-2 border border-espresso-800 flex flex-col justify-center">
-                <span class="text-[10px] sm:text-xs text-cream-300 uppercase tracking-wider font-semibold">{{text10px4}}</span>
-                <span id="literacyDisplay" class="text-base sm:text-xl font-extrabold text-amber-300 font-mono mt-0.5">50%</span>
-            </div>
-
         </div>
     </section>
 
-{{minHScreen3}}    <main id="main" tabindex="-1" class="max-w-4xl mx-auto w-full px-4 py-6 sm:py-8 flex-1">
+{{minHScreen2}}    <!-- The metric tiles, and the one place the fifteen published pages did
+         differ visually from each other rather than from the rest of the site.
+         Every page comes from this template through a plain substitution pass,
+         so the markup and the compiled CSS are identical in all three
+         languages - but the words are not the same length. "Net Worth" set on
+         one line and "Patrimônio Líquido" on two, so this row was one height in
+         English and another in Portuguese, and the tiles inside it did not
+         agree with each other either.
 
-        <!-- PAGE HEADING -->
-        <div class="mb-8">
-            <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-forest-700 mb-2">{{textXs}}</p>
-            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-espresso-950 leading-tight">{{text2xl}}</h1>
-            <p class="mt-3 text-sm sm:text-base text-espresso-800/85 leading-relaxed max-w-2xl">{{mt3}}— {{mt32}}— {{mt33}}a {{mt34}}</p>
-            <!-- The hub described itself but never linked down to the four
-                 standalone simulators, leaving them orphaned in the crawl. -->
-            <nav aria-label="{{mt4AriaLabel}}" class="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
-                <span class="text-espresso-800/60">{{textEspresso80060}}</span>
-                <a href="{{lang.dir}}simulators/freedom-calendar.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px25}}</a>
-                <a href="{{lang.dir}}simulators/market-time-machine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px252}}</a>
-                <a href="{{lang.dir}}simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px253}}</a>
-                <a href="{{lang.dir}}simulators/monte-carlo-fire.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">Monte Carlo FIRE</a>
-            </nav>
+         .sim-stat reserves two lines for every label, so the row is the same
+         height in all three languages whatever the label says - and stays that
+         way for a translation nobody has written yet. -->
+    <section class="sim-statbar">
+        <div class="sim-statbar__inner">
+{{maxW6xl}}            <div class="sim-stat">
+                <span class="sim-stat__label">{{text10px}}</span>
+                <span id="netWorthDisplay" class="sim-stat__value sim-stat__value--series-1">{{networthdisplay}}</span>
+            </div>
+
+{{maxW6xl2}}            <div class="sim-stat">
+                <span class="sim-stat__label">{{text10px2}}</span>
+                <span id="cashFlowDisplay" class="sim-stat__value sim-stat__value--series-2">{{cashflowdisplay}}</span>
+            </div>
+
+{{maxW6xl3}}            <div class="sim-stat">
+                <span class="sim-stat__label">{{text10px3}}</span>
+                <span id="powerDisplay" class="sim-stat__value sim-stat__value--series-3">50%</span>
+            </div>
+
+{{maxW6xl4}}            <div class="sim-stat">
+                <span class="sim-stat__label">{{text10px4}}</span>
+                <span id="literacyDisplay" class="sim-stat__value sim-stat__value--series-4">50%</span>
+            </div>
         </div>
-        
+    </section>
+
+{{minHScreen3}}    <main id="main" tabindex="-1" class="sim-main">
+
 {{main}}        <div class="mb-6">
             <div class="flex items-center justify-between mb-2">
                 <span id="scenarioProgressText" class="text-xs font-bold uppercase tracking-wider text-forest-800">{{scenarioprogresstext}}</span>
@@ -199,7 +212,7 @@
             <div id="stepperDotsContainer" class="flex gap-1.5 w-full"></div>
         </div>
 
-{{main2}}        <div id="scenarioCard" class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow transition-all duration-300">
+{{main2}}        <div id="scenarioCard" class="sim-panel p-6 sm:p-8 transition-all duration-300">
             <h2 id="scenarioTitle" class="text-xl sm:text-2xl font-bold text-espresso-900 mb-3 font-serif">{{scenariotitle}}</h2>
             <p id="scenarioDescription" class="text-base sm:text-lg text-espresso-800/90 mb-6 leading-relaxed"></p>
 
@@ -207,7 +220,7 @@
 {{optionscontainer}}            </div>
         </div>
 
-{{main3}}        <div id="debriefCard" class="hidden bg-cream-50 rounded-2xl p-6 sm:p-8 border-2 border-forest-600 custom-shadow animate-fade-in">
+{{main3}}        <div id="debriefCard" class="sim-panel hidden p-6 sm:p-8 border-2 border-forest-600 sim-enter">
             <div class="flex items-center gap-2 text-forest-800 font-bold text-lg mb-2">
                 <i class="fa-solid fa-compass text-gold-600" aria-hidden="true"></i>
                 <span>{{flex}}</span>
@@ -224,38 +237,38 @@
         </div>
 
 {{main4}}        <div id="resultsScreen" class="hidden space-y-8">
-            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow text-center">
+            <div class="sim-panel p-6 sm:p-8 text-center">
                 <span class="text-xs font-bold uppercase tracking-widest text-gold-600">{{textXs2}}</span>
                 <h2 id="archetypeTitle" class="text-2xl sm:text-4xl font-extrabold text-forest-800 font-serif my-2">{{archetypetitle}}</h2>
                 <p id="archetypeDesc" class="text-espresso-800 text-base sm:text-lg max-w-2xl mx-auto mb-6 leading-relaxed"></p>
 
 {{bgCream50}}                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto my-6 text-left">
-                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300">
+                    <div class="sim-inset p-4">
                         <span class="text-xs text-espresso-800/70 font-medium block">{{textXs3}}</span>
                         <span id="finalNetWorth" class="text-xl font-bold text-forest-800 font-mono">--</span>
                     </div>
-                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300">
+                    <div class="sim-inset p-4">
                         <span class="text-xs text-espresso-800/70 font-medium block">{{textXs4}}</span>
                         <span id="finalCashFlow" class="text-xl font-bold text-gold-600 font-mono">--</span>
                     </div>
-                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300">
+                    <div class="sim-inset p-4">
                         <span class="text-xs text-espresso-800/70 font-medium block">{{textXs5}}</span>
                         <span id="finalPower" class="text-xl font-bold text-sky-700 font-mono">--</span>
                     </div>
-                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300">
+                    <div class="sim-inset p-4">
                         <span class="text-xs text-espresso-800/70 font-medium block">{{text10px4}}</span>
                         <span id="finalLiteracy" class="text-xl font-bold text-amber-600 font-mono">--</span>
                     </div>
                 </div>
             </div>
 
-{{resultsscreen}}            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
+{{resultsscreen}}            <div class="sim-panel p-6 sm:p-8">
                 <h3 class="text-xl font-bold text-espresso-900 mb-4 font-serif flex items-center gap-2">
                     <i class="fa-solid fa-chart-pie text-forest-800" aria-hidden="true"></i>{{textXl}}                </h3>
                 <div id="categoryBreakdown" class="space-y-4"></div>
             </div>
 
-{{resultsscreen2}}            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
+{{resultsscreen2}}            <div class="sim-panel p-6 sm:p-8">
                 <h3 class="text-xl font-bold text-espresso-900 mb-4 font-serif">{{textXl2}}</h3>
                 <div class="h-64 sm:h-80 w-full">
                     <canvas id="trajectoryChart" role="img" aria-label="{{trajectorychartAriaLabel}}"></canvas>
@@ -299,13 +312,13 @@
                 </div>
             </section>
 
-{{resultsscreen3}}            <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 custom-shadow">
+{{resultsscreen3}}            <div class="sim-panel p-6 sm:p-8">
                 <h3 class="text-xl font-bold text-espresso-900 mb-2 font-serif">{{textXl3}}</h3>
                 <p class="text-sm text-espresso-800/80 mb-4">{{textSm}}</p>
                 
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <input type="text" id="playerNameInput" placeholder="{{playernameinputPlaceholder}}" aria-label="{{playernameinputPlaceholder}}" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
-                    <button id="saveScoreButton" data-onclick="saveScoreToLeaderboard()" class="px-6 py-2.5 bg-forest-800 text-white font-bold rounded-xl hover:bg-forest-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                    <button id="saveScoreButton" data-onclick="saveScoreToLeaderboard()" class="sim-btn sim-btn--primary sim-btn--lg">
 {{px6}}                    </button>
                 </div>
 
@@ -379,29 +392,63 @@
             </div>
         </section>
 
-        <!-- CLOSING CALL TO ACTION. The same panel the journal articles and the
-             other four simulators end on, in the same place they all put it: the
-             end of the page. It sat inside #resultsScreen before, which is
-             hidden until a run is finished, so this was the one simulator where
-             the panel could not be seen. Styled by assets/css/simulator-cta.css. -->
-        <section class="simulator-cta" aria-labelledby="closing-cta-title">
-            <div class="simulator-cta__panel">
-                <div>
-                    <p class="simulator-cta__eyebrow">{{ctaEyebrow}}</p>
-                    <h2 id="closing-cta-title" class="simulator-cta__title">{{ctaTitle}}</h2>
-                    <p class="simulator-cta__body">{{ctaBody}}</p>
-                </div>
-                <div class="simulator-cta__actions">
-                    <a class="simulator-cta__button" href="{{lang.home}}#assessment">{{ctaAssessment}}</a>
-                    <a class="simulator-cta__button simulator-cta__button--secondary" href="{{lang.home}}#herramientas">{{ctaTools}}</a>
-                </div>
-            </div>
-        </section>
 
     </main>
 
-{{minHScreen4}}    <footer class="bg-cream-100 border-t border-cream-300 py-6 text-center text-xs text-espresso-800/70 mt-12">
-        <p>© <script>document.write(new Date().getFullYear())</script>{{bgCream100}}</p>
+    <!-- The footer.
+
+         It was three different footers: a cream strip with a copyright line on
+         the hub and the Freedom Calendar, a `.simulator-footer` note on the
+         Market Time Machine and the Passive Income Engine, and a slate bar
+         reading "SURVIVAL FLIGHT" in cyan Orbitron on the Monte Carlo cockpit.
+         All three said the same thing, which is that this is educational and
+         not advice. One of them says it now.
+
+         It is also no longer in the flow. A simulator wants its sliders, its
+         chart and its figures on screen at once, and a disclaimer that is read
+         once was permanently holding the bottom of the document. It carries the
+         closing call to action as well now, which is the one thing on the page
+         that gains from arriving on a scroll rather than waiting at the end for
+         somebody to reach it. assets/js/
+         sim-footer.js docks it to the bottom of the viewport, shows it while
+         the visitor is scrolling, and hides it 2.5s after they stop - and adds
+         the class that does the docking, so without JavaScript this stays an
+         ordinary block at the end of the page. The spacer reserves its height
+         so nothing ends up underneath it; the script un-hides it and measures
+         it, for the same reason. -->
+    <div class="simulator-footer-spacer" aria-hidden="true" hidden></div>
+    <footer class="simulator-footer">
+      <div class="simulator-footer__inner">
+
+        <!-- CLOSING CALL TO ACTION. The journal's "Continue the Journey" offer,
+             which every article and all five simulators end on.
+
+             It used to be a forest slab at the very end of the document, which
+             is the right shape for an article and the wrong one for a tool: on
+             a simulator the end of the document is somewhere a visitor only
+             arrives by scrolling past the thing they came for, and most of them
+             never did. It rides in this bar now, so it arrives on the same
+             signal the bar does - a scroll, anywhere on the page - and leaves
+             with it.
+
+             Riding in a bar that appears over a tool in use sets the whole
+             budget, and the budget is height. The panel's paragraph is gone and
+             what is left is what a call to action actually is: the offer and
+             the two ways to take it. assets/css/simulator-cta.css has the
+             measurements. -->
+        <div class="simulator-cta">
+          <div class="simulator-cta__text">
+            <p class="simulator-cta__eyebrow">{{ctaEyebrow}}</p>
+            <h2 id="closing-cta-title" class="simulator-cta__title">{{ctaTitle}}</h2>
+          </div>
+          <div class="simulator-cta__actions">
+            <a class="simulator-cta__button" href="{{lang.home}}#assessment">{{ctaAssessment}}</a>
+            <a class="simulator-cta__button simulator-cta__button--secondary" href="{{lang.home}}#herramientas">{{ctaTools}}</a>
+          </div>
+        </div>
+
+        <p class="simulator-footer__note">&copy; <script>document.write(new Date().getFullYear())</script> {{simulatorFooterNote}}</p>
+      </div>
     </footer>
 
     <!-- The result-aware call to action: the prose first, then the machinery that
@@ -952,23 +999,25 @@
             }
 
 {{minHScreen160}}
+            // One series, so it is the first one - the same forest green the
+            // Freedom Calendar and the Passive Income Engine open with. The
+            // rest of the configuration is in sim-chart-theme.js.
+            const theme = window.SimChartTheme;
+
             new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
 {{minHScreen161}}                        data: trajectoryData,
-                        borderColor: '#2e6f40',
-                        backgroundColor: 'rgba(46, 111, 64, 0.1)',
+                        borderColor: theme.line(0),
+                        backgroundColor: theme.fill(0),
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.3,
-                        pointBackgroundColor: '#c3922e'
+                        pointBackgroundColor: theme.line(0)
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false }
                     },

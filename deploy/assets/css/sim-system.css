@@ -1,0 +1,1471 @@
+/* ==========================================================================
+   sim-system.css — the one design system the five simulators share.
+
+   Why this file exists.
+
+   The five tools were authored one at a time, each as a standalone page with
+   its own Tailwind theme, and each was then precompiled into its own bundle:
+   sim-simulator-hub.css, sim-freedom-calendar.css, sim-market-passive.css and
+   sim-monte-carlo-fire.css. Nothing was ever shared between them except the
+   header, the closing call to action and the explainer, so nothing kept them
+   in agreement. They drifted, and not subtly:
+
+   - Five typefaces. Inter + Playfair Display on the Freedom Calendar, Inter +
+     Merriweather on the Market Time Machine and the Passive Income Engine,
+     Inter + Orbitron on the Monte Carlo cockpit, Plus Jakarta Sans on the hub.
+     The site itself uses one: Plus Jakarta Sans.
+   - Three greens and three golds. The brand is #1e4620 / #c59b27 (see
+     tailwind.config.js and header.css); the simulators had settled on
+     #134e2a / #d4a338, and the journal on #173d2a / #c89a32.
+   - The same token with two values. `cream-100` compiled to rgb(248 244 237)
+     in two bundles and rgb(247 244 238) in the other two; `espresso-800` to
+     rgb(58 39 25) and rgb(66 44 29). Neither pair was a decision.
+   - Four page backgrounds, three elevation recipes, four slider thumbs, two
+     scrollbars, five button paddings.
+
+   What this file does about it.
+
+   It is loaded last on all five simulators, so it is the last word on any
+   declaration it repeats. Three jobs, in order:
+
+   1. Tokens. One palette, one radius scale, one elevation, expressed as custom
+      properties so a value exists in exactly one place.
+
+   2. A canonical utility layer. The four bundles already ship `.bg-cream-100`,
+      `.text-espresso-800`, `.bg-forest-800` and the rest - they just ship them
+      with different values, and the Monte Carlo bundle does not ship the brand
+      families at all. Redefining them here does both jobs at once: it collapses
+      the drift, and it is what lets the Monte Carlo markup use the same class
+      names as the other four. The utilities are single-class selectors like the
+      ones they replace, so ordering rather than specificity decides, which is
+      why this stylesheet is linked after the bundle on every page.
+
+   3. Components. `.sim-panel`, `.sim-btn`, `.sim-stat`, `.sim-intro`, the
+      range input, the scrollbar and the auto-hiding footer - the parts that
+      were re-invented per tool and now exist once.
+
+   Regenerating a bundle does not invalidate any of this: this file is
+   hand-authored and is not Tailwind output.
+   ========================================================================== */
+
+:root {
+    /* ----------------------------------------------------------------------
+       Surfaces. Anchored on the brand cream: `cream-100` is #faf6ed, the
+       `creamsoft` of tailwind.config.js and the background of the home page,
+       and `cream-300` is #efeae0, the `creamborder` every home-page card is
+       drawn with and the value header.css already uses for the header's own
+       bottom border. A visitor moving from the site into a tool now crosses
+       no colour boundary at all.
+       ---------------------------------------------------------------------- */
+    --sim-cream-50: #fffdf8;
+    --sim-cream-100: #faf6ed;
+    --sim-cream-200: #f4efe4;
+    --sim-cream-300: #efeae0;
+    --sim-cream-400: #ded7c9;
+
+    /* Ink. `espresso-900` is #2a241e, the brand `darkbark`. */
+    --sim-espresso-950: #1f1913;
+    --sim-espresso-900: #2a241e;
+    --sim-espresso-800: #574838;
+
+    /* Green. `forest-800` is #1e4620, the brand `forestgreen`; `forest-900`
+       is the darkest stop of the home page's simulator panel gradient, which
+       the intro band below reuses. */
+    --sim-forest-700: #28563c;
+    --sim-forest-800: #1e4620;
+    --sim-forest-900: #173719;
+
+    /* Gold. `gold-500` is #c59b27, the brand `warmgold`. It is a fill, a
+       border and an icon colour only: at 2.4:1 on cream it is not a text
+       colour, which is the distinction a11y.css already draws with
+       `--gold-text`. `gold-700` is that value, and is the only gold that
+       carries text on a light surface. `gold-400` is the lighter cut used for
+       text on the forest surfaces. */
+    --sim-gold-400: #e0b95c;
+    --sim-gold-500: #c59b27;
+    --sim-gold-600: #b08a22;
+    --sim-gold-700: #7a5f12;
+
+    /* ----------------------------------------------------------------------
+       Semantic roles. One value each, rather than the emerald/teal/cyan that
+       all three meant "good" and the rose/red that both meant "bad".
+
+       Every one of these clears 4.5:1 on all four cream surfaces - the tightest
+       is `caution` at 4.94:1 on cream-300 - so any of them may carry text
+       anywhere in a tool. The `-tint` values are the fills that pair with them.
+       ---------------------------------------------------------------------- */
+    --sim-positive: #146b44;
+    --sim-positive-tint: #e6f2ea;
+    --sim-caution: #8a5a0b;
+    --sim-caution-tint: #fbf1dd;
+    --sim-negative: #a6402a;
+    --sim-negative-tint: #f8eae6;
+    --sim-info: #2a5b8c;
+    --sim-info-tint: #e8eef5;
+
+    /* The 1px ring that goes round a tinted panel. The role colour itself at
+       full strength is a hard outline on a pale fill - it reads as a selected
+       state rather than as an edge - so the lighter border cuts resolve to the
+       role laid over cream instead, which is the same relationship
+       `.sim-series-*` uses for its chips. */
+    --sim-positive-line: rgba(20, 107, 68, 0.32);
+    --sim-caution-line: rgba(138, 90, 11, 0.32);
+    --sim-negative-line: rgba(166, 64, 42, 0.32);
+    --sim-info-line: rgba(42, 91, 140, 0.32);
+    --sim-gold-line: rgba(197, 155, 39, 0.4);
+
+    /* ----------------------------------------------------------------------
+       Geometry. The home page draws its cards at 1rem/1.5rem and its buttons
+       at 0.75rem; the simulators had settled on a looser mix of Tailwind's
+       lg/xl/2xl. These are the home page's values.
+       ---------------------------------------------------------------------- */
+    --sim-radius-sm: 0.5rem;
+    --sim-radius: 0.75rem;
+    --sim-radius-lg: 1rem;
+    --sim-radius-xl: 1.5rem;
+
+    /* One elevation, replacing the three `.custom-shadow` recipes the pages
+       each declared inline. Tinted with the ink colour rather than black, the
+       way the home page's card shadows are. */
+    --sim-shadow: 0 10px 30px -8px rgba(42, 36, 30, 0.1), 0 2px 6px -2px rgba(42, 36, 30, 0.06);
+    --sim-shadow-lg: 0 22px 55px -12px rgba(42, 36, 30, 0.18);
+
+    /* How long the footer stays after the last scroll. 2.5s: under about 1.5s
+       the bar reads as a flicker and a reader cannot finish the sentence in
+       it, and past about 4s the screen space it is borrowing stops coming
+       back quickly enough to be worth borrowing. Declared here so the value
+       is legible next to the rule it drives; sim-footer.js reads it. */
+    --sim-footer-linger: 2500ms;
+    --sim-footer-offset: 0px;
+}
+
+/* --------------------------------------------------------------------------
+   1. Page surface and typography
+
+   Each template used to carry its own `body { background-color; font-family }`
+   in an inline <style>, which is how four tools ended up on four creams. One
+   rule now, and the font is the site's.
+   -------------------------------------------------------------------------- */
+
+body {
+    background-color: var(--sim-cream-100);
+    color: var(--sim-espresso-900);
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* The bundles compile `.font-sans` and `.font-serif` from their own themes -
+   Inter and Playfair Display, Inter and Merriweather, or the Tailwind default.
+   The site has one typeface and the home page uses no serif at all, so both
+   utilities resolve to it and every `font-serif` heading already in the markup
+   becomes an extrabold sans heading without the markup changing.
+
+   `.font-hud` was the Monte Carlo cockpit's Orbitron, declared in that page's
+   inline <style>; it is kept as an alias so nothing depends on the removal
+   order, and it resolves here like the rest. */
+.font-sans,
+.font-serif,
+.font-hud {
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Figures in a simulator are read in columns and change while being read, so
+   they are set on a fixed advance. This replaces the `font-mono` the five
+   pages used for the same purpose: a monospace face in the middle of a
+   Plus Jakarta Sans layout was the second typeface on every tool, and all it
+   was ever wanted for was the digits lining up. */
+.font-mono,
+.sim-figure {
+    font-family: inherit;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+    letter-spacing: -0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   2. Canonical utility layer
+
+   Same class names the bundles compile, one set of values. Written out rather
+   than generated because there is no build step that could generate them: the
+   bundles are Tailwind output and this file is what corrects them.
+   -------------------------------------------------------------------------- */
+
+/* Surfaces */
+.bg-cream-50 { background-color: var(--sim-cream-50); }
+.bg-cream-100 { background-color: var(--sim-cream-100); }
+.bg-cream-200 { background-color: var(--sim-cream-200); }
+.bg-cream-300 { background-color: var(--sim-cream-300); }
+.bg-cream-400 { background-color: var(--sim-cream-400); }
+.hover\:bg-cream-100:hover { background-color: var(--sim-cream-100); }
+.hover\:bg-cream-200:hover { background-color: var(--sim-cream-200); }
+.hover\:bg-cream-300:hover { background-color: var(--sim-cream-300); }
+
+.bg-espresso-800 { background-color: var(--sim-espresso-800); }
+.bg-espresso-900 { background-color: var(--sim-espresso-900); }
+.bg-espresso-950 { background-color: var(--sim-espresso-950); }
+.bg-espresso-950\/70 { background-color: rgba(31, 25, 19, 0.7); }
+
+/* The overlay scrim, shared by all eight modals. The cockpit's bundle compiled
+   `backdrop-blur-md` and not `-sm`, because it was the one tool blurring
+   harder; declared here so the shared value does not depend on which bundle a
+   page happens to load. */
+.backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.bg-forest-700 { background-color: var(--sim-forest-700); }
+.bg-forest-800 { background-color: var(--sim-forest-800); }
+.bg-forest-900 { background-color: var(--sim-forest-900); }
+.hover\:bg-forest-700:hover { background-color: var(--sim-forest-700); }
+.hover\:bg-forest-800:hover { background-color: var(--sim-forest-800); }
+.hover\:bg-forest-900:hover { background-color: var(--sim-forest-900); }
+
+.bg-gold-500 { background-color: var(--sim-gold-500); }
+.bg-gold-600 { background-color: var(--sim-gold-600); }
+.hover\:bg-gold-500:hover { background-color: var(--sim-gold-500); }
+.hover\:bg-gold-600:hover { background-color: var(--sim-gold-600); }
+.hover\:bg-gold-700:hover { background-color: var(--sim-gold-700); }
+
+/* Ink. The fractional variants are the ones the markup already asks for; they
+   are written as flat colours rather than through Tailwind's opacity plumbing
+   so they do not depend on a --tw-* custom property this file does not own. */
+.text-espresso-800 { color: var(--sim-espresso-800); }
+.text-espresso-900 { color: var(--sim-espresso-900); }
+.text-espresso-950 { color: var(--sim-espresso-950); }
+.text-espresso-800\/70 { color: rgba(87, 72, 56, 0.82); }
+.text-espresso-800\/75 { color: rgba(87, 72, 56, 0.85); }
+.text-espresso-800\/80 { color: rgba(87, 72, 56, 0.88); }
+.text-espresso-800\/85 { color: rgba(87, 72, 56, 0.9); }
+.text-espresso-800\/90 { color: rgba(87, 72, 56, 0.94); }
+.text-espresso-900\/70 { color: rgba(42, 36, 30, 0.8); }
+.text-espresso-900\/80 { color: rgba(42, 36, 30, 0.86); }
+
+.text-cream-50 { color: var(--sim-cream-50); }
+.text-cream-100 { color: var(--sim-cream-100); }
+.text-cream-200 { color: var(--sim-cream-200); }
+.text-cream-300 { color: var(--sim-cream-300); }
+
+.text-forest-700 { color: var(--sim-forest-700); }
+.text-forest-800 { color: var(--sim-forest-800); }
+.text-forest-900 { color: var(--sim-forest-900); }
+.hover\:text-forest-800:hover { color: var(--sim-forest-800); }
+.hover\:text-espresso-900:hover { color: var(--sim-espresso-900); }
+.hover\:text-espresso-950:hover { color: var(--sim-espresso-950); }
+
+/* Gold text is `gold-700` at every shade the markup asks for, because that is
+   the only cut of the brand gold that is legible on cream. `gold-400` keeps
+   its lighter value: it is only ever used on the forest surfaces. */
+.text-gold-500,
+.text-gold-600,
+.text-gold-700 { color: var(--sim-gold-700); }
+.text-gold-400 { color: var(--sim-gold-400); }
+
+/* Borders */
+.border-cream-200 { border-color: var(--sim-cream-200); }
+.border-cream-300 { border-color: var(--sim-cream-300); }
+.border-cream-400 { border-color: var(--sim-cream-400); }
+.border-espresso-800 { border-color: var(--sim-espresso-800); }
+.border-espresso-900 { border-color: var(--sim-espresso-900); }
+.border-forest-700 { border-color: var(--sim-forest-700); }
+.border-forest-800 { border-color: var(--sim-forest-800); }
+.border-gold-500 { border-color: var(--sim-gold-500); }
+.border-gold-600 { border-color: var(--sim-gold-600); }
+.hover\:border-forest-800:hover { border-color: var(--sim-forest-800); }
+.hover\:border-gold-500:hover { border-color: var(--sim-gold-500); }
+.focus\:border-gold-500:focus { border-color: var(--sim-gold-500); }
+
+/* The two variants the "count this year" toggle is built from. Tailwind
+   compiled them against a cyan that is not in the palette, and the checked
+   state of a control is the one place the tools already agree on a colour:
+   `accent-color` on every range input and checkbox is forest-800. */
+.peer:checked ~ .peer-checked\:bg-forest-800 { background-color: var(--sim-forest-800); }
+.after\:border-cream-400::after { border-color: var(--sim-cream-400); }
+
+/* ----------------------------------------------------------------------
+   Semantic families.
+
+   The markup keeps Tailwind's family names, because "emerald" for a gain and
+   "rose" for a loss is what the five tools already say and renaming 400
+   occurrences would not make any of them clearer. What changes is that each
+   family now resolves to one value per role rather than to whichever of
+   emerald, teal and cyan that page happened to pick - and that the shade
+   number keeps meaning what it means, so `-600` is the text cut and `-50`
+   and `-100` are the fills that pair with it.
+
+   The lighter cuts (300, 400) existed for text on dark panels. There are no
+   dark panels in the simulators any more, so they resolve to the same legible
+   value as the text cut rather than to something washed out on cream.
+   ---------------------------------------------------------------------- */
+.text-emerald-300,
+.text-emerald-400,
+.text-emerald-500,
+.text-emerald-600,
+.text-emerald-700,
+.text-teal-500,
+.text-teal-600,
+.text-teal-700,
+.text-green-600,
+.text-green-700 { color: var(--sim-positive); }
+
+.text-amber-300,
+.text-amber-400,
+.text-amber-500,
+.text-amber-600,
+.text-amber-700,
+.text-amber-800,
+.text-amber-900,
+.text-yellow-600,
+.text-orange-600 { color: var(--sim-caution); }
+
+.text-rose-300,
+.text-rose-400,
+.text-rose-500,
+.text-rose-600,
+.text-rose-700,
+.text-red-300,
+.text-red-400,
+.text-red-500,
+.text-red-600,
+.text-red-700 { color: var(--sim-negative); }
+
+.text-sky-400,
+.text-sky-500,
+.text-sky-600,
+.text-sky-700,
+.text-blue-300,
+.text-blue-400,
+.text-blue-500,
+.text-blue-600,
+.text-blue-700,
+.text-cyan-300,
+.text-cyan-400,
+.text-cyan-500,
+.text-cyan-600 { color: var(--sim-info); }
+
+/* Purple and pink were a fifth and sixth series colour on two of the tools.
+   They resolve to the brand gold, which is the accent the rest of the site
+   uses when it needs one that is neither green nor a status. */
+.text-purple-300,
+.text-purple-400,
+.text-purple-500,
+.text-purple-600,
+.text-purple-700,
+.text-pink-300,
+.text-pink-400,
+.text-pink-500,
+.text-pink-600 { color: var(--sim-gold-700); }
+
+.bg-emerald-50,
+.bg-emerald-100,
+.bg-teal-50,
+.bg-teal-100,
+.bg-green-100 { background-color: var(--sim-positive-tint); }
+.bg-amber-50,
+.bg-amber-100,
+.bg-yellow-100 { background-color: var(--sim-caution-tint); }
+.bg-rose-50,
+.bg-rose-100,
+.bg-red-50,
+.bg-red-100 { background-color: var(--sim-negative-tint); }
+.bg-sky-50,
+.bg-sky-100,
+.bg-blue-50,
+.bg-blue-100,
+.bg-cyan-50,
+.bg-cyan-100 { background-color: var(--sim-info-tint); }
+.bg-purple-50,
+.bg-purple-100,
+.bg-pink-50 { background-color: #f7f0dd; }
+
+.bg-emerald-500,
+.bg-emerald-600,
+.bg-emerald-700,
+.bg-teal-500,
+.bg-teal-600 { background-color: var(--sim-positive); }
+.bg-amber-500,
+.bg-amber-600 { background-color: var(--sim-caution); }
+.bg-rose-500,
+.bg-rose-600,
+.bg-red-500,
+.bg-red-600 { background-color: var(--sim-negative); }
+.bg-sky-500,
+.bg-sky-600,
+.bg-blue-500,
+.bg-blue-600,
+.bg-cyan-500,
+.bg-cyan-600 { background-color: var(--sim-info); }
+.bg-purple-500,
+.bg-purple-600,
+.bg-pink-500 { background-color: var(--sim-gold-600); }
+
+.border-emerald-200,
+.border-emerald-300,
+.border-teal-200 { border-color: var(--sim-positive-line); }
+.border-emerald-500,
+.border-emerald-600,
+.border-emerald-700,
+.border-teal-600 { border-color: var(--sim-positive); }
+
+.border-amber-200,
+.border-amber-300 { border-color: var(--sim-caution-line); }
+.border-amber-500,
+.border-amber-600 { border-color: var(--sim-caution); }
+
+.border-rose-200,
+.border-rose-300,
+.border-red-200,
+.border-red-300 { border-color: var(--sim-negative-line); }
+.border-rose-500,
+.border-red-500,
+.border-red-700 { border-color: var(--sim-negative); }
+
+.border-sky-200,
+.border-blue-200,
+.border-cyan-200,
+.border-cyan-300 { border-color: var(--sim-info-line); }
+.border-blue-500,
+.border-cyan-500,
+.border-cyan-600 { border-color: var(--sim-info); }
+
+/* Purple and pink were the cockpit's fifth and sixth accents; they resolve to
+   gold with the rest of that family. */
+.border-purple-200,
+.border-pink-200 { border-color: var(--sim-gold-line); }
+.border-purple-500,
+.border-pink-500 { border-color: var(--sim-gold-500); }
+
+.divide-cream-300 > :not([hidden]) ~ :not([hidden]) { border-color: var(--sim-cream-300); }
+
+/* Tailwind renders `accent-*` as a real property, and the three tools that
+   style a native range input each picked a different one. */
+.accent-amber-500,
+.accent-cyan-500,
+.accent-emerald-500,
+.accent-forest-800 { accent-color: var(--sim-forest-800); }
+
+/* Text selection, and the font smoothing that goes with it. Two of the four
+   bundles compiled `selection:*` and two did not, so the same body class
+   highlighted in gold on the hub and in the browser's blue on the market
+   machine. The two that did compile it resolved gold-500 to #D4A338 - a value
+   from a bundle config nobody reconciled - so declaring it here corrects
+   those as well as supplying it to the pages that were missing it. */
+.selection\:bg-gold-500 ::-moz-selection,
+.selection\:bg-gold-500::-moz-selection { background-color: var(--sim-gold-500); }
+.selection\:bg-gold-500 ::selection,
+.selection\:bg-gold-500::selection { background-color: var(--sim-gold-500); }
+.selection\:text-white ::-moz-selection,
+.selection\:text-white::-moz-selection { color: #fff; }
+.selection\:text-white ::selection,
+.selection\:text-white::selection { color: #fff; }
+
+.antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Geometry the markup asks for that no bundle ever compiled. Tailwind only
+   emits the utilities it finds, and these three were missed by every subset:
+   `px-2` is used on all five tools - the bundles carry `px-1.5` and `px-2.5`
+   either side of it and nothing in between - and `-mx-2` and `tracking-wide`
+   belong to the hub's scoreboard rows and the passive engine's tier chips. A
+   chip written with 8px of side padding and widened tracking was rendering
+   flush and tight, which is why those rows read as a different density from
+   the same chip elsewhere. */
+.px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.-mx-2 {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+}
+
+.tracking-wide { letter-spacing: 0.025em; }
+
+/* The tinted brand surfaces, borders and rings. Two of these never resolved
+   at all - `bg-forest-800/5` behind the hub's alternating scoreboard rows and
+   the passive engine's `hover:bg-gold-500/25` - and the rest resolved against
+   the palettes nobody reconciled: gold at #d4a338, forest at #134e2a, cream
+   as three different HSL triplets. At 5% you cannot see which green it was,
+   but `border-gold-500/40` is a visible edge and it was drawn in the old
+   gold on the two bundles that compiled it. Written as flat rgba, like the
+   fractional inks above, so none of it depends on a --tw-* property this
+   file does not own. */
+.bg-forest-800\/5 { background-color: rgba(30, 70, 32, 0.05); }
+.bg-forest-800\/10 { background-color: rgba(30, 70, 32, 0.1); }
+.bg-gold-400\/20 { background-color: rgba(224, 185, 92, 0.2); }
+.bg-gold-500\/10 { background-color: rgba(197, 155, 39, 0.1); }
+.bg-gold-500\/15 { background-color: rgba(197, 155, 39, 0.15); }
+.hover\:bg-gold-500\/25:hover { background-color: rgba(197, 155, 39, 0.25); }
+.bg-cream-100\/40 { background-color: rgba(250, 246, 237, 0.4); }
+.bg-cream-200\/70 { background-color: rgba(244, 239, 228, 0.7); }
+
+.border-espresso-800\/80 { border-color: rgba(87, 72, 56, 0.8); }
+.border-forest-700\/60 { border-color: rgba(40, 86, 60, 0.6); }
+.border-forest-800\/20 { border-color: rgba(30, 70, 32, 0.2); }
+.border-forest-800\/50 { border-color: rgba(30, 70, 32, 0.5); }
+.border-gold-500\/20 { border-color: rgba(197, 155, 39, 0.2); }
+.border-gold-500\/40 { border-color: rgba(197, 155, 39, 0.4); }
+
+.ring-gold-500\/30 { --tw-ring-color: rgba(197, 155, 39, 0.3); }
+
+/* `text-espresso-800/60` and `text-cream-300/80` join the fractional inks
+   above rather than sitting here, for the same reason they do: the unified
+   `espresso-800` is lighter than the two values it replaces, so the alpha is
+   raised to keep the same apparent weight. */
+.text-espresso-800\/60 { color: rgba(87, 72, 56, 0.74); }
+.text-cream-300\/80 { color: rgba(239, 234, 224, 0.8); }
+
+/* --------------------------------------------------------------------------
+   3. Elevation and radius
+
+   Tailwind's shadow utilities are compiled into all four bundles at four
+   different strengths, and the pages mix `shadow`, `shadow-sm`, `shadow-md`,
+   `shadow-lg`, `shadow-xl` and `shadow-2xl` with no rule behind the choice -
+   the Monte Carlo cockpit used `shadow-2xl` nine times. Two levels, and the
+   heavier one is only meaningfully heavier.
+
+   `.custom-shadow` is the class the templates declared inline, three times,
+   with three recipes. It resolves here now and the inline blocks are gone.
+   -------------------------------------------------------------------------- */
+.shadow-sm,
+.shadow,
+.shadow-md,
+.custom-shadow { box-shadow: var(--sim-shadow); }
+
+.shadow-lg,
+.shadow-xl,
+.shadow-2xl { box-shadow: var(--sim-shadow-lg); }
+
+.hover\:shadow-lg:hover,
+.hover\:shadow-xl:hover { box-shadow: var(--sim-shadow-lg); }
+
+/* One radius per size step, matching the home page. `rounded-lg` and
+   `rounded-xl` were used interchangeably across the five tools for the same
+   panel, so they land on the same value. */
+.rounded { border-radius: var(--sim-radius-sm); }
+.rounded-md,
+.rounded-lg,
+.rounded-xl { border-radius: var(--sim-radius); }
+.rounded-2xl { border-radius: var(--sim-radius-lg); }
+.rounded-3xl { border-radius: var(--sim-radius-xl); }
+
+/* --------------------------------------------------------------------------
+   4. Components
+   -------------------------------------------------------------------------- */
+
+/* The intro band every tool opens on.
+
+   This is the one element that carries across the click. The home page's
+   simulator section - `.simulator-stage` in home.css - is a forest gradient
+   with a gold glow, and until now a visitor left it and landed on cream with
+   nothing in common. The gradient below is that one, stop for stop, so the
+   band at the top of a tool is the panel the visitor just came from. */
+.sim-intro {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--sim-forest-900);
+    background:
+        radial-gradient(circle at 88% 15%, rgba(197, 155, 39, 0.22), transparent 24rem),
+        linear-gradient(135deg, var(--sim-forest-900) 0%, var(--sim-forest-800) 58%, #243c2b 100%);
+    color: var(--sim-cream-50);
+}
+
+.sim-intro__inner {
+    position: relative;
+    z-index: 1;
+    width: min(80rem, 100%);
+    margin-inline: auto;
+    padding: 22px 16px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* The icon chip from the home page's simulator cards, at the same size and
+   with the same gold hairline. It is the per-tool identity: one icon and one
+   accent, which is all the difference five tools in one system need. */
+.sim-intro__icon {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--sim-radius-lg);
+    border: 1px solid rgba(197, 155, 39, 0.5);
+    background: rgba(197, 155, 39, 0.12);
+    color: var(--sim-gold-400);
+    font-size: 1.15rem;
+}
+
+.sim-intro__eyebrow {
+    margin: 0 0 6px;
+    color: var(--sim-gold-400);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.sim-intro__title {
+    margin: 0;
+    color: var(--sim-cream-50);
+    font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.sim-intro__lede {
+    max-width: 68ch;
+    margin: 8px 0 0;
+    /* rgba(255,255,255,.8) on the darkest stop of the gradient is 6.9:1. */
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.sim-intro a {
+    color: var(--sim-gold-400);
+}
+
+/* The row of links to the other four tools. It was a strip of cream chips on
+   four of the five pages and a strip of slate-and-cyan chips on the fifth; on
+   the forest band it is a translucent chip of the band itself, which is what
+   the home page's own on-dark links do. */
+.sim-intro__nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 12px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+}
+
+.sim-intro__navlabel {
+    color: rgba(255, 255, 255, 0.62);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.sim-intro__link {
+    display: inline-flex;
+    align-items: center;
+    /* 24px, which is the AA target size for a pointer control (SC 2.5.8). */
+    min-height: 1.5rem;
+    padding: 0.25rem 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--sim-cream-50);
+    text-decoration: none;
+    transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.sim-intro__link:hover,
+.sim-intro__link:focus-visible {
+    border-color: rgba(197, 155, 39, 0.7);
+    background: rgba(197, 155, 39, 0.22);
+    color: #fff;
+}
+
+@media (max-width: 640px) {
+    .sim-intro__inner {
+        padding: 18px 16px 20px;
+        gap: 12px;
+    }
+
+    .sim-intro__icon {
+        width: 2.4rem;
+        height: 2.4rem;
+        font-size: 1rem;
+    }
+}
+
+/* The panel every control group, chart and table sits in. One background, one
+   border, one radius, one shadow - replacing `bg-white rounded-2xl shadow-sm`,
+   `bg-cream-50 rounded-xl custom-shadow`, `hud-glass rounded-xl shadow-2xl`
+   and the several dozen other combinations the five tools had accumulated. */
+.sim-panel {
+    background: var(--sim-cream-50);
+    border-radius: var(--sim-radius);
+    box-shadow: var(--sim-shadow);
+}
+
+/* The inset a panel uses for a row or a chip inside itself: no shadow, because
+   nothing two levels down should be casting one. */
+.sim-inset {
+    background: var(--sim-cream-100);
+    border-radius: var(--sim-radius-sm);
+}
+
+/* The edge, declared through `:where()` so it carries no specificity at all.
+   A handful of panels are deliberately not cream-edged - the modal that
+   confirms a run keeps its gold border, the debrief keeps forest, the
+   warning banner keeps amber - and they say so with the border utility they
+   already carried. This file is loaded last, so a plain `.sim-panel` rule
+   would outrank `.border-2 .border-gold-500` no matter which of the two the
+   author wrote later. At zero specificity the default loses to any utility
+   that is actually present on the element and still beats Tailwind's
+   `*`-level border reset, which is the only other thing setting this. */
+:where(.sim-panel, .sim-inset) {
+    border: 1px solid var(--sim-cream-300);
+}
+
+/* Three buttons, which is what the home page offers: forest filled, forest
+   outline, gold filled. The tools had five paddings and four colour schemes
+   between them - and the Monte Carlo cockpit had cyan, amber, emerald and
+   slate, none of which is a brand colour. */
+.sim-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    /* SC 2.5.8 asks for 24px; 36px is the smallest control in the header and
+       these are the same size or larger. */
+    min-height: 2.25rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid transparent;
+    border-radius: var(--sim-radius);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.sim-btn:disabled,
+.sim-btn[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.sim-btn:not(:disabled):hover {
+    transform: translateY(-1px);
+}
+
+.sim-btn--primary {
+    background: var(--sim-forest-800);
+    border-color: var(--sim-forest-800);
+    color: #fff;
+}
+
+.sim-btn--primary:not(:disabled):hover {
+    background: var(--sim-forest-700);
+    border-color: var(--sim-forest-700);
+}
+
+.sim-btn--secondary {
+    background: transparent;
+    border-color: var(--sim-forest-800);
+    color: var(--sim-forest-800);
+}
+
+.sim-btn--secondary:not(:disabled):hover {
+    background: var(--sim-forest-800);
+    color: #fff;
+}
+
+/* The gold action carries the ink colour rather than white, exactly as the
+   home page's gold buttons do: white on #c59b27 is 2.2:1. */
+.sim-btn--accent {
+    background: var(--sim-gold-500);
+    border-color: var(--sim-gold-500);
+    color: var(--sim-espresso-950);
+}
+
+.sim-btn--accent:not(:disabled):hover {
+    background: var(--sim-gold-400);
+    border-color: var(--sim-gold-400);
+}
+
+.sim-btn--quiet {
+    background: var(--sim-cream-200);
+    border-color: var(--sim-cream-300);
+    color: var(--sim-espresso-900);
+}
+
+.sim-btn--quiet:not(:disabled):hover {
+    background: var(--sim-cream-300);
+}
+
+.sim-btn--lg {
+    min-height: 2.75rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8125rem;
+}
+
+.sim-btn--block {
+    width: 100%;
+}
+
+/* The tab strip and the filter row.
+
+   Both were pills whose selected state was a different class string, swapped
+   in by hand in JavaScript: switchTab() rewrote `className` on all four tab
+   buttons on every switch, and syncFilterButtons() did the same to six filter
+   buttons. Two long literals had to stay in step with the markup that ships the
+   initial state, and did not - the filter buttons published no `aria-pressed`
+   at all, so the selected filter was visible only as a colour.
+
+   The state is now the attribute the pattern already requires: `aria-selected`
+   for a tab, `aria-pressed` for a toggle. The JavaScript sets that and nothing
+   else, and the selected pill is a CSS consequence of it. */
+.sim-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid var(--sim-cream-300);
+    border-radius: var(--sim-radius);
+    background: var(--sim-cream-100);
+}
+
+.sim-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    /* SC 2.5.8: 24px minimum. */
+    min-height: 1.75rem;
+    padding: 0.3125rem 0.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--sim-radius-sm);
+    background: transparent;
+    color: var(--sim-espresso-800);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.sim-tab:hover {
+    background: var(--sim-cream-200);
+    color: var(--sim-espresso-950);
+}
+
+.sim-tab[aria-selected="true"],
+.sim-tab[aria-pressed="true"] {
+    border-color: var(--sim-cream-400);
+    background: var(--sim-cream-50);
+    color: var(--sim-forest-800);
+    font-weight: 800;
+}
+
+/* The row of things a pilot can switch on mid-flight. The card carried a neon
+   bloom for its selected state, and the bloom is gone with the rest of the
+   cockpit; the ring the hue already put on the card is the state now, over the
+   tint the panel would otherwise be. */
+.is-active {
+    background: var(--sim-cream-100);
+    box-shadow: var(--sim-shadow);
+}
+
+/* The text input, the number input and the select.
+
+   Between them the five tools had eight recipes for a field: cream-50 or
+   cream-100, a cream-300 or a cream-400 border, `rounded-lg` or `rounded-xl`,
+   `focus:ring-2 focus:ring-forest-800` or `focus:border-cyan-500` or nothing at
+   all, and on the cockpit a value coloured by which metric it belonged to. The
+   width utility stays in the markup, because a field's width is a layout
+   decision and genuinely differs; everything else is here.
+
+   The focus ring is the gold one a11y.css uses site-wide rather than a
+   border-colour change, because a border that changes colour on focus moves no
+   pixels and is the same 1px it was - it reads as a state a sighted keyboard
+   user can miss. */
+.sim-field {
+    width: 100%;
+    /* SC 2.5.8, and the size of every other control in a tool. */
+    min-height: 2.25rem;
+    padding: 0.4375rem 0.625rem;
+    border: 1px solid var(--sim-cream-400);
+    border-radius: var(--sim-radius-sm);
+    background: var(--sim-cream-50);
+    color: var(--sim-espresso-900);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.sim-field:focus-visible {
+    outline: 2px solid var(--sim-gold-500);
+    outline-offset: 1px;
+}
+
+/* For a field that sits in a row and is sized by a width utility. */
+.sim-field--inline {
+    width: auto;
+}
+
+/* A figure reads right-aligned, the way it does in the tables and the tiles. */
+.sim-field--figure {
+    text-align: right;
+}
+
+select.sim-field {
+    cursor: pointer;
+}
+
+/* The metric tile.
+
+   This is also the fix for the one way the fifteen pages did differ from each
+   other visually. The markup and the compiled CSS are identical in all three
+   languages - the pages come from one template and one substitution pass - but
+   the words are not the same length, and a label that sets on one line in
+   English ("Net Worth") sets on two in Portuguese ("Patrimonio Liquido"). Tiles
+   in the same row then had different heights, and the row was a different
+   height in each language.
+
+   Reserving two lines for every label makes the tile the same size in all
+   three, whatever the label says, and leaves room for the next translation
+   without anybody having to check. */
+.sim-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 0.625rem 0.75rem;
+    background: var(--sim-cream-100);
+    border: 1px solid var(--sim-cream-300);
+    border-radius: var(--sim-radius-sm);
+    text-align: left;
+}
+
+.sim-stat__label {
+    display: flex;
+    align-items: flex-start;
+    /* Room for the series swatch, when the tile names a line on a chart. */
+    gap: 0.4em;
+    /* Two lines at this size and line height, so the tile does not resize
+       when the label wraps. This is what keeps a row of tiles the same height
+       in all three languages: "Net Worth" is nine characters and "Patrimonio
+       Neto" is sixteen, so one wraps where the other does not. */
+    min-height: 2.1em;
+    margin: 0;
+    color: var(--sim-espresso-800);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.05;
+    text-transform: uppercase;
+}
+
+/* The swatch sits on the first line of the label rather than on its box. */
+.sim-stat__label .sim-series__key {
+    margin-top: 0.18em;
+}
+
+.sim-stat__value {
+    margin: 0;
+    color: var(--sim-espresso-950);
+    font-weight: 800;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+}
+
+/* The size, at no specificity, because a headline figure and a tile in a
+   six-across row are the same component at two scales and the templates
+   already say which with `text-2xl` or `text-sm`. Anything that says nothing
+   gets the default. */
+:where(.sim-stat__value) {
+    font-size: 1.0625rem;
+}
+
+/* The value tinted as a chart series, for the tiles that track a quantity the
+   chart on the same page also plots. Four different metrics want four different
+   colours; what they should not be is four colours picked per tile, which is
+   how the hub's top bar ended up reading emerald, gold, sky and amber. */
+.sim-stat__value--series-1 { color: #1e4620; }
+.sim-stat__value--series-2 { color: var(--sim-gold-700); }
+.sim-stat__value--series-3 { color: #2a5b8c; }
+.sim-stat__value--series-4 { color: #a6402a; }
+.sim-stat__value--series-5 { color: #1f6259; }
+.sim-stat__value--series-6 { color: #5a4d3a; }
+
+.sim-stat__value--positive { color: var(--sim-positive); }
+.sim-stat__value--negative { color: var(--sim-negative); }
+.sim-stat__value--caution { color: var(--sim-caution); }
+
+.sim-stat__note {
+    margin: 0;
+    color: var(--sim-espresso-800);
+    line-height: 1.3;
+}
+
+:where(.sim-stat__note) {
+    font-size: 0.6875rem;
+}
+
+/* The bar of tiles the hub keeps pinned under the header while a run is in
+   progress. It was `bg-espresso-950` - a near-black strip directly below a
+   cream header, on an otherwise cream page - which is the same mistake the
+   Monte Carlo cockpit made at page scale. Cream, with the tiles carrying the
+   weight instead of the bar. */
+.sim-statbar {
+    position: sticky;
+    /* Clears the 80px header, which is itself sticky at z-index 50. */
+    top: 5rem;
+    z-index: 40;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--sim-cream-300);
+    background: rgba(250, 246, 237, 0.94);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+    .sim-statbar {
+        background: rgba(250, 246, 237, 0.82);
+        backdrop-filter: blur(8px);
+    }
+}
+
+.sim-statbar__inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: min(80rem, 100%);
+    margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+    .sim-statbar__inner {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* The page container. The five tools set their own: `max-w-6xl` on two,
+   `max-w-7xl` on three, `px-4` on three and `px-4 sm:px-6 lg:px-8` on two,
+   `py-4` on two and `py-6 sm:py-8` on two, and a vertical rhythm on two of the
+   five. The header shell above all five is 80rem with the wider padding, so
+   the two narrow pages had content that did not line up with their own
+   header. This is that shell, and the rhythm is the `space-y-4` the other
+   three were missing.
+
+   The rhythm is `> * + *` rather than a flex gap because a flex container
+   would change how the panels inside it size themselves, and these are five
+   pages of layout that already work. */
+.sim-main {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding: 1.25rem 1rem 2rem;
+    flex: 1 1 auto;
+}
+
+.sim-main > * + * {
+    margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+    .sim-main {
+        padding: 1.5rem 1.5rem 2.5rem;
+    }
+
+    .sim-main > * + * {
+        margin-top: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sim-main {
+        padding-inline: 2rem;
+    }
+}
+
+/* The same reservation for any other label that shares a row with its
+   siblings and is translated. */
+.sim-label {
+    display: block;
+    min-height: 2.1em;
+    color: var(--sim-espresso-800);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.05;
+    text-transform: uppercase;
+}
+
+/* One range input, replacing the four thumbs the pages declared inline: a 20px
+   forest circle, an 18px forest circle, an 18px glowing cyan circle, and the
+   browser default on the two tools that never styled one. */
+input[type="range"] {
+    width: 100%;
+    height: 1.5rem;
+    accent-color: var(--sim-forest-800);
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 0.375rem;
+    border-radius: 999px;
+    background: var(--sim-cream-300);
+}
+
+input[type="range"]::-moz-range-track {
+    height: 0.375rem;
+    border-radius: 999px;
+    background: var(--sim-cream-300);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: -0.375rem;
+    border: 2px solid var(--sim-cream-50);
+    border-radius: 999px;
+    background: var(--sim-forest-800);
+    box-shadow: 0 1px 4px rgba(42, 36, 30, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid var(--sim-cream-50);
+    border-radius: 999px;
+    background: var(--sim-forest-800);
+    box-shadow: 0 1px 4px rgba(42, 36, 30, 0.3);
+}
+
+/* One scrollbar. Two of the five styled theirs cream, one styled it slate, and
+   two left it to the browser. `.custom-scrollbar` is the class the templates
+   already carry; the bare selectors cover the panes that never got it. */
+.custom-scrollbar,
+.sim-scroll,
+.sim-panel {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sim-cream-400) var(--sim-cream-200);
+}
+
+.custom-scrollbar::-webkit-scrollbar,
+.sim-scroll::-webkit-scrollbar,
+.sim-panel::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track,
+.sim-scroll::-webkit-scrollbar-track,
+.sim-panel::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: var(--sim-cream-200);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb,
+.sim-scroll::-webkit-scrollbar-thumb,
+.sim-panel::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--sim-cream-400);
+}
+
+/* Chart canvases inherit the page's paper rather than each drawing their own,
+   which is what made the Monte Carlo charts read as a separate application
+   embedded in the page. */
+.sim-chart {
+    position: relative;
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   5. The auto-hiding footer
+
+   The footer used to sit in the flow at the bottom of the document, in three
+   different designs across the five tools. It is now one bar, docked to the
+   bottom of the viewport and out of the way: hidden on load, revealed while
+   the visitor is scrolling, and hidden again --sim-footer-linger after they
+   stop. sim-footer.js does the timing; everything visual is here.
+
+   It carries two things: the closing "Continue the Journey" offer, which used
+   to be a slab at the end of the document that a visitor to a simulator had
+   little reason to scroll to, and the disclaimer that was the whole of this bar
+   before. The offer's own measurements are in assets/css/simulator-cta.css,
+   which is also where the argument for its size is - the bar is one row taller
+   than it was, and the reason it is only one row is that everything in the
+   offer that was not the offer came off.
+
+   Two rules keep it from being in the way of anything:
+
+   - `.simulator-footer-spacer` reserves the bar's height at the end of the
+     document, so the last panel on the page is never underneath it.
+   - `--sim-footer-offset` lifts it above the language suggestion bar, which is
+     also fixed to the bottom of the viewport (see header.css). sim-footer.js
+     measures that bar when it is present.
+
+   It stays in the flow, unhidden, when JavaScript has not run: the
+   `.simulator-footer--dockable` class is added by the script, so the docking
+   is only ever applied on a page that can also undock it.
+   -------------------------------------------------------------------------- */
+
+.simulator-footer--dockable {
+    position: fixed;
+    inset-inline: 0;
+    bottom: var(--sim-footer-offset);
+    z-index: 45;
+    margin-top: 0;
+    padding: 10px 16px 11px;
+    border-top: 1px solid var(--sim-cream-300);
+    background: rgba(250, 246, 237, 0.96);
+    box-shadow: 0 -6px 24px rgba(42, 36, 30, 0.1);
+    transform: translateY(calc(100% + var(--sim-footer-offset)));
+    transition: transform 0.28s ease;
+    will-change: transform;
+}
+
+@supports (backdrop-filter: blur(8px)) {
+    .simulator-footer--dockable {
+        background: rgba(250, 246, 237, 0.86);
+        backdrop-filter: blur(8px);
+    }
+}
+
+/* Revealed while scrolling, while the pointer is over it, and while anything
+   inside it has keyboard focus - so it cannot be taken away from somebody who
+   is reading it or tabbing through it. */
+.simulator-footer--dockable.is-revealed,
+.simulator-footer--dockable:hover,
+.simulator-footer--dockable:focus-within {
+    transform: none;
+}
+
+/* Tighter than the same bar sitting in the flow, on both counts: the offer is
+   over a tool somebody is using rather than after it, and the disclaimer is a
+   line to have said rather than a line to read. */
+.simulator-footer--dockable .simulator-footer__inner {
+    gap: 8px;
+}
+
+.simulator-footer--dockable .simulator-footer__note {
+    max-width: 78ch;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.simulator-footer-spacer {
+    /* Replaced with the bar's measured height by sim-footer.js, which measures
+       it in the same call that docks it - so this value covers the frame in
+       between and nothing else. It is what the offer, the disclaimer and the
+       padding come to with a one-line title, which is the common case. */
+    height: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .simulator-footer--dockable {
+        transition: none;
+    }
+
+    .sim-btn:not(:disabled):hover {
+        transform: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. Chart series
+
+   The chip that names a series in the markup and the line that draws it on the
+   canvas have to be the same colour, or the legend is decoration. They were
+   not: the Market Time Machine labelled its six strategies with `bg-emerald-50`,
+   `bg-blue-50`, `bg-purple-50`, `bg-amber-50`, `bg-rose-50` and `bg-teal-50`
+   chips, while the chart drew them in #134e2a, #2563eb, #7c3aed, #d97706,
+   #e11d48 and #0d9488 - six colours that were neither the chips nor each other.
+   It also prefixed each label with a coloured emoji circle, and used the green
+   one twice.
+
+   These six classes are the same six colours sim-chart-theme.js strokes with,
+   indexed the same way, so a chip is the series. `text` is the legible cut of
+   the line colour and `tint` the fill; both are stated in the JavaScript too,
+   because a canvas cannot read a custom property.
+   -------------------------------------------------------------------------- */
+.sim-series {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.5rem;
+    border: 1px solid;
+    border-radius: var(--sim-radius-sm);
+    font-size: 0.625rem;
+    font-weight: 700;
+}
+
+/* The swatch, which replaces the emoji. Square, matching the legend chip
+   Chart.js draws, and sized off the text so it tracks the label. */
+.sim-series__key {
+    flex: 0 0 auto;
+    width: 0.625em;
+    height: 0.625em;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+.sim-series-1 { color: #1e4620; border-color: rgba(30, 70, 32, 0.35); background: rgba(30, 70, 32, 0.08); }
+.sim-series-2 { color: #7a5f12; border-color: rgba(197, 155, 39, 0.45); background: rgba(197, 155, 39, 0.12); }
+.sim-series-3 { color: #2a5b8c; border-color: rgba(42, 91, 140, 0.35); background: rgba(42, 91, 140, 0.08); }
+.sim-series-4 { color: #a6402a; border-color: rgba(166, 64, 42, 0.35); background: rgba(166, 64, 42, 0.08); }
+.sim-series-5 { color: #1f6259; border-color: rgba(47, 122, 114, 0.35); background: rgba(47, 122, 114, 0.08); }
+.sim-series-6 { color: #5a4d3a; border-color: rgba(122, 106, 82, 0.35); background: rgba(122, 106, 82, 0.10); }
+
+/* The same six colours as a standalone swatch, for the places that name a
+   series inside something that is not a `.sim-series` chip - the row of stat
+   tiles under the Market Time Machine chart, where the tile is a tile and only
+   the swatch and the figure carry the series. Setting `color` is enough: the
+   key paints itself with `currentColor`. */
+.sim-series__key--1 { color: #1e4620; }
+.sim-series__key--2 { color: var(--sim-gold-700); }
+.sim-series__key--3 { color: #2a5b8c; }
+.sim-series__key--4 { color: #a6402a; }
+.sim-series__key--5 { color: #1f6259; }
+.sim-series__key--6 { color: #5a4d3a; }
+
+/* The two series a chart dashes rather than strokes solid get a dashed key, so
+   the pairing survives for a reader who cannot separate the hues. */
+.sim-series-5 .sim-series__key,
+.sim-series-6 .sim-series__key,
+.sim-series__key--5,
+.sim-series__key--6 {
+    background: repeating-linear-gradient(90deg, currentColor 0 3px, transparent 3px 5px);
+}
+
+/* --------------------------------------------------------------------------
+   7. Tooltips
+
+   Two of the tools declared `.has-tooltip` / `.tooltip-box` inline, with
+   different offsets and different surfaces. One definition, on the dark ink the
+   rest of the site uses when something floats over the page.
+   -------------------------------------------------------------------------- */
+.has-tooltip {
+    position: relative;
+}
+
+.tooltip-box {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    z-index: 30;
+    width: max-content;
+    max-width: min(20rem, 80vw);
+    padding: 0.625rem 0.75rem;
+    border: 1px solid rgba(197, 155, 39, 0.45);
+    border-radius: var(--sim-radius-sm);
+    background: rgba(31, 25, 19, 0.96);
+    box-shadow: var(--sim-shadow-lg);
+    color: rgba(255, 253, 248, 0.9);
+    font-size: 11px;
+    line-height: 1.5;
+    text-align: left;
+    opacity: 0;
+    transform: translate(-50%, 4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+}
+
+.has-tooltip:hover .tooltip-box,
+.has-tooltip:focus-visible .tooltip-box,
+.has-tooltip:focus-within .tooltip-box {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.tooltip-box strong,
+.tooltip-box b,
+.tooltip-box .tooltip-box__title {
+    color: var(--sim-gold-400);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tooltip-box {
+        transition: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   8. The gradients the tools declared inline
+
+   `.gradient-gold` and `.gradient-forest` existed on three of the five, at
+   three sets of stops, built out of the pre-brand #d4a338 / #134e2a pair. Same
+   two names, brand values, one definition.
+   -------------------------------------------------------------------------- */
+.gradient-gold {
+    background: linear-gradient(135deg, var(--sim-gold-500) 0%, var(--sim-gold-600) 100%);
+    color: var(--sim-espresso-950);
+}
+
+.gradient-forest {
+    background: linear-gradient(135deg, var(--sim-forest-700) 0%, var(--sim-forest-900) 100%);
+    color: var(--sim-cream-50);
+}
+
+/* The way a modal or a toast arrives.
+
+   Five of these were marked up with `animate-in fade-in zoom-in duration-300`
+   and one with `animate-fade-in`, which are tailwindcss-animate's classes. That
+   plugin is not in tailwind.config.js and never has been, so all six compiled
+   to nothing and every panel appeared instantaneously - including the two on
+   the Monte Carlo cockpit, which were never marked up for it in the first place
+   and so were the only ones behaving as intended. One name, one rule. */
+@keyframes sim-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.sim-enter {
+    animation: sim-enter 0.18s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sim-enter {
+        animation: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   9. The alarm
+
+   The Monte Carlo cockpit pulsed a red border when a run was inside a crash
+   window - `.crash-warning`, driven by a keyframe of two rgba(239, 68, 68)
+   stops. It is the one piece of that page's neon that was carrying information
+   rather than atmosphere, so it survives the conversion to the light surface;
+   what changes is that it pulses in the palette's own negative rather than in
+   a red that appears nowhere else.
+
+   Motion is the signal here, so `prefers-reduced-motion` cannot simply drop
+   the animation and leave nothing: it holds the alerted state instead.
+   -------------------------------------------------------------------------- */
+@keyframes sim-alarm-pulse {
+    0%, 100% {
+        border-color: var(--sim-negative);
+        box-shadow: 0 0 0 3px rgba(166, 64, 42, 0.18);
+    }
+    50% {
+        border-color: rgba(166, 64, 42, 0.35);
+        box-shadow: 0 0 0 1px rgba(166, 64, 42, 0.08);
+    }
+}
+
+.crash-warning {
+    border-color: var(--sim-negative);
+    background: var(--sim-negative-tint);
+    animation: sim-alarm-pulse 1.1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .crash-warning {
+        animation: none;
+        border-color: var(--sim-negative);
+        box-shadow: 0 0 0 3px rgba(166, 64, 42, 0.18);
+    }
+}

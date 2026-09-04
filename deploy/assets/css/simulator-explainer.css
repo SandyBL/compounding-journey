@@ -9,17 +9,25 @@
    it models, what it assumes, and how to read what it returns.
 
    Why it draws its own panel: the five simulators do not share a palette. The
-   hub and the Freedom Calendar are cream, the Market Time Machine and the
-   Passive Income Engine sit on #fbf8f3, and the Monte Carlo cockpit is near
-   black. A section styled to inherit would need three sets of rules and would
-   still be wrong on the next simulator. So this paints its own paper surface
-   and sets its own text colour, exactly as simulator-cta.css paints its own
-   forest panel, and reads identically on all five.
+   hub and the Freedom Calendar were cream, the Market Time Machine and the
+   Passive Income Engine sat on #fbf8f3, and the Monte Carlo cockpit was near
+   black. A section styled to inherit would have needed three sets of rules and
+   would still have been wrong on the next simulator, so this painted its own
+   paper surface and set its own text colour, exactly as simulator-cta.css
+   paints its own forest panel.
 
-   The heading font is a stack rather than a named family, for the reason given
-   at length in simulator-cta.css: each simulator group loads a different serif,
-   and the stack resolves to whichever one the page already has. No page
-   downloads a font for this. */
+   The five pages now share one surface - assets/css/sim-system.css - so the
+   reason for painting a separate one is gone, and the values below are that
+   file's tokens rather than a fourth cream. The rules stay, because the panel
+   still wants a border and a slightly lighter paper than the page it sits on;
+   what changed is that "slightly lighter than the page" is now a value that
+   follows from the page instead of a guess that happened to work on two of
+   them.
+
+   The headings were a fall-through serif stack, for the reason given at length
+   in simulator-cta.css - and with the same consequence: they were Playfair on
+   one tool, Merriweather on two, and Georgia on the one that loaded no serif.
+   They are the site's own face now, like everything else in the tools. */
 
 .sim-explainer {
   padding-top: 40px;
@@ -27,18 +35,20 @@
 
 .sim-explainer__inner {
   padding: 34px 38px;
-  background: #fdf8ec;
-  border: 1px solid #e8dcc2;
-  color: #2c231b;
+  background: var(--sim-cream-50, #fffdf8);
+  border: 1px solid var(--sim-cream-300, #efeae0);
+  border-radius: var(--sim-radius, 0.75rem);
+  color: var(--sim-espresso-900, #2a241e);
   text-align: left;
 }
 
 .sim-explainer__title {
   margin: 0;
-  color: #1f1913;
-  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  color: var(--sim-espresso-950, #1f1913);
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(1.45rem, 2.2vw, 1.95rem);
-  font-weight: 600;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1.15;
 }
 
@@ -51,10 +61,11 @@
 
 .sim-explainer__heading {
   margin: 30px 0 0;
-  color: #1f1913;
-  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  color: var(--sim-espresso-950, #1f1913);
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.12rem;
-  font-weight: 600;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   line-height: 1.3;
 }
 
@@ -85,8 +96,8 @@
   max-width: 68ch;
   margin: 16px 0 0;
   padding-left: 14px;
-  border-left: 3px solid #c89a32;
-  color: #574838;
+  border-left: 3px solid var(--sim-gold-500, #c59b27);
+  color: var(--sim-espresso-800, #574838);
   font-size: 0.88rem;
   line-height: 1.6;
 }
@@ -98,7 +109,7 @@
 
 .sim-explainer__faq dt {
   margin-top: 20px;
-  color: #1f1913;
+  color: var(--sim-espresso-950, #1f1913);
   font-size: 0.96rem;
   font-weight: 700;
   line-height: 1.45;
@@ -113,7 +124,7 @@
 .sim-explainer__reading {
   margin-top: 30px;
   padding-top: 22px;
-  border-top: 1px solid #e8dcc2;
+  border-top: 1px solid var(--sim-cream-300, #efeae0);
 }
 
 /* The reading list is the only route from a simulator into the journal. Its
@@ -121,17 +132,17 @@
    surface is doing enough work already and an underline is the one affordance
    that survives a reader who cannot separate the two. */
 .sim-explainer a {
-  color: #2c231b;
+  color: var(--sim-espresso-900, #2a241e);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .sim-explainer a:hover {
-  color: #7a5c1c;
+  color: var(--sim-gold-700, #7a5f12);
 }
 
 .sim-explainer a:focus-visible {
-  outline: 3px solid rgba(200, 154, 50, 0.6);
+  outline: 3px solid rgba(197, 155, 39, 0.6);
   outline-offset: 3px;
 }
 
@@ -152,7 +163,9 @@
  * over large filled areas, not over a line of small text.
  */
 .sim-crumbs {
-  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  /* Was "DM Sans" - the journal's UI face, which no simulator page loads, so
+     this line only ever selected the fallback. Named honestly now. */
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   font-size: 0.8125rem;
   margin: 0 0 1rem;
 }

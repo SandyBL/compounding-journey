@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{lang.code}}" class="h-full bg-[#fbf8f3]">
+<html lang="{{lang.code}}" class="h-full bg-cream-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,66 +13,23 @@
     <script type="application/ld+json">{{hFull2}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"{{explCrumbHome}}","item":"https://compoundingjourney.com{{lang.home}}"},{"@type":"ListItem","position":2,"name":"{{explCrumbSimulators}}","item":"https://compoundingjourney.com{{lang.dir}}simulator.html"},{"@type":"ListItem","position":3,"name":"{{explCrumbSelf}}"}]}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=source">
     <link rel="stylesheet" href="/assets/css/icons.css?v=source">
     <!-- Chart.js -->
     <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
 
-    <style>
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #efe9df;
-            border-radius: 9999px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #c8b79e;
-            border-radius: 9999px;
-        }
-        .custom-shadow {
-            box-shadow: 0 10px 25px -5px rgba(44, 29, 17, 0.05), 0 8px 10px -6px rgba(44, 29, 17, 0.03);
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 18px;
-            width: 18px;
-            border-radius: 50%;
-            background: #134e2a;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        /* Custom Tooltip Styling */
-        .has-tooltip {
-            position: relative;
-        }
-        .tooltip-box {
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 40;
-            white-space: nowrap;
-        }
-        .has-tooltip:hover .tooltip-box {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
+    <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
 </head>
-<body class="font-sans text-espresso-900 bg-[#fbf8f3] min-h-full flex flex-col antialiased">
+<body class="min-h-full flex flex-col antialiased selection:bg-gold-500 selection:text-white">
 
     <a class="skip-link" href="#main">{{skipLink}}</a>
 
-{{fontSans}}    <header class="site-header bg-[#FCF1DB]/95 border-b border-cream-300 sticky top-0 z-50 backdrop-blur shadow-sm">
+{{fontSans}}    <header class="site-header">
         <div class="header-shell simulator-header-shell max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
             <a href="{{lang.home}}#simulador" class="header-brand flex items-center gap-3 group min-w-0" aria-label="{{headerBrandAriaLabel}}">
                 <div class="header-brand-logo h-16 w-16 flex shrink-0 items-center justify-center bg-white rounded-2xl overflow-hidden">
@@ -137,22 +94,34 @@
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
-         and assistants had nothing to read and no way to crawl between them. -->
-    <section class="bg-cream-50 border-b border-cream-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <h1 class="text-xl sm:text-2xl font-extrabold text-espresso-950 font-serif">{{textXl}}</h1>
-            <p class="mt-1.5 max-w-3xl text-sm leading-relaxed text-espresso-800/90">{{mt15}}1920 {{mt152}}</p>
-            <nav aria-label="{{mt3AriaLabel}}" class="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
-                <span class="text-espresso-800/60">{{textEspresso80060}}</span>
-                <a href="{{lang.dir}}simulator.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px25}}</a>
-                <a href="{{lang.dir}}simulators/freedom-calendar.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px252}}</a>
-                <a href="{{lang.dir}}simulators/passive-income-engine.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">{{px253}}</a>
-                <a href="{{lang.dir}}simulators/monte-carlo-fire.html" class="px-2.5 py-1 rounded-lg bg-cream-200 text-espresso-900 hover:bg-cream-300 transition">Monte Carlo FIRE</a>
-            </nav>
+         and assistants had nothing to read and no way to crawl between them.
+
+         The band is the forest gradient from the home page's simulator section
+         (.simulator-stage in home.css), and the icon is that section's gold
+         chip carrying this tool's own icon from its card there. That is the
+         whole of what distinguishes the five tools from each other now: one
+         icon each, on one band. Before this, four of them opened on a cream
+         strip and the fifth on a near-black one, and none of them looked like
+         the panel the visitor had just clicked out of. -->
+    <section class="sim-intro">
+        <div class="sim-intro__inner">
+            <div class="sim-intro__icon" aria-hidden="true"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div>
+                <p class="sim-intro__eyebrow">{{simIntroEyebrow}}</p>
+                <h1 class="sim-intro__title">{{textXl}}</h1>
+                <p class="sim-intro__lede">{{mt15}}1920 {{mt152}}</p>
+                <nav aria-label="{{mt3AriaLabel}}" class="sim-intro__nav">
+                    <span class="sim-intro__navlabel">{{textEspresso80060}}</span>
+                    <a href="{{lang.dir}}simulator.html" class="sim-intro__link">{{px25}}</a>
+                    <a href="{{lang.dir}}simulators/freedom-calendar.html" class="sim-intro__link">{{px252}}</a>
+                    <a href="{{lang.dir}}simulators/passive-income-engine.html" class="sim-intro__link">{{px253}}</a>
+                    <a href="{{lang.dir}}simulators/monte-carlo-fire.html" class="sim-intro__link">Monte Carlo FIRE</a>
+                </nav>
+            </div>
         </div>
     </section>
 
-{{fontSans2}}    <main id="main" tabindex="-1" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-1 space-y-4">
+{{fontSans2}}    <main id="main" tabindex="-1" class="sim-main">
         <!-- The hub declared a BreadcrumbList and the four tools it links to did not,
              so each tool page looked like an orphan at the top level of the site. -->
         <nav class="sim-crumbs" aria-label="{{explCrumbLabel}}">
@@ -193,7 +162,7 @@
 
 {{main2}}        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             
-{{grid}}            <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-3">
+{{grid}}            <div class="sim-panel p-4 space-y-3">
                 <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
@@ -214,7 +183,7 @@
                                 <i class="fa-solid fa-chart-line text-blue-600" aria-hidden="true"></i>{{lblStocks}}                            </span>
                             <span id="val_stocks" class="font-mono text-blue-700">60%</span>
                         </div>
-                        <input type="range" id="slider_stocks" aria-labelledby="lbl_stocks" aria-valuetext="60%" min="0" max="100" value="60" data-oninput="onSliderChange('stocks', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_stocks" aria-labelledby="lbl_stocks" aria-valuetext="60%" min="0" max="100" value="60" data-oninput="onSliderChange('stocks', this.value)" class="w-full">
                     </div>
 
                     <!-- 2. Government Bonds -->
@@ -224,7 +193,7 @@
                                 <i class="fa-solid fa-building-columns text-emerald-700" aria-hidden="true"></i>{{lblBonds}}                            </span>
                             <span id="val_bonds" class="font-mono text-emerald-800">40%</span>
                         </div>
-                        <input type="range" id="slider_bonds" aria-labelledby="lbl_bonds" aria-valuetext="40%" min="0" max="100" value="40" data-oninput="onSliderChange('bonds', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_bonds" aria-labelledby="lbl_bonds" aria-valuetext="40%" min="0" max="100" value="40" data-oninput="onSliderChange('bonds', this.value)" class="w-full">
                     </div>
 
                     <!-- 3. Real Estate / REITs -->
@@ -234,7 +203,7 @@
                                 <i class="fa-solid fa-city text-amber-700" aria-hidden="true"></i>{{lblReits}}                            </span>
                             <span id="val_reits" class="font-mono text-amber-800">0%</span>
                         </div>
-                        <input type="range" id="slider_reits" aria-labelledby="lbl_reits" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('reits', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_reits" aria-labelledby="lbl_reits" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('reits', this.value)" class="w-full">
                     </div>
 
                     <!-- 4. Gold & Commodities -->
@@ -244,7 +213,7 @@
                                 <i class="fa-solid fa-coins text-gold-600" aria-hidden="true"></i>{{lblGold}}                            </span>
                             <span id="val_gold" class="font-mono text-gold-600">0%</span>
                         </div>
-                        <input type="range" id="slider_gold" aria-labelledby="lbl_gold" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('gold', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_gold" aria-labelledby="lbl_gold" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('gold', this.value)" class="w-full">
                     </div>
 
                     <!-- 5. Cash & T-Bills -->
@@ -254,7 +223,7 @@
                                 <i class="fa-solid fa-wallet text-slate-600" aria-hidden="true"></i>{{lblCash}}                            </span>
                             <span id="val_cash" class="font-mono text-slate-700">0%</span>
                         </div>
-                        <input type="range" id="slider_cash" aria-labelledby="lbl_cash" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('cash', this.value)" class="w-full h-2 bg-cream-200 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="slider_cash" aria-labelledby="lbl_cash" aria-valuetext="0%" min="0" max="100" value="0" data-oninput="onSliderChange('cash', this.value)" class="w-full">
                     </div>
                 </div>
 
@@ -265,7 +234,7 @@
 {{grid2}}            <div class="space-y-4">
                 
                 <!-- TIME TRAVEL CONTROLS CARD -->
-                <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-3">
+                <div class="sim-panel p-4 space-y-3">
                     <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                         <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
                             <i class="fa-solid fa-play text-forest-800" aria-hidden="true"></i>{{textXs5}}                        </h3>
@@ -303,7 +272,7 @@
                             <i class="fa-solid fa-play" id="playPauseIcon" aria-hidden="true"></i>
                             <span id="playPauseText">{{playpausetext}}</span>
                         </button>
-                        <button data-onclick="advanceOneYear()" id="nextYearBtn" class="py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
+                        <button data-onclick="advanceOneYear()" id="nextYearBtn" class="sim-btn sim-btn--quiet py-2.5">
                             <i class="fa-solid fa-forward-step" aria-hidden="true"></i>
                             <span>{{nextyearbtn}}</span>
                         </button>
@@ -311,7 +280,7 @@
                 </div>
 
                 <!-- PORTFOLIOS BENCHMARK LEGEND WITH TOOLTIPS -->
-                <div class="bg-cream-50 rounded-2xl p-4 border border-cream-300 custom-shadow space-y-2">
+                <div class="sim-panel p-4 space-y-2">
                     <div class="flex items-center justify-between">
                         <h4 class="text-xs font-bold text-espresso-950 uppercase tracking-wider font-serif">{{textXs6}}</h4>
                         <span class="text-[10px] text-espresso-800/60 flex items-center gap-1"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>{{text10px2}}</span>
@@ -319,12 +288,12 @@
                     <div class="grid grid-cols-2 gap-2 text-[11px]">
                         
                         <!-- 1. Custom Portfolio -->
-                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-950 cursor-pointer shadow-sm hover:border-emerald-400 transition">
-                            <span class="w-3 h-3 rounded-full bg-forest-800 flex-shrink-0"></span>
+                        <div class="sim-series sim-series-1 has-tooltip cursor-pointer">
+                            <span class="sim-series__key" aria-hidden="true"></span>
                             <span><strong>{{hasTooltip}}</strong></span>
                             <!-- Tooltip -->
-                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
-                                <div class="font-bold text-amber-300 border-b border-white/20 pb-0.5 mb-1 font-serif">{{fontBold}}</div>
+                            <div class="tooltip-box space-y-0.5">
+                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">{{fontBold}}</div>
                                 <div id="tooltipCustomComposition" class="space-y-0.5">
                                     <!-- Dynamic JS content -->
                                 </div>
@@ -332,24 +301,24 @@
                         </div>
 
                         <!-- 2. Classic 60/40 -->
-                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-950 cursor-pointer shadow-sm hover:border-blue-400 transition">
-                            <span class="w-3 h-3 rounded-full bg-blue-600 flex-shrink-0"></span>
+                        <div class="sim-series sim-series-3 has-tooltip cursor-pointer">
+                            <span class="sim-series__key" aria-hidden="true"></span>
                             <span><strong>{{hasTooltip2}}</strong></span>
                             <!-- Tooltip -->
-                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
-                                <div class="font-bold text-blue-300 border-b border-white/20 pb-0.5 mb-1 font-serif">{{fontBold2}}</div>
+                            <div class="tooltip-box space-y-0.5">
+                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">{{fontBold2}}</div>
                                 <div>{{tooltipBox}}</div>
                                 <div>{{tooltipBox2}}</div>
                             </div>
                         </div>
 
                         <!-- 3. All-Weather -->
-                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-purple-50 border border-purple-200 text-purple-950 cursor-pointer shadow-sm hover:border-purple-400 transition">
-                            <span class="w-3 h-3 rounded-full bg-purple-600 flex-shrink-0"></span>
-                            <span><strong>All-Weather (Dalio)</strong></span>
+                        <div class="sim-series sim-series-6 has-tooltip cursor-pointer">
+                            <span class="sim-series__key" aria-hidden="true"></span>
+                            <span><strong>{{chipAllWeather}}</strong></span>
                             <!-- Tooltip -->
-                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
-                                <div class="font-bold text-purple-300 border-b border-white/20 pb-0.5 mb-1 font-serif">🟣 All-Weather (Ray Dalio):</div>
+                            <div class="tooltip-box space-y-0.5">
+                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">{{tooltipTitleAllWeather}}</div>
                                 <div>{{tooltipBox3}}</div>
                                 <div>{{tooltipBox4}}</div>
                                 <div>{{tooltipBox5}}</div>
@@ -357,12 +326,12 @@
                         </div>
 
                         <!-- 4. Permanent Portfolio -->
-                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-950 cursor-pointer shadow-sm hover:border-amber-400 transition">
-                            <span class="w-3 h-3 rounded-full bg-amber-600 flex-shrink-0"></span>
+                        <div class="sim-series sim-series-2 has-tooltip cursor-pointer">
+                            <span class="sim-series__key" aria-hidden="true"></span>
                             <span><strong>{{hasTooltip3}}</strong></span>
                             <!-- Tooltip -->
-                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
-                                <div class="font-bold text-amber-300 border-b border-white/20 pb-0.5 mb-1 font-serif">{{fontBold3}}</div>
+                            <div class="tooltip-box space-y-0.5">
+                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">{{fontBold3}}</div>
                                 <div>{{tooltipBox6}}</div>
                                 <div>{{tooltipBox7}}</div>
                                 <div>{{tooltipBox8}}</div>
@@ -371,23 +340,23 @@
                         </div>
 
                         <!-- 5. Aggressive Stocks -->
-                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-950 cursor-pointer shadow-sm hover:border-rose-400 transition">
-                            <span class="w-3 h-3 rounded-full bg-rose-600 flex-shrink-0"></span>
+                        <div class="sim-series sim-series-4 has-tooltip cursor-pointer">
+                            <span class="sim-series__key" aria-hidden="true"></span>
                             <span><strong>{{hasTooltip4}}</strong></span>
                             <!-- Tooltip -->
-                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
-                                <div class="font-bold text-rose-300 border-b border-white/20 pb-0.5 mb-1 font-serif">{{fontBold4}}</div>
+                            <div class="tooltip-box space-y-0.5">
+                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">{{fontBold4}}</div>
                                 <div>{{tooltipBox10}}</div>
                             </div>
                         </div>
 
                         <!-- 6. Conservative Portfolio -->
-                        <div class="has-tooltip flex items-center gap-1.5 p-1.5 rounded-lg bg-teal-50 border border-teal-200 text-teal-950 cursor-pointer shadow-sm hover:border-teal-400 transition">
-                            <span class="w-3 h-3 rounded-full bg-teal-600 flex-shrink-0"></span>
+                        <div class="sim-series sim-series-5 has-tooltip cursor-pointer">
+                            <span class="sim-series__key" aria-hidden="true"></span>
                             <span><strong>{{hasTooltip5}}</strong></span>
                             <!-- Tooltip -->
-                            <div class="tooltip-box bg-espresso-950 text-white text-[11px] font-mono p-2.5 rounded-xl shadow-xl border border-gold-500/50 space-y-0.5 pointer-events-none">
-                                <div class="font-bold text-teal-300 border-b border-white/20 pb-0.5 mb-1 font-serif">{{fontBold5}}</div>
+                            <div class="tooltip-box space-y-0.5">
+                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">{{fontBold5}}</div>
                                 <div>{{tooltipBox11}}</div>
                                 <div>{{tooltipBox12}}</div>
                                 <div>{{tooltipBox13}}</div>
@@ -400,7 +369,7 @@
             </div>
         </div>
 
-{{main3}}        <div class="bg-cream-50 rounded-2xl p-4 sm:p-5 border border-cream-300 custom-shadow space-y-4">
+{{main3}}        <div class="sim-panel p-4 sm:p-5 space-y-4">
             <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                 <div>
                     <h3 class="text-sm sm:text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
@@ -415,45 +384,45 @@
             <!-- STAT COMPARISON CARDS FOR ALL 6 PORTFOLIOS -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
                 <!-- 1. Custom Portfolio -->
-                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-0.5 shadow-sm" role="status" aria-live="polite" aria-atomic="true">
-                    <span class="text-[10px] font-bold uppercase text-emerald-800 block truncate">{{text10px3}}</span>
-                    <div id="statCustomVal" class="text-xs sm:text-sm font-extrabold font-mono text-emerald-900">{{statcustomval}}</div>
-                    <div id="statCustomCagr" class="text-[11px] font-mono text-emerald-700">CAGR: 0.0%</div>
+                <div class="sim-stat has-tooltip" role="status" aria-live="polite" aria-atomic="true">
+                    <span class="sim-stat__label"><span class="sim-series__key sim-series__key--1" aria-hidden="true"></span><span>{{text10px3}}</span></span>
+                    <div id="statCustomVal" class="sim-stat__value sim-stat__value--series-1 text-sm">{{statcustomval}}</div>
+                    <div id="statCustomCagr" class="sim-stat__note">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 2. Classic 60/40 -->
-                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-blue-50 border border-blue-200 space-y-0.5 shadow-sm">
-                    <span class="text-[10px] font-bold uppercase text-blue-800 block truncate">{{text10px4}}</span>
-                    <div id="statClassicVal" class="text-xs sm:text-sm font-extrabold font-mono text-blue-900">{{statcustomval}}</div>
-                    <div id="statClassicCagr" class="text-[11px] font-mono text-blue-700">CAGR: 0.0%</div>
+                <div class="sim-stat has-tooltip">
+                    <span class="sim-stat__label"><span class="sim-series__key sim-series__key--3" aria-hidden="true"></span><span>{{text10px4}}</span></span>
+                    <div id="statClassicVal" class="sim-stat__value sim-stat__value--series-3 text-sm">{{statcustomval}}</div>
+                    <div id="statClassicCagr" class="sim-stat__note">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 3. All-Weather -->
-                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-purple-50 border border-purple-200 space-y-0.5 shadow-sm">
-                    <span class="text-[10px] font-bold uppercase text-purple-800 block truncate">🟣 All-Weather</span>
-                    <div id="statWeatherVal" class="text-xs sm:text-sm font-extrabold font-mono text-purple-900">{{statcustomval}}</div>
-                    <div id="statWeatherCagr" class="text-[11px] font-mono text-purple-700">CAGR: 0.0%</div>
+                <div class="sim-stat has-tooltip">
+                    <span class="sim-stat__label"><span class="sim-series__key sim-series__key--6" aria-hidden="true"></span><span>{{strategyAllWeather}}</span></span>
+                    <div id="statWeatherVal" class="sim-stat__value sim-stat__value--series-6 text-sm">{{statcustomval}}</div>
+                    <div id="statWeatherCagr" class="sim-stat__note">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 4. Permanent Portfolio -->
-                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-amber-50 border border-amber-200 space-y-0.5 shadow-sm">
-                    <span class="text-[10px] font-bold uppercase text-amber-800 block truncate">{{text10px5}}</span>
-                    <div id="statPermanentVal" class="text-xs sm:text-sm font-extrabold font-mono text-amber-900">{{statcustomval}}</div>
-                    <div id="statPermanentCagr" class="text-[11px] font-mono text-amber-700">CAGR: 0.0%</div>
+                <div class="sim-stat has-tooltip">
+                    <span class="sim-stat__label"><span class="sim-series__key sim-series__key--2" aria-hidden="true"></span><span>{{text10px5}}</span></span>
+                    <div id="statPermanentVal" class="sim-stat__value sim-stat__value--series-2 text-sm">{{statcustomval}}</div>
+                    <div id="statPermanentCagr" class="sim-stat__note">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 5. Aggressive Stocks -->
-                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-rose-50 border border-rose-200 space-y-0.5 shadow-sm">
-                    <span class="text-[10px] font-bold uppercase text-rose-800 block truncate">{{text10px6}}</span>
-                    <div id="statAggressiveVal" class="text-xs sm:text-sm font-extrabold font-mono text-rose-900">{{statcustomval}}</div>
-                    <div id="statAggressiveCagr" class="text-[11px] font-mono text-rose-700">CAGR: 0.0%</div>
+                <div class="sim-stat has-tooltip">
+                    <span class="sim-stat__label"><span class="sim-series__key sim-series__key--4" aria-hidden="true"></span><span>{{text10px6}}</span></span>
+                    <div id="statAggressiveVal" class="sim-stat__value sim-stat__value--series-4 text-sm">{{statcustomval}}</div>
+                    <div id="statAggressiveCagr" class="sim-stat__note">CAGR: 0.0%</div>
                 </div>
 
                 <!-- 6. Conservative Portfolio -->
-                <div class="has-tooltip p-2.5 sm:p-3 rounded-xl bg-teal-50 border border-teal-200 space-y-0.5 shadow-sm">
-                    <span class="text-[10px] font-bold uppercase text-teal-800 block truncate">{{text10px7}}</span>
-                    <div id="statConservativeVal" class="text-xs sm:text-sm font-extrabold font-mono text-teal-900">{{statcustomval}}</div>
-                    <div id="statConservativeCagr" class="text-[11px] font-mono text-teal-700">CAGR: 0.0%</div>
+                <div class="sim-stat has-tooltip">
+                    <span class="sim-stat__label"><span class="sim-series__key sim-series__key--5" aria-hidden="true"></span><span>{{text10px7}}</span></span>
+                    <div id="statConservativeVal" class="sim-stat__value sim-stat__value--series-5 text-sm">{{statcustomval}}</div>
+                    <div id="statConservativeCagr" class="sim-stat__note">CAGR: 0.0%</div>
                 </div>
             </div>
 
@@ -572,31 +541,12 @@
             </div>
         </section>
 
-        <!-- CLOSING CALL TO ACTION. This is the journal's "Continue the Journey"
-             panel, down to the markup: whichever door a reader comes in through -
-             an article or a simulator - the page ends on the same offer, in the
-             same shape, and the assessment is the action it leads with. Styled by
-             assets/css/simulator-cta.css, which is where the differences from
-             blog.css are explained. -->
-        <section class="simulator-cta" aria-labelledby="closing-cta-title">
-            <div class="simulator-cta__panel">
-                <div>
-                    <p class="simulator-cta__eyebrow">{{ctaEyebrow}}</p>
-                    <h2 id="closing-cta-title" class="simulator-cta__title">{{ctaTitle}}</h2>
-                    <p class="simulator-cta__body">{{ctaBody}}</p>
-                </div>
-                <div class="simulator-cta__actions">
-                    <a class="simulator-cta__button" href="{{lang.home}}#assessment">{{ctaAssessment}}</a>
-                    <a class="simulator-cta__button simulator-cta__button--secondary" href="{{lang.home}}#herramientas">{{ctaTools}}</a>
-                </div>
-            </div>
-        </section>
 
     </main>
 
     <!-- EVENT EXPLANATION MODAL -->
-    <div id="eventModal" class="fixed inset-0 bg-espresso-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-cream-50 border-2 border-amber-600 rounded-2xl max-w-lg w-full p-6 custom-shadow space-y-4 animate-in fade-in zoom-in duration-300">
+    <div id="eventModal" class="fixed inset-0 bg-espresso-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="sim-panel border-2 border-amber-600 max-w-lg w-full p-6 space-y-4 sim-enter">
             <div class="flex items-center justify-between border-b border-cream-200 pb-2.5">
                 <div class="flex items-center gap-2.5">
                     <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg font-bold shadow animate-pulse">
@@ -630,7 +580,7 @@
                     <span>{{py25}}</span>
                     <i class="fa-solid fa-play text-[10px]" aria-hidden="true"></i>
                 </button>
-                <button data-onclick="closeEventModal(false)" class="py-2.5 px-3 rounded-xl bg-cream-200 hover:bg-cream-300 text-espresso-900 font-bold text-xs border border-cream-300 transition flex items-center justify-center gap-1.5">
+                <button data-onclick="closeEventModal(false)" class="sim-btn sim-btn--quiet py-2.5 px-3">
                     <i class="fa-solid fa-pause text-[10px]" aria-hidden="true"></i>
                     <span>{{py252}}</span>
                 </button>
@@ -640,7 +590,7 @@
 
     <!-- HOW TO PLAY MODAL -->
     <div id="howToPlayModal" class="fixed inset-0 bg-espresso-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-cream-50 border-2 border-forest-800 rounded-2xl max-w-lg w-full p-6 custom-shadow space-y-4 animate-in fade-in zoom-in duration-300">
+        <div class="sim-panel border-2 border-forest-800 max-w-lg w-full p-6 space-y-4 sim-enter">
             <div class="flex items-center justify-between border-b border-cream-200 pb-3">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 rounded-lg bg-forest-800 text-amber-300 flex items-center justify-center font-bold">
@@ -823,7 +773,7 @@
         ];
 
         const PORTFOLIO_BENCHMARKS = {
-{{fontSans22}}            allweather: { name: 'All-Weather (Dalio)', stocks: 30, bonds: 55, reits: 0, gold: 15, cash: 0, color: '#7c3aed' },
+{{fontSans22}}            allweather: { name: '{{chartLabelAllWeather}}', stocks: 30, bonds: 55, reits: 0, gold: 15, cash: 0 },
 {{fontSans23}}        };
 
         let state = {
@@ -1021,6 +971,13 @@
                 state.chartInstance = null;
             }
 
+            // Six series, indexed into the shared palette in the order the
+            // cards under the chart show them, so a chip and the line it names
+            // are the same colour. Series five and six are the pair that is
+            // closest in luminance, so those are the two that dash - the same
+            // pair .sim-series__key dashes in the markup.
+            const theme = window.SimChartTheme;
+
             state.chartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -1028,70 +985,47 @@
                     datasets: [
                         {
 {{fontSans26}}                            data: state.customTrack.map(d => d.val),
-                            borderColor: '#134e2a',
-                            backgroundColor: 'rgba(19, 78, 42, 0.08)',
+                            borderColor: theme.line(0),
+                            backgroundColor: theme.fill(0),
                             borderWidth: 3.5,
                             fill: true,
-                            tension: 0.1,
                             pointRadius: 2
                         },
                         {
 {{fontSans27}}                            data: state.classicTrack.map(d => d.val),
-                            borderColor: '#2563eb',
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
+                            borderColor: theme.line(2),
+                            fill: false
                         },
                         {
-                            label: '🟣 All-Weather (Dalio)',
+                            label: '{{chartLabelAllWeather}}',
                             data: state.allWeatherTrack.map(d => d.val),
-                            borderColor: '#7c3aed',
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
+                            borderColor: theme.line(5),
+                            borderDash: [2, 2],
+                            fill: false
                         },
                         {
 {{fontSans28}}                            data: state.permanentTrack.map(d => d.val),
-                            borderColor: '#d97706',
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
+                            borderColor: theme.line(1),
+                            fill: false
                         },
                         {
 {{fontSans29}}                            data: state.aggressiveTrack.map(d => d.val),
-                            borderColor: '#e11d48',
-                            borderWidth: 2,
-                            borderDash: [4, 4],
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
+                            borderColor: theme.line(3),
+                            fill: false
                         },
                         {
 {{fontSans30}}                            data: state.conservativeTrack.map(d => d.val),
-                            borderColor: '#0d9488',
-                            borderWidth: 1.5,
-                            borderDash: [2, 2],
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
+                            borderColor: theme.line(4),
+                            borderDash: [4, 4],
+                            fill: false
                         }
                     ]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    // The chart is rebuilt on every simulated year, so an
+                    // animation would be competing with the next redraw.
                     animation: false,
                     plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                font: { size: 11, family: 'Inter' },
-                                boxWidth: 12
-                            }
-                        },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
@@ -1108,14 +1042,8 @@
                                     if (val >= 1e6) return '{{lang.currency}}' + (val / 1e6).toFixed(1) + 'M';
                                     if (val >= 1e3) return '{{lang.currency}}' + (val / 1e3).toFixed(0) + 'k';
                                     return '{{lang.currency}}' + val;
-                                },
-                                font: { size: 10, family: 'Inter' }
-                            },
-                            grid: { color: '#efe9df' }
-                        },
-                        x: {
-                            ticks: { font: { size: 10, family: 'Inter' } },
-                            grid: { display: false }
+                                }
+                            }
                         }
                     }
                 }
@@ -1334,8 +1262,60 @@
             recalculateSimulation();
         };
     </script>
+    <!-- The footer.
+
+         It was three different footers: a cream strip with a copyright line on
+         the hub and the Freedom Calendar, a `.simulator-footer` note on the
+         Market Time Machine and the Passive Income Engine, and a slate bar
+         reading "SURVIVAL FLIGHT" in cyan Orbitron on the Monte Carlo cockpit.
+         All three said the same thing, which is that this is educational and
+         not advice. One of them says it now.
+
+         It is also no longer in the flow. A simulator wants its sliders, its
+         chart and its figures on screen at once, and a disclaimer that is read
+         once was permanently holding the bottom of the document. It carries the
+         closing call to action as well now, which is the one thing on the page
+         that gains from arriving on a scroll rather than waiting at the end for
+         somebody to reach it. assets/js/
+         sim-footer.js docks it to the bottom of the viewport, shows it while
+         the visitor is scrolling, and hides it 2.5s after they stop - and adds
+         the class that does the docking, so without JavaScript this stays an
+         ordinary block at the end of the page. The spacer reserves its height
+         so nothing ends up underneath it; the script un-hides it and measures
+         it, for the same reason. -->
+    <div class="simulator-footer-spacer" aria-hidden="true" hidden></div>
     <footer class="simulator-footer">
-      <p class="simulator-footer__note">{{simulatorFooterNote}}</p>
+      <div class="simulator-footer__inner">
+
+        <!-- CLOSING CALL TO ACTION. The journal's "Continue the Journey" offer,
+             which every article and all five simulators end on.
+
+             It used to be a forest slab at the very end of the document, which
+             is the right shape for an article and the wrong one for a tool: on
+             a simulator the end of the document is somewhere a visitor only
+             arrives by scrolling past the thing they came for, and most of them
+             never did. It rides in this bar now, so it arrives on the same
+             signal the bar does - a scroll, anywhere on the page - and leaves
+             with it.
+
+             Riding in a bar that appears over a tool in use sets the whole
+             budget, and the budget is height. The panel's paragraph is gone and
+             what is left is what a call to action actually is: the offer and
+             the two ways to take it. assets/css/simulator-cta.css has the
+             measurements. -->
+        <div class="simulator-cta">
+          <div class="simulator-cta__text">
+            <p class="simulator-cta__eyebrow">{{ctaEyebrow}}</p>
+            <h2 id="closing-cta-title" class="simulator-cta__title">{{ctaTitle}}</h2>
+          </div>
+          <div class="simulator-cta__actions">
+            <a class="simulator-cta__button" href="{{lang.home}}#assessment">{{ctaAssessment}}</a>
+            <a class="simulator-cta__button simulator-cta__button--secondary" href="{{lang.home}}#herramientas">{{ctaTools}}</a>
+          </div>
+        </div>
+
+        <p class="simulator-footer__note">&copy; <script>document.write(new Date().getFullYear())</script> {{simulatorFooterNote}}</p>
+      </div>
     </footer>
 </body>
 </html>

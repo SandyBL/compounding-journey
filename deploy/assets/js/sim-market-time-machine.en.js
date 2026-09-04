@@ -157,11 +157,11 @@
         ];
 
         const PORTFOLIO_BENCHMARKS = {
-            classic6040: { name: 'Classic (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0, color: '#2563eb' },
-            allweather: { name: 'All-Weather (Dalio)', stocks: 30, bonds: 55, reits: 0, gold: 15, cash: 0, color: '#7c3aed' },
-            permanent: { name: 'Permanent (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25, color: '#d97706' },
-            aggressive: { name: '100% Stocks', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0, color: '#e11d48' },
-            conservative: { name: 'Conservative (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20, color: '#0d9488' }
+            classic6040: { name: 'Classic (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0 },
+            allweather: { name: 'All-Weather (Dalio)', stocks: 30, bonds: 55, reits: 0, gold: 15, cash: 0 },
+            permanent: { name: 'Permanent (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25 },
+            aggressive: { name: '100% Stocks', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0 },
+            conservative: { name: 'Conservative (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20 }
         };
 
         let state = {
@@ -365,82 +365,66 @@
                 state.chartInstance = null;
             }
 
+            // Six series, indexed into the shared palette in the order the
+            // cards under the chart show them, so a chip and the line it names
+            // are the same colour. Series five and six are the pair that is
+            // closest in luminance, so those are the two that dash - the same
+            // pair .sim-series__key dashes in the markup.
+            const theme = window.SimChartTheme;
+
             state.chartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
                     datasets: [
                         {
-                            label: '🟢 Your Custom Portfolio',
+                            label: 'Your Custom Portfolio',
                             data: state.customTrack.map(d => d.val),
-                            borderColor: '#134e2a',
-                            backgroundColor: 'rgba(19, 78, 42, 0.08)',
+                            borderColor: theme.line(0),
+                            backgroundColor: theme.fill(0),
                             borderWidth: 3.5,
                             fill: true,
-                            tension: 0.1,
                             pointRadius: 2
                         },
                         {
-                            label: '🔵 Classic 60/40',
+                            label: 'Classic 60/40',
                             data: state.classicTrack.map(d => d.val),
-                            borderColor: '#2563eb',
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
+                            borderColor: theme.line(2),
+                            fill: false
                         },
                         {
-                            label: '🟣 All-Weather (Dalio)',
+                            label: 'All-Weather (Dalio)',
                             data: state.allWeatherTrack.map(d => d.val),
-                            borderColor: '#7c3aed',
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
-                        },
-                        {
-                            label: '🟠 Permanent (Browne)',
-                            data: state.permanentTrack.map(d => d.val),
-                            borderColor: '#d97706',
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
-                        },
-                        {
-                            label: '🔴 100% Stocks (Aggressive)',
-                            data: state.aggressiveTrack.map(d => d.val),
-                            borderColor: '#e11d48',
-                            borderWidth: 2,
-                            borderDash: [4, 4],
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
-                        },
-                        {
-                            label: '🟢 Conservative (20/80)',
-                            data: state.conservativeTrack.map(d => d.val),
-                            borderColor: '#0d9488',
-                            borderWidth: 1.5,
+                            borderColor: theme.line(5),
                             borderDash: [2, 2],
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
+                            fill: false
+                        },
+                        {
+                            label: 'Permanent (Browne)',
+                            data: state.permanentTrack.map(d => d.val),
+                            borderColor: theme.line(1),
+                            fill: false
+                        },
+                        {
+                            label: '100% Stocks (Aggressive)',
+                            data: state.aggressiveTrack.map(d => d.val),
+                            borderColor: theme.line(3),
+                            fill: false
+                        },
+                        {
+                            label: 'Conservative (20/80)',
+                            data: state.conservativeTrack.map(d => d.val),
+                            borderColor: theme.line(4),
+                            borderDash: [4, 4],
+                            fill: false
                         }
                     ]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    // The chart is rebuilt on every simulated year, so an
+                    // animation would be competing with the next redraw.
                     animation: false,
                     plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                font: { size: 11, family: 'Inter' },
-                                boxWidth: 12
-                            }
-                        },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
@@ -457,14 +441,8 @@
                                     if (val >= 1e6) return '$' + (val / 1e6).toFixed(1) + 'M';
                                     if (val >= 1e3) return '$' + (val / 1e3).toFixed(0) + 'k';
                                     return '$' + val;
-                                },
-                                font: { size: 10, family: 'Inter' }
-                            },
-                            grid: { color: '#efe9df' }
-                        },
-                        x: {
-                            ticks: { font: { size: 10, family: 'Inter' } },
-                            grid: { display: false }
+                                }
+                            }
                         }
                     }
                 }

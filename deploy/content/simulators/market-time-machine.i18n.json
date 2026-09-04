@@ -305,9 +305,9 @@
     "pt": "Seu Portfólio (Sliders)"
   },
   "fontBold": {
-    "en": "🟢 Your Current Portfolio:",
-    "es": "🟢 Tu Portafolio Actual:",
-    "pt": "🟢 Seu Portfólio Atual:"
+    "en": "Your Current Portfolio:",
+    "es": "Tu Portafolio Actual:",
+    "pt": "Seu Portfólio Atual:"
   },
   "hasTooltip2": {
     "en": "Classic 60/40",
@@ -315,9 +315,9 @@
     "pt": "Clássico 60/40"
   },
   "fontBold2": {
-    "en": "🔵 Classic 60/40:",
-    "es": "🔵 Clásico 60/40:",
-    "pt": "🔵 Clássico 60/40:"
+    "en": "Classic 60/40:",
+    "es": "Clásico 60/40:",
+    "pt": "Clássico 60/40:"
   },
   "tooltipBox": {
     "en": "• 60% Stocks (S&P 500)",
@@ -350,9 +350,9 @@
     "pt": "Permanente (Browne)"
   },
   "fontBold3": {
-    "en": "🟠 Permanent Portfolio (Harry Browne):",
-    "es": "🟠 Portafolio Permanente (Harry Browne):",
-    "pt": "🟠 Portfólio Permanente (Harry Browne):"
+    "en": "Permanent Portfolio (Harry Browne):",
+    "es": "Portafolio Permanente (Harry Browne):",
+    "pt": "Portfólio Permanente (Harry Browne):"
   },
   "tooltipBox6": {
     "en": "• 25% Stocks (S&P 500)",
@@ -380,9 +380,9 @@
     "pt": "100% Ações"
   },
   "fontBold4": {
-    "en": "🔴 100% Equities (Aggressive):",
-    "es": "🔴 100% Acciones (Agresivo):",
-    "pt": "🔴 100% Ações (Agressivo):"
+    "en": "100% Equities (Aggressive):",
+    "es": "100% Acciones (Agresivo):",
+    "pt": "100% Ações (Agressivo):"
   },
   "tooltipBox10": {
     "en": "• 100% Global / US Stocks",
@@ -395,9 +395,9 @@
     "pt": "Conservador (20/80)"
   },
   "fontBold5": {
-    "en": "🟢 Conservative (20/80):",
-    "es": "🟢 Conservador (20/80):",
-    "pt": "🟢 Conservador (20/80):"
+    "en": "Conservative (20/80):",
+    "es": "Conservador (20/80):",
+    "pt": "Conservador (20/80):"
   },
   "tooltipBox11": {
     "en": "• 20% Stocks",
@@ -430,9 +430,9 @@
     "pt": "Acompanhe o crescimento e a resiliência das estratégias ao longo das décadas"
   },
   "text10px3": {
-    "en": "🟢 Your Portfolio",
-    "es": "🟢 Tu Portafolio",
-    "pt": "🟢 Seu Portfólio"
+    "en": "Your Portfolio",
+    "es": "Tu Portafolio",
+    "pt": "Seu Portfólio"
   },
   "statcustomval": {
     "en": "$100,000",
@@ -440,24 +440,24 @@
     "pt": "R$100.000"
   },
   "text10px4": {
-    "en": "🔵 Classic 60/40",
-    "es": "🔵 Clásico 60/40",
-    "pt": "🔵 Clássico 60/40"
+    "en": "Classic 60/40",
+    "es": "Clásico 60/40",
+    "pt": "Clássico 60/40"
   },
   "text10px5": {
-    "en": "🟠 Permanent",
-    "es": "🟠 Permanente",
-    "pt": "🟠 Permanente"
+    "en": "Permanent",
+    "es": "Permanente",
+    "pt": "Permanente"
   },
   "text10px6": {
-    "en": "🔴 100% Stocks",
-    "es": "🔴 100% Acciones",
-    "pt": "🔴 100% Ações"
+    "en": "100% Stocks",
+    "es": "100% Acciones",
+    "pt": "100% Ações"
   },
   "text10px7": {
-    "en": "🟢 Conservative",
-    "es": "🟢 Conservador",
-    "pt": "🟢 Conservador"
+    "en": "Conservative",
+    "es": "Conservador",
+    "pt": "Conservador"
   },
   "timemachinechartAriaLabel": {
     "en": "Chart: portfolio value across the simulated historical period for each strategy. The final value and CAGR of every strategy are stated as text in the stat cards above.",
@@ -490,9 +490,9 @@
     "pt": " O que o Gráfico Está Mostrando?\n"
   },
   "text11px2": {
-    "en": "                    Observe how 🔴 (100% Stocks) suffers sharp drawdowns during crashes, while diversified strategies like 🟣 (All-Weather) and 🟢 (Your Portfolio) cushion volatility through fixed income and gold!\n",
-    "es": "                    ¡Observa cómo el portafolio 🔴 (100% Acciones) sufre caídas acentuadas en la crisis, mientras que estrategias diversificadas como 🟣 (All-Weather) y 🟢 (Tu Portafolio) suavizan la volatilidad a través de la renta fija y el oro!\n",
-    "pt": "                    Observe como o portfólio 🔴 (100% Ações) sofre quedas acentuadas na crise, enquanto estratégias diversificadas como 🟣 (All-Weather) e 🟢 (Seu Portfólio) suavizam a volatilidade através da renda fixa e ouro!\n"
+    "en": "                    Observe how (100% Stocks) suffers sharp drawdowns during crashes, while diversified strategies like (All-Weather) and (Your Portfolio) cushion volatility through fixed income and gold!\n",
+    "es": "                    ¡Observa cómo el portafolio (100% Acciones) sufre caídas acentuadas en la crisis, mientras que estrategias diversificadas como (All-Weather) y (Tu Portafolio) suavizan la volatilidad a través de la renta fija y el oro!\n",
+    "pt": "                    Observe como o portfólio (100% Ações) sofre quedas acentuadas na crise, enquanto estratégias diversificadas como (All-Weather) e (Seu Portfólio) suavizam a volatilidade através da renda fixa e ouro!\n"
   },
   "py25": {
     "en": "Resume Journey",
@@ -680,14 +680,14 @@
     "pt": "                desc: 'O Fed elevou os juros agressivamente para combater a inflação. Pior queda simultânea em ações e títulos em 50 anos!',\n                impact: 'Ações caíram -18.1% e Títulos caíram -13.0%, testando investidores que dependiam apenas de títulos como proteção.'\n"
   },
   "fontSans22": {
-    "en": "            classic6040: { name: 'Classic (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0, color: '#2563eb' },\n",
-    "es": "            classic6040: { name: 'Clásico (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0, color: '#2563eb' },\n",
-    "pt": "            classic6040: { name: 'Clássico (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0, color: '#2563eb' },\n"
+    "en": "            classic6040: { name: 'Classic (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0 },\n",
+    "es": "            classic6040: { name: 'Clásico (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0 },\n",
+    "pt": "            classic6040: { name: 'Clássico (60/40)', stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0 },\n"
   },
   "fontSans23": {
-    "en": "            permanent: { name: 'Permanent (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25, color: '#d97706' },\n            aggressive: { name: '100% Stocks', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0, color: '#e11d48' },\n            conservative: { name: 'Conservative (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20, color: '#0d9488' }\n",
-    "es": "            permanent: { name: 'Permanente (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25, color: '#d97706' },\n            aggressive: { name: '100% Acciones', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0, color: '#e11d48' },\n            conservative: { name: 'Conservador (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20, color: '#0d9488' }\n",
-    "pt": "            permanent: { name: 'Permanente (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25, color: '#d97706' },\n            aggressive: { name: '100% Ações', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0, color: '#e11d48' },\n            conservative: { name: 'Conservador (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20, color: '#0d9488' }\n"
+    "en": "            permanent: { name: 'Permanent (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25 },\n            aggressive: { name: '100% Stocks', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0 },\n            conservative: { name: 'Conservative (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20 }\n",
+    "es": "            permanent: { name: 'Permanente (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25 },\n            aggressive: { name: '100% Acciones', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0 },\n            conservative: { name: 'Conservador (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20 }\n",
+    "pt": "            permanent: { name: 'Permanente (Browne)', stocks: 25, bonds: 25, reits: 0, gold: 25, cash: 25 },\n            aggressive: { name: '100% Ações', stocks: 100, bonds: 0, reits: 0, gold: 0, cash: 0 },\n            conservative: { name: 'Conservador (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20 }\n"
   },
   "fontSans24": {
     "en": "                <div>• ${state.allocation.stocks}% Stocks</div>\n                <div>• ${state.allocation.bonds}% Bonds</div>\n                <div>• ${state.allocation.reits}% Real Estate/REITs</div>\n                <div>• ${state.allocation.gold}% Gold</div>\n                <div>• ${state.allocation.cash}% Cash</div>\n",
@@ -700,29 +700,29 @@
     "pt": "                    note.textContent = 'Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página.';\n"
   },
   "fontSans26": {
-    "en": "                            label: '🟢 Your Custom Portfolio',\n",
-    "es": "                            label: '🟢 Tu Portafolio Personalizado',\n",
-    "pt": "                            label: '🟢 Seu Portfólio Personalizado',\n"
+    "en": "                            label: 'Your Custom Portfolio',\n",
+    "es": "                            label: 'Tu Portafolio Personalizado',\n",
+    "pt": "                            label: 'Seu Portfólio Personalizado',\n"
   },
   "fontSans27": {
-    "en": "                            label: '🔵 Classic 60/40',\n",
-    "es": "                            label: '🔵 Clásico 60/40',\n",
-    "pt": "                            label: '🔵 Clássico 60/40',\n"
+    "en": "                            label: 'Classic 60/40',\n",
+    "es": "                            label: 'Clásico 60/40',\n",
+    "pt": "                            label: 'Clássico 60/40',\n"
   },
   "fontSans28": {
-    "en": "                            label: '🟠 Permanent (Browne)',\n",
-    "es": "                            label: '🟠 Permanente (Browne)',\n",
-    "pt": "                            label: '🟠 Permanente (Browne)',\n"
+    "en": "                            label: 'Permanent (Browne)',\n",
+    "es": "                            label: 'Permanente (Browne)',\n",
+    "pt": "                            label: 'Permanente (Browne)',\n"
   },
   "fontSans29": {
-    "en": "                            label: '🔴 100% Stocks (Aggressive)',\n",
-    "es": "                            label: '🔴 100% Acciones (Agresivo)',\n",
-    "pt": "                            label: '🔴 100% Ações (Agressivo)',\n"
+    "en": "                            label: '100% Stocks (Aggressive)',\n",
+    "es": "                            label: '100% Acciones (Agresivo)',\n",
+    "pt": "                            label: '100% Ações (Agressivo)',\n"
   },
   "fontSans30": {
-    "en": "                            label: '🟢 Conservative (20/80)',\n",
-    "es": "                            label: '🟢 Conservador (20/80)',\n",
-    "pt": "                            label: '🟢 Conservador (20/80)',\n"
+    "en": "                            label: 'Conservative (20/80)',\n",
+    "es": "                            label: 'Conservador (20/80)',\n",
+    "pt": "                            label: 'Conservador (20/80)',\n"
   },
   "fontSans31": {
     "en": "            document.getElementById('currentYearDisplay').innerText = `YEAR: ${currentYear}`;\n",
@@ -770,9 +770,9 @@
     "pt": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/market-time-machine.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\" aria-current=\"page\">"
   },
   "simulatorFooterNote": {
-    "en": "&copy; 2026 Compounding Journey. For educational purposes only. Not formal financial advice.",
-    "es": "&copy; 2026 Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero.",
-    "pt": "&copy; 2026 Compounding Journey. Apenas para fins educativos. Não constitui aconselhamento financeiro."
+    "en": "Compounding Journey. For educational purposes only. Not formal financial advice.",
+    "es": "Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
+    "pt": "Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
   },
   "a11yCloseDialog": {
     "en": "Close",
@@ -798,11 +798,6 @@
     "en": "Turn a century of market history into your next decision.",
     "es": "Convierte un siglo de historia del mercado en tu próxima decisión.",
     "pt": "Transforma um século de história do mercado na tua próxima decisão."
-  },
-  "ctaBody": {
-    "en": "You have watched portfolios fall and recover across a hundred years of cycles. The financial assessment turns that perspective into a plan built around your own numbers.",
-    "es": "Ya viste cómo las carteras caen y se recuperan a lo largo de un siglo de ciclos. El diagnóstico financiero convierte esa perspectiva en un plan hecho con tus propios números.",
-    "pt": "Já viste como as carteiras caem e recuperam ao longo de um século de ciclos. O diagnóstico financeiro transforma essa perspetiva num plano feito com os teus próprios números."
   },
   "explTitle": {
     "en": "What the Market Time Machine shows",
@@ -963,5 +958,30 @@
     "en": "Breadcrumb",
     "es": "Ruta de navegación",
     "pt": "Trilho de navegação"
+  },
+  "simIntroEyebrow": {
+    "en": "Free interactive tool",
+    "es": "Herramienta interactiva gratuita",
+    "pt": "Ferramenta interativa gratuita"
+  },
+  "strategyAllWeather": {
+    "en": "All-Weather",
+    "es": "Todo Clima",
+    "pt": "Todo Clima"
+  },
+  "chartLabelAllWeather": {
+    "en": "All-Weather (Dalio)",
+    "es": "Todo Clima (Dalio)",
+    "pt": "Todo Clima (Dalio)"
+  },
+  "chipAllWeather": {
+    "en": "All-Weather (Dalio)",
+    "es": "Todo Clima (Dalio)",
+    "pt": "Todo Clima (Dalio)"
+  },
+  "tooltipTitleAllWeather": {
+    "en": "All-Weather (Ray Dalio):",
+    "es": "Todo Clima (Ray Dalio):",
+    "pt": "Todo Clima (Ray Dalio):"
   }
 }

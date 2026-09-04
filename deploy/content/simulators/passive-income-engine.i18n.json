@@ -1029,16 +1029,6 @@
     "es": "                    note.textContent = 'No se pudo dibujar el gráfico. Todas las cifras que mostraría también aparecen como texto en esta página.';\n",
     "pt": "                    note.textContent = 'Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página.';\n"
   },
-  "fontSans64": {
-    "en": "                '#134e2a', // Forest green\n                '#d4a338', // Gold\n",
-    "es": "                '#134e2a', // Verde Bosque\n                '#d4a338', // Oro\n",
-    "pt": "                '#134e2a', // Verde Floresta\n                '#d4a338', // Ouro\n"
-  },
-  "fontSans65": {
-    "en": "                '#10b981', // Emerald\n                '#2563eb', // Royal blue\n                '#9333ea'  // Purple\n",
-    "es": "                '#10b981', // Esmeralda\n                '#2563eb', // Azul Real\n                '#9333ea'  // Púrpura\n",
-    "pt": "                '#10b981', // Esmeralda\n                '#2563eb', // Azul\n                '#9333ea'  // Roxo\n"
-  },
   "fontSans66": {
     "en": "                console.error(\"Chart render error:\", e);\n",
     "es": "                console.error(\"Error al renderizar gráfico:\", e);\n",
@@ -1070,9 +1060,9 @@
     "pt": "<a class=\"simulator-lang-btn\" href=\"/pt/simulators/passive-income-engine.html\" hreflang=\"pt\" lang=\"pt\" aria-label=\"Português\" aria-current=\"page\">"
   },
   "simulatorFooterNote": {
-    "en": "&copy; 2026 Compounding Journey. For educational purposes only. Not formal financial advice.",
-    "es": "&copy; 2026 Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero.",
-    "pt": "&copy; 2026 Compounding Journey. Apenas para fins educativos. Não constitui aconselhamento financeiro."
+    "en": "Compounding Journey. For educational purposes only. Not formal financial advice.",
+    "es": "Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
+    "pt": "Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
   },
   "a11yDismissSummary": {
     "en": "Dismiss summary",
@@ -1103,11 +1093,6 @@
     "en": "Turn simulated cash flow into income that is really yours.",
     "es": "Convierte el flujo simulado en ingresos que sean realmente tuyos.",
     "pt": "Transforma o fluxo simulado em rendimento que seja mesmo teu."
-  },
-  "ctaBody": {
-    "en": "Building the engine here takes minutes. The financial assessment looks at where your money is today, and at what it would take to grow passive income for real.",
-    "es": "Construir el motor aquí toma minutos. El diagnóstico financiero mira dónde está tu dinero hoy y qué haría falta para hacer crecer tus ingresos pasivos de verdad.",
-    "pt": "Construir o motor aqui demora minutos. O diagnóstico financeiro olha para onde está o teu dinheiro hoje e para o que seria preciso para fazer crescer o rendimento passivo a sério."
   },
   "explTitle": {
     "en": "What the Passive Income Engine is for",
@@ -1293,5 +1278,10 @@
     "en": "See what this run means",
     "es": "Ver qué significa esta partida",
     "pt": "Ver o que esta partida significa"
+  },
+  "simIntroEyebrow": {
+    "en": "Free interactive tool",
+    "es": "Herramienta interactiva gratuita",
+    "pt": "Ferramenta interativa gratuita"
   }
 }
