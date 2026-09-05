@@ -205,6 +205,20 @@ button, input { font: inherit; }
 
 .site-footer { padding: 34px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
 .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+/* The section links at the foot of an article. Same rules as the ones in
+   pages.css, because it is the same row rendered from the same table in
+   scripts/section-nav.mjs - the two stylesheets both define .footer-row, and
+   this is the family that loads this one. The current page is bold and
+   unlinked-looking rather than absent: a reader scanning the row should be able
+   to see where the article they just finished sits among the seven.
+
+   Scoped to the nav, unlike in pages.css: the three journal indexes put their
+   RSS link in this same row, and it is not part of this nav and should not
+   start looking like one of its items. */
+.footer-row nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.footer-row nav a { color: var(--forest-soft); font-weight: 600; text-decoration: none; }
+.footer-row nav a:hover { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+.footer-row nav a[aria-current] { color: var(--forest); font-weight: 700; text-decoration: none; cursor: default; }
 /* The counting disclosure. Deliberately quiet - it is a standing statement of
    fact, not a notice a reader has to dismiss - but full size text rather than
    fine print, because shrinking it is how a disclosure stops being one. */
@@ -336,3 +350,70 @@ button, input { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* ==========================================================================
+   Automatic links and the share row.
+   Both are rendered by the build: the links by scripts/inline-links.mjs, which
+   also runs on the generated glossary, calculator and template pages, and the
+   share row by scripts/share-row.mjs, which today only the articles use. These
+   rules moved here from pages.css because the article pages link blog.css,
+   header.css and a11y.css and nothing else, and every page that links pages.css
+   links this file first - so blog.css is the one place both sets of pages can
+   read them from without a fourth request.
+   ========================================================================== */
+
+/* ------------------------------------------------------ inline links ------- */
+
+/**
+ * Links inserted by scripts/inline-links.mjs. They are styled a shade quieter
+ * than an author's own link: a dotted underline rather than a solid one, so a
+ * paragraph carrying two automatic links still reads as prose rather than as a
+ * list of things to click.
+ */
+.article-body .inline-link {
+  color: var(--forest-soft);
+  font-weight: 600;
+  text-decoration: underline dotted;
+  text-decoration-color: rgba(200,154,50,.7);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.article-body .inline-link:hover { color: var(--rust); text-decoration-style: solid; text-decoration-color: var(--gold); }
+
+/* ------------------------------------------------------------- share ------- */
+
+/**
+ * The share row on every article. Deliberately no third-party widgets: those
+ * load scripts from four domains, watch the reader, and need a cookie banner to
+ * be lawful. These are plain links to each network's share endpoint, so the
+ * page ships no tracking and the row costs nothing to render.
+ */
+.share-row { margin: 46px 0 0; padding: 22px 0 0; border-top: 1px solid var(--line); }
+.share-title {
+  margin: 0 0 14px;
+  color: var(--forest);
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.share-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.share-link, .share-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--forest-soft);
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.share-link:hover, .share-copy:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--forest); }
+.share-copy[data-copied="true"] { border-color: var(--forest); color: var(--forest); }

@@ -11,7 +11,7 @@
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="es_ES"><meta property="og:title" content="Máquina del Tiempo del Mercado"><meta property="og:description" content="Compara carteras a través de ciclos y crisis históricas."><meta property="og:url" content="https://compoundingjourney.com/es/simulators/market-time-machine.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Máquina del Tiempo del Mercado"><meta name="twitter:description" content="Compara carteras a través de ciclos y crisis históricas."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Máquina del Tiempo del Mercado","url":"https://compoundingjourney.com/es/simulators/market-time-machine.html","description":"Un simulador interactivo para comparar carteras durante ciclos de mercado desde 1920.","inLanguage":"es","applicationCategory":"FinanceApplication","operatingSystem":"Cualquier navegador web","browserRequirements":"Requiere JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://compoundingjourney.com/"},{"@type":"ListItem","position":2,"name":"Simuladores","item":"https://compoundingjourney.com/es/simulator.html"},{"@type":"ListItem","position":3,"name":"Máquina del Tiempo del Mercado"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://compoundingjourney.com/"},{"@type":"ListItem","position":2,"name":"Simuladores","item":"https://compoundingjourney.com/es/simulators/"},{"@type":"ListItem","position":3,"name":"Máquina del Tiempo del Mercado"}]}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=source">
@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.es.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body class="min-h-full flex flex-col antialiased selection:bg-gold-500 selection:text-white">
 
@@ -92,6 +96,14 @@
             </div>
         </div>
     </header>
+    <!-- The site's section nav: the only navigation on a simulator that points
+         outside the simulators. Rendered from the one table in
+         scripts/section-nav.mjs, with the Simuladores tab marked as the current
+         page, and placed outside the sticky <header> like on every other family
+         - see the .site-section-nav comment in assets/css/header.css. -->
+  <nav class="site-section-nav" aria-label="Secciones del sitio">
+    <div class="site-section-tabs"><a href="/es/blog/">Diario</a><a href="/es/simulators/" aria-current="true">Simuladores</a><a href="/es/calculadoras/">Calculadoras</a><a href="/es/plantillas/">Plantillas</a><a href="/es/glosario/">Glosario</a><a href="/es/datos/">Datos</a><a href="/es/sesiones/">Sesiones</a></div>
+  </nav>
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
@@ -113,7 +125,7 @@
                 <p class="sim-intro__lede">Compara carteras durante ciclos y crisis desde 1920 para explorar riesgo, recuperación, diversificación y rentabilidad a largo plazo.</p>
                 <nav aria-label="Más simuladores" class="sim-intro__nav">
                     <span class="sim-intro__navlabel">Más simuladores:</span>
-                    <a href="/es/simulator.html" class="sim-intro__link">Todos los simuladores</a>
+                    <a href="/es/simulators/" class="sim-intro__link">Todos los simuladores</a>
                     <a href="/es/simulators/freedom-calendar.html" class="sim-intro__link">Calendario de la Libertad</a>
                     <a href="/es/simulators/passive-income-engine.html" class="sim-intro__link">Motor de Ingresos Pasivos</a>
                     <a href="/es/simulators/monte-carlo-fire.html" class="sim-intro__link">Monte Carlo FIRE</a>
@@ -129,10 +141,34 @@
         <nav class="sim-crumbs" aria-label="Ruta de navegación">
             <ol>
                 <li><a href="/">Inicio</a></li>
-                <li><a href="/es/simulator.html">Simuladores</a></li>
+                <li><a href="/es/simulators/">Simuladores</a></li>
                 <li><span aria-current="page">Máquina del Tiempo del Mercado</span></li>
             </ol>
         </nav>
+
+        <!-- The persistent compliance notice.
+
+             Every calculator and glossary page carries one (see the
+             disclaimer() helper in scripts/page-shell.mjs); the simulators
+             carried a single line in `.simulator-footer`, and that bar is
+             docked to the viewport and hides itself 2.5s after the visitor
+             stops scrolling. A notice that disappears on a timer is not a
+             notice, and these five pages are the ones that most need one:
+             they print money figures and dates that look like predictions,
+             which is exactly the reading the notice exists to prevent.
+
+             So it sits in the flow, above the tool, where it is visible before
+             the first number is. The text is in SHARED_STRINGS in
+             scripts/generate-simulator-pages.mjs rather than in this
+             simulator's sidecar, because all five have to say the same thing.
+
+             No painted background, for the reason `.sim-crumbs` gives: three
+             palettes share these templates and only conflict over large filled
+             areas. -->
+        <aside class="sim-disclaimer" role="note" aria-labelledby="sim-disclaimer-title">
+            <p class="sim-disclaimer__title" id="sim-disclaimer-title">Contenido educativo, no asesoramiento financiero</p>
+            <p class="sim-disclaimer__body">Sandy Bradbury es educador financiero, no asesor financiero acreditado. Este simulador es una herramienta educativa: sus resultados son estimaciones ilustrativas calculadas a partir de los supuestos que introduces, no predicen rentabilidades reales y no constituyen asesoramiento ni una recomendación para comprar o vender ningún producto. <a href="/es/aviso-legal/">Leer el aviso legal completo</a></p>
+        </aside>
 
 
         <!-- INTRO BANNER & PRESET SELECTOR -->
@@ -449,6 +485,35 @@
                 <canvas id="timeMachineChart" role="img" aria-label="Gráfico: valor de la cartera durante el periodo histórico simulado para cada estrategia. El valor final y la TCAC de cada estrategia aparecen como texto en las tarjetas superiores."></canvas>
             </div>
 
+            <!-- THE ONLY THING THIS TOOL SENDS ANYWHERE.
+                 Everything else on the page is arithmetic in the browser. This
+                 block is one button that offers to keep the run, and the copy in
+                 it is shared with the Freedom Calendar through
+                 SHARED_STRINGS - the same offer has to be described the same way
+                 in both places, or one of the two descriptions is wrong. -->
+            <div class="sim-contribute" id="contributeBox" data-state="empty"
+                 data-sending="Enviando…"
+                 data-thanks="Añadido. Gracias: las medias de la página de resultados incluyen ahora este escenario."
+                 data-failed="No se ha podido enviar. Tu simulación no se ha perdido; puedes volver a intentarlo.">
+                <h4 class="sim-contribute__title">
+                    <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+                    <span>Añade este escenario a los datos públicos</span>
+                </h4>
+                <p class="sim-contribute__body">Se guardan los ajustes de esta simulación y su resultado: los números que has puesto en el modelo, no datos sobre ti. Sin nombre, sin correo, sin identificador.</p>
+                <p class="sim-contribute__body">
+                    Con ellos se calculan las medias que publico, y cualquiera puede leerlas:
+                    <a href="/es/datos/">ver la página de resultados</a>.
+                </p>
+                <button type="button" id="contributeButton" class="sim-contribute__button" data-onclick="contributeRun()">
+                    Añadir mi escenario
+                </button>
+                <p class="sim-contribute__status" id="contributeStatus" role="status" aria-live="polite"></p>
+                <p class="sim-contribute__note">
+                    Nada sale de tu navegador hasta que pulses el botón, y la herramienta funciona igual si no lo pulsas nunca.
+                    <a href="/es/privacidad/">Cómo se tratan estos datos</a>.
+                </p>
+            </div>
+
             <!-- LOG TIMELINE SUMMARY -->
             <div id="simLogContainer" class="space-y-1.5 pt-2 border-t border-cream-200">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-espresso-800/70 block">Eventos Históricos Atravesados:</span>
@@ -551,7 +616,7 @@
                     <h3 class="sim-explainer__heading" id="reading-title">Sigue leyendo</h3>
                     <p>El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.</p>
                     <ul class="sim-explainer__list">
-                        <li><a href="/es/blog/sistema-dinero-lento/">El sistema de dinero lento: una forma más tranquila de crear patrimonio</a></li>
+                        <li><a href="/es/blog/que-ensena-un-siglo-de-historia-de-los-mercados-caidas-recuperacion-y-diversificacion/">Qué enseña un siglo de historia de los mercados: caídas, recuperación y diversificación</a></li>
                         <li><a href="/es/blog/fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza/">Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza</a></li>
                         <li><a href="/es/blog/">Todas las entradas del diario</a></li>
                     </ul>
@@ -666,6 +731,8 @@
     <!-- JAVASCRIPT SIMULATION ENGINE -->
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-footer.js?v=source" defer></script>
+    <script src="/assets/js/section-nav.js?v=source" defer></script>
+    <script src="/assets/js/sim-contribute.js?v=source" defer></script>
     <script src="/assets/js/sim-chart-theme.js?v=source" defer></script>
     <script src="/assets/js/sim-market-time-machine.es.js?v=source" defer></script>
     <!-- The footer.

@@ -440,6 +440,70 @@
             });
         }
 
+        /**
+         * The shape of the run at the moment it crossed over.
+         *
+         * The board stores how long the run took and what it was worth, and
+         * used to store nothing else - so a table of crossovers said nothing
+         * about how any of them were reached. Which income engine was carrying
+         * the run, and what the six lifestyle dials were set to, is the whole
+         * question this simulator exists to put in front of somebody: freedom
+         * arrives sooner if you live smaller, and how much smaller people
+         * actually choose to live is not something anybody has numbers on.
+         *
+         * `topEngine` is the engine producing the largest share of the monthly
+         * income, not the one with the most units. A single rental condo out-
+         * yields fifty bond units, and the interesting fact is which asset the
+         * income came from.
+         */
+        function crossoverShape() {
+            let top = null;
+            assets.forEach((asset) => {
+                const income = asset.ownedUnits * asset.monthlyYieldPerUnit;
+                if (income > 0 && (!top || income > top.income)) top = { id: asset.id, income };
+            });
+
+            const shape = {
+                monthlyExpenses: recordable(getMonthlyExpenses(), 0, 1000000),
+                monthlyPassive: recordable(getTotalMonthlyPassiveIncome(), 0, 1000000),
+                investedCapital: recordable(getTotalInvestedCapital(), 0, 1000000000),
+                joyScore: recordable(getHappinessScore(), 0, 400),
+                housing: currentLifestyle.housing,
+                transport: currentLifestyle.transport,
+                lifestyle: currentLifestyle.lifestyle,
+                subscriptions: currentLifestyle.subscriptions,
+                travel: currentLifestyle.travel,
+                shopping: currentLifestyle.shopping,
+                hadKid: !!familyState.hasKid,
+                hadPet: !!familyState.hasPet,
+                hadElderCare: !!familyState.hasElderCare
+            };
+
+            // Absent rather than a stand-in when the crossover was reached on
+            // salary alone and no engine was ever bought. That run exists and is
+            // worth recording; calling one of the six engines its top engine
+            // would put a purchase in the data that never happened.
+            if (top) shape.topEngine = top.id;
+
+            return shape;
+        }
+
+        /**
+         * The value if the record can hold it, and nothing if it cannot.
+         *
+         * The endpoint refuses a whole write whose details fall outside the
+         * ranges it declares, and inflation compounds every two years for as
+         * long as a run lasts, so a hundred-year game can carry an expense line
+         * larger than any figure a ceiling should have to anticipate. Dropping
+         * the field costs one number in one row; a rejected write costs the
+         * crossover the player just spent an hour reaching.
+         */
+        function recordable(value, min, max) {
+            const number = Math.round(Number(value));
+            if (!Number.isFinite(number) || number < min || number > max) return undefined;
+            return number;
+        }
+
         function submitPlayerScore() {
             const nameInput = document.getElementById('playerNameInput');
             const button = document.getElementById('submitScoreButton');
@@ -456,7 +520,8 @@
                 board: 'ALL',
                 name: name,
                 score: monthsPassed,
-                tiebreak: Math.round(getNetWorth())
+                tiebreak: Math.round(getNetWorth()),
+                details: crossoverShape()
             })
                 .then((result) => {
                     leaderboardEntries = result.entries;

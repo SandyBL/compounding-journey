@@ -5,6 +5,7 @@ category: Hábitos financeiros
 summary: As dívidas podem ser esmagadoras, mas a estratégia certa muda tudo.
   Compare Dívida Boa vs. Má e aprenda os métodos Bola de Neve e Avalancha.
 translation_key: debt-management-how-to-get-out-and-stay-out-of-debt
+link_phrases: gestão de dívidas, sair das dívidas, método bola de neve, método avalanche
 author: Sandy Bradbury
 ---
 As dívidas podem parecer esmagadoras, mas com a estratégia certa pode assumir o controlo e caminhar para a liberdade financeira[cite: 1]. Quer enfrente empréstimos estudantis, cartões de crédito ou um crédito habitação, compreender como gerir e liquidar dívidas é essencial para o sucesso de longo prazo[cite: 1]. Vamos dividir este processo em passos simples[cite: 1].

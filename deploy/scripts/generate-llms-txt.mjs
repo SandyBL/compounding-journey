@@ -14,6 +14,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeMarkdown } from './markdown.mjs';
 import { readSharedCatalog } from './shared-catalog.mjs';
+import { TOOLS } from '../content/site/tools.mjs';
+import { TEMPLATES } from '../content/site/templates.mjs';
+import { GLOSSARY } from '../content/site/glossary.mjs';
+import { CATEGORIES } from '../content/site/categories.mjs';
+import {
+  toolPath, templatePath, glossaryPath, categoryPath, sessionsPath, dataPath, sectionPath, legalPath, LEGAL_PAGES
+} from './site-routes.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -57,6 +64,49 @@ function simulatorLines(language) {
 
 function homeUrl(language) {
   return language === defaultLanguage ? `${origin}/` : `${origin}/${language}/`;
+}
+
+/**
+ * The sections built from the content tables in content/site/.
+ *
+ * These families - a page per calculator, per template, per glossary term, per
+ * category archive - did not exist when this file was written, and an assistant
+ * reading llms.txt was being handed a map of a site with about a hundred and
+ * fifty pages missing from it. Reading them from the same tables the pages come
+ * from is what keeps that from happening again: a term added to the glossary is
+ * in this file at the next build without anybody remembering to add it.
+ *
+ * Descriptions are included for the calculators and templates, where there are
+ * nine of each and the description is what tells an assistant which one answers
+ * a question. The glossary is names and URLs only: a hundred definitions would
+ * make this file mostly glossary, and llms-full.txt is where full text belongs.
+ */
+function toolLines(language) {
+  return TOOLS.map((tool) => {
+    const copy = tool[language];
+    return `- [${copy.name}](${origin}${toolPath(language, copy.slug)}): ${copy.description}`;
+  }).join('\n');
+}
+
+function templateLines(language) {
+  return TEMPLATES.map((template) => {
+    const copy = template[language];
+    return `- [${copy.name}](${origin}${templatePath(language, copy.slug)}): ${copy.description}`;
+  }).join('\n');
+}
+
+function glossaryLines(language) {
+  return GLOSSARY.map((entry) => {
+    const copy = entry[language];
+    return `- [${copy.name}](${origin}${glossaryPath(language, copy.slug)})`;
+  }).join('\n');
+}
+
+function categoryLines(language) {
+  return CATEGORIES.map((category) => {
+    const copy = category[language];
+    return `- [${copy.name}](${origin}${categoryPath(language, copy.slug)}): ${copy.description}`;
+  }).join('\n');
 }
 
 function articleUrl(language, slug) {
@@ -134,7 +184,70 @@ ${languages.map((code) => `### ${languageNames[code]}\n\n${articleLines(code)}`)
 
 ## Interactive Simulators
 
+Five simulators, each a page of its own that runs in the reader's browser. The
+indexes listing all five are
+${languages.map((code) => `[${languageNames[code]}](${origin}${sectionPath('simulators', code)})`).join(', ')}.
+
 ${languages.map((code) => `### ${languageNames[code]}\n\n${simulatorLines(code)}`).join('\n\n')}
+
+## Calculators
+
+Each calculator has its own page, runs entirely in the reader's browser, and
+stores nothing. The three indexes are
+${languages.map((code) => `[${languageNames[code]}](${origin}${sectionPath('tools', code)})`).join(', ')}.
+
+${languages.map((code) => `### ${languageNames[code]}\n\n${toolLines(code)}`).join('\n\n')}
+
+## Excel Templates
+
+One page per template, each describing what is inside the file before it is
+downloaded. Indexes:
+${languages.map((code) => `[${languageNames[code]}](${origin}${sectionPath('templates', code)})`).join(', ')}.
+
+${languages.map((code) => `### ${languageNames[code]}\n\n${templateLines(code)}`).join('\n\n')}
+
+## Glossary
+
+${GLOSSARY.length} terms, each with its own page giving a one-line definition, a
+longer explanation, and links to the calculators and articles that use it.
+Indexes: ${languages.map((code) => `[${languageNames[code]}](${origin}${glossaryPath(code)})`).join(', ')}.
+
+${languages.map((code) => `### ${languageNames[code]}\n\n${glossaryLines(code)}`).join('\n\n')}
+
+## Journal Categories
+
+${languages.map((code) => `### ${languageNames[code]}\n\n${categoryLines(code)}`).join('\n\n')}
+
+## Sessions
+
+One-to-one financial education sessions - going through a reader's own numbers,
+explaining concepts, and building habits. Explicitly not regulated investment
+advice: no product recommendations, no portfolio management, no tax planning.
+Rates are not published; they are given on request.
+
+${languages.map((code) => `- [${languageNames[code]}](${origin}${sessionsPath(code)})`).join('\n')}
+
+## Simulator Data
+
+Aggregate, anonymous results from the five simulators, recomputed from this
+site's own database on every build: the withdrawal rates readers choose and how
+many of those plans survive, which small habits they refuse to cut, the
+portfolios they build and how often those beat a 60/40, the income source they
+reach for, and how their simulated decisions split between investing, paying
+debt, spending and taking risk. No measure is published below its declared
+minimum sample; money figures are computed inside one language because the
+three versions of the site use three currency symbols. Self-selected
+simulations inside a model, not survey data or observed behaviour.
+
+${languages.map((code) => `- [${languageNames[code]}](${origin}${dataPath(code)})`).join('\n')}
+
+## Legal
+
+${Object.keys(LEGAL_PAGES).map((page) => `- ${page}: ${languages.map((code) => `[${languageNames[code]}](${origin}${legalPath(page, code)})`).join(', ')}`).join('\n')}
+
+Sandy Bradbury is a financial educator and is in the process of obtaining a
+financial advice certification. Nothing on this site is financial, investment,
+tax or legal advice, and no personal recommendations are given.
 
 ## Free Downloads
 

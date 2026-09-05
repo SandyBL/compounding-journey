@@ -847,6 +847,73 @@
       return 1000;
     }
 
+    /**
+     * The assumptions the flight was flown under, in the shape the endpoint
+     * stores them.
+     *
+     * Sent with the score rather than derived from it later, because none of it
+     * can be derived from it later: a score of 5,800 does not say whether it
+     * came from withdrawing 3% over thirty years or 5% over fifty, and those
+     * are the two runs anybody reading a published average would want told
+     * apart. The board shows none of this. It is recorded so that "what do
+     * people actually assume about safe withdrawal rates" is a question this
+     * site can answer with its own numbers.
+     *
+     * The withdrawal rate is computed here rather than server-side and carried
+     * in basis points, because the stored column rounds to whole numbers and a
+     * rate rounded to a whole percent is the wrong resolution for the one
+     * argument it exists to settle. A run whose starting capital was cleared to
+     * zero sends no rate at all instead of an infinity: the field is optional,
+     * and a missing value is honest where a placeholder would enter the average.
+     */
+    function flightAssumptions() {
+      const assumptions = {
+        startCapital: recordable(state.nestEgg, 0, 1000000000),
+        annualSpending: recordable(state.annualSpending, 0, 100000000),
+        startAge: recordable(state.startAge, 18, 100),
+        horizonYears: recordable(state.targetAge - state.startAge, 1, 90),
+        pctStocks: recordable(state.pctStocks, 0, 100),
+        pctBonds: recordable(state.pctBonds, 0, 100),
+        pctCash: recordable(state.pctCash, 0, 100),
+        targetDateFund: !!state.useTargetDateFund,
+        marketSequence: state.marketSequence,
+        // Which levers were pulled, whether or not they were pulled in time.
+        tacticJob: !!state.actJob,
+        tacticCutSpend: !!state.actCutSpend,
+        tacticCashBuffer: !!state.actCashBuffer,
+        tacticGuardrails: !!state.actGuardrails,
+        tacticDownsize: !!state.actDownsize,
+        tacticPension: !!state.actPension
+      };
+
+      if (state.nestEgg > 0) {
+        assumptions.withdrawalBps = recordable((state.annualSpending / state.nestEgg) * 10000, 0, 5000);
+      }
+
+      return assumptions;
+    }
+
+    /**
+     * The value if it is one the record can hold, and nothing if it is not.
+     *
+     * Every field above comes from a number box a visitor can type anything
+     * into, and the endpoint refuses a write whose details fall outside the
+     * range it declares. Somebody modelling a €1 portfolio spending €45,000 a
+     * year has a withdrawal rate of 450,000 basis points, which is a real
+     * thing to try in a simulator and is not a rate; left in, it would cost
+     * them the score they earned, and clamped to 5,000 it would enter every
+     * published average as a 50% withdrawal that nobody chose.
+     *
+     * So an impossible value is dropped instead. The field is optional at the
+     * far end, the aggregate counts how many runs actually carried it, and a
+     * missing number stays missing rather than becoming a wrong one.
+     */
+    function recordable(value, min, max) {
+      const number = Math.round(Number(value));
+      if (!Number.isFinite(number) || number < min || number > max) return undefined;
+      return number;
+    }
+
     function registerScoreToLeaderboard(pilot, boardKey, reached100, crashYears, tacticYears, finalBalance) {
       // Score formula: 
       // Base score (5000 pts for reaching 100, 1000 pts baseline)
@@ -888,12 +955,15 @@
         // remaining columns are carried as details because the board displays
         // them and does not rank on them.
         tiebreak: nestEgg,
-        details: {
-          reached100: !!reached100,
-          crashYears: crashYears || 0,
-          tacticYears: tacticYears || 0,
-          finalBalance: nestEgg
-        }
+        details: Object.assign(
+          {
+            reached100: !!reached100,
+            crashYears: crashYears || 0,
+            tacticYears: tacticYears || 0,
+            finalBalance: nestEgg
+          },
+          flightAssumptions()
+        )
       })
         .then(function (result) {
           if (token !== leaderboardRequest) return;

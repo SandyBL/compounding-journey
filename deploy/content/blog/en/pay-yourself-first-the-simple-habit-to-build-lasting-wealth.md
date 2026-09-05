@@ -5,6 +5,7 @@ category: Money habits
 summary: Learn how saving a fixed percentage before spending can break the
  paycheck-to-paycheck cycle and help you easily build an emergency fund.
 translation_key: pay-yourself-first-power-of-saving
+link_phrases: pay yourself first habit, the saving habit
 author: Sandy Bradbury
 ---
 When it comes to managing your money, there’s one simple rule that can change everything: **Pay Yourself First**. This means putting a portion of your income into savings *before* paying bills, buying groceries, or spending on discretionary items.

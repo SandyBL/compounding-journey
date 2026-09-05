@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compound interest calculator | Compounding Journey</title>
+  <meta name="description" content="Work out how much your money will grow with monthly contributions and an annual return. Free, no sign-up, and the maths runs in your own browser." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="Sandy Bradbury" />
+  <link rel="canonical" href="https://compoundingjourney.com/en/calculators/compound-interest/" />
+  <link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/calculadoras/interes-compuesto/" />
+  <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/calculators/compound-interest/" />
+  <link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/calculadoras/juros-compostos/" />
+  <link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/calculadoras/interes-compuesto/" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=64&amp;h=64&amp;fit=cover&amp;fm=png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=180&amp;h=180&amp;fit=cover&amp;fm=png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Compounding Journey" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Compound interest calculator" />
+  <meta property="og:description" content="Work out how much your money will grow with monthly contributions and an annual return. Free, no sign-up, and the maths runs in your own browser." />
+  <meta property="og:url" content="https://compoundingjourney.com/en/calculators/compound-interest/" />
+  <meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="Compounding Journey logo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Compound interest calculator" />
+  <meta name="twitter:description" content="Work out how much your money will grow with monthly contributions and an annual return. Free, no sign-up, and the maths runs in your own browser." />
+  <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png" />
+  <meta name="twitter:image:alt" content="Compounding Journey logo" />
+  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2?v=source" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2?v=source" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/blog.css?v=source" />
+  <link rel="stylesheet" href="/assets/css/header.css?v=source" />
+  <link rel="stylesheet" href="/assets/css/pages.css?v=source" />
+  <link rel="stylesheet" href="/assets/css/a11y.css?v=source" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://compoundingjourney.com/en/calculators/compound-interest/#app",
+      "name": "Compound interest calculator",
+      "description": "Work out how much your money will grow with monthly contributions and an annual return. Free, no sign-up, and the maths runs in your own browser.",
+      "url": "https://compoundingjourney.com/en/calculators/compound-interest/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "author": {
+        "@id": "https://compoundingjourney.com/#sandy-bradbury"
+      },
+      "publisher": {
+        "@id": "https://compoundingjourney.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compoundingjourney.com/en/calculators/compound-interest/#faq",
+      "inLanguage": "en",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What annual return should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends what you invest in, and nobody can know it in advance. As a historical reference, a global equity portfolio has run around 7–8% nominal a year over very long periods, and a mixed portfolio with bonds considerably less. The useful move is not guessing the right figure but trying three — pessimistic, middling and optimistic — and checking whether your plan still stands up under the pessimistic one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the result change so much when I add five years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because growth is not linear. The last years work on the largest balance, so they contribute far more than the first ones. This is why starting earlier is worth more than contributing more: a year of delay does not remove your first year, it removes your last."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do the results account for inflation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. They are nominal. To think in today’s purchasing power, subtract your inflation expectation from the return you enter: 7% with 2.5% inflation is roughly 4.5% real. The result is then already in today’s money."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you store what I enter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The whole calculation runs in your browser in JavaScript; nothing is sent to a server and nothing is stored. You can verify it by turning off your network and using the calculator anyway."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compoundingjourney.com/en/calculators/compound-interest/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://compoundingjourney.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Financial calculators",
+          "item": "https://compoundingjourney.com/en/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Compound interest calculator",
+          "item": "https://compoundingjourney.com/en/calculators/compound-interest/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://compoundingjourney.com/en/calculators/compound-interest/",
+      "url": "https://compoundingjourney.com/en/calculators/compound-interest/",
+      "name": "Compound interest calculator",
+      "inLanguage": "en",
+      "description": "Work out how much your money will grow with monthly contributions and an annual return. Free, no sign-up, and the maths runs in your own browser.",
+      "isPartOf": {
+        "@id": "https://compoundingjourney.com/#website"
+      },
+      "publisher": {
+        "@id": "https://compoundingjourney.com/#organization"
+      }
+    }
+  ]
+}
+  </script>
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.en.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
+</head>
+<body><div class="site-shell">
+  <a class="skip-link" href="#page-main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-shell">
+      <a class="header-brand" href="/en/"><span class="header-brand-logo"><img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" /></span><span class="header-brand-copy"><span class="header-brand-name">Compounding Journey</span><span class="header-brand-tagline">Your map to freedom</span></span></a>
+      <div class="header-actions">
+        <a class="header-return-link" href="/en/"><span class="return-long">← Back to home</span><span class="return-short">Home</span></a>
+        <nav class="header-language-switcher" aria-label="Language"><a class="lang-btn" href="/es/calculadoras/interes-compuesto/" aria-label="Español" hreflang="es"><svg aria-hidden="true" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#AA151B"/><rect y="5" width="28" height="10" fill="#F1BF00"/><rect x="7" y="8" width="2" height="5" rx=".5" fill="#AA151B" opacity=".85"/></svg></a><a class="lang-btn" href="/en/calculators/compound-interest/" aria-current="page" aria-label="English" hreflang="en"><svg aria-hidden="true" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#fff"/><path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zM0 19h28v1H0z"/><rect width="12" height="11" fill="#3C3B6E"/></svg></a><a class="lang-btn" href="/pt/calculadoras/juros-compostos/" aria-label="Português" hreflang="pt"><svg aria-hidden="true" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#009B3A"/><path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/><circle cx="14" cy="10" r="4" fill="#002776"/></svg></a></nav>
+      </div>
+    </div>
+  </header>
+  <nav class="site-section-nav" aria-label="Site sections">
+    <div class="site-section-tabs"><a href="/en/blog/">Journal</a><a href="/en/simulators/">Simulators</a><a href="/en/calculators/" aria-current="true">Calculators</a><a href="/en/templates/">Templates</a><a href="/en/glossary/">Glossary</a><a href="/en/data/">Data</a><a href="/en/sessions/">Sessions</a></div>
+  </nav>
+  <main id="page-main" class="page-main">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/en/">Home</a></li><li><a href="/en/calculators/">Financial calculators</a></li><li><span aria-current="page">Compound interest calculator</span></li></ol></nav>
+      <header class="page-head">
+        <p class="eyebrow">Calculator</p>
+        <h1>Compound interest calculator</h1>
+        <p class="page-dek">Enter what you have today, what you can add each month, and how many years you will give it. The calculator shows how much you put in and how much time put in.</p>
+      </header>
+    </div>
+    <div class="container">
+      <div class="tool-layout">
+        <div>
+          <div class="calc-panel">
+            <form class="calc-form" data-calculator="compound-interest" novalidate>
+              <div class="calc-fields">
+          <div class="calc-field">
+            <label for="field-compound-interest-initial">Starting amount</label>
+            <input type="number" id="field-compound-interest-initial" name="initial" data-field="initial" value="1000" min="0" step="100" inputmode="decimal" aria-describedby="field-compound-interest-initial-hint" />
+            <p class="calc-field-hint" id="field-compound-interest-initial-hint">What you already have set aside to invest. Zero is fine.</p>
+          </div>
+          <div class="calc-field">
+            <label for="field-compound-interest-monthly">Monthly contribution</label>
+            <input type="number" id="field-compound-interest-monthly" name="monthly" data-field="monthly" value="200" min="0" step="25" inputmode="decimal" aria-describedby="field-compound-interest-monthly-hint" />
+            <p class="calc-field-hint" id="field-compound-interest-monthly-hint">The amount you can add every month without fail.</p>
+          </div>
+          <div class="calc-field">
+            <label for="field-compound-interest-years">Years invested</label>
+            <input type="number" id="field-compound-interest-years" name="years" data-field="years" value="25" min="1" max="60" step="1" inputmode="decimal" aria-describedby="field-compound-interest-years-hint" />
+            <p class="calc-field-hint" id="field-compound-interest-years-hint">Your horizon. The most powerful of the four variables.</p>
+          </div>
+          <div class="calc-field">
+            <label for="field-compound-interest-rate">Estimated annual return (%)</label>
+            <input type="number" id="field-compound-interest-rate" name="rate" data-field="rate" value="7" min="0" max="20" step="0.1" inputmode="decimal" aria-describedby="field-compound-interest-rate-hint" />
+            <p class="calc-field-hint" id="field-compound-interest-rate-hint">A diversified global portfolio has run around 7% a year over the long term, before inflation and fees.</p>
+          </div>
+          <div class="calc-field">
+            <label for="currency-compound-interest">Currency</label>
+            <select id="currency-compound-interest" data-currency><option value="EUR">EUR</option><option value="USD">USD</option><option value="BRL">BRL</option></select>
+          </div>
+              </div>
+              <div class="calc-actions">
+                <button type="submit" class="button">Calculate</button>
+              </div>
+            </form>
+        <div class="calc-result" aria-live="polite">
+          <p class="calc-result-label">Estimated final value</p>
+          <p class="calc-result-value" data-result="total">—</p>
+          <dl class="calc-breakdown">
+            <div><dt>Total you contributed</dt><dd data-result="invested">—</dd></div>
+            <div><dt>Generated by compounding</dt><dd data-result="interest">—</dd></div>
+          </dl>
+          <p class="calc-result-note">An estimate, not a forecast: markets do not deliver the same return every year.</p>
+        </div>
+        
+            <noscript><p class="calc-error">This calculator needs JavaScript enabled. The maths runs in your browser: nothing is sent to any server.</p></noscript>
+          </div>
+          
+      <aside class="compliance" role="note" aria-labelledby="compliance-title">
+        <h2 id="compliance-title" class="compliance-title">Educational content, not financial advice</h2>
+        <p>Sandy Bradbury is a financial educator, not an accredited financial adviser or a regulated firm. This tool is an educational and illustrative calculator: it is not financial, investment, tax or legal advice, and it is not a recommendation to buy or sell any product. Its results are estimates based on the assumptions you enter and do not predict real returns. Before making any decision, consult a properly registered professional in your jurisdiction.</p>
+        <a class="text-link" href="/en/legal-notice/">Read the full legal notice</a>
+      </aside>
+          <section class="page-section tool-notes">
+            <h2 class="section-title">How it works</h2>
+            <div class="article-body"><p>The calculator compounds month by month. Each month it multiplies the balance by the monthly return — the annual figure divided by twelve — and then adds your contribution:</p>
+<pre><code>balance = balance × (1 + annual return / 12) + contribution</code></pre>
+<p>Repeated once for every month in your horizon. The figure shown as &quot;generated by <a href="/en/glossary/compound-interest/" class="inline-link" title="The effect by which the returns on your money begin generating their own returns, so capital grows exponentially rather than linearly." data-link-kind="glossary">compounding</a>&quot; is simply the final value minus everything you put in, and it is the part you would not have had by leaving the money still.</p></div>
+          </section>
+          <section class="page-section tool-notes">
+            <h2 class="section-title">Assumptions and limits</h2>
+            <div class="article-body"><ul><li>The return is applied <strong>constantly</strong>. In reality there are +25% years and −18% years, and the order they arrive in matters.</li><li>The figures are <strong>nominal</strong>: they do not subtract <a href="/en/glossary/inflation/" class="inline-link" title="The general, sustained rise in prices, which reduces what the same amount of money can buy over time." data-link-kind="glossary">inflation</a>. At 2.5% inflation, $100,000 in thirty years buys what about $48,000 buys today.</li><li>It excludes <strong>fees and tax</strong>. Subtracting your fund&#39;s cost from the return you enter is the quick way to approximate them.</li><li>It assumes you <strong>withdraw nothing</strong> over the whole period. A withdrawal partway through breaks the effect being measured.</li></ul></div>
+          </section>
+      <section class="page-section">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="faq-list">
+        <details class="faq-item">
+          <summary>What annual return should I use?</summary>
+          <div><p>It depends what you invest in, and nobody can know it in advance. As a historical reference, a global equity portfolio has run around 7–8% nominal a year over very long periods, and a mixed portfolio with bonds considerably less. The useful move is not guessing the right figure but trying three — pessimistic, middling and optimistic — and checking whether your plan still stands up under the pessimistic one.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Why does the result change so much when I add five years?</summary>
+          <div><p>Because growth is not linear. The last years work on the largest balance, so they contribute far more than the first ones. This is why starting earlier is worth more than contributing more: a year of delay does not remove your first year, it removes your last.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do the results account for inflation?</summary>
+          <div><p>No. They are nominal. To think in today’s purchasing power, subtract your inflation expectation from the return you enter: 7% with 2.5% inflation is roughly 4.5% real. The result is then already in today’s money.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you store what I enter?</summary>
+          <div><p>No. The whole calculation runs in your browser in JavaScript; nothing is sent to a server and nothing is stored. You can verify it by turning off your network and using the calculator anyway.</p></div>
+        </details>
+        </div>
+      </section>
+        </div>
+        <aside class="term-aside">
+          <h2>Other calculators</h2>
+          <ul><li><a href="/en/calculators/financial-freedom/">Financial freedom calculator</a></li><li><a href="/en/calculators/life-cost-in-hours/">Life cost calculator</a></li></ul>
+          <h2>Terms used here</h2><ul><li><a href="/en/glossary/compound-interest/">Compound interest</a></li><li><a href="/en/glossary/real-return/">Real return</a></li><li><a href="/en/glossary/ter-total-expense-ratio/">TER (total expense ratio)</a></li><li><a href="/en/glossary/dollar-cost-averaging/">Dollar cost averaging (DCA)</a></li></ul>
+          <h2>Related reading</h2><ul><li><a href="/en/blog/passive-income-is-not-one-thing-four-engines-and-what-each-one-costs/">Passive Income Is Not One Thing: Four Engines and What Each One Costs</a></li><li><a href="/en/blog/what-a-century-of-market-history-teaches-drawdowns-recovery-and-diversification/">What a Century of Market History Teaches: Drawdowns, Recovery and Diversification</a></li><li><a href="/en/blog/debt-management-how-to-get-out-and-stay-out-of-debt/">Debt Management: How to Get Out and Stay Out of Debt</a></li><li><a href="/en/blog/putting-your-money-to-work-make-money-while-you-sleep/">Put Your Money to Work: Make Money While You Sleep</a></li></ul>
+          <a class="text-link" href="/en/calculators/">See all the calculators</a>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">
+    <nav class="footer-legal" aria-label="Other legal pages"><a href="/en/privacy/">Privacy</a><a href="/en/terms/">Terms</a><a href="/en/legal-notice/">Legal notice</a></nav>
+    <div class="footer-row">
+      <nav aria-label="Site map"><a href="/en/blog/">Journal</a><a href="/en/simulators/">Simulators</a><a href="/en/calculators/" aria-current="true">Calculators</a><a href="/en/templates/">Templates</a><a href="/en/glossary/">Glossary</a><a href="/en/data/">Data</a><a href="/en/sessions/">Sessions</a></nav>
+      <span>© 2026 Compounding Journey — Small choices. Long horizons.</span>
+    </div>
+  </div></footer>
+</div><script src="/assets/js/section-nav.js?v=source" defer></script>
+<script src="/assets/js/calculators.js?v=source" defer></script></body>
+</html>

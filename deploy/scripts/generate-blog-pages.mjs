@@ -1,5 +1,10 @@
 // Pre-renders every Markdown article into a crawlable HTML page at
-// /{lang}/blog/{slug}/ and rebuilds sitemap.xml from the same source of truth.
+// /{lang}/blog/{slug}/, rebuilds the three journal indexes, and writes one RSS
+// feed per language from the same source of truth.
+//
+// It used to write sitemap.xml too, back when the journal, the home pages and
+// the simulators were the whole site. That is scripts/generate-sitemap.mjs now:
+// there are six more page families, and none of them belongs to this file.
 //
 // The journal previously rendered articles in the browser from
 // /{lang}/blog/article.html?post=<slug>, which meant every article shared one
@@ -10,11 +15,24 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { renderMarkdown, collectHeadings, escapeHtml, jsonLdScript } from './markdown.mjs';
 import { readViewCounts, readRecentViewCounts, totalsByTranslation, chooseFeatured, recentlyRead, translationPriorities } from './article-popularity.mjs';
 import { readSharedCatalog } from './shared-catalog.mjs';
+import { GLOSSARY } from '../content/site/glossary.mjs';
+import { TOOLS } from '../content/site/tools.mjs';
+import { TEMPLATES } from '../content/site/templates.mjs';
+import { CATEGORIES } from '../content/site/categories.mjs';
+import { addInlineLinks, glossaryTargets, articleTargets } from './inline-links.mjs';
+import {
+  SECTIONS, sectionPath, glossaryPath, toolPath, templatePath, categoryPath, simulatorPath, simulatorsPath
+} from './site-routes.mjs';
+import { stringsFor } from './page-shell.mjs';
+// The nav the rest of the site carries, from the table every family renders it
+// from. The journal has its own chrome rather than going through page-shell.mjs,
+// which is why it links the pieces itself.
+import { NAV_SCRIPT, sectionNav, sectionNavRow } from './section-nav.mjs';
+import { shareRow } from './share-row.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -48,30 +66,26 @@ function logoAt(size, format) {
 const socialCard = `${origin}/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png`;
 const socialImageAlt = 'Compounding Journey logo';
 
-const simulatorSlugs = [
-  'freedom-calendar',
-  'market-time-machine',
-  'passive-income-engine',
-  'monte-carlo-fire'
-];
-
 // What each simulator is called, in each language. The pages themselves get
 // these from their i18n sidecars; an article linking to one has to name it too,
 // and there is nowhere else in this script that already knows.
 const simulatorNames = {
   en: {
+    simulator: 'Personal Finance Simulator',
     'freedom-calendar': 'Freedom Calendar',
     'market-time-machine': 'Market Time Machine',
     'monte-carlo-fire': 'Monte Carlo FIRE',
     'passive-income-engine': 'Passive Income Engine'
   },
   es: {
+    simulator: 'Simulador de Finanzas Personales',
     'freedom-calendar': 'Calendario de la Libertad',
     'market-time-machine': 'Máquina del Tiempo del Mercado',
     'monte-carlo-fire': 'Monte Carlo FIRE',
     'passive-income-engine': 'Motor de Ingresos Pasivos'
   },
   pt: {
+    simulator: 'Simulador de Finanças Pessoais',
     'freedom-calendar': 'Calendário da Liberdade',
     'market-time-machine': 'Máquina do Tempo do Mercado',
     'monte-carlo-fire': 'Monte Carlo FIRE',
@@ -114,8 +128,42 @@ const articleSimulators = {
 
   'spending-with-purpose-how-to-align-your-money-with-what-truly-matters': ['passive-income-engine', 'freedom-calendar'],
   'gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa': ['passive-income-engine', 'freedom-calendar'],
-  'gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa': ['passive-income-engine', 'freedom-calendar']
+  'gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa': ['passive-income-engine', 'freedom-calendar'],
+
+  // The five pillar articles: one per simulator, each explaining the concept the
+  // tool is built on. They are the only entries here that name their own
+  // simulator first, because that pairing is the point of the piece rather than
+  // a related suggestion - and each simulator's "keep reading" block points
+  // back at its pillar, so the two halves reference each other.
+  'sequence-of-returns-risk-why-the-order-of-returns-decides-your-retirement': ['monte-carlo-fire', 'freedom-calendar'],
+  'riesgo-de-secuencia-de-rentabilidades-por-que-el-orden-decide-tu-jubilacion': ['monte-carlo-fire', 'freedom-calendar'],
+  'risco-de-sequencia-por-que-a-ordem-das-rentabilidades-decide-a-sua-aposentadoria': ['monte-carlo-fire', 'freedom-calendar'],
+
+  'what-a-century-of-market-history-teaches-drawdowns-recovery-and-diversification': ['market-time-machine', 'monte-carlo-fire'],
+  'que-ensena-un-siglo-de-historia-de-los-mercados-caidas-recuperacion-y-diversificacion': ['market-time-machine', 'monte-carlo-fire'],
+  'o-que-ensina-um-seculo-de-historia-dos-mercados-quedas-recuperacao-e-diversificacao': ['market-time-machine', 'monte-carlo-fire'],
+
+  'your-savings-rate-not-your-salary-sets-the-date-you-become-free': ['freedom-calendar', 'passive-income-engine'],
+  'tu-tasa-de-ahorro-no-tu-sueldo-fija-la-fecha-en-que-eres-libre': ['freedom-calendar', 'passive-income-engine'],
+  'sua-taxa-de-poupanca-nao-seu-salario-define-a-data-em-que-voce-fica-livre': ['freedom-calendar', 'passive-income-engine'],
+
+  'passive-income-is-not-one-thing-four-engines-and-what-each-one-costs': ['passive-income-engine', 'freedom-calendar'],
+  'los-ingresos-pasivos-no-son-una-sola-cosa-cuatro-motores-y-lo-que-cuesta-cada-uno': ['passive-income-engine', 'freedom-calendar'],
+  'rendimento-passivo-nao-e-uma-so-coisa-quatro-motores-e-o-que-cada-um-custa': ['passive-income-engine', 'freedom-calendar'],
+
+  'the-psychology-of-money-decisions-why-knowing-the-maths-is-not-enough': ['simulator', 'market-time-machine'],
+  'la-psicologia-de-las-decisiones-de-dinero-por-que-saber-las-cuentas-no-basta': ['simulator', 'market-time-machine'],
+  'a-psicologia-das-decisoes-de-dinheiro-por-que-saber-as-contas-nao-basta': ['simulator', 'market-time-machine']
 };
+
+// The table above names simulators by the slug they have in their URL. The
+// personal finance one is `simulator`, published at /<lang>/simulator.html a
+// level above the other four; site-routes.mjs knows it as `simulator-hub`,
+// after the template it is built from. This maps between the two so the table
+// stays a list of slugs and no URL is written out here.
+function simulatorHref(language, slug) {
+  return simulatorPath(slug === 'simulator' ? 'simulator-hub' : slug, language);
+}
 
 // The sentence of simulator links inside the closing panel, or nothing at all
 // when the article is not in the table above.
@@ -124,9 +172,29 @@ function simulatorLinks(article, labels) {
   const names = simulatorNames[article.language] || {};
   const links = matched
     .filter((slug) => names[slug])
-    .map((slug) => `<a href="/${article.language}/simulators/${slug}.html">${escapeHtml(names[slug])}</a>`);
+    .map((slug) => `<a href="${simulatorHref(article.language, slug)}">${escapeHtml(names[slug])}</a>`);
   if (!links.length) return '';
   return `<p class="cta-simulators">${escapeHtml(labels.ctaSimulatorsLead)} ${links.join(' · ')}</p>`;
+}
+
+/**
+ * The three standing links in the closing panel: the calculators, the
+ * templates and the glossary.
+ *
+ * Unlike the simulator sentence above, these do not depend on which article
+ * this is - every piece on the site is about something one of those three
+ * sections covers, and until now none of them was reachable from an article at
+ * all except through the header. They are rendered from site-routes, so a
+ * section that moves does not leave twenty-one dead links behind.
+ */
+function practicalLinks(language) {
+  const strings = siteStrings[language];
+  const links = [
+    `<a href="${sectionPath('tools', language)}">${escapeHtml(strings.toolsAll)}</a>`,
+    `<a href="${sectionPath('templates', language)}">${escapeHtml(strings.templatesAll)}</a>`,
+    `<a href="${glossaryPath(language)}">${escapeHtml(strings.glossaryAll)}</a>`
+  ];
+  return `<p class="cta-simulators">${links.join(' · ')}</p>`;
 }
 
 const copy = {
@@ -139,7 +207,6 @@ const copy = {
     authorBio: 'Sandy writes about practical money systems, intentional work, and the patient path toward financial freedom.',
     back: '← Back to journal',
     backShort: '← Journal',
-    backFooter: '← Back to the journal',
     home: 'Home',
     journal: 'Journal',
     skip: 'Skip to article',
@@ -183,7 +250,6 @@ const copy = {
     authorBio: 'Sandy escribe sobre sistemas financieros prácticos, trabajo con intención y el camino paciente hacia la libertad financiera.',
     back: '← Volver al diario',
     backShort: '← Diario',
-    backFooter: '← Volver al diario',
     home: 'Inicio',
     journal: 'Diario',
     skip: 'Ir al artículo',
@@ -221,7 +287,6 @@ const copy = {
     authorBio: 'Sandy escreve sobre sistemas financeiros práticos, trabalho intencional e o caminho paciente para a liberdade financeira.',
     back: '← Voltar ao diário',
     backShort: '← Diário',
-    backFooter: '← Voltar ao diário',
     home: 'Início',
     journal: 'Diário',
     skip: 'Ir para o artigo',
@@ -259,6 +324,97 @@ const flags = {
 };
 
 const languageNames = { en: 'English', es: 'Español', pt: 'Português' };
+
+/**
+ * The strings the generated pages share with the hand-authored ones - the share
+ * row's labels, in this file's case. They live in content/site/site.i18n.json
+ * rather than in the `copy` table above because the same five labels are needed
+ * by anything that renders a share row, and a second copy of "Compartir en" is
+ * a second thing to keep in step.
+ */
+const siteSidecar = JSON.parse(await fs.readFile(path.join(root, 'content', 'site', 'site.i18n.json'), 'utf8'));
+const siteStrings = Object.fromEntries(
+  languages.map((code) => [code, stringsFor(siteSidecar, code, 'site.i18n.json')])
+);
+
+/**
+ * The archive an article's category belongs to.
+ *
+ * The category is display text in the frontmatter, so the slug has to be looked
+ * up by name. A name no table entry claims returns null and the category stays
+ * an unlinked span here - generate-category-pages.mjs is where that fails the
+ * build, and it does, with the article listed; failing twice for one typo would
+ * only bury the message that says what to do about it.
+ */
+function categoryHref(language, name) {
+  const entry = CATEGORIES.find((candidate) => candidate[language]?.name === name);
+  return entry ? categoryPath(language, entry[language].slug) : null;
+}
+
+/**
+ * Everything an article body may link to on its own, in precedence order.
+ *
+ * This is the retrofit: twenty-one articles were published with no internal
+ * links in their prose beyond the ones their authors typed, which left the
+ * glossary, the calculators and the templates reachable only from the
+ * navigation. Rather than editing twenty-one Markdown files - and then
+ * remembering to edit the twenty-second - the links are inserted at build time
+ * from the same tables that generate the pages being linked. A new glossary
+ * term or a new calculator starts appearing in older articles at the next
+ * build, and an article that is deleted stops being linked from anywhere,
+ * because nothing about the link lives in the prose.
+ *
+ * Order is precedence: whichever target matches a phrase first claims it, and
+ * each target is used at most once per article. Calculators and templates come
+ * before the glossary because their names contain glossary terms - "compound
+ * interest calculator" should link the calculator, not the two words inside its
+ * name - and articles come last because their link phrases are the broadest and
+ * would otherwise swallow the specific pages.
+ *
+ * The calculators place almost nothing today, and that is the honest result:
+ * the word "calculator" appears in none of the twenty-one articles, because the
+ * prose talks about compound interest rather than about tools. The path that
+ * does work is the one through the glossary - an article links "interés
+ * compuesto", the term page links the calculator - so the tools are two clicks
+ * away rather than one, and the closing panel makes them one. They stay in the
+ * list because a tool named in an article should link to it, not because a
+ * count needs propping up.
+ */
+function linkTargets(article, all) {
+  const language = article.language;
+  const sameLanguage = all.filter((candidate) => candidate.language === language);
+  return [
+    ...TOOLS.map((tool) => ({
+      href: toolPath(language, tool[language].slug),
+      name: tool[language].name,
+      aliases: tool[language].aliases ?? [],
+      title: tool[language].description,
+      dataAttribute: 'data-link-kind="tool"'
+    })),
+    ...TEMPLATES.map((template) => ({
+      href: templatePath(language, template[language].slug),
+      name: template[language].name,
+      aliases: [],
+      title: template[language].description,
+      dataAttribute: 'data-link-kind="template"'
+    })),
+    ...glossaryTargets(GLOSSARY, language, (entry, code) => glossaryPath(code, entry[code].slug)),
+    ...articleTargets(sameLanguage, language, (item, code) => articlePath(code, item.slug), {
+      excludeSlug: article.slug
+    })
+  ];
+}
+
+/**
+ * How many automatic links one article may carry.
+ *
+ * These pieces run 1,200 to 2,500 words. Eight links across that is roughly one
+ * every other section: enough that the glossary and the tools are reachable
+ * from the prose, few enough that a paragraph never reads like a page of search
+ * results. The linker also leaves the opening paragraph alone, so the first
+ * thing a reader meets is still a sentence.
+ */
+const MAX_INLINE_LINKS = 8;
 
 function parseScalar(value) {
   const trimmed = value.trim();
@@ -385,6 +541,19 @@ function structuredData(article, labels, body) {
   return jsonLdScript({ '@context': 'https://schema.org', '@graph': graph });
 }
 
+/**
+ * The category above the title, as a link to its archive.
+ *
+ * Only in the article header. The same value appears on the read-next cards and
+ * the featured card, but those are anchors themselves, and an anchor inside an
+ * anchor is not markup a browser can be asked to interpret.
+ */
+function categoryChip(article) {
+  const href = categoryHref(article.language, article.category);
+  const label = escapeHtml(article.category);
+  return href ? `<span><a href="${href}">${label}</a></span>` : `<span>${label}</span>`;
+}
+
 function renderPage(article, labels, body, headings, related) {
   const url = `${origin}${articlePath(article.language, article.slug)}`;
   const alternates = languages
@@ -460,17 +629,22 @@ ${structuredData(article, labels, body)}
         ${languageSwitcher(article, article.language)}
       </div>
     </div>
-  </header>
+  </header>${sectionNav('journal', article.language, articlePath(article.language, article.slug))}
   <main class="article-page-main"><article data-article-slug="${article.slug}">
-    <header class="article-header"><div class="container article-header-inner"><div class="post-meta"><span>${escapeHtml(article.category)}</span><span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
+    <header class="article-header"><div class="container article-header-inner"><div class="post-meta">${categoryChip(article)}<span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
     <div class="container article-layout">${toc}<div><div id="article-body" class="article-body">
 ${body}
-    </div><footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
+    </div>${shareRow({ url, title: article.title, strings: siteStrings[article.language] })}<footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
   </article>${readNextSection(article, labels, related)}
-    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p>${simulatorLinks(article, labels)}</div><div class="journey-actions"><a class="button" href="/${article.language}/simulator.html">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
+    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p>${simulatorLinks(article, labels)}${practicalLinks(article.language)}</div><div class="journey-actions"><a class="button" href="${simulatorsPath(article.language)}">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
-  <footer class="site-footer"><div class="container footer-row"><a href="/${article.language}/blog/">${escapeHtml(labels.backFooter)}</a><span>© 2026 Compounding Journey</span></div></footer>
-</div><script src="/assets/js/article-view.js?v=source" defer></script></body>
+  <!-- The seven section links again at the end of the document. An article is
+       read to the bottom, which is where the strip at the top is a scroll away,
+       and it is the point at which a reader who liked the piece is deciding
+       what to do next. It replaces a lone "back to the journal" link that said
+       what the header's return link and the Diario tab both already say. -->
+  <footer class="site-footer"><div class="container footer-row">${sectionNavRow('journal', article.language, articlePath(article.language, article.slug))}<span>© 2026 Compounding Journey</span></div></footer>
+</div>${NAV_SCRIPT}<script src="/assets/js/article-view.js?v=source" defer></script><script src="/assets/js/share.js?v=source" defer></script></body>
 </html>
 `;
 }
@@ -627,6 +801,33 @@ async function updateBlogIndex(language, articles, totals, recentCounts) {
       `$1${feedFooterResult.block}$2`
     );
 
+  // The section nav, patched into the index the same way as everything else on
+  // this page. The three indexes are hand-authored documents this script edits
+  // between markers rather than pages it renders, so the strip is inserted
+  // rather than written into the markup: hand-copying seven links and their
+  // labels into three files is how they would stop matching the table in
+  // section-nav.mjs the first time a section is added.
+  //
+  // The fallback path - the one that runs the first time, against an index that
+  // has no markers yet - splices it in after </header>, which is where every
+  // other family renders it. The strip has to be outside the sticky header, so
+  // the anchor is the closing tag rather than anything inside it.
+  //
+  // The footer here is deliberately left as it is: it carries the feed link and
+  // the counting disclosure, and the whole body of this page is already a list
+  // of links. The article pages are where the footer row earns its place.
+  const navResult = replaceBetween(source, 'sectionnav', sectionNav('journal', language, `/${language}/blog/`));
+  source = typeof navResult === 'string'
+    ? navResult
+    : source.replace('</header>', `</header>${navResult.block}`);
+
+  // The client half of that nav: it centres the current tab when the strip is
+  // wider than the viewport. Appended next to the index's own script rather
+  // than through a marker, because a tag is idempotent to check for.
+  if (!source.includes('/assets/js/section-nav.js')) {
+    source = source.replace('</body>', `${NAV_SCRIPT}</body>`);
+  }
+
   // What the site records, stated where a reader can find it rather than only
   // where the ranking appears. The rail above is conditional - it is absent
   // until something has been counted - and a disclosure that only shows up once
@@ -692,8 +893,15 @@ async function pruneRemovedArticles(language, slugs) {
   const entries = await fs.readdir(blogRoot, { withFileTypes: true });
   const removed = [];
 
+  // The category archives are a sub-index of the journal, so they live under
+  // this directory without being articles. They are written by
+  // generate-category-pages.mjs, which prunes its own stale output; this script
+  // has to be told to leave the directory alone or the two would take turns
+  // deleting each other's pages depending on which ran last.
+  const reserved = new Set([SECTIONS.category[language]]);
+
   for (const entry of entries) {
-    if (!entry.isDirectory() || slugs.has(entry.name)) continue;
+    if (!entry.isDirectory() || slugs.has(entry.name) || reserved.has(entry.name)) continue;
     const directory = path.join(blogRoot, entry.name);
     const contents = await fs.readdir(directory);
 
@@ -712,72 +920,9 @@ async function pruneRemovedArticles(language, slugs) {
   return removed;
 }
 
-// lastmod is only emitted where a real modification date exists. Stamping every
-// URL with the build date would tell Google the whole site changed on each
-// deploy, which is the kind of unreliable signal that makes it ignore lastmod.
-function sitemapEntry(loc, lastmod, alternates) {
-  const links = alternates
-    .map(({ hreflang, href }) => `\n    <xhtml:link rel="alternate" hreflang="${hreflang}" href="${href}" />`)
-    .join('');
-  const modified = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : '';
-  return `  <url>
-    <loc>${loc}</loc>${modified}${links}
-  </url>`;
-}
-
 function lastModified(article) {
   return article.updated || article.date;
 }
-
-// The date the sources behind a generated page were last committed, as
-// YYYY-MM-DD, or '' when that cannot be established.
-//
-// Articles carry their own date in front matter, so the sitemap has always been
-// able to state one for them. The home pages and the five simulators have no
-// such field - they are built from a template and a bundle of translation
-// strings - and half the sitemap consequently went out with no <lastmod> at all.
-//
-// The commit date of the source is the honest answer to "when did this page last
-// change", and it is the only one available that does not drift: a file's mtime
-// in CI is the time the checkout ran, and the build date would claim every URL
-// changed on every deploy, which is exactly the unreliable signal the comment
-// above sitemapEntry() exists to avoid. Committing a change is the act that
-// changes a page here, so the two are the same event.
-//
-// Everything about this can fail - git may be absent, the clone may be shallow
-// enough not to reach the last commit that touched the path, the path may be
-// uncommitted - and every failure returns '', which reinstates the previous
-// behaviour of omitting the element. An absent lastmod is a crawler's problem to
-// solve by fetching; a wrong one is a signal it learns to distrust.
-function lastCommitted(...relativePaths) {
-  try {
-    const stdout = execFileSync(
-      'git',
-      ['log', '-1', '--format=%cs', '--', ...relativePaths],
-      { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }
-    ).trim();
-    return /^\d{4}-\d{2}-\d{2}$/.test(stdout) ? stdout : '';
-  } catch {
-    return '';
-  }
-}
-
-// Resolved once per build rather than once per URL: the three home pages come
-// from one template, and the three language builds of a simulator come from one
-// pair of source files, so each of these is a single git call answering three
-// sitemap entries.
-const homeLastModified = lastCommitted(path.join('content', 'home', 'index.html'));
-const simulatorHubLastModified = lastCommitted(
-  path.join('content', 'simulators', 'simulator-hub.html'),
-  path.join('content', 'simulators', 'simulator-hub.i18n.json')
-);
-const simulatorLastModified = Object.fromEntries(simulatorSlugs.map((slug) => [
-  slug,
-  lastCommitted(
-    path.join('content', 'simulators', `${slug}.html`),
-    path.join('content', 'simulators', `${slug}.i18n.json`)
-  )
-]));
 
 // RSS 2.0, one feed per language at /{lang}/blog/feed.xml.
 //
@@ -849,60 +994,6 @@ function feedLinkTag(language, labels) {
   return `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(labels.feedTitle)}" href="${origin}/${language}/blog/feed.xml" />`;
 }
 
-function buildSitemap(articles) {
-  const homeAlternates = languages
-    .map((code) => ({ hreflang: code, href: `${origin}${homeHref(code)}` }))
-    .concat([{ hreflang: 'x-default', href: `${origin}/` }]);
-  const blogAlternates = languages
-    .map((code) => ({ hreflang: code, href: `${origin}/${code}/blog/` }))
-    .concat([{ hreflang: 'x-default', href: `${origin}/es/blog/` }]);
-  const simulatorAlternates = languages
-    .map((code) => ({ hreflang: code, href: `${origin}/${code}/simulator.html` }))
-    .concat([{ hreflang: 'x-default', href: `${origin}/es/simulator.html` }]);
-  const simulatorToolEntries = simulatorSlugs.flatMap((slug) => {
-    const alternates = languages
-      .map((code) => ({ hreflang: code, href: `${origin}/${code}/simulators/${slug}.html` }))
-      .concat([{ hreflang: 'x-default', href: `${origin}/es/simulators/${slug}.html` }]);
-    return languages.map((code) => sitemapEntry(
-      `${origin}/${code}/simulators/${slug}.html`,
-      simulatorLastModified[slug],
-      alternates
-    ));
-  });
-
-  const newest = articles.reduce((latest, article) => (lastModified(article) > latest ? lastModified(article) : latest), '');
-
-  const entries = [
-    ...languages.map((code) => sitemapEntry(`${origin}${homeHref(code)}`, homeLastModified, homeAlternates)),
-    ...languages.map((code) => sitemapEntry(`${origin}/${code}/blog/`, newest, blogAlternates)),
-    ...languages.map((code) => sitemapEntry(`${origin}/${code}/simulator.html`, simulatorHubLastModified, simulatorAlternates)),
-    ...simulatorToolEntries,
-    ...articles.map((article) => sitemapEntry(
-      `${origin}${articlePath(article.language, article.slug)}`,
-      lastModified(article),
-      languages
-        .filter((code) => article.translations[code])
-        .map((code) => ({ hreflang: code, href: `${origin}${articlePath(code, article.translations[code])}` }))
-        .concat([{
-          hreflang: 'x-default',
-          href: `${origin}${articlePath(
-            article.translations[defaultLanguage] ? defaultLanguage : article.language,
-            article.translations[defaultLanguage] || article.slug
-          )}`
-        }])
-    ))
-  ];
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
->
-${entries.join('\n')}
-</urlset>
-`;
-}
-
 const catalog = await readSharedCatalog();
 const prepared = [];
 
@@ -913,21 +1004,45 @@ for (const entry of catalog) {
   const source = await fs.readFile(path.join(contentRoot, entry.language, `${entry.slug}.md`), 'utf8');
   const { body: rawMarkdown } = parseFrontMatter(source);
   const labels = copy[entry.language] || copy.en;
-  const html = renderMarkdown(rawMarkdown, { origin }, labels);
-  const headings = collectHeadings(html);
+  const rendered = renderMarkdown(rawMarkdown, { origin }, labels);
+  // Headings are collected from the rendered body before the linker runs. The
+  // linker never touches a heading - h1-h6 are among its forbidden tags - but
+  // reading the table of contents from the earlier copy makes that a property
+  // of this file rather than something to re-check in that one.
+  const headings = collectHeadings(rendered);
   // readingTime comes from the catalog, which the home page cards read too.
   const article = { ...entry };
 
-  prepared.push({ article, labels, html, headings });
+  prepared.push({ article, labels, html: rendered, headings });
 }
 
 const generated = prepared.map((item) => item.article);
 
+// The automatic links are added in this pass rather than the one above because
+// an article can link its siblings, and the catalog entry of every sibling has
+// to exist first.
+let inlineLinkCount = 0;
+const linkedNothing = [];
+
 for (const { article, labels, html, headings } of prepared) {
   const related = relatedArticles(article, generated);
+  const { html: body, linked } = addInlineLinks(html, linkTargets(article, generated), {
+    maxLinks: MAX_INLINE_LINKS
+  });
+  inlineLinkCount += linked.length;
+  if (linked.length === 0) linkedNothing.push(`/${article.language}/blog/${article.slug}/`);
+
   const directory = path.join(root, article.language, 'blog', article.slug);
   await fs.mkdir(directory, { recursive: true });
-  await fs.writeFile(path.join(directory, 'index.html'), renderPage(article, labels, html, headings, related));
+  await fs.writeFile(path.join(directory, 'index.html'), renderPage(article, labels, body, headings, related));
+}
+
+console.log(`Inline links: ${inlineLinkCount} inserted across ${prepared.length} article(s).`);
+if (linkedNothing.length) {
+  // Not a failure - a short piece can legitimately mention nothing the site
+  // has a page for - but a long list here means the glossary aliases and the
+  // articles' `keywords` frontmatter have drifted apart from the prose.
+  console.log(`No inline link matched in ${linkedNothing.length} article(s): ${linkedNothing.join(', ')}`);
 }
 
 const removed = [];
@@ -967,9 +1082,7 @@ if (priorities.length) {
   console.log('A wide gap usually means the weaker translation reads awkwardly or its title does not match how that audience searches.');
 }
 
-await fs.writeFile(path.join(root, 'sitemap.xml'), buildSitemap(generated));
-
-console.log(`Generated ${generated.length} article pages, ${languages.length} journal indexes, ${languages.length} RSS feeds and sitemap.xml with ${generated.length + 21} URLs.`);
+console.log(`Generated ${generated.length} article pages, ${languages.length} journal indexes and ${languages.length} RSS feeds. scripts/generate-sitemap.mjs lists them.`);
 
 if (removed.length) {
   console.log(`Removed ${removed.length} article page(s) no longer in the catalog:`);

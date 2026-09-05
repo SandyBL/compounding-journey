@@ -5,7 +5,8 @@
   "description": "Build tooling for the Compounding Journey static site. The pages are hand-authored and pre-rendered by the scripts in ./scripts; this manifest exists so the Tailwind bundle they are styled with is produced by the deploy rather than by hand.",
   "scripts": {
     "css": "tailwindcss -i ./assets/tailwind.css -o ./assets/styles.css --minify",
-    "verify": "node scripts/verify-output.mjs"
+    "verify": "node scripts/verify-output.mjs",
+    "glossary": "node scripts/generate-blog-catalog.mjs && node scripts/check-glossary-coverage.mjs"
   },
   "comment": "The Tailwind CLI is a runtime dependency of the build rather than a devDependency: NODE_ENV is production in some Netlify build contexts, and npm skips devDependencies there, which would leave the CLI off the PATH and fail the deploy. @netlify/database is one for the same reason plus a second: netlify/functions/article-view.mjs imports it at runtime. @netlify/edge-functions is the type declarations netlify/edge-functions/language-preference.ts imports from, and is a dependency for the first reason as well - the edge bundler resolves it during the deploy, not just in an editor. All three are pinned exactly, so a build cannot pick up a version no commit asked for.",
   "dependencies": {

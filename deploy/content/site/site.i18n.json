@@ -1,0 +1,464 @@
+{
+  "comment": [
+    "Translated copy for every page type generate-tool-pages.mjs, generate-glossary.mjs,",
+    "generate-category-pages.mjs and generate-info-pages.mjs build. It lives in one file",
+    "because those four generators share a page shell (scripts/page-shell.mjs) and so share",
+    "the chrome around whatever they render: the header, the breadcrumb, the footer, the",
+    "compliance disclaimer and the share row. Three copies of that chrome is how the",
+    "simulators drifted apart before generate-simulator-pages.mjs existed.",
+    "",
+    "Every key must carry all three languages. The generators throw on a missing one rather",
+    "than falling back to Spanish, because a page that silently ships the wrong language is",
+    "worse than a build that stopped."
+  ],
+  "brand": {
+    "es": "Compounding Journey",
+    "en": "Compounding Journey",
+    "pt": "Compounding Journey"
+  },
+  "tagline": {
+    "es": "Tu mapa hacia la libertad",
+    "en": "Your map to freedom",
+    "pt": "O teu mapa para a liberdade"
+  },
+  "home": {
+    "es": "Inicio",
+    "en": "Home",
+    "pt": "Início"
+  },
+  "journal": {
+    "es": "Diario",
+    "en": "Journal",
+    "pt": "Diário"
+  },
+  "skipToContent": {
+    "es": "Ir al contenido",
+    "en": "Skip to content",
+    "pt": "Ir para o conteúdo"
+  },
+  "backToHome": {
+    "es": "← Volver al inicio",
+    "en": "← Back to home",
+    "pt": "← Voltar ao início"
+  },
+  "breadcrumbLabel": {
+    "es": "Ruta de navegación",
+    "en": "Breadcrumb",
+    "pt": "Trilha de navegação"
+  },
+  "footerNote": {
+    "es": "Decisiones pequeñas. Horizontes largos.",
+    "en": "Small choices. Long horizons.",
+    "pt": "Escolhas pequenas. Horizontes longos."
+  },
+  "disclaimerTitle": {
+    "es": "Contenido educativo, no asesoramiento financiero",
+    "en": "Educational content, not financial advice",
+    "pt": "Conteúdo educativo, não é consultoria financeira"
+  },
+  "disclaimerBody": {
+    "es": "Sandy Bradbury es educador financiero, no asesor financiero acreditado ni entidad registrada ante la CNMV. Esta herramienta es una calculadora educativa e ilustrativa: no constituye asesoramiento financiero, de inversión, fiscal ni legal, ni una recomendación para comprar o vender ningún producto. Sus resultados son estimaciones basadas en los supuestos que introduces y no predicen rentabilidades reales. Antes de tomar cualquier decisión, consulta a un profesional debidamente registrado en tu jurisdicción.",
+    "en": "Sandy Bradbury is a financial educator, not an accredited financial adviser or a regulated firm. This tool is an educational and illustrative calculator: it is not financial, investment, tax or legal advice, and it is not a recommendation to buy or sell any product. Its results are estimates based on the assumptions you enter and do not predict real returns. Before making any decision, consult a properly registered professional in your jurisdiction.",
+    "pt": "Sandy Bradbury é educador financeiro, não é consultor financeiro acreditado nem entidade registada. Esta ferramenta é uma calculadora educativa e ilustrativa: não constitui consultoria financeira, de investimento, fiscal ou jurídica, nem uma recomendação de compra ou venda de qualquer produto. Os resultados são estimativas baseadas nos pressupostos que introduzes e não preveem rentabilidades reais. Antes de qualquer decisão, consulta um profissional devidamente registado na tua jurisdição."
+  },
+  "disclaimerLink": {
+    "es": "Leer el aviso legal completo",
+    "en": "Read the full legal notice",
+    "pt": "Ler o aviso legal completo"
+  },
+  "shareTitle": {
+    "es": "Compartir este artículo",
+    "en": "Share this article",
+    "pt": "Partilhar este artigo"
+  },
+  "shareOn": {
+    "es": "Compartir en",
+    "en": "Share on",
+    "pt": "Partilhar no"
+  },
+  "shareCopy": {
+    "es": "Copiar enlace",
+    "en": "Copy link",
+    "pt": "Copiar ligação"
+  },
+  "shareCopied": {
+    "es": "Enlace copiado",
+    "en": "Link copied",
+    "pt": "Ligação copiada"
+  },
+  "shareByEmail": {
+    "es": "Compartir por email",
+    "en": "Share by email",
+    "pt": "Partilhar por email"
+  },
+  "shareEmailSubject": {
+    "es": "Te puede interesar",
+    "en": "You might find this useful",
+    "pt": "Podes achar isto útil"
+  },
+  "toolsSectionTitle": {
+    "es": "Calculadoras financieras",
+    "en": "Financial calculators",
+    "pt": "Calculadoras financeiras"
+  },
+  "toolsSectionSlug": {
+    "es": "calculadoras",
+    "en": "calculators",
+    "pt": "calculadoras"
+  },
+  "toolsIntro": {
+    "es": "Tres calculadoras gratuitas para poner números a tus decisiones. Ninguna guarda tus datos: el cálculo ocurre en tu navegador.",
+    "en": "Three free calculators to put numbers behind your decisions. None of them stores your data: the maths happens in your browser.",
+    "pt": "Três calculadoras gratuitas para pôr números nas tuas decisões. Nenhuma guarda os teus dados: o cálculo acontece no teu navegador."
+  },
+  "toolsOther": {
+    "es": "Otras calculadoras",
+    "en": "Other calculators",
+    "pt": "Outras calculadoras"
+  },
+  "currencyLabel": {
+    "es": "Moneda",
+    "en": "Currency",
+    "pt": "Moeda"
+  },
+  "howItWorks": {
+    "es": "Cómo funciona",
+    "en": "How it works",
+    "pt": "Como funciona"
+  },
+  "assumptions": {
+    "es": "Supuestos y límites",
+    "en": "Assumptions and limits",
+    "pt": "Pressupostos e limites"
+  },
+  "relatedReading": {
+    "es": "Lecturas relacionadas",
+    "en": "Related reading",
+    "pt": "Leituras relacionadas"
+  },
+  "templatesSectionTitle": {
+    "es": "Plantillas de Excel",
+    "en": "Excel templates",
+    "pt": "Modelos de Excel"
+  },
+  "templatesSectionSlug": {
+    "es": "plantillas",
+    "en": "templates",
+    "pt": "modelos"
+  },
+  "templatesIntro": {
+    "es": "Descargas gratuitas para entender y dirigir tu dinero. Sin registro y sin correo electrónico.",
+    "en": "Free downloads to understand and direct your money. No sign-up and no email required.",
+    "pt": "Descargas gratuitas para entender e dirigir o teu dinheiro. Sem registo e sem email."
+  },
+  "templateDownload": {
+    "es": "Descargar la plantilla",
+    "en": "Download the template",
+    "pt": "Descarregar o modelo"
+  },
+  "templateHowToUse": {
+    "es": "Cómo usarla",
+    "en": "How to use it",
+    "pt": "Como usá-lo"
+  },
+  "templateWhatsInside": {
+    "es": "Qué incluye",
+    "en": "What's inside",
+    "pt": "O que inclui"
+  },
+  "templatesOther": {
+    "es": "Otras plantillas",
+    "en": "Other templates",
+    "pt": "Outros modelos"
+  },
+  "templateFormat": {
+    "es": "Formato",
+    "en": "Format",
+    "pt": "Formato"
+  },
+  "templatePrice": {
+    "es": "Precio",
+    "en": "Price",
+    "pt": "Preço"
+  },
+  "templateFree": {
+    "es": "Gratis",
+    "en": "Free",
+    "pt": "Grátis"
+  },
+  "glossaryTitle": {
+    "es": "Glosario financiero",
+    "en": "Financial glossary",
+    "pt": "Glossário financeiro"
+  },
+  "glossarySlug": {
+    "es": "glosario",
+    "en": "glossary",
+    "pt": "glossario"
+  },
+  "glossaryIntro": {
+    "es": "Definiciones claras de los términos que aparecen en el diario, las calculadoras y los simuladores. Un término por página, en el idioma que estás leyendo.",
+    "en": "Plain definitions of the terms used across the journal, the calculators and the simulators. One term per page, in the language you are reading.",
+    "pt": "Definições claras dos termos que aparecem no diário, nas calculadoras e nos simuladores. Um termo por página, no idioma que estás a ler."
+  },
+  "glossaryAll": {
+    "es": "Ver el glosario completo",
+    "en": "See the full glossary",
+    "pt": "Ver o glossário completo"
+  },
+  "glossaryAlsoCalled": {
+    "es": "También llamado",
+    "en": "Also called",
+    "pt": "Também chamado"
+  },
+  "glossaryRelatedTerms": {
+    "es": "Términos relacionados",
+    "en": "Related terms",
+    "pt": "Termos relacionados"
+  },
+  "glossaryMentionedIn": {
+    "es": "Aparece en estos artículos",
+    "en": "Mentioned in these articles",
+    "pt": "Mencionado nestes artigos"
+  },
+  "glossaryTermCountOne": {
+    "es": "término",
+    "en": "term",
+    "pt": "termo"
+  },
+  "glossaryTermCountMany": {
+    "es": "términos",
+    "en": "terms",
+    "pt": "termos"
+  },
+  "glossaryJumpTo": {
+    "es": "Saltar a una sección",
+    "en": "Jump to a section",
+    "pt": "Saltar para uma secção"
+  },
+  "categorySlug": {
+    "es": "categoria",
+    "en": "category",
+    "pt": "categoria"
+  },
+  "categoryTitlePrefix": {
+    "es": "Categoría",
+    "en": "Category",
+    "pt": "Categoria"
+  },
+  "categoryAll": {
+    "es": "Todas las categorías",
+    "en": "All categories",
+    "pt": "Todas as categorias"
+  },
+  "categoryIntro": {
+    "es": "Todos los artículos del diario en esta categoría, del más reciente al más antiguo.",
+    "en": "Every journal article in this category, newest first.",
+    "pt": "Todos os artigos do diário nesta categoria, do mais recente ao mais antigo."
+  },
+  "categoryReadArticle": {
+    "es": "Leer el artículo",
+    "en": "Read article",
+    "pt": "Ler o artigo"
+  },
+  "categoryCountOne": {
+    "es": "artículo",
+    "en": "article",
+    "pt": "artigo"
+  },
+  "categoryCountMany": {
+    "es": "artículos",
+    "en": "articles",
+    "pt": "artigos"
+  },
+  "categoryBrowseOthers": {
+    "es": "Otras categorías",
+    "en": "Other categories",
+    "pt": "Outras categorias"
+  },
+  "legalUpdated": {
+    "es": "Última actualización",
+    "en": "Last updated",
+    "pt": "Última atualização"
+  },
+  "legalContents": {
+    "es": "Contenido",
+    "en": "Contents",
+    "pt": "Conteúdo"
+  },
+  "legalOtherPages": {
+    "es": "Otras páginas legales",
+    "en": "Other legal pages",
+    "pt": "Outras páginas legais"
+  },
+  "legalNav_privacy": {
+    "es": "Privacidad",
+    "en": "Privacy",
+    "pt": "Privacidade"
+  },
+  "legalNav_terms": {
+    "es": "Términos",
+    "en": "Terms",
+    "pt": "Termos"
+  },
+  "legalNav_notice": {
+    "es": "Aviso legal",
+    "en": "Legal notice",
+    "pt": "Aviso legal"
+  },
+  "sectionNavLabel": {
+    "es": "Secciones del sitio",
+    "en": "Site sections",
+    "pt": "Secções do site"
+  },
+  "sectionNavFooterLabel": {
+    "es": "Mapa del sitio",
+    "en": "Site map",
+    "pt": "Mapa do site"
+  },
+  "simulatorsNavLabel": {
+    "es": "Simuladores",
+    "en": "Simulators",
+    "pt": "Simuladores"
+  },
+  "toolsNavLabel": {
+    "es": "Calculadoras",
+    "en": "Calculators",
+    "pt": "Calculadoras"
+  },
+  "templatesNavLabel": {
+    "es": "Plantillas",
+    "en": "Templates",
+    "pt": "Modelos"
+  },
+  "glossaryNavLabel": {
+    "es": "Glosario",
+    "en": "Glossary",
+    "pt": "Glossário"
+  },
+  "sessionsNavLabel": {
+    "es": "Sesiones",
+    "en": "Sessions",
+    "pt": "Sessões"
+  },
+  "dataNavLabel": {
+    "es": "Datos",
+    "en": "Data",
+    "pt": "Dados"
+  },
+  "glossaryGroup_investing": {
+    "es": "Inversión y mercados",
+    "en": "Investing and markets",
+    "pt": "Investimento e mercados"
+  },
+  "glossaryGroup_money": {
+    "es": "Finanzas personales",
+    "en": "Personal finance",
+    "pt": "Finanças pessoais"
+  },
+  "glossaryGroup_mind": {
+    "es": "Psicología del dinero",
+    "en": "Psychology of money",
+    "pt": "Psicologia do dinheiro"
+  },
+  "glossaryEyebrow": {
+    "es": "Glosario",
+    "en": "Glossary",
+    "pt": "Glossário"
+  },
+  "glossaryDefinition": {
+    "es": "Definición",
+    "en": "Definition",
+    "pt": "Definição"
+  },
+  "glossaryUseTools": {
+    "es": "Ponlo en números",
+    "en": "Put a number on it",
+    "pt": "Põe isto em números"
+  },
+  "toolsEyebrow": {
+    "es": "Calculadora",
+    "en": "Calculator",
+    "pt": "Calculadora"
+  },
+  "toolsAll": {
+    "es": "Ver todas las calculadoras",
+    "en": "See all the calculators",
+    "pt": "Ver todas as calculadoras"
+  },
+  "calcResultTitle": {
+    "es": "Resultado",
+    "en": "Result",
+    "pt": "Resultado"
+  },
+  "faqTitle": {
+    "es": "Preguntas frecuentes",
+    "en": "Frequently asked questions",
+    "pt": "Perguntas frequentes"
+  },
+  "toolsGlossaryTitle": {
+    "es": "Términos que aparecen aquí",
+    "en": "Terms used here",
+    "pt": "Termos usados aqui"
+  },
+  "toolsNoJs": {
+    "es": "Esta calculadora necesita JavaScript activado. El cálculo se hace en tu navegador: nada se envía a ningún servidor.",
+    "en": "This calculator needs JavaScript enabled. The maths runs in your browser: nothing is sent to any server.",
+    "pt": "Esta calculadora precisa de JavaScript ativado. O cálculo corre no teu navegador: nada é enviado para nenhum servidor."
+  },
+  "templatesEyebrow": {
+    "es": "Plantilla de Excel",
+    "en": "Excel template",
+    "pt": "Modelo de Excel"
+  },
+  "templatesAll": {
+    "es": "Ver todas las plantillas",
+    "en": "See all the templates",
+    "pt": "Ver todos os modelos"
+  },
+  "templateSheets": {
+    "es": "Hojas",
+    "en": "Sheets",
+    "pt": "Folhas"
+  },
+  "templateSize": {
+    "es": "Tamaño",
+    "en": "Size",
+    "pt": "Tamanho"
+  },
+  "templateStep": {
+    "es": "Paso",
+    "en": "Step",
+    "pt": "Passo"
+  },
+  "templateSequenceTitle": {
+    "es": "Las tres plantillas son un sistema",
+    "en": "The three templates are one system",
+    "pt": "Os três modelos são um sistema"
+  },
+  "templateSequenceIntro": {
+    "es": "Observa tu situación, después sigue tus gastos y sólo entonces ajusta tu presupuesto. En ese orden funcionan mejor que por separado.",
+    "en": "Understand your position, then track your spending, and only then adjust your budget. In that order they work better than they do apart.",
+    "pt": "Analisa a tua situação, depois acompanha as despesas e só então ajusta o orçamento. Nessa ordem funcionam melhor do que separados."
+  },
+  "templateOptinTitle": {
+    "es": "Recibe lo siguiente que escriba",
+    "en": "Get what I write next",
+    "pt": "Recebe o que escrever a seguir"
+  },
+  "templateOptinBody": {
+    "es": "La plantilla es tuya sin dejar ningún dato. Si quieres, puedes suscribirte al boletín y recibir los artículos nuevos, las plantillas y las herramientas cuando salgan.",
+    "en": "The template is yours without leaving any details. If you want to, you can subscribe to the newsletter and get new articles, templates and tools as they come out.",
+    "pt": "O modelo é teu sem deixares qualquer dado. Se quiseres, podes subscrever a newsletter e receber os artigos, modelos e ferramentas novos quando saírem."
+  },
+  "templateOptinAction": {
+    "es": "Suscribirme al boletín",
+    "en": "Subscribe to the newsletter",
+    "pt": "Subscrever a newsletter"
+  },
+  "templateOptinNote": {
+    "es": "Se abre en el formulario del proveedor del boletín. Puedes darte de baja en cualquier momento y la descarga no depende de ello.",
+    "en": "Opens the newsletter provider's own form. You can unsubscribe at any time, and the download does not depend on it.",
+    "pt": "Abre o formulário do próprio fornecedor da newsletter. Podes cancelar a subscrição em qualquer momento e a descarga não depende disso."
+  }
+}

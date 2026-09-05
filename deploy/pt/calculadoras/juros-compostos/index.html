@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora de juros compostos | Compounding Journey</title>
+  <meta name="description" content="Calcula quanto o teu dinheiro vai crescer com reforços mensais e uma rentabilidade anual. Grátis, sem registo e com o cálculo no teu próprio navegador." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="Sandy Bradbury" />
+  <link rel="canonical" href="https://compoundingjourney.com/pt/calculadoras/juros-compostos/" />
+  <link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/calculadoras/interes-compuesto/" />
+  <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/calculators/compound-interest/" />
+  <link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/calculadoras/juros-compostos/" />
+  <link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/calculadoras/interes-compuesto/" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=64&amp;h=64&amp;fit=cover&amp;fm=png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/.netlify/images?url=/logo-compounding-journey.png&amp;w=180&amp;h=180&amp;fit=cover&amp;fm=png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Compounding Journey" />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:title" content="Calculadora de juros compostos" />
+  <meta property="og:description" content="Calcula quanto o teu dinheiro vai crescer com reforços mensais e uma rentabilidade anual. Grátis, sem registo e com o cálculo no teu próprio navegador." />
+  <meta property="og:url" content="https://compoundingjourney.com/pt/calculadoras/juros-compostos/" />
+  <meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="Compounding Journey logo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Calculadora de juros compostos" />
+  <meta name="twitter:description" content="Calcula quanto o teu dinheiro vai crescer com reforços mensais e uma rentabilidade anual. Grátis, sem registo e com o cálculo no teu próprio navegador." />
+  <meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png" />
+  <meta name="twitter:image:alt" content="Compounding Journey logo" />
+  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2?v=source" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2?v=source" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/blog.css?v=source" />
+  <link rel="stylesheet" href="/assets/css/header.css?v=source" />
+  <link rel="stylesheet" href="/assets/css/pages.css?v=source" />
+  <link rel="stylesheet" href="/assets/css/a11y.css?v=source" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://compoundingjourney.com/pt/calculadoras/juros-compostos/#app",
+      "name": "Calculadora de juros compostos",
+      "description": "Calcula quanto o teu dinheiro vai crescer com reforços mensais e uma rentabilidade anual. Grátis, sem registo e com o cálculo no teu próprio navegador.",
+      "url": "https://compoundingjourney.com/pt/calculadoras/juros-compostos/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "inLanguage": "pt",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "author": {
+        "@id": "https://compoundingjourney.com/#sandy-bradbury"
+      },
+      "publisher": {
+        "@id": "https://compoundingjourney.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compoundingjourney.com/pt/calculadoras/juros-compostos/#faq",
+      "inLanguage": "pt",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Que rentabilidade anual devo usar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de onde investes, e ninguém o pode saber de antemão. Como referência histórica, uma carteira global de ações rondou os 7-8 % nominais por ano em períodos muito longos, e uma carteira mista com obrigações bastante menos. O mais útil não é acertar no número, mas testar três: um pessimista, um médio e um otimista, e ver se o teu plano continua de pé com o pessimista."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Porque é que o resultado muda tanto quando acrescento cinco anos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Porque o crescimento não é linear. Os últimos anos trabalham sobre o saldo maior, pelo que contribuem muito mais do que os primeiros. É por isso que começar mais cedo vale mais do que reforçar mais: um ano de atraso não te tira o primeiro ano, tira-te o último."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os resultados descontam a inflação?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. São valores nominais. Para pensar em poder de compra de hoje, subtrai a tua expectativa de inflação à rentabilidade que introduzes: 7 % com inflação de 2,5 % equivale a cerca de 4,5 % real. O resultado fica então já em euros de hoje."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Guardam os dados que introduzo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Todo o cálculo acontece no teu navegador em JavaScript; nada é enviado para um servidor e nada é armazenado. Podes confirmá-lo desligando a rede e usando a calculadora de igual modo."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compoundingjourney.com/pt/calculadoras/juros-compostos/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://compoundingjourney.com/pt/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculadoras financeiras",
+          "item": "https://compoundingjourney.com/pt/calculadoras/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Calculadora de juros compostos",
+          "item": "https://compoundingjourney.com/pt/calculadoras/juros-compostos/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://compoundingjourney.com/pt/calculadoras/juros-compostos/",
+      "url": "https://compoundingjourney.com/pt/calculadoras/juros-compostos/",
+      "name": "Calculadora de juros compostos",
+      "inLanguage": "pt",
+      "description": "Calcula quanto o teu dinheiro vai crescer com reforços mensais e uma rentabilidade anual. Grátis, sem registo e com o cálculo no teu próprio navegador.",
+      "isPartOf": {
+        "@id": "https://compoundingjourney.com/#website"
+      },
+      "publisher": {
+        "@id": "https://compoundingjourney.com/#organization"
+      }
+    }
+  ]
+}
+  </script>
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.pt.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
+</head>
+<body><div class="site-shell">
+  <a class="skip-link" href="#page-main">Ir para o conteúdo</a>
+  <header class="site-header">
+    <div class="header-shell">
+      <a class="header-brand" href="/pt/"><span class="header-brand-logo"><img src="/.netlify/images?url=/logo-compounding-journey.png&amp;w=128&amp;h=128&amp;fit=cover" alt="Compounding Journey" width="128" height="128" fetchpriority="high" /></span><span class="header-brand-copy"><span class="header-brand-name">Compounding Journey</span><span class="header-brand-tagline">O teu mapa para a liberdade</span></span></a>
+      <div class="header-actions">
+        <a class="header-return-link" href="/pt/"><span class="return-long">← Voltar ao início</span><span class="return-short">Início</span></a>
+        <nav class="header-language-switcher" aria-label="Language"><a class="lang-btn" href="/es/calculadoras/interes-compuesto/" aria-label="Español" hreflang="es"><svg aria-hidden="true" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#AA151B"/><rect y="5" width="28" height="10" fill="#F1BF00"/><rect x="7" y="8" width="2" height="5" rx=".5" fill="#AA151B" opacity=".85"/></svg></a><a class="lang-btn" href="/en/calculators/compound-interest/" aria-label="English" hreflang="en"><svg aria-hidden="true" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#fff"/><path fill="#B22234" d="M0 0h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zm0 4h28v2H0zM0 19h28v1H0z"/><rect width="12" height="11" fill="#3C3B6E"/></svg></a><a class="lang-btn" href="/pt/calculadoras/juros-compostos/" aria-current="page" aria-label="Português" hreflang="pt"><svg aria-hidden="true" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#009B3A"/><path fill="#FFDF00" d="m14 3 10 7-10 7-10-7z"/><circle cx="14" cy="10" r="4" fill="#002776"/></svg></a></nav>
+      </div>
+    </div>
+  </header>
+  <nav class="site-section-nav" aria-label="Secções do site">
+    <div class="site-section-tabs"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/">Simuladores</a><a href="/pt/calculadoras/" aria-current="true">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></div>
+  </nav>
+  <main id="page-main" class="page-main">
+    <div class="container">
+      <nav class="crumbs" aria-label="Trilha de navegação"><ol><li><a href="/pt/">Início</a></li><li><a href="/pt/calculadoras/">Calculadoras financeiras</a></li><li><span aria-current="page">Calculadora de juros compostos</span></li></ol></nav>
+      <header class="page-head">
+        <p class="eyebrow">Calculadora</p>
+        <h1>Calculadora de juros compostos</h1>
+        <p class="page-dek">Introduz o que tens hoje, o que consegues reforçar cada mês e os anos que lhe vais dar. A calculadora mostra quanto puseste tu e quanto pôs o tempo.</p>
+      </header>
+    </div>
+    <div class="container">
+      <div class="tool-layout">
+        <div>
+          <div class="calc-panel">
+            <form class="calc-form" data-calculator="compound-interest" novalidate>
+              <div class="calc-fields">
+          <div class="calc-field">
+            <label for="field-compound-interest-initial">Capital inicial</label>
+            <input type="number" id="field-compound-interest-initial" name="initial" data-field="initial" value="1000" min="0" step="100" inputmode="decimal" aria-describedby="field-compound-interest-initial-hint" />
+            <p class="calc-field-hint" id="field-compound-interest-initial-hint">O que já tens poupado para investir. Pode ser zero.</p>
+          </div>
+          <div class="calc-field">
+            <label for="field-compound-interest-monthly">Reforço mensal</label>
+            <input type="number" id="field-compound-interest-monthly" name="monthly" data-field="monthly" value="200" min="0" step="25" inputmode="decimal" aria-describedby="field-compound-interest-monthly-hint" />
+            <p class="calc-field-hint" id="field-compound-interest-monthly-hint">O valor que consegues reforçar todos os meses sem falhar.</p>
+          </div>
+          <div class="calc-field">
+            <label for="field-compound-interest-years">Anos de investimento</label>
+            <input type="number" id="field-compound-interest-years" name="years" data-field="years" value="25" min="1" max="60" step="1" inputmode="decimal" aria-describedby="field-compound-interest-years-hint" />
+            <p class="calc-field-hint" id="field-compound-interest-years-hint">O horizonte. É a variável mais poderosa das quatro.</p>
+          </div>
+          <div class="calc-field">
+            <label for="field-compound-interest-rate">Rentabilidade anual estimada (%)</label>
+            <input type="number" id="field-compound-interest-rate" name="rate" data-field="rate" value="7" min="0" max="20" step="0.1" inputmode="decimal" aria-describedby="field-compound-interest-rate-hint" />
+            <p class="calc-field-hint" id="field-compound-interest-rate-hint">Uma carteira global diversificada rondou os 7 % ao ano no longo prazo, antes de inflação e comissões.</p>
+          </div>
+          <div class="calc-field">
+            <label for="currency-compound-interest">Moeda</label>
+            <select id="currency-compound-interest" data-currency><option value="EUR">EUR</option><option value="USD">USD</option><option value="BRL">BRL</option></select>
+          </div>
+              </div>
+              <div class="calc-actions">
+                <button type="submit" class="button">Calcular</button>
+              </div>
+            </form>
+        <div class="calc-result" aria-live="polite">
+          <p class="calc-result-label">Valor final estimado</p>
+          <p class="calc-result-value" data-result="total">—</p>
+          <dl class="calc-breakdown">
+            <div><dt>Total que reforçaste</dt><dd data-result="invested">—</dd></div>
+            <div><dt>Gerado pelos juros compostos</dt><dd data-result="interest">—</dd></div>
+          </dl>
+          <p class="calc-result-note">Uma estimativa, não uma previsão: os mercados não entregam a mesma rentabilidade todos os anos.</p>
+        </div>
+        
+            <noscript><p class="calc-error">Esta calculadora precisa de JavaScript ativado. O cálculo corre no teu navegador: nada é enviado para nenhum servidor.</p></noscript>
+          </div>
+          
+      <aside class="compliance" role="note" aria-labelledby="compliance-title">
+        <h2 id="compliance-title" class="compliance-title">Conteúdo educativo, não é consultoria financeira</h2>
+        <p>Sandy Bradbury é educador financeiro, não é consultor financeiro acreditado nem entidade registada. Esta ferramenta é uma calculadora educativa e ilustrativa: não constitui consultoria financeira, de investimento, fiscal ou jurídica, nem uma recomendação de compra ou venda de qualquer produto. Os resultados são estimativas baseadas nos pressupostos que introduzes e não preveem rentabilidades reais. Antes de qualquer decisão, consulta um profissional devidamente registado na tua jurisdição.</p>
+        <a class="text-link" href="/pt/aviso-legal/">Ler o aviso legal completo</a>
+      </aside>
+          <section class="page-section tool-notes">
+            <h2 class="section-title">Como funciona</h2>
+            <div class="article-body"><p>A calculadora capitaliza mês a mês. Cada mês multiplica o saldo pela rentabilidade mensal — a anual dividida por doze — e depois soma o teu reforço:</p>
+<pre><code>saldo = saldo × (1 + rentabilidade anual / 12) + reforço</code></pre>
+<p>Repetido tantas vezes quantos meses tiver o teu horizonte. O número que aparece como &quot;gerado pelos <a href="/pt/glossario/juros-compostos/" class="inline-link" title="O efeito pelo qual os rendimentos do teu dinheiro começam a gerar os seus próprios rendimentos, fazendo o capital crescer de forma exponencial e não linear." data-link-kind="glossary">juros compostos</a>&quot; é simplesmente o valor final menos tudo o que puseste tu, e é a parte que não terias deixando o dinheiro parado.</p></div>
+          </section>
+          <section class="page-section tool-notes">
+            <h2 class="section-title">Pressupostos e limites</h2>
+            <div class="article-body"><ul><li>A rentabilidade é aplicada de forma <strong>constante</strong>. Na realidade há anos de +25 % e anos de −18 %, e a ordem em que chegam importa.</li><li>Os valores são <strong>nominais</strong>: não descontam a <a href="/pt/glossario/inflacao/" class="inline-link" title="A subida geral e sustentada dos preços, que reduz aquilo que a mesma quantidade de dinheiro consegue comprar ao longo do tempo." data-link-kind="glossary">inflação</a>. Com inflação de 2,5 %, 100.000 a trinta anos compram o que hoje compram cerca de 48.000.</li><li>Não inclui <strong>comissões nem impostos</strong>. Subtrair o custo do teu fundo à rentabilidade que introduzes é a forma rápida de os aproximar.</li><li>Pressupõe que <strong>não retiras nada</strong> durante todo o período. Uma retirada pelo meio quebra o efeito que se está a medir.</li></ul></div>
+          </section>
+      <section class="page-section">
+        <h2 class="section-title">Perguntas frequentes</h2>
+        <div class="faq-list">
+        <details class="faq-item">
+          <summary>Que rentabilidade anual devo usar?</summary>
+          <div><p>Depende de onde investes, e ninguém o pode saber de antemão. Como referência histórica, uma carteira global de ações rondou os 7-8 % nominais por ano em períodos muito longos, e uma carteira mista com obrigações bastante menos. O mais útil não é acertar no número, mas testar três: um pessimista, um médio e um otimista, e ver se o teu plano continua de pé com o pessimista.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Porque é que o resultado muda tanto quando acrescento cinco anos?</summary>
+          <div><p>Porque o crescimento não é linear. Os últimos anos trabalham sobre o saldo maior, pelo que contribuem muito mais do que os primeiros. É por isso que começar mais cedo vale mais do que reforçar mais: um ano de atraso não te tira o primeiro ano, tira-te o último.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Os resultados descontam a inflação?</summary>
+          <div><p>Não. São valores nominais. Para pensar em poder de compra de hoje, subtrai a tua expectativa de inflação à rentabilidade que introduzes: 7 % com inflação de 2,5 % equivale a cerca de 4,5 % real. O resultado fica então já em euros de hoje.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Guardam os dados que introduzo?</summary>
+          <div><p>Não. Todo o cálculo acontece no teu navegador em JavaScript; nada é enviado para um servidor e nada é armazenado. Podes confirmá-lo desligando a rede e usando a calculadora de igual modo.</p></div>
+        </details>
+        </div>
+      </section>
+        </div>
+        <aside class="term-aside">
+          <h2>Outras calculadoras</h2>
+          <ul><li><a href="/pt/calculadoras/liberdade-financeira/">Calculadora de liberdade financeira</a></li><li><a href="/pt/calculadoras/custo-em-horas-de-vida/">Calculadora do custo em horas de vida</a></li></ul>
+          <h2>Termos usados aqui</h2><ul><li><a href="/pt/glossario/juros-compostos/">Juros compostos</a></li><li><a href="/pt/glossario/rentabilidade-real/">Rentabilidade real</a></li><li><a href="/pt/glossario/ter-custo-total/">TER (custo total)</a></li><li><a href="/pt/glossario/investimento-periodico-dca/">Investimento periódico (DCA)</a></li></ul>
+          <h2>Leituras relacionadas</h2><ul><li><a href="/pt/blog/o-que-ensina-um-seculo-de-historia-dos-mercados-quedas-recuperacao-e-diversificacao/">O que ensina um século de história dos mercados: quedas, recuperação e diversificação</a></li><li><a href="/pt/blog/gestao-de-dividas-como-sair-e-manter-se-livre-das-dividas/">Gestão de Dívidas: Como Sair e Manter-se Livre das Dívidas</a></li><li><a href="/pt/blog/por-seu-dinheiro-a-trabalhar-faca-dinheiro-enquanto-dorme/">Faça Seu Dinheiro a Trabalhar: Ganhe Dinheiro Enquanto Dorme</a></li><li><a href="/pt/blog/gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa/">Gastar com Propósito: Como Alinhar o Seu Dinheiro com o Que Realmente Importa</a></li></ul>
+          <a class="text-link" href="/pt/calculadoras/">Ver todas as calculadoras</a>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">
+    <nav class="footer-legal" aria-label="Outras páginas legais"><a href="/pt/privacidade/">Privacidade</a><a href="/pt/termos/">Termos</a><a href="/pt/aviso-legal/">Aviso legal</a></nav>
+    <div class="footer-row">
+      <nav aria-label="Mapa do site"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/">Simuladores</a><a href="/pt/calculadoras/" aria-current="true">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></nav>
+      <span>© 2026 Compounding Journey — Escolhas pequenas. Horizontes longos.</span>
+    </div>
+  </div></footer>
+</div><script src="/assets/js/section-nav.js?v=source" defer></script>
+<script src="/assets/js/calculators.js?v=source" defer></script></body>
+</html>

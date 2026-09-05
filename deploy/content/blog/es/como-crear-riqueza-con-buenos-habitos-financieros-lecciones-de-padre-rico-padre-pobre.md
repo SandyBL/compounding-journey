@@ -7,6 +7,7 @@ summary: Descubre cómo construir riqueza a largo plazo con buenos hábitos
  financieros. Aprende la diferencia entre activos, pasivos, deuda buena y flujo
  de caja.
 translation_key: building-wealth-good-financial-habits
+link_phrases: hábitos financieros, buenos hábitos financieros, Padre Rico Padre Pobre
 author: Sandy Bradbury
 ---
 Los buenos hábitos van mucho más allá del desarrollo personal: son la verdadera base del éxito financiero a largo plazo. En su célebre libro \*Padre Rico, Padre Pobre\*, Robert Kiyosaki enfatiza que crear riqueza no se trata de cuánto dinero ganas, sino de cómo lo gestionas y haces que trabaje para tu felicidad y libertad.

@@ -18,7 +18,7 @@ The complete text of this site — every FAQ answer and every article, in all th
 - [Financial calculators](https://compoundingjourney.com/#herramientas): compound interest, financial freedom, and purchase cost in working hours.
 - [Excel templates](https://compoundingjourney.com/#plantillas): free personal budgeting and expense-management resources.
 - [Financial assessment](https://compoundingjourney.com/#assessment): the personal financial balance and investment profile questionnaires, and the snapshot, risk profile, and recommended roadmap they produce.
-- [Frequently asked questions](https://compoundingjourney.com/#preguntas-frecuentes): direct answers about the 4% rule, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
+- [Frequently asked questions](https://compoundingjourney.com/#preguntas-frecuentes): direct answers about the 4% rule, what FIRE means and its variants, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
 - [About Sandy Bradbury](https://compoundingjourney.com/#biografia): the creator's approach to money psychology, financial habits, and diversified investing.
 - [Contact](https://compoundingjourney.com/#contacto): the newsletter and a direct contact form.
 
@@ -39,6 +39,13 @@ article without re-crawling the index:
 
 ### Español
 
+- [La psicología de las decisiones de dinero: por qué saber las cuentas no basta](https://compoundingjourney.com/es/blog/la-psicologia-de-las-decisiones-de-dinero-por-que-saber-las-cuentas-no-basta/): Nadie fracasa con el dinero por no saber calcular un interés compuesto. Fracasa porque la decisión llega en un instante y la consecuencia llega en una década, y la mente no está hecha para ese hueco.
+- [Los ingresos pasivos no son una sola cosa: cuatro motores y lo que cuesta cada uno](https://compoundingjourney.com/es/blog/los-ingresos-pasivos-no-son-una-sola-cosa-cuatro-motores-y-lo-que-cuesta-cada-uno/): Un fondo de dividendos, un piso alquilado, una escalera de bonos y un producto que vendiste una vez son cuatro máquinas distintas. Se diferencian en el capital que piden, en las horas que exigen en silencio y en cómo se rompen.
+- [Qué enseña un siglo de historia de los mercados: caídas, recuperación y diversificación](https://compoundingjourney.com/es/blog/que-ensena-un-siglo-de-historia-de-los-mercados-caidas-recuperacion-y-diversificacion/): «A largo plazo la bolsa sube» es cierto y casi inútil. Los números que deciden si aguantas invertido son la profundidad de las caídas, cuánto duraron y qué le hicieron a una cartera mixta.
+- [Riesgo de secuencia: por qué el orden de las rentabilidades decide tu jubilación](https://compoundingjourney.com/es/blog/riesgo-de-secuencia-de-rentabilidades-por-que-el-orden-decide-tu-jubilacion/): La misma rentabilidad media puede dejar a un jubilado tranquilo y a otro sin dinero. Lo que lo decide es el orden en que llegan los años buenos y malos, y eso es justo lo que ninguna media puede mostrarte.
+- [Tu tasa de ahorro, no tu sueldo, fija la fecha en que eres libre](https://compoundingjourney.com/es/blog/tu-tasa-de-ahorro-no-tu-sueldo-fija-la-fecha-en-que-eres-libre/): Cuando haces las cuentas de la independencia financiera pasa algo extraño: tus ingresos se cancelan. Lo que queda es la diferencia entre lo que ganas y lo que gastas, y esa diferencia fija una fecha.
+- [Gestión de Deudas: Cómo Salir y Mantenerte Fuera de Ellas](https://compoundingjourney.com/es/blog/gestion-de-deudas-como-salir-y-mantenerte-fuera-de-ellas/): La deuda puede ser abrumadora, pero la estrategia correcta lo cambia todo. Compara Deuda Buena vs. Mala y aprende los métodos Bola de Nieve y Avalancha.
+- [Pon tu Dinero a Trabajar: Genera Ingresos Mientras Duermes](https://compoundingjourney.com/es/blog/poner-tu-dinero-a-trabajar-genera-ingresos-mientras-duermes/): El ahorro solo no construye riqueza debido a la inflación. Descubre cómo el crecimiento compuesto y las inversiones generan ingresos mientras duermes.
 - [Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa](https://compoundingjourney.com/es/blog/gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa/): El crecimiento financiero no exige eliminar tus alegrías, sino gastar con intencionalidad. Alinear tus compras con tus valores te dará libertad.
 - [Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza](https://compoundingjourney.com/es/blog/fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza/): Descubre consejos simples para presupuestar, rastrear tus gastos y tomar decisiones financieras inteligentes para alcanzar la libertad sin renunciar a lo que te hace feliz.
 - [Cómo Crear Riqueza con Buenos Hábitos Financieros: Lecciones de Padre Rico, Padre Pobre](https://compoundingjourney.com/es/blog/como-crear-riqueza-con-buenos-habitos-financieros-lecciones-de-padre-rico-padre-pobre/): Descubre cómo construir riqueza a largo plazo con buenos hábitos financieros. Aprende la diferencia entre activos, pasivos, deuda buena y flujo de caja.
@@ -47,6 +54,13 @@ article without re-crawling the index:
 
 ### English
 
+- [The Psychology of Money Decisions: Why Knowing the Maths Is Not Enough](https://compoundingjourney.com/en/blog/the-psychology-of-money-decisions-why-knowing-the-maths-is-not-enough/): Nobody fails at money because they cannot calculate compound interest. They fail because the decision arrives in a moment, and the consequence arrives in a decade — and the mind is not built for that gap.
+- [Passive Income Is Not One Thing: Four Engines and What Each One Costs](https://compoundingjourney.com/en/blog/passive-income-is-not-one-thing-four-engines-and-what-each-one-costs/): A dividend fund, a rented flat, a bond ladder and a product you sold once are four different machines. They differ in the capital they need, the hours they quietly demand, and how they break.
+- [What a Century of Market History Teaches: Drawdowns, Recovery and Diversification](https://compoundingjourney.com/en/blog/what-a-century-of-market-history-teaches-drawdowns-recovery-and-diversification/): Over the long run the market goes up — a true sentence, and almost useless. The numbers that decide whether you stay invested are how deep the falls went, how long they lasted, and what they did to a mixed portfolio.
+- [Sequence-of-Returns Risk: Why the Order of Returns Decides Your Retirement](https://compoundingjourney.com/en/blog/sequence-of-returns-risk-why-the-order-of-returns-decides-your-retirement/): The same average return can leave one retiree comfortable and another broke. What decides it is the order the returns arrive in — and that is the one variable no average can show you.
+- [Your Savings Rate, Not Your Salary, Sets the Date You Become Free](https://compoundingjourney.com/en/blog/your-savings-rate-not-your-salary-sets-the-date-you-become-free/): Work through the arithmetic of financial independence and something strange happens: your income cancels out. What is left is the gap between what you earn and what you spend, and that gap sets a date.
+- [Debt Management: How to Get Out and Stay Out of Debt](https://compoundingjourney.com/en/blog/debt-management-how-to-get-out-and-stay-out-of-debt/): Debt can feel overwhelming, but the right strategy can change everything. Compare Good vs. Bad Debt and learn the Snowball vs. Avalanche payoff methods.
+- [Put Your Money to Work: Make Money While You Sleep](https://compoundingjourney.com/en/blog/putting-your-money-to-work-make-money-while-you-sleep/): Saving alone won't build wealth due to inflation. Discover how compound growth, stocks, real estate, and passive streams let your money work while you sleep.
 - [Spending with Purpose: How to Align Your Money with What Truly Matters](https://compoundingjourney.com/en/blog/spending-with-purpose-how-to-align-your-money-with-what-truly-matters/): Financial growth isn't about cutting all joy—it's about intentional spending. Discover how aligning purchases with your core values unlocks lasting freedom.
 - [Foundations of Personal Finance: How to Control Expenses and Build Wealth](https://compoundingjourney.com/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/): Discover simple tips for budgeting, tracking expenses, and making smarter money choices to achieve financial freedom without giving up what makes you happy.
 - [Building Wealth Through Good Financial Habits: Key Lessons from Rich Dad, Poor Dad](https://compoundingjourney.com/en/blog/building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad/): Discover how to build long-term wealth using proven financial habits from Rich Dad, Poor Dad. Learn the key differences between assets, liabilities, good debt, and cash flow.
@@ -55,6 +69,13 @@ article without re-crawling the index:
 
 ### Português
 
+- [A psicologia das decisões de dinheiro: por que saber as contas não basta](https://compoundingjourney.com/pt/blog/a-psicologia-das-decisoes-de-dinheiro-por-que-saber-as-contas-nao-basta/): Ninguém fracassa com dinheiro por não saber calcular juros compostos. Fracassa porque a decisão chega em um instante e a consequência chega em uma década, e a mente não foi feita para esse intervalo.
+- [O que ensina um século de história dos mercados: quedas, recuperação e diversificação](https://compoundingjourney.com/pt/blog/o-que-ensina-um-seculo-de-historia-dos-mercados-quedas-recuperacao-e-diversificacao/): «No longo prazo a bolsa sobe» é verdade e quase inútil. Os números que decidem se você continua investido são a profundidade das quedas, quanto tempo elas duraram e o que fizeram com uma carteira mista.
+- [Rendimento passivo não é uma só coisa: quatro motores e o que cada um custa](https://compoundingjourney.com/pt/blog/rendimento-passivo-nao-e-uma-so-coisa-quatro-motores-e-o-que-cada-um-custa/): Um fundo de dividendos, um apartamento alugado, uma escada de títulos e um produto que você vendeu uma vez são quatro máquinas diferentes. Elas diferem no capital que pedem, nas horas que exigem em silêncio e em como quebram.
+- [Risco de sequência: por que a ordem das rentabilidades decide a sua aposentadoria](https://compoundingjourney.com/pt/blog/risco-de-sequencia-por-que-a-ordem-das-rentabilidades-decide-a-sua-aposentadoria/): A mesma rentabilidade média pode deixar um aposentado tranquilo e outro sem dinheiro. O que decide é a ordem em que chegam os anos bons e os ruins, e isso é justamente o que nenhuma média consegue mostrar.
+- [Sua taxa de poupança, não seu salário, define a data em que você fica livre](https://compoundingjourney.com/pt/blog/sua-taxa-de-poupanca-nao-seu-salario-define-a-data-em-que-voce-fica-livre/): Quando você faz a conta da independência financeira acontece algo estranho: sua renda se cancela. O que sobra é a diferença entre o que você ganha e o que gasta, e essa diferença define uma data.
+- [Gestão de Dívidas: Como Sair e Manter-se Livre das Dívidas](https://compoundingjourney.com/pt/blog/gestao-de-dividas-como-sair-e-manter-se-livre-das-dividas/): As dívidas podem ser esmagadoras, mas a estratégia certa muda tudo. Compare Dívida Boa vs. Má e aprenda os métodos Bola de Neve e Avalancha.
+- [Faça Seu Dinheiro a Trabalhar: Ganhe Dinheiro Enquanto Dorme](https://compoundingjourney.com/pt/blog/por-seu-dinheiro-a-trabalhar-faca-dinheiro-enquanto-dorme/): Poupar sozinho não constrói riqueza devido à inflação. Descubra como os juros compostos e os investimentos geram rendimento enquanto dorme.
 - [Gastar com Propósito: Como Alinhar o Seu Dinheiro com o Que Realmente Importa](https://compoundingjourney.com/pt/blog/gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa/): O crescimento financeiro não exige cortar todas as alegrias, mas sim gastar com intenção. Alinhe as suas compras com os seus valores e alcance a liberdade.
 - [Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza](https://compoundingjourney.com/pt/blog/fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza/): Descubra dicas simples para criar orçamentos, rastrear despesas e tomar decisões financeiras inteligentes para alcançar a liberdade sem abrir mão do que te faz feliz.
 - [Como Construir Riqueza com Bons Hábitos Financeiros: Lições de Pai Rico, Pai Pobre](https://compoundingjourney.com/pt/blog/como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre/): Aprenda a construir riqueza de longo prazo com bons hábitos financeiros. Entenda a diferença entre ativos, passivos, dívida boa e fluxo de caixa.
@@ -62,6 +83,10 @@ article without re-crawling the index:
 - [O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio](https://compoundingjourney.com/pt/blog/sistema-dinheiro-lento/): Um ritmo semanal prático que troca a urgência financeira por poucas decisões sustentáveis.
 
 ## Interactive Simulators
+
+Five simulators, each a page of its own that runs in the reader's browser. The
+indexes listing all five are
+[Español](https://compoundingjourney.com/es/simulators/), [English](https://compoundingjourney.com/en/simulators/), [Português](https://compoundingjourney.com/pt/simulators/).
 
 ### Español
 
@@ -86,6 +111,225 @@ article without re-crawling the index:
 - [Máquina do Tempo do Mercado](https://compoundingjourney.com/pt/simulators/market-time-machine.html): Compara carteiras durante ciclos e crises históricas desde 1920.
 - [Motor de Rendimento Passivo](https://compoundingjourney.com/pt/simulators/passive-income-engine.html): Constrói ativos produtivos e acompanha o crescimento do rendimento passivo.
 - [Voo de Sobrevivência FIRE Monte Carlo](https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html): Testa levantamentos de reforma em milhares de futuros de mercado possíveis.
+
+## Calculators
+
+Each calculator has its own page, runs entirely in the reader's browser, and
+stores nothing. The three indexes are
+[Español](https://compoundingjourney.com/es/calculadoras/), [English](https://compoundingjourney.com/en/calculators/), [Português](https://compoundingjourney.com/pt/calculadoras/).
+
+### Español
+
+- [Calculadora de interés compuesto](https://compoundingjourney.com/es/calculadoras/interes-compuesto/): Calcula cuánto crecerá tu dinero con aportaciones mensuales y una rentabilidad anual. Gratis, sin registro y con el cálculo en tu propio navegador.
+- [Calculadora de libertad financiera](https://compoundingjourney.com/es/calculadoras/libertad-financiera/): Descubre cuánto patrimonio necesitas para vivir de tus inversiones y cuánto tendrías que ahorrar cada mes para llegar a esa cifra.
+- [Calculadora del coste en horas de vida](https://compoundingjourney.com/es/calculadoras/coste-en-horas-de-vida/): Convierte el precio de cualquier compra en las horas de trabajo que cuesta. Una forma distinta —y más honesta— de mirar un gasto.
+
+### English
+
+- [Compound interest calculator](https://compoundingjourney.com/en/calculators/compound-interest/): Work out how much your money will grow with monthly contributions and an annual return. Free, no sign-up, and the maths runs in your own browser.
+- [Financial freedom calculator](https://compoundingjourney.com/en/calculators/financial-freedom/): Find out how much wealth you need to live off your investments, and how much you would have to save each month to get there.
+- [Life cost calculator](https://compoundingjourney.com/en/calculators/life-cost-in-hours/): Convert the price of any purchase into the hours of work it costs. A different — and more honest — way to look at spending.
+
+### Português
+
+- [Calculadora de juros compostos](https://compoundingjourney.com/pt/calculadoras/juros-compostos/): Calcula quanto o teu dinheiro vai crescer com reforços mensais e uma rentabilidade anual. Grátis, sem registo e com o cálculo no teu próprio navegador.
+- [Calculadora de liberdade financeira](https://compoundingjourney.com/pt/calculadoras/liberdade-financeira/): Descobre quanto património precisas para viver dos teus investimentos e quanto terias de poupar por mês para chegar a esse valor.
+- [Calculadora do custo em horas de vida](https://compoundingjourney.com/pt/calculadoras/custo-em-horas-de-vida/): Converte o preço de qualquer compra nas horas de trabalho que custa. Uma forma diferente — e mais honesta — de olhar para uma despesa.
+
+## Excel Templates
+
+One page per template, each describing what is inside the file before it is
+downloaded. Indexes:
+[Español](https://compoundingjourney.com/es/plantillas/), [English](https://compoundingjourney.com/en/templates/), [Português](https://compoundingjourney.com/pt/modelos/).
+
+### Español
+
+- [Análisis financiero personal mensual](https://compoundingjourney.com/es/plantillas/analisis-balance-mensual/): Plantilla de Excel gratuita para hacer el balance de tu mes: ingresos, gastos, activos y pasivos en una sola foto. Sin registro y sin dejar tu correo.
+- [Gestión de gastos](https://compoundingjourney.com/es/plantillas/gestion-de-gastos/): Plantilla de Excel gratuita para registrar cada gasto durante 15 días o un mes y ver con datos adónde se va tu dinero. Sin registro y sin dejar tu correo.
+- [Presupuesto personal](https://compoundingjourney.com/es/plantillas/presupuesto-personal/): Plantilla de Excel gratuita para comparar la distribución real de tu dinero con el presupuesto que quieres tener. Sin registro y sin dejar tu correo.
+
+### English
+
+- [Monthly personal finances analysis](https://compoundingjourney.com/en/templates/monthly-balance-analysis/): A free Excel template for taking stock of your month: income, spending, assets and liabilities in one picture. No signup, no email required.
+- [Expense management](https://compoundingjourney.com/en/templates/expense-management/): A free Excel template for recording every expense for 15 days or a month, so you can see where your money actually goes. No signup, no email required.
+- [Personal budget](https://compoundingjourney.com/en/templates/personal-budget/): A free Excel template for comparing where your money actually goes with the budget you want to have. No signup, no email required.
+
+### Português
+
+- [Análise financeira pessoal mensal](https://compoundingjourney.com/pt/modelos/analise-balanco-mensal/): Modelo de Excel gratuito para fazer o balanço do teu mês: rendimentos, despesas, ativos e passivos numa única fotografia. Sem registo e sem deixar o teu email.
+- [Gestão de despesas](https://compoundingjourney.com/pt/modelos/gestao-de-despesas/): Modelo de Excel gratuito para registar todas as despesas durante 15 dias ou um mês e ver com dados para onde vai o teu dinheiro. Sem registo e sem deixar o teu email.
+- [Orçamento pessoal](https://compoundingjourney.com/pt/modelos/orcamento-pessoal/): Modelo de Excel gratuito para comparar a distribuição real do teu dinheiro com o orçamento que queres ter. Sem registo e sem deixar o teu email.
+
+## Glossary
+
+33 terms, each with its own page giving a one-line definition, a
+longer explanation, and links to the calculators and articles that use it.
+Indexes: [Español](https://compoundingjourney.com/es/glosario/), [English](https://compoundingjourney.com/en/glossary/), [Português](https://compoundingjourney.com/pt/glossario/).
+
+### Español
+
+- [Interés compuesto](https://compoundingjourney.com/es/glosario/interes-compuesto/)
+- [Inflación](https://compoundingjourney.com/es/glosario/inflacion/)
+- [Rentabilidad real](https://compoundingjourney.com/es/glosario/rentabilidad-real/)
+- [Fondo indexado](https://compoundingjourney.com/es/glosario/fondo-indexado/)
+- [ETF](https://compoundingjourney.com/es/glosario/etf/)
+- [TER (coste total)](https://compoundingjourney.com/es/glosario/ter-coste-total/)
+- [Aportación periódica (DCA)](https://compoundingjourney.com/es/glosario/aportacion-periodica-dca/)
+- [Diversificación](https://compoundingjourney.com/es/glosario/diversificacion/)
+- [Distribución de activos](https://compoundingjourney.com/es/glosario/distribucion-de-activos/)
+- [Rebalanceo](https://compoundingjourney.com/es/glosario/rebalanceo/)
+- [Volatilidad](https://compoundingjourney.com/es/glosario/volatilidad/)
+- [Caída máxima (drawdown)](https://compoundingjourney.com/es/glosario/caida-maxima-drawdown/)
+- [Regla del 4 %](https://compoundingjourney.com/es/glosario/regla-del-4-por-ciento/)
+- [Tasa segura de retirada](https://compoundingjourney.com/es/glosario/tasa-segura-de-retirada/)
+- [FIRE (independencia financiera)](https://compoundingjourney.com/es/glosario/fire-independencia-financiera/)
+- [Riesgo de secuencia de rentabilidades](https://compoundingjourney.com/es/glosario/riesgo-de-secuencia-de-rentabilidades/)
+- [Simulación de Monte Carlo](https://compoundingjourney.com/es/glosario/simulacion-de-monte-carlo/)
+- [Fondo de emergencia](https://compoundingjourney.com/es/glosario/fondo-de-emergencia/)
+- [Patrimonio neto](https://compoundingjourney.com/es/glosario/patrimonio-neto/)
+- [Tasa de ahorro](https://compoundingjourney.com/es/glosario/tasa-de-ahorro/)
+- [Flujo de caja personal](https://compoundingjourney.com/es/glosario/flujo-de-caja-personal/)
+- [Coste de oportunidad](https://compoundingjourney.com/es/glosario/coste-de-oportunidad/)
+- [Aversión a la pérdida](https://compoundingjourney.com/es/glosario/aversion-a-la-perdida/)
+- [Inflación del estilo de vida](https://compoundingjourney.com/es/glosario/inflacion-del-estilo-de-vida/)
+- [Contabilidad mental](https://compoundingjourney.com/es/glosario/contabilidad-mental/)
+- [Sesgo de recencia](https://compoundingjourney.com/es/glosario/sesgo-de-recencia/)
+- [Adaptación hedónica](https://compoundingjourney.com/es/glosario/adaptacion-hedonica/)
+- [Sesgo del presente](https://compoundingjourney.com/es/glosario/sesgo-del-presente/)
+- [Págate a ti primero](https://compoundingjourney.com/es/glosario/pagate-a-ti-primero/)
+- [Ingresos pasivos](https://compoundingjourney.com/es/glosario/ingresos-pasivos/)
+- [Coste en horas de vida](https://compoundingjourney.com/es/glosario/coste-en-horas-de-vida/)
+- [Interés compuesto de la deuda](https://compoundingjourney.com/es/glosario/interes-compuesto-de-la-deuda/)
+- [Tiempo en el mercado](https://compoundingjourney.com/es/glosario/tiempo-en-el-mercado/)
+
+### English
+
+- [Compound interest](https://compoundingjourney.com/en/glossary/compound-interest/)
+- [Inflation](https://compoundingjourney.com/en/glossary/inflation/)
+- [Real return](https://compoundingjourney.com/en/glossary/real-return/)
+- [Index fund](https://compoundingjourney.com/en/glossary/index-fund/)
+- [ETF](https://compoundingjourney.com/en/glossary/etf/)
+- [TER (total expense ratio)](https://compoundingjourney.com/en/glossary/ter-total-expense-ratio/)
+- [Dollar cost averaging (DCA)](https://compoundingjourney.com/en/glossary/dollar-cost-averaging/)
+- [Diversification](https://compoundingjourney.com/en/glossary/diversification/)
+- [Asset allocation](https://compoundingjourney.com/en/glossary/asset-allocation/)
+- [Rebalancing](https://compoundingjourney.com/en/glossary/rebalancing/)
+- [Volatility](https://compoundingjourney.com/en/glossary/volatility/)
+- [Drawdown](https://compoundingjourney.com/en/glossary/drawdown/)
+- [4% rule](https://compoundingjourney.com/en/glossary/four-percent-rule/)
+- [Safe withdrawal rate](https://compoundingjourney.com/en/glossary/safe-withdrawal-rate/)
+- [FIRE (financial independence)](https://compoundingjourney.com/en/glossary/fire-financial-independence/)
+- [Sequence of returns risk](https://compoundingjourney.com/en/glossary/sequence-of-returns-risk/)
+- [Monte Carlo simulation](https://compoundingjourney.com/en/glossary/monte-carlo-simulation/)
+- [Emergency fund](https://compoundingjourney.com/en/glossary/emergency-fund/)
+- [Net worth](https://compoundingjourney.com/en/glossary/net-worth/)
+- [Savings rate](https://compoundingjourney.com/en/glossary/savings-rate/)
+- [Personal cash flow](https://compoundingjourney.com/en/glossary/personal-cash-flow/)
+- [Opportunity cost](https://compoundingjourney.com/en/glossary/opportunity-cost/)
+- [Loss aversion](https://compoundingjourney.com/en/glossary/loss-aversion/)
+- [Lifestyle creep](https://compoundingjourney.com/en/glossary/lifestyle-creep/)
+- [Mental accounting](https://compoundingjourney.com/en/glossary/mental-accounting/)
+- [Recency bias](https://compoundingjourney.com/en/glossary/recency-bias/)
+- [Hedonic adaptation](https://compoundingjourney.com/en/glossary/hedonic-adaptation/)
+- [Present bias](https://compoundingjourney.com/en/glossary/present-bias/)
+- [Pay yourself first](https://compoundingjourney.com/en/glossary/pay-yourself-first/)
+- [Passive income](https://compoundingjourney.com/en/glossary/passive-income/)
+- [Life cost (cost in hours)](https://compoundingjourney.com/en/glossary/life-cost-in-hours/)
+- [Compounding debt](https://compoundingjourney.com/en/glossary/compounding-debt/)
+- [Time in the market](https://compoundingjourney.com/en/glossary/time-in-the-market/)
+
+### Português
+
+- [Juros compostos](https://compoundingjourney.com/pt/glossario/juros-compostos/)
+- [Inflação](https://compoundingjourney.com/pt/glossario/inflacao/)
+- [Rentabilidade real](https://compoundingjourney.com/pt/glossario/rentabilidade-real/)
+- [Fundo de índice](https://compoundingjourney.com/pt/glossario/fundo-de-indice/)
+- [ETF](https://compoundingjourney.com/pt/glossario/etf/)
+- [TER (custo total)](https://compoundingjourney.com/pt/glossario/ter-custo-total/)
+- [Investimento periódico (DCA)](https://compoundingjourney.com/pt/glossario/investimento-periodico-dca/)
+- [Diversificação](https://compoundingjourney.com/pt/glossario/diversificacao/)
+- [Alocação de ativos](https://compoundingjourney.com/pt/glossario/alocacao-de-ativos/)
+- [Rebalanceamento](https://compoundingjourney.com/pt/glossario/rebalanceamento/)
+- [Volatilidade](https://compoundingjourney.com/pt/glossario/volatilidade/)
+- [Queda máxima (drawdown)](https://compoundingjourney.com/pt/glossario/queda-maxima-drawdown/)
+- [Regra dos 4 %](https://compoundingjourney.com/pt/glossario/regra-dos-4-por-cento/)
+- [Taxa segura de retirada](https://compoundingjourney.com/pt/glossario/taxa-segura-de-retirada/)
+- [FIRE (independência financeira)](https://compoundingjourney.com/pt/glossario/fire-independencia-financeira/)
+- [Risco de sequência de rentabilidades](https://compoundingjourney.com/pt/glossario/risco-de-sequencia-de-rentabilidades/)
+- [Simulação de Monte Carlo](https://compoundingjourney.com/pt/glossario/simulacao-de-monte-carlo/)
+- [Fundo de emergência](https://compoundingjourney.com/pt/glossario/fundo-de-emergencia/)
+- [Património líquido](https://compoundingjourney.com/pt/glossario/patrimonio-liquido/)
+- [Taxa de poupança](https://compoundingjourney.com/pt/glossario/taxa-de-poupanca/)
+- [Fluxo de caixa pessoal](https://compoundingjourney.com/pt/glossario/fluxo-de-caixa-pessoal/)
+- [Custo de oportunidade](https://compoundingjourney.com/pt/glossario/custo-de-oportunidade/)
+- [Aversão à perda](https://compoundingjourney.com/pt/glossario/aversao-a-perda/)
+- [Inflação do estilo de vida](https://compoundingjourney.com/pt/glossario/inflacao-do-estilo-de-vida/)
+- [Contabilidade mental](https://compoundingjourney.com/pt/glossario/contabilidade-mental/)
+- [Viés de recência](https://compoundingjourney.com/pt/glossario/vies-de-recencia/)
+- [Adaptação hedónica](https://compoundingjourney.com/pt/glossario/adaptacao-hedonica/)
+- [Viés do presente](https://compoundingjourney.com/pt/glossario/vies-do-presente/)
+- [Paga-te a ti primeiro](https://compoundingjourney.com/pt/glossario/paga-te-a-ti-primeiro/)
+- [Rendimento passivo](https://compoundingjourney.com/pt/glossario/rendimento-passivo/)
+- [Custo em horas de vida](https://compoundingjourney.com/pt/glossario/custo-em-horas-de-vida/)
+- [Juros compostos da dívida](https://compoundingjourney.com/pt/glossario/juros-compostos-da-divida/)
+- [Tempo no mercado](https://compoundingjourney.com/pt/glossario/tempo-no-mercado/)
+
+## Journal Categories
+
+### Español
+
+- [Hábitos financieros](https://compoundingjourney.com/es/blog/categoria/habitos-financieros/): Artículos sobre hábitos financieros: ahorro automático, control de gastos, salir de deudas y los sistemas que sobreviven a un mes malo.
+- [Inversión](https://compoundingjourney.com/es/blog/categoria/inversion/): Artículos sobre inversión a largo plazo: interés compuesto, diversificación, horizonte temporal y los errores de comportamiento que cuestan más que las comisiones.
+- [Diseño de vida](https://compoundingjourney.com/es/blog/categoria/diseno-de-vida/): Artículos sobre el dinero como medio: propósito, coste en horas de vida, decidir qué es suficiente y gastar de acuerdo con lo que te importa.
+
+### English
+
+- [Money habits](https://compoundingjourney.com/en/blog/category/money-habits/): Articles on money habits: automatic saving, tracking spending, getting out of debt, and the systems that survive a bad month.
+- [Investing](https://compoundingjourney.com/en/blog/category/investing/): Articles on long-term investing: compound interest, diversification, time horizon, and the behavioural mistakes that cost more than fees.
+- [Life design](https://compoundingjourney.com/en/blog/category/life-design/): Articles on money as a means: purpose, the cost of a purchase in hours of your life, deciding what counts as enough, and spending in line with what matters.
+
+### Português
+
+- [Hábitos financeiros](https://compoundingjourney.com/pt/blog/categoria/habitos-financeiros/): Artigos sobre hábitos financeiros: poupança automática, controlo de despesas, sair das dívidas e os sistemas que sobrevivem a um mês mau.
+- [Investimentos](https://compoundingjourney.com/pt/blog/categoria/investimentos/): Artigos sobre investimento a longo prazo: juros compostos, diversificação, horizonte temporal e os erros de comportamento que custam mais do que as comissões.
+- [Design de vida](https://compoundingjourney.com/pt/blog/categoria/design-de-vida/): Artigos sobre o dinheiro como meio: propósito, custo em horas de vida, decidir o que é suficiente e gastar de acordo com o que te importa.
+
+## Sessions
+
+One-to-one financial education sessions - going through a reader's own numbers,
+explaining concepts, and building habits. Explicitly not regulated investment
+advice: no product recommendations, no portfolio management, no tax planning.
+Rates are not published; they are given on request.
+
+- [Español](https://compoundingjourney.com/es/sesiones/)
+- [English](https://compoundingjourney.com/en/sessions/)
+- [Português](https://compoundingjourney.com/pt/sessoes/)
+
+## Simulator Data
+
+Aggregate, anonymous results from the five simulators, recomputed from this
+site's own database on every build: the withdrawal rates readers choose and how
+many of those plans survive, which small habits they refuse to cut, the
+portfolios they build and how often those beat a 60/40, the income source they
+reach for, and how their simulated decisions split between investing, paying
+debt, spending and taking risk. No measure is published below its declared
+minimum sample; money figures are computed inside one language because the
+three versions of the site use three currency symbols. Self-selected
+simulations inside a model, not survey data or observed behaviour.
+
+- [Español](https://compoundingjourney.com/es/datos/)
+- [English](https://compoundingjourney.com/en/data/)
+- [Português](https://compoundingjourney.com/pt/dados/)
+
+## Legal
+
+- privacy: [Español](https://compoundingjourney.com/es/privacidad/), [English](https://compoundingjourney.com/en/privacy/), [Português](https://compoundingjourney.com/pt/privacidade/)
+- terms: [Español](https://compoundingjourney.com/es/terminos/), [English](https://compoundingjourney.com/en/terms/), [Português](https://compoundingjourney.com/pt/termos/)
+- notice: [Español](https://compoundingjourney.com/es/aviso-legal/), [English](https://compoundingjourney.com/en/legal-notice/), [Português](https://compoundingjourney.com/pt/aviso-legal/)
+
+Sandy Bradbury is a financial educator and is in the process of obtaining a
+financial advice certification. Nothing on this site is financial, investment,
+tax or legal advice, and no personal recommendations are given.
 
 ## Free Downloads
 

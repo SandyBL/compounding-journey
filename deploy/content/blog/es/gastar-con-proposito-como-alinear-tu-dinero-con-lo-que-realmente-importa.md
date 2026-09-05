@@ -5,6 +5,7 @@ category: Diseño de vida
 summary: El crecimiento financiero no exige eliminar tus alegrías, sino gastar
  con intencionalidad. Alinear tus compras con tus valores te dará libertad.
 translation_key: spending-with-purpose-align-money-values
+link_phrases: gastar con propósito, gasto consciente, alinear tu dinero con tus valores
 author: Sandy Bradbury
 ---
 Ahora que has explorado el presupuesto y la gestión de gastos, es momento de analizar a fondo *cómo* gastas tu dinero y por qué esto es crucial. El crecimiento financiero no se trata solo de recortar costos; consiste en asegurar que tu dinero se dirija hacia lo que añade valor real a tu vida. Veamos cómo gastar con propósito mientras construyes un futuro financiero sólido.

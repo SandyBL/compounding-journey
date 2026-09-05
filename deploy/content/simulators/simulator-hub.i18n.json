@@ -24,6 +24,11 @@
     "es": "          \"name\": \"Simulador de Finanzas Personales y Riqueza\",\n          \"item\": \"https://compoundingjourney.com/es/simulator.html\"\n",
     "pt": "          \"name\": \"Simulador de Finanças Pessoais e Riqueza\",\n          \"item\": \"https://compoundingjourney.com/pt/simulator.html\"\n"
   },
+  "crumbSimulators": {
+    "en": "Simulators",
+    "es": "Simuladores",
+    "pt": "Simuladores"
+  },
   "head": {
     "en": "    <!-- Chart.js for Trajectory Visuals -->\n",
     "es": "    <!-- Chart.js para gráficos de trayectoria -->\n",
@@ -1265,14 +1270,14 @@
     "pt": "Se quer uma data em vez de um padrão, o Calendário da Liberdade transforma a poupança numa linha temporal. Se quer saber se um plano sobrevive ao azar, o simulador de Monte Carlo é o que responde a isso."
   },
   "explReadingSlug1": {
-    "en": "slow-money-system",
-    "es": "sistema-dinero-lento",
-    "pt": "sistema-dinheiro-lento"
+    "en": "the-psychology-of-money-decisions-why-knowing-the-maths-is-not-enough",
+    "es": "la-psicologia-de-las-decisiones-de-dinero-por-que-saber-las-cuentas-no-basta",
+    "pt": "a-psicologia-das-decisoes-de-dinheiro-por-que-saber-as-contas-nao-basta"
   },
   "explReadingLabel1": {
-    "en": "The slow money system: a calmer way to build wealth",
-    "es": "El sistema de dinero lento: una forma más tranquila de crear patrimonio",
-    "pt": "O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio"
+    "en": "The psychology of money decisions: why knowing the maths is not enough",
+    "es": "La psicología de las decisiones de dinero: por qué saber las cuentas no basta",
+    "pt": "A psicologia das decisões de dinheiro: por que saber as contas não basta"
   },
   "explReadingSlug2": {
     "en": "spending-with-purpose-how-to-align-your-money-with-what-truly-matters",

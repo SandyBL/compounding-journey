@@ -11,7 +11,7 @@
     <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="{{lang.locale}}"><meta property="og:title" content="{{metaContent3}}"><meta property="og:description" content="{{metaContent4}}"><meta property="og:url" content="https://compoundingjourney.com{{lang.dir}}simulators/market-time-machine.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{metaContent3}}"><meta name="twitter:description" content="{{metaContent4}}"><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
     <script type="application/ld+json">{{hFull2}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"{{explCrumbHome}}","item":"https://compoundingjourney.com{{lang.home}}"},{"@type":"ListItem","position":2,"name":"{{explCrumbSimulators}}","item":"https://compoundingjourney.com{{lang.dir}}simulator.html"},{"@type":"ListItem","position":3,"name":"{{explCrumbSelf}}"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"{{explCrumbHome}}","item":"https://compoundingjourney.com{{lang.home}}"},{"@type":"ListItem","position":2,"name":"{{explCrumbSimulators}}","item":"https://compoundingjourney.com{{lang.simulators}}"},{"@type":"ListItem","position":3,"name":"{{explCrumbSelf}}"}]}</script>
     <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/sim-market-passive.css?v=source">
@@ -91,6 +91,11 @@
             </div>
         </div>
     </header>
+    <!-- The site's section nav: the only navigation on a simulator that points
+         outside the simulators. Rendered from the one table in
+         scripts/section-nav.mjs, with the Simuladores tab marked as the current
+         page, and placed outside the sticky <header> like on every other family
+         - see the .site-section-nav comment in assets/css/header.css. -->{{page.sectionNav}}
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
@@ -112,7 +117,7 @@
                 <p class="sim-intro__lede">{{mt15}}1920 {{mt152}}</p>
                 <nav aria-label="{{mt3AriaLabel}}" class="sim-intro__nav">
                     <span class="sim-intro__navlabel">{{textEspresso80060}}</span>
-                    <a href="{{lang.dir}}simulator.html" class="sim-intro__link">{{px25}}</a>
+                    <a href="{{lang.simulators}}" class="sim-intro__link">{{px25}}</a>
                     <a href="{{lang.dir}}simulators/freedom-calendar.html" class="sim-intro__link">{{px252}}</a>
                     <a href="{{lang.dir}}simulators/passive-income-engine.html" class="sim-intro__link">{{px253}}</a>
                     <a href="{{lang.dir}}simulators/monte-carlo-fire.html" class="sim-intro__link">Monte Carlo FIRE</a>
@@ -127,10 +132,34 @@
         <nav class="sim-crumbs" aria-label="{{explCrumbLabel}}">
             <ol>
                 <li><a href="{{lang.home}}">{{explCrumbHome}}</a></li>
-                <li><a href="{{lang.dir}}simulator.html">{{explCrumbSimulators}}</a></li>
+                <li><a href="{{lang.simulators}}">{{explCrumbSimulators}}</a></li>
                 <li><span aria-current="page">{{explCrumbSelf}}</span></li>
             </ol>
         </nav>
+
+        <!-- The persistent compliance notice.
+
+             Every calculator and glossary page carries one (see the
+             disclaimer() helper in scripts/page-shell.mjs); the simulators
+             carried a single line in `.simulator-footer`, and that bar is
+             docked to the viewport and hides itself 2.5s after the visitor
+             stops scrolling. A notice that disappears on a timer is not a
+             notice, and these five pages are the ones that most need one:
+             they print money figures and dates that look like predictions,
+             which is exactly the reading the notice exists to prevent.
+
+             So it sits in the flow, above the tool, where it is visible before
+             the first number is. The text is in SHARED_STRINGS in
+             scripts/generate-simulator-pages.mjs rather than in this
+             simulator's sidecar, because all five have to say the same thing.
+
+             No painted background, for the reason `.sim-crumbs` gives: three
+             palettes share these templates and only conflict over large filled
+             areas. -->
+        <aside class="sim-disclaimer" role="note" aria-labelledby="sim-disclaimer-title">
+            <p class="sim-disclaimer__title" id="sim-disclaimer-title">{{shared.disclaimerTitle}}</p>
+            <p class="sim-disclaimer__body">{{shared.disclaimerBody}} <a href="{{lang.notice}}">{{shared.disclaimerLink}}</a></p>
+        </aside>
 
 
 {{main}}        <div class="bg-gradient-to-r from-forest-900 via-forest-800 to-espresso-900 rounded-2xl p-4 sm:p-5 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -429,6 +458,35 @@
             <!-- CANVAS CHART WITH EXPANDED HEIGHT -->
             <div class="h-80 sm:h-[480px] w-full relative pt-2">
                 <canvas id="timeMachineChart" role="img" aria-label="{{timemachinechartAriaLabel}}"></canvas>
+            </div>
+
+            <!-- THE ONLY THING THIS TOOL SENDS ANYWHERE.
+                 Everything else on the page is arithmetic in the browser. This
+                 block is one button that offers to keep the run, and the copy in
+                 it is shared with the Freedom Calendar through
+                 SHARED_STRINGS - the same offer has to be described the same way
+                 in both places, or one of the two descriptions is wrong. -->
+            <div class="sim-contribute" id="contributeBox" data-state="empty"
+                 data-sending="{{shared.contributeSending}}"
+                 data-thanks="{{shared.contributeThanks}}"
+                 data-failed="{{shared.contributeFailed}}">
+                <h4 class="sim-contribute__title">
+                    <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+                    <span>{{shared.contributeTitle}}</span>
+                </h4>
+                <p class="sim-contribute__body">{{shared.contributeBody}}</p>
+                <p class="sim-contribute__body">
+                    {{shared.contributeWhy}}
+                    <a href="{{lang.data}}">{{shared.contributeWhyLink}}</a>.
+                </p>
+                <button type="button" id="contributeButton" class="sim-contribute__button" data-onclick="contributeRun()">
+                    {{shared.contributeButton}}
+                </button>
+                <p class="sim-contribute__status" id="contributeStatus" role="status" aria-live="polite"></p>
+                <p class="sim-contribute__note">
+                    {{shared.contributeNote}}
+                    <a href="{{lang.privacy}}">{{shared.contributePrivacyLink}}</a>.
+                </p>
             </div>
 
             <!-- LOG TIMELINE SUMMARY -->
@@ -776,6 +834,12 @@
 {{fontSans22}}            allweather: { name: '{{chartLabelAllWeather}}', stocks: 30, bonds: 55, reits: 0, gold: 15, cash: 0 },
 {{fontSans23}}        };
 
+        /**
+         * The last year the simulation drew, or null before the first draw.
+         * Only the contribute button reads it.
+         */
+        let lastRun = null;
+
         let state = {
             allocation: { stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0 },
             initialCapital: 100000,
@@ -1099,6 +1163,109 @@
                 customCagr: calcCagr(latestCustom.val),
                 classicCagr: calcCagr(latestClassic.val)
             });
+
+            // What the contribute button would send if it were pressed now. It
+            // is replaced once per simulated year, so it always describes the
+            // chart currently on screen and never an earlier version of it.
+            lastRun = {
+                yearsCount,
+                customVal: Math.round(latestCustom.val),
+                classicVal: Math.round(latestClassic.val)
+            };
+
+            // Ten years, the same threshold the result panel uses, and for the
+            // same reason: the difference between two allocations over three
+            // years is mostly the start year, and a data set of three-year
+            // backtests would be a data set of start years.
+            if (window.contributeReady) window.contributeReady(yearsCount >= 10);
+        }
+
+        /**
+         * The run the contribute button offers to keep, or null if there is not
+         * one yet. Read by assets/js/sim-contribute.js.
+         *
+         * None of it is about the visitor. It is an allocation, a stretch of
+         * market history, and what the two came to - and that combination is the
+         * whole reason to record anything here. People do not choose a start
+         * year at random: they choose 1929, or 2000, or the year they were born,
+         * and which decades people want to live through is a fact about how
+         * people think about risk that nobody has published.
+         *
+         * The benchmark value is sent alongside the run's own, over exactly the
+         * same years, because a portfolio that returned 9% a year is a fact
+         * about the decade until you know what the default did over the same
+         * decade. Storing both means a published average can compare them;
+         * storing one would mean recomputing the other later and hoping the
+         * historical series had not been edited in between.
+         *
+         * The CAGR goes in the score column offset by 10,000, so a portfolio
+         * that lost money is still a non-negative number in a column every
+         * board sorts on: 10,000 is flat, 10,700 is +7% a year, 9,200 is -8%.
+         */
+        function describeContributedRun() {
+            if (!lastRun || lastRun.yearsCount < 10) return null;
+
+            const presetEl = document.getElementById('presetSelect');
+            const preset = presetEl ? presetEl.value : 'custom';
+
+            const growth = lastRun.customVal / state.initialCapital;
+            const cagr = growth > 0 ? Math.pow(growth, 1 / lastRun.yearsCount) - 1 : -1;
+
+            return {
+                simulator: 'market-time-machine',
+                score: clamp(10000 + cagr * 10000, 0, 20000),
+                tiebreak: clamp(lastRun.customVal, 0, 1000000000),
+                details: {
+                    startYear: recordable(state.startYear, 1920, 2026),
+                    yearsElapsed: recordable(lastRun.yearsCount, 0, 110),
+                    initialCapital: recordable(state.initialCapital, 1, 1000000000),
+                    pctStocks: recordable(state.allocation.stocks, 0, 100),
+                    pctBonds: recordable(state.allocation.bonds, 0, 100),
+                    pctReits: recordable(state.allocation.reits, 0, 100),
+                    pctGold: recordable(state.allocation.gold, 0, 100),
+                    pctCash: recordable(state.allocation.cash, 0, 100),
+                    preset: PORTFOLIO_BENCHMARKS[preset] ? preset : 'custom',
+                    finalValue: recordable(lastRun.customVal, 0, 1000000000),
+                    benchmarkValue: recordable(lastRun.classicVal, 0, 1000000000),
+                    maxDrawdownBps: recordable(worstDrawdown(state.customTrack) * 10000, 0, 10000)
+                }
+            };
+        }
+
+        /**
+         * The deepest peak-to-trough fall the track took, as a fraction.
+         *
+         * Computed here rather than tracked during the simulation because the
+         * track is the simulation: recalculateSimulation() rebuilds it from the
+         * start year every time anything changes, so a running maximum kept
+         * alongside it would be one more thing that has to be reset in the same
+         * place and would eventually not be.
+         */
+        function worstDrawdown(track) {
+            let peak = 0;
+            let worst = 0;
+            (track || []).forEach((point) => {
+                if (point.val > peak) peak = point.val;
+                if (peak > 0) {
+                    const fall = (peak - point.val) / peak;
+                    if (fall > worst) worst = fall;
+                }
+            });
+            return worst;
+        }
+
+        /** The value if the record can hold it, and nothing if it cannot. */
+        function recordable(value, min, max) {
+            const number = Math.round(Number(value));
+            if (!Number.isFinite(number) || number < min || number > max) return undefined;
+            return number;
+        }
+
+        /** The nearest value the record can hold, for the columns it requires. */
+        function clamp(value, min, max) {
+            const number = Math.round(Number(value));
+            if (!Number.isFinite(number)) return min;
+            return Math.max(min, Math.min(max, number));
         }
 
         /**
