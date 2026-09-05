@@ -6,6 +6,7 @@ summary: La deuda puede ser abrumadora, pero la estrategia correcta lo cambia
   todo. Compara Deuda Buena vs. Mala y aprende los métodos Bola de Nieve y
   Avalancha.
 translation_key: debt-management-how-to-get-out-and-stay-out-of-debt
+link_phrases: gestión de deudas, salir de deudas, método bola de nieve, método avalancha
 author: Sandy Bradbury
 ---
 La deuda puede sentirse abrumadora, pero con la estrategia adecuada puedes tomar el control y avanzar hacia la libertad financiera[cite: 1]. Ya sea que enfrentes préstamos estudiantiles, tarjetas de crédito o una hipoteca, saber gestionar tus deudas es clave para el éxito a largo plazo[cite: 1]. Veamos cómo lograrlo paso a paso[cite: 1].

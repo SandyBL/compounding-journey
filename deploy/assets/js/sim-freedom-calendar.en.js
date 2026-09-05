@@ -159,6 +159,35 @@
         let habits = JSON.parse(JSON.stringify(HABITS_DATA));
         let chartInstance = null;
 
+        /**
+         * The last run recalculateAll() produced, or null before the first one.
+         * Only the contribute button reads it.
+         */
+        let lastRun = null;
+
+        /**
+         * Habit id -> the field the public data set stores its slider position
+         * in. Spelled out rather than derived from the id, because the field
+         * names are part of an interface the endpoint validates against: a habit
+         * renamed in HABITS_DATA should stop being recorded and be noticed,
+         * rather than silently start filling a new column nobody declared.
+         */
+        const HABIT_KEYS = {
+            coffee: 'keptCoffee',
+            lunch: 'keptLunch',
+            subscriptions: 'keptSubscriptions',
+            carLease: 'keptCarLease',
+            impulseShopping: 'keptImpulseShopping',
+            weekendDining: 'keptWeekendDining',
+            energySnacks: 'keptEnergySnacks',
+            techUpgrades: 'keptTechUpgrades',
+            gymMembership: 'keptGymMembership',
+            storageUnit: 'keptStorageUnit',
+            foodWaste: 'keptFoodWaste',
+            shortRideshares: 'keptShortRideshares',
+            bottledWater: 'keptBottledWater'
+        };
+
         // HELPER CALCULATION FUNCTIONS
         function getHourlyWage() {
             const annualHours = Math.max(1, profile.workHoursPerWeek * 52);
@@ -452,6 +481,104 @@
                 optimizedFreedomAge,
                 yearsPulledForward
             });
+
+            // Kept so the contribute button has something to describe. It is
+            // the last computed run and nothing more: no history is retained,
+            // and moving a slider replaces it rather than adding to it.
+            lastRun = { monthlySaved, baselineFreedomAge, optimizedFreedomAge, yearsPulledForward };
+
+            // A habit has been moved off its default, so there is a run to offer.
+            if (window.contributeReady) window.contributeReady(monthlySaved > 0);
+        }
+
+        /**
+         * The run the contribute button offers to keep, or null if there is not
+         * one yet. Read by assets/js/sim-contribute.js.
+         *
+         * Everything here is either a number the visitor typed into a model or a
+         * number the model produced from it. `profile.currentAge` is the age
+         * somebody is planning around, which is a plan, not an identity - this
+         * is a tool people run three times with three different ages - and the
+         * same is true of the income: it is the salary the projection assumes.
+         *
+         * The thirteen `kept*` fields are the interesting part and the reason
+         * this function exists. Each one is the percentage of a habit's full
+         * cost the visitor left in place after seeing it priced in years of
+         * their own life. That is a measurement of what people find negotiable,
+         * taken at the moment the trade-off was visible to them, and there is no
+         * survey anywhere that has it.
+         *
+         * Two things are deliberately absent. Nothing is sent when no habit has
+         * been touched, because an untouched page is the tool's own defaults and
+         * a data set filling up with its own defaults would be measuring itself.
+         * And no custom habit a visitor added is recorded at all - the title is
+         * free text somebody typed, and the endpoint's habit list is closed.
+         */
+        function describeContributedRun() {
+            if (!lastRun) return null;
+            if (!(lastRun.monthlySaved > 0)) return null;
+
+            const details = {
+                currentAge: recordable(profile.currentAge, 16, 90),
+                annualIncome: recordable(profile.annualIncome, 0, 100000000),
+                workHoursPerWeek: recordable(profile.workHoursPerWeek, 1, 120),
+                startingNetWorth: recordable(profile.startingNetWorth, -10000000, 1000000000),
+                basicMonthlyExpenses: recordable(profile.basicMonthlyExpenses, 0, 1000000),
+                realReturnBps: recordable(profile.realReturnRate * 10000, 0, 3000),
+                safeWithdrawalBps: recordable(profile.safeWithdrawalRate * 10000, 1, 2000),
+                // Ages and the years pulled forward are carried times 100, so
+                // "3.4 years earlier" survives a column that stores integers.
+                baselineFreedomAge: recordable(lastRun.baselineFreedomAge * 100, 0, 10000),
+                optimizedFreedomAge: recordable(lastRun.optimizedFreedomAge * 100, 0, 10000),
+                monthlySaved: recordable(lastRun.monthlySaved, 0, 1000000)
+            };
+
+            // How much of each habit was left in place, and which one was cut
+            // hardest in absolute money. Only the thirteen the tool ships with:
+            // HABIT_KEYS maps a habit id to the field name the endpoint declares,
+            // and an id that is not in it - a habit the visitor invented - is
+            // skipped rather than guessed at.
+            let top = null;
+            habits.forEach((habit) => {
+                const field = HABIT_KEYS[habit.id];
+                if (field) details[field] = recordable(habit.choicePct, 0, 100);
+
+                const saved = getHabitMonthlyCost(habit, 100) - getHabitMonthlyCost(habit);
+                if (field && saved > 0 && (!top || saved > top.saved)) top = { id: habit.id, saved };
+            });
+            if (top) details.topHabit = top.id;
+
+            // score and tiebreak are the two columns the endpoint requires, so
+            // these two are clamped where every optional field above is dropped:
+            // a missing detail costs one number, a missing score costs the row.
+            return {
+                simulator: 'freedom-calendar',
+                score: clamp(lastRun.yearsPulledForward * 100, 0, 7000),
+                tiebreak: clamp(lastRun.optimizedFreedomAge * 100, 0, 10000),
+                details
+            };
+        }
+
+        /**
+         * The value if the record can hold it, and nothing if it cannot.
+         *
+         * Every field above traces back to a number box, and the endpoint
+         * refuses an entire write whose details fall outside the ranges it
+         * declares. Somebody modelling a 200-hour week is doing something the
+         * tool allows and the record does not, and the right cost of that is one
+         * missing field rather than a rejected contribution.
+         */
+        function recordable(value, min, max) {
+            const number = Math.round(Number(value));
+            if (!Number.isFinite(number) || number < min || number > max) return undefined;
+            return number;
+        }
+
+        /** The nearest value the record can hold, for the columns it requires. */
+        function clamp(value, min, max) {
+            const number = Math.round(Number(value));
+            if (!Number.isFinite(number)) return min;
+            return Math.max(min, Math.min(max, number));
         }
 
         /**

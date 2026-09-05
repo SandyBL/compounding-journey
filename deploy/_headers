@@ -325,6 +325,36 @@
 /assets/css/a11y.css
   Cache-Control: public, max-age=31536000, immutable
 
+# The shared stylesheet for the generated pages that are not articles: the
+# calculators, the template landing pages, the glossary, the category archives,
+# the sessions page and the legal pages. Every one of them links blog.css for
+# the design system and this for its own furniture, so the second page family a
+# visitor opens costs nothing.
+/assets/css/pages.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# The standalone calculator behaviour. This is a separate file from home.js on
+# purpose: home.js is extracted byte-for-byte out of the home template's inline
+# <script> by generate-home-pages.mjs, which throws if the block no longer
+# matches, so it cannot be refactored into a shared module without making the
+# home page's build fragile. The formulas are the same and the comment at the
+# top of this file records the pairing.
+/assets/js/calculators.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# The share row's clipboard button: progressive enhancement over markup that
+# already works without it, since every other share target is an ordinary
+# anchor and only "copy link" needs script at all.
+/assets/js/share.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# The section nav's one behaviour: scrolling the current tab into view on a
+# viewport too narrow to show all seven. Progressive enhancement in the same
+# sense as share.js - without it the nav is still a complete list of links and
+# aria-current still announces the current page.
+/assets/js/section-nav.js
+  Cache-Control: public, max-age=31536000, immutable
+
 # Generated bundles: the precompiled Tailwind that replaced the Play CDN on the
 # simulator pages, and the Font Awesome subset that replaced the cdnjs build.
 # Both are versioned in their <link> URLs, so they can be cached hard.

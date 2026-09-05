@@ -5,6 +5,7 @@ category: Hábitos financeiros
 summary: Um ritmo semanal prático que troca a urgência financeira por poucas
  decisões sustentáveis.
 translation_key: slow-money-system
+link_phrases: sistema do dinheiro lento, dinheiro lento
 author: Sandy Bradbury
 ---
 

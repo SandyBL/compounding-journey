@@ -5,6 +5,7 @@ category: Hábitos financeiros
 summary: Descubra como poupar uma percentagem fixa antes de gastar pode romper o
  ciclo de viver de salário em salário e construir o seu fundo de emergência.
 translation_key: pay-yourself-first-power-of-saving
+link_phrases: paga-te a ti mesmo primeiro, pague-se a si mesmo primeiro, o hábito da poupança
 author: Sandy Bradbury
 ---
 Quando se trata de gerir o seu dinheiro, existe uma regra simples capaz de transformar a sua vida financeira: **Pague-se a Si Mesmo Primeiro**. Isto significa colocar uma parte do seu rendimento na poupança *antes* de pagar contas, fazer compras ou gastar em lazer.

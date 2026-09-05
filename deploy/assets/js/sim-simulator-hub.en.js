@@ -503,7 +503,10 @@
             options.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = 'w-full text-left p-5 bg-cream-100 hover:bg-cream-200 border border-cream-300 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-forest-800 group custom-shadow hover:-translate-y-0.5';
-                btn.onclick = () => selectOption(opt.data, current);
+                // `opt.key` and not `opt.label`: the label is translated, and the
+                // run's answer sequence is recorded on the board, where 'optionB'
+                // and 'Opción B' must not be two different answers.
+                btn.onclick = () => selectOption(opt.data, current, opt.key);
 
                 btn.innerHTML = `
                     <div class="flex items-start gap-3">
@@ -531,7 +534,7 @@
         }
 
         // SELECT OPTION HANDLER
-        function selectOption(option, scenario) {
+        function selectOption(option, scenario, optionKey) {
             // Update Metrics
             currentState.netWorth += option.impact.netWorthDelta;
             currentState.cashFlow += option.impact.cashFlowDelta;
@@ -554,7 +557,10 @@
                 scenarioId: scenario.id,
                 category: scenario.category,
                 selectedTitle: option.title,
-                qualityScore: option.qualityScore
+                qualityScore: option.qualityScore,
+                // 'A', 'B' or 'C'. The debrief does not use it; the board does,
+                // as one character of the run's answer sequence.
+                pick: (optionKey || '').replace('option', '') || '?'
             });
 
             // Update Header Display
@@ -879,6 +885,61 @@
             });
         }
 
+        /**
+         * The finished run, in the shape the board stores it.
+         *
+         * The score column holds one number - the literacy percentage - and
+         * that number is the least informative thing about a run. A reader who
+         * scored 61 scored it by answering fifteen specific questions in a
+         * specific way, and the aggregate of those answers is a genuinely
+         * original measurement: which parts of personal finance people get
+         * wrong, from people who came to a personal-finance site voluntarily.
+         * Nobody publishes that, because nobody else is holding the answers.
+         *
+         * The five percentages are per category. `picks` is the answer to every
+         * scenario in order, as one character each, so a published finding can
+         * be as specific as "on the pension scenario, three readers in five
+         * took the option that costs the most tax".
+         *
+         * Category keys are recovered from CATEGORIES for the reason
+         * updateResultCta() recovers them: categoryScores is keyed by the
+         * *translated* label, and a data set keyed on translated labels is
+         * three data sets.
+         */
+        function runShape() {
+            const pct = (key) => {
+                const score = categoryScores[CATEGORIES[key]] || { points: 0, max: 0 };
+                return score.max > 0 ? Math.round((score.points / score.max) * 100) : 0;
+            };
+
+            const shape = {
+                investingPct: pct('INVESTING'),
+                debtPct: pct('DEBT'),
+                spendingPct: pct('SPENDING'),
+                taxPct: pct('TAX'),
+                riskPct: pct('RISK'),
+                happiness: Math.round(currentState.happiness),
+                monthlyCashFlow: recordable(currentState.cashFlow, -100000, 1000000)
+            };
+
+            // Only a complete sequence of recognised answers. A run resumed
+            // through some state the tool did not expect would produce a '?',
+            // and a sequence with a hole in it is worse than no sequence: every
+            // character position after the hole would line up against the wrong
+            // scenario in any aggregate that reads it by position.
+            const picks = decisionHistory.map((entry) => entry.pick || '?').join('');
+            if (picks.length > 0 && !picks.includes('?')) shape.picks = picks;
+
+            return shape;
+        }
+
+        /** The value if the board can hold it, and nothing if it cannot. */
+        function recordable(value, min, max) {
+            const number = Math.round(Number(value));
+            if (!Number.isFinite(number) || number < min || number > max) return undefined;
+            return number;
+        }
+
         function saveScoreToLeaderboard() {
             const input = document.getElementById('playerNameInput');
             const button = document.getElementById('saveScoreButton');
@@ -898,7 +959,8 @@
                 board: 'ALL',
                 name: name,
                 score: Math.round(currentState.literacyScore),
-                tiebreak: Math.round(currentState.netWorth)
+                tiebreak: Math.round(currentState.netWorth),
+                details: runShape()
             })
                 .then((result) => {
                     leaderboardEntries = result.entries;

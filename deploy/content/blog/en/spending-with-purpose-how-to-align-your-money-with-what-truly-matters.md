@@ -6,6 +6,7 @@ summary: Financial growth isn't about cutting all joy—it's about intentional
  spending. Discover how aligning purchases with your core values unlocks
  lasting freedom.
 translation_key: spending-with-purpose-align-money-values
+link_phrases: spending with purpose, conscious spending, align your money with your values
 author: Sandy Bradbury
 ---
 Now that you've explored budgeting and expense management, it's time to take a deeper look at *how* you spend your money—and why it matters. Financial growth isn't just about cutting costs; it's about making sure your money goes toward things that truly add value to your life. Let's explore how to spend with purpose while setting yourself up for a brighter financial future.

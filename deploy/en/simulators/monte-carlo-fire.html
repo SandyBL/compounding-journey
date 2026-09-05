@@ -11,7 +11,7 @@
   <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="en_US"><meta property="og:title" content="Monte Carlo FIRE Retirement Survival Simulator"><meta property="og:description" content="Estimate whether a retirement portfolio can survive thousands of possible market futures."><meta property="og:url" content="https://compoundingjourney.com/en/simulators/monte-carlo-fire.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Monte Carlo FIRE Retirement Survival Simulator"><meta name="twitter:description" content="Estimate whether a retirement portfolio can survive thousands of possible market futures."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Monte Carlo FIRE Survival Flight","url":"https://compoundingjourney.com/en/simulators/monte-carlo-fire.html","description":"A Monte Carlo simulator for estimating retirement portfolio survival under varied market returns and withdrawal assumptions.","inLanguage":"en","applicationCategory":"FinanceApplication","operatingSystem":"Any web browser","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://compoundingjourney.com/en/"},{"@type":"ListItem","position":2,"name":"Simulators","item":"https://compoundingjourney.com/en/simulator.html"},{"@type":"ListItem","position":3,"name":"Monte Carlo FIRE"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://compoundingjourney.com/en/"},{"@type":"ListItem","position":2,"name":"Simulators","item":"https://compoundingjourney.com/en/simulators/"},{"@type":"ListItem","position":3,"name":"Monte Carlo FIRE"}]}</script>
   
   
   <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.en.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden antialiased selection:bg-gold-500 selection:text-white">
 
@@ -85,6 +89,14 @@
             </div>
         </div>
     </header>
+    <!-- The site's section nav: the only navigation on a simulator that points
+         outside the simulators. Rendered from the one table in
+         scripts/section-nav.mjs, with the Simuladores tab marked as the current
+         page, and placed outside the sticky <header> like on every other family
+         - see the .site-section-nav comment in assets/css/header.css. -->
+  <nav class="site-section-nav" aria-label="Site sections">
+    <div class="site-section-tabs"><a href="/en/blog/">Journal</a><a href="/en/simulators/" aria-current="true">Simulators</a><a href="/en/calculators/">Calculators</a><a href="/en/templates/">Templates</a><a href="/en/glossary/">Glossary</a><a href="/en/data/">Data</a><a href="/en/sessions/">Sessions</a></div>
+  </nav>
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
@@ -106,7 +118,7 @@
                 <p class="sim-intro__lede">Stress-test a FIRE retirement plan across thousands of Monte Carlo market paths and estimate how likely a portfolio is to sustain withdrawals.</p>
                 <nav aria-label="More simulators" class="sim-intro__nav">
                     <span class="sim-intro__navlabel">More simulators:</span>
-                    <a href="/en/simulator.html" class="sim-intro__link">All simulators</a>
+                    <a href="/en/simulators/" class="sim-intro__link">All simulators</a>
                     <a href="/en/simulators/freedom-calendar.html" class="sim-intro__link">Freedom Calendar</a>
                     <a href="/en/simulators/market-time-machine.html" class="sim-intro__link">Market Time Machine</a>
                     <a href="/en/simulators/passive-income-engine.html" class="sim-intro__link">Passive Income Engine</a>
@@ -139,10 +151,34 @@
         <nav class="sim-crumbs" aria-label="Breadcrumb">
             <ol>
                 <li><a href="/en/">Home</a></li>
-                <li><a href="/en/simulator.html">Simulators</a></li>
+                <li><a href="/en/simulators/">Simulators</a></li>
                 <li><span aria-current="page">Monte Carlo FIRE</span></li>
             </ol>
         </nav>
+
+        <!-- The persistent compliance notice.
+
+             Every calculator and glossary page carries one (see the
+             disclaimer() helper in scripts/page-shell.mjs); the simulators
+             carried a single line in `.simulator-footer`, and that bar is
+             docked to the viewport and hides itself 2.5s after the visitor
+             stops scrolling. A notice that disappears on a timer is not a
+             notice, and these five pages are the ones that most need one:
+             they print money figures and dates that look like predictions,
+             which is exactly the reading the notice exists to prevent.
+
+             So it sits in the flow, above the tool, where it is visible before
+             the first number is. The text is in SHARED_STRINGS in
+             scripts/generate-simulator-pages.mjs rather than in this
+             simulator's sidecar, because all five have to say the same thing.
+
+             No painted background, for the reason `.sim-crumbs` gives: three
+             palettes share these templates and only conflict over large filled
+             areas. -->
+        <aside class="sim-disclaimer" role="note" aria-labelledby="sim-disclaimer-title">
+            <p class="sim-disclaimer__title" id="sim-disclaimer-title">Educational content, not financial advice</p>
+            <p class="sim-disclaimer__body">Sandy Bradbury is a financial educator, not an accredited financial adviser. This simulator is an educational tool: its results are illustrative estimates calculated from the assumptions you enter, they do not predict real returns, and they are not advice or a recommendation to buy or sell any product. <a href="/en/legal-notice/">Read the full legal notice</a></p>
+        </aside>
 
 
     <!-- ================================================================= -->
@@ -888,7 +924,7 @@
                 <h3 class="sim-explainer__heading" id="reading-title">Keep reading</h3>
                 <p>The journal covers the ideas behind this tool at greater length.</p>
                 <ul class="sim-explainer__list">
-                    <li><a href="/en/blog/pay-yourself-first-the-simple-habit-to-build-lasting-wealth/">Pay Yourself First: The Simple Habit to Build Lasting Wealth</a></li>
+                    <li><a href="/en/blog/sequence-of-returns-risk-why-the-order-of-returns-decides-your-retirement/">Sequence-of-returns risk: why the order of returns decides your retirement</a></li>
                     <li><a href="/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/">Foundations of Personal Finance: How to Control Expenses and Build Wealth</a></li>
                     <li><a href="/en/blog/">All journal entries</a></li>
                 </ul>
@@ -1132,6 +1168,7 @@
   <script src="/assets/js/sim-cta.js?v=source" defer></script>
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-footer.js?v=source" defer></script>
+    <script src="/assets/js/section-nav.js?v=source" defer></script>
     <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
     <script src="/assets/js/sim-chart-theme.js?v=source" defer></script>
     <script src="/assets/js/sim-monte-carlo-fire.en.js?v=source" defer></script>

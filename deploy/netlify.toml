@@ -33,8 +33,47 @@
 # depend on that detection, so it keeps working whether or not a lockfile is
 # present. The only dependency is the CLI itself, pinned to an exact version in
 # package.json.
+#
+# check-glossary-coverage.mjs writes nothing. It reads the catalog and reports
+# the terms the articles use that the glossary cannot explain, with a written
+# draft for each, and exits 0 either way: a missing glossary entry is editorial
+# debt, not a broken page, and failing a deploy over it would mean a finished
+# article cannot ship until three paragraphs of glossary are written. Pass
+# --strict to that script to make the report a build failure instead.
+#
+# The order is not arbitrary. generate-blog-catalog.mjs writes the catalog every
+# later generator reads; the page generators then run in any order among
+# themselves except that generate-blog-pages.mjs and generate-category-pages.mjs
+# both write under /{lang}/blog/ and each prunes stale output, so the category
+# archives are written after the articles. generate-llms-txt.mjs and
+# generate-sitemap.mjs enumerate what the others produced and so run last of the
+# generators; npm run css compiles Tailwind against the finished markup, and
+# version-assets.mjs stamps content hashes into every page after that, which is
+# why nothing may write a page or an asset once it has run. verify-output.mjs is
+# last and fails the build on a broken invariant.
 [build]
-  command = "npm install --no-audit --no-fund && node scripts/generate-blog-catalog.mjs && node scripts/generate-home-pages.mjs && node scripts/generate-blog-pages.mjs && node scripts/generate-simulator-pages.mjs && node scripts/generate-llms-txt.mjs && node scripts/generate-manifests.mjs && npm run css && node scripts/version-assets.mjs && node scripts/verify-output.mjs"
+  command = """
+npm install --no-audit --no-fund && \
+node scripts/generate-blog-catalog.mjs && \
+node scripts/check-glossary-coverage.mjs && \
+node scripts/generate-home-pages.mjs && \
+node scripts/generate-blog-pages.mjs && \
+node scripts/generate-simulator-pages.mjs && \
+node scripts/generate-simulators-index.mjs && \
+node scripts/generate-tool-pages.mjs && \
+node scripts/generate-template-pages.mjs && \
+node scripts/generate-glossary.mjs && \
+node scripts/generate-category-pages.mjs && \
+node scripts/generate-legal-pages.mjs && \
+node scripts/generate-sessions-page.mjs && \
+node scripts/generate-data-pages.mjs && \
+node scripts/generate-llms-txt.mjs && \
+node scripts/generate-manifests.mjs && \
+node scripts/generate-sitemap.mjs && \
+npm run css && \
+node scripts/version-assets.mjs && \
+node scripts/verify-output.mjs
+"""
 
 # The generators are Node ESM. Pin the runtime so a change to the Netlify
 # default cannot alter the build without a commit saying so.

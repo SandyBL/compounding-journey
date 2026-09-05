@@ -299,6 +299,95 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   font-size: 0.875rem;
 }
 
+/* ---------------------------------------------------------------------------
+   The section nav
+
+   The strip of seven page links under the header on every page
+   scripts/page-shell.mjs renders, and the current-page state it exists to
+   carry. Values are lifted from the home page's own nav pill so that the two
+   read as one component rather than two designs of the same idea: the same
+   translucent pill, the same 0.68rem bold labels, the same gold tint for the
+   active item.
+
+   It is a second row rather than a third item in .header-shell because seven
+   tabs plus the brand, the return link and the flags do not share a line at any
+   width worth supporting - and because .site-simulator-nav already established
+   this exact shape directly below.
+
+   overflow-x rather than a wrap: a nav that becomes two rows on a phone pushes
+   the page heading below the fold. assets/js/section-nav.js scrolls the current
+   tab into the middle on load, which is what makes a strip whose right-hand end
+   is off-screen still able to say where the reader is.
+
+   Outside header.site-header, so it scrolls away while the 80px header stays -
+   unlike the home page, where the nav is part of the sticky bar. That is a
+   decision rather than an oversight: sticking both would put a 128px
+   double-decker on top of every phone viewport, and it would break the two
+   sticky sidebars measured against the header's height (.toc at 108px,
+   .legal-toc at 96px). The reader needs this nav on arrival, which is where it
+   is, and at the end of the page, where the footer row now carries the same
+   seven links. */
+.site-section-nav {
+  position: relative;
+  z-index: 30;
+  padding: 2px 16px 12px;
+}
+
+.site-section-tabs {
+  display: flex;
+  gap: 2px;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 4px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  border: 1px solid rgba(239, 234, 224, 0.95);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.site-section-tabs a {
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  border-radius: 999px;
+  color: rgba(45, 36, 27, 0.68);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.site-section-tabs a:hover {
+  color: #1e4620;
+  background: rgba(30, 70, 32, 0.08);
+}
+
+/* The state the whole nav was added for. aria-current is the selector on
+   purpose: the attribute is what a screen reader announces, so styling anything
+   else would let the paint and the announcement disagree.
+
+   The attribute and not one of its values, because the nav writes two: "page"
+   on the tab that links to the document being read, "true" on a tab whose
+   section this page is inside - a glossary term, an article, a calculator. A
+   reader looking at the strip is asking which section they are in, so both
+   paint the same; only what a screen reader announces differs. */
+.site-section-tabs a[aria-current] {
+  color: #1e4620;
+  background: rgba(197, 155, 39, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.28);
+}
+
+.site-section-tabs a:focus-visible {
+  outline: 2px solid rgba(197, 155, 39, 0.75);
+  outline-offset: 2px;
+  color: #1e4620;
+}
+
 .site-simulator-nav {
   position: relative;
   z-index: 40;
@@ -394,8 +483,13 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
     padding: 6px;
   }
 
+  .site-section-nav,
   .site-simulator-nav {
     padding-inline: 8px;
+  }
+
+  .site-section-tabs a {
+    padding-inline: 10px;
   }
 }
 

@@ -37,8 +37,8 @@
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
-    <link rel="stylesheet" href="/assets/styles.css?v=e533375be7c0">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=source">
+    <link rel="stylesheet" href="/assets/styles.css?v=source">
     <script type="application/ld+json">
     {
   "@context": "https://schema.org",
@@ -80,7 +80,8 @@
       "name": "Sandy Bradbury",
       "url": "https://compoundingjourney.com/#biografia",
       "image": "https://compoundingjourney.com/sandy-bradbury-portrait.png",
-      "jobTitle": "Financial Advisor",
+      "jobTitle": "Financial educator",
+      "description": "Financial educator writing about money psychology, budgeting, compound growth and long-term investing. Not an accredited financial adviser: no personal investment recommendations are given and no client money is managed.",
       "worksFor": {
         "@id": "https://compoundingjourney.com/#organization"
       },
@@ -164,6 +165,14 @@
         },
         {
           "@type": "Question",
+          "name": "¿Qué significa FIRE y en qué se diferencia de jubilarse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FIRE son las siglas de Financial Independence, Retire Early: independencia financiera y jubilación anticipada. Describe la estrategia de ahorrar e invertir una parte alta de los ingresos hasta acumular un capital cuyos rendimientos cubran los gastos de vida, de modo que trabajar pase a ser una elección y no una obligación. La tasa de ahorro y el tiempo son las dos variables que más pesan, y la regla del 4% es la aproximación habitual para estimar cuánto capital hace falta. Existen variantes según el nivel de gasto: LeanFIRE (un presupuesto muy ajustado), FatFIRE (un nivel de vida más amplio) y BaristaFIRE o CoastFIRE (mantener un trabajo parcial, o dejar de aportar y dejar que el interés compuesto termine el trabajo). La calculadora de libertad financiera de la sección Herramientas estima esa cifra."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "¿Dónde puedo descargar plantillas de presupuesto personal en Excel?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -199,7 +208,7 @@
           "name": "¿Por qué podría necesitar un asesor financiero o planificador patrimonial?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Aunque las herramientas online aportan claridad, un asesor financiero te ayuda a conectar los números con tus valores de vida. Te acompaña para definir una estrategia a medida, gestionar emociones durante la volatilidad del mercado, optimizar tu estructura y mantener la disciplina a lo largo del tiempo."
+            "text": "Un asesor financiero acreditado y registrado en la CNMV puede recomendarte productos concretos, gestionar tu cartera y firmar un plan adaptado a tu situación fiscal. Nada de eso se hace en este sitio: aquí encontrarás educación financiera, es decir, las herramientas y el vocabulario para entender tus propios números y llegar a esa conversación sabiendo qué preguntar. Si lo que necesitas es una recomendación personalizada de inversión, búscala en un profesional registrado."
           }
         },
         {
@@ -223,7 +232,7 @@
           "name": "¿El contenido sustituye el asesoramiento financiero personalizado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son estrictamente educativas e ilustrativas. No constituyen asesoramiento financiero, de inversión o fiscal formal. Para recibir recomendaciones adaptadas a tu contexto, objetivos y tolerancia al riesgo, puedes completar los formularios de diagnóstico o enviarme un mensaje directo."
+            "text": "No, y no puede sustituirlo. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son educativas e ilustrativas: no constituyen asesoramiento financiero, de inversión ni fiscal. Sandy Bradbury es educador financiero y está en proceso de obtener la certificación de asesor financiero; hasta entonces no presta servicios de asesoramiento ni hace recomendaciones personalizadas de productos. Para una recomendación adaptada a tu situación, acude a un asesor registrado en la CNMV."
           }
         }
       ]
@@ -231,11 +240,11 @@
   ]
 }
     </script>
-    <link rel="stylesheet" href="/assets/css/home.css?v=50dc5202d9d9">
-    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
-    <script defer src="/assets/js/home.js?v=50eebbddaa0a"></script>
-    <script type="module" src="/assets/js/home-identity.js?v=f1beb1512497"></script>
+    <link rel="stylesheet" href="/assets/css/home.css?v=60c792555c90">
+    <link rel="stylesheet" href="/assets/css/header.css?v=source">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
+    <script defer src="/assets/js/home.js?v=e3d31c4bd2bd"></script>
+    <script type="module" src="/assets/js/home-identity.js?v=3944bba45c45"></script>
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.es.webmanifest">
     <meta name="theme-color" content="#1E4620">
@@ -283,12 +292,31 @@
                     <span data-i18n class="header-brand-tagline">TU MAPA HACIA LA LIBERTAD</span>
                 </div>
             </a>
-            <!-- Desktop Section Navigation -->
+            <!-- Desktop Section Navigation.
+                 Two kinds of destination sit side by side here, and the
+                 difference is deliberate.
+                 The journal, the simulators and everything under Recursos are
+                 real pages, generated once per language, so those items carry
+                 data-blog-link or data-section-link and are rewritten to
+                 /es/..., /en/... or /pt/... at build time. FAQ and Contacto
+                 exist only as sections of this document, so they stay
+                 same-page anchors with data-section - the attribute the scroll
+                 spy and the smooth-scroll handler key on. A page link
+                 deliberately has no data-section: it is never "the part of this
+                 page you are reading", and giving it one would light a nav item
+                 up for a page the reader is not even on.
+                 Pilares used to be the first item and is not here any more. It
+                 is the strip immediately below the hero - the first thing under
+                 the fold, reached by scrolling once - while Sesiones is a page
+                 that cannot be found at all unless something links it. The pill
+                 has room for six items, so the slot went to the page that needs
+                 it. /pillars still redirects and siteRoutes still maps it, so
+                 the old shortcut and any inbound link to it keep working. -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
-                <a href="#pilares" data-site-route="/pillars" data-section="pilares">
-                    <span data-i18n>Pilares</span>
+                <a href="/es/blog/" data-blog-link>
+                    <span data-i18n>Diario</span>
                 </a>
-                <a href="#simulador" data-site-route="/simulators" data-section="simulador">
+                <a href="/es/simulators/" data-section-link="simulators">
                     <span data-i18n>Simuladores</span>
                 </a>
                 <div class="desktop-resources" data-resources-dropdown>
@@ -297,27 +325,37 @@
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="desktop-resources-menu" class="desktop-resources-menu">
-                        <a href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span data-i18n>Herramientas</span>
+                        <a href="/es/calculadoras/" data-section-link="tools">
+                            <span data-i18n>Calculadoras</span>
                         </a>
-                        <a href="#plantillas" data-site-route="/templates" data-section="plantillas">
+                        <a href="/es/plantillas/" data-section-link="templates">
                             <span data-i18n>Plantillas</span>
+                        </a>
+                        <a href="/es/glosario/" data-section-link="glossary">
+                            <span data-i18n>Glosario</span>
+                        </a>
+                        <a href="/es/datos/" data-section-link="data">
+                            <span data-i18n>Datos</span>
                         </a>
                     </div>
                 </div>
+                <a href="/es/sesiones/" data-section-link="sessions">
+                    <span data-i18n>Sesiones</span>
+                </a>
                 <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
                     <span data-i18n>FAQ</span>
                 </a>
-                <!-- No data-site-route, unlike its five neighbours. That attribute is
-                     the hook for the handler that turns a nav click into a smooth
-                     scroll, and it doubles as the key into `siteRoutes`, which
-                     exists so that arriving at one of the /pillars, /faq, ...
-                     shortcut redirects still lands on the right section. There is no
-                     /contact shortcut, so claiming one here would name a URL that
-                     does not resolve. The plain "#contacto" anchor is picked up by
-                     the fallback handler on the document instead, which gives this
-                     link the same smooth scroll, the same history entry and the same
-                     focus move as the rest of the nav. -->
+                <!-- No data-site-route, unlike FAQ and the Freedom Compass
+                     button. That attribute is the hook for the handler that
+                     turns a nav click into a smooth scroll, and it doubles as
+                     the key into `siteRoutes`, which exists so that arriving at
+                     one of the /pillars, /faq, ... shortcut redirects still
+                     lands on the right section. There is no /contact shortcut,
+                     so claiming one here would name a URL that does not
+                     resolve. The plain "#contacto" anchor is picked up by the
+                     fallback handler on the document instead, which gives this
+                     link the same smooth scroll, the same history entry and the
+                     same focus move as the rest of the nav. -->
                 <a href="#contacto" data-section="contacto">
                     <span data-i18n>Contacto</span>
                 </a>
@@ -383,11 +421,18 @@
                 <p class="mobile-menu__label">
                     <span data-i18n>Navegación</span>
                 </p>
+                <!-- The same six items as the desktop pill, in the same
+                     order, pointing at the same places. The drawer has vertical
+                     room the pill does not, so it could carry more - but a
+                     reader who learns the nav on a laptop and then opens it on
+                     a phone should find the nav they already know, and every
+                     item that is here on one and missing on the other is a
+                     support question waiting to happen. -->
                 <nav class="mobile-nav" aria-label="Mobile section navigation">
-                    <a class="mobile-nav-link" href="#pilares" data-site-route="/pillars" data-section="pilares">
-                        <span data-i18n>Pilares</span>
+                    <a class="mobile-nav-link" href="/es/blog/" data-blog-link>
+                        <span data-i18n>Diario</span>
                     </a>
-                    <a class="mobile-nav-link" href="#simulador" data-site-route="/simulators" data-section="simulador">
+                    <a class="mobile-nav-link" href="/es/simulators/" data-section-link="simulators">
                         <span data-i18n>Simuladores</span>
                     </a>
                     <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-resources-panel">
@@ -395,13 +440,22 @@
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="mobile-resources-panel" class="mobile-resources-panel" hidden>
-                        <a class="mobile-nav-link" href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span data-i18n>Herramientas</span>
+                        <a class="mobile-nav-link" href="/es/calculadoras/" data-section-link="tools">
+                            <span data-i18n>Calculadoras</span>
                         </a>
-                        <a class="mobile-nav-link" href="#plantillas" data-site-route="/templates" data-section="plantillas">
+                        <a class="mobile-nav-link" href="/es/plantillas/" data-section-link="templates">
                             <span data-i18n>Plantillas</span>
                         </a>
+                        <a class="mobile-nav-link" href="/es/glosario/" data-section-link="glossary">
+                            <span data-i18n>Glosario</span>
+                        </a>
+                        <a class="mobile-nav-link" href="/es/datos/" data-section-link="data">
+                            <span data-i18n>Datos</span>
+                        </a>
                     </div>
+                    <a class="mobile-nav-link" href="/es/sesiones/" data-section-link="sessions">
+                        <span data-i18n>Sesiones</span>
+                    </a>
                     <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
                     <a class="mobile-nav-link" href="#contacto" data-section="contacto">
                         <span data-i18n>Contacto</span>
@@ -1187,8 +1241,8 @@
                             <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">03</span>
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
-                            <span class="ml-auto rounded-full bg-warmgold px-3 py-1 text-[10px] font-extrabold tracking-wider text-darkbark">
-                                <span data-i18n>R$ 25 (aprox. US$ 5)</span>
+                            <span class="ml-auto rounded-full bg-forestgreen px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
+                                <span data-i18n>Gratis</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
@@ -1199,11 +1253,11 @@
                         </p>
                     </div>
                     <div class="mt-6">
-                        <a href="https://pay.kiwify.com.br/RyUPxbu" data-template-download="monthlyAnalysis" aria-describedby="template-meta-monthlyAnalysis" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="/assets/templates/es/analisis-balance-mensual.xlsx" download="Plantilla de Analisis del Balance Mensual.xlsx" data-template-download="monthlyAnalysis" aria-describedby="template-meta-monthlyAnalysis" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                             <span data-i18n>Descargar plantilla</span>
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
-                        <p id="template-meta-monthlyAnalysis" data-template-meta="monthlyAnalysis" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">Página externa</p>
+                        <p id="template-meta-monthlyAnalysis" data-template-meta="monthlyAnalysis" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">XLSX · 30 KB</p>
                     </div>
                 </article>
             </div>
@@ -1250,57 +1304,69 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" data-latest-articles>
                     <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Diseño de vida</span>
-                            <span class="h-px w-8 bg-warmgold/50"></span>
-                            <time datetime="2026-08-13" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">13 de agosto de 2026</time>
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Hábitos financieros</span>
+                            <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
+                            <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
+                                <time datetime="2026-09-05"><span class="sr-only">Publicado el </span>5 de septiembre de 2026</time>
+                                <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
+                                <span>6 min de lectura</span>
+                            </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/es/blog/gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa</a>
+                                <a href="/es/blog/la-psicologia-de-las-decisiones-de-dinero-por-que-saber-las-cuentas-no-basta/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">La psicología de las decisiones de dinero: por qué saber las cuentas no basta</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">El crecimiento financiero no exige eliminar tus alegrías, sino gastar con intencionalidad.</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">Nadie fracasa con el dinero por no saber calcular un interés compuesto.</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/es/blog/gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa/" aria-label="Leer el artículo: Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/es/blog/la-psicologia-de-las-decisiones-de-dinero-por-que-saber-las-cuentas-no-basta/" aria-label="Leer el artículo: La psicología de las decisiones de dinero: por qué saber las cuentas no basta" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Leer el artículo
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
                         </div>
                     </article>
                     <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Hábitos financieros</span>
-                            <span class="h-px w-8 bg-warmgold/50"></span>
-                            <time datetime="2026-08-11" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">11 de agosto de 2026</time>
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Inversión</span>
+                            <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
+                            <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
+                                <time datetime="2026-09-04"><span class="sr-only">Publicado el </span>4 de septiembre de 2026</time>
+                                <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
+                                <span>5 min de lectura</span>
+                            </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/es/blog/fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza</a>
+                                <a href="/es/blog/los-ingresos-pasivos-no-son-una-sola-cosa-cuatro-motores-y-lo-que-cuesta-cada-uno/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Los ingresos pasivos no son una sola cosa: cuatro motores y lo que cuesta cada uno</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">Descubre consejos simples para presupuestar, rastrear tus gastos y tomar decisiones financieras inteligentes para alcanzar la libertad sin…</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">Un fondo de dividendos, un piso alquilado, una escalera de bonos y un producto que vendiste una vez son cuatro máquinas distintas.</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/es/blog/fundamentos-de-las-finanzas-personales-como-controlar-gastos-y-crear-riqueza/" aria-label="Leer el artículo: Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/es/blog/los-ingresos-pasivos-no-son-una-sola-cosa-cuatro-motores-y-lo-que-cuesta-cada-uno/" aria-label="Leer el artículo: Los ingresos pasivos no son una sola cosa: cuatro motores y lo que cuesta cada uno" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Leer el artículo
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
                         </div>
                     </article>
                     <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Hábitos financieros</span>
-                            <span class="h-px w-8 bg-warmgold/50"></span>
-                            <time datetime="2026-08-04" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">4 de agosto de 2026</time>
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Inversión</span>
+                            <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
+                            <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
+                                <time datetime="2026-09-04"><span class="sr-only">Publicado el </span>4 de septiembre de 2026</time>
+                                <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
+                                <span>5 min de lectura</span>
+                            </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/es/blog/como-crear-riqueza-con-buenos-habitos-financieros-lecciones-de-padre-rico-padre-pobre/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Cómo Crear Riqueza con Buenos Hábitos Financieros: Lecciones de Padre Rico, Padre Pobre</a>
+                                <a href="/es/blog/que-ensena-un-siglo-de-historia-de-los-mercados-caidas-recuperacion-y-diversificacion/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Qué enseña un siglo de historia de los mercados: caídas, recuperación y diversificación</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">Descubre cómo construir riqueza a largo plazo con buenos hábitos financieros.</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">«A largo plazo la bolsa sube» es cierto y casi inútil.</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/es/blog/como-crear-riqueza-con-buenos-habitos-financieros-lecciones-de-padre-rico-padre-pobre/" aria-label="Leer el artículo: Cómo Crear Riqueza con Buenos Hábitos Financieros: Lecciones de Padre Rico, Padre Pobre" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/es/blog/que-ensena-un-siglo-de-historia-de-los-mercados-caidas-recuperacion-y-diversificacion/" aria-label="Leer el artículo: Qué enseña un siglo de historia de los mercados: caídas, recuperación y diversificación" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Leer el artículo
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
@@ -1498,6 +1564,12 @@
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <h3 class="text-base font-extrabold">¿Qué significa FIRE y en qué se diferencia de jubilarse?</h3>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">FIRE son las siglas de <em lang="en">Financial Independence, Retire Early</em>: independencia financiera y jubilación anticipada. Describe la estrategia de ahorrar e invertir una parte alta de los ingresos hasta acumular un capital cuyos rendimientos cubran los gastos de vida, de modo que trabajar pase a ser una elección y no una obligación. La tasa de ahorro y el tiempo son las dos variables que más pesan, y la regla del 4% es la aproximación habitual para estimar cuánto capital hace falta. Existen variantes según el nivel de gasto: LeanFIRE (un presupuesto muy ajustado), FatFIRE (un nivel de vida más amplio) y BaristaFIRE o CoastFIRE (mantener un trabajo parcial, o dejar de aportar y dejar que el interés compuesto termine el trabajo). Puedes estimar tu propia cifra con la calculadora de libertad financiera de la sección <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Herramientas</a>.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">¿Dónde puedo descargar plantillas de presupuesto personal en Excel?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding Journey ofrece descargas gratuitas en Excel para <a href="/assets/templates/es/presupuesto-personal.xlsx" download="Plantilla de Presupuesto Personal.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">presupuesto personal</a>, <a href="/assets/templates/es/gestion-de-gastos.xlsx" download="Plantilla de Gestion de Gastos.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">control de gastos</a> y <a href="/assets/templates/es/analisis-balance-mensual.xlsx" download="Plantilla de Analisis del Balance Mensual.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">análisis mensual de finanzas personales</a>. También están reunidas en la sección <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Plantillas</a>.</p>
@@ -1524,7 +1596,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">¿Por qué podría necesitar un asesor financiero o planificador patrimonial?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Aunque las herramientas online aportan claridad, un asesor financiero te ayuda a conectar los números con tus valores de vida. Te acompaña para definir una estrategia a medida, gestionar emociones durante la volatilidad del mercado, optimizar tu estructura y mantener la disciplina a lo largo del tiempo.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Un asesor financiero acreditado y registrado en la CNMV puede recomendarte productos concretos, gestionar tu cartera y firmar un plan adaptado a tu situación fiscal. Nada de eso se hace en este sitio: aquí encontrarás educación financiera, es decir, las herramientas y el vocabulario para entender tus propios números y llegar a esa conversación sabiendo qué preguntar. Si lo que necesitas es una recomendación personalizada de inversión, búscala en un profesional registrado.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -1542,7 +1614,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">¿El contenido sustituye el asesoramiento financiero personalizado?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son estrictamente educativas e ilustrativas. No constituyen asesoramiento financiero, de inversión o fiscal formal. Para recibir recomendaciones adaptadas a tu contexto, objetivos y tolerancia al riesgo, puedes completar los formularios de diagnóstico o enviarme un mensaje directo.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No, y no puede sustituirlo. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son educativas e ilustrativas: no constituyen asesoramiento financiero, de inversión ni fiscal. Sandy Bradbury es educador financiero y está en proceso de obtener la certificación de asesor financiero; hasta entonces no presta servicios de asesoramiento ni hace recomendaciones personalizadas de productos. Para una recomendación adaptada a tu situación, acude a un asesor registrado en la CNMV.</p>
                 </details>
             </div>
         </div>
@@ -1559,12 +1631,12 @@
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    <span data-i18n>Conoce al asesor, sigue la newsletter o cuéntanos directamente tu situación financiera.</span>
+                    <span data-i18n>Conoce al educador, sigue la newsletter o cuéntanos directamente tu situación financiera.</span>
                 </p>
                 <nav class="contact-path-nav" aria-labelledby="contact-heading">
                     <a href="#biografia" class="contact-path-link">
                         <i class="fa-solid fa-user-tie text-warmgold" aria-hidden="true"></i>
-                        <span data-i18n>Conoce al asesor</span>
+                        <span data-i18n>Conoce al educador</span>
                     </a>
                     <a href="#contact-newsletter" class="contact-path-link">
                         <i class="fa-regular fa-newspaper text-warmgold" aria-hidden="true"></i>
@@ -1590,7 +1662,7 @@
                                         <!-- Premium Fallback Graphic (shows only if photo is offline/blocked) -->
                                         <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 select-none">
                                             <span class="text-4xl font-extrabold tracking-wider leading-none">SB</span>
-                                            <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Wealth Planner</span>
+                                            <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Financial Educator</span>
                                         </div>
                                         <!-- Actual Image Tag with fallback failure support -->
                                     <img
@@ -1607,7 +1679,7 @@
                                 <div class="mt-5 text-center">
                                     <p class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</p>
                                     <p class="text-xs text-warmgold font-bold uppercase tracking-widest mt-1">
-                                        <span data-i18n>Asesor Financiero</span>
+                                        <span data-i18n>Educador Financiero</span>
                                     </p>
                                 </div>
                             </div>
@@ -1627,6 +1699,9 @@
                             </p>
                             <p>
                                 En <strong>El viaje del Crecimiento Compuesto</strong> no hablo solo de rentabilidad. Exploro cómo usar el interés compuesto para comprar tiempo, reducir dependencias y diseñar una vida con propósito. Tú eres el protagonista del viaje: la estrategia pone el mapa, la disciplina mantiene el rumbo y tus valores deciden el destino.
+                            </p>
+                            <p>
+                                Trabajo como <strong>educador financiero</strong>: explico conceptos, construyo herramientas y ayudo a instalar hábitos. Estoy en proceso de obtener la certificación de asesor financiero y, hasta que la tenga, no hago recomendaciones personalizadas de inversión ni gestiono el dinero de nadie. Todo lo que encuentras aquí es contenido educativo: mira <a href="/es/sesiones/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">cómo son las sesiones</a> y el <a href="/es/aviso-legal/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">aviso legal</a>.
                             </p>
                         </div>
                         <div class="pt-4 flex flex-wrap gap-4">

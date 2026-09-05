@@ -6,6 +6,7 @@ summary: El ahorro solo no construye riqueza debido a la inflación. Descubre
   cómo el crecimiento compuesto y las inversiones generan ingresos mientras
   duermes.
 translation_key: putting-your-money-to-work-make-money-while-you-sleep
+link_phrases: poner tu dinero a trabajar, pon tu dinero a trabajar, ingresos mientras duermes
 author: Sandy Bradbury
 translationKey: putting-your-money-to-work-make-money-while-you-sleep
 featuredImageAlt: Escena tranquila de un dormitorio con un gráfico de

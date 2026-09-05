@@ -57,6 +57,23 @@ https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 3
 /:lang/blog/index.html /:lang/blog/ 301!
 /:lang/blog/:slug/index.html /:lang/blog/:slug/ 301!
 
+# The same twin, for the page families the generators added: the calculators,
+# the templates, the glossary, the sessions page and the three legal pages. They
+# are matched with placeholders rather than written out because the section
+# segment is localised - /es/calculadoras/, /en/calculators/, /pt/calculadoras/ -
+# and listing every combination would be twenty-odd lines that have to be
+# extended by hand every time a section is added. The first rule covers a
+# section's own index and any two-segment page; the second covers one page
+# inside a section; the third covers a category archive, which is one level
+# deeper because it lives under /blog/.
+#
+# The /blog/ rules above come first on purpose: the first match wins, and a
+# journal article would otherwise be collapsed by the generic rule to the same
+# destination by a longer route.
+/:lang/:section/index.html /:lang/:section/ 301!
+/:lang/:section/:slug/index.html /:lang/:section/:slug/ 301!
+/:lang/blog/:section/:slug/index.html /:lang/blog/:section/:slug/ 301!
+
 # The extensionless twin of every generated .html page. The canonical form keeps
 # the extension because that is what the sitemap, the hreflang clusters and the
 # pages' own canonical tags have always declared - changing the canonical form
@@ -83,7 +100,9 @@ https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 3
 # fragments stay Spanish because the section ids are the same on all three
 # published pages; only the document changes.
 /pillars /en/#pilares 301
-/simulators /en/#simulador 301
+# /simulators used to land on the home page's simulator section, because that
+# section was the closest thing the site had to a list of them. It now has one.
+/simulators /en/simulators/ 301
 /tools /en/#herramientas 301
 /templates /en/#plantillas 301
 /faq /en/#preguntas-frecuentes 301

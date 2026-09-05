@@ -107,7 +107,8 @@
           "name": "Sandy Bradbury",
           "url": "https://compoundingjourney.com/#biografia",
           "image": "https://compoundingjourney.com/sandy-bradbury-portrait.png",
-          "jobTitle": "Financial Advisor",
+          "jobTitle": "Financial educator",
+          "description": "Financial educator writing about money psychology, budgeting, compound growth and long-term investing. Not an accredited financial adviser: no personal investment recommendations are given and no client money is managed.",
           "worksFor": {
             "@id": "https://compoundingjourney.com/#organization"
           },
@@ -201,7 +202,7 @@
               "name": "¿Por qué podría necesitar un asesor financiero o planificador patrimonial?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Aunque las herramientas online aportan claridad, un asesor financiero te ayuda a conectar los números con tus valores de vida. Te acompaña para definir una estrategia a medida, gestionar emociones durante la volatilidad del mercado, optimizar tu estructura y mantener la disciplina a lo largo del tiempo."
+                "text": "Un asesor financiero acreditado y registrado en la CNMV puede recomendarte productos concretos, gestionar tu cartera y firmar un plan adaptado a tu situación fiscal. Nada de eso se hace en este sitio: aquí encontrarás educación financiera, es decir, las herramientas y el vocabulario para entender tus propios números y llegar a esa conversación sabiendo qué preguntar. Si lo que necesitas es una recomendación personalizada de inversión, búscala en un profesional registrado."
               }
             },
             {
@@ -225,7 +226,7 @@
               "name": "¿El contenido sustituye el asesoramiento financiero personalizado?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son estrictamente educativas e ilustrativas. No constituyen asesoramiento financiero, de inversión o fiscal formal. Para recibir recomendaciones adaptadas a tu contexto, objetivos y tolerancia al riesgo, puedes completar los formularios de diagnóstico o enviarme un mensaje directo."
+                "text": "No, y no puede sustituirlo. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son educativas e ilustrativas: no constituyen asesoramiento financiero, de inversión ni fiscal. Sandy Bradbury es educador financiero y está en proceso de obtener la certificación de asesor financiero; hasta entonces no presta servicios de asesoramiento ni hace recomendaciones personalizadas de productos. Para una recomendación adaptada a tu situación, acude a un asesor registrado en la CNMV."
               }
             }
           ]
@@ -291,7 +292,7 @@
               "name": "Why might I need a financial advisor or wealth planner?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "While online tools provide clarity, a financial advisor helps you connect numbers to your personal life values. An advisor assists in building a customized strategy, managing emotional reactions during market volatility, optimizing tax structures, and keeping your long-term plan disciplined and sustainable."
+                "text": "An accredited adviser, registered with the relevant regulator, can recommend specific products, manage your portfolio and sign off a plan built around your tax situation. None of that happens on this site. What you will find here is financial education: the tools and the vocabulary to understand your own numbers and to walk into that conversation knowing what to ask. If what you need is a personal investment recommendation, get it from a registered professional."
               }
             },
             {
@@ -315,7 +316,7 @@
               "name": "Does this content replace personalized financial advice?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. All tools, calculators, and templates on Compounding Journey are strictly educational and illustrative. They do not constitute formal financial, investment, or tax advice. For tailored recommendations based on your personal context, goals, and risk tolerance, you can complete our financial diagnostic forms or send a direct message through our contact section."
+                "text": "No, and it cannot. Every tool, calculator and template on Compounding Journey is educational and illustrative: none of it is financial, investment or tax advice. Sandy Bradbury is a financial educator and is in the process of obtaining a financial advice certification; until then, no advisory services are provided and no personal product recommendations are made. For a recommendation fitted to your own situation, go to an adviser registered with your national regulator."
               }
             }
           ]
@@ -381,7 +382,7 @@
               "name": "Porque posso precisar de um consultor financeiro ou planejador financeiro?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Embora as ferramentas online tragam clareza, um planejador financeiro ajuda-te a ligar os números aos teus valores de vida. Acompanha-te na definição de uma estratégia à medida, na gestão emocional durante a volatilidade dos mercados, na otimização da tua estrutura e na manutenção da disciplina."
+                "text": "Um consultor financeiro acreditado e registado no regulador pode recomendar-te produtos concretos, gerir a tua carteira e assinar um plano adaptado à tua situação fiscal. Nada disso é feito neste site: aqui encontras educação financeira, ou seja, as ferramentas e o vocabulário para compreender os teus próprios números e chegar a essa conversa sabendo o que perguntar. Se o que precisas é de uma recomendação personalizada de investimento, procura-a num profissional registado."
               }
             },
             {
@@ -405,7 +406,7 @@
               "name": "O conteúdo substitui aconselhamento financeiro personalizado?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Não. Todas as ferramentas, calculadoras e modelos de A Jornada de Crescimento Composto são estritamente educacionais e ilustrativos. Não constituem aconselhamento financeiro, de investimento ou fiscal formal. Para recomendações adaptadas ao teu contexto, objetivos e tolerância ao risco, podes preencher os formulários de diagnóstico ou enviar uma mensagem direta."
+                "text": "Não, e não pode substituí-lo. Todas as ferramentas, calculadoras e modelos de A Jornada de Crescimento Composto são educativos e ilustrativos: não constituem aconselhamento financeiro, de investimento ou fiscal. Sandy Bradbury é educador financeiro e está em processo de obter a certificação de consultor financeiro; até lá não presta serviços de consultoria nem faz recomendações personalizadas de produtos. Para uma recomendação adaptada à tua situação, procura um consultor registado na CMVM."
               }
             }
           ]
@@ -1003,9 +1004,24 @@
             }
         }
 
-        /* Lowered from 1180px: every tablet in portrait and most in landscape fell
-           into the gap and was served the phone hamburger on a 1024px viewport. */
-        @media (min-width: 1024px) {
+        /* 1024px until the nav gained a sixth item, and 1180px before that.
+
+           The pill needs about 487px for six items plus the Freedom Compass
+           button (the arithmetic is written out above the reduced-type band
+           below), and the header has roughly 437px of slack at 1024px, growing
+           a pixel per pixel from there - so it does not actually fit until
+           about 1074px. 1100px is that figure rounded up to somewhere a person
+           would choose, and it leaves the pill 26px in hand at its narrowest.
+           Between 1024 and 1100px the phone drawer is served instead, which is
+           the same trade the site already makes on a tablet in portrait: a
+           drawer that fits beats a pill that pushes the brand name onto two
+           lines.
+
+           DESKTOP_NAV_BREAKPOINT in the page script must match this number: it
+           is what tells the open drawer to close itself when a resize takes the
+           viewport into desktop territory, where the drawer's own toggle is
+           display:none and it could otherwise be left open with no way out. */
+        @media (min-width: 1100px) {
             .desktop-section-nav {
                 display: flex;
                 align-items: center;
@@ -1047,6 +1063,12 @@
                 transform: translateY(-1px);
             }
 
+            /* The second selector cannot match today: the scroll spy sets
+               .is-active from data-section, and every item in the Recursos
+               menu is now a link to a page rather than a section of this one.
+               It is kept because it is the rule that would be missing the day a
+               section anchor moves back into that menu, and a highlighted item
+               inside a menu whose own label stays grey reads as a bug. */
             .desktop-section-nav a.is-active,
             .desktop-resources:has(a.is-active) .desktop-resources-toggle {
                 color: #1E4620;
@@ -1147,25 +1169,30 @@
             }
         }
 
-        /* The pill was full at five items.
+        /* The pill is full at six items, and this is the arithmetic.
 
-           At 1024px exactly - the width at which it replaces the hamburger - the
-           header has about 437px left for it once the logo and brand name, the
-           three flags, the two publication icons and the shell's own padding
-           have taken their share, and the five items plus the Freedom Compass
-           button measure about 439px in Spanish and Portuguese. Adding Contacto
-           costs another 73px, so between 1024 and roughly 1180px the nav would
-           have pushed the brand name into wrapping onto two lines.
+           At its narrowest - 1100px, the width at which it replaces the phone
+           drawer - the header has about 437px + (viewport - 1024px), so about
+           513px, left for it once the logo and brand name, the three flags, the
+           two publication icons and the shell's own padding have taken their
+           share.
 
-           So the type and the padding come down a little for that band only, and
-           are left alone from 1280px up where there is 180px of slack. The
-           padding-block is deliberately unchanged: it is what gives these
+           Measured with the real advances from the subsetted Plus Jakarta Sans,
+           the six items plus the Freedom Compass button come to about 579px in
+           Spanish and Portuguese at full size, and about 487px with the type and
+           the padding reduced as below - which is why the reduced band exists
+           and why the breakpoint had to move up to 1100px with it. Full size
+           fits from about 1166px, so the band is left running to 1279px and the
+           type returns to normal at 1280px, where there is over 100px of slack.
+
+           Sesiones and Diario are what changed the numbers: Diario is a couple
+           of pixels narrower than the Pilares it replaced, and Sesiones costs
+           about 73px at full size and about 60px reduced.
+
+           The padding-block is deliberately unchanged: it is what gives these
            targets their height, and 24px is the floor WCAG 2.2 SC 2.5.8 asks
-           for. Measured with the real advances from the subsetted Plus Jakarta
-           Sans, the six items come to about 429px in Spanish and Portuguese and
-           416px in English, so the pill has a few pixels in hand at 1024px
-           rather than the nothing at all the five items had before. */
-        @media (min-width: 1024px) and (max-width: 1279px) {
+           for. */
+        @media (min-width: 1100px) and (max-width: 1279px) {
             .desktop-section-nav {
                 gap: 0.08rem;
                 padding: 0.2rem;
@@ -1535,14 +1562,36 @@
                 </div>
             </a>
 
-            <!-- Desktop Section Navigation -->
+            <!-- Desktop Section Navigation.
+
+                 Two kinds of destination sit side by side here, and the
+                 difference is deliberate.
+
+                 The journal, the simulators and everything under Recursos are
+                 real pages, generated once per language, so those items carry
+                 data-blog-link or data-section-link and are rewritten to
+                 /es/..., /en/... or /pt/... at build time. FAQ and Contacto
+                 exist only as sections of this document, so they stay
+                 same-page anchors with data-section - the attribute the scroll
+                 spy and the smooth-scroll handler key on. A page link
+                 deliberately has no data-section: it is never "the part of this
+                 page you are reading", and giving it one would light a nav item
+                 up for a page the reader is not even on.
+
+                 Pilares used to be the first item and is not here any more. It
+                 is the strip immediately below the hero - the first thing under
+                 the fold, reached by scrolling once - while Sesiones is a page
+                 that cannot be found at all unless something links it. The pill
+                 has room for six items, so the slot went to the page that needs
+                 it. /pillars still redirects and siteRoutes still maps it, so
+                 the old shortcut and any inbound link to it keep working. -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
-                <a href="#pilares" data-site-route="/pillars" data-section="pilares">
-                    <span lang-content="es">Pilares</span>
-                    <span lang-content="en">Pillars</span>
-                    <span lang-content="pt">Pilares</span>
+                <a href="/es/blog/" data-blog-link>
+                    <span lang-content="es">Diario</span>
+                    <span lang-content="en">Journal</span>
+                    <span lang-content="pt">Diário</span>
                 </a>
-                <a href="#simulador" data-site-route="/simulators" data-section="simulador">
+                <a href="/es/simulators/" data-section-link="simulators">
                     <span lang-content="es">Simuladores</span>
                     <span lang-content="en">Simulators</span>
                     <span lang-content="pt">Simuladores</span>
@@ -1555,33 +1604,49 @@
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="desktop-resources-menu" class="desktop-resources-menu">
-                        <a href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span lang-content="es">Herramientas</span>
-                            <span lang-content="en">Tools</span>
-                            <span lang-content="pt">Ferramentas</span>
+                        <a href="/es/calculadoras/" data-section-link="tools">
+                            <span lang-content="es">Calculadoras</span>
+                            <span lang-content="en">Calculators</span>
+                            <span lang-content="pt">Calculadoras</span>
                         </a>
-                        <a href="#plantillas" data-site-route="/templates" data-section="plantillas">
+                        <a href="/es/plantillas/" data-section-link="templates">
                             <span lang-content="es">Plantillas</span>
                             <span lang-content="en">Templates</span>
                             <span lang-content="pt">Modelos</span>
                         </a>
+                        <a href="/es/glosario/" data-section-link="glossary">
+                            <span lang-content="es">Glosario</span>
+                            <span lang-content="en">Glossary</span>
+                            <span lang-content="pt">Glossário</span>
+                        </a>
+                        <a href="/es/datos/" data-section-link="data">
+                            <span lang-content="es">Datos</span>
+                            <span lang-content="en">Data</span>
+                            <span lang-content="pt">Dados</span>
+                        </a>
                     </div>
                 </div>
+                <a href="/es/sesiones/" data-section-link="sessions">
+                    <span lang-content="es">Sesiones</span>
+                    <span lang-content="en">Sessions</span>
+                    <span lang-content="pt">Sessões</span>
+                </a>
                 <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
                     <span lang-content="es">FAQ</span>
                     <span lang-content="en">FAQ</span>
                     <span lang-content="pt">FAQ</span>
                 </a>
-                <!-- No data-site-route, unlike its five neighbours. That attribute is
-                     the hook for the handler that turns a nav click into a smooth
-                     scroll, and it doubles as the key into `siteRoutes`, which
-                     exists so that arriving at one of the /pillars, /faq, ...
-                     shortcut redirects still lands on the right section. There is no
-                     /contact shortcut, so claiming one here would name a URL that
-                     does not resolve. The plain "#contacto" anchor is picked up by
-                     the fallback handler on the document instead, which gives this
-                     link the same smooth scroll, the same history entry and the same
-                     focus move as the rest of the nav. -->
+                <!-- No data-site-route, unlike FAQ and the Freedom Compass
+                     button. That attribute is the hook for the handler that
+                     turns a nav click into a smooth scroll, and it doubles as
+                     the key into `siteRoutes`, which exists so that arriving at
+                     one of the /pillars, /faq, ... shortcut redirects still
+                     lands on the right section. There is no /contact shortcut,
+                     so claiming one here would name a URL that does not
+                     resolve. The plain "#contacto" anchor is picked up by the
+                     fallback handler on the document instead, which gives this
+                     link the same smooth scroll, the same history entry and the
+                     same focus move as the rest of the nav. -->
                 <a href="#contacto" data-section="contacto">
                     <span lang-content="es">Contacto</span>
                     <span lang-content="en">Contact</span>
@@ -1659,11 +1724,18 @@
                     <span lang-content="en">Navigation</span>
                     <span lang-content="pt">Navegação</span>
                 </p>
+                <!-- The same six items as the desktop pill, in the same
+                     order, pointing at the same places. The drawer has vertical
+                     room the pill does not, so it could carry more - but a
+                     reader who learns the nav on a laptop and then opens it on
+                     a phone should find the nav they already know, and every
+                     item that is here on one and missing on the other is a
+                     support question waiting to happen. -->
                 <nav class="mobile-nav" aria-label="Mobile section navigation">
-                    <a class="mobile-nav-link" href="#pilares" data-site-route="/pillars" data-section="pilares">
-                        <span lang-content="es">Pilares</span><span lang-content="en">Pillars</span><span lang-content="pt">Pilares</span>
+                    <a class="mobile-nav-link" href="/es/blog/" data-blog-link>
+                        <span lang-content="es">Diario</span><span lang-content="en">Journal</span><span lang-content="pt">Diário</span>
                     </a>
-                    <a class="mobile-nav-link" href="#simulador" data-site-route="/simulators" data-section="simulador">
+                    <a class="mobile-nav-link" href="/es/simulators/" data-section-link="simulators">
                         <span lang-content="es">Simuladores</span><span lang-content="en">Simulators</span><span lang-content="pt">Simuladores</span>
                     </a>
                     <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-resources-panel">
@@ -1671,13 +1743,22 @@
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="mobile-resources-panel" class="mobile-resources-panel" hidden>
-                        <a class="mobile-nav-link" href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span lang-content="es">Herramientas</span><span lang-content="en">Tools</span><span lang-content="pt">Ferramentas</span>
+                        <a class="mobile-nav-link" href="/es/calculadoras/" data-section-link="tools">
+                            <span lang-content="es">Calculadoras</span><span lang-content="en">Calculators</span><span lang-content="pt">Calculadoras</span>
                         </a>
-                        <a class="mobile-nav-link" href="#plantillas" data-site-route="/templates" data-section="plantillas">
+                        <a class="mobile-nav-link" href="/es/plantillas/" data-section-link="templates">
                             <span lang-content="es">Plantillas</span><span lang-content="en">Templates</span><span lang-content="pt">Modelos</span>
                         </a>
+                        <a class="mobile-nav-link" href="/es/glosario/" data-section-link="glossary">
+                            <span lang-content="es">Glosario</span><span lang-content="en">Glossary</span><span lang-content="pt">Glossário</span>
+                        </a>
+                        <a class="mobile-nav-link" href="/es/datos/" data-section-link="data">
+                            <span lang-content="es">Datos</span><span lang-content="en">Data</span><span lang-content="pt">Dados</span>
+                        </a>
                     </div>
+                    <a class="mobile-nav-link" href="/es/sesiones/" data-section-link="sessions">
+                        <span lang-content="es">Sesiones</span><span lang-content="en">Sessions</span><span lang-content="pt">Sessões</span>
+                    </a>
                     <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
                     <a class="mobile-nav-link" href="#contacto" data-section="contacto">
                         <span lang-content="es">Contacto</span>
@@ -3167,7 +3248,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">¿Por qué podría necesitar un asesor financiero o planificador patrimonial?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Aunque las herramientas online aportan claridad, un asesor financiero te ayuda a conectar los números con tus valores de vida. Te acompaña para definir una estrategia a medida, gestionar emociones durante la volatilidad del mercado, optimizar tu estructura y mantener la disciplina a lo largo del tiempo.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Un asesor financiero acreditado y registrado en la CNMV puede recomendarte productos concretos, gestionar tu cartera y firmar un plan adaptado a tu situación fiscal. Nada de eso se hace en este sitio: aquí encontrarás educación financiera, es decir, las herramientas y el vocabulario para entender tus propios números y llegar a esa conversación sabiendo qué preguntar. Si lo que necesitas es una recomendación personalizada de inversión, búscala en un profesional registrado.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -3185,7 +3266,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">¿El contenido sustituye el asesoramiento financiero personalizado?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son estrictamente educativas e ilustrativas. No constituyen asesoramiento financiero, de inversión o fiscal formal. Para recibir recomendaciones adaptadas a tu contexto, objetivos y tolerancia al riesgo, puedes completar los formularios de diagnóstico o enviarme un mensaje directo.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No, y no puede sustituirlo. Todas las herramientas, calculadoras y plantillas de El viaje del Crecimiento Compuesto son educativas e ilustrativas: no constituyen asesoramiento financiero, de inversión ni fiscal. Sandy Bradbury es educador financiero y está en proceso de obtener la certificación de asesor financiero; hasta entonces no presta servicios de asesoramiento ni hace recomendaciones personalizadas de productos. Para una recomendación adaptada a tu situación, acude a un asesor registrado en la CNMV.</p>
                 </details>
             </div>
 
@@ -3230,7 +3311,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Why might I need a financial advisor or wealth planner?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">While online tools provide clarity, a financial advisor helps you connect numbers to your personal life values. An advisor assists in building a customized strategy, managing emotional reactions during market volatility, optimizing tax structures, and keeping your long-term plan disciplined and sustainable.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">An accredited adviser, registered with the relevant regulator, can recommend specific products, manage your portfolio and sign off a plan built around your tax situation. None of that happens on this site. What you will find here is financial education: the tools and the vocabulary to understand your own numbers and to walk into that conversation knowing what to ask. If what you need is a personal investment recommendation, get it from a registered professional.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -3248,7 +3329,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Does this content replace personalized financial advice?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. All tools, calculators, and templates on Compounding Journey are strictly educational and illustrative. They do not constitute formal financial, investment, or tax advice. For tailored recommendations based on your personal context, goals, and risk tolerance, you can complete our financial diagnostic forms or send a direct message through our contact section.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No, and it cannot. Every tool, calculator and template on Compounding Journey is educational and illustrative: none of it is financial, investment or tax advice. Sandy Bradbury is a financial educator and is in the process of obtaining a financial advice certification; until then, no advisory services are provided and no personal product recommendations are made. For a recommendation fitted to your own situation, go to an adviser registered with your national regulator.</p>
                 </details>
             </div>
 
@@ -3293,7 +3374,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Porque posso precisar de um consultor financeiro ou planejador financeiro?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Embora as ferramentas online tragam clareza, um planejador financeiro ajuda-te a ligar os números aos teus valores de vida. Acompanha-te na definição de uma estratégia à medida, na gestão emocional durante a volatilidade dos mercados, na otimização da tua estrutura e na manutenção da disciplina.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Um consultor financeiro acreditado e registado no regulador pode recomendar-te produtos concretos, gerir a tua carteira e assinar um plano adaptado à tua situação fiscal. Nada disso é feito neste site: aqui encontras educação financeira, ou seja, as ferramentas e o vocabulário para compreender os teus próprios números e chegar a essa conversa sabendo o que perguntar. Se o que precisas é de uma recomendação personalizada de investimento, procura-a num profissional registado.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -3311,7 +3392,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">O conteúdo substitui aconselhamento financeiro personalizado?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Não. Todas as ferramentas, calculadoras e modelos de A Jornada de Crescimento Composto são estritamente educacionais e ilustrativos. Não constituem aconselhamento financeiro, de investimento ou fiscal formal. Para recomendações adaptadas ao teu contexto, objetivos e tolerância ao risco, podes preencher os formulários de diagnóstico ou enviar uma mensagem direta.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Não, e não pode substituí-lo. Todas as ferramentas, calculadoras e modelos de A Jornada de Crescimento Composto são educativos e ilustrativos: não constituem aconselhamento financeiro, de investimento ou fiscal. Sandy Bradbury é educador financeiro e está em processo de obter a certificação de consultor financeiro; até lá não presta serviços de consultoria nem faz recomendações personalizadas de produtos. Para uma recomendação adaptada à tua situação, procura um consultor registado na CMVM.</p>
                 </details>
             </div>
         </div>
@@ -3333,17 +3414,17 @@
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    <span lang-content="es">Conoce al asesor, sigue la newsletter o cuéntanos directamente tu situación financiera.</span>
-                    <span lang-content="en">Meet the advisor, follow the newsletter, or tell us directly about your financial situation.</span>
-                    <span lang-content="pt">Conhece o consultor, acompanha a newsletter ou fala-nos diretamente sobre a tua situação financeira.</span>
+                    <span lang-content="es">Conoce al educador, sigue la newsletter o cuéntanos directamente tu situación financiera.</span>
+                    <span lang-content="en">Meet the educator, follow the newsletter, or tell us directly about your financial situation.</span>
+                    <span lang-content="pt">Conhece o educador, acompanha a newsletter ou fala-nos diretamente sobre a tua situação financeira.</span>
                 </p>
 
                 <nav class="contact-path-nav" aria-labelledby="contact-heading">
                     <a href="#biografia" class="contact-path-link">
                         <i class="fa-solid fa-user-tie text-warmgold" aria-hidden="true"></i>
-                        <span lang-content="es">Conoce al asesor</span>
-                        <span lang-content="en">Meet the Advisor</span>
-                        <span lang-content="pt">Conhece o consultor</span>
+                        <span lang-content="es">Conoce al educador</span>
+                        <span lang-content="en">Meet the Educator</span>
+                        <span lang-content="pt">Conhece o educador</span>
                     </a>
                     <a href="#contact-newsletter" class="contact-path-link">
                         <i class="fa-regular fa-newspaper text-warmgold" aria-hidden="true"></i>
@@ -3377,7 +3458,7 @@
                                         <!-- Premium Fallback Graphic (shows only if photo is offline/blocked) -->
                                         <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 select-none">
                                             <span class="text-4xl font-extrabold tracking-wider leading-none">SB</span>
-                                            <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Wealth Planner</span>
+                                            <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Financial Educator</span>
                                         </div>
 
                                         <!-- Actual Image Tag with fallback failure support -->
@@ -3396,9 +3477,9 @@
                                 <div class="mt-5 text-center">
                                     <p class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</p>
                                     <p class="text-xs text-warmgold font-bold uppercase tracking-widest mt-1">
-                                        <span lang-content="es">Asesor Financiero</span>
-                                        <span lang-content="en">Financial Advisor</span>
-                                        <span lang-content="pt">Planejador Financeiro</span>
+                                        <span lang-content="es">Educador Financiero</span>
+                                        <span lang-content="en">Financial Educator</span>
+                                        <span lang-content="pt">Educador Financeiro</span>
                                     </p>
                                 </div>
                             </div>
@@ -3425,6 +3506,9 @@
                             <p>
                                 En <strong>El viaje del Crecimiento Compuesto</strong> no hablo solo de rentabilidad. Exploro cómo usar el interés compuesto para comprar tiempo, reducir dependencias y diseñar una vida con propósito. Tú eres el protagonista del viaje: la estrategia pone el mapa, la disciplina mantiene el rumbo y tus valores deciden el destino.
                             </p>
+                            <p>
+                                Trabajo como <strong>educador financiero</strong>: explico conceptos, construyo herramientas y ayudo a instalar hábitos. Estoy en proceso de obtener la certificación de asesor financiero y, hasta que la tenga, no hago recomendaciones personalizadas de inversión ni gestiono el dinero de nadie. Todo lo que encuentras aquí es contenido educativo: mira <a href="/es/sesiones/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">cómo son las sesiones</a> y el <a href="/es/aviso-legal/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">aviso legal</a>.
+                            </p>
                         </div>
 
                         <div lang-content="en" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
@@ -3434,6 +3518,9 @@
                             <p>
                                 In <strong>Compounding Journey</strong>, I go beyond returns. I explore how compound growth can buy time, reduce dependency, and help you design a purposeful life. You are the protagonist of the journey: strategy provides the map, discipline keeps you moving, and your values choose the destination.
                             </p>
+                            <p>
+                                I work as a <strong>financial educator</strong>: I explain concepts, build tools and help people install habits. I am in the process of obtaining a financial advice certification, and until I hold it I make no personal investment recommendations and manage nobody’s money. Everything here is educational content: see <a href="/en/sessions/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">what the sessions are</a> and the <a href="/en/legal-notice/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">legal notice</a>.
+                            </p>
                         </div>
 
                         <div lang-content="pt" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
@@ -3442,6 +3529,9 @@
                             </p>
                             <p>
                                 Em <strong>A Jornada de Crescimento Composto</strong>, não falo apenas de rentabilidade. Exploro como o crescimento composto pode comprar tempo, reduzir dependências e ajudar-te a desenhar uma vida com propósito. Tu és o protagonista da jornada: a estratégia oferece o mapa, a disciplina mantém o rumo e os teus valores escolhem o destino.
+                            </p>
+                            <p>
+                                Trabalho como <strong>educador financeiro</strong>: explico conceitos, construo ferramentas e ajudo a instalar hábitos. Estou em processo de obter a certificação de consultor financeiro e, até a ter, não faço recomendações personalizadas de investimento nem gerio o dinheiro de ninguém. Tudo o que encontras aqui é conteúdo educativo: vê <a href="/pt/sessoes/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">como são as sessões</a> e o <a href="/pt/aviso-legal/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">aviso legal</a>.
                             </p>
                         </div>
 
@@ -4028,6 +4118,47 @@
             pt: "https://preview.mailerlite.io/forms/2524111/193713995121690448/share"
         };
 
+        // Where the nav's page items point, per language.
+        //
+        // scripts/site-routes.mjs decides these URLs; this is a copy, and it
+        // exists because the language switcher rewrites every localized link in
+        // the document at runtime and a page script cannot import a build
+        // script. generate-home-pages.mjs reads this object back out, resolves
+        // the same keys through site-routes and fails the build if the two
+        // disagree - so the copy cannot drift into a set of 404s unnoticed.
+        //
+        // `simulators` used to be the one entry site-routes did not own, and it
+        // pointed at /<lang>/simulator.html - the personal finance simulator -
+        // because that page was the section's entry point before the section
+        // had an index. It now points at the index, like every other entry
+        // here, and site-routes owns all six.
+        const sectionLinks = {
+            es: {
+                simulators: "/es/simulators/",
+                tools: "/es/calculadoras/",
+                templates: "/es/plantillas/",
+                glossary: "/es/glosario/",
+                data: "/es/datos/",
+                sessions: "/es/sesiones/"
+            },
+            en: {
+                simulators: "/en/simulators/",
+                tools: "/en/calculators/",
+                templates: "/en/templates/",
+                glossary: "/en/glossary/",
+                data: "/en/data/",
+                sessions: "/en/sessions/"
+            },
+            pt: {
+                simulators: "/pt/simulators/",
+                tools: "/pt/calculadoras/",
+                templates: "/pt/modelos/",
+                glossary: "/pt/glossario/",
+                data: "/pt/dados/",
+                sessions: "/pt/sessoes/"
+            }
+        };
+
         const assessmentLinks = {
             en: {
                 financialSnapshot: "https://forms.gle/krYTH3FLmy3mat2h7",
@@ -4280,6 +4411,16 @@
 
             document.querySelectorAll('[data-blog-link]').forEach(link => {
                 link.href = `/${normalizedLanguage}/blog/`;
+            });
+
+            // The nav items that are pages rather than sections of this one.
+            // On a pre-rendered document this re-asserts the href the build
+            // already wrote; it earns its keep when the template is opened
+            // directly and on the ?lang= apex, where the language is switched
+            // without a navigation.
+            document.querySelectorAll('[data-section-link]').forEach(link => {
+                const target = sectionLinks[normalizedLanguage][link.dataset.sectionLink];
+                if (target) link.href = target;
             });
 
             document.querySelectorAll('[data-assessment-link]').forEach(link => {
@@ -4882,6 +5023,23 @@
             }
         }
 
+        // The width at which the pill nav replaces the phone drawer. It is the
+        // same number as the two nav media queries in this page's CSS, written
+        // twice because a stylesheet breakpoint cannot be read back out of one;
+        // the comment above `@media (min-width: 1100px)` is the other half of
+        // this pair, and both say so.
+        const DESKTOP_NAV_BREAKPOINT = 1100;
+
+        // The apex shortcuts, mapped to the section each one lands on. Every
+        // key here is a 301 in _redirects, and this map is what makes arriving
+        // through one of them scroll to the right place rather than the top of
+        // the page.
+        //
+        // The nav only links two of them now - /faq and /assessment - because
+        // the tools and templates items point at their own pages instead. The
+        // other four stay because the redirects stay: they are the URLs older
+        // links and search results still use, and the sections they name are all
+        // still on this page.
         const siteRoutes = {
             '/pillars': 'pilares',
             '/simulators': 'simulador',
@@ -5122,8 +5280,16 @@
             // history. Those paths are apex redirects, so an English reader who
             // middle-clicked the link opened the Spanish page, and every section
             // ended up reachable at two URLs that crawlers had to reconcile.
-            // The links are now plain same-page anchors; this handler only adds
-            // the menu-closing and smooth-scroll behaviour on top of them.
+            // The links that still carry this attribute are plain same-page
+            // anchors; this handler only adds the menu-closing and smooth-scroll
+            // behaviour on top of them.
+            //
+            // Most of the nav no longer arrives here. Six of its items used to
+            // be sections of this page and four of them are now pages of their
+            // own, which are ordinary links: no attribute, no interception, and
+            // deliberately so - a real URL should behave like one, including
+            // under a middle click, a long press and a "copy link address".
+            // What is left is FAQ, Contacto and the Freedom Compass button.
             document.querySelectorAll('[data-site-route]').forEach(link => {
                 link.addEventListener('click', event => {
                     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -5135,6 +5301,29 @@
                     closeDesktopResources();
                     closeMobileMenu(false);
                     scrollToSiteSection(sectionId);
+                });
+            });
+
+            // The other half of that split: the nav items that are real pages.
+            // The click is left completely alone - no preventDefault, no history
+            // entry of our own - but the menu it was made in still has to close.
+            //
+            // The drawer is the reason. While it is open it holds
+            // body{overflow:hidden} and marks the rest of the document inert, so
+            // a page link tapped inside it and left open means two things go
+            // wrong: on a slow connection the reader taps and watches a screen
+            // that has not changed, and coming back through bfcache restores the
+            // page with the drawer still over it. Closing it first costs nothing
+            // if the navigation is instant.
+            //
+            // Bound by attribute rather than by position in the nav, so the
+            // handler also covers the same links in the header and the body,
+            // where the menus are already shut and closing them is a no-op.
+            document.querySelectorAll('[data-section-link], [data-blog-link]').forEach(link => {
+                link.addEventListener('click', event => {
+                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    closeDesktopResources();
+                    closeMobileMenu(false);
                 });
             });
 
@@ -5162,7 +5351,7 @@
             });
 
             window.addEventListener('resize', () => {
-                if (window.innerWidth >= 1024) closeMobileMenu(false);
+                if (window.innerWidth >= DESKTOP_NAV_BREAKPOINT) closeMobileMenu(false);
             });
         }
 

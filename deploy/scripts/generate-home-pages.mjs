@@ -22,6 +22,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { jsonLdScript } from './markdown.mjs';
 import { readSharedCatalog } from './shared-catalog.mjs';
+import { sectionPath } from './site-routes.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -268,6 +269,65 @@ function extractObjectLiteral(source, name) {
   throw new Error(`Could not read the "${name}" object from the homepage template.`);
 }
 
+// The nav's page items are localized in two places, and this is what keeps the
+// two honest.
+//
+// site-routes.mjs decides where the calculators, the templates, the glossary,
+// the data page and the sessions page live in each language. The template also
+// carries a `sectionLinks` table, because the language switcher rewrites the
+// document's localized links in the browser and cannot import a build script.
+// A copy that nobody checks is a copy that eventually points at a 404 in one
+// language only - the kind of breakage that survives a review because the page
+// it is on looks perfect in the other two. So the copy is compared against
+// site-routes here, on every build, key by key and value by value.
+//
+// `simulators` was the one key site-routes did not own, and it was wrong: it
+// pointed at /<lang>/simulator.html, so the nav item labelled "Simuladores"
+// opened the personal finance simulator instead of the list of five. The
+// section now has an index, site-routes owns its URL like the rest, and this
+// checks it like the rest.
+const sectionLinkKeys = ['simulators', 'tools', 'templates', 'glossary', 'data', 'sessions'];
+
+function expectedSectionLinks(language) {
+  const expected = {};
+  for (const key of sectionLinkKeys) expected[key] = sectionPath(key, language);
+  return expected;
+}
+
+function assertSectionLinks(sectionLinks) {
+  const problems = [];
+
+  for (const language of languages) {
+    const actual = sectionLinks[language];
+    if (!actual) {
+      problems.push(`sectionLinks has no "${language}" table`);
+      continue;
+    }
+
+    const expected = expectedSectionLinks(language);
+
+    for (const [key, target] of Object.entries(expected)) {
+      if (actual[key] !== target) {
+        problems.push(`sectionLinks.${language}.${key} is ${JSON.stringify(actual[key] ?? null)}, site-routes says "${target}"`);
+      }
+    }
+
+    for (const key of Object.keys(actual)) {
+      if (!(key in expected)) {
+        problems.push(`sectionLinks.${language}.${key} is not a known section - remove it, or add it to sectionLinkKeys and to site-routes`);
+      }
+    }
+  }
+
+  if (problems.length > 0) {
+    throw new Error(
+      'The homepage template\'s sectionLinks table disagrees with scripts/site-routes.mjs:\n  '
+      + problems.join('\n  ')
+      + '\nsite-routes.mjs is the source of truth; edit the template to match it.'
+    );
+  }
+}
+
 // --- head, structured data and link rewriting ------------------------------
 
 function replaceTagAttribute(html, selector, attribute, value) {
@@ -498,6 +558,22 @@ function rewriteLocalizedLinks(html, language, config) {
 
     if (/\sdata-blog-link\b/.test(tag.attributes)) {
       raw = setAttribute(raw, 'href', `/${language}/blog/`);
+    }
+
+    // The nav items that are pages of their own rather than sections of the
+    // home page. Unlike the branches around it this one throws rather than
+    // leaving the href alone: the template ships the Spanish URL as its
+    // placeholder, so a mistyped key would not fail, it would quietly serve
+    // /es/glosario/ to English and Portuguese readers.
+    const sectionLink = tag.attributes.match(/\sdata-section-link="([^"]+)"/);
+    if (sectionLink) {
+      const target = config.sectionLinks[language]?.[sectionLink[1]];
+      if (!target) {
+        throw new Error(
+          `data-section-link="${sectionLink[1]}" has no "${language}" target in the template's sectionLinks table.`
+        );
+      }
+      raw = setAttribute(raw, 'href', target);
     }
 
     const assessment = tag.attributes.match(/\sdata-assessment-link="([^"]+)"/);
@@ -872,8 +948,11 @@ const config = {
   newsletterLinks: extractObjectLiteral(template, 'newsletterLinks'),
   assessmentLinks: extractObjectLiteral(template, 'assessmentLinks'),
   templateDownloads: extractObjectLiteral(template, 'templateDownloads'),
+  sectionLinks: extractObjectLiteral(template, 'sectionLinks'),
   formCopy: extractObjectLiteral(template, 'formCopy')
 };
+
+assertSectionLinks(config.sectionLinks);
 
 for (const language of languages) {
   const split = keepOnlyLanguage(template, language);

@@ -7,6 +7,7 @@ summary: Aprenda a construir riqueza de longo prazo com bons hábitos
  financeiros. Entenda a diferença entre ativos, passivos, dívida boa e fluxo de
  caixa.
 translation_key: building-wealth-good-financial-habits
+link_phrases: hábitos financeiros, bons hábitos financeiros, Pai Rico Pai Pobre
 author: Sandy Bradbury
 ---
 Bons hábitos vão muito além do desenvolvimento pessoal — eles são a verdadeira base do sucesso financeiro de longo prazo. Em seu famoso livro \*Pai Rico, Pai Pobre\*, Robert Kiyosaki enfatiza que construir riqueza não é apenas sobre o quanto você ganha, mas sobre como você gerencia o seu dinheiro e o faz trabalhar para a sua felicidade e liberdade.

@@ -5,6 +5,7 @@ category: Investimentos
 summary: Poupar sozinho não constrói riqueza devido à inflação. Descubra como os
   juros compostos e os investimentos geram rendimento enquanto dorme.
 translation_key: putting-your-money-to-work-make-money-while-you-sleep
+link_phrases: pôr o dinheiro a trabalhar, fazer o dinheiro trabalhar, ganhar dinheiro enquanto dorme
 author: Sandy Bradbury
 ---
 Quando o objetivo é construir riqueza, a mudança de mentalidade mais importante é perceber que ganhar dinheiro não precisa de estar limitado às horas em que está a trabalhar ativamente[cite: 1]. Quem alcança a independência financeira compreende que o dinheiro deve trabalhar para si[cite: 1]. Este conceito, conhecido como **ganhar dinheiro enquanto dorme**, baseia-se em criar sistemas que gerem rendimento passivo[cite: 1].

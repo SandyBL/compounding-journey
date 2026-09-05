@@ -72,6 +72,21 @@ for (const language of languages) {
       summary: attributes.summary || '',
       author: attributes.author || defaultAuthor,
       translationKey: attributes.translation_key || path.basename(file, '.md'),
+      // Optional, comma-separated. The phrases that, when they appear in
+      // *another* article's prose, should become a link to this one - so
+      // "regla del 4 %" anywhere on the site reaches the piece that explains
+      // the rule. scripts/inline-links.mjs does the placing; this is only the
+      // list of handles, and it lives in the front matter because the author is
+      // the only one who knows what their article is the best answer to.
+      //
+      // Titles are not usable as handles on their own: nobody writes a
+      // colon-and-subtitle headline verbatim in the middle of a paragraph. That
+      // is why an article with no phrases simply never becomes a link target
+      // rather than falling back to matching its title.
+      linkPhrases: (attributes.link_phrases || '')
+        .split(',')
+        .map((phrase) => phrase.trim())
+        .filter(Boolean),
       // Computed here rather than by each generator that shows it, so the number
       // on a home page card is the same number the article's own header states.
       readingTime: readingMinutes(body),

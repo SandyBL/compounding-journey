@@ -587,9 +587,24 @@
             }
         }
 
-        /* Lowered from 1180px: every tablet in portrait and most in landscape fell
-           into the gap and was served the phone hamburger on a 1024px viewport. */
-        @media (min-width: 1024px) {
+        /* 1024px until the nav gained a sixth item, and 1180px before that.
+
+           The pill needs about 487px for six items plus the Freedom Compass
+           button (the arithmetic is written out above the reduced-type band
+           below), and the header has roughly 437px of slack at 1024px, growing
+           a pixel per pixel from there - so it does not actually fit until
+           about 1074px. 1100px is that figure rounded up to somewhere a person
+           would choose, and it leaves the pill 26px in hand at its narrowest.
+           Between 1024 and 1100px the phone drawer is served instead, which is
+           the same trade the site already makes on a tablet in portrait: a
+           drawer that fits beats a pill that pushes the brand name onto two
+           lines.
+
+           DESKTOP_NAV_BREAKPOINT in the page script must match this number: it
+           is what tells the open drawer to close itself when a resize takes the
+           viewport into desktop territory, where the drawer's own toggle is
+           display:none and it could otherwise be left open with no way out. */
+        @media (min-width: 1100px) {
             .desktop-section-nav {
                 display: flex;
                 align-items: center;
@@ -631,6 +646,12 @@
                 transform: translateY(-1px);
             }
 
+            /* The second selector cannot match today: the scroll spy sets
+               .is-active from data-section, and every item in the Recursos
+               menu is now a link to a page rather than a section of this one.
+               It is kept because it is the rule that would be missing the day a
+               section anchor moves back into that menu, and a highlighted item
+               inside a menu whose own label stays grey reads as a bug. */
             .desktop-section-nav a.is-active,
             .desktop-resources:has(a.is-active) .desktop-resources-toggle {
                 color: #1E4620;
@@ -731,25 +752,30 @@
             }
         }
 
-        /* The pill was full at five items.
+        /* The pill is full at six items, and this is the arithmetic.
 
-           At 1024px exactly - the width at which it replaces the hamburger - the
-           header has about 437px left for it once the logo and brand name, the
-           three flags, the two publication icons and the shell's own padding
-           have taken their share, and the five items plus the Freedom Compass
-           button measure about 439px in Spanish and Portuguese. Adding Contacto
-           costs another 73px, so between 1024 and roughly 1180px the nav would
-           have pushed the brand name into wrapping onto two lines.
+           At its narrowest - 1100px, the width at which it replaces the phone
+           drawer - the header has about 437px + (viewport - 1024px), so about
+           513px, left for it once the logo and brand name, the three flags, the
+           two publication icons and the shell's own padding have taken their
+           share.
 
-           So the type and the padding come down a little for that band only, and
-           are left alone from 1280px up where there is 180px of slack. The
-           padding-block is deliberately unchanged: it is what gives these
+           Measured with the real advances from the subsetted Plus Jakarta Sans,
+           the six items plus the Freedom Compass button come to about 579px in
+           Spanish and Portuguese at full size, and about 487px with the type and
+           the padding reduced as below - which is why the reduced band exists
+           and why the breakpoint had to move up to 1100px with it. Full size
+           fits from about 1166px, so the band is left running to 1279px and the
+           type returns to normal at 1280px, where there is over 100px of slack.
+
+           Sesiones and Diario are what changed the numbers: Diario is a couple
+           of pixels narrower than the Pilares it replaced, and Sesiones costs
+           about 73px at full size and about 60px reduced.
+
+           The padding-block is deliberately unchanged: it is what gives these
            targets their height, and 24px is the floor WCAG 2.2 SC 2.5.8 asks
-           for. Measured with the real advances from the subsetted Plus Jakarta
-           Sans, the six items come to about 429px in Spanish and Portuguese and
-           416px in English, so the pill has a few pixels in hand at 1024px
-           rather than the nothing at all the five items had before. */
-        @media (min-width: 1024px) and (max-width: 1279px) {
+           for. */
+        @media (min-width: 1100px) and (max-width: 1279px) {
             .desktop-section-nav {
                 gap: 0.08rem;
                 padding: 0.2rem;

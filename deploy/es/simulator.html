@@ -62,6 +62,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Simuladores",
+          "item": "https://compoundingjourney.com/es/simulators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Simulador de Finanzas Personales y Riqueza",
           "item": "https://compoundingjourney.com/es/simulator.html"
         }
@@ -84,6 +90,10 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.es.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
 
@@ -149,6 +159,14 @@
             </div>
         </div>
     </header>
+    <!-- The site's section nav: the only navigation on a simulator that points
+         outside the simulators. Rendered from the one table in
+         scripts/section-nav.mjs, with the Simuladores tab marked as the current
+         page, and placed outside the sticky <header> like on every other family
+         - see the .site-section-nav comment in assets/css/header.css. -->
+  <nav class="site-section-nav" aria-label="Secciones del sitio">
+    <div class="site-section-tabs"><a href="/es/blog/">Diario</a><a href="/es/simulators/" aria-current="true">Simuladores</a><a href="/es/calculadoras/">Calculadoras</a><a href="/es/plantillas/">Plantillas</a><a href="/es/glosario/">Glosario</a><a href="/es/datos/">Datos</a><a href="/es/sesiones/">Sesiones</a></div>
+  </nav>
 
     <!-- Page intro. The hub's heading used to be the first block inside <main>,
          set on the page's own cream, while the four standalone tools opened on a
@@ -221,6 +239,30 @@
 
     <!-- CONTENEDOR PRINCIPAL -->
     <main id="main" tabindex="-1" class="sim-main">
+
+        <!-- The persistent compliance notice.
+
+             Every calculator and glossary page carries one (see the
+             disclaimer() helper in scripts/page-shell.mjs); the simulators
+             carried a single line in `.simulator-footer`, and that bar is
+             docked to the viewport and hides itself 2.5s after the visitor
+             stops scrolling. A notice that disappears on a timer is not a
+             notice, and these five pages are the ones that most need one:
+             they print money figures and dates that look like predictions,
+             which is exactly the reading the notice exists to prevent.
+
+             So it sits in the flow, above the tool, where it is visible before
+             the first number is. The text is in SHARED_STRINGS in
+             scripts/generate-simulator-pages.mjs rather than in this
+             simulator's sidecar, because all five have to say the same thing.
+
+             No painted background, for the reason `.sim-crumbs` gives: three
+             palettes share these templates and only conflict over large filled
+             areas. -->
+        <aside class="sim-disclaimer" role="note" aria-labelledby="sim-disclaimer-title">
+            <p class="sim-disclaimer__title" id="sim-disclaimer-title">Contenido educativo, no asesoramiento financiero</p>
+            <p class="sim-disclaimer__body">Sandy Bradbury es educador financiero, no asesor financiero acreditado. Este simulador es una herramienta educativa: sus resultados son estimaciones ilustrativas calculadas a partir de los supuestos que introduces, no predicen rentabilidades reales y no constituyen asesoramiento ni una recomendación para comprar o vender ningún producto. <a href="/es/aviso-legal/">Leer el aviso legal completo</a></p>
+        </aside>
 
         <!-- PUNTOS DE PROGRESO (STEPPER) -->
         <div class="mb-6">
@@ -414,7 +456,7 @@
                     <h3 class="sim-explainer__heading" id="reading-title">Sigue leyendo</h3>
                     <p>El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.</p>
                     <ul class="sim-explainer__list">
-                        <li><a href="/es/blog/sistema-dinero-lento/">El sistema de dinero lento: una forma más tranquila de crear patrimonio</a></li>
+                        <li><a href="/es/blog/la-psicologia-de-las-decisiones-de-dinero-por-que-saber-las-cuentas-no-basta/">La psicología de las decisiones de dinero: por qué saber las cuentas no basta</a></li>
                         <li><a href="/es/blog/gastar-con-proposito-como-alinear-tu-dinero-con-lo-que-realmente-importa/">Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa</a></li>
                         <li><a href="/es/blog/">Todas las entradas del diario</a></li>
                     </ul>
@@ -491,6 +533,7 @@
     <script src="/assets/js/sim-cta.js?v=source" defer></script>
     <script src="/assets/js/sim-actions.js?v=source" defer></script>
     <script src="/assets/js/sim-footer.js?v=source" defer></script>
+    <script src="/assets/js/section-nav.js?v=source" defer></script>
     <script src="/assets/js/sim-leaderboard.js?v=source" defer></script>
     <script src="/assets/js/sim-chart-theme.js?v=source" defer></script>
     <script src="/assets/js/sim-simulator-hub.es.js?v=source" defer></script>

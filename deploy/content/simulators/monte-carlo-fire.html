@@ -11,7 +11,7 @@
   <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="{{lang.locale}}"><meta property="og:title" content="{{metaContent3}}"><meta property="og:description" content="{{metaContent4}}"><meta property="og:url" content="https://compoundingjourney.com{{lang.dir}}simulators/monte-carlo-fire.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{metaContent3}}"><meta name="twitter:description" content="{{metaContent4}}"><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
   <script type="application/ld+json">{{hFull2}}FIRE {{hFull3}}Monte {{hFull4}}Carlo {{hFull5}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"{{explCrumbHome}}","item":"https://compoundingjourney.com{{lang.home}}"},{"@type":"ListItem","position":2,"name":"{{explCrumbSimulators}}","item":"https://compoundingjourney.com{{lang.dir}}simulator.html"},{"@type":"ListItem","position":3,"name":"{{explCrumbSelf}}"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"{{explCrumbHome}}","item":"https://compoundingjourney.com{{lang.home}}"},{"@type":"ListItem","position":2,"name":"{{explCrumbSimulators}}","item":"https://compoundingjourney.com{{lang.simulators}}"},{"@type":"ListItem","position":3,"name":"{{explCrumbSelf}}"}]}</script>
   
   
   <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
@@ -84,6 +84,11 @@
             </div>
         </div>
     </header>
+    <!-- The site's section nav: the only navigation on a simulator that points
+         outside the simulators. Rendered from the one table in
+         scripts/section-nav.mjs, with the Simuladores tab marked as the current
+         page, and placed outside the sticky <header> like on every other family
+         - see the .site-section-nav comment in assets/css/header.css. -->{{page.sectionNav}}
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
@@ -105,7 +110,7 @@
                 <p class="sim-intro__lede">{{mt15}}Monte Carlo {{mt152}}</p>
                 <nav aria-label="{{mt3AriaLabel}}" class="sim-intro__nav">
                     <span class="sim-intro__navlabel">{{textSlate500}}</span>
-                    <a href="{{lang.dir}}simulator.html" class="sim-intro__link">{{px25}}</a>
+                    <a href="{{lang.simulators}}" class="sim-intro__link">{{px25}}</a>
                     <a href="{{lang.dir}}simulators/freedom-calendar.html" class="sim-intro__link">{{px252}}</a>
                     <a href="{{lang.dir}}simulators/market-time-machine.html" class="sim-intro__link">{{px253}}</a>
                     <a href="{{lang.dir}}simulators/passive-income-engine.html" class="sim-intro__link">{{px254}}</a>
@@ -133,10 +138,34 @@
         <nav class="sim-crumbs" aria-label="{{explCrumbLabel}}">
             <ol>
                 <li><a href="{{lang.home}}">{{explCrumbHome}}</a></li>
-                <li><a href="{{lang.dir}}simulator.html">{{explCrumbSimulators}}</a></li>
+                <li><a href="{{lang.simulators}}">{{explCrumbSimulators}}</a></li>
                 <li><span aria-current="page">{{explCrumbSelf}}</span></li>
             </ol>
         </nav>
+
+        <!-- The persistent compliance notice.
+
+             Every calculator and glossary page carries one (see the
+             disclaimer() helper in scripts/page-shell.mjs); the simulators
+             carried a single line in `.simulator-footer`, and that bar is
+             docked to the viewport and hides itself 2.5s after the visitor
+             stops scrolling. A notice that disappears on a timer is not a
+             notice, and these five pages are the ones that most need one:
+             they print money figures and dates that look like predictions,
+             which is exactly the reading the notice exists to prevent.
+
+             So it sits in the flow, above the tool, where it is visible before
+             the first number is. The text is in SHARED_STRINGS in
+             scripts/generate-simulator-pages.mjs rather than in this
+             simulator's sidecar, because all five have to say the same thing.
+
+             No painted background, for the reason `.sim-crumbs` gives: three
+             palettes share these templates and only conflict over large filled
+             areas. -->
+        <aside class="sim-disclaimer" role="note" aria-labelledby="sim-disclaimer-title">
+            <p class="sim-disclaimer__title" id="sim-disclaimer-title">{{shared.disclaimerTitle}}</p>
+            <p class="sim-disclaimer__body">{{shared.disclaimerBody}} <a href="{{lang.notice}}">{{shared.disclaimerLink}}</a></p>
+        </aside>
 
 
     <!-- ================================================================= -->
@@ -1785,6 +1814,73 @@
       return 1000;
     }
 
+    /**
+     * The assumptions the flight was flown under, in the shape the endpoint
+     * stores them.
+     *
+     * Sent with the score rather than derived from it later, because none of it
+     * can be derived from it later: a score of 5,800 does not say whether it
+     * came from withdrawing 3% over thirty years or 5% over fifty, and those
+     * are the two runs anybody reading a published average would want told
+     * apart. The board shows none of this. It is recorded so that "what do
+     * people actually assume about safe withdrawal rates" is a question this
+     * site can answer with its own numbers.
+     *
+     * The withdrawal rate is computed here rather than server-side and carried
+     * in basis points, because the stored column rounds to whole numbers and a
+     * rate rounded to a whole percent is the wrong resolution for the one
+     * argument it exists to settle. A run whose starting capital was cleared to
+     * zero sends no rate at all instead of an infinity: the field is optional,
+     * and a missing value is honest where a placeholder would enter the average.
+     */
+    function flightAssumptions() {
+      const assumptions = {
+        startCapital: recordable(state.nestEgg, 0, 1000000000),
+        annualSpending: recordable(state.annualSpending, 0, 100000000),
+        startAge: recordable(state.startAge, 18, 100),
+        horizonYears: recordable(state.targetAge - state.startAge, 1, 90),
+        pctStocks: recordable(state.pctStocks, 0, 100),
+        pctBonds: recordable(state.pctBonds, 0, 100),
+        pctCash: recordable(state.pctCash, 0, 100),
+        targetDateFund: !!state.useTargetDateFund,
+        marketSequence: state.marketSequence,
+        // Which levers were pulled, whether or not they were pulled in time.
+        tacticJob: !!state.actJob,
+        tacticCutSpend: !!state.actCutSpend,
+        tacticCashBuffer: !!state.actCashBuffer,
+        tacticGuardrails: !!state.actGuardrails,
+        tacticDownsize: !!state.actDownsize,
+        tacticPension: !!state.actPension
+      };
+
+      if (state.nestEgg > 0) {
+        assumptions.withdrawalBps = recordable((state.annualSpending / state.nestEgg) * 10000, 0, 5000);
+      }
+
+      return assumptions;
+    }
+
+    /**
+     * The value if it is one the record can hold, and nothing if it is not.
+     *
+     * Every field above comes from a number box a visitor can type anything
+     * into, and the endpoint refuses a write whose details fall outside the
+     * range it declares. Somebody modelling a €1 portfolio spending €45,000 a
+     * year has a withdrawal rate of 450,000 basis points, which is a real
+     * thing to try in a simulator and is not a rate; left in, it would cost
+     * them the score they earned, and clamped to 5,000 it would enter every
+     * published average as a 50% withdrawal that nobody chose.
+     *
+     * So an impossible value is dropped instead. The field is optional at the
+     * far end, the aggregate counts how many runs actually carried it, and a
+     * missing number stays missing rather than becoming a wrong one.
+     */
+    function recordable(value, min, max) {
+      const number = Math.round(Number(value));
+      if (!Number.isFinite(number) || number < min || number > max) return undefined;
+      return number;
+    }
+
     function registerScoreToLeaderboard(pilot, boardKey, reached100, crashYears, tacticYears, finalBalance) {
 {{minHScreen78}}      let baseScore = reached100 ? 5000 : 1000;
       let catBonus = getCategoryBonus(boardKey);
@@ -1820,12 +1916,15 @@
         // remaining columns are carried as details because the board displays
         // them and does not rank on them.
         tiebreak: nestEgg,
-        details: {
-          reached100: !!reached100,
-          crashYears: crashYears || 0,
-          tacticYears: tacticYears || 0,
-          finalBalance: nestEgg
-        }
+        details: Object.assign(
+          {
+            reached100: !!reached100,
+            crashYears: crashYears || 0,
+            tacticYears: tacticYears || 0,
+            finalBalance: nestEgg
+          },
+          flightAssumptions()
+        )
       })
         .then(function (result) {
           if (token !== leaderboardRequest) return;

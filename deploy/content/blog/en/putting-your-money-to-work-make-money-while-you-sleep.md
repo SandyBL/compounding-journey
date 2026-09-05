@@ -6,6 +6,7 @@ summary: Saving alone won't build wealth due to inflation. Discover how compound
   growth, stocks, real estate, and passive streams let your money work while you
   sleep.
 translation_key: putting-your-money-to-work-make-money-while-you-sleep
+link_phrases: put your money to work, putting your money to work, make money while you sleep
 author: Sandy Bradbury
 translationKey: putting-your-money-to-work-make-money-while-you-sleep
 featuredImageAlt: A peaceful bedroom scene with a digital growth graph

@@ -65,6 +65,47 @@
             pt: "https://preview.mailerlite.io/forms/2524111/193713995121690448/share"
         };
 
+        // Where the nav's page items point, per language.
+        //
+        // scripts/site-routes.mjs decides these URLs; this is a copy, and it
+        // exists because the language switcher rewrites every localized link in
+        // the document at runtime and a page script cannot import a build
+        // script. generate-home-pages.mjs reads this object back out, resolves
+        // the same keys through site-routes and fails the build if the two
+        // disagree - so the copy cannot drift into a set of 404s unnoticed.
+        //
+        // `simulators` used to be the one entry site-routes did not own, and it
+        // pointed at /<lang>/simulator.html - the personal finance simulator -
+        // because that page was the section's entry point before the section
+        // had an index. It now points at the index, like every other entry
+        // here, and site-routes owns all six.
+        const sectionLinks = {
+            es: {
+                simulators: "/es/simulators/",
+                tools: "/es/calculadoras/",
+                templates: "/es/plantillas/",
+                glossary: "/es/glosario/",
+                data: "/es/datos/",
+                sessions: "/es/sesiones/"
+            },
+            en: {
+                simulators: "/en/simulators/",
+                tools: "/en/calculators/",
+                templates: "/en/templates/",
+                glossary: "/en/glossary/",
+                data: "/en/data/",
+                sessions: "/en/sessions/"
+            },
+            pt: {
+                simulators: "/pt/simulators/",
+                tools: "/pt/calculadoras/",
+                templates: "/pt/modelos/",
+                glossary: "/pt/glossario/",
+                data: "/pt/dados/",
+                sessions: "/pt/sessoes/"
+            }
+        };
+
         const assessmentLinks = {
             en: {
                 financialSnapshot: "https://forms.gle/krYTH3FLmy3mat2h7",
@@ -83,7 +124,8 @@
         const templateDownloads = {
             en: {
                 monthlyAnalysis: {
-                    href: "https://pay.kiwify.com.br/1K9syUk"
+                    href: "/assets/templates/en/monthly-balance-analysis.xlsx",
+                    filename: "Template Monthly Balance Analysis.xlsx"
                 },
                 expenseManagement: {
                     href: "/assets/templates/en/expense-management.xlsx",
@@ -96,7 +138,8 @@
             },
             es: {
                 monthlyAnalysis: {
-                    href: "https://pay.kiwify.com.br/RyUPxbu"
+                    href: "/assets/templates/es/analisis-balance-mensual.xlsx",
+                    filename: "Plantilla de Analisis del Balance Mensual.xlsx"
                 },
                 expenseManagement: {
                     href: "/assets/templates/es/gestion-de-gastos.xlsx",
@@ -109,7 +152,8 @@
             },
             pt: {
                 monthlyAnalysis: {
-                    href: "https://pay.kiwify.com.br/cIkE63K"
+                    href: "/assets/templates/pt/analise-balanco-mensal.xlsx",
+                    filename: "Modelo de Analise Balanco Mensal.xlsx"
                 },
                 expenseManagement: {
                     href: "/assets/templates/pt/gestao-de-despesas.xlsx",
@@ -314,6 +358,16 @@
 
             document.querySelectorAll('[data-blog-link]').forEach(link => {
                 link.href = `/${normalizedLanguage}/blog/`;
+            });
+
+            // The nav items that are pages rather than sections of this one.
+            // On a pre-rendered document this re-asserts the href the build
+            // already wrote; it earns its keep when the template is opened
+            // directly and on the ?lang= apex, where the language is switched
+            // without a navigation.
+            document.querySelectorAll('[data-section-link]').forEach(link => {
+                const target = sectionLinks[normalizedLanguage][link.dataset.sectionLink];
+                if (target) link.href = target;
             });
 
             document.querySelectorAll('[data-assessment-link]').forEach(link => {
@@ -916,6 +970,23 @@
             }
         }
 
+        // The width at which the pill nav replaces the phone drawer. It is the
+        // same number as the two nav media queries in this page's CSS, written
+        // twice because a stylesheet breakpoint cannot be read back out of one;
+        // the comment above `@media (min-width: 1100px)` is the other half of
+        // this pair, and both say so.
+        const DESKTOP_NAV_BREAKPOINT = 1100;
+
+        // The apex shortcuts, mapped to the section each one lands on. Every
+        // key here is a 301 in _redirects, and this map is what makes arriving
+        // through one of them scroll to the right place rather than the top of
+        // the page.
+        //
+        // The nav only links two of them now - /faq and /assessment - because
+        // the tools and templates items point at their own pages instead. The
+        // other four stay because the redirects stay: they are the URLs older
+        // links and search results still use, and the sections they name are all
+        // still on this page.
         const siteRoutes = {
             '/pillars': 'pilares',
             '/simulators': 'simulador',
@@ -1156,8 +1227,16 @@
             // history. Those paths are apex redirects, so an English reader who
             // middle-clicked the link opened the Spanish page, and every section
             // ended up reachable at two URLs that crawlers had to reconcile.
-            // The links are now plain same-page anchors; this handler only adds
-            // the menu-closing and smooth-scroll behaviour on top of them.
+            // The links that still carry this attribute are plain same-page
+            // anchors; this handler only adds the menu-closing and smooth-scroll
+            // behaviour on top of them.
+            //
+            // Most of the nav no longer arrives here. Six of its items used to
+            // be sections of this page and four of them are now pages of their
+            // own, which are ordinary links: no attribute, no interception, and
+            // deliberately so - a real URL should behave like one, including
+            // under a middle click, a long press and a "copy link address".
+            // What is left is FAQ, Contacto and the Freedom Compass button.
             document.querySelectorAll('[data-site-route]').forEach(link => {
                 link.addEventListener('click', event => {
                     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -1169,6 +1248,29 @@
                     closeDesktopResources();
                     closeMobileMenu(false);
                     scrollToSiteSection(sectionId);
+                });
+            });
+
+            // The other half of that split: the nav items that are real pages.
+            // The click is left completely alone - no preventDefault, no history
+            // entry of our own - but the menu it was made in still has to close.
+            //
+            // The drawer is the reason. While it is open it holds
+            // body{overflow:hidden} and marks the rest of the document inert, so
+            // a page link tapped inside it and left open means two things go
+            // wrong: on a slow connection the reader taps and watches a screen
+            // that has not changed, and coming back through bfcache restores the
+            // page with the drawer still over it. Closing it first costs nothing
+            // if the navigation is instant.
+            //
+            // Bound by attribute rather than by position in the nav, so the
+            // handler also covers the same links in the header and the body,
+            // where the menus are already shut and closing them is a no-op.
+            document.querySelectorAll('[data-section-link], [data-blog-link]').forEach(link => {
+                link.addEventListener('click', event => {
+                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    closeDesktopResources();
+                    closeMobileMenu(false);
                 });
             });
 
@@ -1196,7 +1298,7 @@
             });
 
             window.addEventListener('resize', () => {
-                if (window.innerWidth >= 1024) closeMobileMenu(false);
+                if (window.innerWidth >= DESKTOP_NAV_BREAKPOINT) closeMobileMenu(false);
             });
         }
 

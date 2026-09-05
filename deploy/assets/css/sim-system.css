@@ -1469,3 +1469,212 @@ input[type="range"]::-moz-range-thumb {
         box-shadow: 0 0 0 3px rgba(166, 64, 42, 0.18);
     }
 }
+
+/* --------------------------------------------------------------------------
+   The persistent compliance notice, above the tool on all five simulators.
+
+   Three palettes share these templates - cream on four, near-black on the
+   Monte Carlo cockpit - so this paints no background and sets no colour of its
+   own. It borrows `currentColor` at two opacities, the same trick `.sim-crumbs`
+   uses in simulator-explainer.css, which is why the notice is legible on all
+   three without a per-page override.
+
+   It is small, and deliberately not tiny: 0.8125rem is the breadcrumb size
+   above it, and anything below about 0.75rem reads as text that was put on the
+   page in order not to be read. The point of moving this out of the
+   auto-hiding footer bar was for it to be read.
+   -------------------------------------------------------------------------- */
+
+.sim-disclaimer {
+    border-left: 2px solid currentColor;
+    padding: 0.5rem 0 0.5rem 0.875rem;
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+.sim-disclaimer__title {
+    margin: 0 0 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.sim-disclaimer__body {
+    margin: 0;
+    max-width: 68ch;
+    opacity: 0.75;
+}
+
+.sim-disclaimer a {
+    color: currentColor;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+}
+
+.sim-disclaimer a:hover {
+    opacity: 0.75;
+}
+
+.sim-disclaimer a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+
+/* ==========================================================================
+   THE CONTRIBUTE BLOCK
+
+   One button, on the two simulators that rank nothing, offering to add the run
+   to the public data set. Styled here rather than with Tailwind utilities in
+   the templates for the reason everything else in this file is: it appears in
+   two templates and has to be the same thing in both, and a component defined
+   by a string of utility classes is a component that is defined twice.
+
+   Drawn as a quiet inset rather than a call to action. It is a genuine offer
+   and it is not the point of either page, so it sits at the weight of the
+   stat cards around it. A gold-bordered panel with a full-width button would
+   be asking for the data rather than offering to keep it, and the two read
+   very differently to somebody deciding.
+
+   The four `data-state` values are the whole interaction:
+
+     empty    before there is a run to contribute - hidden outright, because
+              both tools render their own defaults on load and an offer to
+              publish the tool's defaults is an offer to measure the tool
+     idle     a run exists and has not been sent
+     sending  the request is open
+     done     it landed; the button is gone and the thank-you stays
+     failed   it did not land; the button comes back
+   ========================================================================== */
+.sim-contribute {
+    border: 1px solid var(--sim-cream-400);
+    border-radius: 0.75rem;
+    background: var(--sim-cream-50);
+    padding: 0.875rem 1rem 1rem;
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    color: var(--sim-espresso-900);
+}
+
+.sim-contribute[data-state="empty"] {
+    display: none;
+}
+
+.sim-contribute__title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sim-forest-800);
+}
+
+.sim-contribute__title i {
+    color: var(--sim-gold-600);
+    font-size: 0.8125rem;
+}
+
+.sim-contribute__body {
+    margin: 0 0 0.5rem;
+    max-width: 62ch;
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: var(--sim-espresso-800);
+}
+
+.sim-contribute__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.25rem;
+    margin-top: 0.125rem;
+    padding: 0 1rem;
+    border: 1px solid var(--sim-forest-800);
+    border-radius: 0.625rem;
+    background: transparent;
+    color: var(--sim-forest-800);
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+.sim-contribute__button:not(:disabled):hover {
+    background: var(--sim-forest-800);
+    color: #fff;
+}
+
+.sim-contribute__button:focus-visible {
+    outline: 2px solid var(--sim-forest-800);
+    outline-offset: 2px;
+}
+
+.sim-contribute__button:disabled {
+    opacity: 0.55;
+    cursor: default;
+}
+
+/* Sent. The button has done the only thing it does, so it stops occupying a
+   place a finger can land - and the confirmation takes its space rather than
+   appearing under a control that now does nothing. */
+.sim-contribute[data-state="done"] .sim-contribute__button {
+    display: none;
+}
+
+.sim-contribute__status {
+    margin: 0.5rem 0 0;
+    max-width: 62ch;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.sim-contribute[data-state="done"] .sim-contribute__status {
+    color: var(--sim-positive);
+}
+
+.sim-contribute[data-state="failed"] .sim-contribute__status {
+    color: var(--sim-negative);
+}
+
+/* Empty until the button is pressed, and it must not reserve a line while it
+   is: `aria-live` regions have to exist in the document before the text
+   arrives for the change to be announced, so it cannot be added on demand. */
+.sim-contribute__status:empty {
+    display: none;
+}
+
+.sim-contribute__note {
+    margin: 0.625rem 0 0;
+    max-width: 62ch;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: var(--sim-espresso-800);
+    opacity: 0.8;
+}
+
+.sim-contribute a {
+    color: var(--sim-forest-800);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.sim-contribute a:hover {
+    color: var(--sim-forest-700);
+}
+
+.sim-contribute a:focus-visible {
+    outline: 2px solid var(--sim-forest-800);
+    outline-offset: 2px;
+    border-radius: 2px;
+}

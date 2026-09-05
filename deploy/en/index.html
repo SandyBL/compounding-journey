@@ -37,8 +37,8 @@
     <meta name="twitter:image:alt" content="Compounding Journey tree logo">
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="/assets/css/icons.css?v=1bac4bca4f3f">
-    <link rel="stylesheet" href="/assets/styles.css?v=e533375be7c0">
+    <link rel="stylesheet" href="/assets/css/icons.css?v=source">
+    <link rel="stylesheet" href="/assets/styles.css?v=source">
     <script type="application/ld+json">
     {
   "@context": "https://schema.org",
@@ -80,7 +80,8 @@
       "name": "Sandy Bradbury",
       "url": "https://compoundingjourney.com/#biografia",
       "image": "https://compoundingjourney.com/sandy-bradbury-portrait.png",
-      "jobTitle": "Financial Advisor",
+      "jobTitle": "Financial educator",
+      "description": "Financial educator writing about money psychology, budgeting, compound growth and long-term investing. Not an accredited financial adviser: no personal investment recommendations are given and no client money is managed.",
       "worksFor": {
         "@id": "https://compoundingjourney.com/#organization"
       },
@@ -164,6 +165,14 @@
         },
         {
           "@type": "Question",
+          "name": "What does FIRE mean, and how is it different from retiring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FIRE stands for Financial Independence, Retire Early. It describes saving and investing a high share of your income until the returns on that capital can cover your living costs, so that paid work becomes a choice rather than an obligation. Your savings rate and time are the two variables that matter most, and the 4% rule is the usual shorthand for estimating how much capital is enough. Common variants differ by spending level: LeanFIRE (a deliberately lean budget), FatFIRE (a wider lifestyle) and BaristaFIRE or CoastFIRE (keeping part-time work, or stopping contributions and letting compounding finish the job). The financial freedom calculator in the Tools section estimates that number."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Where can I download personal budget templates in Excel?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -199,7 +208,7 @@
           "name": "Why might I need a financial advisor or wealth planner?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "While online tools provide clarity, a financial advisor helps you connect numbers to your personal life values. An advisor assists in building a customized strategy, managing emotional reactions during market volatility, optimizing tax structures, and keeping your long-term plan disciplined and sustainable."
+            "text": "An accredited adviser, registered with the relevant regulator, can recommend specific products, manage your portfolio and sign off a plan built around your tax situation. None of that happens on this site. What you will find here is financial education: the tools and the vocabulary to understand your own numbers and to walk into that conversation knowing what to ask. If what you need is a personal investment recommendation, get it from a registered professional."
           }
         },
         {
@@ -223,7 +232,7 @@
           "name": "Does this content replace personalized financial advice?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. All tools, calculators, and templates on Compounding Journey are strictly educational and illustrative. They do not constitute formal financial, investment, or tax advice. For tailored recommendations based on your personal context, goals, and risk tolerance, you can complete our financial diagnostic forms or send a direct message through our contact section."
+            "text": "No, and it cannot. Every tool, calculator and template on Compounding Journey is educational and illustrative: none of it is financial, investment or tax advice. Sandy Bradbury is a financial educator and is in the process of obtaining a financial advice certification; until then, no advisory services are provided and no personal product recommendations are made. For a recommendation fitted to your own situation, go to an adviser registered with your national regulator."
           }
         }
       ]
@@ -231,11 +240,11 @@
   ]
 }
     </script>
-    <link rel="stylesheet" href="/assets/css/home.css?v=50dc5202d9d9">
-    <link rel="stylesheet" href="/assets/css/header.css?v=d722a99d021e">
-    <link rel="stylesheet" href="/assets/css/a11y.css?v=479094f25dda">
-    <script defer src="/assets/js/home.js?v=50eebbddaa0a"></script>
-    <script type="module" src="/assets/js/home-identity.js?v=f1beb1512497"></script>
+    <link rel="stylesheet" href="/assets/css/home.css?v=60c792555c90">
+    <link rel="stylesheet" href="/assets/css/header.css?v=source">
+    <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
+    <script defer src="/assets/js/home.js?v=e3d31c4bd2bd"></script>
+    <script type="module" src="/assets/js/home-identity.js?v=3944bba45c45"></script>
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.en.webmanifest">
     <meta name="theme-color" content="#1E4620">
@@ -283,12 +292,31 @@
                     <span data-i18n class="header-brand-tagline">YOUR MAP TO FREEDOM</span>
                 </div>
             </a>
-            <!-- Desktop Section Navigation -->
+            <!-- Desktop Section Navigation.
+                 Two kinds of destination sit side by side here, and the
+                 difference is deliberate.
+                 The journal, the simulators and everything under Recursos are
+                 real pages, generated once per language, so those items carry
+                 data-blog-link or data-section-link and are rewritten to
+                 /es/..., /en/... or /pt/... at build time. FAQ and Contacto
+                 exist only as sections of this document, so they stay
+                 same-page anchors with data-section - the attribute the scroll
+                 spy and the smooth-scroll handler key on. A page link
+                 deliberately has no data-section: it is never "the part of this
+                 page you are reading", and giving it one would light a nav item
+                 up for a page the reader is not even on.
+                 Pilares used to be the first item and is not here any more. It
+                 is the strip immediately below the hero - the first thing under
+                 the fold, reached by scrolling once - while Sesiones is a page
+                 that cannot be found at all unless something links it. The pill
+                 has room for six items, so the slot went to the page that needs
+                 it. /pillars still redirects and siteRoutes still maps it, so
+                 the old shortcut and any inbound link to it keep working. -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
-                <a href="#pilares" data-site-route="/pillars" data-section="pilares">
-                    <span data-i18n>Pillars</span>
+                <a href="/en/blog/" data-blog-link>
+                    <span data-i18n>Journal</span>
                 </a>
-                <a href="#simulador" data-site-route="/simulators" data-section="simulador">
+                <a href="/en/simulators/" data-section-link="simulators">
                     <span data-i18n>Simulators</span>
                 </a>
                 <div class="desktop-resources" data-resources-dropdown>
@@ -297,27 +325,37 @@
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="desktop-resources-menu" class="desktop-resources-menu">
-                        <a href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span data-i18n>Tools</span>
+                        <a href="/en/calculators/" data-section-link="tools">
+                            <span data-i18n>Calculators</span>
                         </a>
-                        <a href="#plantillas" data-site-route="/templates" data-section="plantillas">
+                        <a href="/en/templates/" data-section-link="templates">
                             <span data-i18n>Templates</span>
+                        </a>
+                        <a href="/en/glossary/" data-section-link="glossary">
+                            <span data-i18n>Glossary</span>
+                        </a>
+                        <a href="/en/data/" data-section-link="data">
+                            <span data-i18n>Data</span>
                         </a>
                     </div>
                 </div>
+                <a href="/en/sessions/" data-section-link="sessions">
+                    <span data-i18n>Sessions</span>
+                </a>
                 <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
                     <span data-i18n>FAQ</span>
                 </a>
-                <!-- No data-site-route, unlike its five neighbours. That attribute is
-                     the hook for the handler that turns a nav click into a smooth
-                     scroll, and it doubles as the key into `siteRoutes`, which
-                     exists so that arriving at one of the /pillars, /faq, ...
-                     shortcut redirects still lands on the right section. There is no
-                     /contact shortcut, so claiming one here would name a URL that
-                     does not resolve. The plain "#contacto" anchor is picked up by
-                     the fallback handler on the document instead, which gives this
-                     link the same smooth scroll, the same history entry and the same
-                     focus move as the rest of the nav. -->
+                <!-- No data-site-route, unlike FAQ and the Freedom Compass
+                     button. That attribute is the hook for the handler that
+                     turns a nav click into a smooth scroll, and it doubles as
+                     the key into `siteRoutes`, which exists so that arriving at
+                     one of the /pillars, /faq, ... shortcut redirects still
+                     lands on the right section. There is no /contact shortcut,
+                     so claiming one here would name a URL that does not
+                     resolve. The plain "#contacto" anchor is picked up by the
+                     fallback handler on the document instead, which gives this
+                     link the same smooth scroll, the same history entry and the
+                     same focus move as the rest of the nav. -->
                 <a href="#contacto" data-section="contacto">
                     <span data-i18n>Contact</span>
                 </a>
@@ -383,11 +421,18 @@
                 <p class="mobile-menu__label">
                     <span data-i18n>Navigation</span>
                 </p>
+                <!-- The same six items as the desktop pill, in the same
+                     order, pointing at the same places. The drawer has vertical
+                     room the pill does not, so it could carry more - but a
+                     reader who learns the nav on a laptop and then opens it on
+                     a phone should find the nav they already know, and every
+                     item that is here on one and missing on the other is a
+                     support question waiting to happen. -->
                 <nav class="mobile-nav" aria-label="Mobile section navigation">
-                    <a class="mobile-nav-link" href="#pilares" data-site-route="/pillars" data-section="pilares">
-                        <span data-i18n>Pillars</span>
+                    <a class="mobile-nav-link" href="/en/blog/" data-blog-link>
+                        <span data-i18n>Journal</span>
                     </a>
-                    <a class="mobile-nav-link" href="#simulador" data-site-route="/simulators" data-section="simulador">
+                    <a class="mobile-nav-link" href="/en/simulators/" data-section-link="simulators">
                         <span data-i18n>Simulators</span>
                     </a>
                     <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-resources-panel">
@@ -395,13 +440,22 @@
                         <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <div id="mobile-resources-panel" class="mobile-resources-panel" hidden>
-                        <a class="mobile-nav-link" href="#herramientas" data-site-route="/tools" data-section="herramientas">
-                            <span data-i18n>Tools</span>
+                        <a class="mobile-nav-link" href="/en/calculators/" data-section-link="tools">
+                            <span data-i18n>Calculators</span>
                         </a>
-                        <a class="mobile-nav-link" href="#plantillas" data-site-route="/templates" data-section="plantillas">
+                        <a class="mobile-nav-link" href="/en/templates/" data-section-link="templates">
                             <span data-i18n>Templates</span>
                         </a>
+                        <a class="mobile-nav-link" href="/en/glossary/" data-section-link="glossary">
+                            <span data-i18n>Glossary</span>
+                        </a>
+                        <a class="mobile-nav-link" href="/en/data/" data-section-link="data">
+                            <span data-i18n>Data</span>
+                        </a>
                     </div>
+                    <a class="mobile-nav-link" href="/en/sessions/" data-section-link="sessions">
+                        <span data-i18n>Sessions</span>
+                    </a>
                     <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
                     <a class="mobile-nav-link" href="#contacto" data-section="contacto">
                         <span data-i18n>Contact</span>
@@ -1187,8 +1241,8 @@
                             <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">03</span>
                             <span class="h-px w-8 bg-warmgold/50"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">Excel</span>
-                            <span class="ml-auto rounded-full bg-warmgold px-3 py-1 text-[10px] font-extrabold tracking-wider text-darkbark">
-                                <span data-i18n>R$ 25 (approx. US$ 5)</span>
+                            <span class="ml-auto rounded-full bg-forestgreen px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
+                                <span data-i18n>Free</span>
                             </span>
                         </div>
                         <h3 class="text-xl font-extrabold text-forestgreen mb-2">
@@ -1199,11 +1253,11 @@
                         </p>
                     </div>
                     <div class="mt-6">
-                        <a href="https://pay.kiwify.com.br/1K9syUk" data-template-download="monthlyAnalysis" aria-describedby="template-meta-monthlyAnalysis" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
+                        <a href="/assets/templates/en/monthly-balance-analysis.xlsx" download="Template Monthly Balance Analysis.xlsx" data-template-download="monthlyAnalysis" aria-describedby="template-meta-monthlyAnalysis" class="inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                             <span data-i18n>Download template</span>
                             <i class="fa-solid fa-arrow-down text-warmgold group-hover:translate-y-0.5 transition-transform"></i>
                         </a>
-                        <p id="template-meta-monthlyAnalysis" data-template-meta="monthlyAnalysis" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">External page</p>
+                        <p id="template-meta-monthlyAnalysis" data-template-meta="monthlyAnalysis" class="mt-2 text-center text-[11px] font-semibold text-darkbark/60">XLSX · 30 KB</p>
                     </div>
                 </article>
             </div>
@@ -1250,57 +1304,69 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" data-latest-articles>
                     <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Life design</span>
-                            <span class="h-px w-8 bg-warmgold/50"></span>
-                            <time datetime="2026-08-13" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">August 13, 2026</time>
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Money habits</span>
+                            <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
+                            <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
+                                <time datetime="2026-09-05"><span class="sr-only">Published </span>September 5, 2026</time>
+                                <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
+                                <span>5 min read</span>
+                            </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/en/blog/spending-with-purpose-how-to-align-your-money-with-what-truly-matters/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Spending with Purpose: How to Align Your Money with What Truly Matters</a>
+                                <a href="/en/blog/the-psychology-of-money-decisions-why-knowing-the-maths-is-not-enough/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">The Psychology of Money Decisions: Why Knowing the Maths Is Not Enough</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">Financial growth isn't about cutting all joy—it's about intentional spending.</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">Nobody fails at money because they cannot calculate compound interest.</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/en/blog/spending-with-purpose-how-to-align-your-money-with-what-truly-matters/" aria-label="Read the article: Spending with Purpose: How to Align Your Money with What Truly Matters" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/en/blog/the-psychology-of-money-decisions-why-knowing-the-maths-is-not-enough/" aria-label="Read the article: The Psychology of Money Decisions: Why Knowing the Maths Is Not Enough" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Read the article
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
                         </div>
                     </article>
                     <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Money habits</span>
-                            <span class="h-px w-8 bg-warmgold/50"></span>
-                            <time datetime="2026-08-11" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">August 11, 2026</time>
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Investing</span>
+                            <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
+                            <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
+                                <time datetime="2026-09-04"><span class="sr-only">Published </span>September 4, 2026</time>
+                                <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
+                                <span>5 min read</span>
+                            </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Foundations of Personal Finance: How to Control Expenses and Build Wealth</a>
+                                <a href="/en/blog/passive-income-is-not-one-thing-four-engines-and-what-each-one-costs/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Passive Income Is Not One Thing: Four Engines and What Each One Costs</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">Discover simple tips for budgeting, tracking expenses, and making smarter money choices to achieve financial freedom without giving up what…</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">A dividend fund, a rented flat, a bond ladder and a product you sold once are four different machines.</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/en/blog/foundations-of-personal-finance-how-to-control-expenses-and-build-wealth/" aria-label="Read the article: Foundations of Personal Finance: How to Control Expenses and Build Wealth" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/en/blog/passive-income-is-not-one-thing-four-engines-and-what-each-one-costs/" aria-label="Read the article: Passive Income Is Not One Thing: Four Engines and What Each One Costs" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Read the article
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
                         </div>
                     </article>
                     <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Money habits</span>
-                            <span class="h-px w-8 bg-warmgold/50"></span>
-                            <time datetime="2026-08-04" class="text-[10px] font-bold uppercase tracking-wider text-darkbark/45">August 4, 2026</time>
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Investing</span>
+                            <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
+                            <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
+                                <time datetime="2026-09-04"><span class="sr-only">Published </span>September 4, 2026</time>
+                                <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
+                                <span>5 min read</span>
+                            </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/en/blog/building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Building Wealth Through Good Financial Habits: Key Lessons from Rich Dad, Poor Dad</a>
+                                <a href="/en/blog/what-a-century-of-market-history-teaches-drawdowns-recovery-and-diversification/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">What a Century of Market History Teaches: Drawdowns, Recovery and Diversification</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">Discover how to build long-term wealth using proven financial habits from Rich Dad, Poor Dad.</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">Over the long run the market goes up — a true sentence, and almost useless.</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/en/blog/building-wealth-through-good-financial-habits-key-lessons-from-rich-dad-poor-dad/" aria-label="Read the article: Building Wealth Through Good Financial Habits: Key Lessons from Rich Dad, Poor Dad" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/en/blog/what-a-century-of-market-history-teaches-drawdowns-recovery-and-diversification/" aria-label="Read the article: What a Century of Market History Teaches: Drawdowns, Recovery and Diversification" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Read the article
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
@@ -1498,6 +1564,12 @@
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
+                        <h3 class="text-base font-extrabold">What does FIRE mean, and how is it different from retiring?</h3>
+                    </summary>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">FIRE stands for <em>Financial Independence, Retire Early</em>. It describes saving and investing a high share of your income until the returns on that capital can cover your living costs, so that paid work becomes a choice rather than an obligation. Your savings rate and time are the two variables that matter most, and the 4% rule is the usual shorthand for estimating how much capital is enough. Common variants differ by spending level: LeanFIRE (a deliberately lean budget), FatFIRE (a wider lifestyle) and BaristaFIRE or CoastFIRE (keeping part-time work, or stopping contributions and letting compounding finish the job). You can estimate your own number with the financial freedom calculator in the <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Tools</a> section.</p>
+                </details>
+                <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
+                    <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Where can I download personal budget templates in Excel?</h3>
                     </summary>
                     <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">Compounding Journey provides free Excel downloads for <a href="/assets/templates/en/personal-budget.xlsx" download="Template Personal Budget.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">personal budgeting</a>, <a href="/assets/templates/en/expense-management.xlsx" download="Template Expense Management.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">expense tracking</a>, and <a href="/assets/templates/en/monthly-balance-analysis.xlsx" download="Template Monthly Balance Analysis.xlsx" class="font-bold text-forestgreen hover:text-warmgold transition-colors">monthly personal finance analysis</a>. They are also collected in the <a href="#plantillas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Templates</a> section.</p>
@@ -1524,7 +1596,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Why might I need a financial advisor or wealth planner?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">While online tools provide clarity, a financial advisor helps you connect numbers to your personal life values. An advisor assists in building a customized strategy, managing emotional reactions during market volatility, optimizing tax structures, and keeping your long-term plan disciplined and sustainable.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">An accredited adviser, registered with the relevant regulator, can recommend specific products, manage your portfolio and sign off a plan built around your tax situation. None of that happens on this site. What you will find here is financial education: the tools and the vocabulary to understand your own numbers and to walk into that conversation knowing what to ask. If what you need is a personal investment recommendation, get it from a registered professional.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -1542,7 +1614,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Does this content replace personalized financial advice?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No. All tools, calculators, and templates on Compounding Journey are strictly educational and illustrative. They do not constitute formal financial, investment, or tax advice. For tailored recommendations based on your personal context, goals, and risk tolerance, you can complete our financial diagnostic forms or send a direct message through our contact section.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">No, and it cannot. Every tool, calculator and template on Compounding Journey is educational and illustrative: none of it is financial, investment or tax advice. Sandy Bradbury is a financial educator and is in the process of obtaining a financial advice certification; until then, no advisory services are provided and no personal product recommendations are made. For a recommendation fitted to your own situation, go to an adviser registered with your national regulator.</p>
                 </details>
             </div>
         </div>
@@ -1559,12 +1631,12 @@
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    <span data-i18n>Meet the advisor, follow the newsletter, or tell us directly about your financial situation.</span>
+                    <span data-i18n>Meet the educator, follow the newsletter, or tell us directly about your financial situation.</span>
                 </p>
                 <nav class="contact-path-nav" aria-labelledby="contact-heading">
                     <a href="#biografia" class="contact-path-link">
                         <i class="fa-solid fa-user-tie text-warmgold" aria-hidden="true"></i>
-                        <span data-i18n>Meet the Advisor</span>
+                        <span data-i18n>Meet the Educator</span>
                     </a>
                     <a href="#contact-newsletter" class="contact-path-link">
                         <i class="fa-regular fa-newspaper text-warmgold" aria-hidden="true"></i>
@@ -1590,7 +1662,7 @@
                                         <!-- Premium Fallback Graphic (shows only if photo is offline/blocked) -->
                                         <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 select-none">
                                             <span class="text-4xl font-extrabold tracking-wider leading-none">SB</span>
-                                            <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Wealth Planner</span>
+                                            <span class="text-[9px] uppercase tracking-widest font-bold opacity-80 mt-1.5">Financial Educator</span>
                                         </div>
                                         <!-- Actual Image Tag with fallback failure support -->
                                     <img
@@ -1607,7 +1679,7 @@
                                 <div class="mt-5 text-center">
                                     <p class="text-xl font-extrabold text-forestgreen">Sandy Bradbury</p>
                                     <p class="text-xs text-warmgold font-bold uppercase tracking-widest mt-1">
-                                        <span data-i18n>Financial Advisor</span>
+                                        <span data-i18n>Financial Educator</span>
                                     </p>
                                 </div>
                             </div>
@@ -1627,6 +1699,9 @@
                             </p>
                             <p>
                                 In <strong>Compounding Journey</strong>, I go beyond returns. I explore how compound growth can buy time, reduce dependency, and help you design a purposeful life. You are the protagonist of the journey: strategy provides the map, discipline keeps you moving, and your values choose the destination.
+                            </p>
+                            <p>
+                                I work as a <strong>financial educator</strong>: I explain concepts, build tools and help people install habits. I am in the process of obtaining a financial advice certification, and until I hold it I make no personal investment recommendations and manage nobody’s money. Everything here is educational content: see <a href="/en/sessions/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">what the sessions are</a> and the <a href="/en/legal-notice/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">legal notice</a>.
                             </p>
                         </div>
                         <div class="pt-4 flex flex-wrap gap-4">

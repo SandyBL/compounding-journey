@@ -164,6 +164,12 @@
             conservative: { name: 'Conservador (20/80)', stocks: 20, bonds: 60, reits: 0, gold: 0, cash: 20 }
         };
 
+        /**
+         * The last year the simulation drew, or null before the first draw.
+         * Only the contribute button reads it.
+         */
+        let lastRun = null;
+
         let state = {
             allocation: { stocks: 60, bonds: 40, reits: 0, gold: 0, cash: 0 },
             initialCapital: 100000,
@@ -499,6 +505,109 @@
                 customCagr: calcCagr(latestCustom.val),
                 classicCagr: calcCagr(latestClassic.val)
             });
+
+            // What the contribute button would send if it were pressed now. It
+            // is replaced once per simulated year, so it always describes the
+            // chart currently on screen and never an earlier version of it.
+            lastRun = {
+                yearsCount,
+                customVal: Math.round(latestCustom.val),
+                classicVal: Math.round(latestClassic.val)
+            };
+
+            // Ten years, the same threshold the result panel uses, and for the
+            // same reason: the difference between two allocations over three
+            // years is mostly the start year, and a data set of three-year
+            // backtests would be a data set of start years.
+            if (window.contributeReady) window.contributeReady(yearsCount >= 10);
+        }
+
+        /**
+         * The run the contribute button offers to keep, or null if there is not
+         * one yet. Read by assets/js/sim-contribute.js.
+         *
+         * None of it is about the visitor. It is an allocation, a stretch of
+         * market history, and what the two came to - and that combination is the
+         * whole reason to record anything here. People do not choose a start
+         * year at random: they choose 1929, or 2000, or the year they were born,
+         * and which decades people want to live through is a fact about how
+         * people think about risk that nobody has published.
+         *
+         * The benchmark value is sent alongside the run's own, over exactly the
+         * same years, because a portfolio that returned 9% a year is a fact
+         * about the decade until you know what the default did over the same
+         * decade. Storing both means a published average can compare them;
+         * storing one would mean recomputing the other later and hoping the
+         * historical series had not been edited in between.
+         *
+         * The CAGR goes in the score column offset by 10,000, so a portfolio
+         * that lost money is still a non-negative number in a column every
+         * board sorts on: 10,000 is flat, 10,700 is +7% a year, 9,200 is -8%.
+         */
+        function describeContributedRun() {
+            if (!lastRun || lastRun.yearsCount < 10) return null;
+
+            const presetEl = document.getElementById('presetSelect');
+            const preset = presetEl ? presetEl.value : 'custom';
+
+            const growth = lastRun.customVal / state.initialCapital;
+            const cagr = growth > 0 ? Math.pow(growth, 1 / lastRun.yearsCount) - 1 : -1;
+
+            return {
+                simulator: 'market-time-machine',
+                score: clamp(10000 + cagr * 10000, 0, 20000),
+                tiebreak: clamp(lastRun.customVal, 0, 1000000000),
+                details: {
+                    startYear: recordable(state.startYear, 1920, 2026),
+                    yearsElapsed: recordable(lastRun.yearsCount, 0, 110),
+                    initialCapital: recordable(state.initialCapital, 1, 1000000000),
+                    pctStocks: recordable(state.allocation.stocks, 0, 100),
+                    pctBonds: recordable(state.allocation.bonds, 0, 100),
+                    pctReits: recordable(state.allocation.reits, 0, 100),
+                    pctGold: recordable(state.allocation.gold, 0, 100),
+                    pctCash: recordable(state.allocation.cash, 0, 100),
+                    preset: PORTFOLIO_BENCHMARKS[preset] ? preset : 'custom',
+                    finalValue: recordable(lastRun.customVal, 0, 1000000000),
+                    benchmarkValue: recordable(lastRun.classicVal, 0, 1000000000),
+                    maxDrawdownBps: recordable(worstDrawdown(state.customTrack) * 10000, 0, 10000)
+                }
+            };
+        }
+
+        /**
+         * The deepest peak-to-trough fall the track took, as a fraction.
+         *
+         * Computed here rather than tracked during the simulation because the
+         * track is the simulation: recalculateSimulation() rebuilds it from the
+         * start year every time anything changes, so a running maximum kept
+         * alongside it would be one more thing that has to be reset in the same
+         * place and would eventually not be.
+         */
+        function worstDrawdown(track) {
+            let peak = 0;
+            let worst = 0;
+            (track || []).forEach((point) => {
+                if (point.val > peak) peak = point.val;
+                if (peak > 0) {
+                    const fall = (peak - point.val) / peak;
+                    if (fall > worst) worst = fall;
+                }
+            });
+            return worst;
+        }
+
+        /** The value if the record can hold it, and nothing if it cannot. */
+        function recordable(value, min, max) {
+            const number = Math.round(Number(value));
+            if (!Number.isFinite(number) || number < min || number > max) return undefined;
+            return number;
+        }
+
+        /** The nearest value the record can hold, for the columns it requires. */
+        function clamp(value, min, max) {
+            const number = Math.round(Number(value));
+            if (!Number.isFinite(number)) return min;
+            return Math.max(min, Math.min(max, number));
         }
 
         /**
