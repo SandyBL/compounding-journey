@@ -39,8 +39,8 @@ export const CATEGORIES = [
     pt: {
       name: 'Hábitos financeiros',
       slug: 'habitos-financeiros',
-      intro: 'A parte das finanças pessoais que não se resolve com uma folha de cálculo. Aqui estão os artigos sobre o que fazes todas as semanas com o teu dinheiro: como se forma um hábito, por que se quebra e que sistemas aguentam um mês mau.',
-      description: 'Artigos sobre hábitos financeiros: poupança automática, controlo de despesas, sair das dívidas e os sistemas que sobrevivem a um mês mau.'
+      intro: 'A parte das finanças pessoais que não se resolve com uma planilha. Aqui estão os artigos sobre o que você faz toda semana com o seu dinheiro: como se forma um hábito, por que se quebra e que sistemas aguentam um mês mau.',
+      description: 'Artigos sobre hábitos financeiros: poupança automática, controle de despesas, sair das dívidas e os sistemas que sobrevivem a um mês mau.'
     }
   },
   {
@@ -55,7 +55,7 @@ export const CATEGORIES = [
       name: 'Investing',
       slug: 'investing',
       intro: 'How putting money to work actually works, without product recommendations. Compound interest, time horizon, diversification, and the mistakes that cost more than fees do.',
-      description: 'Articles on long-term investing: compound interest, diversification, time horizon, and the behavioural mistakes that cost more than fees.'
+      description: 'Articles on long-term investing: compound interest, diversification, time horizon, and the behavioral mistakes that cost more than fees.'
     },
     pt: {
       name: 'Investimentos',
@@ -81,8 +81,8 @@ export const CATEGORIES = [
     pt: {
       name: 'Design de vida',
       slug: 'design-de-vida',
-      intro: 'O dinheiro como meio e não como objetivo. Artigos sobre para que queres o dinheiro, quanto da tua vida custa cada compra e o que significa "suficiente" quando se põe em números.',
-      description: 'Artigos sobre o dinheiro como meio: propósito, custo em horas de vida, decidir o que é suficiente e gastar de acordo com o que te importa.'
+      intro: 'O dinheiro como meio e não como objetivo. Artigos sobre para que quer o dinheiro, quanto da sua vida custa cada compra e o que significa "suficiente" quando se põe em números.',
+      description: 'Artigos sobre o dinheiro como meio: propósito, custo em horas de vida, decidir o que é suficiente e gastar de acordo com o que importa para você.'
     }
   }
 ];

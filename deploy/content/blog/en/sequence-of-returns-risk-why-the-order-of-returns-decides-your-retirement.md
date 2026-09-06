@@ -69,7 +69,7 @@ A 90% success rate is not "you will be fine". It means one in ten of the futures
 
 - **It is a model of a model.** Random draws from a smooth distribution are tidier than real markets, which have fat tails and long moods. Independent draws also lose the tendency of bad years to arrive in clusters.
 - **The inputs dominate the output.** Change the expected return by one percentage point and the success rate moves more than any clever refinement.
-- **Nobody behaves like the model retiree.** Real people cut spending in a crash. That single behaviour, absent from the simple version, is worth more than most portfolio changes.
+- **Nobody behaves like the model retiree.** Real people cut spending in a crash. That single behavior, absent from the simple version, is worth more than most portfolio changes.
 - **Chasing 100% has a cost.** Certainty is bought with years of extra work and a smaller life. Somewhere around the high eighties, more precision stops being the useful question.
 
 ## The four levers that actually move it

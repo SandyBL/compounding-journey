@@ -49,11 +49,11 @@ The result is real, and it gets oversold. Some honest limits:
 - **The rate matters more than the direction.** Going from 5% to 15% is worth roughly eight years. Going from 60% to 70% is worth three. The early moves are the valuable ones, which is fortunate, since they are also the achievable ones.
 - **A raise you do not spend counts twice.** Income cancels out of the *formula*, not out of your life. A higher salary is the cheapest way to raise a savings rate, as long as your spending stays where it was. It usually does not — see lifestyle creep.
 - **5% real is an assumption, not a fact.** Change it to 3% and every row gets longer. The shape of the table survives; the numbers move.
-- **Starting from zero is a simplification.** Existing savings, a mortgage, a pension you will receive at 67 all change the answer, and they change it in your favour.
+- **Starting from zero is a simplification.** Existing savings, a mortgage, a pension you will receive at 67 all change the answer, and they change it in your favor.
 
 ## The gap is a lifestyle question, not a spreadsheet question
 
-Because spending sits on both sides of the equation, the interesting work is not optimisation. It is deciding what your spending is *for*.
+Because spending sits on both sides of the equation, the interesting work is not optimization. It is deciding what your spending is *for*.
 
 A person who spends €40,000 a year on things they would defend in an argument is in a different position from a person who spends €40,000 a year and could not tell you where €12,000 of it went. Both have the same target. Only one of them can lower it without losing anything they care about.
 
@@ -61,7 +61,7 @@ This is why "cut everything" advice fails and reliably produces a rebound. The d
 
 ## Turning a percentage into a date
 
-A savings rate is an abstraction, and abstractions do not change behaviour. A date does.
+A savings rate is an abstraction, and abstractions do not change behavior. A date does.
 
 That is what the [Freedom Calendar](/en/simulators/freedom-calendar.html) is for. You put in what you have, what you save and what you spend, and instead of a final balance it gives you a timeline: when your portfolio covers your essentials, when it covers your current life, when it covers the life you would choose.
 

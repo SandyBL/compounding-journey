@@ -8,7 +8,7 @@
                 baseCost: 5,
                 unit: 'day', // 'day', 'week', 'month'
                 desc: 'Cafés especiales, bebidas energéticas o cafés helados comprados al paso.',
-                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de €0.50 por taza!',
+                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de €0,50 por taza!',
                 choicePct: 100
             },
             {
@@ -19,7 +19,7 @@
                 baseCost: 15,
                 unit: 'day',
                 desc: 'Pedir por UberEats/DoorDash o comer fuera en lugar de llevar almuerzo preparado.',
-                tip: 'Prepara comidas en lote los domingos o ten comidas congeladas gourmet en el trabajo para reducir el delivery a 1 día por semana como recompensa.',
+                tip: 'Prepara comidas en lote los domingos o ten comidas congeladas gourmet en el trabajo para reducir los pedidos a domicilio a 1 día por semana como recompensa.',
                 choicePct: 100
             },
             {
@@ -35,13 +35,13 @@
             },
             {
                 id: 'carLease',
-                title: 'Renovar el Leasing del Auto Cada 3 Años',
+                title: 'Renovar el Leasing del Coche Cada 3 Años',
                 icon: 'fa-car',
                 category: 'Estilo de Vida Mayor',
                 baseCost: 350,
                 unit: 'month',
-                desc: 'Manejar siempre un auto arrendado nuevo en lugar de mantener un vehículo propio confiable y pagado.',
-                tip: 'Compra un auto seminuevo certificado de 3 años y mantenlo durante 7–10 años. Redirige las cuotas del leasing directamente a fondos indexados.',
+                desc: 'Conducir siempre un coche de alquiler nuevo en lugar de mantener un vehículo propio fiable y pagado.',
+                tip: 'Compra un coche seminuevo certificado de 3 años y mantenlo durante 7–10 años. Redirige las cuotas del leasing directamente a fondos indexados.',
                 choicePct: 100
             },
             {
@@ -52,7 +52,7 @@
                 baseCost: 40,
                 unit: 'week',
                 desc: 'Comprar camisetas, accesorios o ofertas tecnológicas que no tenías planeadas.',
-                tip: 'Aplica la "Regla de Enfriamiento de 72 Horas" para compras no esenciales. Si aún lo quieres 3 días después, evalúa primero su costo en horas de trabajo.',
+                tip: 'Aplica la "Regla de Enfriamiento de 72 Horas" para compras no esenciales. Si aún lo quieres 3 días después, evalúa primero su coste en horas de trabajo.',
                 choicePct: 100
             },
             {
@@ -74,7 +74,7 @@
                 baseCost: 6,
                 unit: 'day',
                 desc: 'Snacks de gasolinera, latas de energía y compras impulsivas en máquinas expendedoras.',
-                tip: 'Compra snacks y bebidas al por mayor en clubes de descuento y ten paquetes de emergencia en tu auto, mochila o escritorio.',
+                tip: 'Compra snacks y bebidas al por mayor en clubes de descuento y ten paquetes de emergencia en tu coche, mochila o escritorio.',
                 choicePct: 100
             },
             {
@@ -112,12 +112,12 @@
             },
             {
                 id: 'foodWaste',
-                title: 'Desperdicio de Comida y Comestibles Vencidos',
+                title: 'Desperdicio de Comida y Alimentos Caducados',
                 icon: 'fa-trash-arrow-up',
                 category: 'Gasto Impulsivo',
                 baseCost: 40,
                 unit: 'week',
-                desc: 'Comestibles y productos frescos que se echan a perder en el refrigerador antes de comerlos.',
+                desc: 'Alimentos y productos frescos que se echan a perder en la nevera antes de comerlos.',
                 tip: 'Compra con una lista exacta de comidas, haz un inventario antes de comprar y congela alimentos frescos antes de que se arruinen.',
                 choicePct: 100
             },
@@ -139,7 +139,7 @@
                 category: 'Micro-Hábito Diario',
                 baseCost: 3,
                 unit: 'day',
-                desc: 'Comprar botellas de agua, gaseosas o tés por pura conveniencia.',
+                desc: 'Comprar botellas de agua, refrescos o tés por pura conveniencia.',
                 tip: 'Lleva una botella de agua de acero inoxidable reutilizable con filtro. Ahorras dinero y reduces el plástico al instante.',
                 choicePct: 100
             }
@@ -366,7 +366,7 @@
                 category: 'Gasto Personalizado',
                 baseCost: 10,
                 unit: 'day',
-                desc: 'Ingresa el costo y la frecuencia de tu gasto recurrente personalizado.',
+                desc: 'Ingresa el coste y la frecuencia de tu gasto recurrente personalizado.',
                 tip: 'Analiza si este gasto te aporta verdadero valor o si puede ser optimizado sin afectar tu calidad de vida.',
                 choicePct: 100,
                 isCustom: true

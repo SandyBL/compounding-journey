@@ -279,7 +279,7 @@ const copy = {
     privacyNote: 'Este diario cuenta cu\u00e1ntas veces se abre cada art\u00edculo, y nada m\u00e1s. Sin cookies, sin identificadores, sin registro de qui\u00e9n ley\u00f3 qu\u00e9: solo un n\u00famero por art\u00edculo, que sirve para decidir qu\u00e9 destacar aqu\u00ed.'
   },
   pt: {
-    locale: 'pt_PT',
+    locale: 'pt_BR',
     reading: 'min de leitura',
     toc: 'Neste artigo',
     insight: 'Ideia-chave',

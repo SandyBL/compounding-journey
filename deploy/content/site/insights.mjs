@@ -212,7 +212,7 @@ export const INSIGHTS_PAGE = {
     caveatTitle: 'What these numbers are not',
     caveat: [
       'They are not a survey. Somebody who lands on a financial independence simulator and chooses to save their scenario is not a sample of the population: they are people interested in the subject, probably savers, probably with more slack than average. The self-selection bias is large and cannot be corrected for.',
-      'They are not real behaviour. They are decisions taken inside a model, with no consequences. People take more risk in a simulation than with their own money, which makes these figures useful for understanding preferences and intuitions and useless for predicting what anybody will actually do.',
+      'They are not real behavior. They are decisions taken inside a model, with no consequences. People take more risk in a simulation than with their own money, which makes these figures useful for understanding preferences and intuitions and useless for predicting what anybody will actually do.',
       'They are not a recommendation. That most people pick a given withdrawal rate, portfolio or habit does not make it right for you. What is published here is what people choose, not what you should choose.'
     ],
     contributeTitle: 'Add a simulation',
@@ -225,11 +225,11 @@ export const INSIGHTS_PAGE = {
     title: 'O que dizem os dados dos simuladores',
     heading: 'O que dizem os dados dos simuladores',
     description:
-      'Médias, percentagens e escolhas reais retiradas das simulações que os leitores da Compounding Journey guardaram: que taxa de retirada escolhem, que hábitos não largam e que carteira constroem.',
+      'Médias, porcentagens e escolhas reais retiradas das simulações que os leitores da Compounding Journey guardaram: que taxa de retirada escolhem, que hábitos não largam e que carteira constroem.',
     intro:
-      'Cada simulação que alguém decide guardar deixa um registo anónimo dos números que usou e do resultado que obteve. Esta página é a soma de todos eles e é recalculada em cada publicação do site.',
+      'Cada simulação que alguém decide guardar deixa um registro anônimo dos números que usou e do resultado que obteve. Esta página é a soma de todos eles e é recalculada em cada publicação do site.',
     units: { perMonth: '/mês', years: 'anos', year: 'ano' },
-    runsLabel: 'simulações registadas',
+    runsLabel: 'simulações registradas',
     updatedLabel: 'Recalculado',
     insightsTitle: 'O que se pode afirmar hoje',
     insightsEmpty:
@@ -243,28 +243,28 @@ export const INSIGHTS_PAGE = {
     rangeLabel: 'intervalo',
     sampleUnit: 'simulações',
     notEnough:
-      'Este simulador ainda não tem amostra suficiente para publicar médias. O que falta são simulações, não código: cada vez que alguém usa a ferramenta e decide guardar o seu cenário, esta secção fica mais perto de poder dizer algo.',
+      'Este simulador ainda não tem amostra suficiente para publicar médias. O que falta são simulações, não código: cada vez que alguém usa a ferramenta e decide guardar o seu cenário, esta seção fica mais perto de poder dizer algo.',
     tryLabel: 'Abrir o simulador',
     noDataTitle: 'Sem dados disponíveis neste momento',
     noDataBody:
       'A base de dados não respondeu durante a última publicação do site, por isso esta página aparece sem números. A explicação de cada simulador continua válida; os números voltam na próxima publicação.',
     methodTitle: 'Como isto é calculado',
     method: [
-      'Cada número vem da tabela onde os simuladores guardam as simulações: os valores introduzidos e o resultado que saiu. Não há nomes, emails, identificadores pessoais nem cookies por trás destes números.',
+      'Cada número vem da tabela onde os simuladores guardam as simulações: os valores introduzidos e o resultado que saiu. Não há nomes, e-mails, identificadores pessoais nem cookies por trás destes números.',
       'Nenhuma medida é publicada antes de ter amostra suficiente. Cada uma tem o seu próprio mínimo e não aparece abaixo dele: uma "média" de três simulações descreveria a tarde de três pessoas, não um padrão.',
-      'Os valores em dinheiro são calculados apenas dentro de um idioma. As três versões do site mostram três moedas diferentes para o mesmo campo, por isso uma média conjunta seria uma média de moedas. Tudo o que não tem unidade - percentagens, idades, anos, escolhas - soma os três idiomas.',
-      'A amostra ao lado de cada número conta as simulações que traziam esse campo, não a tabela inteira. Um campo que começou a ser guardado mais tarde tem por isso uma amostra menor, e isso vê-se.'
+      'Os valores em dinheiro são calculados apenas dentro de um idioma. As três versões do site mostram três moedas diferentes para o mesmo campo, por isso uma média conjunta seria uma média de moedas. Tudo o que não tem unidade - porcentagens, idades, anos, escolhas - soma os três idiomas.',
+      'A amostra ao lado de cada número conta as simulações que traziam esse campo, não a tabela inteira. Um campo que começou a ser guardado mais tarde tem por isso uma amostra menor, e isso se vê.'
     ],
     caveatTitle: 'O que estes números não são',
     caveat: [
-      'Não são um inquérito. Quem chega a um simulador de independência financeira e decide guardar o seu cenário não é uma amostra da população: são pessoas interessadas no tema, provavelmente poupadoras e com mais margem do que a média. O viés de autosseleção é grande e não é corrigível.',
-      'Não são comportamento real, mas decisões tomadas dentro de um modelo, sem consequências. As pessoas arriscam mais numa simulação do que com o seu dinheiro, o que torna estes números úteis para entender preferências e intuições e inúteis para prever o que alguém fará de facto.',
-      'Não são uma recomendação. O facto de a maioria escolher uma taxa de retirada, uma carteira ou um hábito não a torna adequada para ti. Aqui publica-se o que as pessoas escolhem, não o que deves escolher.'
+      'Não são uma pesquisa. Quem chega a um simulador de independência financeira e decide guardar o seu cenário não é uma amostra da população: são pessoas interessadas no tema, provavelmente poupadoras e com mais margem do que a média. O viés de autosseleção é grande e não é corrigível.',
+      'Não são comportamento real, mas decisões tomadas dentro de um modelo, sem consequências. As pessoas arriscam mais numa simulação do que com o seu dinheiro, o que torna estes números úteis para entender preferências e intuições e inúteis para prever o que alguém vai fazer de fato.',
+      'Não são uma recomendação. O fato de a maioria escolher uma taxa de retirada, uma carteira ou um hábito não a torna adequada para você. Aqui se publica o que as pessoas escolhem, não o que você deve escolher.'
     ],
     contributeTitle: 'Acrescentar uma simulação',
     contributeBody:
-      'Duas das ferramentas têm um botão para guardar o cenário nestes dados públicos, e as outras três guardam a simulação quando é enviada uma pontuação para a sua classificação. Em ambos os casos é voluntário e não se guarda nada pessoal.',
-    readMore: 'Continuar a ler'
+      'Duas das ferramentas têm um botão para guardar o cenário nestes dados públicos, e as outras três guardam a simulação quando é enviada uma pontuação para o seu ranking. Em ambos os casos é voluntário e não se guarda nada pessoal.',
+    readMore: 'Continuar lendo'
   }
 };
 
@@ -293,9 +293,9 @@ export const INSIGHT_SIMULATORS = [
         'The 4% rule gets quoted as if it were a law, when it is the result of one study of one market, one period and one portfolio. This simulator lets each person choose their own withdrawal rate, horizon and portfolio, and shows what share of scenarios the money survives. What gets recorded is therefore the rate people pick when the choice is theirs, and how many of those plans hold up: the gap between the two figures is the lesson.'
     },
     pt: {
-      name: 'Simulação Monte Carlo da reforma',
+      name: 'Simulação Monte Carlo da aposentadoria',
       lesson:
-        'A regra dos 4% é citada como se fosse uma lei, quando é o resultado de um estudo sobre um mercado, um período e uma carteira concretos. Este simulador deixa cada pessoa escolher a sua taxa de retirada, o seu horizonte e a sua carteira, e mostra em que proporção de cenários o dinheiro aguenta. O que fica registado é a taxa que as pessoas escolhem quando a escolha é delas, e quantos desses planos sobrevivem: a distância entre os dois números é a lição.'
+        'A regra dos 4% é citada como se fosse uma lei, quando é o resultado de um estudo sobre um mercado, um período e uma carteira concretos. Este simulador deixa cada pessoa escolher a sua taxa de retirada, o seu horizonte e a sua carteira, e mostra em que proporção de cenários o dinheiro aguenta. O que fica registrado é a taxa que as pessoas escolhem quando a escolha é delas, e quantos desses planos sobrevivem: a distância entre os dois números é a lição.'
     }
   },
   {
@@ -314,7 +314,7 @@ export const INSIGHT_SIMULATORS = [
     pt: {
       name: 'Calendário da liberdade financeira',
       lesson:
-        'Quase todos aceitam em abstrato que as despesas pequenas e repetidas custam anos de trabalho. Este simulador põe o número: cada hábito tem um cursor e o resultado é a data em que deixarias de precisar do salário. Os dados mostram algo que nenhuma teoria prevê bem - quais desses hábitos as pessoas cortam de imediato e a quais não renunciam nem depois de ver o preço em anos.'
+        'Quase todos aceitam em abstrato que as despesas pequenas e repetidas custam anos de trabalho. Este simulador põe o número: cada hábito tem um cursor e o resultado é a data em que deixaria de precisar do salário. Os dados mostram algo que nenhuma teoria prevê bem - quais desses hábitos as pessoas cortam de imediato e a quais não renunciam nem depois de ver o preço em anos.'
     }
   },
   {
@@ -333,7 +333,7 @@ export const INSIGHT_SIMULATORS = [
     pt: {
       name: 'Máquina do tempo do mercado',
       lesson:
-        'Construir uma carteira é fácil de opinar e difícil de verificar, porque a verificação leva décadas. Aqui constrói-se uma e lança-se sobre a história real do mercado, com uma carteira 60/40 ao lado como referência. O interessante do registo não é que carteira ganha, que depende do período, mas quantas pessoas escolhem uma mistura própria em vez de um modelo e quantas dessas misturas batem a referência.'
+        'Construir uma carteira é fácil de opinar e difícil de verificar, porque a verificação leva décadas. Aqui você constrói uma e a lança sobre a história real do mercado, com uma carteira 60/40 ao lado como referência. O interessante do registro não é que carteira ganha, que depende do período, mas quantas pessoas escolhem uma mistura própria em vez de um modelo e quantas dessas misturas batem a referência.'
     }
   },
   {
@@ -350,9 +350,9 @@ export const INSIGHT_SIMULATORS = [
         'Financial independence is two lines crossing: what you spend each month and what your assets produce each month. This simulator forces you to move both, because every lifestyle upgrade raises the line you have to reach. The record keeps which income source ends up largest at the crossover - the question no survey answers well: what people reach for when the choice is free.'
     },
     pt: {
-      name: 'Motor de rendimentos passivos',
+      name: 'Motor de rendimento passivo',
       lesson:
-        'A independência financeira é o cruzamento de duas linhas: o que gastas cada mês e o que o teu património produz cada mês. Este simulador obriga a mexer nas duas, porque cada melhoria de estilo de vida sobe a linha que é preciso alcançar. O registo guarda que fonte de rendimento acaba a pesar mais no cruzamento, que é a pergunta que nenhum inquérito responde bem: o que escolhem as pessoas quando a escolha não custa nada.'
+        'A independência financeira é o cruzamento de duas linhas: o que você gasta cada mês e o que o seu patrimônio produz cada mês. Este simulador obriga a mexer nas duas, porque cada melhoria de estilo de vida sobe a linha que é preciso alcançar. O registro guarda qual fonte de rendimento acaba pesando mais no cruzamento, que é a pergunta que nenhuma pesquisa responde bem: o que as pessoas escolhem quando a escolha não custa nada.'
     }
   },
   {
@@ -371,7 +371,7 @@ export const INSIGHT_SIMULATORS = [
     pt: {
       name: 'Simulador de decisões financeiras',
       lesson:
-        'Este simulador não calcula nada: propõe situações e obriga a decidir, com dinheiro e satisfação como marcadores. É o mais próximo da psicologia do dinheiro, e por isso o registo das decisões é o mais revelador dos cinco. A divisão entre investir, pagar dívida, gastar e assumir risco diz o que esta audiência considera prudente, e o marcador de satisfação diz quanto está disposta a pagar por isso.'
+        'Este simulador não calcula nada: propõe situações e obriga a decidir, com dinheiro e satisfação como marcadores. É o mais próximo da psicologia do dinheiro, e por isso o registro das decisões é o mais revelador dos cinco. A divisão entre investir, pagar dívida, gastar e assumir risco diz o que esta audiência considera prudente, e o marcador de satisfação diz quanto ela está disposta a pagar por isso.'
     }
   }
 ];
@@ -444,8 +444,8 @@ export const INSIGHT_METRICS = [
       takeaway: 'Ante una caída del mercado, la defensa que más gente activa es {value} ({n} simulaciones).'
     },
     en: {
-      label: 'Defences switched on for a crash',
-      takeaway: 'Facing a market crash, the defence most people switch on is {value} ({n} simulations).'
+      label: 'Defenses switched on for a crash',
+      takeaway: 'Facing a market crash, the defense most people switch on is {value} ({n} simulations).'
     },
     pt: {
       label: 'Defesas ativadas face a uma queda',
@@ -549,7 +549,7 @@ export const INSIGHT_METRICS = [
       takeaway: 'By cutting small habits alone, the average simulation pulls financial independence forward by {value} ({n} simulations).'
     },
     pt: {
-      label: 'Anos que a liberdade é antecipada',
+      label: 'Anos em que a liberdade se antecipa',
       takeaway: 'Cortando apenas hábitos pequenos, a simulação média antecipa a sua independência financeira em {value} ({n} simulações).'
     }
   },
@@ -736,7 +736,7 @@ export const INSIGHT_METRICS = [
     },
     pt: {
       label: 'Fonte de rendimento dominante no cruzamento',
-      takeaway: 'Quando a escolha não custa nada, a fonte de rendimento que acaba a pesar mais é {value} ({n} simulações).'
+      takeaway: 'Quando a escolha não custa nada, a fonte de rendimento que acaba pesando mais é {value} ({n} simulações).'
     }
   },
   {
@@ -756,7 +756,7 @@ export const INSIGHT_METRICS = [
       takeaway: 'The average simulation takes {value} for passive income to cover its expenses ({n} simulations).'
     },
     pt: {
-      label: 'Tempo até ao cruzamento',
+      label: 'Tempo até o cruzamento',
       takeaway: 'A simulação média leva {value} até os rendimentos passivos cobrirem as despesas ({n} simulações).'
     }
   },

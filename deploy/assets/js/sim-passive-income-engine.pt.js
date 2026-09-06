@@ -8,7 +8,7 @@
         const assets = [
             { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos do mercado. Os pagamentos se multiplicam e crescem organicamente.', riskText: 'Baixo Risco / Crescimento Contínuo' },
             { id: 'bonds', name: 'Títulos do Tesouro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Garantidos pelo governo. Rendem mais em ciclos de juros altos.', riskText: 'Garantido / Seguro' },
-            { id: 'rental_property', name: 'Imóvel para Aluguel', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Fluxo imobiliário. Sujeito a custos ocasionais de reforma.', riskText: 'Risco Médio / Fluxo de Caixa' },
+            { id: 'rental_property', name: 'Imóvel para Aluguel', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Fluxo imobiliário. Sujeito a custos ocasionais de reparos.', riskText: 'Risco Médio / Fluxo de Caixa' },
             { id: 'reit_index', name: 'Fundos Imobiliários (REITs)', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fundo de investimento imobiliário. Pagamentos mensais constantes.', riskText: 'Risco Moderado / Imóveis' },
             { id: 'digital_business', name: 'Negócio Digital', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimento, sensível a custos de anúncios.', riskText: 'Alto Rendimento / Volátil' },
             { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoativo. Grandes ciclos de alta, pressão em ciclos de baixa.', riskText: 'Alta Volatilidade / Especulativo' }
@@ -257,10 +257,10 @@
             if (Math.random() < 0.25) {
                 if (bonds) {
                     bonds.monthlyYieldPerUnit = 3.2;
-                    bonds.riskText = 'Alta dos Juros (7.7% ao ano)';
+                    bonds.riskText = 'Alta dos Juros (7,7% ao ano)';
                     if (bonds.ownedUnits > 0) {
                         const bondBoost = ((3.2 - bonds.baseYield) * bonds.ownedUnits).toFixed(0);
-                        eventLogs.push(`🏦 <strong>Alta de Juros pelo Banco Central:</strong> O rendimento dos Títulos subiu para <strong>+R$3.2/unidade</strong> (7.7% ao ano). Adicionou <strong>+R$${bondBoost}/mês</strong> à renda passiva.`);
+                        eventLogs.push(`🏦 <strong>Alta de Juros pelo Banco Central:</strong> O rendimento dos Títulos subiu para <strong>+R$3.2/unidade</strong> (7,7% ao ano). Adicionou <strong>+R$${bondBoost}/mês</strong> à renda passiva.`);
                     }
                 }
             } else if (bonds) {
@@ -314,7 +314,7 @@
                 const repairCost = Math.floor(Math.random() * 1500) + 1000;
                 if (cash >= repairCost) {
                     cash -= repairCost;
-                    eventLogs.push(`🛠️ <strong>Reforma no Imóvel:</strong> Despesa emergencial de manutenção: <strong>-R$${repairCost.toLocaleString()}</strong> do Caixa.`);
+                    eventLogs.push(`🛠️ <strong>Reparo no Imóvel:</strong> Despesa emergencial de manutenção: <strong>-R$${repairCost.toLocaleString()}</strong> do Caixa.`);
                 }
             }
 

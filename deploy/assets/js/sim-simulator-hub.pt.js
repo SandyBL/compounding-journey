@@ -214,7 +214,7 @@
                 },
                 optionB: {
                     title: "Comprar o telefone parcelado em 24 meses com juros embutidos.",
-                    desc: "Oculta o valor total por meio de pequenas parcelas diárias.",
+                    desc: "Oculta o valor total por meio de pequenas parcelas mensais.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -2000, cashFlowDelta: -85, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
                     lesson: "Parcelamentos longos mascaram o custo real e reduzem sua margem de manobra financeira no futuro."
@@ -422,14 +422,14 @@
                 title: "15. Hábitos Diários: 'Pague-se em Primeiro Lugar'",
                 description: "Seu salário cai na conta no primeiro dia de cada mês.",
                 optionA: {
-                    title: "Automate transferências para investimentos no dia do pagamento ('Pague-se em Primeiro Lugar').",
+                    title: "Automatize transferências para investimentos no dia do pagamento ('Pague-se em Primeiro Lugar').",
                     desc: "Garante a construção de riqueza de forma automática antes do consumo.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
                     lesson: "Pagar-se em primeiro lugar automatiza a disciplina. Você adapta seu estilo de vida ao saldo restante sem estresse."
                 },
                 optionB: {
-                    title: "Gastar ao longo do mês e poupar o que eventualmente sobrar no final.",
+                    title: "Gastar ao longo do mês e poupar o que sobrar no final.",
                     desc: "Geralmente resulta em poupança zero devido à tendência natural de gastar o saldo disponível.",
                     qualityScore: 10,
                     impact: { netWorthDelta: 500, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },

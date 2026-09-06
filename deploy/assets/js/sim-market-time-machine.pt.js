@@ -15,14 +15,14 @@
                 title: 'O Grande Colapso de 1929',
                 icon: 'fa-building-circle-exclamation',
                 desc: 'Terça-Feira Negra e início da Grande Depressão. O mercado de ações colapsou após anos de especulação desenfreada, desencadeando falências bancárias em massa.',
-                impact: 'Ações caíram -8.4% em 1929 e continuaram caindo nos anos seguintes. Títulos do tesouro ofereceram proteção positiva (+4.2%).'
+                impact: 'Ações caíram -8,4% em 1929 e continuaram caindo nos anos seguintes. Títulos do tesouro ofereceram proteção positiva (+4,2%).'
             }},
             { year: 1930, stocks: -24.9, bonds: 4.5, reits: -20.0, gold: 0.0, cash: 2.4 },
             { year: 1931, stocks: -43.3, bonds: -2.6, reits: -35.0, gold: 0.0, cash: 1.1, event: {
                 title: 'Fundo da Grande Depressão (1931)',
                 icon: 'fa-burst',
                 desc: 'Pior ano da história de Wall Street. O desespero fez milhões de investidores realizarem todas as suas perdas e jurarem nunca mais voltar às ações.',
-                impact: 'Queda devastadora de -43.3% nas ações. Portfólios com ouro e títulos amorteceram a queda drasticamente.'
+                impact: 'Queda devastadora de -43,3% nas ações. Portfólios com ouro e títulos amorteceram a queda drasticamente.'
             }},
             { year: 1932, stocks: -8.2, bonds: 8.8, reits: -18.0, gold: 0.0, cash: 1.0 },
             { year: 1933, stocks: 54.0, bonds: 1.9, reits: 25.0, gold: 20.0, cash: 0.3 },
@@ -33,7 +33,7 @@
                 title: 'Recessão Secundária de 1937',
                 icon: 'fa-triangle-exclamation',
                 desc: 'Aperto monetário do Fed e cortes de gastos públicos resultaram em uma recaída violenta no meio da recuperação.',
-                impact: 'Ações despencaram -35.0%, testando a disciplina de quem havia sobrevivido à crise de 1929.'
+                impact: 'Ações despencaram -35,0%, testando a disciplina de quem havia sobrevivido à crise de 1929.'
             }},
             { year: 1938, stocks: 31.1, bonds: 5.5, reits: 15.0, gold: 0.0, cash: 0.1 },
             { year: 1939, stocks: -0.4, bonds: 4.4, reits: -2.0, gold: 0.0, cash: 0.0 },
@@ -75,7 +75,7 @@
                 title: 'Choque do Petróleo e Estagflação (1974)',
                 icon: 'fa-fire-flame-curved',
                 desc: 'Embargo de petróleo da OPEP, inflação de dois dígitos e desaceleração econômica severa. O ouro explodiu como ativo de proteção.',
-                impact: 'Ações caíram -26.5% e Imóveis -28.0%. Em contrapartida, o Ouro subiu impressionantes +66.0%!'
+                impact: 'Ações caíram -26,5% e Imóveis -28,0%. Em contrapartida, o Ouro subiu impressionantes +66,0%!'
             }},
             { year: 1975, stocks: 37.2, bonds: 9.2, reits: 18.0, gold: -24.0, cash: 5.8 },
             { year: 1976, stocks: 23.8, bonds: 16.8, reits: 48.0, gold: -4.0, cash: 5.1 },
@@ -92,8 +92,8 @@
             { year: 1987, stocks: 5.3, bonds: -2.7, reits: -3.0, gold: 24.0, cash: 5.8, event: {
                 title: 'Segunda-Feira Negra (1987)',
                 icon: 'fa-bolt',
-                desc: 'Maior queda percentual em um único dia da história do Dow Jones (-22.6%). Falhas em modelos computadorizados provocaram vendas em cascata.',
-                impact: 'Apesar do pânico em outubro, o mercado recuperou-se e encerrou o ano com saldo positivo de +5.3% nas ações.'
+                desc: 'Maior queda percentual em um único dia da história do Dow Jones (-22,6%). Falhas em modelos computadorizados provocaram vendas em cascata.',
+                impact: 'Apesar do pânico em outubro, o mercado recuperou-se e encerrou o ano com saldo positivo de +5,3% nas ações.'
             }},
             { year: 1988, stocks: 16.6, bonds: 9.7, reits: 13.0, gold: -15.0, cash: 6.7 },
             { year: 1989, stocks: 31.7, bonds: 14.5, reits: 8.0, gold: -2.0, cash: 8.1 },
@@ -111,7 +111,7 @@
                 title: 'Estouro da Bolha Dot-Com (2000)',
                 icon: 'fa-laptop-code',
                 desc: 'Colapso de valuations eufóricos de empresas de tecnologia sem lucro. Início de um bear market de 3 anos nas ações.',
-                impact: 'Ações despencaram -9.1%, enquanto Títulos (+11.6%) e Imóveis/REITs (+26.8%) atuaram como excelentes amortecedores.'
+                impact: 'Ações despencaram -9,1%, enquanto Títulos (+11,6%) e Imóveis/REITs (+26,8%) atuaram como excelentes amortecedores.'
             }},
             { year: 2001, stocks: -11.9, bonds: 8.4, reits: 15.5, gold: 2.5, cash: 3.8 },
             { year: 2002, stocks: -22.1, bonds: 15.1, reits: 3.8, gold: 24.7, cash: 1.7 },
@@ -124,7 +124,7 @@
                 title: 'Crise Financeira Global de 2008',
                 icon: 'fa-skull-crossbones',
                 desc: 'Falência do Lehman Brothers e colapso do sistema de crédito subprime mundial. A pior queda desde 1929.',
-                impact: 'Ações caíram -37.0% e REITs -37.7%. No entanto, Títulos do Tesouro subiram +20.1%, provando o poder da diversificação!'
+                impact: 'Ações caíram -37,0% e REITs -37,7%. No entanto, Títulos do Tesouro subiram +20,1%, provando o poder da diversificação!'
             }},
             { year: 2009, stocks: 26.5, bonds: -11.1, reits: 28.0, gold: 23.4, cash: 0.1 },
             { year: 2010, stocks: 15.1, bonds: 8.5, reits: 27.9, gold: 29.5, cash: 0.1 },
@@ -141,14 +141,14 @@
                 title: 'Pandemia & Lockdowns Globais (2020)',
                 icon: 'fa-virus-covid',
                 desc: 'Paralisação econômica global relâmpago seguida por estímulos fiscais e monetários trilionários sem precedentes.',
-                impact: 'Após um crash de -34% em poucas semanas, o mercado encerrou o ano em alta forte de +18.4% impulsionado por liquidez.'
+                impact: 'Após um crash de -34% em poucas semanas, o mercado encerrou o ano em alta forte de +18,4% impulsionado por liquidez.'
             }},
             { year: 2021, stocks: 28.7, bonds: -1.5, reits: 41.3, gold: -3.6, cash: 0.1 },
             { year: 2022, stocks: -18.1, bonds: -13.0, reits: -24.9, gold: -0.1, cash: 1.5, event: {
                 title: 'Aperto Monetário & Inflação (2022)',
                 icon: 'fa-arrow-trend-down',
                 desc: 'O Fed elevou os juros agressivamente para combater a inflação. Pior queda simultânea em ações e títulos em 50 anos!',
-                impact: 'Ações caíram -18.1% e Títulos caíram -13.0%, testando investidores que dependiam apenas de títulos como proteção.'
+                impact: 'Ações caíram -18,1% e Títulos caíram -13,0%, testando investidores que dependiam apenas de títulos como proteção.'
             }},
             { year: 2023, stocks: 26.3, bonds: 5.5, reits: 11.4, gold: 13.1, cash: 5.0 },
             { year: 2024, stocks: 24.2, bonds: 1.2, reits: 8.5, gold: 27.2, cash: 5.2 },

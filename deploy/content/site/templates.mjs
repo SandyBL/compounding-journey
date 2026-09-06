@@ -105,25 +105,25 @@ export const TEMPLATES = [
       slug: 'analise-balanco-mensal',
       download: 'Modelo de Analise do Balanco Mensal.xlsx',
       title: 'Modelo de análise financeira mensal em Excel (grátis)',
-      description: 'Modelo de Excel gratuito para fazer o balanço do teu mês: rendimentos, despesas, ativos e passivos numa única fotografia. Sem registo e sem deixar o teu email.',
-      intro: 'Antes de orçamentar qualquer coisa é preciso saber de onde partes. Este modelo é o balanço da tua economia: o que entra, o que sai, o que tens e o que deves, numa só folha que podes repetir todos os meses.',
-      whatsInside: `- Uma folha de **rendimentos e despesas** do mês, separada por categorias, que termina num único valor: quanto te sobrou.
-- Uma folha de **ativos e passivos** —contas, investimentos, imóveis, dívidas— que calcula o teu património líquido.
-- Uma folha de **evolução** onde cada mês é uma linha, para que a comparação entre meses seja feita pela folha e não pela tua memória.
-- Fórmulas já escritas: a taxa de poupança do mês e o património líquido calculam-se sozinhos.`,
-      howToUse: `1. Escolhe um mês já fechado, não o que está a correr. Os meses a meio parecem sempre melhores do que são.
-2. Preenche os rendimentos com o que **entrou de facto** na conta, não com o bruto do recibo de vencimento.
-3. Passa as despesas do extrato bancário, não de memória. Se uma categoria te dá vergonha, é exatamente essa que tens de registar.
-4. Registra ativos e passivos à data de fecho. Um valor aproximado serve; usar o mesmo critério todos os meses é o que importa.
-5. Repete no mês seguinte numa linha nova. Três meses bastam para ver uma tendência; um mês é uma anedota.`,
+      description: 'Modelo de Excel gratuito para fazer o balanço do seu mês: rendimentos, despesas, ativos e passivos numa única fotografia. Sem registro e sem deixar o seu e-mail.',
+      intro: 'Antes de orçamentar qualquer coisa é preciso saber de onde você parte. Este modelo é o balanço da sua economia: o que entra, o que sai, o que você tem e o que você deve, em uma só planilha que dá para repetir todos os meses.',
+      whatsInside: `- Uma planilha de **rendimentos e despesas** do mês, separada por categorias, que termina em um único valor: quanto sobrou.
+- Uma planilha de **ativos e passivos** —contas, investimentos, imóveis, dívidas— que calcula o seu patrimônio líquido.
+- Uma planilha de **evolução** onde cada mês é uma linha, para que a comparação entre meses seja feita pela planilha e não pela sua memória.
+- Fórmulas já escritas: a taxa de poupança do mês e o patrimônio líquido se calculam sozinhos.`,
+      howToUse: `1. Escolha um mês já fechado, não o que está em curso. Os meses pela metade parecem sempre melhores do que são.
+2. Preencha os rendimentos com o que **entrou de fato** na conta, não com o bruto do holerite.
+3. Passe as despesas do extrato bancário, não de memória. Se uma categoria dá vergonha, é exatamente essa que você tem de registrar.
+4. Registre ativos e passivos na data de fechamento. Um valor aproximado serve; usar o mesmo critério todos os meses é o que importa.
+5. Repita no mês seguinte em uma linha nova. Três meses bastam para ver uma tendência; um mês é uma anedota.`,
       faq: [
         {
-          q: 'Preciso de Excel para o usar?',
-          a: 'Não necessariamente. O ficheiro é .xlsx e funciona no Excel, mas também abre no Google Sheets, no LibreOffice Calc e no Numbers. As fórmulas são somas, subtrações e percentagens: nada que dependa de uma função exclusiva da Microsoft.'
+          q: 'Preciso do Excel para usar?',
+          a: 'Não necessariamente. O arquivo é .xlsx e funciona no Excel, mas também abre no Google Sheets, no LibreOffice Calc e no Numbers. As fórmulas são soma, subtrações e porcentagens: nada que dependa de uma função exclusiva da Microsoft.'
         },
         {
           q: 'Os meus dados são enviados para algum lado?',
-          a: 'Não. É um ficheiro que descarregas e que fica no teu computador. Não há conta, não há sincronização e não há servidor pelo meio: o que escreveres na folha não sai do teu equipamento.'
+          a: 'Não. É um arquivo que você baixa e que fica no seu computador. Não há conta, não há sincronização e não há servidor pelo meio: o que você escrever na planilha não sai do seu computador.'
         },
         {
           q: 'Com que frequência devo preenchê-lo?',
@@ -151,7 +151,7 @@ export const TEMPLATES = [
       howToUse: `1. Elige el periodo antes de empezar: 15 días si nunca lo has hecho, un mes completo si ya lo has intentado.
 2. Anota en el momento, no al final del día. Lo que no se anota en el momento se olvida, y lo que se olvida es justo lo que buscabas.
 3. No corrijas tu comportamiento durante el registro. Un mes falseado por las ganas de que salga bien no sirve para nada.
-4. Al terminar, mira sólo dos cosas: la categoría más grande y la suma de los impulsos.
+4. Al terminar, mira solo dos cosas: la categoría más grande y la suma de los impulsos.
 5. Cambia **una** cosa. Una sola, la que más pese, y vuelve a medir el mes siguiente.`,
       faq: [
         {
@@ -181,17 +181,17 @@ export const TEMPLATES = [
 - A column for marking each expense **necessary, useful or impulsive** - which is where the log stops being bookkeeping and starts being information.`,
       howToUse: `1. Choose the period before you start: 15 days if you have never done this, a full month if you have.
 2. Log it at the time, not at the end of the day. What is not written down at the time is forgotten, and what is forgotten is exactly what you were looking for.
-3. Do not correct your behaviour while you are logging. A month distorted by wanting it to look good tells you nothing.
+3. Do not correct your behavior while you are logging. A month distorted by wanting it to look good tells you nothing.
 4. When it is over, look at only two things: the biggest category, and the total of the impulses.
 5. Change **one** thing. One, the heaviest, and measure again next month.`,
       faq: [
         {
           q: 'Is 15 days enough?',
-          a: 'For daily habits, yes: small repeated expenses show up almost immediately. What 15 days will not capture is the irregular spending - the insurance, the car service, the birthday present - which is why this template is used alongside the monthly analysis one, which does pick those up.'
+          a: 'For daily habits, yes: small repeated expenses show up almost immediately. What 15 days will not capture is the irregular spending - the insurance, the car repair, the birthday present - which is why this template is used alongside the monthly analysis one, which does pick those up.'
         },
         {
           q: 'Would a banking app not be easier?',
-          a: 'It is more convenient, which is why it works less well. The app categorises for you, so the expense passes by without you having to look at it. Writing it by hand is deliberately slow: the friction is the mechanism, not a shortcoming of the template.'
+          a: 'It is more convenient, which is why it works less well. The app categorizes for you, so the expense passes by without you having to look at it. Writing it by hand is deliberately slow: the friction is the mechanism, not a shortcoming of the template.'
         },
         {
           q: 'What do I do with the result?',
@@ -204,29 +204,29 @@ export const TEMPLATES = [
       slug: 'gestao-de-despesas',
       download: 'Modelo de Gestao de Despesas.xlsx',
       title: 'Modelo de Excel para controlar despesas (grátis)',
-      description: 'Modelo de Excel gratuito para registar todas as despesas durante 15 dias ou um mês e ver com dados para onde vai o teu dinheiro. Sem registo e sem deixar o teu email.',
-      intro: 'Quase ninguém sabe em que gasta o dinheiro: sabe em que acredita que o gasta. Este modelo existe para fechar essa distância com um método incómodo e muito eficaz: registar tudo, sem exceções, durante um período curto.',
-      whatsInside: `- Uma folha de **registo diário**: data, descrição, categoria e valor. Uma linha por despesa, café incluído.
-- Categorias pré-carregadas e editáveis, com um **resumo automático** que ordena as tuas categorias da maior para a menor.
+      description: 'Modelo de Excel gratuito para registrar todas as despesas durante 15 dias ou um mês e ver com dados para onde vai o seu dinheiro. Sem registro e sem deixar o seu e-mail.',
+      intro: 'Quase ninguém sabe em que gasta o dinheiro: sabe em que acredita que o gasta. Este modelo existe para fechar essa distância com um método incômodo e muito eficaz: registrar tudo, sem exceções, durante um período curto.',
+      whatsInside: `- Uma planilha de **registro diário**: data, descrição, categoria e valor. Uma linha por despesa, café incluído.
+- Categorias pré-carregadas e editáveis, com um **resumo automático** que ordena as suas categorias da maior para a menor.
 - Um contador de **despesa média diária**, que costuma surpreender mais do que o total.
-- Espaço para marcar cada despesa como **necessária, útil ou impulsiva**, que é onde o registo deixa de ser contabilidade e passa a ser informação.`,
-      howToUse: `1. Escolhe o período antes de começar: 15 dias se nunca o fizeste, um mês completo se já tentaste.
-2. Registra no momento, não ao fim do dia. O que não se registra no momento esquece-se, e o que se esquece é precisamente o que procuravas.
-3. Não corrijas o teu comportamento durante o registo. Um mês falseado pela vontade de que corra bem não serve para nada.
-4. No fim, olha só para duas coisas: a categoria maior e a soma dos impulsos.
-5. Muda **uma** coisa. Uma só, a que mais pesa, e volta a medir no mês seguinte.`,
+- Espaço para marcar cada despesa como **necessária, útil ou impulsiva**, que é onde o registro deixa de ser contabilidade e passa a ser informação.`,
+      howToUse: `1. Escolha o período antes de começar: 15 dias se você nunca fez isso, um mês completo se já tentou.
+2. Registre no momento, não no fim do dia. O que não se registra na hora acaba esquecido, e o que se esquece é exatamente o que você procurava.
+3. Não corrija o seu comportamento durante o registro. Um mês falseado pela vontade de que corra bem não serve para nada.
+4. No fim, olhe só para duas coisas: a categoria maior e a soma dos impulsos.
+5. Mude **uma** coisa. Uma só, a que mais pesa, e volte a medir no mês seguinte.`,
       faq: [
         {
           q: 'Quinze dias são suficientes?',
-          a: 'Para ver os hábitos diários, sim: as despesas pequenas e repetidas aparecem quase de imediato. O que quinze dias não captam são as despesas irregulares —o seguro, a revisão do carro, o presente de aniversário—, e é por isso que este modelo se usa em conjunto com o da análise mensal, que as recolhe.'
+          a: 'Para ver os hábitos diários, sim: as despesas pequenas e repetidas aparecem quase de imediato. O que quinze dias não captam são as despesas irregulares —o seguro, a revisão do carro, o presente de aniversário—, e é por isso que este modelo se usa junto com o da análise mensal, que as captura.'
         },
         {
-          q: 'Não é mais fácil usar uma app do banco?',
-          a: 'É mais cómodo, e é por isso que funciona pior. A app categoriza sozinha, portanto a despesa passa à tua frente sem que tenhas de olhar para ela. Escrever à mão é lento de propósito: a fricção é o mecanismo, não um defeito do modelo.'
+          q: 'Não é mais fácil usar um app do banco?',
+          a: 'É mais cômodo, e é por isso que funciona pior. O app categoriza sozinho, então a despesa passa na sua frente sem que você tenha de olhar para ela. Escrever à mão é lento de propósito: a fricção é o mecanismo, não um defeito do modelo.'
         },
         {
           q: 'O que faço com o resultado?',
-          a: 'Nada durante uma semana. Lê-o, deixa que te incomode e não tomes decisões a quente. Depois escolhe uma única mudança e dá-lhe um mês. Os orçamentos refeitos de cima a baixo num dia costumam durar exatamente esse dia.'
+          a: 'Nada durante uma semana. Leia, deixe que incomode e não tome decisões a quente. Depois escolha uma única mudança e dê a ela um mês. Os orçamentos refeitos de cima a baixo num dia costumam durar exatamente esse dia.'
         }
       ]
     }
@@ -250,7 +250,7 @@ export const TEMPLATES = [
       howToUse: `1. Rellena primero la columna *real* con datos, no con intenciones: sácalos de la plantilla de gestión de gastos o del extracto.
 2. Fija tu ahorro como una **partida fija** en la parte de arriba, antes de repartir el resto. Si sobra al final, no ahorras: ahorras si lo apartas primero.
 3. Rellena la columna *objetivo* sin heroísmos. Un presupuesto que exige un mes perfecto se abandona en la segunda semana.
-4. Mira sólo las tres desviaciones mayores. El resto es ruido.
+4. Mira solo las tres desviaciones mayores. El resto es ruido.
 5. Revísalo una vez al mes, no una vez al año. Un presupuesto es un documento vivo o es un documento muerto.`,
       faq: [
         {
@@ -303,29 +303,29 @@ export const TEMPLATES = [
       slug: 'orcamento-pessoal',
       download: 'Modelo de Orcamento Pessoal.xlsx',
       title: 'Modelo de orçamento pessoal em Excel (grátis)',
-      description: 'Modelo de Excel gratuito para comparar a distribuição real do teu dinheiro com o orçamento que queres ter. Sem registo e sem deixar o teu email.',
-      intro: 'Um orçamento não é uma lista de proibições: é uma decisão tomada com antecedência sobre aquilo a que queres que o teu mês se pareça. Este modelo põe as duas colunas ao lado —o que fizeste e o que querias fazer— e calcula a distância.',
-      whatsInside: `- Uma folha de **orçamento por categorias** com duas colunas, *real* e *objetivo*, e o desvio calculado entre ambas.
-- Uma distribuição **percentual** automática, para poderes comparar o teu mês com regras conhecidas como a 50/30/20 sem teres de acreditar em nenhuma.
-- Uma linha de **poupança como primeira rubrica**, no topo e não no fim, que é a única diferença estrutural entre um orçamento que poupa e um que não.
+      description: 'Modelo de Excel gratuito para comparar a distribuição real do seu dinheiro com o orçamento que quer ter. Sem registro e sem deixar o seu e-mail.',
+      intro: 'Um orçamento não é uma lista de proibições: é uma decisão tomada com antecedência sobre com o que você quer que o seu mês se pareça. Este modelo põe as duas colunas lado a lado —o que você fez e o que queria fazer— e calcula a distância.',
+      whatsInside: `- Uma planilha de **orçamento por categorias** com duas colunas, *real* e *objetivo*, e o desvio calculado entre ambas.
+- Uma distribuição **percentual** automática, para você comparar o seu mês com regras conhecidas como a 50/30/20 sem ter de acreditar em nenhuma.
+- Uma linha de **poupança como primeiro item**, no topo e não no fim, que é a única diferença estrutural entre um orçamento que poupa e um que não.
 - Um resumo da **taxa de poupança** do mês.`,
-      howToUse: `1. Preenche primeiro a coluna *real* com dados, não com intenções: tira-os do modelo de gestão de despesas ou do extrato.
-2. Fixa a tua poupança como uma **rubrica fixa** no topo, antes de distribuir o resto. Se for o que sobra no fim, não poupas: poupas se a separares primeiro.
-3. Preenche a coluna *objetivo* sem heroísmos. Um orçamento que exige um mês perfeito é abandonado na segunda semana.
-4. Olha apenas para os três maiores desvios. O resto é ruído.
-5. Revê-o uma vez por mês, não uma vez por ano. Um orçamento é um documento vivo ou é um documento morto.`,
+      howToUse: `1. Preencha primeiro a coluna *real* com dados, não com intenções: tire-os do modelo de gestão de despesas ou do extrato.
+2. Fixe a sua poupança como um **item fixo** no topo, antes de distribuir o resto. Se ela for o que sobra no fim, você não poupa: você poupa se separá-la primeiro.
+3. Preencha a coluna *objetivo* sem heroísmos. Um orçamento que exige um mês perfeito é abandonado na segunda semana.
+4. Olhe apenas para os três maiores desvios. O resto é ruído.
+5. Revise-o uma vez por mês, não uma vez por ano. Um orçamento é um documento vivo ou é um documento morto.`,
       faq: [
         {
           q: 'A regra 50/30/20 serve?',
-          a: 'Como ponto de partida, sim; como norma, não. É uma referência razoável para quem não tem nenhuma, e deixa de fazer sentido no momento em que a habitação consome 45 % do teu rendimento, ou quando a tua situação não se parece nada com a de quem inventou a regra. O modelo calcula as tuas percentagens reais para decidires com as tuas e não com as de outra pessoa.'
+          a: 'Como ponto de partida, sim; como norma, não. É uma referência razoável para quem não tem nenhuma, e deixa de fazer sentido no momento em que a moradia consome 45% da sua renda, ou quando a sua situação não se parece nada com a de quem inventou a regra. O modelo calcula as suas porcentagens reais para você decidir com as suas e não com as de outra pessoa.'
         },
         {
-          q: 'Porque é que a poupança vai no topo?',
+          q: 'Por que a poupança vai no topo?',
           a: 'Porque a poupança deixada para o fim é a que não acontece. Tratá-la como mais uma fatura —uma que se paga primeiro— é a única mudança do método que funciona por si só, sem exigir mais disciplina no resto do mês.'
         },
         {
           q: 'E se os meus rendimentos forem irregulares?',
-          a: 'Orçamenta com base no teu mês mais fraco dos últimos doze, não na média. Os meses bons alimentam um colchão, e é do colchão que sai o salário dos meses fracos. Dá mais trabalho no início e evita o ciclo de excesso e corte que esvazia qualquer orçamento variável.'
+          a: 'Faça o orçamento com base no seu mês mais fraco dos últimos doze, não na média. Os meses bons alimentam um colchão, e é do colchão que sai o salário dos meses fracos. Dá mais trabalho no início e evita o ciclo de excesso e corte que esvazia qualquer orçamento variável.'
         }
       ]
     }

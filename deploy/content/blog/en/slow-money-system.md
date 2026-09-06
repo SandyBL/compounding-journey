@@ -55,7 +55,7 @@ A weekly review catches what is happening now. Two slower reviews catch what is 
 - **Once a month, about an hour.** Confirm every automatic transfer actually landed. Read the subscription charges line by line and cancel whatever you did not consciously use. Compare the reserve balance against the irregular costs you already know are coming this year.
 - **Once a quarter, about an hour.** Ask whether the split still fits your life. If your income rose, move part of the raise into the investment share before it becomes ordinary spending. Check that your investment contributions are still going where you intended.
 
-Together those three layers cost roughly thirty hours a year — less than many people spend choosing a single holiday, and spread thinly enough that no individual session feels like an event.
+Together those three layers cost roughly thirty hours a year — less than many people spend choosing a single vacation, and spread thinly enough that no individual session feels like an event.
 
 ## What to do when a month goes wrong
 

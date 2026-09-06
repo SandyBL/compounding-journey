@@ -24,10 +24,6 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
-    <!--manifest:start-->
-    <link rel="manifest" href="/manifest.es.webmanifest">
-    <meta name="theme-color" content="#1E4620">
-    <!--manifest:end-->
 </head>
 <body class="min-h-full flex flex-col antialiased selection:bg-gold-500 selection:text-white">
 
@@ -176,10 +172,10 @@
             <div class="space-y-1 max-w-2xl">
                 <div class="flex items-center gap-2">
                     <span class="bg-gold-500 text-espresso-950 font-bold text-[10px] uppercase px-2 py-0.5 rounded-md">Simulador de Asignación</span>
-                    <h2 class="text-base sm:text-lg font-bold font-serif">Compara tu Portafolio Personalizado con Modelos Famosos</h2>
+                    <h2 class="text-base sm:text-lg font-bold font-serif">Compara tu Cartera Personalizada con Modelos Famosos</h2>
                 </div>
                 <p class="text-xs text-cream-200 leading-relaxed">
-                    ¡Crea tu estrategia utilizando los deslizadores y sigue en tiempo real cómo habría rendido tu portafolio junto a <strong>5 referencias famosas del mercado</strong> desde 1920!
+                    ¡Crea tu estrategia utilizando los deslizadores y sigue en tiempo real cómo habría rendido tu cartera junto a <strong>5 referencias famosas del mercado</strong> desde 1920!
                 </p>
             </div>
 
@@ -192,7 +188,7 @@
                 <select id="presetSelect" data-onchange="applyPreset(this.value)" class="w-full text-xs bg-espresso-950 text-white border border-gold-500/40 rounded-lg p-2 font-medium focus:ring-2 focus:ring-gold-400">
                     <option value="classic6040">Clásico (60% Acciones / 40% Bonos)</option>
                     <option value="allweather">All-Weather de Ray Dalio (30% Acciones, 55% Bonos, 15% Oro)</option>
-                    <option value="permanent">Portafolio Permanente (25% Acciones, 25% Bonos, 25% Oro, 25% Efectivo)</option>
+                    <option value="permanent">Cartera Permanente (25% Acciones, 25% Bonos, 25% Oro, 25% Efectivo)</option>
                     <option value="aggressive">100% Acciones (Crecimiento Agresivo)</option>
                     <option value="conservative">Conservador (20% Acciones, 60% Bonos, 20% Efectivo)</option>
                     <option value="custom" selected>Personalizado (Edita los deslizadores)</option>
@@ -208,7 +204,7 @@
                 <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2">
-                            <i class="fa-solid fa-sliders text-forest-800" aria-hidden="true"></i> Construcción de tu Portafolio
+                            <i class="fa-solid fa-sliders text-forest-800" aria-hidden="true"></i> Construcción de tu Cartera
                         </h3>
                         <p class="text-[11px] text-espresso-800/70">Ajusta la asignación de los deslizadores (Suma: 100%)</p>
                     </div>
@@ -245,7 +241,7 @@
                     <div class="space-y-0.5">
                         <div class="flex justify-between text-xs font-bold">
                             <span id="lbl_reits" class="text-espresso-950 flex items-center gap-1.5">
-                                <i class="fa-solid fa-city text-amber-700" aria-hidden="true"></i> Bienes Raíces & REITs
+                                <i class="fa-solid fa-city text-amber-700" aria-hidden="true"></i> Inmuebles & REITs
                             </span>
                             <span id="val_reits" class="font-mono text-amber-800">0%</span>
                         </div>
@@ -310,7 +306,7 @@
                             <select id="startYearSelect" data-onchange="changeStartYear(this.value)" class="w-full py-1 px-2 rounded-lg border border-cream-300 bg-white font-mono font-bold text-right text-espresso-950">
                                 <option value="1920" selected>1920</option>
                                 <option value="1929">1929 (Gran Depresión)</option>
-                                <option value="1970">1970 (Estagflación)</option>
+                                <option value="1970">1970 (Estanflación)</option>
                                 <option value="1990">1990 (Década de los 90)</option>
                                 <option value="2000">2000 (Burbuja Dot-Com)</option>
                                 <option value="2008">2008 (Crisis Subprime)</option>
@@ -334,7 +330,7 @@
                 <!-- PORTFOLIOS BENCHMARK LEGEND WITH TOOLTIPS -->
                 <div class="sim-panel p-4 space-y-2">
                     <div class="flex items-center justify-between">
-                        <h4 class="text-xs font-bold text-espresso-950 uppercase tracking-wider font-serif">Portafolios Comparados en el Gráfico:</h4>
+                        <h4 class="text-xs font-bold text-espresso-950 uppercase tracking-wider font-serif">Carteras Comparadas en el Gráfico:</h4>
                         <span class="text-[10px] text-espresso-800/60 flex items-center gap-1"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Pasa el cursor para ver la composición</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-[11px]">
@@ -342,10 +338,10 @@
                         <!-- 1. Custom Portfolio -->
                         <div class="sim-series sim-series-1 has-tooltip cursor-pointer">
                             <span class="sim-series__key" aria-hidden="true"></span>
-                            <span><strong>Tu Portafolio (Deslizadores)</strong></span>
+                            <span><strong>Tu Cartera (Deslizadores)</strong></span>
                             <!-- Tooltip -->
                             <div class="tooltip-box space-y-0.5">
-                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">Tu Portafolio Actual:</div>
+                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">Tu Cartera Actual:</div>
                                 <div id="tooltipCustomComposition" class="space-y-0.5">
                                     <!-- Dynamic JS content -->
                                 </div>
@@ -383,7 +379,7 @@
                             <span><strong>Permanente (Browne)</strong></span>
                             <!-- Tooltip -->
                             <div class="tooltip-box space-y-0.5">
-                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">Portafolio Permanente (Harry Browne):</div>
+                                <div class="tooltip-box__title border-b border-white/20 pb-0.5 mb-1">Cartera Permanente (Harry Browne):</div>
                                 <div>• 25% Acciones (S&P 500)</div>
                                 <div>• 25% Bonos del Tesoro</div>
                                 <div>• 25% Oro Físico</div>
@@ -426,7 +422,7 @@
             <div class="flex items-center justify-between border-b border-cream-200 pb-2">
                 <div>
                     <h3 class="text-sm sm:text-base font-bold text-espresso-950 font-serif flex items-center gap-2">
-                        <i class="fa-solid fa-chart-line text-forest-800" aria-hidden="true"></i> Trayectoria del Patrimonio (Tu Portafolio vs. Referencias)
+                        <i class="fa-solid fa-chart-line text-forest-800" aria-hidden="true"></i> Trayectoria del Patrimonio (Tu Cartera vs. Referencias)
                     </h3>
                     <p id="chartSubtext" class="text-xs text-espresso-800/70">Sigue el crecimiento y la resiliencia de las estrategias a lo largo de las décadas</p>
                 </div>
@@ -439,7 +435,7 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
                 <!-- 1. Custom Portfolio -->
                 <div class="sim-stat has-tooltip" role="status" aria-live="polite" aria-atomic="true">
-                    <span class="sim-stat__label"><span class="sim-series__key sim-series__key--1" aria-hidden="true"></span><span>Tu Portafolio</span></span>
+                    <span class="sim-stat__label"><span class="sim-series__key sim-series__key--1" aria-hidden="true"></span><span>Tu Cartera</span></span>
                     <div id="statCustomVal" class="sim-stat__value sim-stat__value--series-1 text-sm">€100.000</div>
                     <div id="statCustomCagr" class="sim-stat__note">CAGR: 0.0%</div>
                 </div>
@@ -657,7 +653,7 @@
                     <i class="fa-solid fa-lightbulb text-gold-600" aria-hidden="true"></i> ¿Qué Muestra el Gráfico?
                 </strong>
                 <p class="text-[11px] text-espresso-800 leading-normal">
-                    ¡Observa cómo el portafolio (100% Acciones) sufre caídas acentuadas en la crisis, mientras que estrategias diversificadas como (All-Weather) y (Tu Portafolio) suavizan la volatilidad a través de la renta fija y el oro!
+                    ¡Observa cómo la cartera (100% Acciones) sufre caídas acentuadas en la crisis, mientras que estrategias diversificadas como (All-Weather) y (Tu Cartera) suavizan la volatilidad a través de la renta fija y el oro!
                 </p>
             </div>
 
@@ -698,8 +694,8 @@
                         <i class="fa-solid fa-bullseye text-gold-600" aria-hidden="true"></i> Objetivos del Simulador:
                     </strong>
                     <ul class="list-disc list-inside space-y-1 text-[11px]">
-                        <li><strong>Asignación Personalizada:</strong> Crea tu portafolio y prueba la eficiencia de la diversificación.</li>
-                        <li><strong>Comparación en Tiempo Real:</strong> Observa cómo rinde tu portafolio frente a 5 modelos de referencia consagrados.</li>
+                        <li><strong>Asignación Personalizada:</strong> Crea tu cartera y prueba la eficiencia de la diversificación.</li>
+                        <li><strong>Comparación en Tiempo Real:</strong> Observa cómo rinde tu cartera frente a 5 modelos de referencia consagrados.</li>
                         <li><strong>Lecciones de Historia Financiera:</strong> Pop-ups explicativos destacan cómo reaccionó cada clase de activo a las mayores crisis de los siglos XX y XXI.</li>
                     </ul>
                 </div>

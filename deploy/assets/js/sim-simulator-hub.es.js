@@ -18,7 +18,7 @@
             INVESTING: "Inversión y Asignación de Activos",
             DEBT: "Gestión de Deudas y Apalancamiento",
             SPENDING: "Consumo Consciente y Hábitos",
-            TAX: "Planificación Fiscal y Retiro",
+            TAX: "Planificación Fiscal y Jubilación",
             RISK: "Gestión de Riesgos y Protección"
         };
 
@@ -42,23 +42,23 @@
                 id: 1,
                 category: CATEGORIES.INVESTING,
                 title: "1. El Dilema del Dinero Estancado",
-                description: "Recibes un bono de trabajo de €5,000. No necesitas este dinero de inmediato. La tasa de inflación anual es de 3.5%. ¿Cómo asignas este capital?",
+                description: "Recibes un bono de trabajo de €5.000. No necesitas este dinero de inmediato. La tasa de inflación anual es de 3,5%. ¿Cómo asignas este capital?",
                 optionA: {
-                    title: "Dejar los €5,000 completos en la cuenta corriente común al 0.01%.",
+                    title: "Dejar los €5.000 completos en la cuenta corriente común al 0,01%.",
                     desc: "Mantiene el 100% del dinero líquido en la cuenta corriente para tranquilidad emocional.",
                     qualityScore: 10,
                     impact: { netWorthDelta: 5000, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
                     lesson: "El dinero estancado en la cuenta corriente parece seguro, pero pierde poder adquisitivo silenciosamente todos los años debido a la inflación."
                 },
                 optionB: {
-                    title: "Poner los €5,000 en una Cuenta de Alto Rendimiento / Fondo de Liquidez.",
+                    title: "Poner los €5.000 en una Cuenta de Alto Rendimiento / Fondo de Liquidez.",
                     desc: "Genera intereses competitivos a corto plazo sin perder la liquidez inmediata.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 5250, cashFlowDelta: 20, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
                     lesson: "Las cuentas de alto rendimiento o fondos de liquidez protegen tus reservas contra la inflación y generan ingresos pasivos sin comprometer la liquidez."
                 },
                 optionC: {
-                    title: "Invertir el 100% de los €5,000 en una memecoin altamente especulativa.",
+                    title: "Invertir el 100% de los €5.000 en una memecoin altamente especulativa.",
                     desc: "Busca ganancias astronómicas rápidas con probabilidad extrema de pérdida.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -3000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
@@ -69,9 +69,9 @@
                 id: 2,
                 category: CATEGORIES.INVESTING,
                 title: "2. Casa en la Playa: Comprar vs. Alquilar vs. Activos Productivos",
-                description: "Deseas pasar los meses de verano cerca del mar y has juntado €60,000 para una entrada o inversión.",
+                description: "Deseas pasar los meses de verano cerca del mar y has juntado €60.000 para una entrada o inversión.",
                 optionA: {
-                    title: "Comprar la casa en la playa con una hipoteca elevada y altos costos de mantenimiento.",
+                    title: "Comprar la casa en la playa con una hipoteca elevada y altos costes de mantenimiento.",
                     desc: "Compromete el flujo de caja mensual y concentra riesgo inmobiliario en una sola región.",
                     qualityScore: 10,
                     impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10, literacyDelta: -3.0, literacyDeltaText: "-3%" },
@@ -85,11 +85,11 @@
                     lesson: "Alquilar bienes de lujo y poseer activos productivos generadores de renta maximiza la felicidad personal y la velocidad de acumulación."
                 },
                 optionC: {
-                    title: "Dejar los €60,000 paralizados en la cuenta corriente sin rendimiento por tiempo indefinido.",
+                    title: "Dejar los €60.000 paralizados en la cuenta corriente sin rendimiento por tiempo indefinido.",
                     desc: "Mantiene el capital sin invertir por temor al mercado inmobiliario o de acciones.",
                     qualityScore: 0,
                     impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
-                    lesson: "El costo de oportunidad es enorme. Mantener el capital inmóvil impide que el poder del interés compuesto trabaje a tu favor."
+                    lesson: "El coste de oportunidad es enorme. Mantener el capital inmóvil impide que el poder del interés compuesto trabaje a tu favor."
                 }
             },
             {
@@ -105,11 +105,11 @@
                     lesson: "Los planificadores fiduciarios cobran por tiempo o consultoría puntual (no comisiones por producto), alineando sus consejos directamente a tus intereses."
                 },
                 optionB: {
-                    title: "Usar un asesor que cobra un 1.5% anual de comisión sobre tu patrimonio (AUM) + comisión de ventas.",
-                    desc: "Paga una tarifa porcentual continua que erosiona el rendimiento compuesto de tu portafolio.",
+                    title: "Usar un asesor que cobra un 1,5% anual de comisión sobre tu patrimonio (AUM) + comisión de ventas.",
+                    desc: "Paga una tarifa porcentual continua que erosiona el rendimiento compuesto de tu cartera.",
                     qualityScore: 10,
                     impact: { netWorthDelta: -1500, cashFlowDelta: -50, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
-                    lesson: "Una comisión del 1.5% anual parece pequeña, pero a lo largo de 30 años puede consumir más del 30% del crecimiento total de tu riqueza."
+                    lesson: "Una comisión del 1,5% anual parece pequeña, pero a lo largo de 30 años puede consumir más del 30% del crecimiento total de tu riqueza."
                 },
                 optionC: {
                     title: "Seguir consejos financieros exclusivamente de influencers en redes sociales.",
@@ -125,7 +125,7 @@
                 title: "4. Seguro de Vida para Dependientes",
                 description: "Tienes personas que dependen de tus ingresos y necesitas proteger el futuro financiero de tu familia.",
                 optionA: {
-                    title: "Contratar un Seguro de Vida a Término asequible e invertir la diferencia en fondos de índice.",
+                    title: "Contratar un Seguro de Vida Temporal asequible e invertir la diferencia en fondos de índice.",
                     desc: "Separa la protección pura de la inversión para lograr la máxima eficiencia.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 4000, cashFlowDelta: -20, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
@@ -150,7 +150,7 @@
                 id: 5,
                 category: CATEGORIES.DEBT,
                 title: "5. Gestión de Deudas: Hipoteca vs. Renta Fija",
-                description: "Tienes €20,000 en efectivo y una hipoteca con tasa fija baja del 3.0% anual, mientras que bonos seguros rinden el 5.2% anual.",
+                description: "Tienes €20.000 en efectivo y una hipoteca con tasa fija baja del 3,0% anual, mientras que bonos seguros rinden el 5,2% anual.",
                 optionA: {
                     title: "Liquidar de forma anticipada la hipoteca del 3% lo antes posible.",
                     desc: "Aplica liquidez en patrimonio inmovilizado para eliminar la deuda a baja tasa.",
@@ -160,10 +160,10 @@
                 },
                 optionB: {
                     title: "Mantener la deuda al 3% e invertir los €20k en bonos/índices que rinden más.",
-                    desc: "Aprovecha el diferencial de tasas (5.2% de rendimiento vs. 3.0% de costo de la deuda).",
+                    desc: "Aprovecha el diferencial de tasas (5,2% de rendimiento vs. 3,0% de coste de la deuda).",
                     qualityScore: 30,
                     impact: { netWorthDelta: 3500, cashFlowDelta: 40, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
-                    lesson: "La deuda buena es apalancamiento fijo a tasas bajas. Cuando el rendimiento de activos seguros supera el costo de la deuda, invertir acelera la riqueza."
+                    lesson: "La deuda buena es apalancamiento fijo a tasas bajas. Cuando el rendimiento de activos seguros supera el coste de la deuda, invertir acelera la riqueza."
                 },
                 optionC: {
                     title: "Solicitar un préstamo personal a tasa alta para financiar unas vacaciones de lujo.",
@@ -177,7 +177,7 @@
                 id: 6,
                 category: CATEGORIES.SPENDING,
                 title: "6. Consumo Consciente y Alineación de Valores",
-                description: "Has recibido un aumento salarial de €300 mensuales. ¿Cómo integras este nuevo monto a tu estilo de vida?",
+                description: "Has recibido un aumento salarial de €300 mensuales. ¿Cómo integras este nuevo importe a tu estilo de vida?",
                 optionA: {
                     title: "Gasto con propósito: Asignar €150 a experiencias/pasiones e invertir €150.",
                     desc: "Equilibra la satisfacción presente con el crecimiento del capital futuro.",
@@ -187,13 +187,13 @@
                 },
                 optionB: {
                     title: "Inflación de estilo de vida: Aumentar gastos en restaurantes y compras de estatus de inmediato.",
-                    desc: "Absorbe todo el incremento elevando automáticamente el costo de vida base.",
+                    desc: "Absorbe todo el incremento elevando automáticamente el coste de vida base.",
                     qualityScore: 5,
                     impact: { netWorthDelta: -1500, cashFlowDelta: -100, happinessDelta: 5, literacyDelta: -3.0, literacyDeltaText: "-3%" },
                     lesson: "La inflación del estilo de vida ocurre cuando los gastos suben a la par de los ingresos, estancando tu capacidad real de ahorro."
                 },
                 optionC: {
-                    title: "Austeridad extrema: Ahorrar el 100% y eliminar todo el ocio, vida social y pasatiempos.",
+                    title: "Austeridad extrema: Ahorrar el 100% y eliminar todo el ocio, vida social y aficiones.",
                     desc: "Elimina toda alegría personal en busca de metas numéricas frías.",
                     qualityScore: 10,
                     impact: { netWorthDelta: 3000, cashFlowDelta: 300, happinessDelta: -20, literacyDelta: -2.0, literacyDeltaText: "-2%" },
@@ -204,23 +204,23 @@
                 id: 7,
                 category: CATEGORIES.SPENDING,
                 title: "7. Pensando en 'Horas de Trabajo'",
-                description: "Quieres comprar un teléfono inteligente de última generación de €1,500. Tu ingreso neto por hora es de €25.",
+                description: "Quieres comprar un teléfono inteligente de última generación de €1.500. Tu ingreso neto por hora es de €25.",
                 optionA: {
-                    title: "Calcular el costo en tiempo (60 horas de trabajo) y conservar tu equipo actual funcional.",
-                    desc: "Reconoce que la compra equivale a 1.5 semanas completas de trabajo.",
+                    title: "Calcular el coste en tiempo (60 horas de trabajo) y conservar tu equipo actual funcional.",
+                    desc: "Reconoce que la compra equivale a 1,5 semanas completas de trabajo.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 1500, cashFlowDelta: 0, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
-                    lesson: "Convertir precios a 'horas de vida trabajadas' revela el costo real de las compras y evita gastos por impulso."
+                    lesson: "Convertir precios a 'horas de vida trabajadas' revela el coste real de las compras y evita gastos por impulso."
                 },
                 optionB: {
                     title: "Comprar el teléfono financiado a 24 meses con intereses implícitos.",
                     desc: "Oculta el precio total a través de pequeñas cuotas mensuales.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -2000, cashFlowDelta: -85, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
-                    lesson: "Los financiamientos a largo plazo enmascaran el costo real y restan flexibilidad a tus finanzas futuras."
+                    lesson: "Las financiaciones a largo plazo enmascaran el coste real y restan flexibilidad a tus finanzas futuras."
                 },
                 optionC: {
-                    title: "Comprar un modelo reacondicionado excelente por €400 e invertir la diferencia de €1,100.",
+                    title: "Comprar un modelo reacondicionado excelente por €400 e invertir la diferencia de €1.100.",
                     desc: "Satisface perfectamente la necesidad funcional ahorrando un capital significativo.",
                     qualityScore: 25,
                     impact: { netWorthDelta: 1100, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 2.5, literacyDeltaText: "+2.5%" },
@@ -234,14 +234,14 @@
                 description: "Tu empresa ofrece un plan de pensiones corporativo con aportación equivalente del 50% hasta el 6% de tu salario.",
                 optionA: {
                     title: "Aportar el 6% para obtener el 100% de la aportación gratuita de la empresa y beneficio fiscal.",
-                    desc: "Garantiza un retorno inmediato del 50% sobre tu capital más diferimiento impositivo.",
+                    desc: "Garantiza un retorno inmediato del 50% sobre tu capital más diferimiento fiscal.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 4500, cashFlowDelta: 50, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
                     lesson: "La aportación de la empresa es dinero gratuito con retorno inmediato. Aprovechar los incentivos fiscales acelera la acumulación."
                 },
                 optionB: {
-                    title: "Ignorar el plan corporativo e invertir únicamente en cuentas imponibles ordinarias.",
-                    desc: "Pierde el aporte de la empresa y expone los rendimientos a impuestos anuales.",
+                    title: "Ignorar el plan corporativo e invertir únicamente en cuentas ordinarias sin ventajas fiscales.",
+                    desc: "Pierde la aportación de la empresa y expone los rendimientos a impuestos anuales.",
                     qualityScore: 10,
                     impact: { netWorthDelta: 1000, cashFlowDelta: 0, happinessDelta: 5, literacyDelta: -3.0, literacyDeltaText: "-3%" },
                     lesson: "Invertir fuera de planes con ventajas fiscales expone innecesariamente tu capital al impacto de los impuestos sobre rendimientos."
@@ -258,7 +258,7 @@
                 id: 9,
                 category: CATEGORIES.DEBT,
                 title: "9. Eliminando Deudas Tóxicas de Tarjeta de Crédito",
-                description: "Tienes €4,000 en deudas de tarjeta de crédito al 22% de interés anual y €4,000 guardados en ahorros.",
+                description: "Tienes €4.000 en deudas de tarjeta de crédito al 22% de interés anual y €4.000 guardados en ahorros.",
                 optionA: {
                     title: "Usar los ahorros para pagar la tarjeta de crédito de inmediato.",
                     desc: "Elimina una fuga financiera severa y obtiene un retorno garantizado del 22%.",
@@ -267,7 +267,7 @@
                     lesson: "Pagar una deuda del 22% equivale a una inversión sin riesgo y libre de impuestos con un retorno del 22% anual."
                 },
                 optionB: {
-                    title: "Pagar el mínimo mensual mientras mantienes los €4,000 invertidos en acciones rindiendo el 8%.",
+                    title: "Pagar el mínimo mensual mientras mantienes los €4.000 invertidos en acciones rindiendo el 8%.",
                     desc: "Pierde dinero matemáticamente al pagar el 22% para ganar solo el 8%.",
                     qualityScore: 5,
                     impact: { netWorthDelta: -2000, cashFlowDelta: -80, happinessDelta: -10, literacyDelta: -5.0, literacyDeltaText: "-5%" },
@@ -285,40 +285,40 @@
                 id: 10,
                 category: CATEGORIES.SPENDING,
                 title: "10. Activos vs. Bienes de Consumo (Elección de Vehículo)",
-                description: "Necesitas un transporte confiable para ir a trabajar y dispones de presupuesto.",
+                description: "Necesitas un transporte fiable para ir a trabajar y dispones de presupuesto.",
                 optionA: {
-                    title: "Comprar un auto seminuevo confiable al contado o financiamiento bajo e invertir el resto.",
+                    title: "Comprar un coche seminuevo fiable al contado o con financiación baja e invertir el resto.",
                     desc: "Minimiza las pérdidas por depreciación y mantiene libre el flujo de caja.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 3500, cashFlowDelta: 100, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
-                    lesson: "Los autos son herramientas que se deprecian. Mantener los costos de transporte bajo control libera capital para activos reales."
+                    lesson: "Los coches son herramientas que se deprecian. Mantener los costes de transporte bajo control libera capital para activos reales."
                 },
                 optionB: {
-                    title: "Hacer un leasing de un auto de lujo 0 km por €600/mes.",
+                    title: "Hacer un leasing de un coche de lujo 0 km por €600/mes.",
                     desc: "Paga la fase más pronunciada de depreciación sin acumular patrimonio.",
                     qualityScore: 5,
                     impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
-                    lesson: "Arrendar vehículos de lujo implica asumir el pico de desvalorización del bien, drenando continuamente tu caja."
+                    lesson: "Alquilar vehículos de lujo implica asumir el pico de desvalorización del bien, drenando continuamente tu caja."
                 },
                 optionC: {
-                    title: "Financiar una camioneta deportiva a 84 meses.",
+                    title: "Financiar un SUV deportivo a 84 meses.",
                     desc: "Se compromete a pagar intereses prolongados sobre un bien que pierde valor rápidamente.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -7000, cashFlowDelta: -600, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
-                    lesson: "Los financiamientos de plazos muy largos te hacen pagar altos intereses por un activo que pierde valor cada día."
+                    lesson: "Las financiaciones de plazos muy largos te hacen pagar altos intereses por un activo que pierde valor cada día."
                 }
             },
             {
                 id: 11,
                 category: CATEGORIES.INVESTING,
-                title: "11. Estilo de Inversión: Calidad e Índices de Bajo Costo",
-                description: "Estás definiendo la estrategia central de tu portafolio para los próximos 20 años.",
+                title: "11. Estilo de Inversión: Calidad e Índices de Bajo Coste",
+                description: "Estás definiendo la estrategia central de tu cartera para los próximos 20 años.",
                 optionA: {
-                    title: "Fondo de Índice Global diversificado (Comisión de 0.03%) que cubra empresas de Calidad y Crecimiento.",
-                    desc: "Captura el retorno global del mercado con un costo operativo cercano a cero.",
+                    title: "Fondo de Índice Global diversificado (Comisión de 0,03%) que cubra empresas de Calidad y Crecimiento.",
+                    desc: "Captura el retorno global del mercado con un coste operativo cercano a cero.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 6000, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
-                    lesson: "Los fondos indexados globales de bajo costo garantizan el rendimiento del mercado sin los riesgos de quiebra individual."
+                    lesson: "Los fondos indexados globales de bajo coste garantizan el rendimiento del mercado sin los riesgos de quiebra individual."
                 },
                 optionB: {
                     title: "Tratar de acertar 3 acciones altamente especulativas recomendadas en foros de internet.",
@@ -339,13 +339,13 @@
                 id: 12,
                 category: CATEGORIES.INVESTING,
                 title: "12. Diversificación de Clases de Activos",
-                description: "Deseas construir un portafolio de inversión resiliente.",
+                description: "Deseas construir una cartera de inversión resiliente.",
                 optionA: {
-                    title: "Asignación Equilibrada: Acciones Globales, Bienes Raíces, Renta Fija y Oro.",
+                    title: "Asignación Equilibrada: Acciones Globales, Inmuebles, Renta Fija y Oro.",
                     desc: "Diversifica entre diferentes clases no correlacionadas para un crecimiento constante.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 4500, cashFlowDelta: 30, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
-                    lesson: "La verdadera diversificación reduce la volatilidad del portafolio sin sacrificar el potencial de crecimiento a largo plazo."
+                    lesson: "La verdadera diversificación reduce la volatilidad de la cartera sin sacrificar el potencial de crecimiento a largo plazo."
                 },
                 optionB: {
                     title: "Colocar el 100% de tu patrimonio en Bitcoin y altcoins.",
@@ -383,7 +383,7 @@
                 },
                 optionC: {
                     title: "Operar diariamente con ETFs apalancados 3x intentando adivinar las noticias.",
-                    desc: "Sufre por el desgaste de la volatilidad y los costos excesivos de transacción.",
+                    desc: "Sufre por el desgaste de la volatilidad y los costes excesivos de transacción.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -5000, cashFlowDelta: 0, happinessDelta: -20, literacyDelta: -8.0, literacyDeltaText: "-8%" },
                     lesson: "Los ETFs apalancados están diseñados para coberturas tácticas breves. Operar en exceso genera pérdidas severas y alto estrés."
@@ -429,7 +429,7 @@
                     lesson: "Pagarte a ti mismo primero automatiza la disciplina. Adaptas tu estilo de vida al saldo restante sin estrés."
                 },
                 optionB: {
-                    title: "Gastar a lo largo del mes y ahorrar lo que eventualmente sobre al final.",
+                    title: "Gastar a lo largo del mes y ahorrar lo que sobre al final.",
                     desc: "Generalmente resulta en cero ahorro debido a la tendencia natural de consumir el saldo disponible.",
                     qualityScore: 10,
                     impact: { netWorthDelta: 500, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
@@ -437,7 +437,7 @@
                 },
                 optionC: {
                     title: "Mantener suscripciones olvidadas y pedir comida por aplicación diariamente por impulso.",
-                    desc: "Drena cientos de euros mensuales en costos innecesarios sin darte cuenta.",
+                    desc: "Drena cientos de euros mensuales en costes innecesarios sin darte cuenta.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
                     lesson: "Los pequeños goteos diarios y suscripciones no utilizadas consumen en silencio el equivalente a miles de euros anuales."
@@ -638,7 +638,7 @@
                 archetypeDescription = "¡Buena base financiera! Comprendes los conceptos clave para generar riqueza, aunque pequeños goteos en comisiones de inversión o decisiones puntuales de consumo pueden optimizarse.";
             } else if (finalIQ >= 20) {
                 archetype = "El Aprendiz de Riqueza";
-                archetypeDescription = "Posees una conciencia financiera básica, pero expones tu patrimonio con frecuencia a la inflación, pasivos de costo elevado o créditos desfavorables.";
+                archetypeDescription = "Posees una conciencia financiera básica, pero expones tu patrimonio con frecuencia a la inflación, pasivos de coste elevado o créditos desfavorables.";
             } else {
                 archetype = "El Consumidor Vulnerable";
                 archetypeDescription = "¡Perfil con alto riesgo financiero! Tus decisiones actuales priorizan el consumo de corto plazo, deudas de interés alto y dinero estancado que erosiona tu patrimonio futuro.";

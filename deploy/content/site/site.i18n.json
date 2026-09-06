@@ -19,7 +19,7 @@
   "tagline": {
     "es": "Tu mapa hacia la libertad",
     "en": "Your map to freedom",
-    "pt": "O teu mapa para a liberdade"
+    "pt": "O seu mapa para a liberdade"
   },
   "home": {
     "es": "Inicio",
@@ -59,7 +59,7 @@
   "disclaimerBody": {
     "es": "Sandy Bradbury es educador financiero, no asesor financiero acreditado ni entidad registrada ante la CNMV. Esta herramienta es una calculadora educativa e ilustrativa: no constituye asesoramiento financiero, de inversión, fiscal ni legal, ni una recomendación para comprar o vender ningún producto. Sus resultados son estimaciones basadas en los supuestos que introduces y no predicen rentabilidades reales. Antes de tomar cualquier decisión, consulta a un profesional debidamente registrado en tu jurisdicción.",
     "en": "Sandy Bradbury is a financial educator, not an accredited financial adviser or a regulated firm. This tool is an educational and illustrative calculator: it is not financial, investment, tax or legal advice, and it is not a recommendation to buy or sell any product. Its results are estimates based on the assumptions you enter and do not predict real returns. Before making any decision, consult a properly registered professional in your jurisdiction.",
-    "pt": "Sandy Bradbury é educador financeiro, não é consultor financeiro acreditado nem entidade registada. Esta ferramenta é uma calculadora educativa e ilustrativa: não constitui consultoria financeira, de investimento, fiscal ou jurídica, nem uma recomendação de compra ou venda de qualquer produto. Os resultados são estimativas baseadas nos pressupostos que introduzes e não preveem rentabilidades reais. Antes de qualquer decisão, consulta um profissional devidamente registado na tua jurisdição."
+    "pt": "Sandy Bradbury é educador financeiro, não é consultor financeiro credenciado nem entidade registrada. Esta ferramenta é uma calculadora educativa e ilustrativa: não constitui consultoria financeira, de investimento, fiscal ou jurídica, nem uma recomendação de compra ou venda de qualquer produto. Os resultados são estimativas baseadas nas premissas que você informa e não preveem rentabilidades reais. Antes de qualquer decisão, consulte um profissional devidamente registrado na sua jurisdição."
   },
   "disclaimerLink": {
     "es": "Leer el aviso legal completo",
@@ -69,32 +69,32 @@
   "shareTitle": {
     "es": "Compartir este artículo",
     "en": "Share this article",
-    "pt": "Partilhar este artigo"
+    "pt": "Compartilhar este artigo"
   },
   "shareOn": {
     "es": "Compartir en",
     "en": "Share on",
-    "pt": "Partilhar no"
+    "pt": "Compartilhar no"
   },
   "shareCopy": {
     "es": "Copiar enlace",
     "en": "Copy link",
-    "pt": "Copiar ligação"
+    "pt": "Copiar o link"
   },
   "shareCopied": {
     "es": "Enlace copiado",
     "en": "Link copied",
-    "pt": "Ligação copiada"
+    "pt": "Link copiado"
   },
   "shareByEmail": {
     "es": "Compartir por email",
     "en": "Share by email",
-    "pt": "Partilhar por email"
+    "pt": "Compartilhar por e-mail"
   },
   "shareEmailSubject": {
     "es": "Te puede interesar",
     "en": "You might find this useful",
-    "pt": "Podes achar isto útil"
+    "pt": "Você pode achar isto útil"
   },
   "toolsSectionTitle": {
     "es": "Calculadoras financieras",
@@ -108,8 +108,8 @@
   },
   "toolsIntro": {
     "es": "Tres calculadoras gratuitas para poner números a tus decisiones. Ninguna guarda tus datos: el cálculo ocurre en tu navegador.",
-    "en": "Three free calculators to put numbers behind your decisions. None of them stores your data: the maths happens in your browser.",
-    "pt": "Três calculadoras gratuitas para pôr números nas tuas decisões. Nenhuma guarda os teus dados: o cálculo acontece no teu navegador."
+    "en": "Three free calculators to put numbers behind your decisions. None of them stores your data: the math happens in your browser.",
+    "pt": "Três calculadoras gratuitas para pôr números nas suas decisões. Nenhuma guarda os seus dados: o cálculo acontece no seu navegador."
   },
   "toolsOther": {
     "es": "Otras calculadoras",
@@ -149,12 +149,12 @@
   "templatesIntro": {
     "es": "Descargas gratuitas para entender y dirigir tu dinero. Sin registro y sin correo electrónico.",
     "en": "Free downloads to understand and direct your money. No sign-up and no email required.",
-    "pt": "Descargas gratuitas para entender e dirigir o teu dinheiro. Sem registo e sem email."
+    "pt": "Downloads gratuitos para entender e administrar o seu dinheiro. Sem cadastro e sem e-mail."
   },
   "templateDownload": {
     "es": "Descargar la plantilla",
     "en": "Download the template",
-    "pt": "Descarregar o modelo"
+    "pt": "Baixar o modelo"
   },
   "templateHowToUse": {
     "es": "Cómo usarla",
@@ -199,7 +199,7 @@
   "glossaryIntro": {
     "es": "Definiciones claras de los términos que aparecen en el diario, las calculadoras y los simuladores. Un término por página, en el idioma que estás leyendo.",
     "en": "Plain definitions of the terms used across the journal, the calculators and the simulators. One term per page, in the language you are reading.",
-    "pt": "Definições claras dos termos que aparecem no diário, nas calculadoras e nos simuladores. Um termo por página, no idioma que estás a ler."
+    "pt": "Definições claras dos termos que aparecem no diário, nas calculadoras e nos simuladores. Um termo por página, no idioma que você está lendo."
   },
   "glossaryAll": {
     "es": "Ver el glosario completo",
@@ -234,7 +234,7 @@
   "glossaryJumpTo": {
     "es": "Saltar a una sección",
     "en": "Jump to a section",
-    "pt": "Saltar para uma secção"
+    "pt": "Ir para uma seção"
   },
   "categorySlug": {
     "es": "categoria",
@@ -309,7 +309,7 @@
   "sectionNavLabel": {
     "es": "Secciones del sitio",
     "en": "Site sections",
-    "pt": "Secções do site"
+    "pt": "Seções do site"
   },
   "sectionNavFooterLabel": {
     "es": "Mapa del sitio",
@@ -374,7 +374,7 @@
   "glossaryUseTools": {
     "es": "Ponlo en números",
     "en": "Put a number on it",
-    "pt": "Põe isto em números"
+    "pt": "Ponha isto em números"
   },
   "toolsEyebrow": {
     "es": "Calculadora",
@@ -403,8 +403,8 @@
   },
   "toolsNoJs": {
     "es": "Esta calculadora necesita JavaScript activado. El cálculo se hace en tu navegador: nada se envía a ningún servidor.",
-    "en": "This calculator needs JavaScript enabled. The maths runs in your browser: nothing is sent to any server.",
-    "pt": "Esta calculadora precisa de JavaScript ativado. O cálculo corre no teu navegador: nada é enviado para nenhum servidor."
+    "en": "This calculator needs JavaScript enabled. The math runs in your browser: nothing is sent to any server.",
+    "pt": "Esta calculadora precisa de JavaScript ativado. O cálculo roda no seu navegador: nada é enviado para nenhum servidor."
   },
   "templatesEyebrow": {
     "es": "Plantilla de Excel",
@@ -419,7 +419,7 @@
   "templateSheets": {
     "es": "Hojas",
     "en": "Sheets",
-    "pt": "Folhas"
+    "pt": "Planilhas"
   },
   "templateSize": {
     "es": "Tamaño",
@@ -437,28 +437,28 @@
     "pt": "Os três modelos são um sistema"
   },
   "templateSequenceIntro": {
-    "es": "Observa tu situación, después sigue tus gastos y sólo entonces ajusta tu presupuesto. En ese orden funcionan mejor que por separado.",
+    "es": "Observa tu situación, después sigue tus gastos y solo entonces ajusta tu presupuesto. En ese orden funcionan mejor que por separado.",
     "en": "Understand your position, then track your spending, and only then adjust your budget. In that order they work better than they do apart.",
-    "pt": "Analisa a tua situação, depois acompanha as despesas e só então ajusta o orçamento. Nessa ordem funcionam melhor do que separados."
+    "pt": "Analise a sua situação, depois acompanhe as despesas e só então ajuste o orçamento. Nessa ordem funcionam melhor do que separados."
   },
   "templateOptinTitle": {
     "es": "Recibe lo siguiente que escriba",
     "en": "Get what I write next",
-    "pt": "Recebe o que escrever a seguir"
+    "pt": "Receba o que eu escrever a seguir"
   },
   "templateOptinBody": {
     "es": "La plantilla es tuya sin dejar ningún dato. Si quieres, puedes suscribirte al boletín y recibir los artículos nuevos, las plantillas y las herramientas cuando salgan.",
     "en": "The template is yours without leaving any details. If you want to, you can subscribe to the newsletter and get new articles, templates and tools as they come out.",
-    "pt": "O modelo é teu sem deixares qualquer dado. Se quiseres, podes subscrever a newsletter e receber os artigos, modelos e ferramentas novos quando saírem."
+    "pt": "O modelo é seu sem deixar nenhum dado. Se quiser, você pode assinar a newsletter e receber os artigos, modelos e ferramentas novos quando saírem."
   },
   "templateOptinAction": {
     "es": "Suscribirme al boletín",
     "en": "Subscribe to the newsletter",
-    "pt": "Subscrever a newsletter"
+    "pt": "Assinar a newsletter"
   },
   "templateOptinNote": {
     "es": "Se abre en el formulario del proveedor del boletín. Puedes darte de baja en cualquier momento y la descarga no depende de ello.",
     "en": "Opens the newsletter provider's own form. You can unsubscribe at any time, and the download does not depend on it.",
-    "pt": "Abre o formulário do próprio fornecedor da newsletter. Podes cancelar a subscrição em qualquer momento e a descarga não depende disso."
+    "pt": "Abre o formulário do próprio fornecedor da newsletter. Você pode cancelar a assinatura a qualquer momento, e o download não depende disso."
   }
 }

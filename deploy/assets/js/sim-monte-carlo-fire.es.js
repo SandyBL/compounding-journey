@@ -363,7 +363,7 @@
         if (state.actDownsize && state.isSimulating) {
           state.currentNestEgg += 100000;
           showCopilotBanner(
-            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVENDA',
+            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVIENDA',
             '¡Inyectaste +€100.000 de combustible de emergencia tras vender o reducir tu vivienda!',
             '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',
             'info'
@@ -612,7 +612,7 @@
         } else if (infl > 0.05) {
           showCopilotBanner(
             '🔥 PICO DE INFLACIÓN SHOCK',
-            `La inflación saltó al ${(infl * 100).toFixed(1)}%, aumentando los costos de vida.`,
+            `La inflación saltó al ${(infl * 100).toFixed(1)}%, aumentando los costes de vida.`,
             '💡 Consejo: Mantén cierto crecimiento en acciones a largo plazo para superar la inflación.',
             'warning'
           );
@@ -682,7 +682,7 @@
       } else {
         title.innerText = '¡VUELO DESTRUIDO: BANCARROTA EN DESPLOME!';
         title.className = 'text-lg font-bold text-red-400';
-        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de €0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu portafolio se quedó sin combustible!`;
+        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de €0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu cartera se quedó sin combustible!`;
         iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-50 text-red-400 border border-red-200 shadow-lg';
         icon.className = 'fa-solid fa-plane-slash';
         playSound('crash');

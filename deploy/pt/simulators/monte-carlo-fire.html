@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador Monte Carlo de Sobrevivência FIRE | Compounding Journey</title>
-  <meta name="description" content="Testa um plano de reforma FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar os levantamentos.">
+  <meta name="description" content="Teste um plano de aposentadoria FIRE em milhares de cenários Monte Carlo e estime a probabilidade de a carteira sustentar as retiradas.">
   <link rel="canonical" href="https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html">
   <link rel="alternate" hreflang="en" href="https://compoundingjourney.com/en/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="es" href="https://compoundingjourney.com/es/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="pt" href="https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html"><link rel="alternate" hreflang="x-default" href="https://compoundingjourney.com/es/simulators/monte-carlo-fire.html">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-  <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_PT"><meta property="og:title" content="Simulador Monte Carlo de Sobrevivência FIRE"><meta property="og:description" content="Estima se uma carteira de reforma pode sobreviver a milhares de futuros de mercado possíveis."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Simulador Monte Carlo de Sobrevivência FIRE"><meta name="twitter:description" content="Estima se uma carteira de reforma pode sobreviver a milhares de futuros de mercado possíveis."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Voo de Sobrevivência FIRE Monte Carlo","url":"https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html","description":"Um simulador Monte Carlo para estimar a sobrevivência de uma carteira de reforma sob diferentes retornos e levantamentos.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Compounding Journey"><meta property="og:locale" content="pt_BR"><meta property="og:title" content="Simulador Monte Carlo de Sobrevivência FIRE"><meta property="og:description" content="Estima se uma carteira de aposentadoria pode sobreviver a milhares de futuros de mercado possíveis."><meta property="og:url" content="https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html"><meta property="og:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Simulador Monte Carlo de Sobrevivência FIRE"><meta name="twitter:description" content="Estima se uma carteira de aposentadoria pode sobreviver a milhares de futuros de mercado possíveis."><meta name="twitter:image" content="https://compoundingjourney.com/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Voo de Sobrevivência FIRE Monte Carlo","url":"https://compoundingjourney.com/pt/simulators/monte-carlo-fire.html","description":"Um simulador Monte Carlo para estimar a sobrevivência de uma carteira de aposentadoria sob diferentes retornos e retiradas.","inLanguage":"pt","applicationCategory":"FinanceApplication","operatingSystem":"Qualquer navegador web","browserRequirements":"Requer JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"},"publisher":{"@id":"https://compoundingjourney.com/#organization"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://compoundingjourney.com/pt/"},{"@type":"ListItem","position":2,"name":"Simuladores","item":"https://compoundingjourney.com/pt/simulators/"},{"@type":"ListItem","position":3,"name":"Monte Carlo FIRE"}]}</script>
   
   
@@ -25,10 +25,6 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
-    <!--manifest:start-->
-    <link rel="manifest" href="/manifest.pt.webmanifest">
-    <meta name="theme-color" content="#1E4620">
-    <!--manifest:end-->
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden antialiased selection:bg-gold-500 selection:text-white">
 
@@ -43,7 +39,7 @@
                 </div>
                 <div class="header-brand-copy">
                     <span class="header-brand-name">Compounding Journey</span>
-                    <span class="header-brand-tagline">O teu mapa para a liberdade</span>
+                    <span class="header-brand-tagline">O seu mapa para a liberdade</span>
                 </div>
             </a>
 
@@ -94,7 +90,7 @@
          scripts/section-nav.mjs, with the Simuladores tab marked as the current
          page, and placed outside the sticky <header> like on every other family
          - see the .site-section-nav comment in assets/css/header.css. -->
-  <nav class="site-section-nav" aria-label="Secções do site">
+  <nav class="site-section-nav" aria-label="Seções do site">
     <div class="site-section-tabs"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></div>
   </nav>
 
@@ -115,7 +111,7 @@
             <div>
                 <p class="sim-intro__eyebrow">Ferramenta interativa gratuita</p>
                 <h1 class="sim-intro__title">Simulador Monte Carlo de Sobrevivência FIRE</h1>
-                <p class="sim-intro__lede">Testa um plano de reforma FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar os levantamentos.</p>
+                <p class="sim-intro__lede">Teste um plano de aposentadoria FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar as retiradas.</p>
                 <nav aria-label="Mais simuladores" class="sim-intro__nav">
                     <span class="sim-intro__navlabel">Mais simuladores:</span>
                     <a href="/pt/simulators/" class="sim-intro__link">Todos os simuladores</a>
@@ -303,7 +299,7 @@
               <div class="flex justify-between items-center text-[11px] text-espresso-800 pt-1">
                 <span>Taxa Segura de Retirada (SWR):</span>
                 <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-400 border border-red-200">
-                  5.3% (ALTO RISCO)
+                  5,3% (ALTO RISCO)
                 </span>
               </div>
             </div>
@@ -888,31 +884,31 @@
     <section class="sim-explainer" aria-labelledby="explainer-title">
         <div class="sim-explainer__inner">
             <h2 class="sim-explainer__title" id="explainer-title">O que uma simulação de Monte Carlo lhe diz</h2>
-            <p class="sim-explainer__lede">Qualquer outra calculadora de reforma dá-lhe um número, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro lhe sobreviveu.</p>
+            <p class="sim-explainer__lede">Qualquer outra calculadora de aposentadoria dá-lhe um número, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro lhe sobreviveu.</p>
 
             <h3 class="sim-explainer__heading">Como funcionam as mil simulações</h3>
-            <p>Para cada uma das 1.000 simulações e cada ano dentro dela, o simulador sorteia uma rentabilidade aleatória para ações, obrigações e liquidez, e uma taxa aleatória de inflação, a partir de distribuições calibradas com a história de longo prazo: as ações têm média de 8,2% ao ano com um desvio-padrão de 24%, as obrigações 3,5% com 6%, a liquidez 1,5% com 1%, e a inflação 3,5% com 2,5%. A sua carteira cresce segundo o resultado ponderado, é levantada a sua despesa, e essa despesa é inflacionada para o ano seguinte.</p>
+            <p>Para cada uma das 1.000 simulações e cada ano dentro dela, o simulador sorteia uma rentabilidade aleatória para ações, títulos e liquidez, e uma taxa aleatória de inflação, a partir de distribuições calibradas com a história de longo prazo: as ações têm média de 8,2% ao ano com um desvio-padrão de 24%, as títulos 3,5% com 6%, a liquidez 1,5% com 1%, e a inflação 3,5% com 2,5%. A sua carteira cresce segundo o resultado ponderado, é levantada a sua despesa, e essa despesa é inflacionada para o ano seguinte.</p>
             <p>Os mil resultados são ordenados e são mostrados três: o percentil 10, a mediana e o percentil 90. A mediana é o desfecho corrente. O percentil 10 é o que importa: é o que acontece quando os sorteios correm contra si, e um plano que só funciona na mediana é um plano que falha uma vez em cada duas. Uma simulação em que o saldo fica a zero durante dez anos seguidos conta como arruinada, não como recuperada.</p>
 
             <h3 class="sim-explainer__heading">O que pressupõe</h3>
             <ul class="sim-explainer__list">
-                <li>As rentabilidades são sorteadas de forma independente em cada ano a partir de uma distribuição normal. Os mercados reais têm caudas grossas — os anos extremos acontecem mais do que uma curva de sino prevê — e agrupam-se, pelo que um mau ano tem mais probabilidade de ser seguido de outro.</li>
+                <li>As rentabilidades são sorteadas de forma independente em cada ano a partir de uma distribuição normal. Os mercados reais têm caudas grossas — os anos extremos acontecem mais do que uma curva de sino prevê — e se agrupam, por isso um ano ruim tem mais probabilidade de ser seguido de outro.</li>
                 <li>As classes de ativos são sorteadas independentemente umas das outras. Numa crise real as correlações sobem para perto de um, que é precisamente quando a diversificação deveria ajudar.</li>
-                <li>O seu levantamento sobe com a inflação independentemente do que a carteira fez. Os reformados reais gastam menos depois de um mau ano, que é a defesa mais eficaz disponível e aqui não está modelada.</li>
+                <li>O seu retirada sobe com a inflação independentemente do que a carteira fez. Os aposentados reais gastam menos depois de um mau ano, que é a defesa mais eficaz disponível e aqui não está modelada.</li>
                 <li>Sem impostos, sem comissões de fundos, sem pensão pública e sem outros rendimentos. Cada um desses fatores move o resultado, e não todos na mesma direção.</li>
             </ul>
             <p class="sim-explainer__note">Leia a taxa de sucesso como ferramenta de comparação, não como previsão. Noventa por cento aqui não significa nove hipóteses em dez no mundo real: significa que este plano falhou um décimo das vezes sob estes pressupostos, e pode ver exatamente que alteração move esse número.</p>
 
             <h3 class="sim-explainer__heading">Um exemplo resolvido</h3>
-            <p>Uma carteira de 800.000, com 70% em ações, consumida a 4% ao ano durante trinta anos, devolve uma taxa de sucesso nos noventa e poucos. A simulação mediana termina com mais dinheiro do que começou, muitas vezes várias vezes mais, que é a parte contraintuitiva: o desfecho típico de um plano de levantamento sustentável é morrer rico.</p>
-            <p>Agora suba a taxa de levantamento para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro a meio dos vinte e tal anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que não lhe mostraram.</p>
+            <p>Uma carteira de 800.000, com 70% em ações, consumida a 4% ao ano durante trinta anos, devolve uma taxa de sucesso nos noventa e poucos. A simulação mediana termina com mais dinheiro do que começou, muitas vezes várias vezes mais, que é a parte contraintuitiva: o desfecho típico de um plano de retirada sustentável é morrer rico.</p>
+            <p>Agora suba a taxa de retirada para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro na metade dos vinte e tantos anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que não lhe mostraram.</p>
 
             <h3 class="sim-explainer__heading">Perguntas frequentes</h3>
             <dl class="sim-explainer__faq">
                 <dt>Porquê mil simulações e não mais?</dt>
                 <dd>Mil bastam para que a taxa de sucesso seja estável com uma margem de cerca de um ponto percentual, e são poucas para terminar instantaneamente no seu navegador. Executar dez mil moveria a segunda casa decimal, não a decisão.</dd>
-                <dt>Porque é que o resultado muda de cada vez que o executo?</dt>
-                <dd>Porque os sorteios são aleatórios. Que a taxa de sucesso oscile um ou dois pontos entre execuções é normal; que oscile dez está a dizer-lhe que o plano está no fio da navalha, e isso já é a resposta.</dd>
+                <dt>Por que o resultado muda cada vez que eu executo?</dt>
+                <dd>Porque os sorteios são aleatórios. Que a taxa de sucesso oscile um ou dois pontos entre execuções é normal; que oscile dez está dizendo que o plano está no fio da navalha, e isso já é a resposta.</dd>
                 <dt>A que taxa de sucesso devo aspirar?</dt>
                 <dd>Não há um limiar correto, e perseguir 100% costuma significar trabalhar anos a mais para se proteger de cenários em que teria cortado a despesa de qualquer forma. Importa mais saber que alavanca — despesa, alocação ou mais um ano de poupança — move mais o seu número.</dd>
             </dl>
@@ -979,7 +975,7 @@
         <div class="simulator-cta">
           <div class="simulator-cta__text">
             <p class="simulator-cta__eyebrow">Continua a jornada</p>
-            <h2 id="closing-cta-title" class="simulator-cta__title">Transforma uma probabilidade de sobrevivência num plano que consigas executar.</h2>
+            <h2 id="closing-cta-title" class="simulator-cta__title">Transforme uma probabilidade de sobrevivência num plano que você consiga executar.</h2>
           </div>
           <div class="simulator-cta__actions">
             <a class="simulator-cta__button" href="/pt/#assessment">Fazer o diagnóstico</a>

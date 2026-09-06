@@ -8,7 +8,7 @@
                 baseCost: 5,
                 unit: 'day', // 'day', 'week', 'month'
                 desc: 'Cafés especiais, energéticos ou cafés gelados comprados no dia a dia.',
-                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de R$0.50 por xícara!',
+                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de R$0,50 por xícara!',
                 choicePct: 100
             },
             {
@@ -29,7 +29,7 @@
                 category: 'Recurrente Mensal',
                 baseCost: 120,
                 unit: 'month',
-                desc: 'Múltiples serviços de streaming, academias ou aplicativos sem uso regular.',
+                desc: 'Múltiplos serviços de streaming, academias ou aplicativos sem uso regular.',
                 tip: 'Adote a "Regra de Uma por Vez": assine apenas 1 serviço de streaming por mês, assista o que quiser, cancele e troque.',
                 choicePct: 100
             },
@@ -40,7 +40,7 @@
                 category: 'Estilo de Vida Maior',
                 baseCost: 350,
                 unit: 'month',
-                desc: 'Dirigir sempre um carro zero arrendado em vez de manter um veículo próprio confiável e quitado.',
+                desc: 'Dirigir sempre um carro zero alugado em vez de manter um veículo próprio confiável e quitado.',
                 tip: 'Compre um seminovo certificado de 3 anos e mantenha-o por 7–10 anos. Redirecione as parcelas do leasing diretamente para fundos de índice.',
                 choicePct: 100
             },
@@ -443,7 +443,7 @@
             const badge = document.getElementById('yearsSavedBadge');
             if (yearsPulledForward > 0) {
                 badge.classList.remove('hidden');
-                badge.innerHTML = `<i class="fa-solid fa-calendar-check"></i><span>¡Liberdade Antecipada em ${yearsPulledForward} ANOS!</span>`;
+                badge.innerHTML = `<i class="fa-solid fa-calendar-check"></i><span>Liberdade Antecipada em ${yearsPulledForward} ANOS!</span>`;
             } else {
                 badge.classList.add('hidden');
             }

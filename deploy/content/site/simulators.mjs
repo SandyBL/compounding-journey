@@ -48,13 +48,13 @@ export const SIMULATOR_CARDS = [
     en: {
       eyebrow: 'Decision trainer',
       name: 'Personal Finance Simulator',
-      body: 'It puts the ordinary money choices of a life in front of you — a raise, a car, a holiday, an unexpected bill, a market fall — and shows what each one does to four things at once: your wealth, your cash flow, your reported wellbeing and your financial knowledge.',
-      forWhom: 'For anyone who understands the maths and still cannot say why they decide what they decide.'
+      body: 'It puts the ordinary money choices of a life in front of you — a raise, a car, a vacation, an unexpected bill, a market fall — and shows what each one does to four things at once: your wealth, your cash flow, your reported well-being and your financial knowledge.',
+      forWhom: 'For anyone who understands the math and still cannot say why they decide what they decide.'
     },
     pt: {
       eyebrow: 'Treinador de decisões',
       name: 'Simulador de Finanças Pessoais',
-      body: 'Coloca à tua frente as escolhas de dinheiro de uma vida normal — um aumento, um carro, umas férias, uma despesa inesperada, uma queda do mercado — e mostra o que cada uma faz a quatro coisas ao mesmo tempo: o património, o fluxo de caixa, o bem-estar declarado e o conhecimento financeiro.',
+      body: 'Coloca à sua frente as escolhas de dinheiro de uma vida normal — um aumento, um carro, umas férias, uma despesa inesperada, uma queda do mercado — e mostra o que cada uma faz a quatro coisas ao mesmo tempo: o patrimônio, o fluxo de caixa, o bem-estar declarado e o conhecimento financeiro.',
       forWhom: 'Para quem entende as contas e ainda assim não sabe explicar por que decide o que decide.'
     }
   },
@@ -75,7 +75,7 @@ export const SIMULATOR_CARDS = [
     pt: {
       eyebrow: 'Uma data, não um total',
       name: 'Calendário da Liberdade',
-      body: 'Converte o teu rendimento, as tuas despesas e os teus investimentos atuais numa única data: o dia em que deixas de precisar de um salário. Depois traduz cada despesa recorrente na unidade que ela custa de verdade, que são dias de trabalho.',
+      body: 'Converte o seu rendimento, as suas despesas e os seus investimentos atuais numa única data: o dia em que deixa de precisar de um salário. Depois traduz cada despesa recorrente na unidade que ela custa de verdade, que são dias de trabalho.',
       forWhom: 'Para quem já poupa e quer saber quando chega, não quanto acumula.'
     }
   },
@@ -96,7 +96,7 @@ export const SIMULATOR_CARDS = [
     pt: {
       eyebrow: 'Cem anos de mercado real',
       name: 'Máquina do Tempo do Mercado',
-      body: 'Desenhas uma carteira e fá-la atravessar as rentabilidades que aconteceram de verdade desde 1920: a Grande Depressão, os anos da guerra, a inflação dos anos setenta, o rebentamento das dot-com, 2008, a pandemia. Não é uma projeção; é o que a tua alocação teria vivido.',
+      body: 'Você desenha uma carteira e a faz atravessar as rentabilidades que aconteceram de verdade desde 1920: a Grande Depressão, os anos da guerra, a inflação dos anos setenta, o estouro das dot-com, 2008, a pandemia. Não é uma projeção; é o que a sua alocação teria vivido.',
       forWhom: 'Para quem nunca viu a sua própria carteira dentro de uma crise.'
     }
   },
@@ -117,7 +117,7 @@ export const SIMULATOR_CARDS = [
     pt: {
       eyebrow: 'Probabilidade, não média',
       name: 'Monte Carlo FIRE',
-      body: 'Executa o teu plano de retirada mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e devolve uma probabilidade em vez de um número: a proporção desses futuros em que o dinheiro aguenta até ao fim.',
+      body: 'Executa o seu plano de retirada mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e devolve uma probabilidade em vez de um número: a proporção desses futuros em que o dinheiro aguenta até ao fim.',
       forWhom: 'Para quem já tem um número-alvo e quer saber quanta margem lhe resta.'
     }
   },
@@ -138,7 +138,7 @@ export const SIMULATOR_CARDS = [
     pt: {
       eyebrow: 'Rendimento, fonte a fonte',
       name: 'Motor de Rendimento Passivo',
-      body: 'Constróis uma corrente de rendimento com seis fontes diferentes — dividendos, arrendamento, juros, negócio, direitos, carteira — e depois tentas viver dela, até que as diferenças entre elas deixem de ser uma ideia e passem a ser uma fatura.',
+      body: 'Você constrói uma corrente de rendimento com seis fontes diferentes — dividendos, aluguel, juros, negócio, royalties, carteira — e depois tenta viver dela, até que as diferenças entre elas deixem de ser uma ideia e passem a ser uma fatura.',
       forWhom: 'Para quem ouve «rendimento passivo» como se fosse uma coisa só.'
     }
   }
@@ -171,15 +171,15 @@ export const SIMULATORS_PAGE = {
   },
   en: {
     title: 'Financial simulators',
-    description: 'Five free simulators for practising money decisions: personal finance, your independence date, a century of markets, withdrawal probability and passive income.',
+    description: 'Five free simulators for practicing money decisions: personal finance, your independence date, a century of markets, withdrawal probability and passive income.',
     eyebrow: 'Five simulators',
     heading: 'Financial simulators',
-    intro: 'Five tools for practising decisions before you make them with real money. All free, all running in your browser, none of them asking you to sign up.',
+    intro: 'Five tools for practicing decisions before you make them with real money. All free, all running in your browser, none of them asking you to sign up.',
     forWhomLabel: 'Who it is for',
     startTitle: 'Where to start',
     startBody: 'If you arrive without a specific question, start with the Personal Finance Simulator: it asks you for nothing and shows you a decision moving within two minutes. The other four each answer one narrow question, so if yours is above, go straight there.',
     privacyTitle: 'What happens to what you type',
-    privacyBody: 'The maths happens entirely in your browser: nothing you type is sent anywhere while you play. Three of the simulators keep a public ranking and the other two carry a button that contributes your run, and in both cases something is only sent when you press it. What is contributed appears aggregated, without a name, on the results page.',
+    privacyBody: 'The math happens entirely in your browser: nothing you type is sent anywhere while you play. Three of the simulators keep a public ranking and the other two carry a button that contributes your run, and in both cases something is only sent when you press it. What is contributed appears aggregated, without a name, on the results page.',
     nextTitle: 'If you want a figure rather than a game',
     nextBody: 'A simulator shows you how a decision behaves; a calculator gives you the number. If you already know what you want to work out, the calculators are the short way there, and the glossary explains the terms that come up inside the simulators.'
   },
@@ -188,13 +188,13 @@ export const SIMULATORS_PAGE = {
     description: 'Cinco simuladores gratuitos para praticar decisões de dinheiro: finanças pessoais, data de independência, cem anos de mercado, probabilidade de retirada e rendimento passivo.',
     eyebrow: 'Cinco simuladores',
     heading: 'Simuladores financeiros',
-    intro: 'Cinco ferramentas para praticar decisões antes de as tomares com dinheiro real. Todas gratuitas, todas a funcionar no teu navegador, nenhuma te pede registo.',
+    intro: 'Cinco ferramentas para praticar decisões antes de as tomar com dinheiro real. Todas gratuitas, todas rodando no seu navegador, nenhuma pede cadastro.',
     forWhomLabel: 'Para quem',
     startTitle: 'Por onde começar',
-    startBody: 'Se chegas sem uma pergunta concreta, começa pelo Simulador de Finanças Pessoais: não te pede nenhum dado e em dois minutos já viste uma decisão a mover-se. Os outros quatro respondem a uma pergunta muito concreta cada um, por isso se a tua está acima, vai direto.',
-    privacyTitle: 'O que acontece ao que escreves',
-    privacyBody: 'O cálculo acontece inteiramente no teu navegador: nada do que escreves é enviado enquanto jogas. Três dos simuladores têm uma classificação pública e os outros dois têm um botão para contribuir a tua simulação, e em ambos os casos só é enviado algo quando o pressionas. O que é contribuído aparece agregado, sem nome, na página de resultados.',
-    nextTitle: 'Se o que queres é uma conta, não um jogo',
-    nextBody: 'Um simulador mostra como se comporta uma decisão; uma calculadora dá-te o número. Se já sabes o que queres calcular, as calculadoras são o caminho curto, e o glossário explica os termos que aparecem dentro dos simuladores.'
+    startBody: 'Se você chega sem uma pergunta concreta, comece pelo Simulador de Finanças Pessoais: ele não pede nenhum dado e em dois minutos você já viu uma decisão se mover. Os outros quatro respondem a uma pergunta muito concreta cada um, então, se a sua está acima, vá direto.',
+    privacyTitle: 'O que acontece ao que escreve',
+    privacyBody: 'O cálculo acontece inteiramente no seu navegador: nada do que você escreve é enviado enquanto joga. Três dos simuladores têm um ranking público e os outros dois têm um botão para enviar a sua simulação, e nos dois casos só sai algo quando você clica nele. O que é enviado aparece agregado, sem nome, na página de resultados.',
+    nextTitle: 'Se o que quer é uma conta, não um jogo',
+    nextBody: 'Um simulador mostra como se comporta uma decisão; uma calculadora dá o número. Se você já sabe o que quer calcular, as calculadoras são o caminho curto, e o glossário explica os termos que aparecem dentro dos simuladores.'
   }
 };
