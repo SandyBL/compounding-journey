@@ -113,16 +113,9 @@ Using a structured budget allows you to track planned vs. actual spending:
 
 4. \*\*Leverage Modern Apps & Tools:\*\* Use digital bank features, spreadsheets (Google Sheets/Excel), or dedicated apps like \*\*YNAB, Mint, PocketGuard, or GoodBudget\*\* to automate tracking.
 
+---
 
+### Ready to Master Your Money Habits?
+A budget only counts if it survives a bad week, and most of them do not. Take our habit assessment to see where your money is quietly leaking and which single change would make the rest of the plan hold.
 
-\---
-
-
-
-\### Ready to Master Your Money?
-
-Controlling your expenses isn't about giving up what you love—it's about designing a life of true financial security and freedom. Take our quick assessment to evaluate your budgeting habits, identify hidden leaks, and build a personalized roadmap to financial growth.
-
-
-
-\[Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)
+[Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)

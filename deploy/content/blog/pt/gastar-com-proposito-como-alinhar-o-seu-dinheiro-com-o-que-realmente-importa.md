@@ -1,5 +1,5 @@
 ---
-title: "Gastar com Propósito: Como Alinhar o Seu Dinheiro com o Que Realmente Importa"
+title: "Gastar com propósito: como alinhar o seu dinheiro com o que realmente importa"
 date: 2026-08-13
 category: Design de vida
 summary: O crescimento financeiro não exige cortar todas as alegrias, mas sim
@@ -16,7 +16,7 @@ Agora que já explorou o orçamento e a gestão de despesas, é momento de anali
 
 ---
 
-## Por Que Importa Refletir Sobre o Que Lhe Traz Felicidade
+## Por que importa refletir sobre o que lhe traz felicidade
 
 Já comprou algo e mais tarde percebeu que isso não lhe trouxe a felicidade esperada? Todos nós já passamos por isso. A verdade é que nem todas as compras adicionam valor genuíno à nossa vida.
 
@@ -27,7 +27,7 @@ Observe dois cenários reais e opostos:
 
 ---
 
-## Gastar Dinheiro No Que Realmente Importa
+## Gastar dinheiro no que realmente importa
 
 Tire um momento para refletir sobre o que lhe traz verdadeira realização. As categorias com mais significado costumam incluir:
 
@@ -40,20 +40,20 @@ Quando alinha as suas decisões financeiras com as suas prioridades, deixa de de
 
 ---
 
-## A Armadilha do Sobre-Endividamento e a Inflação do Estilo de Vida
+## A armadilha do sobre-endividamento e a inflação do estilo de vida
 
 É fácil cair na armadilha de gastar dinheiro para impressionar terceiros ou manter um estilo de vida insustentável. Comprar bens de luxo que não pode pagar ou financiar saídas dispendiosas com cartão de crédito cria um estatuto temporário, mas gera ansiedade a longo prazo.
 
 [ Expectativas Externas ] ➔ [ Gastos Impulsivos ] ➔ [ Dívidas e Estresse ] ➔ [ Opções Limitadas ]
 
-### Os Custos Ocultos de Viver Acima das Suas Possibilidades
+### Os custos ocultos de viver acima das suas possibilidades
 1. **Dívidas com Juros Elevados:** Saldos acumulados no cartão de crédito que consomem os seus rendimentos futuros.
 2. **Estresse Financeiro Crônico:** Ansiedade constante em relação à liquidação das despesas mensais básicas.
 3. **Opções de Vida Limitadas:** Menos recursos disponíveis para reformas antecipadas, mudanças de carreira ou liberdade real.
 
 ---
 
-## Viver Dentro das Suas Possibilidades: O Caminho Para a Liberdade
+## Viver dentro das suas possibilidades: o caminho para a liberdade
 
 Viver dentro dos seus rendimentos não significa privar-se de viver—significa escolher a liberdade de longo prazo em detrimento da gratificação instantânea.
 
@@ -65,7 +65,7 @@ Viver dentro dos seus rendimentos não significa privar-se de viver—significa 
 
 ---
 
-## Como o Consumo Consciente Constrói Riqueza Real
+## Como o consumo consciente constrói riqueza real
 
 Ao eliminar gastos supérfluos, liberta capital para poupar e investir. Com o tempo, o efeito dos juros compostos gera três grandes vantagens:
 
@@ -75,7 +75,7 @@ Ao eliminar gastos supérfluos, liberta capital para poupar e investir. Com o te
 
 ---
 
-### Exercício Prático: Faça uma Auditoria aos Seus Valores
+### Exercício prático: faça uma auditoria aos seus valores
 
 1. **Reflita Sobre os Seus Valores:** Anote 3 a 5 coisas que lhe tragam verdadeira felicidade.
 2. **Revise as Despesas do Mês Passado:** Identifique 2 gastos que não estejam alinhados com esses valores e elimine-os.
@@ -83,7 +83,7 @@ Ao eliminar gastos supérfluos, liberta capital para poupar e investir. Com o te
 
 ---
 
-### Pronto Para Dominar os Seus Hábitos Financeiros?
-Gastar com propósito é fazer com que o seu dinheiro trabalhe para a sua felicidade. Faça a nossa avaliação rápida para analisar os seus hábitos de consumo, eliminar fugas financeiras e mapear o seu caminho para a independência.
+### Pronto para dominar os seus hábitos financeiros?
+Quase ninguém gasta contra os próprios valores de propósito. Isso acontece em passos pequenos e muito fáceis de justificar. Faça a nossa avaliação de hábitos para ver onde os seus gastos e as suas prioridades se afastaram e qual dessas distâncias vale a pena fechar primeiro.
 
-[Avalie os Seus Hábitos Financeiros →](https://compoundingjourney.com/pt/#assessment)
+[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

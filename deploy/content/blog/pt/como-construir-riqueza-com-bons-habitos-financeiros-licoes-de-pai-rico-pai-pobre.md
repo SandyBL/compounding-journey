@@ -1,6 +1,5 @@
 ---
-title: "Como Construir Riqueza com Bons Hábitos Financeiros: Lições de Pai Rico,
- Pai Pobre"
+title: "Como construir riqueza com bons hábitos financeiros: lições de Pai Rico, Pai Pobre"
 date: 2026-08-04
 category: Hábitos financeiros
 summary: Aprenda a construir riqueza de longo prazo com bons hábitos
@@ -32,7 +31,7 @@ Para transformar sua relação com o dinheiro, você deve dominar alguns princí
 
 
 
-\## Dívida Boa vs. Dívida Ruim: Nem Toda Dívida é Igual
+\## Dívida boa vs. dívida ruim: nem toda dívida é igual
 
 
 
@@ -58,7 +57,7 @@ Kiyosaki aconselha utilizar a dívida boa de forma alavancada e responsável, en
 
 
 
-\## Ativos vs. Passivos: A Base da Riqueza
+\## Ativos vs. passivos: a base da riqueza
 
 
 
@@ -80,7 +79,7 @@ Pessoas prósperas focam sua energia em acumular ativos geradores de renda, enqu
 
 
 
-\## 6 Hábitos para Construir Liberdade Financeira
+\## 6 hábitos para construir liberdade financeira
 
 
 
@@ -100,16 +99,9 @@ Construir riqueza é um processo gradual e intencional. Adotar estes hábitos di
 
 6. \*\*Priorize o Fluxo de Caixa:\*\* Foque em ativos que gerem renda recorrente e previsível. O fluxo de caixa é o que traz a verdadeira independência.
 
+---
 
+### Pronto para dominar os seus hábitos financeiros?
+A linha entre um ativo e um passivo é fácil de aceitar e bem mais difícil de aplicar ao extrato da sua própria conta. Faça a nossa avaliação de hábitos para ver de que lado dessa linha o seu dinheiro está agora e qual hábito levaria a maior parte dele para o outro lado.
 
-\---
-
-
-
-\### Pronto para Projetar seu Futuro Financeiro?
-
-Construir riqueza é criar uma vida onde o dinheiro trabalha para a sua felicidade e tranquilidade. Preencha nosso formulário rápido para avaliar seus hábitos financeiros atuais, identificar pontos de melhoria e construir um plano claro rumo à sua independência financeira.
-
-
-
-\[Avalie seus Hábitos Financeiros →](https://compoundingjourney.com/pt/#assessment)
+[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

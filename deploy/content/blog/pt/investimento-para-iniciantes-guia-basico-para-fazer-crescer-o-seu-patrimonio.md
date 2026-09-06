@@ -1,5 +1,5 @@
 ---
-title: "Investimento para Iniciantes: Guia Básico para Fazer Crescer o Seu Patrimônio"
+title: "Investimento para iniciantes: guia básico para fazer crescer o seu patrimônio"
 date: 2026-09-04
 category: Investimentos
 summary: Investir não é apenas para ricos. Aprenda os conceitos de ações,
@@ -15,7 +15,7 @@ Investir pode parecer intimidante se nunca o fez antes, mas qualquer pessoa pode
 
 ---
 
-## Tipos de Ativos para Começar
+## Tipos de ativos para começar
 
 Compreender onde alocar o seu dinheiro é o primeiro passo para construir uma carteira equilibrada.
 
@@ -29,7 +29,7 @@ Compreender onde alocar o seu dinheiro é o primeiro passo para construir uma ca
 
 ---
 
-## Compreender a Relação Risco e Retorno
+## Compreender a relação risco e retorno
 
 Todos os investimentos envolvem algum nível de risco. A regra fundamental nas finanças é que para obter retornos potenciais mais elevados, é necessário aceitar maior risco.
 
@@ -39,18 +39,18 @@ Todos os investimentos envolvem algum nível de risco. A regra fundamental nas f
 
 ---
 
-## O Impacto de Começar Cedo
+## O impacto de começar cedo
 
 A força mais poderosa nas finanças pessoais são os **juros compostos**. Os seus rendimentos geram novos rendimentos, multiplicando-se exponencialmente ao longo das décadas.
 
-### O Custo de Adiar o Investimento ($100/mês a 7% de Retorno Médio Anual)
+### O custo de adiar o investimento ($100/mês a 7% de retorno médio anual)
 
 * **Começando aos 25 anos:** Acumula aproximadamente **$250,000** aos 65 anos.
 * **Começando aos 35 anos:** Acumula aproximadamente **$120,000** aos 65 anos—menos da metade do patrimônio final!
 
 ---
 
-## Como Dar o Seu Primeiro Passo Hoje
+## Como dar o seu primeiro passo hoje
 
 1. **Abra uma Conta de Investimento:** Utilize plataformas de baixas comissões como a Vanguard ou Fidelity nos EUA, ou DeGiro, Trade Republic, MyInvestor ou Indexa Capital na Europa.
 2. **Escolha um Ativo Simples:** Um ETF diversificado como o S&P 500 ou um fundo global é ideal para começar.
@@ -59,7 +59,7 @@ A força mais poderosa nas finanças pessoais são os **juros compostos**. Os se
 
 ---
 
-### Pronto Para Dominar os Seus Hábitos Financeiros?
-Começar a investir cedo é a decisão mais eficaz para garantir a sua independência financeira. Faça a nossa avaliação rápida para analisar o seu perfil de risco, definir a sua carteira ideal e automatizar o seu plano de crescimento.
+### Pronto para dominar os seus hábitos financeiros?
+A parte difícil de investir não é escolher o fundo. São os vinte anos de não mexer nele que vêm depois. Faça a nossa avaliação de hábitos para ver se o seu plano foi feito para ser deixado em paz e o que vale a pena automatizar antes de começar.
 
-[Avalie os Seus Hábitos Financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

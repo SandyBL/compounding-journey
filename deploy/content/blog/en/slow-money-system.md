@@ -1,5 +1,5 @@
 ---
-title: "The slow money system: a calmer way to build wealth"
+title: "The Slow Money System: A Calmer Way to Build Wealth"
 date: 2026-07-21
 category: Money habits
 summary: A practical weekly rhythm that replaces financial urgency with a small
@@ -80,6 +80,6 @@ Build a pace that leaves room for your life, then allow time and repetition to c
 ---
 
 ### Ready to Master Your Money Habits?
-Paying yourself first is the fundamental step toward buying back your time and creating financial peace. Take our habit assessment to benchmark your current savings routine and discover actionable steps to accelerate your path to independence.
+Slow only works if it keeps going, and what keeps it going is a pace you barely notice. Take our habit assessment to see whether the amount you save is one you could still be saving in five years, and where it is worth easing off.
 
 [Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)

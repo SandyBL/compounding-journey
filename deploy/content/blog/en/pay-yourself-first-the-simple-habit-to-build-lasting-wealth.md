@@ -66,6 +66,6 @@ An emergency fund protects you against life's unexpected turns—such as car rep
 ---
 
 ### Ready to Master Your Money Habits?
-Paying yourself first is the fundamental step toward buying back your time and creating financial peace. Take our habit assessment to benchmark your current savings routine and discover actionable steps to accelerate your path to independence.
+Paying yourself first is advice right up until it becomes a standing transfer on payday, and then it stops being advice and starts being a balance. Take our habit assessment to see how your saving is currently ordered and what belongs at the front of the queue.
 
 [Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)

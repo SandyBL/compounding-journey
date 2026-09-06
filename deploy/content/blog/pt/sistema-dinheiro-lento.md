@@ -79,7 +79,7 @@ Crie um ritmo que deixe espaço para sua vida e permita que o tempo multiplique 
 
 ---
 
-### Pronto Para Dominar os Seus Hábitos Financeiros?
-Pagar-se a si mesmo primeiro é o passo fundamental para retomar o controle do seu tempo e construir paz financeira. Faça a nossa avaliação de hábitos para diagnosticar a sua rotina atual de poupança e descobrir passos práticos para acelerar a sua independência.
+### Pronto para dominar os seus hábitos financeiros?
+O devagar só funciona se continuar, e o que faz continuar é um ritmo que você quase não sente. Faça a nossa avaliação de hábitos para ver se o valor que você poupa é um valor que ainda estaria poupando dentro de cinco anos e onde vale a pena aliviar.
 
-[Avalie os Seus Hábitos Financeiros →](https://compoundingjourney.com/pt/#assessment)
+[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

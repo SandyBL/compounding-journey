@@ -100,16 +100,9 @@ Building wealth is a gradual, intentional journey. Adopting these core daily hab
 
 6. \*\*Prioritize Cash Flow:\*\* Focus on assets that generate consistent, recurring cash flow. Cash flow creates true financial independence.
 
+---
 
+### Ready to Master Your Money Habits?
+The line between an asset and a liability is easy to agree with and surprisingly hard to apply to your own bank statement. Take our habit assessment to see which side of that line your money is sitting on right now, and which habit would move the most of it across.
 
-\---
-
-
-
-\### Ready to Design Your Financial Future?
-
-Building wealth is about designing a life where money serves your happiness and freedom. Take our quick assessment to evaluate your current money habits, identify bottlenecks, and build a personalized roadmap to financial independence.
-
-
-
-\[Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)
+[Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)
