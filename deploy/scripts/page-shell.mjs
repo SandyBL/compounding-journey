@@ -53,7 +53,7 @@ export function logoAt(size, format) {
 export const socialCard = `${ORIGIN}/.netlify/images?url=/logo-compounding-journey.png&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png`;
 export const socialImageAlt = 'Compounding Journey logo';
 
-export const localeOf = { es: 'es_ES', en: 'en_US', pt: 'pt_PT' };
+export const localeOf = { es: 'es_ES', en: 'en_US', pt: 'pt_BR' };
 export const languageNames = { en: 'English', es: 'Español', pt: 'Português' };
 
 /**

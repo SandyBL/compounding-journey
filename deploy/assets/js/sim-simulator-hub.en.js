@@ -105,7 +105,7 @@
                     lesson: "Fee-only fiduciary planners charge for time or flat advice—not commissions—aligning their recommendations directly with your best interest."
                 },
                 optionB: {
-                    title: "Use an advisor charging a 1.5% annual Asset Under Management (AUM) fee + product sales.",
+                    title: "Use an adviser charging a 1.5% annual Asset Under Management (AUM) fee + product sales.",
                     desc: "Pays an ongoing percentage fee that compounds against your portfolio.",
                     qualityScore: 10,
                     impact: { netWorthDelta: -1500, cashFlowDelta: -50, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
@@ -166,11 +166,11 @@
                     lesson: "Good debt is low-rate fixed leverage. When risk-free investment returns exceed your debt cost, maintaining low-rate debt builds wealth faster."
                 },
                 optionC: {
-                    title: "Take out an additional high-interest personal loan for a luxury holiday.",
+                    title: "Take out an additional high-interest personal loan for a luxury vacation.",
                     desc: "Piles on high-rate consumer debt for short-term gratification.",
                     qualityScore: 0,
                     impact: { netWorthDelta: -5000, cashFlowDelta: -250, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
-                    lesson: "Taking high-interest debt for non-essential consumables drains future cash flow, causing stress once the holiday ends."
+                    lesson: "Taking high-interest debt for non-essential consumables drains future cash flow, causing stress once the vacation ends."
                 }
             },
             {

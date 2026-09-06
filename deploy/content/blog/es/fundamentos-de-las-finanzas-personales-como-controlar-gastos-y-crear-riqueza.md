@@ -79,7 +79,7 @@ Utilizar una plantilla te permite comparar lo planificado con lo gastado en real
 
 
 
-\| Categoría | Monto Planificado | Monto Real | Diferencia | Notas |
+\| Categoría | Importe Planificado | Importe Real | Diferencia | Notas |
 
 \|:--- |:--- |:--- |:--- |:--- |
 

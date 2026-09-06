@@ -12,7 +12,7 @@
             pt: {
                 name: "Ex. Carlos Silva",
                 email: "carlos@empresa.com",
-                message: "Conta-me que vida queres construir e que decisões financeiras gostarias de organizar..."
+                message: "Conte-me que vida você quer construir e que decisões financeiras gostaria de organizar..."
             }
         };
 
@@ -25,13 +25,13 @@
         const pageDescriptions = {
             es: "Compounding Journey — psicología del dinero, inversión con propósito y herramientas para construir libertad financiera según tus valores.",
             en: "Compounding Journey — money psychology, purposeful investing, and practical tools for building financial freedom around your values.",
-            pt: "Compounding Journey — psicologia do dinheiro, investimento com propósito e ferramentas para construir liberdade financeira segundo os teus valores."
+            pt: "Compounding Journey — psicologia do dinheiro, investimento com propósito e ferramentas para construir liberdade financeira segundo os seus valores."
         };
 
         const openGraphLocales = {
             es: "es_ES",
             en: "en_US",
-            pt: "pt_PT"
+            pt: "pt_BR"
         };
 
         const supportedLanguages = ["en", "es", "pt"];
@@ -615,7 +615,7 @@
             const language = document.body.classList.contains('lang-en')
                 ? 'en'
                 : document.body.classList.contains('lang-pt') ? 'pt' : 'es';
-            const locale = language === 'en' ? 'en-US' : language === 'pt' ? 'pt-PT' : 'es-ES';
+            const locale = language === 'en' ? 'en-US' : language === 'pt' ? 'pt-BR' : 'es-ES';
 
             document.getElementById('life-result-hourly-rate').textContent = formatCurrency(hourlyRate);
             document.getElementById('life-result-hours').textContent = lifeHours.toLocaleString(locale, {
@@ -628,7 +628,7 @@
         function formatCurrency(amount) {
             const locale = document.body.classList.contains('lang-en')
                 ? 'en-US'
-                : document.body.classList.contains('lang-pt') ? 'pt-PT' : 'es-ES';
+                : document.body.classList.contains('lang-pt') ? 'pt-BR' : 'es-ES';
 
             return amount.toLocaleString(locale, {
                 style: 'currency',
@@ -662,14 +662,14 @@
                 failed: "There was a problem sending your message. Please try again."
             },
             pt: {
-                subject: "Novo contacto - Compounding Journey",
-                nameRequired: "Escreve o teu nome completo.",
-                emailRequired: "Escreve o teu e-mail.",
-                emailInvalid: "Esse e-mail não parece válido. Verifica o formato, por exemplo nome@dominio.com.",
-                messageRequired: "Conta-nos como te podemos ajudar.",
-                sending: "A enviar a tua mensagem…",
+                subject: "Novo contato - Compounding Journey",
+                nameRequired: "Escreva o seu nome completo.",
+                emailRequired: "Escreva o seu e-mail.",
+                emailInvalid: "Esse e-mail não parece válido. Verifique o formato, por exemplo nome@dominio.com.",
+                messageRequired: "Conte-nos como podemos ajudar você.",
+                sending: "Enviando a sua mensagem…",
                 sent: "Mensagem enviada com sucesso.",
-                failed: "Ocorreu um problema ao enviar a tua mensagem. Por favor, tenta novamente."
+                failed: "Ocorreu um problema ao enviar a sua mensagem. Por favor, tente novamente."
             }
         };
 
@@ -730,8 +730,8 @@
             },
             pt: {
                 subject: 'Resultado do simulador',
-                intro: 'Acabei de fazer o simulador {simulator} e este é o resultado que me saiu. Gostava de falar sobre isto contigo.',
-                introGeneric: 'Acabei de fazer um dos simuladores do site e este é o resultado que me saiu. Gostava de falar sobre isto contigo.',
+                intro: 'Acabei de fazer o simulador {simulator} e este é o resultado que obtive. Gostaria de conversar sobre isso com você.',
+                introGeneric: 'Acabei de fazer um dos simuladores do site e este é o resultado que obtive. Gostaria de conversar sobre isso com você.',
                 resultLabel: 'O meu resultado',
                 names: {
                     'simulator-hub': 'Decisões Financeiras',

@@ -53,7 +53,7 @@ This is why the 1970s deserve more attention than they get. There was no dramati
 Diversification is usually explained as free lunch, which sets people up for disappointment. What a century of history actually shows is narrower and more valuable:
 
 - **It reduces the depth of the hole, not the existence of it.** A mixed portfolio of stocks and bonds fell meaningfully less than stocks alone in most crises — and it still fell.
-- **It buys behaviour.** Its real product is a fall shallow enough that you keep contributing. That is worth more than a slightly higher expected return you fail to collect because you sold.
+- **It buys behavior.** Its real product is a fall shallow enough that you keep contributing. That is worth more than a slightly higher expected return you fail to collect because you sold.
 - **Correlations break at the worst moment.** In a genuine panic, things that normally move apart move together for a few weeks. Diversification helps over years, not in the third week of a crisis.
 - **2022 was the reminder.** Stocks and bonds fell together, because both were repricing to the same thing: interest rates. Anyone who believed bonds were an unconditional hedge learned that they hedge recessions, not inflation.
 
@@ -61,7 +61,7 @@ Diversification is usually explained as free lunch, which sets people up for dis
 
 Running a portfolio through past returns tells you something no forecast can: this actually happened, and here is what it would have felt like. That is genuinely valuable, and it comes with limits you should carry with you.
 
-- **Survivorship.** The century of data everyone quotes belongs to the markets that won. Some markets in that period were closed, nationalised or wiped out.
+- **Survivorship.** The century of data everyone quotes belongs to the markets that won. Some markets in that period were closed, nationalized or wiped out.
 - **One sample.** A hundred years sounds enormous. As independent 30-year retirements it is three, and they overlap.
 - **The future has never been obliged to rhyme.** The starting conditions — valuations, rates, demographics — differ every time.
 

@@ -6,8 +6,8 @@
   },
   "metaContent": {
     "en": "Stress-test a FIRE retirement plan across thousands of Monte Carlo market paths and estimate how likely a portfolio is to sustain withdrawals.",
-    "es": "Pon a prueba un plan de retiro FIRE en miles de escenarios Monte Carlo y estima la probabilidad de que la cartera sostenga tus retiradas.",
-    "pt": "Testa um plano de reforma FIRE em milhares de cenários Monte Carlo e estima a probabilidade de a carteira sustentar os levantamentos."
+    "es": "Pon a prueba un plan de jubilación FIRE en miles de escenarios Monte Carlo y estima la probabilidad de que la cartera sostenga tus retiradas.",
+    "pt": "Teste um plano de aposentadoria FIRE em milhares de cenários Monte Carlo e estime a probabilidade de a carteira sustentar as retiradas."
   },
   "metaContent3": {
     "en": "Monte Carlo FIRE Retirement Survival Simulator",
@@ -16,8 +16,8 @@
   },
   "metaContent4": {
     "en": "Estimate whether a retirement portfolio can survive thousands of possible market futures.",
-    "es": "Estima si una cartera de retiro puede sobrevivir miles de futuros de mercado posibles.",
-    "pt": "Estima se uma carteira de reforma pode sobreviver a milhares de futuros de mercado possíveis."
+    "es": "Estima si una cartera de jubilación puede sobrevivir miles de futuros de mercado posibles.",
+    "pt": "Estima se uma carteira de aposentadoria pode sobreviver a milhares de futuros de mercado possíveis."
   },
   "hFull2": {
     "en": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Monte Carlo ",
@@ -36,8 +36,8 @@
   },
   "hFull5": {
     "en": "simulator for estimating retirement portfolio survival under varied market returns and withdrawal assumptions.\",\"inLanguage\":\"en\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Any web browser\",\"browserRequirements\":\"Requires JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
-    "es": "para estimar la supervivencia de una cartera de retiro bajo distintos rendimientos y retiradas.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
-    "pt": "para estimar a sobrevivência de uma carteira de reforma sob diferentes retornos e levantamentos.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"BRL\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
+    "es": "para estimar la supervivencia de una cartera de jubilación bajo distintos rendimientos y retiradas.\",\"inLanguage\":\"es\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Cualquier navegador web\",\"browserRequirements\":\"Requiere JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}",
+    "pt": "para estimar a sobrevivência de uma carteira de aposentadoria sob diferentes retornos e retiradas.\",\"inLanguage\":\"pt\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Qualquer navegador web\",\"browserRequirements\":\"Requer JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"BRL\"},\"publisher\":{\"@id\":\"https://compoundingjourney.com/#organization\"}}"
   },
   "skipLink": {
     "en": "Skip to main content",
@@ -57,7 +57,7 @@
   "headerBrandTagline": {
     "en": "Your map to freedom",
     "es": "Tu mapa hacia la libertad",
-    "pt": "O teu mapa para a liberdade"
+    "pt": "O seu mapa para a liberdade"
   },
   "siteReturnLinkAriaLabel": {
     "en": "Back to the website",
@@ -71,13 +71,13 @@
   },
   "mt15": {
     "en": "Stress-test a FIRE retirement plan across thousands of ",
-    "es": "Pon a prueba un plan de retiro FIRE en miles de escenarios ",
-    "pt": "Testa um plano de reforma FIRE em milhares de cenários "
+    "es": "Pon a prueba un plan de jubilación FIRE en miles de escenarios ",
+    "pt": "Teste um plano de aposentadoria FIRE em milhares de cenários "
   },
   "mt152": {
     "en": "market paths and estimate how likely a portfolio is to sustain withdrawals.",
     "es": "y estima la probabilidad de que la cartera sostenga tus retiradas.",
-    "pt": "e estima a probabilidade de a carteira sustentar os levantamentos."
+    "pt": "e estima a probabilidade de a carteira sustentar as retiradas."
   },
   "mt3AriaLabel": {
     "en": "More simulators",
@@ -226,12 +226,12 @@
   },
   "tabCockpit2": {
     "en": "      <!-- Top Presets & Quick Flight Scenarios -->\n",
-    "es": "      <!-- Escenarios Predefinidos de Retiro -->\n",
+    "es": "      <!-- Escenarios Predefinidos de Jubilación -->\n",
     "pt": "      <!-- Cenários Predefinidos de Aposentadoria -->\n"
   },
   "fontHud": {
     "en": " RETIREMENT SCENARIO PRESETS:\n",
-    "es": " ESCENARIOS PREDEFINIDOS DE RETIRO:\n",
+    "es": " ESCENARIOS PREDEFINIDOS DE JUBILACIÓN:\n",
     "pt": " CENÁRIOS PREDEFINIDOS DE APOSENTADORIA:\n"
   },
   "px3": {
@@ -311,7 +311,7 @@
   },
   "dispNestegg": {
     "en": "$850,000",
-    "es": "€850,000",
+    "es": "€850.000",
     "pt": "R$850.000"
   },
   "hudGlass3": {
@@ -331,18 +331,18 @@
   },
   "dispSpending": {
     "en": "$45,000",
-    "es": "€45,000",
+    "es": "€45.000",
     "pt": "R$45.000"
   },
   "flex2": {
     "en": "Withdrawal Rate (SWR):",
-    "es": "Tasa de Retiro Anual (SWR):",
+    "es": "Tasa de Retirada Anual (SWR):",
     "pt": "Taxa Segura de Retirada (SWR):"
   },
   "dispSwrBadge": {
     "en": "                  5.3% (HIGH RISK)\n",
-    "es": "                  5.3% (ALTO RIESGO)\n",
-    "pt": "                  5.3% (ALTO RISCO)\n"
+    "es": "                  5,3% (ALTO RIESGO)\n",
+    "pt": "                  5,3% (ALTO RISCO)\n"
   },
   "hudGlass4": {
     "en": "            <!-- Age Range Inputs -->\n",
@@ -371,12 +371,12 @@
   },
   "hudGlass5": {
     "en": "            <!-- Asset Allocation Strategy -->\n",
-    "es": "            <!-- Asignación de Portafolio -->\n",
+    "es": "            <!-- Asignación de Cartera -->\n",
     "pt": "            <!-- Alocação de Ativos -->\n"
   },
   "textXs7": {
     "en": "Asset Allocation Portfolio",
-    "es": "Asignación de Activos del Portafolio",
+    "es": "Asignación de Activos de la Cartera",
     "pt": "Alocação de Ativos do Portfólio"
   },
   "flex3": {
@@ -386,7 +386,7 @@
   },
   "ml2": {
     "en": "Auto Target Date Fund",
-    "es": "Fondo Fecha Objetivo Auto",
+    "es": "Fondo de Fecha Objetivo Automático",
     "pt": "Fundo Data-Alvo Auto"
   },
   "spaceY2": {
@@ -556,7 +556,7 @@
   },
   "copilotMessage": {
     "en": "                    Market dropped -22% this year. Early retirement drops trigger Sequence of Returns Risk!\n",
-    "es": "                    El mercado cayó un -22% este año. ¡Las caídas al inicio del retiro activan el Riesgo de Secuencia de Rendimientos!\n",
+    "es": "                    El mercado cayó un -22% este año. ¡Las caídas al inicio de la jubilación activan el Riesgo de Secuencia de Rendimientos!\n",
     "pt": "                    O mercado caiu -22% este ano. Quedas no início da aposentadoria ativam o Risco da Sequência de Retornos!\n"
   },
   "copilotTip": {
@@ -616,7 +616,7 @@
   },
   "text10px9": {
     "en": "Earn $15,000/yr part-time income to reduce portfolio withdrawals.",
-    "es": "Gana €15.000/año a tiempo parcial para reducir retiros del portafolio.",
+    "es": "Gana €15.000/año a tiempo parcial para reducir retiradas de la cartera.",
     "pt": "Ganhe R$15.000/ano em meio período para reduzir retiradas do portfólio."
   },
   "textSlate4004": {
@@ -681,7 +681,7 @@
   },
   "text10px12": {
     "en": "Guyton-Klinger rule: auto-cuts spending 10% when portfolio drops &gt;15%.",
-    "es": "Regla Guyton-Klinger: recorta gasto 10% si el portafolio cae &gt;15%.",
+    "es": "Regla Guyton-Klinger: recorta gasto 10% si la cartera cae &gt;15%.",
     "pt": "Regra Guyton-Klinger: corta 10% do gasto se o portfólio cair &gt;15%."
   },
   "textPurple300": {
@@ -736,7 +736,7 @@
   },
   "textBase2": {
     "en": " GLOBAL RETIREMENT FLIGHT LEADERBOARD\n",
-    "es": " CLASIFICACIÓN GLOBAL DE VUELO RETIRO\n",
+    "es": " CLASIFICACIÓN GLOBAL DE VUELO DE JUBILACIÓN\n",
     "pt": " CLASSIFICAÇÃO GLOBAL DE VOO FIRE\n"
   },
   "textXs15": {
@@ -941,7 +941,7 @@
   },
   "py2": {
     "en": "Retirement Age",
-    "es": "Edad de Retiro",
+    "es": "Edad de Jubilación",
     "pt": "Idade de Aposentadoria"
   },
   "py22": {
@@ -981,7 +981,7 @@
   },
   "textBase4": {
     "en": " FIRE FLIGHT ACADEMY: CORE RETIREMENT LESSONS\n",
-    "es": " ACADEMIA DE VUELO FIRE: LECCIONES CLAVE DE RETIRO\n",
+    "es": " ACADEMIA DE VUELO FIRE: LECCIONES CLAVE DE JUBILACIÓN\n",
     "pt": " ACADEMIA DE VOO FIRE: LIÇÕES FUNDAMENTAIS\n"
   },
   "textXs21": {
@@ -996,12 +996,12 @@
   },
   "fontHud5": {
     "en": "The 4% Safe Withdrawal Rate Rule",
-    "es": "La Regla del 4% de Tasa Segura de Retiro",
+    "es": "La Regla del 4% de Tasa Segura de Retirada",
     "pt": "A Regra dos 4% de Taxa Segura de Retirada"
   },
   "textSlate3005": {
     "en": "            Derived from the landmark 1998 Trinity Study, the 4% rule states that withdrawing 4% of your initial portfolio in year one (adjusted for inflation each subsequent year) historically provided a 95%+ success rate over 30-year retirement periods.\n",
-    "es": "            Derivada del famoso Estudio Trinity de 1998, la regla del 4% establece que retirar el 4% de tu portafolio inicial el primer año (ajustado por inflación en los siguientes) ofreció históricamente una tasa de éxito superior al 95% en periodos de 30 años.\n",
+    "es": "            Derivada del famoso Estudio Trinity de 1998, la regla del 4% establece que retirar el 4% de tu cartera inicial el primer año (ajustado por inflación en los siguientes) ofreció históricamente una tasa de éxito superior al 95% en periodos de 30 años.\n",
     "pt": "            Derivada do famoso Estudo Trinity de 1998, a regra dos 4% estabelece que retirar 4% do seu portfólio inicial no primeiro ano (ajustado pela inflação nos anos seguintes) ofereceu historicamente uma taxa de sucesso superior a 95% em períodos de 30 anos.\n"
   },
   "p3": {
@@ -1041,7 +1041,7 @@
   },
   "textSlate3007": {
     "en": "            As retirement progresses, holding 100% aggressive equities increases crash exposure. Target Date Funds automatically shift asset allocation toward fixed income (bonds/cash) over time to lock in gains and buffer volatility.\n",
-    "es": "            Mantener un 100% en renta variable durante el retiro aumenta la exposición a caídas. Los fondos Target Date reequilibran automáticamente hacia renta fija (bonos/efectivo) para asegurar ganancias y amortiguar volatilidad.\n",
+    "es": "            Mantener un 100% en renta variable durante la jubilación aumenta la exposición a caídas. Los fondos Target Date reequilibran automáticamente hacia renta fija (bonos/efectivo) para asegurar ganancias y amortiguar volatilidad.\n",
     "pt": "            Manter 100% em renda variável durante a aposentadoria aumenta a exposição a quedas. Os fundos Data-Alvo reequilibram automaticamente para renda fixa (títulos/caixa) ao longo do tempo para consolidar ganhos e suavizar a volatilidade.\n"
   },
   "p33": {
@@ -1061,12 +1061,12 @@
   },
   "textSlate3008": {
     "en": "            Flexible retirees don't rigidly withdraw fixed amounts during severe bear markets. Taking a part-time job, cutting spending by 15%, or tapping cash buckets lets your stock portfolio recover without forcing liquidations.\n",
-    "es": "            Los jubilados flexibles no retiran montos fijos rígidamente durante mercados bajistas. Trabajar a tiempo parcial, recortar el gasto un 15% o usar fondos en efectivo permite que las acciones se recuperen sin liquidar en mínimos.\n",
+    "es": "            Los jubilados flexibles no retiran importes fijos rígidamente durante mercados bajistas. Trabajar a tiempo parcial, recortar el gasto un 15% o usar fondos en efectivo permite que las acciones se recuperen sin liquidar en mínimos.\n",
     "pt": "            Aposentados flexíveis não retiram valores fixos rigidamente durante mercados em queda. Trabalhar em meio período, cortar gastos em 15% ou usar reservas de caixa permite que as ações se recuperem sem liquidações forçadas nas mínimas.\n"
   },
   "p34": {
     "en": "            Guyton-Klinger Rule: Cut spending by 10% when portfolio drops >15%.\n",
-    "es": "            Regla Guyton-Klinger: Recorta el gasto un 10% cuando el portafolio cae >15%.\n",
+    "es": "            Regla Guyton-Klinger: Recorta el gasto un 10% cuando la cartera cae >15%.\n",
     "pt": "            Regra Guyton-Klinger: Corte os gastos em 10% quando o portfólio cair >15%.\n"
   },
   "langSwitchAriaLabel": {
@@ -1091,17 +1091,17 @@
   },
   "minHScreen4": {
     "en": "  <!-- MODAL 1: ANNUAL RETIREMENT SPEND CALCULATOR -->\n",
-    "es": "  <!-- MODAL 1: CALCULADORA DE PRESUPUESTO DE RETIRO -->\n",
+    "es": "  <!-- MODAL 1: CALCULADORA DE PRESUPUESTO DE JUBILACIÓN -->\n",
     "pt": "  <!-- MODAL 1: CALCULADORA DE ORÇAMENTO ANUAL -->\n"
   },
   "fontHud9": {
     "en": " RETIREMENT ANNUAL BUDGET CALCULATOR\n",
-    "es": " CALCULADORA DE PRESUPUESTO ANUAL DE RETIRO\n",
+    "es": " CALCULADORA DE PRESUPUESTO ANUAL DE JUBILACIÓN\n",
     "pt": " CALCULADORA DE ORÇAMENTO ANUAL DE APOSENTADORIA\n"
   },
   "textXs22": {
     "en": "        Estimate your annual retirement spending by filling in estimated monthly expenses below:\n",
-    "es": "        Estima tus gastos de retiro ingresando los costos mensuales proyectados:\n",
+    "es": "        Estima tus gastos de jubilación ingresando los costes mensuales proyectados:\n",
     "pt": "        Estime seus gastos anuais de aposentadoria preenchendo os custos mensais projetados:\n"
   },
   "textSlate3009": {
@@ -1161,7 +1161,7 @@
   },
   "textXs23": {
     "en": "        Calculate your target nest egg using your annual retirement spend and target Safe Withdrawal Rate (SWR):\n",
-    "es": "        Calcula el capital acumulado requerido en función de tus gastos anuales y la Tasa Segura de Retiro (SWR):\n",
+    "es": "        Calcula el capital acumulado requerido en función de tus gastos anuales y la Tasa Segura de Retirada (SWR):\n",
     "pt": "        Calcule o patrimônio acumulado necessário com base no seu gasto anual e na Taxa Segura de Retirada (SWR):\n"
   },
   "textSlate30014": {
@@ -1171,7 +1171,7 @@
   },
   "textSlate30015": {
     "en": "Target Safe Withdrawal Rate (%):",
-    "es": "Tasa Segura de Retiro Objetivo (%):",
+    "es": "Tasa Segura de Retirada Objetivo (%):",
     "pt": "Taxa Segura de Retirada Alvo (%):"
   },
   "calcEggSwr": {
@@ -1231,7 +1231,7 @@
   },
   "debriefMsg": {
     "en": "        You successfully reached Age 100 with $1,240,000 remaining in portfolio fuel!\n",
-    "es": "        ¡Llegaste con éxito a los 100 años con €1.240.000 restantes en el tanque de combustible de tu portafolio!\n",
+    "es": "        ¡Llegaste con éxito a los 100 años con €1.240.000 restantes en el tanque de combustible de tu cartera!\n",
     "pt": "        Você chegou com sucesso aos 100 anos com R$1.240.000 restantes no tanque do seu portfólio!\n"
   },
   "textSlate4006": {
@@ -1421,7 +1421,7 @@
   },
   "minHScreen38": {
     "en": "            '🏠 REAL ESTATE DOWNSIZING INJECTION',\n            'You injected +$100,000 emergency fuel from downsizing your home into your retirement portfolio!',\n            '💡 Tip: Real estate equity acts as a powerful last-resort longevity buffer.',\n",
-    "es": "            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVENDA',\n            '¡Inyectaste +€100.000 de combustible de emergencia tras vender o reducir tu vivienda!',\n            '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',\n",
+    "es": "            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVIENDA',\n            '¡Inyectaste +€100.000 de combustible de emergencia tras vender o reducir tu vivienda!',\n            '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',\n",
     "pt": "            '🏠 INJEÇÃO POR REDUÇÃO DE IMÓVEL',\n            'Você injetou +R$100.000 de combustível de emergência após vender ou reduzir seu imóvel!',\n            '💡 Dica: O patrimônio imobiliário atua como um excelente colchão de segurança.',\n"
   },
   "minHScreen39": {
@@ -1576,7 +1576,7 @@
   },
   "minHScreen69": {
     "en": "            '🔥 INFLATION SURGE SHOCK',\n            `Inflation jumped to ${(infl * 100).toFixed(1)}%, driving up living costs.`,\n            '💡 Tip: Keep some equity growth in your portfolio long-term to outpace inflation.',\n",
-    "es": "            '🔥 PICO DE INFLACIÓN SHOCK',\n            `La inflación saltó al ${(infl * 100).toFixed(1)}%, aumentando los costos de vida.`,\n            '💡 Consejo: Mantén cierto crecimiento en acciones a largo plazo para superar la inflación.',\n",
+    "es": "            '🔥 PICO DE INFLACIÓN SHOCK',\n            `La inflación saltó al ${(infl * 100).toFixed(1)}%, aumentando los costes de vida.`,\n            '💡 Consejo: Mantén cierto crecimiento en acciones a largo plazo para superar la inflación.',\n",
     "pt": "            '🔥 SURTO DE INFLAÇÃO',\n            `A inflação subiu para ${(infl * 100).toFixed(1)}%, aumentando o custo de vida.`,\n            '💡 Dica: Mantenha parte do patrimônio em ações para superar a inflação a longo prazo.',\n"
   },
   "minHScreen70": {
@@ -1596,7 +1596,7 @@
   },
   "minHScreen73": {
     "en": "        msg.innerText = `Pilot ${state.pilotName}, your flight remained in the $0 crashline zone for 10 consecutive years at Age ${state.currentAge}. Your retirement portfolio ran out of fuel!`;\n",
-    "es": "        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de €0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu portafolio se quedó sin combustible!`;\n",
+    "es": "        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de €0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu cartera se quedó sin combustible!`;\n",
     "pt": "        msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de R$0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;\n"
   },
   "minHScreen74": {
@@ -1827,7 +1827,7 @@
   "ctaTitle": {
     "en": "Turn a survival probability into a plan you can act on.",
     "es": "Convierte una probabilidad de supervivencia en un plan que puedas ejecutar.",
-    "pt": "Transforma uma probabilidade de sobrevivência num plano que consigas executar."
+    "pt": "Transforme uma probabilidade de sobrevivência num plano que você consiga executar."
   },
   "explTitle": {
     "en": "What a Monte Carlo simulation tells you",
@@ -1837,7 +1837,7 @@
   "explLede": {
     "en": "Every other retirement calculator gives you one number, produced by assuming the market returns the same amount every year. It never does. This simulator runs your plan a thousand times over, drawing a different sequence of market years each time, and reports not a number but a probability: the share of those thousand lives in which your money outlasted you.",
     "es": "Cualquier otra calculadora de jubilación te da un número, obtenido suponiendo que el mercado rinde lo mismo todos los años. Nunca lo hace. Este simulador ejecuta tu plan mil veces, extrayendo cada vez una secuencia distinta de años de mercado, y no informa de un número sino de una probabilidad: la proporción de esas mil vidas en las que tu dinero te sobrevivió.",
-    "pt": "Qualquer outra calculadora de reforma dá-lhe um número, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro lhe sobreviveu."
+    "pt": "Qualquer outra calculadora de aposentadoria dá-lhe um número, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro lhe sobreviveu."
   },
   "explHowTitle": {
     "en": "How the thousand runs work",
@@ -1847,7 +1847,7 @@
   "explHow1": {
     "en": "For each of the 1,000 runs and each year within it, the simulator draws a random return for stocks, bonds and cash, and a random rate of inflation, from distributions calibrated to long-run history: stocks average 8.2% a year with a standard deviation of 24%, bonds 3.5% with 6%, cash 1.5% with 1%, and inflation 3.5% with 2.5%. Your portfolio grows by the weighted result, your withdrawal is taken out, and the withdrawal is inflated for the following year.",
     "es": "Para cada una de las 1.000 simulaciones y cada año dentro de ella, el simulador extrae una rentabilidad aleatoria para acciones, bonos y efectivo, y una tasa aleatoria de inflación, de distribuciones calibradas con la historia a largo plazo: las acciones promedian un 8,2% anual con una desviación típica del 24%, los bonos un 3,5% con un 6%, el efectivo un 1,5% con un 1%, y la inflación un 3,5% con un 2,5%. Tu cartera crece según el resultado ponderado, se retira tu gasto, y ese gasto se infla para el año siguiente.",
-    "pt": "Para cada uma das 1.000 simulações e cada ano dentro dela, o simulador sorteia uma rentabilidade aleatória para ações, obrigações e liquidez, e uma taxa aleatória de inflação, a partir de distribuições calibradas com a história de longo prazo: as ações têm média de 8,2% ao ano com um desvio-padrão de 24%, as obrigações 3,5% com 6%, a liquidez 1,5% com 1%, e a inflação 3,5% com 2,5%. A sua carteira cresce segundo o resultado ponderado, é levantada a sua despesa, e essa despesa é inflacionada para o ano seguinte."
+    "pt": "Para cada uma das 1.000 simulações e cada ano dentro dela, o simulador sorteia uma rentabilidade aleatória para ações, títulos e liquidez, e uma taxa aleatória de inflação, a partir de distribuições calibradas com a história de longo prazo: as ações têm média de 8,2% ao ano com um desvio-padrão de 24%, as títulos 3,5% com 6%, a liquidez 1,5% com 1%, e a inflação 3,5% com 2,5%. A sua carteira cresce segundo o resultado ponderado, é levantada a sua despesa, e essa despesa é inflacionada para o ano seguinte."
   },
   "explHow2": {
     "en": "The thousand results are then sorted, and three of them are shown: the 10th percentile, the median and the 90th. The median is the ordinary outcome. The 10th percentile is the one that matters — it is what happens when the draws go against you, and a plan that only works at the median is a plan that fails one time in two. A run in which the balance sits at zero for ten consecutive years is counted as ruined, not as recovered.",
@@ -1862,7 +1862,7 @@
   "explAssumption1": {
     "en": "Returns are drawn independently each year from a normal distribution. Real markets have fat tails — extreme years happen more often than a bell curve predicts — and they cluster, so a bad year is more likely to be followed by another.",
     "es": "Las rentabilidades se extraen de forma independiente cada año de una distribución normal. Los mercados reales tienen colas gruesas —los años extremos ocurren más de lo que predice una campana— y se agrupan, así que un mal año tiene más probabilidad de ir seguido de otro.",
-    "pt": "As rentabilidades são sorteadas de forma independente em cada ano a partir de uma distribuição normal. Os mercados reais têm caudas grossas — os anos extremos acontecem mais do que uma curva de sino prevê — e agrupam-se, pelo que um mau ano tem mais probabilidade de ser seguido de outro."
+    "pt": "As rentabilidades são sorteadas de forma independente em cada ano a partir de uma distribuição normal. Os mercados reais têm caudas grossas — os anos extremos acontecem mais do que uma curva de sino prevê — e se agrupam, por isso um ano ruim tem mais probabilidade de ser seguido de outro."
   },
   "explAssumption2": {
     "en": "Asset classes are drawn independently of each other. In a real crisis correlations rise towards one, which is precisely when diversification is supposed to help.",
@@ -1870,9 +1870,9 @@
     "pt": "As classes de ativos são sorteadas independentemente umas das outras. Numa crise real as correlações sobem para perto de um, que é precisamente quando a diversificação deveria ajudar."
   },
   "explAssumption3": {
-    "en": "Your withdrawal rises with inflation regardless of what the portfolio did. Real retirees spend less after a bad year, which is the single most effective defence available and is not modelled here.",
+    "en": "Your withdrawal rises with inflation regardless of what the portfolio did. Real retirees spend less after a bad year, which is the single most effective defense available and is not modeled here.",
     "es": "Tu retirada sube con la inflación pase lo que pase con la cartera. Los jubilados reales gastan menos tras un mal año, que es la defensa más eficaz disponible y aquí no está modelada.",
-    "pt": "O seu levantamento sobe com a inflação independentemente do que a carteira fez. Os reformados reais gastam menos depois de um mau ano, que é a defesa mais eficaz disponível e aqui não está modelada."
+    "pt": "O seu retirada sobe com a inflação independentemente do que a carteira fez. Os aposentados reais gastam menos depois de um mau ano, que é a defesa mais eficaz disponível e aqui não está modelada."
   },
   "explAssumption4": {
     "en": "No taxes, no fund fees, no state pension and no other income. Each of those shifts the result, and not all of them in the same direction.",
@@ -1880,7 +1880,7 @@
     "pt": "Sem impostos, sem comissões de fundos, sem pensão pública e sem outros rendimentos. Cada um desses fatores move o resultado, e não todos na mesma direção."
   },
   "explAssumptionsNote": {
-    "en": "Read the success rate as a comparison tool, not as a forecast. Ninety per cent here does not mean a nine-in-ten chance in the world; it means this plan failed a tenth of the time under these assumptions, and you can see exactly which change makes that number move.",
+    "en": "Read the success rate as a comparison tool, not as a forecast. Ninety percent here does not mean a nine-in-ten chance in the world; it means this plan failed a tenth of the time under these assumptions, and you can see exactly which change makes that number move.",
     "es": "Lee la tasa de éxito como herramienta de comparación, no como pronóstico. Un noventa por ciento aquí no significa nueve posibilidades de cada diez en el mundo real: significa que este plan falló una décima parte de las veces bajo estos supuestos, y puedes ver exactamente qué cambio mueve esa cifra.",
     "pt": "Leia a taxa de sucesso como ferramenta de comparação, não como previsão. Noventa por cento aqui não significa nove hipóteses em dez no mundo real: significa que este plano falhou um décimo das vezes sob estes pressupostos, e pode ver exatamente que alteração move esse número."
   },
@@ -1892,12 +1892,12 @@
   "explExample1": {
     "en": "A portfolio of 800,000, 70% in stocks, drawn down at 4% a year over thirty years, comes back with a success rate in the low nineties. The median run ends with more money than it started with — often several times more — which is the counter-intuitive part: the typical outcome of a sustainable withdrawal plan is dying rich.",
     "es": "Una cartera de 800.000, con un 70% en acciones, consumida al 4% anual durante treinta años, devuelve una tasa de éxito en los noventa y pocos. La simulación mediana termina con más dinero del que empezó, a menudo varias veces más, que es la parte contraintuitiva: el desenlace típico de un plan de retirada sostenible es morir rico.",
-    "pt": "Uma carteira de 800.000, com 70% em ações, consumida a 4% ao ano durante trinta anos, devolve uma taxa de sucesso nos noventa e poucos. A simulação mediana termina com mais dinheiro do que começou, muitas vezes várias vezes mais, que é a parte contraintuitiva: o desfecho típico de um plano de levantamento sustentável é morrer rico."
+    "pt": "Uma carteira de 800.000, com 70% em ações, consumida a 4% ao ano durante trinta anos, devolve uma taxa de sucesso nos noventa e poucos. A simulação mediana termina com mais dinheiro do que começou, muitas vezes várias vezes mais, que é a parte contraintuitiva: o desfecho típico de um plano de retirada sustentável é morrer rico."
   },
   "explExample2": {
     "en": "Now raise the withdrawal rate to 5%. The median barely moves — but the success rate falls by more than twenty points and the 10th percentile run runs out of money in the mid-twenties. That gap is the entire argument for looking at the bottom decile: the typical outcome of the riskier plan looks fine, and the risk is all hiding in the tail you were not shown.",
     "es": "Ahora sube la tasa de retirada al 5%. La mediana apenas se mueve, pero la tasa de éxito cae más de veinte puntos y la simulación del percentil 10 se queda sin dinero a mitad de los veintitantos años. Esa brecha es todo el argumento para mirar el decil inferior: el desenlace típico del plan más arriesgado parece correcto, y el riesgo está escondido entero en la cola que no te enseñaron.",
-    "pt": "Agora suba a taxa de levantamento para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro a meio dos vinte e tal anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que não lhe mostraram."
+    "pt": "Agora suba a taxa de retirada para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro na metade dos vinte e tantos anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que não lhe mostraram."
   },
   "explFaqQ1": {
     "en": "Why a thousand runs and not more?",
@@ -1912,12 +1912,12 @@
   "explFaqQ2": {
     "en": "Why does the result change each time I run it?",
     "es": "¿Por qué el resultado cambia cada vez que lo ejecuto?",
-    "pt": "Porque é que o resultado muda de cada vez que o executo?"
+    "pt": "Por que o resultado muda cada vez que eu executo?"
   },
   "explFaqA2": {
     "en": "Because the draws are random. A success rate that swings by a point or two between runs is normal; one that swings by ten is telling you the plan is sitting on a knife edge, which is itself the answer.",
     "es": "Porque los sorteos son aleatorios. Que la tasa de éxito oscile uno o dos puntos entre ejecuciones es normal; que oscile diez te está diciendo que el plan está en el filo, y eso ya es la respuesta.",
-    "pt": "Porque os sorteios são aleatórios. Que a taxa de sucesso oscile um ou dois pontos entre execuções é normal; que oscile dez está a dizer-lhe que o plano está no fio da navalha, e isso já é a resposta."
+    "pt": "Porque os sorteios são aleatórios. Que a taxa de sucesso oscile um ou dois pontos entre execuções é normal; que oscile dez está dizendo que o plano está no fio da navalha, e isso já é a resposta."
   },
   "explFaqQ3": {
     "en": "What success rate should I aim for?",

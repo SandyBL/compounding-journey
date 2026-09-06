@@ -67,10 +67,10 @@ For somebody living off a portfolio, dividends are only one of the two ways of t
       name: 'Rentabilidade por dividendo',
       slug: 'rentabilidade-por-dividendo',
       aliases: ['dividend yield', 'rendimento do dividendo', 'yield'],
-      short: 'O dividendo anual que uma ação ou um fundo paga dividido pelo seu preço, expresso em percentagem.',
-      body: `A rentabilidade por dividendo calcula-se dividindo o dividendo pago num ano pelo preço da ação. Uma ação a 20 que distribui 1 por ano tem uma rentabilidade por dividendo de 5 %.
+      short: 'O dividendo anual que uma ação ou um fundo paga dividido pelo seu preço, expresso em porcentagem.',
+      body: `A rentabilidade por dividendo calcula-se dividindo o dividendo pago num ano pelo preço da ação. Uma ação a 20 que distribui 1 por ano tem uma rentabilidade por dividendo de 5%.
 
-É um quociente, e isso significa que sobe quando o numerador cresce e também quando o denominador cai. Uma empresa cujo preço caiu 40 % aparece de repente com uma rentabilidade por dividendo altíssima, e esse número não é boa notícia: é o mercado a dizer que duvida de que o dividendo se mantenha.
+É um quociente, e isso significa que sobe quando o numerador cresce e também quando o denominador cai. Uma empresa cujo preço caiu 40% aparece de repente com uma rentabilidade por dividendo altíssima, e esse número não é boa notícia: é o mercado dizendo que duvida de que o dividendo se mantenha.
 
 Para quem vive da sua carteira, o dividendo é apenas uma das duas formas de retirar dinheiro dela; a outra é vender unidades. Escolher ações pelo dividendo alto em vez da rentabilidade total é uma das armadilhas mais frequentes ao construir uma carteira de rendimento.`
     }
@@ -91,24 +91,24 @@ No es una media de las rentabilidades anuales. Un año de +50 % seguido de otro 
 Es la única forma honesta de comparar dos inversiones con periodos distintos, y por eso también es la que se manipula al escoger las fechas de inicio y fin. Ante una rentabilidad anualizada espectacular, la primera pregunta es siempre desde cuándo se mide.`
     },
     en: {
-      name: 'Annualised return (CAGR)',
+      name: 'Annualized return (CAGR)',
       slug: 'annualised-return-cagr',
       aliases: ['CAGR', 'compound annual growth rate', 'annualized return'],
       short: 'The constant rate an investment would have to grow at each year to go from its starting value to its ending value over the period measured.',
-      body: `Annualised return turns a total result into a yearly pace. Going from $10,000 to $20,000 in ten years is not 10% a year but 7.2%: compounding does the rest.
+      body: `Annualized return turns a total result into a yearly pace. Going from $10,000 to $20,000 in ten years is not 10% a year but 7.2%: compounding does the rest.
 
-It is not an average of the yearly returns. A year of +50% followed by one of -50% averages to 0% and annualises to -13.4%, because what is left is $75 of every $100. The second number is the one that describes your money.
+It is not an average of the yearly returns. A year of +50% followed by one of -50% averages to 0% and annualizes to -13.4%, because what is left is $75 of every $100. The second number is the one that describes your money.
 
-It is the only honest way to compare two investments over different periods, which is also why it is the number most often manipulated by choosing the start and end dates. Faced with a spectacular annualised return, the first question is always: measured from when?`
+It is the only honest way to compare two investments over different periods, which is also why it is the number most often manipulated by choosing the start and end dates. Faced with a spectacular annualized return, the first question is always: measured from when?`
     },
     pt: {
       name: 'Rentabilidade anualizada (CAGR)',
       slug: 'rentabilidade-anualizada-cagr',
       aliases: ['CAGR', 'taxa de crescimento anual composta', 'rentabilidade média anual composta'],
       short: 'A taxa constante a que um investimento teria de crescer cada ano para passar do valor inicial ao final no período medido.',
-      body: `A rentabilidade anualizada converte um resultado total num ritmo anual. Passar de 10.000 para 20.000 em dez anos não é 10 % por ano, mas 7,2 %: os juros compostos fazem o resto.
+      body: `A rentabilidade anualizada converte um resultado total num ritmo anual. Passar de 10.000 para 20.000 em dez anos não é 10% por ano, mas 7,2%: os juros compostos fazem o resto.
 
-Não é uma média das rentabilidades anuais. Um ano de +50 % seguido de outro de −50 % dá uma média aritmética de 0 % e uma rentabilidade anualizada de −13,4 %, porque o que fica são 75 de cada 100. O segundo número é o que descreve o teu dinheiro.
+Não é uma média das rentabilidades anuais. Um ano de +50% seguido de outro de −50% dá uma média aritmética de 0% e uma rentabilidade anualizada de −13,4%, porque o que fica são 75 de cada 100. O segundo número é o que descreve o seu dinheiro.
 
 É a única forma honesta de comparar dois investimentos com períodos diferentes, e por isso também é o número mais manipulado através da escolha das datas de início e fim. Diante de uma rentabilidade anualizada espetacular, a primeira pergunta é sempre: medida desde quando?`
     }
@@ -143,12 +143,12 @@ What decides your outcome is not the bear market but what you do inside it. Sell
       name: 'Mercado em baixa',
       slug: 'mercado-em-baixa',
       aliases: ['bear market', 'mercado bear', 'mercados em baixa'],
-      short: 'Um período em que um índice cai pelo menos 20 % desde o seu máximo anterior e se mantém aí.',
-      body: `O limiar dos 20 % é uma convenção, não uma lei: serve para distinguir uma queda séria de uma correção comum, que é qualquer recuo de 10 %.
+      short: 'Um período em que um índice cai pelo menos 20% desde o seu máximo anterior e se mantém aí.',
+      body: `O limiar dos 20% é uma convenção, não uma lei: serve para distinguir uma queda séria de uma correção comum, que é qualquer recuo de 10%.
 
 Os mercados em baixa são frequentes e costumam ser mais curtos do que parecem enquanto se vivem. Na bolsa americana houve um a cada seis ou sete anos em média desde 1950, com uma duração típica inferior a dois anos e uma recuperação posterior que sempre ultrapassou o ponto de partida.
 
-O que decide o teu resultado não é o mercado em baixa, mas o que fazes dentro dele. Vender no fundo transforma uma perda temporária numa permanente, e é a única forma segura de uma queda de 30 % te custar dinheiro a sério.`
+O que decide o seu resultado não é o mercado em baixa, mas o que faz dentro dele. Vender no fundo transforma uma perda temporária numa permanente, e é a única forma segura de uma queda de 30% lhe custar dinheiro de verdade.`
     }
   },
   {
@@ -211,7 +211,7 @@ Como reparte obligatoriamente casi todo su beneficio, su rentabilidad por divide
       short: 'A listed company that owns and rents out property and is required to distribute most of its profit to shareholders.',
       body: `A REIT lets you own a share of a property portfolio without buying any property: it is bought and sold like a share, in seconds and for a few dollars.
 
-In exchange, a REIT behaves like a share and not like a flat: it is priced every day and can fall 40% in a year in which the rents it collects did not move at all. The liquidity it gains is paid for in visible volatility.
+In exchange, a REIT behaves like a share and not like an apartment: it is priced every day and can fall 40% in a year in which the rents it collects did not move at all. The liquidity it gains is paid for in visible volatility.
 
 Because it is obliged to pay out nearly all of its profit, a REIT's dividend yield tends to be high and its growth from reinvestment low. It is a source of income rather than an engine of accumulation, which is worth remembering before comparing it with a stock index.`
     },
@@ -220,9 +220,9 @@ Because it is obliged to pay out nearly all of its profit, a REIT's dividend yie
       slug: 'reit-imobiliario-cotado',
       aliases: ['REIT', 'REITs', 'fundo de investimento imobiliário', 'imobiliário cotado'],
       short: 'Uma empresa cotada que possui e arrenda imóveis e é obrigada a distribuir a maior parte do lucro pelos acionistas.',
-      body: `Um REIT permite ser proprietário de uma parte de uma carteira de imóveis sem comprar nenhum: compra-se e vende-se como uma ação, em segundos e por poucos euros.
+      body: `Um REIT permite ser proprietário de uma parte de uma carteira de imóveis sem comprar nenhum: compra-se e vende-se como uma ação, em segundos e por poucos reais.
 
-Em troca, um REIT comporta-se como uma ação e não como um apartamento: é cotado todos os dias e pode cair 40 % num ano em que as rendas que recebe não se mexeram. A liquidez que ganha paga-se em volatilidade visível.
+Em troca, um REIT comporta-se como uma ação e não como um apartamento: é cotado todos os dias e pode cair 40% num ano em que as rendas que recebe não se mexeram. A liquidez que ganha paga-se em volatilidade visível.
 
 Como distribui obrigatoriamente quase todo o lucro, a sua rentabilidade por dividendo tende a ser alta e o seu crescimento por reinvestimento baixo. É uma fonte de rendimento mais do que um motor de acumulação, e vale a pena lembrá-lo antes de o comparar com um índice de ações.`
     }
@@ -258,11 +258,11 @@ Which makes the decision more psychological than mathematical. If a 20% fall the
       slug: 'investimento-de-uma-so-vez',
       aliases: ['lump sum', 'investir tudo de uma vez'],
       short: 'Investir um montante inteiro num único momento, em vez de o repartir em contribuições periódicas.',
-      body: `A alternativa ao investimento de uma só vez é o investimento periódico: dividir o dinheiro em partes iguais e entrar ao longo de vários meses.
+      body: `A alternativa ao investimento de uma só vez é o investimento periódico: dividir o dinheiro em parte iguais e entrar ao longo de vários meses.
 
 Estatisticamente, investir tudo de uma vez ganha em cerca de dois de cada três períodos históricos, simplesmente porque o mercado sobe mais vezes do que desce e estar investido compensa. O preço dessa vantagem é a possibilidade de entrar pouco antes de uma queda.
 
-Por isso a decisão é mais psicológica do que matemática. Se uma queda de 20 % na semana seguinte te fizesse vender, o investimento periódico é melhor: não porque renda mais, mas porque é o que serás capaz de manter.`
+Por isso a decisão é mais psicológica do que matemática. Se uma queda de 20% na semana seguinte fizesse você vender, o investimento periódico é melhor: não porque renda mais, mas porque é o que será capaz de manter.`
     }
   },
   {
@@ -300,7 +300,7 @@ That proof has real value. In studies of repayment plans, people who start with 
 
 Matematicamente não é ótimo: pagar primeiro a dívida mais cara poupa mais juros. O que a bola de neve ganha é a primeira dívida liquidada cedo e, com ela, a prova de que o plano funciona.
 
-Essa prova tem valor real. Nos estudos sobre planos de pagamento, quem começa pela dívida pequena desiste menos, e um plano pior que se termina bate um plano ótimo que se deixa a meio.`
+Essa prova tem valor real. Nos estudos sobre planos de pagamento, quem começa pela dívida pequena desiste menos, e um plano pior que se termina bate um plano ótimo que se abandona no meio.`
     }
   },
   {
@@ -336,7 +336,7 @@ Its weak point is morale: if the most expensive debt is also the largest, months
       short: 'Uma forma de pagar dívidas que ataca primeiro a taxa de juro mais alta, independentemente do saldo.',
       body: `Pagam-se os mínimos de todas e o excedente vai para a dívida mais cara. Quando essa é liquidada, passa-se à seguinte por taxa de juro, não por tamanho.
 
-É a opção ótima em juros pagos e em tempo total. Com um cartão a 20 % e um empréstimo a 6 %, cada euro que vai para o cartão poupa mais do triplo do que o mesmo euro no empréstimo.
+É a opção ótima em juros pagos e em tempo total. Com um cartão a 20% e um empréstimo a 6%, cada real que vai para o cartão economiza mais do que o triplo do mesmo real no empréstimo.
 
 O seu ponto fraco é o ânimo: se a dívida mais cara for também a maior, podem passar meses sem que nenhuma desapareça. Quem precisa de ver progresso para não desistir costuma terminar mais planos com o método bola de neve.`
     }
@@ -372,9 +372,9 @@ So the useful question about any credit is not what the monthly payment is but w
       slug: 'taeg-taxa-anual-de-encargos',
       aliases: ['TAEG', 'APR', 'taxa anual efetiva global'],
       short: 'O custo real anual de um empréstimo, que inclui a taxa de juro mais as comissões e os encargos obrigatórios.',
-      body: `A TAN é apenas o juro; a TAEG acrescenta comissões de abertura, seguros associados e qualquer encargo obrigatório, e distribui-os ao longo da vida do empréstimo. É o número que permite comparar duas propostas.
+      body: `A TAN é apenas o juro; a TAEG acrescenta comissões de abertura, seguros associados e qualquer encargo obrigatório, e os distribui ao longo da vida do empréstimo. É o número que permite comparar duas propostas.
 
-A diferença entre as duas não é cosmética. Um empréstimo a 6 % de juro com uma comissão de abertura de 2 % pode ter uma TAEG perto de 8 % se for pago em poucos anos, porque essa comissão é paga inteira no início.
+A diferença entre as duas não é cosmética. Um empréstimo a 6% de juro com uma comissão de abertura de 2% pode ter uma TAEG perto de 8% se for pago em poucos anos, porque essa comissão é paga inteira no início.
 
 Por isso, diante de qualquer crédito, a pergunta útil não é qual é a prestação, mas qual é a TAEG e quanto se paga no total. A prestação pode ficar pequena alargando o prazo; o total, não.`
     }
@@ -409,12 +409,12 @@ The useful way to use it is backwards: fix the 20% saving first, move it out on 
       name: 'Regra 50/30/20',
       slug: 'regra-50-30-20',
       aliases: ['50/30/20', 'regra 50 30 20', 'divisão 50/30/20'],
-      short: 'Uma divisão orientativa do rendimento líquido: metade para necessidades, 30 % para gostos e 20 % para poupança e dívida.',
-      body: `O seu valor está em dar uma referência onde não havia nenhuma. Quem não sabe se poupar 4 % é pouco ou muito passa a ter um número com que se comparar.
+      short: 'Uma divisão orientativa do rendimento líquido: metade para necessidades, 30% para gostos e 20% para poupança e dívida.',
+      body: `O seu valor está em dar uma referência onde não havia nenhuma. Quem não sabe se poupar 4% é pouco ou muito passa a ter um número com que se comparar.
 
-É também aritmética, não uma lei. Numa cidade onde a renda leva 45 % do salário líquido, os 50 % de necessidades são inalcançáveis e a divisão transforma-se numa fonte de culpa em vez de um plano.
+É também aritmética, não uma lei. Numa cidade onde a renda leva 45% do salário líquido, os 50% de necessidades são inalcançáveis e a divisão transforma-se numa fonte de culpa em vez de um plano.
 
-A forma útil de a usar é ao contrário: fixar primeiro os 20 % de poupança, retirá-los no dia em que o salário entra e distribuir o resto como sair. A ordem importa mais do que as percentagens.`
+A forma útil de a usar é ao contrário: fixar primeiro os 20% de poupança, retirá-los no dia em que o salário entra e distribuir o resto como sair. A ordem importa mais do que as porcentagens.`
     }
   },
   {
@@ -436,7 +436,7 @@ Su efecto real es sobre la deuda. La mayoría de los saldos de tarjeta no nacen 
       name: 'Sinking fund',
       slug: 'sinking-fund',
       aliases: ['sinking funds', 'planned expense fund'],
-      short: 'Money set aside every month for a large expense you know is coming, such as an annual insurance premium, a car service or a holiday.',
+      short: 'Money set aside every month for a large expense you know is coming, such as an annual insurance premium, a car repair or a vacation.',
       body: `It is not an emergency fund. An emergency fund covers what cannot be foreseen; this covers exactly the opposite: the $600 bill that has arrived every February for eight years.
 
 It works by dividing the annual cost by twelve and setting that aside each month. A $720 premium stops being a $720 problem and becomes a $60 line in the budget.
@@ -486,11 +486,11 @@ Its limits are the 4% rule's limits: it assumes a thirty-year horizon, a diversi
       slug: 'regra-dos-25',
       aliases: ['regra dos 25x', '25x', 'regra das 25 vezes'],
       short: 'A estimativa de que o capital necessário para viver de uma carteira é cerca de vinte e cinco vezes a despesa anual.',
-      body: `É a regra dos 4 % ao contrário: retirar 4 % de uma carteira equivale a precisar de vinte e cinco vezes a despesa de um ano. Uma despesa de 24.000 por ano são 600.000 de objetivo.
+      body: `É a regra dos 4% ao contrário: retirar 4% de uma carteira equivale a precisar de vinte e cinco vezes a despesa de um ano. Uma despesa de 24.000 por ano são 600.000 de objetivo.
 
-A sua utilidade é transformar uma aspiração num número que se pode perseguir, e transformar qualquer despesa recorrente no seu preço a longo prazo: 100 por mês de subscrições são 30.000 de capital.
+A sua utilidade é transformar uma aspiração num número que se pode perseguir, e transformar qualquer despesa recorrente no seu preço a longo prazo: 100 por mês de assinaturas são 30.000 de capital.
 
-Os seus limites são os da regra dos 4 %: pressupõe um horizonte de trinta anos, uma carteira diversificada e uma despesa estável. Com reformas mais longas ou despesa crescente, o multiplicador honesto está mais perto de trinta do que de vinte e cinco.`
+Os seus limites são os da regra dos 4%: pressupõe um horizonte de trinta anos, uma carteira diversificada e uma despesa estável. Com aposentadorias mais longas ou despesa crescente, o multiplicador honesto está mais perto de trinta do que de vinte e cinco.`
     }
   },
   {
@@ -526,9 +526,9 @@ The fix is changing the question. Instead of "how much do I have in this?", ask:
       short: 'A tendência para continuar com algo porque já se investiu dinheiro, tempo ou esforço, em vez de decidir pelo que ainda está por vir.',
       body: `O custo já pago é informação sobre o passado, não sobre o futuro. A única pergunta relevante é o que acontece a partir de agora, e essa pergunta não muda por causa do que se gastou antes.
 
-Em investimento aparece como a ação que não se vende até «recuperar o que custou». O preço de compra é um dado privado teu: não faz parte do valor da empresa e não influencia o seu percurso.
+Em investimento aparece como a ação que não se vende até «recuperar o que custou». O preço de compra é um dado privado seu: não faz parte do valor da empresa e não influencia o seu percurso.
 
-Combate-se mudando a pergunta. Em vez de «quanto é que já meti aqui?», a pergunta é: se hoje tivesse este dinheiro em caixa, punha-o nisto? Se a resposta é não, continuar dentro é uma decisão nova, não a continuação de uma antiga.`
+Combate-se mudando a pergunta. Em vez de «quanto eu já coloquei aqui?», a pergunta é: se hoje eu tivesse este dinheiro em caixa, colocaria nisto? Se a resposta é não, continuar dentro é uma decisão nova, não a continuação de uma antiga.`
     }
   },
   {
@@ -555,7 +555,7 @@ La defensa es tener una referencia propia antes de ver la del vendedor o la del 
 
 In investing, the usual anchor is a portfolio's all-time high. An account that reached $50,000 and holds $44,000 today feels like a $6,000 loss, even when the money paid in was $38,000.
 
-The defence is having your own reference before you see the seller's or the market's: what is this worth to me, how much have I put in, how much do I need. Your own anchor displaces somebody else's.`
+The defense is having your own reference before you see the seller's or the market's: what is this worth to me, how much have I put in, how much do I need. Your own anchor displaces somebody else's.`
     },
     pt: {
       name: 'Ancoragem',
@@ -589,7 +589,7 @@ El antídoto práctico es escribir, antes de invertir, qué tendría que pasar p
       slug: 'confirmation-bias',
       aliases: ['confirmatory bias'],
       short: 'The tendency to seek out, remember and believe information that supports what you already think, and to discard what contradicts it.',
-      body: `It is the bias that turns research into a collection of supporting arguments. After buying something, the articles praising it get read to the end and the ones criticising it get closed halfway.
+      body: `It is the bias that turns research into a collection of supporting arguments. After buying something, the articles praising it get read to the end and the ones criticizing it get closed halfway.
 
 In finance it is especially expensive because markets produce material for any thesis. There is always a chart, a period and an expert confirming what you want to believe, and finding them feels exactly like analysis.
 
@@ -600,9 +600,9 @@ The practical antidote is writing down, before investing, what would have to hap
       slug: 'vies-de-confirmacao',
       aliases: ['confirmation bias', 'viés confirmatório'],
       short: 'A tendência para procurar, recordar e acreditar na informação que apoia o que já se pensa, e para descartar a que a contradiz.',
-      body: `É o viés que transforma a investigação numa recolha de argumentos a favor. Depois de comprar algo, os artigos que o elogiam leem-se até ao fim e os que o criticam fecham-se a meio.
+      body: `É o viés que transforma a pesquisa em uma coleta de argumentos a favor. Depois de comprar algo, os artigos que o elogiam se leem até o fim e os que o criticam se fecham no meio.
 
-Em finanças é especialmente caro porque os mercados produzem material para qualquer tese. Há sempre um gráfico, um período e um especialista a confirmar o que se quer acreditar, e encontrá-los sente-se exatamente como analisar.
+Em finanças é especialmente caro porque os mercados produzem material para qualquer tese. Há sempre um gráfico, um período e um especialista confirmando o que se quer acreditar, e procurá-los dá exatamente a sensação de estar analisando.
 
 O antídoto prático é escrever, antes de investir, o que teria de acontecer para reconhecer que a decisão foi má. Um critério escrito de antemão é mais difícil de renegociar do que uma intuição.`
     }
@@ -637,12 +637,12 @@ You handle it with friction rather than willpower: a written rule for the larges
       name: 'FOMO (medo de ficar de fora)',
       slug: 'fomo-medo-de-ficar-de-fora',
       aliases: ['FOMO', 'medo de ficar de fora', 'fear of missing out'],
-      short: 'A urgência de entrar em algo que está a subir por medo de perder o ganho, mais do que por uma razão sobre o ativo.',
+      short: 'A urgência de entrar em algo que está subindo por medo de perder o ganho, mais do que por uma razão sobre o ativo.',
       body: `O que dispara o FOMO não é o ativo, mas o ganho alheio: normalmente de alguém conhecido, contado depois de ter acontecido. Essa história chega sem a parte em que podia ter corrido mal.
 
 O seu custo está no preço de entrada. O FOMO aparece, por definição, depois de algo já ter subido muito, por isso empurra para comprar tarde e vender cedo, que é a ordem exatamente inversa à que faz dinheiro.
 
-Gere-se com fricção, não com força de vontade: uma regra escrita sobre o peso máximo de uma posição nova e uma espera de setenta e duas horas antes de executar qualquer ideia que chegou por uma conversa ou uma rede social.`
+Controla-se com fricção, não com força de vontade: uma regra escrita sobre o peso máximo de uma posição nova e uma espera de setenta e duas horas antes de executar qualquer ideia que chegou por uma conversa ou uma rede social.`
     }
   },
   {
@@ -652,7 +652,7 @@ Gere-se com fricção, não com força de vontade: uma regra escrita sobre o pes
     es: {
       name: 'Comportamiento de rebaño',
       slug: 'comportamiento-de-rebano',
-      aliases: ['herd behaviour', 'efecto rebaño', 'comportamiento de manada'],
+      aliases: ['herd behavior', 'efecto rebaño', 'comportamiento de manada'],
       short: 'La tendencia a hacer lo que hace la mayoría porque lo hace la mayoría, tomando el consenso como información.',
       body: `Seguir al grupo es un atajo razonable cuando el grupo sabe algo que tú no. En los mercados suele ser lo contrario: la mayoría está mirando el mismo titular reciente que tú.
 
@@ -661,7 +661,7 @@ Su efecto agregado es amplificar los extremos. Los precios suben porque suben y 
 Una cartera con reglas escritas —cuánto se aporta, en qué, cuándo se rebalancea— es la defensa práctica. Convierte la decisión en algo decidido de antemano, cuando el rebaño todavía no se movía.`
     },
     en: {
-      name: 'Herd behaviour',
+      name: 'Herd behavior',
       slug: 'herd-behaviour',
       aliases: ['herding', 'herd mentality', 'herd behavior'],
       short: 'The tendency to do what most people are doing because most people are doing it, treating consensus as information.',
@@ -669,16 +669,16 @@ Una cartera con reglas escritas —cuánto se aporta, en qué, cuándo se rebala
 
 Its aggregate effect is to amplify extremes. Prices rise because they are rising and fall because they are falling, and bubbles and panics are largely this dynamic running at scale.
 
-A portfolio with written rules - how much goes in, into what, when it is rebalanced - is the practical defence. It makes the decision one you took in advance, while the herd was still standing still.`
+A portfolio with written rules - how much goes in, into what, when it is rebalanced - is the practical defense. It makes the decision one you took in advance, while the herd was still standing still.`
     },
     pt: {
       name: 'Comportamento de manada',
       slug: 'comportamento-de-manada',
-      aliases: ['herd behaviour', 'efeito manada', 'comportamento de rebanho'],
+      aliases: ['herd behavior', 'efeito manada', 'comportamento de rebanho'],
       short: 'A tendência para fazer o que a maioria faz porque a maioria o faz, tratando o consenso como informação.',
-      body: `Seguir o grupo é um atalho razoável quando o grupo sabe algo que tu não sabes. Nos mercados costuma ser o contrário: a maioria está a olhar para a mesma notícia recente que tu.
+      body: `Seguir o grupo é um atalho razoável quando o grupo sabe algo que você não sabe. Nos mercados costuma ser o contrário: a maioria está olhando para a mesma notícia recente que você.
 
-O seu efeito agregado é amplificar os extremos. Os preços sobem porque estão a subir e caem porque estão a cair, e as bolhas e os pânicos são em grande medida esta dinâmica a funcionar em escala.
+O seu efeito agregado é amplificar os extremos. Os preços sobem porque estão subindo e caem porque estão caindo, e as bolhas e os pânicos são em grande medida essa dinâmica funcionando em escala.
 
 Uma carteira com regras escritas - quanto entra, em quê, quando se rebalanceia - é a defesa prática. Transforma a decisão em algo decidido de antemão, quando a manada ainda não se tinha mexido.`
     }

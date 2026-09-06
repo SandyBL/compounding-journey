@@ -24,10 +24,6 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
-    <!--manifest:start-->
-    <link rel="manifest" href="/manifest.es.webmanifest">
-    <meta name="theme-color" content="#1E4620">
-    <!--manifest:end-->
 </head>
 <body class="min-h-full flex flex-col antialiased selection:bg-gold-500 selection:text-white">
 
@@ -186,7 +182,7 @@
                     <i class="fa-solid fa-wallet text-amber-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
-                    <span id="cashDisplay" class="sim-stat__value text-base sm:text-lg">€10,000</span>
+                    <span id="cashDisplay" class="sim-stat__value text-base sm:text-lg">€10.000</span>
                     <span class="sim-stat__note block text-[9px] mt-0.5">Capital para activos</span>
                 </div>
             </div>
@@ -198,7 +194,7 @@
                     <i class="fa-solid fa-briefcase text-blue-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
-                    <span id="activeDisplay" class="sim-stat__value sim-stat__value--series-3 text-base sm:text-lg">€3,200/mes</span>
+                    <span id="activeDisplay" class="sim-stat__value sim-stat__value--series-3 text-base sm:text-lg">€3.200/mes</span>
                     <span class="sim-stat__note block text-[9px] mt-0.5">Ingreso laboral del hogar</span>
                 </div>
             </div>
@@ -222,8 +218,8 @@
                     <i class="fa-solid fa-arrow-trend-down text-rose-600" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
-                    <span id="expensesDisplay" class="sim-stat__value sim-stat__value--negative text-base sm:text-lg">€2,670/mes</span>
-                    <span class="sim-stat__note block text-[9px] mt-0.5">Costo de vida base</span>
+                    <span id="expensesDisplay" class="sim-stat__value sim-stat__value--negative text-base sm:text-lg">€2.670/mes</span>
+                    <span class="sim-stat__note block text-[9px] mt-0.5">Coste de vida base</span>
                 </div>
             </div>
 
@@ -309,7 +305,7 @@
                             <p class="text-[11px] text-espresso-800/70">Invierte el efectivo disponible en activos. ¡Equilibra rendimiento seguro con crecimiento y volatilidad!</p>
                         </div>
                         <span class="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                            Efectivo Disponible: <span id="marketplaceCash" class="font-mono">€10,000</span>
+                            Efectivo Disponible: <span id="marketplaceCash" class="font-mono">€10.000</span>
                         </span>
                     </div>
 
@@ -337,10 +333,10 @@
                             </div>
                             <select id="housingSelect" aria-labelledby="label-housing" data-onchange="updateLifestyle('housing', this.value)" class="sim-field w-full p-1.5">
                                 <option value="modest">Modesta Compartida (€800)</option>
-                                <option value="standard" selected>Apto. Estándar (€1,200)</option>
-                                <option value="luxury">Penthouse Lujo (€2,200)</option>
+                                <option value="standard" selected>Apto. Estándar (€1.200)</option>
+                                <option value="luxury">Ático de Lujo (€2.200)</option>
                             </select>
-                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="housingCostBadge">€1,200/mes</div>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="housingCostBadge">€1.200/mes</div>
                         </div>
 
                         <!-- Transporte -->
@@ -350,8 +346,8 @@
                             </div>
                             <select id="transportSelect" aria-labelledby="label-transport" data-onchange="updateLifestyle('transport', this.value)" class="sim-field w-full p-1.5">
                                 <option value="public">Tránsito Público (€100)</option>
-                                <option value="used" selected>Usado Confiable (€300)</option>
-                                <option value="lease">SUV Lujo Arriendo (€800)</option>
+                                <option value="used" selected>Usado Fiable (€300)</option>
+                                <option value="lease">SUV Lujo Alquiler (€800)</option>
                             </select>
                             <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="transportCostBadge">€300/mes</div>
                         </div>
@@ -364,7 +360,7 @@
                             <select id="lifestyleSelect" aria-labelledby="label-lifestyle" data-onchange="updateLifestyle('lifestyle', this.value)" class="sim-field w-full p-1.5">
                                 <option value="frugal">Frugal / En Casa (€300)</option>
                                 <option value="balanced" selected>Restaurantes / Bal. (€500)</option>
-                                <option value="lavish">Cenas Elegantes (€1,100)</option>
+                                <option value="lavish">Cenas Elegantes (€1.100)</option>
                             </select>
                             <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="lifestyleCostBadge">€500/mes</div>
                         </div>
@@ -439,7 +435,7 @@
                                         <span class="w-2 h-2 rounded-full bg-rose-600 inline-block"></span>
                                         Meta de Gastos
                                     </span>
-                                    <span id="barExpenseVal" class="font-mono text-rose-700">€2,670/mes</span>
+                                    <span id="barExpenseVal" class="font-mono text-rose-700">€2.670/mes</span>
                                 </div>
                                 <div class="w-full bg-cream-300 rounded-full h-2.5 overflow-hidden p-0.5">
                                     <div id="expensesBar" class="bg-rose-500 h-1.5 rounded-full transition-all duration-500" style="width: 100%"></div>
@@ -462,7 +458,7 @@
                         </div>
 
                         <div id="crossoverGapNotice" class="sim-inset text-center py-1 text-[10px] font-medium text-espresso-800/80">
-                            Brecha: <span id="gapAmountDisplay" class="font-bold text-rose-700">€2,670/mes</span> para la libertad.
+                            Brecha: <span id="gapAmountDisplay" class="font-bold text-rose-700">€2.670/mes</span> para la libertad.
                         </div>
                     </div>
 
@@ -475,7 +471,7 @@
 
                         <!-- ASSET ALLOCATION PIE DIAGRAM -->
                         <div id="pieChartContainer" class="hidden pb-1 border-b border-cream-200">
-                            <span class="text-[9px] font-bold uppercase tracking-wider text-espresso-800/70 block mb-1 text-center">Distribución del Portafolio</span>
+                            <span class="text-[9px] font-bold uppercase tracking-wider text-espresso-800/70 block mb-1 text-center">Distribución de la Cartera</span>
                             <div class="h-32 w-full relative">
                                 <canvas id="assetPieChart" role="img" aria-label="Gráfico circular: cómo se reparte la cartera entre clases de activos. La misma distribución se detalla activo por activo más abajo."></canvas>
                             </div>
@@ -563,7 +559,7 @@
 
                 <h3 class="sim-explainer__heading">Cómo funciona</h3>
                 <p>Repartes capital entre seis fuentes: un ETF de dividendos, bonos del Tesoro, un piso en alquiler, un índice de REITs, un negocio online y bitcoin. Cada una paga un rendimiento distinto, y cada una carga con una dosis distinta de eso que la palabra «pasivo» calla: el alquiler necesita encontrar inquilino y arreglar la caldera, el negocio online necesita a alguien que lo lleve, y ninguno de los dos paga mientras estás enfermo.</p>
-                <p>La otra mitad es el gasto. Fijas tus decisiones de vivienda, transporte y comidas fuera, y la herramienta sigue un indicador de Disfrute Vital junto a tus ingresos. Esta es la parte que la mayoría del contenido sobre ingresos pasivos omite: el objetivo no es una cifra, es cubrir una vida que de verdad querrías vivir. Recortar tu estilo de vida al hueso hace el objetivo trivialmente fácil y el resultado inútil, y el indicador existe para hacer explícito ese canje en lugar de dejar que te optimices en silencio hacia una vida que odiarías.</p>
+                <p>La otra mitad es el gasto. Fijas tus decisiones de vivienda, transporte y comidas fuera, y la herramienta sigue un indicador de Alegría de Vivir junto a tus ingresos. Esta es la parte que la mayoría del contenido sobre ingresos pasivos omite: el objetivo no es una cifra, es cubrir una vida que de verdad querrías vivir. Recortar tu estilo de vida al hueso hace el objetivo trivialmente fácil y el resultado inútil, y el indicador existe para hacer explícito ese canje en lugar de dejar que te optimices en silencio hacia una vida que odiarías.</p>
 
                 <h3 class="sim-explainer__heading">Qué supone</h3>
                 <ul class="sim-explainer__list">
@@ -576,7 +572,7 @@
 
                 <h3 class="sim-explainer__heading">Un ejemplo resuelto</h3>
                 <p>Pon todo en el ETF de dividendos y el ingreso mensual es modesto, completamente pasivo, y llega te levantes o no de la cama. Mueve la mitad al piso en alquiler y el ingreso da un salto, y a la vez has adquirido en silencio un trabajo a tiempo parcial, un activo ilíquido y un único inquilino cuya marcha te quita de golpe una parte grande de los ingresos.</p>
-                <p>Ahora cubre el mismo objetivo mensual manteniendo alto el Disfrute Vital. La opción de vivienda más barata hace el objetivo alcanzable con mucho menos capital y te cuesta algo que se suponía que los ingresos iban a comprar. No existe una combinación que maximice los ingresos, minimice el esfuerzo y preserve la vida a la vez, y descubrir dónde quieres situarte tú en ese triángulo vale más que cualquier cifra de rendimiento que la herramienta imprima.</p>
+                <p>Ahora cubre el mismo objetivo mensual manteniendo alta la Alegría de Vivir. La opción de vivienda más barata hace el objetivo alcanzable con mucho menos capital y te cuesta algo que se suponía que los ingresos iban a comprar. No existe una combinación que maximice los ingresos, minimice el esfuerzo y preserve la vida a la vez, y descubrir dónde quieres situarte tú en ese triángulo vale más que cualquier cifra de rendimiento que la herramienta imprima.</p>
 
                 <h3 class="sim-explainer__heading">Preguntas frecuentes</h3>
                 <dl class="sim-explainer__faq">
@@ -650,7 +646,7 @@
                     <span class="w-5 h-5 rounded-full bg-forest-800 text-white font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">2</span>
                     <div>
                         <strong class="text-espresso-950 block">Compra Activos de Flujo de Caja y Gestiona el Riesgo</strong>
-                        <p class="text-[11px] text-espresso-800/80">Invierte el efectivo en ETFs de Dividendos, Bonos, Bienes Raíces o Bitcoin.</p>
+                        <p class="text-[11px] text-espresso-800/80">Invierte el efectivo en ETFs de Dividendos, Bonos, Inmuebles o Bitcoin.</p>
                     </div>
                 </div>
 

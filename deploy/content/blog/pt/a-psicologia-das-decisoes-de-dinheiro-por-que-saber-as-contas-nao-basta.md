@@ -30,9 +30,9 @@ Tudo o que vem abaixo é um caso particular da mesma assimetria.
 
 **Inflação do estilo de vida.** A renda sobe, o gasto sobe para igualá-la em cerca de um ano, e a taxa de poupança — o número que [de fato define a sua data de liberdade](/pt/blog/sua-taxa-de-poupanca-nao-seu-salario-define-a-data-em-que-voce-fica-livre/) — termina exatamente onde estava. Dez anos de aumentos podem produzir zero progresso, e nunca parece uma decisão, porque cada melhoria individual era pequena e defensável.
 
-**Aversão à perda.** Uma perda é registrada com aproximadamente o dobro da força de um ganho equivalente. É por isso que uma carteira 30 % menor não é vivida como um solavanco temporário, mas como uma emergência que exige ação, e por isso a ação quase sempre destrói valor. Também explica por que as pessoas mantêm caixa que sabem estar perdendo poder de compra: essa perda é invisível, e perdas invisíveis doem menos.
+**Aversão à perda.** Uma perda é registrada com aproximadamente o dobro da força de um ganho equivalente. É por isso que uma carteira 30% menor não é vivida como um solavanco temporário, mas como uma emergência que exige ação, e por isso a ação quase sempre destrói valor. Também explica por que as pessoas mantêm caixa que sabem estar perdendo poder de compra: essa perda é invisível, e perdas invisíveis doem menos.
 
-**Contabilidade mental.** O dinheiro é tratado de forma diferente conforme o bolso em que está. Um bônus de 2.000 € é gasto enquanto 2.000 € de cartão de crédito a 20 % continuam sem ser pagos. São os mesmos 2.000 €, e o segundo é um retorno garantido de 20 %.
+**Contabilidade mental.** O dinheiro é tratado de forma diferente conforme o bolso em que está. Um bônus de R$ 2.000 é gasto enquanto R$ 2.000 de cartão de crédito a 20% continuam sem ser pagos. São os mesmos R$ 2.000, e o segundo é um retorno garantido de 20%.
 
 **Viés de ação.** Num mercado em queda, não fazer nada parece negligência. Então as pessoas rebalanceiam, trocam de fundo, se protegem: atividade que parece controle e que compra principalmente custos de transação e pior sincronismo. Investir no longo prazo pede que você fique parado exatamente no momento em que o seu instinto exige movimento.
 
@@ -48,7 +48,7 @@ Tudo o que vem abaixo é um caso particular da mesma assimetria.
 | Viés do presente | Guardar «começa no mês que vem» | Transferência automática no dia do pagamento, antes de ver o dinheiro |
 | Inflação do estilo de vida | O aumento desaparece em um ano | Comprometer antecipadamente uma fatia de cada aumento com a poupança |
 | Aversão à perda | Vender numa queda | Uma política escrita, decidida em um mês calmo, que diz o que você fará |
-| Contabilidade mental | Guardar com uma dívida a 20 % | Uma única visão de todas as contas e dívidas, no mesmo lugar |
+| Contabilidade mental | Guardar com uma dívida a 20% | Uma única visão de todas as contas e dívidas, no mesmo lugar |
 | Viés de ação | Mexer sem parar | Uma data fixa de revisão; entre elas nada muda |
 | Comparação social | Melhorias que você não consegue justificar | Uma lista escrita do que o seu dinheiro serve para fazer |
 

@@ -17,20 +17,20 @@ Confundi-las produz os dois erros clássicos: comprar a maior rentabilidade disp
 
 ## O único número que as torna comparáveis
 
-Todo motor de renda se reduz à mesma pergunta: **quanto capital são necessários para 1.000 € por mês.**
+Todo motor de renda se reduz à mesma pergunta: **quanto capital são necessários para R$ 1.000 por mês.**
 
-1.000 € por mês são 12.000 € por ano. Divida isso pela rentabilidade líquida e você tem o capital.
+R$ 1.000 por mês são R$ 12.000 por ano. Divida isso pela rentabilidade líquida e você tem o capital.
 
-| Motor | Rentabilidade líquida realista | Capital para 1.000 €/mês | Horas que realmente pede |
+| Motor | Rentabilidade líquida realista | Capital para R$ 1.000/mês | Horas que realmente pede |
 |---|---|---|---|
-| Dividendos de ações ou fundos listados | 2–4 % | 300.000–600.000 € | quase nenhuma |
-| Juros: depósitos, títulos, fundos de títulos | 2–4 % | 300.000–600.000 € | quase nenhuma |
-| Imóvel alugado | 3–5 % líquido de custos | 240.000–400.000 € mais custos de compra | reais e recorrentes |
+| Dividendos de ações ou fundos listados | 2–4% | R$ 300.000–600.000 | quase nenhuma |
+| Juros: depósitos, títulos, fundos de títulos | 2–4% | R$ 300.000–600.000 | quase nenhuma |
+| Imóvel alugado | 3–5% líquido de custos | R$ 240.000–400.000 mais custos de compra | reais e recorrentes |
 | Produtos, direitos autorais, um negócio pequeno | sem relação fixa | pouco capital, muito tempo | altas no início, nunca zero |
 
 Duas coisas saltam dessa tabela de imediato.
 
-A primeira é que os motores financeiros precisam de capital sério e não oferecem nada além disso. Não existe rentabilidade que transforme 20.000 € em um salário. Qualquer coisa que anuncie uma está lhe vendendo risco, a devolução do seu próprio capital ou uma ficção.
+A primeira é que os motores financeiros precisam de capital sério e não oferecem nada além disso. Não existe rentabilidade que transforme R$ 20.000 em um salário. Qualquer coisa que anuncie uma está lhe vendendo risco, a devolução do seu próprio capital ou uma ficção.
 
 A segunda é que a quarta linha é de outra espécie. Ela troca tempo por capital. Isso a torna o único caminho aberto a quem ainda não tem capital, e também o que mais se parece com trabalho.
 
@@ -41,7 +41,7 @@ A segunda é que a quarta linha é de outra espécie. Ela troca tempo por capita
 
 O erro caro mais comum em todo esse terreno é tratar o dividendo como se fosse a pontuação.
 
-Rentabilidade total é crescimento do capital mais renda. O dividendo é apenas a parte da renda. Um fundo que distribui 7 % enquanto seu valor cai 5 % por ano lhe entregou 2 %, e entregou na forma menos eficiente do ponto de vista tributário.
+Rentabilidade total é crescimento do capital mais renda. O dividendo é apenas a parte da renda. Um fundo que distribui 7% enquanto seu valor cai 5% por ano lhe entregou 2%, e entregou na forma menos eficiente do ponto de vista tributário.
 
 Rentabilidades altas normalmente são altas por algum motivo: uma empresa que distribui mais do que ganha, um imóvel num lugar de onde as pessoas estão saindo, um título cujo emissor pode não pagar. O dividendo é muitas vezes a estimativa de risco feita pelo mercado, expressa em um número que as pessoas confundem com prêmio.
 
@@ -57,9 +57,9 @@ A versão sem graça funciona melhor. Tenha ativos produtivos por rentabilidade 
 
 ## O erro que vejo com mais frequência
 
-As pessoas constroem o motor antes do combustível. Passam um ano construindo algo que gera 200 € por mês sem guardar nada, e terminam esse ano com 2.400 € de renda e nenhum ativo.
+As pessoas constroem o motor antes do combustível. Passam um ano construindo algo que gera R$ 200 por mês sem guardar nada, e terminam esse ano com R$ 2.400 de renda e nenhum ativo.
 
-A ordem sem graça quase sempre é melhor: construa capital primeiro com a maior taxa de poupança que consiga manter, mantenha-o investido por rentabilidade total e deixe os motores de renda serem algo que você liga quando tem capital suficiente para que signifiquem algo. 4 % é um erro de arredondamento sobre 10.000 € e um salário sobre 400.000 €. A variável interessante é o capital, não a porcentagem.
+A ordem sem graça quase sempre é melhor: construa capital primeiro com a maior taxa de poupança que consiga manter, mantenha-o investido por rentabilidade total e deixe os motores de renda serem algo que você liga quando tem capital suficiente para que signifiquem algo. 4% é um erro de arredondamento sobre R$ 10.000 e um salário sobre R$ 400.000. A variável interessante é o capital, não a porcentagem.
 
 A exceção é real: se o seu motor é um produto ou uma habilidade, construí-lo cedo pode aumentar sua renda, o que aumenta sua taxa de poupança, o que constrói capital mais rápido. Esse é um bom motivo para construí-lo. «Porque é passivo» não é.
 

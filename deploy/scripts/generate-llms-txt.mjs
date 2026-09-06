@@ -245,9 +245,9 @@ ${languages.map((code) => `- [${languageNames[code]}](${origin}${dataPath(code)}
 
 ${Object.keys(LEGAL_PAGES).map((page) => `- ${page}: ${languages.map((code) => `[${languageNames[code]}](${origin}${legalPath(page, code)})`).join(', ')}`).join('\n')}
 
-Sandy Bradbury is a financial educator and is in the process of obtaining a
-financial advice certification. Nothing on this site is financial, investment,
-tax or legal advice, and no personal recommendations are given.
+Sandy Bradbury is a financial educator, not an accredited financial adviser.
+Nothing on this site is financial, investment, tax or legal advice, and no
+personal recommendations are given.
 
 ## Free Downloads
 

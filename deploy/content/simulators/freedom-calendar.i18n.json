@@ -7,7 +7,7 @@
   "metaContent": {
     "en": "Turn savings, investments, and lifestyle goals into a visual timeline showing when each stage of financial freedom may become achievable.",
     "es": "Convierte tus ahorros, inversiones y objetivos de vida en una línea de tiempo visual que muestra cuándo podrías alcanzar cada nivel de libertad financiera.",
-    "pt": "Transforma poupanças, investimentos e objetivos de vida numa linha temporal visual que mostra quando cada nível de liberdade financeira pode ficar ao teu alcance."
+    "pt": "Transforme as suas poupanças, investimentos e objetivos de vida numa linha temporal visual que mostra quando cada nível de liberdade financeira pode ficar ao seu alcance."
   },
   "head": {
     "en": "\n    ",
@@ -22,7 +22,7 @@
   "metaContent4": {
     "en": "Visualize when your savings and investments may unlock each stage of financial freedom.",
     "es": "Visualiza cuándo tus ahorros e inversiones pueden desbloquear cada etapa de libertad financiera.",
-    "pt": "Visualiza quando as tuas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."
+    "pt": "Visualiza quando as suas poupanças e investimentos podem desbloquear cada etapa de liberdade financeira."
   },
   "script": {
     "en": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Freedom Calendar\",\"url\":\"https://compoundingjourney.com/en/simulators/freedom-calendar.html\",\"description\":\"A ",
@@ -47,7 +47,7 @@
   "headerBrandTagline": {
     "en": "Your map to freedom",
     "es": "Tu mapa hacia la libertad",
-    "pt": "O teu mapa para a liberdade"
+    "pt": "O seu mapa para a liberdade"
   },
   "siteReturnLinkAriaLabel": {
     "en": "Back to the website",
@@ -72,12 +72,12 @@
   "mt15": {
     "en": "Turn savings, investments, and lifestyle goals into a ",
     "es": "Convierte tus ahorros, inversiones y objetivos de vida en una línea de tiempo ",
-    "pt": "Transforma poupanças, investimentos e objetivos de vida numa linha temporal "
+    "pt": "Transforme as suas poupanças, investimentos e objetivos de vida numa linha temporal "
   },
   "mt152": {
     "en": "timeline showing when each stage of financial freedom may become achievable.",
     "es": "que muestra cuándo podrías alcanzar cada nivel de libertad financiera.",
-    "pt": "que mostra quando cada nível de liberdade financeira pode ficar ao teu alcance."
+    "pt": "que mostra quando cada nível de liberdade financeira pode ficar ao seu alcance."
   },
   "mt3AriaLabel": {
     "en": "More simulators",
@@ -146,12 +146,12 @@
   },
   "textXs3": {
     "en": ". Assumes a 7% real investment return rate and 4% safe withdrawal rate (FIRE 25x rule).\n",
-    "es": ". Asume una tasa de retorno real del 7% y una tasa de retiro seguro del 4% (Regla del 25x de FIRE).\n",
+    "es": ". Asume una tasa de retorno real del 7% y una tasa de retirada segura del 4% (Regla del 25x de FIRE).\n",
     "pt": ". Considera uma taxa de retorno real de 7% e uma taxa de retirada segura de 4% (Regra dos 25x do FIRE).\n"
   },
   "textXs4": {
     "en": "The Opportunity Cost Converter",
-    "es": "El Convertidor de Costo de Oportunidad",
+    "es": "El Convertidor de Coste de Oportunidad",
     "pt": "O Conversor de Custo de Oportunidade"
   },
   "text2xl": {
@@ -166,7 +166,7 @@
   },
   "textSm2": {
     "en": "lunch or lease a luxury car, you aren't just spending dollars—you are spending ",
-    "es": "o arrendas un auto de lujo, no solo estás gastando euros: estás gastando ",
+    "es": "o alquilas un coche de lujo, no solo estás gastando euros: estás gastando ",
     "pt": "ou faz o leasing de um carro de luxo, não está apenas gastando reais: está gastando "
   },
   "textForest800": {
@@ -242,7 +242,7 @@
   "yearssavedbadge": {
     "en": "Freedom Pulled Forward 9 YEARS!",
     "es": "¡Libertad Adelantada 9 AÑOS!",
-    "pt": "¡Liberdade Antecipada em 9 ANOS!"
+    "pt": "Liberdade Antecipada em 9 ANOS!"
   },
   "flex": {
     "en": "Start: ",
@@ -307,7 +307,7 @@
   "wealthchartAriaLabel": {
     "en": "Chart: wealth trajectory over a thirty-year horizon, comparing the current path with the adjusted one. The end values are stated as text in the summary cards.",
     "es": "Gráfico: trayectoria del patrimonio en un horizonte de treinta años, comparando la ruta actual con la ajustada. Los valores finales aparecen como texto en las tarjetas de resumen.",
-    "pt": "Gráfico: trajetória do património num horizonte de trinta anos, comparando o percurso atual com o ajustado. Os valores finais aparecem como texto nos cartões de resumo."
+    "pt": "Gráfico: trajetória do patrimônio num horizonte de trinta anos, comparando o percurso atual com o ajustado. Os valores finais aparecem como texto nos cartões de resumo."
   },
   "langSwitchAriaLabel": {
     "en": "Language",
@@ -346,8 +346,8 @@
   },
   "minHScreen4": {
     "en": "                desc: 'Specialty lattes, energy drinks, or iced coffee purchased on the go.',\n                tip: 'Invest in a quality french press or espresso maker at home and a leakproof travel mug. You keep the daily ritual for under $0.50/cup!',\n",
-    "es": "                desc: 'Cafés especiales, bebidas energéticas o cafés helados comprados al paso.',\n                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de €0.50 por taza!',\n",
-    "pt": "                desc: 'Cafés especiais, energéticos ou cafés gelados comprados no dia a dia.',\n                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de R$0.50 por xícara!',\n"
+    "es": "                desc: 'Cafés especiales, bebidas energéticas o cafés helados comprados al paso.',\n                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de €0,50 por taza!',\n",
+    "pt": "                desc: 'Cafés especiais, energéticos ou cafés gelados comprados no dia a dia.',\n                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de R$0,50 por xícara!',\n"
   },
   "minHScreen5": {
     "en": "                title: 'Daily Restaurant & Lunch Delivery',\n",
@@ -356,7 +356,7 @@
   },
   "minHScreen6": {
     "en": "                desc: 'Ordering UberEats/DoorDash or eating out instead of packing lunch.',\n                tip: 'Prep meals in batch on Sundays or keep gourmet frozen meals at work to cut takeout down to 1 day per week as a true reward.',\n",
-    "es": "                desc: 'Pedir por UberEats/DoorDash o comer fuera en lugar de llevar almuerzo preparado.',\n                tip: 'Prepara comidas en lote los domingos o ten comidas congeladas gourmet en el trabajo para reducir el delivery a 1 día por semana como recompensa.',\n",
+    "es": "                desc: 'Pedir por UberEats/DoorDash o comer fuera en lugar de llevar almuerzo preparado.',\n                tip: 'Prepara comidas en lote los domingos o ten comidas congeladas gourmet en el trabajo para reducir los pedidos a domicilio a 1 día por semana como recompensa.',\n",
     "pt": "                desc: 'Pedir por apps de entrega (UberEats/iFood) ou comer fora diariamente em vez de levar almoço.',\n                tip: 'Prepare refeições em lote nos fins de semana ou tenha refeições congeladas no trabalho para reduzir o delivery a 1 dia por semana como recompensa.',\n"
   },
   "minHScreen7": {
@@ -372,11 +372,11 @@
   "minHScreen9": {
     "en": "                desc: 'Multiple streaming services, unused gym or app memberships.',\n                tip: 'Adopt the \"One-at-a-Time Rule\": subscribe to only 1 streaming service per month, binge what you want, cancel, and switch.',\n",
     "es": "                desc: 'Múltiples servicios de streaming, membresías de gimnasio o aplicaciones sin uso.',\n                tip: 'Adopta la \"Regla de Una a la Vez\": suscríbete a solo 1 servicio de streaming al mes, mira lo que quieras, cancela y cambia.',\n",
-    "pt": "                desc: 'Múltiples serviços de streaming, academias ou aplicativos sem uso regular.',\n                tip: 'Adote a \"Regra de Uma por Vez\": assine apenas 1 serviço de streaming por mês, assista o que quiser, cancele e troque.',\n"
+    "pt": "                desc: 'Múltiplos serviços de streaming, academias ou aplicativos sem uso regular.',\n                tip: 'Adote a \"Regra de Uma por Vez\": assine apenas 1 serviço de streaming por mês, assista o que quiser, cancele e troque.',\n"
   },
   "minHScreen10": {
     "en": "                title: 'Upgrading Car Lease Every 3 Years',\n",
-    "es": "                title: 'Renovar el Leasing del Auto Cada 3 Años',\n",
+    "es": "                title: 'Renovar el Leasing del Coche Cada 3 Años',\n",
     "pt": "                title: 'Renovar o Leasing do Carro a Cada 3 Anos',\n"
   },
   "minHScreen11": {
@@ -386,8 +386,8 @@
   },
   "minHScreen12": {
     "en": "                desc: 'Always driving a new leased car vs keeping a paid-off reliable vehicle.',\n                tip: 'Buy a 3-year-old certified pre-owned car and keep it for 7–10 years. Redirect former lease payments straight into index funds.',\n",
-    "es": "                desc: 'Manejar siempre un auto arrendado nuevo en lugar de mantener un vehículo propio confiable y pagado.',\n                tip: 'Compra un auto seminuevo certificado de 3 años y mantenlo durante 7–10 años. Redirige las cuotas del leasing directamente a fondos indexados.',\n",
-    "pt": "                desc: 'Dirigir sempre um carro zero arrendado em vez de manter um veículo próprio confiável e quitado.',\n                tip: 'Compre um seminovo certificado de 3 anos e mantenha-o por 7–10 anos. Redirecione as parcelas do leasing diretamente para fundos de índice.',\n"
+    "es": "                desc: 'Conducir siempre un coche de alquiler nuevo en lugar de mantener un vehículo propio fiable y pagado.',\n                tip: 'Compra un coche seminuevo certificado de 3 años y mantenlo durante 7–10 años. Redirige las cuotas del leasing directamente a fondos indexados.',\n",
+    "pt": "                desc: 'Dirigir sempre um carro zero alugado em vez de manter um veículo próprio confiável e quitado.',\n                tip: 'Compre um seminovo certificado de 3 anos e mantenha-o por 7–10 anos. Redirecione as parcelas do leasing diretamente para fundos de índice.',\n"
   },
   "minHScreen13": {
     "en": "                title: 'Unplanned Clothes & Gadget Buying',\n",
@@ -401,7 +401,7 @@
   },
   "minHScreen15": {
     "en": "                desc: 'Buying t-shirts, accessories, or tech deals you weren\\'t planning on.',\n                tip: 'Use the \"72-Hour Cooling Off Rule\" for non-essential buys. If you still want it 3 days later, consider its hourly work cost first.',\n",
-    "es": "                desc: 'Comprar camisetas, accesorios o ofertas tecnológicas que no tenías planeadas.',\n                tip: 'Aplica la \"Regla de Enfriamiento de 72 Horas\" para compras no esenciales. Si aún lo quieres 3 días después, evalúa primero su costo en horas de trabajo.',\n",
+    "es": "                desc: 'Comprar camisetas, accesorios o ofertas tecnológicas que no tenías planeadas.',\n                tip: 'Aplica la \"Regla de Enfriamiento de 72 Horas\" para compras no esenciales. Si aún lo quieres 3 días después, evalúa primero su coste en horas de trabajo.',\n",
     "pt": "                desc: 'Comprar roupas, acessórios ou ofertas de tecnologia não planejadas.',\n                tip: 'Aplique a \"Regra de Esfriamento de 72 Horas\" para compras não essenciais. Se ainda quiser após 3 dias, avalie primeiro o custo em horas de trabalho.',\n"
   },
   "minHScreen16": {
@@ -426,7 +426,7 @@
   },
   "minHScreen20": {
     "en": "                desc: 'Gas station snacks, energy cans, and vending machine impulse grabs.',\n                tip: 'Buy bulk snacks and beverages at wholesale clubs and keep emergency packs in your car, backpack, or desk drawer.',\n",
-    "es": "                desc: 'Snacks de gasolinera, latas de energía y compras impulsivas en máquinas expendedoras.',\n                tip: 'Compra snacks y bebidas al por mayor en clubes de descuento y ten paquetes de emergencia en tu auto, mochila o escritorio.',\n",
+    "es": "                desc: 'Snacks de gasolinera, latas de energía y compras impulsivas en máquinas expendedoras.',\n                tip: 'Compra snacks y bebidas al por mayor en clubes de descuento y ten paquetes de emergencia en tu coche, mochila o escritorio.',\n",
     "pt": "                desc: 'Lanches de posto de gasolina, energéticos e compras impulsivas em máquinas de venda.',\n                tip: 'Compre lanches e bebidas no atacado e mantenha pacotes de emergência no seu carro, mochila ou mesa de trabalho.',\n"
   },
   "minHScreen21": {
@@ -461,12 +461,12 @@
   },
   "minHScreen27": {
     "en": "                title: 'Food Waste & Expired Groceries',\n",
-    "es": "                title: 'Desperdicio de Comida y Comestibles Vencidos',\n",
+    "es": "                title: 'Desperdicio de Comida y Alimentos Caducados',\n",
     "pt": "                title: 'Desperdício de Alimentos e Compras Vencidas',\n"
   },
   "minHScreen28": {
     "en": "                desc: 'Groceries and fresh produce that spoil in the fridge before being eaten.',\n                tip: 'Shop with an exact meal plan list, do a \"fridge inventory\" before grocery shopping, and freeze fresh items before they spoil.',\n",
-    "es": "                desc: 'Comestibles y productos frescos que se echan a perder en el refrigerador antes de comerlos.',\n                tip: 'Compra con una lista exacta de comidas, haz un inventario antes de comprar y congela alimentos frescos antes de que se arruinen.',\n",
+    "es": "                desc: 'Alimentos y productos frescos que se echan a perder en la nevera antes de comerlos.',\n                tip: 'Compra con una lista exacta de comidas, haz un inventario antes de comprar y congela alimentos frescos antes de que se arruinen.',\n",
     "pt": "                desc: 'Alimentos frescos e feira que estragam na geladeira antes de serem consumidos.',\n                tip: 'Compre com uma lista exata de refeições, faça um inventário antes de ir ao mercado e congele alimentos frescos antes que estraguem.',\n"
   },
   "minHScreen29": {
@@ -486,7 +486,7 @@
   },
   "minHScreen32": {
     "en": "                desc: 'Buying bottled water cases, sodas, or teas out of convenience.',\n                tip: 'Carry an insulated stainless steel water bottle with an inline filter. Saves money and reduces plastic waste instantly.',\n",
-    "es": "                desc: 'Comprar botellas de agua, gaseosas o tés por pura conveniencia.',\n                tip: 'Lleva una botella de agua de acero inoxidable reutilizable con filtro. Ahorras dinero y reduces el plástico al instante.',\n",
+    "es": "                desc: 'Comprar botellas de agua, refrescos o tés por pura conveniencia.',\n                tip: 'Lleva una botella de agua de acero inoxidable reutilizable con filtro. Ahorras dinero y reduces el plástico al instante.',\n",
     "pt": "                desc: 'Comprar garrafas de água, refrigerantes ou chás por pura conveniência.',\n                tip: 'Carregue uma garrafa de água reutilizável de aço inoxidável com filtro. Você economiza dinheiro e reduz o plástico instantaneamente.',\n"
   },
   "minHScreen33": {
@@ -586,7 +586,7 @@
   },
   "minHScreen52": {
     "en": "                desc: 'Enter your custom recurring expense cost and frequency above.',\n",
-    "es": "                desc: 'Ingresa el costo y la frecuencia de tu gasto recurrente personalizado.',\n                tip: 'Analiza si este gasto te aporta verdadero valor o si puede ser optimizado sin afectar tu calidad de vida.',\n",
+    "es": "                desc: 'Ingresa el coste y la frecuencia de tu gasto recurrente personalizado.',\n                tip: 'Analiza si este gasto te aporta verdadero valor o si puede ser optimizado sin afectar tu calidad de vida.',\n",
     "pt": "                desc: 'Insira o custo e a frequência do seu gasto recorrente personalizado.',\n                tip: 'Analise se este gasto traz valor real para você ou se pode ser otimizado sem afetar sua qualidade de vida.',\n"
   },
   "minHScreen53": {
@@ -627,7 +627,7 @@
   "minHScreen60": {
     "en": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>Freedom Pulled Forward ${yearsPulledForward} YEARS!</span>`;\n",
     "es": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>¡Libertad Adelantada ${yearsPulledForward} AÑOS!</span>`;\n",
-    "pt": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>¡Liberdade Antecipada em ${yearsPulledForward} ANOS!</span>`;\n"
+    "pt": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>Liberdade Antecipada em ${yearsPulledForward} ANOS!</span>`;\n"
   },
   "minHScreen61": {
     "en": "            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('en-US')}/mo`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Days/Yr`;\n            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('en-US')}`;\n",
@@ -682,7 +682,7 @@
   "ctaTitle": {
     "en": "Ready to Build Your Custom Map to Freedom?",
     "es": "¿Listo para Construir tu Mapa Personalizado hacia la Libertad?",
-    "pt": "Pronto para Construir o teu Mapa Personalizado para a Liberdade?"
+    "pt": "Pronto para Construir o seu Mapa Personalizado para a Liberdade?"
   },
   "explTitle": {
     "en": "What the Freedom Calendar measures",
@@ -702,12 +702,12 @@
   "explHow1": {
     "en": "Your target is the amount that can fund your annual spending indefinitely at a 4% withdrawal rate — twenty-five times what you spend in a year. That figure comes from research on how long a diversified portfolio survives being drawn down, and 4% is the rate at which it survived essentially every historical starting year over a thirty-year retirement. The calendar then grows your current investments and adds your monthly surplus month by month at a 7% annual real return, and reports the month the balance first reaches the target.",
     "es": "Tu objetivo es la cantidad que puede financiar tu gasto anual de forma indefinida con una tasa de retirada del 4%: veinticinco veces lo que gastas en un año. Esa cifra viene de la investigación sobre cuánto sobrevive una cartera diversificada mientras se consume, y el 4% es la tasa a la que sobrevivió prácticamente en todos los años de inicio históricos durante una jubilación de treinta años. El calendario hace crecer tus inversiones actuales y suma tu excedente mensual mes a mes con un 7% de rentabilidad real anual, y señala el mes en que el saldo alcanza por primera vez el objetivo.",
-    "pt": "O seu objetivo é o montante que consegue financiar a sua despesa anual indefinidamente com uma taxa de levantamento de 4%: vinte e cinco vezes o que gasta num ano. Esse número vem da investigação sobre quanto tempo uma carteira diversificada sobrevive a ser consumida, e 4% é a taxa à qual sobreviveu praticamente em todos os anos de início históricos ao longo de uma reforma de trinta anos. O calendário faz crescer os seus investimentos atuais e soma o seu excedente mensal mês a mês com 7% de rentabilidade real anual, e indica o mês em que o saldo atinge pela primeira vez o objetivo."
+    "pt": "O seu objetivo é o montante que consegue financiar a sua despesa anual indefinidamente com uma taxa de retirada de 4%: vinte e cinco vezes o que gasta num ano. Esse número vem da investigação sobre quanto tempo uma carteira diversificada sobrevive a ser consumida, e 4% é a taxa à qual sobreviveu praticamente em todos os anos de início históricos ao longo de uma aposentadoria de trinta anos. O calendário faz crescer os seus investimentos atuais e soma o seu excedente mensal mês a mês com 7% de rentabilidade real anual, e indica o mês em que o saldo atinge pela primeira vez o objetivo."
   },
   "explHow2": {
     "en": "The 7% is a real return — already net of inflation — which is why the target does not need to be inflated year by year. Both sides of the comparison are in today's money, so the date they meet at is meaningful without any further adjustment. The second half of the tool divides your take-home pay by the hours you actually work to get a net hourly wage, then prices your recurring expenses in that unit. A subscription is no longer three dollars a month; it is the number of working hours a year it takes to pay for it.",
     "es": "El 7% es una rentabilidad real, ya descontada la inflación, y por eso el objetivo no necesita inflarse año a año. Ambos lados de la comparación están en dinero de hoy, así que la fecha en la que se encuentran es significativa sin más ajustes. La segunda mitad de la herramienta divide tu sueldo neto entre las horas que realmente trabajas para obtener un salario neto por hora, y luego valora tus gastos recurrentes en esa unidad. Una suscripción deja de ser tres euros al mes: pasa a ser el número de horas de trabajo al año que cuesta pagarla.",
-    "pt": "Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa de ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, pelo que a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma subscrição deixa de ser três reais por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la."
+    "pt": "Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, por isso a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma assinatura deixa de ser três reais por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la."
   },
   "explAssumptionsTitle": {
     "en": "What it assumes",
@@ -722,7 +722,7 @@
   "explAssumption2": {
     "en": "A 4% withdrawal rate, and therefore a 25× target. Lower it to 3.5% and the target becomes 28.6× — a change of a few years for most people.",
     "es": "Una tasa de retirada del 4%, y por tanto un objetivo de 25×. Bájala al 3,5% y el objetivo pasa a 28,6×, una diferencia de varios años para la mayoría.",
-    "pt": "Uma taxa de levantamento de 4%, e portanto um objetivo de 25×. Baixe-a para 3,5% e o objetivo passa a 28,6×, uma diferença de vários anos para a maioria das pessoas."
+    "pt": "Uma taxa de retirada de 4%, e portanto um objetivo de 25×. Baixe-a para 3,5% e o objetivo passa a 28,6×, uma diferença de vários anos para a maioria das pessoas."
   },
   "explAssumption3": {
     "en": "Your income and your spending stay where you put them. No raises, no children, no move to a cheaper city, no new mortgage.",
@@ -732,7 +732,7 @@
   "explAssumption4": {
     "en": "No taxes on investment gains, no fund fees, and no state pension arriving later to lower the amount you need from your own portfolio.",
     "es": "Sin impuestos sobre las plusvalías, sin comisiones de fondos y sin una pensión pública que llegue más tarde a reducir lo que necesitas de tu propia cartera.",
-    "pt": "Sem impostos sobre mais-valias, sem comissões de fundos e sem uma pensão pública que chegue mais tarde a reduzir o que precisa da sua própria carteira."
+    "pt": "Sem impostos sobre ganhos de capital, sem comissões de fundos e sem uma pensão pública que chegue mais tarde a reduzir o que precisa da sua própria carteira."
   },
   "explAssumptionsNote": {
     "en": "Because of those four, the date is a direction rather than an appointment. Its value is in what happens when you change one input: the difference between two dates is far more trustworthy than either date on its own.",
@@ -747,7 +747,7 @@
   "explExample1": {
     "en": "Take someone earning 3,000 a month after tax, spending 2,200, with 20,000 already invested. Annual spending is 26,400, so the target is 660,000. The monthly surplus is 800. Starting from 20,000 and adding 800 a month at 7% real, the balance crosses 660,000 in roughly twenty-six years.",
     "es": "Toma a alguien que gana 3.000 al mes después de impuestos, gasta 2.200 y tiene 20.000 ya invertidos. El gasto anual es 26.400, así que el objetivo es 660.000. El excedente mensual es 800. Partiendo de 20.000 y añadiendo 800 al mes al 7% real, el saldo cruza los 660.000 en unos veintiséis años.",
-    "pt": "Considere alguém que ganha 3.000 por mês depois de impostos, gasta 2.200 e tem 20.000 já investidos. A despesa anual é 26.400, pelo que o objetivo é 660.000. O excedente mensal é 800. Partindo de 20.000 e acrescentando 800 por mês a 7% real, o saldo cruza os 660.000 em cerca de vinte e seis anos."
+    "pt": "Considere alguém que ganha 3.000 por mês depois de impostos, gasta 2.200 e tem 20.000 já investidos. A despesa anual é 26.400, então o objetivo é 660.000. O excedente mensal é 800. Partindo de 20.000 e acrescentando 800 por mês a 7% real, o saldo cruza os 660.000 em cerca de vinte e seis anos."
   },
   "explExample2": {
     "en": "Now cut spending to 2,000. The target falls to 600,000 and the monthly surplus rises to 1,000, because every dollar not spent is a dollar invested. The date moves in by about five years. That is the asymmetry the calendar exists to make visible: a change in spending moves both sides of the equation at once, while a raise of the same size moves only one.",
@@ -762,7 +762,7 @@
   "explFaqA1": {
     "en": "It is the rate that survived nearly every thirty-year window in the historical record for a stock-and-bond portfolio. It is a rule of thumb, not a law — it assumes a thirty-year horizon and a particular asset mix, and retiring at forty means planning for considerably longer than thirty years.",
     "es": "Es la tasa que sobrevivió a casi todas las ventanas de treinta años del registro histórico para una cartera de acciones y bonos. Es una regla práctica, no una ley: supone un horizonte de treinta años y una mezcla de activos concreta, y jubilarse a los cuarenta significa planificar bastante más de treinta años.",
-    "pt": "É a taxa que sobreviveu a quase todas as janelas de trinta anos do registo histórico para uma carteira de ações e obrigações. É uma regra prática, não uma lei: pressupõe um horizonte de trinta anos e uma mistura de ativos concreta, e reformar-se aos quarenta significa planear bastante mais do que trinta anos."
+    "pt": "É a taxa que sobreviveu a quase todas as janelas de trinta anos do registro histórico para uma carteira de ações e títulos. É uma regra prática, não uma lei: pressupõe um horizonte de trinta anos e uma mistura de ativos concreta, e se aposentar aos quarenta significa planejar bastante mais do que trinta anos."
   },
   "explFaqQ2": {
     "en": "Does the date account for a market crash?",
@@ -782,7 +782,7 @@
   "explFaqA3": {
     "en": "Close, but it uses take-home pay rather than gross, so it reflects what an hour actually puts in your account. Adding commuting time to your hours makes it more honest still, and usually lowers it more than people expect.",
     "es": "Casi: usa el sueldo neto en lugar del bruto, así que refleja lo que una hora deja realmente en tu cuenta. Añadir el tiempo de desplazamiento a tus horas lo hace aún más honesto, y suele bajarlo más de lo que la gente espera.",
-    "pt": "Quase: usa o salário líquido em vez do bruto, pelo que reflete o que uma hora coloca realmente na sua conta. Acrescentar o tempo de deslocação às suas horas torna-o ainda mais honesto, e costuma baixá-lo mais do que as pessoas esperam."
+    "pt": "Quase: usa o salário líquido em vez do bruto, por isso reflete o que uma hora coloca realmente na sua conta. Acrescentar o tempo de deslocamento às suas horas torna-o ainda mais honesto, e costuma baixá-lo mais do que as pessoas esperam."
   },
   "explReadingSlug1": {
     "en": "your-savings-rate-not-your-salary-sets-the-date-you-become-free",

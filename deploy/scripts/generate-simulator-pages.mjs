@@ -63,7 +63,7 @@ const languages = ['en', 'es', 'pt'];
 const languageMeta = {
   en: { code: 'en', locale: 'en_US', home: '/en/', dir: '/en/', currency: '$', priceCurrency: 'USD', notice: legalPath('notice', 'en'), data: dataPath('en'), privacy: legalPath('privacy', 'en'), simulators: simulatorsPath('en') },
   es: { code: 'es', locale: 'es_ES', home: '/', dir: '/es/', currency: '€', priceCurrency: 'EUR', notice: legalPath('notice', 'es'), data: dataPath('es'), privacy: legalPath('privacy', 'es'), simulators: simulatorsPath('es') },
-  pt: { code: 'pt', locale: 'pt_PT', home: '/pt/', dir: '/pt/', currency: 'R$', priceCurrency: 'BRL', notice: legalPath('notice', 'pt'), data: dataPath('pt'), privacy: legalPath('privacy', 'pt'), simulators: simulatorsPath('pt') }
+  pt: { code: 'pt', locale: 'pt_BR', home: '/pt/', dir: '/pt/', currency: 'R$', priceCurrency: 'BRL', notice: legalPath('notice', 'pt'), data: dataPath('pt'), privacy: legalPath('privacy', 'pt'), simulators: simulatorsPath('pt') }
 };
 
 /**

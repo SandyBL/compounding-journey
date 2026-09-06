@@ -1,5 +1,5 @@
 ---
-title: "The Psychology of Money Decisions: Why Knowing the Maths Is Not Enough"
+title: "The Psychology of Money Decisions: Why Knowing the Math Is Not Enough"
 date: 2026-09-05
 category: Money habits
 summary: Nobody fails at money because they cannot calculate compound interest.
@@ -55,11 +55,11 @@ Two of those deserve emphasis. **Automation** works because it exploits present 
 
 None of this is inspiring. That is the point. Inspiring approaches depend on the feeling lasting, and the feeling never does.
 
-## Practising decisions when the feedback takes decades
+## Practicing decisions when the feedback takes decades
 
 Here is the awkward part. You learn a skill through feedback, and money gives you feedback on a delay of ten to thirty years. By the time a decision at 30 has visibly paid off or not, you are 55 and cannot use the lesson.
 
-Which is why the useful thing is not to read more about biases — recognising a bias in an article is easy, and recognising it in yourself at the till is a different skill. The useful thing is to make decisions and see the consequence compressed.
+Which is why the useful thing is not to read more about biases — recognizing a bias in an article is easy, and recognizing it in yourself at the till is a different skill. The useful thing is to make decisions and see the consequence compressed.
 
 That is what the [personal finance simulator](/en/simulator.html) is for. It puts ordinary choices in front of you — a raise, a car, a move, a market fall — and shows what each one does to your wealth, your cash flow and your reported happiness over years, in minutes. You get to spend the raise and watch the timeline move. You get to sell in the crash and see what it cost.
 
@@ -69,4 +69,4 @@ Both of those are worth knowing before you make them with actual money, and this
 
 You already know the arithmetic. What is missing is usually a small number of structural decisions, made once, in a calm month, and then left alone: an automatic transfer, a written rule for market falls, one place to see everything, and a short list of what your money is actually for.
 
-The maths was never the hard part. The hard part is designing a life in which the maths runs by itself — and that is a design problem, not a discipline problem.
+The math was never the hard part. The hard part is designing a life in which the math runs by itself — and that is a design problem, not a discipline problem.

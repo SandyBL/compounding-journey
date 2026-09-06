@@ -6,11 +6,11 @@
 
         // ASSET DATA DEFINITIONS (SPANISH TRANSLATION)
         const assets = [
-            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos del mercado. Los pagos se componen y crecen orgánicamente.', riskText: 'Bajo Riesgo / Crecimiento Cts.' },
+            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos del mercado. Los pagos se componen y crecen orgánicamente.', riskText: 'Bajo Riesgo / Crecimiento Compuesto' },
             { id: 'bonds', name: 'Bonos del Tesoro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Respaldados por el gobierno. Rinde más en ciclos de altas tasas.', riskText: 'Garantizado / Seguro' },
-            { id: 'rental_property', name: 'Condominio Alquiler', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Flujo inmobiliario. Sujeto a costos ocasionales de reparación.', riskText: 'Riesgo Medio / Flujo Caja' },
-            { id: 'reit_index', name: 'Índice REIT', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fondo de inversión inmobiliaria. Pagos mensuales constantes.', riskText: 'Riesgo Moderado / Bienes Raíces' },
-            { id: 'digital_business', name: 'Negocio en Línea', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimiento, sensible a costos publicitarios.', riskText: 'Alto Rendimiento / Volátil' },
+            { id: 'rental_property', name: 'Piso en Alquiler', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Flujo inmobiliario. Sujeto a costes ocasionales de reparación.', riskText: 'Riesgo Medio / Flujo Caja' },
+            { id: 'reit_index', name: 'Índice REIT', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fondo de inversión inmobiliaria. Pagos mensuales constantes.', riskText: 'Riesgo Moderado / Inmuebles' },
+            { id: 'digital_business', name: 'Negocio Online', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimiento, sensible a costes publicitarios.', riskText: 'Alto Rendimiento / Volátil' },
             { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoactivo. Grandes auges alcistas, presión en ciclos bajistas.', riskText: 'Alta Volatilidad / Especulativo' }
         ];
 
@@ -181,11 +181,11 @@
 
                 if (newAgeYears >= 18) {
                     familyState.hasKid = false;
-                    eventLogs.push(`🎓 <strong>¡Nido Vacío!</strong> Tu hijo cumplió 18 años y se mudó a la universidad. ¡Los gastos cayeron <strong>-€1,000/mes</strong>!`);
+                    eventLogs.push(`🎓 <strong>¡Nido Vacío!</strong> Tu hijo cumplió 18 años y se mudó a la universidad. ¡Los gastos cayeron <strong>-€1.000/mes</strong>!`);
                 } else if (prevAgeYears < 6 && newAgeYears >= 6) {
                     eventLogs.push(`🎒 <strong>Etapa Escolar:</strong> Tu hijo ingresó a la escuela primaria. Los gastos aumentaron <strong>+€250/mes</strong> (+€750/mes presupuesto total hijo) en útiles y deportes.`);
                 } else if (prevAgeYears < 13 && newAgeYears >= 13) {
-                    eventLogs.push(`🎧 <strong>Etapa Adolescente:</strong> Pasatiempos, tecnología y ropa aumentaron los gastos del hijo en <strong>+€250/mes</strong> (+€1,000/mes presupuesto total).`);
+                    eventLogs.push(`🎧 <strong>Etapa Adolescente:</strong> Aficiones, tecnología y ropa aumentaron los gastos del hijo en <strong>+€250/mes</strong> (+€1.000/mes presupuesto total).`);
                 }
             }
 
@@ -257,10 +257,10 @@
             if (Math.random() < 0.25) {
                 if (bonds) {
                     bonds.monthlyYieldPerUnit = 3.2;
-                    bonds.riskText = 'Ciclo de Altas Tasas (7.7% APY)';
+                    bonds.riskText = 'Ciclo de Altas Tasas (7,7% APY)';
                     if (bonds.ownedUnits > 0) {
                         const bondBoost = ((3.2 - bonds.baseYield) * bonds.ownedUnits).toFixed(0);
-                        eventLogs.push(`🏦 <strong>Alza de Tasas del Banco Central:</strong> El rendimiento de los Bonos subió a <strong>+€3.2/unidad</strong> (7.7% APY). Añadió <strong>+€${bondBoost}/mes</strong> al flujo pasivo.`);
+                        eventLogs.push(`🏦 <strong>Alza de Tasas del Banco Central:</strong> El rendimiento de los Bonos subió a <strong>+€3,2/unidad</strong> (7,7% APY). Añadió <strong>+€${bondBoost}/mes</strong> al flujo pasivo.`);
                     }
                 }
             } else if (bonds) {
@@ -301,7 +301,7 @@
                 } else if (bizRoll < 0.45) {
                     biz.monthlyYieldPerUnit = 35;
                     if (biz.ownedUnits > 0) {
-                        eventLogs.push(`⚠️ <strong>Aumento de Costos Publicitarios:</strong> Mayor competencia redujo el rendimiento del negocio a +€35/unidad/mes este año.`);
+                        eventLogs.push(`⚠️ <strong>Aumento de Costes Publicitarios:</strong> Mayor competencia redujo el rendimiento del negocio a +€35/unidad/mes este año.`);
                     }
                 } else {
                     biz.monthlyYieldPerUnit = biz.baseYield;
@@ -314,7 +314,7 @@
                 const repairCost = Math.floor(Math.random() * 1500) + 1000;
                 if (cash >= repairCost) {
                     cash -= repairCost;
-                    eventLogs.push(`🛠️ <strong>Reparación en Condominio:</strong> Pago de mantenimiento de emergencia: <strong>-€${repairCost.toLocaleString()}</strong> del Efectivo Disponible.`);
+                    eventLogs.push(`🛠️ <strong>Reparación en el Piso:</strong> Pago de mantenimiento de emergencia: <strong>-€${repairCost.toLocaleString()}</strong> del Efectivo Disponible.`);
                 }
             }
 
@@ -694,7 +694,7 @@
                 familyBadge.classList.remove('hidden');
                 const yrs = Math.floor(familyState.kidAgeMonths / 12);
                 let stageLabel = "Bebé/Párvulo (+€500/mes)";
-                if (yrs >= 13) stageLabel = "Adolescente (+€1,000/mes)";
+                if (yrs >= 13) stageLabel = "Adolescente (+€1.000/mes)";
                 else if (yrs >= 6) stageLabel = "Escuela Primaria (+€750/mes)";
                 familyText.innerText = `Hijo Edad ${yrs} • ${stageLabel}`;
             } else {
@@ -761,7 +761,7 @@
 
                     <div class="space-y-1.5 pt-1.5 border-t border-cream-200">
                         <div class="flex justify-between items-center text-[11px]">
-                            <span class="text-espresso-800/70">Costo: <strong class="text-espresso-950 font-mono">€${asset.unitCost.toLocaleString()}</strong></span>
+                            <span class="text-espresso-800/70">Coste: <strong class="text-espresso-950 font-mono">€${asset.unitCost.toLocaleString()}</strong></span>
                             <span class="${yieldColor} font-bold font-mono">${yieldSign}€${asset.monthlyYieldPerUnit}/mes</span>
                         </div>
                         <div class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-200 truncate">

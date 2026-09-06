@@ -9,7 +9,7 @@ translation_key: four-passive-income-engines
 link_phrases: passive income, dividend yield, cash flow, rental yield, yield
 author: Sandy Bradbury
 ---
-Passive income gets sold as a single idea, as though a dividend fund, a rented flat and an online course were the same thing in different clothes. They are not. They are four distinct machines with different fuel, different maintenance and different ways of failing.
+Passive income gets sold as a single idea, as though a dividend fund, a rented apartment and an online course were the same thing in different clothes. They are not. They are four distinct machines with different fuel, different maintenance and different ways of failing.
 
 Confusing them is what produces the two classic mistakes: buying the highest yield available and calling it income, and buying something described as passive that turns out to be a second job.
 

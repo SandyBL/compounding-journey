@@ -92,7 +92,7 @@ Construir riqueza é um processo gradual e intencional. Adotar estes hábitos di
 
 2. \*\*Invista em Educação Financeira:\*\* O conhecimento é seu ativo mais valioso. Busque aprender continuamente sobre finanças pessoais, investimentos e mercados.
 
-3. \*\*Invista seus Ahorros com Sabedoria:\*\* Guardar dinheiro na poupança corrói seu patrimônio ao longo do tempo. Invista em ativos que cresçam acima da inflação.
+3. \*\*Invista suas Economias com Sabedoria:\*\* Guardar dinheiro na poupança corrói seu patrimônio ao longo do tempo. Invista em ativos que cresçam acima da inflação.
 
 4. \*\*Evite a Inflação do Estilo de Vida:\*\* Conforme sua renda aumentar, mantenha seu padrão de vida estável e invista a diferença em vez de gastar mais.
 

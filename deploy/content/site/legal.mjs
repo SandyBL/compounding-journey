@@ -13,11 +13,12 @@
  * started calling an analytics endpoint would be blocked by the browser before
  * it could make this page untrue.
  *
- * The other reason these exist: the author is studying for a financial adviser
- * certification and does not hold one yet. Both the terms and the legal notice
- * say so in their own words, in every language, because "educational content,
- * not investment advice" has to be a statement a reader can find on the site's
- * own terms - not an aside in a FAQ answer. scripts/page-shell.mjs also puts
+ * The other reason these exist: the author works as a financial educator and
+ * not as an accredited adviser, permanently - any certification earned later
+ * backs the teaching rather than opening an advisory practice. Both the terms
+ * and the legal notice say so in their own words, in every language, because
+ * "educational content, not investment advice" has to be a statement a reader
+ * can find on the site's own terms - not an aside in a FAQ answer. scripts/page-shell.mjs also puts
  * the short version of it on every calculator, simulator and template page,
  * linked back to the legal notice.
  *
@@ -209,87 +210,87 @@ If any of the above changes, this page changes with it, along with the revision 
     },
     pt: {
       title: 'Política de privacidade',
-      description: 'Que dados o Compounding Journey recolhe, para quê, durante quanto tempo e como exercer os teus direitos. Responsável: Sandy Bradbury (Espanha).',
+      description: 'Quais dados o Compounding Journey coleta, para quê, por quanto tempo e como exercer os seus direitos. Responsável: Sandy Bradbury (Espanha).',
       heading: 'Política de privacidade',
-      intro: 'Este site recolhe muito pouco, e esta página diz exatamente o quê, para quê e o que podes fazer quanto a isso.',
+      intro: 'Este site coleta muito pouco, e esta página diz exatamente o quê, para quê e o que você pode fazer quanto a isso.',
       body: `
-## Quem trata os teus dados
+## Quem trata os seus dados
 
-O responsável pelo tratamento é **Sandy Bradbury**, pessoa singular residente em Espanha e titular de compoundingjourney.com. Escreve para **san.bradbury@gmail.com** sobre qualquer assunto desta página, incluindo o exercício dos teus direitos.
+O responsável pelo tratamento é **Sandy Bradbury**, pessoa singular residente em Espanha e titular de compoundingjourney.com. Escreva para **san.bradbury@gmail.com** sobre qualquer assunto desta página, incluindo o exercício dos seus direitos.
 
 Não existe encarregado de proteção de dados: o site é gerido por uma só pessoa e nenhum dos tratamentos aqui descritos obriga a nomear um.
 
 ## Resumo dos tratamentos
 
-| O que se recolhe | Para quê | Base jurídica | Conservação |
+| O que é coletado | Para quê | Base jurídica | Conservação |
 | --- | --- | --- | --- |
-| Nome, email e mensagem do formulário de contacto | Responder-te | O teu consentimento ao enviar o formulário, e a relação pré-contratual que pediste | 24 meses desde a última mensagem |
-| Nome visível e pontuação nas classificações dos simuladores | Publicar a classificação que decidiste enviar | O teu consentimento ao premir «enviar pontuação» | Até pedires a sua remoção |
-| Os valores e o resultado de uma simulação (números, percentagens e opções escolhidas) | Publicar médias e percentagens agregadas na [página de dados]({{data}}) | O teu consentimento ao premir o botão que guarda a simulação | Indefinidamente, de forma agregada e sem nome |
+| Nome, e-mail e mensagem do formulário de contato | Responder a você | O seu consentimento ao enviar o formulário, e a relação pré-contratual que você pediu | 24 meses desde a última mensagem |
+| Nome visível e pontuação nos rankings dos simuladores | Publicar a pontuação que você decidiu enviar | O seu consentimento ao clicar em «enviar pontuação» | Até você pedir a remoção |
+| Os valores e o resultado de uma simulação (números, porcentagens e opções escolhidas) | Publicar médias e porcentagens agregadas na [página de dados]({{data}}) | O seu consentimento ao clicar no botão que guarda a simulação | Indefinidamente, de forma agregada e sem nome |
 | Número de vezes que cada artigo é aberto | Decidir o que destacar | Interesse legítimo em saber o que é lido | Um contador agregado por artigo e por mês, sem prazo |
-| Endereço IP e dados técnicos do pedido | Servir a página, limitar abusos e registar falhas | Interesse legítimo na segurança do serviço | Registos do fornecedor de alojamento, dias |
+| Endereço IP e dados técnicos da requisição | Servir a página, limitar abusos e registrar falhas | Interesse legítimo na segurança do serviço | Logs do fornecedor de hospedagem, dias |
 
-## O formulário de contacto
+## O formulário de contato
 
-O formulário pede o teu nome, o teu email e a tua mensagem. É enviado para o Netlify Forms, fica lá guardado e é-me reencaminhado por email. Não serve para te enviar nada que não tenhas pedido, não é cedido a ninguém e não alimenta nenhuma lista de correio: subscrever a newsletter é um passo separado.
+O formulário pede o seu nome, o seu e-mail e a sua mensagem. Ele é enviado para o Netlify Forms, fica guardado lá e é encaminhado para mim por e-mail. Não serve para enviar a você nada que você não tenha pedido, não é cedido a ninguém e não alimenta nenhuma lista de e-mails: assinar a newsletter é um passo separado.
 
 ## Os simuladores e os dados públicos
 
-Três dos simuladores têm uma classificação pública. Se premires o botão para enviar a tua pontuação, guarda-se o nome visível que escreveste, a pontuação, o idioma da página, a data e os valores com que fizeste essa simulação, e a linha da classificação fica visível para todos. Nada disto acontece até premires: podes usar os simuladores sem enviar nada.
+Três dos simuladores têm um ranking público. Se você clicar no botão para enviar a sua pontuação, ficam guardados o nome visível que você escreveu, a pontuação, o idioma da página, a data e os valores com que você fez essa simulação, e a linha do ranking fica visível para todos. Nada disso acontece até você clicar: dá para usar os simuladores sem enviar nada.
 
-Os outros dois — o Calendário da Liberdade e a Máquina do Tempo do Mercado — não têm classificação, mas têm um botão para acrescentar a tua simulação aos dados públicos. Aí não se guarda nome nenhum: apenas os números que introduziste, as opções que escolheste e o resultado que saiu.
+Os outros dois — o Calendário da Liberdade e a Máquina do Tempo do Mercado — não têm ranking, mas têm um botão para acrescentar a sua simulação aos dados públicos. Aí não se guarda nome nenhum: apenas os números que você informou, as opções que você escolheu e o resultado que saiu.
 
-«Os valores da simulação» são coisas como a taxa de retirada, a percentagem de ações e obrigações da carteira, a idade inicial, o horizonte em anos ou que hábitos cortaste. São os números do modelo, não dados sobre ti: não há endereço, nem profissão, nem património real, nem nada que um formulário peça. O que se publica deles são médias e percentagens na [página de dados]({{data}}), e nenhuma medida aparece antes de ter amostra suficiente - precisamente para que nenhum número descreva uma única simulação.
+«Os valores da simulação» são coisas como a taxa de retirada, a porcentagem de ações e títulos da carteira, a idade inicial, o horizonte em anos ou quais hábitos você cortou. São os números do modelo, não dados sobre você: não há endereço, nem profissão, nem patrimônio real, nem nada que um formulário peça. O que se publica deles são médias e porcentagens na [página de dados]({{data}}), e nenhuma medida aparece antes de ter amostra suficiente - precisamente para que nenhum número descreva uma única simulação.
 
-As linhas guardadas sem nome não têm identificador algum, pelo que também não podem ser localizadas depois: não há forma de saber qual era a tua, nem para mim nem para ninguém. É isso que as torna anónimas, e significa também que uma linha concreta não pode ser apagada a pedido. A classificação é diferente: aí há um nome visível e pode ser retirado.
+As linhas guardadas sem nome não têm identificador nenhum, então também não podem ser localizadas depois: não há como saber qual era a sua, nem para mim nem para ninguém. É isso que as torna anônimas, e significa também que uma linha específica não pode ser apagada a pedido. O ranking é diferente: ali há um nome visível e ele pode ser retirado.
 
-**O nome visível és tu que o escolhes, e o sensato é que não seja o teu nome verdadeiro.** Uma alcunha faz o mesmo trabalho. Se enviaste um e queres que desapareça, escreve para san.bradbury@gmail.com indicando a pontuação e o simulador, e será apagado.
+**O nome visível é você que escolhe, e o sensato é que não seja o seu nome verdadeiro.** Um apelido faz o mesmo trabalho. Se você enviou um e quer que ele desapareça, escreva para san.bradbury@gmail.com indicando a pontuação e o simulador, e ele será apagado.
 
 ## A contagem de leituras
 
-Abrir um artigo soma um a um contador. Esse contador guarda um número por artigo e por mês, e mais nada: sem cookies, sem identificadores, sem impressão digital do navegador, sem registo de quem leu o quê. É o que decide qual o artigo destacado no diário.
+Abrir um artigo soma um a um contador. Esse contador guarda um número por artigo e por mês, e mais nada: sem cookies, sem identificadores, sem impressão digital do navegador, sem registro de quem leu o quê. É o que decide qual artigo é destacado no diário.
 
-## Armazenamento no teu navegador, e porque não há aviso de cookies
+## Armazenamento no seu navegador, e por que não há aviso de cookies
 
-Este site **não usa cookies** — nem próprias, nem de terceiros, nem de análise, nem de publicidade. É por isso que não te pedimos para aceitar nada: não há nada a consentir.
+Este site **não usa cookies** — nem próprias, nem de terceiros, nem de análise, nem de publicidade. É por isso que não pedimos que você aceite nada: não há nada a consentir.
 
-Usa quatro chaves de armazenamento local, que ficam no teu navegador e nunca são enviadas para nenhum servidor:
+Usa quatro chaves de armazenamento local, que ficam no seu navegador e nunca são enviadas para nenhum servidor:
 
-- \`preferredLanguage\` — o idioma que escolheste, para não te perguntarmos outra vez.
-- \`languageSuggestionDismissed\` — que já fechaste o aviso de idioma.
-- \`preferredCalculatorCurrency\` — a moeda em que queres ver as calculadoras.
-- \`cj:simulator:context\` e \`cj:leaderboard:mine:*\` — de que simulador vinhas e quais as linhas da classificação que são tuas, para as poder assinalar. Estas duas são apagadas ao fechar o separador.
+- \`preferredLanguage\` — o idioma que você escolheu, para não perguntarmos de novo.
+- \`languageSuggestionDismissed\` — que você já fechou o aviso de idioma.
+- \`preferredCalculatorCurrency\` — a moeda em que você quer ver as calculadoras.
+- \`cj:simulator:context\` e \`cj:leaderboard:mine:*\` — de qual simulador você veio e quais linhas do ranking são suas, para poder marcá-las. Essas duas são apagadas ao fechar a aba.
 
-Podes apagá-las quando quiseres a partir do navegador. O site continua a funcionar; apenas deixa de se lembrar das tuas preferências.
+Você pode apagá-las quando quiser pelo navegador. O site continua funcionando; apenas deixa de lembrar as suas preferências.
 
-## Quem mais vê os teus dados
+## Quem mais vê os seus dados
 
-- **A Netlify** (Netlify, Inc.) aloja o site, processa o formulário e executa a base de dados onde vivem as simulações, as pontuações e os contadores. Atua como subcontratante.
-- **Mais ninguém.** Carregar uma página aqui não contacta nenhum terceiro: as tipografias, os gráficos e os scripts são servidos deste mesmo domínio. Não há Google Analytics, não há pixels e não há botões sociais que te sigam.
+- **A Netlify** (Netlify, Inc.) hospeda o site, processa o formulário e executa o banco de dados onde vivem as simulações, as pontuações e os contadores. Atua como operador dos dados.
+- **Mais ninguém.** Carregar uma página aqui não contata nenhum terceiro: as fontes, os gráficos e os scripts são servidos deste mesmo domínio. Não há Google Analytics, não há pixels e não há botões sociais que sigam você.
 
-## A newsletter e os botões de partilha
+## A newsletter e os botões de compartilhamento
 
-A subscrição da newsletter não acontece aqui: o link leva-te ao formulário do próprio fornecedor (MailerLite para espanhol e português, Substack para inglês) e, a partir daí, são eles que tratam o teu email, com a política deles. Este site nunca o recebe.
+A assinatura da newsletter não acontece aqui: o link leva você ao formulário do próprio fornecedor (MailerLite para espanhol e português, Substack para inglês) e, a partir daí, são eles que tratam o seu e-mail, com a política deles. Este site nunca o recebe.
 
-Os botões de partilha dos artigos são links normais. Não carregam nada dessas redes nem lhes contam que estiveste aqui: só abrem quando os premes.
+Os botões de compartilhamento dos artigos são links normais. Não carregam nada dessas redes nem contam a elas que você esteve aqui: só abrem quando você clica neles.
 
 ## Transferências internacionais
 
-A Netlify, Inc. e a Substack estão nos Estados Unidos, pelo que os dados que tratam podem sair do Espaço Económico Europeu. Essas transferências apoiam-se no Quadro de Privacidade de Dados UE-EUA e nas cláusulas contratuais-tipo da Comissão Europeia, conforme o fornecedor.
+A Netlify, Inc. e a Substack estão nos Estados Unidos, então os dados que elas tratam podem sair do Espaço Econômico Europeu. Essas transferências se apoiam no Quadro de Privacidade de Dados UE-EUA e nas cláusulas contratuais-tipo da Comissão Europeia, conforme o fornecedor.
 
-## Os teus direitos
+## Os seus direitos
 
-Podes pedir-me em qualquer momento o acesso aos teus dados, a sua retificação ou apagamento, a limitação ou oposição ao seu tratamento e a sua portabilidade, e podes retirar o teu consentimento quando quiseres. Escreve para **san.bradbury@gmail.com** e respondo no prazo de um mês.
+Você pode me pedir a qualquer momento o acesso aos seus dados, a retificação ou o apagamento deles, a limitação ou oposição ao tratamento e a portabilidade, e pode retirar o seu consentimento quando quiser. Escreva para **san.bradbury@gmail.com** e eu respondo no prazo de um mês.
 
-Se achares que respondi mal, podes reclamar junto da **Agencia Española de Protección de Datos** (www.aepd.es), C/ Jorge Juan 6, 28001 Madrid, que é a autoridade de controlo deste site, ou junto da CNPD em Portugal.
+Se você achar que respondi mal, pode reclamar junto da **Agencia Española de Protección de Datos** (www.aepd.es), C/ Jorge Juan 6, 28001 Madrid, que é a autoridade de controle deste site, ou junto da autoridade de proteção de dados do seu país de residência.
 
 ## Menores
 
-Este site não se dirige a menores de 14 anos e não recolhe conscientemente dados de ninguém dessa idade. Se achares que aconteceu, escreve-me e será apagado.
+Este site não se dirige a menores de 14 anos e não coleta conscientemente dados de ninguém dessa idade. Se você achar que isso aconteceu, escreva para mim e os dados serão apagados.
 
 ## Alterações
 
-Se algo do acima mudar, esta página muda com ele, e também a data de revisão no topo. Alterações que afetem um tratamento baseado no teu consentimento não se aplicam ao que já foi recolhido sem te perguntar de novo.
+Se algo do acima mudar, esta página muda com ele, e também a data de revisão no topo. Alterações que afetem um tratamento baseado no seu consentimento não se aplicam ao que já foi coletado sem perguntar a você de novo.
 `
     }
   }
@@ -382,7 +383,7 @@ The decisions you make are yours, and so are their consequences.
 
 ## The calculators and simulators
 
-The [calculators]({{tools}}) and simulators do arithmetic on the numbers you enter, under the assumptions each page states. Their results are **illustrative estimates, not forecasts**: they do not model real inflation, tax, future fees, crashes, changes in your income, or the behaviour of any actual market. A past return does not repeat because a calculator extended it in a straight line.
+The [calculators]({{tools}}) and simulators do arithmetic on the numbers you enter, under the assumptions each page states. Their results are **illustrative estimates, not forecasts**: they do not model real inflation, tax, future fees, crashes, changes in your income, or the behavior of any actual market. A past return does not repeat because a calculator extended it in a straight line.
 
 All of the calculation happens in your browser, and nothing is stored — except the simulations you choose to save: a score submitted to a leaderboard, or a scenario added to the [public data]({{data}}).
 
@@ -429,49 +430,49 @@ Any question about this page: **san.bradbury@gmail.com**. For personal data, see
       title: 'Termos de utilização',
       description: 'Termos de utilização do Compounding Journey: natureza educativa do conteúdo, uso das calculadoras e modelos, propriedade intelectual e responsabilidade.',
       heading: 'Termos de utilização',
-      intro: 'As regras de utilização deste site, a começar pela mais importante: aqui encontras educação financeira, não consultoria.',
+      intro: 'As regras de uso deste site, a começar pela mais importante: aqui você encontra educação financeira, não consultoria.',
       body: `
-## O que aceitas ao usar este site
+## O que você aceita ao usar este site
 
-Ao navegar em compoundingjourney.com, usar as suas calculadoras e simuladores ou descarregar os seus modelos, aceitas estes termos. Se não concordas com eles, o coerente é não usar o site.
+Ao navegar em compoundingjourney.com, usar as calculadoras e os simuladores ou baixar os modelos, você aceita estes termos. Se não concorda com eles, o coerente é não usar o site.
 
 ## Isto é educação financeira, não consultoria
 
 É a cláusula mais importante desta página, por isso vai sem rodeios:
 
-**Sandy Bradbury é educador financeiro. Não é consultor financeiro acreditado, não está registado como empresa de investimento nem como agente junto da CMVM, da CNMV ou de qualquer regulador equivalente, e nada do que publica neste site constitui consultoria financeira, de investimento, fiscal ou jurídica, nem uma recomendação personalizada para comprar, vender ou manter qualquer produto.**
+**Sandy Bradbury é educador financeiro. Não é consultor financeiro credenciado, não está registrado como empresa de investimento nem como agente junto da CVM, da CNMV ou de qualquer regulador equivalente, e nada do que publica neste site constitui consultoria financeira, de investimento, fiscal ou jurídica, nem uma recomendação personalizada para comprar, vender ou manter qualquer produto.**
 
-Todo o conteúdo é informação geral de carácter educativo, escrita sem conhecer a tua situação, os teus rendimentos, as tuas dívidas, a tua situação fiscal ou a tua tolerância ao risco. Ler não cria entre ti e o autor qualquer relação de consultoria, fiduciária ou profissional. Antes de tomares uma decisão sobre o teu dinheiro, consulta um profissional devidamente registado na tua jurisdição.
+Todo o conteúdo é informação geral de caráter educativo, escrita sem conhecer a sua situação, a sua renda, as suas dívidas, a sua situação fiscal ou a sua tolerância ao risco. Ler não cria entre você e o autor nenhuma relação de consultoria, fiduciária ou profissional. Antes de tomar uma decisão sobre o seu dinheiro, consulte um profissional devidamente registrado na sua jurisdição.
 
-As decisões que tomas são tuas, e as consequências também.
+As decisões que você toma são suas, e as consequências também.
 
 ## As calculadoras e os simuladores
 
-As [calculadoras]({{tools}}) e os simuladores fazem aritmética com os números que introduzes e com os pressupostos que cada página declara. Os resultados são **estimativas ilustrativas, não previsões**: não modelam inflação real, impostos, comissões futuras, quedas de mercado, mudanças nos teus rendimentos nem o comportamento de nenhum mercado concreto. Uma rentabilidade passada não se repete só porque uma calculadora a prolongou em linha reta.
+As [calculadoras]({{tools}}) e os simuladores fazem aritmética com os números que você informa e com as premissas que cada página declara. Os resultados são **estimativas ilustrativas, não previsões**: não modelam inflação real, impostos, comissões futuras, quedas de mercado, mudanças na sua renda nem o comportamento de nenhum mercado específico. Uma rentabilidade passada não se repete só porque uma calculadora a prolongou em linha reta.
 
-Todo o cálculo acontece no teu navegador e nada é guardado — exceto as simulações que escolhas guardar: uma pontuação enviada para uma classificação, ou um cenário acrescentado aos [dados públicos]({{data}}).
+Todo o cálculo acontece no seu navegador e nada é guardado — exceto as simulações que você escolher guardar: uma pontuação enviada para um ranking, ou um cenário acrescentado aos [dados públicos]({{data}}).
 
 ## Os modelos
 
-Os modelos de folha de cálculo são gratuitos para uso pessoal. Copia-os, altera-os, usa-os como quiseres nas tuas próprias finanças. Não podes revendê-los, redistribuí-los como produto próprio nem apresentá-los como material de outra pessoa. São entregues como estão, sem garantia: verifica as fórmulas antes de confiar uma decisão importante a uma folha de cálculo.
+Os modelos de planilha são gratuitos para uso pessoal. Copie, altere e use como quiser nas suas próprias finanças. Você não pode revendê-los, redistribuí-los como produto próprio nem apresentá-los como material de outra pessoa. Eles são entregues como estão, sem garantia: verifique as fórmulas antes de confiar uma decisão importante a uma planilha.
 
-## As classificações e os dados públicos
+## Os rankings e os dados públicos
 
-Se enviares uma pontuação para a classificação de um simulador, aceitas que o nome visível e a pontuação sejam públicos. Não escrevas lá dados pessoais — teus ou de terceiros. Qualquer entrada com dados pessoais de terceiros, insultos, publicidade ou tentativas de manipular a tabela pode ser removida sem aviso.
+Se você enviar uma pontuação para o ranking de um simulador, aceita que o nome visível e a pontuação sejam públicos. Não escreva ali dados pessoais — seus ou de terceiros. Qualquer entrada com dados pessoais de terceiros, insultos, publicidade ou tentativas de manipular a tabela pode ser removida sem aviso.
 
-Se guardares uma simulação nos [dados públicos]({{data}}), aceitas que os seus números e escolhas sejam publicados de forma agregada — médias, percentagens e distribuições —, sem nome e sem identificador. Nunca se publica uma simulação isolada, e nenhuma medida é publicada abaixo da sua amostra mínima. Esses dados podem ser usados em artigos deste site e citados com atribuição.
+Se você guardar uma simulação nos [dados públicos]({{data}}), aceita que os seus números e escolhas sejam publicados de forma agregada — médias, porcentagens e distribuições —, sem nome e sem identificador. Nunca se publica uma simulação isolada, e nenhuma medida é publicada abaixo da sua amostra mínima. Esses dados podem ser usados em artigos deste site e citados com atribuição.
 
 ## As sessões
 
-As [sessões]({{sessions}}) são de educação e acompanhamento: rever modelos, compreender conceitos, organizar hábitos, definir objetivos. **Não incluem recomendações de investimento, seleção de produtos, gestão de carteiras nem planeamento fiscal**, e não substituem um consultor registado. Cada sessão é contratada em separado e as suas condições concretas são acordadas por escrito antes do pagamento.
+As [sessões]({{sessions}}) são de educação e acompanhamento: rever modelos, compreender conceitos, organizar hábitos, definir objetivos. **Não incluem recomendações de investimento, seleção de produtos, gestão de carteiras nem planejamento fiscal**, e não substituem um consultor registrado. Cada sessão é contratada separadamente e as suas condições são acordadas por escrito antes do pagamento.
 
 ## Propriedade intelectual
 
-Os textos, os modelos, o código e o design deste site são obra de Sandy Bradbury e estão protegidos por direitos de autor. Podes citar passagens curtas com atribuição e um link para a página original. Não podes republicar artigos completos, usar o conteúdo para treinar modelos comerciais fechados nem reproduzir o site.
+Os textos, os modelos, o código e o design deste site são obra de Sandy Bradbury e estão protegidos por direitos autorais. Você pode citar passagens curtas com atribuição e um link para a página original. Não pode republicar artigos completos, usar o conteúdo para treinar modelos comerciais fechados nem reproduzir o site.
 
 ## Links para terceiros
 
-Alguns artigos remetem para livros, ferramentas ou páginas de terceiros. Esses links são referências, não recomendações, e não controlo o que publicam nem o que fazem com os teus dados.
+Alguns artigos remetem a livros, ferramentas ou páginas de terceiros. Esses links são referências, não recomendações, e eu não controlo o que eles publicam nem o que fazem com os seus dados.
 
 ## Disponibilidade e alterações
 
@@ -479,15 +480,15 @@ O site é oferecido como está, sem garantia de disponibilidade contínua. Posso
 
 ## Responsabilidade
 
-Na medida permitida pela lei, não assumo responsabilidade por perdas resultantes do uso deste site, da interpretação do seu conteúdo, de um erro num cálculo ou num modelo, ou da indisponibilidade do serviço. Nada disto limita os direitos que a lei do consumo te reconhece como consumidor.
+Na medida permitida pela lei, não assumo responsabilidade por perdas resultantes do uso deste site, da interpretação do seu conteúdo, de um erro num cálculo ou num modelo, ou da indisponibilidade do serviço. Nada disso limita os direitos que a lei do consumidor garante a você.
 
 ## Lei aplicável
 
-Estes termos regem-se pela lei espanhola. Se és consumidor, mantés o direito de recorrer aos tribunais do teu local de residência.
+Estes termos se regem pela lei espanhola. Se você é consumidor, mantém o direito de recorrer aos tribunais do seu local de residência.
 
-## Contacto
+## Contato
 
-Qualquer dúvida sobre esta página: **san.bradbury@gmail.com**. Sobre dados pessoais, vê a [política de privacidade]({{privacy}}); sobre a titularidade do site, o [aviso legal]({{notice}}).
+Qualquer dúvida sobre esta página: **san.bradbury@gmail.com**. Sobre dados pessoais, veja a [política de privacidade]({{privacy}}); sobre a titularidade do site, o [aviso legal]({{notice}}).
 `
     }
   }
@@ -516,7 +517,7 @@ Un sitio de **educación financiera**: artículos, un glosario, calculadoras, si
 
 Conviene decirlo aquí, en la página que existe precisamente para identificar al responsable del sitio:
 
-**Sandy Bradbury se presenta como educador financiero. Está en proceso de obtener una certificación de asesoramiento financiero y, hasta que la obtenga, no ejerce ni se presenta como asesor financiero acreditado.**
+**Sandy Bradbury ejerce como educador financiero, y esa es su actividad de forma permanente. No ejerce ni se presenta como asesor financiero acreditado. Cualquier titulación o certificación profesional que llegue a obtener servirá únicamente como aval del rigor de esa labor educativa: no convierte el contenido en asesoramiento ni habilita servicios de asesoramiento.**
 
 En consecuencia:
 
@@ -567,7 +568,7 @@ A **financial education** site: articles, a glossary, calculators, simulators an
 
 This is the page that exists to identify who is responsible for the site, so it belongs here:
 
-**Sandy Bradbury works as a financial educator, and is in the process of obtaining a financial advice certification. Until that certification is held, Sandy neither practises nor holds themselves out as an accredited financial adviser.**
+**Sandy Bradbury works as a financial educator, permanently: that is the role, not a stage on the way to another one. Sandy neither practices nor holds themselves out as an accredited financial adviser. Any professional qualification obtained in future will serve only to back the rigor of that educational work — it does not make the content advice, and no advisory service follows from it.**
 
 It follows that:
 
@@ -597,7 +598,7 @@ This notice is governed by Spanish law, in particular Law 34/2002 on information
     },
     pt: {
       title: 'Aviso legal',
-      description: 'Titularidade de compoundingjourney.com e esclarecimento sobre a natureza do conteúdo: Sandy Bradbury é educador financeiro, não consultor financeiro acreditado.',
+      description: 'Titularidade de compoundingjourney.com e esclarecimento sobre a natureza do conteúdo: Sandy Bradbury é educador financeiro, não consultor financeiro credenciado.',
       heading: 'Aviso legal',
       intro: 'Quem está por trás deste site, o que faz e, sobretudo, o que não faz.',
       body: `
@@ -605,45 +606,45 @@ This notice is governed by Spanish law, in particular Law 34/2002 on information
 
 - **Titular:** Sandy Bradbury, pessoa singular.
 - **País de residência:** Espanha.
-- **Email:** san.bradbury@gmail.com
+- **E-mail:** san.bradbury@gmail.com
 - **Site:** https://compoundingjourney.com
 
-O endereço postal completo e os dados fiscais estão à disposição de quem tenha um interesse legítimo, a pedido para o email acima. Este site não vende nada online: as [sessões]({{sessions}}) são combinadas por email, caso a caso.
+O endereço postal completo e os dados fiscais ficam à disposição de quem tenha um interesse legítimo, mediante pedido para o e-mail acima. Este site não vende nada online: as [sessões]({{sessions}}) são combinadas por e-mail, caso a caso.
 
 ## O que é o Compounding Journey
 
-Um site de **educação financeira**: artigos, um glossário, calculadoras, simuladores e modelos de folha de cálculo sobre finanças pessoais, investimento de longo prazo e psicologia do dinheiro. O propósito é explicar como as coisas funcionam para que quem lê possa decidir melhor por si.
+Um site de **educação financeira**: artigos, um glossário, calculadoras, simuladores e modelos de planilha sobre finanças pessoais, investimento de longo prazo e psicologia do dinheiro. O propósito é explicar como as coisas funcionam para que quem lê possa decidir melhor por si.
 
-## Sandy Bradbury não é consultor financeiro acreditado
+## Sandy Bradbury não é consultor financeiro credenciado
 
 Esta é a página que existe para identificar o responsável pelo site, por isso é aqui que isto se diz:
 
-**Sandy Bradbury apresenta-se como educador financeiro. Está em processo de obtenção de uma certificação de consultoria financeira e, até a obter, não exerce nem se apresenta como consultor financeiro acreditado.**
+**Sandy Bradbury atua como educador financeiro, e essa é a sua atividade de forma permanente. Não atua nem se apresenta como consultor financeiro credenciado. Qualquer titulação ou certificação profissional que venha a obter servirá apenas como aval do rigor desse trabalho educativo: não transforma o conteúdo em consultoria nem habilita serviços de consultoria.**
 
 Em consequência:
 
-- Este site **não presta serviços de investimento** reservados pela legislação espanhola e europeia (consultoria para investimento, gestão de carteiras, receção e transmissão de ordens ou colocação de instrumentos financeiros).
-- **Não está registado nem supervisionado pela CNMV, pela CMVM** ou por qualquer outra autoridade financeira, porque não desenvolve nenhuma atividade que exija esse registo.
-- **Não são dadas recomendações personalizadas.** Nenhum conteúdo tem em conta a situação particular de quem o lê, e nenhuma calculadora conhece o teu caso.
-- **Não se gere nem se guarda o dinheiro de ninguém.** Este site nunca te pedirá para transferir fundos para investir. Se alguém o fizer em seu nome, é fraude: escreve-me.
+- Este site **não presta serviços de investimento** reservados pela legislação espanhola e europeia (consultoria para investimento, gestão de carteiras, recepção e transmissão de ordens ou colocação de instrumentos financeiros).
+- **Não está registrado nem supervisionado pela CNMV, pela CVM** ou por qualquer outra autoridade financeira, porque não desenvolve nenhuma atividade que exija esse registro.
+- **Não são dadas recomendações personalizadas.** Nenhum conteúdo leva em conta a situação particular de quem o lê, e nenhuma calculadora conhece o seu caso.
+- **Não se administra nem se guarda o dinheiro de ninguém.** Este site nunca vai pedir que você transfira fundos para investir. Se alguém fizer isso em nome deste site, é fraude: escreva para mim.
 
-Se procuras consultoria financeira, procura um profissional ou uma entidade inscrita nos registos oficiais da CMVM (www.cmvm.pt) ou da CNMV (www.cnmv.es), que são públicos e consultáveis.
+Se você procura consultoria financeira, procure um profissional ou uma entidade inscrita nos registros oficiais da CVM (www.gov.br/cvm) ou da CNMV (www.cnmv.es), que são públicos e consultáveis.
 
 ## Propriedade intelectual
 
-Os conteúdos deste site — textos, modelos, código, design, nome e logótipo — pertencem a Sandy Bradbury, salvo quando outra autoria for indicada. A sua utilização está sujeita aos [termos de utilização]({{terms}}).
+Os conteúdos deste site — textos, modelos, código, design, nome e logotipo — pertencem a Sandy Bradbury, salvo quando outra autoria for indicada. A sua utilização está sujeita aos [termos de utilização]({{terms}}).
 
 ## Responsabilidade
 
-O conteúdo é publicado de boa-fé e revisto, mas pode conter erros ou ficar desatualizado. Não se garante que a informação seja completa ou aplicável a um caso concreto, nem se assume responsabilidade pelas decisões tomadas com base nela, nos termos da secção de responsabilidade dos [termos de utilização]({{terms}}).
+O conteúdo é publicado de boa-fé e revisado, mas pode conter erros ou ficar desatualizado com o tempo. Não se garante que a informação seja completa ou aplicável a um caso concreto, nem se assume responsabilidade pelas decisões tomadas com base nela, nos termos da seção de responsabilidade dos [termos de utilização]({{terms}}).
 
 ## Dados pessoais
 
-O tratamento de dados pessoais está descrito na [política de privacidade]({{privacy}}). Em resumo: este site não usa cookies, não tem análise de terceiros e não contacta nenhum terceiro quando carregas uma página.
+O tratamento de dados pessoais está descrito na [política de privacidade]({{privacy}}). Em resumo: este site não usa cookies, não tem análise de terceiros e não contata nenhum terceiro quando você carrega uma página.
 
 ## Legislação aplicável
 
-Este aviso rege-se pela lei espanhola, em particular pela Lei 34/2002 dos serviços da sociedade da informação e do comércio eletrónico.
+Este aviso se rege pela lei espanhola, em particular pela Lei 34/2002 dos serviços da sociedade da informação e do comércio eletrônico.
 `
     }
   }

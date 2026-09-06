@@ -16,14 +16,14 @@ Agora que já explorou o orçamento e a gestão de despesas, é momento de anali
 
 ---
 
-## Por Que Razão Importa Refletir Sobre o Que Lhe Traz Felicidade
+## Por Que Importa Refletir Sobre o Que Lhe Traz Felicidade
 
-Já comprou algo e mais tarde percebeu que isso não lhe trouxe a felicidade esperada? Todos nós já passámos por isso. A verdade é que nem todas as compras adicionam valor genuíno à nossa vida.
+Já comprou algo e mais tarde percebeu que isso não lhe trouxe a felicidade esperada? Todos nós já passamos por isso. A verdade é que nem todas as compras adicionam valor genuíno à nossa vida.
 
 Observe dois cenários reais e opostos:
 
 * **A Abordagem da Emma (Alinhada com Valores):** A Emma adora moda, e comprar uma mala elegante aumenta genuinamente a sua confiança no trabalho. É uma compra intencional que lhe traz satisfação.
-* **A Armadilha do Jake (Pressão Externa):** O Jake comprou um relógio dispendioso apenas porque se sentiu pressionado a acompanhar os seus amigos. Isso não lhe trouxe alegria duradoura—apenas o stress de ter esvaziado a sua conta bancária.
+* **A Armadilha do Jake (Pressão Externa):** O Jake comprou um relógio dispendioso apenas porque se sentiu pressionado a acompanhar os seus amigos. Isso não lhe trouxe alegria duradoura—apenas o estresse de ter esvaziado a sua conta bancária.
 
 ---
 
@@ -33,7 +33,7 @@ Tire um momento para refletir sobre o que lhe traz verdadeira realização. As c
 
 * **Memórias e Viagens:** Conhecer novas culturas e fazer pausas revigorantes.
 * **Saúde e Vitalidade:** Investir em nutrição, exercício e bem-estar mental.
-* **Crescimento Pessoal:** Aprender novas competências, hobbys ou conhecimentos profissionais.
+* **Crescimento Pessoal:** Aprender novas competências, hobbies ou conhecimentos profissionais.
 * **Relações Significativas:** Passar tempo de qualidade com a família e amigos.
 
 Quando alinha as suas decisões financeiras com as suas prioridades, deixa de desperdiçar dinheiro e começa a construir uma vida repleta de experiências intencionais.
@@ -44,11 +44,11 @@ Quando alinha as suas decisões financeiras com as suas prioridades, deixa de de
 
 É fácil cair na armadilha de gastar dinheiro para impressionar terceiros ou manter um estilo de vida insustentável. Comprar bens de luxo que não pode pagar ou financiar saídas dispendiosas com cartão de crédito cria um estatuto temporário, mas gera ansiedade a longo prazo.
 
-[ Expectativas Externas ] ➔ [ Gastos Impulsivos ] ➔ [ Dívidas e Stress ] ➔ [ Opções Limitadas ]
+[ Expectativas Externas ] ➔ [ Gastos Impulsivos ] ➔ [ Dívidas e Estresse ] ➔ [ Opções Limitadas ]
 
 ### Os Custos Ocultos de Viver Acima das Suas Possibilidades
 1. **Dívidas com Juros Elevados:** Saldos acumulados no cartão de crédito que consomem os seus rendimentos futuros.
-2. **Stress Financeiro Crónico:** Ansiedade constante em relação à liquidação das despesas mensais básicas.
+2. **Estresse Financeiro Crônico:** Ansiedade constante em relação à liquidação das despesas mensais básicas.
 3. **Opções de Vida Limitadas:** Menos recursos disponíveis para reformas antecipadas, mudanças de carreira ou liberdade real.
 
 ---
@@ -57,7 +57,7 @@ Quando alinha as suas decisões financeiras com as suas prioridades, deixa de de
 
 Viver dentro dos seus rendimentos não significa privar-se de viver—significa escolher a liberdade de longo prazo em detrimento da gratificação instantânea.
 
-| Característica / Hábito | Sofia (Constutora Intencional de Riqueza) | Marcos (Atrapalhado na Inflação de Estilo de Vida) |
+| Característica / Hábito | Sofia (Construtora Intencional de Riqueza) | Marcos (Atrapalhado na Inflação de Estilo de Vida) |
 |:--- |:--- |:--- |
 | **Estratégia de Poupança** | Investe 20% do rendimento de forma automática | Gasta 100% do que ganha e recorre a crédito para extras |
 | **Hábito de Consumo** | Evita compras por impulso e foca-se nos seus valores | Utiliza cartões de crédito para férias e itens de estatuto |
@@ -70,7 +70,7 @@ Viver dentro dos seus rendimentos não significa privar-se de viver—significa 
 Ao eliminar gastos supérfluos, liberta capital para poupar e investir. Com o tempo, o efeito dos juros compostos gera três grandes vantagens:
 
 * **Uma Rede de Segurança Sólida:** Um fundo de emergência capaz de absorver os imprevistos da vida.
-* **Independência Financeira:** Património suficiente para trabalhar por opção e não por necessidade.
+* **Independência Financeira:** Patrimônio suficiente para trabalhar por opção e não por necessidade.
 * **Foco No Que Importa:** A ausência de ansiedade financeira permite focar-se na saúde, relações e paixões pessoais.
 
 ---

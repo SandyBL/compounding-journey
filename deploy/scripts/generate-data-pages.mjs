@@ -53,7 +53,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CURRENCY = { es: '€', en: '$', pt: 'R$' };
 
 /** Intl tags. localeOf in page-shell.mjs is the Open Graph spelling. */
-const NUMBER_LOCALE = { es: 'es-ES', en: 'en-US', pt: 'pt-PT' };
+const NUMBER_LOCALE = { es: 'es-ES', en: 'en-US', pt: 'pt-BR' };
 
 /** ------------------------------------------------------------ formatting */
 
