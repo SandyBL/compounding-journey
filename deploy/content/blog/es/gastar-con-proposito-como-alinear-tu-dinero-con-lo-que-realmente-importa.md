@@ -1,5 +1,5 @@
 ---
-title: "Gastar con Propósito: Cómo Alinear tu Dinero con lo que Realmente Importa"
+title: "Gastar con propósito: cómo alinear tu dinero con lo que realmente importa"
 date: 2026-08-13
 category: Diseño de vida
 summary: El crecimiento financiero no exige eliminar tus alegrías, sino gastar
@@ -15,7 +15,7 @@ Ahora que has explorado el presupuesto y la gestión de gastos, es momento de an
 
 ---
 
-## Por Qué Importa Reflexionar sobre lo que te Da Felicidad
+## Por qué importa reflexionar sobre lo que te da felicidad
 
 ¿Alguna vez compraste algo y luego notaste que no te hizo tan feliz como esperabas? A todos nos ha pasado. La realidad es que no todas las compras aportan un valor genuino a nuestra vida.
 
@@ -26,7 +26,7 @@ Compara estos dos casos de la vida real:
 
 ---
 
-## Gastar Dinero en lo que Realmente Importa
+## Gastar dinero en lo que realmente importa
 
 Tómate un momento para reflexionar sobre lo que te genera plenitud genuina. Entre las categorías más valiosas suelen estar:
 
@@ -39,20 +39,20 @@ Al alinear tus decisiones financieras con tus prioridades reales, dejas de despe
 
 ---
 
-## La Trampa del Sobreendeudamiento y el Aumento del Estilo de Vida
+## La trampa del sobreendeudamiento y el aumento del estilo de vida
 
 Es fácil caer en el error de gastar para impresionar a otros o sostener un estilo de vida insostenible. Adquirir lujos que no puedes permitirte o pagar salidas costosas con tarjeta genera estatus temporal, pero destruye tu estabilidad futura.
 
 [ Expectativas Externas ] ➔ [ Gastos Impulsivos ] ➔ [ Deuda y Estrés ] ➔ [ Opciones Limitadas ]
 
-### Las Consecuencias Invisibles de Vivir por Encima de tus Posibilidades
+### Las consecuencias invisibles de vivir por encima de tus posibilidades
 1. **Deudas con Intereses Altos:** Saldos en tarjetas de crédito que se acumulan y devoran tus ingresos futuros.
 2. **Estrés Financiero Crónico:** Preocupación constante por cubrir los compromisos básicos de cada mes.
 3. **Opciones de Vida Limitadas:** Menos capital disponible para retirarte antes, cambiar de carrera o disfrutar de libertad real.
 
 ---
 
-## Vivir Dentro de tus Posibilidades: Dos Futuros Distintos
+## Vivir dentro de tus posibilidades: dos futuros distintos
 
 Vivir por debajo de tus ingresos no significa privarte de disfrutar, sino priorizar la libertad a largo plazo sobre la gratificación instantánea.
 
@@ -64,7 +64,7 @@ Vivir por debajo de tus ingresos no significa privarte de disfrutar, sino priori
 
 ---
 
-## Cómo el Gasto Consciente Construye Riqueza Real
+## Cómo el gasto consciente construye riqueza real
 
 Al eliminar los gastos automáticos e innecesarios, liberas capital para ahorrar e invertir. Con el tiempo, el interés compuesto genera tres grandes ventajas:
 
@@ -74,7 +74,7 @@ Al eliminar los gastos automáticos e innecesarios, liberas capital para ahorrar
 
 ---
 
-### Ejercicio Práctico: Audita tus Valores
+### Ejercicio práctico: audita tus valores
 
 1. **Reflexiona sobre tus Valores:** Anota de 3 a 5 actividades o metas que te brinden plenitud real.
 2. **Revisa tus Gastos del Último Mes:** Identifica 2 gastos que no se alineen con esos valores y elimínalos.
@@ -82,7 +82,7 @@ Al eliminar los gastos automáticos e innecesarios, liberas capital para ahorrar
 
 ---
 
-### ¿Listo para Dominar tus Hábitos Financieros?
-Gastar con propósito es hacer que tu dinero trabaje para tu felicidad. Completa nuestra evaluación rápida para analizar tus hábitos de gasto, eliminar fugas financieras y trazar tu mapa hacia la independencia.
+### ¿Listo para dominar tus hábitos financieros?
+Casi nadie gasta en contra de sus propios valores a propósito. Pasa en pasos pequeños y muy defendibles. Realiza nuestra evaluación de hábitos para ver dónde se han separado tu gasto y tus prioridades, y cuál de esas distancias conviene cerrar primero.
 
-[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#assessment)
+[Evalúa tus hábitos financieros →](https://compoundingjourney.com/#assessment)

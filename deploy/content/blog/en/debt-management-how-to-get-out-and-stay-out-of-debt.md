@@ -52,6 +52,6 @@ If you carry multiple balances, choosing an intentional repayment strategy accel
 ---
 
 ### Ready to Master Your Money Habits?
-Escaping debt is the ultimate momentum-builder on your path to financial freedom. Take our habit assessment to evaluate your current debt-to-income ratio, identify hidden interest drains, and build a tailored payoff roadmap.
+Getting out of debt has less to do with picking the clever method than with keeping one going for eighteen months. Take our habit assessment to see which payoff order fits the way you actually stay motivated, and what to put in place so the balance does not creep back.
 
 [Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)

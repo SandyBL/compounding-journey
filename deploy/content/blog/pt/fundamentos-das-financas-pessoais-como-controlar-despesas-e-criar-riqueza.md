@@ -1,5 +1,5 @@
 ---
-title: "Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza"
+title: "Fundamentos das finanças pessoais: como controlar despesas e criar riqueza"
 date: 2026-08-11
 category: Hábitos financeiros
 summary: Descubra dicas simples para criar orçamentos, rastrear despesas e tomar
@@ -20,7 +20,7 @@ Gerenciar o seu orçamento não significa viver com privações, mas sim ganhar 
 
 ---
 
-## Por que o Orçamento é Essencial para sua Saúde Financeira
+## Por que o orçamento é essencial para sua saúde financeira
 
 Um orçamento bem estruturado transforma a sua relação com o dinheiro através de quatro benefícios principais:
 
@@ -31,7 +31,7 @@ Um orçamento bem estruturado transforma a sua relação com o dinheiro através
 
 ---
 
-## 4 Regras Essenciais para um Orçamento Eficiente
+## 4 regras essenciais para um orçamento eficiente
 
 1. **Pague-se Primeiro:** Guarde e invista pelo menos **20% da sua renda** antes de gastar com qualquer outra coisa.
 2. **Limite os Custos de Moradia:** Mantenha aluguel/financiamento e contas básicas em no máximo **33% da renda total da família**.
@@ -40,7 +40,7 @@ Um orçamento bem estruturado transforma a sua relação com o dinheiro através
 
 ---
 
-## Modelo Prático: Estruturando seu Orçamento Mensal
+## Modelo prático: estruturando seu orçamento mensal
 
 Utilizar uma planilha ou modelo permite comparar o planejado com o gasto real:
 
@@ -55,7 +55,7 @@ Utilizar uma planilha ou modelo permite comparar o planejado com o gasto real:
 
 ---
 
-## Como Rastrear Despesas e Identificar Gastos Desnecessários
+## Como rastrear despesas e identificar gastos desnecessários
 
 1. **Registre Cada Compra:** Anote absolutamente tudo. Um gasto diário de $5 em café soma $150 no final do mês.
 2. **Categorize seus Gastos:** Agrupe despesas em categorias claras para enxergar padrões de consumo.
@@ -64,7 +64,7 @@ Utilizar uma planilha ou modelo permite comparar o planejado com o gasto real:
 
 ---
 
-### Pronto para Dominar suas Finanças?
-Controlar suas despesas não significa abrir mão do que você ama, mas sim construir uma vida com verdadeira segurança e liberdade financeira. Preencha nosso formulário rápido para avaliar seus hábitos de consumo, identificar pontos de melhoria e construir um plano claro rumo à sua independência financeira.
+### Pronto para dominar os seus hábitos financeiros?
+Um orçamento só vale se sobreviver a uma semana ruim, e a maioria não sobrevive. Faça a nossa avaliação de hábitos para ver por onde o seu dinheiro está vazando e qual mudança sozinha faria o resto do plano se sustentar.
 
-[Avalie seus Hábitos Financeiros →](https://compoundingjourney.com/pt/#assessment)
+[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

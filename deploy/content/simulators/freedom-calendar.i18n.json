@@ -782,7 +782,7 @@
   "explFaqA3": {
     "en": "Close, but it uses take-home pay rather than gross, so it reflects what an hour actually puts in your account. Adding commuting time to your hours makes it more honest still, and usually lowers it more than people expect.",
     "es": "Casi: usa el sueldo neto en lugar del bruto, así que refleja lo que una hora deja realmente en tu cuenta. Añadir el tiempo de desplazamiento a tus horas lo hace aún más honesto, y suele bajarlo más de lo que la gente espera.",
-    "pt": "Quase: usa o salário líquido em vez do bruto, por isso reflete o que uma hora coloca realmente na sua conta. Acrescentar o tempo de deslocamento às suas horas torna-o ainda mais honesto, e costuma baixá-lo mais do que as pessoas esperam."
+    "pt": "Quase: usa o salário líquido em vez do bruto, por isso reflete o que uma hora coloca realmente na sua conta. Somar o tempo de deslocamento às suas horas deixa o número ainda mais honesto, e costuma baixá-lo mais do que as pessoas esperam."
   },
   "explReadingSlug1": {
     "en": "your-savings-rate-not-your-salary-sets-the-date-you-become-free",
@@ -790,7 +790,7 @@
     "pt": "sua-taxa-de-poupanca-nao-seu-salario-define-a-data-em-que-voce-fica-livre"
   },
   "explReadingLabel1": {
-    "en": "Your savings rate, not your salary, sets the date you become free",
+    "en": "Your Savings Rate, Not Your Salary, Sets the Date You Become Free",
     "es": "Tu tasa de ahorro, no tu sueldo, fija la fecha en que eres libre",
     "pt": "Sua taxa de poupança, não seu salário, define a data em que você fica livre"
   },
@@ -800,7 +800,7 @@
     "pt": "sistema-dinheiro-lento"
   },
   "explReadingLabel2": {
-    "en": "The slow money system: a calmer way to build wealth",
+    "en": "The Slow Money System: A Calmer Way to Build Wealth",
     "es": "El sistema de dinero lento: una forma más tranquila de crear patrimonio",
     "pt": "O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio"
   },
@@ -812,7 +812,7 @@
   "explReadingTitle": {
     "en": "Keep reading",
     "es": "Sigue leyendo",
-    "pt": "Continue a ler"
+    "pt": "Continue lendo"
   },
   "explReadingIntro": {
     "en": "The journal covers the ideas behind this tool at greater length.",

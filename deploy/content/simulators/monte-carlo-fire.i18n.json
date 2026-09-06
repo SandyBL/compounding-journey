@@ -1832,12 +1832,12 @@
   "explTitle": {
     "en": "What a Monte Carlo simulation tells you",
     "es": "Qué te dice una simulación de Monte Carlo",
-    "pt": "O que uma simulação de Monte Carlo lhe diz"
+    "pt": "O que uma simulação de Monte Carlo diz para você"
   },
   "explLede": {
     "en": "Every other retirement calculator gives you one number, produced by assuming the market returns the same amount every year. It never does. This simulator runs your plan a thousand times over, drawing a different sequence of market years each time, and reports not a number but a probability: the share of those thousand lives in which your money outlasted you.",
     "es": "Cualquier otra calculadora de jubilación te da un número, obtenido suponiendo que el mercado rinde lo mismo todos los años. Nunca lo hace. Este simulador ejecuta tu plan mil veces, extrayendo cada vez una secuencia distinta de años de mercado, y no informa de un número sino de una probabilidad: la proporción de esas mil vidas en las que tu dinero te sobrevivió.",
-    "pt": "Qualquer outra calculadora de aposentadoria dá-lhe um número, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro lhe sobreviveu."
+    "pt": "Qualquer outra calculadora de aposentadoria dá um número para você, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro durou mais do que você."
   },
   "explHowTitle": {
     "en": "How the thousand runs work",
@@ -1897,7 +1897,7 @@
   "explExample2": {
     "en": "Now raise the withdrawal rate to 5%. The median barely moves — but the success rate falls by more than twenty points and the 10th percentile run runs out of money in the mid-twenties. That gap is the entire argument for looking at the bottom decile: the typical outcome of the riskier plan looks fine, and the risk is all hiding in the tail you were not shown.",
     "es": "Ahora sube la tasa de retirada al 5%. La mediana apenas se mueve, pero la tasa de éxito cae más de veinte puntos y la simulación del percentil 10 se queda sin dinero a mitad de los veintitantos años. Esa brecha es todo el argumento para mirar el decil inferior: el desenlace típico del plan más arriesgado parece correcto, y el riesgo está escondido entero en la cola que no te enseñaron.",
-    "pt": "Agora suba a taxa de retirada para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro na metade dos vinte e tantos anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que não lhe mostraram."
+    "pt": "Agora suba a taxa de retirada para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro na metade dos vinte e tantos anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que ninguém mostrou para você."
   },
   "explFaqQ1": {
     "en": "Why a thousand runs and not more?",
@@ -1937,7 +1937,7 @@
   "explReadingTitle": {
     "en": "Keep reading",
     "es": "Sigue leyendo",
-    "pt": "Continue a ler"
+    "pt": "Continue lendo"
   },
   "explReadingIntro": {
     "en": "The journal covers the ideas behind this tool at greater length.",
@@ -1965,7 +1965,7 @@
     "pt": "risco-de-sequencia-por-que-a-ordem-das-rentabilidades-decide-a-sua-aposentadoria"
   },
   "explReadingLabel1": {
-    "en": "Sequence-of-returns risk: why the order of returns decides your retirement",
+    "en": "Sequence-of-Returns Risk: Why the Order of Returns Decides Your Retirement",
     "es": "Riesgo de secuencia: por qué el orden de las rentabilidades decide tu jubilación",
     "pt": "Risco de sequência: por que a ordem das rentabilidades decide a sua aposentadoria"
   },
@@ -1976,8 +1976,8 @@
   },
   "explReadingLabel2": {
     "en": "Foundations of Personal Finance: How to Control Expenses and Build Wealth",
-    "es": "Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza",
-    "pt": "Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza"
+    "es": "Fundamentos de las finanzas personales: cómo controlar gastos y crear riqueza",
+    "pt": "Fundamentos das finanças pessoais: como controlar despesas e criar riqueza"
   },
   "explCrumbSelf": {
     "en": "Monte Carlo FIRE",

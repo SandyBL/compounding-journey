@@ -63,18 +63,18 @@ Por eso el horizonte temporal es la variable más poderosa —y la única que no
 
 The gap against simple interest is small in year one and enormous at thirty years. At an average 7% annual return, $10,000 becomes roughly $19,700 after ten years, $38,700 after twenty and $76,100 after thirty. Nothing about the contribution changed: the only thing that changed is how long it was left alone.
 
-This is why time horizon is the most powerful variable — and the only one you cannot buy later. A year of delay does not cost you one year of return; it costs the most valuable year, which is the last one.`
+This is why time horizon is the most powerful variable you have, and the only one you cannot go back and buy later. A year of delay does not cost you one year of return. It costs the most valuable year, which is the last one.`
     },
     pt: {
       name: 'Juros compostos',
       slug: 'juros-compostos',
       aliases: ['capitalização composta', 'crescimento composto', 'juro composto'],
       short: 'O efeito pelo qual os rendimentos do seu dinheiro começam a gerar os seus próprios rendimentos, fazendo o capital crescer de forma exponencial e não linear.',
-      body: `Os juros compostos aparecem quando **não retira** o que o seu dinheiro rendeu. Juros, dividendos ou ganhos de capital são reinvestidos e passam a fazer parte do capital que gera o rendimento seguinte.
+      body: `Os juros compostos aparecem quando você **não retira** o que o seu dinheiro rendeu. Juros, dividendos ou ganhos de capital são reinvestidos e passam a fazer parte do capital que gera o rendimento seguinte.
 
-A diferença face aos juros simples é pequena no primeiro ano e enorme aos trinta. Com uma rentabilidade média de 7% ao ano, 10.000 tornam-se cerca de 19.700 aos dez anos, 38.700 aos vinte e 76.100 aos trinta. Nada muda na contribuição: o que muda é o tempo que a deixou trabalhar.
+A diferença em relação aos juros simples é pequena no primeiro ano e enorme aos trinta. Com uma rentabilidade média de 7% ao ano, 10.000 viram cerca de 19.700 em dez anos, 38.700 em vinte e 76.100 em trinta. O aporte não mudou em nada: o que mudou foi o tempo que você deixou o dinheiro trabalhar.
 
-É por isso que o horizonte temporal é a variável mais poderosa — e a única que não se pode comprar mais tarde. Um ano de atraso não custa um ano de rentabilidade: custa o ano mais valioso, que é o último.`
+É por isso que o horizonte temporal é a variável mais poderosa que você tem, e a única que não dá para comprar mais tarde. Um ano de atraso não custa um ano de rentabilidade. Custa o ano mais valioso, que é o último.`
     }
   },
   {
@@ -135,7 +135,7 @@ Si haces proyecciones a largo plazo, elige una de las dos formas coherentes: pro
       slug: 'real-return',
       aliases: ['real returns', 'inflation-adjusted return'],
       short: 'The return left after subtracting inflation: what your purchasing power actually gained, rather than what your balance did.',
-      body: `A portfolio that rises 8% in a year with 3% inflation has not made you 8% richer. It has made you roughly 5% richer. That figure — the **real** return — is the only one you can compare against your future spending, because your future spending also rises with inflation.
+      body: `A portfolio that rises 8% in a year with 3% inflation has not made you 8% richer. It has made you roughly 5% richer. That figure, the **real** return, is the only one you can compare against your future spending, because your future spending rises with inflation too.
 
 Nominal return is what appears on statements and in headlines. Real return is what decides whether you can maintain your standard of living.
 
@@ -146,7 +146,7 @@ If you are projecting long term, pick one of the two coherent methods: project i
       slug: 'rentabilidade-real',
       aliases: ['retorno real', 'rentabilidade ajustada à inflação'],
       short: 'A rentabilidade que sobra depois de descontar a inflação: aquilo que o seu poder de compra cresceu de fato, e não o seu saldo.',
-      body: `Uma carteira que sobe 8% num ano com inflação de 3% não o tornou 8% mais rico. Tornou-o cerca de 5% mais rico. Esse número — a rentabilidade **real** — é o único que se pode comparar com as suas despesas futuras, porque as suas despesas futuras também sobem com a inflação.
+      body: `Uma carteira que sobe 8% em um ano com inflação de 3% não deixou você 8% mais rico. Deixou você cerca de 5% mais rico. Esse número, a rentabilidade **real**, é o único que dá para comparar com as suas despesas futuras, porque as suas despesas futuras também sobem com a inflação.
 
 A rentabilidade nominal é a que aparece nos extratos e nos títulos de jornal. A real é a que decide se conseguirá manter o seu nível de vida.
 
@@ -173,7 +173,7 @@ Lo que un fondo indexado **no** hace es protegerte de las caídas: si el índice
       slug: 'index-fund',
       aliases: ['index funds', 'index tracker', 'passive investing', 'indexing'],
       short: 'A fund that does not try to pick the best companies but instead replicates an entire index at the lowest possible cost.',
-      body: `An index fund buys every company in an index — the S&P 500, the MSCI World — in the weights that index specifies, and makes no further decisions. There is no manager selecting stocks, which is why the cost is a fraction of an active fund's.
+      body: `An index fund buys every company in an index (the S&P 500, the MSCI World, whichever it tracks) in the weights that index specifies, and then makes no further decisions. There is no manager selecting stocks, which is why the cost is a fraction of an active fund's.
 
 The reason this works is not that indexing is clever but that it is **arithmetically hard to beat**. All investors together *are* the market; the average return before costs is the market's, and after costs it is the market's minus fees. A product charging 0.20% starts with a structural advantage over one charging 1.50%, and that advantage compounds year after year.
 
@@ -184,7 +184,7 @@ What an index fund does **not** do is protect you from falls: if the index drops
       slug: 'fundo-de-indice',
       aliases: ['fundos de índice', 'fundo indexado', 'gestão passiva', 'indexação'],
       short: 'Um fundo que não tenta escolher as melhores empresas, mas replicar um índice completo ao menor custo possível.',
-      body: `Um fundo de índice compra todas as empresas de um índice — o S&P 500, o MSCI World — na proporção que esse índice define, e não toma mais nenhuma decisão. Não há gestor a escolher ações, e por isso o custo é uma fração do de um fundo ativo.
+      body: `Um fundo de índice compra todas as empresas de um índice (o S&P 500, o MSCI World, seja qual for) na proporção que esse índice define, e depois não toma mais nenhuma decisão. Não há gestor escolhendo ações, e é por isso que o custo é uma fração do de um fundo ativo.
 
 A razão pela qual isto funciona não é a indexação ser inteligente, mas ser **aritmeticamente difícil de bater**. Todos os investidores juntos *são* o mercado; o rendimento médio antes de custos é o do mercado, e depois de custos é o do mercado menos as comissões. Um produto que cobra 0,20% parte com uma vantagem estrutural sobre um que cobra 1,50%, e essa vantagem compõe-se ano após ano.
 
@@ -249,7 +249,7 @@ Es también la única variable de una cartera que conoces con certeza de anteman
       slug: 'ter-total-expense-ratio',
       aliases: ['total expense ratio', 'expense ratio', 'management fee', 'ongoing charges'],
       short: 'The annual percentage a fund charges on the money you have invested, deducted in good years and bad alike.',
-      body: `The TER — total expense ratio — is a fund's annual cost as a percentage of assets. It is never invoiced: it is quietly subtracted from the unit price, every day, which makes it the easiest expense in a financial lifetime to ignore.
+      body: `The TER, or total expense ratio, is a fund's annual cost as a percentage of assets. It is never invoiced: it is quietly subtracted from the unit price, every day, which makes it the easiest expense in a financial lifetime to ignore.
 
 The gap between 0.20% and 1.50% looks trivial. On $100,000 over thirty years at 7%, it is roughly $200,000 of difference in the final balance. The cost is not subtracted from your return: it is subtracted from **all the compounding that return would have produced**.
 
@@ -260,7 +260,7 @@ It is also the only variable in a portfolio you know with certainty in advance. 
       slug: 'ter-custo-total',
       aliases: ['total expense ratio', 'comissão de gestão', 'encargos correntes', 'taxa de despesas'],
       short: 'A porcentagem anual que um fundo cobra sobre o dinheiro investido, descontada tanto num bom ano como num ano mau.',
-      body: `O TER — *total expense ratio* — é o custo anual do fundo expresso como porcentagem do patrimônio. Não é faturado: é subtraído silenciosamente do valor da unidade, todos os dias, o que o torna a despesa mais fácil de ignorar de toda uma vida financeira.
+      body: `O TER, ou *total expense ratio*, é o custo anual do fundo expresso como porcentagem do patrimônio. Não é faturado: é subtraído silenciosamente do valor da unidade, todos os dias, o que o torna a despesa mais fácil de ignorar de toda uma vida financeira.
 
 A diferença entre 0,20% e 1,50% parece trivial. Sobre 100.000 durante trinta anos a 7%, são cerca de 200.000 de diferença no patrimônio final. O custo não se subtrai à rentabilidade: subtrai-se a **todos os juros compostos que essa rentabilidade teria gerado**.
 
@@ -289,7 +289,7 @@ Un matiz honesto: si ya tienes una cantidad grande en efectivo, la historia dice
       short: 'Investing a fixed amount at regular intervals instead of trying to time your entry.',
       body: `Dollar cost averaging means investing the same amount every month, whatever happens. When the market falls, that amount buys more units; when it rises, fewer. The average price paid ends up below the average of the prices.
 
-Its main virtue, though, is not mathematical but **behavioral**: it converts a hard, repeated decision — is this a good moment? — into an automatic transfer that requires no decision at all. It removes the part of the process where most money is lost.
+Its main virtue, though, is not mathematical but **behavioral**: it turns a hard, repeated decision (is this a good moment to buy?) into an automatic transfer that requires no decision at all. It removes the part of the process where most money is lost.
 
 One honest caveat: if you already hold a large cash sum, history says investing it at once usually beats spreading it out, simply because markets rise more often than they fall. Spreading it out is worse on average and far better if the realistic alternative was never investing.`
     },
@@ -300,7 +300,7 @@ One honest caveat: if you already hold a large cash sum, history says investing 
       short: 'Investir um valor fixo em intervalos regulares, em vez de tentar acertar no momento de entrada.',
       body: `O investimento periódico consiste em investir o mesmo valor todos os meses, aconteça o que acontecer. Quando o mercado desce, esse valor compra mais unidades; quando sobe, compra menos. O preço médio pago acaba por ser mais baixo do que a média dos preços.
 
-A sua principal virtude, no entanto, não é matemática, mas **comportamental**: transforma uma decisão difícil e repetida — é boa altura? — numa transferência automática que não exige decisão nenhuma. Remove a parte do processo onde se perde mais dinheiro.
+A sua principal virtude, no entanto, não é matemática, mas **comportamental**: transforma uma decisão difícil e repetida (é um bom momento para comprar?) em uma transferência automática que não exige decisão nenhuma. Ela tira do caminho justamente a parte do processo em que se perde mais dinheiro.
 
 Uma ressalva honesta: se já tem um montante grande em dinheiro, a história diz que investi-lo de uma vez costuma bater o faseamento, simplesmente porque os mercados sobem mais vezes do que descem. Fasear é pior em média e muito melhor se a alternativa realista era nunca investir.`
     }
@@ -362,23 +362,23 @@ Por eso el porcentaje correcto depende más de tu **horizonte** y de tu toleranc
       name: 'Asset allocation',
       slug: 'asset-allocation',
       aliases: ['allocation', 'portfolio mix', 'stock bond split'],
-      short: 'How a portfolio is divided between asset types — equities, bonds, cash — and the decision that explains most of its behavior.',
+      short: 'How a portfolio is divided between asset types (equities, bonds, cash), and the decision that explains most of its behavior.',
       body: `Asset allocation is the answer to "what percentage in stocks and what percentage in bonds?". Classic studies attribute most of the variability in a portfolio's results over time to that decision: far more than the choice of individual holdings.
 
 An 80/20 portfolio and a 40/60 portfolio are not more and less ambitious versions of the same thing. They are two different experiences: the first can fall 35% in a bad year, the second around 18%. Both figures are normal, and the relevant question is not which returns more but which you can hold without selling.
 
-That is why the right percentage depends more on your **horizon** and your actual tolerance — not your stated one — than on any market forecast.`
+That is why the right percentage depends more on your **horizon** and your actual tolerance, not the tolerance you would claim in a calm month, than on any market forecast.`
     },
     pt: {
       name: 'Alocação de ativos',
       slug: 'alocacao-de-ativos',
       aliases: ['asset allocation', 'distribuição de ativos', 'composição da carteira'],
-      short: 'Como se reparte uma carteira entre tipos de ativo — ações, títulos, liquidez — e a decisão que mais explica o seu comportamento.',
+      short: 'Como uma carteira se divide entre tipos de ativo (ações, títulos, liquidez), e a decisão que mais explica o comportamento dela.',
       body: `A alocação de ativos é a resposta a "que porcentagem em ações e que porcentagem em títulos?". Os estudos clássicos atribuem a essa decisão a maior parte da variabilidade dos resultados de uma carteira ao longo do tempo: muito mais do que a escolha de títulos concretos.
 
 Uma carteira 80/20 e uma 40/60 não são versões mais ou menos ambiciosas da mesma coisa. São duas experiências diferentes: a primeira pode cair 35% num ano mau, a segunda cerca de 18%. Ambos os números são normais, e a pergunta relevante não é qual rende mais, mas qual consegue manter sem vender.
 
-É por isso que a porcentagem correta depende mais do seu **horizonte** e da sua tolerância real — não a declarada — do que de qualquer previsão de mercado.`
+É por isso que a porcentagem correta depende mais do seu **horizonte** e da sua tolerância real, não a que você diria ter num mês tranquilo, do que de qualquer previsão de mercado.`
     }
   },
   {
@@ -405,18 +405,18 @@ Es también la operación psicológicamente más incómoda de la inversión, por
 
 Its main function is **risk control**, not return: it stops a portfolio from turning more aggressive right after a good run, which is exactly when doing so feels most like a good idea and is least likely to be one.
 
-It is also the most psychologically uncomfortable operation in investing, because it forces you to sell what is working and buy what is not. That is why it works better as a mechanical rule — once a year, or whenever a position drifts more than five points — than as a discretionary call.`
+It is also the most psychologically uncomfortable operation in investing, because it forces you to sell what is working and buy what is not. That is why it works better as a mechanical rule (once a year, or whenever a position drifts more than five points) than as a call you make in the moment.`
     },
     pt: {
       name: 'Rebalanceamento',
       slug: 'rebalanceamento',
       aliases: ['rebalancear', 'reequilíbrio da carteira', 'rebalanceamento de carteira'],
       short: 'Devolver a carteira aos seus pesos-alvo vendendo o que subiu e comprando o que desceu.',
-      body: `Com o tempo, uma carteira 70/30 deixa de o ser: se as ações sobem muito, transforma-se num 80/20 sem que tenha decidido nada. Rebalancear é vender a parte que se excedeu e comprar a que ficou curta, até voltar aos pesos que escolheu.
+      body: `Com o tempo, uma carteira 70/30 para de ser 70/30: se as ações sobem muito, ela vira uma 80/20 sem que você tenha decidido nada. Rebalancear é vender a parte que se excedeu e comprar a que ficou curta, até voltar aos pesos que escolheu.
 
 A sua função principal é **controle de risco**, não rentabilidade: evita que a carteira se torne mais agressiva logo depois de uma boa fase, que é quando isso mais parece boa ideia e menos o é.
 
-É também a operação psicologicamente mais desconfortável do investimento, porque obriga a vender o que está indo bem e a comprar o que está indo mal. Por isso funciona melhor como regra mecânica — uma vez por ano, ou quando uma posição se desvia mais de cinco pontos — do que como decisão discricionária.`
+É também a operação psicologicamente mais desconfortável do investimento, porque obriga a vender o que está indo bem e a comprar o que está indo mal. Por isso funciona melhor como regra mecânica (uma vez por ano, ou quando uma posição se desvia mais de cinco pontos) do que como decisão tomada no calor do momento.`
     }
   },
   {
@@ -591,7 +591,7 @@ El error más frecuente del movimiento no es matemático sino de propósito: opt
       slug: 'fire-financial-independence',
       aliases: ['financial independence', 'financial independence retire early', 'FIRE movement', 'retire early'],
       short: 'The point at which your assets generate enough to cover your expenses, so that working becomes a choice rather than an obligation.',
-      body: `FIRE stands for *Financial Independence, Retire Early*. The more useful half of the concept is the first: financial independence is a state — your assets cover your costs — and early retirement is only one of the things you can do with it.
+      body: `FIRE stands for *Financial Independence, Retire Early*. The more useful half of the concept is the first: financial independence is a state, meaning your assets cover your costs, and early retirement is only one of the things you can do with it.
 
 The arithmetic is surprisingly simple and fairly brutal: what determines time to independence is not your salary but your **savings rate**. Someone saving 10% needs decades; someone saving 50% needs a little over fifteen years, because every unit saved raises the numerator and lowers the denominator at once.
 
@@ -602,7 +602,7 @@ The movement's most common mistake is not mathematical but about purpose: optimi
       slug: 'fire-independencia-financeira',
       aliases: ['independência financeira', 'financial independence retire early', 'movimento FIRE', 'liberdade financeira'],
       short: 'O ponto em que os seus ativos geram o suficiente para cobrir as suas despesas, tornando o trabalho numa escolha e não numa obrigação.',
-      body: `FIRE são as iniciais de *Financial Independence, Retire Early*. A parte mais útil do conceito é a primeira: a independência financeira é um estado — os seus ativos cobrem os seus custos — e a aposentadoria antecipada é apenas uma das coisas que pode fazer com ela.
+      body: `FIRE são as iniciais de *Financial Independence, Retire Early*. A parte mais útil do conceito é a primeira: a independência financeira é um estado, ou seja, os seus ativos cobrem os seus custos, e a aposentadoria antecipada é apenas uma das coisas que você pode fazer com ela.
 
 A aritmética é surpreendentemente simples e bastante brutal: o que determina o tempo até a independência não é o seu salário, mas a sua **taxa de poupança**. Quem poupa 10% precisa de décadas; quem poupa 50% precisa de pouco mais de quinze anos, porque cada real poupado sobe o numerador e baixa o denominador ao mesmo tempo.
 
@@ -897,7 +897,7 @@ La defensa no es sentirlo menos, porque no se puede. Es diseñar el sistema para
       short: 'The tendency to feel a loss roughly twice as intensely as a gain of the same size.',
       body: `Kahneman and Tversky measured it: losing $100 hurts about twice as much as gaining $100 feels good. This is not a character flaw, it is how the human brain evaluates outcomes by default.
 
-Its consequences in investing are almost all expensive. It explains why good investments get sold in downturns — the one action that turns a temporary loss into a permanent one — why losing positions are held for years waiting to "get back to even", and why many people with a forty-year horizon hold a portfolio that is far too conservative.
+Its consequences in investing are almost all expensive. It explains why good investments get sold in downturns, which is the one action that turns a temporary loss into a permanent one, why losing positions are held for years waiting to "get back to even", and why many people with a forty-year horizon hold a portfolio that is far too conservative.
 
 The defense is not to feel it less, because you cannot. It is to design the system so the emotion has no buttons to press: automatic contributions, infrequent reviews, and a rebalancing rule written down before the fall arrives.`
     },
@@ -908,7 +908,7 @@ The defense is not to feel it less, because you cannot. It is to design the syst
       short: 'A tendência para sentir uma perda com uma intensidade cerca de duas vezes maior do que um ganho do mesmo tamanho.',
       body: `Kahneman e Tversky mediram-no: perder 100 dói cerca do dobro do que agrada ganhar 100. Não é fraqueza de caráter, é como o cérebro humano avalia resultados por defeito.
 
-As suas consequências no investimento são quase todas caras. Explica por que se vendem os bons investimentos nas quedas — a única ação que transforma uma perda temporária em definitiva —, por que se mantêm durante anos posições perdedoras à espera de "voltar ao zero", e por que muita gente com quarenta anos de horizonte mantém uma carteira conservadora demais.
+As suas consequências no investimento são quase todas caras. Explica por que se vendem os bons investimentos nas quedas, que é a única ação capaz de transformar uma perda temporária em definitiva, por que se mantêm durante anos posições perdedoras à espera de "voltar ao zero", e por que muita gente com quarenta anos de horizonte mantém uma carteira conservadora demais.
 
 A defesa não é senti-lo menos, porque não se consegue. É desenhar o sistema para que a emoção não tenha botões para premir: reforços automáticos, revisões pouco frequentes e uma regra de rebalanceamento escrita antes de a queda chegar.`
     }
@@ -933,11 +933,11 @@ El antídoto no es austeridad, es **asignación anticipada**: decidir el reparto
       slug: 'lifestyle-creep',
       aliases: ['lifestyle inflation', 'lifestyle drift'],
       short: 'The process by which spending rises automatically with every pay increase, leaving the savings rate exactly where it was.',
-      body: `After a 20% raise, spending almost always rises 20%. The car improves, the apartment improves, the vacations improve, and two years later the sense of comfort is precisely what it was before — with one important difference: the standard of living now requires more money to sustain.
+      body: `After a 20% raise, spending almost always rises 20%. The car improves, the apartment improves, the vacations improve, and two years later the sense of comfort is precisely what it was before, with one important difference: the standard of living now costs more to keep.
 
 That is the double cost. Not only did you not save the raise: you have raised the wealth you will need to be independent, because that target is calculated from your annual spending. Every $100 of permanent monthly spending adds roughly $30,000 to the number.
 
-The antidote is not austerity but **pre-allocation**: deciding how the next raise gets split before it arrives — half to automatic saving and half to living better, say. Chosen in advance, it is a decision. Chosen afterwards, habit already decided it.`
+The antidote is not austerity but **pre-allocation**: deciding how the next raise gets split before it arrives, say half to automatic saving and half to living better. Chosen in advance, it is a decision. Chosen afterwards, your habits already decided it for you.`
     },
     pt: {
       name: 'Inflação do estilo de vida',
@@ -948,7 +948,7 @@ The antidote is not austerity but **pre-allocation**: deciding how the next rais
 
 Está aí o duplo custo. Não só não poupou o aumento: subiu o patrimônio de que vai precisar para ser independente, porque esse objetivo calcula-se a partir da sua despesa anual. Cada 100 de despesa mensal permanente acrescentam cerca de 30.000 ao número.
 
-O antídoto não é austeridade, é **alocação antecipada**: decidir a distribuição do próximo aumento antes de o receber — por exemplo, metade para poupança automática e metade para viver melhor. Escolhido de antemão, é uma decisão. Escolhido depois, já foi o hábito a escolher.`
+O antídoto não é austeridade, é **alocação antecipada**: decidir a distribuição do próximo aumento antes de ele chegar, por exemplo metade para a poupança automática e metade para viver melhor. Escolhido de antemão, é uma decisão. Escolhido depois, quem escolheu foram os seus hábitos.`
     }
   },
   {
@@ -1160,7 +1160,7 @@ La formulación útil no es "quiero ingresos pasivos", sino "quiero que mis acti
       name: 'Passive income',
       slug: 'passive-income',
       aliases: ['passive income streams', 'unearned income'],
-      short: 'Income that does not require your continuous active work — dividends, interest, rent — and almost always requires capital or prior work instead.',
+      short: 'Income that does not need your continuous active work (dividends, interest, rent), and that almost always needs capital or prior work instead.',
       body: `The phrase gets used with a looseness worth unpicking. Honest passive income is basically two things: what **capital** produces (dividends, interest, coupons, net rent) and what a **previously built asset** produces (a book, a product, a license), which is also rarely as passive as advertised.
 
 The arithmetic is unforgiving in the first case: $1,000 a month of passive income at a 4% withdrawal rate requires roughly $300,000 of capital. There is no shortcut, and any offer promising that income on far less is promising a risk it is not mentioning.
@@ -1171,7 +1171,7 @@ The useful framing is not "I want passive income" but "I want my assets to cover
       name: 'Rendimento passivo',
       slug: 'rendimento-passivo',
       aliases: ['rendimentos passivos', 'passive income', 'renda passiva'],
-      short: 'Rendimento que não exige o seu trabalho ativo contínuo — dividendos, juros, rendas — e que quase sempre exige capital ou trabalho anterior.',
+      short: 'Renda que não exige o seu trabalho ativo contínuo (dividendos, juros, aluguéis), e que quase sempre exige capital ou trabalho anterior.',
       body: `A expressão usa-se com uma leveza que convém desfazer. O rendimento passivo honesto é basicamente duas coisas: o que o **capital** produz (dividendos, juros, cupons, rendas líquidas) e o que produz um **ativo construído antes** (um livro, um produto, uma licença), que além disso raramente é tão passivo como se anuncia.
 
 A aritmética é implacável no primeiro caso: um rendimento passivo de 1.000 por mês com uma taxa de retirada de 4% exige cerca de 300.000 de capital. Não há atalho, e qualquer oferta que prometa essa renda com muito menos está prometendo um risco que não menciona.
@@ -1199,7 +1199,7 @@ No es una técnica para gastar menos, sino para gastar **con la información com
       slug: 'life-cost-in-hours',
       aliases: ['cost in hours', 'life energy cost', 'cost in life hours'],
       short: 'The price of a purchase expressed in the hours of work needed to pay for it, rather than in money.',
-      body: `The idea comes from *Your Money or Your Life*, by Vicki Robin and Joe Dominguez: money is life energy exchanged for hours. Divide your take-home pay by the hours you genuinely give to work — including commuting, training and the time it takes to switch off — and you get your real hourly rate.
+      body: `The idea comes from *Your Money or Your Life*, by Vicki Robin and Joe Dominguez: money is life energy exchanged for hours. Divide your take-home pay by the hours you genuinely give to work, including commuting, training and the time it takes to switch off, and you get your real hourly rate.
 
 With that figure, a $900 phone stops costing $900 and starts costing, say, seventy-five hours. Almost two weeks of work. Neither number is truer than the other, but only one is in the unit you actually pay in.
 
@@ -1210,7 +1210,7 @@ It is not a technique for spending less but for spending **with the full informa
       slug: 'custo-em-horas-de-vida',
       aliases: ['custo em vida', 'preço em horas de vida', 'custo em tempo'],
       short: 'O preço de uma compra expresso nas horas de trabalho necessárias para a pagar, em vez de em dinheiro.',
-      body: `A ideia aparece em *Your Money or Your Life*, de Vicki Robin e Joe Dominguez: o dinheiro é energia vital trocada por horas. Divida o seu salário líquido pelas horas que realmente dedica ao trabalho — incluindo deslocamentos, treinamento e o tempo que leva para desligar — e obtenha a sua tarifa real por hora.
+      body: `A ideia aparece em *Your Money or Your Life*, de Vicki Robin e Joe Dominguez: o dinheiro é energia vital trocada por horas. Divida o seu salário líquido pelas horas que você realmente dedica ao trabalho, incluindo deslocamentos, treinamento e o tempo que leva para desligar, e você tem a sua tarifa real por hora.
 
 Com esse número, um celular de 900 deixa de custar 900 e começa a custar, por exemplo, setenta e cinco horas. Quase duas semanas de trabalho. Nenhum dos dois números é mais verdadeiro do que o outro, mas só um está na unidade em que se paga de fato.
 
@@ -1275,7 +1275,7 @@ La consecuencia práctica es aburrida y por eso funciona: elegir una distribuci�
       slug: 'time-in-the-market',
       aliases: ['market timing', 'timing the market', 'staying invested'],
       short: 'The idea that staying invested over time matters more than trying to get the timing of entries and exits right.',
-      body: `The popular summary — "time in the market beats timing the market" — has a simple arithmetic backing: the best trading days are concentrated into very few sessions, and those sessions usually land **inside** the panics rather than after them. Anyone who steps out to "wait for things to calm down" frequently misses precisely the days that explain the decade's return.
+      body: `The popular summary, "time in the market beats timing the market", has a simple arithmetic backing: the best trading days are concentrated into very few sessions, and those sessions usually land **inside** the panics rather than after them. Anyone who steps out to "wait for things to calm down" frequently misses precisely the days that explain the decade's return.
 
 This is not an argument for ignoring risk. It is an argument about which lever is realistic: nobody has demonstrated a sustained ability to know when to exit and re-enter, and being invested for twenty years has demonstrably worked across almost every historical window.
 
@@ -1286,7 +1286,7 @@ The practical consequence is boring, which is why it works: choose an allocation
       slug: 'tempo-no-mercado',
       aliases: ['time in the market', 'market timing', 'timing de mercado'],
       short: 'A ideia de que permanecer investido ao longo do tempo importa mais do que tentar acertar no momento de entrar e sair.',
-      body: `O resumo popular — "time in the market beats timing the market" — tem um suporte aritmético simples: as melhores sessões de bolsa estão concentradas em muito poucos dias, e esses dias caem normalmente **dentro** dos períodos de pânico, não depois. Quem sai para "esperar que acalme" perde com frequência precisamente as sessões que explicam a rentabilidade da década.
+      body: `O resumo popular, "time in the market beats timing the market", tem um suporte aritmético simples: as melhores sessões de bolsa estão concentradas em muito poucos dias, e esses dias caem normalmente **dentro** dos períodos de pânico, não depois. Quem sai para "esperar que acalme" perde com frequência precisamente as sessões que explicam a rentabilidade da década.
 
 Isto não é um argumento para ignorar o risco. É um argumento sobre qual alavanca é realista: ninguém demonstrou de forma sustentada saber quando sair e voltar, e está demonstrado que estar dentro durante vinte anos funcionou em quase todas as janelas históricas.
 

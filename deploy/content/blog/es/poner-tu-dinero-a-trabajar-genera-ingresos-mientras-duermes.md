@@ -1,5 +1,5 @@
 ---
-title: "Pon tu Dinero a Trabajar: Genera Ingresos Mientras Duermes"
+title: "Pon tu dinero a trabajar: genera ingresos mientras duermes"
 date: 2026-09-01
 category: Inversión
 summary: El ahorro solo no construye riqueza debido a la inflación. Descubre
@@ -23,7 +23,7 @@ En este artículo, analizaremos por qué ahorrar no es suficiente y cómo lograr
 
 ---
 
-## Por Qué Solo Ahorrar No Es Suficiente
+## Por qué solo ahorrar no es suficiente
 
 Construir un fondo de emergencia—de **3 a 6 meses de gastos básicos**—es un paso fundamental e indispensable. Esta reserva debe permanecer accesible para cubrir imprevistos como emergencias médicas o desempleo.
 
@@ -31,13 +31,13 @@ Sin embargo, el ahorro tradicional en cuentas bancarias sufre un castigo invisib
 
 ---
 
-## El Poder del Interés Compuesto: Dinero que Genera Dinero
+## El poder del interés compuesto: dinero que genera dinero
 
 El interés compuesto ocurre cuando las ganancias generadas por tus inversiones empiezan a producir sus propios rendimientos. Al adquirir activos de calidad, tu capital inicial se expande de forma exponencial con el tiempo.
 
 [ Inversión Inicial ] ➔ [ Crecimiento Compuesto ] ➔ [ Rendimientos Reinvertidos ] ➔ [ Crecimiento Exponencial ]
 
-### El Interés Compuesto en Acción: Crecimiento de $10,000 (Retorno Promedio del 7% Anual)
+### El interés compuesto en acción: crecimiento de $10,000 (retorno promedio del 7% anual)
 
 | Horizonte | Valor Total | Crecimiento Acumulado | Motor Principal |
 | :--- | :--- | :--- | :--- |
@@ -47,7 +47,7 @@ El interés compuesto ocurre cuando las ganancias generadas por tus inversiones 
 
 ---
 
-## 5 Pasos para Poner tu Dinero a Trabajar
+## 5 pasos para poner tu dinero a trabajar
 
 1. **Invierte en Fondos Indexados y ETFs:** El índice S&P 500 ha rendido históricamente entre un **7% y un 10% anual** ajustado por inflación a largo plazo. Los fondos indexados te permiten diversificar entre cientos de empresas líderes.
 2. **Inversiones en Bienes Raíces:** Las propiedades de alquiler ofrecen flujo de caja mensual y apreciación del valor del inmueble. Los REITs o FIBRAs son alternativas para invertir en bienes raíces sin gestionar propiedades directamente.
@@ -57,14 +57,14 @@ El interés compuesto ocurre cuando las ganancias generadas por tus inversiones 
 
 ---
 
-## Comparativa: Ahorro Tradicional vs. Inversión Compuesta ($10,000 a 1 Año)
+## Comparativa: ahorro tradicional vs. inversión compuesta ($10,000 a 1 año)
 
 * **Cuenta de Ahorros Convencional (1% Retorno):** Termina el año con **$10,100** (pérdida de poder adquisitivo tras la inflación).
 * **Portafolio Diversificado (7% Retorno Promedio):** Termina el año con **$10,700** (supera la inflación y aumenta tu riqueza real).
 
 ---
 
-### ¿Listo para Dominar tus Hábitos Financieros?
-Dar el salto de trabajador activo a propietario de activos que generan ingresos es el camino directo hacia la libertad financiera. Completa nuestra evaluación para medir el crecimiento de tu portafolio, optimizar tu efectivo e impulsar tu plan de inversión.
+### ¿Listo para dominar tus hábitos financieros?
+El efectivo quieto da sensación de seguridad y te cuesta algo silenciosamente cada año que sigue ahí. Realiza nuestra evaluación de hábitos para ver cuánto de tu dinero no está haciendo nada y cómo sería, en tu caso, un primer paso fuera de la cuenta de ahorro.
 
-[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/?lang=es#contacto)
+[Evalúa tus hábitos financieros →](https://compoundingjourney.com/#assessment)

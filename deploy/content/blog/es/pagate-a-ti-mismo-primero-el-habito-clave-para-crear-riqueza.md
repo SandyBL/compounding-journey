@@ -1,5 +1,5 @@
 ---
-title: "Págate a Ti Mismo Primero: El Hábito Clave para Crear Riqueza"
+title: "Págate a ti mismo primero: el hábito clave para crear riqueza"
 date: 2026-07-28
 category: Hábitos financieros
 summary: Descubre cómo ahorrar un porcentaje fijo antes de gastar romperá el
@@ -15,7 +15,7 @@ Cuando se trata de administrar tu dinero, existe una regla fundamental que puede
 
 ---
 
-## ¿Qué Significa Realmente "Pagarte a Ti Mismo Primero"?
+## ¿Qué significa realmente "pagarte a ti mismo primero"?
 
 Imagina que acabas de recibir tu salario. En lugar de gastarlo hasta dejar la cuenta en cero, tomas inmediatamente un porcentaje—por ejemplo, entre el **10% y el 15%**—y lo destinas a tu futuro. Este dinero puede canalizarse hacia:
 
@@ -25,7 +25,7 @@ Imagina que acabas de recibir tu salario. En lugar de gastarlo hasta dejar la cu
 
 ---
 
-## Cómo Ahorrar un Porcentaje Fijo de tus Ingresos
+## Cómo ahorrar un porcentaje fijo de tus ingresos
 
 Desarrollar un hábito de ahorro constante no requiere sacrificios extremos. Sigue estos tres pasos prácticos:
 
@@ -37,7 +37,7 @@ Desarrollar un hábito de ahorro constante no requiere sacrificios extremos. Sig
 
 ---
 
-## Por Qué la Estrategia del "Dinero Sobrante" Suele Fallar
+## Por qué la estrategia del "dinero sobrante" suele fallar
 
 Intentar ahorrar lo que queda al final del mes casi nunca funciona, ya que los gastos discrecionales tienden a expandirse hasta consumir todo el dinero disponible.
 
@@ -48,15 +48,15 @@ Intentar ahorrar lo que queda al final del mes casi nunca funciona, ya que los g
 
 ---
 
-## Tu Fondo de Emergencia: El Escudo Financiero
+## Tu fondo de emergencia: el escudo financiero
 
 Un fondo de emergencia te protege contra las sorpresas de la vida—como reparaciones del auto, gastos médicos o desempleo—evitando que caigas en deudas.
 
-### Beneficios Clave de una Red de Seguridad
+### Beneficios clave de una red de seguridad
 * **Paz Mental:** Saber que cuentas con reservas en efectivo reduce drásticamente el estrés.
 * **Prevención de Deudas:** Elimina la necesidad de recurrir a tarjetas de crédito con intereses altos o préstamos.
 
-### Metas Progresivas para tu Fondo de Emergencia
+### Metas progresivas para tu fondo de emergencia
 
 * **Fase 1 (Fondo Inicial):** Guarda entre **$500 y $1,000** tan pronto como sea posible.
 * **Fase 2 (Seguridad Total):** Acumula de **3 a 6 meses** de gastos básicos de subsistencia (por ejemplo, $6,000–$12,000 para un presupuesto de $2,000/mes).
@@ -65,7 +65,7 @@ Un fondo de emergencia te protege contra las sorpresas de la vida—como reparac
 
 ---
 
-### ¿Listo para Dominar tus Hábitos Financieros?
-Pagarte a ti mismo primero es el paso fundamental para recuperar el control de tu tiempo y construir tranquilidad. Realiza nuestra evaluación de hábitos para diagnosticar tu rutina actual de ahorro y descubrir pasos concretos para acelerar tu independencia.
+### ¿Listo para dominar tus hábitos financieros?
+Pagarte a ti mismo primero es un consejo hasta el momento en que se convierte en una transferencia automática el día de la nómina, y entonces deja de ser un consejo y empieza a ser un saldo. Realiza nuestra evaluación de hábitos para ver en qué orden estás ahorrando y qué merece pasar al principio de la cola.
 
-[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#assessment)
+[Evalúa tus hábitos financieros →](https://compoundingjourney.com/#assessment)

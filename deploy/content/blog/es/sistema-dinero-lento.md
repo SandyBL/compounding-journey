@@ -79,7 +79,7 @@ Encuentra un ritmo que deje espacio para tu vida y permite que el tiempo multipl
 
 ---
 
-### ¿Listo para Dominar tus Hábitos Financieros?
-Pagarte a ti mismo primero es el paso fundamental para recuperar el control de tu tiempo y construir tranquilidad. Realiza nuestra evaluación de hábitos para diagnosticar tu rutina actual de ahorro y descubrir pasos concretos para acelerar tu independencia.
+### ¿Listo para dominar tus hábitos financieros?
+Lo lento solo funciona si continúa, y lo que hace que continúe es un ritmo que apenas notas. Realiza nuestra evaluación de hábitos para ver si la cantidad que ahorras es una que seguirías ahorrando dentro de cinco años y dónde conviene aflojar.
 
-[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/#assessment)
+[Evalúa tus hábitos financieros →](https://compoundingjourney.com/#assessment)

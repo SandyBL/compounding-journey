@@ -84,6 +84,6 @@ When you eliminate mindless spending, you free up capital to save and invest. Ov
 ---
 
 ### Ready to Master Your Money Habits?
-Spending with purpose is about making your money work for your happiness. Take our quick assessment to benchmark your spending habits, eliminate financial leaks, and map out your path to true independence.
+Almost nobody spends against their own values on purpose. It happens in small, defensible steps. Take our habit assessment to see where your spending and your priorities have drifted apart, and which gap is worth closing first.
 
 [Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)

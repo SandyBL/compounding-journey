@@ -862,7 +862,7 @@
   "explExample1": {
     "en": "Put 100% in stocks and start in 1929. The balance falls by roughly two thirds within three years and does not return to its starting value for well over a decade. Put the same money in the Permanent Portfolio — a quarter each in stocks, long bonds, gold and cash — and the same three years cost you a fraction of that.",
     "es": "Pon el 100% en acciones y empieza en 1929. El saldo cae cerca de dos tercios en tres años y no vuelve a su valor inicial hasta bastante más de una década después. Pon el mismo dinero en la Cartera Permanente —un cuarto en acciones, un cuarto en bonos largos, un cuarto en oro y un cuarto en efectivo— y esos mismos tres años te cuestan una fracción de eso.",
-    "pt": "Ponha 100% em ações e comece em 1929. O saldo cai cerca de dois terços em três anos e não volta ao valor inicial senão bastante mais de uma década depois. Ponha o mesmo dinheiro na Carteira Permanente — um quarto em ações, um quarto em títulos longas, um quarto em ouro e um quarto em liquidez — e esses mesmos três anos custam-lhe uma fração disso."
+    "pt": "Ponha 100% em ações e comece em 1929. O saldo cai cerca de dois terços em três anos e só volta ao valor inicial bem mais de uma década depois. Ponha o mesmo dinheiro na Carteira Permanente — um quarto em ações, um quarto em títulos longos, um quarto em ouro e um quarto em liquidez — e esses mesmos três anos custam a você uma fração disso."
   },
   "explExample2": {
     "en": "Then run both to the present day. The all-stock portfolio ends far ahead. Both facts are true at once, and the useful question is not which number is bigger but whether you would have held the first one through 1932 — because an allocation you abandon at the bottom returns nothing at all. That is what the tool is really testing.",
@@ -907,7 +907,7 @@
   "explReadingTitle": {
     "en": "Keep reading",
     "es": "Sigue leyendo",
-    "pt": "Continue a ler"
+    "pt": "Continue lendo"
   },
   "explReadingIntro": {
     "en": "The journal covers the ideas behind this tool at greater length.",
@@ -935,7 +935,7 @@
     "pt": "o-que-ensina-um-seculo-de-historia-dos-mercados-quedas-recuperacao-e-diversificacao"
   },
   "explReadingLabel1": {
-    "en": "What a century of market history teaches: drawdowns, recovery and diversification",
+    "en": "What a Century of Market History Teaches: Drawdowns, Recovery and Diversification",
     "es": "Qué enseña un siglo de historia de los mercados: caídas, recuperación y diversificación",
     "pt": "O que ensina um século de história dos mercados: quedas, recuperação e diversificação"
   },
@@ -946,8 +946,8 @@
   },
   "explReadingLabel2": {
     "en": "Foundations of Personal Finance: How to Control Expenses and Build Wealth",
-    "es": "Fundamentos de las Finanzas Personales: Cómo Controlar Gastos y Crear Riqueza",
-    "pt": "Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza"
+    "es": "Fundamentos de las finanzas personales: cómo controlar gastos y crear riqueza",
+    "pt": "Fundamentos das finanças pessoais: como controlar despesas e criar riqueza"
   },
   "explCrumbSelf": {
     "en": "Market Time Machine",

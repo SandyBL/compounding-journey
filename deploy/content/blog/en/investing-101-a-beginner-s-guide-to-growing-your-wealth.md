@@ -60,6 +60,6 @@ The most powerful force in personal finance is **compound growth**. Your returns
 ---
 
 ### Ready to Master Your Money Habits?
-Starting your investment journey early is the single most effective way to secure your financial freedom. Take our habit assessment to evaluate your current risk tolerance, discover your ideal asset mix, and set up your automated growth plan.
+The hardest part of investing is not choosing the fund. It is the twenty years of leaving it alone that come afterwards. Take our habit assessment to see whether your plan is built to be left alone, and what is worth automating before you start.
 
-[Assess Your Financial Habits →](https://compoundingjourney.com/?lang=en#contacto)
+[Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)

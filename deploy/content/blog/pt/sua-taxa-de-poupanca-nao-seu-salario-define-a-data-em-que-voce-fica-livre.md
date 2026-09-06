@@ -10,21 +10,21 @@ translation_key: savings-rate-sets-the-date
 link_phrases: taxa de poupança, independência financeira, regra dos 25, data de liberdade
 author: Sandy Bradbury
 ---
-Pergunte à maioria das pessoas o que permitiria parar de precisar de um salário e elas responderão: um salário maior. É a resposta intuitiva e é quase sempre errada, e o motivo é um dos poucos resultados genuinamente surpreendentes das finanças pessoais.
+Pergunte à maioria das pessoas o que permitiria parar de precisar de um salário e elas vão responder: um salário maior. É a resposta intuitiva, e ela está quase toda errada. O motivo é um dos poucos resultados genuinamente surpreendentes das finanças pessoais, e vale sentar com ele por um minuto.
 
 Escreva a aritmética e a sua renda desaparece dela.
 
 ## Os dois números que decidem tudo
 
-A independência financeira, reduzida à sua mecânica, é uma única condição: seus ativos produzem o suficiente para cobrir seus gastos sem que você trabalhe.
+A independência financeira, reduzida à sua mecânica, é uma condição só: seus ativos produzem o suficiente para cobrir seus gastos sem que você trabalhe.
 
-Isso dá um alvo. Se você supõe que pode retirar cerca de 4% de uma carteira por ano, a carteira necessária é aproximadamente **25 vezes o seu gasto anual**. Gaste R$ 24.000 por ano e o alvo é R$ 600.000. Gaste R$ 40.000 e é R$ 1.000.000.
+Isso lhe dá um alvo. Se você supõe que pode retirar cerca de 4% de uma carteira por ano, a carteira necessária é aproximadamente **25 vezes o seu gasto anual**. Gaste R$ 24.000 por ano e o alvo é R$ 600.000. Gaste R$ 40.000 e é R$ 1.000.000.
 
-Repare no que acabou de acontecer. Seu gasto aparece duas vezes: define quanto você precisa acumular *e* define quanto pode guardar cada ano. A renda aparece só uma vez e, ao fazer a álgebra, ela se cancela por completo.
+Agora repare no que acabou de acontecer. Seu gasto aparece duas vezes: define quanto você precisa acumular *e* define quanto você consegue guardar cada ano. A renda aparece uma vez só e, quando você faz a álgebra, ela se cancela por completo.
 
 ## A tabela que prova o ponto
 
-Partindo de zero. Supondo 5% de rentabilidade acima da inflação, aportes uma vez por ano, gasto estável em termos reais e o alvo de 25× acima. Então os anos até a carteira cobrir o seu gasto dependem de uma coisa só: a fração da sua renda que você mantém.
+Comece do zero. Suponha 5% de rentabilidade acima da inflação, aportes uma vez por ano, gasto estável em termos reais e o alvo de 25× acima. Os anos até a sua carteira cobrir o seu gasto passam a depender de uma coisa só: a fatia da sua renda que você mantém.
 
 | Taxa de poupança | Anos até 25× o gasto |
 |---|---|
@@ -37,37 +37,44 @@ Partindo de zero. Supondo 5% de rentabilidade acima da inflação, aportes uma v
 | 60% | cerca de 12 |
 | 70% | cerca de 9 |
 
-Não existe coluna de renda, porque a resposta não tem uma. Quem guarda 20% de R$ 30.000 e quem guarda 20% de R$ 300.000 chegam à liberdade no mesmo número de anos. A segunda pessoa chega dentro de uma vida bem maior, o que importa, mas não chega um dia antes.
+Não existe coluna de renda, porque a resposta não tem uma. Quem guarda 20% de R$ 30.000 e quem guarda 20% de R$ 300.000 chegam à liberdade no mesmo número de anos. A segunda pessoa chega dentro de uma vida bem maior, o que sem dúvida importa, mas não chega um único dia antes.
 
 > 💡 **Por que o efeito é tão violento:**
-> Aumentar sua taxa de poupança faz duas coisas ao mesmo tempo. Soma ao que você acumula todo ano e reduz o alvo em direção ao qual você acumula. Quase todas as alavancas financeiras empurram um lado de uma razão; esta empurra os dois, e é por isso que os anos desabam tão rápido.
+> Aumentar a sua taxa de poupança faz duas coisas ao mesmo tempo. Soma ao que você acumula todo ano e reduz o alvo em direção ao qual você está acumulando. Quase todas as alavancas financeiras empurram um lado de uma razão. Esta empurra os dois, e é por isso que os anos desabam tão rápido.
 
 ## O que isso não diz
 
-O resultado é real e é vendido com facilidade demais. Alguns limites honestos:
+O resultado é real, e ele é vendido com facilidade demais. Então aqui estão os limites honestos:
 
-- **A renda define o piso.** Abaixo de certo nível não existe margem, e a resposta não é disciplina. Nada nesta aritmética é um juízo moral sobre quem não consegue guardar.
-- **Importa a faixa, não a direção.** Ir de 5% para 15% vale cerca de oito anos. Ir de 60% para 70% vale três. Os primeiros movimentos são os valiosos, o que é uma sorte, porque também são os alcançáveis.
-- **Um aumento que você não gasta conta duas vezes.** A renda se cancela da *fórmula*, não da sua vida. Um salário maior é a forma mais barata de elevar uma taxa de poupança, desde que o seu gasto continue onde estava. Normalmente não continua: isso é a inflação do estilo de vida.
-- **5% real é uma suposição, não um fato.** Troque por 3% e todas as linhas se alongam. A forma da tabela sobrevive; os números se movem.
+- **A renda define o piso.** Abaixo de certo nível não existe margem nenhuma, e a resposta não é disciplina. Nada nesta aritmética é um juízo moral sobre quem não consegue guardar.
+- **Importa a faixa, não a direção.** Ir de 5% para 15% vale cerca de oito anos. Ir de 60% para 70% vale três. Os primeiros movimentos são os valiosos, o que é uma sorte, porque são também os alcançáveis.
+- **Um aumento que você não gasta conta duas vezes.** A renda se cancela da *fórmula*, não da sua vida. Um salário maior é a forma mais barata de elevar uma taxa de poupança, desde que o seu gasto continue onde estava. Normalmente ele não continua, e isso é a inflação do estilo de vida resumida em uma frase.
+- **5% real é uma suposição, não um fato.** Troque por 3% e todas as linhas se alongam. A forma da tabela sobrevive, mas os números se movem.
 - **Partir de zero é uma simplificação.** O que você já tem guardado, um financiamento imobiliário ou uma previdência que começa aos 65 mudam a resposta, e mudam a seu favor.
 
 ## A diferença é uma questão de vida, não de planilha
 
-Como o gasto está nos dois lados da equação, o trabalho interessante não é otimizar. É decidir para que serve o seu gasto.
+Como o gasto está nos dois lados da equação, o trabalho interessante aqui não é otimizar. É decidir para que serve o seu gasto.
 
-Quem gasta R$ 40.000 por ano em coisas que defenderia numa discussão está em outra posição do que quem gasta R$ 40.000 por ano e não saberia dizer para onde foram 12.000. Os dois têm o mesmo alvo. Só um deles consegue reduzi-lo sem perder nada que lhe importe.
+Pense em duas pessoas que gastam R$ 40.000 por ano. Uma delas defenderia cada linha desse gasto numa discussão. A outra não saberia dizer para onde foram R$ 12.000. As duas têm exatamente o mesmo alvo, mas só uma consegue reduzi-lo sem perder nada que lhe importe.
 
-É por isso que o conselho de «corte tudo» fracassa e produz um efeito rebote de forma confiável. A versão duradoura é mais estreita: encontre o gasto que não compra nada de que você sentiria falta, remova isso e deixe o resto em paz. O que sobra é uma taxa de poupança que você consegue manter por uma década, e a década é a unidade em que esta aritmética funciona.
+É por isso que o conselho de «corte tudo» fracassa e produz um efeito rebote com uma regularidade impressionante. A versão que dura é bem mais estreita: encontre o gasto que não compra nada de que você sentiria falta, remova isso e deixe o resto em paz. O que sobra é uma taxa de poupança que você consegue manter por uma década, e a década é a unidade em que esta aritmética funciona.
 
 ## Transformar uma porcentagem em uma data
 
 Uma taxa de poupança é uma abstração, e abstrações não mudam comportamento. Uma data muda.
 
-É para isso que serve o [Calendário da Liberdade](/pt/simulators/freedom-calendar.html). Você informa o que tem, o que guarda e o que gasta e, em vez de um saldo final, recebe uma linha de tempo: quando sua carteira cobre o essencial, quando cobre a sua vida atual, quando cobre a vida que você escolheria.
+É para isso que serve o [Calendário da Liberdade](/pt/simulators/freedom-calendar.html). Você informa o que tem, o que guarda e o que gasta e, em vez de um saldo final, recebe uma linha de tempo: quando a sua carteira cobre o essencial, quando cobre a sua vida atual e quando cobre a vida que você escolheria.
 
-O exercício útil não é o primeiro resultado. São o segundo e o terceiro. Adicione R$ 100 por mês e veja a data se mover. Tire R$ 200 por mês do seu gasto e veja-a se mover mais, porque você mexeu nos dois lados ao mesmo tempo. Reduza a rentabilidade suposta para 3% e veja quanto do seu plano estava apoiado em otimismo.
+O exercício útil não é o primeiro resultado. São o segundo e o terceiro. Adicione R$ 100 por mês e veja a data se mover. Tire R$ 200 por mês do seu gasto e veja-a se mover mais, porque você mexeu nos dois lados ao mesmo tempo. Depois reduza a rentabilidade suposta para 3% e veja quanto do seu plano estava apoiado em otimismo.
 
-Você aprende duas coisas rápido. A data é mais sensível ao seu gasto que ao seu salário, e é mais sensível aos dois que a qualquer coisa engenhosa que você possa fazer com a carteira no meio do caminho.
+Você aprende duas coisas rápido. A sua data é mais sensível ao seu gasto que ao seu salário, e é mais sensível aos dois que a qualquer coisa engenhosa que você possa fazer com a carteira no meio do caminho.
 
-Esse é o resultado completo, e está disponível para quase qualquer pessoa com uma diferença positiva: o quanto você mantém é o que define a data. Todo o resto é detalhe.
+Esse é o resultado completo, e ele está disponível para quase qualquer pessoa com uma diferença positiva: o quanto você mantém é o que define a data.
+
+---
+
+### Pronto para dominar os seus hábitos financeiros?
+A sua taxa de poupança é o número em que toda essa conta se apoia, então vale conhecê-lo com precisão e não por aproximação. Faça a nossa avaliação de hábitos para descobrir onde ela está hoje e qual mudança a elevaria sem encolher a sua vida.
+
+[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

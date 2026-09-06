@@ -64,6 +64,6 @@ Compounding occurs when your investment returns begin generating their own retur
 ---
 
 ### Ready to Master Your Money Habits?
-Transitioning from active worker to owner of income-producing assets is the definitive path to financial freedom. Take our habit assessment to evaluate your current portfolio growth, eliminate drag from uninvested cash, and design your personalized compounding roadmap.
+Cash sitting still feels safe, and it quietly costs you something every year it stays there. Take our habit assessment to see how much of your money is currently doing nothing, and what a first step out of the savings account would look like for you.
 
-[Assess Your Financial Habits →](https://compoundingjourney.com/?lang=en#contacto)
+[Assess Your Financial Habits →](https://compoundingjourney.com/en/#assessment)

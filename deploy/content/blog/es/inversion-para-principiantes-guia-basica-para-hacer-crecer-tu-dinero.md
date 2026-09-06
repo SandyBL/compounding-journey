@@ -1,5 +1,5 @@
 ---
-title: "Inversión para Principiantes: Guía Básica para Hacer Crecer tu Dinero"
+title: "Inversión para principiantes: guía básica para hacer crecer tu dinero"
 date: 2026-09-04
 category: Inversión
 summary: Invertir no es solo para ricos. Aprende sobre acciones, bonos, ETFs y
@@ -14,7 +14,7 @@ Invertir puede parecer intimidante si nunca lo has hecho, pero cualquiera puede 
 
 ---
 
-## Tipos de Activos para Empezar
+## Tipos de activos para empezar
 
 Conocer dónde poner tu dinero es el primer paso para construir un portafolio equilibrado.
 
@@ -28,7 +28,7 @@ Conocer dónde poner tu dinero es el primer paso para construir un portafolio eq
 
 ---
 
-## Comprendiendo la Relación Riesgo y Retorno
+## Comprendiendo la relación riesgo y retorno
 
 Toda inversión conlleva cierto grado de riesgo. La regla fundamental en finanzas es que a mayor potencial de rendimiento, mayor riesgo debes asumir.
 
@@ -38,18 +38,18 @@ Toda inversión conlleva cierto grado de riesgo. La regla fundamental en finanza
 
 ---
 
-## El Impacto de Empezar Cuanto Antes
+## El impacto de empezar cuanto antes
 
 La fuerza más poderosa en las finanzas personales es el **crecimiento compuesto**. Tus ganancias generan nuevos rendimientos, multiplicándose exponencialmente con el paso de los años.
 
-### El Costo de Posponer la Inversión ($100/mes a un 7% de Retorno Promedio Anual)
+### El costo de posponer la inversión ($100/mes a un 7% de retorno promedio anual)
 
 * **Empezando a los 25 años:** Acumulas aproximadamente **$250,000** a los 65 años.
 * **Empezando a los 35 años:** Acumulas aproximadamente **$120,000** a los 65 años—¡menos de la mitad del patrimonio final!
 
 ---
 
-## Cómo Dar tu Primer Paso Hoy
+## Cómo dar tu primer paso hoy
 
 1. **Abre una Cuenta de Inversión:** Utiliza plataformas de bajas comisiones como Vanguard o Fidelity en EE. UU., o DeGiro, Trade Republic, MyInvestor o Indexa Capital en Europa.
 2. **Elige un Activo Sencillo:** Un ETF diversificado como el S&P 500 o un fondo global es ideal para comenzar.
@@ -58,7 +58,7 @@ La fuerza más poderosa en las finanzas personales es el **crecimiento compuesto
 
 ---
 
-### ¿Listo para Dominar tus Hábitos Financieros?
-Comenzar a invertir temprano es la decisión más efectiva para asegurar tu independencia financiera. Completa nuestra evaluación rápida para analizar tu tolerancia al riesgo, definir tu portafolio ideal y automatizar tu plan de crecimiento.
+### ¿Listo para dominar tus hábitos financieros?
+La parte difícil de invertir no es elegir el fondo. Son los veinte años de no tocarlo que vienen después. Realiza nuestra evaluación de hábitos para ver si tu plan está hecho para dejarlo en paz y qué conviene automatizar antes de empezar.
 
-[Evalúa tus Hábitos Financieros →](https://compoundingjourney.com/?lang=es#contacto)
+[Evalúa tus hábitos financieros →](https://compoundingjourney.com/#assessment)
