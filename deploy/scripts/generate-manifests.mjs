@@ -52,8 +52,8 @@ const MANIFESTS = {
     scope: '/en/'
   },
   es: {
-    name: 'El viaje del Crecimiento Compuesto',
-    short_name: 'Crecimiento',
+    name: 'Compounding Journey',
+    short_name: 'Compounding',
     description: 'Tu mapa hacia la libertad financiera: ensayos, calculadoras y simuladores sobre interés compuesto, ahorro e inversión a largo plazo.',
     start_url: '/',
     // Spanish is the one language whose pages are not all under one prefix: the
@@ -64,8 +64,8 @@ const MANIFESTS = {
     scope: '/'
   },
   pt: {
-    name: 'A Jornada de Crescimento Composto',
-    short_name: 'Crescimento',
+    name: 'Compounding Journey',
+    short_name: 'Compounding',
     description: 'O teu mapa para a liberdade financeira: ensaios, calculadoras e simuladores sobre juros compostos, poupança e investimento a longo prazo.',
     start_url: '/pt/',
     scope: '/pt/'

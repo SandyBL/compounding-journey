@@ -815,14 +815,14 @@
     "pt": "Continue lendo"
   },
   "explReadingIntro": {
-    "en": "The journal covers the ideas behind this tool at greater length.",
-    "es": "El diario desarrolla con más calma las ideas que hay detrás de esta herramienta.",
-    "pt": "O diário desenvolve com mais calma as ideias por trás desta ferramenta."
+    "en": "The blog covers the ideas behind this tool at greater length.",
+    "es": "El blog desarrolla con más calma las ideas que hay detrás de esta herramienta.",
+    "pt": "O blog desenvolve com mais calma as ideias por trás desta ferramenta."
   },
   "explReadingAll": {
-    "en": "All journal entries",
-    "es": "Todas las entradas del diario",
-    "pt": "Todas as entradas do diário"
+    "en": "All blog posts",
+    "es": "Todas las entradas del blog",
+    "pt": "Todas as entradas do blog"
   },
   "explCrumbHome": {
     "en": "Home",

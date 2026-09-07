@@ -27,9 +27,9 @@
     "pt": "Início"
   },
   "journal": {
-    "es": "Diario",
-    "en": "Journal",
-    "pt": "Diário"
+    "es": "Blog",
+    "en": "Blog",
+    "pt": "Blog"
   },
   "skipToContent": {
     "es": "Ir al contenido",
@@ -197,9 +197,9 @@
     "pt": "glossario"
   },
   "glossaryIntro": {
-    "es": "Definiciones claras de los términos que aparecen en el diario, las calculadoras y los simuladores. Un término por página, en el idioma que estás leyendo.",
-    "en": "Plain definitions of the terms used across the journal, the calculators and the simulators. One term per page, in the language you are reading.",
-    "pt": "Definições claras dos termos que aparecem no diário, nas calculadoras e nos simuladores. Um termo por página, no idioma que você está lendo."
+    "es": "Definiciones claras de los términos que aparecen en el blog, las calculadoras y los simuladores. Un término por página, en el idioma que estás leyendo.",
+    "en": "Plain definitions of the terms used across the blog, the calculators and the simulators. One term per page, in the language you are reading.",
+    "pt": "Definições claras dos termos que aparecem no blog, nas calculadoras e nos simuladores. Um termo por página, no idioma que você está lendo."
   },
   "glossaryAll": {
     "es": "Ver el glosario completo",
@@ -252,9 +252,9 @@
     "pt": "Todas as categorias"
   },
   "categoryIntro": {
-    "es": "Todos los artículos del diario en esta categoría, del más reciente al más antiguo.",
-    "en": "Every journal article in this category, newest first.",
-    "pt": "Todos os artigos do diário nesta categoria, do mais recente ao mais antigo."
+    "es": "Todos los artículos del blog en esta categoría, del más reciente al más antiguo.",
+    "en": "Every blog article in this category, newest first.",
+    "pt": "Todos os artigos do blog nesta categoria, do mais recente ao mais antigo."
   },
   "categoryReadArticle": {
     "es": "Leer el artículo",

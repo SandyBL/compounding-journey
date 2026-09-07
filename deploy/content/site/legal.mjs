@@ -78,7 +78,7 @@ Las filas que se guardan sin nombre no llevan identificador alguno, así que tam
 
 ## El recuento de lecturas
 
-Cada vez que se abre un artículo se suma uno a un contador. Ese contador guarda un número por artículo y por mes, y nada más: no hay cookie, no hay identificador, no hay huella del navegador y no queda registro de quién ha leído qué. Es lo que decide qué artículo se destaca en la portada del diario.
+Cada vez que se abre un artículo se suma uno a un contador. Ese contador guarda un número por artículo y por mes, y nada más: no hay cookie, no hay identificador, no hay huella del navegador y no queda registro de quién ha leído qué. Es lo que decide qué artículo se destaca en la portada del blog.
 
 ## Almacenamiento en tu navegador, y por qué no hay aviso de cookies
 
@@ -163,7 +163,7 @@ The rows stored without a name carry no identifier at all, which means they cann
 
 ## The reading counter
 
-Opening an article adds one to a counter. That counter holds a number per article per month and nothing else: no cookie, no identifier, no browser fingerprint, no record of who read what. It is what decides which article the journal features.
+Opening an article adds one to a counter. That counter holds a number per article per month and nothing else: no cookie, no identifier, no browser fingerprint, no record of who read what. It is what decides which article the blog features.
 
 ## Storage in your browser, and why there is no cookie banner
 
@@ -248,7 +248,7 @@ As linhas guardadas sem nome não têm identificador nenhum, então também não
 
 ## A contagem de leituras
 
-Abrir um artigo soma um a um contador. Esse contador guarda um número por artigo e por mês, e mais nada: sem cookies, sem identificadores, sem impressão digital do navegador, sem registro de quem leu o quê. É o que decide qual artigo é destacado no diário.
+Abrir um artigo soma um a um contador. Esse contador guarda um número por artigo e por mês, e mais nada: sem cookies, sem identificadores, sem impressão digital do navegador, sem registro de quem leu o quê. É o que decide qual artigo é destacado no blog.
 
 ## Armazenamento no seu navegador, e por que não há aviso de cookies
 
