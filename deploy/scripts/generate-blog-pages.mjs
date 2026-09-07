@@ -205,10 +205,10 @@ const copy = {
     insight: 'Key insight',
     authorPrefix: 'Written by',
     authorBio: 'Sandy writes about practical money systems, intentional work, and the patient path toward financial freedom.',
-    back: '← Back to journal',
-    backShort: '← Journal',
+    back: '← Back to the blog',
+    backShort: '← Blog',
     home: 'Home',
-    journal: 'Journal',
+    journal: 'Blog',
     skip: 'Skip to article',
     ctaEyebrow: 'Continue the Journey',
     ctaTitle: 'Turn insight into your next clear step.',
@@ -217,7 +217,7 @@ const copy = {
     ctaSimulatorsLead: 'Put this into practice:',
     ctaAssessment: 'Take the assessment',
     readNextEyebrow: 'Keep reading',
-    readNextTitle: 'Three more from the journal',
+    readNextTitle: 'Three more from the blog',
     readNextNote: 'Ideas that sit alongside this one. Pick the next step in your reading.',
     readNextLink: 'Read article',
     readNextAll: 'See every article',
@@ -234,12 +234,12 @@ const copy = {
     featuredLink: 'Read the essay',
     featuredMostRead: 'Most read',
     featuredLatest: 'Latest',
-    feedTitle: 'The Compounding Journal',
+    feedTitle: 'The Compounding Blog',
     feedDescription: 'Practical money systems, intentional work, and the patient path toward financial freedom.',
     feedLink: 'RSS feed',
     recentTitle: 'Read this month',
     recentNote: 'Ranked by how often each page was opened.',
-    privacyNote: 'This journal counts how many times each article page is opened, and nothing else. No cookie, no identifier, no record of who read what \u2014 just a number per article, used to decide what to feature here.'
+    privacyNote: 'This blog counts how many times each article page is opened, and nothing else. No cookie, no identifier, no record of who read what \u2014 just a number per article, used to decide what to feature here.'
   },
   es: {
     locale: 'es_ES',
@@ -248,10 +248,10 @@ const copy = {
     insight: 'Idea clave',
     authorPrefix: 'Escrito por',
     authorBio: 'Sandy escribe sobre sistemas financieros prácticos, trabajo con intención y el camino paciente hacia la libertad financiera.',
-    back: '← Volver al diario',
-    backShort: '← Diario',
+    back: '← Volver al blog',
+    backShort: '← Blog',
     home: 'Inicio',
-    journal: 'Diario',
+    journal: 'Blog',
     skip: 'Ir al artículo',
     ctaEyebrow: 'Continúa el viaje',
     ctaTitle: 'Convierte la idea en tu siguiente paso claro.',
@@ -260,7 +260,7 @@ const copy = {
     ctaSimulatorsLead: 'Ponlo en práctica:',
     ctaAssessment: 'Hacer el diagnóstico',
     readNextEyebrow: 'Sigue leyendo',
-    readNextTitle: 'Tres lecturas más del diario',
+    readNextTitle: 'Tres lecturas más del blog',
     readNextNote: 'Ideas que acompañan a esta. Elige tu siguiente lectura.',
     readNextLink: 'Leer el artículo',
     readNextAll: 'Ver todos los artículos',
@@ -271,12 +271,12 @@ const copy = {
     featuredLink: 'Leer el artículo',
     featuredMostRead: 'Lo más leído',
     featuredLatest: 'Lo más reciente',
-    feedTitle: 'El Diario del Interés Compuesto',
+    feedTitle: 'El Blog del Interés Compuesto',
     feedDescription: 'Sistemas prácticos de dinero, trabajo intencional y el camino paciente hacia la libertad financiera.',
     feedLink: 'Fuente RSS',
     recentTitle: 'Lo m\u00e1s le\u00eddo este mes',
     recentNote: 'Ordenado por cu\u00e1ntas veces se abri\u00f3 cada p\u00e1gina.',
-    privacyNote: 'Este diario cuenta cu\u00e1ntas veces se abre cada art\u00edculo, y nada m\u00e1s. Sin cookies, sin identificadores, sin registro de qui\u00e9n ley\u00f3 qu\u00e9: solo un n\u00famero por art\u00edculo, que sirve para decidir qu\u00e9 destacar aqu\u00ed.'
+    privacyNote: 'Este blog cuenta cu\u00e1ntas veces se abre cada art\u00edculo, y nada m\u00e1s. Sin cookies, sin identificadores, sin registro de qui\u00e9n ley\u00f3 qu\u00e9: solo un n\u00famero por art\u00edculo, que sirve para decidir qu\u00e9 destacar aqu\u00ed.'
   },
   pt: {
     locale: 'pt_BR',
@@ -285,10 +285,10 @@ const copy = {
     insight: 'Ideia-chave',
     authorPrefix: 'Escrito por',
     authorBio: 'Sandy escreve sobre sistemas financeiros práticos, trabalho intencional e o caminho paciente para a liberdade financeira.',
-    back: '← Voltar ao diário',
-    backShort: '← Diário',
+    back: '← Voltar ao blog',
+    backShort: '← Blog',
     home: 'Início',
-    journal: 'Diário',
+    journal: 'Blog',
     skip: 'Ir para o artigo',
     ctaEyebrow: 'Continua a jornada',
     ctaTitle: 'Transforma a ideia no teu próximo passo claro.',
@@ -297,7 +297,7 @@ const copy = {
     ctaSimulatorsLead: 'Ponha isto em prática:',
     ctaAssessment: 'Fazer o diagnóstico',
     readNextEyebrow: 'Continua a ler',
-    readNextTitle: 'Mais três leituras do diário',
+    readNextTitle: 'Mais três leituras do blog',
     readNextNote: 'Ideias que acompanham esta. Escolhe a tua próxima leitura.',
     readNextLink: 'Ler o artigo',
     readNextAll: 'Ver todos os artigos',
@@ -308,12 +308,12 @@ const copy = {
     featuredLink: 'Ler o artigo',
     featuredMostRead: 'O mais lido',
     featuredLatest: 'O mais recente',
-    feedTitle: 'O Diário dos Juros Compostos',
+    feedTitle: 'O Blog dos Juros Compostos',
     feedDescription: 'Sistemas práticos de dinheiro, trabalho intencional e o caminho paciente para a liberdade financeira.',
     feedLink: 'Fonte RSS',
     recentTitle: 'O mais lido este m\u00eas',
     recentNote: 'Ordenado por quantas vezes cada p\u00e1gina foi aberta.',
-    privacyNote: 'Este di\u00e1rio conta quantas vezes cada artigo \u00e9 aberto, e mais nada. Sem cookies, sem identificadores, sem registo de quem leu o qu\u00ea: apenas um n\u00famero por artigo, usado para decidir o que destacar aqui.'
+    privacyNote: 'Este blog conta quantas vezes cada artigo \u00e9 aberto, e mais nada. Sem cookies, sem identificadores, sem registo de quem leu o qu\u00ea: apenas um n\u00famero por artigo, usado para decidir o que destacar aqui.'
   }
 };
 
@@ -642,7 +642,7 @@ ${body}
        read to the bottom, which is where the strip at the top is a scroll away,
        and it is the point at which a reader who liked the piece is deciding
        what to do next. It replaces a lone "back to the journal" link that said
-       what the header's return link and the Diario tab both already say. -->
+       what the header's return link and the Blog tab both already say. -->
   <footer class="site-footer"><div class="container footer-row">${sectionNavRow('journal', article.language, articlePath(article.language, article.slug))}<span>© 2026 Compounding Journey</span></div></footer>
 </div>${NAV_SCRIPT}<script src="/assets/js/article-view.js?v=source" defer></script><script src="/assets/js/share.js?v=source" defer></script></body>
 </html>
@@ -741,7 +741,7 @@ async function updateBlogIndex(language, articles, totals, recentCounts) {
         '@type': 'Blog',
         '@id': `${origin}/${language}/blog/#blog`,
         url: `${origin}/${language}/blog/`,
-        name: 'The Compounding Journal',
+        name: 'The Compounding Blog',
         inLanguage: language,
         publisher: { '@id': `${origin}/#organization` },
         blogPost: sorted.map((article) => ({

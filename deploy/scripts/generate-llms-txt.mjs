@@ -31,7 +31,7 @@ const languages = ['es', 'en', 'pt'];
 const defaultLanguage = 'es';
 
 const languageNames = { es: 'Español', en: 'English', pt: 'Português' };
-const journalNames = { es: 'Diario en español', en: 'Journal in English', pt: 'Diário em português' };
+const journalNames = { es: 'Blog en español', en: 'Blog in English', pt: 'Blog em português' };
 const simulatorCatalog = {
   en: [
     ['Personal Finance & Wealth Simulator', '/en/simulator.html', 'Practice everyday money decisions and see their effects on wealth, cash flow, happiness, and financial knowledge.'],
@@ -169,7 +169,7 @@ ${languages.map((code) => `- [${languageNames[code]}](${homeUrl(code)})`).join('
 - [About Sandy Bradbury](${origin}/#biografia): the creator's approach to money psychology, financial habits, and diversified investing.
 - [Contact](${origin}/#contacto): the newsletter and a direct contact form.
 
-## Journal
+## Blog
 
 ${languages.map((code) => `- [${journalNames[code]}](${origin}/${code}/blog/)`).join('\n')}
 
@@ -214,7 +214,7 @@ Indexes: ${languages.map((code) => `[${languageNames[code]}](${origin}${glossary
 
 ${languages.map((code) => `### ${languageNames[code]}\n\n${glossaryLines(code)}`).join('\n\n')}
 
-## Journal Categories
+## Blog Categories
 
 ${languages.map((code) => `### ${languageNames[code]}\n\n${categoryLines(code)}`).join('\n\n')}
 
@@ -323,7 +323,7 @@ const llmsFull = `# Compounding Journey — full content
 > ${organization?.description || 'Financial education about money psychology, intentional investing and building financial freedom around personal values.'}
 
 This file contains the complete text of compoundingjourney.com: the frequently
-asked questions in all three languages, and every journal article in full. It is
+asked questions in all three languages, and every blog article in full. It is
 generated from the same source as the pages themselves, so it does not drift.
 
 - Site: ${origin}/
@@ -344,7 +344,7 @@ ${languages.map((code) => faqSection(code)).filter(Boolean).join('\n\n')}
 
 ${languages.map((code) => `### ${languageNames[code]}\n\n${simulatorLines(code)}`).join('\n\n')}
 
-## Journal articles
+## Blog articles
 
 ${articleSections.join('\n\n---\n\n')}
 `;
