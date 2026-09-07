@@ -17,7 +17,7 @@ import { escapeHtml, jsonLdScript } from './markdown.mjs';
 // The section nav is shared with the journal and the simulators, which this
 // shell does not render, so it lives in its own module. See the comment at the
 // top of it for why one table rather than one per generator.
-import { NAV_SCRIPT, assertSectionKey, sectionNav, sectionNavRow } from './section-nav.mjs';
+import { NAV_SCRIPT, assertSectionKey, headerMenu, sectionNav, sectionNavRow } from './section-nav.mjs';
 import {
   DEFAULT_LANGUAGE,
   LANGUAGES,
@@ -276,6 +276,7 @@ ${jsonLd}
       <div class="header-actions">
         <a class="header-return-link" href="${homePath(language)}"><span class="return-long">${escapeHtml(strings.backToHome)}</span><span class="return-short">${escapeHtml(strings.home)}</span></a>
         ${languageSwitcher(language, pathFor)}
+        ${headerMenu(section, language, pathname)}
       </div>
     </div>
   </header>${sectionNav(section, language, pathname)}
