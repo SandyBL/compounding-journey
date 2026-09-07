@@ -388,6 +388,279 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   color: #1e4620;
 }
 
+/* ---------------------------------------------------------------------------
+   The site menu
+
+   Eight tabs need about 620px, and a phone has 360. So what the strip above
+   actually did on a phone was show the three that fit and give no sign that the
+   other five existed: no visible scrollbar on a touch device, no cut-off eighth
+   item to hint at a ninth, nothing. A reader on a glossary term could reach the
+   calculators only by going back to the home page - which is the problem the
+   strip was added to solve, still unsolved on the viewport most of these pages
+   are read on.
+
+   Below 768px a hamburger in the header takes over: the same button the home
+   page has always had, drawn from the same values, opening a panel with all
+   eight links in it. The home page keeps its own copy in home.css - that drawer
+   lists the sections of one long document, not the eight pages here - so what
+   is shared is the shape of the control, not the code. A reader who has learned
+   that icon on the way in finds it in the same corner of every page after.
+
+   In the header rather than beside the strip, because the header is sticky. The
+   strip scrolls away with the article; the button does not, so the way out of a
+   page is reachable from the bottom of it. On the simulators that is the whole
+   point: their footer is a docked call to action rather than a set of links, so
+   until now scrolling past the strip left no route off the tool at all.
+
+   Everything visible here waits on assets/js/section-nav.js, which removes the
+   button's `hidden` attribute and sets data-site-menu on <html> in the same
+   line. Both come from one place, so there is no state in which the strip has
+   stood down for a button that cannot open a panel: with no script the page
+   keeps the scrolling strip exactly as it is today.
+
+   768px rather than the 639px the rest of this file breaks at, because the
+   eight labels in Spanish and Portuguese - Simuladores, Calculadoras,
+   Plantillas - come to about 620px, and .site-section-nav's own 16px of inline
+   padding leaves 608px at 640px wide. The strip is served where it fits, and
+   the first breakpoint where it does is a little above the one the header uses
+   for its own reasons. */
+
+/* The button and the panel, and no `position` of its own on purpose: that
+   leaves the panel's containing block header.site-header, which is sticky and
+   therefore positioned. `top: 100%` on the panel is then the bottom edge of the
+   header whatever height it happens to be - and the simulator headers wrap to
+   two rows on a narrow phone, so that height is not a number this file could
+   have hardcoded. */
+.site-header .site-header-menu {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.site-header .site-menu-toggle {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(30, 70, 32, 0.18);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--site-header-forest);
+  box-shadow: 0 2px 8px rgba(45, 36, 27, 0.08);
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+/* The button ships with `hidden` and this is what honours it: `display` in the
+   rule above would otherwise win over the UA sheet's `[hidden] { display: none }`
+   on specificity alone, and the control would appear on a page whose script
+   never ran. */
+.site-header .site-menu-toggle[hidden] {
+  display: none;
+}
+
+.site-header .site-menu-toggle:hover {
+  color: #2d241b;
+  background: rgba(197, 155, 39, 0.18);
+  transform: translateY(-1px);
+}
+
+.site-header .site-menu-toggle:focus-visible {
+  outline: 3px solid rgba(197, 155, 39, 0.48);
+  outline-offset: 3px;
+}
+
+/* Three bars from one element: the middle is the span, the outer two are its
+   pseudo-elements. Same 1.2rem x 2px and the same 0.38rem offsets as the home
+   page's, because a reader comparing the two corners should not be able to see
+   which file drew which. */
+.site-menu-toggle__icon,
+.site-menu-toggle__icon::before,
+.site-menu-toggle__icon::after {
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: currentColor;
+  content: "";
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.site-menu-toggle__icon {
+  position: relative;
+}
+
+.site-menu-toggle__icon::before,
+.site-menu-toggle__icon::after {
+  position: absolute;
+  left: 0;
+}
+
+.site-menu-toggle__icon::before {
+  transform: translateY(-0.38rem);
+}
+
+.site-menu-toggle__icon::after {
+  transform: translateY(0.38rem);
+}
+
+/* Open: the middle bar goes, the other two cross. Keyed on aria-expanded so the
+   glyph cannot disagree with what a screen reader is told - the attribute the
+   script has to set anyway is the one the paint reads. */
+.site-menu-toggle[aria-expanded="true"] .site-menu-toggle__icon {
+  background: transparent;
+}
+
+.site-menu-toggle[aria-expanded="true"] .site-menu-toggle__icon::before {
+  transform: rotate(45deg);
+}
+
+.site-menu-toggle[aria-expanded="true"] .site-menu-toggle__icon::after {
+  transform: rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .site-menu-toggle,
+  .site-menu-toggle__icon,
+  .site-menu-toggle__icon::before,
+  .site-menu-toggle__icon::after {
+    transition: none;
+  }
+}
+
+/* Anchored to the header's own gutter rather than to the button, so the panel
+   lines up with the edge of the page instead of with whichever control the
+   header happens to end on. 12px is .header-shell's inline padding on a phone;
+   the 640px rule below follows it to 24px. */
+.site-header .site-menu-panel {
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  z-index: 1;
+  width: min(21rem, calc(100vw - 24px));
+  /* Eight 44px rows plus the label do not fit a phone held in landscape. */
+  max-height: min(70vh, 30rem);
+  margin-top: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  border: 1px solid var(--site-header-border);
+  border-radius: 18px;
+  background: #fffdf8;
+  box-shadow: 0 18px 40px rgba(24, 38, 28, 0.18);
+}
+
+.site-header .site-menu-panel[hidden] {
+  display: none;
+}
+
+/* The nav's name, said out loud. The panel covers part of the page, so it owes
+   the reader a word about what it is; and a sighted reader gets the heading a
+   screen reader gets from the aria-label either way. */
+.site-menu-panel__label {
+  margin: 0 0 6px;
+  padding-inline: 6px;
+  color: rgba(45, 36, 27, 0.55);
+  font-family: var(--site-header-font);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.site-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.site-menu-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: rgba(45, 36, 27, 0.78);
+  font-family: var(--site-header-font);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.site-menu-nav a:hover {
+  color: var(--site-header-forest);
+  background: rgba(30, 70, 32, 0.08);
+}
+
+/* Same reading of aria-current as the strip: the attribute rather than one of
+   its values, because the nav writes "page" on the link that points at this
+   document and "true" on the one whose section this page sits inside. Someone
+   looking at the list is asking which section they are in, so both paint the
+   same; only what a screen reader announces differs. */
+.site-menu-nav a[aria-current] {
+  color: var(--site-header-forest);
+  background: rgba(197, 155, 39, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.28);
+}
+
+.site-menu-nav a:focus-visible {
+  outline: 2px solid rgba(197, 155, 39, 0.75);
+  outline-offset: 2px;
+  color: var(--site-header-forest);
+}
+
+@media (min-width: 640px) {
+  .site-header .site-menu-panel {
+    right: 24px;
+    width: min(21rem, calc(100vw - 48px));
+  }
+}
+
+/* The button's job above the breakpoint is done by the strip, which fits from
+   here up and shows all eight at once. Two navigations with the same name in
+   one page would be a worse answer than either alone. */
+@media (min-width: 768px) {
+  .site-header .site-menu-toggle,
+  .site-header .site-menu-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  /* The strip stands down for the menu, and only once the script that opens the
+     menu has run. Removing it rather than leaving both is what keeps a screen
+     reader from meeting the same eight links under the same name twice, and it
+     takes the row that showed three of eight off a phone for good. */
+  html[data-site-menu] .site-section-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  /* The same shrink home.css makes at its own narrow breakpoint. */
+  .site-header .site-menu-toggle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  /* Except on the simulators, where the button joins a row that already holds a
+     return link, up to four of the tool's own controls and three flags. 36px is
+     the size the flags in that row are, so the header reads as one set of
+     controls rather than as a menu bolted onto the end of one, and it is what
+     keeps the busiest of the five - the Passive Income Engine - on a single row
+     at 390px. Still well over the 24px WCAG 2.2 SC 2.5.8 asks for; the row is
+     already free to wrap if a narrower phone needs it to. */
+  .site-header .simulator-header-actions .site-menu-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 0.75rem;
+  }
+}
+
 .site-simulator-nav {
   position: relative;
   z-index: 40;

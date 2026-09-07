@@ -48,10 +48,11 @@
                     <span class="site-return-link__text">{{siteReturnLinkText}}</span>
                 </a>
                 <!-- The three translations, as flag links, and deliberately the
-                     last thing in this row on every simulator: the tools each
-                     carry a different set of controls, so anchoring the flags to
-                     the far right is what puts them in the same place on all of
-                     them. Real links, not buttons: each language is a distinct
+                     second-to-last thing in this row on every simulator, with
+                     only the site menu after them: the tools each carry a
+                     different set of controls, so anchoring the flags to the
+                     right is what puts them in the same place on all of them.
+                     Real links, not buttons: each language is a distinct
                      pre-rendered document, so switching is a navigation, and the
                      alternates stay crawlable. The generator writes
                      aria-current="page" onto the current one. -->
@@ -81,6 +82,15 @@
                         </svg>
                     </a>
                 </nav>
+                <!-- The site menu, and the reason the flags above are no longer the
+                     last thing in this row. The hamburger is the one control
+                     that is in the same place on every page of the site - the
+                     home page has kept it at the end of its header row since it
+                     was built - so it is anchored to the far right here too, and
+                     the flags stay anchored immediately before it on all five
+                     tools. Rendered from the one table in
+                     scripts/section-nav.mjs. -->
+                {{page.headerMenu}}
             </div>
         </div>
     </header>

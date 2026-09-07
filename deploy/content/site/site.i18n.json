@@ -316,6 +316,16 @@
     "en": "Site map",
     "pt": "Mapa do site"
   },
+  "sectionMenuOpenLabel": {
+    "es": "Abrir el menú de navegación",
+    "en": "Open navigation menu",
+    "pt": "Abrir o menu de navegação"
+  },
+  "sectionMenuCloseLabel": {
+    "es": "Cerrar el menú de navegación",
+    "en": "Close navigation menu",
+    "pt": "Fechar o menu de navegação"
+  },
   "simulatorsNavLabel": {
     "es": "Simuladores",
     "en": "Simulators",

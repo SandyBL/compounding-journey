@@ -33,7 +33,7 @@ import { stringsFor } from './page-shell.mjs';
 // The nav the rest of the site carries, from the table every family renders it
 // from. The journal has its own chrome rather than going through page-shell.mjs,
 // which is why it links the pieces itself.
-import { NAV_SCRIPT, sectionNav, sectionNavRow } from './section-nav.mjs';
+import { NAV_SCRIPT, headerMenu, sectionNav, sectionNavRow } from './section-nav.mjs';
 import { shareRow } from './share-row.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -774,6 +774,7 @@ ${structuredData(article, labels, body)}
       <div class="header-actions">
         <a class="header-return-link" href="/${article.language}/blog/"><span class="return-long">${escapeHtml(labels.back)}</span><span class="return-short">${escapeHtml(labels.backShort)}</span></a>
         ${languageSwitcher(article, article.language)}
+        ${headerMenu('journal', article.language, articlePath(article.language, article.slug))}
       </div>
     </div>
   </header>${sectionNav('journal', article.language, articlePath(article.language, article.slug))}
@@ -968,9 +969,26 @@ async function updateBlogIndex(language, articles, totals, recentCounts) {
     ? navResult
     : source.replace('</header>', `</header>${navResult.block}`);
 
-  // The client half of that nav: it centres the current tab when the strip is
-  // wider than the viewport. Appended next to the index's own script rather
-  // than through a marker, because a tag is idempotent to check for.
+  // And the hamburger button that stands in for that strip on a phone, patched
+  // in for the same reason and from the same table. It belongs to the header
+  // rather than to the row below it, so its marker sits inside .header-actions
+  // - after the language switcher, which is where the home page keeps its own
+  // hamburger and where every other family now renders this one.
+  //
+  // The fallback anchors on the closing tag of that switcher, which is the last
+  // thing in the row on all three indexes. Their headers are formatted three
+  // different ways - two write the row on one line and one indents it - so a
+  // whitespace-sensitive anchor would work on one file and silently skip the
+  // other two, and the marker is what makes every run after the first exact.
+  const menuResult = replaceBetween(source, 'headermenu', headerMenu('journal', language, `/${language}/blog/`));
+  source = typeof menuResult === 'string'
+    ? menuResult
+    : source.replace(/<\/nav>(\s*)<\/div>/, `</nav>${menuResult.block}$1</div>`);
+
+  // The client half of both: it reveals that button, opens the menu behind it
+  // and stands the strip down at phone widths. Appended next to the index's own
+  // script rather than through a marker, because a tag is idempotent to check
+  // for.
   if (!source.includes('/assets/js/section-nav.js')) {
     source = source.replace('</body>', `${NAV_SCRIPT}</body>`);
   }

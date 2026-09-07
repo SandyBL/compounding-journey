@@ -1,5 +1,6 @@
-// The strip of section links every page on the site carries, and the one table
-// its eight destinations come from.
+// The section links every page on the site carries - a strip under the header
+// where they fit, a hamburger menu in the header where they do not - and the one
+// table their eight destinations come from.
 //
 // Four page families render this nav and they share no markup: the pages
 // scripts/page-shell.mjs wraps (calculators, template landings, the glossary,
@@ -13,11 +14,12 @@
 //
 // Two things are exported alongside the markup for the same reason. NAV_SCRIPT
 // is the tag for assets/js/section-nav.js, the client half of this component -
-// it scrolls the current tab into view on a viewport too narrow to show the
-// whole strip, so a page that renders the nav and forgets the script has a
-// highlight its phone readers cannot see. And assertSectionKey is what turns a
-// mistyped section into a failed build rather than a page whose nav quietly
-// highlights nothing.
+// it reveals the menu button and stands the strip down below 768px, and centres
+// the current tab where the strip is what is shown, so a page that renders the
+// nav and forgets the script falls back to eight links a phone reader has to
+// guess can be scrolled sideways. And assertSectionKey is what turns a mistyped
+// section into a failed build rather than a page whose nav quietly highlights
+// nothing.
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -136,6 +138,68 @@ function links(section, language, currentPath) {
 }
 
 /**
+ * The hamburger button and the menu it opens, for the header of every page.
+ *
+ * The strip below the header solved the problem it was added for on a laptop
+ * and only half solved it on a phone: eight tabs need about 620px and a phone
+ * has 360, so what a reader saw was the three that fit and no indication that
+ * the other five existed - a touch device draws no scrollbar, and the strip
+ * happened to cut off between items rather than mid-word. A reader who arrived
+ * on a glossary term from a search could reach the calculators only by going
+ * back to the home page first, which is the problem the strip exists to solve.
+ *
+ * The home page has never had that problem, because it has a hamburger button
+ * in its header and a menu behind it. This is that button, on the other two
+ * hundred pages: same glyph, same place in the row, same two bars crossing into
+ * an X when it opens. A reader who learns the control on the home page finds
+ * the control they already know everywhere else.
+ *
+ * It goes in the header rather than in the nav below it, and that is the point
+ * of putting it here rather than leaving the dropdown attached to the strip:
+ * the header is sticky and the strip is not, so a menu hung off the header is
+ * reachable from anywhere in a long article instead of only from the top of it.
+ *
+ * Three things about how it is rendered are deliberate.
+ *
+ * It ships with the `hidden` attribute, and assets/js/section-nav.js is what
+ * removes it - along with marking the document so the strip stands down on
+ * phone widths. A menu is not a menu without a script to open it, so the two
+ * happen together: a page whose script has not run shows no button and keeps
+ * the scrollable strip it has today. Nothing is taken away before its
+ * replacement is known to work.
+ *
+ * The panel repeats the eight links rather than moving them, which is the one
+ * duplication in this file. It is unavoidable now that the button is in the
+ * header: the strip is a row under it, and one element cannot be both. What
+ * matters is that both are rendered from SECTION_NAV in the same pass, so they
+ * cannot come to name different destinations - which is the whole reason this
+ * module exists. Only one of the two is ever in the accessibility tree, since
+ * whichever does not apply at the current width is display: none.
+ *
+ * And the button's two labels are handed to the script as data attributes
+ * rather than looked up there. Both halves of this component then read their
+ * strings from content/site/site.i18n.json, and a fourth language is a change
+ * to the sidecar rather than to a table hidden in a script - which is the
+ * mistake the home page's own menu made, where the three translations of
+ * "Open navigation menu" are written into assets/js/home.js.
+ */
+export function headerMenu(section, language, currentPath = null) {
+  const navLabel = escapeHtml(labelFor('sectionNavLabel', language));
+  const open = escapeHtml(labelFor('sectionMenuOpenLabel', language));
+  const close = escapeHtml(labelFor('sectionMenuCloseLabel', language));
+  return `<div class="site-header-menu">`
+    + `<button type="button" class="site-menu-toggle" aria-expanded="false"`
+    + ` aria-controls="site-menu-panel" aria-label="${open}"`
+    + ` data-label-open="${open}" data-label-close="${close}" hidden>`
+    + `<span class="site-menu-toggle__icon" aria-hidden="true"></span></button>`
+    + `<div id="site-menu-panel" class="site-menu-panel" hidden>`
+    + `<p class="site-menu-panel__label">${navLabel}</p>`
+    + `<nav class="site-menu-nav" aria-label="${navLabel}">`
+    + links(section, language, currentPath)
+    + `</nav></div></div>`;
+}
+
+/**
  * The strip under the header.
  *
  * The home page's nav can never show which of these seven pages you are on,
@@ -147,9 +211,13 @@ function links(section, language, currentPath) {
  *
  * Deliberately flat, where the home page groups four of these under a Recursos
  * dropdown. A highlighted item inside a collapsed group is invisible, which
- * would defeat the point, and none of these pages ships a menu script to open
- * one with. The strip scrolls horizontally instead - the shape
- * .site-simulator-nav already uses in header.css.
+ * would defeat the point at the widths this strip is shown at - all eight fit
+ * on one row there.
+ *
+ * Below 768px it is not shown at all: eight tabs do not fit a phone, so
+ * headerMenu() above puts the same eight behind the hamburger button in the
+ * header instead, and assets/js/section-nav.js stands this row down at the
+ * same moment it reveals that button.
  *
  * It renders outside <header> on every family, so it scrolls away while the
  * 80px header stays. See the .site-section-nav comment in assets/css/header.css
