@@ -19,8 +19,10 @@ import { TEMPLATES } from '../content/site/templates.mjs';
 import { GLOSSARY } from '../content/site/glossary.mjs';
 import { CATEGORIES } from '../content/site/categories.mjs';
 import {
-  toolPath, templatePath, glossaryPath, categoryPath, sessionsPath, dataPath, sectionPath, legalPath, LEGAL_PAGES
+  DEFAULT_LANGUAGE,
+  toolPath, templatePath, glossaryPath, categoryPath, sessionsPath, dataPath, aboutPath, sectionPath, legalPath, LEGAL_PAGES
 } from './site-routes.mjs';
+import { SAME_AS } from '../content/site/about.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -166,7 +168,7 @@ ${languages.map((code) => `- [${languageNames[code]}](${homeUrl(code)})`).join('
 - [Excel templates](${origin}/#plantillas): free personal budgeting and expense-management resources.
 - [Financial assessment](${origin}/#assessment): the personal financial balance and investment profile questionnaires, and the snapshot, risk profile, and recommended roadmap they produce.
 - [Frequently asked questions](${origin}/#preguntas-frecuentes): direct answers about the 4% rule, what FIRE means and its variants, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
-- [About Sandy Bradbury](${origin}/#biografia): the creator's approach to money psychology, financial habits, and diversified investing.
+- [About Sandy Bradbury](${origin}${aboutPath(DEFAULT_LANGUAGE)}): who writes the site, what is and is not being claimed, and the six rules the material is written under. The home page carries a short version of the same under its ${origin}/#biografia heading.
 - [Contact](${origin}/#contacto): the newsletter and a direct contact form.
 
 ## Blog
@@ -218,12 +220,37 @@ ${languages.map((code) => `### ${languageNames[code]}\n\n${glossaryLines(code)}`
 
 ${languages.map((code) => `### ${languageNames[code]}\n\n${categoryLines(code)}`).join('\n\n')}
 
+## About the Author
+
+Sandy Bradbury, financial educator, resident in Spain, writing in Spanish,
+English and Portuguese. Not an accredited financial adviser and not a regulated
+firm: no personal investment recommendations are given, no client money is held
+or managed, no financial products are sold, and no commission is taken for
+mentioning one. What is offered is education - explaining concepts, going
+through a reader's own numbers, and preparing the questions they will put to a
+registered professional.
+
+How the material is made, each point verifiable elsewhere on the site: claims
+are cited, and every article ends with sources saying which claim each one
+supports; published figures state their sample size and are withheld below a
+declared minimum; the calculators, templates, glossary and simulators are free
+with no sign-up and no email; there are no affiliate links, no sponsored
+content and no product recommendations; page views are counted with no cookies,
+identifiers or per-reader records; and the three languages are written
+separately rather than machine-translated.
+
+${languages.map((code) => `- [${languageNames[code]}](${origin}${aboutPath(code)})`).join('\n')}
+
 ## Sessions
 
 One-to-one financial education sessions - going through a reader's own numbers,
 explaining concepts, and building habits. Explicitly not regulated investment
 advice: no product recommendations, no portfolio management, no tax planning.
-Rates are not published; they are given on request.
+An entry price is published - from R$ 99 / $19 / 17 EUR, rounded per currency,
+for the shortest session - and the three individual rates are given on request,
+because they depend on the session and the country. Enquiries go through the
+contact form on the home page; no email address is published anywhere on the
+site.
 
 ${languages.map((code) => `- [${languageNames[code]}](${origin}${sessionsPath(code)})`).join('\n')}
 
@@ -257,8 +284,7 @@ personal recommendations are given.
 
 ## Official Profiles
 
-- [Sandy Bradbury on LinkedIn](https://www.linkedin.com/in/sandy-bradbury)
-- [Compounding Journey on Substack](https://compoundingjourney.substack.com/)
+${SAME_AS.map((url) => `- ${url}`).join('\n')}
 
 ## Attribution
 

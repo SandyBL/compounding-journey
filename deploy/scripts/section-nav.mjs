@@ -1,11 +1,11 @@
 // The strip of section links every page on the site carries, and the one table
-// its seven destinations come from.
+// its eight destinations come from.
 //
 // Four page families render this nav and they share no markup: the pages
 // scripts/page-shell.mjs wraps (calculators, template landings, the glossary,
 // category archives, the sessions page, the data page), the three journal
 // indexes, every journal article, and the fifteen simulator documents. Written
-// per generator that is four copies of seven URLs and their labels in three
+// per generator that is four copies of eight URLs and their labels in three
 // languages - four places for the next section to be added to three of them.
 // The footer row was already that mistake once: it named five destinations
 // because the simulators and the templates were added to the site after it was
@@ -49,6 +49,11 @@ const SECTION_NAV = [
   { key: 'templates', href: (code) => sectionPath('templates', code), label: 'templatesNavLabel' },
   { key: 'glossary', href: (code) => glossaryPath(code), label: 'glossaryNavLabel' },
   { key: 'data', href: (code) => sectionPath('data', code), label: 'dataNavLabel' },
+  // About before Sessions, and that order is the argument. A reader who has
+  // just finished an article and is wondering whether to pay for an hour wants
+  // to know who is on the other end of it first; a tab strip that offers the
+  // invoice before the introduction asks for the decision in the wrong order.
+  { key: 'about', href: (code) => sectionPath('about', code), label: 'aboutNavLabel' },
   { key: 'sessions', href: (code) => sectionPath('sessions', code), label: 'sessionsNavLabel' }
 ];
 

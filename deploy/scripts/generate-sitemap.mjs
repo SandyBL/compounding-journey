@@ -35,7 +35,7 @@ import { sitemapEntry, lastCommitted, newestDate } from './page-dates.mjs';
 import {
   LANGUAGES, DEFAULT_LANGUAGE, ORIGIN, LEGAL_PAGES, SIMULATORS,
   homePath, journalPath, articlePath, sectionPath, toolPath, templatePath,
-  glossaryPath, categoryPath, sessionsPath, dataPath, legalPath, absolute,
+  glossaryPath, categoryPath, sessionsPath, dataPath, aboutPath, legalPath, absolute,
   simulatorPath, simulatorsPath
 } from './site-routes.mjs';
 
@@ -101,6 +101,10 @@ async function main() {
     path.join('content', 'site', 'sessions.mjs'),
     path.join('scripts', 'generate-sessions-page.mjs')
   );
+  const aboutDate = lastCommitted(
+    path.join('content', 'site', 'about.mjs'),
+    path.join('scripts', 'generate-about-page.mjs')
+  );
   // The results page is recomputed from the database on every build, so its
   // figures can change without a commit. The date published here is still the
   // one its sources were last edited on: that is when the page's claims - the
@@ -162,6 +166,7 @@ async function main() {
     ...tableFamily(TEMPLATES, (row, code) => row[code].slug, templatePath, () => templatesDate),
     ...family(glossaryPath, glossaryDate),
     ...tableFamily(GLOSSARY, (row, code) => row[code].slug, glossaryPath, () => glossaryDate),
+    ...family(aboutPath, aboutDate),
     ...family(sessionsPath, sessionsDate),
     ...family(dataPath, dataDate),
 

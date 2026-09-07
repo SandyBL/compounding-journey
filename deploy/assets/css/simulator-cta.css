@@ -181,7 +181,7 @@
    bar tall. */
 @media (max-width: 900px) {
   .simulator-cta {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .simulator-cta__actions {

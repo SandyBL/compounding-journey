@@ -88,7 +88,7 @@ button, input { font: inherit; }
 
 .blog-intro { position: relative; padding: 52px 0 30px; background: var(--forest); color: white; }
 .blog-intro::after { content: ""; position: absolute; right: -8vw; bottom: -180px; width: 390px; height: 390px; border: 1px solid rgba(200,154,50,.25); border-radius: 50%; box-shadow: 0 0 0 50px rgba(200,154,50,.04), 0 0 0 105px rgba(200,154,50,.025); pointer-events: none; }
-.intro-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.4fr .6fr; align-items: end; gap: 64px; }
+.intro-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); align-items: end; gap: 64px; }
 .blog-intro h1 { max-width: 680px; margin: 0; font-family: var(--serif); font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 600; line-height: .94; letter-spacing: -.045em; }
 .blog-intro h1 em { color: #e6c673; font-style: italic; font-weight: 500; }
 .intro-note { max-width: 330px; margin: 0 0 5px; color: rgba(255,255,255,.72); font-size: .94rem; line-height: 1.65; }
@@ -197,6 +197,13 @@ button, input { font: inherit; }
 .cta-simulators a { color: white; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .cta-simulators a:hover { color: var(--gold); }
 .cta-simulators a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+/* The last of the three link rows - the newsletter and the sessions page. It
+   gets a hairline above it and the gold used for links elsewhere on the panel,
+   because it is the row where the reader stops browsing pages and starts
+   dealing with a person. Same type and spacing otherwise: a row that shouted
+   would read as an ad in the middle of a panel that is otherwise a signpost. */
+.cta-panel .cta-work { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.85); }
+.cta-work a { font-weight: 600; }
 .journey-actions { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 .button { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; min-width: 164px; padding: 14px 18px; border: 1px solid var(--gold); background: var(--gold); color: #1b2b20; font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; transition: transform .25s ease, background .25s ease; }
 .button:hover { transform: translateY(-3px); background: #e1bd62; }
@@ -238,14 +245,28 @@ button, input { font: inherit; }
    the distance. The sticky table of contents in the left column starts from the
    same line, which keeps it clear of the fixed header at its 108px offset. */
 .article-layout { display: grid; grid-template-columns: 230px minmax(0, 760px); justify-content: center; gap: 70px; padding: 52px 0 92px; }
+/* Every child of this grid is pinned to min-width: 0. A grid item's default
+   min-width: auto resolves to its min-content contribution, so the widest
+   single thing anywhere inside it becomes a floor the column cannot go below -
+   and .article-body table is deliberately min-width: 640px, so that wide tables
+   scroll inside .article-table-wrap instead of squashing to unreadable columns.
+   .article-body already declares min-width: 0, but it is a descendant of the
+   grid item, not the item itself (.article-main, the wrapper around the body,
+   the sources block, the share row and the author card), so that declaration
+   never reached the box that needed it. Unpinned on a phone the column grew
+   to ~648px inside a ~362px .container, justify-content: center above split
+   that overflow evenly across both edges, and .site-shell's overflow-x: clip
+   hid it with no scrollbar: text cut off at the start AND at the end of every
+   line, with no amount of zooming out able to bring it back. */
+.article-layout > * { min-width: 0; }
 .toc { position: sticky; top: 108px; align-self: start; padding-top: 8px; }
 .toc h2 { margin: 0 0 18px; color: var(--rust); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
 .toc ol { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; counter-reset: toc; }
 .toc li { counter-increment: toc; }
-.toc a { display: grid; grid-template-columns: 26px 1fr; color: var(--muted); font-size: .82rem; line-height: 1.45; text-decoration: none; }
+.toc a { display: grid; grid-template-columns: 26px minmax(0, 1fr); color: var(--muted); font-size: .82rem; line-height: 1.45; text-decoration: none; }
 .toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: .68rem; font-weight: 700; }
 .toc a:hover { color: var(--forest); }
-.article-body { min-width: 0; font-family: var(--serif); font-size: 1.2rem; line-height: 1.8; }
+.article-body { min-width: 0; max-width: 100%; font-family: var(--serif); font-size: 1.2rem; line-height: 1.8; }
 .article-body > *:first-child { margin-top: 0; }
 .article-body h2, .article-body h3 { scroll-margin-top: 108px; color: var(--forest); font-family: var(--serif); line-height: 1.08; letter-spacing: -.025em; }
 .article-body h2 { position: relative; margin: 2.6em 0 .7em; padding-top: .55em; font-size: clamp(2rem, 4vw, 2.65rem); }
@@ -265,7 +286,7 @@ button, input { font: inherit; }
 .article-body ul, .article-body ol { margin: 0 0 1.8em; padding-left: 1.35em; }
 .article-body li { margin-bottom: .7em; padding-left: .35em; }
 .article-body li::marker { color: var(--gold); font-family: var(--sans); font-weight: 800; }
-.article-body .article-table-wrap { width: 100%; margin: 2.4em 0; overflow-x: auto; border: 1px solid var(--line); background: var(--paper); box-shadow: 0 16px 40px rgba(45,61,48,.07); -webkit-overflow-scrolling: touch; }
+.article-body .article-table-wrap { width: 100%; max-width: 100%; margin: 2.4em 0; overflow-x: auto; border: 1px solid var(--line); background: var(--paper); box-shadow: 0 16px 40px rgba(45,61,48,.07); -webkit-overflow-scrolling: touch; }
 .article-body table { width: 100%; min-width: 640px; border-collapse: collapse; font-family: var(--sans); font-size: .82rem; line-height: 1.5; }
 .article-body th { padding: 15px 18px; border-bottom: 2px solid var(--gold); background: var(--forest); color: white; font-size: .7rem; letter-spacing: .06em; text-align: left; text-transform: uppercase; }
 .article-body td { padding: 15px 18px; border-bottom: 1px solid #e8e0d2; vertical-align: top; }
@@ -277,10 +298,29 @@ button, input { font: inherit; }
 .article-body pre code { padding: 0; border: 0; background: transparent; color: inherit; }
 .article-body img { width: 100%; height: auto; margin: 2.5em 0; border-radius: 2px; box-shadow: 0 18px 48px rgba(31,41,34,.12); }
 .article-body > p:first-child { color: #34473a; font-size: 1.32rem; line-height: 1.72; }
-.author-card { display: grid; grid-template-columns: 96px 1fr; gap: 24px; margin-top: 68px; padding-top: 34px; border-top: 1px solid var(--line); font-family: var(--sans); }
+.author-card { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 24px; margin-top: 68px; padding-top: 34px; border-top: 1px solid var(--line); font-family: var(--sans); }
 .author-card img { width: 96px; height: 96px; margin: 0; border-radius: 50%; object-fit: cover; background: var(--paper); }
 .author-card h2 { margin: 0 0 8px; font-family: var(--serif); font-size: 1.7rem; }
 .author-card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.65; }
+
+/* The reference list at the foot of an article, rendered by
+   scripts/generate-blog-pages.mjs from content/site/sources.mjs.
+
+   It sits outside .article-body on purpose - it is apparatus rather than prose,
+   and inheriting the body's 1.15rem serif measure would give a bibliography the
+   same visual weight as the argument it supports. Set in the sans face, one
+   step down, with the note under each reference in muted text: scannable when
+   a reader wants to check a claim, quiet when they do not. */
+.article-sources { margin-top: 52px; padding-top: 30px; border-top: 1px solid var(--line); font-family: var(--sans); }
+.article-sources h2 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.45rem; }
+.article-sources-note { margin: 0 0 20px; max-width: 620px; color: var(--muted); font-size: .85rem; line-height: 1.6; }
+.article-sources ol { display: grid; gap: 15px; max-width: 720px; margin: 0; padding-left: 1.4em; }
+.article-sources li { font-size: .9rem; line-height: 1.6; }
+.article-sources .source-ref { display: block; }
+.article-sources cite { font-style: italic; }
+.article-sources .source-note { display: block; margin-top: 3px; color: var(--muted); font-size: .84rem; line-height: 1.55; }
+.article-sources a { color: var(--rust); font-weight: 600; text-decoration-color: rgba(166,79,42,.35); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .2s ease, text-decoration-color .2s ease; }
+.article-sources a:hover { color: var(--forest); text-decoration-color: var(--gold); }
 .article-status { min-height: 320px; display: grid; place-items: center; color: var(--muted); font-family: var(--sans); font-size: .95rem; }
 .article-status.is-error { color: #8c3326; }
 .skeleton { display: grid; gap: 18px; }
@@ -290,13 +330,17 @@ button, input { font: inherit; }
 @keyframes shimmer { to { background-position: -200% 0; } }
 
 @media (max-width: 900px) {
-  .intro-grid, .cta-panel { grid-template-columns: 1fr; }
+  .intro-grid, .cta-panel { grid-template-columns: minmax(0, 1fr); }
   .intro-grid { gap: 28px; }
   .catalog-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .read-next-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .journey-actions { justify-content: flex-start; }
-  .article-layout { grid-template-columns: 1fr; gap: 40px; }
+  /* minmax(0, 1fr), never a bare 1fr: 1fr means minmax(auto, 1fr), and that
+     auto minimum is the min-content contribution again - the same 640px table
+     floor, applied to the track this time instead of to the item. Item and
+     track both have to be pinned or the column still outgrows the container. */
+  .article-layout { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .toc { position: static; padding: 24px; border: 1px solid var(--line); background: rgba(255,255,255,.45); }
 }
 
@@ -317,12 +361,12 @@ button, input { font: inherit; }
   .recently-read { padding: 18px 20px; }
   .section-heading { display: block; }
   .section-heading p { margin-top: 14px; }
-  .catalog-toolbar { grid-template-columns: 1fr; padding: 14px; }
-  .post-grid { grid-template-columns: 1fr; }
+  .catalog-toolbar { grid-template-columns: minmax(0, 1fr); padding: 14px; }
+  .post-grid { grid-template-columns: minmax(0, 1fr); }
   .read-next { padding: 44px 0 48px; }
   .read-next-head { display: block; }
   .read-next-note { margin-top: 14px; }
-  .read-next-grid { grid-template-columns: 1fr; }
+  .read-next-grid { grid-template-columns: minmax(0, 1fr); }
   .cta-panel { padding: 28px 22px; }
   .journey-actions { display: grid; width: 100%; }
   .button { width: 100%; min-width: 0; }
@@ -335,7 +379,7 @@ button, input { font: inherit; }
   .article-body .article-callout { padding: 34px 24px 24px; }
   .article-body .article-callout::before { left: 20px; }
   .article-body .article-table-wrap { margin-inline: -4px; width: calc(100% + 8px); }
-  .author-card { grid-template-columns: 72px 1fr; }
+  .author-card { grid-template-columns: 72px minmax(0, 1fr); }
   .author-card img { width: 72px; height: 72px; }
 }
 

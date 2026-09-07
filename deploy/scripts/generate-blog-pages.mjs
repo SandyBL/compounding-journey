@@ -23,9 +23,11 @@ import { GLOSSARY } from '../content/site/glossary.mjs';
 import { TOOLS } from '../content/site/tools.mjs';
 import { TEMPLATES } from '../content/site/templates.mjs';
 import { CATEGORIES } from '../content/site/categories.mjs';
+import { ARTICLE_SOURCES, SOURCE_LIBRARY } from '../content/site/sources.mjs';
 import { addInlineLinks, glossaryTargets, articleTargets } from './inline-links.mjs';
 import {
-  SECTIONS, sectionPath, glossaryPath, toolPath, templatePath, categoryPath, simulatorPath, simulatorsPath
+  SECTIONS, sectionPath, glossaryPath, toolPath, templatePath, categoryPath, simulatorPath, simulatorsPath,
+  sessionsPath
 } from './site-routes.mjs';
 import { stringsFor } from './page-shell.mjs';
 // The nav the rest of the site carries, from the table every family renders it
@@ -197,6 +199,33 @@ function practicalLinks(language) {
   return `<p class="cta-simulators">${links.join(' · ')}</p>`;
 }
 
+/**
+ * The two links that lead past the free material: the newsletter, and the
+ * sessions page where the entry price is published.
+ *
+ * A separate row rather than two more items in practicalLinks above, and the
+ * split is the argument. Those three are more of what the reader just finished
+ * - free, self-serve, nobody on the other end of them. These two are the only
+ * places on the site where the answer involves a person, and one of them costs
+ * money. Mixing all five into one dot-separated line would file the offer under
+ * "here are some other pages", which is exactly how it gets skipped.
+ *
+ * It sits at the foot of an article and nowhere earlier for the same reason. A
+ * reader who has read to the bottom is the only reader in a position to judge
+ * whether an hour is worth paying for; asking before that is asking someone to
+ * buy on a promise. There is no booking link here on purpose - the calendar is
+ * sent by the automatic email that answers the two questionnaires, so the only
+ * door on the site is the sessions page and the contact form on it.
+ */
+function workLinks(language, labels) {
+  const strings = siteStrings[language];
+  const links = [
+    `<a href="${homeHref(language)}#contact-newsletter">${escapeHtml(strings.newsletterFollow)}</a>`,
+    `<a href="${sessionsPath(language)}">${escapeHtml(strings.sessionsAll)}</a>`
+  ];
+  return `<p class="cta-simulators cta-work">${escapeHtml(labels.ctaWorkLead)} ${links.join(' · ')}</p>`;
+}
+
 const copy = {
   en: {
     locale: 'en_US',
@@ -216,6 +245,7 @@ const copy = {
     ctaTools: 'Explore the tools',
     ctaSimulatorsLead: 'Put this into practice:',
     ctaAssessment: 'Take the assessment',
+    ctaWorkLead: 'Or take it further with me:',
     readNextEyebrow: 'Keep reading',
     readNextTitle: 'Three more from the blog',
     readNextNote: 'Ideas that sit alongside this one. Pick the next step in your reading.',
@@ -239,6 +269,8 @@ const copy = {
     feedLink: 'RSS feed',
     recentTitle: 'Read this month',
     recentNote: 'Ranked by how often each page was opened.',
+    sourcesTitle: 'Sources',
+    sourcesNote: 'Each line says which claim in the article it supports. The links go to the original work, not to a summary of it.',
     privacyNote: 'This blog counts how many times each article page is opened, and nothing else. No cookie, no identifier, no record of who read what \u2014 just a number per article, used to decide what to feature here.'
   },
   es: {
@@ -259,6 +291,7 @@ const copy = {
     ctaTools: 'Explorar las herramientas',
     ctaSimulatorsLead: 'Ponlo en práctica:',
     ctaAssessment: 'Hacer el diagnóstico',
+    ctaWorkLead: 'O seguir conmigo:',
     readNextEyebrow: 'Sigue leyendo',
     readNextTitle: 'Tres lecturas más del blog',
     readNextNote: 'Ideas que acompañan a esta. Elige tu siguiente lectura.',
@@ -276,6 +309,8 @@ const copy = {
     feedLink: 'Fuente RSS',
     recentTitle: 'Lo m\u00e1s le\u00eddo este mes',
     recentNote: 'Ordenado por cu\u00e1ntas veces se abri\u00f3 cada p\u00e1gina.',
+    sourcesTitle: 'Fuentes',
+    sourcesNote: 'Cada línea indica qué afirmación del artículo sostiene. Los enlaces llevan al trabajo original, no a un resumen.',
     privacyNote: 'Este blog cuenta cu\u00e1ntas veces se abre cada art\u00edculo, y nada m\u00e1s. Sin cookies, sin identificadores, sin registro de qui\u00e9n ley\u00f3 qu\u00e9: solo un n\u00famero por art\u00edculo, que sirve para decidir qu\u00e9 destacar aqu\u00ed.'
   },
   pt: {
@@ -296,6 +331,7 @@ const copy = {
     ctaTools: 'Explorar as ferramentas',
     ctaSimulatorsLead: 'Ponha isto em prática:',
     ctaAssessment: 'Fazer o diagnóstico',
+    ctaWorkLead: 'Ou seguir comigo:',
     readNextEyebrow: 'Continua a ler',
     readNextTitle: 'Mais três leituras do blog',
     readNextNote: 'Ideias que acompanham esta. Escolhe a tua próxima leitura.',
@@ -313,6 +349,8 @@ const copy = {
     feedLink: 'Fonte RSS',
     recentTitle: 'O mais lido este m\u00eas',
     recentNote: 'Ordenado por quantas vezes cada p\u00e1gina foi aberta.',
+    sourcesTitle: 'Fontes',
+    sourcesNote: 'Cada linha indica qual afirmação do artigo ela sustenta. Os links levam ao trabalho original, não a um resumo.',
     privacyNote: 'Este blog conta quantas vezes cada artigo \u00e9 aberto, e mais nada. Sem cookies, sem identificadores, sem registo de quem leu o qu\u00ea: apenas um n\u00famero por artigo, usado para decidir o que destacar aqui.'
   }
 };
@@ -508,6 +546,107 @@ function readNextSection(article, labels, related) {
     </div></section>`;
 }
 
+/** -------------------------------------------------------------- references */
+
+/**
+ * The references behind one article, resolved from ids to full entries.
+ *
+ * Keyed by translation key rather than slug, because the three translations of
+ * a piece rest on the same evidence and keeping three lists in step is a job
+ * nobody would keep doing. An article with no entry returns an empty list and
+ * renders no block: a personal essay that cites nothing should say nothing
+ * rather than print an empty heading.
+ *
+ * Everything else throws. A citation is a claim that a reader can check, so a
+ * reference to an id that does not exist, a source with a field missing, or a
+ * note that was never translated are all build failures rather than a footnote
+ * shipping the word "undefined" under an article about being careful with
+ * numbers.
+ */
+function sourcesFor(article) {
+  const references = ARTICLE_SOURCES[article.translationKey];
+  if (!references) return [];
+  return references.map((reference) => {
+    const source = SOURCE_LIBRARY[reference.id];
+    if (!source) {
+      throw new Error(
+        `Article "${article.translationKey}" cites "${reference.id}", which is not in SOURCE_LIBRARY ` +
+          '(content/site/sources.mjs).'
+      );
+    }
+    for (const field of ['authors', 'title', 'publication']) {
+      if (!source[field]) {
+        throw new Error(`Source "${reference.id}" is missing ${field} in content/site/sources.mjs.`);
+      }
+    }
+    const note = reference.note?.[article.language];
+    if (!note) {
+      throw new Error(
+        `Article "${article.translationKey}" cites "${reference.id}" with no ${article.language} note in ` +
+          'content/site/sources.mjs. Every reference has to say, in the reader\'s language, which claim it supports.'
+      );
+    }
+    return { ...source, note };
+  });
+}
+
+/**
+ * The reference list at the foot of an article.
+ *
+ * An ordered list rather than prose, and each entry carries a note saying what
+ * it is doing there. A bare bibliography is decoration - the reader has no way
+ * to tell which line backs the sentence they doubted - so the note is the part
+ * that makes the block worth the space it takes.
+ *
+ * Links open in a new tab and carry noopener noreferrer, matching what
+ * markdown.mjs does with external links in prose. They are deliberately *not*
+ * nofollow: these are editorial citations of primary sources, which is exactly
+ * the kind of link a search engine should be allowed to follow.
+ *
+ * A source with no url renders as plain text. Bengen 1994 and the Trinity study
+ * were published in journals with no free stable landing page, and a full
+ * reference with no link is honest, where a link to whichever aggregator
+ * currently hosts a scan is a dead link with a date on it.
+ */
+function sourcesBlock(article, labels) {
+  const references = sourcesFor(article);
+  if (references.length === 0) return '';
+  const items = references.map((reference) => {
+    const year = reference.year ? ` (${escapeHtml(reference.year)})` : '';
+    const title = escapeHtml(reference.title);
+    const linked = reference.url
+      ? `<a href="${reference.url}" target="_blank" rel="noopener noreferrer">${title}</a>`
+      : title;
+    return `<li><span class="source-ref">${escapeHtml(reference.authors)}${year}. <cite>${linked}</cite>. `
+      + `${escapeHtml(reference.publication)}.</span><span class="source-note">${escapeHtml(reference.note)}</span></li>`;
+  });
+  return `<section class="article-sources" aria-labelledby="sources-title">
+      <h2 id="sources-title">${escapeHtml(labels.sourcesTitle)}</h2>
+      <p class="article-sources-note">${escapeHtml(labels.sourcesNote)}</p>
+      <ol>${items.join('')}</ol>
+    </section>`;
+}
+
+/**
+ * The reference list again, as schema.org nodes for the BlogPosting.
+ *
+ * The visible block and this share sourcesFor(), so the two cannot disagree
+ * about what an article cites - which is the failure mode of every hand-kept
+ * duplicate of a bibliography.
+ */
+function citations(article) {
+  const references = sourcesFor(article);
+  if (references.length === 0) return undefined;
+  return references.map((reference) => ({
+    '@type': 'CreativeWork',
+    name: reference.title,
+    author: reference.authors,
+    publisher: reference.publication,
+    ...(reference.year ? { datePublished: reference.year } : {}),
+    ...(reference.url ? { url: reference.url } : {})
+  }));
+}
+
 function structuredData(article, labels, body) {
   const url = `${origin}${articlePath(article.language, article.slug)}`;
   const graph = [
@@ -524,9 +663,17 @@ function structuredData(article, labels, body) {
       image: [logo],
       wordCount: body.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length,
       articleSection: article.category || undefined,
-      author: { '@type': 'Person', '@id': `${origin}/#sandy-bradbury`, name: 'Sandy Bradbury', url: `${origin}/#biografia` },
+      // The about page rather than the home page's #biografia anchor: an author
+      // url pointing at an anchor tells a consumer the canonical page about
+      // this person is a page about the site. Spanish because that is what
+      // x-default resolves to everywhere else on the site.
+      author: { '@type': 'Person', '@id': `${origin}/#sandy-bradbury`, name: 'Sandy Bradbury', url: `${origin}/es/sobre-mi/` },
       publisher: { '@id': `${origin}/#organization` },
-      isPartOf: { '@type': 'Blog', '@id': `${origin}/${article.language}/blog/#blog` }
+      isPartOf: { '@type': 'Blog', '@id': `${origin}/${article.language}/blog/#blog` },
+      // The same reference list the reader sees, in the field a machine reads.
+      // undefined rather than [] when an article cites nothing, so the property
+      // is dropped from the JSON instead of asserting an empty bibliography.
+      citation: citations(article)
     },
     {
       '@type': 'BreadcrumbList',
@@ -632,11 +779,11 @@ ${structuredData(article, labels, body)}
   </header>${sectionNav('journal', article.language, articlePath(article.language, article.slug))}
   <main class="article-page-main"><article data-article-slug="${article.slug}">
     <header class="article-header"><div class="container article-header-inner"><div class="post-meta">${categoryChip(article)}<span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
-    <div class="container article-layout">${toc}<div><div id="article-body" class="article-body">
+    <div class="container article-layout">${toc}<div class="article-main"><div id="article-body" class="article-body">
 ${body}
-    </div>${shareRow({ url, title: article.title, strings: siteStrings[article.language] })}<footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
+    </div>${sourcesBlock(article, labels)}${shareRow({ url, title: article.title, strings: siteStrings[article.language] })}<footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
   </article>${readNextSection(article, labels, related)}
-    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p>${simulatorLinks(article, labels)}${practicalLinks(article.language)}</div><div class="journey-actions"><a class="button" href="${simulatorsPath(article.language)}">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
+    <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p>${simulatorLinks(article, labels)}${practicalLinks(article.language)}${workLinks(article.language, labels)}</div><div class="journey-actions"><a class="button" href="${simulatorsPath(article.language)}">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
   <!-- The seven section links again at the end of the document. An article is
        read to the bottom, which is where the strip at the top is a scroll away,

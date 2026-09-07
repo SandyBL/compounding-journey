@@ -30,7 +30,7 @@ import { LEGAL } from '../content/site/legal.mjs';
 import { renderMarkdown, collectHeadings, escapeHtml } from './markdown.mjs';
 import {
   LANGUAGES, ORIGIN, LEGAL_PAGES, legalPath, sectionPath, glossaryPath,
-  sessionsPath, dataPath, journalPath, absolute
+  sessionsPath, dataPath, journalPath, homePath, absolute
 } from './site-routes.mjs';
 import { renderShell, stringsFor } from './page-shell.mjs';
 
@@ -50,7 +50,14 @@ const RESOLVERS = {
   templates: (language) => sectionPath('templates', language),
   glossary: (language) => glossaryPath(language),
   data: (language) => dataPath(language),
-  journal: (language) => journalPath(language)
+  journal: (language) => journalPath(language),
+  // The contact form on the home page, and the only way to reach the author
+  // from this site. It replaced a printed address in every one of these
+  // documents: an address on a page this crawlable is harvested, and a
+  // controller whose inbox is full of spam answers rights requests more slowly,
+  // not faster. GDPR Art. 13 asks for contact details rather than for an email
+  // address specifically, and a monitored form is accepted as such.
+  contact: (language) => `${homePath(language)}#contacto`
 };
 
 const insightLabel = { es: 'Idea clave', en: 'Key insight', pt: 'Ideia-chave' };

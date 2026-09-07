@@ -93,7 +93,7 @@
         },
         {
           "@type": "Question",
-          "name": "Guardam os dados que introduzo?",
+          "name": "Os dados que eu digito ficam guardados em algum lugar?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Não. Todo o cálculo acontece no seu navegador em JavaScript; nada é enviado para um servidor e nada é armazenado. Você pode confirmar isso desligando a rede e usando a calculadora do mesmo jeito."
@@ -142,6 +142,10 @@
   ]
 }
   </script>
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.pt.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body><div class="site-shell">
   <a class="skip-link" href="#page-main">Ir para o conteúdo</a>
@@ -155,7 +159,7 @@
     </div>
   </header>
   <nav class="site-section-nav" aria-label="Seções do site">
-    <div class="site-section-tabs"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/">Simuladores</a><a href="/pt/calculadoras/" aria-current="true">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></div>
+    <div class="site-section-tabs"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/">Simuladores</a><a href="/pt/calculadoras/" aria-current="true">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a></div>
   </nav>
   <main id="page-main" class="page-main">
     <div class="container">
@@ -163,7 +167,7 @@
       <header class="page-head">
         <p class="eyebrow">Calculadora</p>
         <h1>Calculadora de juros compostos</h1>
-        <p class="page-dek">Informe o que você tem hoje, quanto consegue aportar cada mês e quantos anos vai dar ao dinheiro. A calculadora mostra quanto você pôs e quanto o tempo pôs.</p>
+        <p class="page-dek">Informe o que você tem hoje, quanto consegue aportar por mês e quantos anos está disposto a dar ao dinheiro. No fim aparecem dois números separados: quanto você colocou e quanto o tempo colocou.</p>
       </header>
     </div>
     <div class="container">
@@ -221,7 +225,7 @@
       </aside>
           <section class="page-section tool-notes">
             <h2 class="section-title">Como funciona</h2>
-            <div class="article-body"><p>A calculadora capitaliza mês a mês. Cada mês multiplica o saldo pela rentabilidade mensal — a anual dividida por doze — e depois soma o seu aporte:</p>
+            <div class="article-body"><p>A calculadora capitaliza mês a mês. Cada mês multiplica o saldo pela rentabilidade mensal (a anual dividida por doze) e depois soma o seu aporte:</p>
 <pre><code>saldo = saldo × (1 + rentabilidade anual / 12) + aporte</code></pre>
 <p>Repetido tantas vezes quantos meses tiver o seu horizonte. O número que aparece como &quot;gerado pelos <a href="/pt/glossario/juros-compostos/" class="inline-link" title="O efeito pelo qual os rendimentos do seu dinheiro começam a gerar os seus próprios rendimentos, fazendo o capital crescer de forma exponencial e não linear." data-link-kind="glossary">juros compostos</a>&quot; é simplesmente o valor final menos tudo o que você pôs, e é a parte que não existiria se o dinheiro tivesse ficado parado.</p></div>
           </section>
@@ -245,7 +249,7 @@
           <div><p>Não. São valores nominais. Para pensar em poder de compra de hoje, subtraia a sua expectativa de inflação da rentabilidade que informa: 7% com inflação de 2,5% equivale a cerca de 4,5% real. O resultado fica então já em reais de hoje.</p></div>
         </details>
         <details class="faq-item">
-          <summary>Guardam os dados que introduzo?</summary>
+          <summary>Os dados que eu digito ficam guardados em algum lugar?</summary>
           <div><p>Não. Todo o cálculo acontece no seu navegador em JavaScript; nada é enviado para um servidor e nada é armazenado. Você pode confirmar isso desligando a rede e usando a calculadora do mesmo jeito.</p></div>
         </details>
         </div>
@@ -255,7 +259,7 @@
           <h2>Outras calculadoras</h2>
           <ul><li><a href="/pt/calculadoras/liberdade-financeira/">Calculadora de liberdade financeira</a></li><li><a href="/pt/calculadoras/custo-em-horas-de-vida/">Calculadora do custo em horas de vida</a></li></ul>
           <h2>Termos usados aqui</h2><ul><li><a href="/pt/glossario/juros-compostos/">Juros compostos</a></li><li><a href="/pt/glossario/rentabilidade-real/">Rentabilidade real</a></li><li><a href="/pt/glossario/ter-custo-total/">TER (custo total)</a></li><li><a href="/pt/glossario/investimento-periodico-dca/">Investimento periódico (DCA)</a></li></ul>
-          <h2>Leituras relacionadas</h2><ul><li><a href="/pt/blog/investimento-para-iniciantes-guia-basico-para-fazer-crescer-o-seu-patrimonio/">Investimento para Iniciantes: Guia Básico para Fazer Crescer o Seu Patrimônio</a></li><li><a href="/pt/blog/o-que-ensina-um-seculo-de-historia-dos-mercados-quedas-recuperacao-e-diversificacao/">O que ensina um século de história dos mercados: quedas, recuperação e diversificação</a></li><li><a href="/pt/blog/gestao-de-dividas-como-sair-e-manter-se-livre-das-dividas/">Gestão de Dívidas: Como Sair e Manter-se Livre das Dívidas</a></li><li><a href="/pt/blog/por-seu-dinheiro-a-trabalhar-faca-dinheiro-enquanto-dorme/">Faça Seu Dinheiro a Trabalhar: Ganhe Dinheiro Enquanto Dorme</a></li></ul>
+          <h2>Leituras relacionadas</h2><ul><li><a href="/pt/blog/investimento-para-iniciantes-guia-basico-para-fazer-crescer-o-seu-patrimonio/">Investimento para iniciantes: guia básico para fazer crescer o seu patrimônio</a></li><li><a href="/pt/blog/o-que-ensina-um-seculo-de-historia-dos-mercados-quedas-recuperacao-e-diversificacao/">O que ensina um século de história dos mercados: quedas, recuperação e diversificação</a></li><li><a href="/pt/blog/gestao-de-dividas-como-sair-e-manter-se-livre-das-dividas/">Gestão de dívidas: como sair e manter-se livre das dívidas</a></li><li><a href="/pt/blog/por-seu-dinheiro-a-trabalhar-faca-dinheiro-enquanto-dorme/">Faça seu dinheiro trabalhar: ganhe dinheiro enquanto dorme</a></li></ul>
           <a class="text-link" href="/pt/calculadoras/">Ver todas as calculadoras</a>
         </aside>
       </div>
@@ -264,7 +268,7 @@
   <footer class="site-footer"><div class="container">
     <nav class="footer-legal" aria-label="Outras páginas legais"><a href="/pt/privacidade/">Privacidade</a><a href="/pt/termos/">Termos</a><a href="/pt/aviso-legal/">Aviso legal</a></nav>
     <div class="footer-row">
-      <nav aria-label="Mapa do site"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/">Simuladores</a><a href="/pt/calculadoras/" aria-current="true">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></nav>
+      <nav aria-label="Mapa do site"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/">Simuladores</a><a href="/pt/calculadoras/" aria-current="true">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a></nav>
       <span>© 2026 Compounding Journey — Escolhas pequenas. Horizontes longos.</span>
     </div>
   </div></footer>

@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.pt.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden antialiased selection:bg-gold-500 selection:text-white">
 
@@ -91,7 +95,7 @@
          page, and placed outside the sticky <header> like on every other family
          - see the .site-section-nav comment in assets/css/header.css. -->
   <nav class="site-section-nav" aria-label="Seções do site">
-    <div class="site-section-tabs"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></div>
+    <div class="site-section-tabs"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a></div>
   </nav>
 
     <!-- Page intro. These simulators previously opened straight into their app
@@ -883,8 +887,8 @@
                  section has to read identically on all of them. -->
     <section class="sim-explainer" aria-labelledby="explainer-title">
         <div class="sim-explainer__inner">
-            <h2 class="sim-explainer__title" id="explainer-title">O que uma simulação de Monte Carlo lhe diz</h2>
-            <p class="sim-explainer__lede">Qualquer outra calculadora de aposentadoria dá-lhe um número, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro lhe sobreviveu.</p>
+            <h2 class="sim-explainer__title" id="explainer-title">O que uma simulação de Monte Carlo diz para você</h2>
+            <p class="sim-explainer__lede">Qualquer outra calculadora de aposentadoria dá um número para você, obtido assumindo que o mercado rende o mesmo todos os anos. Nunca rende. Este simulador executa o seu plano mil vezes, sorteando de cada vez uma sequência diferente de anos de mercado, e não reporta um número mas uma probabilidade: a proporção dessas mil vidas em que o seu dinheiro durou mais do que você.</p>
 
             <h3 class="sim-explainer__heading">Como funcionam as mil simulações</h3>
             <p>Para cada uma das 1.000 simulações e cada ano dentro dela, o simulador sorteia uma rentabilidade aleatória para ações, títulos e liquidez, e uma taxa aleatória de inflação, a partir de distribuições calibradas com a história de longo prazo: as ações têm média de 8,2% ao ano com um desvio-padrão de 24%, as títulos 3,5% com 6%, a liquidez 1,5% com 1%, e a inflação 3,5% com 2,5%. A sua carteira cresce segundo o resultado ponderado, é levantada a sua despesa, e essa despesa é inflacionada para o ano seguinte.</p>
@@ -901,7 +905,7 @@
 
             <h3 class="sim-explainer__heading">Um exemplo resolvido</h3>
             <p>Uma carteira de 800.000, com 70% em ações, consumida a 4% ao ano durante trinta anos, devolve uma taxa de sucesso nos noventa e poucos. A simulação mediana termina com mais dinheiro do que começou, muitas vezes várias vezes mais, que é a parte contraintuitiva: o desfecho típico de um plano de retirada sustentável é morrer rico.</p>
-            <p>Agora suba a taxa de retirada para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro na metade dos vinte e tantos anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que não lhe mostraram.</p>
+            <p>Agora suba a taxa de retirada para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro na metade dos vinte e tantos anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que ninguém mostrou para você.</p>
 
             <h3 class="sim-explainer__heading">Perguntas frequentes</h3>
             <dl class="sim-explainer__faq">
@@ -917,12 +921,12 @@
                  simulator linked to an article, so the articles were reachable only from
                  the blog index and the crawler had no reason to treat the two as one site. -->
             <nav class="sim-explainer__reading" aria-labelledby="reading-title">
-                <h3 class="sim-explainer__heading" id="reading-title">Continue a ler</h3>
-                <p>O diário desenvolve com mais calma as ideias por trás desta ferramenta.</p>
+                <h3 class="sim-explainer__heading" id="reading-title">Continue lendo</h3>
+                <p>O blog desenvolve com mais calma as ideias por trás desta ferramenta.</p>
                 <ul class="sim-explainer__list">
                     <li><a href="/pt/blog/risco-de-sequencia-por-que-a-ordem-das-rentabilidades-decide-a-sua-aposentadoria/">Risco de sequência: por que a ordem das rentabilidades decide a sua aposentadoria</a></li>
-                    <li><a href="/pt/blog/fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza/">Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza</a></li>
-                    <li><a href="/pt/blog/">Todas as entradas do diário</a></li>
+                    <li><a href="/pt/blog/fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza/">Fundamentos das finanças pessoais: como controlar despesas e criar riqueza</a></li>
+                    <li><a href="/pt/blog/">Todas as entradas do blog</a></li>
                 </ul>
             </nav>
         </div>

@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.pt.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body class="min-h-full flex flex-col antialiased selection:bg-gold-500 selection:text-white">
 
@@ -105,7 +109,7 @@
          page, and placed outside the sticky <header> like on every other family
          - see the .site-section-nav comment in assets/css/header.css. -->
   <nav class="site-section-nav" aria-label="Seções do site">
-    <div class="site-section-tabs"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></div>
+    <div class="site-section-tabs"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a></div>
   </nav>
 
     <!-- Page intro. These simulators previously opened straight into their app
@@ -555,45 +559,45 @@
         <section class="sim-explainer" aria-labelledby="explainer-title">
             <div class="sim-explainer__inner">
                 <h2 class="sim-explainer__title" id="explainer-title">Para que serve o Motor de Rendimento Passivo</h2>
-                <p class="sim-explainer__lede">O rendimento passivo costuma ser vendido como uma ideia única, como se um fundo de dividendos, um apartamento alugado e um negócio online fossem a mesma coisa com roupa diferente. Não são. Esta ferramenta obriga-o a construir uma corrente de rendimento com seis deles e depois a viver dela, para que as diferenças — em rendimento, em esforço, em quão mal cada um pode correr — sejam algo que sentiu e não algo que leu.</p>
+                <p class="sim-explainer__lede">O rendimento passivo costuma ser vendido como uma ideia única, como se um fundo de dividendos, um apartamento alugado e um negócio online fossem a mesma coisa com roupa diferente. Não são. Esta ferramenta faz você montar uma corrente de renda com seis deles e depois viver dela, para que as diferenças — em renda, em esforço, em quão mal cada um pode dar errado — sejam algo que você sentiu e não algo que você leu.</p>
 
                 <h3 class="sim-explainer__heading">Como funciona</h3>
                 <p>Distribui capital por seis fontes: um ETF de dividendos, títulos do Tesouro, um apartamento alugado, um índice de REITs, um negócio online e bitcoin. Cada uma paga um rendimento diferente, e cada uma carrega uma dose diferente daquilo que a palavra «passivo» cala: o aluguel exige encontrar inquilino e consertar a caldeira, o negócio online precisa de alguém que o conduza, e nenhum dos dois paga enquanto está doente.</p>
-                <p>A outra metade é a despesa. Você define as suas escolhas de moradia, transporte e refeições fora, e a ferramenta acompanha um indicador de Alegria de Viver ao lado do seu rendimento. Esta é a parte que a maioria do conteúdo sobre rendimento passivo omite: o objetivo não é um número, é cobrir uma vida que realmente queira viver. Cortar o seu estilo de vida até o osso torna o objetivo trivialmente fácil e o resultado inútil, e o indicador existe para tornar essa troca explícita em vez de o deixar otimizar-se em silêncio até uma vida que detestaria.</p>
+                <p>A outra metade é a despesa. Você define as suas escolhas de moradia, transporte e refeições fora, e a ferramenta acompanha um indicador de Alegria de Viver ao lado do seu rendimento. Esta é a parte que a maioria do conteúdo sobre rendimento passivo omite: o objetivo não é um número, é cobrir uma vida que você realmente queira viver. Cortar o seu estilo de vida até o osso deixa o objetivo fácil demais e o resultado inútil, e o indicador existe para deixar essa troca explícita em vez de deixar você otimizar em silêncio até chegar a uma vida que ia detestar.</p>
 
                 <h3 class="sim-explainer__heading">O que pressupõe</h3>
                 <ul class="sim-explainer__list">
                     <li>Os rendimentos são médias estáveis. Os dividendos são cortados, os inquilinos saem, e um negócio online pode perder a maior parte da sua receita por uma única alteração no algoritmo de outra pessoa.</li>
-                    <li>O número do aluguel é a renda, não o lucro. Um imóvel real custa-lhe gestão, manutenção, seguro, impostos e os meses em que está vazio: habitualmente um terço do número anunciado.</li>
+                    <li>O número do aluguel é a renda, não o lucro. Um imóvel real custa a você gestão, manutenção, seguro, impostos e os meses em que fica vazio: normalmente um terço do número anunciado.</li>
                     <li>O rendimento é mostrado antes de impostos, e o rendimento passivo é frequentemente tributado de forma menos favorável do que o salário que pretende substituir.</li>
                     <li>A bitcoin não produz rendimento nenhum. Está na lista porque há quem a mantenha à espera dele, e ver que uma alocação grande não contribui em nada para o número mensal é precisamente a ideia.</li>
                 </ul>
                 <p class="sim-explainer__note">Nada disto é uma recomendação para deter nenhum destes seis ativos. Estão na ferramenta porque se comportam de forma diferente entre si, que é o que faz com que a comparação ensine alguma coisa.</p>
 
                 <h3 class="sim-explainer__heading">Um exemplo resolvido</h3>
-                <p>Ponha tudo no ETF de dividendos e o rendimento mensal é modesto, completamente passivo, e chega quer se levante da cama quer não. Mova metade para o apartamento alugado e o rendimento dá um salto — e ao mesmo tempo adquiriu em silêncio um trabalho a tempo parcial, um ativo ilíquido e um único inquilino cuja saída lhe retira de uma só vez uma parte grande do rendimento.</p>
-                <p>Agora cubra o mesmo objetivo mensal mantendo alta a Alegria de Viver. A opção de habitação mais barata torna o objetivo alcançável com muito menos capital e custa-lhe algo que o rendimento supostamente iria comprar. Não existe uma combinação que maximize o rendimento, minimize o esforço e preserve a vida ao mesmo tempo, e descobrir onde quer situar-se nesse triângulo vale mais do que qualquer número de rendimento que a ferramenta imprima.</p>
+                <p>Ponha tudo no ETF de dividendos e o rendimento mensal é modesto, completamente passivo, e chega se você levantar da cama e chega se não levantar. Mova metade para o apartamento alugado e a renda dá um salto — e ao mesmo tempo você adquiriu em silêncio um trabalho de meio período, um ativo ilíquido e um único inquilino cuja saída tira de você, de uma vez, uma parte grande da renda.</p>
+                <p>Agora cubra o mesmo objetivo mensal mantendo alta a Alegria de Viver. A opção de moradia mais barata deixa o objetivo alcançável com muito menos capital e custa a você algo que a renda supostamente ia comprar. Não existe uma combinação que maximize a renda, minimize o esforço e preserve a vida ao mesmo tempo, e descobrir onde você quer ficar nesse triângulo vale mais do que qualquer número que a ferramenta imprima.</p>
 
                 <h3 class="sim-explainer__heading">Perguntas frequentes</h3>
                 <dl class="sim-explainer__faq">
                     <dt>Alguma coisa disto é realmente passiva?</dt>
-                    <dd>Duas das seis são: o ETF de dividendos e os títulos do Tesouro. O índice de REITs se aproxima. O aluguel e o negócio online são negócios, e o simulador é mais útil precisamente quando lhe mostra qual parte do seu rendimento depende dos que precisam de você.</dd>
+                    <dd>Duas das seis são: o ETF de dividendos e os títulos do Tesouro. O índice de REITs se aproxima. O aluguel e o negócio online são negócios, e o simulador é mais útil justamente quando mostra para você qual parte da sua renda depende dos que precisam de você.</dd>
                     <dt>Por que a despesa faz parte de uma ferramenta de rendimento?</dt>
                     <dd>Porque a meta é definida por ela. Baixar os seus custos mensais em 300 equivale a encontrar 90.000 de capital a 4%, e uma dessas duas coisas está disponível este mês.</dd>
                     <dt>Devo diversificar pelas seis?</dt>
-                    <dd>Essa não é uma pergunta que um simulador possa responder por si, e espalhar capital por coisas que não compreende não é diversificar. O que a ferramenta pode mostrar é quanto muda, se uma única fonte dominar o seu rendimento, aquilo que um só golpe de azar lhe faz.</dd>
+                    <dd>Essa não é uma pergunta que um simulador responda sozinho, e espalhar capital por coisas que você não entende não é diversificar. O que a ferramenta pode mostrar é o quanto muda, se uma única fonte dominar a sua renda, o que um só golpe de azar faz com você.</dd>
                 </dl>
 
                 <!-- The journal and the simulators were two separate islands: nothing on a
                      simulator linked to an article, so the articles were reachable only from
                      the blog index and the crawler had no reason to treat the two as one site. -->
                 <nav class="sim-explainer__reading" aria-labelledby="reading-title">
-                    <h3 class="sim-explainer__heading" id="reading-title">Continue a ler</h3>
-                    <p>O diário desenvolve com mais calma as ideias por trás desta ferramenta.</p>
+                    <h3 class="sim-explainer__heading" id="reading-title">Continue lendo</h3>
+                    <p>O blog desenvolve com mais calma as ideias por trás desta ferramenta.</p>
                     <ul class="sim-explainer__list">
                         <li><a href="/pt/blog/rendimento-passivo-nao-e-uma-so-coisa-quatro-motores-e-o-que-cada-um-custa/">Rendimento passivo não é uma só coisa: quatro motores e o que cada um custa</a></li>
-                        <li><a href="/pt/blog/como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre/">Como Construir Riqueza com Bons Hábitos Financeiros</a></li>
-                        <li><a href="/pt/blog/">Todas as entradas do diário</a></li>
+                        <li><a href="/pt/blog/como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre/">Como construir riqueza com bons hábitos financeiros: lições de Pai Rico, Pai Pobre</a></li>
+                        <li><a href="/pt/blog/">Todas as entradas do blog</a></li>
                     </ul>
                 </nav>
             </div>

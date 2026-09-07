@@ -98,6 +98,26 @@ const LANGUAGE_SUFFIX = /\.(en|es|pt)\.js$/;
  */
 const LANGUAGE_CLASS = /^lang-(?:en|es|pt)$/;
 
+/**
+ * Addresses that must never reach a published page.
+ *
+ * The author's personal mailbox used to be printed in the legal notice, the
+ * privacy policy, the terms and the sessions page - fifteen places, in three
+ * languages, on a site that asks eleven AI crawlers to read everything. It has
+ * been replaced everywhere by the contact form on the home page, and this is
+ * what stops it coming back: a generator gets copied, a translation gets
+ * pasted, and an address in one paragraph of one language's privacy policy is
+ * not something anybody would notice in review.
+ *
+ * The whole local part is matched rather than the full address, so a variant
+ * with a different domain is caught too. Add a line here for any other address
+ * that should stay private - not for the contact form, which is a URL.
+ */
+const PRIVATE_CONTACTS = [
+  /san\.bradbury/i,
+  /mailto:[^"'\s>]*gmail\.com/i
+];
+
 async function* htmlPages() {
   for (const entry of PAGE_ROOTS) {
     const absolute = path.join(root, entry);
@@ -338,6 +358,22 @@ async function main() {
       problems.push(`${page}: also served at ${duplicate}, which no forced 301 in _redirects collapses.`);
     }
 
+    // 8. No private address is printed anywhere.
+    //
+    // Every enquiry is supposed to arrive through the contact form: one inbox,
+    // one privacy paragraph describing it, and nothing for a harvester to
+    // scrape off a page. See PRIVATE_CONTACTS above for why this is enforced
+    // here rather than trusted to review.
+    for (const pattern of PRIVATE_CONTACTS) {
+      const found = markup.match(pattern);
+      if (found) {
+        problems.push(
+          `${page}: prints "${found[0]}". Contact goes through the form at #contacto - see PRIVATE_CONTACTS ` +
+            'in scripts/verify-output.mjs.'
+        );
+      }
+    }
+
     // 6. A page carrying the result panel links the copy it is made of.
     //
     // Both files are needed and they are needed together: sim-cta.js is the
@@ -488,7 +524,7 @@ async function main() {
   console.log(
     `verify-output: ${pages} pages, ${references} asset references, ${redirects.length} forced redirects, ` +
       `${editions.size} simulators in ${LANGUAGES.size} languages. Versions, caching rules, canonical URLs, ` +
-      `language declarations, result-panel copy and cross-language visual parity all check out.`,
+      `language declarations, result-panel copy, contact privacy and cross-language visual parity all check out.`,
   );
 }
 

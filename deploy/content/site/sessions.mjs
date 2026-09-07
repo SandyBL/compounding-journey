@@ -16,11 +16,13 @@
  * leaves the reader to assume the rest, and the assumption a finance page
  * invites is "he'll tell me what to buy".
  *
- * The second is that there are no prices yet. Rather than invent them or leave
- * the page until there are, every session says the rate is available on
- * request, and SESSION_PRICES below is the single switch that changes that: set
- * it and the page prints amounts instead, in every language, with no other
- * edit anywhere.
+ * The second is pricing, and it is deliberately answered in two halves. The
+ * page publishes a floor - SESSION_PRICE_FROM, one rounded number per currency,
+ * so nobody has to write an email to find out the order of magnitude - and
+ * leaves the three individual rates on request, because those really do depend
+ * on the session and the country. SESSION_PRICES is the switch for publishing
+ * all three; it is all-or-nothing and stays null. Both live below with the
+ * reasoning next to them.
  */
 
 /**
@@ -41,6 +43,50 @@
  * where two sessions have a price and the third silently does not.
  */
 export const SESSION_PRICES = null;
+
+/**
+ * The entry price, published; the three individual rates, still on request.
+ *
+ * This is a different thing from SESSION_PRICES above, and it exists because
+ * the two questions a reader has are not the same question. "Is this 20 or
+ * 2,000?" has to be answered on the page - a service page with no number at all
+ * filters out the people who would have paid along with the people who would
+ * not, and makes the ones who stay send an email to find out something they
+ * were entitled to know before they invested the effort. "What exactly does the
+ * three-session accompaniment cost in my country?" can wait for the reply,
+ * because that answer genuinely depends on the session and the currency.
+ *
+ * So the page prints one floor and says the rest come by return. SESSION_PRICES
+ * stays null: filling it is all-or-nothing by design, and this is not that.
+ *
+ * The three numbers are one offer in three currencies, rounded to something
+ * that reads like a price rather than converted to the cent. R$ 99 is the
+ * reference; 19 $ and 17 EUR are what that is worth as a price tag, not what it
+ * is worth at today's mid-market rate. Two consequences worth knowing: the euro
+ * and dollar figures do not need touching when the rate moves a few percent,
+ * and they do need touching when it moves a lot. They are marketing numbers,
+ * which is why the page says "approximately" about the two that are not the
+ * reader's own currency.
+ *
+ * "display" is what a reader sees, formatted for their locale - R$ before the
+ * amount, the euro sign after it, the dollar sign tight against the digits.
+ * "amount" and "currency" are what go into the AggregateOffer, where a machine
+ * needs a bare number and an ISO code.
+ *
+ * Language, not country, picks the currency, because language is the only thing
+ * the site knows about a visitor. A Portuguese-speaking reader in Lisbon sees
+ * reais, which is exactly why the equivalents are printed next to the headline
+ * rather than hidden behind it.
+ *
+ * scripts/generate-sessions-page.mjs fails the build if a language is missing
+ * or a field is blank. Setting the whole export to null removes the headline
+ * and puts every rate back on request.
+ */
+export const SESSION_PRICE_FROM = {
+  es: { display: '17 €', amount: 17, currency: 'EUR' },
+  en: { display: '$19', amount: 19, currency: 'USD' },
+  pt: { display: 'R$ 99', amount: 99, currency: 'BRL' }
+};
 
 /**
  * What is on offer.
@@ -155,16 +201,18 @@ export const SESSIONS_PAGE = {
     howTitle: 'Cómo funciona',
     how: [
       'Escríbeme contándome brevemente dónde estás y qué te gustaría resolver.',
-      'Te respondo con la tarifa vigente, la disponibilidad y qué sesión encaja mejor. Y si creo que no necesitas ninguna, te lo digo.',
+      'Te respondo con las tres tarifas, la disponibilidad y qué sesión encaja mejor. Y si creo que no necesitas ninguna, te lo digo.',
       'Confirmamos día y hora, y te envío por escrito qué llevar preparado.',
       'Tras la sesión recibes un resumen escrito con lo acordado y los siguientes pasos.'
     ],
     enquiryTitle: 'Pedir cita',
-    enquiryBody: 'Cuéntame en dos líneas dónde estás. Respondo en 48 horas laborables con la tarifa vigente y la disponibilidad.',
+    enquiryBody: 'Cuéntame en dos líneas dónde estás. Respondo en 48 horas laborables con las tres tarifas y la disponibilidad.',
     enquiryAction: 'Escribir desde el formulario',
     priceLabel: 'Tarifa',
     priceOnRequest: 'Consultar tarifa vigente',
-    priceNote: 'Las tarifas no están publicadas todavía: pídelas por correo y te las envío con la disponibilidad. Sin compromiso y sin cobro hasta que confirmes.',
+    priceFromLabel: 'Desde',
+    priceFromEquivalent: 'Equivale aproximadamente a',
+    priceNote: 'Ese es el punto de partida, la sesión más corta. Lo que cuesta cada una de las tres depende de la sesión y del país: te las envío por escrito, con la disponibilidad, cuando me escribas. Sin compromiso y sin cobro hasta que confirmes.',
     forWhomLabel: 'Para quién',
     freeFirst: 'Antes de pagar nada: casi todo lo que hago en una sesión se puede hacer solo, gratis, con las plantillas, las calculadoras y el glosario de este sitio. Empieza por ahí. Las sesiones son para cuando quieres que alguien lo mire contigo.'
   },
@@ -197,16 +245,18 @@ export const SESSIONS_PAGE = {
     howTitle: 'How it works',
     how: [
       'Write to me with a short description of where you are and what you would like to sort out.',
-      'I reply with the current rate, my availability and which session fits best. And if I think you do not need one, I say so.',
+      'I reply with all three rates, my availability and which session fits best. And if I think you do not need one, I say so.',
       'We confirm a day and time, and I send you in writing what to have ready.',
       'After the session you get a written summary of what we agreed and the next steps.'
     ],
     enquiryTitle: 'Ask about a session',
-    enquiryBody: 'Tell me in two lines where you are. I answer within 48 working hours with the current rate and availability.',
+    enquiryBody: 'Tell me in two lines where you are. I answer within 48 working hours with all three rates and my availability.',
     enquiryAction: 'Write from the contact form',
     priceLabel: 'Rate',
     priceOnRequest: 'Request current rates',
-    priceNote: 'Rates are not published yet: ask by email and I will send them with my availability. No commitment, and nothing is charged until you confirm.',
+    priceFromLabel: 'From',
+    priceFromEquivalent: 'Roughly equivalent to',
+    priceNote: 'That is the starting point, for the shortest session. What each of the three costs depends on the session and the country: I send all of them in writing, with my availability, when you write. No commitment, and nothing is charged until you confirm.',
     forWhomLabel: 'Who it is for',
     freeFirst: 'Before you pay for anything: almost everything I do in a session can be done alone, for free, with the templates, calculators and glossary on this site. Start there. The sessions are for when you want somebody to look at it with you.'
   },
@@ -239,16 +289,18 @@ export const SESSIONS_PAGE = {
     howTitle: 'Como funciona',
     how: [
       'Escreva-me contando brevemente onde você está e o que gostaria de resolver.',
-      'Respondo com a tarifa em vigor, a disponibilidade e qual sessão encaixa melhor, ou digo com franqueza se acho que você não precisa de nenhuma.',
+      'Respondo com as três tarifas, a disponibilidade e qual sessão encaixa melhor, ou digo com franqueza se acho que você não precisa de nenhuma.',
       'Confirmamos dia e hora, e envio por escrito o que você deve ter preparado.',
       'Depois da sessão você recebe um resumo escrito do que foi acordado e dos próximos passos.'
     ],
     enquiryTitle: 'Agendar uma sessão',
-    enquiryBody: 'Conte-me em duas linhas onde você está. Respondo em 48 horas úteis com a tarifa em vigor e a disponibilidade.',
+    enquiryBody: 'Conte-me em duas linhas onde você está. Respondo em 48 horas úteis com as três tarifas e a disponibilidade.',
     enquiryAction: 'Escrever pelo formulário',
     priceLabel: 'Tarifa',
     priceOnRequest: 'Consultar tarifa em vigor',
-    priceNote: 'As tarifas ainda não estão publicadas: peça por e-mail e eu envio junto com a disponibilidade. Sem compromisso e sem cobrança até confirmar.',
+    priceFromLabel: 'A partir de',
+    priceFromEquivalent: 'Equivale aproximadamente a',
+    priceNote: 'Esse é o ponto de partida, a sessão mais curta. Quanto custa cada uma das três depende da sessão e do país: envio todas por escrito, com a disponibilidade, quando você escrever. Sem compromisso e sem cobrança até confirmar.',
     forWhomLabel: 'Para quem',
     freeFirst: 'Antes de pagar qualquer coisa: quase tudo o que eu faço em uma sessão você pode fazer sozinho, de graça, com os modelos, as calculadoras e o glossário deste site. Comece por aí. As sessões são para quando você quer que alguém olhe para isso junto com você.'
   }
