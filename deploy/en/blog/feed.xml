@@ -4,14 +4,14 @@
   xmlns:dc="http://purl.org/dc/elements/1.1/"
 >
   <channel>
-    <title>The Compounding Journal</title>
+    <title>The Compounding Blog</title>
     <link>https://compoundingjourney.com/en/blog/</link>
     <description>Practical money systems, intentional work, and the patient path toward financial freedom.</description>
     <language>en</language>
     <atom:link href="https://compoundingjourney.com/en/blog/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://compoundingjourney.com/logo-compounding-journey.png</url>
-      <title>The Compounding Journal</title>
+      <title>The Compounding Blog</title>
       <link>https://compoundingjourney.com/en/blog/</link>
     </image>
     <lastBuildDate>Sat, 05 Sep 2026 00:00:00 GMT</lastBuildDate>
@@ -22,7 +22,7 @@
       <pubDate>Sat, 05 Sep 2026 00:00:00 GMT</pubDate>
       <category>Money habits</category>
       <dc:creator>Sandy Bradbury</dc:creator>
-      <description>Nobody fails at money because they cannot calculate compound interest. They fail because the decision arrives in a moment, and the consequence arrives in a decade — and the mind is not built for that gap.</description>
+      <description>Nobody fails at money because they can&#39;t calculate compound interest. They struggle because the decision arrives in a moment and the consequence arrives in a decade, and the mind simply isn&#39;t built for that gap.</description>
     </item>
     <item>
       <title>Investing 101: A Beginner’s Guide to Growing Your Wealth</title>
@@ -40,7 +40,7 @@
       <pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate>
       <category>Investing</category>
       <dc:creator>Sandy Bradbury</dc:creator>
-      <description>A dividend fund, a rented flat, a bond ladder and a product you sold once are four different machines. They differ in the capital they need, the hours they quietly demand, and how they break.</description>
+      <description>A dividend fund, a rented flat, a bond ladder and a course you sold once are four completely different machines. They differ in the capital they need, the hours they quietly ask for, and the way they break.</description>
     </item>
     <item>
       <title>What a Century of Market History Teaches: Drawdowns, Recovery and Diversification</title>
@@ -49,7 +49,7 @@
       <pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate>
       <category>Investing</category>
       <dc:creator>Sandy Bradbury</dc:creator>
-      <description>Over the long run the market goes up — a true sentence, and almost useless. The numbers that decide whether you stay invested are how deep the falls went, how long they lasted, and what they did to a mixed portfolio.</description>
+      <description>“Over the long run the market goes up” is a true sentence and an almost useless one. The numbers that decide whether you stay invested are how deep the falls went, how long they lasted, and what they did to a mixed portfolio.</description>
     </item>
     <item>
       <title>Sequence-of-Returns Risk: Why the Order of Returns Decides Your Retirement</title>
@@ -58,7 +58,7 @@
       <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
       <category>Investing</category>
       <dc:creator>Sandy Bradbury</dc:creator>
-      <description>The same average return can leave one retiree comfortable and another broke. What decides it is the order the returns arrive in — and that is the one variable no average can show you.</description>
+      <description>Two people can retire with the same money and earn the same average return, and still end up in very different places. What separates them is the order the good and bad years arrive in — and that&#39;s the one thing an average can never show you.</description>
     </item>
     <item>
       <title>Your Savings Rate, Not Your Salary, Sets the Date You Become Free</title>
@@ -67,7 +67,7 @@
       <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
       <category>Life design</category>
       <dc:creator>Sandy Bradbury</dc:creator>
-      <description>Work through the arithmetic of financial independence and something strange happens: your income cancels out. What is left is the gap between what you earn and what you spend, and that gap sets a date.</description>
+      <description>Work through the arithmetic of financial independence and something strange happens: your income cancels out. What&#39;s left is the gap between what you earn and what you spend, and that gap sets a date.</description>
     </item>
     <item>
       <title>Debt Management: How to Get Out and Stay Out of Debt</title>
@@ -124,7 +124,7 @@
       <description>Learn how saving a fixed percentage before spending can break the paycheck-to-paycheck cycle and help you easily build an emergency fund.</description>
     </item>
     <item>
-      <title>The slow money system: a calmer way to build wealth</title>
+      <title>The Slow Money System: A Calmer Way to Build Wealth</title>
       <link>https://compoundingjourney.com/en/blog/slow-money-system/</link>
       <guid isPermaLink="true">https://compoundingjourney.com/en/blog/slow-money-system/</guid>
       <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>

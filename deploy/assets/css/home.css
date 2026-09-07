@@ -768,9 +768,11 @@
            fits from about 1166px, so the band is left running to 1279px and the
            type returns to normal at 1280px, where there is over 100px of slack.
 
-           Sesiones and Diario are what changed the numbers: Diario is a couple
-           of pixels narrower than the Pilares it replaced, and Sesiones costs
-           about 73px at full size and about 60px reduced.
+           Sesiones and the blog tab are what changed the numbers: the tab was
+           Diario, a couple of pixels narrower than the Pilares it replaced,
+           and Sesiones costs about 73px at full size and about 60px reduced.
+           The tab now reads Blog in all three languages, which is narrower
+           still, so every figure above is an upper bound.
 
            The padding-block is deliberately unchanged: it is what gives these
            targets their height, and 24px is the floor WCAG 2.2 SC 2.5.8 asks

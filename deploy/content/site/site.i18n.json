@@ -336,6 +336,16 @@
     "en": "Glossary",
     "pt": "Glossário"
   },
+  "aboutContactAction": {
+    "es": "Escribir por el formulario",
+    "en": "Write through the contact form",
+    "pt": "Escrever pelo formulário"
+  },
+  "aboutNavLabel": {
+    "es": "Sobre mí",
+    "en": "About",
+    "pt": "Sobre mim"
+  },
   "sessionsNavLabel": {
     "es": "Sesiones",
     "en": "Sessions",
@@ -410,6 +420,16 @@
     "es": "Plantilla de Excel",
     "en": "Excel template",
     "pt": "Modelo de Excel"
+  },
+  "sessionsAll": {
+    "es": "Ver cómo son las sesiones",
+    "en": "See how the sessions work",
+    "pt": "Ver como são as sessões"
+  },
+  "newsletterFollow": {
+    "es": "Recibir la newsletter",
+    "en": "Get the newsletter",
+    "pt": "Receber a newsletter"
   },
   "templatesAll": {
     "es": "Ver todas las plantillas",

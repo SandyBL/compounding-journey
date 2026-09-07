@@ -19,9 +19,22 @@
  * The whole design problem here is honesty under a thin sample. Three
  * mechanisms handle it, and none of them is cosmetic:
  *
- *   1. Every metric declares a minimum sample and is omitted below it - see
- *      content/site/insights.mjs. A section with nothing publishable prints why
- *      instead of printing a number.
+ *   1. Every metric declares a minimum sample. At or above it the figure is a
+ *      finding; between the provisional floor and it the figure is printed with
+ *      the word "provisional" beside it and kept out of the headline findings
+ *      and out of the Dataset's variableMeasured; below the floor it is not
+ *      printed at all - see PROVISIONAL_MINIMUM in
+ *      scripts/simulator-insights.mjs. A section with nothing to show prints
+ *      why instead of printing a number.
+ *   1b. What is honest at any sample size is a count, so the page publishes
+ *      those without a threshold: how many simulations each tool has recorded,
+ *      how many of its measures are showing, and how many more runs the next
+ *      one needs. That table is the page's own progress bar, and it is what
+ *      makes the contribute section an ask with a number attached rather than
+ *      a plea. It is also the answer to the failure mode this page had on the
+ *      day it shipped: five runs in the table, nothing above any minimum, and
+ *      therefore a page that said "not enough data yet" eleven times and gave
+ *      a reader no reason to change that.
  *   2. The database is optional exactly as it is for the journal's featured
  *      card. No database, no table, an outage: the page renders its empty
  *      state and the build carries on. A page of averages is not worth failing
@@ -41,7 +54,9 @@ import {
   LANGUAGES, ORIGIN, dataPath, journalPath, glossaryPath, sectionPath, legalPath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
-import { readSimulatorRuns, summarize, publishable, isLanguageScoped } from './simulator-insights.mjs';
+import {
+  readSimulatorRuns, summarize, publishable, reportable, runsNeeded, isLanguageScoped, PROVISIONAL_MINIMUM
+} from './simulator-insights.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -119,9 +134,9 @@ function labelFor(metric, key, language) {
  * into the table on the back of the twelve that were answered two hundred
  * times.
  */
-function entriesOf(metric, stats) {
+function entriesOf(metric, stats, floor) {
   if (metric.kind === 'set' || metric.kind === 'shareSet') {
-    return stats.entries.filter((entry) => entry.sample >= metric.minimum);
+    return stats.entries.filter((entry) => entry.sample >= floor);
   }
   return stats.entries;
 }
@@ -132,9 +147,14 @@ function entryFigure(metric, entry, language, copy) {
   return `${amount(entry.share, language, 1)}%`;
 }
 
-/** The entry a takeaway sentence talks about: the largest one. */
+/**
+ * The entry a takeaway sentence talks about: the largest one.
+ *
+ * The metric's own minimum, not the provisional floor: takeaways are only ever
+ * built from confirmed statistics, so this is the only bar that applies here.
+ */
 function leadEntry(metric, stats) {
-  return entriesOf(metric, stats)[0] || null;
+  return entriesOf(metric, stats, metric.minimum)[0] || null;
 }
 
 /**
@@ -159,7 +179,7 @@ function takeawayValue(metric, stats, language, copy) {
 /** ---------------------------------------------------------------- markup */
 
 /** The value cell of one metric's row. */
-function valueCell(metric, stats, language, copy) {
+function valueCell(metric, stats, floor, language, copy) {
   if (metric.kind === 'average') {
     const spread = [
       `${copy.medianLabel} ${figure(metric, stats.median, language, copy)}`,
@@ -172,7 +192,7 @@ function valueCell(metric, stats, language, copy) {
     return `<strong>${escapeHtml(`${amount(stats.share, language, 1)}%`)}</strong>`;
   }
 
-  const entries = entriesOf(metric, stats);
+  const entries = entriesOf(metric, stats, floor);
   const items = entries.map((entry) => {
     const key = metric.kind === 'set' || metric.kind === 'shareSet' ? entry.field : entry.value;
     return `<li><span>${escapeHtml(labelFor(metric, key, language))}</span> <strong>${escapeHtml(entryFigure(metric, entry, language, copy))}</strong></li>`;
@@ -180,22 +200,37 @@ function valueCell(metric, stats, language, copy) {
   return `<ul class="data-breakdown">${items.join('')}</ul>`;
 }
 
-/** The table of everything publishable for one simulator, or null. */
+/**
+ * The table of everything showable for one simulator, or null.
+ *
+ * A provisional row is marked in the row header rather than in the value cell,
+ * and that placement is deliberate: the mark has to be readable by somebody
+ * who arrives at the figure through a screen reader announcing the row header,
+ * and it has to survive being screenshotted next to the number. A note under
+ * the table says what the word means, and it is rendered only when a row on
+ * this table actually carries it.
+ */
 function metricTable(simulator, summary, language, copy) {
   const rows = [];
+  let provisional = 0;
   for (const metric of INSIGHT_METRICS.filter((entry) => entry.simulator === simulator.id)) {
-    const stats = publishable(metric, summary, language);
-    if (!stats) continue;
+    const report = reportable(metric, summary, language);
+    if (!report) continue;
+    const { stats, tier, floor } = report;
     if ((metric.kind === 'top' || metric.kind === 'breakdown' || metric.kind === 'set' || metric.kind === 'shareSet')
-      && entriesOf(metric, stats).length === 0) continue;
+      && entriesOf(metric, stats, floor).length === 0) continue;
 
     // Money rows are marked with the symbol they are counted in, so a reader
     // can see at a glance which figures pool the three languages and which
     // cannot. The language code would say the same thing to nobody.
     const scope = isLanguageScoped(metric) ? ` <span class="data-scope">(${escapeHtml(CURRENCY[language])})</span>` : '';
+    const mark = tier === 'provisional'
+      ? ` <span class="data-tier">${escapeHtml(copy.provisionalLabel)}</span>`
+      : '';
+    if (tier === 'provisional') provisional += 1;
     rows.push(`            <tr>
-              <th scope="row">${escapeHtml(metric[language].label)}${scope}</th>
-              <td>${valueCell(metric, stats, language, copy)}</td>
+              <th scope="row">${escapeHtml(metric[language].label)}${scope}${mark}</th>
+              <td>${valueCell(metric, stats, floor, language, copy)}</td>
               <td>${escapeHtml(`${amount(stats.sample, language)} ${copy.sampleUnit}`)}</td>
             </tr>`);
   }
@@ -212,7 +247,7 @@ function metricTable(simulator, summary, language, copy) {
 ${rows.join('\n')}
           </tbody>
         </table></div>
-      </div>`;
+${provisional > 0 ? `        <p class="data-note">${escapeHtml(copy.provisionalNote)}</p>\n` : ''}      </div>`;
 }
 
 /**
@@ -263,6 +298,55 @@ ${table || `      <div class="article-body"><p>${escapeHtml(copy.notEnough)}</p>
       </section>`;
 }
 
+/**
+ * One row per simulator: runs recorded, measures showing, runs to the next.
+ *
+ * Every column here is a count, which is why this table has no threshold in
+ * front of it while every figure above does. "Five simulations recorded" is
+ * exactly as true at five as at five hundred; it is the mean of five that
+ * would be a lie. So this is the part of the page that works from the first
+ * run onwards, and the part that tells a reader who wants to help precisely
+ * what helping does.
+ *
+ * The last column is the smallest gap across the simulator's measures rather
+ * than a total, because the reader is not being asked to fill the table - they
+ * are being told what one more save is worth. A simulator already showing
+ * something says so instead of printing a zero, which would read as a gap of
+ * nothing rather than as a bar already cleared.
+ */
+function progressTable(overall, language, copy) {
+  const rows = INSIGHT_SIMULATORS.map((simulator) => {
+    const summary = overall.simulators.get(simulator.id);
+    const metrics = INSIGHT_METRICS.filter((entry) => entry.simulator === simulator.id);
+    const showing = metrics.filter((metric) => reportable(metric, summary, language)).length;
+    const needed = Math.min(...metrics.map((metric) => runsNeeded(metric, summary, language)));
+    const gap = showing > 0 || needed === 0
+      ? copy.progressReady
+      : `${amount(needed, language)} ${copy.sampleUnit}`;
+    return `            <tr>
+              <th scope="row"><a href="${simulator.page(language)}">${escapeHtml(simulator[language].name)}</a></th>
+              <td>${escapeHtml(amount(summary?.runs || 0, language))}</td>
+              <td>${escapeHtml(`${amount(showing, language)} / ${amount(metrics.length, language)}`)}</td>
+              <td>${escapeHtml(gap)}</td>
+            </tr>`;
+  });
+
+  return `      <div class="article-body">
+        <p>${escapeHtml(copy.progressIntro)}</p>
+        <div class="article-table-wrap"><table>
+          <thead><tr>
+            <th scope="col">${escapeHtml(copy.progressSimulatorHeading)}</th>
+            <th scope="col">${escapeHtml(copy.progressRunsHeading)}</th>
+            <th scope="col">${escapeHtml(copy.progressReportingHeading)}</th>
+            <th scope="col">${escapeHtml(copy.progressNeededHeading)}</th>
+          </tr></thead>
+          <tbody>
+${rows.join('\n')}
+          </tbody>
+        </table></div>
+      </div>`;
+}
+
 function listBlock(title, paragraphs) {
   return `      <section class="page-section">
         <h2 class="section-title">${escapeHtml(title)}</h2>
@@ -283,6 +367,7 @@ function render(language, strings, overall) {
     ? `      <div class="article-body">
         <p class="data-headline">
           <strong>${escapeHtml(`${amount(overall.runs, language)} ${copy.runsLabel}`)}</strong>${
+  overall.first ? ` · ${escapeHtml(`${copy.sinceLabel} ${overall.first.slice(0, 10)}`)}` : ''}${
   overall.last ? ` · ${escapeHtml(`${copy.updatedLabel}: ${overall.last.slice(0, 10)}`)}` : ''}
         </p>
       </div>`
@@ -311,9 +396,16 @@ ${INSIGHT_SIMULATORS.map((simulator) => simulatorSection(simulator, overall, lan
       </section>
 ${listBlock(copy.methodTitle, copy.method)}
 ${listBlock(copy.caveatTitle, copy.caveat)}
+${overall.available
+    ? `      <section class="page-section" id="sample">
+        <h2 class="section-title">${escapeHtml(copy.progressTitle)}</h2>
+${progressTable(overall, language, copy)}
+      </section>`
+    : ''}
       <section class="page-section">
         <h2 class="section-title">${escapeHtml(copy.contributeTitle)}</h2>
         <div class="article-body">
+          ${overall.available ? `<p>${escapeHtml(copy.contributeAsk)}</p>` : ''}
           <p>${escapeHtml(copy.contributeBody)}</p>
           <p>${INSIGHT_SIMULATORS.map((simulator) =>
     `<a href="${simulator.page(language)}">${escapeHtml(simulator[language].name)}</a>`).join(' · ')}</p>
@@ -410,6 +502,21 @@ async function main() {
       }
     }
   }
+  // The provisional mark and the status table are the two places where a
+  // missing string would be published as the word "undefined" beside a real
+  // number, which is worse than a page that fails to build.
+  const required = [
+    'sinceLabel', 'provisionalLabel', 'provisionalNote',
+    'progressTitle', 'progressIntro', 'progressSimulatorHeading', 'progressRunsHeading',
+    'progressReportingHeading', 'progressNeededHeading', 'progressReady', 'contributeAsk'
+  ];
+  for (const language of LANGUAGES) {
+    for (const key of required) {
+      if (typeof INSIGHTS_PAGE[language]?.[key] !== 'string' || !INSIGHTS_PAGE[language][key]) {
+        throw new Error(`INSIGHTS_PAGE.${language} is missing "${key}" in content/site/insights.mjs.`);
+      }
+    }
+  }
 
   const rows = await readSimulatorRuns();
   const overall = summarize(rows, INSIGHT_METRICS);
@@ -424,9 +531,24 @@ async function main() {
   }
 
   const published = LANGUAGES.map((language) => takeaways(overall, language, INSIGHTS_PAGE[language]).length);
+  const tiers = LANGUAGES.map((language) => {
+    let confirmed = 0;
+    let provisional = 0;
+    for (const simulator of INSIGHT_SIMULATORS) {
+      const summary = overall.simulators.get(simulator.id);
+      for (const metric of INSIGHT_METRICS.filter((entry) => entry.simulator === simulator.id)) {
+        const report = reportable(metric, summary, language);
+        if (report?.tier === 'confirmed') confirmed += 1;
+        if (report?.tier === 'provisional') provisional += 1;
+      }
+    }
+    return { confirmed, provisional };
+  });
   console.log(
     `Results: ${written.length} page(s) — ${written.join(', ')} (${overall.available ? `${overall.runs} run(s) read` : 'no database'}, ` +
-      `${Math.max(...published)} headline finding(s) above their minimum sample).`
+      `${Math.max(...published)} headline finding(s) above their minimum sample, ` +
+      `${Math.max(...tiers.map((tier) => tier.confirmed))} measure(s) confirmed and ` +
+      `${Math.max(...tiers.map((tier) => tier.provisional))} provisional at n>=${PROVISIONAL_MINIMUM}).`
   );
   return written;
 }

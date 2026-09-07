@@ -18,13 +18,19 @@
  *      the fold on a phone. The terms page states the same boundary in legal
  *      register; this states it in the register somebody deciding whether to
  *      pay will read.
- *   2. The price. There is none yet, so every card says the rate is on request
- *      and the enquiry box explains why. content/site/sessions.mjs holds the
- *      single switch: fill SESSION_PRICES and this file prints amounts in all
- *      three languages, adds priceSpecification to the structured data, and
- *      drops the "ask me" note, with no other edit. If it is filled in but
- *      misses a session, the build fails rather than shipping a page where two
- *      of three sessions have a price.
+ *   2. The price. A floor is published and the three rates are not, which is
+ *      not indecision: a reader needs to know the order of magnitude before
+ *      they will spend effort on an enquiry, and does not need a rate card to
+ *      decide whether to ask. So the enquiry box leads with "from 17 EUR" in
+ *      the reader's currency, prints the other two as approximate equivalents,
+ *      and says plainly that the per-session rates come by return. That floor
+ *      also goes into the structured data as an AggregateOffer/lowPrice, which
+ *      is the only price field a search engine can read without being lied to.
+ *      content/site/sessions.mjs holds both switches: SESSION_PRICE_FROM for
+ *      the floor, SESSION_PRICES for the full card. The second is
+ *      all-or-nothing - fill it and every card prints its own rate; miss a
+ *      session and the build fails rather than shipping a page where two of
+ *      three sessions have a price.
  *   3. The free path. Almost everything a session does can be done alone with
  *      the templates, the calculators and the glossary, and the page says so
  *      before it asks for money. A page that hides the free option to sell the
@@ -34,12 +40,20 @@
  * rather than introducing a second one: one Netlify form, one inbox, one
  * privacy policy paragraph describing it. `#contacto` is the anchor id on all
  * three home pages, so it needs no translation.
+ *
+ * The form is also the only way to reach the author from this site. There is no
+ * address printed here and no mailto anywhere, by decision: a plain address on
+ * a public page is harvested within days and then every enquiry competes with
+ * the spam it attracted, whereas the form arrives labelled, in one inbox, under
+ * the one privacy paragraph that describes what happens to it.
+ * scripts/verify-output.mjs enforces that - it fails the build if a personal
+ * address turns up anywhere in the generated site.
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { SESSIONS, SESSIONS_PAGE, SESSION_PRICES } from '../content/site/sessions.mjs';
+import { SESSIONS, SESSIONS_PAGE, SESSION_PRICES, SESSION_PRICE_FROM } from '../content/site/sessions.mjs';
 import { escapeHtml } from './markdown.mjs';
 import {
   LANGUAGES, ORIGIN, sessionsPath, homePath, sectionPath, glossaryPath, journalPath, legalPath, absolute
@@ -47,9 +61,6 @@ import {
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-
-/** The address the enquiry links write to. Also in content/site/legal.mjs. */
-const CONTACT_EMAIL = 'san.bradbury@gmail.com';
 
 /**
  * The rate line for one session, or null while prices are unpublished.
@@ -87,25 +98,60 @@ ${column('no', copy.scopeNo, copy.no)}
 }
 
 /**
+ * The price headline: the floor in the reader's currency, then the other two.
+ *
+ * The equivalents are listed rather than omitted because language does not tell
+ * you a currency. A Portuguese-speaking reader in Lisbon gets reais as their
+ * headline and needs to see the euro figure to know what they are being asked
+ * for; the same goes in reverse for a Spanish-speaking reader in Buenos Aires.
+ * They are labelled approximate, which they are - see the note on rounding in
+ * content/site/sessions.mjs.
+ *
+ * Returns an empty string when SESSION_PRICE_FROM is null, so switching the
+ * headline off leaves clean markup rather than an empty heading.
+ */
+function priceFrom(language, copy) {
+  if (!SESSION_PRICE_FROM) return '';
+  const mine = SESSION_PRICE_FROM[language];
+  const others = LANGUAGES.filter((code) => code !== language).map((code) => SESSION_PRICE_FROM[code].display);
+  return `        <p class="session-price-from"><span>${escapeHtml(copy.priceFromLabel)}</span> <strong>${escapeHtml(mine.display)}</strong></p>
+        <p class="session-price-equivalent">${escapeHtml(copy.priceFromEquivalent)} ${others.map((display) => escapeHtml(display)).join(' · ')}.</p>`;
+}
+
+/**
  * The enquiry panel.
  *
- * Two ways out on purpose: the contact form for readers who are already on the
- * site, and a plain mailto for readers who would rather not fill in a form -
- * and for the case where the form is broken, which is invisible to a visitor
- * and fatal to an enquiry. The mailto's subject is prefilled so the message
- * arrives labelled.
+ * One way out, not two. This used to print a mailto next to the form link, on
+ * the reasoning that some readers would rather not fill in a form and that a
+ * silently broken form is fatal to an enquiry. Both are true and it still went:
+ * a personal address on a page this crawlable is harvested, and an inbox full
+ * of spam loses real enquiries at a far higher rate than a form outage nobody
+ * has ever reported. The form posts to Netlify Forms, which is checked, and it
+ * is the only channel the privacy policy has to describe.
+ *
+ * Order in the panel is deliberate: what it costs, what that is in other
+ * currencies, what to say, what is not yet public, then the link. The reader's
+ * first question is answered before they are asked to do anything.
+ *
+ * The link lands on the form itself, #contact-form-panel, and not on the top of
+ * #contacto: a reader who has just read the prices and decided to write should
+ * not have to scroll past the newsletter block and the biography to find the
+ * fields. ?from=sessions is read by the home page, which fills the message with
+ * a request for the three rates and the availability - the two things the copy
+ * above promises to send - so the form can be sent without typing a word, and
+ * then removes the marker from the address bar. Nothing here depends on that:
+ * with script off the link is still a plain jump to the form.
  */
 function enquiry(language, copy) {
-  const subject = encodeURIComponent(copy.enquiryTitle);
-  const price = SESSION_PRICES
+  const rates = SESSION_PRICES
     ? `<p class="session-price">${escapeHtml(copy.priceLabel)}: ${SESSIONS.map((session) => `${escapeHtml(session[language].name)} — ${escapeHtml(priceOf(session))}`).join(' · ')}</p>`
     : `<p class="session-price">${escapeHtml(copy.priceNote)}</p>`;
   return `      <aside class="session-enquiry" aria-labelledby="enquiry-title">
         <h2 id="enquiry-title">${escapeHtml(copy.enquiryTitle)}</h2>
+${priceFrom(language, copy)}
         <p>${escapeHtml(copy.enquiryBody)}</p>
-${price}
-        <a class="text-link" href="${homePath(language)}#contacto">${escapeHtml(copy.enquiryAction)}</a>
-        <p><a href="mailto:${CONTACT_EMAIL}?subject=${subject}">${CONTACT_EMAIL}</a></p>
+${rates}
+        <a class="text-link" href="${homePath(language)}?from=sessions#contact-form-panel">${escapeHtml(copy.enquiryAction)}</a>
       </aside>`;
 }
 
@@ -168,6 +214,23 @@ ${scopeBlock(copy)}
       serviceUrl: url,
       availableLanguage: LANGUAGES
     },
+    // The floor, and only the floor. An AggregateOffer with lowPrice and no
+    // highPrice is the honest shape for "from X, the rest on request": it tells
+    // a search engine the entry price without asserting a ceiling that has not
+    // been decided. offerCount is the catalogue below, so the two agree.
+    ...(SESSION_PRICE_FROM
+      ? {
+          offers: {
+            '@type': 'AggregateOffer',
+            '@id': `${url}#offers`,
+            lowPrice: SESSION_PRICE_FROM[language].amount,
+            priceCurrency: SESSION_PRICE_FROM[language].currency,
+            offerCount: SESSIONS.length,
+            availability: 'https://schema.org/InStock',
+            url
+          }
+        }
+      : {}),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: copy.heading,
@@ -226,6 +289,26 @@ async function main() {
     }
   }
 
+  // The published floor has to exist in every language or one page prints a
+  // headline reading "Desde undefined", which is worse than no headline. The
+  // amount is checked for being a number rather than for being truthy, because
+  // a free introductory session priced at 0 is a thing somebody might want and
+  // 0 is falsy.
+  if (SESSION_PRICE_FROM) {
+    for (const language of LANGUAGES) {
+      const entry = SESSION_PRICE_FROM[language];
+      if (!entry) {
+        throw new Error(`SESSION_PRICE_FROM has no entry for "${language}" in content/site/sessions.mjs.`);
+      }
+      if (!entry.display || !entry.currency || typeof entry.amount !== 'number') {
+        throw new Error(
+          `SESSION_PRICE_FROM.${language} needs a display string, a numeric amount and an ISO currency code ` +
+            '(content/site/sessions.mjs).'
+        );
+      }
+    }
+  }
+
   // Prices are all-or-nothing. Two of three sessions priced reads as an error
   // to a visitor and is one, so it fails here instead.
   if (SESSION_PRICES) {
@@ -253,7 +336,7 @@ async function main() {
 
   console.log(
     `Sessions: ${written.length} page(s) — ${written.join(', ')} (${SESSIONS.length} session(s), ` +
-      `${SESSION_PRICES ? 'prices published' : 'rates on request'}).`
+      `${SESSION_PRICES ? 'all rates published' : SESSION_PRICE_FROM ? 'from-price published, rates on request' : 'rates on request'}).`
   );
   return written;
 }

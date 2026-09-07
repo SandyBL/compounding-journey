@@ -17,9 +17,9 @@
         };
 
         const pageTitles = {
-            es: "Compounding Journey — El viaje del Crecimiento Compuesto",
+            es: "Compounding Journey — Tu mapa hacia la libertad financiera",
             en: "Compounding Journey — Your Map to Freedom",
-            pt: "Compounding Journey — A Jornada de Crescimento Composto"
+            pt: "Compounding Journey — O teu mapa para a liberdade financeira"
         };
 
         const pageDescriptions = {
@@ -812,6 +812,63 @@
             }
         }
 
+        /* ===================================================================
+           THE HANDOFF FROM THE SESSIONS PAGE
+           ===================================================================
+
+           /es/sesiones/ and its siblings publish the entry price and then send
+           the reader here with ?from=sessions. Unlike the simulator handoff
+           above there is no result to carry: what is known is only that they
+           read the sessions page and want to write about a session. So the
+           message states that and nothing else - a prefill that guessed at
+           somebody's finances would put words in their mouth, which is worse
+           than an empty field.
+
+           What it does do is ask for the two things the sessions panel promises
+           to send back (the three rates and the availability), so pressing send
+           without typing a word is already a complete request. Anything the
+           reader wants to add about their own situation continues from the end,
+           and the hint under the field is what invites it. */
+        const sessionsHandoffCopy = {
+            es: {
+                subject: 'Consulta de sesiones',
+                message: 'Hola Sandy:\n\nHe leído la página de sesiones y me gustaría reservar una hora contigo. ¿Me envías las tres tarifas y la disponibilidad?\n\nTodavía no sé qué sesión me encaja mejor, así que agradezco tu recomendación.'
+            },
+            en: {
+                subject: 'Sessions enquiry',
+                message: 'Hi Sandy,\n\nI have read the sessions page and I would like to book an hour with you. Could you send me the three rates and your availability?\n\nI am not sure yet which session fits me best, so any recommendation is welcome.'
+            },
+            pt: {
+                subject: 'Consulta de sessões',
+                message: 'Olá Sandy,\n\nLi a página de sessões e gostaria de reservar uma hora com você. Pode me enviar as três tarifas e a disponibilidade?\n\nAinda não sei qual sessão encaixa melhor no meu caso, então qualquer recomendação é bem-vinda.'
+            }
+        };
+
+        function applySessionsHandoff() {
+            const url = new URL(window.location.href);
+            if (url.searchParams.get('from') !== 'sessions') return;
+
+            // Cleared for the same reason as the simulator marker: it has been
+            // acted on, and a reload or a shared link must not rewrite a
+            // message the reader has since edited.
+            url.searchParams.delete('from');
+            window.history.replaceState(window.history.state, '', url);
+
+            const copy = sessionsHandoffCopy[currentLanguage()];
+            const messageField = document.getElementById('form-message');
+            const subjectField = document.querySelector('#contact-form [name="subject"]');
+
+            // Never overwrite something already typed.
+            if (messageField && !messageField.value.trim()) {
+                messageField.value = copy.message;
+                // Cursor at the end, no focus: they navigated here to read the
+                // form, not to be dropped inside a textarea.
+                messageField.setSelectionRange(messageField.value.length, messageField.value.length);
+            }
+
+            if (subjectField) subjectField.value = copy.subject;
+        }
+
         function setFieldError(fieldId, message) {
             const field = document.getElementById(fieldId);
             const error = document.getElementById(`${fieldId}-error`);
@@ -1555,6 +1612,7 @@
         // After setLanguage, because the prefilled message has to be written in
         // the language the page has settled on rather than the one it loaded in.
         applySimulatorHandoff();
+        applySessionsHandoff();
         initializeNavigationMenus();
         initializeLanguageSwitcher();
         initializeCalculatorTabs();

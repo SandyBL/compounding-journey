@@ -150,6 +150,18 @@ export const INSIGHTS_PAGE = {
     medianLabel: 'mediana',
     rangeLabel: 'rango',
     sampleUnit: 'simulaciones',
+    sinceLabel: 'desde',
+    provisionalLabel: 'provisional',
+    provisionalNote:
+      'Las filas marcadas como provisionales tienen menos muestra que el mínimo de su medida. Se publican con su muestra a la vista porque una cifra que el lector puede ver moverse enseña más que un hueco, pero todavía no son un patrón: no cuentan como hallazgo arriba y pueden cambiar bastante con las próximas simulaciones.',
+    progressTitle: 'Cuánta muestra hay y cuánta falta',
+    progressIntro:
+      'Esta tabla es el estado real de los datos, no una promesa. Dice cuántas simulaciones se han guardado en cada herramienta, cuántas de sus medidas se están publicando ya y cuántas simulaciones faltan para que aparezca la siguiente.',
+    progressSimulatorHeading: 'Simulador',
+    progressRunsHeading: 'Simulaciones',
+    progressReportingHeading: 'Medidas publicadas',
+    progressNeededHeading: 'Faltan para la siguiente',
+    progressReady: 'ya publica',
     notEnough:
       'Aún no hay muestra suficiente en este simulador para publicar medias. Lo que falta son simulaciones, no código: cada vez que alguien usa la herramienta y decide guardar su escenario, esta sección se acerca a poder decir algo.',
     tryLabel: 'Abrir el simulador',
@@ -172,6 +184,8 @@ export const INSIGHTS_PAGE = {
     contributeTitle: 'Añadir una simulación',
     contributeBody:
       'Dos de las herramientas tienen un botón para guardar el escenario en estos datos públicos, y las otras tres guardan la simulación al enviar una puntuación a su clasificación. En ambos casos es voluntario y no se guarda ningún dato personal.',
+    contributeAsk:
+      'Guardar una simulación mueve una cifra de esta página. No existe ninguna encuesta que pregunte qué tasa de retirada elige alguien justo después de ver fallar su propia jubilación en la mitad de los escenarios, así que la única forma de que ese número exista es que la gente que usa la herramienta lo deje aquí. La tabla de arriba dice exactamente qué medida desbloquea la siguiente simulación.',
     readMore: 'Seguir leyendo'
   },
   en: {
@@ -196,6 +210,18 @@ export const INSIGHTS_PAGE = {
     medianLabel: 'median',
     rangeLabel: 'range',
     sampleUnit: 'simulations',
+    sinceLabel: 'since',
+    provisionalLabel: 'provisional',
+    provisionalNote:
+      'The rows marked provisional have a smaller sample than their measure asks for. They are published with their sample in view because a figure the reader can watch move teaches more than a blank space, but they are not a pattern yet: they do not count as findings above, and the next few simulations can still move them a long way.',
+    progressTitle: 'How much sample there is, and how much is missing',
+    progressIntro:
+      'This table is the actual state of the data rather than a promise about it. It says how many simulations each tool has recorded, how many of its measures are being published already, and how many more simulations it takes for the next one to appear.',
+    progressSimulatorHeading: 'Simulator',
+    progressRunsHeading: 'Simulations',
+    progressReportingHeading: 'Measures shown',
+    progressNeededHeading: 'To the next measure',
+    progressReady: 'publishing already',
     notEnough:
       'This simulator does not have a large enough sample to publish averages yet. What is missing is simulations rather than code: every time somebody uses the tool and chooses to save their scenario, this section gets closer to having something to say.',
     tryLabel: 'Open the simulator',
@@ -218,6 +244,8 @@ export const INSIGHTS_PAGE = {
     contributeTitle: 'Add a simulation',
     contributeBody:
       'Two of the tools have a button that saves the scenario into this public data, and the other three save the run when a score is submitted to their leaderboard. Both are opt-in, and neither stores anything personal.',
+    contributeAsk:
+      'Saving one simulation moves a figure on this page. No survey anywhere asks what withdrawal rate somebody picks in the minute after watching their own retirement fail in half the scenarios, so the only way that number comes to exist is if the people using the tool leave it here. The table above says exactly which measure the next simulation unlocks.',
     readMore: 'Keep reading'
   },
   pt: {
@@ -242,6 +270,18 @@ export const INSIGHTS_PAGE = {
     medianLabel: 'mediana',
     rangeLabel: 'intervalo',
     sampleUnit: 'simulações',
+    sinceLabel: 'desde',
+    provisionalLabel: 'provisório',
+    provisionalNote:
+      'As linhas marcadas como provisórias têm menos amostra do que a sua medida exige. São publicadas com a amostra à vista porque um número que o leitor pode ver se mover ensina mais do que um espaço vazio, mas ainda não são um padrão: não contam como achado acima e as próximas simulações ainda podem mudá-los bastante.',
+    progressTitle: 'Quanta amostra existe e quanta falta',
+    progressIntro:
+      'Esta tabela é o estado real dos dados, não uma promessa. Diz quantas simulações cada ferramenta guardou, quantas das suas medidas já estão sendo publicadas e quantas simulações faltam para que a próxima apareça.',
+    progressSimulatorHeading: 'Simulador',
+    progressRunsHeading: 'Simulações',
+    progressReportingHeading: 'Medidas publicadas',
+    progressNeededHeading: 'Faltam para a próxima',
+    progressReady: 'já publica',
     notEnough:
       'Este simulador ainda não tem amostra suficiente para publicar médias. O que falta são simulações, não código: cada vez que alguém usa a ferramenta e decide guardar o seu cenário, esta seção fica mais perto de poder dizer algo.',
     tryLabel: 'Abrir o simulador',
@@ -264,6 +304,8 @@ export const INSIGHTS_PAGE = {
     contributeTitle: 'Acrescentar uma simulação',
     contributeBody:
       'Duas das ferramentas têm um botão para guardar o cenário nestes dados públicos, e as outras três guardam a simulação quando é enviada uma pontuação para o seu ranking. Em ambos os casos é voluntário e não se guarda nada pessoal.',
+    contributeAsk:
+      'Guardar uma simulação move um número desta página. Não existe nenhuma pesquisa que pergunte qual taxa de retirada alguém escolhe no minuto seguinte a ver a sua própria aposentadoria falhar em metade dos cenários, por isso a única maneira de esse número existir é as pessoas que usam a ferramenta o deixarem aqui. A tabela acima diz exatamente qual medida a próxima simulação desbloqueia.',
     readMore: 'Continuar lendo'
   }
 };

@@ -4,14 +4,14 @@
   xmlns:dc="http://purl.org/dc/elements/1.1/"
 >
   <channel>
-    <title>O Diário dos Juros Compostos</title>
+    <title>O Blog dos Juros Compostos</title>
     <link>https://compoundingjourney.com/pt/blog/</link>
     <description>Sistemas práticos de dinheiro, trabalho intencional e o caminho paciente para a liberdade financeira.</description>
     <language>pt</language>
     <atom:link href="https://compoundingjourney.com/pt/blog/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://compoundingjourney.com/logo-compounding-journey.png</url>
-      <title>O Diário dos Juros Compostos</title>
+      <title>O Blog dos Juros Compostos</title>
       <link>https://compoundingjourney.com/pt/blog/</link>
     </image>
     <lastBuildDate>Sat, 05 Sep 2026 00:00:00 GMT</lastBuildDate>
@@ -25,7 +25,7 @@
       <description>Ninguém fracassa com dinheiro por não saber calcular juros compostos. Fracassa porque a decisão chega em um instante e a consequência chega em uma década, e a mente não foi feita para esse intervalo.</description>
     </item>
     <item>
-      <title>Investimento para Iniciantes: Guia Básico para Fazer Crescer o Seu Patrimônio</title>
+      <title>Investimento para iniciantes: guia básico para fazer crescer o seu patrimônio</title>
       <link>https://compoundingjourney.com/pt/blog/investimento-para-iniciantes-guia-basico-para-fazer-crescer-o-seu-patrimonio/</link>
       <guid isPermaLink="true">https://compoundingjourney.com/pt/blog/investimento-para-iniciantes-guia-basico-para-fazer-crescer-o-seu-patrimonio/</guid>
       <pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate>
@@ -70,7 +70,7 @@
       <description>Quando você faz a conta da independência financeira acontece algo estranho: sua renda se cancela. O que sobra é a diferença entre o que você ganha e o que gasta, e essa diferença define uma data.</description>
     </item>
     <item>
-      <title>Gestão de Dívidas: Como Sair e Manter-se Livre das Dívidas</title>
+      <title>Gestão de dívidas: como sair e manter-se livre das dívidas</title>
       <link>https://compoundingjourney.com/pt/blog/gestao-de-dividas-como-sair-e-manter-se-livre-das-dividas/</link>
       <guid isPermaLink="true">https://compoundingjourney.com/pt/blog/gestao-de-dividas-como-sair-e-manter-se-livre-das-dividas/</guid>
       <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
@@ -79,7 +79,7 @@
       <description>As dívidas podem ser esmagadoras, mas a estratégia certa muda tudo. Compare Dívida Boa vs. Má e aprenda os métodos Bola de Neve e Avalancha.</description>
     </item>
     <item>
-      <title>Faça Seu Dinheiro a Trabalhar: Ganhe Dinheiro Enquanto Dorme</title>
+      <title>Faça seu dinheiro trabalhar: ganhe dinheiro enquanto dorme</title>
       <link>https://compoundingjourney.com/pt/blog/por-seu-dinheiro-a-trabalhar-faca-dinheiro-enquanto-dorme/</link>
       <guid isPermaLink="true">https://compoundingjourney.com/pt/blog/por-seu-dinheiro-a-trabalhar-faca-dinheiro-enquanto-dorme/</guid>
       <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
@@ -88,7 +88,7 @@
       <description>Poupar sozinho não constrói riqueza devido à inflação. Descubra como os juros compostos e os investimentos geram rendimento enquanto dorme.</description>
     </item>
     <item>
-      <title>Gastar com Propósito: Como Alinhar o Seu Dinheiro com o Que Realmente Importa</title>
+      <title>Gastar com propósito: como alinhar o seu dinheiro com o que realmente importa</title>
       <link>https://compoundingjourney.com/pt/blog/gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa/</link>
       <guid isPermaLink="true">https://compoundingjourney.com/pt/blog/gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa/</guid>
       <pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate>
@@ -97,7 +97,7 @@
       <description>O crescimento financeiro não exige cortar todas as alegrias, mas sim gastar com intenção. Alinhe as suas compras com os seus valores e alcance a liberdade.</description>
     </item>
     <item>
-      <title>Fundamentos das Finanças Pessoais: Como Controlar Despesas e Criar Riqueza</title>
+      <title>Fundamentos das finanças pessoais: como controlar despesas e criar riqueza</title>
       <link>https://compoundingjourney.com/pt/blog/fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza/</link>
       <guid isPermaLink="true">https://compoundingjourney.com/pt/blog/fundamentos-das-financas-pessoais-como-controlar-despesas-e-criar-riqueza/</guid>
       <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
@@ -106,7 +106,7 @@
       <description>Descubra dicas simples para criar orçamentos, rastrear despesas e tomar decisões financeiras inteligentes para alcançar a liberdade sem abrir mão do que te faz feliz.</description>
     </item>
     <item>
-      <title>Como Construir Riqueza com Bons Hábitos Financeiros: Lições de Pai Rico, Pai Pobre</title>
+      <title>Como construir riqueza com bons hábitos financeiros: lições de Pai Rico, Pai Pobre</title>
       <link>https://compoundingjourney.com/pt/blog/como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre/</link>
       <guid isPermaLink="true">https://compoundingjourney.com/pt/blog/como-construir-riqueza-com-bons-habitos-financeiros-licoes-de-pai-rico-pai-pobre/</guid>
       <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
@@ -115,7 +115,7 @@
       <description>Aprenda a construir riqueza de longo prazo com bons hábitos financeiros. Entenda a diferença entre ativos, passivos, dívida boa e fluxo de caixa.</description>
     </item>
     <item>
-      <title>Pague-se a Si Mesmo Primeiro: O Hábito Chave para Criar Riqueza</title>
+      <title>Pague-se a si mesmo primeiro: o hábito chave para criar riqueza</title>
       <link>https://compoundingjourney.com/pt/blog/pague-se-a-si-mesmo-primeiro-o-habito-chave-para-criar-riqueza/</link>
       <guid isPermaLink="true">https://compoundingjourney.com/pt/blog/pague-se-a-si-mesmo-primeiro-o-habito-chave-para-criar-riqueza/</guid>
       <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>

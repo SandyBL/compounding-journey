@@ -46,7 +46,7 @@ export const LEGAL = {
       body: `
 ## Quién trata tus datos
 
-El responsable del tratamiento es **Sandy Bradbury**, persona física con residencia en España, titular de compoundingjourney.com. Puedes escribir a **san.bradbury@gmail.com** para cualquier asunto relacionado con esta política, incluido el ejercicio de tus derechos.
+El responsable del tratamiento es **Sandy Bradbury**, persona física con residencia en España, titular de compoundingjourney.com. Puedes escribirme por el [formulario de contacto]({{contact}}) para cualquier asunto relacionado con esta política, incluido el ejercicio de tus derechos. Es la única vía de contacto de este sitio: no hay ninguna dirección de correo publicada, y los mensajes del formulario llegan a un único buzón.
 
 No hay delegado de protección de datos: el sitio lo lleva una sola persona y ninguno de los tratamientos descritos aquí obliga a nombrar uno.
 
@@ -74,7 +74,7 @@ Los otros dos —el Calendario de la Libertad y la Máquina del Tiempo del Merca
 
 Las filas que se guardan sin nombre no llevan identificador alguno, así que tampoco se pueden localizar después: no hay forma de saber cuál era tuya, ni para mí ni para nadie. Eso es lo que las hace anónimas, y también significa que una fila concreta no se puede borrar a petición. La clasificación es distinta: ahí hay un nombre visible y se puede retirar.
 
-**El nombre visible lo eliges tú, y lo sensato es que no sea tu nombre real.** Un apodo cumple exactamente la misma función. Si has enviado uno y quieres que desaparezca, escribe a san.bradbury@gmail.com indicando la puntuación y el simulador, y se borra.
+**El nombre visible lo eliges tú, y lo sensato es que no sea tu nombre real.** Un apodo cumple exactamente la misma función. Si has enviado uno y quieres que desaparezca, escríbeme por el [formulario de contacto]({{contact}}) indicando la puntuación y el simulador, y se borra.
 
 ## El recuento de lecturas
 
@@ -110,7 +110,7 @@ Netlify, Inc. y Substack están en Estados Unidos, así que los datos que tratan
 
 ## Tus derechos
 
-Puedes pedirme en cualquier momento acceso a tus datos, su rectificación, su supresión, la limitación u oposición a su tratamiento, y su portabilidad, y puedes retirar tu consentimiento cuando quieras. Escribe a **san.bradbury@gmail.com** y te respondo en el plazo de un mes.
+Puedes pedirme en cualquier momento acceso a tus datos, su rectificación, su supresión, la limitación u oposición a su tratamiento, y su portabilidad, y puedes retirar tu consentimiento cuando quieras. Escríbeme por el [formulario de contacto]({{contact}}) y te respondo en el plazo de un mes.
 
 Si crees que no he respondido como debía, puedes reclamar ante la **Agencia Española de Protección de Datos** (www.aepd.es), C/ Jorge Juan 6, 28001 Madrid.
 
@@ -131,7 +131,7 @@ Si cambia algo de lo anterior, cambia esta página y la fecha de revisión que f
       body: `
 ## Who processes your data
 
-The data controller is **Sandy Bradbury**, an individual resident in Spain and the owner of compoundingjourney.com. Write to **san.bradbury@gmail.com** about anything on this page, including to exercise your rights.
+The data controller is **Sandy Bradbury**, an individual resident in Spain and the owner of compoundingjourney.com. Write to me through the [contact form]({{contact}}) about anything on this page, including to exercise your rights. It is the only way to reach me from this site: no email address is published here, and form messages arrive in a single inbox.
 
 There is no data protection officer: one person runs this site, and none of the processing described here requires appointing one.
 
@@ -159,7 +159,7 @@ The other two — the Freedom Calendar and the Market Time Machine — have no l
 
 The rows stored without a name carry no identifier at all, which means they cannot be found again afterwards: there is no way to tell which one was yours, for me or for anybody else. That is what makes them anonymous, and it also means a particular row cannot be deleted on request. The leaderboard is different: there is a display name there, and it can be removed.
 
-**You choose the display name, and the sensible choice is not your real one.** A nickname does the same job. If you submitted one and want it gone, write to san.bradbury@gmail.com naming the score and the simulator, and it will be deleted.
+**You choose the display name, and the sensible choice is not your real one.** A nickname does the same job. If you submitted one and want it gone, write through the [contact form]({{contact}}) naming the score and the simulator, and it will be deleted.
 
 ## The reading counter
 
@@ -195,7 +195,7 @@ Netlify, Inc. and Substack are in the United States, so data they process may le
 
 ## Your rights
 
-You can ask me at any time for access to your data, its correction or erasure, the restriction of or objection to its processing, and its portability, and you can withdraw your consent whenever you like. Write to **san.bradbury@gmail.com** and I will answer within one month.
+You can ask me at any time for access to your data, its correction or erasure, the restriction of or objection to its processing, and its portability, and you can withdraw your consent whenever you like. Write through the [contact form]({{contact}}) and I will answer within one month.
 
 If you think I handled that badly, you can complain to the **Spanish Data Protection Agency** (www.aepd.es), C/ Jorge Juan 6, 28001 Madrid, which is the supervisory authority for this site.
 
@@ -216,7 +216,7 @@ If any of the above changes, this page changes with it, along with the revision 
       body: `
 ## Quem trata os seus dados
 
-O responsável pelo tratamento é **Sandy Bradbury**, pessoa singular residente em Espanha e titular de compoundingjourney.com. Escreva para **san.bradbury@gmail.com** sobre qualquer assunto desta página, incluindo o exercício dos seus direitos.
+O responsável pelo tratamento é **Sandy Bradbury**, pessoa singular residente em Espanha e titular de compoundingjourney.com. Escreva para mim pelo [formulário de contato]({{contact}}) sobre qualquer assunto desta página, incluindo o exercício dos seus direitos. É a única via de contato deste site: não há nenhum endereço de e-mail publicado aqui, e as mensagens do formulário chegam a uma única caixa de entrada.
 
 Não existe encarregado de proteção de dados: o site é gerido por uma só pessoa e nenhum dos tratamentos aqui descritos obriga a nomear um.
 
@@ -244,7 +244,7 @@ Os outros dois — o Calendário da Liberdade e a Máquina do Tempo do Mercado �
 
 As linhas guardadas sem nome não têm identificador nenhum, então também não podem ser localizadas depois: não há como saber qual era a sua, nem para mim nem para ninguém. É isso que as torna anônimas, e significa também que uma linha específica não pode ser apagada a pedido. O ranking é diferente: ali há um nome visível e ele pode ser retirado.
 
-**O nome visível é você que escolhe, e o sensato é que não seja o seu nome verdadeiro.** Um apelido faz o mesmo trabalho. Se você enviou um e quer que ele desapareça, escreva para san.bradbury@gmail.com indicando a pontuação e o simulador, e ele será apagado.
+**O nome visível é você que escolhe, e o sensato é que não seja o seu nome verdadeiro.** Um apelido faz o mesmo trabalho. Se você enviou um e quer que ele desapareça, escreva pelo [formulário de contato]({{contact}}) indicando a pontuação e o simulador, e ele será apagado.
 
 ## A contagem de leituras
 
@@ -280,7 +280,7 @@ A Netlify, Inc. e a Substack estão nos Estados Unidos, então os dados que elas
 
 ## Os seus direitos
 
-Você pode me pedir a qualquer momento o acesso aos seus dados, a retificação ou o apagamento deles, a limitação ou oposição ao tratamento e a portabilidade, e pode retirar o seu consentimento quando quiser. Escreva para **san.bradbury@gmail.com** e eu respondo no prazo de um mês.
+Você pode me pedir a qualquer momento o acesso aos seus dados, a retificação ou o apagamento deles, a limitação ou oposição ao tratamento e a portabilidade, e pode retirar o seu consentimento quando quiser. Escreva pelo [formulário de contato]({{contact}}) e eu respondo no prazo de um mês.
 
 Se você achar que respondi mal, pode reclamar junto da **Agencia Española de Protección de Datos** (www.aepd.es), C/ Jorge Juan 6, 28001 Madrid, que é a autoridade de controle deste site, ou junto da autoridade de proteção de dados do seu país de residência.
 
@@ -358,7 +358,7 @@ Estos términos se rigen por la legislación española. Si eres consumidor, cons
 
 ## Contacto
 
-Cualquier duda sobre esta página: **san.bradbury@gmail.com**. Sobre datos personales, mira la [política de privacidad]({{privacy}}); sobre la titularidad del sitio, el [aviso legal]({{notice}}).
+Cualquier duda sobre esta página: escríbeme por el [formulario de contacto]({{contact}}). Sobre datos personales, mira la [política de privacidad]({{privacy}}); sobre la titularidad del sitio, el [aviso legal]({{notice}}).
 `
     },
     en: {
@@ -423,7 +423,7 @@ These terms are governed by Spanish law. If you are a consumer, you keep the rig
 
 ## Contact
 
-Any question about this page: **san.bradbury@gmail.com**. For personal data, see the [privacy policy]({{privacy}}); for who owns the site, the [legal notice]({{notice}}).
+Any question about this page: write through the [contact form]({{contact}}). For personal data, see the [privacy policy]({{privacy}}); for who owns the site, the [legal notice]({{notice}}).
 `
     },
     pt: {
@@ -488,7 +488,7 @@ Estes termos se regem pela lei espanhola. Se você é consumidor, mantém o dire
 
 ## Contato
 
-Qualquer dúvida sobre esta página: **san.bradbury@gmail.com**. Sobre dados pessoais, veja a [política de privacidade]({{privacy}}); sobre a titularidade do site, o [aviso legal]({{notice}}).
+Qualquer dúvida sobre esta página: escreva pelo [formulário de contato]({{contact}}). Sobre dados pessoais, veja a [política de privacidade]({{privacy}}); sobre a titularidade do site, o [aviso legal]({{notice}}).
 `
     }
   }
@@ -504,10 +504,10 @@ Qualquer dúvida sobre esta página: **san.bradbury@gmail.com**. Sobre dados pes
 
 - **Titular:** Sandy Bradbury, persona física.
 - **Residencia:** España.
-- **Correo electrónico:** san.bradbury@gmail.com
+- **Contacto:** [formulario de contacto]({{contact}}) — la única vía de contacto de este sitio.
 - **Sitio web:** https://compoundingjourney.com
 
-El domicilio completo y los datos fiscales están a disposición de cualquier persona con un interés legítimo, previa solicitud al correo anterior. Este sitio no realiza ventas online: las [sesiones]({{sessions}}) se contratan por correo, caso por caso.
+El domicilio completo y los datos fiscales están a disposición de cualquier persona con un interés legítimo, previa solicitud por el formulario. Este sitio no realiza ventas online: las [sesiones]({{sessions}}) se contratan caso por caso, después de escribir por el formulario.
 
 ## Qué es Compounding Journey
 
@@ -555,10 +555,10 @@ Este aviso se rige por la legislación española, en particular por la Ley 34/20
 
 - **Owner:** Sandy Bradbury, acting as an individual.
 - **Country of residence:** Spain.
-- **Email:** san.bradbury@gmail.com
+- **Contact:** [contact form]({{contact}}) — the only way to reach me from this site.
 - **Website:** https://compoundingjourney.com
 
-The full postal address and tax details are available to anyone with a legitimate interest, on request to the address above. This site sells nothing online: the [sessions]({{sessions}}) are arranged by email, case by case.
+The full postal address and tax details are available to anyone with a legitimate interest, on request through the form. This site sells nothing online: the [sessions]({{sessions}}) are arranged case by case, after you write through the form.
 
 ## What Compounding Journey is
 
@@ -606,10 +606,10 @@ This notice is governed by Spanish law, in particular Law 34/2002 on information
 
 - **Titular:** Sandy Bradbury, pessoa singular.
 - **País de residência:** Espanha.
-- **E-mail:** san.bradbury@gmail.com
+- **Contato:** [formulário de contato]({{contact}}) — a única via de contato deste site.
 - **Site:** https://compoundingjourney.com
 
-O endereço postal completo e os dados fiscais ficam à disposição de quem tenha um interesse legítimo, mediante pedido para o e-mail acima. Este site não vende nada online: as [sessões]({{sessions}}) são combinadas por e-mail, caso a caso.
+O endereço postal completo e os dados fiscais ficam à disposição de quem tenha um interesse legítimo, mediante pedido pelo formulário. Este site não vende nada online: as [sessões]({{sessions}}) são combinadas caso a caso, depois de você escrever pelo formulário.
 
 ## O que é o Compounding Journey
 

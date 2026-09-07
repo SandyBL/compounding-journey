@@ -102,7 +102,7 @@
                     desc: "Recebe orientações isentas de conflito de interesses sem taxas percentuais recorrentes.",
                     qualityScore: 30,
                     impact: { netWorthDelta: 3500, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
-                    lesson: "Planejadores fiduciários cobram pelo tempo ou consultoria pontual — e não comissões por produto —, alinhando os conselhos diretamente aos seus interesses."
+                    lesson: "Planejadores fiduciários cobram pelo tempo ou por consultoria pontual, não comissão por produto, o que alinha o conselho direto aos seus interesses."
                 },
                 optionB: {
                     title: "Usar um assessor que cobra 1,5% ao ano de taxa sobre o patrimônio (AUM) + comissão de vendas.",

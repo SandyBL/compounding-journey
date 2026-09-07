@@ -87,7 +87,8 @@
           },
           "sameAs": [
             "https://www.linkedin.com/in/sandy-bradbury",
-            "https://compoundingjourney.substack.com/"
+            "https://compoundingjourney.substack.com/",
+            "https://www.instagram.com/compounding.journey_sb/"
           ],
           "knowsAbout": [
             "Money psychology",
@@ -101,7 +102,7 @@
           "@type": "Person",
           "@id": "https://compoundingjourney.com/#sandy-bradbury",
           "name": "Sandy Bradbury",
-          "url": "https://compoundingjourney.com/#biografia",
+          "url": "https://compoundingjourney.com/es/sobre-mi/",
           "image": "https://compoundingjourney.com/sandy-bradbury-portrait.png",
           "jobTitle": "Financial educator",
           "description": "Financial educator writing about money psychology, budgeting, compound growth and long-term investing. Not an accredited financial adviser: no personal investment recommendations are given and no client money is managed.",
@@ -110,7 +111,8 @@
           },
           "sameAs": [
             "https://www.linkedin.com/in/sandy-bradbury",
-            "https://compoundingjourney.substack.com/"
+            "https://compoundingjourney.substack.com/",
+            "https://www.instagram.com/compounding.journey_sb/"
           ],
           "knowsAbout": [
             "Money psychology",
@@ -3506,6 +3508,9 @@
                             <p>
                                 Un aviso importante: <strong>no soy asesor financiero acreditado</strong>, no hago recomendaciones personalizadas de inversión y no gestiono ni invierto el dinero de nadie. Todo lo que encuentras aquí es contenido educativo: mira <a href="/es/sesiones/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">cómo son las sesiones</a> y el <a href="/es/aviso-legal/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">aviso legal</a>.
                             </p>
+                            <p>
+                                Esto es el resumen. En <a href="/es/sobre-mi/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Sobre mí</a> están las seis reglas con las que se hace este sitio, cada una comprobable en otra página: fuentes citadas, datos con su muestra, sin afiliados y sin rastrearte.
+                            </p>
                         </div>
 
                         <div lang-content="en" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
@@ -3518,6 +3523,9 @@
                             <p>
                                 One important disclosure: <strong>I am not an accredited financial adviser</strong>, I make no personal investment recommendations and I do not manage or invest anybody else’s money. Everything here is educational content: see <a href="/en/sessions/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">what the sessions are</a> and the <a href="/en/legal-notice/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">legal notice</a>.
                             </p>
+                            <p>
+                                That is the summary. <a href="/en/about/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">About</a> has the six rules this site is made under, each one checkable on another page: sources cited, data published with its sample, no affiliates and no tracking.
+                            </p>
                         </div>
 
                         <div lang-content="pt" class="space-y-4 text-darkbark/80 font-light leading-relaxed">
@@ -3529,6 +3537,9 @@
                             </p>
                             <p>
                                 Um aviso importante: <strong>não sou consultor financeiro credenciado</strong>, não faço recomendações personalizadas de investimento nem administro ou invisto o dinheiro de ninguém. Tudo o que você encontra aqui é conteúdo educativo: veja <a href="/pt/sessoes/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">como são as sessões</a> e o <a href="/pt/aviso-legal/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">aviso legal</a>.
+                            </p>
+                            <p>
+                                Isso é o resumo. Em <a href="/pt/sobre-mim/" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Sobre mim</a> estão as seis regras com que este site é feito, cada uma verificável em outra página: fontes citadas, dados com a amostra declarada, sem afiliados e sem rastrear você.
                             </p>
                         </div>
 
@@ -3648,8 +3659,12 @@
                 </div>
             </div>
 
-            <!-- Form Container Card -->
-            <div class="bg-white rounded-3xl border border-creamborder p-8 sm:p-12 mt-6 shadow-sm relative overflow-hidden">
+            <!-- Form Container Card. The id is here rather than on the <form>
+                 because /es/sesiones/ links straight to it - landing on the
+                 panel keeps the heading that says what the form is for in view,
+                 and saves a reader who has just read the prices from scrolling
+                 past the newsletter and the biography. -->
+            <div id="contact-form-panel" class="scroll-mt-20 bg-white rounded-3xl border border-creamborder p-8 sm:p-12 mt-6 shadow-sm relative overflow-hidden">
                 <div class="absolute -top-12 -right-12 w-40 h-40 bg-forestgreen/5 rounded-full blur-2xl pointer-events-none"></div>
 
                 <div class="relative z-10 mb-8 text-center">
@@ -4862,6 +4877,63 @@
             }
         }
 
+        /* ===================================================================
+           THE HANDOFF FROM THE SESSIONS PAGE
+           ===================================================================
+
+           /es/sesiones/ and its siblings publish the entry price and then send
+           the reader here with ?from=sessions. Unlike the simulator handoff
+           above there is no result to carry: what is known is only that they
+           read the sessions page and want to write about a session. So the
+           message states that and nothing else - a prefill that guessed at
+           somebody's finances would put words in their mouth, which is worse
+           than an empty field.
+
+           What it does do is ask for the two things the sessions panel promises
+           to send back (the three rates and the availability), so pressing send
+           without typing a word is already a complete request. Anything the
+           reader wants to add about their own situation continues from the end,
+           and the hint under the field is what invites it. */
+        const sessionsHandoffCopy = {
+            es: {
+                subject: 'Consulta de sesiones',
+                message: 'Hola Sandy:\n\nHe leído la página de sesiones y me gustaría reservar una hora contigo. ¿Me envías las tres tarifas y la disponibilidad?\n\nTodavía no sé qué sesión me encaja mejor, así que agradezco tu recomendación.'
+            },
+            en: {
+                subject: 'Sessions enquiry',
+                message: 'Hi Sandy,\n\nI have read the sessions page and I would like to book an hour with you. Could you send me the three rates and your availability?\n\nI am not sure yet which session fits me best, so any recommendation is welcome.'
+            },
+            pt: {
+                subject: 'Consulta de sessões',
+                message: 'Olá Sandy,\n\nLi a página de sessões e gostaria de reservar uma hora com você. Pode me enviar as três tarifas e a disponibilidade?\n\nAinda não sei qual sessão encaixa melhor no meu caso, então qualquer recomendação é bem-vinda.'
+            }
+        };
+
+        function applySessionsHandoff() {
+            const url = new URL(window.location.href);
+            if (url.searchParams.get('from') !== 'sessions') return;
+
+            // Cleared for the same reason as the simulator marker: it has been
+            // acted on, and a reload or a shared link must not rewrite a
+            // message the reader has since edited.
+            url.searchParams.delete('from');
+            window.history.replaceState(window.history.state, '', url);
+
+            const copy = sessionsHandoffCopy[currentLanguage()];
+            const messageField = document.getElementById('form-message');
+            const subjectField = document.querySelector('#contact-form [name="subject"]');
+
+            // Never overwrite something already typed.
+            if (messageField && !messageField.value.trim()) {
+                messageField.value = copy.message;
+                // Cursor at the end, no focus: they navigated here to read the
+                // form, not to be dropped inside a textarea.
+                messageField.setSelectionRange(messageField.value.length, messageField.value.length);
+            }
+
+            if (subjectField) subjectField.value = copy.subject;
+        }
+
         function setFieldError(fieldId, message) {
             const field = document.getElementById(fieldId);
             const error = document.getElementById(`${fieldId}-error`);
@@ -5605,6 +5677,7 @@
         // After setLanguage, because the prefilled message has to be written in
         // the language the page has settled on rather than the one it loaded in.
         applySimulatorHandoff();
+        applySessionsHandoff();
         initializeNavigationMenus();
         initializeLanguageSwitcher();
         initializeCalculatorTabs();

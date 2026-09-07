@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.pt.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
 
@@ -94,7 +98,7 @@
          page, and placed outside the sticky <header> like on every other family
          - see the .site-section-nav comment in assets/css/header.css. -->
   <nav class="site-section-nav" aria-label="Seções do site">
-    <div class="site-section-tabs"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></div>
+    <div class="site-section-tabs"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a></div>
   </nav>
 
     <!-- Page intro. These simulators previously opened straight into their app
@@ -454,19 +458,19 @@
                     <dt>A data tem em conta uma queda do mercado?</dt>
                     <dd>Não. Aplica a mesma rentabilidade todos os meses, que é precisamente o que os mercados nunca fazem. Se quiser ver o que uma má década faz ao mesmo plano, o simulador de Monte Carlo executa mil versões com a volatilidade incluída.</dd>
                     <dt>O salário por hora é o meu vencimento dividido pelas minhas horas?</dt>
-                    <dd>Quase: usa o salário líquido em vez do bruto, por isso reflete o que uma hora coloca realmente na sua conta. Acrescentar o tempo de deslocamento às suas horas torna-o ainda mais honesto, e costuma baixá-lo mais do que as pessoas esperam.</dd>
+                    <dd>Quase: usa o salário líquido em vez do bruto, por isso reflete o que uma hora coloca realmente na sua conta. Somar o tempo de deslocamento às suas horas deixa o número ainda mais honesto, e costuma baixá-lo mais do que as pessoas esperam.</dd>
                 </dl>
 
                 <!-- The journal and the simulators were two separate islands: nothing on a
                      simulator linked to an article, so the articles were reachable only from
                      the blog index and the crawler had no reason to treat the two as one site. -->
                 <nav class="sim-explainer__reading" aria-labelledby="reading-title">
-                    <h3 class="sim-explainer__heading" id="reading-title">Continue a ler</h3>
-                    <p>O diário desenvolve com mais calma as ideias por trás desta ferramenta.</p>
+                    <h3 class="sim-explainer__heading" id="reading-title">Continue lendo</h3>
+                    <p>O blog desenvolve com mais calma as ideias por trás desta ferramenta.</p>
                     <ul class="sim-explainer__list">
                         <li><a href="/pt/blog/sua-taxa-de-poupanca-nao-seu-salario-define-a-data-em-que-voce-fica-livre/">Sua taxa de poupança, não seu salário, define a data em que você fica livre</a></li>
                         <li><a href="/pt/blog/sistema-dinheiro-lento/">O sistema do dinheiro lento: uma forma mais tranquila de construir patrimônio</a></li>
-                        <li><a href="/pt/blog/">Todas as entradas do diário</a></li>
+                        <li><a href="/pt/blog/">Todas as entradas do blog</a></li>
                     </ul>
                 </nav>
             </div>

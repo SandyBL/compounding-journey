@@ -15,6 +15,18 @@
 //      below its minimum is not rendered at all - not rendered as "1 run says
 //      4.2%". Below the minimum the number is one person, and publishing it
 //      would both mislead the reader and expose that person's run.
+//
+//      There is one tier between those two states, and it exists because the
+//      alternative was worse. With the table this thin, waiting for every
+//      minimum meant a page that printed nothing but apologies for months,
+//      which teaches nobody anything and gives nobody a reason to add a run.
+//      So a metric at or above PROVISIONAL_MINIMUM but below its own minimum
+//      is reported with its tier attached, and the renderer is obliged to
+//      label it: the figure appears with the word "provisional" next to it and
+//      its sample printed beside it, it is kept out of the page's headline
+//      findings, and it is kept out of the Dataset's variableMeasured. What is
+//      not allowed is the middle path where a thin number is shown as if it
+//      were a finding.
 //   2. Money does not pool. The three languages show three currency symbols
 //      ($ / EUR / R$) for the same input field, so an average across languages
 //      would be an average of three currencies. Money metrics are therefore
@@ -305,17 +317,80 @@ export function summarize(rows, metrics) {
 }
 
 /**
- * The statistics a metric may be published from in a given language, or null.
+ * The smallest sample any figure on the page may be computed from, however it
+ * is labelled.
+ *
+ * Eight, and the number is argued rather than picked. The page's own method
+ * section tells the reader that an average of three simulations "would
+ * describe three people's afternoon, not a pattern", so the floor has to sit
+ * clearly above the number that sentence dismisses, or the page contradicts
+ * itself in print. Eight is also about where a mean stops being dragged
+ * bodily by a single extreme run: one outlier in eight moves the mean by an
+ * eighth of its distance, which a reader who has been told the sample is eight
+ * can reason about. Below this there is no labelling that makes the figure
+ * worth printing.
+ *
+ * It is a floor and never a ceiling: a metric whose own minimum is lower than
+ * this keeps its own, so this constant can only ever make the page more
+ * cautious than a metric asked to be.
+ */
+export const PROVISIONAL_MINIMUM = 8;
+
+/** The pooled or per-language statistics for a metric, before any gate. */
+function statsFor(metric, summary, language) {
+  return (isLanguageScoped(metric)
+    ? summary?.metrics?.get(metric.id)?.byLanguage?.[language]
+    : summary?.metrics?.get(metric.id)?.pooled) || null;
+}
+
+/**
+ * The statistics a metric may be shown from in a given language, and on which
+ * tier, or null.
  *
  * This is the single gate the renderer asks: it applies the pooled/scoped rule
- * and the minimum sample in one place, so no caller can render a metric that
- * one of the two would have rejected.
+ * and both sample thresholds in one place, so no caller can render a metric
+ * that one of them would have rejected. `floor` comes back with the tier
+ * because the entries of a distribution or a per-field set are filtered
+ * against it one by one - a habit answered twice must not ride into the table
+ * on the back of the twelve that were answered two hundred times, and on the
+ * provisional tier the bar it has to clear is this one rather than the
+ * metric's own.
+ */
+export function reportable(metric, summary, language) {
+  const stats = statsFor(metric, summary, language);
+  if (!stats) return null;
+  if (stats.sample >= metric.minimum) {
+    return { stats, tier: 'confirmed', floor: metric.minimum };
+  }
+  const floor = Math.min(metric.minimum, PROVISIONAL_MINIMUM);
+  if (stats.sample >= floor) return { stats, tier: 'provisional', floor };
+  return null;
+}
+
+/**
+ * The statistics a metric is published from as a finding, or null.
+ *
+ * Confirmed only. The headline findings and the Dataset's variableMeasured ask
+ * through here, so adding the provisional tier could not quietly promote a
+ * thin number into either of them.
  */
 export function publishable(metric, summary, language) {
-  const stats = isLanguageScoped(metric)
-    ? summary?.metrics?.get(metric.id)?.byLanguage?.[language]
-    : summary?.metrics?.get(metric.id)?.pooled;
-  if (!stats) return null;
-  if (stats.sample < metric.minimum) return null;
-  return stats;
+  const report = reportable(metric, summary, language);
+  return report?.tier === 'confirmed' ? report.stats : null;
+}
+
+/**
+ * How many further runs this metric needs before it can be shown at all, in
+ * this language.
+ *
+ * Counted against the provisional floor rather than the metric's own minimum,
+ * because that is the honest answer to "what does one more save unlock". It
+ * is in runs and not in rows of the table: a metric's sample counts the
+ * simulations that carried its field, so a measure whose field started being
+ * recorded late has a small sample under a large simulator, and every new run
+ * from here does carry it.
+ */
+export function runsNeeded(metric, summary, language) {
+  const floor = Math.min(metric.minimum, PROVISIONAL_MINIMUM);
+  return Math.max(0, floor - (statsFor(metric, summary, language)?.sample || 0));
 }

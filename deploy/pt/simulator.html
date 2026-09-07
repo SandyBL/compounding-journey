@@ -90,6 +90,10 @@
     <link rel="stylesheet" href="/assets/css/simulator-explainer.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
     <link rel="stylesheet" href="/assets/css/sim-system.css?v=source">
+    <!--manifest:start-->
+    <link rel="manifest" href="/manifest.pt.webmanifest">
+    <meta name="theme-color" content="#1E4620">
+    <!--manifest:end-->
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-white">
 
@@ -161,7 +165,7 @@
          page, and placed outside the sticky <header> like on every other family
          - see the .site-section-nav comment in assets/css/header.css. -->
   <nav class="site-section-nav" aria-label="Seções do site">
-    <div class="site-section-tabs"><a href="/pt/blog/">Diário</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sessoes/">Sessões</a></div>
+    <div class="site-section-tabs"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a></div>
   </nav>
 
     <!-- Page intro. The hub's heading used to be the first block inside <main>,
@@ -416,11 +420,11 @@
         <section class="sim-explainer" aria-labelledby="explainer-title">
             <div class="sim-explainer__inner">
                 <h2 class="sim-explainer__title" id="explainer-title">Para que serve este simulador</h2>
-                <p class="sim-explainer__lede">O simulador é um treinador de decisões, não uma calculadora. Coloca-o perante as escolhas de dinheiro que qualquer pessoa enfrenta — um aumento, um carro, umas férias, uma despesa inesperada — e mostra o que cada uma faz a quatro coisas ao mesmo tempo: o seu patrimônio, o seu fluxo de caixa mensal, o seu bem-estar diário e a sua inteligência financeira. O objetivo não é chegar a um número, mas sentir como as decisões interagem antes de as tomar com dinheiro real.</p>
+                <p class="sim-explainer__lede">O simulador é um treinador de decisões, não uma calculadora. Coloca você diante das escolhas de dinheiro que qualquer pessoa enfrenta — um aumento, um carro, umas férias, uma despesa inesperada — e mostra o que cada uma faz a quatro coisas ao mesmo tempo: o seu patrimônio, o seu fluxo de caixa mensal, o seu bem-estar diário e a sua inteligência financeira. O objetivo não é chegar a um número, mas sentir como as decisões interagem antes de você tomá-las com dinheiro real.</p>
 
                 <h3 class="sim-explainer__heading">Como funciona</h3>
-                <p>Você recebe uma sequência de cenários. Cada um oferece duas ou mais respostas, e nenhuma está marcada como correta, porque nenhuma o é. Comprar o carro mais barato protege o seu fluxo de caixa e custa-lhe algo que queria; aceitar o segundo emprego aumenta o rendimento e gasta o único recurso que não pode comprar de volta. Cada escolha move os quatro indicadores, e essa tensão é a lição.</p>
-                <p>Os indicadores acumulam-se. Uma decisão tomada no início muda o que os cenários seguintes lhe podem fazer, que é o mais perto que uma sessão curta consegue estar de mostrar como os juros compostos se comportam: devagar, e depois de repente. No fim, o simulador nomeia o padrão que as suas escolhas formaram, como um arquétipo. Esse rótulo resume o que fez, não determina quem é.</p>
+                <p>Você recebe uma sequência de cenários. Cada um oferece duas ou mais respostas, e nenhuma está marcada como correta, porque nenhuma o é. Comprar o carro mais barato protege o seu fluxo de caixa e custa a você algo que você queria; aceitar o segundo emprego aumenta a renda e gasta o único recurso que você não pode comprar de volta. Cada escolha move os quatro indicadores, e essa tensão é a lição.</p>
+                <p>Os indicadores acumulam-se. Uma decisão tomada no início muda o que os cenários seguintes podem fazer com você, que é o mais perto que uma sessão curta consegue estar de mostrar como os juros compostos se comportam: devagar, e depois de repente. No fim, o simulador nomeia o padrão que as suas escolhas formaram, como um arquétipo. Esse rótulo resume o que você fez, não determina quem você é.</p>
 
                 <h3 class="sim-explainer__heading">O que pressupõe</h3>
                 <ul class="sim-explainer__list">
@@ -433,7 +437,7 @@
 
                 <h3 class="sim-explainer__heading">Um exemplo resolvido</h3>
                 <p>Um cenário oferece uma promoção que aumenta o rendimento num quinto mas acrescenta uma hora de trajeto em cada sentido. Aceitar eleva de imediato o patrimônio e o fluxo de caixa, e baixa o bem-estar. Recusar mantém o bem-estar e deixa os outros dois planos.</p>
-                <p>Nenhuma é a resposta certa por si só. O que decide é o estado de que parte: sem fundo de emergência, esse rendimento é o que lhe compra a capacidade de sobreviver ao cenário seguinte, e o custo em bem-estar é temporário. Com uma almofada já construída, gastar mais dez horas por semana para fazer crescer um número que você não está usando é a opção mais cara. Corra o mesmo cenário duas vezes a partir de estados diferentes e os indicadores farão esse argumento por si.</p>
+                <p>Nenhuma é a resposta certa por si só. O que decide é o estado de que parte: sem fundo de emergência, essa renda é o que compra para você a capacidade de sobreviver ao cenário seguinte, e o custo em bem-estar é temporário. Com uma almofada já construída, gastar mais dez horas por semana para fazer crescer um número que você não está usando é a opção mais cara. Rode o mesmo cenário duas vezes a partir de estados diferentes e os indicadores fazem esse argumento sozinhos.</p>
 
                 <h3 class="sim-explainer__heading">Perguntas frequentes</h3>
                 <dl class="sim-explainer__faq">
@@ -449,12 +453,12 @@
                      simulator linked to an article, so the articles were reachable only from
                      the blog index and the crawler had no reason to treat the two as one site. -->
                 <nav class="sim-explainer__reading" aria-labelledby="reading-title">
-                    <h3 class="sim-explainer__heading" id="reading-title">Continue a ler</h3>
-                    <p>O diário desenvolve com mais calma as ideias por trás desta ferramenta.</p>
+                    <h3 class="sim-explainer__heading" id="reading-title">Continue lendo</h3>
+                    <p>O blog desenvolve com mais calma as ideias por trás desta ferramenta.</p>
                     <ul class="sim-explainer__list">
                         <li><a href="/pt/blog/a-psicologia-das-decisoes-de-dinheiro-por-que-saber-as-contas-nao-basta/">A psicologia das decisões de dinheiro: por que saber as contas não basta</a></li>
-                        <li><a href="/pt/blog/gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa/">Gastar com Propósito: Como Alinhar o Seu Dinheiro com o Que Realmente Importa</a></li>
-                        <li><a href="/pt/blog/">Todas as entradas do diário</a></li>
+                        <li><a href="/pt/blog/gastar-com-proposito-como-alinhar-o-seu-dinheiro-com-o-que-realmente-importa/">Gastar com propósito: como alinhar o seu dinheiro com o que realmente importa</a></li>
+                        <li><a href="/pt/blog/">Todas as entradas do blog</a></li>
                     </ul>
                 </nav>
             </div>
