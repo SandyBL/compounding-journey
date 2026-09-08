@@ -94,6 +94,12 @@ export const SESSION_PRICE_FROM = {
  * `id` is the key SESSION_PRICES uses. `length` and `format` are the meta line;
  * they are per language because "60 minutes" and "por videollamada" are text a
  * reader reads, not data.
+ *
+ * `body` and `forWhom` are the same voice as the home page and the about page:
+ * first person, second person singular, and concrete about what happens in the
+ * hour rather than about the value of investing in yourself. Each body says
+ * what we open, what we look at and what the reader leaves with, because that
+ * is what somebody deciding whether to pay is actually trying to find out.
  */
 export const SESSIONS = [
   {
@@ -102,22 +108,22 @@ export const SESSIONS = [
       name: 'Sesión de orientación',
       length: '45 minutos',
       format: 'Videollamada',
-      body: 'Una primera conversación para ordenar el punto de partida: qué ingresos y gastos tienes, qué deudas, qué te preocupa y qué te gustaría que fuera distinto dentro de un año. Sales con un diagnóstico escrito de dos páginas y con la plantilla concreta por la que empezar.',
-      forWhom: 'Si nunca has puesto tus números en un mismo sitio y no sabes por dónde empezar.'
+      body: 'La primera conversación sirve para ordenar el punto de partida: qué entra cada mes, qué sale, qué debes, qué te quita el sueño y qué te gustaría que fuera distinto dentro de un año. Contarlo en voz alta a alguien que va preguntando ordena más de lo que parece. Al terminar te envío dos páginas escritas con la foto de dónde estás y la plantilla por la que te conviene empezar.',
+      forWhom: 'Si nunca has puesto tus números en el mismo sitio y no sabes por dónde empezar.'
     },
     en: {
       name: 'Orientation session',
       length: '45 minutes',
       format: 'Video call',
-      body: 'A first conversation to establish the starting point: what comes in and goes out, what you owe, what worries you, and what you would like to be different a year from now. You leave with a two-page written summary and the one template to start with.',
-      forWhom: 'If you have never put your numbers in one place and have no idea where to start.'
+      body: 'The first conversation is for getting the starting point straight: what comes in each month, what goes out, what you owe, what keeps you up at night and what you would like to be different a year from now. Saying it out loud to somebody who keeps asking questions sorts out more than you would expect. Afterwards I send you two written pages with a picture of where you are and the one template worth starting with.',
+      forWhom: 'If you have never had your numbers in the same place and do not know where to start.'
     },
     pt: {
       name: 'Sessão de orientação',
       length: '45 minutos',
       format: 'Videochamada',
-      body: 'Uma primeira conversa para organizar o ponto de partida: o que entra e o que sai, o que você deve, o que preocupa você e o que gostaria que fosse diferente dentro de um ano. Você sai com um diagnóstico escrito de duas páginas e com o modelo concreto por onde começar.',
-      forWhom: 'Se você nunca colocou os seus números em um só lugar e não sabe por onde começar.'
+      body: 'A primeira conversa serve para organizar o ponto de partida: o que entra por mês, o que sai, o que você deve, o que tira o seu sono e o que você gostaria que fosse diferente daqui a um ano. Dizer isso em voz alta para alguém que vai perguntando organiza mais do que parece. No fim, envio duas páginas escritas com a foto de onde você está e o modelo por onde vale a pena começar.',
+      forWhom: 'Se você nunca juntou os seus números em um só lugar e não sabe por onde começar.'
     }
   },
   {
@@ -126,21 +132,21 @@ export const SESSIONS = [
       name: 'Revisión de tus plantillas',
       length: '60 minutos',
       format: 'Videollamada, con la hoja de cálculo abierta',
-      body: 'Revisamos juntos tu análisis mensual y tu control de gastos: si las categorías reflejan tu vida real, si la tasa de ahorro que sale es la que crees, dónde se está escapando el dinero y qué tres cambios tendrían el mayor efecto el mes que viene. Es la sesión más práctica de las tres.',
+      body: 'Abrimos tu análisis mensual y tu control de gastos y los miramos juntos: si las categorías se parecen a tu vida real, si tu tasa de ahorro es la que crees que es, por dónde se está escapando el dinero y qué tres cambios notarías más el mes que viene. Es la más práctica de las tres: sales con cosas hechas, no con deberes.',
       forWhom: 'Si ya rellenas las plantillas y quieres saber qué te están diciendo.'
     },
     en: {
       name: 'A review of your templates',
       length: '60 minutes',
       format: 'Video call, with the spreadsheet open',
-      body: 'We go through your monthly analysis and your expense tracking together: whether the categories match your actual life, whether the savings rate coming out is the one you think it is, where the money is leaking, and which three changes would do the most next month. It is the most practical of the three.',
-      forWhom: 'If you are already filling in the templates and want to know what they are telling you.'
+      body: 'We open your monthly analysis and your expense tracking and go through them together: whether the categories look anything like your real life, whether your savings rate is the one you think it is, where the money is leaking and which three changes you would feel most next month. It is the most practical of the three: you leave with things done rather than with homework.',
+      forWhom: 'If you already fill in the templates and want to know what they are telling you.'
     },
     pt: {
       name: 'Revisão dos seus modelos',
       length: '60 minutos',
       format: 'Videochamada, com a planilha aberta',
-      body: 'Olhamos juntos a sua análise mensal e o seu controle de despesas: se as categorias refletem a sua vida real, se a taxa de poupança que sai dali é a que você imagina, por onde o dinheiro está vazando e quais três mudanças teriam o maior efeito já no mês seguinte. É a mais prática das três.',
+      body: 'Abrimos a sua análise mensal e o seu controle de despesas e olhamos os dois juntos: se as categorias se parecem com a sua vida real, se a sua taxa de poupança é a que você imagina, por onde o dinheiro está vazando e quais três mudanças você sentiria mais já no mês seguinte. É a mais prática das três: você sai com coisas feitas, não com tarefa de casa.',
       forWhom: 'Se você já preenche os modelos e quer saber o que eles estão dizendo.'
     }
   },
@@ -150,44 +156,61 @@ export const SESSIONS = [
       name: 'Acompañamiento de tres meses',
       length: 'Tres sesiones de 60 minutos, una al mes',
       format: 'Videollamada, con correo entre sesiones',
-      body: 'Un hábito no se instala en una hora. Fijamos dos o tres objetivos concretos y medibles, montamos el sistema que los sostiene (automatizaciones, fechas, un sitio donde apuntar) y en cada sesión miramos qué aguantó, qué no y por qué. Entre sesiones puedes escribirme con cualquier duda.',
+      body: 'Un hábito no se instala en una hora. Elegimos dos o tres objetivos concretos, montamos el sistema que los sostiene (transferencias automáticas, fechas en el calendario, un sitio donde apuntar) y cada mes miramos qué aguantó, qué se cayó y por qué. Entre sesiones me escribes cuando te surja la duda, sin guardarla para la siguiente cita.',
       forWhom: 'Si ya sabes qué quieres cambiar y se te deshace a las tres semanas.'
     },
     en: {
       name: 'Three-month accompaniment',
       length: 'Three 60-minute sessions, one a month',
       format: 'Video call, with email between sessions',
-      body: 'A habit does not install itself in an hour. We set two or three concrete, measurable goals, build the system that holds them up (automatic transfers, dates, somewhere to write things down) and then each session looks at what held, what did not, and why. Between sessions you can write to me with anything that comes up.',
-      forWhom: 'If you know exactly what you want to change and watch it fall apart after three weeks.'
+      body: 'No habit installs itself in an hour. We pick two or three concrete goals, build the system that holds them up (automatic transfers, dates in the calendar, somewhere to write things down) and each month we look at what held, what fell over and why. Between sessions you write to me when the question comes up, instead of saving it for the next appointment.',
+      forWhom: 'If you know what you want to change and watch it fall apart after three weeks.'
     },
     pt: {
       name: 'Acompanhamento de três meses',
       length: 'Três sessões de 60 minutos, uma por mês',
       format: 'Videochamada, com e-mail entre sessões',
-      body: 'Um hábito não se instala em uma hora. Definimos dois ou três objetivos concretos e mensuráveis, montamos o sistema que os sustenta (transferências automáticas, datas, um lugar onde anotar) e em cada sessão olhamos o que aguentou, o que não aguentou e por quê. Entre as sessões você pode me escrever com qualquer dúvida.',
+      body: 'Nenhum hábito se instala em uma hora. Escolhemos dois ou três objetivos concretos, montamos o sistema que os sustenta (transferências automáticas, datas no calendário, um lugar para anotar) e a cada mês olhamos o que aguentou, o que caiu e por quê. Entre as sessões você me escreve quando a dúvida aparece, sem guardar para a próxima conversa.',
       forWhom: 'Se você já sabe o que quer mudar e vê tudo se desfazer em três semanas.'
     }
   }
 ];
 
-/** The page's own copy: everything that is not a session. */
+/**
+ * The page's own copy: everything that is not a session.
+ *
+ * `intro` is the page dek, and it is the one string on this page that a reader
+ * cannot skip, so it says the three things that decide whether they keep
+ * reading: it happens on a call, their own numbers are on the screen, and
+ * nothing gets recommended to them. It used to end "Esto es lo que hago y, con
+ * la misma claridad, lo que no hago", where "esto" pointed at a sentence
+ * fragment and then had to mean two opposite things at once - a sentence that
+ * survives being skimmed and falls apart being read. It now points forward, at
+ * the two lists further down the page, which is what it was always describing.
+ *
+ * The register throughout is the home page's: first person, "tú" / "você", and
+ * plain sentences about what happens rather than balanced abstractions about
+ * clarity and value. Where the old copy hedged with a construction nobody says
+ * out loud ("con la misma claridad", "Es la sesión más práctica de las tres"),
+ * this says the same thing the way it would be said on a call.
+ */
 export const SESSIONS_PAGE = {
   es: {
     title: 'Sesiones de educación financiera',
-    description: 'Sesiones individuales de educación financiera: revisar tus números, entender los conceptos y montar los hábitos que aguantan. No son asesoramiento de inversión.',
+    description: 'Sesiones individuales de educación financiera: ordenar tus números, entender los conceptos y montar los hábitos que aguantan. No son asesoramiento de inversión.',
     heading: 'Sesiones de educación financiera',
     eyebrow: 'Trabajar juntos',
-    intro: 'Una hora contigo, tus números delante y ninguna recomendación de producto. Esto es lo que hago y, con la misma claridad, lo que no hago.',
-    scopeTitle: 'Qué es y qué no es una sesión',
-    scopeIntro: 'La segunda lista es tan importante como la primera. Trabajo como educador financiero, no como asesor financiero acreditado, y no presto ninguno de los servicios reservados a quien lo es.',
+    intro: 'Una videollamada, con tus números delante y sin ninguna recomendación de producto. Abajo te cuento qué hacemos en una sesión y, con el mismo detalle, qué no hacemos.',
+    scopeTitle: 'Qué hacemos y qué no hacemos en una sesión',
+    scopeIntro: 'La segunda lista importa tanto como la primera, así que va igual de grande. Soy educador financiero y no asesor financiero acreditado: puedo ayudarte a entender tus propios números y a llegar con las preguntas escritas a quien sí puede darte una recomendación, pero no voy a decirte dónde poner tu dinero.',
     scopeYes: 'Lo que sí hacemos',
     scopeNo: 'Lo que no hacemos',
     yes: [
-      'Poner tus ingresos, gastos, deudas y ahorro en un sitio donde se puedan ver.',
-      'Entender qué significan tus propios números: tasa de ahorro, flujo de caja, patrimonio neto.',
-      'Explicar cómo funcionan los conceptos que te encuentras: interés compuesto, diversificación, comisiones, inflación.',
-      'Revisar y adaptar las plantillas a tu caso.',
-      'Fijar objetivos concretos y el sistema de hábitos que los sostiene.',
+      'Poner tus ingresos, gastos, deudas y ahorro en un sitio donde se vean todos a la vez.',
+      'Entender qué te están diciendo tus propios números: tasa de ahorro, flujo de caja, patrimonio neto.',
+      'Explicar los conceptos que te encuentras por todas partes: interés compuesto, diversificación, comisiones, inflación.',
+      'Adaptar las plantillas a tu caso, contigo delante.',
+      'Fijar objetivos concretos y montar el sistema de hábitos que los sostiene.',
       'Preparar las preguntas que le vas a hacer a un asesor registrado o a tu banco.'
     ],
     no: [
@@ -200,38 +223,38 @@ export const SESSIONS_PAGE = {
     ],
     howTitle: 'Cómo funciona',
     how: [
-      'Escríbeme contándome brevemente dónde estás y qué te gustaría resolver.',
-      'Te respondo con las tres tarifas, la disponibilidad y qué sesión encaja mejor. Y si creo que no necesitas ninguna, te lo digo.',
-      'Confirmamos día y hora, y te envío por escrito qué llevar preparado.',
-      'Tras la sesión recibes un resumen escrito con lo acordado y los siguientes pasos.'
+      'Me escribes por el formulario y me cuentas en cuatro líneas dónde estás y qué te gustaría resolver.',
+      'Te contesto con las tres tarifas, los huecos que tengo y qué sesión encaja mejor. Si creo que no necesitas ninguna, también te lo digo.',
+      'Cerramos día y hora, y te mando por escrito lo que conviene tener a mano.',
+      'Al acabar recibes un resumen escrito de lo que hablamos y de los siguientes pasos, para que nada dependa de tu memoria.'
     ],
     enquiryTitle: 'Pedir cita',
-    enquiryBody: 'Cuéntame en dos líneas dónde estás. Respondo en 48 horas laborables con las tres tarifas y la disponibilidad.',
+    enquiryBody: 'Cuéntame en dos líneas dónde estás. Te contesto en menos de 48 horas laborables con las tres tarifas y los huecos que tengo.',
     enquiryAction: 'Escribir desde el formulario',
     priceLabel: 'Tarifa',
     priceOnRequest: 'Consultar tarifa vigente',
     priceFromLabel: 'Desde',
     priceFromEquivalent: 'Equivale aproximadamente a',
-    priceNote: 'Ese es el punto de partida, la sesión más corta. Lo que cuesta cada una de las tres depende de la sesión y del país: te las envío por escrito, con la disponibilidad, cuando me escribas. Sin compromiso y sin cobro hasta que confirmes.',
+    priceNote: 'Ese es el punto de partida: la sesión más corta. Lo que cuesta cada una de las tres depende de la sesión y del país, así que te las mando por escrito, con la disponibilidad, cuando me escribas. Preguntar no te compromete a nada y no se cobra nada hasta que confirmas.',
     forWhomLabel: 'Para quién',
-    freeFirst: 'Antes de pagar nada: casi todo lo que hago en una sesión se puede hacer solo, gratis, con las plantillas, las calculadoras y el glosario de este sitio. Empieza por ahí. Las sesiones son para cuando quieres que alguien lo mire contigo.'
+    freeFirst: 'Antes de pagar nada: casi todo lo que hacemos en una sesión puedes hacerlo tú solo y gratis, con las plantillas, las calculadoras y el glosario de este sitio. Empieza por ahí. Las sesiones son para cuando ya lo has intentado y quieres que alguien lo mire contigo.'
   },
   en: {
     title: 'Financial education sessions',
-    description: 'One-to-one financial education sessions: going through your numbers, understanding the concepts, and building habits that hold. These are not investment advice.',
+    description: 'One-to-one financial education sessions: putting your numbers in order, understanding the concepts and building habits that hold. These are not investment advice.',
     heading: 'Financial education sessions',
     eyebrow: 'Working together',
-    intro: 'An hour with you, your numbers on the screen, and no product recommendations. Here is what I do, and, just as clearly, what I do not do.',
-    scopeTitle: 'What a session is, and what it is not',
-    scopeIntro: 'The second list matters as much as the first. I work as a financial educator, not as an accredited financial adviser, and I provide none of the services that are reserved to advisers.',
+    intro: 'A video call, your own numbers on the screen and not one product recommendation. Below is what we do in a session and, in the same detail, what we do not.',
+    scopeTitle: 'What we do in a session, and what we do not',
+    scopeIntro: 'The second list matters as much as the first, so it gets the same space. I am a financial educator and not an accredited financial adviser: I can help you understand your own numbers and turn up to a registered adviser with your questions already written, but I am not going to tell you where to put your money.',
     scopeYes: 'What we do',
     scopeNo: 'What we do not do',
     yes: [
-      'Put your income, spending, debts and savings somewhere you can see them.',
-      'Understand what your own numbers mean: savings rate, cash flow, net worth.',
-      'Explain how the concepts you keep meeting work: compound interest, diversification, fees, inflation.',
-      'Go through the templates and adapt them to your case.',
-      'Set concrete goals and the habit system that holds them up.',
+      'Put your income, spending, debts and savings somewhere you can see them all at once.',
+      'Work out what your own numbers are telling you: savings rate, cash flow, net worth.',
+      'Explain the concepts you keep running into: compound interest, diversification, fees, inflation.',
+      'Adapt the templates to your case, with you there.',
+      'Set concrete goals and build the habit system that holds them up.',
       'Prepare the questions you are going to ask a registered adviser or your bank.'
     ],
     no: [
@@ -244,38 +267,38 @@ export const SESSIONS_PAGE = {
     ],
     howTitle: 'How it works',
     how: [
-      'Write to me with a short description of where you are and what you would like to sort out.',
-      'I reply with all three rates, my availability and which session fits best. And if I think you do not need one, I say so.',
-      'We confirm a day and time, and I send you in writing what to have ready.',
-      'After the session you get a written summary of what we agreed and the next steps.'
+      'You write through the contact form and tell me in four lines where you are and what you would like to sort out.',
+      'I reply with all three rates, the slots I have and which session fits best. If I think you do not need one, I say that too.',
+      'We fix a day and a time, and I send you in writing what is worth having to hand.',
+      'Afterwards you get a written summary of what we talked about and the next steps, so none of it depends on your memory.'
     ],
     enquiryTitle: 'Ask about a session',
-    enquiryBody: 'Tell me in two lines where you are. I answer within 48 working hours with all three rates and my availability.',
+    enquiryBody: 'Tell me in two lines where you are. I answer within 48 working hours with all three rates and the slots I have.',
     enquiryAction: 'Write from the contact form',
     priceLabel: 'Rate',
     priceOnRequest: 'Request current rates',
     priceFromLabel: 'From',
     priceFromEquivalent: 'Roughly equivalent to',
-    priceNote: 'That is the starting point, for the shortest session. What each of the three costs depends on the session and the country: I send all of them in writing, with my availability, when you write. No commitment, and nothing is charged until you confirm.',
+    priceNote: 'That is the starting point: the shortest session. What each of the three costs depends on the session and the country, so I send all of them in writing, with my availability, when you write. Asking commits you to nothing, and nothing is charged until you confirm.',
     forWhomLabel: 'Who it is for',
-    freeFirst: 'Before you pay for anything: almost everything I do in a session can be done alone, for free, with the templates, calculators and glossary on this site. Start there. The sessions are for when you want somebody to look at it with you.'
+    freeFirst: 'Before you pay for anything: almost everything we do in a session you can do on your own, for free, with the templates, calculators and glossary on this site. Start there. The sessions are for when you have tried that and want somebody to look at it with you.'
   },
   pt: {
     title: 'Sessões de educação financeira',
-    description: 'Sessões individuais de educação financeira: rever os seus números, compreender os conceitos e construir hábitos que aguentam. Não são consultoria de investimento.',
+    description: 'Sessões individuais de educação financeira: organizar os seus números, compreender os conceitos e construir hábitos que aguentam. Não são consultoria de investimento.',
     heading: 'Sessões de educação financeira',
     eyebrow: 'Trabalhar juntos',
-    intro: 'Uma hora com você, os seus números na tela e nenhuma recomendação de produto. Isto é o que eu faço e, com a mesma clareza, o que eu não faço.',
-    scopeTitle: 'O que é e o que não é uma sessão',
-    scopeIntro: 'A segunda lista é tão importante quanto a primeira. Trabalho como educador financeiro e não como consultor financeiro credenciado, e não presto nenhum dos serviços que são reservados a quem tem essa credencial.',
+    intro: 'Uma videochamada, com os seus números na tela e nenhuma recomendação de produto. Abaixo você lê o que fazemos em uma sessão e, com o mesmo detalhe, o que não fazemos.',
+    scopeTitle: 'O que fazemos e o que não fazemos em uma sessão',
+    scopeIntro: 'A segunda lista importa tanto quanto a primeira, por isso ocupa o mesmo espaço. Sou educador financeiro e não consultor financeiro credenciado: posso ajudar você a entender os seus próprios números e a chegar com as perguntas escritas a quem pode fazer uma recomendação, mas não vou dizer onde colocar o seu dinheiro.',
     scopeYes: 'O que fazemos',
     scopeNo: 'O que não fazemos',
     yes: [
-      'Colocar os seus rendimentos, despesas, dívidas e poupança num lugar onde se possam ver.',
-      'Compreender o que significam os seus próprios números: taxa de poupança, fluxo de caixa, patrimônio líquido.',
-      'Explicar como funcionam os conceitos que você encontra: juros compostos, diversificação, comissões, inflação.',
-      'Passar pelos modelos e adaptá-los ao seu caso.',
-      'Definir objetivos concretos e o sistema de hábitos que os sustenta.',
+      'Colocar os seus rendimentos, despesas, dívidas e poupança em um lugar onde dê para ver tudo de uma vez.',
+      'Entender o que os seus próprios números estão dizendo: taxa de poupança, fluxo de caixa, patrimônio líquido.',
+      'Explicar os conceitos que você encontra em todo lugar: juros compostos, diversificação, taxas, inflação.',
+      'Adaptar os modelos ao seu caso, com você ali.',
+      'Definir objetivos concretos e montar o sistema de hábitos que os sustenta.',
       'Preparar as perguntas que você vai fazer a um consultor registrado ou ao seu banco.'
     ],
     no: [
@@ -288,20 +311,20 @@ export const SESSIONS_PAGE = {
     ],
     howTitle: 'Como funciona',
     how: [
-      'Escreva-me contando brevemente onde você está e o que gostaria de resolver.',
-      'Respondo com as três tarifas, a disponibilidade e qual sessão encaixa melhor, ou digo com franqueza se acho que você não precisa de nenhuma.',
-      'Confirmamos dia e hora, e envio por escrito o que você deve ter preparado.',
-      'Depois da sessão você recebe um resumo escrito do que foi acordado e dos próximos passos.'
+      'Você me escreve pelo formulário e conta em quatro linhas onde está e o que gostaria de resolver.',
+      'Eu respondo com as três tarifas, os horários que tenho e qual sessão encaixa melhor. Se eu achar que você não precisa de nenhuma, digo isso também.',
+      'Marcamos dia e hora, e eu envio por escrito o que vale a pena ter à mão.',
+      'No fim você recebe um resumo escrito do que conversamos e dos próximos passos, para nada depender da sua memória.'
     ],
     enquiryTitle: 'Agendar uma sessão',
-    enquiryBody: 'Conte-me em duas linhas onde você está. Respondo em 48 horas úteis com as três tarifas e a disponibilidade.',
+    enquiryBody: 'Conte-me em duas linhas onde você está. Respondo em menos de 48 horas úteis com as três tarifas e os horários que tenho.',
     enquiryAction: 'Escrever pelo formulário',
     priceLabel: 'Tarifa',
     priceOnRequest: 'Consultar tarifa em vigor',
     priceFromLabel: 'A partir de',
     priceFromEquivalent: 'Equivale aproximadamente a',
-    priceNote: 'Esse é o ponto de partida, a sessão mais curta. Quanto custa cada uma das três depende da sessão e do país: envio todas por escrito, com a disponibilidade, quando você escrever. Sem compromisso e sem cobrança até confirmar.',
+    priceNote: 'Esse é o ponto de partida: a sessão mais curta. Quanto custa cada uma das três depende da sessão e do país, então envio todas por escrito, com a disponibilidade, quando você escrever. Perguntar não compromete você a nada, e nada é cobrado até você confirmar.',
     forWhomLabel: 'Para quem',
-    freeFirst: 'Antes de pagar qualquer coisa: quase tudo o que eu faço em uma sessão você pode fazer sozinho, de graça, com os modelos, as calculadoras e o glossário deste site. Comece por aí. As sessões são para quando você quer que alguém olhe para isso junto com você.'
+    freeFirst: 'Antes de pagar qualquer coisa: quase tudo o que fazemos em uma sessão você pode fazer sozinho, de graça, com os modelos, as calculadoras e o glossário deste site. Comece por aí. As sessões são para quando você já tentou e quer que alguém olhe junto com você.'
   }
 };
