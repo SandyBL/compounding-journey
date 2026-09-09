@@ -1084,11 +1084,15 @@
             section.focus({ preventScroll: true });
         }
 
+        // Every disclosure in the pill, not the first one. There are two now -
+        // Recursos and Ayuda - and this was a `querySelector`, which would have
+        // left the second one latched open while a navigation out of it closed
+        // only the first.
         function closeDesktopResources() {
-            const dropdown = document.querySelector('[data-resources-dropdown]');
-            const toggle = dropdown?.querySelector('.desktop-resources-toggle');
-            dropdown?.removeAttribute('data-open');
-            toggle?.setAttribute('aria-expanded', 'false');
+            document.querySelectorAll('[data-resources-dropdown]').forEach(dropdown => {
+                dropdown.removeAttribute('data-open');
+                dropdown.querySelector('.desktop-resources-toggle')?.setAttribute('aria-expanded', 'false');
+            });
         }
 
         // The three flags in the header are ordinary links and they stay ordinary
@@ -1137,12 +1141,19 @@
         }
 
         function initializeNavigationMenus() {
-            const dropdown = document.querySelector('[data-resources-dropdown]');
-            const dropdownToggle = dropdown?.querySelector('.desktop-resources-toggle');
+            // Both menus in the pill, and both disclosures in the drawer, as
+            // lists. Each pairs a toggle with the panel it already names in
+            // aria-controls, so the markup stays the one place the pairing is
+            // written down: an id repeated in a script is an id that gets
+            // renamed in the markup alone.
+            const dropdowns = [...document.querySelectorAll('[data-resources-dropdown]')]
+                .map(element => ({ element, toggle: element.querySelector('.desktop-resources-toggle') }))
+                .filter(entry => entry.toggle);
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileResourcesToggle = document.querySelector('.mobile-resources-toggle');
-            const mobileResourcesPanel = document.getElementById('mobile-resources-panel');
+            const mobileDisclosures = [...document.querySelectorAll('.mobile-resources-toggle')]
+                .map(toggle => ({ toggle, panel: document.getElementById(toggle.getAttribute('aria-controls')) }))
+                .filter(entry => entry.panel);
             let previousBodyOverflow = '';
 
             const getNavigationLabels = () => ({
@@ -1151,17 +1162,23 @@
                 pt: { open: 'Abrir menu de navegação', close: 'Fechar menu de navegação' }
             }[getActiveLanguage()]);
 
-            const setDesktopResourcesOpen = open => {
-                if (!dropdown || !dropdownToggle) return;
-                dropdown.toggleAttribute('data-open', open);
-                dropdownToggle.setAttribute('aria-expanded', String(open));
+            const setDesktopResourcesOpen = (dropdown, open) => {
+                dropdown.element.toggleAttribute('data-open', open);
+                dropdown.toggle.setAttribute('aria-expanded', String(open));
+                // One at a time. The two panels are the same width and their
+                // labels sit side by side, so a click that latches one open
+                // while the pointer travels on to the other would leave two
+                // overlapping menus and no obvious way out of either.
+                if (!open) return;
+                dropdowns.forEach(other => {
+                    if (other !== dropdown) setDesktopResourcesOpen(other, false);
+                });
             };
 
-            const setMobileResourcesOpen = open => {
-                if (!mobileResourcesToggle || !mobileResourcesPanel) return;
-                mobileResourcesToggle.setAttribute('aria-expanded', String(open));
-                mobileResourcesPanel.hidden = !open;
-            };
+            const closeMobileResources = () => mobileDisclosures.forEach(disclosure => {
+                disclosure.toggle.setAttribute('aria-expanded', 'false');
+                disclosure.panel.hidden = true;
+            });
 
             // What is made inert while the drawer is open. The drawer declares
             // aria-modal, but that alone does not stop a screen reader's virtual
@@ -1210,7 +1227,7 @@
                 document.body.style.overflow = previousBodyOverflow;
                 inertedLayers.forEach(layer => { layer.inert = false; });
                 inertedLayers = [];
-                setMobileResourcesOpen(false);
+                closeMobileResources();
                 if (restoreFocus) mobileMenuToggle.focus();
             };
 
@@ -1226,38 +1243,55 @@
                 mobileMenu.querySelector('.mobile-nav-link, .mobile-resources-toggle')?.focus();
             };
 
-            dropdownToggle?.addEventListener('click', event => {
-                event.stopPropagation();
-                setDesktopResourcesOpen(!dropdown.hasAttribute('data-open'));
-            });
+            dropdowns.forEach(dropdown => {
+                dropdown.toggle.addEventListener('click', event => {
+                    event.stopPropagation();
+                    setDesktopResourcesOpen(dropdown, !dropdown.element.hasAttribute('data-open'));
+                });
 
-            dropdown?.addEventListener('pointerenter', () => setDesktopResourcesOpen(true));
-            dropdown?.addEventListener('pointerleave', () => setDesktopResourcesOpen(false));
-            dropdown?.addEventListener('focusin', () => setDesktopResourcesOpen(true));
-            dropdown?.addEventListener('focusout', event => {
-                if (!dropdown.contains(event.relatedTarget)) setDesktopResourcesOpen(false);
+                dropdown.element.addEventListener('pointerenter', () => setDesktopResourcesOpen(dropdown, true));
+                dropdown.element.addEventListener('pointerleave', () => setDesktopResourcesOpen(dropdown, false));
+                dropdown.element.addEventListener('focusin', () => setDesktopResourcesOpen(dropdown, true));
+                dropdown.element.addEventListener('focusout', event => {
+                    if (!dropdown.element.contains(event.relatedTarget)) setDesktopResourcesOpen(dropdown, false);
+                });
             });
 
             mobileMenuToggle?.addEventListener('click', () => {
                 if (mobileMenu.hidden) openMobileMenu();
                 else closeMobileMenu();
             });
-            mobileResourcesToggle?.addEventListener('click', () => {
-                setMobileResourcesOpen(mobileResourcesToggle.getAttribute('aria-expanded') !== 'true');
+            mobileDisclosures.forEach(disclosure => {
+                disclosure.toggle.addEventListener('click', () => {
+                    const opening = disclosure.toggle.getAttribute('aria-expanded') !== 'true';
+                    // The drawer scrolls, so two open panels are not the
+                    // problem here that they are in the pill. Closing the other
+                    // one anyway is about what the reader has to walk past: a
+                    // list of four links between them and the label they are
+                    // looking for.
+                    closeMobileResources();
+                    if (!opening) return;
+                    disclosure.toggle.setAttribute('aria-expanded', 'true');
+                    disclosure.panel.hidden = false;
+                });
             });
             mobileMenu?.querySelector('[data-mobile-menu-close]')?.addEventListener('click', () => closeMobileMenu());
 
             document.addEventListener('click', event => {
-                if (dropdown && !dropdown.contains(event.target)) closeDesktopResources();
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.element.contains(event.target)) setDesktopResourcesOpen(dropdown, false);
+                });
             });
 
             document.addEventListener('keydown', event => {
                 if (event.key === 'Escape') {
                     // Dismissing a menu must return focus to the control that
                     // opened it, or the reader is dropped at the top of the page.
-                    if (dropdown?.hasAttribute('data-open') && dropdown.contains(document.activeElement)) {
+                    const focused = dropdowns.find(dropdown => dropdown.element.hasAttribute('data-open')
+                        && dropdown.element.contains(document.activeElement));
+                    if (focused) {
                         closeDesktopResources();
-                        dropdownToggle?.focus();
+                        focused.toggle.focus();
                         return;
                     }
                     closeDesktopResources();
@@ -1297,7 +1331,9 @@
             // own, which are ordinary links: no attribute, no interception, and
             // deliberately so - a real URL should behave like one, including
             // under a middle click, a long press and a "copy link address".
-            // What is left is FAQ, Contacto and the Freedom Compass button.
+            // What is left is FAQ, Contacto and the Freedom Compass button -
+            // the same three the generated pages now render, where they are a
+            // link to this page and a fragment rather than a same-page anchor.
             document.querySelectorAll('[data-site-route]').forEach(link => {
                 link.addEventListener('click', event => {
                     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
