@@ -286,7 +286,7 @@ function extractObjectLiteral(source, name) {
 // opened the personal finance simulator instead of the list of five. The
 // section now has an index, site-routes owns its URL like the rest, and this
 // checks it like the rest.
-const sectionLinkKeys = ['simulators', 'tools', 'templates', 'glossary', 'data', 'sessions'];
+const sectionLinkKeys = ['simulators', 'tools', 'templates', 'glossary', 'data', 'about', 'sessions'];
 
 function expectedSectionLinks(language) {
   const expected = {};

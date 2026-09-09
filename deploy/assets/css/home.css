@@ -152,10 +152,6 @@
             scroll-margin-top: 5rem;
         }
 
-        .desktop-section-nav {
-            display: none;
-        }
-
         .mobile-menu-toggle {
             display: inline-grid;
             width: 2.75rem;
@@ -587,211 +583,25 @@
             }
         }
 
-        /* 1024px until the nav gained a sixth item, and 1180px before that.
+        /* The pill's own rules, the Recursos dropdown's, and the width the two
+           appear at, are in assets/css/header.css - which this page loads
+           immediately after this block and which every other page on the site
+           loads as well. They used to be here, and while they were, this page
+           and the two hundred generated ones were two designs of the same nav:
+           the inner pages could not link this file, so they carried a flat strip
+           of tabs below the header instead. One stylesheet is what makes them
+           the same component rather than the same intention.
 
-           The pill needs about 487px for six items plus the Freedom Compass
-           button (the arithmetic is written out above the reduced-type band
-           below), and the header has roughly 437px of slack at 1024px, growing
-           a pixel per pixel from there - so it does not actually fit until
-           about 1074px. 1100px is that figure rounded up to somewhere a person
-           would choose, and it leaves the pill 26px in hand at its narrowest.
-           Between 1024 and 1100px the phone drawer is served instead, which is
-           the same trade the site already makes on a tablet in portrait: a
-           drawer that fits beats a pill that pushes the brand name onto two
-           lines.
-
-           DESKTOP_NAV_BREAKPOINT in the page script must match this number: it
-           is what tells the open drawer to close itself when a resize takes the
-           viewport into desktop territory, where the drawer's own toggle is
-           display:none and it could otherwise be left open with no way out. */
-        @media (min-width: 1100px) {
-            .desktop-section-nav {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.125rem;
-                padding: 0.3rem;
-                border: 1px solid rgba(239, 234, 224, 0.95);
-                border-radius: 9999px;
-                background: rgba(255, 255, 255, 0.58);
-                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            }
-
-            .desktop-section-nav > a,
-            .desktop-resources-toggle {
-                position: relative;
-                display: inline-flex;
-                align-items: center;
-                gap: 0.35rem;
-                padding: 0.65rem 0.7rem;
-                border: 0;
-                border-radius: 9999px;
-                background: transparent;
-                color: rgba(45, 36, 27, 0.68);
-                font-family: inherit;
-                font-size: 0.68rem;
-                font-weight: 700;
-                line-height: 1;
-                white-space: nowrap;
-                transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
-            }
-
-            .desktop-section-nav > a:hover,
-            .desktop-resources-toggle:hover,
-            .desktop-resources[data-open="true"] .desktop-resources-toggle,
-            .desktop-resources:hover .desktop-resources-toggle,
-            .desktop-resources:focus-within .desktop-resources-toggle {
-                color: #1E4620;
-                background: rgba(30, 70, 32, 0.08);
-                transform: translateY(-1px);
-            }
-
-            /* The second selector cannot match today: the scroll spy sets
-               .is-active from data-section, and every item in the Recursos
-               menu is now a link to a page rather than a section of this one.
-               It is kept because it is the rule that would be missing the day a
-               section anchor moves back into that menu, and a highlighted item
-               inside a menu whose own label stays grey reads as a bug. */
-            .desktop-section-nav a.is-active,
-            .desktop-resources:has(a.is-active) .desktop-resources-toggle {
-                color: #1E4620;
-                background: rgba(197, 155, 39, 0.18);
-                box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.28);
-            }
-
-            .desktop-section-nav a:focus-visible,
-            .desktop-resources-toggle:focus-visible {
-                outline: 2px solid rgba(197, 155, 39, 0.75);
-                outline-offset: 2px;
-                color: #1E4620;
-                background: rgba(197, 155, 39, 0.12);
-            }
-
-            .desktop-resources {
-                position: relative;
-            }
-
-            .desktop-resources-toggle svg {
-                width: 0.75rem;
-                height: 0.75rem;
-                transition: transform 180ms ease;
-            }
-
-            .desktop-resources[data-open="true"] .desktop-resources-toggle svg,
-            .desktop-resources:hover .desktop-resources-toggle svg,
-            .desktop-resources:focus-within .desktop-resources-toggle svg {
-                transform: rotate(180deg);
-            }
-
-            .desktop-resources-menu {
-                position: absolute;
-                top: calc(100% + 0.65rem);
-                left: 50%;
-                width: 12rem;
-                padding: 0.45rem;
-                border: 1px solid rgba(239, 234, 224, 0.98);
-                border-radius: 1rem;
-                background: #FFFDF8;
-                box-shadow: 0 18px 50px rgba(45, 36, 27, 0.16);
-                opacity: 0;
-                pointer-events: none;
-                transform: translate(-50%, -0.35rem);
-                transition: opacity 160ms ease, transform 160ms ease;
-            }
-
-            .desktop-resources-menu::before {
-                position: absolute;
-                right: 0;
-                bottom: 100%;
-                left: 0;
-                height: 0.75rem;
-                content: "";
-            }
-
-            .desktop-resources[data-open="true"] .desktop-resources-menu,
-            .desktop-resources:hover .desktop-resources-menu,
-            .desktop-resources:focus-within .desktop-resources-menu {
-                opacity: 1;
-                pointer-events: auto;
-                transform: translate(-50%, 0);
-            }
-
-            .desktop-resources-menu a {
-                display: flex;
-                padding: 0.75rem 0.8rem;
-                border-radius: 0.7rem;
-                color: rgba(45, 36, 27, 0.78);
-                font-size: 0.75rem;
-                font-weight: 750;
-                transition: color 180ms ease, background-color 180ms ease;
-            }
-
-            .desktop-resources-menu a:hover,
-            .desktop-resources-menu a.is-active {
-                color: #1E4620;
-                background: rgba(30, 70, 32, 0.08);
-            }
-
-            .desktop-nav-cta {
-                margin-left: 0.25rem;
-                padding: 0.72rem 0.9rem !important;
-                background: #1E4620 !important;
-                color: #FFFFFF !important;
-                font-weight: 800 !important;
-                box-shadow: 0 8px 20px rgba(30, 70, 32, 0.2);
-            }
-
-            .desktop-nav-cta:hover {
-                background: #2D241B !important;
-                color: #FFFFFF !important;
-                box-shadow: 0 11px 24px rgba(45, 36, 27, 0.24);
-            }
-
+           What stays here is the one rule that is only true of this page. The
+           drawer this toggle opens lists the sections of one long document; the
+           panel the other pages open lists the eight pages, and it hangs off a
+           different button (.site-menu-toggle) with rules of its own. So the
+           two hide at the same width from two files. That width is written down
+           in the .desktop-section-nav comment in header.css, and
+           DESKTOP_NAV_BREAKPOINT in this page's script must match it. */
+        @media (min-width: 1180px) {
             .mobile-menu-toggle {
                 display: none;
-            }
-        }
-
-        /* The pill is full at six items, and this is the arithmetic.
-
-           At its narrowest - 1100px, the width at which it replaces the phone
-           drawer - the header has about 437px + (viewport - 1024px), so about
-           513px, left for it once the logo and brand name, the three flags, the
-           two publication icons and the shell's own padding have taken their
-           share.
-
-           Measured with the real advances from the subsetted Plus Jakarta Sans,
-           the six items plus the Freedom Compass button come to about 579px in
-           Spanish and Portuguese at full size, and about 487px with the type and
-           the padding reduced as below - which is why the reduced band exists
-           and why the breakpoint had to move up to 1100px with it. Full size
-           fits from about 1166px, so the band is left running to 1279px and the
-           type returns to normal at 1280px, where there is over 100px of slack.
-
-           Sesiones and the blog tab are what changed the numbers: the tab was
-           Diario, a couple of pixels narrower than the Pilares it replaced,
-           and Sesiones costs about 73px at full size and about 60px reduced.
-           The tab now reads Blog in all three languages, which is narrower
-           still, so every figure above is an upper bound.
-
-           The padding-block is deliberately unchanged: it is what gives these
-           targets their height, and 24px is the floor WCAG 2.2 SC 2.5.8 asks
-           for. */
-        @media (min-width: 1100px) and (max-width: 1279px) {
-            .desktop-section-nav {
-                gap: 0.08rem;
-                padding: 0.2rem;
-            }
-
-            .desktop-section-nav > a,
-            .desktop-resources-toggle {
-                padding: 0.65rem 0.42rem;
-                font-size: 0.63rem;
-            }
-
-            .desktop-nav-cta {
-                margin-left: 0.12rem;
-                padding: 0.72rem 0.66rem !important;
             }
         }
 

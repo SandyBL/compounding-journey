@@ -32,9 +32,9 @@ import { fileURLToPath } from 'node:url';
 
 // The nav the rest of the site carries. The simulators are the fourth family to
 // render it and the only one whose markup is hand-authored HTML rather than a
-// template literal, so it arrives here as a {{lang.sectionNav}} substitution
+// template literal, so it arrives here as a {{page.headerNav}} substitution
 // like every other value that follows from the language.
-import { NAV_SCRIPT, headerMenu, sectionNav } from './section-nav.mjs';
+import { NAV_SCRIPT, headerMenu, headerNav } from './section-nav.mjs';
 import { SIMULATORS, dataPath, legalPath, simulatorPath, simulatorsPath } from './site-routes.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -245,13 +245,13 @@ const placeholderPattern = /\{\{([^{}]+)\}\}/g;
 /**
  * Values that follow from which of the fifteen documents is being rendered,
  * written as `{{page.field}}`. There are two, and they are the same navigation
- * in the two shapes it takes: the strip below the header, and the hamburger in
- * the header that stands in for it on a phone.
+ * in the two shapes it takes: the home page's pill in the header, and the
+ * hamburger at the end of the same row that stands in for it below 1280px.
  *
  * Neither can be a `{{lang.*}}` value even though all fifteen pages are in the
  * same section, because both mark the current item differently depending on
  * whether it links to this page or to the landing page above it. None of the
- * five is that landing page any more - the Simuladores tab points at the index
+ * five is that landing page any more - the Simuladores item points at the index
  * in /<lang>/simulators/ - so all fifteen currently take the weaker value, and
  * the strong one is one URL change away. See currentAttribute() in
  * section-nav.mjs.
@@ -259,14 +259,14 @@ const placeholderPattern = /\{\{([^{}]+)\}\}/g;
  * Neither is the footer row an article also carries: a simulator's footer is a
  * bar that slides in over the tool with a call to action in it, and eight more
  * links in there would compete with the one thing that bar exists to offer.
- * That is also why the hamburger matters more here than anywhere else on the
- * site - it is now the only route out of a simulator that stays on screen once
- * the reader has scrolled past the strip.
+ * Both of these live in the sticky header instead, so unlike the strip they
+ * replaced, the route off a tool is on screen however far the reader has
+ * scrolled into it.
  */
 function pageValues(simulator, language) {
   const path = simulatorPath(simulator.name, language);
   return {
-    sectionNav: sectionNav('simulators', language, path),
+    headerNav: headerNav('simulators', language, path),
     headerMenu: headerMenu('simulators', language, path)
   };
 }

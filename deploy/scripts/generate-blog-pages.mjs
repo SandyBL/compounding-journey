@@ -33,7 +33,7 @@ import { stringsFor } from './page-shell.mjs';
 // The nav the rest of the site carries, from the table every family renders it
 // from. The journal has its own chrome rather than going through page-shell.mjs,
 // which is why it links the pieces itself.
-import { NAV_SCRIPT, headerMenu, sectionNav, sectionNavRow } from './section-nav.mjs';
+import { NAV_SCRIPT, headerMenu, headerNav, sectionNavRow } from './section-nav.mjs';
 import { shareRow } from './share-row.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -771,13 +771,14 @@ ${structuredData(article, labels, body)}
   <header class="site-header">
     <div class="header-shell">
       <a class="header-brand" href="${homeHref(article.language)}"><span class="header-brand-logo"><img src="${logoAt(128)}" alt="Compounding Journey" width="128" height="128" fetchpriority="high" /></span><span class="header-brand-copy"><span class="header-brand-name">Compounding Journey</span><span class="header-brand-tagline">${escapeHtml(labels.tagline)}</span></span></a>
+      ${headerNav('journal', article.language, articlePath(article.language, article.slug))}
       <div class="header-actions">
         <a class="header-return-link" href="/${article.language}/blog/"><span class="return-long">${escapeHtml(labels.back)}</span><span class="return-short">${escapeHtml(labels.backShort)}</span></a>
         ${languageSwitcher(article, article.language)}
         ${headerMenu('journal', article.language, articlePath(article.language, article.slug))}
       </div>
     </div>
-  </header>${sectionNav('journal', article.language, articlePath(article.language, article.slug))}
+  </header>
   <main class="article-page-main"><article data-article-slug="${article.slug}">
     <header class="article-header"><div class="container article-header-inner"><div class="post-meta">${categoryChip(article)}<span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
     <div class="container article-layout">${toc}<div class="article-main"><div id="article-body" class="article-body">
@@ -786,11 +787,13 @@ ${body}
   </article>${readNextSection(article, labels, related)}
     <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p>${simulatorLinks(article, labels)}${practicalLinks(article.language)}${workLinks(article.language, labels)}</div><div class="journey-actions"><a class="button" href="${simulatorsPath(article.language)}">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
-  <!-- The seven section links again at the end of the document. An article is
-       read to the bottom, which is where the strip at the top is a scroll away,
-       and it is the point at which a reader who liked the piece is deciding
-       what to do next. It replaces a lone "back to the journal" link that said
-       what the header's return link and the Blog tab both already say. -->
+  <!-- The eight section links again at the end of the document. An article is
+       read to the bottom, and it is the point at which a reader who liked the
+       piece is deciding what to do next. It is also the one list of them that
+       needs no script at all, which is what a reader whose JavaScript never ran
+       has instead of the header's hamburger. It replaces a lone "back to the
+       journal" link that said what the header's return link and the Blog item
+       both already say. -->
   <footer class="site-footer"><div class="container footer-row">${sectionNavRow('journal', article.language, articlePath(article.language, article.slug))}<span>© 2026 Compounding Journey</span></div></footer>
 </div>${NAV_SCRIPT}<script src="/assets/js/article-view.js?v=source" defer></script><script src="/assets/js/share.js?v=source" defer></script></body>
 </html>
@@ -949,31 +952,32 @@ async function updateBlogIndex(language, articles, totals, recentCounts) {
       `$1${feedFooterResult.block}$2`
     );
 
-  // The section nav, patched into the index the same way as everything else on
+  // The header nav, patched into the index the same way as everything else on
   // this page. The three indexes are hand-authored documents this script edits
-  // between markers rather than pages it renders, so the strip is inserted
-  // rather than written into the markup: hand-copying seven links and their
+  // between markers rather than pages it renders, so the pill is inserted
+  // rather than written into the markup: hand-copying eight links and their
   // labels into three files is how they would stop matching the table in
   // section-nav.mjs the first time a section is added.
   //
-  // The fallback path - the one that runs the first time, against an index that
-  // has no markers yet - splices it in after </header>, which is where every
-  // other family renders it. The strip has to be outside the sticky header, so
-  // the anchor is the closing tag rather than anything inside it.
+  // Its marker sits between the brand link and .header-actions, which is where
+  // the home page keeps its own pill and where every other family now renders
+  // this one - the header shell is a space-between flex row, so the pill
+  // centres itself between the two. The fallback path, the one that would run
+  // against an index carrying no marker yet, splices it in before that row.
   //
   // The footer here is deliberately left as it is: it carries the feed link and
   // the counting disclosure, and the whole body of this page is already a list
   // of links. The article pages are where the footer row earns its place.
-  const navResult = replaceBetween(source, 'sectionnav', sectionNav('journal', language, `/${language}/blog/`));
+  const navResult = replaceBetween(source, 'headernav', headerNav('journal', language, `/${language}/blog/`));
   source = typeof navResult === 'string'
     ? navResult
-    : source.replace('</header>', `</header>${navResult.block}`);
+    : source.replace(/<div class="header-actions"/, `${navResult.block}<div class="header-actions"`);
 
-  // And the hamburger button that stands in for that strip on a phone, patched
-  // in for the same reason and from the same table. It belongs to the header
-  // rather than to the row below it, so its marker sits inside .header-actions
-  // - after the language switcher, which is where the home page keeps its own
-  // hamburger and where every other family now renders this one.
+  // And the hamburger button that stands in for that pill below its breakpoint,
+  // patched in for the same reason and from the same table. It belongs at the
+  // end of .header-actions - after the language switcher, which is where the
+  // home page keeps its own hamburger and where every other family now renders
+  // this one.
   //
   // The fallback anchors on the closing tag of that switcher, which is the last
   // thing in the row on all three indexes. Their headers are formatted three
@@ -986,9 +990,9 @@ async function updateBlogIndex(language, articles, totals, recentCounts) {
     : source.replace(/<\/nav>(\s*)<\/div>/, `</nav>${menuResult.block}$1</div>`);
 
   // The client half of both: it reveals that button, opens the menu behind it
-  // and stands the strip down at phone widths. Appended next to the index's own
-  // script rather than through a marker, because a tag is idempotent to check
-  // for.
+  // and adds click and Escape handling to the pill's Recursos disclosure.
+  // Appended next to the index's own script rather than through a marker,
+  // because a tag is idempotent to check for.
   if (!source.includes('/assets/js/section-nav.js')) {
     source = source.replace('</body>', `${NAV_SCRIPT}</body>`);
   }

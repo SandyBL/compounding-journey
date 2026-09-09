@@ -39,6 +39,7 @@ article without re-crawling the index:
 
 ### Español
 
+- [Aumenta tu productividad diaria con herramientas de Lean management](https://compoundingjourney.com/es/blog/aumenta-tu-productividad-diaria-con-herramientas-de-lean-management/): Creada para las fábricas de Toyota, la metodología Lean puede transformar tu enfoque personal. Descubre cómo 5S, Kanban y Kaizen reducen la fatiga mental.
 - [La psicología de las decisiones de dinero: por qué saber las cuentas no basta](https://compoundingjourney.com/es/blog/la-psicologia-de-las-decisiones-de-dinero-por-que-saber-las-cuentas-no-basta/): Nadie fracasa con el dinero por no saber calcular un interés compuesto. Cuesta porque la decisión llega en un instante y la consecuencia llega en una década, y la mente no está hecha para ese hueco.
 - [Inversión para principiantes: guía básica para hacer crecer tu dinero](https://compoundingjourney.com/es/blog/inversion-para-principiantes-guia-basica-para-hacer-crecer-tu-dinero/): Invertir no es solo para ricos. Aprende sobre acciones, bonos, ETFs y robo-advisors para empezar a construir crecimiento compuesto desde hoy.
 - [Los ingresos pasivos no son una sola cosa: cuatro motores y lo que cuesta cada uno](https://compoundingjourney.com/es/blog/los-ingresos-pasivos-no-son-una-sola-cosa-cuatro-motores-y-lo-que-cuesta-cada-uno/): Un fondo de dividendos, un piso alquilado, una escalera de bonos y un producto que vendiste una vez son cuatro máquinas distintas. Se diferencian en el capital que piden, en las horas que exigen en silencio y en cómo se rompen.
@@ -55,6 +56,7 @@ article without re-crawling the index:
 
 ### English
 
+- [Boost Your Daily Productivity with Lean Management Tools](https://compoundingjourney.com/en/blog/boost-your-daily-productivity-with-lean-management-tools/): Originally built for Toyota factories, Lean management can transform your personal focus. Learn how 5S, Kanban, and Kaizen reduce mental friction and unlock daily productivity.
 - [The Psychology of Money Decisions: Why Knowing the Math Is Not Enough](https://compoundingjourney.com/en/blog/the-psychology-of-money-decisions-why-knowing-the-maths-is-not-enough/): Nobody fails at money because they can't calculate compound interest. They struggle because the decision arrives in a moment and the consequence arrives in a decade, and the mind simply isn't built for that gap.
 - [Investing 101: A Beginner’s Guide to Growing Your Wealth](https://compoundingjourney.com/en/blog/investing-101-a-beginner-s-guide-to-growing-your-wealth/): Investing isn't just for the wealthy. Learn the basics of stocks, bonds, ETFs, and robo-advisors to start building long-term compound growth today.
 - [Passive Income Is Not One Thing: Four Engines and What Each One Costs](https://compoundingjourney.com/en/blog/passive-income-is-not-one-thing-four-engines-and-what-each-one-costs/): A dividend fund, a rented flat, a bond ladder and a course you sold once are four completely different machines. They differ in the capital they need, the hours they quietly ask for, and the way they break.
@@ -71,6 +73,7 @@ article without re-crawling the index:
 
 ### Português
 
+- [Aumente sua produtividade diária com ferramentas de Lean management](https://compoundingjourney.com/pt/blog/aumente-sua-produtividade-diaria-com-ferramentas-de-lean-management/): Criada para as fábricas da Toyota, a metodologia Lean pode transformar seu foco pessoal. Descubra como 5S, Kanban e Kaizen reduzem a fadiga mental.
 - [A psicologia das decisões de dinheiro: por que saber as contas não basta](https://compoundingjourney.com/pt/blog/a-psicologia-das-decisoes-de-dinheiro-por-que-saber-as-contas-nao-basta/): Ninguém fracassa com dinheiro por não saber calcular juros compostos. Fracassa porque a decisão chega em um instante e a consequência chega em uma década, e a mente não foi feita para esse intervalo.
 - [Investimento para iniciantes: guia básico para fazer crescer o seu patrimônio](https://compoundingjourney.com/pt/blog/investimento-para-iniciantes-guia-basico-para-fazer-crescer-o-seu-patrimonio/): Investir não é apenas para ricos. Aprenda os conceitos de ações, títulos, ETFs e robo-advisors para começar a criar crescimento composto hoje.
 - [O que ensina um século de história dos mercados: quedas, recuperação e diversificação](https://compoundingjourney.com/pt/blog/o-que-ensina-um-seculo-de-historia-dos-mercados-quedas-recuperacao-e-diversificacao/): «No longo prazo a bolsa sobe» é verdade e quase inútil. Os números que decidem se você continua investido são a profundidade das quedas, quanto tempo elas duraram e o que fizeram com uma carteira mista.

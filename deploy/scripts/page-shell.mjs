@@ -14,10 +14,11 @@
 // and a page built out of those looks like the rest of the site for free.
 // pages.css adds only what is genuinely new here.
 import { escapeHtml, jsonLdScript } from './markdown.mjs';
-// The section nav is shared with the journal and the simulators, which this
-// shell does not render, so it lives in its own module. See the comment at the
-// top of it for why one table rather than one per generator.
-import { NAV_SCRIPT, assertSectionKey, headerMenu, sectionNav, sectionNavRow } from './section-nav.mjs';
+// The nav is shared with the journal and the simulators, which this shell does
+// not render, so it lives in its own module. See the comment at the top of it
+// for why one table rather than one per generator, and for why the header now
+// draws the home page's own pill rather than a strip of its own below it.
+import { NAV_SCRIPT, assertSectionKey, headerMenu, headerNav, sectionNavRow } from './section-nav.mjs';
 import {
   DEFAULT_LANGUAGE,
   LANGUAGES,
@@ -180,7 +181,7 @@ function footer(strings, language, section, pathname) {
  * structured data the caller wants alongside the breadcrumb - a
  * SoftwareApplication for a calculator, a DefinedTerm for a glossary entry.
  *
- * `section` is which of the seven nav items this page belongs to, and the only
+ * `section` is which of the eight nav items this page belongs to, and the only
  * thing a caller has to say to get its nav item highlighted. A calculator and
  * the calculator index both pass 'tools'; a category archive passes 'journal',
  * because an archive is a slice of the journal rather than a section of its
@@ -273,13 +274,14 @@ ${jsonLd}
   <header class="site-header">
     <div class="header-shell">
       <a class="header-brand" href="${homePath(language)}"><span class="header-brand-logo"><img src="${logoAt(128)}" alt="Compounding Journey" width="128" height="128" fetchpriority="high" /></span><span class="header-brand-copy"><span class="header-brand-name">Compounding Journey</span><span class="header-brand-tagline">${escapeHtml(strings.tagline)}</span></span></a>
+      ${headerNav(section, language, pathname)}
       <div class="header-actions">
         <a class="header-return-link" href="${homePath(language)}"><span class="return-long">${escapeHtml(strings.backToHome)}</span><span class="return-short">${escapeHtml(strings.home)}</span></a>
         ${languageSwitcher(language, pathFor)}
         ${headerMenu(section, language, pathname)}
       </div>
     </div>
-  </header>${sectionNav(section, language, pathname)}
+  </header>
   <main id="page-main" class="page-main">
     <div class="container">
       ${breadcrumbMarkup(fullTrail, strings.breadcrumbLabel)}
