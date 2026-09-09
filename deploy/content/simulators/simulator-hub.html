@@ -97,6 +97,18 @@
                 </div>
             </a>
 
+            <!-- The site's nav: the only navigation on a simulator that
+                 points outside the simulators. It is the home page's own pill,
+                 rendered from the one table in scripts/section-nav.mjs with the
+                 Simuladores item marked as current, and it sits inside the
+                 sticky header like on every other family - so it is still on
+                 screen at the bottom of a tool, which the strip that used to
+                 run below the header was not. On the simulators it waits for
+                 1280px rather than the 1180px everywhere else, because this
+                 row also carries the tool's own controls; below that the
+                 hamburger at the end of the row holds the same links. See the
+                 .desktop-section-nav comment in assets/css/header.css. -->
+            {{page.headerNav}}
 {{headerShell}}            <div class="header-actions flex items-center gap-2 shrink-0">
                 <a href="{{lang.home}}#simulador" class="site-return-link" aria-label="{{siteReturnLinkAriaLabel}}">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
@@ -153,11 +165,6 @@
             </div>
         </div>
     </header>
-    <!-- The site's section nav: the only navigation on a simulator that points
-         outside the simulators. Rendered from the one table in
-         scripts/section-nav.mjs, with the Simuladores tab marked as the current
-         page, and placed outside the sticky <header> like on every other family
-         - see the .site-section-nav comment in assets/css/header.css. -->{{page.sectionNav}}
 
     <!-- Page intro. The hub's heading used to be the first block inside <main>,
          set on the page's own cream, while the four standalone tools opened on a

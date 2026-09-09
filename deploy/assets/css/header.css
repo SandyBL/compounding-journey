@@ -300,130 +300,332 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
 }
 
 /* ---------------------------------------------------------------------------
-   The section nav
+   The desktop section nav
 
-   The strip of seven page links under the header on every page
-   scripts/page-shell.mjs renders, and the current-page state it exists to
-   carry. Values are lifted from the home page's own nav pill so that the two
-   read as one component rather than two designs of the same idea: the same
-   translucent pill, the same 0.68rem bold labels, the same gold tint for the
-   active item.
+   The pill of seven items in the header of every page outside the home page:
+   Blog, Simuladores, a Recursos menu holding the four resource sections, Sobre
+   mí, Sesiones, and the FAQ and Contacto anchors on the home page.
 
-   It is a second row rather than a third item in .header-shell because seven
-   tabs plus the brand, the return link and the flags do not share a line at any
-   width worth supporting - and because .site-simulator-nav already established
-   this exact shape directly below.
+   These are the home page's own nav rules, moved here rather than copied. They
+   used to live in the inline <style> of content/home/index.html - the block
+   generate-home-pages.mjs lifts into home.css - and they were the reason the
+   two navigations looked like two designs of the same idea: this file carried a
+   full-width strip of tabs below the header, the home page carried a pill
+   inside it. The pill is now the only shape, so the rules have one home, and
+   the home page still gets them because it links header.css after home.css.
+   The strip they replace is gone, along with the phone-width rules that hid it
+   for the menu and the script that scrolled its current tab into view.
 
-   overflow-x rather than a wrap: a nav that becomes two rows on a phone pushes
-   the page heading below the fold. assets/js/section-nav.js scrolls the current
-   tab into the middle on load, which is what makes a strip whose right-hand end
-   is off-screen still able to say where the reader is.
+   Nothing in blog.css, pages.css, the simulator sheets or home.css targets a
+   .desktop-* selector, so moving them collides with nothing. Two values did
+   have to change on the way: `font-family: inherit` became the header font
+   variable, because the body font is Plus Jakarta Sans on the home page but DM
+   Sans everywhere else, and the links needed `text-decoration: none`, because
+   nothing outside Tailwind's preflight was resetting the underline.
 
-   Outside header.site-header, so it scrolls away while the 80px header stays -
-   unlike the home page, where the nav is part of the sticky bar. That is a
-   decision rather than an oversight: sticking both would put a 128px
-   double-decker on top of every phone viewport, and it would break the two
-   sticky sidebars measured against the header's height (.toc at 108px,
-   .legal-toc at 96px). The reader needs this nav on arrival, which is where it
-   is, and at the end of the page, where the footer row now carries the same
-   seven links. */
-.site-section-nav {
-  position: relative;
-  z-index: 30;
-  padding: 2px 16px 12px;
+   The current-item rules read `[aria-current]` as well as the home page's
+   `.is-active`. The home page's scroll spy writes a class as the reader moves
+   through one document; the generated pages carry the state in the attribute,
+   set server-side by scripts/section-nav.mjs. Same paint, two sources. */
+.desktop-section-nav {
+  display: none;
 }
 
-.site-section-tabs {
-  display: flex;
-  gap: 2px;
-  width: fit-content;
-  max-width: 100%;
-  margin-inline: auto;
-  padding: 4px;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  border: 1px solid rgba(239, 234, 224, 0.95);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.58);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+/* 1024px until the nav gained a sixth item, 1100px until it gained a seventh.
+
+   The pill needs about 547px for seven items with the type and the padding
+   reduced as in the band below (the arithmetic is written out above it), and
+   the header has roughly 437px of slack at 1024px, growing a pixel per pixel
+   from there - so it does not actually fit until about 1134px. 1180px is that
+   figure rounded up to somewhere a person would choose. Below it the phone
+   drawer is served instead, which is the same trade the site already makes on a
+   tablet in portrait: a drawer that fits beats a pill that pushes the brand
+   name onto two lines.
+
+   DESKTOP_NAV_BREAKPOINT in the home page's script and desktopNavBreakpoint in
+   assets/js/section-nav.js must both match this number - the second reads 1280
+   instead on the simulators, for the reason given in the band below. Each is
+   what tells an open menu to close itself when a resize takes the viewport into
+   pill territory, where the button that opened it is display:none and it could
+   otherwise be left open with no way out. */
+@media (min-width: 1180px) {
+  .desktop-section-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.125rem;
+    padding: 0.3rem;
+    border: 1px solid rgba(239, 234, 224, 0.95);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.58);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .desktop-section-nav > a,
+  .desktop-resources-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0.65rem 0.7rem;
+    border: 0;
+    border-radius: 9999px;
+    background: transparent;
+    color: rgba(45, 36, 27, 0.68);
+    font-family: var(--site-header-font);
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+  }
+
+  .desktop-section-nav > a:hover,
+  .desktop-resources-toggle:hover,
+  .desktop-resources[data-open="true"] .desktop-resources-toggle,
+  .desktop-resources:hover .desktop-resources-toggle,
+  .desktop-resources:focus-within .desktop-resources-toggle {
+    color: #1e4620;
+    background: rgba(30, 70, 32, 0.08);
+    transform: translateY(-1px);
+  }
+
+  /* The second selector is what keeps the Recursos label from staying grey
+     while an item inside its menu is lit - which is how a reader on the
+     glossary or the data page would otherwise see it, since those two and the
+     calculators and the templates all live in that menu.
+
+     `[aria-current]` and not one of its values, because the nav writes two:
+     "page" on the item that links to the document being read, "true" on the one
+     whose section this page is inside - a glossary term, an article, a
+     calculator. A reader looking at the pill is asking which section they are
+     in, so both paint the same; only what a screen reader announces differs. */
+  .desktop-section-nav a.is-active,
+  .desktop-section-nav a[aria-current],
+  .desktop-resources:has(a.is-active) .desktop-resources-toggle,
+  .desktop-resources:has(a[aria-current]) .desktop-resources-toggle {
+    color: #1e4620;
+    background: rgba(197, 155, 39, 0.18);
+    box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.28);
+  }
+
+  .desktop-section-nav a:focus-visible,
+  .desktop-resources-toggle:focus-visible {
+    outline: 2px solid rgba(197, 155, 39, 0.75);
+    outline-offset: 2px;
+    color: #1e4620;
+    background: rgba(197, 155, 39, 0.12);
+  }
+
+  .desktop-resources {
+    position: relative;
+  }
+
+  .desktop-resources-toggle svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    transition: transform 180ms ease;
+  }
+
+  .desktop-resources[data-open="true"] .desktop-resources-toggle svg,
+  .desktop-resources:hover .desktop-resources-toggle svg,
+  .desktop-resources:focus-within .desktop-resources-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  /* Opened by :hover and :focus-within as well as by the script's data-open, so
+     the four sections behind this label are reachable with a mouse and with the
+     keyboard on a page whose JavaScript never ran. That matters more here than
+     it did on the home page: these are the only links to the calculators, the
+     templates, the glossary and the data page in this header. */
+  .desktop-resources-menu {
+    position: absolute;
+    top: calc(100% + 0.65rem);
+    left: 50%;
+    z-index: 40;
+    width: 12rem;
+    padding: 0.45rem;
+    border: 1px solid rgba(239, 234, 224, 0.98);
+    border-radius: 1rem;
+    background: #fffdf8;
+    box-shadow: 0 18px 50px rgba(45, 36, 27, 0.16);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -0.35rem);
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+
+  /* Bridges the gap between the label and the panel, so travelling from one to
+     the other does not pass over the page and close it. */
+  .desktop-resources-menu::before {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    left: 0;
+    height: 0.75rem;
+    content: "";
+  }
+
+  .desktop-resources[data-open="true"] .desktop-resources-menu,
+  .desktop-resources:hover .desktop-resources-menu,
+  .desktop-resources:focus-within .desktop-resources-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+
+  .desktop-resources-menu a {
+    display: flex;
+    padding: 0.75rem 0.8rem;
+    border-radius: 0.7rem;
+    color: rgba(45, 36, 27, 0.78);
+    font-family: var(--site-header-font);
+    font-size: 0.75rem;
+    font-weight: 750;
+    text-decoration: none;
+    transition: color 180ms ease, background-color 180ms ease;
+  }
+
+  .desktop-resources-menu a:hover,
+  .desktop-resources-menu a.is-active,
+  .desktop-resources-menu a[aria-current] {
+    color: #1e4620;
+    background: rgba(30, 70, 32, 0.08);
+  }
+
+  /* The Freedom Compass button. It exists on the home page only - it opens a
+     section of that document - so no generated page renders it; the rules are
+     here because this is where the pill lives now. */
+  .desktop-nav-cta {
+    margin-left: 0.25rem;
+    padding: 0.72rem 0.9rem !important;
+    background: #1e4620 !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    box-shadow: 0 8px 20px rgba(30, 70, 32, 0.2);
+  }
+
+  .desktop-nav-cta:hover {
+    background: #2d241b !important;
+    color: #ffffff !important;
+    box-shadow: 0 11px 24px rgba(45, 36, 27, 0.24);
+  }
 }
 
-.site-section-tabs a {
-  flex: 0 0 auto;
-  padding: 10px 12px;
-  border-radius: 999px;
-  color: rgba(45, 36, 27, 0.68);
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
-  text-decoration: none;
-  transition: color 0.18s ease, background-color 0.18s ease;
+/* The pill is full at seven items, and this is the arithmetic.
+
+   At its narrowest - 1180px, the width at which it replaces the phone drawer -
+   about 564px is left for it on a generated page, once the brand lockup, the
+   return link, the three flags and the shell's own padding have taken their
+   share. The home page spends its share differently - two publication icons
+   instead of the return link - and has about 620px.
+
+   Measured with the real advances from the subsetted Plus Jakarta Sans, the
+   home page's seven items plus its Freedom Compass button come to about 652px
+   in Spanish and Portuguese at full size, and about 547px with the type and the
+   padding reduced as below - which is why the reduced band exists and why the
+   breakpoint had to move up to 1180px with it. Full size fits from about
+   1239px, so the band is left running to 1279px and the type returns to normal
+   at 1280px, where the shell stops growing.
+
+   The generated pages render no call to action, so their pill is about 100px
+   narrower at both sizes - roughly 548px and 477px - and they spend the
+   difference on the return link the home page has no use for. Close enough that
+   one pair of breakpoints serves both, which is the point of moving these rules
+   into a shared file.
+
+   Sobre mí is what changed the numbers: it costs about 73px at full size and
+   about 60px reduced, the same as Sesiones.
+
+   The padding-block is deliberately unchanged: it is what gives these targets
+   their height, and 24px is the floor WCAG 2.2 SC 2.5.8 asks for. */
+@media (min-width: 1180px) and (max-width: 1279px) {
+  .desktop-section-nav {
+    gap: 0.08rem;
+    padding: 0.2rem;
+  }
+
+  .desktop-section-nav > a,
+  .desktop-resources-toggle {
+    padding: 0.65rem 0.42rem;
+    font-size: 0.63rem;
+  }
+
+  .desktop-nav-cta {
+    margin-left: 0.12rem;
+    padding: 0.72rem 0.66rem !important;
+  }
+
+  /* Except on the simulators, where the middle of the header is not free: that
+     row also carries the tool's own controls - four of them on the Passive
+     Income Engine - and .header-actions there is allowed to wrap, so a pill
+     that does not fit does not overflow, it puts the flags on a second line
+     inside an 80px header. 449px is what is left for it at 1180px and the
+     compact pill needs about 477px, so those pages keep the hamburger until
+     1280px. The rule beside the menu's own breakpoint below is the other half
+     of that. */
+  .simulator-header-shell .desktop-section-nav {
+    display: none;
+  }
 }
 
-.site-section-tabs a:hover {
-  color: #1e4620;
-  background: rgba(30, 70, 32, 0.08);
-}
+/* And where the simulators pick the pill up: at 1280px, and at the compact size
+   rather than the full one.
 
-/* The state the whole nav was added for. aria-current is the selector on
-   purpose: the attribute is what a screen reader announces, so styling anything
-   else would let the paint and the announcement disagree.
+   The shell stops growing at 1280px, so what is left for the pill on those
+   pages stops growing with it - about 549px, once the brand lockup, the return
+   link, four 36px controls, the three flags and two 16px shell gaps have taken
+   their share. The full-size pill is about 548px wide in Spanish and
+   Portuguese. Sizing a header on a 1px margin is how a header ends up wrapping
+   on someone else's font stack, so these pages keep the reduced type and
+   padding at every width above the breakpoint: about 477px, which leaves 70px
+   in hand and cannot be spent by a wider viewport, because there is no wider
+   shell. */
+@media (min-width: 1280px) {
+  .simulator-header-shell .desktop-section-nav {
+    gap: 0.08rem;
+    padding: 0.2rem;
+  }
 
-   The attribute and not one of its values, because the nav writes two: "page"
-   on the tab that links to the document being read, "true" on a tab whose
-   section this page is inside - a glossary term, an article, a calculator. A
-   reader looking at the strip is asking which section they are in, so both
-   paint the same; only what a screen reader announces differs. */
-.site-section-tabs a[aria-current] {
-  color: #1e4620;
-  background: rgba(197, 155, 39, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.28);
-}
-
-.site-section-tabs a:focus-visible {
-  outline: 2px solid rgba(197, 155, 39, 0.75);
-  outline-offset: 2px;
-  color: #1e4620;
+  .simulator-header-shell .desktop-section-nav > a,
+  .simulator-header-shell .desktop-resources-toggle {
+    padding: 0.65rem 0.42rem;
+    font-size: 0.63rem;
+  }
 }
 
 /* ---------------------------------------------------------------------------
    The site menu
 
-   Eight tabs need about 620px, and a phone has 360. So what the strip above
-   actually did on a phone was show the three that fit and give no sign that the
-   other five existed: no visible scrollbar on a touch device, no cut-off eighth
-   item to hint at a ninth, nothing. A reader on a glossary term could reach the
-   calculators only by going back to the home page - which is the problem the
-   strip was added to solve, still unsolved on the viewport most of these pages
-   are read on.
+   Eight links need about 620px, and a phone has 360. So the hamburger in the
+   header is the whole of the site navigation below 1180px: the same button the
+   home page has always had, drawn from the same values, opening a panel with
+   all eight pages in it. The home page keeps its own copy in home.css - that
+   drawer lists the sections of one long document, not the eight pages here - so
+   what is shared is the shape of the control, not the code. A reader who has
+   learned that icon on the way in finds it in the same corner of every page
+   after.
 
-   Below 768px a hamburger in the header takes over: the same button the home
-   page has always had, drawn from the same values, opening a panel with all
-   eight links in it. The home page keeps its own copy in home.css - that drawer
-   lists the sections of one long document, not the eight pages here - so what
-   is shared is the shape of the control, not the code. A reader who has learned
-   that icon on the way in finds it in the same corner of every page after.
+   It used to take over below 768px only, because a full-width strip of tabs
+   below the header covered every width above that. The strip is gone - the pill
+   in .desktop-section-nav replaced it - and the pill needs 1180px, so the
+   button now covers everything under that. Which is also what the home page
+   does, at the same width.
 
-   In the header rather than beside the strip, because the header is sticky. The
-   strip scrolls away with the article; the button does not, so the way out of a
-   page is reachable from the bottom of it. On the simulators that is the whole
-   point: their footer is a docked call to action rather than a set of links, so
-   until now scrolling past the strip left no route off the tool at all.
+   In the header, and the header is sticky, so the way off a page is reachable
+   from the bottom of it. On the simulators that is the whole point: their
+   footer is a docked call to action rather than a set of links.
 
    Everything visible here waits on assets/js/section-nav.js, which removes the
-   button's `hidden` attribute and sets data-site-menu on <html> in the same
-   line. Both come from one place, so there is no state in which the strip has
-   stood down for a button that cannot open a panel: with no script the page
-   keeps the scrolling strip exactly as it is today.
-
-   768px rather than the 639px the rest of this file breaks at, because the
-   eight labels in Spanish and Portuguese - Simuladores, Calculadoras,
-   Plantillas - come to about 620px, and .site-section-nav's own 16px of inline
-   padding leaves 608px at 640px wide. The strip is served where it fits, and
-   the first breakpoint where it does is a little above the one the header uses
-   for its own reasons. */
+   button's `hidden` attribute. The rule below honours that attribute, so there
+   is no state in which a page shows a control that cannot open anything. With
+   no script the header still carries the brand, the return link and the flags,
+   and the footer row of the same eight links is the route on from there -
+   except on the simulators, whose footer is a docked call to action, where it
+   is the return link. */
 
 /* The button and the panel, and no `position` of its own on purpose: that
    leaves the panel's containing block header.site-header, which is sticky and
@@ -620,23 +822,36 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   }
 }
 
-/* The button's job above the breakpoint is done by the strip, which fits from
-   here up and shows all eight at once. Two navigations with the same name in
-   one page would be a worse answer than either alone. */
-@media (min-width: 768px) {
+/* The button's job above the breakpoint is done by the pill, which fits from
+   here up and shows all seven at once. Two navigations with the same name in
+   one page would be a worse answer than either alone.
+
+   768px until the strip was removed: that was the width the strip fitted at,
+   and the pill needs 1180px. The number is the same one the home page swaps its
+   own drawer for its own pill at, which is the point of the change - one
+   breakpoint, one shape at each width, on every page. */
+@media (min-width: 1180px) {
   .site-header .site-menu-toggle,
   .site-header .site-menu-panel {
     display: none;
   }
 }
 
-@media (max-width: 767px) {
-  /* The strip stands down for the menu, and only once the script that opens the
-     menu has run. Removing it rather than leaving both is what keeps a screen
-     reader from meeting the same eight links under the same name twice, and it
-     takes the row that showed three of eight off a phone for good. */
-  html[data-site-menu] .site-section-nav {
-    display: none;
+/* And the other half of the simulator exception. Their pill waits for 1280px,
+   so their hamburger has to survive the rule above until then, or the band in
+   between would leave those pages with no header nav at all.
+
+   `:not([hidden])` rather than a plain override, because the button ships with
+   `hidden` and assets/js/section-nav.js is what removes it. Without the guard
+   this rule would out-specify the `[hidden]` rule it sits after and put a dead
+   control in the header of a page whose script never ran. */
+@media (min-width: 1180px) and (max-width: 1279px) {
+  .site-header .simulator-header-shell .site-menu-toggle:not([hidden]) {
+    display: inline-grid;
+  }
+
+  .site-header .simulator-header-shell .site-menu-panel:not([hidden]) {
+    display: block;
   }
 }
 
@@ -756,13 +971,8 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
     padding: 6px;
   }
 
-  .site-section-nav,
   .site-simulator-nav {
     padding-inline: 8px;
-  }
-
-  .site-section-tabs a {
-    padding-inline: 10px;
   }
 }
 

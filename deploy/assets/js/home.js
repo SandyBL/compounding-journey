@@ -78,7 +78,7 @@
         // pointed at /<lang>/simulator.html - the personal finance simulator -
         // because that page was the section's entry point before the section
         // had an index. It now points at the index, like every other entry
-        // here, and site-routes owns all six.
+        // here, and site-routes owns all seven.
         const sectionLinks = {
             es: {
                 simulators: "/es/simulators/",
@@ -86,6 +86,7 @@
                 templates: "/es/plantillas/",
                 glossary: "/es/glosario/",
                 data: "/es/datos/",
+                about: "/es/sobre-mi/",
                 sessions: "/es/sesiones/"
             },
             en: {
@@ -94,6 +95,7 @@
                 templates: "/en/templates/",
                 glossary: "/en/glossary/",
                 data: "/en/data/",
+                about: "/en/about/",
                 sessions: "/en/sessions/"
             },
             pt: {
@@ -102,6 +104,7 @@
                 templates: "/pt/modelos/",
                 glossary: "/pt/glossario/",
                 data: "/pt/dados/",
+                about: "/pt/sobre-mim/",
                 sessions: "/pt/sessoes/"
             }
         };
@@ -1028,11 +1031,12 @@
         }
 
         // The width at which the pill nav replaces the phone drawer. It is the
-        // same number as the two nav media queries in this page's CSS, written
+        // same number as the nav media queries in assets/css/header.css, written
         // twice because a stylesheet breakpoint cannot be read back out of one;
-        // the comment above `@media (min-width: 1100px)` is the other half of
-        // this pair, and both say so.
-        const DESKTOP_NAV_BREAKPOINT = 1100;
+        // the .desktop-section-nav comment in that file is the other half of
+        // this pair, and both say so. It moved from 1100px when the nav gained
+        // its seventh item.
+        const DESKTOP_NAV_BREAKPOINT = 1180;
 
         // The apex shortcuts, mapped to the section each one lands on. Every
         // key here is a 301 in _redirects, and this map is what makes arriving

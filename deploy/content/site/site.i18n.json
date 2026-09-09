@@ -366,6 +366,21 @@
     "en": "Data",
     "pt": "Dados"
   },
+  "resourcesNavLabel": {
+    "es": "Recursos",
+    "en": "Resources",
+    "pt": "Recursos"
+  },
+  "faqNavLabel": {
+    "es": "FAQ",
+    "en": "FAQ",
+    "pt": "FAQ"
+  },
+  "contactNavLabel": {
+    "es": "Contacto",
+    "en": "Contact",
+    "pt": "Contato"
+  },
   "glossaryGroup_investing": {
     "es": "Inversión y mercados",
     "en": "Investing and markets",

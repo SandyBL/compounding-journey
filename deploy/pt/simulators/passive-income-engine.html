@@ -45,6 +45,18 @@
                 </div>
             </a>
 
+            <!-- The site's nav: the only navigation on a simulator that
+                 points outside the simulators. It is the home page's own pill,
+                 rendered from the one table in scripts/section-nav.mjs with the
+                 Simuladores item marked as current, and it sits inside the
+                 sticky header like on every other family - so it is still on
+                 screen at the bottom of a tool, which the strip that used to
+                 run below the header was not. On the simulators it waits for
+                 1280px rather than the 1180px everywhere else, because this
+                 row also carries the tool's own controls; below that the
+                 hamburger at the end of the row holds the same links. See the
+                 .desktop-section-nav comment in assets/css/header.css. -->
+            <nav class="desktop-section-nav" aria-label="Seções do site"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><div class="desktop-resources" data-resources-dropdown><button type="button" class="desktop-resources-toggle" aria-expanded="false" aria-controls="desktop-resources-menu">Recursos<svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div id="desktop-resources-menu" class="desktop-resources-menu"><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a></div></div><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a><a href="/pt/#preguntas-frecuentes" data-site-route="/faq">FAQ</a><a href="/pt/#contacto">Contato</a></nav>
             <div class="header-actions simulator-header-actions flex items-center gap-2 shrink-0">
                 <a href="/pt/#simulador" class="site-return-link" aria-label="Voltar ao site">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
@@ -67,10 +79,11 @@
                     <span class="sr-only">Reiniciar</span>
                 </button>
                 <!-- The three translations, as flag links, and deliberately the
-                     last thing in this row on every simulator: the tools each
-                     carry a different set of controls, so anchoring the flags to
-                     the far right is what puts them in the same place on all of
-                     them. Real links, not buttons: each language is a distinct
+                     second-to-last thing in this row on every simulator, with
+                     only the site menu after them: the tools each carry a
+                     different set of controls, so anchoring the flags to the
+                     right is what puts them in the same place on all of them.
+                     Real links, not buttons: each language is a distinct
                      pre-rendered document, so switching is a navigation, and the
                      alternates stay crawlable. The generator writes
                      aria-current="page" onto the current one. -->
@@ -100,17 +113,18 @@
                         </svg>
                     </a>
                 </nav>
+                <!-- The site menu, and the reason the flags above are no longer the
+                     last thing in this row. The hamburger is the one control
+                     that is in the same place on every page of the site - the
+                     home page has kept it at the end of its header row since it
+                     was built - so it is anchored to the far right here too, and
+                     the flags stay anchored immediately before it on all five
+                     tools. Rendered from the one table in
+                     scripts/section-nav.mjs. -->
+                <div class="site-header-menu"><button type="button" class="site-menu-toggle" aria-expanded="false" aria-controls="site-menu-panel" aria-label="Abrir o menu de navegação" data-label-open="Abrir o menu de navegação" data-label-close="Fechar o menu de navegação" hidden><span class="site-menu-toggle__icon" aria-hidden="true"></span></button><div id="site-menu-panel" class="site-menu-panel" hidden><p class="site-menu-panel__label">Seções do site</p><nav class="site-menu-nav" aria-label="Seções do site"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a></nav></div></div>
             </div>
         </div>
     </header>
-    <!-- The site's section nav: the only navigation on a simulator that points
-         outside the simulators. Rendered from the one table in
-         scripts/section-nav.mjs, with the Simuladores tab marked as the current
-         page, and placed outside the sticky <header> like on every other family
-         - see the .site-section-nav comment in assets/css/header.css. -->
-  <nav class="site-section-nav" aria-label="Seções do site">
-    <div class="site-section-tabs"><a href="/pt/blog/">Blog</a><a href="/pt/simulators/" aria-current="true">Simuladores</a><a href="/pt/calculadoras/">Calculadoras</a><a href="/pt/modelos/">Modelos</a><a href="/pt/glossario/">Glossário</a><a href="/pt/dados/">Dados</a><a href="/pt/sobre-mim/">Sobre mim</a><a href="/pt/sessoes/">Sessões</a></div>
-  </nav>
 
     <!-- Page intro. These simulators previously opened straight into their app
          UI: no h1, no prose, and no route to the other three, so search engines
