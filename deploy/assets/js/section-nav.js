@@ -1,23 +1,23 @@
 /**
  * The client half of the site nav: it turns the hamburger in the header on, and
- * it opens the Recursos menu inside the header's nav pill.
+ * it opens the two menus inside the header's nav pill.
  *
- * The pill scripts/section-nav.mjs renders needs 1180px - seven items in
- * Spanish and Portuguese come to about 547px even with the type reduced - and a
- * phone has 390. So below that width the pill is display:none and the button
- * this file reveals is the whole of the site navigation: the same eight links,
- * as a panel under the header. Above it the button is display:none and the pill
- * is what is shown. One shape at each width, the same two widths the home page
- * swaps its own pill and drawer at.
+ * The pill scripts/section-nav.mjs renders needs 1180px - the row plus the
+ * brand lockup, the return link and the flags does not fit a narrower one - and
+ * a phone has 390. So below that width the pill is display:none and the button
+ * this file reveals is the whole of the site navigation: the same eight links
+ * and the same call to action, as a panel under the header. Above it the button
+ * is display:none and the pill is what is shown. One shape at each width, the
+ * same two widths the home page swaps its own pill and drawer at.
  *
  * The button ships with `hidden` and this file removes it, which is the whole
  * of the progressive enhancement contract here: with no script the header still
  * carries the brand, the return link and the flags, no dead control appears,
  * and the footer row of the same eight links is the route on from the page - on
  * the simulators, whose footer is a docked call to action, the return link is.
- * The pill itself needs nothing from this file - above 1180px the Recursos menu
- * opens on :hover and :focus-within in CSS - so a scriptless desktop reader
- * gets a complete, working nav, dropdown included.
+ * The pill itself needs nothing from this file - above 1180px both of its menus
+ * open on :hover and :focus-within in CSS - so a scriptless desktop reader gets
+ * a complete, working nav, dropdowns included.
  *
  * There used to be a full-width strip of tabs below the header, and this file
  * used to scroll its current tab into the middle. The strip is gone: it showed
@@ -87,49 +87,70 @@
     });
   }
 
-  // The Recursos menu in the pill.
+  // The two menus in the pill: Recursos, and the one that holds About, Sessions,
+  // FAQ and Contacto.
   //
-  // CSS already opens it on :hover and :focus-within, and that is what keeps it
-  // working with no script at all. What this adds is the two things those
-  // selectors cannot do: a click that latches it open, and a way to dismiss it
+  // CSS already opens them on :hover and :focus-within, and that is what keeps
+  // them working with no script at all. What this adds is the two things those
+  // selectors cannot do: a click that latches one open, and a way to dismiss it
   // that is not "move the pointer away" - which is no way at all on a touch
   // screen, where a tap on the label is a hover that never ends.
+  //
+  // Queried as a list, not as the one. This file bound `querySelector` while
+  // there was only ever one disclosure in the pill, and the second one arrived
+  // with the regrouping - which on a touch screen is a label that opens nothing
+  // and, once hovered, cannot be dismissed by anything except leaving the page.
   //
   // Same handlers, same data-open attribute and same order as the home page's
   // copy in its own script, because it is the same component. Both write
   // aria-expanded on the button so the state is announced, not just painted.
-  const dropdown = document.querySelector('[data-resources-dropdown]');
-  const dropdownToggle = dropdown?.querySelector('.desktop-resources-toggle');
+  const dropdowns = [...document.querySelectorAll('[data-resources-dropdown]')]
+    .map((element) => ({ element, toggle: element.querySelector('.desktop-resources-toggle') }))
+    .filter((entry) => entry.toggle);
 
-  if (!dropdown || !dropdownToggle) return;
+  if (!dropdowns.length) return;
 
-  const setDropdownOpen = (open) => {
-    dropdown.toggleAttribute('data-open', open);
-    dropdownToggle.setAttribute('aria-expanded', String(open));
+  const setDropdownOpen = (dropdown, open) => {
+    dropdown.element.toggleAttribute('data-open', open);
+    dropdown.toggle.setAttribute('aria-expanded', String(open));
+    // One at a time. The panels are the same width and their labels sit side by
+    // side, so a click that latches one open while the pointer moves on to the
+    // other would leave two overlapping menus and no obvious way out of either.
+    if (!open) return;
+    dropdowns.forEach((other) => {
+      if (other !== dropdown) setDropdownOpen(other, false);
+    });
   };
 
-  dropdownToggle.addEventListener('click', (event) => {
-    event.stopPropagation();
-    setDropdownOpen(!dropdown.hasAttribute('data-open'));
-  });
+  dropdowns.forEach((dropdown) => {
+    dropdown.toggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      setDropdownOpen(dropdown, !dropdown.element.hasAttribute('data-open'));
+    });
 
-  dropdown.addEventListener('pointerenter', () => setDropdownOpen(true));
-  dropdown.addEventListener('pointerleave', () => setDropdownOpen(false));
-  dropdown.addEventListener('focusin', () => setDropdownOpen(true));
-  dropdown.addEventListener('focusout', (event) => {
-    if (!dropdown.contains(event.relatedTarget)) setDropdownOpen(false);
+    dropdown.element.addEventListener('pointerenter', () => setDropdownOpen(dropdown, true));
+    dropdown.element.addEventListener('pointerleave', () => setDropdownOpen(dropdown, false));
+    dropdown.element.addEventListener('focusin', () => setDropdownOpen(dropdown, true));
+    dropdown.element.addEventListener('focusout', (event) => {
+      if (!dropdown.element.contains(event.relatedTarget)) setDropdownOpen(dropdown, false);
+    });
   });
 
   document.addEventListener('click', (event) => {
-    if (!dropdown.contains(event.target)) setDropdownOpen(false);
+    dropdowns.forEach((dropdown) => {
+      if (!dropdown.element.contains(event.target)) setDropdownOpen(dropdown, false);
+    });
   });
 
   // Dismissing a menu must return focus to the control that opened it, or the
   // reader is dropped at the top of the page.
   document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape' || !dropdown.hasAttribute('data-open')) return;
-    const inside = dropdown.contains(document.activeElement);
-    setDropdownOpen(false);
-    if (inside) dropdownToggle.focus();
+    if (event.key !== 'Escape') return;
+    dropdowns.forEach((dropdown) => {
+      if (!dropdown.element.hasAttribute('data-open')) return;
+      const inside = dropdown.element.contains(document.activeElement);
+      setDropdownOpen(dropdown, false);
+      if (inside) dropdown.toggle.focus();
+    });
   });
 })();

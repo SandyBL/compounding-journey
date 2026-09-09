@@ -496,9 +496,16 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
     background: rgba(30, 70, 32, 0.08);
   }
 
-  /* The Freedom Compass button. It exists on the home page only - it opens a
-     section of that document - so no generated page renders it; the rules are
-     here because this is where the pill lives now. */
+  /* The Freedom Compass button.
+
+     It was the home page's alone until the nav was regrouped, on the grounds
+     that it opens a band of that document rather than a section of the site.
+     Every page renders it now: from anywhere else it is a link to the home page
+     and a fragment, which is what FAQ and Contacto already were, and the row had
+     the space once About, Sessions, FAQ and Contacto moved behind one label.
+     These rules did not have to change to cover the other two hundred pages -
+     they were already in this shared file rather than in home.css, and they were
+     never scoped to the home page. */
   .desktop-nav-cta {
     margin-left: 0.25rem;
     padding: 0.72rem 0.9rem !important;
@@ -515,7 +522,7 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   }
 }
 
-/* The pill is full at seven items, and this is the arithmetic.
+/* The pill was full at seven items, and this is the arithmetic it was full by.
 
    At its narrowest - 1180px, the width at which it replaces the phone drawer -
    about 564px is left for it on a generated page, once the brand lockup, the
@@ -523,22 +530,31 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
    share. The home page spends its share differently - two publication icons
    instead of the return link - and has about 620px.
 
-   Measured with the real advances from the subsetted Plus Jakarta Sans, the
-   home page's seven items plus its Freedom Compass button come to about 652px
-   in Spanish and Portuguese at full size, and about 547px with the type and the
-   padding reduced as below - which is why the reduced band exists and why the
-   breakpoint had to move up to 1180px with it. Full size fits from about
-   1239px, so the band is left running to 1279px and the type returns to normal
-   at 1280px, where the shell stops growing.
+   Measured with the real advances from the subsetted Plus Jakarta Sans, seven
+   items plus the Freedom Compass button came to about 652px in Spanish and
+   Portuguese at full size, and about 547px with the type and the padding reduced
+   as below - which is why this reduced band exists and why the breakpoint had to
+   move up to 1180px with it. Full size fitted from about 1239px, so the band was
+   left running to 1279px and the type returns to normal at 1280px, where the
+   shell stops growing.
 
-   The generated pages render no call to action, so their pill is about 100px
-   narrower at both sizes - roughly 548px and 477px - and they spend the
-   difference on the return link the home page has no use for. Close enough that
-   one pair of breakpoints serves both, which is the point of moving these rules
-   into a shared file.
+   Both pills are now the same four items and a call to action, and the numbers
+   are the same on both pages: about 459px at full size and about 392px reduced.
+   Sobre mí, Sesiones, FAQ and Contacto came out of the row - roughly 264px of it
+   at full size, 215px reduced, Sobre mí and Sesiones costing about 73px and 60px
+   each - and one grouped label went back in for about 71px and 60px. The
+   generated pages then gained the button the home page already had, which is the
+   ~104px and ~70px that used to be the whole of the difference between the two
+   pills; that is why there is no difference left.
 
-   Sobre mí is what changed the numbers: it costs about 73px at full size and
-   about 60px reduced, the same as Sesiones.
+   So the band below is no longer load-bearing: 459px fits the 564px a generated
+   page has at 1180px and the 620px the home page has. It is left in place
+   because a pill that reads a shade smaller between 1180px and 1279px is not a
+   defect, and because moving a breakpoint means moving the same number in
+   assets/js/home.js, in assets/js/section-nav.js and in three comments that
+   explain it - a change with more ways to go wrong than the 67px it would buy
+   back. The slack is the point: the row now has room the next section can be
+   added to.
 
    The padding-block is deliberately unchanged: it is what gives these targets
    their height, and 24px is the floor WCAG 2.2 SC 2.5.8 asks for. */
@@ -563,10 +579,17 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
      row also carries the tool's own controls - four of them on the Passive
      Income Engine - and .header-actions there is allowed to wrap, so a pill
      that does not fit does not overflow, it puts the flags on a second line
-     inside an 80px header. 449px is what is left for it at 1180px and the
-     compact pill needs about 477px, so those pages keep the hamburger until
+     inside an 80px header. 449px is what is left for it at 1180px, and the
+     compact pill needed about 477px, so those pages keep the hamburger until
      1280px. The rule beside the menu's own breakpoint below is the other half
-     of that. */
+     of that.
+
+     The regrouped pill is about 392px, so it would now fit that 449px. The
+     exception stays anyway: what those pages gain by dropping it is the pill
+     instead of the hamburger across 100px of width, and what they risk is a
+     wrapped header on the busiest of the five, measured against controls this
+     file does not own. Worth doing on purpose, with those pages in front of
+     you; not worth taking as a side effect of a nav regrouping. */
   .simulator-header-shell .desktop-section-nav {
     display: none;
   }
@@ -813,6 +836,55 @@ body.lang-pt .site-header .header-brand-tagline[lang-content="pt"] {
   outline: 2px solid rgba(197, 155, 39, 0.75);
   outline-offset: 2px;
   color: var(--site-header-forest);
+}
+
+/* The Freedom Compass button, under the list rather than in it.
+
+   Below 1180px this panel is the whole of the header nav, so a panel without
+   the button is a page without any route to the assessment - which was every
+   page but the home page on every phone until the nav was regrouped.
+
+   Drawn like the home page drawer's copy in home.css: same green, same weight,
+   same arrow, and the same 0.55rem above it, a little more than the 2px between
+   the links, which is what marks it as the call to action rather than a ninth
+   destination. It is outside the `<nav>` for the same reason - a screen reader
+   listing the site's navigation should hear eight places to go, not nine with
+   one of them an invitation. */
+.site-menu-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  margin-top: 0.55rem;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #1e4620;
+  color: #ffffff;
+  font-family: var(--site-header-font);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(30, 70, 32, 0.2);
+  transition: background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.site-menu-cta:hover {
+  background: #2d241b;
+  color: #ffffff;
+  box-shadow: 0 13px 28px rgba(45, 36, 27, 0.24);
+}
+
+.site-menu-cta:focus-visible {
+  outline: 2px solid rgba(197, 155, 39, 0.75);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu-cta {
+    transition: none;
+  }
 }
 
 @media (min-width: 640px) {

@@ -1390,10 +1390,16 @@
                  Pilares used to be the first item and is not here any more. It
                  is the strip immediately below the hero - the first thing under
                  the fold, reached by scrolling once - while Sesiones is a page
-                 that cannot be found at all unless something links it. The pill
-                 has room for seven items, so the slot went to the page that
-                 needs it. /pillars still redirects and siteRoutes still maps it, so
-                 the old shortcut and any inbound link to it keep working. -->
+                 that cannot be found at all unless something links it, so the
+                 slot went to the page that needed it. /pillars still redirects
+                 and siteRoutes still maps it, so the old shortcut and any
+                 inbound link to it keep working.
+
+                 The row was full at seven items when that trade was made. It
+                 holds four and a call to action now, because two of those seven
+                 and the two that followed them moved behind the Ayuda label
+                 below - which is what made room for the Freedom Compass button
+                 on every generated page, where it had never been. -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
                 <a href="/es/blog/" data-blog-link>
                     <span lang-content="es">Blog</span>
@@ -1435,37 +1441,66 @@
                         </a>
                     </div>
                 </div>
-                <a href="/es/sobre-mi/" data-section-link="about">
-                    <span lang-content="es">Sobre mí</span>
-                    <span lang-content="en">About</span>
-                    <span lang-content="pt">Sobre mim</span>
-                </a>
-                <a href="/es/sesiones/" data-section-link="sessions">
-                    <span lang-content="es">Sesiones</span>
-                    <span lang-content="en">Sessions</span>
-                    <span lang-content="pt">Sessões</span>
-                </a>
-                <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
-                    <span lang-content="es">FAQ</span>
-                    <span lang-content="en">FAQ</span>
-                    <span lang-content="pt">FAQ</span>
-                </a>
-                <!-- No data-site-route, unlike FAQ and the Freedom Compass
-                     button. That attribute is the hook for the handler that
-                     turns a nav click into a smooth scroll, and it doubles as
-                     the key into `siteRoutes`, which exists so that arriving at
-                     one of the /pillars, /faq, ... shortcut redirects still
-                     lands on the right section. There is no /contact shortcut,
-                     so claiming one here would name a URL that does not
-                     resolve. The plain "#contacto" anchor is picked up by the
-                     fallback handler on the document instead, which gives this
-                     link the same smooth scroll, the same history entry and the
-                     same focus move as the rest of the nav. -->
-                <a href="#contacto" data-section="contacto">
-                    <span lang-content="es">Contacto</span>
-                    <span lang-content="en">Contact</span>
-                    <span lang-content="pt">Contato</span>
-                </a>
+                <!-- Sobre mí, Sesiones, FAQ and Contacto, behind one label.
+
+                     They were four tabs of their own until the row ran out of
+                     room, and they answer one question between them: who is
+                     behind this, and how do I reach them. Grouping them the way
+                     Recursos groups the four reference sections is what paid for
+                     the Freedom Compass button on the other two hundred pages of
+                     the site, which had never had it - see the comment on
+                     HEADER_NAV in scripts/section-nav.mjs.
+
+                     Two pages and two sections of this document, in one menu,
+                     which is why the attributes inside it are not all the same
+                     kind. That mix is deliberate and it is the reader's view
+                     that decides it: "Sesiones" and "FAQ" are both things the
+                     site can tell them about, and which one happens to be a
+                     separate document is not something a nav should make them
+                     think about. -->
+                <div class="desktop-resources" data-resources-dropdown>
+                    <button type="button" class="desktop-resources-toggle" aria-expanded="false" aria-controls="desktop-support-menu">
+                        <span lang-content="es">Ayuda</span>
+                        <span lang-content="en">Support</span>
+                        <span lang-content="pt">Ajuda</span>
+                        <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div id="desktop-support-menu" class="desktop-resources-menu">
+                        <a href="/es/sobre-mi/" data-section-link="about">
+                            <span lang-content="es">Sobre mí</span>
+                            <span lang-content="en">About</span>
+                            <span lang-content="pt">Sobre mim</span>
+                        </a>
+                        <a href="/es/sesiones/" data-section-link="sessions">
+                            <span lang-content="es">Sesiones</span>
+                            <span lang-content="en">Sessions</span>
+                            <span lang-content="pt">Sessões</span>
+                        </a>
+                        <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
+                            <span lang-content="es">FAQ</span>
+                            <span lang-content="en">FAQ</span>
+                            <span lang-content="pt">FAQ</span>
+                        </a>
+                        <!-- No data-site-route, unlike FAQ and the Freedom
+                             Compass button. That attribute is the hook for the
+                             handler that turns a nav click into a smooth scroll,
+                             and it doubles as the key into `siteRoutes`, which
+                             exists so that arriving at one of the /pillars,
+                             /faq, ... shortcut redirects still lands on the
+                             right section. There is no /contact shortcut, so
+                             claiming one here would name a URL that does not
+                             resolve. The plain "#contacto" anchor is picked up
+                             by the fallback handler on the document instead,
+                             which gives this link the same smooth scroll, the
+                             same history entry and the same focus move as the
+                             rest of the nav. -->
+                        <a href="#contacto" data-section="contacto">
+                            <span lang-content="es">Contacto</span>
+                            <span lang-content="en">Contact</span>
+                            <span lang-content="pt">Contato</span>
+                        </a>
+                    </div>
+                </div>
                 <a href="#assessment" data-site-route="/assessment" data-section="assessment" class="desktop-nav-cta">
                     <span lang-content="es">Freedom Compass</span>
                     <span lang-content="en">Freedom Compass</span>
@@ -1538,13 +1573,19 @@
                     <span lang-content="en">Navigation</span>
                     <span lang-content="pt">Navegação</span>
                 </p>
-                <!-- The same six items as the desktop pill, in the same
-                     order, pointing at the same places. The drawer has vertical
-                     room the pill does not, so it could carry more - but a
-                     reader who learns the nav on a laptop and then opens it on
-                     a phone should find the nav they already know, and every
-                     item that is here on one and missing on the other is a
-                     support question waiting to happen. -->
+                <!-- The same items as the desktop pill, in the same order,
+                     grouped the same way, pointing at the same places. The
+                     drawer has vertical room the pill does not, so it could
+                     carry more - but a reader who learns the nav on a laptop and
+                     then opens it on a phone should find the nav they already
+                     know, and every item that is here on one and missing on the
+                     other is a support question waiting to happen.
+
+                     Sobre mí was exactly that: it was added to the pill and not
+                     to this list, so the page introducing the person the reader
+                     is deciding whether to pay was unreachable from the nav on a
+                     phone. Mirroring the Ayuda group brought it back, because
+                     the group is rendered from the same four items on both. -->
                 <nav class="mobile-nav" aria-label="Mobile section navigation">
                     <a class="mobile-nav-link" href="/es/blog/" data-blog-link>
                         <span lang-content="es">Blog</span><span lang-content="en">Blog</span><span lang-content="pt">Blog</span>
@@ -1570,15 +1611,24 @@
                             <span lang-content="es">Datos</span><span lang-content="en">Data</span><span lang-content="pt">Dados</span>
                         </a>
                     </div>
-                    <a class="mobile-nav-link" href="/es/sesiones/" data-section-link="sessions">
-                        <span lang-content="es">Sesiones</span><span lang-content="en">Sessions</span><span lang-content="pt">Sessões</span>
-                    </a>
-                    <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
-                    <a class="mobile-nav-link" href="#contacto" data-section="contacto">
-                        <span lang-content="es">Contacto</span>
-                        <span lang-content="en">Contact</span>
-                        <span lang-content="pt">Contato</span>
-                    </a>
+                    <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-support-panel">
+                        <span><span lang-content="es">Ayuda</span><span lang-content="en">Support</span><span lang-content="pt">Ajuda</span></span>
+                        <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div id="mobile-support-panel" class="mobile-resources-panel" hidden>
+                        <a class="mobile-nav-link" href="/es/sobre-mi/" data-section-link="about">
+                            <span lang-content="es">Sobre mí</span><span lang-content="en">About</span><span lang-content="pt">Sobre mim</span>
+                        </a>
+                        <a class="mobile-nav-link" href="/es/sesiones/" data-section-link="sessions">
+                            <span lang-content="es">Sesiones</span><span lang-content="en">Sessions</span><span lang-content="pt">Sessões</span>
+                        </a>
+                        <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
+                        <a class="mobile-nav-link" href="#contacto" data-section="contacto">
+                            <span lang-content="es">Contacto</span>
+                            <span lang-content="en">Contact</span>
+                            <span lang-content="pt">Contato</span>
+                        </a>
+                    </div>
                 </nav>
                 <a class="mobile-nav-cta" href="#assessment" data-site-route="/assessment" data-section="assessment">
                     <span lang-content="es">Freedom Compass</span><span lang-content="en">Freedom Compass</span><span lang-content="pt">Freedom Compass</span>
@@ -4964,11 +5014,15 @@
             section.focus({ preventScroll: true });
         }
 
+        // Every disclosure in the pill, not the first one. There are two now -
+        // Recursos and Ayuda - and this was a `querySelector`, which would have
+        // left the second one latched open while a navigation out of it closed
+        // only the first.
         function closeDesktopResources() {
-            const dropdown = document.querySelector('[data-resources-dropdown]');
-            const toggle = dropdown?.querySelector('.desktop-resources-toggle');
-            dropdown?.removeAttribute('data-open');
-            toggle?.setAttribute('aria-expanded', 'false');
+            document.querySelectorAll('[data-resources-dropdown]').forEach(dropdown => {
+                dropdown.removeAttribute('data-open');
+                dropdown.querySelector('.desktop-resources-toggle')?.setAttribute('aria-expanded', 'false');
+            });
         }
 
         // The three flags in the header are ordinary links and they stay ordinary
@@ -5017,12 +5071,19 @@
         }
 
         function initializeNavigationMenus() {
-            const dropdown = document.querySelector('[data-resources-dropdown]');
-            const dropdownToggle = dropdown?.querySelector('.desktop-resources-toggle');
+            // Both menus in the pill, and both disclosures in the drawer, as
+            // lists. Each pairs a toggle with the panel it already names in
+            // aria-controls, so the markup stays the one place the pairing is
+            // written down: an id repeated in a script is an id that gets
+            // renamed in the markup alone.
+            const dropdowns = [...document.querySelectorAll('[data-resources-dropdown]')]
+                .map(element => ({ element, toggle: element.querySelector('.desktop-resources-toggle') }))
+                .filter(entry => entry.toggle);
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileResourcesToggle = document.querySelector('.mobile-resources-toggle');
-            const mobileResourcesPanel = document.getElementById('mobile-resources-panel');
+            const mobileDisclosures = [...document.querySelectorAll('.mobile-resources-toggle')]
+                .map(toggle => ({ toggle, panel: document.getElementById(toggle.getAttribute('aria-controls')) }))
+                .filter(entry => entry.panel);
             let previousBodyOverflow = '';
 
             const getNavigationLabels = () => ({
@@ -5031,17 +5092,23 @@
                 pt: { open: 'Abrir menu de navegação', close: 'Fechar menu de navegação' }
             }[getActiveLanguage()]);
 
-            const setDesktopResourcesOpen = open => {
-                if (!dropdown || !dropdownToggle) return;
-                dropdown.toggleAttribute('data-open', open);
-                dropdownToggle.setAttribute('aria-expanded', String(open));
+            const setDesktopResourcesOpen = (dropdown, open) => {
+                dropdown.element.toggleAttribute('data-open', open);
+                dropdown.toggle.setAttribute('aria-expanded', String(open));
+                // One at a time. The two panels are the same width and their
+                // labels sit side by side, so a click that latches one open
+                // while the pointer travels on to the other would leave two
+                // overlapping menus and no obvious way out of either.
+                if (!open) return;
+                dropdowns.forEach(other => {
+                    if (other !== dropdown) setDesktopResourcesOpen(other, false);
+                });
             };
 
-            const setMobileResourcesOpen = open => {
-                if (!mobileResourcesToggle || !mobileResourcesPanel) return;
-                mobileResourcesToggle.setAttribute('aria-expanded', String(open));
-                mobileResourcesPanel.hidden = !open;
-            };
+            const closeMobileResources = () => mobileDisclosures.forEach(disclosure => {
+                disclosure.toggle.setAttribute('aria-expanded', 'false');
+                disclosure.panel.hidden = true;
+            });
 
             // What is made inert while the drawer is open. The drawer declares
             // aria-modal, but that alone does not stop a screen reader's virtual
@@ -5090,7 +5157,7 @@
                 document.body.style.overflow = previousBodyOverflow;
                 inertedLayers.forEach(layer => { layer.inert = false; });
                 inertedLayers = [];
-                setMobileResourcesOpen(false);
+                closeMobileResources();
                 if (restoreFocus) mobileMenuToggle.focus();
             };
 
@@ -5106,38 +5173,55 @@
                 mobileMenu.querySelector('.mobile-nav-link, .mobile-resources-toggle')?.focus();
             };
 
-            dropdownToggle?.addEventListener('click', event => {
-                event.stopPropagation();
-                setDesktopResourcesOpen(!dropdown.hasAttribute('data-open'));
-            });
+            dropdowns.forEach(dropdown => {
+                dropdown.toggle.addEventListener('click', event => {
+                    event.stopPropagation();
+                    setDesktopResourcesOpen(dropdown, !dropdown.element.hasAttribute('data-open'));
+                });
 
-            dropdown?.addEventListener('pointerenter', () => setDesktopResourcesOpen(true));
-            dropdown?.addEventListener('pointerleave', () => setDesktopResourcesOpen(false));
-            dropdown?.addEventListener('focusin', () => setDesktopResourcesOpen(true));
-            dropdown?.addEventListener('focusout', event => {
-                if (!dropdown.contains(event.relatedTarget)) setDesktopResourcesOpen(false);
+                dropdown.element.addEventListener('pointerenter', () => setDesktopResourcesOpen(dropdown, true));
+                dropdown.element.addEventListener('pointerleave', () => setDesktopResourcesOpen(dropdown, false));
+                dropdown.element.addEventListener('focusin', () => setDesktopResourcesOpen(dropdown, true));
+                dropdown.element.addEventListener('focusout', event => {
+                    if (!dropdown.element.contains(event.relatedTarget)) setDesktopResourcesOpen(dropdown, false);
+                });
             });
 
             mobileMenuToggle?.addEventListener('click', () => {
                 if (mobileMenu.hidden) openMobileMenu();
                 else closeMobileMenu();
             });
-            mobileResourcesToggle?.addEventListener('click', () => {
-                setMobileResourcesOpen(mobileResourcesToggle.getAttribute('aria-expanded') !== 'true');
+            mobileDisclosures.forEach(disclosure => {
+                disclosure.toggle.addEventListener('click', () => {
+                    const opening = disclosure.toggle.getAttribute('aria-expanded') !== 'true';
+                    // The drawer scrolls, so two open panels are not the
+                    // problem here that they are in the pill. Closing the other
+                    // one anyway is about what the reader has to walk past: a
+                    // list of four links between them and the label they are
+                    // looking for.
+                    closeMobileResources();
+                    if (!opening) return;
+                    disclosure.toggle.setAttribute('aria-expanded', 'true');
+                    disclosure.panel.hidden = false;
+                });
             });
             mobileMenu?.querySelector('[data-mobile-menu-close]')?.addEventListener('click', () => closeMobileMenu());
 
             document.addEventListener('click', event => {
-                if (dropdown && !dropdown.contains(event.target)) closeDesktopResources();
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.element.contains(event.target)) setDesktopResourcesOpen(dropdown, false);
+                });
             });
 
             document.addEventListener('keydown', event => {
                 if (event.key === 'Escape') {
                     // Dismissing a menu must return focus to the control that
                     // opened it, or the reader is dropped at the top of the page.
-                    if (dropdown?.hasAttribute('data-open') && dropdown.contains(document.activeElement)) {
+                    const focused = dropdowns.find(dropdown => dropdown.element.hasAttribute('data-open')
+                        && dropdown.element.contains(document.activeElement));
+                    if (focused) {
                         closeDesktopResources();
-                        dropdownToggle?.focus();
+                        focused.toggle.focus();
                         return;
                     }
                     closeDesktopResources();
@@ -5177,7 +5261,9 @@
             // own, which are ordinary links: no attribute, no interception, and
             // deliberately so - a real URL should behave like one, including
             // under a middle click, a long press and a "copy link address".
-            // What is left is FAQ, Contacto and the Freedom Compass button.
+            // What is left is FAQ, Contacto and the Freedom Compass button -
+            // the same three the generated pages now render, where they are a
+            // link to this page and a fragment rather than a same-page anchor.
             document.querySelectorAll('[data-site-route]').forEach(link => {
                 link.addEventListener('click', event => {
                     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

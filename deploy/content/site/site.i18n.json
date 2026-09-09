@@ -371,6 +371,16 @@
     "en": "Resources",
     "pt": "Recursos"
   },
+  "supportNavLabel": {
+    "es": "Ayuda",
+    "en": "Support",
+    "pt": "Ajuda"
+  },
+  "assessmentNavLabel": {
+    "es": "Freedom Compass",
+    "en": "Freedom Compass",
+    "pt": "Freedom Compass"
+  },
   "faqNavLabel": {
     "es": "FAQ",
     "en": "FAQ",

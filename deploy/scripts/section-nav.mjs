@@ -17,18 +17,32 @@
 // the same idea: a reader who learned the grouped pill on the way in met a
 // different shape of the same links on every page after. The strip is gone and
 // headerNav() below draws the pill instead - same classes, same stylesheet
-// (assets/css/header.css, which the home page loads too), same Recursos
-// dropdown, same order. The two differences are deliberate and both are about
-// what a page is: the home page ends its pill with the Freedom Compass button,
-// which is that page's own call to action rather than a section of the site, and
-// the pages here open with a link back to the home page, which the home page has
-// no use for.
+// (assets/css/header.css, which the home page loads too), same two dropdowns,
+// same order, and now the same Freedom Compass button at the end of the row.
 //
-// The phone menu is untouched by that change. Below the pill's breakpoint the
-// hamburger in the header opens the same flat panel of page links it always
-// has - headerMenu() - because the panel is a list of destinations rather than a
-// row that has to fit, so grouping four of them behind a disclosure would add a
-// tap to reach a calculator and hide the highlight that says where the reader is.
+// That button used to be the home page's alone, on the grounds that it opens a
+// band of that document rather than a section of the site. What its absence
+// cost was the same on every page: the one thing the site asks a reader to do
+// was missing from all two hundred of them and present only on the one a search
+// result is least likely to land on. From here it is a link to the home page and
+// a fragment, which is exactly what FAQ and Contacto already were.
+//
+// The room for it came from grouping About, Sessions, FAQ and Contacto behind
+// one label - HEADER_NAV below - which takes the row from seven items to four
+// and a call to action. The one difference left between the two copies of this
+// pill is that the pages here open .header-actions with a link back to the home
+// page, which the home page has no use for.
+//
+// The phone menu keeps its flat list. Below the pill's breakpoint the hamburger
+// in the header opens the same panel of eight page links it always has -
+// headerMenu() - because that panel is a list of destinations rather than a row
+// that has to fit, so grouping four of them behind a disclosure would add a tap
+// to reach a calculator and hide the highlight that says where the reader is.
+// The one thing it gains is the Freedom Compass button under the list, in the
+// place and the shape the home page's own drawer has always put it: the pill is
+// not painted at these widths, so without it a reader on a phone would still
+// have no route to the assessment from anywhere but the home page - which is
+// most readers.
 //
 // Two things are exported alongside the markup for the same reason. NAV_SCRIPT
 // is the tag for assets/js/section-nav.js, the client half of this component -
@@ -86,20 +100,38 @@ const SECTION_NAV = [
  * and is rendered from it, so the pill cannot come to point somewhere the phone
  * panel does not - which is the whole reason this module exists.
  *
- * The two entries that are not sections are the two items the home page nav has
- * that are not pages: FAQ and Contacto are bands of the home document, so from
- * anywhere else on the site they are a link to the home page and a fragment.
- * The fragment in the href is what does the work: the browser scrolls to the
- * band on arrival, and the home page's own script reads the hash on load for
- * the cases where it has to move focus as well.
+ * Two of the four top-level entries are groups, and the second of them is why
+ * this table changed shape. Seven items filled the pill exactly, which is what
+ * kept the Freedom Compass button off every page but the home page. About,
+ * Sessions, FAQ and Contacto answer one question between them - who is behind
+ * this, and how do I reach them - so they now sit behind one label the way the
+ * four reference sections sit behind Recursos, and the three slots that buys pay
+ * for the call to action.
  *
- * `route` is the apex shortcut that lands on the same band - /faq is a 301 in
- * _redirects and siteRoutes in the home page's script maps it back to this
- * fragment - and it is carried through as data-site-route only so that the two
- * copies of this pill are the same markup. Nothing on the pages rendered here
- * reads it; the handler that does is in assets/js/home.js, where the click
- * happens inside the document being scrolled. There is no /contact shortcut, so
- * that item claims none: naming one would name a URL that does not resolve.
+ * A group's `items` are ordinary entries of this table, `section` or `fragment`
+ * alike, so both groups are the same construct even though one holds four pages
+ * and the other holds two pages and two bands of the home document.
+ *
+ * The entries that are not sections are the three items the home page nav has
+ * that are not pages: FAQ, Contacto and the Freedom Compass button are bands of
+ * the home document, so from anywhere else on the site they are a link to the
+ * home page and a fragment. The fragment in the href is what does the work: the
+ * browser scrolls to the band on arrival, and the home page's own script reads
+ * the hash on load for the cases where it has to move focus as well.
+ *
+ * `route` is the apex shortcut that lands on the same band - /faq and
+ * /assessment are 301s in _redirects, and siteRoutes in the home page's script
+ * maps them back to these fragments - and it is carried through as
+ * data-site-route only so that the two copies of this pill are the same markup.
+ * Nothing on the pages rendered here reads it; the handler that does is in
+ * assets/js/home.js, where the click happens inside the document being scrolled.
+ * There is no /contact shortcut, so that item claims none: naming one would name
+ * a URL that does not resolve.
+ *
+ * `cta` is what paints an entry as the green button rather than as another tab.
+ * It is the last thing in the row here because it is the last thing in the row
+ * on the home page: a call to action that moves between pages is one a reader
+ * has to look for.
  */
 const HEADER_NAV = [
   { section: 'journal' },
@@ -107,17 +139,33 @@ const HEADER_NAV = [
   {
     group: 'resourcesNavLabel',
     id: 'desktop-resources-menu',
-    sections: ['tools', 'templates', 'glossary', 'data']
+    items: [{ section: 'tools' }, { section: 'templates' }, { section: 'glossary' }, { section: 'data' }]
   },
-  { section: 'about' },
-  { section: 'sessions' },
-  { fragment: 'preguntas-frecuentes', label: 'faqNavLabel', route: '/faq' },
-  { fragment: 'contacto', label: 'contactNavLabel' }
+  {
+    group: 'supportNavLabel',
+    id: 'desktop-support-menu',
+    items: [
+      { section: 'about' },
+      { section: 'sessions' },
+      { fragment: 'preguntas-frecuentes', label: 'faqNavLabel', route: '/faq' },
+      { fragment: 'contacto', label: 'contactNavLabel' }
+    ]
+  },
+  { fragment: 'assessment', label: 'assessmentNavLabel', route: '/assessment', cta: true }
 ];
 
-/** The chevron on the Recursos disclosure, byte for byte the home page's. */
+/** The chevron on both disclosures, byte for byte the home page's. */
 const CHEVRON = '<svg aria-hidden="true" viewBox="0 0 16 16" fill="none">'
   + '<path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+/**
+ * The arrow on the Freedom Compass button in the phone panel, byte for byte the
+ * home page drawer's. The pill's copy of the button carries no glyph, on either
+ * page: at 0.63rem in a row of tabs it reads as a smudge rather than as a
+ * direction.
+ */
+const ARROW = '<svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none">'
+  + '<path d="M4 10h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 /**
  * The nav reads its own labels rather than being handed them, because the four
@@ -213,6 +261,33 @@ function links(section, language, currentPath) {
 }
 
 /**
+ * One entry of HEADER_NAV as a link: a section of the site, or a band of the
+ * home page reached from wherever this page happens to be.
+ *
+ * Both kinds appear at the top level of the pill and inside a group, and a
+ * fragment entry renders the same either way, so this is one function rather
+ * than the same two branches written twice.
+ *
+ * A fragment claims no `aria-current`. It cannot: the band it names is on a
+ * different document from the one being rendered here, so "current" would be a
+ * claim about a page the reader is not on.
+ */
+function navLink(entry, section, language, currentPath, className = '') {
+  const classAttribute = className ? ` class="${className}"` : '';
+
+  if (entry.fragment) {
+    const route = entry.route ? ` data-site-route="${entry.route}"` : '';
+    return `<a${classAttribute} href="${homePath(language)}#${entry.fragment}"${route}>`
+      + `${escapeHtml(labelFor(entry.label, language))}</a>`;
+  }
+
+  const item = itemFor(entry.section);
+  const current = currentAttribute(item, section, language, currentPath);
+  return `<a${classAttribute} href="${item.href(language)}"${current}>`
+    + `${escapeHtml(labelFor(item.label, language))}</a>`;
+}
+
+/**
  * The pill in the header: the home page's nav, on every other page of the site.
  *
  * It is a direct child of `.header-shell`, between the brand and the header
@@ -225,11 +300,13 @@ function links(section, language, currentPath) {
  * double-decker on every phone viewport and breaking the two sidebars measured
  * against the header's height (.toc at 108px, .legal-toc at 96px).
  *
- * Below 1180px it is not painted at all: seven items and a brand lockup do not
- * fit, so headerMenu() below puts the eight pages behind the hamburger there
+ * Below 1180px it is not painted at all: a row of tabs and a brand lockup do
+ * not fit, so headerMenu() below puts the eight pages behind the hamburger there
  * instead. That is the same width the home page swaps its own pill for a drawer
  * at, and the arithmetic behind it is written out in the .desktop-section-nav
- * block in assets/css/header.css.
+ * block in assets/css/header.css. Grouping four items into one left that number
+ * where it was and gave it room to spare, rather than moving a breakpoint two
+ * stylesheets and two scripts agree on.
  *
  * The simulators hold it back to 1280px, because the middle of their header is
  * not free: that row also carries up to four of the tool's own controls, and
@@ -237,36 +314,27 @@ function links(section, language, currentPath) {
  * changes for them - the markup is identical and the two rules that make the
  * exception are in header.css, scoped to .simulator-header-shell.
  *
- * The Recursos disclosure needs no script to open: assets/css/header.css opens
- * it on hover and on `:focus-within`, so a keyboard reader can tab into the four
- * links and a reader with no JavaScript at all still reaches them.
- * assets/js/section-nav.js adds click-to-open and Escape on top of that.
+ * Neither disclosure needs a script to open: assets/css/header.css opens them on
+ * hover and on `:focus-within`, so a keyboard reader can tab into the links
+ * inside and a reader with no JavaScript at all still reaches them.
+ * assets/js/section-nav.js adds click-to-open and Escape on top of that, for
+ * both, which is why it queries for all of them rather than for the one.
  */
 export function headerNav(section, language, currentPath = null) {
   assertRenderable(section, currentPath, 'the header nav');
 
   const body = HEADER_NAV.map((entry) => {
     if (entry.group) {
-      const children = entry.sections.map((key) => {
-        const item = itemFor(key);
-        const current = currentAttribute(item, section, language, currentPath);
-        return `<a href="${item.href(language)}"${current}>${escapeHtml(labelFor(item.label, language))}</a>`;
-      }).join('');
+      const children = entry.items
+        .map((child) => navLink(child, section, language, currentPath))
+        .join('');
       return `<div class="desktop-resources" data-resources-dropdown>`
         + `<button type="button" class="desktop-resources-toggle" aria-expanded="false" aria-controls="${entry.id}">`
         + `${escapeHtml(labelFor(entry.group, language))}${CHEVRON}</button>`
         + `<div id="${entry.id}" class="desktop-resources-menu">${children}</div></div>`;
     }
 
-    if (entry.fragment) {
-      const route = entry.route ? ` data-site-route="${entry.route}"` : '';
-      return `<a href="${homePath(language)}#${entry.fragment}"${route}>`
-        + `${escapeHtml(labelFor(entry.label, language))}</a>`;
-    }
-
-    const item = itemFor(entry.section);
-    const current = currentAttribute(item, section, language, currentPath);
-    return `<a href="${item.href(language)}"${current}>${escapeHtml(labelFor(item.label, language))}</a>`;
+    return navLink(entry, section, language, currentPath, entry.cta ? 'desktop-nav-cta' : '');
   }).join('');
 
   return `<nav class="desktop-section-nav" aria-label="${escapeHtml(labelFor('sectionNavLabel', language))}">${body}</nav>`;
@@ -302,6 +370,13 @@ export function headerNav(section, language, currentPath = null) {
  * in the accessibility tree, since whichever does not apply at the current
  * width is display: none.
  *
+ * The Freedom Compass button is outside the `<nav>` rather than the last link
+ * in it, for the same reason it is a button and not a tab in the pill: it is
+ * the page's call to action, not a ninth place to go, and a screen reader
+ * listing the navigation should hear eight destinations rather than nine with
+ * one of them an invitation. It is rendered from the same HEADER_NAV entry the
+ * pill renders, so the two cannot come to point at different fragments.
+ *
  * And the button's two labels are handed to the script as data attributes
  * rather than looked up there. Both halves of this component then read their
  * strings from content/site/site.i18n.json, and a fourth language is a change
@@ -313,6 +388,18 @@ export function headerMenu(section, language, currentPath = null) {
   const navLabel = escapeHtml(labelFor('sectionNavLabel', language));
   const open = escapeHtml(labelFor('sectionMenuOpenLabel', language));
   const close = escapeHtml(labelFor('sectionMenuCloseLabel', language));
+  const cta = HEADER_NAV.find((entry) => entry.cta);
+  // Rendered from the pill's own table, so it cannot be removed from the pill
+  // and left in the panel. Taking it out of both is a deliberate act, and this
+  // is what makes it read as one rather than as a panel that stopped having a
+  // call to action for no reason anybody can find.
+  if (!cta) {
+    throw new Error(
+      'section-nav: HEADER_NAV has no entry marked `cta`, which is what both the '
+      + 'pill and the phone panel render the Freedom Compass button from. Remove '
+      + 'the button from headerMenu() too if it is meant to be gone.'
+    );
+  }
   return `<div class="site-header-menu">`
     + `<button type="button" class="site-menu-toggle" aria-expanded="false"`
     + ` aria-controls="site-menu-panel" aria-label="${open}"`
@@ -322,7 +409,10 @@ export function headerMenu(section, language, currentPath = null) {
     + `<p class="site-menu-panel__label">${navLabel}</p>`
     + `<nav class="site-menu-nav" aria-label="${navLabel}">`
     + links(section, language, currentPath)
-    + `</nav></div></div>`;
+    + `</nav>`
+    + `<a class="site-menu-cta" href="${homePath(language)}#${cta.fragment}"`
+    + ` data-site-route="${cta.route}">${escapeHtml(labelFor(cta.label, language))}${ARROW}</a>`
+    + `</div></div>`;
 }
 
 /**
