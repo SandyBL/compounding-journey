@@ -388,6 +388,19 @@ async function main() {
       }
     }
 
+    // The same failure, one panel over: a template page's "what next" block is
+    // rendered hidden and is unhidden only by template-next.js. Unlike the
+    // panel above it carries all of its own prose, so the page is not broken
+    // without the script - it just never shows the panel to anybody, and
+    // nothing on screen says so. There is no per-language bundle to pair with,
+    // because that prose is in the markup for exactly that reason.
+    if (markup.includes('id="template-next"')) {
+      const required = '/assets/js/template-next.js';
+      if (!markup.includes(`"${required}?v=`) && !markup.includes(`"${required}"`)) {
+        problems.push(`${page}: carries the download panel but does not link ${required}.`);
+      }
+    }
+
     const scripts = scriptsOf(markup);
 
     // ...and every per-language bundle it links is its own language. The check

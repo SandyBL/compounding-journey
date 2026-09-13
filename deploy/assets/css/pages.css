@@ -243,6 +243,57 @@
 .template-optin .button { width: auto; }
 .optin-consent { margin: 12px 0 0; color: var(--muted); font-family: var(--sans); font-size: .74rem; line-height: 1.55; }
 
+/* The panel the download reveals, directly under the download card so it
+   appears where the reader's attention already is. It is the darkest block on
+   the page on purpose: it arrives after a click, in a column of cream cards,
+   and it has one job - to be read once. The post-interaction panel on the
+   simulators (.sim-result-cta, assets/css/simulator-cta.css) is the same idea
+   and the same shape, and the note at the top of that file is why this lives
+   here rather than in a stylesheet of its own: a fourth tiny sheet for one
+   block on nine pages is a request the pages do not need to make. */
+.template-next {
+  margin: 28px 0 34px;
+  padding: 28px 30px;
+  border: 1px solid var(--forest);
+  background: var(--forest);
+  box-shadow: 0 18px 42px rgba(45,61,48,.14);
+}
+/* `hidden` is an attribute the generator sets and template-next.js clears.
+   Restating it here is not redundant: the rules above set a background and a
+   border, and a UA `display: none` that a later author's `display: block`
+   overrides is how a panel meant for after the click ends up above the fold. */
+.template-next[hidden] { display: none; }
+.template-next-eyebrow {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.template-next-title { margin: 0 0 10px; color: var(--cream); font-family: var(--serif); font-size: 1.45rem; letter-spacing: -.02em; line-height: 1.25; }
+.template-next-body { margin: 0 0 20px; color: rgba(244,239,228,.82); font-family: var(--sans); font-size: .88rem; line-height: 1.7; }
+.template-next-actions { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+.template-next-actions .button { width: auto; }
+/* .text-link carries a 20px top margin for the end of a card body; in this
+   row it is a sibling of the button and does not. */
+.template-next-actions .text-link { margin-top: 0; color: var(--cream); }
+.template-next-note { margin: 20px 0 0; color: rgba(244,239,228,.6); font-family: var(--sans); font-size: .72rem; line-height: 1.6; }
+
+/* The reveal is animated only where the reader has not asked otherwise, and
+   the un-animated case is the default rather than the override: an element
+   that appears mid-page is exactly the motion prefers-reduced-motion is for,
+   and a transition written first and suppressed second is one @media query
+   away from shipping the motion to everybody. */
+@media (prefers-reduced-motion: no-preference) {
+  .template-next { animation: template-next-in .32s ease-out both; }
+  @keyframes template-next-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
 /* ---------------------------------------------------------- glossary ------- */
 
 .glossary-jump { margin: 0 0 36px; padding: 16px 18px; border: 1px solid var(--line); background: rgba(244,239,228,.6); }

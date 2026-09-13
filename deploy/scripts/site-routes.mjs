@@ -164,7 +164,10 @@ export function categoryPath(language, slug) {
 export const LEGAL_PAGES = {
   privacy: {
     slug: { es: 'privacidad', en: 'privacy', pt: 'privacidade' },
-    updated: '2026-09-05'
+    // Revised when the template download counter was added: the policy
+    // enumerates every counter and every storage key, so a new one of either
+    // is a new version of the text and a date a reader can check.
+    updated: '2026-09-13'
   },
   terms: {
     slug: { es: 'terminos', en: 'terms', pt: 'termos' },

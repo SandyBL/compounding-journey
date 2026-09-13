@@ -65,6 +65,32 @@ export const CATEGORIES = [
     }
   },
   {
+    // The articles about the date rather than the month: savings rates,
+    // withdrawal rates, sequence risk, what "enough" costs. It is a separate
+    // category from investing because the question is different - investing is
+    // how the money grows, this is when the growth is finally enough to stop -
+    // and separate from life design because the answer here is arithmetic.
+    id: 'financial-freedom',
+    es: {
+      name: 'Libertad financiera',
+      slug: 'libertad-financiera',
+      intro: 'La parte de las finanzas personales que trata de una fecha y no de un mes. Aquí están los artículos sobre la tasa de ahorro, la regla del 4%, el orden en que llegan las rentabilidades y cuánto capital hace falta de verdad para que trabajar sea opcional.',
+      description: 'Artículos sobre libertad financiera: tasa de ahorro, regla del 4%, riesgo de secuencia de rentabilidades y cuánto capital hace falta para dejar de depender de la nómina.'
+    },
+    en: {
+      name: 'Financial freedom',
+      slug: 'financial-freedom',
+      intro: 'The part of personal finance that is about a date rather than a month. These are the articles on savings rates, the 4% rule, the order returns arrive in, and how much capital it actually takes before working becomes optional.',
+      description: 'Articles on financial freedom: savings rates, the 4% rule, sequence-of-returns risk, and how much capital it takes to stop depending on a salary.'
+    },
+    pt: {
+      name: 'Liberdade financeira',
+      slug: 'liberdade-financeira',
+      intro: 'A parte das finanças pessoais que trata de uma data, e não de um mês. Aqui estão os artigos sobre taxa de poupança, a regra dos 4%, a ordem em que as rentabilidades chegam e quanto capital é realmente necessário para que trabalhar passe a ser opcional.',
+      description: 'Artigos sobre liberdade financeira: taxa de poupança, regra dos 4%, risco de sequência de rentabilidades e quanto capital é preciso para deixar de depender do salário.'
+    }
+  },
+  {
     id: 'life-design',
     es: {
       name: 'Diseño de vida',

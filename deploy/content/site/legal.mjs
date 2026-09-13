@@ -58,6 +58,7 @@ No hay delegado de protección de datos: el sitio lo lleva una sola persona y ni
 | Nombre visible y puntuación en las clasificaciones de los simuladores | Publicar la clasificación que tú decides enviar | Tu consentimiento al pulsar «enviar puntuación» | Hasta que pidas su retirada |
 | Los ajustes y el resultado de una simulación (cifras, porcentajes y opciones elegidas) | Publicar medias y porcentajes agregados en la [página de datos]({{data}}) | Tu consentimiento al pulsar el botón de guardar la simulación | Indefinidamente, en forma agregada y sin nombre |
 | Número de veces que se abre cada artículo | Decidir qué contenido destacar | Interés legítimo en saber qué se lee | Un contador agregado por artículo y mes, sin caducidad |
+| Número de veces que se descarga cada plantilla, y cuántas veces se sigue el enlace que aparece después | Saber qué plantilla sirve y si el panel que la sigue sirve de algo | Interés legítimo en saber qué se descarga | Dos contadores agregados por plantilla, idioma y mes, sin caducidad |
 | Dirección IP y datos técnicos de la petición | Servir la página, limitar abusos y registrar incidencias | Interés legítimo en la seguridad del servicio | Registros del proveedor de alojamiento, días |
 
 ## El formulario de contacto
@@ -80,16 +81,24 @@ Las filas que se guardan sin nombre no llevan identificador alguno, así que tam
 
 Cada vez que se abre un artículo se suma uno a un contador. Ese contador guarda un número por artículo y por mes, y nada más: no hay cookie, no hay identificador, no hay huella del navegador y no queda registro de quién ha leído qué. Es lo que decide qué artículo se destaca en la portada del blog.
 
+## El recuento de descargas
+
+Las plantillas se descargan sin dejar ningún dato: no hay formulario delante del archivo y no hace falta suscribirse a nada para bajarlo. Lo único que se cuenta es la descarga en sí. Al pulsar el botón se suma uno a un contador que guarda, por plantilla, por idioma y por mes, cuántas veces se ha descargado; y si después sigues uno de los dos enlaces del panel que aparece, se suma uno a un segundo contador.
+
+Ese segundo número existe para poder juzgar el panel: si casi nadie lo usa, sobra. Ninguno de los dos guarda nada más. Se envía el idioma de la página y el identificador interno de la plantilla, y eso es todo: no hay correo, no hay cookie, no hay identificador de visitante y no queda registro de quién ha descargado qué.
+
 ## Almacenamiento en tu navegador, y por qué no hay aviso de cookies
 
 Este sitio **no usa cookies**, ni propias ni de terceros, ni de analítica ni de publicidad. Por eso no verás un aviso pidiéndote permiso: no hay nada que consentir.
 
-Sí se usan cuatro claves de almacenamiento local, que se quedan en tu navegador y no viajan a ningún servidor:
+Sí se usan seis claves de almacenamiento local, que se quedan en tu navegador y no viajan a ningún servidor:
 
 - \`preferredLanguage\` — el idioma que elegiste, para no volver a preguntártelo.
 - \`languageSuggestionDismissed\` — que ya cerraste el aviso de idioma.
 - \`preferredCalculatorCurrency\` — la moneda con la que quieres ver las calculadoras.
 - \`cj:simulator:context\` y \`cj:leaderboard:mine:*\` — qué simulador venías usando y qué filas de la clasificación son tuyas, para poder señalarlas. Estas dos se borran al cerrar la pestaña.
+- \`cj:viewed:*\` — qué artículos ya se han contado en esta pestaña, para que recargar uno no lo cuente dos veces. Se borra al cerrar la pestaña.
+- \`cj:template:*\` — qué plantillas ya se han contado en esta pestaña, por el mismo motivo. También se borra al cerrar la pestaña.
 
 Puedes borrarlas cuando quieras desde tu navegador. El sitio seguirá funcionando; solo dejará de recordar tus preferencias.
 
@@ -143,6 +152,7 @@ There is no data protection officer: one person runs this site, and none of the 
 | Display name and score in the simulator leaderboards | Publishing the ranking you chose to submit | Your consent in pressing "submit score" | Until you ask for it to be removed |
 | The settings and the result of a simulation (figures, percentages and options chosen) | Publishing aggregate averages and shares on the [data page]({{data}}) | Your consent in pressing the button that saves the simulation | Indefinitely, in aggregate and with no name |
 | How many times each article is opened | Deciding what to feature | Legitimate interest in knowing what is read | One aggregate counter per article per month, indefinitely |
+| How many times each template is downloaded, and how often the link shown afterwards is followed | Knowing which template is useful, and whether the panel after it is worth keeping | Legitimate interest in knowing what is downloaded | Two aggregate counters per template per language per month, indefinitely |
 | IP address and technical request data | Serving the page, rate-limiting abuse, logging faults | Legitimate interest in keeping the service up | The hosting provider's logs, days |
 
 ## The contact form
@@ -165,16 +175,24 @@ The rows stored without a name carry no identifier at all, which means they cann
 
 Opening an article adds one to a counter. That counter holds a number per article per month and nothing else: no cookie, no identifier, no browser fingerprint, no record of who read what. It is what decides which article the blog features.
 
+## The download counter
+
+The templates download without leaving any details: there is no form in front of the file and nothing to subscribe to in order to get it. The only thing counted is the download itself. Pressing the button adds one to a counter holding how many times that template has been downloaded, per template, per language, per month; and if you then follow one of the two links in the panel that appears, one is added to a second counter.
+
+That second number exists so the panel can be judged: if almost nobody uses it, it should go. Neither counter holds anything more. What is sent is the page's language and the template's internal id, and that is all: no address, no cookie, no visitor identifier, and no record of who downloaded what.
+
 ## Storage in your browser, and why there is no cookie banner
 
 This site **uses no cookies** — not its own, not anyone else's, none for analytics and none for advertising. That is why you are not asked to accept anything: there is nothing to consent to.
 
-It does use four local-storage keys, which stay in your browser and are never sent anywhere:
+It does use six local-storage keys, which stay in your browser and are never sent anywhere:
 
 - \`preferredLanguage\` — the language you chose, so you are not asked twice.
 - \`languageSuggestionDismissed\` — that you already dismissed the language prompt.
 - \`preferredCalculatorCurrency\` — the currency you want the calculators in.
 - \`cj:simulator:context\` and \`cj:leaderboard:mine:*\` — which simulator you came from, and which leaderboard rows are yours so they can be marked. These two are cleared when you close the tab.
+- \`cj:viewed:*\` — which articles have already been counted in this tab, so reloading one does not count it twice. Cleared when you close the tab.
+- \`cj:template:*\` — which templates have already been counted in this tab, for the same reason. Also cleared when you close the tab.
 
 You can delete them from your browser whenever you like. The site keeps working; it just stops remembering your preferences.
 
@@ -228,6 +246,7 @@ Não existe encarregado de proteção de dados: o site é gerido por uma só pes
 | Nome visível e pontuação nos rankings dos simuladores | Publicar a pontuação que você decidiu enviar | O seu consentimento ao clicar em «enviar pontuação» | Até você pedir a remoção |
 | Os valores e o resultado de uma simulação (números, porcentagens e opções escolhidas) | Publicar médias e porcentagens agregadas na [página de dados]({{data}}) | O seu consentimento ao clicar no botão que guarda a simulação | Indefinidamente, de forma agregada e sem nome |
 | Número de vezes que cada artigo é aberto | Decidir o que destacar | Interesse legítimo em saber o que é lido | Um contador agregado por artigo e por mês, sem prazo |
+| Número de vezes que cada modelo é baixado, e quantas vezes o link que aparece depois é seguido | Saber qual modelo é útil e se o painel que vem depois serve para algo | Interesse legítimo em saber o que é baixado | Dois contadores agregados por modelo, idioma e mês, sem prazo |
 | Endereço IP e dados técnicos da requisição | Servir a página, limitar abusos e registrar falhas | Interesse legítimo na segurança do serviço | Logs do fornecedor de hospedagem, dias |
 
 ## O formulário de contato
@@ -250,16 +269,24 @@ As linhas guardadas sem nome não têm identificador nenhum, então também não
 
 Abrir um artigo soma um a um contador. Esse contador guarda um número por artigo e por mês, e mais nada: sem cookies, sem identificadores, sem impressão digital do navegador, sem registro de quem leu o quê. É o que decide qual artigo é destacado no blog.
 
+## A contagem de downloads
+
+Os modelos são baixados sem deixar nenhum dado: não há formulário na frente do arquivo e não é preciso assinar nada para baixá-lo. O único registro é o download em si. Clicar no botão soma um a um contador que guarda, por modelo, por idioma e por mês, quantas vezes ele foi baixado; e se depois você seguir um dos dois links do painel que aparece, soma um a um segundo contador.
+
+Esse segundo número existe para poder julgar o painel: se quase ninguém o usa, ele é dispensável. Nenhum dos dois guarda mais nada. O que é enviado é o idioma da página e o identificador interno do modelo, e é tudo: sem e-mail, sem cookies, sem identificador de visitante, sem registro de quem baixou o quê.
+
 ## Armazenamento no seu navegador, e por que não há aviso de cookies
 
 Este site **não usa cookies** — nem próprias, nem de terceiros, nem de análise, nem de publicidade. É por isso que não pedimos que você aceite nada: não há nada a consentir.
 
-Usa quatro chaves de armazenamento local, que ficam no seu navegador e nunca são enviadas para nenhum servidor:
+Usa seis chaves de armazenamento local, que ficam no seu navegador e nunca são enviadas para nenhum servidor:
 
 - \`preferredLanguage\` — o idioma que você escolheu, para não perguntarmos de novo.
 - \`languageSuggestionDismissed\` — que você já fechou o aviso de idioma.
 - \`preferredCalculatorCurrency\` — a moeda em que você quer ver as calculadoras.
 - \`cj:simulator:context\` e \`cj:leaderboard:mine:*\` — de qual simulador você veio e quais linhas do ranking são suas, para poder marcá-las. Essas duas são apagadas ao fechar a aba.
+- \`cj:viewed:*\` — quais artigos já foram contados nesta aba, para que recarregar um não o conte duas vezes. É apagada ao fechar a aba.
+- \`cj:template:*\` — quais modelos já foram contados nesta aba, pelo mesmo motivo. Também é apagada ao fechar a aba.
 
 Você pode apagá-las quando quiser pelo navegador. O site continua funcionando; apenas deixa de lembrar as suas preferências.
 

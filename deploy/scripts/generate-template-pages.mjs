@@ -12,13 +12,21 @@
  * the file itself somewhere to be explained - what is in it, how to fill it in,
  * and what it will not tell you.
  *
- * Two things about how it is built are worth stating:
+ * Three things about how it is built are worth stating:
  *
  *   - The download button links the workbook directly, above the fold, with no
  *     email gate. That is a deliberate trade: an address collected in exchange
  *     for a spreadsheet is worth very little and costs the thing the site is
  *     for. The newsletter is offered next to the download as a choice, using
  *     the provider's own hosted form, so nothing new processes personal data.
+ *   - What the page asks for instead is attention, and only once the file is
+ *     already on its way: every page carries a panel naming the next workbook
+ *     in the sequence and one tool that reads the same figures, hidden until
+ *     the download link is used and revealed by assets/js/template-next.js.
+ *     It is rendered here, in full, rather than written in by that script -
+ *     so its two links carry real anchor text and are followed by a crawler,
+ *     which is the other thing these pages were missing: nothing on them
+ *     pointed at the simulators or the assessment.
  *   - The file's existence and size are read from disk at build time. A renamed
  *     or removed workbook fails the build rather than publishing a page whose
  *     only reason to exist is a download button that 404s.
@@ -34,7 +42,8 @@ import { renderMarkdown, escapeHtml, slugify } from './markdown.mjs';
 import { addInlineLinks, glossaryTargets } from './inline-links.mjs';
 import { newsletterLinks } from './newsletter-links.mjs';
 import {
-  LANGUAGES, ORIGIN, sectionPath, templatePath, glossaryPath, articlePath, absolute
+  LANGUAGES, ORIGIN, SIMULATORS, sectionPath, templatePath, glossaryPath, articlePath,
+  simulatorPath, homePath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
 
@@ -114,6 +123,59 @@ function optin(strings, url) {
         </aside>`;
 }
 
+/**
+ * Where one of a template's two `nextRoutes` keys points, in one language.
+ *
+ * The keys are written once in content/site/templates.mjs and read here in
+ * nine renders, so they are deliberately loose about what kind of thing they
+ * name - another template, one of the five simulators, or the assessment on
+ * the home page. What they are not allowed to be is wrong: a key that matches
+ * none of the three fails the build rather than rendering a panel whose
+ * headline offers step 2 and whose button goes nowhere.
+ */
+function nextHref(key, language) {
+  const template = TEMPLATES.find((candidate) => candidate.id === key);
+  if (template) return templatePath(language, template[language].slug);
+  if (SIMULATORS.some((simulator) => simulator.name === key)) return simulatorPath(key, language);
+  if (key === 'assessment') return `${homePath(language)}#assessment`;
+  throw new Error(
+    `Template nextRoutes key "${key}" is not a template id, a simulator name or "assessment".`
+  );
+}
+
+/**
+ * The panel the download reveals.
+ *
+ * Hidden in the markup, unhidden by assets/js/template-next.js when the
+ * download link is clicked - which is the whole of that script's power over
+ * the download. The file is a plain link to a plain .xlsx and is already on
+ * its way before any of this runs; a reader with JavaScript off gets the
+ * workbook exactly as before and simply never sees the panel.
+ *
+ * The live region is outside the section on purpose. A role="status" node
+ * inside a `hidden` element announces nothing when the element is unhidden,
+ * so the announcement has to live somewhere that was never hidden, and the
+ * script fills it from the eyebrow's own text - which keeps all nine panels'
+ * prose in the content file and none of it in JavaScript.
+ */
+function nextPanel(template, language, strings) {
+  const copy = template[language].next;
+  const primary = nextHref(template.nextRoutes.primary, language);
+  const secondary = nextHref(template.nextRoutes.secondary, language);
+
+  return `          <p class="sr-only" id="template-next-status" role="status" aria-live="polite"></p>
+          <section class="template-next" id="template-next" data-template="${template.id}" aria-labelledby="template-next-title" hidden>
+            <p class="template-next-eyebrow">${escapeHtml(strings.templateNextStarted)}</p>
+            <h2 class="template-next-title" id="template-next-title">${escapeHtml(copy.title)}</h2>
+            <p class="template-next-body">${escapeHtml(copy.body)}</p>
+            <div class="template-next-actions">
+              <a class="button" href="${primary}">${escapeHtml(copy.primaryLabel)}</a>
+              <a class="text-link" href="${secondary}">${escapeHtml(copy.secondaryLabel)}</a>
+            </div>
+            <p class="template-next-note">${escapeHtml(strings.templateNextNote)}</p>
+          </section>`;
+}
+
 /** ------------------------------------------------------------------ index */
 
 function renderIndex(language, strings, sizes) {
@@ -123,7 +185,7 @@ function renderIndex(language, strings, sizes) {
           <p class="card-eyebrow">${escapeHtml(strings.templateStep)} ${template.step} · ${escapeHtml(strings.templateFree)}</p>
           <h2 class="card-title"><a href="${templatePath(language, copy.slug)}">${escapeHtml(copy.name)}</a></h2>
           <p class="card-body">${escapeHtml(copy.description)}</p>
-          <p class="card-meta">XLSX · ${sizes.get(fileHref(template, language))} · ${template.sheets} ${escapeHtml(strings.templateSheets).toLowerCase()}</p>
+          <p class="card-meta">XLSX · ${sizes.get(fileHref(template, language))} · ${template.sheets} ${escapeHtml(template.sheets === 1 ? strings.templateSheetsOne : strings.templateSheets).toLowerCase()}</p>
         </article>`;
   }).join('\n');
 
@@ -212,7 +274,7 @@ function renderTemplate(template, language, strings, catalog, targets, sizes, ne
       <div class="template-layout">
         <div>
           <div class="template-download">
-            <a class="button" href="${href}" download="${escapeHtml(copy.download)}">${escapeHtml(strings.templateDownload)}</a>
+            <a class="button" href="${href}" download="${escapeHtml(copy.download)}" data-template-download>${escapeHtml(strings.templateDownload)}</a>
             <dl class="template-facts">
               <div><dt>${escapeHtml(strings.templateFormat)}</dt><dd>XLSX</dd></div>
               <div><dt>${escapeHtml(strings.templateSize)}</dt><dd>${size}</dd></div>
@@ -220,6 +282,7 @@ function renderTemplate(template, language, strings, catalog, targets, sizes, ne
               <div><dt>${escapeHtml(strings.templatePrice)}</dt><dd>${escapeHtml(strings.templateFree)}</dd></div>
             </dl>
           </div>
+${nextPanel(template, language, strings)}
           <section class="page-section">
             <h2 class="section-title">${escapeHtml(strings.templateWhatsInside)}</h2>
             <div class="article-body">${prose(copy.whatsInside)}</div>
@@ -296,7 +359,8 @@ ${faq}
       { name: copy.name, href: templatePath(language, copy.slug) }
     ],
     graph,
-    body
+    body,
+    extraScripts: '\n<script src="/assets/js/template-next.js?v=source" defer></script>'
   });
 }
 
@@ -332,6 +396,47 @@ async function measure() {
   return sizes;
 }
 
+/**
+ * That the counter endpoint accepts exactly the templates this publishes.
+ *
+ * netlify/functions/template-download.mjs validates the `template` field
+ * against a hard-coded list rather than importing content/site/templates.mjs,
+ * because importing it would pull 32 KB of nine editions' prose into a
+ * function whose whole job is to add one to a number. The cost of that choice
+ * is a second list, and a second list drifts: add a fourth workbook and its
+ * downloads are silently rejected with a 400 nobody sees, because the beacon
+ * is fire-and-forget by design.
+ *
+ * So the build reads the endpoint's own source and compares. The same trick as
+ * newsletter-links.mjs reading the home page and verify-output.mjs reading
+ * _headers: the file that states the fact stays the one source of it, and the
+ * build refuses to ship a page whose counter cannot count.
+ */
+async function assertEndpointTemplates() {
+  const endpoint = path.join(root, 'netlify', 'functions', 'template-download.mjs');
+  const source = await fs.readFile(endpoint, 'utf8');
+  const declaration = source.match(/const TEMPLATES = new Set\(\[([^\]]*)\]\)/);
+  if (!declaration) {
+    throw new Error(
+      'netlify/functions/template-download.mjs no longer declares `const TEMPLATES = new Set([...])`, ' +
+        'so the build cannot check that the download counter accepts every published template.'
+    );
+  }
+
+  const accepted = new Set([...declaration[1].matchAll(/'([^']+)'/g)].map((match) => match[1]));
+  const published = TEMPLATES.map((template) => template.id);
+  const missing = published.filter((id) => !accepted.has(id));
+  const extra = [...accepted].filter((id) => !published.includes(id));
+  if (missing.length > 0 || extra.length > 0) {
+    throw new Error(
+      'The download counter and the published templates disagree. ' +
+        (missing.length > 0 ? `Published but rejected by /api/template-download: ${missing.join(', ')}. ` : '') +
+        (extra.length > 0 ? `Accepted but no longer published: ${extra.join(', ')}. ` : '') +
+        'Update the TEMPLATES set in netlify/functions/template-download.mjs.'
+    );
+  }
+}
+
 async function pruneRemoved() {
   for (const language of LANGUAGES) {
     const directory = path.join(root, sectionPath('templates', language));
@@ -354,6 +459,7 @@ async function main() {
   const sidecar = JSON.parse(await fs.readFile(path.join(root, 'content', 'site', 'site.i18n.json'), 'utf8'));
   const catalog = await readSharedCatalog();
   const sizes = await measure();
+  await assertEndpointTemplates();
   const newsletter = await newsletterLinks();
 
   for (const language of LANGUAGES) {

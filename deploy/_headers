@@ -400,6 +400,13 @@
 /assets/js/article-view.js
   Cache-Control: public, max-age=31536000, immutable
 
+# The template pages' "what next" panel: it unhides a block already in the page
+# and posts the download to /api/template-download. Same hashed-link reasoning
+# as the two above, and scripts/verify-output.mjs fails the build on a linked
+# asset with no rule of its own, so the /assets/* fallback is not an option.
+/assets/js/template-next.js
+  Cache-Control: public, max-age=31536000, immutable
+
 # Chart.js, self-hosted so the simulators no longer reach a third-party origin
 # on the render path. The version is in the filename, so an upgrade is a new
 # URL and this response can be cached permanently.
