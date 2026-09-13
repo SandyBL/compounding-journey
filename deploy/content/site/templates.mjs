@@ -22,12 +22,32 @@
  *              nothing to budget from.
  *   sheets   - number of sheets in the workbook, shown as a fact. Checked
  *              against nothing: a wrong number here is a wrong number on the
- *              page, and the generator has no way to open an xlsx.
+ *              page, and the generator has no way to open an xlsx. All three
+ *              workbooks hold exactly one sheet - read out of xl/workbook.xml
+ *              on 2026-09-13, after the pages had been claiming three and two.
  *   glossary - terms to offer in the sidebar.
+ *   nextRoutes - where the panel that the download reveals sends the reader:
+ *              `primary` continues the sequence, `secondary` is something to
+ *              try rather than something to read. Both are route keys resolved
+ *              by generate-template-pages.mjs, which throws on one it does not
+ *              recognise.
+ *
+ *              The routes sit here, in the table all three languages share,
+ *              while the sentences that offer them sit in the language blocks
+ *              below. A destination is a property of the template and has to be
+ *              identical in every language; the sentence pointing at it is prose
+ *              and cannot be. Splitting them this way is what stops one
+ *              language's panel quietly routing somewhere the other two do not.
  *   <lang>   - name, slug, download filename, and the page's copy. `slug` is
  *              also the name of the file under /assets/templates/<lang>/, and
  *              generate-template-pages.mjs fails the build if the file is not
  *              there, so a renamed workbook cannot ship a dead download button.
+ *              `next` is the panel the download reveals - one title, one
+ *              paragraph and the two labels for the routes above. It is
+ *              rendered into the page at build time rather than written in by
+ *              script, so the panel's links carry real anchor text and are
+ *              followed by a crawler; assets/js/template-next.js only unhides
+ *              what is already there.
  *
  * `whatsInside` and `howToUse` are Markdown, rendered by scripts/markdown.mjs
  * and auto-linked to the glossary like any other prose on the site.
@@ -36,24 +56,36 @@ export const TEMPLATES = [
   {
     id: 'monthly-analysis',
     step: 1,
-    sheets: 3,
+    sheets: 1,
     glossary: ['net-worth', 'cash-flow', 'savings-rate'],
+    // The balance sheet is step one, so the sequence is the obvious primary.
+    // The Compass is the secondary because it reads back the same four figures
+    // this workbook produces - income, outgoings, assets, debts.
+    nextRoutes: { primary: 'expense-management', secondary: 'assessment' },
     es: {
       name: 'Análisis financiero personal mensual',
       slug: 'analisis-balance-mensual',
       download: 'Plantilla de Analisis del Balance Mensual.xlsx',
       title: 'Plantilla de análisis financiero mensual en Excel (gratis)',
       description: 'Plantilla de Excel gratuita para hacer el balance de tu mes: ingresos, gastos, activos y pasivos en una sola foto. Sin registro y sin dejar tu correo.',
-      intro: 'Antes de presupuestar nada hace falta saber de dónde partes. Esta plantilla es el balance de tu economía: lo que entra, lo que sale, lo que tienes y lo que debes, en una sola hoja que puedes repetir cada mes.',
-      whatsInside: `- Una hoja de **ingresos y gastos** del mes, separada por categorías, que termina en una única cifra: cuánto te has quedado.
-- Una hoja de **activos y pasivos** —cuentas, inversiones, propiedades, deudas— que calcula tu patrimonio neto.
-- Una hoja de **evolución** donde cada mes es una fila, para que la comparación entre meses la haga la hoja y no tu memoria.
-- Fórmulas ya escritas: la tasa de ahorro del mes y el patrimonio neto se calculan solos.`,
-      howToUse: `1. Elige un mes cerrado, no el que está en curso. Los meses a medias siempre parecen mejores de lo que son.
-2. Rellena los ingresos con lo que **entró de verdad** en la cuenta, no con el bruto de la nómina.
-3. Vuelca los gastos desde el extracto bancario, no de memoria. Si una categoría te da vergüenza, esa es exactamente la que hay que anotar.
-4. Anota activos y pasivos a día de cierre. Un valor aproximado sirve; lo importante es usar el mismo criterio todos los meses.
-5. Repítelo el mes siguiente en una fila nueva. Tres meses son suficientes para ver una tendencia; uno solo es una anécdota.`,
+      intro: 'Antes de presupuestar nada hace falta saber de dónde partes. Esta plantilla es el balance de tu economía: lo que entra, lo que sale, lo que tienes y lo que debes, en una sola hoja que rellenas una vez, con la forma de un mes normal, y que no vuelves a tocar hasta que algo cambie de verdad.',
+      whatsInside: `- Un bloque de **patrimonio neto** arriba: activos, inversiones y ahorros menos lo que debes, en una sola cifra.
+- El mes entero debajo, en la misma hoja: el ingreso neto de todas las fuentes, quince líneas de costes fijos, el gasto sin culpa, la inversión y las metas de ahorro.
+- Una **banda de referencia** en cada bloque —50-60% de costes fijos, 20-35% de gasto sin culpa, 10% invertido, 5-10% a metas— y una columna de **porcentaje** que pone el tuyo al lado, que es la única comparación que viaja de una persona a otra.
+- Fórmulas ya escritas: el patrimonio neto, el saldo que queda después de cada bloque y una línea final de **sobrante** que debería salir cerca de cero, porque la hoja está pensada para que todo el dinero de un mes normal tenga un sitio. La línea de misceláneos añade sola un 15% para lo que olvidaste.`,
+      howToUse: `1. Rellénala con un mes **normal**, no con el último. En cada línea quieres la cifra más cercana a tu media: un mes con vacaciones o con una avería dentro describe un suceso, no tu economía.
+2. Pon en los ingresos lo que **entra de verdad** en la cuenta, no el bruto de la nómina, y cuenta a todos los miembros de la casa y todas las fuentes.
+3. Sé honesto con los costes fijos y no toques la línea de misceláneos: añade un 15% por encima para lo que olvidaste, y algo olvidaste.
+4. Anota activos, inversiones, ahorros y deudas a valor de hoy. Un valor aproximado sirve: un patrimonio neto con un 2% de error te dice lo mismo.
+5. Y ya está: **no se rellena otra vez el mes que viene**. Esto no es un registro mensual, es la foto de un mes normal, y sigue siendo verdad hasta que deje de serlo. Vuelves a ella cuando cambia algo de fondo: una subida de sueldo, una nueva fuente de ingresos, una inversión nueva, una herencia, un coste fijo nuevo, una compra grande que ya has decidido.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: '¿Quieres la siguiente? En el paso 2 el gasto deja de ser una estimación.',
+        body: 'Ya tienes la forma de un mes normal: lo que entra, lo que sale, lo que tienes y lo que debes. Lo que esa hoja no puede decirte es si el mes normal que acabas de describir es el que vives de verdad; para eso hace falta un mes real, anotado mientras ocurre, y de eso se encarga la plantilla de gestión de gastos. Y si te quedas un momento, el Freedom Compass te devuelve esas mismas cuatro cifras y te dice qué implican.',
+        primaryLabel: 'Descargar el paso 2: Gestión de gastos',
+        secondaryLabel: 'O hacer el Freedom Compass'
+      },
       faq: [
         {
           q: '¿Necesito Excel para usarla?',
@@ -65,7 +97,7 @@ export const TEMPLATES = [
         },
         {
           q: '¿Cada cuánto debería rellenarla?',
-          a: 'Una vez al mes, el mismo día aproximadamente. La utilidad no está en la foto de un mes, sino en la serie: doce filas dicen mucho más que una, y la disciplina de una fecha fija es lo que hace que existan las doce.'
+          a: 'Una vez, y después solo cuando algo cambie. Es la foto de un mes normal, no el registro de cada mes: la rellenas con tu media y sigue siendo válida hasta que una de sus cifras deja de serlo —una subida de sueldo, un coste fijo nuevo, otra fuente de ingresos, una compra grande que ya has decidido, una herencia—. Si no ha pasado nada de eso, rellenarla otra vez solo reproduce la misma hoja. Seguir un mes concreto mientras ocurre es lo que hace la plantilla de gestión de gastos.'
         }
       ]
     },
@@ -75,16 +107,24 @@ export const TEMPLATES = [
       download: 'Monthly Balance Analysis Template.xlsx',
       title: 'Free monthly financial analysis Excel template',
       description: 'A free Excel template for taking stock of your month: income, spending, assets and liabilities in one picture. No signup, no email required.',
-      intro: 'Before budgeting anything you need to know where you are starting from. This template is your balance sheet: what came in, what went out, what you own and what you owe, on one sheet you can repeat every month.',
-      whatsInside: `- An **income and spending** sheet for the month, split by category, ending in a single figure: what you actually kept.
-- An **assets and liabilities** sheet - accounts, investments, property, debts - that works out your net worth.
-- A **history** sheet where each month is a row, so the comparison between months is done by the spreadsheet rather than by your memory.
-- Formulas already written: the month's savings rate and your net worth calculate themselves.`,
-      howToUse: `1. Pick a month that has already ended, not the one you are in. Half-finished months always look better than they are.
-2. Fill in income with what **actually landed** in the account, not the gross figure on your payslip.
-3. Copy spending from the bank statement, not from memory. If a category is embarrassing, that is precisely the one to write down.
-4. Record assets and liabilities as at the closing date. An approximate value is fine; using the same basis every month is what matters.
-5. Do it again next month in a new row. Three months is enough to see a trend; one month is an anecdote.`,
+      intro: 'Before budgeting anything you need to know where you are starting from. This template is your balance sheet: what comes in, what goes out, what you own and what you owe, on a single sheet you fill in once for a normal month and then leave alone until something actually changes.',
+      whatsInside: `- A **net worth** block at the top: assets, investments and savings minus what you owe, in one figure.
+- The whole month underneath it, on the same sheet: net income from every source, fifteen fixed-cost lines, guilt-free spending, investing and savings goals.
+- A **reference band** on each block - 50-60% fixed costs, 20-35% guilt-free, 10% invested, 5-10% to goals - and a **percentage** column that puts yours next to it, which is the only comparison that travels from one person to another.
+- Formulas already written: net worth, the balance left after each block, and a final **left over** line that should come out near zero, because the sheet is built so that all of a normal month's money has somewhere to be. The miscellaneous line adds 15% by itself for whatever you forgot.`,
+      howToUse: `1. Fill it in for a **normal** month, not for last month. The figure you want on each line is the one closest to your average: a month with a holiday or a broken boiler in it describes an event, not your finances.
+2. Put in the income that **actually lands** in the account, not the gross figure on your payslip, and count every member of the household and every stream.
+3. Be honest about the fixed costs, and leave the miscellaneous line alone: it adds 15% on top for what you forgot, and you did forget something.
+4. Record assets, investments, savings and debts at today's value. An approximate figure is fine: a net worth that is 2% out tells you the same thing.
+5. Then you are done - **you do not fill it in again next month**. This is not a monthly log, it is the picture of a normal month, and it stays true until it stops being true. You come back to it when something underneath it changes: a pay rise, a new income stream, a new investment, an inheritance, a new fixed cost, a big purchase you have already decided on.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: 'Want the next one? Step 2 is where the spending stops being an estimate.',
+        body: 'You now have the shape of a normal month: what comes in, what goes out, what you own and what you owe. What the sheet cannot tell you is whether the normal month you just described is the one you actually live — that takes a real month, recorded as it happens, and that is what the expense management template does. While you\'re here, the Freedom Compass reads those same four figures back and tells you what they imply.',
+        primaryLabel: 'Get step 2: Expense management',
+        secondaryLabel: 'Or take the Freedom Compass'
+      },
       faq: [
         {
           q: 'Do I need Excel to use it?',
@@ -96,7 +136,7 @@ export const TEMPLATES = [
         },
         {
           q: 'How often should I fill it in?',
-          a: 'Once a month, on roughly the same day. The value is not in one month’s snapshot but in the series: twelve rows say far more than one, and a fixed date is what makes the twelve happen.'
+          a: 'Once, and after that only when something changes. It is the picture of a normal month rather than a log of each one: you fill it in with your average and it holds until one of its figures stops being true - a pay rise, a new fixed cost, another income stream, a big purchase you have committed to, an inheritance. If none of that has happened, filling it in again only reproduces the same sheet. Following one particular month as it happens is what the expense management template is for.'
         }
       ]
     },
@@ -106,16 +146,24 @@ export const TEMPLATES = [
       download: 'Modelo de Analise do Balanco Mensal.xlsx',
       title: 'Modelo de análise financeira mensal em Excel (grátis)',
       description: 'Modelo de Excel gratuito para fazer o balanço do seu mês: rendimentos, despesas, ativos e passivos numa única fotografia. Sem registro e sem deixar o seu e-mail.',
-      intro: 'Antes de orçamentar qualquer coisa é preciso saber de onde você parte. Este modelo é o balanço da sua economia: o que entra, o que sai, o que você tem e o que você deve, em uma só planilha que dá para repetir todos os meses.',
-      whatsInside: `- Uma planilha de **rendimentos e despesas** do mês, separada por categorias, que termina em um único valor: quanto sobrou.
-- Uma planilha de **ativos e passivos** —contas, investimentos, imóveis, dívidas— que calcula o seu patrimônio líquido.
-- Uma planilha de **evolução** onde cada mês é uma linha, para que a comparação entre meses seja feita pela planilha e não pela sua memória.
-- Fórmulas já escritas: a taxa de poupança do mês e o patrimônio líquido se calculam sozinhos.`,
-      howToUse: `1. Escolha um mês já fechado, não o que está em curso. Os meses pela metade parecem sempre melhores do que são.
-2. Preencha os rendimentos com o que **entrou de fato** na conta, não com o bruto do holerite.
-3. Passe as despesas do extrato bancário, não de memória. Se uma categoria dá vergonha, é exatamente essa que você tem de registrar.
-4. Registre ativos e passivos na data de fechamento. Um valor aproximado serve; usar o mesmo critério todos os meses é o que importa.
-5. Repita no mês seguinte em uma linha nova. Três meses bastam para ver uma tendência; um mês é uma anedota.`,
+      intro: 'Antes de orçamentar qualquer coisa é preciso saber de onde você parte. Este modelo é o balanço da sua economia: o que entra, o que sai, o que você tem e o que você deve, em uma só planilha que você preenche uma vez, com o formato de um mês normal, e não volta a mexer até que algo mude de verdade.',
+      whatsInside: `- Um bloco de **patrimônio líquido** no topo: ativos, investimentos e poupança menos o que você deve, em um único valor.
+- O mês inteiro embaixo, na mesma planilha: a renda líquida de todas as fontes, quinze linhas de custos fixos, os gastos sem culpa, os investimentos e as metas de poupança.
+- Uma **faixa de referência** em cada bloco —50-60% de custos fixos, 20-35% de gastos sem culpa, 10% investido, 5-10% para metas— e uma coluna de **porcentagem** que coloca a sua ao lado, que é a única comparação que viaja de uma pessoa para outra.
+- Fórmulas já escritas: o patrimônio líquido, o saldo que sobra depois de cada bloco e uma linha final de **sobra** que deveria ficar perto de zero, porque a planilha foi feita para que todo o dinheiro de um mês normal tenha um lugar. A linha de diversos acrescenta sozinha 15% para o que você esqueceu.`,
+      howToUse: `1. Preencha com um mês **normal**, não com o último. Em cada linha você quer o valor mais próximo da sua média: um mês com férias ou com um conserto dentro descreve um acontecimento, não a sua economia.
+2. Coloque nos rendimentos o que **entra de fato** na conta, não o bruto do holerite, e conte todos os membros da casa e todas as fontes.
+3. Seja honesto com os custos fixos e não mexa na linha de diversos: ela acrescenta 15% por cima para o que você esqueceu, e você esqueceu algo.
+4. Registre ativos, investimentos, poupança e dívidas a valor de hoje. Um valor aproximado serve: um patrimônio líquido com 2% de erro diz a mesma coisa.
+5. E pronto: **não se preenche de novo no mês seguinte**. Isto não é um registro mensal, é a fotografia de um mês normal, e continua verdadeiro até deixar de ser. Você volta a ela quando algo de fundo muda: um aumento, uma nova fonte de renda, um investimento novo, uma herança, um custo fixo novo, uma compra grande que você já decidiu.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: 'Quer o próximo? No passo 2 a despesa deixa de ser uma estimativa.',
+        body: 'Você já tem o formato de um mês normal: o que entra, o que sai, o que você tem e o que você deve. O que essa planilha não pode dizer é se o mês normal que você acabou de descrever é o que você vive de fato; para isso é preciso um mês real, anotado enquanto acontece, e disso cuida o modelo de gestão de despesas. E, se ficar um instante, o Freedom Compass devolve esses mesmos quatro números e diz o que eles implicam.',
+        primaryLabel: 'Baixar o passo 2: Gestão de despesas',
+        secondaryLabel: 'Ou fazer o Freedom Compass'
+      },
       faq: [
         {
           q: 'Preciso do Excel para usar?',
@@ -127,7 +175,7 @@ export const TEMPLATES = [
         },
         {
           q: 'Com que frequência devo preenchê-lo?',
-          a: 'Uma vez por mês, aproximadamente no mesmo dia. A utilidade não está na fotografia de um mês, mas na série: doze linhas dizem muito mais do que uma, e a disciplina de uma data fixa é o que faz com que existam as doze.'
+          a: 'Uma vez, e depois só quando algo mudar. É a fotografia de um mês normal, não o registro de cada mês: você a preenche com a sua média e ela continua válida até que um dos seus números deixe de ser verdade — um aumento, um custo fixo novo, outra fonte de renda, uma compra grande que você já decidiu, uma herança. Se nada disso aconteceu, preencher de novo só reproduz a mesma planilha. Acompanhar um mês específico enquanto ele acontece é o que o modelo de gestão de despesas faz.'
         }
       ]
     }
@@ -135,8 +183,12 @@ export const TEMPLATES = [
   {
     id: 'expense-management',
     step: 2,
-    sheets: 2,
+    sheets: 1,
     glossary: ['cash-flow', 'lifestyle-creep', 'mental-accounting'],
+    // Tracking leads to budgeting, and the Financial Decisions simulator is the
+    // one that prices ordinary spending choices - which is what somebody who has
+    // just categorised a month of them is thinking about.
+    nextRoutes: { primary: 'personal-budget', secondary: 'simulator-hub' },
     es: {
       name: 'Gestión de gastos',
       slug: 'gestion-de-gastos',
@@ -153,6 +205,14 @@ export const TEMPLATES = [
 3. No corrijas tu comportamiento durante el registro. Un mes falseado por las ganas de que salga bien no sirve para nada.
 4. Al terminar, mira solo dos cosas: la categoría más grande y la suma de los impulsos.
 5. Cambia **una** cosa. Una sola, la que más pese, y vuelve a medir el mes siguiente.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: '¿Quieres la siguiente? El paso 3 convierte lo que anotas en una decisión.',
+        body: 'Anotar te dice adónde fue el dinero. No te dice adónde debería ir, y eso es otro ejercicio con otra hoja: la plantilla de presupuesto personal es donde se fija la cifra antes del mes en lugar de después. Y si te quedas un momento, el simulador de Decisiones financieras te pone delante quince elecciones normales y te enseña lo que cuesta cada una en diez años, que es justo lo que una hoja del mes pasado no puede enseñarte.',
+        primaryLabel: 'Descargar el paso 3: Presupuesto personal',
+        secondaryLabel: 'O jugar al simulador de Decisiones financieras'
+      },
       faq: [
         {
           q: '¿Quince días son suficientes?',
@@ -184,6 +244,14 @@ export const TEMPLATES = [
 3. Do not correct your behavior while you are logging. A month distorted by wanting it to look good tells you nothing.
 4. When it is over, look at only two things: the biggest category, and the total of the impulses.
 5. Change **one** thing. One, the heaviest, and measure again next month.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: 'Want the next one? Step 3 turns what you tracked into a decision.',
+        body: 'Tracking tells you where the money went. It does not tell you where it should go instead, and that is a different exercise with a different workbook: the personal budget template is where the number is set before the month rather than after it. While you\'re here, the Financial Decisions simulator puts fifteen ordinary choices in front of you and shows what each one costs over a decade — which is exactly what a spreadsheet of last month cannot show.',
+        primaryLabel: 'Get step 3: Personal budget',
+        secondaryLabel: 'Or play the Financial Decisions simulator'
+      },
       faq: [
         {
           q: 'Is 15 days enough?',
@@ -215,6 +283,14 @@ export const TEMPLATES = [
 3. Não corrija o seu comportamento durante o registro. Um mês falseado pela vontade de que corra bem não serve para nada.
 4. No fim, olhe só para duas coisas: a categoria maior e a soma dos impulsos.
 5. Mude **uma** coisa. Uma só, a que mais pesa, e volte a medir no mês seguinte.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: 'Quer o próximo? O passo 3 transforma o que você anota numa decisão.',
+        body: 'Anotar diz para onde o dinheiro foi. Não diz para onde ele deveria ir, e isso é outro exercício com outra planilha: o modelo de orçamento pessoal é onde o número é definido antes do mês, e não depois. E, se ficar um instante, o simulador de Decisões Financeiras coloca quinze escolhas comuns na sua frente e mostra quanto cada uma custa em dez anos — exatamente o que uma planilha do mês passado não consegue mostrar.',
+        primaryLabel: 'Baixar o passo 3: Orçamento pessoal',
+        secondaryLabel: 'Ou jogar o simulador de Decisões Financeiras'
+      },
       faq: [
         {
           q: 'Quinze dias são suficientes?',
@@ -234,8 +310,12 @@ export const TEMPLATES = [
   {
     id: 'personal-budget',
     step: 3,
-    sheets: 2,
+    sheets: 1,
     glossary: ['savings-rate', 'pay-yourself-first', 'opportunity-cost'],
+    // The last workbook, so there is no next one to offer. The Freedom Calendar
+    // takes over instead: the sequence ends with a savings rate, and a savings
+    // rate is only interesting once it has been turned into a date.
+    nextRoutes: { primary: 'freedom-calendar', secondary: 'assessment' },
     es: {
       name: 'Presupuesto personal',
       slug: 'presupuesto-personal',
@@ -252,6 +332,14 @@ export const TEMPLATES = [
 3. Rellena la columna *objetivo* sin heroísmos. Un presupuesto que exige un mes perfecto se abandona en la segunda semana.
 4. Mira solo las tres desviaciones mayores. El resto es ruido.
 5. Revísalo una vez al mes, no una vez al año. Un presupuesto es un documento vivo o es un documento muerto.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: 'Ya tienes las tres. Ahora mira a cuánto suman.',
+        body: 'Observar, anotar, decidir: las tres plantillas son una secuencia y esta es el final. Lo que ninguna de ellas puede contarte es lo único que de verdad quieres saber: cuándo esto deja de ser un presupuesto y se convierte en no necesitar la nómina. Eso es una pregunta sobre el tiempo, y para eso está el Calendario de la Libertad: convierte una tasa de ahorro en una fecha, y te enseña qué le hace a esa fecha mover la tasa.',
+        primaryLabel: 'Abrir el Calendario de la Libertad',
+        secondaryLabel: 'O hacer el Freedom Compass'
+      },
       faq: [
         {
           q: '¿Vale la regla 50/30/20?',
@@ -283,6 +371,14 @@ export const TEMPLATES = [
 3. Fill in the *target* column without heroics. A budget that requires a perfect month gets abandoned in week two.
 4. Look at only the three largest variances. The rest is noise.
 5. Review it monthly, not annually. A budget is either a living document or a dead one.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: 'That\'s all three. Now see what they add up to.',
+        body: 'Observe, track, decide — the three workbooks are a sequence and this is the end of it. What none of them can tell you is the only thing you really want to know: when this stops being a budget and becomes not needing the salary. That is a question about time, and the Freedom Calendar is the tool for it — it turns a savings rate into a date, and shows what moving the rate does to the date.',
+        primaryLabel: 'Open the Freedom Calendar',
+        secondaryLabel: 'Or take the Freedom Compass'
+      },
       faq: [
         {
           q: 'Is the 50/30/20 rule any good?',
@@ -314,6 +410,14 @@ export const TEMPLATES = [
 3. Preencha a coluna *objetivo* sem heroísmos. Um orçamento que exige um mês perfeito é abandonado na segunda semana.
 4. Olhe apenas para os três maiores desvios. O resto é ruído.
 5. Revise-o uma vez por mês, não uma vez por ano. Um orçamento é um documento vivo ou é um documento morto.`,
+      // The panel the download reveals. See `nextRoutes` above for where
+      // its two links go; these are only the words on them.
+      next: {
+        title: 'Você já tem os três. Agora veja quanto eles somam.',
+        body: 'Observar, anotar, decidir: os três modelos são uma sequência e este é o fim dela. O que nenhum deles consegue contar é a única coisa que você realmente quer saber: quando isto deixa de ser um orçamento e passa a ser não precisar do salário. Essa é uma pergunta sobre tempo, e é para isso que existe o Calendário da Liberdade — ele transforma uma taxa de poupança numa data, e mostra o que mexer na taxa faz com a data.',
+        primaryLabel: 'Abrir o Calendário da Liberdade',
+        secondaryLabel: 'Ou fazer o Freedom Compass'
+      },
       faq: [
         {
           q: 'A regra 50/30/20 serve?',
