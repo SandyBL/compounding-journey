@@ -294,7 +294,12 @@ button, input { font: inherit; }
 .article-body tbody tr:last-child td { border-bottom: 0; }
 .article-body table strong { color: var(--forest); }
 .article-body code { padding: .16em .38em; border: 1px solid #ddd3bf; border-radius: 4px; background: #eee7da; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .82em; }
-.article-body pre { margin: 2em 0; padding: 24px; overflow-x: auto; background: #142a1d; color: #f7f1e5; font-size: .86rem; line-height: 1.65; }
+/* A preformatted block is the one place in an article where the lines may not
+   be re-flowed: the articles use it for ASCII diagrams, where a character's
+   column is what says which box an arrow points at. So it scrolls sideways
+   rather than wrapping, and max-width keeps that scrolling inside the block
+   instead of widening the page around it. */
+.article-body pre { max-width: 100%; margin: 2em 0; padding: 24px; overflow-x: auto; background: #142a1d; color: #f7f1e5; font-size: .86rem; line-height: 1.65; -webkit-overflow-scrolling: touch; tab-size: 4; }
 .article-body pre code { padding: 0; border: 0; background: transparent; color: inherit; }
 .article-body img { width: 100%; height: auto; margin: 2.5em 0; border-radius: 2px; box-shadow: 0 18px 48px rgba(31,41,34,.12); }
 .article-body > p:first-child { color: #34473a; font-size: 1.32rem; line-height: 1.72; }
@@ -379,6 +384,7 @@ button, input { font: inherit; }
   .article-body .article-callout { padding: 34px 24px 24px; }
   .article-body .article-callout::before { left: 20px; }
   .article-body .article-table-wrap { margin-inline: -4px; width: calc(100% + 8px); }
+  .article-body pre { margin-inline: -4px; width: calc(100% + 8px); padding: 18px 16px; font-size: .74rem; }
   .author-card { grid-template-columns: 72px minmax(0, 1fr); }
   .author-card img { width: 72px; height: 72px; }
 }
