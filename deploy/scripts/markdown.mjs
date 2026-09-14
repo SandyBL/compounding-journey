@@ -164,6 +164,16 @@ function renderInline(text, options) {
   return output.replace(/\u0000CODE(\d+)\u0000/g, (_match, index) => `<code>${escapeHtml(codeSpans[Number(index)])}</code>`);
 }
 
+// Drops the indentation shared by every non-blank line of a code block. Tabs
+// are left alone rather than guessed at a width: a block that mixes them with
+// spaces has no shared prefix to remove, and keeping it as written is better
+// than re-aligning it wrongly.
+function dedent(code) {
+  const indents = code.filter((codeLine) => codeLine.trim()).map((codeLine) => codeLine.match(/^[ ]*/)[0].length);
+  const shared = indents.length ? Math.min(...indents) : 0;
+  return shared ? code.map((codeLine) => codeLine.slice(shared)) : code;
+}
+
 function renderTable(rows, options) {
   const cells = (row) => row.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim());
   const header = cells(rows[0]);
@@ -214,6 +224,40 @@ export function renderBlocks(markdown, options, labels) {
       while (index < lines.length && !/^```/.test(lines[index])) { code.push(lines[index]); index += 1; }
       index += 1;
       html.push(`<pre><code>${escapeHtml(code.join('\n'))}</code></pre>`);
+      continue;
+    }
+
+    // A block indented by four spaces or a tab is a code block in CommonMark,
+    // which is what the content studio's preview renders it as. Without this
+    // branch such a block fell through to the paragraph rule instead, and that
+    // rule trims every line and reflows them in a proportional font - which is
+    // exactly what the articles use an indented block *for*: ASCII diagrams
+    // whose alignment is the whole content. The preview showed a diagram and
+    // the published page showed the same characters shuffled into a paragraph.
+    //
+    // Straight after a list the same indentation means something else. An
+    // indented paragraph under a list item is a continuation of that item, and
+    // only indentation past the item's own content column - four spaces on top
+    // of the two or three the marker takes - reads as code there. The preview
+    // draws that line too, so this branch stands aside for the shallow case
+    // and keeps the paragraph behaviour the lists have always had.
+    const indent = line.match(/^[ \t]*/)[0].replace(/\t/g, '    ').length;
+    const afterList = /<\/(?:ul|ol)>$/.test(html[html.length - 1] ?? '');
+    if (indent >= (afterList ? 8 : 4)) {
+      // Blank lines inside the block are kept, because a diagram can have
+      // them; blank lines after it are not, because they belong to the
+      // document. The four-space marker comes off as CommonMark says, and then
+      // whatever indentation every remaining line still shares comes off too:
+      // that shifts the block as a whole, leaving the alignment that carries
+      // the meaning untouched, so a diagram centred in the Markdown source
+      // does not open thirteen blank columns past the left edge of a phone.
+      const code = [];
+      while (index < lines.length && (/^(?: {4}|\t)/.test(lines[index]) || !lines[index].trim())) {
+        code.push(lines[index].replace(/^(?: {4}|\t)/, ''));
+        index += 1;
+      }
+      while (code.length && !code[code.length - 1].trim()) code.pop();
+      html.push(`<pre><code>${escapeHtml(dedent(code).join('\n'))}</code></pre>`);
       continue;
     }
 
