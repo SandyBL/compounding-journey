@@ -9,9 +9,9 @@ summary: Ever wondered why you can't see the exact price when buying a mutual
 translation_key: why-mutual-funds-operate-blind-mechanics-of-subscriptions-redemptions-and-nav
 author: Sandy Bradbury
 ---
-When I first placed an order to buy shares in a mutual fund, I searched everywhere on my screen for an execution button with a live ticker price[cite: 1]. I was used to stocks, where you see the exact price move every second and execute your order instantly[cite: 1]. But with mutual funds, I had to place my order completely blindly, trusting a price that wouldn't even be calculated until after the market closed[cite: 1].
+When I first placed an order to buy shares in a mutual fund, I searched everywhere on my screen for an execution button with a live ticker price. I was used to stocks, where you see the exact price move every second and execute your order instantly. But with mutual funds, I had to place my order completely blindly, trusting a price that wouldn't even be calculated until after the market closed.
 
-At first, trading without seeing the exact price felt unnerving[cite: 1]. But as I learned how collective investment vehicles work behind the scenes, I realized that this "forward pricing" rule isn't a limitation at all[cite: 1]. It is actually a vital protection mechanism designed to keep day traders from exploiting long-term investors[cite: 1].
+At first, trading without seeing the exact price felt unnerving. But as I learned how collective investment vehicles work behind the scenes, I realized that this "forward pricing" rule isn't a limitation at all. It is actually a vital protection mechanism designed to keep day traders from exploiting long-term investors.
 
 Whether you invest $50 or $5,000 every month, understanding the operational rhythm of fund pricing, daily expense accruals, and cash settlement timelines gives you complete clarity over how your money moves[cite: 1]. Let's break down why funds operate blind and how the daily machinery functions step by step[cite: 1].
 
