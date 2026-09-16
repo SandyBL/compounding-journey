@@ -9,14 +9,14 @@ summary: ¿Cómo protegen los fondos de inversión tu dinero frente a grandes
 translation_key: investment-limits-and-risk-diversification-in-mutual-funds-ucits
 author: Sandy Bradbury
 ---
-Cuando empecé a diseñar mi propia estrategia de inversión, una duda me rondaba constantemente la cabeza: ¿qué pasaría con mis ahorros si la empresa principal de mi fondo entrara en quiebra o sufriera una crisis grave[cite: 1]?
+Cuando empecé a diseñar mi propia estrategia de inversión, una duda me rondaba constantemente la cabeza: ¿qué pasaría con mis ahorros si la empresa principal de mi fondo entrara en quiebra o sufriera una crisis grave?
 
-Pronto descubrí que la normativa europea UCITS (transpuesta minuciosamente a la legislación española) cuenta con un mecanismo de protección extraordinario[cite: 1]. Para evitar que la solvencia de un fondo dependa del destino de una sola empresa o entidad bancaria, la ley impone límites matemáticos de diversificación muy estrictos[cite: 1].
+Pronto descubrí que la normativa europea UCITS (transpuesta minuciosamente a la legislación española) cuenta con un mecanismo de protección extraordinario. Para evitar que la solvencia de un fondo dependa del destino de una sola empresa o entidad bancaria, la ley impone límites matemáticos de diversificación muy estrictos.
 
-Entender estas reglas te permite ver la ingeniería de seguridad que opera en el interior de los fondos de inversión e indexados que utilizas a diario[cite: 1]. Vamos a repasar paso a paso cómo protege la ley tu capital[cite: 1].
+Entender estas reglas te permite ver la ingeniería de seguridad que opera en el interior de los fondos de inversión e indexados que utilizas a diario. Vamos a repasar paso a paso cómo protege la ley tu capital.
 
 > 💡 **La Base Fundamental:**
-> Gestionar el riesgo no significa evitar los mercados, sino eliminar la concentración excesiva[cite: 1]. La ley obliga a los fondos a repartir el patrimonio para que el tropiezo de un emisor nunca arruine tu futuro financiero[cite: 1].
+> Gestionar el riesgo no significa evitar los mercados, sino eliminar la concentración excesiva. La ley obliga a los fondos a repartir el patrimonio para que el tropiezo de un emisor nunca arruine tu futuro financiero.
 
 ---
 
@@ -77,6 +77,6 @@ Para permitir que la gestión pasiva copie con fidelidad a los índices, la ley 
 
 ### ¿Quieres dar el siguiente paso?
 
-Aprender cómo la regulación protege tu dinero y diversifica los riesgos es un paso decisivo para invertir con criterio y tranquilidad[cite: 1]. Realiza nuestra evaluación de hábitos para analizar el nivel de concentración de tus ahorros, revisar tus productos financieros y construir un plan de inversión equilibrado a largo plazo.
+Aprender cómo la regulación protege tu dinero y diversifica los riesgos es un paso decisivo para invertir con criterio y tranquilidad. Realiza nuestra evaluación de hábitos para analizar el nivel de concentración de tus ahorros, revisar tus productos financieros y construir un plan de inversión equilibrado a largo plazo.
 
 [Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/?lang=es#contacto)

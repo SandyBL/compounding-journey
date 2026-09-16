@@ -9,20 +9,20 @@ summary: ¿Te has preguntado qué ocurre en las entrañas de un fondo de inversi
 translation_key: how-collective-investment-schemes-work-inside-the-machinery-of-mutual-funds
 author: Sandy Bradbury
 ---
-Cuando compré mis primeras participaciones en un fondo de inversión, recuerdo pulsar el botón de orden y quedarme unos segundos pensando[cite: 1]. Había enviado mis ahorros a través de una aplicación, pero no tenía del todo claro dónde estaba guardado mi dinero ni quién lo custodiaba exactamente[cite: 1]. ¿Estaba mi capital en la cuenta corriente de la gestora? ¿Qué pasaría si esa entidad financiera entrase en quiebra[cite: 1]?
+Cuando compré mis primeras participaciones en un fondo de inversión, recuerdo pulsar el botón de orden y quedarme unos segundos pensando. Había enviado mis ahorros a través de una aplicación, pero no tenía del todo claro dónde estaba guardado mi dinero ni quién lo custodiaba exactamente. ¿Estaba mi capital en la cuenta corriente de la gestora? ¿Qué pasaría si esa entidad financiera entrase en quiebra?
 
-Fue al estudiar la maquinaria operativa de las Instituciones de Inversión Colectiva (IIC)—el término técnico que engloba a los fondos y sociedades de inversión—cuando descubrí la solidez del sistema[cite: 1]. Todo el entramado está diseñado para proteger al ahorrador frente a fraudes, mala gestión o conflictos de interés[cite: 1].
+Fue al estudiar la maquinaria operativa de las Instituciones de Inversión Colectiva (IIC)—el término técnico que engloba a los fondos y sociedades de inversión—cuando descubrí la solidez del sistema. Todo el entramado está diseñado para proteger al ahorrador frente a fraudes, mala gestión o conflictos de interés.
 
-Tanto si aportas $50\text{ €}$ al mes como si gestionas un patrimonio amplio, entender la ingeniería financiera que mueve tus fondos te dará una tranquilidad absoluta al invertir[cite: 1]. Vamos a analizar paso a paso cómo funciona este mecanismo por dentro[cite: 1].
+Tanto si aportas $50\text{ €}$ al mes como si gestionas un patrimonio amplio, entender la ingeniería financiera que mueve tus fondos te dará una tranquilidad absoluta al invertir. Vamos a analizar paso a paso cómo funciona este mecanismo por dentro.
 
 > 💡 **La Base Fundamental:**
-> Tu dinero nunca forma parte del patrimonio de la gestora[cite: 1]. La ley exige separar estrictamente a la entidad que decide dónde invertir de la entidad que custodia tu efectivo y tus valores[cite: 1].
+> Tu dinero nunca forma parte del patrimonio de la gestora. La ley exige separar estrictamente a la entidad que decide dónde invertir de la entidad que custodia tu efectivo y tus valores.
 
 ---
 
 ## El Triángulo Organizativo: Segregación Obligatoria de Funciones
 
-Para garantizar la protección del inversor, la Comisión Nacional del Mercado de Valores (CNMV) impone una separación funcional absoluta entre tres figuras clave[cite: 1]:
+Para garantizar la protección del inversor, la Comisión Nacional del Mercado de Valores (CNMV) impone una separación funcional absoluta entre tres figuras clave:
 
                  ┌─────────────────────────────────────────┐
                  │                PARTÍCIPE                │
@@ -41,10 +41,10 @@ Para garantizar la protección del inversor, la Comisión Nacional del Mercado d
                             Vigilancia Mutua
 
 ### 1. El Partícipe
-Aporta su capital en efectivo adquiriendo participaciones (en fondos) o acciones (en sociedades de inversión)[cite: 1]. Es el propietario definitivo del patrimonio proporcional del fondo[cite: 1].
+Aporta su capital en efectivo adquiriendo participaciones (en fondos) o acciones (en sociedades de inversión). Es el propietario definitivo del patrimonio proporcional del fondo.
 
 ### 2. La Sociedad Gestora (SGIIC)
-Es la entidad especializada que administra y representa al fondo. Sus analistas y gestores deciden qué activos comprar o vender, pero jamás guardan tu dinero en sus cuentas[cite: 1].
+Es la entidad especializada que administra y representa al fondo. Sus analistas y gestores deciden qué activos comprar o vender, pero jamás guardan tu dinero en sus cuentas.
 
 ### 3. El Depositario
 Suele ser una entidad bancaria independiente encargada de la custodia de los títulos y del efectivo. Además, ejerce una labor de supervisión sobre la gestora, vigilando que cada operación cumpla a rajatabla la ley y el folleto informativo.
@@ -61,7 +61,7 @@ Dentro de una Sociedad Gestora de Instituciones de Inversión Colectiva (SGIIC),
 | **Middle Office** | Control de Riesgos y Cumplimiento | Supervisa coeficientes legales, límites y normativas |
 | **Back Office** | Administración y Contabilidad | Contabiliza operaciones y calcula el Valor Liquidativo |
 
-Si te interesa entender cómo la optimización de procesos y el control de cuellos de botella se aplican a las organizaciones, te recomiendo leer *La meta* y *No fue suerte* de Eliyahu Goldratt[cite: 1]. Aunque están ambientados en el sector industrial, sus lecciones sobre gestión son perfectamente aplicables al mundo financiero[cite: 1].
+Si te interesa entender cómo la optimización de procesos y el control de cuellos de botella se aplican a las organizaciones, te recomiendo leer *La meta* y *No fue suerte* de Eliyahu Goldratt. Aunque están ambientados en el sector industrial, sus lecciones sobre gestión son perfectamente aplicables al mundo financiero.
 
 ---
 
@@ -93,6 +93,6 @@ Cuando la gestora aplica comisiones sobre resultados (comisión de éxito), debe
 
 ### ¿Quieres dar el siguiente paso?
 
-Comprender la estructura de seguridad que protege tus ahorros es fundamental para invertir con total serenidad y criterio[cite: 1]. Realiza nuestra evaluación de hábitos para revisar la eficiencia de tu portafolio, analizar las comisiones de tus productos y construir un plan de inversión sólido a largo plazo.
+Comprender la estructura de seguridad que protege tus ahorros es fundamental para invertir con total serenidad y criterio. Realiza nuestra evaluación de hábitos para revisar la eficiencia de tu portafolio, analizar las comisiones de tus productos y construir un plan de inversión sólido a largo plazo.
 
 [Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/?lang=es#contacto)
