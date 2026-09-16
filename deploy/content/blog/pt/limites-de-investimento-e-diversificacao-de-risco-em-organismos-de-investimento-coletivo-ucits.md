@@ -9,14 +9,14 @@ summary: Como os fundos de investimento protegem o seu dinheiro contra grandes
 translation_key: investment-limits-and-risk-diversification-in-mutual-funds-ucits
 author: Sandy Bradbury
 ---
-Quando comecei a montar a minha carteira de investimentos, uma dúvida me deixava bastante preocupado: o que aconteceria com o meu dinheiro se a principal empresa do meu fundo passasse por uma grande crise ou falisse[cite: 1]?
+Quando comecei a montar a minha carteira de investimentos, uma dúvida me deixava bastante preocupado: o que aconteceria com o meu dinheiro se a principal empresa do meu fundo passasse por uma grande crise ou falisse?
 
-Foi então que conheci o rigoroso modelo de proteção das diretrizes europeias UCITS (que inspirou as regras de fundos em diversos mercados mundiais)[cite: 1]. Para evitar que o patrimônio de um investidor dependa demais da saúde de uma única empresa ou banco, a legislação fixa limites matemáticos de diversificação bem claros[cite: 1].
+Foi então que conheci o rigoroso modelo de proteção das diretrizes europeias UCITS (que inspirou as regras de fundos em diversos mercados mundiais). Para evitar que o patrimônio de um investidor dependa demais da saúde de uma única empresa ou banco, a legislação fixa limites matemáticos de diversificação bem claros.
 
-Entender como esses limites funcionam ajuda a perceber o nível de segurança que existe por trás dos fundos de investimento e fundos de índice que usamos no dia a dia[cite: 1]. Vamos ver passo a passo como a lei protege o seu capital[cite: 1].
+Entender como esses limites funcionam ajuda a perceber o nível de segurança que existe por trás dos fundos de investimento e fundos de índice que usamos no dia a dia. Vamos ver passo a passo como a lei protege o seu capital.
 
 > 💡 **A Base Fundamental:**
-> Gerenciar riscos não significa fugir da renda variável, mas sim eliminar a concentração em poucas empresas[cite: 1]. A lei obriga os fundos a pulverizar o capital para que o problema de um emissor nunca destrua a sua reserva financeira[cite: 1].
+> Gerenciar riscos não significa fugir da renda variável, mas sim eliminar a concentração em poucas empresas. A lei obriga os fundos a pulverizar o capital para que o problema de um emissor nunca destrua a sua reserva financeira.
 
 ---
 
@@ -77,6 +77,6 @@ Para permitir que os fundos de índice copiem o mercado com precisão, a lei tra
 
 ### Quer dar o próximo passo?
 
-Entender os mecanismos de proteção e diversificação dos fundos é um passo fundamental para investir com autonomia e segurança[cite: 1]. Faça a nossa avaliação de hábitos para diagnosticar o nível de pulverização dos seus investimentos, analisar a estrutura dos seus produtos e construir uma carteira sólida para o seu futuro[cite: 1].
+Entender os mecanismos de proteção e diversificação dos fundos é um passo fundamental para investir com autonomia e segurança. Faça a nossa avaliação de hábitos para diagnosticar o nível de pulverização dos seus investimentos, analisar a estrutura dos seus produtos e construir uma carteira sólida para o seu futuro.
 
 [Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/?lang=pt#contacto)

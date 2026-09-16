@@ -8,14 +8,14 @@ summary: How do funds protect your money from massive market crashes? Discover
 translation_key: investment-limits-and-risk-diversification-in-mutual-funds-ucits
 author: Sandy Bradbury
 ---
-When I first started building my investment strategy, I worried about what might happen if one major corporation went bankrupt[cite: 1]. What if the company I invested my hard-earned savings into suddenly suffered an accounting scandal or a devastating crisis[cite: 1]? 
+When I first started building my investment strategy, I worried about what might happen if one major corporation went bankrupt. What if the company I invested my hard-earned savings into suddenly suffered an accounting scandal or a devastating crisis?
 
-That was when I discovered the European UCITS framework—the gold standard for regulatory protection in collective investing[cite: 1]. Regulators designed a strict set of mathematical boundaries to ensure that no single company, bank, or government can ever sink your entire investment portfolio[cite: 1].
+That was when I discovered the European UCITS framework—the gold standard for regulatory protection in collective investing. Regulators designed a strict set of mathematical boundaries to ensure that no single company, bank, or government can ever sink your entire investment portfolio.
 
-Understanding these diversification limits gives you a peak under the hood of how professional index funds and mutual funds manage risk behind the scenes[cite: 1]. Let's explore the core rules that keep your capital safe and properly diversified[cite: 1].
+Understanding these diversification limits gives you a peak under the hood of how professional index funds and mutual funds manage risk behind the scenes. Let's explore the core rules that keep your capital safe and properly diversified.
 
 > 💡 **The Core Foundation:**
-> True risk management isn't about avoiding the market; it's about avoiding single-point concentration[cite: 1]. By law, regulated funds must spread risk across dozens of companies so that a failure in one won't destroy your financial future[cite: 1].
+> True risk management isn't about avoiding the market; it's about avoiding single-point concentration. By law, regulated funds must spread risk across dozens of companies so that a failure in one won't destroy your financial future.
 
 ---
 
@@ -76,6 +76,6 @@ To allow index funds to mirror real market returns accurately, regulatory rules 
 
 ### Ready to Take the Next Step?
 
-Understanding how fund managers diversify risk behind the scenes is key to building a resilient, worry-free investment strategy[cite: 1]. Take our habit assessment to evaluate your current portfolio allocation, check your asset concentration, and map out a diversified path to long-term wealth.
+Understanding how fund managers diversify risk behind the scenes is key to building a resilient, worry-free investment strategy. Take our habit assessment to evaluate your current portfolio allocation, check your asset concentration, and map out a diversified path to long-term wealth.
 
 [Take the Financial Habits Assessment →](https://compoundingjourney.com/?lang=en#contacto)
