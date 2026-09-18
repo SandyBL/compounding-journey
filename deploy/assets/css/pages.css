@@ -314,21 +314,73 @@
    one-line definition - so the page is still scannable without opening
    anything, which is the property a glossary cannot afford to lose.
 
-   The marker is the browser's. `list-style` on the summary is what moves it,
-   and it is left alone here on purpose: an arrow drawn with a pseudo-element
-   is one more thing to keep in step with the open state, and the native one
-   already rotates. */
+   The chevron is drawn here rather than left to the browser. The native marker
+   on a `display: list-item` summary is laid out *outside* the summary's content
+   box, so with no left padding it painted in the container's side gutter: 24px
+   of room on a desktop and 14px on a phone, where `.site-shell`'s
+   `overflow-x: clip` then cut it off. A phone reader got a row of headings with
+   nothing to say they opened. Owning the marker costs one `[open]` rule to keep
+   the rotation in step, and buys an affordance that sits inside the row at
+   every width and does not depend on a UA's marker metrics.
+
+   The summary is a two-column grid so that the chevron holds its own column and
+   the name and the one-line definition stack in the second - both children are
+   placed explicitly, because auto-placement would drop the second one into the
+   chevron's column on the next row. */
 .glossary-item { border-bottom: 1px solid var(--line); scroll-margin-top: 92px; }
 .glossary-item:first-of-type { border-top: 1px solid var(--line); }
-.glossary-item > summary { display: list-item; padding: 16px 4px 16px 0; cursor: pointer; list-style-position: outside; }
-.glossary-item > summary::marker { color: var(--gold); }
+.glossary-item > summary {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  column-gap: 12px;
+  padding: 16px 4px;
+  cursor: pointer;
+  list-style: none;
+}
+/* `list-style: none` above is what removes the marker in browsers that lay one
+   out; this is the same instruction for older WebKit, which draws a triangle of
+   its own and ignores it. */
+.glossary-item > summary::-webkit-details-marker { display: none; }
+.glossary-item > summary::before {
+  content: "";
+  grid-area: 1 / 1;
+  align-self: start;
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M3.2 1.6 6.6 5 3.2 8.4' fill='none' stroke='%2328563c' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 10px 10px;
+  transition: transform .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.glossary-item[open] > summary::before { transform: rotate(90deg); border-color: var(--gold); background-color: var(--cream); }
+.glossary-item > summary:hover::before { border-color: var(--gold); }
 .glossary-item > summary:hover .glossary-item-name { color: var(--rust); }
 .glossary-item > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.glossary-item-name { display: block; margin: 0 0 5px; color: var(--forest); font-family: var(--serif); font-size: 1.28rem; font-weight: 600; line-height: 1.2; }
-.glossary-item-short { display: block; color: var(--muted); font-size: .95rem; line-height: 1.62; }
-.glossary-item[open] > summary { border-bottom: 1px dashed var(--line); }
+.glossary-item-name { grid-area: 1 / 2; display: block; margin: 0 0 5px; color: var(--forest); font-family: var(--serif); font-size: 1.28rem; font-weight: 600; line-height: 1.2; }
+.glossary-item-short { grid-area: 2 / 2; display: block; color: var(--muted); font-size: .95rem; line-height: 1.62; }
+.glossary-item[open] > summary { padding-bottom: 10px; }
+.glossary-item[open] > summary .glossary-item-name { color: var(--rust); }
 .glossary-item[open] > summary .glossary-item-short { color: var(--ink); }
-.glossary-item-detail { padding: 20px 0 26px; }
+
+/* The definition reads as a panel hung off the row rather than as more of the
+   row: its own tint and a gold rule down the left, so it is never a question
+   which of the two things on screen the reader is in.
+
+   The type is the other half of that. `.article-body` is the blog's prose scale
+   - 1.2rem, with a 1.32rem lead paragraph - and this is the one place the file
+   header's "a definition and a blog post are the same kind of reading" does not
+   hold: a definition is read under a 1.28rem name, so the blog scale put the
+   body *above* its own heading and inverted the hierarchy. Scaled down here
+   only, and only for this container, so the articles keep theirs. */
+.glossary-item-detail {
+  margin: 0 0 22px;
+  padding: 18px 20px 20px;
+  border-left: 3px solid var(--gold);
+  background: rgba(244,239,228,.55);
+}
+.glossary-item-detail .article-body { font-size: 1rem; line-height: 1.72; }
+.glossary-item-detail .article-body > p:first-child { font-size: 1rem; line-height: 1.72; color: var(--ink); }
 
 /* A term the reader was sent to, rather than one they opened themselves. The
    rule is what tells them the page did something when they arrived, since the
@@ -360,7 +412,13 @@
 .glossary-item-links a:hover { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 600px) {
+  .glossary-item > summary { grid-template-columns: 20px minmax(0, 1fr); column-gap: 10px; }
+  .glossary-item > summary::before { width: 20px; height: 20px; background-size: 9px 9px; }
   .glossary-item-name { font-size: 1.15rem; }
+  .glossary-item-short { font-size: .92rem; }
+  .glossary-item-detail { margin-bottom: 18px; padding: 16px 15px 18px; }
+  .glossary-item-detail .article-body { font-size: .98rem; }
+  .glossary-item-detail .article-body > p:first-child { font-size: .98rem; }
   .glossary-item:target { padding-left: 11px; }
 }
 
