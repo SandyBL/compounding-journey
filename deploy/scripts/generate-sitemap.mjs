@@ -7,9 +7,9 @@
  * was: 21 fixed URLs plus one per article, and that file already knew every
  * article's date. It is the wrong place now. The site has since grown nine
  * calculator pages and their three indexes, nine template landing pages and
- * theirs, a hundred-odd glossary terms, twelve category archives, nine legal
- * documents and three sessions pages - about 150 URLs that the blog generator
- * has no reason to know about, and that were consequently in no sitemap at all.
+ * theirs, a glossary, twelve category archives, nine legal documents and three
+ * sessions pages - URLs that the blog generator has no reason to know about,
+ * and that were consequently in no sitemap at all.
  *
  * A page missing from the sitemap is not invisible, but on a site with no
  * inbound links it is close: nothing outside points at it, and the only paths
@@ -28,7 +28,6 @@ import { fileURLToPath } from 'node:url';
 
 import { TOOLS } from '../content/site/tools.mjs';
 import { TEMPLATES } from '../content/site/templates.mjs';
-import { GLOSSARY } from '../content/site/glossary.mjs';
 import { CATEGORIES } from '../content/site/categories.mjs';
 import { readSharedCatalog } from './shared-catalog.mjs';
 import { sitemapEntry, lastCommitted, newestDate } from './page-dates.mjs';
@@ -61,7 +60,7 @@ function family(pathFor, lastmod) {
 
 /**
  * The same, for a family whose members are rows in a table with per-language
- * slugs - calculators, templates, glossary terms, category archives. `slugOf`
+ * slugs - calculators, templates, category archives. `slugOf`
  * reads the slug for one row in one language; `pathOf` turns it into a URL.
  */
 function tableFamily(rows, slugOf, pathOf, lastmodOf) {
@@ -77,7 +76,7 @@ async function main() {
   const catalog = await readSharedCatalog();
 
   // One git call per source file rather than one per URL: three home pages come
-  // from one template, and a hundred glossary pages come from one table.
+  // from one template, and three glossary pages come from one table.
   const homeDate = lastCommitted(path.join('content', 'home', 'index.html'));
   // Each simulator is dated by its own template and sidecar, which is where
   // everything a reader sees on it comes from. The index above them is dated by
@@ -164,8 +163,13 @@ async function main() {
     ...tableFamily(TOOLS, (row, code) => row[code].slug, toolPath, () => toolsDate),
     ...family((code) => sectionPath('templates', code), templatesDate),
     ...tableFamily(TEMPLATES, (row, code) => row[code].slug, templatePath, () => templatesDate),
+    // The glossary is three URLs, not ninety-nine plus three. A term is a
+    // fragment on its language's page now, and a fragment is not an address a
+    // crawler can be sent to - `glossaryPath(code, slug)` returns one, so
+    // listing the terms here would have put ninety-nine `#`-bearing <loc>
+    // values in the file, all of them duplicates of the three real pages as far
+    // as any consumer is concerned.
     ...family(glossaryPath, glossaryDate),
-    ...tableFamily(GLOSSARY, (row, code) => row[code].slug, glossaryPath, () => glossaryDate),
     ...family(aboutPath, aboutDate),
     ...family(sessionsPath, sessionsDate),
     ...family(dataPath, dataDate),
@@ -204,7 +208,7 @@ ${entries.join('\n')}
   const withoutDates = entries.filter((entry) => !entry.includes('<lastmod>')).length;
   console.log(
     `Sitemap: ${entries.length} URL(s) — ${catalog.length} article(s), ${TOOLS.length} calculator(s), ` +
-      `${TEMPLATES.length} template(s), ${GLOSSARY.length} glossary term(s), ${CATEGORIES.length} category archive(s) ` +
+      `${TEMPLATES.length} template(s) and ${CATEGORIES.length} category archive(s) ` +
       `per language, plus the home, journal, simulator, sessions, results and legal pages.`
   );
   if (withoutDates > 0) {
