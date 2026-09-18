@@ -33,6 +33,33 @@ https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 3
 /es/blog/article.html /es/blog/ 301
 /pt/blog/article.html /pt/blog/ 301
 
+# The glossary used to publish a page per term: thirty-three terms in three
+# languages, ninety-nine URLs, each one a heading, two paragraphs and a link
+# back. Google discovered them and then declined to index them - they were the
+# bulk of the 212 URLs sitting in "discovered - currently not indexed" - and a
+# page it will not index is a page that dilutes the crawl of the ones it will.
+# The terms are disclosures on one page per language now, so each of those
+# ninety-nine addresses points at the disclosure that holds the same
+# definition. The old directory name is the new fragment, so this is a 1:1 map
+# and needs no table.
+#
+# A hash in a destination is ordinary: the navigation shortcuts at the bottom of
+# this file have used one since they were written, and Netlify passes it
+# through in the Location header. Interpolating a placeholder *after* the hash
+# is the part that is not spelled out in the redirect documentation. It is
+# worth doing anyway because the failure mode is mild: if `:slug` is not
+# substituted the reader lands at the top of the glossary in their language,
+# which is the page they were going to, one scroll from the term, with the jump
+# nav in front of them.
+#
+# Forced, because the term directories are pruned by
+# scripts/generate-glossary.mjs rather than deleted once, and an unforced rule
+# would lose to any of them that came back. That does mean the glossary cannot
+# have a real sub-page without removing these three lines first.
+/es/glosario/:slug/ /es/glosario/#:slug 301!
+/en/glossary/:slug/ /en/glossary/#:slug 301!
+/pt/glossario/:slug/ /pt/glossario/#:slug 301!
+
 # One page, one URL.
 #
 # Netlify serves a directory and the index.html inside it as two separate 200s,

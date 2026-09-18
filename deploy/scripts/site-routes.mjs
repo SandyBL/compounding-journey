@@ -72,8 +72,29 @@ export function templatePath(language, slug) {
   return `${sectionPath('templates', language)}${slug}/`;
 }
 
+/**
+ * The glossary, and one term inside it.
+ *
+ * A term used to be its own page, so this returned a directory. The glossary is
+ * one page per language now and a term is a disclosure on it, which makes a
+ * term's address a fragment rather than a path - and makes this function the
+ * only place that had to learn about the move. Every generator that links a
+ * term goes through here: the auto-linker in scripts/inline-links.mjs, the
+ * "terms used here" list on each calculator and template, the journal's article
+ * bodies and the glossary's own cross-references. They all now point at the
+ * disclosure that holds the definition, and none of them had to be edited.
+ *
+ * The fragment is the term's localized slug, which is what its directory was
+ * named - so a link that was `/en/glossary/compound-interest/` is now
+ * `/en/glossary/#compound-interest` and the old address redirects to exactly
+ * that. assets/js/glossary.js is what opens the disclosure on arrival.
+ *
+ * Fragments are client-side only, so nothing that talks to a server may use
+ * this form for a term: sitemap.xml lists the glossary page once per language
+ * and no longer lists terms at all.
+ */
 export function glossaryPath(language, slug) {
-  return slug ? `${sectionPath('glossary', language)}${slug}/` : sectionPath('glossary', language);
+  return slug ? `${sectionPath('glossary', language)}#${slug}` : sectionPath('glossary', language);
 }
 
 export function sessionsPath(language) {

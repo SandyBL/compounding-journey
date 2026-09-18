@@ -23,8 +23,31 @@
  * to _redirects, which sends it to the journal index. There is nothing to strip
  * in that case, and leaving it there means those URLs still resolve if this
  * function ever bypasses on error.
+ *
+ * Stripping the parameter was only half the job, and the half that was wrong
+ * was the destination. This used to paste the incoming slug into the new path
+ * unchanged, which quietly assumed a slug means the same thing in all three
+ * languages. It does not - the slugs are localized, on purpose - so
+ *
+ *     /pt/blog/article.html?post=slow-money-system
+ *
+ * was sent to /pt/blog/slow-money-system/, and the Portuguese translation is
+ * published at /pt/blog/sistema-dinheiro-lento/. That was the "not found
+ * (404)" Search Console reported, and it was not one bad link: the shell page
+ * served all three languages from one slug, so every article had the same hole
+ * in the two languages whose slug differs from the translation key.
+ *
+ * The slug is therefore resolved through the table in ./lib/article-slugs.ts,
+ * which is generated from the articles' front matter by
+ * scripts/generate-blog-catalog.mjs and keyed by every handle a legacy link
+ * could be carrying. A handle that is not in the table, or an article not yet
+ * translated into the language being asked for, falls through to the
+ * _redirects rule for the journal index - a reader who lands on the list of
+ * articles has somewhere to go, which a 404 does not.
  */
 import type { Config, Context } from '@netlify/edge-functions';
+
+import { ARTICLE_SLUGS } from './lib/article-slugs.ts';
 
 /**
  * The shape of a slug this site generates: lowercase, digits and hyphens. The
@@ -56,10 +79,17 @@ export default async (request: Request, _context: Context) => {
   // avoids restating that list in a second place.
   const language = url.pathname.split('/')[1];
 
+  // The slug this language publishes the article under. A handle nobody
+  // recognises, or one whose article has no translation here yet, is not
+  // something this function can send anywhere useful, so it hands the request
+  // back to _redirects and the journal index.
+  const published = ARTICLE_SLUGS[slug]?.[language];
+  if (!published) return;
+
   // Only the slug is dropped. A campaign parameter that happened to ride along
   // belongs to the visit and survives the hop.
   const target = new URL(url);
-  target.pathname = `/${language}/blog/${slug}/`;
+  target.pathname = `/${language}/blog/${published}/`;
   target.searchParams.delete('post');
 
   const response = new Response(null, { status: 301 });

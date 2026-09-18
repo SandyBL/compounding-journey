@@ -51,7 +51,7 @@ import { fileURLToPath } from 'node:url';
 import { INSIGHTS_PAGE, INSIGHT_SIMULATORS, INSIGHT_METRICS, VALUE_LABELS } from '../content/site/insights.mjs';
 import { escapeHtml } from './markdown.mjs';
 import {
-  LANGUAGES, ORIGIN, dataPath, journalPath, glossaryPath, sectionPath, legalPath, absolute
+  LANGUAGES, DEFAULT_LANGUAGE, ORIGIN, dataPath, journalPath, glossaryPath, sectionPath, legalPath, aboutPath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
 import {
@@ -448,8 +448,30 @@ ${progressTable(overall, language, copy)}
     url,
     inLanguage: language,
     isAccessibleForFree: true,
-    creator: { '@id': `${ORIGIN}/#sandy-bradbury` },
-    publisher: { '@id': `${ORIGIN}/#organization` },
+    // Typed as well as referenced, which is the difference between valid
+    // schema.org and something Google can read. The Person and the
+    // Organization are declared in full on the home pages and identified by
+    // `@id` everywhere else, so the whole site talks about one author and one
+    // publisher rather than about a hundred namesakes. Google's structured
+    // data parser resolves `@id` only within a single page's `@graph` though,
+    // and neither node is in this page's graph - so an `@id` on its own
+    // arrived as an object with no type, and Search Console reported
+    // "invalid object type for field creator" and the same for publisher.
+    // Naming the type here costs one word per reference and keeps the
+    // consolidation the `@id` is there to do. Same shape as the article author
+    // in scripts/generate-blog-pages.mjs.
+    creator: {
+      '@type': 'Person',
+      '@id': `${ORIGIN}/#sandy-bradbury`,
+      name: 'Sandy Bradbury',
+      url: `${ORIGIN}${aboutPath(DEFAULT_LANGUAGE)}`
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': `${ORIGIN}/#organization`,
+      name: 'Compounding Journey',
+      url: `${ORIGIN}/`
+    },
     license: 'https://creativecommons.org/licenses/by/4.0/',
     measurementTechnique: copy.methodTitle,
     ...(overall.first && overall.last

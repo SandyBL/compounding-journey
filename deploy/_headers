@@ -355,6 +355,14 @@
 /assets/js/section-nav.js
   Cache-Control: public, max-age=31536000, immutable
 
+# The glossary page's two behaviours: opening the term a fragment link points
+# at, and putting the open term's slug in the address bar so a reader can copy
+# the link to a definition. Progressive enhancement in the same sense as
+# section-nav.js - the terms are <details> elements that open on click without
+# it, and the fragment still scrolls to the right one.
+/assets/js/glossary.js
+  Cache-Control: public, max-age=31536000, immutable
+
 # Generated bundles: the precompiled Tailwind that replaced the Play CDN on the
 # simulator pages, and the Font Awesome subset that replaced the cdnjs build.
 # Both are versioned in their <link> URLs, so they can be cached hard.

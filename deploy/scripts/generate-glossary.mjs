@@ -1,33 +1,49 @@
 #!/usr/bin/env node
 /**
- * Publishes the financial glossary: one index and one page per term, per
- * language. 33 terms x 3 languages = 99 term pages plus 3 indexes.
+ * Publishes the financial glossary: one page per language, every term on it as
+ * a disclosure that opens.
  *
- * Why a page per term rather than one long page with anchors:
+ * It used to be a page per term - 33 terms x 3 languages, 99 pages plus the 3
+ * indexes above them - on the reasoning that a definitional search ("qué es el TER",
+ * "what is sequence of returns risk") is a whole search intent, and that the
+ * result which wins it is a page whose title, URL and structured data are all
+ * about that one term. That reasoning is still correct in the abstract. It was
+ * the wrong bet for this site, and Search Console said so: 26 URLs indexed
+ * against 227 not, of which 212 sat in "discovered - currently not indexed" -
+ * found, never crawled. Ninety-nine of those URLs were glossary terms of
+ * 250-320 words each. A definition cannot win an intent from a page Google has
+ * not fetched, and asking a domain a few weeks old to spend its crawl budget on
+ * ninety-nine near-identical short pages is what kept it from fetching them.
  *
- * A definitional search - "qué es el TER", "what is sequence of returns risk" -
- * is a whole search intent, and the result that wins it is a page whose title,
- * URL, first paragraph and structured data are all about that one term. An
- * anchor into a 30,000-word page can rank, but it competes with itself for
- * every one of the thirty-three intents and gives the reader a wall of text to
- * land in. A page per term also means each definition gets its own hreflang
- * cluster, so a Portuguese search for "juros compostos" reaches the Portuguese
- * page rather than the Spanish one with a language switcher.
+ * So the trade is deliberate and worth stating plainly: the site gives up 99
+ * thin URLs and the chance that any one of them ranks on its own, and gets one
+ * substantial page per language that concentrates the crawl budget, the
+ * internal links and the reading. What is lost is a per-term title tag and a
+ * per-term hreflang cluster. What is kept is everything a reader came for, and
+ * the 99 old addresses 301 to the term they asked for - see the glossary block
+ * in _redirects.
  *
- * Three things link the glossary into the rest of the site, and they are the
- * reason it is worth more than the sum of its definitions:
+ * Three things link the glossary into the rest of the site, and none of them
+ * changed:
  *
  *   - Every article body gets its terms linked automatically, by
- *     scripts/inline-links.mjs. That is 33 new internal link targets reachable
- *     from every article, computed at build time, with no author effort.
- *   - Each term page lists the articles that mention it, found by searching the
+ *     scripts/inline-links.mjs. Those links now land on a disclosure rather
+ *     than a page, which is a change to scripts/site-routes.mjs and to nothing
+ *     else.
+ *   - Each term lists the articles that mention it, found by searching the
  *     catalog's `searchText`. So the link graph runs both ways, and publishing
- *     an article adds it to the relevant term pages without touching them.
- *   - Each term page carries its own body through the same auto-linker, so the
- *     definitions cross-reference each other too.
+ *     an article adds it to the relevant terms without touching them.
+ *   - Each definition runs through the same auto-linker, so the terms
+ *     cross-reference each other - now as same-page anchors, which open the
+ *     target disclosure rather than costing a navigation.
+ *
+ * The disclosure is the same `<details name>` accordion the home page's FAQ
+ * uses, for the same reason: it is the whole behaviour with no JavaScript in
+ * it. assets/js/glossary.js adds one thing on top, which is opening the term a
+ * fragment asks for.
  *
  * The glossary content lives in content/site/glossary.mjs and this file only
- * renders it. That separation is what lets the same data drive both the pages
+ * renders it. That separation is what lets the same data drive both the page
  * and the auto-linker without either one owning it.
  */
 import { promises as fs } from 'node:fs';
@@ -40,24 +56,37 @@ import { readSharedCatalog } from './shared-catalog.mjs';
 import { renderMarkdown, escapeHtml, slugify } from './markdown.mjs';
 import { addInlineLinks, glossaryTargets, articleTargets } from './inline-links.mjs';
 import {
-  LANGUAGES, ORIGIN, glossaryPath, sectionPath, articlePath, journalPath, toolPath, absolute
+  LANGUAGES, ORIGIN, glossaryPath, sectionPath, articlePath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-/** Order the pillars appear in, on the index and in the jump nav. */
+/** Order the pillars appear in, on the page and in the jump nav. */
 const GROUPS = ['investing', 'money', 'mind'];
 
 /**
- * A term's pillar suggests which calculator is worth offering next to it. This
- * is a coarse mapping on purpose: a specific term-to-tool table would be
+ * A pillar suggests which calculator is worth offering beside it. This is a
+ * coarse mapping on purpose: a specific term-to-tool table would be
  * thirty-three entries to maintain for a link in a sidebar.
+ *
+ * It is offered once per pillar rather than once per term. On a page per term
+ * that distinction did not exist; on one page it is the difference between
+ * three calculator links and thirty-three copies of the same three.
  */
 const GROUP_TOOL = { investing: 'compound-interest', money: 'financial-freedom', mind: 'life-cost' };
 
 /**
- * The calculator's own name and localised URL for a term's pillar.
+ * How many articles a term admits to appearing in.
+ *
+ * Six, when each term had a page to itself. Three here: thirty-three terms at
+ * six links each is two hundred article links on one page, which is a page
+ * whose own link graph is mostly footnotes.
+ */
+const MENTION_LIMIT = 3;
+
+/**
+ * The calculator's own name and localised URL for a pillar.
  *
  * The ids above are language-independent; the slugs are not - the compound
  * interest calculator lives at /es/calculadoras/interes-compuesto/ and
@@ -68,7 +97,7 @@ const GROUP_TOOL = { investing: 'compound-interest', money: 'financial-freedom',
 function toolLink(group, language) {
   const tool = TOOLS.find((candidate) => candidate.id === GROUP_TOOL[group]);
   if (!tool) throw new Error(`Glossary group "${group}" points at unknown tool "${GROUP_TOOL[group]}".`);
-  return { href: toolPath(language, tool[language].slug), name: tool[language].name };
+  return { href: `${sectionPath('tools', language)}${tool[language].slug}/`, name: tool[language].name };
 }
 
 const insightLabel = { es: 'Idea clave', en: 'Key insight', pt: 'Ideia-chave' };
@@ -97,12 +126,85 @@ function mentionedIn(entry, language, catalog) {
       return needles.some((needle) => haystack.includes(needle));
     })
     .sort((left, right) => right.date.localeCompare(left.date))
-    .slice(0, 6);
+    .slice(0, MENTION_LIMIT);
 }
 
-/** ------------------------------------------------------------------ index */
+/** ------------------------------------------------------------------- term */
 
-function renderIndex(language, strings, catalog) {
+/**
+ * One term, as a disclosure.
+ *
+ * The summary carries the name and the one-line definition, which is what the
+ * old index card carried: closed, the page reads as the index it replaces, and
+ * a reader scanning for a word never has to open anything to find it. Opening
+ * is what adds the full definition, the aliases and the links.
+ *
+ * `id` is the term's localized slug - the last segment of the URL it used to
+ * have - so the redirect from that URL is a path becoming a fragment and
+ * nothing else, and every link the auto-linker has ever placed still points at
+ * the right words.
+ */
+function renderTerm(entry, language, strings, catalog, links) {
+  const term = entry[language];
+
+  // The definition body, auto-linked to the other terms and to the articles.
+  // The exclusion stops a term linking itself, which on one page would be an
+  // anchor to the disclosure the reader has just opened.
+  const { html } = addInlineLinks(
+    renderMarkdown(term.body, { origin: ORIGIN }, { insight: insightLabel[language] }),
+    links(entry.id),
+    { maxLinks: 6 }
+  );
+
+  const related = entry.related
+    .map((id) => GLOSSARY.find((candidate) => candidate.id === id))
+    .filter(Boolean)
+    .map((other) => `<a href="${hrefForEntry(other, language)}">${escapeHtml(other[language].name)}</a>`)
+    .join(' · ');
+
+  const articles = mentionedIn(entry, language, catalog)
+    .map((article) => `<a href="${articlePath(language, article.slug)}">${escapeHtml(article.title)}</a>`)
+    .join(' · ');
+
+  const aliases = term.aliases.length > 0
+    ? `<p class="term-aliases"><strong>${escapeHtml(strings.glossaryAlsoCalled)}:</strong> ${term.aliases.map((alias) => escapeHtml(alias)).join(' · ')}</p>`
+    : '';
+
+  const footer = [
+    related ? `<p><strong>${escapeHtml(strings.glossaryRelatedTerms)}:</strong> ${related}</p>` : '',
+    articles ? `<p><strong>${escapeHtml(strings.glossaryMentionedIn)}:</strong> ${articles}</p>` : ''
+  ].filter(Boolean).join('\n            ');
+
+  return `<details class="glossary-item" id="${term.slug}" name="glossary">
+          <summary>
+            <h3 class="glossary-item-name">${escapeHtml(term.name)}</h3>
+            <span class="glossary-item-short">${escapeHtml(term.short)}</span>
+          </summary>
+          <div class="glossary-item-detail">
+            ${aliases}
+            <div class="article-body">${html}</div>
+            ${footer ? `<div class="glossary-item-links">\n            ${footer}\n          </div>` : ''}
+          </div>
+        </details>`;
+}
+
+/** ------------------------------------------------------------------- page */
+
+function renderPage(language, strings, catalog) {
+  const url = absolute(glossaryPath(language));
+
+  // Built once per language rather than once per term: the target list is the
+  // same terms and articles every time, and compiling forty regular
+  // expressions thirty-three times over is work for nothing.
+  const allTargets = [
+    ...glossaryTargets(GLOSSARY, language, hrefForEntry),
+    ...articleTargets(catalog.filter((a) => a.language === language), language, (a) => articlePath(language, a.slug))
+  ];
+  const linksExcluding = (excludeId) => {
+    const self = hrefForEntry(GLOSSARY.find((entry) => entry.id === excludeId), language);
+    return allTargets.filter((target) => target.href !== self);
+  };
+
   const jump = GROUPS.map(
     (group) => `<li><a href="#${group}">${escapeHtml(strings[`glossaryGroup_${group}`])}</a></li>`
   ).join('');
@@ -111,20 +213,18 @@ function renderIndex(language, strings, catalog) {
     const entries = GLOSSARY.filter((entry) => entry.group === group)
       .sort((left, right) => left[language].name.localeCompare(right[language].name, language));
     const terms = entries
-      .map((entry) => {
-        const term = entry[language];
-        return `<li class="glossary-term">
-            <h3><a href="${hrefForEntry(entry, language)}">${escapeHtml(term.name)}</a></h3>
-            <p>${escapeHtml(term.short)}</p>
-          </li>`;
-      })
-      .join('');
+      .map((entry) => renderTerm(entry, language, strings, catalog, linksExcluding))
+      .join('\n        ');
     const count = entries.length === 1 ? strings.glossaryTermCountOne : strings.glossaryTermCountMany;
+    const tool = toolLink(group, language);
     return `<section class="glossary-group">
         <h2 id="${group}">${escapeHtml(strings[`glossaryGroup_${group}`])} <span class="card-meta">${entries.length} ${escapeHtml(count)}</span></h2>
-        <ul class="glossary-terms">${terms}</ul>
+        <p class="glossary-group-tool">${escapeHtml(strings.glossaryUseTools)}: <a href="${tool.href}">${escapeHtml(tool.name)}</a></p>
+        <div class="glossary-terms">
+        ${terms}
+        </div>
       </section>`;
-  }).join('');
+  }).join('\n      ');
 
   const body = `    <div class="container">
       <nav class="glossary-jump" aria-label="${escapeHtml(strings.glossaryJumpTo)}">
@@ -135,22 +235,38 @@ function renderIndex(language, strings, catalog) {
       ${disclaimer(strings, language, { compact: true })}
     </div>`;
 
-  // DefinedTermSet with the full member list. This is the one place where
-  // listing all 33 terms in structured data is right: it tells a crawler that
-  // the 33 pages are one work rather than 33 unrelated stubs.
+  // One DefinedTermSet holding every DefinedTerm, which is now a description of
+  // the page rather than a claim about 33 others: each term's `url` is
+  // the fragment that opens it, so a crawler is pointed at the disclosure whose
+  // text it has already been given. The aliases move in here too - they used to
+  // be a term page's `alternateName` and this is the only place left for them.
   const graph = [{
     '@type': 'DefinedTermSet',
-    '@id': `${absolute(glossaryPath(language))}#termset`,
+    '@id': `${url}#termset`,
     name: strings.glossaryTitle,
     description: strings.glossaryIntro,
     inLanguage: language,
-    url: absolute(glossaryPath(language)),
-    hasDefinedTerm: GLOSSARY.map((entry) => ({
-      '@type': 'DefinedTerm',
-      name: entry[language].name,
-      description: entry[language].short,
-      url: absolute(hrefForEntry(entry, language))
-    }))
+    url,
+    hasDefinedTerm: GLOSSARY.map((entry) => {
+      const term = entry[language];
+      return {
+        '@type': 'DefinedTerm',
+        '@id': `${url}#${term.slug}`,
+        name: term.name,
+        ...(term.aliases.length > 0 ? { alternateName: term.aliases } : {}),
+        description: term.short,
+        inLanguage: language,
+        url: `${url}#${term.slug}`,
+        // Typed as well as referenced, for the same reason the Dataset nodes
+        // in scripts/generate-data-pages.mjs are: a bare `@id` is only
+        // resolvable to a parser that reads the whole graph, and Search
+        // Console read the site's typeless references as objects with no type
+        // and reported them. This one does point at a node in this page's own
+        // graph, which is the case Google does resolve - naming the type is
+        // insurance, and it costs one line.
+        inDefinedTermSet: { '@type': 'DefinedTermSet', '@id': `${url}#termset` }
+      };
+    })
   }];
 
   return renderShell({
@@ -165,88 +281,7 @@ function renderIndex(language, strings, catalog) {
     intro: strings.glossaryIntro,
     trail: [{ name: strings.glossaryTitle, href: glossaryPath(language) }],
     graph,
-    body
-  });
-}
-
-/** ------------------------------------------------------------------- term */
-
-function renderTerm(entry, language, strings, catalog, links) {
-  const term = entry[language];
-  const url = absolute(hrefForEntry(entry, language));
-
-  // The definition body, auto-linked to the other terms and to the articles.
-  // `excludeId` stops a page linking its own term back to itself, which would
-  // be a link to the page you are already on.
-  const { html } = addInlineLinks(
-    renderMarkdown(term.body, { origin: ORIGIN }, { insight: insightLabel[language] }),
-    links(entry.id),
-    { maxLinks: 6 }
-  );
-
-  const related = entry.related
-    .map((id) => GLOSSARY.find((candidate) => candidate.id === id))
-    .filter(Boolean)
-    .map((other) => `<li><a href="${hrefForEntry(other, language)}">${escapeHtml(other[language].name)}</a></li>`)
-    .join('');
-
-  const articles = mentionedIn(entry, language, catalog)
-    .map((article) => `<li><a href="${articlePath(language, article.slug)}">${escapeHtml(article.title)}</a></li>`)
-    .join('');
-
-  const aliases = term.aliases.length > 0
-    ? `<p class="term-aliases"><strong>${escapeHtml(strings.glossaryAlsoCalled)}:</strong> ${term.aliases.map((alias) => escapeHtml(alias)).join(' · ')}</p>`
-    : '';
-
-  const body = `    <div class="container">
-      <div class="term-layout">
-        <div>
-          ${aliases}
-          <div class="article-body">${html}</div>
-          ${disclaimer(strings, language, { compact: true })}
-        </div>
-        <aside class="term-aside">
-          ${related ? `<h2>${escapeHtml(strings.glossaryRelatedTerms)}</h2><ul>${related}</ul>` : ''}
-          ${articles ? `<h2>${escapeHtml(strings.glossaryMentionedIn)}</h2><ul>${articles}</ul>` : ''}
-          <h2>${escapeHtml(strings.glossaryUseTools)}</h2>
-          <ul><li><a href="${toolLink(entry.group, language).href}">${escapeHtml(toolLink(entry.group, language).name)}</a></li></ul>
-          <a class="text-link" href="${glossaryPath(language)}">${escapeHtml(strings.glossaryAll)}</a>
-        </aside>
-      </div>
-    </div>`;
-
-  const graph = [{
-    '@type': 'DefinedTerm',
-    '@id': `${url}#term`,
-    name: term.name,
-    alternateName: term.aliases,
-    description: term.short,
-    inLanguage: language,
-    url,
-    inDefinedTermSet: {
-      '@type': 'DefinedTermSet',
-      '@id': `${absolute(glossaryPath(language))}#termset`,
-      name: strings.glossaryTitle,
-      url: absolute(glossaryPath(language))
-    }
-  }];
-
-  return renderShell({
-    language,
-    strings,
-    section: 'glossary',
-    pathFor: (code) => glossaryPath(code, GLOSSARY.find((e) => e.id === entry.id)[code].slug),
-    title: `${term.name} — ${strings.glossaryDefinition}`,
-    description: term.short,
-    heading: term.name,
-    eyebrow: strings[`glossaryGroup_${entry.group}`],
-    intro: term.short,
-    trail: [
-      { name: strings.glossaryTitle, href: glossaryPath(language) },
-      { name: term.name, href: hrefForEntry(entry, language) }
-    ],
-    graph,
-    ogType: 'article',
+    extraScripts: '\n<script src="/assets/js/glossary.js?v=source" defer></script>',
     body
   });
 }
@@ -263,9 +298,9 @@ async function main() {
   const sidecar = JSON.parse(await fs.readFile(path.join(root, 'content', 'site', 'site.i18n.json'), 'utf8'));
   const catalog = await readSharedCatalog();
 
-  // A term whose slug collides with the glossary index's own path, or with
-  // another term's, would silently overwrite a page. Cheap to check, and the
-  // kind of thing that only shows up as a missing page weeks later.
+  // A slug is a fragment now rather than a directory, so a collision no longer
+  // overwrites a page - it silently points two terms at one disclosure, and the
+  // second one is unreachable. Same check, same reason, one failure mode milder.
   for (const language of LANGUAGES) {
     const slugs = GLOSSARY.map((entry) => entry[language].slug);
     const duplicates = slugs.filter((slug, index) => slugs.indexOf(slug) !== index);
@@ -277,58 +312,45 @@ async function main() {
         throw new Error(`Glossary slug "${slug}" (${GLOSSARY[index].id}, ${language}) is not URL-safe.`);
       }
     }
-  }
-
-  let pages = 0;
-  const written = [];
-
-  for (const language of LANGUAGES) {
-    const strings = stringsFor(sidecar, language, 'site.i18n.json');
-    const indexPath = `${sectionPath('glossary', language).replace(/^\//, '')}index.html`;
-
-    await write(indexPath, renderIndex(language, strings, catalog));
-    written.push(glossaryPath(language));
-    pages += 1;
-
-    // Built once per language rather than once per term: the target list is the
-    // same 33 terms and 7 articles every time, and compiling 40 regular
-    // expressions 33 times over is work for nothing.
-    const allTargets = [
-      ...glossaryTargets(GLOSSARY, language, hrefForEntry),
-      ...articleTargets(catalog.filter((a) => a.language === language), language, (a) => articlePath(language, a.slug))
-    ];
-    const linksExcluding = (excludeId) => {
-      const self = hrefForEntry(GLOSSARY.find((entry) => entry.id === excludeId), language);
-      return allTargets.filter((target) => target.href !== self);
-    };
-
-    for (const entry of GLOSSARY) {
-      const termPath = `${glossaryPath(language, entry[language].slug).replace(/^\//, '')}index.html`;
-      await write(termPath, renderTerm(entry, language, strings, catalog, linksExcluding));
-      written.push(glossaryPath(language, entry[language].slug));
-      pages += 1;
+    // A slug that collides with a pillar's id would have the jump nav and a
+    // term competing for one fragment, and the browser would open whichever is
+    // first in the document.
+    const clashes = slugs.filter((slug) => GROUPS.includes(slug));
+    if (clashes.length > 0) {
+      throw new Error(`Glossary slug(s) ${clashes.join(', ')} collide with a group anchor (${GROUPS.join(', ')}).`);
     }
   }
 
-  // Removed terms leave orphan directories that stay published and indexed.
-  await pruneRemoved();
+  const written = [];
+  for (const language of LANGUAGES) {
+    const strings = stringsFor(sidecar, language, 'site.i18n.json');
+    const indexPath = `${sectionPath('glossary', language).replace(/^\//, '')}index.html`;
+    await write(indexPath, renderPage(language, strings, catalog));
+    written.push(glossaryPath(language));
+  }
 
-  console.log(`Glossary: ${pages} page(s) across ${LANGUAGES.length} language(s), ${GLOSSARY.length} term(s) each.`);
+  await pruneTermDirectories();
+
+  console.log(`Glossary: ${LANGUAGES.length} page(s), ${GLOSSARY.length} term(s) each.`);
   return written;
 }
 
 /**
- * Deletes term directories that no longer correspond to an entry.
+ * Deletes the per-term directories the glossary used to publish.
  *
- * Renaming a slug otherwise leaves the old page in place, where it keeps its
- * canonical tag pointing at itself and competes with the new one. This only
- * ever removes directories directly under a glossary root, so it cannot reach
- * anything another generator owns.
+ * There were 99 of them committed to the repository, and every one is a page
+ * that stays published and canonical to itself until the file is gone. The
+ * redirects in _redirects are forced, so they answer first either way - but a
+ * forced redirect is a rule somebody can relax, and a published page is a page
+ * a crawler can find some other way. Deleting the files is the half of it that
+ * does not depend on configuration. This runs every build rather than once,
+ * because the glossary root is this generator's to own and nothing else writes
+ * into it.
  */
-async function pruneRemoved() {
+async function pruneTermDirectories() {
+  let removed = 0;
   for (const language of LANGUAGES) {
     const directory = path.join(root, sectionPath('glossary', language));
-    const expected = new Set(GLOSSARY.map((entry) => entry[language].slug));
     let found;
     try {
       found = await fs.readdir(directory, { withFileTypes: true });
@@ -336,11 +358,12 @@ async function pruneRemoved() {
       continue;
     }
     for (const item of found) {
-      if (!item.isDirectory() || expected.has(item.name)) continue;
+      if (!item.isDirectory()) continue;
       await fs.rm(path.join(directory, item.name), { recursive: true, force: true });
-      console.log(`Glossary: removed stale term directory ${language}/${item.name}`);
+      removed += 1;
     }
   }
+  if (removed > 0) console.log(`Glossary: removed ${removed} retired term director${removed === 1 ? 'y' : 'ies'}.`);
 }
 
 export { main as generateGlossary, hrefForEntry, GROUPS };

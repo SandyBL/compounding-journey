@@ -148,7 +148,7 @@
    symptom is prose running off the edge of a phone screen with no scrollbar to
    bring it back, because .site-shell clips the overflow. Kept in one rule
    because the fix is identical for all six. */
-.tool-layout > *, .template-layout > *, .term-layout > *, .about-intro > *, .sessions-layout > *, .legal-layout > * { min-width: 0; }
+.tool-layout > *, .template-layout > *, .about-intro > *, .sessions-layout > *, .legal-layout > * { min-width: 0; }
 
 /* ------------------------------------------------------------- tools ------- */
 
@@ -303,18 +303,46 @@
 .glossary-jump a:hover { border-color: var(--gold); color: var(--rust); }
 
 .glossary-group { margin: 0 0 44px; }
-.glossary-group > h2 { margin: 0 0 18px; padding-bottom: 10px; border-bottom: 2px solid var(--gold); color: var(--forest); font-family: var(--serif); font-size: 1.75rem; letter-spacing: -.02em; scroll-margin-top: 100px; }
+.glossary-group > h2 { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 2px solid var(--gold); color: var(--forest); font-family: var(--serif); font-size: 1.75rem; letter-spacing: -.02em; scroll-margin-top: 100px; }
+.glossary-group-tool { margin: 0 0 14px; color: var(--muted); font-family: var(--sans); font-size: .8rem; line-height: 1.5; }
+.glossary-group-tool a { color: var(--forest-soft); font-weight: 700; text-decoration: none; }
+.glossary-group-tool a:hover { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
 .glossary-terms { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
-.glossary-term { padding: 18px 0; border-bottom: 1px solid var(--line); }
-.glossary-term h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.28rem; line-height: 1.2; }
-.glossary-term h3 a { color: var(--forest); text-decoration: none; }
-.glossary-term h3 a:hover { color: var(--rust); text-decoration: underline; text-underline-offset: 4px; }
-.glossary-term p { margin: 0; color: var(--muted); font-size: .95rem; line-height: 1.62; }
 
-.term-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 48px; align-items: start; }
-@media (max-width: 900px) { .term-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
-.term-aliases { margin: 0 0 28px; color: var(--muted); font-family: var(--sans); font-size: .84rem; line-height: 1.6; }
+/* Each term is a disclosure, styled like the .faq-item rules above: a row that
+   reads as a list entry closed, and opens in place. Closed, it shows what the old index card showed - the term and its
+   one-line definition - so the page is still scannable without opening
+   anything, which is the property a glossary cannot afford to lose.
+
+   The marker is the browser's. `list-style` on the summary is what moves it,
+   and it is left alone here on purpose: an arrow drawn with a pseudo-element
+   is one more thing to keep in step with the open state, and the native one
+   already rotates. */
+.glossary-item { border-bottom: 1px solid var(--line); scroll-margin-top: 92px; }
+.glossary-item:first-of-type { border-top: 1px solid var(--line); }
+.glossary-item > summary { display: list-item; padding: 16px 4px 16px 0; cursor: pointer; list-style-position: outside; }
+.glossary-item > summary::marker { color: var(--gold); }
+.glossary-item > summary:hover .glossary-item-name { color: var(--rust); }
+.glossary-item > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.glossary-item-name { display: block; margin: 0 0 5px; color: var(--forest); font-family: var(--serif); font-size: 1.28rem; font-weight: 600; line-height: 1.2; }
+.glossary-item-short { display: block; color: var(--muted); font-size: .95rem; line-height: 1.62; }
+.glossary-item[open] > summary { border-bottom: 1px dashed var(--line); }
+.glossary-item[open] > summary .glossary-item-short { color: var(--ink); }
+.glossary-item-detail { padding: 20px 0 26px; }
+
+/* A term the reader was sent to, rather than one they opened themselves. The
+   rule is what tells them the page did something when they arrived, since the
+   scroll alone is indistinguishable from having landed there. */
+.glossary-item:target { border-left: 3px solid var(--gold); padding-left: 14px; }
+
+.term-aliases { margin: 0 0 20px; color: var(--muted); font-family: var(--sans); font-size: .84rem; line-height: 1.6; }
 .term-aliases strong { color: var(--forest); font-weight: 700; }
+
+/* The sidebar on a calculator or a template page. Named for the term pages it
+   was written for, which no longer exist - those two families adopted it and
+   are the only users left, so the name is now the one misleading thing about
+   it and renaming it would touch two generators and every published page in
+   both families for no visible gain. */
 .term-aside { padding: 24px; border: 1px solid var(--line); background: rgba(244,239,228,.55); font-family: var(--sans); }
 .term-aside h2 { margin: 0 0 12px; color: var(--forest); font-family: var(--sans); font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .term-aside h2:not(:first-child) { margin-top: 26px; }
@@ -323,6 +351,18 @@
 .term-aside li:last-child { border-bottom: 0; }
 .term-aside a { color: var(--forest-soft); font-weight: 600; text-decoration: none; }
 .term-aside a:hover { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+
+.glossary-item-links { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); font-family: var(--sans); }
+.glossary-item-links p { margin: 0 0 8px; color: var(--muted); font-size: .84rem; line-height: 1.65; }
+.glossary-item-links p:last-child { margin-bottom: 0; }
+.glossary-item-links strong { color: var(--forest); font-weight: 700; }
+.glossary-item-links a { color: var(--forest-soft); font-weight: 600; text-decoration: none; }
+.glossary-item-links a:hover { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 600px) {
+  .glossary-item-name { font-size: 1.15rem; }
+  .glossary-item:target { padding-left: 11px; }
+}
 
 /* ------------------------------------------------------------- about ------- */
 

@@ -197,9 +197,9 @@
     "pt": "glossario"
   },
   "glossaryIntro": {
-    "es": "Definiciones claras de los términos que aparecen en el blog, las calculadoras y los simuladores. Un término por página, en el idioma que estás leyendo.",
-    "en": "Plain definitions of the terms used across the blog, the calculators and the simulators. One term per page, in the language you are reading.",
-    "pt": "Definições claras dos termos que aparecem no blog, nas calculadoras e nos simuladores. Um termo por página, no idioma que você está lendo."
+    "es": "Definiciones claras de los términos que aparecen en el blog, las calculadoras y los simuladores. Todos en una página: abre el que necesites.",
+    "en": "Plain definitions of the terms used across the blog, the calculators and the simulators. All on one page: open the one you need.",
+    "pt": "Definições claras dos termos que aparecem no blog, nas calculadoras e nos simuladores. Todos em uma página: abra o que você precisar."
   },
   "glossaryAll": {
     "es": "Ver el glosario completo",
@@ -410,11 +410,6 @@
     "es": "Glosario",
     "en": "Glossary",
     "pt": "Glossário"
-  },
-  "glossaryDefinition": {
-    "es": "Definición",
-    "en": "Definition",
-    "pt": "Definição"
   },
   "glossaryUseTools": {
     "es": "Ponlo en números",

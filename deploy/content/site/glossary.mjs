@@ -4,33 +4,39 @@
  * This file is content rather than machinery, and it is the input to two very
  * different things:
  *
- *   1. scripts/generate-glossary.mjs publishes an index and one page per term
- *      per language, which is what makes a definitional search land on this
- *      site instead of on somebody else's.
- *   2. scripts/glossary-links.mjs uses `name` and `aliases` to find the first
- *      mention of a term in an article body and link it to that term's page,
- *      automatically, at build time. That is why the aliases matter: an article
- *      that says "fondo indexado" and an article that says "fondos indexados"
- *      should both link to the same entry, and neither author should have to
- *      remember to write the link.
+ *   1. scripts/generate-glossary.mjs publishes one page per language, on which
+ *      every term is a section that opens where it sits. It used to publish a
+ *      page per term as well; the comment at the top of that file records why
+ *      it stopped.
+ *   2. scripts/inline-links.mjs uses `name` and `aliases` to find the first
+ *      mention of a term in an article body and link it to that term's
+ *      section, automatically, at build time. That is why the aliases matter:
+ *      an article that says "fondo indexado" and an article that says "fondos
+ *      indexados" should both link to the same entry, and neither author should
+ *      have to remember to write the link.
  *
  * Shape of an entry:
  *   id       - language-independent key. Used for `related` and for nothing the
  *              reader ever sees, so it never changes even if a slug does.
  *   group    - which pillar the term belongs to: investing, money, or mind.
  *              The index groups by it.
- *   related  - other entry ids. Rendered as links on the term's own page, and
- *              deliberately not symmetric: "ETF" is worth reaching from "index
- *              fund" more than the reverse.
+ *   related  - other entry ids. Rendered as links inside the term's own
+ *              section, and deliberately not symmetric: "ETF" is worth reaching
+ *              from "index fund" more than the reverse.
  *   <lang>   - { name, slug, aliases, short, body }
  *              `name`    is the heading and the DefinedTerm name.
- *              `slug`    is the URL segment, localized.
+ *              `slug`    is the term's fragment on the glossary page, localized.
+ *                        It was the URL segment of its own page until those
+ *                        pages were folded into one, and the old addresses are
+ *                        redirected onto this fragment in _redirects - so
+ *                        changing one now breaks a redirect as well as a link.
  *              `aliases` are the other spellings the auto-linker should catch,
  *                        including plurals and the abbreviation, and must NOT
  *                        include `name` (the linker adds it).
- *              `short`   is one sentence. It is the index card, the meta
- *                        description and the DefinedTerm description, so it has
- *                        to stand alone with no heading above it.
+ *              `short`   is one sentence. It is what the term's section shows
+ *                        while it is closed and it is the DefinedTerm
+ *                        description, so it has to stand alone with no heading
+ *                        above it.
  *              `body`    is Markdown, rendered by scripts/markdown.mjs like an
  *                        article body.
  *

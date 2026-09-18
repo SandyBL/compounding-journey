@@ -71,8 +71,8 @@ function homeUrl(language) {
 /**
  * The sections built from the content tables in content/site/.
  *
- * These families - a page per calculator, per template, per glossary term, per
- * category archive - did not exist when this file was written, and an assistant
+ * These families - a page per calculator, per template, per category archive,
+ * and the glossary - did not exist when this file was written, and an assistant
  * reading llms.txt was being handed a map of a site with about a hundred and
  * fifty pages missing from it. Reading them from the same tables the pages come
  * from is what keeps that from happening again: a term added to the glossary is
@@ -80,8 +80,11 @@ function homeUrl(language) {
  *
  * Descriptions are included for the calculators and templates, where there are
  * nine of each and the description is what tells an assistant which one answers
- * a question. The glossary is names and URLs only: a hundred definitions would
- * make this file mostly glossary, and llms-full.txt is where full text belongs.
+ * a question. The glossary is names and URLs only: thirty-three definitions
+ * would make this file mostly glossary, and llms-full.txt is where full text
+ * belongs. The URLs are fragments rather than pages now - every term lives on
+ * its language's single glossary page - which is worth listing anyway, because
+ * the fragment is what says which of thirty-three sections to read.
  */
 function toolLines(language) {
   return TOOLS.map((tool) => {
@@ -210,9 +213,10 @@ ${languages.map((code) => `### ${languageNames[code]}\n\n${templateLines(code)}`
 
 ## Glossary
 
-${GLOSSARY.length} terms, each with its own page giving a one-line definition, a
-longer explanation, and links to the calculators and articles that use it.
-Indexes: ${languages.map((code) => `[${languageNames[code]}](${origin}${glossaryPath(code)})`).join(', ')}.
+${GLOSSARY.length} terms on one page per language. Each is a collapsed section
+giving a one-line definition, a longer explanation, and links to the calculators
+and articles that use it; the link below each name opens that section. Pages:
+${languages.map((code) => `[${languageNames[code]}](${origin}${glossaryPath(code)})`).join(', ')}.
 
 ${languages.map((code) => `### ${languageNames[code]}\n\n${glossaryLines(code)}`).join('\n\n')}
 
