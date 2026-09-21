@@ -87,4 +87,4 @@ Toda semana eu me faço uma pergunta bem simples: *"Qual foi o menor obstáculo 
 
 Aumentar sua produtividade diária não é sobre produzir mais e trabalhar até cansar, mas sim sobre liberar tempo e energia para as metas e pessoas que trazem sentido real para a sua vida. Faça a nossa avaliação de hábitos para diagnosticar seus sistemas atuais, identificar pontos de gargalo e construir um plano de desenvolvimento sob medida.
 
-[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
