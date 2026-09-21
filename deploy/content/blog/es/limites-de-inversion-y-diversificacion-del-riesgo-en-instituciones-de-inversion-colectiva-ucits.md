@@ -79,4 +79,4 @@ Para permitir que la gestión pasiva copie con fidelidad a los índices, la ley 
 
 Aprender cómo la regulación protege tu dinero y diversifica los riesgos es un paso decisivo para invertir con criterio y tranquilidad. Realiza nuestra evaluación de hábitos para analizar el nivel de concentración de tus ahorros, revisar tus productos financieros y construir un plan de inversión equilibrado a largo plazo.
 
-[Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/?lang=es#contacto)
+[Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)
