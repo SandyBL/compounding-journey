@@ -77,4 +77,4 @@ Flexible funds give managers the maximum operational freedom. They operate witho
 
 Knowing what your funds are legally allowed to hold is key to building a portfolio that truly matches your goals and risk tolerance. Take our habit assessment to review your current portfolio, evaluate your fund allocations, and design an automated strategy for long-term growth.
 
-[Take the Financial Habits Assessment →](https://compoundingjourney.com/?lang=en#contacto)
+[Take the Financial Habits Assessment →](https://compoundingjourney.com/en/#assessment)
