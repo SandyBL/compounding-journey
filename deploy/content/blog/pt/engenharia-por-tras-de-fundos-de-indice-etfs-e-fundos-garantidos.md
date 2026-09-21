@@ -87,4 +87,4 @@ Como o cálculo da média reduz a volatilidade do mercado em cerca de 60%, o cus
 
 Entender a engenharia por trás dos produtos financeiros ajuda você a avaliar se vale a pena buscar a proteção de uma estrutura garantida ou se faz mais sentido seguir a simplicidade de uma estratégia indexada pura. Faça a nossa avaliação de hábitos para diagnosticar a estrutura da sua carteira, analisar os seus produtos atuais e construir um plano automatizado para multiplicar o seu patrimônio.
 
-[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
