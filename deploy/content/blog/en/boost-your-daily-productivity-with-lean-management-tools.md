@@ -88,4 +88,4 @@ Every Sunday, I ask myself one simple question: *"What is one small point of fri
 
 Optimizing your daily productivity isn't just about getting more done—it's about freeing up time and energy for the goals and relationships that bring true fulfillment. Take our habit assessment to evaluate your current daily systems, identify hidden points of friction, and map out a personalized strategy for long-term growth.
 
-[Take the Financial Habits Assessment →](https://compoundingjourney.com/?lang=en#contacto)
+[Take the Financial Habits Assessment →](https://compoundingjourney.com/en/#assessment)
