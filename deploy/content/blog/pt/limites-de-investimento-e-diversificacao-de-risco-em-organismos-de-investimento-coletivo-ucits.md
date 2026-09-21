@@ -79,4 +79,4 @@ Para permitir que os fundos de índice copiem o mercado com precisão, a lei tra
 
 Entender os mecanismos de proteção e diversificação dos fundos é um passo fundamental para investir com autonomia e segurança. Faça a nossa avaliação de hábitos para diagnosticar o nível de pulverização dos seus investimentos, analisar a estrutura dos seus produtos e construir uma carteira sólida para o seu futuro.
 
-[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
