@@ -84,4 +84,4 @@ Essa reserva de liquidez é calculada sobre a média dos saldos do fundo e fica 
 
 Entender a engrenagem por trás da precificação dos fundos é um passo essencial para investir com autonomia e segurança. Faça a nossa avaliação de hábitos para diagnosticar a estrutura da sua carteira, avaliar os custos dos seus investimentos e construir um plano automatizado para alcançar seus objetivos financeiros.
 
-[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
