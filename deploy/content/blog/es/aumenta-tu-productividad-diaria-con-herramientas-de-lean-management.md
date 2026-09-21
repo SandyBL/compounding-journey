@@ -88,4 +88,4 @@ Cada domingo me hago una pregunta muy simple: *"¿Qué pequeña dificultad me ha
 
 Optimizar tu productividad diaria no consiste únicamente en hacer más tareas, sino en liberar tiempo y energía para las metas y las personas que aportan un sentido real a tu vida. Realiza nuestra evaluación de hábitos para analizar tus sistemas actuales, identificar fricciones innecesarias y trazar un plan de desarrollo a tu medida.
 
-[Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/?lang=es#contacto)
+[Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)
