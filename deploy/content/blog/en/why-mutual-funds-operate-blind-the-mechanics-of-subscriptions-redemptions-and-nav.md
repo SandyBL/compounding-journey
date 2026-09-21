@@ -86,4 +86,4 @@ This reserve is calculated on the monthly average of daily balances and must be 
 
 Understanding the hidden machinery behind fund pricing and execution gives you the confidence to navigate the markets with peace of mind. Take our habit assessment to evaluate your current investment portfolio, check your fund execution structures, and build an automated strategy for long-term compound growth.
 
-[Take the Financial Habits Assessment →](https://compoundingjourney.com/?lang=en#contacto)
+[Take the Financial Habits Assessment →](https://compoundingjourney.com/en/#assessment)
