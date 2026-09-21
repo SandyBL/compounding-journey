@@ -87,4 +87,4 @@ Because taking an arithmetic average reduces overall price volatility by roughly
 
 Understanding how financial products are constructed under the hood helps you evaluate whether structured guarantees or simple index strategies align best with your long-term goals. Take our habit assessment to review your current portfolio, check your investment structures, and design an automated roadmap for compounding wealth.
 
-[Take the Financial Habits Assessment →](https://compoundingjourney.com/?lang=en#contacto)
+[Take the Financial Habits Assessment →](https://compoundingjourney.com/en/#assessment)
