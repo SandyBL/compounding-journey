@@ -77,4 +77,4 @@ Son aquellos que no se encasillan en ninguna categoría anterior. Tienen liberta
 
 Comprender los límites legales que regulan a tus fondos es fundamental para construir una cartera transparente y adaptada a tus objetivos. Realiza nuestra evaluación de hábitos para diagnosticar el nivel de riesgo de tu portafolio, analizar tus fondos actuales y trazar un plan de inversión sólido a largo plazo.
 
-[Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/?lang=es#contacto)
+[Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)
