@@ -90,4 +90,4 @@ If picking individual index funds or rebalancing asset allocations feels dauntin
 
 Designing your ideal retirement strategy isn't about making drastic sacrifices today—it's about building small, consistent habits that give your future self total freedom and security. Take our habit assessment to evaluate your current savings rate, map out your independence timeline, and discover your personalized path to long-term wealth.
 
-[Take the Financial Habits Assessment →](https://compoundingjourney.com/?lang=en#contacto)
+[Take the Financial Habits Assessment →](https://compoundingjourney.com/en/#assessment)
