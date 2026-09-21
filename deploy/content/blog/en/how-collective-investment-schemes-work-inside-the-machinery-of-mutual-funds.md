@@ -96,4 +96,4 @@ To prevent managers from getting paid twice for the same gains, performance fees
 
 Understanding how financial institutions protect your money is a major milestone in taking full ownership of your wealth. Take our habit assessment to evaluate your current portfolio structure, review your fund fees, and build a streamlined investment strategy for long-term growth.
 
-[Take the Financial Habits Assessment →](https://compoundingjourney.com/?lang=en#contacto)
+[Take the Financial Habits Assessment →](https://compoundingjourney.com/en/#assessment)
