@@ -106,7 +106,7 @@ export const ABOUT_PAGE = {
     workTitle: 'Si quieres que lo miremos juntos',
     work: [
       'Empieza por el material gratis: es lo mismo que usaríamos en una sesión, y mucha gente no necesita nada más. Si después de eso quieres que alguien mire tus números contigo, las sesiones son eso y solo eso, con la tarifa de partida publicada y sin cobro hasta que confirmes.',
-      'Para cualquier cosa, incluido decirme que algo de aquí está mal, escríbeme por el formulario de contacto. Es la única vía: no publico ninguna dirección de correo en el sitio.'
+      'Para cualquier cosa, incluido decirme que algo de aquí está mal, escríbeme por el formulario de contacto o por correo a {{mailbox}}. Son las dos vías, y las dos llegan al mismo buzón.'
     ]
   },
 
@@ -178,7 +178,7 @@ export const ABOUT_PAGE = {
     workTitle: 'If you want a second pair of eyes',
     work: [
       'Start with the free material: it is the same material we would use in a session, and plenty of people need nothing more. If after that you want somebody to look at your numbers with you, the sessions are that and only that, with the starting rate published and nothing charged until you confirm.',
-      'For anything at all, including telling me something here is wrong, write through the contact form. It is the only way: no email address is published anywhere on this site.'
+      'For anything at all, including telling me something here is wrong, write through the contact form or by email to {{mailbox}}. Those are the two ways, and both arrive in the same inbox.'
     ]
   },
 
@@ -250,7 +250,7 @@ export const ABOUT_PAGE = {
     workTitle: 'Se você quiser um segundo par de olhos',
     work: [
       'Comece pelo material gratuito: é o mesmo que usaríamos em uma sessão, e muita gente não precisa de mais nada. Se depois disso você quiser que alguém olhe os seus números com você, as sessões são isso e só isso, com a tarifa de partida publicada e sem cobrança até você confirmar.',
-      'Para qualquer coisa, inclusive para me dizer que algo aqui está errado, escreva pelo formulário de contato. É a única via: não há nenhum endereço de e-mail publicado neste site.'
+      'Para qualquer coisa, inclusive para me dizer que algo aqui está errado, escreva pelo formulário de contato ou por e-mail para {{mailbox}}. São as duas vias, e as duas chegam à mesma caixa de entrada.'
     ]
   }
 };

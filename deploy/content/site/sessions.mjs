@@ -223,7 +223,7 @@ export const SESSIONS_PAGE = {
     ],
     howTitle: 'Cómo funciona',
     how: [
-      'Me escribes por el formulario y me cuentas en cuatro líneas dónde estás y qué te gustaría resolver.',
+      'Me escribes por el formulario o por correo y me cuentas en cuatro líneas dónde estás y qué te gustaría resolver.',
       'Te contesto con las tres tarifas, los huecos que tengo y qué sesión encaja mejor. Si creo que no necesitas ninguna, también te lo digo.',
       'Cerramos día y hora, y te mando por escrito lo que conviene tener a mano.',
       'Al acabar recibes un resumen escrito de lo que hablamos y de los siguientes pasos, para que nada dependa de tu memoria.'
@@ -231,6 +231,7 @@ export const SESSIONS_PAGE = {
     enquiryTitle: 'Pedir cita',
     enquiryBody: 'Cuéntame en dos líneas dónde estás. Te contesto en menos de 48 horas laborables con las tres tarifas y los huecos que tengo.',
     enquiryAction: 'Escribir desde el formulario',
+    enquiryEmailLabel: 'O escríbeme directamente a',
     priceLabel: 'Tarifa',
     priceOnRequest: 'Consultar tarifa vigente',
     priceFromLabel: 'Desde',
@@ -267,7 +268,7 @@ export const SESSIONS_PAGE = {
     ],
     howTitle: 'How it works',
     how: [
-      'You write through the contact form and tell me in four lines where you are and what you would like to sort out.',
+      'You write through the contact form or by email and tell me in four lines where you are and what you would like to sort out.',
       'I reply with all three rates, the slots I have and which session fits best. If I think you do not need one, I say that too.',
       'We fix a day and a time, and I send you in writing what is worth having to hand.',
       'Afterwards you get a written summary of what we talked about and the next steps, so none of it depends on your memory.'
@@ -275,6 +276,7 @@ export const SESSIONS_PAGE = {
     enquiryTitle: 'Ask about a session',
     enquiryBody: 'Tell me in two lines where you are. I answer within 48 working hours with all three rates and the slots I have.',
     enquiryAction: 'Write from the contact form',
+    enquiryEmailLabel: 'Or write straight to',
     priceLabel: 'Rate',
     priceOnRequest: 'Request current rates',
     priceFromLabel: 'From',
@@ -311,7 +313,7 @@ export const SESSIONS_PAGE = {
     ],
     howTitle: 'Como funciona',
     how: [
-      'Você me escreve pelo formulário e conta em quatro linhas onde está e o que gostaria de resolver.',
+      'Você me escreve pelo formulário ou por e-mail e conta em quatro linhas onde está e o que gostaria de resolver.',
       'Eu respondo com as três tarifas, os horários que tenho e qual sessão encaixa melhor. Se eu achar que você não precisa de nenhuma, digo isso também.',
       'Marcamos dia e hora, e eu envio por escrito o que vale a pena ter à mão.',
       'No fim você recebe um resumo escrito do que conversamos e dos próximos passos, para nada depender da sua memória.'
@@ -319,6 +321,7 @@ export const SESSIONS_PAGE = {
     enquiryTitle: 'Agendar uma sessão',
     enquiryBody: 'Conte-me em duas linhas onde você está. Respondo em menos de 48 horas úteis com as três tarifas e os horários que tenho.',
     enquiryAction: 'Escrever pelo formulário',
+    enquiryEmailLabel: 'Ou escreva diretamente para',
     priceLabel: 'Tarifa',
     priceOnRequest: 'Consultar tarifa em vigor',
     priceFromLabel: 'A partir de',

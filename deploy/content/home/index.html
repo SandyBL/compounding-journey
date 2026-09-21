@@ -82,6 +82,7 @@
             "height": 2048
           },
           "description": "Financial education about money psychology, intentional investing, compound growth, budgeting, and financial freedom, with free calculators and downloadable Excel templates.",
+          "email": "compoundingjourney@gmail.com",
           "founder": {
             "@id": "https://compoundingjourney.com/#sandy-bradbury"
           },
@@ -105,6 +106,7 @@
           "url": "https://compoundingjourney.com/es/sobre-mi/",
           "image": "https://compoundingjourney.com/sandy-bradbury-portrait.png",
           "jobTitle": "Financial educator",
+          "email": "compoundingjourney@gmail.com",
           "description": "Financial educator writing about money psychology, budgeting, compound growth and long-term investing. Not an accredited financial adviser: no personal investment recommendations are given and no client money is managed.",
           "worksFor": {
             "@id": "https://compoundingjourney.com/#organization"
@@ -3548,6 +3550,20 @@
                         <span lang-content="en">Include any context that matters so we can begin with a useful, focused conversation.</span>
                         <span lang-content="pt">Inclua o contexto que você considerar importante para começarmos com uma conversa útil e concreta.</span>
                     </p>
+                    <!-- The second channel, under the first. The form is offered first
+                         because it posts to Netlify Forms and lands somewhere that is
+                         monitored; the address is here for the reader who would rather
+                         write from their own mail client, and both arrive in the same
+                         mailbox. Any change to the address has to be made here, in the
+                         footer below, in the two structured-data nodes in <head>, and in
+                         CONTACT_EMAIL in scripts/site-routes.mjs, which is what the
+                         generated pages print - scripts/verify-output.mjs fails the build
+                         on any page that prints a different one. -->
+                    <p class="mt-2 text-sm text-darkbark/65 leading-relaxed max-w-2xl mx-auto">
+                        <span lang-content="es">O escríbeme directamente a <a class="font-bold text-forestgreen underline decoration-warmgold/60 decoration-2 underline-offset-2 hover:text-warmgold break-words" href="mailto:compoundingjourney@gmail.com">compoundingjourney@gmail.com</a>.</span>
+                        <span lang-content="en">Or write straight to <a class="font-bold text-forestgreen underline decoration-warmgold/60 decoration-2 underline-offset-2 hover:text-warmgold break-words" href="mailto:compoundingjourney@gmail.com">compoundingjourney@gmail.com</a>.</span>
+                        <span lang-content="pt">Ou escreva diretamente para <a class="font-bold text-forestgreen underline decoration-warmgold/60 decoration-2 underline-offset-2 hover:text-warmgold break-words" href="mailto:compoundingjourney@gmail.com">compoundingjourney@gmail.com</a>.</span>
+                    </p>
                 </div>
 
                 <form id="contact-form" name="contact" method="POST" autocomplete="on" novalidate data-netlify="true" netlify-honeypot="bot-field" class="space-y-6 relative z-10">
@@ -3751,6 +3767,11 @@
                         <span lang-content="es">Contacto</span>
                         <span lang-content="en">Contact</span>
                         <span lang-content="pt">Contato</span>
+                    </a>
+                    <a href="mailto:compoundingjourney@gmail.com" class="hover:text-warmgold transition-colors">
+                        <span lang-content="es">Correo</span>
+                        <span lang-content="en">Email</span>
+                        <span lang-content="pt">E-mail</span>
                     </a>
                     <a href="https://www.linkedin.com/in/sandy-bradbury" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">LinkedIn</a>
                     <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Substack</a>

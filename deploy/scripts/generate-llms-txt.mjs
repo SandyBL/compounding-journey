@@ -19,7 +19,7 @@ import { TEMPLATES } from '../content/site/templates.mjs';
 import { GLOSSARY } from '../content/site/glossary.mjs';
 import { CATEGORIES } from '../content/site/categories.mjs';
 import {
-  DEFAULT_LANGUAGE,
+  DEFAULT_LANGUAGE, CONTACT_EMAIL,
   toolPath, templatePath, glossaryPath, categoryPath, sessionsPath, dataPath, aboutPath, sectionPath, legalPath, LEGAL_PAGES
 } from './site-routes.mjs';
 import { SAME_AS } from '../content/site/about.mjs';
@@ -172,7 +172,7 @@ ${languages.map((code) => `- [${languageNames[code]}](${homeUrl(code)})`).join('
 - [Financial assessment](${origin}/#assessment): the personal financial balance and investment profile questionnaires, and the snapshot, risk profile, and recommended roadmap they produce.
 - [Frequently asked questions](${origin}/#preguntas-frecuentes): direct answers about the 4% rule, what FIRE means and its variants, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
 - [About Sandy Bradbury](${origin}${aboutPath(DEFAULT_LANGUAGE)}): who writes the site, what is and is not being claimed, and the six rules the material is written under. The home page carries a short version of the same under its ${origin}/#biografia heading.
-- [Contact](${origin}/#contacto): the newsletter and a direct contact form.
+- [Contact](${origin}/#contacto): the newsletter, a direct contact form, and the project's address, ${CONTACT_EMAIL}. The form and the address arrive in the same mailbox.
 
 ## Blog
 
@@ -253,8 +253,8 @@ advice: no product recommendations, no portfolio management, no tax planning.
 An entry price is published - from R$ 99 / $19 / 17 EUR, rounded per currency,
 for the shortest session - and the three individual rates are given on request,
 because they depend on the session and the country. Enquiries go through the
-contact form on the home page; no email address is published anywhere on the
-site.
+contact form on the home page or to ${CONTACT_EMAIL}; both arrive in the same
+mailbox.
 
 ${languages.map((code) => `- [${languageNames[code]}](${origin}${sessionsPath(code)})`).join('\n')}
 
