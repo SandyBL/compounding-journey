@@ -95,4 +95,4 @@ Para impedir que a gestora cobre taxa de performance duas vezes sobre o mesmo ga
 
 Entender a arquitetura de segurança que protege seus investimentos é um passo essencial para investir com autonomia e inteligência. Faça a nossa avaliação de hábitos para diagnosticar a eficiência da sua carteira, avaliar as taxas dos seus fundos e construir uma estratégia sólida para o seu futuro.
 
-[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
