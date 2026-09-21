@@ -89,4 +89,4 @@ Si prefieres no preocuparte por reajustar tu cartera con el paso de los años, e
 
 Diseñar tu plan de jubilación no exige renunciar a disfrutar del presente, sino organizar tus finanzas con la claridad necesaria para que tu futuro esté garantizado. Realiza nuestra evaluación de hábitos para analizar tu capacidad de ahorro, calcular tu horizonte de inversión y trazar un camino claro hacia tu independencia financiera.
 
-[Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/?lang=es#contacto)
+[Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)
