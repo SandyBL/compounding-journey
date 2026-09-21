@@ -78,4 +78,4 @@ To allow index funds to mirror real market returns accurately, regulatory rules 
 
 Understanding how fund managers diversify risk behind the scenes is key to building a resilient, worry-free investment strategy. Take our habit assessment to evaluate your current portfolio allocation, check your asset concentration, and map out a diversified path to long-term wealth.
 
-[Take the Financial Habits Assessment →](https://compoundingjourney.com/?lang=en#contacto)
+[Take the Financial Habits Assessment →](https://compoundingjourney.com/en/#assessment)
