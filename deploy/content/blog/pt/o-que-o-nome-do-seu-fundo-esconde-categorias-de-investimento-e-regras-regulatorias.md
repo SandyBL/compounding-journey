@@ -76,4 +76,4 @@ Fundos que não possuem compromisso de manter concentrações fixas em uma únic
 
 Entender os limites legais que regem os seus fundos de investimento é fundamental para construir uma carteira transparente e alinhada com os seus objetivos. Faça a nossa avaliação de hábitos para diagnosticar o nível de risco dos seus investimentos, analisar a sua carteira atual e construir um plano sólido para o seu futuro.
 
-[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
