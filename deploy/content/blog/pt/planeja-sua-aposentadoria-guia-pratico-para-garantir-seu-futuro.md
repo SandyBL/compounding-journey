@@ -84,4 +84,4 @@ Muitos investidores preferem construir uma carteira com fundos imobiliários que
 
 Planejar a sua aposentadoria não significa abrir mão do presente, mas sim organizar o seu dinheiro para que o seu futuro seja leve e independente. Faça a nossa avaliação de hábitos para diagnosticar a sua capacidade de investimento, calcular sua meta acumulada e construir um plano prático para alcançar a sua liberdade financeira.
 
-[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/?lang=pt#contacto)
+[Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
