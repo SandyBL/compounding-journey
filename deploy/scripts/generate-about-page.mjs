@@ -32,8 +32,9 @@ import { fileURLToPath } from 'node:url';
 import { ABOUT_PAGE, SAME_AS } from '../content/site/about.mjs';
 import { escapeHtml } from './markdown.mjs';
 import {
-  LANGUAGES, DEFAULT_LANGUAGE, ORIGIN, aboutPath, homePath, sessionsPath, sectionPath,
-  glossaryPath, journalPath, dataPath, simulatorsPath, legalPath, absolute
+  LANGUAGES, DEFAULT_LANGUAGE, ORIGIN, CONTACT_EMAIL, CONTACT_MAILTO, aboutPath,
+  homePath, sessionsPath, sectionPath, glossaryPath, journalPath, dataPath,
+  simulatorsPath, legalPath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
 
@@ -58,6 +59,33 @@ const PORTRAIT = '/.netlify/images?url=/sandy-bradbury-portrait.png&amp;w=440&am
 
 function paragraphs(items) {
   return items.map((item) => `<p>${escapeHtml(item)}</p>`).join('');
+}
+
+/**
+ * The contact address, linked, inside prose that is otherwise escaped.
+ *
+ * The closing section names the project's mailbox, and a printed address a
+ * reader has to select and retype is one an enquiry gets lost to. The copy in
+ * content/site/about.mjs writes `{{mailbox}}` instead of the address so this
+ * page cannot end up naming a different one from the legal pages - both read
+ * CONTACT_EMAIL from site-routes - and so the escaping above stays honest: the
+ * anchor is added after the prose is escaped, not written into the copy where
+ * escapeHtml would print it as text.
+ *
+ * A token that survives this pass is a bug in the copy, not something to render
+ * literally, so it fails the build here rather than shipping `{{mailbox}}` to a
+ * reader.
+ */
+function withContactAddress(html, context) {
+  const linked = html.replaceAll(
+    '{{mailbox}}',
+    `<a href="${CONTACT_MAILTO}">${escapeHtml(CONTACT_EMAIL)}</a>`
+  );
+  const leftover = linked.match(/\{\{[a-z]+\}\}/);
+  if (leftover) {
+    throw new Error(`${context} uses ${leftover[0]}, which nothing on this page resolves.`);
+  }
+  return linked;
 }
 
 /**
@@ -128,7 +156,7 @@ ${practiceBlock(copy, language, strings)}
       </section>
       <section class="page-section" aria-labelledby="work-title">
         <h2 class="section-title" id="work-title">${escapeHtml(copy.workTitle)}</h2>
-        <div class="article-body">${paragraphs(copy.work)}
+        <div class="article-body">${withContactAddress(paragraphs(copy.work), `content/site/about.mjs (work, ${language})`)}
           <p>
             <a href="${sessionsPath(language)}">${escapeHtml(strings.sessionsNavLabel)}</a> ·
             <a href="${simulatorsPath(language)}">${escapeHtml(strings.simulatorsNavLabel)}</a> ·

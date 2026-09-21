@@ -56,7 +56,8 @@ import { fileURLToPath } from 'node:url';
 import { SESSIONS, SESSIONS_PAGE, SESSION_PRICES, SESSION_PRICE_FROM } from '../content/site/sessions.mjs';
 import { escapeHtml } from './markdown.mjs';
 import {
-  LANGUAGES, ORIGIN, sessionsPath, homePath, sectionPath, glossaryPath, journalPath, legalPath, absolute
+  LANGUAGES, ORIGIN, CONTACT_EMAIL, CONTACT_MAILTO, sessionsPath, homePath, sectionPath, glossaryPath,
+  journalPath, legalPath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
 
@@ -123,11 +124,14 @@ function priceFrom(language, copy) {
  *
  * One way out, not two. This used to print a mailto next to the form link, on
  * the reasoning that some readers would rather not fill in a form and that a
- * silently broken form is fatal to an enquiry. Both are true and it still went:
- * a personal address on a page this crawlable is harvested, and an inbox full
- * of spam loses real enquiries at a far higher rate than a form outage nobody
- * has ever reported. The form posts to Netlify Forms, which is checked, and it
- * is the only channel the privacy policy has to describe.
+ * silently broken form is fatal to an enquiry. Both were true, and what had
+ * been missing was an address that could take the harvesting: the one printed
+ * here before was the author's personal mailbox, and an inbox full of spam
+ * loses real enquiries at a far higher rate than a form outage nobody has ever
+ * reported. The project now has its own, so both channels are offered - the
+ * form first, because it posts to Netlify Forms and arrives somewhere that is
+ * checked, and the address under it for the reader who would rather use their
+ * own mail client. The privacy policy describes both.
  *
  * Order in the panel is deliberate: what it costs, what that is in other
  * currencies, what to say, what is not yet public, then the link. The reader's
@@ -152,6 +156,7 @@ ${priceFrom(language, copy)}
         <p>${escapeHtml(copy.enquiryBody)}</p>
 ${rates}
         <a class="text-link" href="${homePath(language)}?from=sessions#contact-form-panel">${escapeHtml(copy.enquiryAction)}</a>
+        <p class="session-enquiry-email">${escapeHtml(copy.enquiryEmailLabel)} <a href="${CONTACT_MAILTO}">${escapeHtml(CONTACT_EMAIL)}</a></p>
       </aside>`;
 }
 

@@ -29,8 +29,9 @@ import { fileURLToPath } from 'node:url';
 import { LEGAL } from '../content/site/legal.mjs';
 import { renderMarkdown, collectHeadings, escapeHtml } from './markdown.mjs';
 import {
-  LANGUAGES, ORIGIN, LEGAL_PAGES, legalPath, sectionPath, glossaryPath,
-  sessionsPath, dataPath, journalPath, homePath, absolute
+  LANGUAGES, ORIGIN, LEGAL_PAGES, CONTACT_EMAIL, CONTACT_MAILTO, legalPath,
+  sectionPath, glossaryPath, sessionsPath, dataPath, journalPath, homePath,
+  absolute
 } from './site-routes.mjs';
 import { renderShell, stringsFor } from './page-shell.mjs';
 
@@ -51,13 +52,21 @@ const RESOLVERS = {
   glossary: (language) => glossaryPath(language),
   data: (language) => dataPath(language),
   journal: (language) => journalPath(language),
-  // The contact form on the home page, and the only way to reach the author
-  // from this site. It replaced a printed address in every one of these
-  // documents: an address on a page this crawlable is harvested, and a
+  // The contact form on the home page. GDPR Art. 13 asks for contact details
+  // rather than for an email address specifically, and a monitored form is
+  // accepted as such, so for a long time this was the only channel these
+  // documents named: an address on a page this crawlable is harvested, and a
   // controller whose inbox is full of spam answers rights requests more slowly,
-  // not faster. GDPR Art. 13 asks for contact details rather than for an email
-  // address specifically, and a monitored form is accepted as such.
-  contact: (language) => `${homePath(language)}#contacto`
+  // not faster.
+  contact: (language) => `${homePath(language)}#contacto`,
+  // The project's official mailbox, now published beside the form. Two
+  // placeholders rather than one because a document has to print the address as
+  // well as link it: a reader who wants to write from their phone's mail app,
+  // or who is reading this on paper, needs the characters. {{email}} is the
+  // href, {{mailbox}} is the text, and both come from site-routes so the two
+  // can never disagree.
+  email: () => CONTACT_MAILTO,
+  mailbox: () => CONTACT_EMAIL
 };
 
 const insightLabel = { es: 'Idea clave', en: 'Key insight', pt: 'Ideia-chave' };

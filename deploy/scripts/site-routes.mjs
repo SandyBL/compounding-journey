@@ -19,6 +19,24 @@ export const LANGUAGES = ['es', 'en', 'pt'];
 export const DEFAULT_LANGUAGE = 'es';
 export const ORIGIN = 'https://compoundingjourney.com';
 
+// The project's official mailbox, and the second way to reach it.
+//
+// For most of this site's life there was no published address at all: every
+// enquiry went through the form on the home page, the legal documents said so
+// in three languages, and scripts/verify-output.mjs failed the build on any
+// address that reached a page. There is now an official mailbox for the
+// project, so the address is published alongside the form rather than instead
+// of it - the form still works for a reader with no mail client configured, and
+// it is still the channel Netlify Forms stores and the privacy policy
+// describes.
+//
+// It is written here once because it is printed by the legal pages, the about
+// page, the sessions page, the home page and llms.txt. Typed out in each of
+// those, the copy that goes stale is the one nobody reads until an enquiry is
+// lost in a mailbox that no longer exists.
+export const CONTACT_EMAIL = 'compoundingjourney@gmail.com';
+export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
+
 // The home page is the one document whose Spanish edition is not under /es/:
 // it is the apex. Everything else this project generates - the journal, the
 // simulators, and every page added here - keeps its language prefix, because a

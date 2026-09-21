@@ -45,6 +45,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { CONTACT_EMAIL } from './site-routes.mjs';
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 /** Where published pages live. Everything else in the repo is build input. */
@@ -103,20 +105,30 @@ const LANGUAGE_CLASS = /^lang-(?:en|es|pt)$/;
  *
  * The author's personal mailbox used to be printed in the legal notice, the
  * privacy policy, the terms and the sessions page - fifteen places, in three
- * languages, on a site that asks eleven AI crawlers to read everything. It has
- * been replaced everywhere by the contact form on the home page, and this is
- * what stops it coming back: a generator gets copied, a translation gets
- * pasted, and an address in one paragraph of one language's privacy policy is
+ * languages, on a site that asks eleven AI crawlers to read everything. The
+ * project now publishes a mailbox of its own instead, CONTACT_EMAIL in
+ * site-routes, and that one is allowed anywhere; everything matched here is
+ * still forbidden, because a generator gets copied, a translation gets pasted,
+ * and a personal address in one paragraph of one language's privacy policy is
  * not something anybody would notice in review.
  *
- * The whole local part is matched rather than the full address, so a variant
- * with a different domain is caught too. Add a line here for any other address
- * that should stay private - not for the contact form, which is a URL.
+ * The second pattern catches any other mailbox at the same provider, which is
+ * what a hand-typed variant of the published address looks like: a page that
+ * prints `compoundingjourney@gmal.com`, or the author's own account, reads as
+ * correct and sends every enquiry somewhere nobody reads. The first matches the
+ * whole local part of the retired address rather than the full thing, so a
+ * variant of it with a different domain is caught too.
+ *
+ * Add a line here for any other address that should stay private - not for the
+ * contact form, which is a URL.
  */
 const PRIVATE_CONTACTS = [
   /san\.bradbury/i,
-  /mailto:[^"'\s>]*gmail\.com/i
+  /[a-z0-9._%+-]+@gmail\.com/i
 ];
+
+/** The one address a page is allowed to print. Matched case-insensitively. */
+const PUBLISHED_CONTACT = CONTACT_EMAIL.toLowerCase();
 
 async function* htmlPages() {
   for (const entry of PAGE_ROOTS) {
@@ -360,16 +372,23 @@ async function main() {
 
     // 8. No private address is printed anywhere.
     //
-    // Every enquiry is supposed to arrive through the contact form: one inbox,
-    // one privacy paragraph describing it, and nothing for a harvester to
-    // scrape off a page. See PRIVATE_CONTACTS above for why this is enforced
-    // here rather than trusted to review.
+    // Every enquiry is supposed to arrive at one of two channels - the contact
+    // form or the project's published address - both of which land in the same
+    // inbox and are both described by the privacy policy. Any other address on
+    // a page is either a personal mailbox that should not be harvestable or a
+    // typo that silently swallows enquiries. See PRIVATE_CONTACTS above for why
+    // this is enforced here rather than trusted to review.
     for (const pattern of PRIVATE_CONTACTS) {
-      const found = markup.match(pattern);
-      if (found) {
+      // Every match is examined rather than the first, because a page that
+      // prints the published address and a private one prints the published
+      // one first: the form panel and the footer come before anything a stray
+      // paste would have added below them.
+      const global = new RegExp(pattern.source, `${pattern.flags.replace('g', '')}g`);
+      for (const [found] of markup.matchAll(global)) {
+        if (found.toLowerCase() === PUBLISHED_CONTACT) continue;
         problems.push(
-          `${page}: prints "${found[0]}". Contact goes through the form at #contacto - see PRIVATE_CONTACTS ` +
-            'in scripts/verify-output.mjs.'
+          `${page}: prints "${found}". Contact goes to ${CONTACT_EMAIL} or the form at #contacto - see ` +
+            'PRIVATE_CONTACTS in scripts/verify-output.mjs.'
         );
       }
     }
