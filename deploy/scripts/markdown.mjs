@@ -5,6 +5,15 @@
 
 const BLOCK_HTML = /^<\/?(?:p|div|section|figure|img|br|hr|table|ul|ol|blockquote|h[1-6])\b/i;
 
+// A thematic break, as CommonMark defines it: three or more matching -, * or _
+// characters, each allowed to be followed by spaces or tabs. The spaced forms
+// matter because the content studio writes them: its rich-text editor
+// serialises a divider as "- - -", not "---". This used to match only the
+// unspaced runs, so "- - -" fell through to the bullet-list rule instead and
+// shipped as a list item reading "- -" - correct in the studio preview, which
+// renders with a full CommonMark parser, and visibly wrong on the page.
+const THEMATIC_BREAK = /^\s*([-*_])(?:[ \t]*\1){2,}[ \t]*$/;
+
 // Article Markdown arrives from the content studio, so it is trusted content
 // from a source that should not be able to run script on this origin: an editor
 // account is a licence to publish words, not to add an event handler to a page
@@ -271,7 +280,7 @@ export function renderBlocks(markdown, options, labels) {
       continue;
     }
 
-    if (/^\s*(?:---|\*\*\*|___)\s*$/.test(line)) {
+    if (THEMATIC_BREAK.test(line)) {
       html.push('<hr />');
       index += 1;
       continue;
@@ -301,6 +310,10 @@ export function renderBlocks(markdown, options, labels) {
       const pattern = ordered ? numbered : bullet;
       const items = [];
       while (index < lines.length) {
+        // A divider written as "- - -" also matches the bullet pattern, so a
+        // list that runs straight into one without a blank line between them
+        // would otherwise absorb it as a final item.
+        if (THEMATIC_BREAK.test(lines[index])) break;
         const match = lines[index].match(pattern);
         if (match) {
           items.push([match[2]]);
@@ -325,7 +338,7 @@ export function renderBlocks(markdown, options, labels) {
     const paragraph = [];
     while (index < lines.length && lines[index].trim() && !/^(?:#{1,6}\s|```|\s*>|\s*\|)/.test(lines[index])
       && !bullet.test(lines[index]) && !numbered.test(lines[index])
-      && !/^\s*(?:---|\*\*\*|___)\s*$/.test(lines[index])) {
+      && !THEMATIC_BREAK.test(lines[index])) {
       paragraph.push(lines[index].trim());
       index += 1;
     }
