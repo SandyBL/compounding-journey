@@ -18,7 +18,7 @@ Entender cómo funciona este mecanismo por dentro—y la infraestructura bancari
 > 💡 **La Base Fundamental:**
 > El diferimiento fiscal no significa que no vayas a pagar impuestos nunca, sino que no los pagas mientras mantengas tu dinero invertido. Al cambiar de fondo mediante un traspaso, el 100% de tus ganancias sigue trabajando para ti, multiplicando el poder del interés compuesto año tras año.
 
-- - -
+---
 
 ## El Fundamento Legal del Diferimiento Fiscal en el IRPF
 
@@ -35,7 +35,7 @@ Por el contrario, cuando te acoges al procedimiento oficial de **traspaso de IIC
 
 *Nota importante: Este beneficio es de aplicación exclusiva para personas físicas residentes en España. Las sociedades y personas jurídicas integran las variaciones patrimoniales directamente en el Impuesto sobre Sociedades sin posibilidad de diferimiento.*
 
-- - -
+---
 
 ## La Infraestructura Técnica: El Sistema Nacional de Compensación Electrónica (SNCE)
 

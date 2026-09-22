@@ -17,7 +17,7 @@ Understanding the engineering behind index funds, ETFs, and guaranteed funds hel
 > 💡 **The Core Foundation:**
 > Structured financial products aren't built on stock picking. They are engineered using two simple components: a safe bond that restores your initial deposit at maturity and a derivatives contract that captures market upside.
 
-- - -
+---
 
 ## Index Funds and Regulatory Diversification Flexibility
 
@@ -32,7 +32,7 @@ To solve this, regulatory frameworks grant passive index funds specific exemptio
 
 This flexibility allows index funds to mirror real-world market returns with near-zero tracking error.
 
-- - -
+---
 
 ## ETFs: Real-Time Trading and Market Dynamics
 
@@ -46,7 +46,7 @@ Exchange-Traded Funds (ETFs) are index-tracking funds that trade on public stock
 
 Because ETFs trade on open exchanges, Market Makers continuously quote bid and ask prices, ensuring that the ETF's trading price stays aligned with the underlying value of its holdings.
 
-- - -
+---
 
 ## Inside a Guaranteed Fund: The Financial Blueprint
 
