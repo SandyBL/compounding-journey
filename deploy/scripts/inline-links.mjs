@@ -45,6 +45,18 @@
 /** Tags whose contents must never gain a link. */
 const FORBIDDEN_TAGS = new Set(['a', 'code', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'aside', 'figcaption']);
 
+/**
+ * Elements whose contents must never gain a link, recognised by class rather
+ * than by tag name.
+ *
+ * A formula rendered by scripts/math.mjs is built from spans, and a span is not
+ * a tag this module can forbid outright. It has to be forbidden anyway: the
+ * numerator of "total fund assets - total fund liabilities" contains the words
+ * of two glossary terms, and a link opened inside a fraction would put an
+ * underline through half of a division rule and read as part of the formula.
+ */
+const FORBIDDEN_CLASSES = /\bclass="[^"]*\b(?:article-math|article-formula|article-fraction)/;
+
 /** Default ceiling on links added to a single body. Generous but finite. */
 const DEFAULT_MAX = 14;
 
@@ -89,16 +101,21 @@ function compileTarget(target) {
 function segments(html) {
   const parts = [];
   const openForbidden = [];
+  // Open elements inside a formula, innermost last. Once a formula is entered
+  // every tag is counted rather than only the named ones, because what closes
+  // the region is the formula's own end tag and the only way to recognise it is
+  // to have kept count of the ones nested inside.
+  const openMath = [];
   let index = 0;
 
   while (index < html.length) {
     const next = html.indexOf('<', index);
     if (next === -1) {
-      parts.push({ kind: 'text', value: html.slice(index), forbidden: openForbidden.length > 0 });
+      parts.push({ kind: 'text', value: html.slice(index), forbidden: openForbidden.length > 0 || openMath.length > 0 });
       break;
     }
     if (next > index) {
-      parts.push({ kind: 'text', value: html.slice(index, next), forbidden: openForbidden.length > 0 });
+      parts.push({ kind: 'text', value: html.slice(index, next), forbidden: openForbidden.length > 0 || openMath.length > 0 });
     }
     const close = html.indexOf('>', next);
     if (close === -1) {
@@ -118,6 +135,13 @@ function segments(html) {
           if (at !== -1) openForbidden.splice(at, 1);
         } else {
           openForbidden.push(name);
+        }
+      }
+      if (!selfClosing) {
+        if (slash) {
+          if (openMath[openMath.length - 1] === name) openMath.pop();
+        } else if (openMath.length > 0 || FORBIDDEN_CLASSES.test(tag)) {
+          openMath.push(name);
         }
       }
     }

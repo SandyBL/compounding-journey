@@ -27,7 +27,7 @@ Money market funds are designed for extreme safety, short-term liquidity, and ca
 * **Weighted Average Maturity (WAM):** Measures the portfolio's sensitivity to interest rate shifts. In short-term money market funds, WAM is capped at **60 days or less**. In standard money market funds, it cannot exceed **6 months**.
 * **Weighted Average Life (WAL):** Measures the portfolio's credit and default risk by tracking the actual time remaining until the final principal payoff of every asset. Short-term funds cap WAL at **120 days**, while standard funds allow up to **12 months**.
 
-[ WAM ≤ 60 Days ] ➔ Interest Rate Sensitivity Cap
+[ WAM ≤ 60 Days ]  ➔ Interest Rate Sensitivity Cap
 [ WAL ≤ 120 Days ] ➔ Credit & Principal Default Risk Cap
 
 Money market funds are strictly prohibited from holding direct exposure to equities or unhedged foreign currencies, ensuring that your cash reserve remains liquid and stable.

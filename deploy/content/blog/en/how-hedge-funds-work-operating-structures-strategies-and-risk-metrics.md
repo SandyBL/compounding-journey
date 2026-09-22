@@ -70,21 +70,24 @@ Managers take highly leveraged, directional bets across global currencies, inter
 
 Hedge fund fee structures traditionally follow a performance-heavy model (such as a 2% management fee and a 20% performance fee on gains). To protect investors from paying performance fees on recovered losses, managers must abide by the **High-Water Mark (HWM)** principle:
 
-Net Asset Value ($NAV$)
-
-▲
-
-│      High-Water Mark 1 (HWM)
-
-│           ┌───┐  x (Performance fee │collected)       
-│       ┌───┐   ╱  ╲   
-│       ╱     ╲─╱       ╲──── (Drawdown Period: NO fee collected)
-
-
- 
-│────┴─────────────────┴───
-
-└─────────────────────────────► Time
+```
+NAV
+ ▲
+ │ HWM 2 ························───
+ │                              ╱
+ │ HWM 1 ·───╲·················╱····
+ │       ╱    ╲               ╱
+ │      ╱      ╲             ╱
+ │     ╱        ╲           ╱
+ │    ╱          ╲         ╱
+ │   ╱            ╲       ╱
+ │  ╱              ──────╱
+ │ ╱
+ │╱
+ └───────────┴─────────────────┴─────► Time
+      fee     │     no fee      │ fee
+    charged   │ (below HWM 1)   │ charged
+```
 
 A manager can only calculate and collect a performance fee on capital gains that push the fund's Net Asset Value strictly above its highest historical peak. If a fund loses 15% of its value, the manager must earn back that entire 15% loss before taking another dollar in performance fees.
 

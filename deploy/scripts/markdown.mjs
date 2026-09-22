@@ -3,7 +3,14 @@
 // assets/js/blog.js (marked + DOMPurify) closely enough that existing article
 // styles keep working, without pulling a dependency into the build.
 
+import { isMathSpan, renderMath } from './math.mjs';
+
 const BLOCK_HTML = /^<\/?(?:p|div|section|figure|img|br|hr|table|ul|ol|blockquote|h[1-6])\b/i;
+
+// A line opening a display formula. The articles write one per paragraph -
+// "$$VL = \frac{...}{...}$$" - which is how every Markdown dialect that
+// supports math spells it.
+const DISPLAY_MATH = /^\s*\$\$/;
 
 // A thematic break, as CommonMark defines it: three or more matching -, * or _
 // characters, each allowed to be followed by spaces or tabs. The spaced forms
@@ -13,6 +20,14 @@ const BLOCK_HTML = /^<\/?(?:p|div|section|figure|img|br|hr|table|ul|ol|blockquot
 // shipped as a list item reading "- -" - correct in the studio preview, which
 // renders with a full CommonMark parser, and visibly wrong on the page.
 const THEMATIC_BREAK = /^\s*([-*_])(?:[ \t]*\1){2,}[ \t]*$/;
+
+// Box drawing, block elements, geometric shapes and the heavy dingbat arrows:
+// characters that draw something rather than say it, and that no sentence in an
+// article contains. A line holding one of them is a row of a diagram. The light
+// arrows at U+2190-U+21FF are deliberately not in the set - "→" is ordinary
+// punctuation in this journal, and every article ends with a link that reads
+// "Take the assessment →", which is a sentence and must stay one.
+const DIAGRAM_MARK = /[\u2500-\u25ff\u2794-\u27bf]/;
 
 // Article Markdown arrives from the content studio, so it is trusted content
 // from a source that should not be able to run script on this origin: an editor
@@ -134,6 +149,55 @@ export function readingMinutes(markdown) {
   return Math.max(1, Math.ceil(normalizeMarkdown(String(markdown ?? '')).split(/\s+/).filter(Boolean).length / 210));
 }
 
+/**
+ * Lifts the `$...$` formulas out of a run of text, leaving a placeholder.
+ *
+ * The scan is left to right and deliberately unwilling. A dollar opens a
+ * candidate; the next dollar that is not backslash-escaped, and is on the same
+ * line, closes it; and the span becomes a formula only if isMathSpan agrees it
+ * is one. When it does not - which is most of the time, because this journal
+ * quotes prices in dollars - the opening dollar is emitted as the character it
+ * is and the scan resumes one position later, so the second dollar of "$2,500
+ * to $3,000" gets its own chance to open a real formula rather than being
+ * consumed as the close of a fake one.
+ *
+ * Escaped dollars are skipped on both sides, because a formula may contain one:
+ * the Brazilian real is written \text{R}\$ inside math mode.
+ */
+function extractMath(text, store) {
+  let output = '';
+  let index = 0;
+
+  while (index < text.length) {
+    const open = text.indexOf('$', index);
+    if (open === -1) { output += text.slice(index); break; }
+    if (open > 0 && text[open - 1] === '\\') {
+      output += text.slice(index, open + 1);
+      index = open + 1;
+      continue;
+    }
+
+    let close = -1;
+    for (let scan = open + 1; scan < text.length; scan += 1) {
+      if (text[scan] === '\n') break;
+      if (text[scan] === '$' && text[scan - 1] !== '\\') { close = scan; break; }
+    }
+
+    const body = close === -1 ? null : text.slice(open + 1, close);
+    if (body !== null && isMathSpan(body)) {
+      output += text.slice(index, open);
+      store.push(body);
+      output += `\u0000MATH${store.length - 1}\u0000`;
+      index = close + 1;
+    } else {
+      output += text.slice(index, open + 1);
+      index = open + 1;
+    }
+  }
+
+  return output;
+}
+
 function renderInline(text, options) {
   // Code spans are lifted out before escaping and emphasis run, then put
   // back at the end, so that neither pass can reach inside them. The marker
@@ -147,6 +211,13 @@ function renderInline(text, options) {
     codeSpans.push(code);
     return `\u0000CODE${codeSpans.length - 1}\u0000`;
   });
+
+  // Formulas come out next, for the same reason and in the same way: their
+  // contents are LaTeX, where _ and * and \ mean something other than what
+  // they mean in Markdown, and "R_m" would otherwise lose its subscript to the
+  // emphasis rule. They go back in already rendered, after the escaping pass.
+  const mathSpans = [];
+  output = extractMath(output, mathSpans);
 
   output = escapeHtml(output);
 
@@ -170,6 +241,8 @@ function renderInline(text, options) {
     .replace(/(^|[\s(])\*([^*\n]+)\*/gm, '$1<em>$2</em>')
     .replace(/(^|[\s(])_([^_\n]+)_/gm, '$1<em>$2</em>');
 
+  output = output.replace(/\u0000MATH(\d+)\u0000/g, (_match, index) => renderMath(mathSpans[Number(index)]));
+
   return output.replace(/\u0000CODE(\d+)\u0000/g, (_match, index) => `<code>${escapeHtml(codeSpans[Number(index)])}</code>`);
 }
 
@@ -181,6 +254,18 @@ function dedent(code) {
   const indents = code.filter((codeLine) => codeLine.trim()).map((codeLine) => codeLine.match(/^[ ]*/)[0].length);
   const shared = indents.length ? Math.min(...indents) : 0;
   return shared ? code.map((codeLine) => codeLine.slice(shared)) : code;
+}
+
+// A line inside a diagram that carries no drawing character of its own: the
+// "Mutual Oversight" written under a pair of boxes, or a heading placed over a
+// column. It is read as part of the diagram only when it sits directly under a
+// row with no blank line between them, and is positioned with whitespace rather
+// than written as a sentence - indented, or holding a gap of two or more spaces
+// that puts it under something. A sentence that follows a diagram without a
+// blank line between has neither, and ends the block instead of joining it.
+function diagramLabel(line) {
+  if (/^\s*(?:#{1,6}\s|```|>|\||[-*+]\s|\d+[.)]\s)/.test(line)) return false;
+  return /^[ \t]/.test(line) || /\S[ \t]{2,}\S/.test(line);
 }
 
 function renderTable(rows, options) {
@@ -233,6 +318,30 @@ export function renderBlocks(markdown, options, labels) {
       while (index < lines.length && !/^```/.test(lines[index])) { code.push(lines[index]); index += 1; }
       index += 1;
       html.push(`<pre><code>${escapeHtml(code.join('\n'))}</code></pre>`);
+      continue;
+    }
+
+    // A display formula, on its own line and delimited by $$. It is read here
+    // rather than in renderInline because it is a block: it is centred, it gets
+    // room above and below it, and a fraction inside it is set at full size
+    // instead of being squeezed into the line height of a sentence.
+    if (DISPLAY_MATH.test(line)) {
+      const formula = [];
+      const first = line.replace(DISPLAY_MATH, '');
+      const closesOnItsOwnLine = /\$\$\s*$/.test(first) && first.trim() !== '';
+      if (closesOnItsOwnLine) {
+        formula.push(first.replace(/\$\$\s*$/, ''));
+        index += 1;
+      } else {
+        if (first.trim()) formula.push(first);
+        index += 1;
+        while (index < lines.length && !/\$\$/.test(lines[index])) { formula.push(lines[index]); index += 1; }
+        if (index < lines.length) {
+          formula.push(lines[index].replace(/\$\$.*$/, ''));
+          index += 1;
+        }
+      }
+      html.push(renderMath(formula.join(' ').trim(), { display: true }));
       continue;
     }
 
@@ -329,6 +438,43 @@ export function renderBlocks(markdown, options, labels) {
       continue;
     }
 
+    // A diagram pasted into the body with no fence and no four-space indent,
+    // which is the shape one arrives in from the content studio: its rich-text
+    // editor keeps each line of a pasted drawing as its own paragraph, so what
+    // reaches this file has the rows separated by blank lines and no
+    // indentation left to mark them as code. Read as paragraphs, every row is
+    // trimmed and re-flowed in a proportional font and the drawing is gone -
+    // while the studio preview, a full CommonMark parser fed the same text,
+    // still shows one row per line and so looks right. The blank lines between
+    // rows are those paragraph breaks rather than blank rows of the drawing, so
+    // they come out here; the columns are what carry the meaning, so they stay
+    // exactly as written apart from an indent every row shares.
+    if (DIAGRAM_MARK.test(line)) {
+      const rows = [];
+      let cursor = index;
+      while (cursor < lines.length) {
+        if (!lines[cursor].trim()) {
+          let ahead = cursor;
+          while (ahead < lines.length && !lines[ahead].trim()) ahead += 1;
+          if (ahead >= lines.length || !DIAGRAM_MARK.test(lines[ahead])) break;
+          cursor = ahead;
+          continue;
+        }
+        if (!DIAGRAM_MARK.test(lines[cursor]) && !diagramLabel(lines[cursor])) break;
+        rows.push(lines[cursor].replace(/[ \t]+$/, ''));
+        cursor += 1;
+      }
+      index = cursor;
+      // A drawing one row tall - "[ Market Exposure ] ➔ Beta" and the other
+      // one-line flows the journal uses - has no second row to stay aligned
+      // with, so it is the one preformatted block that may wrap instead of
+      // scrolling a phone sideways. Two rows or more and the alignment between
+      // them is the whole content, so it must not.
+      const attribute = rows.length === 1 ? ' class="article-diagram-line"' : '';
+      html.push(`<pre${attribute}><code>${escapeHtml(dedent(rows).join('\n'))}</code></pre>`);
+      continue;
+    }
+
     if (BLOCK_HTML.test(line.trim())) {
       html.push(sanitizeRawBlock(line.trim()));
       index += 1;
@@ -338,7 +484,11 @@ export function renderBlocks(markdown, options, labels) {
     const paragraph = [];
     while (index < lines.length && lines[index].trim() && !/^(?:#{1,6}\s|```|\s*>|\s*\|)/.test(lines[index])
       && !bullet.test(lines[index]) && !numbered.test(lines[index])
-      && !THEMATIC_BREAK.test(lines[index])) {
+      && !THEMATIC_BREAK.test(lines[index])
+      && !DISPLAY_MATH.test(lines[index])
+      // A drawing that a draft runs straight into, with no blank line to
+      // separate it from the sentence above, still ends that paragraph.
+      && !DIAGRAM_MARK.test(lines[index])) {
       paragraph.push(lines[index].trim());
       index += 1;
     }

@@ -63,8 +63,6 @@ Para conectar las entidades financieras sin tocar tu cuenta personal, el sistema
 │     DEPOSITARIO ORIGEN (DO)     │◄──►│       GESTORA ORIGEN (GO)       │
 └─────────────────────────────────┘    └─────────────────────────────────┘
 Envío de Efectivo y Fichero Fiscal
-
-
 ```
 ---
 

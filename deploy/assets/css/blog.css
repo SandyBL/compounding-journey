@@ -301,6 +301,37 @@ button, input { font: inherit; }
    instead of widening the page around it. */
 .article-body pre { max-width: 100%; margin: 2em 0; padding: 24px; overflow-x: auto; background: #142a1d; color: #f7f1e5; font-size: .86rem; line-height: 1.65; -webkit-overflow-scrolling: touch; tab-size: 4; }
 .article-body pre code { padding: 0; border: 0; background: transparent; color: inherit; }
+/* The exception: a diagram one row tall. It has no second row to stay aligned
+   with, so wrapping cannot break anything, and wrapping is what keeps a long
+   one-line flow - "[ Initial Investment ] ➔ [ Compound Returns ] ➔ ..." -
+   readable on a phone instead of scrolling off the side of it. */
+.article-body pre.article-diagram-line { white-space: pre-wrap; overflow-x: visible; overflow-wrap: break-word; }
+/* Mathematics, rendered into ordinary elements at build time by
+   scripts/math.mjs rather than typeset in the browser by a library.
+
+   Inline math deliberately has no font of its own. Most of these spans are a
+   price or a percentage that an author happened to write in math mode - "50 €",
+   "R$ 1.800.000" - and a reader should not be able to tell those apart from the
+   sentence around them. The only places the rendering should differ from prose
+   are the places where mathematics genuinely does: a stacked fraction, a
+   sub- or superscript, a real × or ≤, and an italic single-letter variable. */
+.article-body .article-math i, .article-body .article-formula i { font-style: italic; }
+.article-body .article-math sub, .article-body .article-math sup,
+.article-body .article-formula sub, .article-body .article-formula sup { font-size: .72em; line-height: 0; }
+
+/* A display formula stands on its own, centred, with room around it and a rule
+   above and below to separate it from the prose it is being quoted inside. It
+   scrolls sideways on a narrow screen for the same reason a wide table does:
+   an expression broken across two lines mid-term says something else. */
+.article-body .article-formula { max-width: 100%; margin: 2.2em 0; padding: 26px 24px; overflow-x: auto; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(239,231,212,.38); color: var(--forest); font-size: 1.12rem; line-height: 1.35; text-align: center; -webkit-overflow-scrolling: touch; }
+
+/* The fraction, which is the whole reason this renderer exists: "assets -
+   liabilities / shares" written along one line is a different expression from
+   the one the articles mean. inline-grid stacks the two halves and centres the
+   shorter over the longer; the rule between them is the division. */
+.article-body .article-fraction { display: inline-grid; grid-template-columns: auto; vertical-align: -.55em; text-align: center; }
+.article-body .article-fraction-over { padding: 0 .4em .12em; border-bottom: 1px solid currentColor; }
+.article-body .article-fraction-under { padding: .12em .4em 0; }
 .article-body img { width: 100%; height: auto; margin: 2.5em 0; border-radius: 2px; box-shadow: 0 18px 48px rgba(31,41,34,.12); }
 .article-body > p:first-child { color: #34473a; font-size: 1.32rem; line-height: 1.72; }
 .author-card { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 24px; margin-top: 68px; padding-top: 34px; border-top: 1px solid var(--line); font-family: var(--sans); }
@@ -385,6 +416,7 @@ button, input { font: inherit; }
   .article-body .article-callout::before { left: 20px; }
   .article-body .article-table-wrap { margin-inline: -4px; width: calc(100% + 8px); }
   .article-body pre { margin-inline: -4px; width: calc(100% + 8px); padding: 18px 16px; font-size: .74rem; }
+  .article-body .article-formula { margin-inline: -4px; width: calc(100% + 8px); padding: 20px 14px; font-size: .98rem; }
   .author-card { grid-template-columns: 72px minmax(0, 1fr); }
   .author-card img { width: 72px; height: 72px; }
 }

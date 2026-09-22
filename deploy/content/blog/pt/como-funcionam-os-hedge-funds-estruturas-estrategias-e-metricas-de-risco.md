@@ -68,21 +68,24 @@ Aplica estratégias alavancadas operando moedas, juros futuros, commodities e í
 
 A estrutura de custos nos *hedge funds* costuma incluir uma taxa de performance expressiva sobre os ganhos (geralmente de 20% sobre o excedente do benchmark). Para proteger o cotista de pagar taxa de performance sobre a recuperação de perdas antigas, a regulação exige a aplicação da **Linha D'Água (High-Water Mark)**:
 
-Valor da Cota (VL)
-
-▲
-
-│      High-Water Mark 1 (HWM)
-
-│           ┌───┐  x (Cobrança de taxa de performance)       
-│       ┌───┐   ╱  ╲   
-│       ╱     ╲─╱       ╲──── (Período de recuperação: NÃO há cobrança)
-
-
- 
-│────┴─────────────────┴───
-
-└─────────────────────────────► Tempo
+```
+Valor da Cota
+ ▲
+ │ HWM 2 ························───
+ │                              ╱
+ │ HWM 1 ·───╲·················╱····
+ │       ╱    ╲               ╱
+ │      ╱      ╲             ╱
+ │     ╱        ╲           ╱
+ │    ╱          ╲         ╱
+ │   ╱            ╲       ╱
+ │  ╱              ──────╱
+ │ ╱
+ │╱
+ └───────────┴─────────────────┴─────► Tempo
+     taxa     │    sem taxa     │ taxa
+    cobrada   │(abaixo do HWM)  │ cobrada
+```
 
 A gestora só pode calcular e cobrar a taxa de performance sobre os ganhos que levarem o valor da cota estritamente acima do maior topo histórico já atingido anteriormente. Se o fundo passar por uma queda de 10%, o gestor precisa recuperar toda essa perda antes de voltar a cobrar um único real de taxa de performance.
 
