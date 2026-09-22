@@ -6,23 +6,45 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>Content Studio | Compounding Journey</title>
     <style>
-      :root { color-scheme: light; font-family: ui-sans-serif, system-ui, sans-serif; }
-      * { box-sizing: border-box; }
-      body { margin: 0; background: #f5f1e8; color: #183a25; }
-      .auth-shell { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+      /*
+       * Every rule here is scoped to this page's own two screens - the sign-in
+       * card and the "opening the studio" splash. Nothing is left on a bare
+       * element selector, and that is load-bearing rather than tidy.
+       *
+       * Decap renders the entire content studio into this same document, not
+       * into an iframe, so a rule written as `button { ... }` reaches every
+       * button the CMS draws. The markdown editor's toolbar is a row of icon
+       * buttons that carry no width of their own, so `width: 100%` made each
+       * one a full-width block: the toolbar stopped being a toolbar and became
+       * a column as tall as the number of icons on it, leaving a sliver of the
+       * window for the text being written. `input`, `label`, `p` and `h1` were
+       * leaking into the studio's chrome the same way, one cosmetic step short
+       * of the same problem.
+       *
+       * Scoping them in does not leave the CMS unstyled: Decap injects its own
+       * reset - box-sizing, the body font and background, a font for buttons -
+       * so what these rules stop overriding, it styles itself. Anything added
+       * to this block from now on belongs under .auth-shell, .auth-card or
+       * .loading for the same reason.
+       */
+      :root { color-scheme: light; }
+      body { margin: 0; }
+      .auth-shell, .loading { min-height: 100vh; display: grid; place-items: center; background: #f5f1e8; color: #183a25; font-family: ui-sans-serif, system-ui, sans-serif; }
+      .auth-shell { padding: 24px; }
+      .auth-shell *, .auth-shell *::before, .auth-shell *::after { box-sizing: border-box; }
       .auth-card { width: min(100%, 430px); padding: 38px; border: 1px solid #ded5c3; border-radius: 24px; background: #fffdf8; box-shadow: 0 24px 80px rgba(24, 58, 37, .14); }
       .auth-card img { width: 72px; height: 72px; object-fit: contain; }
-      h1 { margin: 20px 0 8px; font-family: Georgia, serif; font-size: 2rem; }
-      p { margin: 0 0 24px; color: #5d665e; line-height: 1.6; }
-      label { display: block; margin-top: 16px; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-      input { width: 100%; margin-top: 7px; padding: 13px 14px; border: 1px solid #cfc6b5; border-radius: 10px; font: inherit; background: white; }
-      input:focus { outline: 3px solid rgba(197, 155, 39, .24); border-color: #c59b27; }
-      button { width: 100%; margin-top: 22px; padding: 14px 18px; border: 0; border-radius: 10px; background: #1e4620; color: white; font: inherit; font-weight: 800; cursor: pointer; }
-      button:hover { background: #173719; }
-      button:disabled { opacity: .65; cursor: wait; }
-      .status { min-height: 24px; margin: 14px 0 0; color: #9b2c2c; font-size: .9rem; }
-      .loading { min-height: 100vh; display: grid; place-items: center; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-      [hidden] { display: none !important; }
+      .auth-card h1 { margin: 20px 0 8px; font-family: Georgia, serif; font-size: 2rem; }
+      .auth-card p { margin: 0 0 24px; color: #5d665e; line-height: 1.6; }
+      .auth-card label { display: block; margin-top: 16px; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+      .auth-card input { width: 100%; margin-top: 7px; padding: 13px 14px; border: 1px solid #cfc6b5; border-radius: 10px; font: inherit; background: white; }
+      .auth-card input:focus { outline: 3px solid rgba(197, 155, 39, .24); border-color: #c59b27; }
+      .auth-card button { width: 100%; margin-top: 22px; padding: 14px 18px; border: 0; border-radius: 10px; background: #1e4620; color: white; font: inherit; font-weight: 800; cursor: pointer; }
+      .auth-card button:hover { background: #173719; }
+      .auth-card button:disabled { opacity: .65; cursor: wait; }
+      .auth-card .status { min-height: 24px; margin: 14px 0 0; color: #9b2c2c; font-size: .9rem; }
+      .loading { font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+      .auth-shell[hidden], .loading[hidden] { display: none !important; }
     </style>
   </head>
   <body>

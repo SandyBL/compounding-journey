@@ -47,7 +47,7 @@ Veja quanto seria necessário investir mensalmente para acumular um patrimônio 
 Quem começa aos 25 anos tira do próprio bolso menos da metade do valor gasto por quem começa aos 45, deixando que os juros compostos façam mais de 80% do trabalho pesado!
 
 [ Início aos 25 anos ] ➔ R$ 240k Aportados + R$ 1,26M Juros ➔ R$ 1,5M Meta
-[ Início aos 45 anos ] ➔ R$ 600k Aportados + R$ 900k Juros ➔ R$ 1,5M Meta
+[ Início aos 45 anos ] ➔ R$ 600k Aportados + R$ 900k Juros  ➔ R$ 1,5M Meta
 
 ---
 

@@ -48,21 +48,24 @@ $$\text{Rentabilidad Total de la Cartera} = \text{Alfa } (\alpha) + \beta \cdot 
 [ Exposición al Mercado ] ➔ Rentabilidad Beta (Comportamiento del Índice)
 [ Habilidad del Gestor ]  ➔ Rentabilidad Alfa (Ganancia Independiente del Mercado)
 
+```
 Valor Liquidativo (VL)
-
-▲
-
-│      High-Water Mark 1 (HWM)
-
-│           ┌───┐  x (Cobro de comisión de éxito)       
-│       ┌───┐   ╱  ╲   
-│       ╱     ╲─╱       ╲──── (Periodo de pérdidas: NO se cobra comisión)
-
-
- 
-│────┴─────────────────┴───
-
-└─────────────────────────────► Tiempo
+ ▲
+ │ HWM 2 ························───
+ │                              ╱
+ │ HWM 1 ·───╲·················╱····
+ │       ╱    ╲               ╱
+ │      ╱      ╲             ╱
+ │     ╱        ╲           ╱
+ │    ╱          ╲         ╱
+ │   ╱            ╲       ╱
+ │  ╱              ──────╱
+ │ ╱
+ │╱
+ └───────────┴─────────────────┴─────► Tiempo
+   comisión   │  sin comisión   │ comisión
+    cobrada   │  (bajo HWM 1)   │ cobrada
+```
 
 La gestora solo puede calcular y liquidar la comisión de éxito sobre aquellas ganancias que sitúen el Valor Liquidativo del fondo estrictamente por encima de su máximo histórico absoluto previo. Si el fondo cae un 15%, el gestor debe recuperar primero ese 15% entero antes de volver a cobrar un solo euro de comisión de éxito.
 

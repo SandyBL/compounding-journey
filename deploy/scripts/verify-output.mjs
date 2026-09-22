@@ -33,6 +33,13 @@
  * page that ships the panel without linking the bundle is a page with a working,
  * permanently empty call to action, and it looks completely fine in a diff.
  *
+ * The paragraph-diagram check was added after a chart of a fund's high-water
+ * mark published as five paragraphs of box-drawing characters. The Markdown was
+ * exactly what had been pasted into the content studio, the studio's preview
+ * showed the chart intact, and the diff showed nothing but the text of it - the
+ * rows only lose their columns at the moment a paragraph re-flows them, which
+ * is in the output and nowhere before it.
+ *
  * The cross-language parity check was added after the five simulators were
  * brought onto one visual system and the three editions of each turned out to
  * have drifted apart from each other as well: a simulator's markup and its
@@ -55,6 +62,44 @@ const PAGE_ROOTS = ['index.html', '404.html', 'en', 'es', 'pt'];
 /** Spanish is the apex language, so a page outside /en/ or /pt/ is Spanish. */
 const DEFAULT_LANGUAGE = 'es';
 const LANGUAGES = new Set(['en', 'es', 'pt']);
+
+/** A paragraph as published, with whatever markup ended up inside it. */
+const PARAGRAPH = /<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/g;
+
+/**
+ * A character that draws rather than says something: box drawing, block
+ * elements, geometric shapes, and the heavy dingbat arrows the flow diagrams
+ * are built from. Kept in step with DIAGRAM_MARK in scripts/markdown.mjs, which
+ * decides what gets lifted into a <pre>; this is what notices when the two
+ * disagree. The light arrows at U+2190-U+21FF are excluded on purpose - every
+ * article ends with a link reading "Take the assessment \u2192", which belongs in a
+ * paragraph.
+ */
+const DRAWING_CHARACTER = /[\u2500-\u25ff\u2794-\u27bf]/;
+
+/**
+ * The elements a page says something in, as opposed to the ones it is built
+ * from. Everything an author wrote ends up inside one of these, which is what
+ * makes them the right place to look for source code that should have been
+ * rendered into something else.
+ *
+ * Scoped deliberately rather than searched for across the whole file: the
+ * simulators ship their copy as JavaScript, and a template literal like
+ * `$${total}` is not a formula that failed to render, it is a bundle doing
+ * its job.
+ */
+const ARTICLE_TEXT = /<(p|li|td|th|dt|dd|h[1-6]|figcaption|blockquote)(?:\s[^>]*)?>([\s\S]*?)<\/\1>/g;
+
+/**
+ * LaTeX as a reader would see it: a backslash command, or the pair of dollar
+ * signs that opens a displayed equation, still sitting in the published text.
+ * scripts/math.mjs turns those into markup at build time, so one reaching a
+ * page means it was never recognised as mathematics - a command outside the
+ * supported subset, a single `$` the author left unpaired, or a formula split
+ * across a blank line. The subset is small on purpose, and this is what keeps
+ * its edges visible instead of letting them show up on the page.
+ */
+const RAW_LATEX = /\$\$|\\(?:[a-zA-Z]{2,}\b|[%$&#])/;
 
 /** Any `/assets/...` URL a page references, with whatever version it carries. */
 const ASSET_REFERENCE = /["'(]((?:\/assets\/)[^"'()\s]+)["')\s]/g;
@@ -393,6 +438,57 @@ async function main() {
       }
     }
 
+    // 9. A diagram published as a diagram, not as a paragraph.
+    //
+    // The journal's articles explain fund mechanics with ASCII drawings, and a
+    // drawing is nothing but the column each character sits in. A paragraph is
+    // the one element that cannot keep those: the renderer trims every line and
+    // joins them, and the browser then collapses the runs of spaces and
+    // re-flows the result in a proportional font. The drawing does not look
+    // damaged - it looks like a sentence made of box characters.
+    //
+    // This is the check that reads the output, because nothing before it can.
+    // The content studio's editor stores a pasted drawing as one paragraph per
+    // line, so the Markdown committed for an article is already in the shape
+    // that breaks, and its preview - a full CommonMark parser, one row per
+    // line - shows the drawing intact. Markdown that looks right in the studio,
+    // a diff that shows nothing but the text that was pasted, and a page that
+    // published the rows as prose: that is how a chart of a high-water mark
+    // shipped as five paragraphs of box characters. renderBlocks lifts these
+    // into <pre> now; this fails the build if one ever lands in a <p> again.
+    for (const [, text] of markup.matchAll(PARAGRAPH)) {
+      const drawing = text.match(DRAWING_CHARACTER);
+      if (!drawing) continue;
+      problems.push(
+        `${page}: a paragraph contains "${drawing[0]}", which only a <pre> can keep aligned: ` +
+          `"${text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().slice(0, 60)}".`,
+      );
+    }
+
+    // 10. Mathematics published as mathematics, not as its source code.
+    //
+    // The articles explain fund mechanics with formulas, and an author writes
+    // one the way every other numerate tool accepts it: `$\beta$` for a symbol,
+    // `$$...$$` for a displayed equation. scripts/math.mjs renders that into
+    // ordinary markup while the page is built, which is why these pages carry
+    // no maths library and no extra web font - but it renders only the subset
+    // it knows, and a command outside that subset must fail loudly.
+    //
+    // Quietly is the failure that actually happened. With no renderer at all,
+    // `$$\text{NAV} = \frac{...}{...}$$` published verbatim, backslashes and
+    // braces included, in the middle of a sentence explaining how a fund is
+    // priced: a typesetting error to anyone who has seen LaTeX, and gibberish
+    // to everyone else. This fails the build instead, and names the command,
+    // so widening the subset is the obvious next move rather than a mystery.
+    for (const [, , text] of markup.matchAll(ARTICLE_TEXT)) {
+      const latex = text.match(RAW_LATEX);
+      if (!latex) continue;
+      problems.push(
+        `${page}: published text contains "${latex[0]}", which scripts/math.mjs should have rendered: ` +
+          `"${text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().slice(0, 60)}".`,
+      );
+    }
+
     // 6. A page carrying the result panel links the copy it is made of.
     //
     // Both files are needed and they are needed together: sim-cta.js is the
@@ -556,7 +652,8 @@ async function main() {
   console.log(
     `verify-output: ${pages} pages, ${references} asset references, ${redirects.length} forced redirects, ` +
       `${editions.size} simulators in ${LANGUAGES.size} languages. Versions, caching rules, canonical URLs, ` +
-      `language declarations, result-panel copy, contact privacy and cross-language visual parity all check out.`,
+      `language declarations, result-panel copy, contact privacy, cross-language visual parity and every ` +
+      `diagram published as a diagram all check out.`,
   );
 }
 

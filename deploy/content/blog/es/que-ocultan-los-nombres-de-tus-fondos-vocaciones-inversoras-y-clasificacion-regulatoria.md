@@ -27,7 +27,7 @@ Los fondos monetarios buscan la máxima preservación del capital y la gestión 
 * **Weighted Average Maturity (WAM / Vencimiento Medio Ponderado):** Mide la sensibilidad de la cartera ante cambios en los tipos de interés. En los monetarios a corto plazo no puede superar los **60 días**, mientras que en los monetarios estándar el límite es de **6 meses**.
 * **Weighted Average Life (WAL / Vida Media Ponderada):** Mide el impacto del riesgo de crédito calculando el tiempo que resta hasta la amortización final del principal de los activos. El límite es de **120 días** para el corto plazo y de **12 meses** para el estándar.
 
-[ WAM ≤ 60 Días ] ➔ Control del riesgo de tipos de interés
+[ WAM ≤ 60 Días ]  ➔ Control del riesgo de tipos de interés
 [ WAL ≤ 120 Días ] ➔ Control del riesgo de crédito e impago
 
 Los fondos monetarios tienen prohibido por ley tener exposición directa o indirecta a la bolsa o a divisas distintas de la moneda de referencia de la entidad, garantizando que tu reserva de liquidez se mantenga estable.
