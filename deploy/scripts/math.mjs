@@ -249,10 +249,13 @@ function toHtml(nodes) {
       case 'space': return ' ';
       case 'subscript': return `<sub>${toHtml(node.nodes)}</sub>`;
       case 'superscript': return `<sup>${toHtml(node.nodes)}</sup>`;
+      // Each half's contents get a span of their own so the half can be a flex
+      // box that pushes them against the rule, without every <i> and <sub>
+      // inside becoming a flex item and losing its place on the line.
       case 'fraction':
         return '<span class="article-fraction">'
-          + `<span class="article-fraction-over">${toHtml(node.over)}</span>`
-          + `<span class="article-fraction-under">${toHtml(node.under)}</span>`
+          + `<span class="article-fraction-over"><span>${toHtml(node.over)}</span></span>`
+          + `<span class="article-fraction-under"><span>${toHtml(node.under)}</span></span>`
           + '</span>';
       default: return '';
     }
@@ -300,9 +303,40 @@ function isStructural(nodes) {
  * differs from prose, which is fractions, sub- and superscripts, real symbols
  * and italic variables.
  */
+/**
+ * A display formula with a fraction at its top level, laid out as a row of
+ * terms that are centred on the fraction's rule.
+ *
+ * Set as a line of text, "Affordability Ratio = numerator / denominator" puts
+ * the words on the left on the baseline of whichever half the browser aligns
+ * with, which is never the rule: the left-hand side reads as level with the
+ * numerator, and on a phone the whole fraction wraps below it. As separate flex
+ * items, each run of terms is centred on the middle of the fraction - which the
+ * CSS makes the rule itself - and each one wraps inside its own column instead
+ * of pushing the next onto a line of its own.
+ */
+function toDisplayHtml(nodes) {
+  if (!nodes.some((node) => node.kind === 'fraction')) return toHtml(nodes);
+  const items = [];
+  let run = [];
+  const flush = () => {
+    while (run.length && run[0].kind === 'space') run.shift();
+    while (run.length && run[run.length - 1].kind === 'space') run.pop();
+    if (run.length) items.push(`<span class="article-formula-term">${toHtml(run)}</span>`);
+    run = [];
+  };
+  nodes.forEach((node) => {
+    if (node.kind !== 'fraction') { run.push(node); return; }
+    flush();
+    items.push(toHtml([node]));
+  });
+  flush();
+  return `<span class="article-formula-row">${items.join('')}</span>`;
+}
+
 export function renderMath(latex, { display = false } = {}) {
   const nodes = parse(String(latex).trim());
-  const html = toHtml(nodes);
+  const html = display ? toDisplayHtml(nodes) : toHtml(nodes);
   const tag = display ? 'div' : 'span';
   const className = display ? 'article-formula' : 'article-math';
   const label = display || isStructural(nodes)
