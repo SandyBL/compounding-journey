@@ -10,9 +10,9 @@ translation_key: sequence-of-returns-risk
 link_phrases: risco de sequência, sequência de rentabilidades, regra dos 4%, regra dos 4%, taxa de retirada segura, simulação de Monte Carlo
 author: Sandy Bradbury
 ---
-Quase toda projeção de aposentadoria que você vai ver na vida se apoia em um único número: uma rentabilidade média anual. Você digita 7%, a planilha faz o seu dinheiro crescer 7% todos os anos e conclui que ele dura para sempre.
+Quase toda projeção de aposentadoria que você vai ver na vida se apoia em um único número: uma rentabilidade média anual. Você digita 7%, a planilha faz seu dinheiro crescer 7% todos os anos e conclui que ele dura para sempre.
 
-E aqui está o problema. O mercado nunca entregou a sua média, nem uma única vez. Ele entrega +22%, depois −9%, depois +4%, depois −31%. A média desses quatro anos é bem real, mas nenhum ano individual se pareceu com ela.
+E aqui está o problema. O mercado nunca entregou sua média, nem uma única vez. Ele entrega +22%, depois −9%, depois +4%, depois −31%. A média desses quatro anos é bem real, mas nenhum ano individual se pareceu com ela.
 
 Enquanto você está acumulando, isso quase não importa. No dia em que você começa a retirar dinheiro, passa a importar mais do que quase tudo.
 
@@ -55,13 +55,19 @@ Vale ler a afirmação com cuidado, porque ela é bem mais estreita do que a rep
 
 A regra dos 4% é um dado histórico e um bom ponto de partida. Ela nunca foi uma lei, e nunca foi uma promessa feita a você.
 
+### Três ajustes para quem vai se aposentar no Brasil
+
+* **O imposto sai da mesma carteira.** Uma retirada de 4% é bruta. Resgate de renda fixa paga de 22,5% a **15%** pela tabela regressiva; fundo aberto perdeu cotas para o **come-cotas** de maio e novembro antes de você sacar; venda de ETF paga **15%** com **DARF** por sua conta. Na outra direção, **rendimento de FII** e **dividendo de ação** são isentos na pessoa física, e **previdência na tabela regressiva** chega a **10% depois de dez anos**. A composição da carteira na fase de retirada é, em boa medida, uma decisão fiscal.
+* **O juro real disponível aqui é diferente.** Um **Tesouro IPCA+** com juro real contratado alto permite uma taxa de retirada mais generosa que a americana — mas só até o vencimento. O que ninguém garante é que a mesma taxa estará disponível para reinvestir daqui a quinze anos, e isso é uma forma de risco de sequência que o investidor americano em bolsa não tem.
+* **O INSS já cobre uma parte, e ela é corrigida.** O benefício é reajustado anualmente e pago enquanto você viver, o que faz dele exatamente o tipo de renda que encurta a janela que a carteira precisa cobrir sozinha. Consulte o valor estimado no **Meu INSS** e desconte-o das suas despesas antes de calcular a taxa de retirada. Muda mais o resultado do que qualquer ajuste de alocação.
+
 ## O que uma simulação de Monte Carlo acrescenta
 
 Se a ordem importa, uma projeção única está falando de uma ordenação entre um número enorme de ordenações possíveis. Uma [simulação de Monte Carlo](/pt/simulators/monte-carlo-fire.html) gera milhares delas.
 
-Cada rodada sorteia uma nova sequência de rentabilidades anuais a partir da distribuição que você define, uma rentabilidade esperada e uma volatilidade, e passa o seu plano por ela: suas retiradas, sua alocação, seu horizonte. Uma rodada é uma anedota. Dez mil rodadas são uma distribuição, e aí a resposta deixa de ser um número e passa a ser uma forma.
+Cada rodada sorteia uma nova sequência de rentabilidades anuais a partir da distribuição que você define, uma rentabilidade esperada e uma volatilidade, e passa seu plano por ela: suas retiradas, sua alocação, seu horizonte. Uma rodada é uma anedota. Dez mil rodadas são uma distribuição, e aí a resposta deixa de ser um número e passa a ser uma forma.
 
-O que sai no fim é uma **probabilidade de sucesso**: a proporção de futuros simulados em que o dinheiro durou mais que você. Você também vê as falhas, e elas são a metade mais instrutiva do resultado, porque mostram quando os planos morreram e como tinham sido os seus primeiros cinco anos.
+O que sai no fim é uma **probabilidade de sucesso**: a proporção de futuros simulados em que o dinheiro durou mais que você. Você também vê as falhas, e elas são a metade mais instrutiva do resultado, porque mostram quando os planos morreram e como tinham sido seus primeiros cinco anos.
 
 ## Como ler honestamente uma probabilidade de sucesso
 
@@ -77,19 +83,19 @@ O que sai no fim é uma **probabilidade de sucesso**: a proporção de futuros s
 Quando um plano aparece frágil na tela, poucas coisas mudam o quadro de verdade, e elas não custam o mesmo:
 
 1. **Flexibilidade de gastos.** Uma regra combinada com você mesmo de antemão, como manter a retirada estável depois de um ano ruim e cortá-la 10% depois de um ano muito ruim, aumenta a sobrevivência mais que quase qualquer outra coisa. Ela evita justamente a venda forçada que causa o dano.
-2. **Os primeiros anos em caixa.** De um a três anos de despesas fora do mercado significam que o primeiro ano ruim não precisa ser pago vendendo dentro dele.
+2. **Os primeiros anos em caixa.** De um a três anos de despesas fora do mercado significam que o primeiro ano ruim não precisa ser pago vendendo dentro dele. No Brasil, «fora do mercado» é confortável: **Tesouro Selic** e CDB de liquidez diária pagam perto do CDI com oscilação mínima, então a reserva de sequência não custa quase nada em retorno abandonado — diferente do que acontece num país de juro zero.
 3. **A alocação.** Crescimento suficiente para superar a inflação por 30 anos, estabilidade suficiente para atravessar os cinco primeiros. Os dois modos de falha são reais, e só um deles faz barulho.
-4. **Qualquer renda.** Um trabalho de meio período, uma previdência que começa mais tarde, um aluguel. Rendas pequenas e sem graça encurtam a janela que a carteira precisa cobrir sozinha, e isso pesa muito mais do que parece à primeira vista.
+4. **Qualquer renda.** Um trabalho de meio período, o **INSS** que começa mais tarde, o **Tesouro Renda+** convertendo em renda mensal corrigida pelo IPCA, o rendimento mensal de **FIIs**. Rendas pequenas e sem graça encurtam a janela que a carteira precisa cobrir sozinha, e isso pesa muito mais do que parece à primeira vista. Vale notar que postergar o pedido do benefício do INSS aumenta o valor dele, o que o torna uma das poucas alavancas com retorno garantido disponíveis nessa fase.
 
 ## O que nada disso pode dizer
 
-Uma simulação não sabe o que o mercado vai fazer, o que a sua saúde vai fazer nem o que você vai querer aos 70. Não é uma previsão, e certamente não é recomendação personalizada. O que ela faz é mais modesto e bem mais útil: mostra em quais suposições o seu plano está apoiado e quanto precisa dar errado para ele quebrar.
+Uma simulação não sabe o que o mercado vai fazer, o que sua saúde vai fazer nem o que você vai querer aos 70. Não é uma previsão, e certamente não é recomendação personalizada. O que ela faz é mais modesto e bem mais útil: mostra em quais suposições seu plano está apoiado e quanto precisa dar errado para ele quebrar.
 
-Passe os seus próprios números pelo [simulador Monte Carlo FIRE](/pt/simulators/monte-carlo-fire.html) e depois mude uma entrada por vez, para ver de qual delas a resposta realmente depende. É exatamente isso que uma rentabilidade média nunca vai poder mostrar.
+Passe seus próprios números pelo [simulador Monte Carlo FIRE](/pt/simulators/monte-carlo-fire.html) e depois mude uma entrada por vez, para ver de qual delas a resposta realmente depende. É exatamente isso que uma rentabilidade média nunca vai poder mostrar.
 
 ---
 
-### Pronto para dominar os seus hábitos financeiros?
-A ordem das rentabilidades não está nas suas mãos, mas a sua taxa de poupança, a sua reserva em caixa e a sua reação a um ano ruim estão. Faça a nossa avaliação de hábitos para ver onde o seu plano é forte e qual dessas alavancas vale a pena puxar primeiro.
+### Pronto para dominar seus hábitos financeiros?
+A ordem das rentabilidades não está nas suas mãos, mas sua taxa de poupança, sua reserva em caixa e sua reação a um ano ruim estão. Faça a nossa avaliação de hábitos para ver onde seu plano é forte e qual dessas alavancas vale a pena puxar primeiro.
 
-[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
+[Avalie seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

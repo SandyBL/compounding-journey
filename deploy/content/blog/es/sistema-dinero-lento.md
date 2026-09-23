@@ -30,11 +30,13 @@ Los porcentajes exactos importan menos que automatizar las transferencias y revi
 
 | Destino | Porcentaje del ingreso neto | Qué absorbe |
 |:--- |:--- |:--- |
-| **Cuenta corriente** | 70% | Alquiler, comida, transporte: todo lo mensual y previsible |
-| **Reserva** | 15% | Reparaciones, dentista, franquicias del seguro, recibos anuales |
+| **Cuenta corriente** | 70% | Alquiler o hipoteca, compra, transporte: todo lo mensual y previsible |
+| **Reserva** | 15% | Reparaciones, dentista, franquicias del seguro, IBI, recibos anuales |
 | **Inversión** | 15% | Crecimiento a largo plazo que no tocas |
 
-> **Ejemplo práctico:** Daniel ingresa **$3,200 al mes**. El día de cobro salen automáticamente $480 hacia la reserva y $480 hacia la inversión, y vive con los $2,240 restantes. No toma ninguna otra decisión de presupuesto durante el mes. Al cabo de un año tiene **$5,760 en la reserva** y **$5,760 invertidos**, sin un solo momento que exigiera fuerza de voluntad.
+> **Ejemplo práctico:** Daniel cobra una nómina neta de **2.200 € al mes**. El día de cobro salen automáticamente 330 € hacia la reserva y 330 € hacia la inversión, y vive con los 1.540 € restantes. No toma ninguna otra decisión de presupuesto durante el mes. Al cabo de un año tiene **3.960 € en la reserva** y **3.960 € invertidos**, sin un solo momento que exigiera fuerza de voluntad.
+
+Si cobras en **catorce pagas**, el sistema se vuelve más fácil todavía: calcula los porcentajes sobre las doce nóminas ordinarias y manda las dos pagas extra íntegras a la inversión. Son más de dos meses de aportación al año que nunca formaron parte de tu presupuesto mensual.
 
 Si un 15% y un 15% quedan lejos este año, empieza con un 5% y un 5%. El porcentaje puede subir cuando suba tu ingreso; lo que tiene que existir desde el principio es la automatización.
 
@@ -54,6 +56,7 @@ La revisión semanal detecta lo que está pasando ahora. Dos revisiones más len
 
 - **Una vez al mes, alrededor de una hora.** Confirma que cada transferencia automática se ejecutó de verdad. Lee los cargos de suscripciones uno por uno y cancela lo que no hayas usado conscientemente. Compara el saldo de la reserva con los gastos irregulares que ya sabes que llegarán este año.
 - **Una vez al trimestre, alrededor de una hora.** Pregúntate si el reparto sigue encajando con tu vida. Si tu ingreso subió, lleva parte de esa subida a la inversión antes de que se convierta en gasto habitual. Comprueba que tus aportaciones siguen yendo donde querías.
+- **Una vez al año, en el último trimestre.** Es el momento de mirar el IRPF con tiempo: si te interesa aportar a un **plan de pensiones**, el límite de **1.500 € anuales** que reduce la base imponible general caduca el 31 de diciembre y no se arrastra al año siguiente. Y si tienes pérdidas latentes en la cartera, diciembre es cuando puedes aflorarlas para compensar ganancias del mismo ejercicio en la base del ahorro.
 
 Las tres capas juntas cuestan unas treinta horas al año, menos de lo que mucha gente dedica a elegir un solo viaje, y repartidas de forma que ninguna sesión concreta se sienta como un acontecimiento.
 
@@ -73,7 +76,7 @@ Elimina categorías innecesarias, desactiva alertas que no te ayudan a actuar y 
 
 ## Deja que la constancia haga el trabajo
 
-El patrimonio rara vez aparece gracias a un mes heroico. Crece con meses normales gestionados con cuidado. Los $480 mensuales que Daniel invierte, dejados en paz con una rentabilidad media del 6% anual, se convierten en unos **$222,000 al cabo de veinte años**, y solo unos $115,000 de esa cifra es dinero que él depositó. El resto es el tiempo haciendo un trabajo que nunca tuvo que supervisar.
+El patrimonio rara vez aparece gracias a un mes heroico. Crece con meses normales gestionados con cuidado. Los 330 € mensuales que Daniel invierte, dejados en paz con una rentabilidad media del 6% anual, se convierten en unos **152.000 € al cabo de veinte años**, y solo unos 79.000 € de esa cifra es dinero que él aportó. El resto es el tiempo haciendo un trabajo que nunca tuvo que supervisar. Si lo hizo dentro de un fondo de inversión, además, no ha pagado un euro a Hacienda por el camino: la ganancia solo tributa cuando reembolsas.
 
 Encuentra un ritmo que deje espacio para tu vida y permite que el tiempo multiplique el resultado.
 

@@ -24,8 +24,16 @@ Not all debt is created equal. Borrowing to acquire assets that appreciate or in
 | :--- | :--- | :--- | :--- |
 | **Student Loans** | Good Debt | Low to Moderate | Boosts lifetime earning potential |
 | **Mortgages** | Good Debt | Low to Moderate | Builds equity in real estate over time |
-| **Credit Cards** | Bad Debt | High (18% - 29%+) | High interest eats through savings |
-| **Payday Loans** | Bad Debt | Extremely High | Risk of predatory fee traps |
+| **Credit Cards** | Bad Debt | High (18% - 29%+ APR) | High interest eats through savings |
+| **Payday / High-Cost Short-Term** | Bad Debt | Extremely High | Risk of predatory fee traps |
+
+### Student Loans Are Not the Same Debt in Both Countries
+
+This is the one line item where US and UK readers should behave differently.
+
+**In the US**, federal loans carry a fixed rate set annually by Congress, and the repayment plan is a real choice with real consequences: standard, graduated, or income-driven plans such as SAVE and IBR, with Public Service Loan Forgiveness available after 120 qualifying payments in eligible employment. Private loans have none of these protections, which is why refinancing a federal loan privately for a slightly lower rate is usually a bad trade. Interest on qualifying loans may be deductible up to a set annual amount.
+
+**In the UK**, a student loan is closer to a graduate contribution than a debt. Repayment is 9% of income above the threshold for your plan, collected automatically through PAYE, it stops if your income falls, it never touches your credit file for mortgage scoring purposes in the way a normal debt does, and the balance is written off after the term for your plan—25 years for Plan 2, 40 years for Plan 5. Most graduates will never repay the full amount. **Voluntarily overpaying a UK student loan is, for a majority of borrowers, worse than putting the same money into a pension or an ISA**—a piece of advice that would be wrong in the US and is right here.
 
 ---
 
@@ -45,9 +53,23 @@ If you carry multiple balances, choosing an intentional repayment strategy accel
 
 ## Tips to Avoid Common Debt Traps
 
-* **Avoid Minimum-Only Payments:** Paying only the minimum on credit cards keeps you trapped in high-interest debt for years.
+* **Avoid Minimum-Only Payments:** Paying only the minimum on credit cards keeps you trapped in high-interest debt for years. US statements are required to show you how long that takes; UK statements must show the same, and both numbers are usually measured in decades.
 * **Negotiate Lower Interest Rates:** Call your lenders and request a lower APR based on your payment history.
-* **Build a Starter Emergency Fund:** Having $500 to $1,000 set aside prevents relying on credit when unexpected expenses arise.
+* **Use a 0% Transfer Deliberately:** US issuers offer 0% balance transfer cards; UK issuers offer some of the longest 0% transfer periods in the world. Both charge a transfer fee of roughly 1–4%, and both revert to a high rate on a fixed date. It only works if you set the monthly payment to clear the balance *before* that date.
+* **Build a Starter Emergency Fund:** Having $500 to $1,000—or £500 to £1,000—set aside prevents relying on credit when unexpected expenses arise.
+* **Know Your Rate Cap:** The FCA caps UK high-cost short-term credit at 0.8% per day with a total cost ceiling of 100% of the amount borrowed, so a UK payday loan can never double. The US has no federal equivalent: caps are set state by state, and rates above 300% APR remain legal in several of them.
+
+---
+
+## Protect Your Credit File While You Pay Down
+
+Your repayment strategy and your credit record are two different projects, and the second one determines what your next mortgage costs.
+
+**In the US**, FICO and VantageScore run on data from Equifax, Experian, and TransUnion. Payment history and **credit utilization**—balances as a share of limits, ideally kept under 30%—do most of the work. You are entitled to free reports from all three bureaus via AnnualCreditReport.com. Note the trap in the avalanche method: closing a paid-off card reduces your total limit and can raise utilization overnight. Keep the account open and empty.
+
+**In the UK**, Experian, Equifax, and TransUnion each publish their own score and lenders largely ignore all three, underwriting from the underlying file instead. What actually matters is the register of county court judgments, defaults, missed payments, and being on the electoral roll at your current address. Free statutory access is a legal right, and several services provide ongoing access at no cost.
+
+**In both countries**, a formal arrangement has a formal cost. A US debt settlement or Chapter 7 filing, and a UK Debt Relief Order, IVA, or bankruptcy, each stay on your file for years. Free, regulated advice exists before that point—the National Foundation for Credit Counseling in the US, and StepChange, Citizens Advice, or National Debtline in the UK. Commercial firms charging a fee to arrange what these organisations do for nothing are the most common trap at the bottom of a debt spiral.
 
 ---
 

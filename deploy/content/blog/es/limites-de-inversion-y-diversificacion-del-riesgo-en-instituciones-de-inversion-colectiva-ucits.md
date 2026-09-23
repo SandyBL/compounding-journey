@@ -11,7 +11,7 @@ author: Sandy Bradbury
 ---
 Cuando empecé a diseñar mi propia estrategia de inversión, una duda me rondaba constantemente la cabeza: ¿qué pasaría con mis ahorros si la empresa principal de mi fondo entrara en quiebra o sufriera una crisis grave?
 
-Pronto descubrí que la normativa europea UCITS (transpuesta minuciosamente a la legislación española) cuenta con un mecanismo de protección extraordinario. Para evitar que la solvencia de un fondo dependa del destino de una sola empresa o entidad bancaria, la ley impone límites matemáticos de diversificación muy estrictos.
+Pronto descubrí que la normativa europea UCITS —transpuesta a la **Ley 35/2003 de Instituciones de Inversión Colectiva** y desarrollada por el **Real Decreto 1082/2012**— cuenta con un mecanismo de protección extraordinario. Para evitar que la solvencia de un fondo dependa del destino de una sola empresa o entidad bancaria, la ley impone límites matemáticos de diversificación muy estrictos, y la **CNMV** verifica su cumplimiento sobre la cartera que la **SGIIC** remite periódicamente.
 
 Entender estas reglas te permite ver la ingeniería de seguridad que opera en el interior de los fondos de inversión e indexados que utilizas a diario. Vamos a repasar paso a paso cómo protege la ley tu capital.
 
@@ -30,6 +30,9 @@ Antes de aplicar cualquier porcentaje de diversificación, la ley delimita con p
 * **Inversión en Otras IIC:** Participaciones en otros fondos armonizados, siempre que el fondo destino no invierta más de un 10% en otros fondos (evitando la inversión en cadena).
 
 Para preservar la calidad de la cartera, la normativa limita al **10% el cajón de sastre** para activos fuera del circuito estándar, como valores no cotizados o entidades de capital riesgo.
+
+> 💡 **Quién vigila que esto se cumpla:**
+> La gestora (**SGIIC**) decide las inversiones, pero no custodia el dinero: los activos están en un **depositario** distinto, inscrito en el registro de la CNMV, cuya obligación legal incluye comprobar el cumplimiento de los coeficientes de diversificación. Esa separación es la razón por la que un fondo español no puede desaparecer con el patrimonio de sus partícipes. Conviene tener claro, eso sí, qué no cubre: el **Fondo de Garantía de Depósitos** protege depósitos bancarios hasta 100.000 €, no participaciones en fondos, y **FOGAIN** cubre supuestos de mala administración o insolvencia de la entidad, no las pérdidas de mercado de una cartera correctamente gestionada.
 
 ---
 
@@ -61,6 +64,8 @@ La ley distingue la solvencia de las empresas privadas de la del sector público
 | **Deuda Pública / Soberana** | **Hasta el 35%** | Emitida por Estados UE, CCAA o países OCDE solventes |
 | **Riesgo Global de Entidad** | **Máximo 20% Conjunto** | Suma de acciones + bonos + depósitos + derivados en 1 banco |
 
+Un matiz que importa para las carteras conservadoras españolas: las **Letras del Tesoro** y los bonos y obligaciones del Estado entran en ese 35% ampliable, y un fondo monetario o de renta fija a corto plazo puede llegar al 100% en deuda pública si reparte la cartera en al menos seis emisiones distintas sin que ninguna supere el 30%. Es la excepción que permite que exista un fondo español íntegramente invertido en deuda soberana.
+
 ---
 
 ## Fondos Índice y Gestión Pasiva: Excepciones Especiales
@@ -70,6 +75,16 @@ La ley distingue la solvencia de las empresas privadas de la del sector público
 Para permitir que la gestión pasiva copie con fidelidad a los índices, la ley aplica márgenes especiales:
 * **Fondos que Replican un Índice:** Pueden invertir hasta un **20%** en un solo emisor. De forma excepcional, si una empresa domina claramente el mercado de referencia, el tope puede elevarse hasta el **35%** para ese único emisor.
 * **Fondos que Toman como Referencia un Índice:** Permiten tener hasta un 10% en valores directos más un 10% adicional a través de derivados negociados, con un máximo absoluto del 35%.
+
+En el caso español esto no es teórico. El **IBEX 35** es un índice notablemente concentrado: los grandes bancos, Iberdrola e Inditex suman una fracción del índice que ningún fondo de gestión activa podría replicar sin saltarse la regla 5/10/40. Un fondo indexado al IBEX está diversificado exactamente en la medida en que lo está el IBEX, y esa medida es menor que la de un índice global como el MSCI World.
+
+---
+
+## Lo que Queda Fuera: las IIC de Inversión Libre
+
+Todo lo anterior describe las IIC armonizadas, es decir, las que se pueden vender a cualquier ahorrador. La **Ley 35/2003** contempla además dos figuras que operan sin estos coeficientes: las **IIC de Inversión Libre (IICIL)**, el equivalente español del *hedge fund*, y las **IIC de IIC de Inversión Libre**.
+
+Estas figuras pueden concentrar posiciones, apalancarse y exigir preavisos largos para el reembolso. En contrapartida, la normativa restringe su comercialización: se dirigen a inversores profesionales o a clientes minoristas que inviertan un mínimo de 100.000 € y firmen una declaración de conocimiento del riesgo. Si un producto te promete rentabilidades que los límites de este artículo harían imposibles, lo más probable es que estés mirando una IICIL, y el primer documento que conviene leer no es la ficha comercial sino el folleto registrado en la CNMV.
 
 ---
 

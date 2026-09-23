@@ -23,9 +23,12 @@ Todo motor de ingresos se reduce a la misma pregunta: **cuánto capital hace fal
 | Motor | Rentabilidad neta realista | Capital para 1.000 €/mes | Horas que pide de verdad |
 |---|---|---|---|
 | Dividendos de acciones o fondos cotizados | 2–4 % | 300.000–600.000 € | casi ninguna |
-| Intereses: depósitos, bonos, fondos de bonos | 2–4 % | 300.000–600.000 € | casi ninguna |
-| Vivienda en alquiler | 3–5 % neto de gastos | 240.000–400.000 € más costes de compra | reales y recurrentes |
+| Intereses: depósitos, Letras del Tesoro, fondos de renta fija | 2–3 % neto de IRPF | 400.000–600.000 € | casi ninguna |
+| Vivienda en alquiler | 3–5 % neto de gastos | 240.000–400.000 € más ITP, notaría y registro | reales y recurrentes |
 | Productos, derechos de autor, un negocio pequeño | sin relación fija | poco capital, mucho tiempo | altas al principio, nunca cero |
+
+> 💡 **La columna que falta en casi todas estas tablas: Hacienda.**
+> En España, los dividendos y los intereses son **rendimientos del capital** y tributan en la **base del ahorro del IRPF**, con tipos que arrancan en el **19 %** y suben por tramos hasta el **28 %** en las rentas más altas. Los dividendos llegan además con una **retención del 19 %** ya practicada. Así que una rentabilidad bruta del 4 % es un 3,2 % en tu cuenta, y el capital necesario sube en la misma proporción. La única excepción cómoda es el **fondo de inversión**: mientras no reembolses no hay nada que declarar, y un **traspaso** entre fondos no tributa. Por eso la cartera que acumula y la cartera que reparte no son la misma cartera aunque contengan lo mismo.
 
 De esa tabla salen dos cosas de inmediato.
 
@@ -48,9 +51,11 @@ La versión sin glamour funciona mejor. Ten activos productivos por rentabilidad
 
 ## Qué te cuesta cada motor
 
-**Dividendos e intereses.** Son los genuinamente pasivos. Tributas a medida que los recibes, en casi todas partes tanto si necesitabas ese dinero ese año como si no, y por eso son una forma mediocre de tener dinero que ibas a reinvertir de todos modos. Su debilidad es que la rentabilidad es la que es; no hay palanca que tocar.
+**Dividendos e intereses.** Son los genuinamente pasivos, y en España también los más caros de tener mientras acumulas. Tributas a medida que los recibes, tanto si necesitabas ese dinero ese año como si no, y por eso son una forma mediocre de tener dinero que ibas a reinvertir de todos modos: el mismo índice dentro de un fondo de acumulación crece sin peaje anual hasta el día del reembolso. Su otra debilidad es que la rentabilidad es la que es; no hay palanca que tocar. En el lado de los intereses, las **Letras del Tesoro** te dan riesgo soberano con vencimientos de 3 a 12 meses y sin comisión de custodia si compras directamente al Tesoro, y un **depósito** está cubierto por el **Fondo de Garantía de Depósitos** hasta 100.000 € por titular y entidad, cobertura que un fondo de renta fija no tiene.
 
-**Vivienda en alquiler.** Rentabilidades más altas sobre el papel, y luego la diferencia entre bruto y neto se come casi todo: meses vacíos, reparaciones, comisiones, seguro, impuestos y el inquilino difícil que acaba llegando. Es concentrada (un activo, una calle, un marco legal), ilíquida y te pide atención justo en los meses en los que tenías otros planes. El apalancamiento multiplica igual los aciertos y los errores.
+**Vivienda en alquiler.** Rentabilidades más altas sobre el papel, y luego la diferencia entre bruto y neto se come casi todo: meses vacíos, reparaciones, comisiones de agencia, **IBI**, comunidad, derramas, seguro y el inquilino difícil que acaba llegando. En la compra hay que sumar el **ITP** de tu comunidad autónoma más notaría y registro, un desembolso que no recuperas al vender. En el IRPF, el alquiler va a la **base general** y tributa a tu tipo marginal, aunque el arrendamiento de vivienda habitual da derecho a una **reducción del rendimiento neto** cuyos tramos reformuló la **Ley 12/2023**: comprobar el porcentaje que te corresponde cambia la cuenta más que cualquier detalle del piso. Es concentrada (un activo, una calle, un inquilino), ilíquida y te pide atención justo en los meses en los que tenías otros planes. El apalancamiento de la hipoteca multiplica igual los aciertos y los errores, y con tipo variable el **Euríbor** decide tu flujo de caja sin consultarte.
+
+Si lo que buscas es la exposición al inmobiliario y no el oficio de casero, una **SOCIMI** cotizada o un fondo del sector te dan lo primero sin lo segundo, con liquidez diaria y tributando en la base del ahorro.
 
 **Productos y derechos de autor.** Sin barrera de capital y sin suelo tampoco. El ingreso es volátil y a menudo decae: un curso se queda desactualizado, una plataforma cambia sus reglas, el tráfico se seca. Lo que aquí parece ingreso pasivo suele ser la cola de un trabajo continuo. A veces una cola excelente, pero una cola.
 

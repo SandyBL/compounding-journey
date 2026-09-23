@@ -52,6 +52,8 @@ One of the most powerful lessons in financial literacy is recognizing that debt 
 
 Kiyosaki advises leveraging good debt responsibly while aggressively minimizing or avoiding bad debt.
 
+Two caveats before you act on the "good debt" half, because the tax rules he wrote about have changed and they now differ sharply by country. \*\*In the US\*\*, mortgage interest remains deductible on up to $750,000 of acquisition debt, but the much larger standard deduction means the majority of households no longer itemize and therefore get no deduction at all—so run the arithmetic for your own return rather than assuming the benefit. \*\*In the UK\*\*, the leveraged buy-to-let model the book implicitly assumes was dismantled in 2020: under \*\*Section 24\*\*, landlords can no longer deduct mortgage interest from rental profit and instead receive only a basic-rate tax credit, which means a higher-rate taxpayer can now owe tax on rental income that never reached them.
+
 
 
 \---
@@ -92,7 +94,7 @@ Building wealth is a gradual, intentional journey. Adopting these core daily hab
 
 2. \*\*Invest in Financial Education:\*\* Financial literacy is your most valuable asset. Continuously read, take courses, and learn how money and markets work.
 
-3. \*\*Invest Savings Wisely:\*\* Saving money in a low-interest bank account causes your wealth to erode over time. Put your savings to work in appreciating assets like index funds or real estate.
+3. \*\*Invest Savings Wisely:\*\* Saving money in a low-interest bank account causes your wealth to erode over time. Put your savings to work in appreciating assets like index funds or real estate—and hold them inside a tax-advantaged wrapper first. A 401(k) match, a Roth IRA, a workplace pension or a Stocks & Shares ISA will do more for your net worth than any asset you pick inside them.
 
 4. \*\*Avoid Lifestyle Inflation:\*\* As your income grows, keep your living expenses stable and invest the difference rather than upgrading consumer items.
 

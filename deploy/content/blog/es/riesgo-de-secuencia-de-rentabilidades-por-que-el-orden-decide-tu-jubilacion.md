@@ -55,6 +55,12 @@ Merece la pena leer esa afirmación con calma, porque es bastante más estrecha 
 
 Nada de esto convierte la regla del 4 % en algo inútil. Es un dato histórico muy valioso y un buen punto de partida para una conversación. Simplemente nunca fue una ley, y nunca fue una promesa.
 
+### Tres matices españoles antes de aplicarla
+
+* **El 4 % es bruto, y Hacienda cobra en la retirada.** Al reembolsar un fondo tributas por la ganancia acumulada en la **base del ahorro del IRPF**, del **19 %** al **28 %** según tramos, y la norma aplica **FIFO**: se venden primero las participaciones más antiguas, que suelen ser las de mayor plusvalía. Un **plan de pensiones** funciona al contrario y es la sorpresa más habitual: la prestación tributa en la **base general** como **rendimiento del trabajo**, sobre el total rescatado y no solo sobre la ganancia. Dos carteras con el mismo saldo pueden dejarte rentas netas muy distintas según el envoltorio.
+* **La pensión pública cambia la pregunta.** En España, la **Seguridad Social** cubre una parte sustancial del gasto de la mayoría de los jubilados y se revaloriza anualmente con el **IPC**, que es exactamente el tipo de ingreso que acorta la ventana que la cartera debe cubrir sola. Consulta tu previsión en la sede electrónica de la Seguridad Social, réstala de tu gasto anual y calcula la tasa de retiro sobre la diferencia. Ese cálculo mueve el resultado más que cualquier ajuste de cartera.
+* **Una mala secuencia española tiene cara conocida.** El **IBEX 35** marcó máximos por encima de los 15.900 puntos en noviembre de 2007 y tardó más de una década en acercarse de nuevo a esa cifra en términos de precio. Un jubilado español con la cartera concentrada en bolsa local y retiros fijos vivió precisamente el escenario de la columna «años malos primero». Es el argumento más concreto a favor de que la cartera de la que vas a vivir esté diversificada por geografías.
+
 ## Qué añade una simulación de Monte Carlo
 
 Si el orden importa, una sola proyección te habla de un único orden posible entre una cantidad enorme de ellos. Una [simulación de Monte Carlo](/es/simulators/monte-carlo-fire.html) genera miles.
@@ -77,9 +83,9 @@ Una tasa de éxito del 90 % no significa «vas a estar bien». Significa que uno
 Cuando un plan se ve frágil, solo un puñado de cosas cambian el dibujo, y no cuestan lo mismo:
 
 1. **Flexibilidad en el gasto.** Una regla que acuerdas contigo mismo por adelantado, como mantener los retiros planos después de un año malo o recortarlos un 10 % tras uno muy malo, sube la supervivencia más que casi nada. Evita la venta forzada, que es la que hace el daño.
-2. **Los primeros años en efectivo.** Tener de uno a tres años de gastos fuera del mercado significa que el primer año malo no se paga vendiendo dentro de él.
+2. **Los primeros años en efectivo.** Tener de uno a tres años de gastos fuera del mercado significa que el primer año malo no se paga vendiendo dentro de él. En España ese colchón cabe en **Letras del Tesoro** escalonadas a 3, 6 y 12 meses, en un **fondo monetario** (que además permite el **traspaso** a otro fondo sin tributar) o en un depósito cubierto por el **Fondo de Garantía de Depósitos** hasta 100.000 €.
 3. **La asignación.** Crecimiento suficiente para batir a la inflación durante treinta años, estabilidad suficiente para sobrevivir a los cinco primeros. Los dos riesgos son reales y solo uno hace ruido.
-4. **Cualquier ingreso.** Trabajo a tiempo parcial, una pensión que llega más tarde, un inmueble. Los ingresos pequeños y poco glamurosos acortan la ventana que la cartera tiene que cubrir sola, y el efecto es mucho mayor de lo que parece.
+4. **Cualquier ingreso.** Trabajo a tiempo parcial, la **pensión pública** que llega más tarde, un alquiler, la renta de un plan de pensiones rescatado en forma de renta. Los ingresos pequeños y poco glamurosos acortan la ventana que la cartera tiene que cubrir sola, y el efecto es mucho mayor de lo que parece. Retrasar la jubilación respecto a la edad ordinaria incrementa además el porcentaje de la base reguladora, de modo que es una de las pocas palancas de esta lista con un retorno conocido de antemano.
 
 ## Lo que nada de esto puede decirte
 

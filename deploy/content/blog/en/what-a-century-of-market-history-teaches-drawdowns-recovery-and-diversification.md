@@ -33,6 +33,8 @@ Here are the rough peak-to-trough falls for a broad US stock index, in nominal t
 
 These are round numbers, and they vary with the index, the currency and whether dividends are counted. It's the pattern that matters: falls of a third are ordinary, falls of a half happen several times a century, and one fall took most of a working life to undo.
 
+The British record is not a copy of the American one, and the differences are instructive. The **FTSE All-Share** fell roughly **−73% in real terms across 1972–74**, a deeper real fall than anything the US endured outside 1929, driven by the oil shock, a three-day week and inflation running above 20%. It fell about −45% in 2000–03 and about −45% again in 2007–09. And because the FTSE 100 carries a heavy weight in oil, banks, mining and tobacco rather than technology, the two markets diverge for years at a time: the UK's 2000–03 fall was shallower than the Nasdaq's and its recovery from 2009 far slower than America's. **The headline index of the country you happen to live in is not the market.** It's one sector bet among many.
+
 > 💡 **The question worth asking:**
 > Not "what return do I need?" but "what fall can I sit through without selling?" A portfolio you abandon at the bottom returns far less than a duller one you keep. Your tolerance is a real input, not a weakness to be corrected.
 
@@ -44,7 +46,7 @@ If you're still saving, a long recovery is quietly a gift, because every contrib
 
 ## Real returns are the only ones you spend
 
-A 1970s portfolio that gained 6% in a year when inflation ran at 11% lost 5% of its purchasing power. The statement was accurate and the money still bought less.
+A 1970s portfolio that gained 6% in a year when inflation ran at 11% lost 5% of its purchasing power. The statement was accurate and the money still bought less. British readers should scale that up rather than down: UK inflation peaked near **25% in 1975**, and sterling lost purchasing power far faster through that decade than the dollar did. The same arithmetic, applied to a harsher input, is why UK-based safe-withdrawal research lands on lower numbers than Bengen's American 4%.
 
 That's why the 1970s deserve more attention than they usually get. There was no dramatic single-day crash to remember, and yet inflation quietly took a large share of a decade's savings. **So always check whether a chart is real or nominal.** Nominal charts flatter every long-term result, and the gap is widest in exactly the decades that hurt.
 
@@ -53,6 +55,7 @@ That's why the 1970s deserve more attention than they usually get. There was no 
 Diversification usually gets explained as a free lunch, which sets people up for disappointment. What a century of history actually shows is narrower and more valuable:
 
 * **It reduces the depth of the hole, not the existence of it.** A mixed portfolio of stocks and bonds fell meaningfully less than stocks alone in most crises, and it still fell.
+* **Currency is a second axis nobody chose deliberately.** A UK investor holding US equities was cushioned in 2008 because sterling collapsed against the dollar, and punished in the years when it recovered. An American investor holding domestic assets simply has no exposure to this. If you are British, decide whether your unhedged foreign holdings are a diversifier or a second bet you never intended to place.
 * **It buys behavior.** Its real product is a fall shallow enough that you keep contributing, and that's worth more than a slightly higher expected return you never collect because you sold.
 * **Correlations break at the worst moment.** In a genuine panic, things that normally move apart move together for a few weeks. Diversification helps over years, not in the third week of a crisis.
 * **2022 was the reminder.** Stocks and bonds fell together, because both were repricing to the same thing: interest rates. Anyone who believed bonds were an unconditional hedge learned that they hedge recessions, not inflation.
@@ -61,7 +64,7 @@ Diversification usually gets explained as a free lunch, which sets people up for
 
 Running a portfolio through past returns tells you something no forecast can: this actually happened, and here's roughly what it would have felt like. That's genuinely valuable, and it comes with limits worth carrying with you.
 
-* **Survivorship.** The century of data everyone quotes belongs to the markets that won. Some markets in that same period were closed, nationalized or wiped out.
+* **Survivorship.** The century of data everyone quotes belongs to the markets that won. Some markets in that same period were closed, nationalized or wiped out. It is worth remembering that in 1900 the London Stock Exchange was the largest in the world and Britain the dominant market; a plausible investor of that era would have been diversified into Russian and Argentine railway bonds.
 * **One sample.** A hundred years sounds enormous. Counted as independent 30-year retirements, it's three, and they overlap.
 * **The future has never been obliged to rhyme.** The starting conditions, meaning valuations, rates and demographics, differ every time.
 

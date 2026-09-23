@@ -32,7 +32,7 @@ Todo lo que viene ahora es un caso concreto de esa misma asimetría.
 
 **Aversión a la pérdida.** Una pérdida se siente aproximadamente el doble que una ganancia equivalente. Por eso una cartera al −30 % no se vive como un bache temporal, sino como una emergencia que exige actuar, y por eso esa actuación casi siempre destruye valor. También explica por qué la gente mantiene efectivo sabiendo que pierde poder de compra: esa pérdida es invisible, y las pérdidas invisibles duelen mucho menos que las visibles.
 
-**Contabilidad mental.** Tratamos el dinero de forma distinta según el bolsillo en el que está. Una paga extra de 2.000 € se gasta mientras 2.000 € de deuda de tarjeta al 20 % siguen sin pagar. Son los mismos 2.000 €, y liquidar la deuda es una rentabilidad garantizada del 20 %.
+**Contabilidad mental.** Tratamos el dinero de forma distinta según el bolsillo en el que está. La **paga extra** de junio se gasta como si fuera dinero encontrado mientras 2.000 € de **tarjeta revolving** al 22 % de TAE siguen sin pagar. Son los mismos euros, y amortizar el revolving es la rentabilidad garantizada más alta a la que va a tener acceso la mayoría de la gente. El revolving es además el producto donde este sesgo hace más daño en España, porque la cuota fija mensual oculta el plazo: pagas todos los meses y el principal apenas baja.
 
 **Sesgo de acción.** En un mercado que cae, no hacer nada parece una negligencia. Así que la gente rebalancea, cambia de fondo, se cubre: actividad que da sensación de control y que sobre todo compra costes de transacción y peor sincronización. Invertir a largo plazo te pide quedarte quieto justo en el momento en que tu instinto te grita que te muevas.
 
@@ -45,10 +45,10 @@ Todo lo que viene ahora es un caso concreto de esa misma asimetría.
 
 | Patrón | Cómo aparece | Qué funciona de verdad |
 |---|---|---|
-| Sesgo del presente | Ahorrar «empieza el mes que viene» | Transferencia automática el día de la nómina, antes de ver el dinero |
+| Sesgo del presente | Ahorrar «empieza el mes que viene» | Transferencia periódica programada para el día siguiente al abono de la nómina |
 | Inflación del estilo de vida | El aumento desaparece en un año | Comprometer por adelantado una parte de cada subida al ahorro |
 | Aversión a la pérdida | Vender en una caída | Una política escrita, decidida en un mes tranquilo, que dice qué harás |
-| Contabilidad mental | Ahorrar con una deuda al 20 % | Una sola vista de todas las cuentas y deudas, en un mismo sitio |
+| Contabilidad mental | Ahorrar con un revolving al 22 % de TAE | Una sola vista de cuentas y deudas, con el informe **CIRBE** del Banco de España para las que se te hayan olvidado |
 | Sesgo de acción | Toqueteo constante | Una fecha fija de revisión; entre ellas no se cambia nada |
 | Comparación social | Mejoras que no puedes justificar | Una lista escrita de para qué es tu dinero |
 

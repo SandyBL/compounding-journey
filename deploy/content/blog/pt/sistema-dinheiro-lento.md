@@ -34,9 +34,11 @@ Os percentuais exatos importam menos do que automatizar as transferências e rev
 | **Reserva** | 15% | Consertos, dentista, franquia do seguro, contas anuais |
 | **Investimento** | 15% | Crescimento de longo prazo no qual você não mexe |
 
-> **Exemplo prático:** Daniel recebe **$3,200 por mês**. No dia do pagamento saem automaticamente $480 para a reserva e $480 para o investimento, e ele vive com os $2,240 que sobram. Não toma nenhuma outra decisão de orçamento durante o mês. Ao fim de um ano tem **$5,760 na reserva** e **$5,760 investidos**, sem um único momento que exigisse força de vontade.
+> **Exemplo prático:** Daniel recebe **R$ 4.000 por mês**. No dia do pagamento saem automaticamente R$ 600 para a reserva e R$ 600 para o investimento, e ele vive com os R$ 2.800 que sobram. Não toma nenhuma outra decisão de orçamento durante o mês. Ao fim de um ano tem **R$ 7.200 na reserva** e **R$ 7.200 investidos**, sem um único momento que exigisse força de vontade.
 
-Se 15% e 15% estão fora de alcance neste ano, comece com 5% e 5%. O percentual pode subir quando a sua renda subir; o que precisa existir desde o começo é a automação.
+O calendário brasileiro dá a esse sistema uma terceira entrada de graça. O **décimo terceiro salário** e o **adicional de um terço das férias** não pertencem a nenhum mês do fluxo normal, e é justamente por isso que desaparecem tão facilmente. Decida uma vez para onde eles vão — metade para a reserva e metade para o investimento é uma regra defensável — e você acrescenta cerca de um mês e meio de aportes por ano sem mudar nada no seu padrão de vida.
+
+Se 15% e 15% estão fora de alcance neste ano, comece com 5% e 5%. O percentual pode subir quando sua renda subir; o que precisa existir desde o começo é a automação.
 
 ## Uma revisão semanal de vinte minutos
 
@@ -54,6 +56,7 @@ A revisão semanal capta o que está acontecendo agora. Duas revisões mais lent
 
 - **Uma vez por mês, cerca de uma hora.** Confirme que cada transferência automática realmente aconteceu. Leia as cobranças de assinaturas uma a uma e cancele o que você não usou conscientemente. Compare o saldo da reserva com os custos irregulares que você já sabe que virão neste ano.
 - **Uma vez por trimestre, cerca de uma hora.** Pergunte se a divisão ainda serve à sua vida. Se a renda subiu, leve parte do aumento para o investimento antes que ele vire gasto comum. Verifique se os aportes continuam indo para onde você pretendia.
+- **Uma vez por ano, em dezembro.** Duas coisas só podem ser feitas antes do dia 31. Se você declara pelo modelo completo, o aporte no **PGBL** que deduz até **12% da sua renda bruta tributável** precisa estar liquidado dentro do ano-calendário. E se você realizou ganho em ações durante o ano, vender posições com prejuízo agora compensa esse ganho na apuração e reduz o **DARF** que você pagaria. Em março, quando começa a temporada do **Imposto de Renda**, nenhuma das duas ainda está disponível.
 
 Juntas, essas três camadas custam por volta de trinta horas por ano — menos do que muita gente gasta escolhendo uma única viagem, e distribuídas de forma que nenhuma sessão isolada pareça um evento.
 
@@ -73,13 +76,13 @@ Remova categorias desnecessárias, cancele alertas que não ajudam você a agir 
 
 ## Deixe a consistência fazer o trabalho pesado
 
-O patrimônio raramente nasce de um mês heroico. Ele cresce com meses comuns conduzidos com cuidado. Os $480 mensais que Daniel investe, deixados em paz com um retorno médio de 6% ao ano, viram cerca de **$222,000 depois de vinte anos** — e apenas uns $115,000 disso é dinheiro que ele depositou. O resto é o tempo fazendo um trabalho que ele nunca precisou supervisionar.
+O patrimônio raramente nasce de um mês heroico. Ele cresce com meses comuns conduzidos com cuidado. Os R$ 600 mensais que Daniel investe, deixados em paz com um retorno médio real de 6% ao ano, viram cerca de **R$ 277.000 depois de vinte anos** — e apenas uns R$ 144.000 disso é dinheiro que ele depositou. O resto é o tempo fazendo um trabalho que ele nunca precisou supervisionar.
 
 Crie um ritmo que deixe espaço para sua vida e permita que o tempo multiplique o resultado.
 
 ---
 
-### Pronto para dominar os seus hábitos financeiros?
+### Pronto para dominar seus hábitos financeiros?
 O devagar só funciona se continuar, e o que faz continuar é um ritmo que você quase não sente. Faça a nossa avaliação de hábitos para ver se o valor que você poupa é um valor que ainda estaria poupando dentro de cinco anos e onde vale a pena aliviar.
 
-[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
+[Avalie seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
