@@ -26,7 +26,9 @@ In this article, we'll explore why saving alone isn't enough and how to ensure y
 
 Building an emergency fund—typically **3 to 6 months' worth of living expenses**—is an essential first step. This cash buffer must remain liquid to handle unexpected shocks like medical bills or job transitions.
 
-However, traditional savings accounts carry an unseen penalty: **inflation**. Inflation gradually erodes your purchasing power over time. If inflation averages 3% annually, a $100 bill today retains only $97 worth of buying power next year. Without asset growth, uninvested savings steadily lose value.
+However, traditional savings accounts carry an unseen penalty: **inflation**. Inflation gradually erodes your purchasing power over time. If inflation averages 3% annually, a $100 bill today retains only $97 worth of buying power next year—and a £100 note does exactly the same thing. Without asset growth, uninvested savings steadily lose value.
+
+Keep the buffer in cash anyway, but keep it in cash that is paid for. **In the US**, that means a high-yield savings account or a money market fund rather than a checking account, with deposits **FDIC-insured to $250,000** per depositor per bank. **In the UK**, it means an easy-access savings account or a **Cash ISA**, with **FSCS protection to £85,000** per person per institution. UK readers get a second advantage here: interest inside a Cash ISA is entirely tax-free, while interest outside one is only sheltered up to the Personal Savings Allowance of £1,000 for basic-rate and £500 for higher-rate taxpayers.
 
 ---
 
@@ -51,7 +53,7 @@ Compounding occurs when your investment returns begin generating their own retur
 1. **Invest in Broad Index Funds & ETFs:** The S&P 500 index has historically returned **7% to 10% annually** after inflation over extended periods. Broad index funds spread your risk across top companies automatically.
 2. **Explore Real Estate Investments:** Physical rental properties produce monthly cash flow alongside long-term capital appreciation. Alternatively, Real Estate Investment Trusts (REITs) offer real estate exposure without property management demands.
 3. **Build or Acquire Passive Income Assets:** Invest upfront effort into digital products, content assets, or automated businesses that continue generating royalties and ad revenue over time.
-4. **Allocate to Bonds & Fixed Income:** While returns are lower than equities, fixed-income bonds supply consistent interest payouts and stabilize your overall portfolio.
+4. **Allocate to Bonds & Fixed Income:** While returns are lower than equities, bonds supply consistent interest payouts and stabilize your overall portfolio. US investors can buy **Treasuries directly through TreasuryDirect**, including inflation-linked TIPS and Series I savings bonds. UK investors can buy **Gilts**, where a quirk of the tax code matters: gains on gilts are exempt from capital gains tax, so low-coupon gilts held to maturity are unusually efficient for higher-rate taxpayers holding bonds outside a wrapper. **Premium Bonds** from NS&I are the British cash alternative whose prizes are tax-free, though the expected return is modest.
 5. **Reinvest Dividend Stocks:** Shares in dividend-paying companies deliver regular cash distributions. Reinvesting these payouts reinvests back into the asset, accelerating your compound growth cycle.
 
 ---
@@ -60,6 +62,8 @@ Compounding occurs when your investment returns begin generating their own retur
 
 * **Traditional Bank Savings Account (1% Return):** Ends year with **$10,100** (a net loss after average inflation).
 * **Diversified Investment Portfolio (7% Return):** Ends year with **$10,700** (beating inflation and growing real purchasing power).
+
+Before you move any of it, put the money in the right wrapper. Investment growth inside a **Roth IRA** or a **Stocks & Shares ISA** is never taxed, and the ISA can be withdrawn at any age without a penalty. The single most expensive habit in both countries is holding a long-term portfolio in a plain taxable account while an unused allowance expires—and the UK's £20,000 ISA allowance cannot be carried forward to next year.
 
 ---
 

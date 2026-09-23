@@ -59,7 +59,7 @@ A well-structured budget transforms how you interact with money by offering four
 
 1. \*\*Pay Yourself First:\*\* Save and invest at least \*\*20% of your total income\*\* before spending money on discretionary items.
 
-2. \*\*Cap Housing Expenses:\*\* Keep rent or mortgage payments, along with utilities, at or below \*\*33% of your total household income\*\*.
+2. \*\*Cap Housing Expenses:\*\* Keep rent or mortgage payments, along with utilities, at or below \*\*33% of your total household income\*\*. This is also how lenders will judge you: US underwriting applies the 28/36 rule, and UK lenders cap borrowing near 4.5 times income.
 
 3. \*\*Live Below Your Means:\*\* Ensure total monthly expenses never exceed your total earnings to avoid accumulating debt.
 
@@ -111,7 +111,17 @@ Using a structured budget allows you to track planned vs. actual spending:
 
 3. \*\*Evaluate Value vs. Cost:\*\* Ask whether each non-essential purchase brings genuine value to your life.
 
-4. \*\*Leverage Modern Apps & Tools:\*\* Use digital bank features, spreadsheets (Google Sheets/Excel), or dedicated apps like \*\*YNAB, Mint, PocketGuard, or GoodBudget\*\* to automate tracking.
+4. \*\*Leverage Modern Apps & Tools:\*\* Use your bank's own categorisation, a spreadsheet, or a dedicated app. In the US, \*\*YNAB, Monarch, PocketGuard or Empower\*\* are the common choices (Mint closed in 2024 and its users were migrated to Credit Karma). In the UK, Open Banking makes this easier than anywhere else: \*\*Monzo, Starling, Snoop, Emma or Money Dashboard\*\* can read every account you hold and categorise it automatically.
+
+\---
+
+\## Two Fixed Costs People Forget to Budget
+
+The line items that break a budget are the ones that do not arrive monthly.
+
+\* \*\*In the UK:\*\* \*\*Council Tax\*\* (often billed over ten months, not twelve), water, the TV Licence, and annual car tax and MOT. Council Tax alone can exceed £2,000 a year and is rarely in a first budget.
+
+\* \*\*In the US:\*\* \*\*property tax\*\* and homeowners insurance—sometimes escrowed into the mortgage payment and sometimes not—HOA dues, and the health insurance premium, deductible and out-of-pocket maximum that together form a far larger annual number than most people plan for.
 
 ---
 

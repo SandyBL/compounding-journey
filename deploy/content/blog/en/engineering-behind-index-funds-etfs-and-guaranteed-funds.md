@@ -21,14 +21,14 @@ Understanding the engineering behind index funds, ETFs, and guaranteed funds hel
 
 ## Index Funds and Regulatory Diversification Flexibility
 
-Traditional mutual funds must comply with strict concentration caps, such as the standard rule restricting exposure to any single issuer to no more than 5% or 10% of total assets. 
+Regulated funds must comply with concentration caps. A US fund registered as "diversified" under the Investment Company Act of 1940 keeps single-issuer positions under 5% across 75% of assets; a UK fund under the FCA's COLL rules works to the 5/10/40 limits.
 
-However, passive index funds face a challenge: if an index like the S&P 500 or a national benchmark has major tech giants or banks representing 12% or 15% of the total market, a standard fund couldn't track it accurately without breaking concentration laws.
+However, passive index funds face a challenge: if an index like the S&P 500 has tech giants representing 7% or more of the total market, a fund bound by a 5% cap couldn't track it accurately.
 
-To solve this, regulatory frameworks grant passive index funds specific exemptions:
+Each market solves this differently, and the difference shows up on the fund's own paperwork:
 
-* **Replication Index Funds:** Allowed to hold up to **20%** of their portfolio in a single issuer. In market structures where one company clearly dominates, this limit can extend up to **35%** for that single entity.
-* **Benchmark Index Funds:** Can hold up to 10% in direct equities plus an additional 10% exposure through regulated derivatives, capping total exposure at 35% per issuer.
+* **US index funds** frequently register as **non-diversified**, which lifts the 1940 Act limit entirely and leaves the IRS Subchapter M ceiling—25% in a single issuer—as the binding constraint. That label is printed in the prospectus, and it is the honest signal that a fund's concentration follows its index rather than a regulatory floor.
+* **UK replication funds** get an explicit exemption instead: up to **20%** in a single issuer, extending to **35%** for one dominant constituent in exceptional market structures.
 
 This flexibility allows index funds to mirror real-world market returns with near-zero tracking error.
 
@@ -45,6 +45,10 @@ Exchange-Traded Funds (ETFs) are index-tracking funds that trade on public stock
 | **Intraday Pricing**      | Unknown until end-of-day calculation                | Live market pricing visible every second                          |
 
 Because ETFs trade on open exchanges, Market Makers continuously quote bid and ask prices, ensuring that the ETF's trading price stays aligned with the underlying value of its holdings.
+
+The mechanism that actually enforces that alignment is **creation and redemption**. Large institutions called Authorized Participants can hand the fund a basket of the underlying shares in exchange for new ETF shares, or hand back ETF shares to receive the underlying. When the ETF drifts above the value of its holdings they create and sell; when it drifts below they buy and redeem. Arbitrage, not goodwill, is what keeps the price honest.
+
+That same in-kind machinery is the reason a US ETF is usually more **tax-efficient** than an equivalent mutual fund: redemptions happen in shares rather than cash, so the fund distributes far fewer capital gains to shareholders who simply held on. UK investors get a different pair of perks—ETF purchases are exempt from the 0.5% **Stamp Duty Reserve Tax** charged on individual UK share purchases, and most London-listed ETFs are eligible to be held inside an ISA or SIPP. Two cautions apply on both sides of the Atlantic: check the fund is **UK-reporting** if you are a British investor buying an offshore-domiciled ETF, and use limit orders rather than market orders, because a spread you cannot see costs more than the expense ratio you can.
 
 ---
 
@@ -68,6 +72,26 @@ A small fraction of the initial capital (for example, $4.8\%$) is set aside to c
 
 ### 3. Upside Participation via Asian Options
 The remaining cash (for example, $12.6\%$) is used to purchase a specialized derivative called an **Asian Call Option** on the target stock index.
+
+---
+
+## What These Products Are Called in the US and UK
+
+The structure above—a zero-coupon bond plus an option—is the engine inside a family of products sold under very different names in each market. Recognising the engine is what stops you paying twice for it.
+
+**In the United States**, the guaranteed fund as a fund is rare, because the 1940 Act makes it awkward for a registered fund to promise a return. The same engineering is sold instead as:
+
+* **Structured notes**, issued as unsecured debt of a bank. This is the critical distinction: your capital protection is the **issuer's promise**, not a fund's assets, which is exactly why Lehman Brothers notes marketed as "100% principal protected" paid out cents on the dollar in 2008. FINRA has issued repeated investor alerts about them.
+* **Market-linked CDs**, where the deposit component is **FDIC-insured** up to the standard limit—the genuinely protected version.
+* **Registered index-linked annuities (RILAs)** and **fixed indexed annuities**, sold through insurers, where caps, participation rates and surrender charges do the same job as the option budget above.
+* **Defined-outcome or buffered ETFs**, which run the bond-plus-option structure inside an exchange-traded wrapper on a rolling quarterly basis.
+
+**In the United Kingdom**, the FCA draws the same line by name:
+
+* **Structured deposits** are held with a bank, and the capital element is covered by the **FSCS up to £85,000** per person per firm.
+* **Structured investment products** are securities issued by a counterparty and are **not** FSCS-protected against that counterparty failing—a lesson British investors also learned through Lehman-backed plans.
+
+Whichever label it carries, ask three questions before buying: who is actually standing behind the guarantee, what the product does with dividends (almost all of these structures keep them, which is a large silent cost over four years), and what happens if you need the money before maturity.
 
 ---
 

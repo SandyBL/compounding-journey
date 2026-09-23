@@ -23,7 +23,7 @@ Embora tenha surgido na manufatura, percebi que a filosofia Lean se encaixa perf
 No dia a dia, a metodologia Lean se apoia em três pilares fundamentais que funcionam tão bem na mesa de trabalho de casa quanto em uma linha de montagem:
 
 1. **Eliminação de Desperdícios:** Retirar do seu caminho distrações digitais, tarefas irrelevantes e bagunça física que consomem sua atenção.
-2. **Melhoria Contínua (Kaizen):** Fazer pequenos ajustes semanais em vez de tentar mudar toda a sua vida da noite para o dia.
+2. **Melhoria Contínua (Kaizen):** Fazer pequenos ajustes semanais em vez de tentar mudar toda sua vida da noite para o dia.
 3. **Foco no Valor:** Priorizar ações que realmente trazem impacto para sua saúde, suas finanças e suas relações, cortando o excesso sem culpa.
 
 Se você quiser entender como a mentalidade Lean resolve gargalos de forma leve e prática, recomendo muito a leitura dos livros *A Meta* e *Não Foi Sorte*, de Eliyahu Goldratt. Ao contar a história de Alex Rogo—um gerente que tem três meses para salvar sua fábrica da falência—, esses livros mostram como simplificar processos por meio de uma narrativa envolvente.
@@ -38,7 +38,7 @@ Aqui está como eu adaptei as principais ferramentas do Lean para estruturar meu
 
 ### 1. O Método 5S Para Clareza Física e Mental
 
-O sistema 5S foi desenhado para organizar ambientes industriais, mas é perfeito para o seu escritório ou área de trabalho no computador:
+O sistema 5S foi desenhado para organizar ambientes industriais, mas é perfeito para seu escritório ou área de trabalho no computador:
 
 * **Seiri (Senso de Utilização):** Remova da sua mesa tudo o que você não usa diariamente. Guarde papéis velhos, doie canetas sobressalentes e limpe os arquivos da sua área de trabalho.
 * **Seiton (Senso de Organização):** Deixe os itens essenciais sempre ao alcance das mãos. Seu caderno, sua garrafa de água e seu carregador devem ter lugares fixos.
@@ -66,7 +66,7 @@ A regra de ouro é limitar a coluna "Em Andamento" a no máximo duas ou três ta
 Manter o ambiente limpo e as tarefas visíveis não adiantará muito se interrupções constantes destruírem seu ritmo de trabalho. Para manter a concentração, eu combino duas práticas:
 
 ### Blocos de Tempo (Time Blocking)
-Em vez de trabalhar olhando para uma lista infinita de afazeres, defina horários fixos no seu calendário para cada tipo de atividade. Por exemplo, reserve das $\text{R}\$ 9\text{h}$ às $10\text{h}30$ exclusivamente para escrever relatórios ou planejar projetos, deixando a checagem de e-mails para um bloco específico no meio da tarde.
+Em vez de trabalhar olhando para uma lista infinita de afazeres, defina horários fixos no seu calendário para cada tipo de atividade. Por exemplo, reserve das $9\text{h}$ às $10\text{h}30$ exclusivamente para escrever relatórios ou planejar projetos, deixando a checagem de e-mails para um bloco específico no meio da tarde.
 
 ### Técnica Pomodoro
 Durante o bloco de trabalho, ligue um cronômetro: trabalhe com foco total por 25 minutos e faça uma pausa obrigatória de 5 minutos. Essas pequenas pausas regulares mantêm seu cérebro descansado e evitam aquela sensação de esgotamento ao final do dia.
@@ -77,7 +77,7 @@ Durante o bloco de trabalho, ligue um cronômetro: trabalhe com foco total por 2
 
 Mudanças radicais na rotina costumam durar pouco porque exigem uma quantidade enorme de força de vontade. O conceito de Kaizen nos mostra que pequenas melhorias contínuas trazem resultados gigantescos ao longo do tempo.
 
-Toda semana eu me faço uma pergunta bem simples: *"Qual foi o menor obstáculo que atrapalhou minha rotina nos últimos dias e como posso eliminá-lo?"* Se percebo que perco tempo preparando o café da manhã, deixo os utensílios separados na noite anterior. Ao longo de um ano, 52 pequenos ajustes transformam completamente a sua produtividade.
+Toda semana eu me faço uma pergunta bem simples: *"Qual foi o menor obstáculo que atrapalhou minha rotina nos últimos dias e como posso eliminá-lo?"* Se percebo que perco tempo preparando o café da manhã, deixo os utensílios separados na noite anterior. Ao longo de um ano, 52 pequenos ajustes transformam completamente sua produtividade.
 
 ---
 
@@ -85,6 +85,6 @@ Toda semana eu me faço uma pergunta bem simples: *"Qual foi o menor obstáculo 
 
 ### Quer dar o próximo passo?
 
-Aumentar sua produtividade diária não é sobre produzir mais e trabalhar até cansar, mas sim sobre liberar tempo e energia para as metas e pessoas que trazem sentido real para a sua vida. Faça a nossa avaliação de hábitos para diagnosticar seus sistemas atuais, identificar pontos de gargalo e construir um plano de desenvolvimento sob medida.
+Aumentar sua produtividade diária não é sobre produzir mais e trabalhar até cansar, mas sim sobre liberar tempo e energia para as metas e pessoas que trazem sentido real para sua vida. Faça a nossa avaliação de hábitos para diagnosticar seus sistemas atuais, identificar pontos de gargalo e construir um plano de desenvolvimento sob medida.
 
 [Faça a avaliação de hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

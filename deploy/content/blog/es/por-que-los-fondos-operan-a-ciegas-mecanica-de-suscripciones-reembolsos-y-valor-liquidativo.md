@@ -82,6 +82,6 @@ Este colchón de seguridad se calcula sobre el promedio mensual de saldos diario
 
 ### ¿Quieres dar el siguiente paso?
 
-Entender la mecánica interna con la que operan tus fondos de inversión es un paso indispensable para gestionar tu patrimonio con criterio y tranquilidad. Realiza nuestra evaluación de hábitos para analizar la estructura de tu portafolio, revisar tus costes de inversión y trazar un plan automatizado para alcanzar tus metas financieras.
+Entender la mecánica interna con la que operan tus fondos de inversión es un paso indispensable para gestionar tu patrimonio con criterio y tranquilidad. Realiza nuestra evaluación de hábitos para analizar la estructura de tu cartera, revisar tus costes de inversión y trazar un plan automatizado para alcanzar tus metas financieras.
 
 [Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)

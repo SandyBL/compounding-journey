@@ -24,7 +24,7 @@ Understanding where to place your money is the first step toward building a bala
 | **Stocks** | High | High growth potential through ownership | Long-term capital growth |
 | **Bonds** | Low | Steady income and principal preservation | Portfolio stability and safety |
 | **ETFs** | Medium | Instant diversification across hundreds of assets | Hands-off index investing |
-| **Mutual Funds** | Medium | Professional management and pooled capital | Retirement accounts (e.g., 401k) |
+| **Mutual Funds** | Medium | Professional management and pooled capital | Retirement accounts (a 401(k) or a workplace pension) |
 | **Robo-Advisors** | Tailored | Automated asset allocation and rebalancing | Beginners wanting a "set and forget" approach |
 
 ---
@@ -35,7 +35,9 @@ Every investment carries a degree of risk. The fundamental rule of investing is 
 
 * **High Risk / High Reward:** Individual stocks can grow rapidly, but they experience sharp price swings.
 * **Medium Risk / Medium Reward:** ETFs and mutual funds spread out risk across broad markets, offering steady growth.
-* **Low Risk / Low Reward:** Government bonds preserve cash safely but grow slowly.
+* **Low Risk / Low Reward:** Government bonds—US Treasuries, UK Gilts—preserve cash safely but grow slowly.
+
+One thing risk ratings never tell you: whose money is protected and by whom. Market losses are never insured anywhere. What *is* protected is your cash and assets if the firm holding them fails—**SIPC** covers up to $500,000 per customer at a US broker, and the **FSCS** covers £85,000 per person per firm in the UK. Check that any platform you open is a member before you fund it.
 
 ---
 
@@ -43,19 +45,22 @@ Every investment carries a degree of risk. The fundamental rule of investing is 
 
 The most powerful force in personal finance is **compound growth**. Your returns generate their own returns, compounding exponentially over decades.
 
-### The Cost of Delaying ($100/Month at 7% Average Annual Growth)
+### The Cost of Delaying ($100 or £100/Month at 7% Average Annual Growth)
 
 * **Starting at Age 25:** Grows to approximately **$250,000** by age 65.
 * **Starting at Age 35:** Grows to approximately **$120,000** by age 65—less than half the final wealth!
+
+The arithmetic is identical in sterling: £100 a month from 25 reaches roughly £250,000 by 65, and starting ten years later leaves you with less than half of it.
 
 ---
 
 ## How to Take Your First Step Today
 
-1. **Open a Brokerage or Platform Account:** Look into low-cost platforms like Vanguard, Fidelity, or Schwab in the US, or DeGiro, Trade Republic, MyInvestor, or Indexa Capital in Europe.
-2. **Choose an Easy Starting Asset:** A broad S&P 500 or Total World ETF provides instant global diversification.
-3. **Automate Monthly Deposits:** Set up recurring contributions—even $10 or $50 a month builds the habit.
-4. **Stay Patient:** Ignore short-term market noise and keep your focus on long-term compound growth.
+1. **Pick the Wrapper Before the Fund.** This is the step beginners skip, and it is worth more than any fund selection. In the US, capture your full **401(k)** employer match first, then use a **Roth or Traditional IRA**, and only then a taxable brokerage account. In the UK, capture your **workplace pension** match first, then use a **Stocks & Shares ISA** for its £20,000 annual allowance and completely tax-free growth and withdrawals, with a **SIPP** for money you are content to lock away until your late fifties. The same fund held inside the right wrapper and outside it can differ by tens of thousands of pounds or dollars over a working life.
+2. **Open a Brokerage or Platform Account:** In the US, look at Vanguard, Fidelity, or Schwab. In the UK, look at Vanguard Investor, AJ Bell, Hargreaves Lansdown, InvestEngine, or Trading 212—and compare the platform fee structure, because a percentage-based charge and a flat annual fee suit very different portfolio sizes.
+3. **Choose an Easy Starting Asset:** A broad S&P 500, FTSE Global All Cap, or total-world ETF provides instant global diversification. UK investors should check a fund is **UK-reporting**, since non-reporting offshore funds have their gains taxed as income rather than as capital gains.
+4. **Automate Monthly Deposits:** Set up recurring contributions—even $10, £10, or $50 a month builds the habit. Many UK platforms run free regular-investment dealing days, which removes the per-trade commission entirely.
+5. **Stay Patient:** Ignore short-term market noise and keep your focus on long-term compound growth.
 
 ---
 

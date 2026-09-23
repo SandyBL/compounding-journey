@@ -43,9 +43,15 @@ Una de las lecciones más importantes en educación financiera es entender que l
 
 \|:--- |:--- |:--- |
 
-\| \*\*Deuda Buena\*\* | Dinero prestado para adquirir activos que aumentan de valor o generan ingresos pasivos. | Hipotecas para propiedades de alquiler, capital para negocios o educación que aumenta tu capacidad de ingreso. |
+\| \*\*Deuda Buena\*\* | Dinero prestado para adquirir activos que aumentan de valor o generan ingresos pasivos. | Hipoteca sobre un piso en alquiler, financiación de un negocio, o formación que aumenta tu capacidad de ingreso. |
 
-\| \*\*Deuda Mala\*\* | Dinero prestado para consumo no productivo que agota tus recursos. | Tarjetas de crédito con intereses altos, préstamos para autos de lujo o vacaciones financiadas. |
+\| \*\*Deuda Mala\*\* | Dinero prestado para consumo no productivo que agota tus recursos. | Tarjetas \*\*revolving\*\* con TAE del 20%, financiación de un coche de gama alta o vacaciones a plazos. |
+
+\> 💡 \*\*El matiz español que cambia la cuenta:\*\*
+
+\> A diferencia de lo que ocurre en el Reino Unido desde 2020, en España \*\*los intereses de la hipoteca de un inmueble alquilado siguen siendo deducibles\*\* del rendimiento del capital inmobiliario en el IRPF, junto con el IBI, la comunidad, el seguro y la amortización del 3% anual sobre el valor de construcción. Encima, si alquilas como vivienda habitual, el rendimiento neto positivo disfruta de una \*\*reducción de entre el 50% y el 90%\*\* según el caso desde la Ley 12/2023. Eso es lo que hace que el apalancamiento inmobiliario funcione aquí mejor de lo que funciona en otros países: el Estado está compartiendo el coste financiero contigo.
+
+\> Lo que no comparte son los costes de entrada. Entre \*\*ITP\*\* (del 6% al 10% según comunidad autónoma) o \*\*IVA más AJD\*\* en obra nueva, notaría, registro y gestoría, la compra se te va fácilmente a un 10% - 13% sobre el precio. Ese porcentaje es la rentabilidad de varios años que pagas el primer día.
 
 
 
@@ -65,9 +71,9 @@ La razón principal por la que muchas personas luchan financieramente es que com
 
 
 
-\* \*\*Activos:\*\* Todo aquello que pone dinero \*\*en\** tu bolsillo. Ejemplos: acciones, bienes raíces de alquiler, bonos, regalías y negocios rentables.
+\* \*\*Activos:\*\* Todo aquello que pone dinero \*\*en\** tu bolsillo. Ejemplos: acciones, un piso alquilado, Letras del Tesoro, derechos de autor y negocios rentables.
 
-\* \*\*Pasivos:\*\* Todo aquello que saca dinero \*\*de\** tu bolsillo. Ejemplos: préstamos de autos personales, saldos de tarjetas de crédito e hipotecas de viviendas no productivas.
+\* \*\*Pasivos:\*\* Todo aquello que saca dinero \*\*de\** tu bolsillo. Ejemplos: el préstamo del coche particular, el saldo aplazado de la tarjeta y la hipoteca de una vivienda que no genera renta.
 
 
 
@@ -91,7 +97,7 @@ Construir riqueza es un proceso gradual e intencional. Adoptar estos hábitos di
 
 2. \*\*Invierte en Educación Financiera:\*\* El conocimiento es tu activo más valioso. Lee constantemente, toma cursos y aprende cómo funcionan los mercados y el dinero.
 
-3. \*\*Invierte tus Ahorros con Sabiduría:\*\* Guardar dinero en una cuenta bancaria con bajos intereses destruye tu poder adquisitivo por la inflación. Invierte en activos que crezcan con el tiempo.
+3. \*\*Invierte tus Ahorros con Sabiduría:\*\* Dejar el dinero en una cuenta corriente al 0% destruye tu poder adquisitivo por la inflación. Invierte en activos que crezcan con el tiempo, y hazlo en un \*\*fondo de inversión\*\* si quieres poder cambiar de estrategia sin pasar por Hacienda: los traspasos entre fondos no tributan, y la ganancia solo se declara cuando reembolsas de verdad.
 
 4. \*\*Evita la Inflación del Estilo de Vida:\*\* A medida que aumenten tus ingresos, mantén tus gastos estables e invierte la diferencia.
 

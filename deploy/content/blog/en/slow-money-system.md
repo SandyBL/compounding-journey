@@ -34,7 +34,9 @@ The exact percentages matter less than making the transfers automatic and review
 | **Reserve** | 15% | Car repairs, dentist, insurance excess, the annual bills |
 | **Investment** | 15% | Long-term growth you do not touch |
 
-> **Worked example:** Daniel takes home **$3,200 a month**. On payday, $480 leaves automatically for the reserve and $480 for investments, and he lives on the $2,240 that remains. He makes no further budgeting decisions all month. After a year he holds **$5,760 in reserve** and **$5,760 invested** — without a single moment that required willpower.
+> **Worked example:** Daniel takes home **$3,200 a month** (the arithmetic is identical for £3,200). On payday, $480 leaves automatically for the reserve and $480 for investments, and he lives on the $2,240 that remains. He makes no further budgeting decisions all month. After a year he holds **$5,760 in reserve** and **$5,760 invested** — without a single moment that required willpower.
+
+One thing to check before you set the investment transfer: whether part of it should be going somewhere with a match attached. A 401(k) employer match in the US, or contributing above the auto-enrolment minimum where a UK employer will match it, beats the same money moved to a brokerage account by a margin nothing else in this system can equal.
 
 If 15% and 15% is out of reach this year, start at 5% and 5%. The percentage can rise whenever your income does; the automation is the part that has to exist from the beginning.
 

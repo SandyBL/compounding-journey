@@ -33,6 +33,11 @@ Estas são as quedas aproximadas de topo a fundo de um índice amplo de ações 
 
 São números redondos, e eles variam conforme o índice, a moeda e se os dividendos entram na conta. O que importa é o padrão: cair um terço é comum, cair a metade acontece várias vezes por século, e uma dessas quedas levou quase uma vida de trabalho para ser desfeita.
 
+O **Ibovespa** conta uma versão mais dura da mesma história. Ele chegou a cerca de **74.000 pontos em maio de 2008** e só recuperou esse nível de forma consistente **mais de oito anos depois**, em 2016 — e isso em termos nominais, com o IPCA acumulado do período ainda por descontar. Em dólar, a recuperação foi mais lenta ainda, porque o real se desvalorizou durante boa parte do intervalo. Some a isso a concentração: uma fatia grande do índice está em algumas poucas empresas de **commodities e bancos**, o que significa que quem compra «a bolsa brasileira» está comprando, em boa medida, uma aposta em minério, petróleo e crédito.
+
+> 💡 **O índice do país onde você mora não é «o mercado».**
+> Ele é um recorte de um mercado, com os vieses setoriais e cambiais daquele país. Um investidor brasileiro 100% em Ibovespa e um investidor americano 100% em S&P 500 acham os dois que estão diversificados, e nenhum dos dois está.
+
 > 💡 **A pergunta que vale a pena:**
 > Não «de que rentabilidade eu preciso?», mas «que queda eu consigo atravessar sem vender?». Uma carteira que você abandona no fundo rende muito menos que outra mais sem graça que você mantém. Sua tolerância é um dado real, não uma fraqueza a ser corrigida.
 
@@ -46,6 +51,8 @@ Se você ainda está acumulando, uma recuperação lenta é silenciosamente um p
 
 Uma carteira dos anos setenta que ganhou 6% em um ano com inflação de 11% perdeu 5% do seu poder de compra. O número estava correto e o dinheiro comprava menos.
 
+Nenhum país precisa dessa lição menos que o Brasil. Entre o fim dos anos oitenta e 1994, a inflação brasileira chegou a passar de **2.000% ao ano**, e o país trocou de moeda cinco vezes em uma década antes de o **Plano Real** estabilizar os preços. Uma geração inteira de brasileiros aprendeu na prática o que significa rentabilidade nominal alta e rentabilidade real negativa. É também a razão de existir uma coisa como o **Tesouro IPCA+**, que paga inflação mais um juro real contratado: ele não é um produto exótico, é uma resposta de política pública a uma memória coletiva.
+
 É por isso que os anos setenta merecem mais atenção do que costumam receber. Não houve um tombo dramático de um único dia para guardar na memória e, ainda assim, a inflação levou em silêncio boa parte da poupança de uma década. **Verifique sempre se um gráfico é nominal ou real.** Gráficos nominais favorecem qualquer resultado de longo prazo, e a diferença é maior exatamente nas décadas que doeram.
 
 ## O que a diversificação realmente fez
@@ -56,16 +63,18 @@ A diversificação costuma ser explicada como almoço grátis, o que prepara as 
 - **Ela compra comportamento.** O produto real dela é uma queda suave o suficiente para você continuar aportando, e isso vale mais que uma rentabilidade esperada um pouco maior que você nunca recebe porque vendeu.
 - **As correlações se rompem no pior momento.** Num pânico de verdade, coisas que normalmente se movem separadas se movem juntas por algumas semanas. A diversificação ajuda ao longo de anos, não na terceira semana de uma crise.
 - **2022 foi o lembrete.** Ações e títulos caíram juntos, porque os dois estavam se ajustando à mesma coisa: os juros. Quem acreditava que títulos eram uma proteção incondicional aprendeu que eles protegem de recessões, não de inflação.
+- **A moeda é um eixo de diversificação, e no Brasil é o principal.** Quem investe em real carrega um risco que o investidor americano não tem: em vários episódios, a bolsa brasileira caiu ao mesmo tempo que o real se desvalorizou, dobrando a perda medida em poder de compra internacional. Uma fatia em ativos globais — por um **ETF de índice mundial na B3**, como ACWI11 ou IVVB11, ou por um fundo de investimento no exterior — costuma subir justamente quando o resto da carteira cai. O incômodo é que ela parece um erro em todos os anos em que o real se valoriza.
+- **O maior risco da carteira brasileira típica é o viés doméstico somado à renda fixa doméstica.** Com a Selic em dois dígitos, é confortável ficar inteiro no CDI. Isso funciona até o ciclo virar, e quem passou vinte anos só em CDI descobriu que estava exposto a uma única decisão: a do Banco Central.
 
 ## Um backtest é evidência, não profecia
 
 Passar uma carteira pelas rentabilidades do passado diz algo que nenhuma previsão consegue dizer: isso aconteceu de verdade, e era mais ou menos assim que teria sido. Isso é genuinamente valioso, e vem com limites que convém carregar junto.
 
-- **Viés de sobrevivência.** O século de dados que todo mundo cita pertence aos mercados que venceram. Alguns mercados daquele mesmo período foram fechados, estatizados ou simplesmente desapareceram.
+- **Viés de sobrevivência.** O século de dados que todo mundo cita pertence aos mercados que venceram. Alguns mercados daquele mesmo período foram fechados, estatizados ou simplesmente desapareceram. E vale lembrar onde o Brasil se encaixa nessa conta: as séries longas de rentabilidade brasileira são curtas, cheias de trocas de moeda e de mudanças de regime — o Ibovespa em base comparável começa nos anos noventa, não em 1900. Quando alguém lhe mostra «cem anos de dados», quase nunca são cem anos daqui.
 - **Uma única amostra.** Cem anos parecem enormes. Contados como aposentadorias independentes de 30 anos, são três, e elas se sobrepõem.
 - **O futuro nunca foi obrigado a rimar.** As condições de partida, ou seja, valuations, juros e demografia, são diferentes a cada vez.
 
-Nada disso torna a história inútil. Torna-a uma fonte de *cenários* mais que de probabilidades: o que uma queda de 50% faz com o seu plano, se você continuaria aportando no ano quatro, o que uma década de rentabilidade real estagnada faz com a sua data de liberdade.
+Nada disso torna a história inútil. Torna-a uma fonte de *cenários* mais que de probabilidades: o que uma queda de 50% faz com seu plano, se você continuaria aportando no ano quatro, o que uma década de rentabilidade real estagnada faz com sua data de liberdade.
 
 ## Como usar isso
 
@@ -75,7 +84,7 @@ Se a resposta for não, a mudança que vale a pena não é uma previsão melhor.
 
 ---
 
-### Pronto para dominar os seus hábitos financeiros?
-Atravessar uma queda é um hábito muito antes de ser uma estratégia, e os hábitos que aguentam são os que você monta em um mês calmo. Faça a nossa avaliação de hábitos para ver como o seu plano lidaria com um ano ruim e o que colocar de pé antes de um chegar.
+### Pronto para dominar seus hábitos financeiros?
+Atravessar uma queda é um hábito muito antes de ser uma estratégia, e os hábitos que aguentam são os que você monta em um mês calmo. Faça a nossa avaliação de hábitos para ver como seu plano lidaria com um ano ruim e o que colocar de pé antes de um chegar.
 
-[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
+[Avalie seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

@@ -13,7 +13,7 @@ Quando fiz o meu primeiro pedido de aplicação em um fundo de investimento, pas
 
 No começo, investir sem saber o preço exato me deixou um pouco inseguro. Mas quando estudei a engenharia operacional dos fundos de investimento, entendi que a regra do "preço desconhecido" não é uma falha, e sim uma proteção indispensável para o investidor de longo prazo.
 
-Quer você invista $\text{R}\$ 100$ ou $\text{R}\$ 10.000$ por mês, entender como o valor da cota é calculado todos os dias, como as despesas são divididas e como funciona o resgate traz total clareza para a sua vida financeira. Vamos ver passo a passo por que os fundos operam dessa forma e como funciona essa engrenagem por dentro.
+Quer você invista $\text{R}\$ 100$ ou $\text{R}\$ 10.000$ por mês, entender como o valor da cota é calculado todos os dias, como as despesas são divididas e como funciona o resgate traz total clareza para sua vida financeira. Vamos ver passo a passo por que os fundos operam dessa forma e como funciona essa engrenagem por dentro.
 
 > 💡 **A Base Fundamental:**
 > As cotas de um fundo aberto não são negociadas entre investidores em um pregão. É a própria gestora que cria novas cotas quando entra dinheiro e cancela cotas quando alguém resgata, aplicando sempre o Valor da Cota oficial ao final do dia.
@@ -24,9 +24,11 @@ Quer você invista $\text{R}\$ 100$ ou $\text{R}\$ 10.000$ por mês, entender co
 
 Quando você compra ações na bolsa, você está comprando os papéis de outro investidor no mercado secundário, pelo preço exato do segundo em que fechou o negócio. Nos fundos tradicionais, o processo é bem diferente. Não existe uma bolsa secundária onde os cotistas negociam cotas entre si.
 
-Em vez disso, a Gestora e o Custodiante criam novas cotas quando o dinheiro entra (**subscrição**) ou cancelam cotas entregando o dinheiro correspondente quando o investidor pede o resgate.
+Em vez disso, o **administrador** do fundo emite novas cotas quando o dinheiro entra (**aplicação**) ou cancela cotas entregando o dinheiro correspondente quando o investidor pede o **resgate**. É a **CVM** que regula esse mecanismo, hoje pela **Resolução CVM 175**.
 
-Para evitar que investidores de curto prazo usem notícias do fim do dia para se beneficiar às custas dos cotistas que permanecem no fundo, a legislação aplica o **Princípio do Preço Desconhecido**. Quando você envia o seu pedido no Dia S, você faz isso sem saber o preço exato. A sua operação será executada pelo Valor da Cota ($VL$) calculado com os preços oficiais de fechamento dos mercados daquele mesmo dia.
+Para evitar que investidores de curto prazo usem notícias do fim do dia para se beneficiar às custas dos cotistas que permanecem no fundo, a regulação aplica o **princípio do preço desconhecido**. Quando você envia seu pedido no Dia S, você faz isso sem saber o preço exato. Sua operação será executada pelo **valor da cota** calculado com os preços oficiais de fechamento dos mercados daquele mesmo dia.
+
+Na prática, o que decide em qual dia seu pedido entra é o **horário de corte** previsto no regulamento — tipicamente entre 13h e 15h para fundos de renda fixa e multimercados. Um pedido enviado às 16h não é executado pela cota de hoje: ele é tratado como pedido do próximo dia útil. É um detalhe operacional banal que gera uma quantidade enorme de confusão, sobretudo em dias de forte oscilação, quando um pedido feito pouco depois do corte «pega» um mercado diferente daquele que motivou a decisão.
 
 [ Dia S: Pedido às Cegas ] ➔ [ Fechamento dos Mercados ] ➔ [ Dia S+1: Cálculo da Cota ] ➔ [ Resgate/Liquidação ]
 
@@ -55,13 +57,16 @@ Para garantir total igualdade entre os cotistas, as regras contábeis exigem a *
 
 ## O Ciclo da Sua Operação em 3 Etapas
 
-Quando você pede uma aplicação ou um resgate, o seu pedido cumpre um cronograma regulado para garantir total precisão contábil:
+Quando você pede uma aplicação ou um resgate, seu pedido cumpre um cronograma regulado para garantir total precisão contábil:
 
 | Etapa | Momento Temporal | Processo Técnico Interno | Impacto na Sua Conta |
 | :--- | :--- | :--- | :--- |
-| **Solicitação** | **Dia S** | Registro do pedido e entrada do dinheiro na conta do custodiante. | Você faz a aplicação às cegas, usando a cota anterior como referência. |
-| **Cálculo da Cota** | **Dia S+1** | Avaliação da carteira pelos preços de fechamento do Dia S e cálculo da cota. | Sua conta recebe o número exato de cotas compradas ou vendidas. |
-| **Liquidação** | **Dias D+1 a D+3** | O custodiante faz a transferência bancária do valor do resgate. | O dinheiro cai disponível na sua conta corrente pessoal. |
+| **Solicitação** | **Dia do pedido**, antes do horário de corte | Registro do pedido pelo distribuidor e envio ao administrador. | Você aplica ou resgata às cegas, usando a cota anterior como referência. |
+| **Cotização** | **D+0, D+1 ou D+30**, conforme o regulamento | Avaliação da carteira pelos preços de fechamento e conversão do valor em cotas. | Define o número exato de cotas creditadas ou canceladas. |
+| **Liquidação Financeira** | Normalmente 1 a 3 dias úteis após a cotização | O administrador ordena a transferência do valor do resgate. | O dinheiro cai disponível na sua conta. |
+
+> 💡 **Os dois números que você precisa procurar na lâmina:**
+> **Cotização** é quando o preço é travado; **liquidação** é quando o dinheiro chega. Um fundo DI é tipicamente D+0/D+0. Um fundo de ações costuma ser D+1 para cotização e D+2 ou D+3 para liquidação — e vale lembrar que, desde maio de 2024, a **liquidação das ações nos Estados Unidos passou a ser em T+1**, enquanto a **B3 liquida em D+2**, o que explica parte da diferença de prazos entre fundos locais e fundos com ativos no exterior. Um multimercado pode ser D+30 ou D+60 na cotização, e aí o preço que você recebe é a cota de uma data que ainda não existia quando você clicou em resgatar. Não é uma pegadinha — é o preço de o gestor poder carregar ativos menos líquidos —, mas precisa ser uma escolha consciente.
 
 *Nota: Aplicações e resgates não alteram o valor da cota por si sós. Quando entram $\text{R}\$ 1.000$, o patrimônio total cresce exatamente na mesma proporção em que aumenta o número de cotas em circulação, mantendo o preço unitário da cota intacto.*
 
@@ -69,12 +74,21 @@ Quando você pede uma aplicação ou um resgate, o seu pedido cumpre um cronogra
 
 ## Proteção de Liquidez: A Reserva Mínima de Caixa
 
-O que acontece quando muitos investidores pedem o resgate do dinheiro no mesmo dia? Para evitar que o gestor precise vender ações ou títulos da carteira às pressas a preços ruins, a lei exige que o fundo mantenha uma **reserva obrigatória de liquidez em caixa**.
+O que acontece quando muitos investidores pedem o resgate do dinheiro no mesmo dia? A regulação brasileira não resolve isso com um percentual fixo de caixa. Ela usa uma regra de compatibilidade: o gestor é obrigado a manter a **liquidez da carteira compatível com o prazo de resgate prometido no regulamento**, e o administrador acompanha esse enquadramento diariamente. É por isso que um fundo que compra debêntures de prazo longo não pode oferecer resgate em D+0.
 
-Essa reserva de liquidez é calculada sobre a média dos saldos do fundo e fica alocada apenas em ativos de disponibilidade imediata:
-* Dinheiro em caixa na conta do fundo.
-* Depósitos à vista na instituição custodiante.
-* Títulos públicos de altíssima liquidez (como o Tesouro Selic).
+Na prática, a reserva de liquidez de um fundo brasileiro fica em:
+* Caixa na conta do fundo.
+* **Operações compromissadas** lastreadas em títulos públicos, com liquidez de um dia.
+* **LFT (Tesouro Selic)**, que tem mercado profundo e baixa oscilação de preço.
+
+### Quando a liquidez não é suficiente
+
+Se os pedidos de resgate superarem a capacidade de venda ordenada da carteira, a Resolução CVM 175 prevê ferramentas excepcionais, e todas elas precisam estar previstas no regulamento: **fechamento do fundo para resgates**, com convocação de assembleia de cotistas em prazo curto, e em último caso o **pagamento do resgate em ativos** em vez de dinheiro.
+
+Isso não é hipotético. Em vários episódios de estresse nos fundos brasileiros de **crédito privado** — notadamente em 2019 e nos primeiros meses de 2020 —, ondas de resgate forçaram gestores a vender debêntures num mercado secundário fino, o que derrubou a cota de quem ficou. A lição é a mesma que a estrutura já sugere: **a liquidez que você vê no aplicativo é uma promessa do regulamento, não uma propriedade dos ativos**. Antes de escolher um fundo pela rentabilidade, olhe o que ele carrega e pergunte se aqueles ativos poderiam ser vendidos, com pressa, ao preço que estão marcados.
+
+> 💡 **O imposto também entra na conta do resgate:**
+> Fundos abertos de renda fixa e multimercado recolhem Imposto de Renda de duas formas: pela **tabela regressiva** no resgate (22,5% até 180 dias, chegando a 15% acima de 720 dias) e pelo **come-cotas** no último dia útil de maio e novembro, que antecipa parte desse imposto reduzindo o número de cotas que você tem. Fundos de ações não têm come-cotas e pagam 15% no resgate. Para um plano de décadas, essa diferença de estrutura vale mais atenção que a rentabilidade do último ano.
 
 ---
 

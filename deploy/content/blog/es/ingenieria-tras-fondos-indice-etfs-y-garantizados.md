@@ -85,6 +85,6 @@ Como calcular la media reduce la volatilidad del mercado en aproximadamente un 6
 
 ### ¿Quieres dar el siguiente paso?
 
-Entender la ingeniería con la que se construyen los productos financieros te permite valorar si te conviene la tranquilidad de una garantía estructurada o la sencillez de una estrategia indexada pura. Realiza nuestra evaluación de hábitos para analizar la estructura de tu portafolio, revisar tus productos actuales y trazar un plan automatizado para hacer crecer tu patrimonio.
+Entender la ingeniería con la que se construyen los productos financieros te permite valorar si te conviene la tranquilidad de una garantía estructurada o la sencillez de una estrategia indexada pura. Realiza nuestra evaluación de hábitos para analizar la estructura de tu cartera, revisar tus productos actuales y trazar un plan automatizado para hacer crecer tu patrimonio.
 
 [Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)

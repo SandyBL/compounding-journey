@@ -19,23 +19,23 @@ While you're still saving, that barely matters. Once you start living off the mo
 
 ## The average that hides the risk
 
-Picture a portfolio of €500,000. You take out €25,000 at the start of each year, which is 5% of the starting balance. Over the next three years the market returns −30%, −10% and +50%, in some order.
+Picture a portfolio of $500,000. You take out $25,000 at the start of each year, which is 5% of the starting balance. Over the next three years the market returns −30%, −10% and +50%, in some order.
 
 Two people retire with identical portfolios and live through those same three years. The only thing that's different is the order.
 
 | | Bad years first | Good years first |
 |---|---|---|
-| Start | €500,000 | €500,000 |
+| Start | $500,000 | $500,000 |
 | Year 1 return | −30% | +50% |
-| End of year 1 | €332,500 | €712,500 |
+| End of year 1 | $332,500 | $712,500 |
 | Year 2 return | −10% | −10% |
-| End of year 2 | €276,750 | €618,750 |
+| End of year 2 | $276,750 | $618,750 |
 | Year 3 return | +50% | −30% |
-| **End of year 3** | **€377,625** | **€415,625** |
+| **End of year 3** | **$377,625** | **$415,625** |
 
-Three years in, there's €38,000 between them, close to 8% of the original capital. Nothing created that gap except the order the years arrived in.
+Three years in, there's $38,000 between them, close to 8% of the original capital. Nothing created that gap except the order the years arrived in.
 
-Now take the withdrawals away. Leave both portfolios completely alone and they both end at exactly €472,500, because multiplication doesn't care about order: 0.70 × 0.90 × 1.50 gives you the same answer read backwards.
+Now take the withdrawals away. Leave both portfolios completely alone and they both end at exactly $472,500, because multiplication doesn't care about order: 0.70 × 0.90 × 1.50 gives you the same answer read backwards.
 
 > 💡 **The idea in one line:**
 > The order of returns is irrelevant to a portfolio nobody touches, and decisive for one you're drawing from. Selling units in a fallen market turns a temporary loss into a permanent one, because those units aren't there when the recovery finally arrives.
@@ -52,7 +52,9 @@ It's worth reading that claim closely, because it's a lot narrower than the way 
 * **Thirty years.** Not forty-five. If you're retiring at 45, you're asking a different question.
 * **A fixed, inflation-adjusted withdrawal.** The retiree in the model never once reacted to a crash.
 * **Before costs and taxes.** Fees and tax come out of the same portfolio, and they aren't in the number.
-* **"Success" means one euro left on the last day.** A plan that finished with €12 counts as a win.
+* **"Success" means one dollar left on the last day.** A plan that finished with $12 counts as a win.
+
+UK readers should add one more caveat to that list. Bengen's worst case was American, and British inflation history is harsher: sterling lost purchasing power far faster through the 1970s than the dollar did. Researchers running the same exercise on UK data and a UK-weighted portfolio typically land nearer **3.0–3.5%** as the historically safe rate. The mechanism is identical; the number that survived it is not.
 
 None of that makes the 4% rule useless. It's a genuinely useful piece of history and a good place to start a conversation. It was just never a law, and it was never a promise.
 
@@ -73,6 +75,16 @@ A 90% success rate doesn't mean "you'll be fine". It means one in ten of the fut
 * **Nobody behaves like the model retiree.** Real people cut back in a crash. That single behavior, which the simple version leaves out, is worth more than most portfolio changes.
 * **Chasing 100% has a price.** Certainty gets bought with extra years of work and a smaller life. Somewhere in the high eighties, more precision stops being the useful question.
 
+## The part your tax system decides for you
+
+Sequence risk is arithmetic, but *which* units you are forced to sell in a bad year is set by the rules of the country you retire in. That makes withdrawal order a lever, not a detail.
+
+**In the US**, you are drawing from up to three tax buckets: taxable brokerage, tax-deferred (401(k), Traditional IRA) and tax-free (Roth). The conventional order is taxable first, then tax-deferred, then Roth last, which leaves the tax-free bucket compounding longest and gives you something to draw on in a crash without realizing gains. Two wrinkles bite hard on sequence risk: **required minimum distributions** eventually force money out of tax-deferred accounts whether or not the market has fallen, so partial Roth conversions in the low-income years between retiring and RMDs starting are one of the few ways to shrink a future forced sale. Long-term capital gains and qualified dividends are also taxed at preferential rates, so the taxable bucket is cheaper to tap than most people assume.
+
+**In the UK**, the equivalent structure is a **Stocks & Shares ISA** alongside a **pension in flexi-access drawdown**. The ISA is the better crash buffer of the two, because withdrawals are entirely free of income tax and capital gains tax and can be taken in any amount at any time without touching your tax position. Pension withdrawals are 25% tax-free and 75% taxable as income, and taking taxable income in a year you did not need it is the most common self-inflicted wound in British drawdown. Watch for the **Money Purchase Annual Allowance**, which cuts what you can still contribute once you flexibly access a pension, and remember that the **State Pension** arrives later and is inflation-linked, which shortens the window your portfolio has to cover alone.
+
+In both systems the practical rule is the same: keep the flexible, tax-free pot for the bad years, and do your taxable selling in the good ones.
+
 ## The four levers that genuinely move the outcome
 
 When a plan looks fragile, only a handful of things really change the picture, and they aren't equally hard:
@@ -80,7 +92,7 @@ When a plan looks fragile, only a handful of things really change the picture, a
 1. **Spending flexibility.** A rule you agree with yourself in advance — hold withdrawals flat after a down year, trim them by 10% after a bad one — lifts survival more than almost anything else, because it stops the forced selling that does the damage.
 2. **The first few years in cash.** One to three years of expenses held outside the market means your first bad year doesn't have to be paid for by selling into it.
 3. **Allocation.** Enough growth to outrun inflation over thirty years, enough stability to survive the first five. Both failure modes are real, and only one of them is loud.
-4. **Any income at all.** Part-time work, a pension that starts later, one property. Small, unglamorous income streams shorten the window your portfolio has to cover on its own, and the effect is much bigger than it feels.
+4. **Any income at all.** Part-time work, a pension that starts later, one property. Small, unglamorous income streams shorten the window your portfolio has to cover on its own, and the effect is much bigger than it feels. Social Security in the US and the State Pension in the UK are both worth more the later you claim them—delayed retirement credits to 70 in the US, deferral increments in the UK—which makes bridging the gap with portfolio money a deliberate trade rather than an accident.
 
 ## What none of this can tell you
 

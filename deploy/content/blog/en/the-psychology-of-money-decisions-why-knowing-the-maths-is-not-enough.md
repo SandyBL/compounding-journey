@@ -31,7 +31,7 @@ Everything below is just a specific case of the same asymmetry.
 
 **Loss aversion.** A loss registers roughly twice as hard as an equivalent gain. That's why a −30% portfolio doesn't feel like a temporary dip but like an emergency demanding action, and why the action almost always destroys value. It's also why people hold cash they know is losing purchasing power: that loss is invisible, and invisible losses hurt far less than visible ones.
 
-**Mental accounting.** We treat money differently depending on which pocket it's sitting in. A €2,000 bonus gets spent while €2,000 of credit card debt at 20% sits there unpaid. It's the same €2,000, and clearing the debt is a guaranteed 20% return.
+**Mental accounting.** We treat money differently depending on which pocket it's sitting in. A $2,000 bonus gets spent while $2,000 of credit card debt at 20% sits there unpaid. It's the same $2,000, and clearing the debt is a guaranteed 20% return—better than any investment you will be offered this year, and it is why a tax refund from the IRS or a rebate from HMRC is the most commonly wasted money in a financial life.
 
 **Action bias.** In a falling market, doing nothing feels like negligence. So people rebalance, switch funds, hedge — activity that feels like control and mostly buys transaction costs and worse timing. Long-term investing asks you to sit still at precisely the moment your instincts are screaming at you to move.
 

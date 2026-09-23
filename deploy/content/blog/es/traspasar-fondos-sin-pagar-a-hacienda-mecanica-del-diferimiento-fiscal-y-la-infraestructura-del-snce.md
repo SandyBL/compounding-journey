@@ -101,6 +101,6 @@ Al elegir la opción del traspaso, empiezas en el nuevo fondo con **1.140 € ad
 
 ### ¿Quieres dar el siguiente paso?
 
-Aprovechar las ventajas fiscales que ofrece la normativa española es uno de los pilares más efectivos para acelerar el crecimiento de tu patrimonio sin asumir riesgos innecesarios. Realiza nuestra evaluación de hábitos para analizar la eficiencia fiscal de tus inversiones actuales, revisar la estructura de tu portafolio y diseñar una estrategia optimizada a largo plazo.
+Aprovechar las ventajas fiscales que ofrece la normativa española es uno de los pilares más efectivos para acelerar el crecimiento de tu patrimonio sin asumir riesgos innecesarios. Realiza nuestra evaluación de hábitos para analizar la eficiencia fiscal de tus inversiones actuales, revisar la estructura de tu cartera y diseñar una estrategia optimizada a largo plazo.
 
 [Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)

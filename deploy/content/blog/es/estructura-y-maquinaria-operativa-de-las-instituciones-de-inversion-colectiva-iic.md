@@ -93,6 +93,6 @@ Cuando la gestora aplica comisiones sobre resultados (comisión de éxito), debe
 
 ### ¿Quieres dar el siguiente paso?
 
-Comprender la estructura de seguridad que protege tus ahorros es fundamental para invertir con total serenidad y criterio. Realiza nuestra evaluación de hábitos para revisar la eficiencia de tu portafolio, analizar las comisiones de tus productos y construir un plan de inversión sólido a largo plazo.
+Comprender la estructura de seguridad que protege tus ahorros es fundamental para invertir con total serenidad y criterio. Realiza nuestra evaluación de hábitos para revisar la eficiencia de tu cartera, analizar las comisiones de tus productos y construir un plan de inversión sólido a largo plazo.
 
 [Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)

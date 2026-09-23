@@ -9,7 +9,7 @@ translation_key: building-wealth-good-financial-habits
 link_phrases: hábitos financeiros, bons hábitos financeiros, Pai Rico Pai Pobre
 author: Sandy Bradbury
 ---
-Bons hábitos vão muito além do desenvolvimento pessoal — eles são a verdadeira base do sucesso financeiro de longo prazo. Em seu famoso livro \*Pai Rico, Pai Pobre\*, Robert Kiyosaki enfatiza que construir riqueza não é apenas sobre o quanto você ganha, mas sobre como você gerencia o seu dinheiro e o faz trabalhar para a sua felicidade e liberdade.
+Bons hábitos vão muito além do desenvolvimento pessoal — eles são a verdadeira base do sucesso financeiro de longo prazo. Em seu famoso livro \*Pai Rico, Pai Pobre\*, Robert Kiyosaki enfatiza que construir riqueza não é apenas sobre o quanto você ganha, mas sobre como você gerencia seu dinheiro e o faz trabalhar para sua felicidade e liberdade.
 
 
 
@@ -50,6 +50,18 @@ Uma das lições mais valiosas sobre educação financeira é entender que a dí
 
 
 Kiyosaki aconselha utilizar a dívida boa de forma alavancada e responsável, enquanto se evita ou minimiza ao máximo a dívida ruim.
+
+
+
+\> 💡 \*\*O que isso significa no Brasil:\*\*
+
+\> A distância entre a dívida boa e a dívida ruim aqui é maior do que em quase qualquer outro mercado. Um \*\*financiamento imobiliário pelo SFH\*\* sai por volta de 9% a 12% ao ano; o \*\*rotativo do cartão\*\* passa de 400% ao ano, mesmo com o teto legal que limita a dívida a duas vezes o valor original. Alavancar com a primeira é uma decisão; carregar a segunda não é estratégia nenhuma. E o \*\*crédito consignado\*\*, a 1,5% a 2% ao mês, ocupa um lugar próprio: é barato porque o desconto vem direto da folha ou do benefício do INSS, e é arriscado exatamente pelo mesmo motivo.
+
+
+
+\> 💡 \*\*O custo de carregar um imóvel de aluguel:\*\*
+
+\> Na compra, some o \*\*ITBI\*\* (2% a 3% na maioria das capitais) e o registro em cartório. Depois, \*\*IPTU\*\*, condomínio, vacância e manutenção. E o aluguel recebido por pessoa física entra na \*\*tabela progressiva do Imposto de Renda\*\*, podendo chegar a 27,5%, com recolhimento mensal por carnê-leão. Um \*\*FII\*\* distribui rendimento mensal \*\*isento de IR\*\* para pessoa física que atenda às condições legais, sem ITBI, sem inquilino e sem obra. Nem sempre o ativo de tijolo é o ativo mais eficiente.
 
 
 
@@ -101,7 +113,7 @@ Construir riqueza é um processo gradual e intencional. Adotar estes hábitos di
 
 ---
 
-### Pronto para dominar os seus hábitos financeiros?
-A linha entre um ativo e um passivo é fácil de aceitar e bem mais difícil de aplicar ao extrato da sua própria conta. Faça a nossa avaliação de hábitos para ver de que lado dessa linha o seu dinheiro está agora e qual hábito levaria a maior parte dele para o outro lado.
+### Pronto para dominar seus hábitos financeiros?
+A linha entre um ativo e um passivo é fácil de aceitar e bem mais difícil de aplicar ao extrato da sua própria conta. Faça a nossa avaliação de hábitos para ver de que lado dessa linha seu dinheiro está agora e qual hábito levaria a maior parte dele para o outro lado.
 
-[Avalie os seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)
+[Avalie seus hábitos financeiros →](https://compoundingjourney.com/pt/#assessment)

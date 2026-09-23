@@ -85,6 +85,6 @@ Como los *hedge funds* utilizan derivados, apalancamiento y ventas en corto, los
 
 ### ¿Quieres dar el siguiente paso?
 
-Comprender cómo operan las instituciones financieras en los mercados de inversión alternativa es un paso fundamental para tomar decisiones de inversión con serenidad y criterio. Realiza nuestra evaluación de hábitos para analizar la estructura de tu portafolio, revisar tus niveles de riesgo y construir un plan financiero sólido a largo plazo.
+Comprender cómo operan las instituciones financieras en los mercados de inversión alternativa es un paso fundamental para tomar decisiones de inversión con serenidad y criterio. Realiza nuestra evaluación de hábitos para analizar la estructura de tu cartera, revisar tus niveles de riesgo y construir un plan financiero sólido a largo plazo.
 
 [Haz la evaluación de hábitos financieros →](https://compoundingjourney.com/#assessment)

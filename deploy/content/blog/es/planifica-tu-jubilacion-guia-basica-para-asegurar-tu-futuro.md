@@ -28,7 +28,9 @@ Al calcular tus gastos futuros, es fundamental incluir:
 
 ### Un Ejemplo Práctico de Cálculo
 
-Imagina que mi objetivo es retirarme a los 60 años manteniendo un presupuesto de $2,500\text{ €}$ al mes. Para cubrir un periodo de 30 años de jubilación hasta los 90, el capital base que necesitaría acumular sin contar con el crecimiento de las inversiones sería de $900,000\text{ €}$ ($2,500\text{ €} \times 12\text{ meses} \times 30\text{ años}$).
+Imagina que mi objetivo es retirarme a los 60 años manteniendo un presupuesto de $2.500\text{ €}$ al mes. Para cubrir un periodo de 30 años de jubilación hasta los 90, el capital base que necesitaría acumular sin contar con el crecimiento de las inversiones sería de $900.000\text{ €}$ ($2.500\text{ €} \times 12\text{ meses} \times 30\text{ años}$).
+
+Ese cálculo, además, ignora deliberadamente la pensión pública, y conviene entender por qué. La **edad ordinaria de jubilación en España** se está elevando de forma progresiva hasta los **67 años** (65 si acreditas 38 años y 6 meses cotizados), así que retirarse a los 60 significa financiar íntegramente siete años en los que no cobrarás nada de la **Seguridad Social**. Consulta tu **vida laboral** y la simulación de pensión en la Sede Electrónica de la Seguridad Social antes de fijar la cifra: la diferencia entre tu pensión estimada y tu presupuesto deseado es el único hueco que tu cartera tiene que tapar realmente.
 
 ---
 
@@ -36,13 +38,13 @@ Imagina que mi objetivo es retirarme a los 60 años manteniendo un presupuesto d
 
 El tiempo es el multiplicador más potente a la hora de construir un patrimonio. Gracias al interés compuesto—donde las ganancias generadas vuelven a rentabilizarse—, comenzar una década antes reduce drásticamente la cantidad total que debes aportar de tu bolsillo.
 
-Veamos cuánto habría que invertir cada mes para alcanzar un capital de **$750,000\text{ €}$** a los 65 años, estimando una rentabilidad media anual del mercado del 7%:
+Veamos cuánto habría que invertir cada mes para alcanzar un capital de **$750.000\text{ €}$** a los 65 años, estimando una rentabilidad media anual del mercado del 7%:
 
 | Edad de Inicio | Años de Inversión | Aportación Mensual | Capital Total Aportado | Rentabilidad Compuesta Ganada |
 | :--- | :--- | :--- | :--- | :--- |
-| **A los 25 años** | 40 años | **$250\text{ €} / \text{mes}$** | $120,000\text{ €}$ | **$630,000\text{ €}$** |
-| **A los 35 años** | 30 años | **$550\text{ €} / \text{mes}$** | $198,000\text{ €}$ | **$552,000\text{ €}$** |
-| **A los 45 años** | 20 años | **$1,250\text{ €} / \text{mes}$** | $300,000\text{ €}$ | **$450,000\text{ €}$** |
+| **A los 25 años** | 40 años | **$250\text{ €} / \text{mes}$** | $120.000\text{ €}$ | **$630.000\text{ €}$** |
+| **A los 35 años** | 30 años | **$550\text{ €} / \text{mes}$** | $198.000\text{ €}$ | **$552.000\text{ €}$** |
+| **A los 45 años** | 20 años | **$1.250\text{ €} / \text{mes}$** | $300.000\text{ €}$ | **$450.000\text{ €}$** |
 
 Si empiezas a los 25 años, el esfuerzo de tu propio bolsillo representa menos de la mitad que si comienzas a los 45, dejando que los mercados financieros hagan el 80% del trabajo pesado por ti.
 
@@ -57,8 +59,11 @@ Si empiezas a los 25 años, el esfuerzo de tu propio bolsillo representa menos d
 
 Para calcular tu cifra objetivo aplicando esta regla, simplemente multiplica tus gastos anuales deseados por 25:
 
-* **$24,000\text{ €}/\text{año}$ de gasto ($2,000\text{ €}/\text{mes}$):** Requiere un patrimonio de **$600,000\text{ €}$** ($24,000 \times 25$).
-* **$48,000\text{ €}/\text{año}$ de gasto ($4,000\text{ €}/\text{mes}$):** Requiere un patrimonio de **$1,200,000\text{ €}$** ($48,000 \times 25$).
+* **$24.000\text{ €}/\text{año}$ de gasto ($2.000\text{ €}/\text{mes}$):** Requiere un patrimonio de **$600.000\text{ €}$** ($24.000 \times 25$).
+* **$48.000\text{ €}/\text{año}$ de gasto ($4.000\text{ €}/\text{mes}$):** Requiere un patrimonio de **$1.200.000\text{ €}$** ($48.000 \times 25$).
+
+> 💡 **Dos matices españoles sobre la Regla del 4%:**
+> El estudio original se hizo con datos del mercado estadounidense y sin impuestos. Aquí hay que ajustar por dos cosas. La primera es fiscal: si retiras 24.000 € vendiendo participaciones, solo tributa la **ganancia** contenida en lo vendido, no el importe total, y lo hace en la base del ahorro del IRPF (19% - 30%). La segunda es que tu **pensión pública** actúa como una renta vitalicia indexada a la inflación desde los 65 - 67 años, lo que reduce mucho el capital que la cartera tiene que sostener por sí sola: la regla del 4% solo se aplica al hueco, no a todo tu gasto.
 
 ---
 
@@ -66,11 +71,18 @@ Para calcular tu cifra objetivo aplicando esta regla, simplemente multiplica tus
 
 En España y gran parte de Europa, confiar únicamente en las pensiones públicas del Estado puede resultar arriesgado de cara al futuro. Para complementar la pensión pública, conviene aprovechar diferentes vehículos:
 
-### 1. Planes de Pensiones Individuales
-Permiten realizar aportaciones anuales con ventajas fiscales, reduciendo la base imponible del IRPF en la declaración de la renta. Aunque el dinero queda ilíquido hasta la jubilación (salvo supuestos especiales), ofrece un diferimiento fiscal interesante.
+### 1. Planes de Pensiones Individuales y Planes de Empleo
+Las aportaciones reducen la **base imponible general del IRPF** en la declaración de la renta, lo que supone un ahorro inmediato igual a tu tipo marginal. El límite actual es estrecho y conviene conocerlo bien: **1.500 € anuales** en un plan individual, ampliables en **8.500 € más** por aportaciones de la empresa a un **plan de pensiones de empleo** (con la regla de proporcionalidad según lo que aportes tú). Si eres **autónomo**, puedes aportar hasta 5.750 € adicionales a un plan de empleo simplificado.
 
-### 2. Inversión Directa en Fondos Indexados (ETFs)
-Cada vez más ahorradores prefieren construir su cartera de jubilación mediante fondos indexados globales de bajas comisiones. En España, los fondos de inversión tradicionales permiten realizar traspasos entre fondos sin tributar por las ganancias patrimoniales hasta el momento de la venta definitiva, lo que acelera el interés compuesto.
+El coste de esa ventaja es doble y casi nunca se explica: el dinero queda **ilíquido hasta la jubilación** (salvo desempleo de larga duración, enfermedad grave, o las aportaciones con más de diez años de antigüedad) y, al rescatarlo, **todo el importe tributa como rendimiento del trabajo** en la base general, no como ganancia patrimonial. Un rescate en forma de capital en un solo año puede empujarte a un tramo marginal más alto que el que te ahorraste al aportar; rescatar en forma de renta a lo largo de varios años suele ser mucho más eficiente. Existe una reducción del 40% para las aportaciones anteriores a 2007, y solo se aplica si rescatas en el ejercicio en que te jubilas o en los dos siguientes.
+
+### 1.b. PPA, PIAS y Unit Linked
+Los **Planes de Previsión Asegurados (PPA)** funcionan fiscalmente igual que un plan de pensiones pero con un interés garantizado. Los **PIAS** no desgravan al aportar, y en cambio permiten rescatar como renta vitalicia con una exención muy alta de los rendimientos si se mantienen al menos cinco años. No son equivalentes: uno te ahorra impuestos hoy y el otro al cobrar.
+
+### 2. Fondos Indexados en una Cuenta de Valores
+Cada vez más ahorradores construyen su cartera de jubilación con fondos indexados globales de bajas comisiones, registrados para su comercialización en España y supervisados en origen bajo la normativa **UCITS**. La ventaja estructural aquí es el **régimen de traspasos** del artículo 94 de la Ley del IRPF: puedes mover tu dinero entre fondos de inversión sin tributar por la ganancia acumulada, algo que un **ETF no permite** porque su venta es una transmisión que realiza la plusvalía en ese mismo ejercicio.
+
+Para una cartera de jubilación que vas a rebalancear durante treinta años, esa diferencia pesa más que unos puntos básicos de comisión. Verifica siempre que la gestora o la comercializadora figura en el **registro de la CNMV**, y que tu intermediario está cubierto por el **FOGAIN** hasta 100.000 €.
 
 ---
 
@@ -79,7 +91,10 @@ Cada vez más ahorradores prefieren construir su cartera de jubilación mediante
 Si prefieres no preocuparte por reajustar tu cartera con el paso de los años, existen alternativas automatizadas:
 
 * **Fondos de Fecha Objetivo (Target-Date Funds):** Ajustan automáticamente su nivel de riesgo a medida que te acercas a la fecha estimada de tu retiro. Cuando eres joven invierten mayoritariamente en renta variable para buscar crecimiento, y gradualmente incrementan la renta fija para aportar estabilidad.
-* **Rentas Vitalicias:** Productos aseguradores que convierten un capital acumulado en un ingreso mensual garantizado de por vida.
+* **Rentas Vitalicias:** Productos aseguradores que convierten un capital acumulado en un ingreso mensual garantizado de por vida. En España tienen un trato fiscal muy favorable a partir de cierta edad: en una renta vitalicia inmediata, el porcentaje del cobro que se considera rendimiento del capital sujeto a tributación baja al **8% a partir de los 70 años**, lo que en la práctica convierte la mayor parte de la renta en devolución de capital exenta. A cambio, entregas el control del capital de forma irreversible.
+
+> 💡 **El orden que casi siempre funciona en España:**
+> Primero el plan de empleo hasta agotar la aportación de la empresa, porque es dinero que solo existe si lo pides. Después el fondo indexado en cuenta de valores, por los traspasos y la liquidez. Y el plan de pensiones individual al final, dimensionado según tu tipo marginal hoy frente al que esperas tener al rescatarlo: si ahora estás en el 19% - 24%, la desgravación aporta poco y la iliquidez cuesta mucho.
 
 ---
 
