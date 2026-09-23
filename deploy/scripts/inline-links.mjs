@@ -54,8 +54,10 @@ const FORBIDDEN_TAGS = new Set(['a', 'code', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'
  * numerator of "total fund assets - total fund liabilities" contains the words
  * of two glossary terms, and a link opened inside a fraction would put an
  * underline through half of a division rule and read as part of the formula.
+ * A flow diagram is the same case: its boxes are the terms of a drawing, and
+ * they were never linked while the drawing was a <pre>.
  */
-const FORBIDDEN_CLASSES = /\bclass="[^"]*\b(?:article-math|article-formula|article-fraction)/;
+const FORBIDDEN_CLASSES = /\bclass="[^"]*\b(?:article-math|article-formula|article-fraction|article-flow)/;
 
 /** Default ceiling on links added to a single body. Generous but finite. */
 const DEFAULT_MAX = 14;

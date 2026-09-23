@@ -70,7 +70,7 @@ const PARAGRAPH = /<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/g;
  * A character that draws rather than says something: box drawing, block
  * elements, geometric shapes, and the heavy dingbat arrows the flow diagrams
  * are built from. Kept in step with DIAGRAM_MARK in scripts/markdown.mjs, which
- * decides what gets lifted into a <pre>; this is what notices when the two
+ * decides what gets lifted into a <pre> or a flow diagram; this is what notices when the two
  * disagree. The light arrows at U+2190-U+21FF are excluded on purpose - every
  * article ends with a link reading "Take the assessment \u2192", which belongs in a
  * paragraph.

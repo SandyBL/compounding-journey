@@ -298,14 +298,40 @@ button, input { font: inherit; }
    be re-flowed: the articles use it for ASCII diagrams, where a character's
    column is what says which box an arrow points at. So it scrolls sideways
    rather than wrapping, and max-width keeps that scrolling inside the block
-   instead of widening the page around it. */
-.article-body pre { max-width: 100%; margin: 2em 0; padding: 24px; overflow-x: auto; background: #142a1d; color: #f7f1e5; font-size: .86rem; line-height: 1.65; -webkit-overflow-scrolling: touch; tab-size: 4; }
+   instead of widening the page around it. It is set on paper with forest ink,
+   like the tables, because what it holds is a figure of the article rather
+   than a terminal session. */
+.article-body pre { max-width: 100%; margin: 2.4em 0; padding: 26px 28px; overflow-x: auto; border: 1px solid var(--line); border-top: 3px solid var(--gold); background: var(--paper); box-shadow: 0 16px 40px rgba(45,61,48,.07); color: var(--forest); font-size: .86rem; line-height: 1.65; -webkit-overflow-scrolling: touch; tab-size: 4; }
 .article-body pre code { padding: 0; border: 0; background: transparent; color: inherit; }
 /* The exception: a diagram one row tall. It has no second row to stay aligned
    with, so wrapping cannot break anything, and wrapping is what keeps a long
    one-line flow - "[ Initial Investment ] ➔ [ Compound Returns ] ➔ ..." -
    readable on a phone instead of scrolling off the side of it. */
 .article-body pre.article-diagram-line { white-space: pre-wrap; overflow-x: visible; overflow-wrap: break-word; }
+/* A flow diagram: "[ Step ] ➔ [ Step ]" and "[ Condition ] ➔ outcome" rows,
+   which scripts/markdown.mjs publishes as boxes and connectors rather than as
+   monospace, because nothing in them depends on a character's column.
+
+   The rows share one grid - the template comes from the renderer, since only it
+   knows how many terms a row has - and each row is a subgrid of it, so the
+   terms of parallel rows line up the way they did in the Markdown. The arrow
+   between two terms is drawn in the column gap by the later term, which keeps
+   it out of the list a screen reader announces. A bracketed term is a step and
+   gets a card; a bare one is an outcome or a note and is set lighter; the last
+   term of a row is where the flow arrives and is set in forest. */
+.article-body .article-flow { --flow-gap: 46px; display: grid; grid-template-columns: var(--flow-template); column-gap: var(--flow-gap); row-gap: 14px; margin: 2.4em 0; padding: 28px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(255,253,248,.96), rgba(239,231,212,.62)); box-shadow: 0 16px 40px rgba(45,61,48,.07); font-family: var(--sans); }
+.article-body .article-flow-row { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; margin: 0; padding: 0; list-style: none; }
+.article-body .article-flow-node { position: relative; display: flex; align-items: center; gap: 10px; margin: 0; padding: 14px 16px; border: 1px solid #ddd3bf; background: rgba(255,253,248,.72); color: var(--ink); font-size: .84rem; font-weight: 500; line-height: 1.45; }
+.article-body .article-flow.is-sequence .article-flow-node { justify-content: center; text-align: center; }
+.article-body .article-flow-node.is-step { border-color: #d8ccb3; border-top: 3px solid var(--gold); background: var(--paper); box-shadow: 0 8px 22px rgba(48,57,48,.06); color: var(--forest); font-weight: 700; }
+.article-body .article-flow-node.is-end { border-color: var(--forest); background: var(--forest); color: white; }
+.article-body .article-flow-node.is-step.is-end { border-top-color: var(--gold); }
+.article-body .article-flow-node::marker { content: none; }
+.article-body .article-flow-node + .article-flow-node::before { content: ""; position: absolute; top: 50%; right: calc(100% + 9px); width: calc(var(--flow-gap) - 18px); height: 2px; background: var(--gold); transform: translateY(-50%); }
+.article-body .article-flow-node + .article-flow-node::after { content: ""; position: absolute; top: 50%; right: calc(100% + 9px); width: 8px; height: 8px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); transform: translateY(-50%) rotate(45deg); }
+.article-body .article-flow-trend { display: inline-grid; flex: none; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(200,154,50,.18); color: #8a6516; font-size: .82rem; font-weight: 800; line-height: 1; }
+.article-body .article-flow-node.is-end .article-flow-trend { background: rgba(255,255,255,.16); color: #f1d79a; }
+.article-body .article-flow strong { color: inherit; }
 /* Mathematics, rendered into ordinary elements at build time by
    scripts/math.mjs rather than typeset in the browser by a library.
 
@@ -328,10 +354,21 @@ button, input { font: inherit; }
 /* The fraction, which is the whole reason this renderer exists: "assets -
    liabilities / shares" written along one line is a different expression from
    the one the articles mean. inline-grid stacks the two halves and centres the
-   shorter over the longer; the rule between them is the division. */
-.article-body .article-fraction { display: inline-grid; grid-template-columns: auto; vertical-align: -.55em; text-align: center; }
-.article-body .article-fraction-over { padding: 0 .4em .12em; border-bottom: 1px solid currentColor; }
-.article-body .article-fraction-under { padding: .12em .4em 0; }
+   shorter over the longer; the rule between them is the division.
+
+   The two rows are 1fr each, so they are always the same height - the taller
+   half's - and the rule is therefore always the vertical middle of the box,
+   even when one half wraps onto two lines and the other does not. Each half
+   presses its contents against the rule. That is what lets the fraction be
+   aligned by its middle: vertical-align: middle inside a sentence, and
+   align-items: center in a display formula, where the terms on the left of the
+   equals sign then sit level with the rule rather than with the numerator. */
+.article-body .article-fraction { display: inline-grid; grid-template-columns: auto; grid-template-rows: 1fr 1fr; vertical-align: middle; line-height: 1.25; text-align: center; }
+.article-body .article-fraction-over, .article-body .article-fraction-under { display: flex; justify-content: center; }
+.article-body .article-fraction-over { align-items: flex-end; padding: 0 .4em .14em; border-bottom: 1px solid currentColor; }
+.article-body .article-fraction-under { align-items: flex-start; padding: .14em .4em 0; }
+.article-body .article-formula-row { display: flex; align-items: center; justify-content: center; gap: .4em; width: fit-content; max-width: 100%; margin: 0 auto; }
+.article-body .article-formula-term { min-width: 0; }
 .article-body img { width: 100%; height: auto; margin: 2.5em 0; border-radius: 2px; box-shadow: 0 18px 48px rgba(31,41,34,.12); }
 .article-body > p:first-child { color: #34473a; font-size: 1.32rem; line-height: 1.72; }
 .author-card { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 24px; margin-top: 68px; padding-top: 34px; border-top: 1px solid var(--line); font-family: var(--sans); }
@@ -416,6 +453,15 @@ button, input { font: inherit; }
   .article-body .article-callout::before { left: 20px; }
   .article-body .article-table-wrap { margin-inline: -4px; width: calc(100% + 8px); }
   .article-body pre { margin-inline: -4px; width: calc(100% + 8px); padding: 18px 16px; font-size: .74rem; }
+  /* On a phone a row of terms turns ninety degrees: the terms stack, the
+     arrows point down between them, and parallel rows are separated by a rule
+     instead of sitting side by side. */
+  .article-body .article-flow { --flow-gap: 30px; grid-template-columns: minmax(0, 1fr); row-gap: 22px; margin-inline: -4px; width: calc(100% + 8px); padding: 20px 16px; }
+  .article-body .article-flow-row { row-gap: var(--flow-gap); }
+  .article-body .article-flow-row + .article-flow-row { padding-top: 22px; border-top: 1px solid var(--line); }
+  .article-body .article-flow-node { justify-content: center; text-align: center; }
+  .article-body .article-flow-node + .article-flow-node::before { top: auto; right: auto; bottom: calc(100% + 7px); left: 50%; width: 2px; height: calc(var(--flow-gap) - 14px); transform: translateX(-50%); }
+  .article-body .article-flow-node + .article-flow-node::after { top: auto; right: auto; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) rotate(135deg); }
   .article-body .article-formula { margin-inline: -4px; width: calc(100% + 8px); padding: 20px 14px; font-size: .98rem; }
   .author-card { grid-template-columns: 72px minmax(0, 1fr); }
   .author-card img { width: 72px; height: 72px; }

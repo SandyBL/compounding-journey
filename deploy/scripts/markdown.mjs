@@ -268,6 +268,93 @@ function diagramLabel(line) {
   return /^[ \t]/.test(line) || /\S[ \t]{2,}\S/.test(line);
 }
 
+// The arrows a flow diagram is written with: the heavy dingbats ("➔", "➜",
+// "➡"), a box-drawing shaft with a head ("──►"), the ASCII "->", and the light
+// arrows, which are punctuation in a sentence but are a connector between two
+// terms once a row is already known to be part of a drawing.
+const FLOW_ARROW = /\s*(?:[\u2794-\u27bf]|\u2500+[\u25b6\u25ba>]|-+>|[\u2192\u21d2\u27f6])\s*/;
+
+// A leading "↑" or "↓" says a quantity rises or falls - "↑ Aging Population
+// ──► ↓ Net Household Formation" - and is drawn as a marker on its node.
+const FLOW_TREND = /^([\u2191\u2193\u25b2\u25bc\u2b06\u2b07])\s*/;
+
+/**
+ * Reads the rows of a drawing as a flow diagram, or returns null when they are
+ * something else.
+ *
+ * Most drawings in the journal are not drawings at all but sentences with
+ * arrows in them - "[ Initial Investment ] ➔ [ Compound Returns ] ➔ ..." or a
+ * pair of "[ condition ] ➔ outcome" rows. Nothing in them depends on the column
+ * a character sits in, so they can be published as real boxes and connectors in
+ * the article's own type and colours instead of as a block of monospace. Every
+ * row has to qualify - two or more terms joined by arrows, with no box-drawing
+ * left over once the arrows are gone - because a row that does not is a picture
+ * whose alignment is its meaning, and a picture only a <pre> can keep.
+ */
+function parseFlow(rows) {
+  const flow = [];
+  for (const row of rows) {
+    if (!row.trim()) continue;
+    const terms = row.trim().split(FLOW_ARROW);
+    if (terms.length < 2 || terms.some((term) => !term.trim())) return null;
+    const nodes = [];
+    for (const term of terms) {
+      let label = term.trim();
+      const bracketed = label.match(/^\[\s*([^\]]*?)\s*\]$/);
+      if (bracketed) label = bracketed[1];
+      const trend = label.match(FLOW_TREND);
+      if (trend) label = label.slice(trend[0].length);
+      if (!label || DIAGRAM_MARK.test(label)) return null;
+      nodes.push({ label, step: Boolean(bracketed), trend: trend && (/[\u2191\u25b2\u2b06]/.test(trend[1]) ? 'up' : 'down') });
+    }
+    flow.push(nodes);
+  }
+  return flow.length ? flow : null;
+}
+
+// One row of steps is a sequence, and its boxes share the width equally. Two
+// rows or more are parallel statements - a condition and what follows from it -
+// so each column is as wide as the terms in it need, up to an equal share, the
+// last takes the rest, and the rows line up the way they did in the source.
+function renderFlow(flow, options) {
+  const columns = flow[0].length;
+  const share = `fit-content(calc((100% - ${columns - 1} * var(--flow-gap)) / ${columns}))`;
+  const template = flow.length === 1
+    ? `repeat(${columns}, minmax(0, 1fr))`
+    : `repeat(${columns - 1}, ${share}) minmax(0, 1fr)`;
+  const rows = flow.map((nodes) => {
+    const items = nodes.map((node, index) => {
+      const classes = ['article-flow-node', node.step ? 'is-step' : 'is-note'];
+      if (index === nodes.length - 1) classes.push('is-end');
+      const trend = node.trend
+        ? `<span class="article-flow-trend is-${node.trend}">${node.trend === 'up' ? '\u2191' : '\u2193'}</span>`
+        : '';
+      return `<li class="${classes.join(' ')}">${trend}<span>${renderInline(node.label, options)}</span></li>`;
+    }).join('');
+    return `<ol class="article-flow-row">${items}</ol>`;
+  }).join('');
+  const kind = flow.length === 1 ? 'is-sequence' : 'is-rows';
+  return `<div class="article-flow ${kind}" style="--flow-template: ${template}">${rows}</div>`;
+}
+
+// A drawing as published: a flow diagram when it is one, and otherwise the
+// preformatted block that keeps its columns. Rows arriving together with a
+// different number of terms are two flows that met without a sentence between
+// them, not one, so each run of rows of the same shape gets a diagram of its own.
+function renderDrawing(rows, options, attribute = '') {
+  const flow = parseFlow(rows);
+  if (flow) {
+    const groups = [];
+    flow.forEach((nodes) => {
+      const last = groups[groups.length - 1];
+      if (last && last[0].length === nodes.length) last.push(nodes);
+      else groups.push([nodes]);
+    });
+    return groups.map((group) => renderFlow(group, options)).join('\n');
+  }
+  return `<pre${attribute}><code>${escapeHtml(dedent(rows).join('\n'))}</code></pre>`;
+}
+
 function renderTable(rows, options) {
   const cells = (row) => row.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim());
   const header = cells(rows[0]);
@@ -375,7 +462,12 @@ export function renderBlocks(markdown, options, labels) {
         index += 1;
       }
       while (code.length && !code[code.length - 1].trim()) code.pop();
-      html.push(`<pre><code>${escapeHtml(dedent(code).join('\n'))}</code></pre>`);
+      // An indented flow - "[ A ] ➔ [ B ]" pushed in four spaces - is still a
+      // flow, and is published as one. Anything without a drawing character is
+      // left as the code block it was written as.
+      html.push(code.some((codeLine) => DIAGRAM_MARK.test(codeLine))
+        ? renderDrawing(code, options)
+        : `<pre><code>${escapeHtml(dedent(code).join('\n'))}</code></pre>`);
       continue;
     }
 
@@ -471,7 +563,7 @@ export function renderBlocks(markdown, options, labels) {
       // scrolling a phone sideways. Two rows or more and the alignment between
       // them is the whole content, so it must not.
       const attribute = rows.length === 1 ? ' class="article-diagram-line"' : '';
-      html.push(`<pre${attribute}><code>${escapeHtml(dedent(rows).join('\n'))}</code></pre>`);
+      html.push(renderDrawing(rows, options, attribute));
       continue;
     }
 
