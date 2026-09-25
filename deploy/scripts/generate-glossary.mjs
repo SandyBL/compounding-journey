@@ -92,7 +92,7 @@ const MENTION_LIMIT = 3;
  * interest calculator lives at /es/calculadoras/interes-compuesto/ and
  * /en/calculators/compound-interest/. Resolving through TOOLS also means the
  * link is labelled with the calculator's name rather than with the section
- * heading, so the reader knows which of the three they are being sent to.
+ * heading, so the reader knows which calculator they are being sent to.
  */
 function toolLink(group, language) {
   const tool = TOOLS.find((candidate) => candidate.id === GROUP_TOOL[group]);
