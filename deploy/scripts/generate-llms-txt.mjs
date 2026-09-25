@@ -167,7 +167,7 @@ ${languages.map((code) => `- [${languageNames[code]}](${homeUrl(code)})`).join('
 ## Main Topics and Tools
 
 - [Financial education pillars](${origin}/#pilares): money psychology, intentional investing, sustainable habits, and financial freedom.
-- [Financial calculators](${origin}/#herramientas): compound interest, financial freedom, and purchase cost in working hours.
+- [Financial calculators](${origin}/#herramientas): compound interest, the negative compounding of fees and taxes, financial freedom, and purchase cost in working hours.
 - [Excel templates](${origin}/#plantillas): free personal budgeting and expense-management resources.
 - [Financial assessment](${origin}/#assessment): the personal financial balance and investment profile questionnaires, and the snapshot, risk profile, and recommended roadmap they produce.
 - [Frequently asked questions](${origin}/#preguntas-frecuentes): direct answers about the 4% rule, what FIRE means and its variants, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.

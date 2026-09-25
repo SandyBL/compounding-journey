@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
  * Publishes the calculators: one index and one page per calculator, per
- * language. 3 calculators x 3 languages = 9 pages plus 3 indexes.
+ * language. 4 calculators x 3 languages = 12 pages plus 3 indexes.
  *
- * All three already ran on the home page, as tabs of a single widget. They
- * still do - this does not remove them. What it adds is a page per calculation
+ * The first three already ran on the home page, as tabs of a single widget.
+ * They still do - this does not remove them. The fourth, negative compounding,
+ * was born here and has no home-page tab. What it adds is a page per calculation
  * whose URL, title, H1, description and structured data are about that one
  * calculation, because that is what a tool-shaped search matches. A home page
  * cannot rank for "calculadora de interés compuesto" and "life cost
@@ -16,7 +17,9 @@
  *   - The markup is generated from content/site/tools.mjs, and the arithmetic
  *     lives in assets/js/calculators.js keyed by the same tool `id`. Adding a
  *     fourth calculator is a data entry plus an engine function; no wiring
- *     here changes.
+ *     here changes - unless it needs a kind of input or output the first
+ *     three did not, as the fourth did: a select, presets, a second result
+ *     list and a chart are all optional properties of a tool now.
  *   - The visible FAQ and the FAQPage schema are rendered from the same array,
  *     so they cannot disagree. Structured data that promises an answer the
  *     page does not contain is a manual action, not a missed opportunity.
@@ -79,32 +82,135 @@ function relatedArticles(tool, language, catalog) {
 
 /** ------------------------------------------------------------------ parts */
 
-function fieldMarkup(tool, language) {
-  const copy = tool[language];
-  return tool.fields
-    .map((field) => {
-      const id = `field-${tool.id}-${field.id}`;
-      const hint = copy.hints[field.id];
-      const attributes = [
-        `type="${field.type}"`,
-        `id="${id}"`,
-        `name="${field.id}"`,
-        `data-field="${field.id}"`,
-        `value="${field.value}"`,
-        field.min !== undefined ? `min="${field.min}"` : '',
-        field.max !== undefined ? `max="${field.max}"` : '',
-        field.step !== undefined ? `step="${field.step}"` : '',
-        'inputmode="decimal"',
-        hint ? `aria-describedby="${id}-hint"` : ''
-      ].filter(Boolean).join(' ');
+/**
+ * The explanatory card under a select option.
+ *
+ * Every option's card is in the markup, and calculators.js unhides the one
+ * that matches the current value. Rendering them all server-side rather than
+ * building them in script means the explanations are indexable, readable
+ * without JavaScript (the first one is visible by default), and translated in
+ * the same data file as everything else on the page.
+ */
+function optionNoteMarkup(field, option, index, copy) {
+  if (!option.note) return '';
+  const note = option.note;
+  const labels = copy.noteLabels;
+  const rows = ['timing', 'mechanics', 'effect', 'tip']
+    .filter((key) => note[key])
+    .map((key) => `                <div><dt>${escapeHtml(labels[key])}</dt><dd>${escapeHtml(note[key])}</dd></div>`)
+    .join('\n');
+  return `            <div class="calc-note" data-show-for="${field.id}" data-show-value="${escapeHtml(option.id)}"${index === 0 ? '' : ' hidden'}>
+              <p class="calc-note-head"><strong>${escapeHtml(option.name)}</strong><span class="calc-note-badge calc-note-badge--${note.tone}">${escapeHtml(note.badge)}</span></p>
+              <dl>
+${rows}
+              </dl>
+            </div>`;
+}
 
-      return `          <div class="calc-field">
+function singleFieldMarkup(tool, field, language) {
+  const copy = tool[language];
+  const id = `field-${tool.id}-${field.id}`;
+  const hint = copy.hints[field.id];
+
+  if (field.type === 'select') {
+    const options = copy.options[field.id];
+    const optionTags = options
+      .map((option) => `<option value="${escapeHtml(option.id)}">${escapeHtml(option.name)}</option>`)
+      .join('');
+    const notes = options.map((option, index) => optionNoteMarkup(field, option, index, copy)).filter(Boolean).join('\n');
+    return `          <div class="calc-field">
+            <label for="${id}">${escapeHtml(copy.labels[field.id])}</label>
+            <select id="${id}" name="${field.id}" data-field="${field.id}"${hint ? ` aria-describedby="${id}-hint"` : ''}>${optionTags}</select>
+            ${hint ? `<p class="calc-field-hint" id="${id}-hint">${escapeHtml(hint)}</p>` : ''}
+${notes}
+          </div>`;
+  }
+
+  const attributes = [
+    `type="${field.type}"`,
+    `id="${id}"`,
+    `name="${field.id}"`,
+    `data-field="${field.id}"`,
+    `value="${field.value}"`,
+    field.min !== undefined ? `min="${field.min}"` : '',
+    field.max !== undefined ? `max="${field.max}"` : '',
+    field.step !== undefined ? `step="${field.step}"` : '',
+    'inputmode="decimal"',
+    hint ? `aria-describedby="${id}-hint"` : ''
+  ].filter(Boolean).join(' ');
+
+  return `          <div class="calc-field">
             <label for="${id}">${escapeHtml(copy.labels[field.id])}</label>
             <input ${attributes} />
             ${hint ? `<p class="calc-field-hint" id="${id}-hint">${escapeHtml(hint)}</p>` : ''}
           </div>`;
+}
+
+/**
+ * The inputs, in one block or - when the tool declares `group` on its fields -
+ * in one titled fieldset per group. The currency selector joins the first
+ * block, next to the amounts it applies to.
+ */
+function fieldsMarkup(tool, language, strings) {
+  const copy = tool[language];
+  const currency = currencyMarkup(tool, strings);
+  const groups = [];
+  for (const field of tool.fields) {
+    const key = field.group ?? '';
+    let group = groups.find((candidate) => candidate.key === key);
+    if (!group) {
+      group = { key, fields: [] };
+      groups.push(group);
+    }
+    group.fields.push(field);
+  }
+
+  return groups
+    .map((group, index) => {
+      const legend = group.key && copy.groups?.[group.key]
+        ? `\n                <legend class="calc-legend">${escapeHtml(copy.groups[group.key])}</legend>`
+        : '';
+      const fields = group.fields.map((field) => singleFieldMarkup(tool, field, language)).join('\n');
+      return `              <fieldset class="calc-fields">${legend}
+${fields}
+${index === 0 ? currency : ''}
+              </fieldset>`;
     })
     .join('\n');
+}
+
+/**
+ * One-click example scenarios. Each button carries the values it sets as JSON,
+ * so the script needs no per-tool knowledge to apply them.
+ */
+function presetsMarkup(tool, language) {
+  const copy = tool[language];
+  if (!copy.presets?.length) return '';
+  const buttons = copy.presets
+    .map((preset) => `<button type="button" class="calc-preset" data-preset="${escapeHtml(JSON.stringify(preset.values))}">${escapeHtml(preset.label)}</button>`)
+    .join('');
+  return `            <div class="calc-presets" role="group" aria-label="${escapeHtml(copy.presetsLabel)}">
+              <p class="calc-presets-label">${escapeHtml(copy.presetsLabel)}</p>
+              <div class="calc-presets-list">${buttons}</div>
+            </div>`;
+}
+
+/**
+ * The growth chart, for a tool that declares `chart: true`.
+ *
+ * Its series labels travel as data attributes so the script stays
+ * language-agnostic. The canvas is an image to assistive technology, with the
+ * figcaption saying what it shows; every number it plots is also in the result
+ * block above it, which is what a screen reader reads.
+ */
+function chartMarkup(tool, language) {
+  if (!tool.chart) return '';
+  const chart = tool[language].chart;
+  const labels = JSON.stringify({ ideal: chart.ideal, net: chart.net, year: chart.year, exit: chart.exit });
+  return `            <figure class="calc-chart">
+              <div class="calc-chart-canvas"><canvas data-chart="${escapeHtml(labels)}" role="img" aria-label="${escapeHtml(chart.caption)}"></canvas></div>
+              <figcaption>${escapeHtml(chart.caption)}</figcaption>
+            </figure>`;
 }
 
 function currencyMarkup(tool, strings) {
@@ -132,12 +238,22 @@ function resultMarkup(tool, language) {
     .map((key) => `            <div><dt>${escapeHtml(copy.results[key])}</dt><dd data-result="${key}">—</dd></div>`)
     .join('\n');
 
+  // A second, titled list for a tool whose result has two layers - the
+  // headline comparison and the itemised costs behind it.
+  const detail = tool.result.detail?.length
+    ? `
+          <p class="calc-breakdown-title">${escapeHtml(copy.detailTitle)}</p>
+          <dl class="calc-breakdown">
+${tool.result.detail.map((key) => `            <div><dt>${escapeHtml(copy.results[key])}</dt><dd data-result="${key}">—</dd></div>`).join('\n')}
+          </dl>`
+    : '';
+
   return `        <div class="calc-result" aria-live="polite">
           <p class="calc-result-label">${escapeHtml(copy.results[tool.result.primary])}</p>
           <p class="calc-result-value" data-result="${tool.result.primary}">—</p>
           <dl class="calc-breakdown">
 ${rows}
-          </dl>
+          </dl>${detail}
           <p class="calc-result-note">${escapeHtml(copy.resultNote)}</p>
         </div>
         ${copy.error ? `<p class="calc-error" hidden>${escapeHtml(copy.error)}</p>` : ''}`;
@@ -243,15 +359,14 @@ function renderTool(tool, language, strings, catalog, targets) {
         <div>
           <div class="calc-panel">
             <form class="calc-form" data-calculator="${tool.id}" novalidate>
-              <div class="calc-fields">
-${fieldMarkup(tool, language)}
-${currencyMarkup(tool, strings)}
-              </div>
+${presetsMarkup(tool, language)}
+${fieldsMarkup(tool, language, strings)}
               <div class="calc-actions">
                 <button type="submit" class="button">${escapeHtml(copy.action)}</button>
               </div>
             </form>
 ${resultMarkup(tool, language)}
+${chartMarkup(tool, language)}
             <noscript><p class="calc-error">${escapeHtml(strings.toolsNoJs)}</p></noscript>
           </div>
           ${disclaimer(strings, language)}
@@ -320,7 +435,15 @@ ${faqMarkup(tool, language, strings)}
     ],
     graph,
     body,
-    extraScripts: '\n<script src="/assets/js/calculators.js?v=source" defer></script>'
+    // Chart.js and the shared chart theme only where a chart is drawn, and in
+    // this order: deferred scripts run in document order, so Chart and its
+    // defaults exist before calculators.js constructs anything.
+    extraScripts:
+      (tool.chart
+        ? '\n<script src="/assets/js/chart-4.4.1.umd.min.js" defer></script>' +
+          '\n<script src="/assets/js/sim-chart-theme.js?v=source" defer></script>'
+        : '') +
+      '\n<script src="/assets/js/calculators.js?v=source" defer></script>'
   });
 }
 
@@ -381,7 +504,17 @@ async function main() {
           throw new Error(`Tool ${tool.id} (${language}) has no label for field "${field.id}".`);
         }
       }
-      for (const key of [tool.result.primary, ...tool.result.rows]) {
+      // A select with no options renders an empty control, and one without
+      // an option list at all would throw halfway through a page.
+      for (const field of tool.fields.filter((candidate) => candidate.type === 'select')) {
+        if (!tool[language].options?.[field.id]?.length) {
+          throw new Error(`Tool ${tool.id} (${language}) has no options for select "${field.id}".`);
+        }
+      }
+      if (tool.chart && !tool[language].chart) {
+        throw new Error(`Tool ${tool.id} (${language}) declares a chart but has no chart labels.`);
+      }
+      for (const key of [tool.result.primary, ...tool.result.rows, ...(tool.result.detail ?? [])]) {
         if (!tool[language].results[key]) {
           throw new Error(`Tool ${tool.id} (${language}) has no label for result "${key}".`);
         }

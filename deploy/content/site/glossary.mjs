@@ -274,6 +274,44 @@ A diferença entre 0,20% e 1,50% parece trivial. Sobre 100.000 durante trinta an
     }
   },
   {
+    id: 'tax-deferral',
+    group: 'investing',
+    related: ['ter', 'compound-interest', 'opportunity-cost'],
+    es: {
+      name: 'Diferimiento fiscal',
+      slug: 'diferimiento-fiscal',
+      aliases: ['tax drag', 'lastre fiscal', 'fiscalidad diferida', 'diferir impuestos'],
+      short: 'Pagar los impuestos de una inversión al final, cuando se vende, y no cada año por el camino, para que ese dinero siga generando rentabilidad mientras tanto.',
+      body: `Un impuesto sobre la rentabilidad se puede pagar en dos momentos: cada año, a medida que se genera, o una sola vez, al vender. El tipo puede ser idéntico y el resultado no lo es. Lo que se paga cada año sale de la cartera y deja de componerse para siempre; lo que se paga al final ha estado trabajando para ti hasta el último día. Al primer efecto se le llama en inglés *tax drag*, el lastre fiscal; al segundo, diferimiento.
+
+Con números: 100.000 € al 7 % durante treinta años, con un impuesto del 19 % sobre la ganancia. Pagándolo cada año, el resultado final ronda los 523.000 €. Pagándolo solo al vender, unos 635.000 € después de impuestos. Mismo tipo, misma rentabilidad, unos 112.000 € de diferencia.
+
+En España, los fondos de inversión permiten traspasar de uno a otro sin tributar, y un fondo de acumulación no reparte dividendos, así que la plusvalía no pasa por Hacienda hasta el reembolso final. Es una de las pocas ventajas fiscales disponibles para cualquiera, y la razón por la que la forma de un producto importa tanto como su comisión.`
+    },
+    en: {
+      name: 'Tax deferral',
+      slug: 'tax-deferral',
+      aliases: ['tax drag', 'tax-deferred', 'deferred tax', 'tax deferred'],
+      short: 'Paying the tax on an investment at the end, when you sell, rather than every year along the way, so that money keeps earning in the meantime.',
+      body: `Tax on investment returns can be paid at two moments: every year, as the return is earned, or once, when you sell. The rate can be identical and the outcome is not. What is paid each year leaves the portfolio and stops compounding for good; what is paid at the end has been working for you until the last day. The first effect is called tax drag; the second, deferral.
+
+In numbers: $100,000 at 7% for thirty years, with a 15% tax on the gain. Paid every year, the final balance comes to about $566,000. Paid only when you sell, about $662,000 after tax. Same rate, same return, roughly $96,000 apart.
+
+This is why a fund that distributes a lot every year costs more than its fee suggests in a taxable account, and why accounts like a 401(k), an IRA or a Roth IRA are worth so much over decades. The wrapper decides when the tax falls, and when is most of what matters.`
+    },
+    pt: {
+      name: 'Diferimento fiscal',
+      slug: 'diferimento-fiscal',
+      aliases: ['tax drag', 'come-cotas', 'arrasto fiscal', 'imposto diferido'],
+      short: 'Pagar o imposto de um investimento no fim, quando se resgata, e não todos os anos pelo caminho, para que esse dinheiro continue rendendo entretanto.',
+      body: `Um imposto sobre a rentabilidade pode ser pago em dois momentos: todo ano, à medida que o rendimento surge, ou uma única vez, no resgate. A alíquota pode ser idêntica e o resultado não é. O que se paga todo ano sai da carteira e deixa de render para sempre; o que se paga no fim trabalhou para você até o último dia. Ao primeiro efeito chama-se em inglês *tax drag*, o arrasto fiscal; ao segundo, diferimento.
+
+Com números: 100.000 a 7% durante trinta anos, com 15% de imposto sobre o ganho. Pagando todo ano, o saldo final fica perto de 566.000. Pagando só no resgate, cerca de 662.000 já depois do imposto. Mesma alíquota, mesma rentabilidade, perto de 96.000 de diferença.
+
+No Brasil, o come-cotas é o exemplo clássico do primeiro caso: a cada maio e novembro, os fundos de renda fixa e multimercado recolhem o imposto sobre o rendimento do semestre, mesmo sem resgate. Um CDB ou um título do Tesouro sem cupom só é tributado no resgate, e os fundos de ações só na venda, o que faz da forma do produto uma decisão tão importante quanto a taxa.`
+    }
+  },
+  {
     id: 'dca',
     group: 'investing',
     related: ['compound-interest', 'volatility', 'pay-yourself-first'],
