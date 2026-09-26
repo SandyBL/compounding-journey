@@ -177,7 +177,7 @@
               "name": "¿Qué calculadoras financieras gratuitas incluye Compounding Journey?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "La página incluye una calculadora de interés compuesto, una calculadora orientativa de libertad financiera basada en gastos y tasa de retirada, y una calculadora que convierte el coste de una compra en horas de trabajo."
+                "text": "La página incluye una calculadora de interés compuesto, una calculadora orientativa de libertad financiera basada en gastos y tasa de retirada, una calculadora que convierte el coste de una compra en horas de trabajo y una calculadora de interés compuesto negativo que muestra cuánto patrimonio se llevan las comisiones y los impuestos con los años."
               }
             },
             {
@@ -267,7 +267,7 @@
               "name": "Which free financial calculators does Compounding Journey include?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The page includes a compound interest calculator, a financial freedom calculator based on spending and a withdrawal rate, and a calculator that converts a purchase price into working hours."
+                "text": "The page includes a compound interest calculator, a financial freedom calculator based on spending and a withdrawal rate, a calculator that converts a purchase price into working hours, and a negative compounding calculator that shows how much wealth fees and taxes take over the years."
               }
             },
             {
@@ -357,7 +357,7 @@
               "name": "Que calculadoras financeiras gratuitas inclui a Compounding Journey?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de retirada, e uma calculadora que converte o custo de uma compra em horas de trabalho."
+                "text": "A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de retirada, uma calculadora que converte o custo de uma compra em horas de trabalho e uma calculadora de juros compostos negativos que mostra quanto patrimônio as taxas e os impostos levam ao longo dos anos."
               }
             },
             {
@@ -2109,9 +2109,9 @@
                     <span lang-content="pt">Ferramentas para transformar dinheiro em liberdade</span>
                 </h2>
                 <p class="text-sm text-darkbark/70 mt-2 max-w-lg mx-auto">
-                    <span lang-content="es">Pon números a tus sueños: visualiza cómo crece tu dinero, qué necesitas para ganar autonomía y cuántas horas de vida cuesta cada compra.</span>
-                    <span lang-content="en">Put numbers behind your dreams: see how money grows, what greater autonomy requires, and how many hours of life each purchase costs.</span>
-                    <span lang-content="pt">Dê números aos seus sonhos: veja como o dinheiro cresce, o que você precisa para ganhar autonomia e quantas horas de vida custa cada compra.</span>
+                    <span lang-content="es">Pon números a tus sueños: visualiza cómo crece tu dinero, qué necesitas para ganar autonomía, cuántas horas de vida cuesta cada compra y cuánto te quitan comisiones e impuestos.</span>
+                    <span lang-content="en">Put numbers behind your dreams: see how money grows, what greater autonomy requires, how many hours of life each purchase costs, and how much fees and taxes take.</span>
+                    <span lang-content="pt">Dê números aos seus sonhos: veja como o dinheiro cresce, o que você precisa para ganhar autonomia, quantas horas de vida custa cada compra e quanto taxas e impostos levam.</span>
                 </p>
             </div>
 
@@ -2156,6 +2156,13 @@
                         <span lang-content="es">Coste en Horas</span>
                         <span lang-content="en">Cost in Hours</span>
                         <span lang-content="pt">Custo em Horas</span>
+                    </button>
+                    <!-- Tab Button 4: Negative Compounding -->
+                    <button type="button" role="tab" id="tab-btn-negative" aria-selected="false" aria-controls="panel-negative" tabindex="-1" data-tab="negative" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
+                        <i class="fa-solid fa-arrow-trend-down text-sm" aria-hidden="true"></i>
+                        <span lang-content="es">Interés Compuesto Negativo</span>
+                        <span lang-content="en">Negative Compounding</span>
+                        <span lang-content="pt">Juros Compostos Negativos</span>
                     </button>
                 </div>
             </div>
@@ -2578,6 +2585,218 @@
                                 <span lang-content="es">“No solo gastas dinero: también eliges cuánto tiempo de tu vida intercambias por cada compra.”</span>
                                 <span lang-content="en">“You do not just spend money: you choose how much of your life you exchange for every purchase.”</span>
                                 <span lang-content="pt">“Você não gasta apenas dinheiro: também escolhe quanto tempo da sua vida troca por cada compra.”</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 4: NEGATIVE COMPOUNDING CALCULATOR (FEES AND TAX).
+                 A compact version of the standalone page: the same inputs, the
+                 same tax regimes per language and the same headline figures,
+                 without the chart and the option explanations, which the link
+                 at the bottom leads to. The regime list differs by language
+                 (Spain, US, Brazil), so each language has its own <select>. -->
+            <div id="panel-negative" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-negative" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-warmgold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                <span lang-content="es">El coste invisible de invertir</span>
+                                <span lang-content="en">The hidden cost of investing</span>
+                                <span lang-content="pt">O custo invisível de investir</span>
+                            </p>
+                            <h3 class="text-2xl font-extrabold text-forestgreen leading-tight">
+                                <span lang-content="es">¿Cuánto te quitan comisiones e impuestos?</span>
+                                <span lang-content="en">How much do fees and taxes take?</span>
+                                <span lang-content="pt">Quanto taxas e impostos levam?</span>
+                            </h3>
+                            <p class="text-sm text-darkbark/70 mt-2 leading-relaxed">
+                                <span lang-content="es">Compara tu cartera ideal, sin fricciones, con la que de verdad acaba en tu cuenta.</span>
+                                <span lang-content="en">Compare your ideal, frictionless portfolio with the one that actually reaches your account.</span>
+                                <span lang-content="pt">Compare a sua carteira ideal, sem atritos, com a que de fato chega à sua conta.</span>
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="neg-initial" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span lang-content="es">Capital inicial</span>
+                                    <span lang-content="en">Starting amount</span>
+                                    <span lang-content="pt">Capital inicial</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-initial"
+                                    min="0" step="100" inputmode="decimal"
+                                    value="10000"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                            <div>
+                                <label for="neg-monthly" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span lang-content="es">Aportación mensual</span>
+                                    <span lang-content="en">Monthly contribution</span>
+                                    <span lang-content="pt">Aporte mensal</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-monthly"
+                                    min="0" step="25" inputmode="decimal"
+                                    value="300"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                            <div>
+                                <label for="neg-years" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span lang-content="es">Años</span>
+                                    <span lang-content="en">Years</span>
+                                    <span lang-content="pt">Anos</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-years"
+                                    min="1" max="60" step="1" inputmode="numeric"
+                                    value="30"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                            <div>
+                                <label for="neg-rate" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span lang-content="es">Rentabilidad bruta (%)</span>
+                                    <span lang-content="en">Gross return (%)</span>
+                                    <span lang-content="pt">Rentabilidade bruta (%)</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-rate"
+                                    min="0" max="20" step="0.1" inputmode="decimal"
+                                    value="7"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="pt-5 border-t border-creamborder space-y-6">
+                            <div>
+                                <label for="neg-fee" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span lang-content="es">Comisión anual / TER (%)</span>
+                                    <span lang-content="en">Annual fee / expense ratio (%)</span>
+                                    <span lang-content="pt">Taxa de administração anual (%)</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-fee"
+                                    min="0" max="5" step="0.05" inputmode="decimal"
+                                    value="1.5"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+
+                            <div lang-content="es">
+                                <label for="neg-regime-es" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">Cómo tributa (España)</label>
+                                <select id="neg-regime-es" class="neg-regime w-full cursor-pointer bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-sm text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen">
+                                    <option value="ES_REPARTO">Dividendos o ETF de distribución</option>
+                                    <option value="ES_TRASPASO">Fondo de acumulación (traspasos sin tributar)</option>
+                                    <option value="ES_PENSIONES">Plan de pensiones (rescate en forma de capital)</option>
+                                </select>
+                            </div>
+                            <div lang-content="en">
+                                <label for="neg-regime-en" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">How it is taxed (US)</label>
+                                <select id="neg-regime-en" class="neg-regime w-full cursor-pointer bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-sm text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen">
+                                    <option value="US_TURNOVER">Actively managed fund, taxable account</option>
+                                    <option value="US_ETF">Index ETF, taxable account</option>
+                                    <option value="US_HIGH">Index ETF, top tax bracket</option>
+                                    <option value="US_ROTH">Roth IRA or Roth 401(k)</option>
+                                </select>
+                            </div>
+                            <div lang-content="pt">
+                                <label for="neg-regime-pt" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">Como é tributado (Brasil)</label>
+                                <select id="neg-regime-pt" class="neg-regime w-full cursor-pointer bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-sm text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen">
+                                    <option value="BR_COMECOTAS">Fundo de renda fixa ou multimercado (come-cotas)</option>
+                                    <option value="BR_REGRESSIVA">CDB ou Tesouro Direto (tabela regressiva)</option>
+                                    <option value="BR_ACOES">Ações, ETFs ou fundos de ações</option>
+                                    <option value="BR_ISENTO">LCI, LCA, CRI ou CRA (isentos para pessoa física)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
+                        <div id="neg-results" class="space-y-6">
+                            <div>
+                                <p class="text-xs font-bold text-forestgreen/75 uppercase tracking-wider mb-1">
+                                    <span lang-content="es">Lo que te cuestan comisiones e impuestos</span>
+                                    <span lang-content="en">What fees and tax cost you</span>
+                                    <span lang-content="pt">O que taxas e impostos custam a você</span>
+                                </p>
+                                <p id="neg-result-gap" class="text-3xl sm:text-4xl font-extrabold text-[#a6402a]">€0,00</p>
+                                <p class="text-[11px] font-bold text-darkbark/60 mt-1">
+                                    <span lang-content="es">Parte del patrimonio que se pierde:</span>
+                                    <span lang-content="en">Share of wealth lost:</span>
+                                    <span lang-content="pt">Parte do patrimônio perdida:</span>
+                                    <span id="neg-result-erosion" class="text-darkbark">0 %</span>
+                                </p>
+                            </div>
+
+                            <div class="border-t border-creamborder pt-4 grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
+                                        <span lang-content="es">Sin fricciones</span>
+                                        <span lang-content="en">No friction</span>
+                                        <span lang-content="pt">Sem atritos</span>
+                                    </p>
+                                    <p id="neg-result-ideal" class="text-lg font-bold text-forestgreen">€0,00</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
+                                        <span lang-content="es">Neto real</span>
+                                        <span lang-content="en">Actual net</span>
+                                        <span lang-content="pt">Líquido real</span>
+                                    </p>
+                                    <p id="neg-result-net" class="text-lg font-bold text-darkbark">€0,00</p>
+                                </div>
+                            </div>
+
+                            <dl class="border-t border-creamborder pt-4 space-y-2 text-xs">
+                                <div class="flex justify-between gap-4">
+                                    <dt class="text-darkbark/65">
+                                        <span lang-content="es">Comisiones pagadas</span>
+                                        <span lang-content="en">Fees paid</span>
+                                        <span lang-content="pt">Taxas pagas</span>
+                                    </dt>
+                                    <dd id="neg-result-fees" class="font-bold text-darkbark text-right">€0,00</dd>
+                                </div>
+                                <div class="flex justify-between gap-4">
+                                    <dt class="text-darkbark/65">
+                                        <span lang-content="es">Impuestos pagados</span>
+                                        <span lang-content="en">Tax paid</span>
+                                        <span lang-content="pt">Impostos pagos</span>
+                                    </dt>
+                                    <dd id="neg-result-tax" class="font-bold text-darkbark text-right">€0,00</dd>
+                                </div>
+                                <div class="flex justify-between gap-4">
+                                    <dt class="text-darkbark/65">
+                                        <span lang-content="es">Crecimiento que ese dinero ya no generó</span>
+                                        <span lang-content="en">Growth that money never earned</span>
+                                        <span lang-content="pt">Crescimento que esse dinheiro não gerou</span>
+                                    </dt>
+                                    <dd id="neg-result-lost-growth" class="font-bold text-warmgold text-right">€0,00</dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <div id="neg-warning" class="hidden rounded-xl border border-warmgold/40 bg-warmgold/10 px-4 py-3 text-xs text-darkbark/75">
+                            <span lang-content="es">Introduce un capital inicial o una aportación mensual mayor que cero: sin dinero invertido no hay nada que erosionar.</span>
+                            <span lang-content="en">Enter a starting amount or a monthly contribution above zero: with nothing invested, there is nothing to erode.</span>
+                            <span lang-content="pt">Informe um capital inicial ou um aporte mensal acima de zero: sem dinheiro investido não há nada a corroer.</span>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-white rounded-xl border border-creamborder">
+                            <p class="text-[11px] leading-relaxed text-darkbark/80">
+                                <span lang-content="es">Estimación con fiscalidad simplificada. <a href="/es/calculadoras/interes-compuesto-negativo/" class="font-bold text-forestgreen underline hover:text-warmgold transition-colors">Abre la calculadora completa</a> para ver el gráfico y cómo funciona cada opción.</span>
+                                <span lang-content="en">An estimate with simplified tax rules. <a href="/en/calculators/negative-compounding/" class="font-bold text-forestgreen underline hover:text-warmgold transition-colors">Open the full calculator</a> for the chart and how each option works.</span>
+                                <span lang-content="pt">Estimativa com tributação simplificada. <a href="/pt/calculadoras/juros-compostos-negativos/" class="font-bold text-forestgreen underline hover:text-warmgold transition-colors">Abra a calculadora completa</a> para ver o gráfico e como funciona cada opção.</span>
                             </p>
                         </div>
                     </div>
@@ -3096,7 +3315,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">¿Qué calculadoras financieras gratuitas incluye Compounding Journey?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">La página incluye una calculadora de interés compuesto, una calculadora orientativa de libertad financiera basada en gastos y tasa de retirada, y una calculadora que convierte el coste de una compra en horas de trabajo. Todas están disponibles en la sección <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Herramientas</a>.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">La página incluye una calculadora de interés compuesto, una calculadora orientativa de libertad financiera basada en gastos y tasa de retirada, una calculadora que convierte el coste de una compra en horas de trabajo y una calculadora de interés compuesto negativo que muestra cuánto patrimonio se llevan las comisiones y los impuestos con los años. Todas están disponibles en la sección <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Herramientas</a>.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -3159,7 +3378,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Which free financial calculators does Compounding Journey include?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">The page includes a compound interest calculator, a financial freedom calculator based on spending and a withdrawal rate, and a calculator that converts a purchase price into working hours. All three are available in the <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Tools</a> section.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">The page includes a compound interest calculator, a financial freedom calculator based on spending and a withdrawal rate, a calculator that converts a purchase price into working hours, and a negative compounding calculator that shows how much wealth fees and taxes take over the years. All four are available in the <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Tools</a> section.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -3222,7 +3441,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Que calculadoras financeiras gratuitas inclui a Compounding Journey?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de retirada, e uma calculadora que converte o custo de uma compra em horas de trabalho. Todas estão disponíveis na seção <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Ferramentas</a>.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de retirada, uma calculadora que converte o custo de uma compra em horas de trabalho e uma calculadora de juros compostos negativos que mostra quanto patrimônio as taxas e os impostos levam ao longo dos anos. Todas estão disponíveis na seção <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Ferramentas</a>.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -4389,6 +4608,7 @@
             calculateCompoundInterest();
             calculateFreedom();
             calculateLifeCost();
+            calculateNegativeCompounding();
         }
 
         function setCalculatorCurrency(currency) {
@@ -4408,14 +4628,16 @@
             calculateCompoundInterest();
             calculateFreedom();
             calculateLifeCost();
+            calculateNegativeCompounding();
         }
 
         // TAB SWITCHER
-        const calculatorTabs = ['compound', 'freedom', 'life-cost'];
+        const calculatorTabs = ['compound', 'freedom', 'life-cost', 'negative'];
         const calculatorRecalculators = {
             compound: () => calculateCompoundInterest(),
             freedom: () => calculateFreedom(),
-            'life-cost': () => calculateLifeCost()
+            'life-cost': () => calculateLifeCost(),
+            negative: () => calculateNegativeCompounding()
         };
 
         function switchTab(tabId, moveFocus = false) {
@@ -4577,6 +4799,128 @@
                 maximumFractionDigits: 1
             });
             document.getElementById('life-cost-warning').classList.toggle('hidden', hasValidRate);
+        }
+
+        // NEGATIVE COMPOUNDING CALCULATOR ENGINE
+        //
+        // Restates negativeCompounding() and REGIMES from
+        // assets/js/calculators.js, for the reason given at the top of that
+        // file. If a rate or the loop changes there, it changes here too. The
+        // ideal portfolio is calculateCompoundInterest()'s loop exactly.
+        const SPAIN_SAVINGS_BANDS = [[6000, 0.19], [50000, 0.21], [200000, 0.23], [300000, 0.27], [Infinity, 0.30]];
+
+        function spainSavingsTax(gain) {
+            let tax = 0;
+            let floor = 0;
+            for (let i = 0; i < SPAIN_SAVINGS_BANDS.length && gain > floor; i++) {
+                const ceiling = SPAIN_SAVINGS_BANDS[i][0];
+                tax += (Math.min(gain, ceiling) - floor) * SPAIN_SAVINGS_BANDS[i][1];
+                floor = ceiling;
+            }
+            return tax;
+        }
+
+        const flatTax = rate => gain => gain * rate;
+
+        function brazilRegressiveTax(gain, years) {
+            const months = years * 12;
+            const rate = months <= 6 ? 0.225 : months <= 12 ? 0.20 : months <= 24 ? 0.175 : 0.15;
+            return gain * rate;
+        }
+
+        const NEGATIVE_REGIMES = {
+            ES_REPARTO: { every: 12, distribution: 0.03, periodicTax: spainSavingsTax, exitTax: spainSavingsTax },
+            ES_TRASPASO: { exitTax: spainSavingsTax },
+            ES_PENSIONES: { exitOnTotal: 0.30 },
+            US_TURNOVER: { every: 12, distribution: 0.03, periodicTax: flatTax(0.15), exitTax: flatTax(0.15) },
+            US_ETF: { every: 12, distribution: 0.015, periodicTax: flatTax(0.15), exitTax: flatTax(0.15) },
+            US_HIGH: { every: 12, distribution: 0.015, periodicTax: flatTax(0.238), exitTax: flatTax(0.238) },
+            US_ROTH: {},
+            BR_COMECOTAS: { every: 6, accrual: flatTax(0.15), exitTax: brazilRegressiveTax },
+            BR_REGRESSIVA: { exitTax: brazilRegressiveTax },
+            BR_ACOES: { exitTax: flatTax(0.15) },
+            BR_ISENTO: {}
+        };
+
+        // Each language has its own regime list, so only one of the three
+        // selects exists on a generated page. The template has all three.
+        function negativeRegimeSelect() {
+            return document.getElementById(`neg-regime-${currentLanguage()}`)
+                || document.querySelector('.neg-regime');
+        }
+
+        function calculateNegativeCompounding() {
+            const panel = document.getElementById('panel-negative');
+            if (!panel) return;
+
+            const initial = Math.max(0, parseFloat(document.getElementById('neg-initial').value) || 0);
+            const monthly = Math.max(0, parseFloat(document.getElementById('neg-monthly').value) || 0);
+            const years = Math.max(1, Math.round(parseFloat(document.getElementById('neg-years').value) || 0));
+            const rateVal = parseFloat(document.getElementById('neg-rate').value) || 0;
+            const feeRate = Math.max(0, parseFloat(document.getElementById('neg-fee').value) || 0) / 100;
+            const regimeSelect = negativeRegimeSelect();
+            const regime = (regimeSelect && NEGATIVE_REGIMES[regimeSelect.value]) || {};
+
+            const monthlyRate = (rateVal / 100) / 12;
+            const totalMonths = years * 12;
+
+            let ideal = initial;
+            let net = initial;
+            let basis = initial;
+            let fees = 0;
+            let taxPaid = 0;
+
+            for (let month = 1; month <= totalMonths; month++) {
+                ideal = (ideal * (1 + monthlyRate)) + monthly;
+
+                net = net * (1 + monthlyRate);
+                const fee = net * feeRate / 12;
+                net = net - fee + monthly;
+                fees += fee;
+                basis += monthly;
+
+                if (regime.every && month % regime.every === 0) {
+                    let tax = 0;
+                    if (regime.distribution) {
+                        const paidOut = net * regime.distribution;
+                        tax = regime.periodicTax(paidOut, years);
+                        basis += paidOut - tax;
+                    } else if (regime.accrual && net > basis) {
+                        tax = regime.accrual(net - basis, years);
+                        basis = net - tax;
+                    }
+                    net -= tax;
+                    taxPaid += tax;
+                }
+            }
+
+            let exitTax = 0;
+            if (regime.exitOnTotal) {
+                exitTax = net * regime.exitOnTotal;
+            } else if (regime.exitTax && net > basis) {
+                exitTax = regime.exitTax(net - basis, years);
+            }
+            net -= exitTax;
+            taxPaid += exitTax;
+
+            const valid = ideal > 0;
+            document.getElementById('neg-results').classList.toggle('hidden', !valid);
+            document.getElementById('neg-warning').classList.toggle('hidden', valid);
+            if (!valid) return;
+
+            const gap = Math.max(0, ideal - net);
+            const lostGrowth = Math.max(0, gap - fees - taxPaid);
+            const language = currentLanguage();
+            const locale = language === 'en' ? 'en-US' : language === 'pt' ? 'pt-BR' : 'es-ES';
+            const erosion = (gap / ideal) * 100;
+
+            document.getElementById('neg-result-gap').textContent = formatCurrency(gap);
+            document.getElementById('neg-result-erosion').textContent = `${erosion.toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`;
+            document.getElementById('neg-result-ideal').textContent = formatCurrency(ideal);
+            document.getElementById('neg-result-net').textContent = formatCurrency(net);
+            document.getElementById('neg-result-fees').textContent = formatCurrency(fees);
+            document.getElementById('neg-result-tax').textContent = formatCurrency(taxPaid);
+            document.getElementById('neg-result-lost-growth').textContent = formatCurrency(lostGrowth);
         }
 
         function formatCurrency(amount) {
@@ -5577,6 +5921,12 @@
         });
         ['#life-monthly-salary', '#life-monthly-hours', '#life-purchase-cost'].forEach((selector) => {
             on(selector, 'input', calculateLifeCost);
+        });
+        ['#neg-initial', '#neg-monthly', '#neg-years', '#neg-rate', '#neg-fee'].forEach((selector) => {
+            on(selector, 'input', calculateNegativeCompounding);
+        });
+        document.querySelectorAll('.neg-regime').forEach((select) => {
+            select.addEventListener('change', calculateNegativeCompounding);
         });
         on('#calculator-currency', 'change', (event) => setCalculatorCurrency(event.target.value));
         on('#contact-form', 'submit', handleFormSubmit);
