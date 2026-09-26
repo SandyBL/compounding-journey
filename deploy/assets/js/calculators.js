@@ -1,8 +1,8 @@
 /**
  * The standalone calculator pages' behaviour.
  *
- * Relationship to assets/js/home.js, which matters: the first three
- * calculations also run on the home page, inside a tabbed widget. That copy is
+ * Relationship to assets/js/home.js, which matters: all four calculations
+ * also run on the home page, inside a tabbed widget. That copy is
  * not imported here and this one is not imported there, and the duplication is
  * deliberate rather than an oversight.
  *
@@ -138,11 +138,12 @@
   /* --------------------------------------------- negative compounding -- */
 
   /*
-   * This one has no twin in home.js: it was written for its own page and has
-   * no home-page tab. Its frictionless portfolio is, on purpose, the exact
-   * loop compoundInterest() runs above, so the same inputs give the same
-   * "ideal" figure on both pages and the difference between them is only ever
-   * the friction.
+   * Twin: calculateNegativeCompounding() and NEGATIVE_REGIMES in home.js, a
+   * compact home-page tab without the chart. A rate or a change to the loop
+   * below has to be made there too. Its frictionless portfolio is, on
+   * purpose, the exact loop compoundInterest() runs above, so the same inputs
+   * give the same "ideal" figure on both pages and the difference between
+   * them is only ever the friction.
    */
 
   /** Spain's savings-income scale (base del ahorro), applied band by band. */
