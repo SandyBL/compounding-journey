@@ -26,7 +26,7 @@ URGENTE                      NO URGENTE
           ┌───────────────────────────┬───────────────────────────┐
           │                           │                           │
 IMPORTANTE  │        🔥 HAZLO YA        │     🌱 INVIERTE AQUÍ      │
-│  Crisis y plazos límite   │  Estrategia, salud y meta │
+│  Crisis y plazos límite   │ Estrategia, salud y metas │
 │                           │                           │
 ├───────────────────────────┼───────────────────────────┤
 │                           │                           │

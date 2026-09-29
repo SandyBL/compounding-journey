@@ -55,9 +55,11 @@ const FORBIDDEN_TAGS = new Set(['a', 'code', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'
  * of two glossary terms, and a link opened inside a fraction would put an
  * underline through half of a division rule and read as part of the formula.
  * A flow diagram is the same case: its boxes are the terms of a drawing, and
- * they were never linked while the drawing was a <pre>.
+ * they were never linked while the drawing was a <pre>. So is a matrix of
+ * quadrants: each cell is a short label, and a link in one would read as a
+ * quadrant of its own.
  */
-const FORBIDDEN_CLASSES = /\bclass="[^"]*\b(?:article-math|article-formula|article-fraction|article-flow)/;
+const FORBIDDEN_CLASSES = /\bclass="[^"]*\b(?:article-math|article-formula|article-fraction|article-flow|article-matrix)/;
 
 /** Default ceiling on links added to a single body. Generous but finite. */
 const DEFAULT_MAX = 14;
