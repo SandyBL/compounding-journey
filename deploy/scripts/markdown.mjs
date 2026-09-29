@@ -355,6 +355,128 @@ function renderDrawing(rows, options, attribute = '') {
   return `<pre${attribute}><code>${escapeHtml(dedent(rows).join('\n'))}</code></pre>`;
 }
 
+// The borders of a grid drawn in box characters: the top, a divider between
+// two bands of cells, and the bottom. Each has to run the whole width in one
+// piece with at least one junction in it, which is what separates a grid of
+// cells from the stacked single boxes of a flow chart.
+const GRID_TOP = /^┌─*(?:┬─*)+┐$/;
+const GRID_DIVIDER = /^├─*(?:┼─*)+┤$/;
+const GRID_BOTTOM = /^└─*(?:┴─*)+┘$/;
+
+// A line that cannot be a column heading of a grid, because it is already
+// Markdown that means something else.
+const NOT_A_HEADING = /^\s*(?:#{1,6}\s|```|>|\||[-*+]\s|\d+[.)]\s|\$\$)/;
+
+/**
+ * Reads a grid drawn in box characters - the four quadrants of an Eisenhower
+ * matrix, or any table of cells written the same way - starting at `start`, and
+ * returns it with the index of the line after it, or null when the lines there
+ * are not one.
+ *
+ * A grid pasted through the content studio arrives with its indentation
+ * scrambled: some rows keep the margin they were centred with, the labels
+ * written to the left of a row push that row's first border out of line, and
+ * the rest lose their margin altogether. As a <pre> that is a drawing with its
+ * right-hand edge in three places, and the rows that happened to be indented
+ * four spaces were read as a separate code block, which is how a matrix came
+ * out as a stray paragraph of column headings over two half-boxes. None of that
+ * matters to a grid, though, because its meaning is in the order of the cells
+ * and not in the column a character sits in. Splitting each row on its "│"
+ * recovers the cells whatever the indentation did, so the grid can be published
+ * as real cells instead.
+ *
+ * What it recognises: one optional line of column headings directly above the
+ * top border, separated from each other by two spaces or more; an optional row
+ * label written to the left of a band's first border; and inside each cell a
+ * first line that names it and any lines after that describe it. Anything that
+ * does not fit - a row with the wrong number of cells, a heading line that does
+ * not split into one heading per column, a border that does not close - makes
+ * this return null, and the lines are left to the drawing rules below, which
+ * keep them exactly as written.
+ */
+function readGrid(lines, start) {
+  let cursor = start;
+  let headings = null;
+  const first = lines[cursor];
+  if (first.trim() && !DIAGRAM_MARK.test(first) && !NOT_A_HEADING.test(first)) {
+    headings = first.trim().split(/\s{2,}/);
+    cursor += 1;
+  }
+
+  const top = (lines[cursor] || '').trim();
+  if (!GRID_TOP.test(top)) return null;
+  const columns = top.split('┬').length;
+  if (headings && headings.length !== columns) return null;
+  cursor += 1;
+
+  const bands = [[]];
+  let closed = false;
+  while (cursor < lines.length) {
+    const line = lines[cursor];
+    const trimmed = line.trim();
+    cursor += 1;
+    // Blank lines between rows are the paragraph breaks the studio adds to a
+    // pasted drawing, not part of it. A grid that never closes still fails
+    // below, so skipping them cannot swallow the text after a broken one.
+    if (!trimmed) continue;
+    if (GRID_BOTTOM.test(trimmed)) { closed = true; break; }
+    if (GRID_DIVIDER.test(trimmed)) {
+      if (trimmed.split('┼').length !== columns) return null;
+      bands.push([]);
+      continue;
+    }
+    const bar = line.indexOf('│');
+    if (bar === -1) return null;
+    const cells = line.slice(bar + 1).split('│');
+    if (cells.pop().trim() || cells.length !== columns) return null;
+    bands[bands.length - 1].push({ label: line.slice(0, bar).trim(), cells: cells.map((cell) => cell.trim()) });
+  }
+  if (!closed || bands.some((band) => !band.length)) return null;
+
+  const rows = bands.map((band) => ({
+    label: band.map((row) => row.label).filter(Boolean).join(' '),
+    cells: Array.from({ length: columns }, (_unused, column) =>
+      band.map((row) => row.cells[column]).filter(Boolean))
+  }));
+  return { grid: { headings, rows }, next: cursor };
+}
+
+// A grid as published: a matrix of cells with its column headings over it and
+// its row labels beside it, carrying table roles so a screen reader announces
+// each quadrant with the heading and label it sits under, the way a reader of
+// the drawing would read it.
+function renderGrid({ headings, rows }, options) {
+  const columns = rows[0].cells.length;
+  const labelled = rows.some((row) => row.label);
+  const quadrants = columns === 2 && rows.length === 2;
+  const template = `${labelled ? 'auto ' : ''}repeat(${columns}, minmax(0, 1fr))`;
+  const classes = ['article-matrix'];
+  if (labelled) classes.push('has-row-labels');
+  if (headings) classes.push('has-headings');
+  if (quadrants) classes.push('is-quadrants');
+
+  const head = headings
+    ? `<div class="article-matrix-row is-head" role="row">${labelled ? '<span class="article-matrix-corner" aria-hidden="true"></span>' : ''}${
+      headings.map((heading) => `<span class="article-matrix-heading" role="columnheader">${renderInline(heading, options)}</span>`).join('')}</div>`
+    : '';
+  const body = rows.map((row, rowIndex) => {
+    const label = labelled
+      ? `<span class="article-matrix-label" role="rowheader"><span>${renderInline(row.label, options)}</span></span>`
+      : '';
+    const cells = row.cells.map((cell, column) => {
+      const [title = '', ...rest] = cell;
+      const note = rest.length ? `<span class="article-matrix-note">${renderInline(rest.join(' '), options)}</span>` : '';
+      // A 2x2 grid is a quadrant chart, and each quadrant gets an accent of
+      // its own, numbered in reading order.
+      const quadrant = quadrants ? ` is-quadrant-${rowIndex * 2 + column + 1}` : '';
+      return `<div class="article-matrix-cell${quadrant}" role="cell"><strong class="article-matrix-title">${renderInline(title, options)}</strong>${note}</div>`;
+    }).join('');
+    return `<div class="article-matrix-row" role="row">${label}${cells}</div>`;
+  }).join('');
+
+  return `<div class="${classes.join(' ')}" role="table" style="--matrix-template: ${template}">${head}${body}</div>`;
+}
+
 function renderTable(rows, options) {
   const cells = (row) => row.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim());
   const header = cells(rows[0]);
@@ -446,6 +568,16 @@ export function renderBlocks(markdown, options, labels) {
     // of the two or three the marker takes - reads as code there. The preview
     // draws that line too, so this branch stands aside for the shallow case
     // and keeps the paragraph behaviour the lists have always had.
+    // A grid of cells drawn in box characters is read before the indented-code
+    // rule, because the rows of one that has been pasted through the studio are
+    // indented unevenly and that rule would otherwise cut it in two.
+    const grid = readGrid(lines, index);
+    if (grid) {
+      html.push(renderGrid(grid.grid, options));
+      index = grid.next;
+      continue;
+    }
+
     const indent = line.match(/^[ \t]*/)[0].replace(/\t/g, '    ').length;
     const afterList = /<\/(?:ul|ol)>$/.test(html[html.length - 1] ?? '');
     if (indent >= (afterList ? 8 : 4)) {
