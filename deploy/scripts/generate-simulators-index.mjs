@@ -69,7 +69,7 @@ function render(language, strings) {
   const url = absolute(simulatorsPath(language));
 
   const body = `    <div class="container">
-      <div class="card-grid">
+      <div class="card-grid card-grid-simulators">
 ${SIMULATORS.map((simulator) => card(simulator, language, copy)).join('\n')}
       </div>
       <section class="page-section">

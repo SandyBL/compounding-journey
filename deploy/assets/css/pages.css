@@ -134,6 +134,25 @@
 .card-meta { margin: auto 0 0; padding-top: 6px; color: var(--muted); font-family: var(--sans); font-size: .74rem; letter-spacing: .03em; }
 .card .text-link { margin-top: 8px; }
 
+/**
+ * The simulator index has five cards, and the shared auto-fill grid lays five
+ * out as four and a stray one. Here the rows are composed instead: two wide
+ * cards over three on a desktop, and on a tablet the first card - the one the
+ * page tells a newcomer to start with - across the top over two pairs. The
+ * nth-last-child guard keeps the wide pair to a set of exactly five, so a sixth
+ * simulator falls back to two even rows of three rather than an odd layout.
+ */
+@media (min-width: 640px) and (max-width: 999px) {
+  .card-grid-simulators { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card-grid-simulators > .card:first-child:nth-last-child(odd) { grid-column: 1 / -1; }
+}
+@media (min-width: 1000px) {
+  .card-grid-simulators { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .card-grid-simulators > .card { grid-column: span 2; }
+  .card-grid-simulators > .card:first-child:nth-last-child(5),
+  .card-grid-simulators > .card:first-child:nth-last-child(5) + .card { grid-column: span 3; }
+}
+
 /* ------------------------------------------------ overflow containment ------- */
 
 /* Every two-column page layout below collapses to a single column on a phone,
