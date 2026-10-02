@@ -86,40 +86,44 @@ button, input { font: inherit; }
 .lang-btn svg { display: block; width: 24px; height: 16px; overflow: hidden; border-radius: 2px; box-shadow: 0 1px 2px rgba(45,36,27,.2); }
 .return-short { display: none; }
 
-.blog-intro { position: relative; padding: 52px 0 30px; background: var(--forest); color: white; }
+.blog-intro { position: relative; padding: 40px 0 28px; background: var(--forest); color: white; }
 .blog-intro::after { content: ""; position: absolute; right: -8vw; bottom: -180px; width: 390px; height: 390px; border: 1px solid rgba(200,154,50,.25); border-radius: 50%; box-shadow: 0 0 0 50px rgba(200,154,50,.04), 0 0 0 105px rgba(200,154,50,.025); pointer-events: none; }
-.intro-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); align-items: end; gap: 64px; }
-.blog-intro h1 { max-width: 680px; margin: 0; font-family: var(--serif); font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 600; line-height: .94; letter-spacing: -.045em; }
+/* Title and note stack, each on one line on desktop, so the article list
+   starts within the first screen instead of below the fold. */
+.intro-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.blog-intro h1 { margin: 0; font-family: var(--serif); font-size: clamp(2.2rem, 3.6vw, 3.3rem); font-weight: 600; line-height: 1; letter-spacing: -.04em; }
 .blog-intro h1 em { color: #e6c673; font-style: italic; font-weight: 500; }
-.intro-note { max-width: 330px; margin: 0 0 5px; color: rgba(255,255,255,.72); font-size: .94rem; line-height: 1.65; }
+.intro-note { margin: 0; color: rgba(255,255,255,.72); font-size: .98rem; line-height: 1.6; }
+@media (min-width: 901px) {
+  .blog-intro h1, .intro-note { white-space: nowrap; }
+  .blog-intro h1 br { display: none; }
+}
 
-.featured-section { position: relative; z-index: 2; padding: 30px 0 56px; }
-.featured-card { position: relative; max-width: 920px; min-height: 220px; overflow: hidden; border-left: 5px solid var(--gold); border-radius: 3px; background: var(--paper); box-shadow: 0 18px 50px rgba(23,61,42,.1); }
-.featured-card::after { content: ""; position: absolute; right: -70px; bottom: -105px; width: 240px; height: 240px; border: 1px solid rgba(200,154,50,.2); border-radius: 50%; }
-.featured-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; min-height: 220px; padding: 30px 36px; }
+.recent-section { position: relative; z-index: 2; padding: 22px 0 30px; }
+/* Nothing counted yet means no strip in the markup; drop the empty band too. */
+.recent-section:not(:has(.recently-read)) { display: none; }
+
 .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--rust); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .post-meta span + span::before { content: "•"; margin-right: 8px; color: var(--gold); }
-.featured-copy h2 { margin: 16px 0 10px; font-family: var(--serif); font-size: clamp(1.9rem, 3vw, 2.7rem); line-height: 1; letter-spacing: -.03em; }
-.featured-copy p { max-width: 690px; margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.62; }
 .text-link { display: inline-flex; align-items: center; gap: 12px; width: fit-content; margin-top: 20px; color: var(--forest); font-size: .72rem; font-weight: 700; letter-spacing: .11em; text-decoration: none; text-transform: uppercase; }
 .text-link::after { content: "→"; font-size: 1.1rem; transition: transform .25s ease; }
 .text-link:hover::after { transform: translateX(5px); }
 
-/* The "read this month" rail under the featured card. It is written into the
+/* The "read this month" strip above the catalog. It is written into the
    markup by generate-blog-pages.mjs from counts that already exist at build
-   time, so it paints with the rest of the page rather than arriving later - the
-   whole point of ranking here instead of in the browser. When nothing has been
-   counted the section is absent from the markup entirely, which is why nothing
-   below needs an empty state. */
-.recently-read { max-width: 920px; margin: 26px 0 0; padding: 22px 26px; border: 1px solid var(--line); border-radius: 3px; background: rgba(255,255,255,.55); }
-.recently-read h2 { margin: 0 0 14px; color: var(--rust); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.recently-read ol { display: grid; gap: 10px; margin: 0; padding: 0; counter-reset: recently-read; list-style: none; }
-.recently-read li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; counter-increment: recently-read; }
-.recently-read li::before { content: counter(recently-read); min-width: 1.2em; color: var(--gold); font-size: .8rem; font-weight: 700; }
-.recently-read a { color: var(--ink); font-size: .95rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
-.recently-read a:hover { border-bottom-color: var(--gold); }
-.recently-read li span { color: var(--muted); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.recently-read-note { margin: 16px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.6; }
+   time, so it paints with the rest of the page rather than arriving later. It
+   is laid out as one horizontal row so it costs as little height as possible
+   and the article list starts high on the first screen. */
+.recently-read { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "title list" "note list"; align-items: center; column-gap: 28px; row-gap: 4px; padding: 14px 22px; border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 3px; background: rgba(255,255,255,.55); }
+.recently-read h2 { grid-area: title; align-self: end; margin: 0; color: var(--rust); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.recently-read ol { grid-area: list; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 22px; margin: 0; padding: 0; counter-reset: recently-read; list-style: none; }
+.recently-read li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 10px; row-gap: 2px; align-content: center; counter-increment: recently-read; }
+.recently-read li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+.recently-read li::before { content: counter(recently-read); grid-row: span 2; color: var(--gold); font-family: var(--serif); font-size: 1.5rem; font-weight: 600; line-height: 1; }
+.recently-read a { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; color: var(--ink); font-size: .88rem; font-weight: 600; line-height: 1.35; text-decoration: none; }
+.recently-read a:hover { color: var(--forest); text-decoration: underline; text-decoration-color: var(--gold); }
+.recently-read li span { color: var(--muted); font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.recently-read-note { grid-area: note; align-self: start; max-width: 200px; margin: 0; color: var(--muted); font-size: .7rem; line-height: 1.4; }
 
 .latest-section { padding: 8px 0 64px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
@@ -427,8 +431,8 @@ button, input { font: inherit; }
 @keyframes shimmer { to { background-position: -200% 0; } }
 
 @media (max-width: 900px) {
-  .intro-grid, .cta-panel { grid-template-columns: minmax(0, 1fr); }
-  .intro-grid { gap: 28px; }
+  .cta-panel { grid-template-columns: minmax(0, 1fr); }
+  .intro-grid { gap: 20px; }
   .catalog-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .read-next-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -451,11 +455,10 @@ button, input { font: inherit; }
   .lang-btn { width: 36px; height: 36px; padding: 6px; }
   .blog-intro { padding: 42px 0 26px; }
   .blog-intro h1 { font-size: clamp(2.7rem, 13vw, 3.8rem); }
-  .featured-section { padding-top: 28px; }
-  .featured-card { min-height: 0; }
-  .featured-copy { min-height: 0; padding: 26px 22px 30px; }
-  .featured-copy h2 { font-size: 2rem; }
-  .recently-read { padding: 18px 20px; }
+  .recent-section { padding-top: 18px; }
+  .recently-read { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "list" "note"; row-gap: 12px; padding: 16px 18px; }
+  .recently-read ol { grid-auto-flow: row; gap: 12px; }
+  .recently-read li + li { padding-left: 0; border-left: 0; }
   .section-heading { display: block; }
   .section-heading p { margin-top: 14px; }
   .catalog-toolbar { grid-template-columns: minmax(0, 1fr); padding: 14px; }

@@ -1,5 +1,5 @@
 // Ranks the journal's articles by how often they have been read, for the
-// featured card generate-blog-pages.mjs writes at the top of each index.
+// "read this month" strip generate-blog-pages.mjs writes at the top of each index.
 //
 // The card used to be part of the hand-authored index markup: one article,
 // named once, updated by remembering to. It named a July essay while five newer
@@ -26,7 +26,7 @@ export async function readViewCounts() {
     const database = getDatabase();
     rows = await database.sql`SELECT language, slug, views FROM article_views`;
   } catch (error) {
-    console.log(`Featured article: no view counts available (${error.message}). Falling back to the newest article.`);
+    console.log(`Article views: no view counts available (${error.message}).`);
     return null;
   }
 
@@ -87,34 +87,13 @@ export function totalsByTranslation(articles, counts) {
   return totals;
 }
 
-// The article a given language's index should feature: most read first, newest
-// as the tie-break, slug last so the choice cannot depend on catalog order.
-// `ranked` says whether the pick came from real reading or from the fallback -
-// the card labels itself differently in each case, because calling an article
-// the most read one when nothing has been counted yet would be a claim the site
-// cannot support.
-export function chooseFeatured(articles, totals) {
-  const ordered = [...articles].sort((first, second) => {
-    const byViews = (totals.get(second.translationKey) || 0) - (totals.get(first.translationKey) || 0);
-    if (byViews !== 0) return byViews;
-    const byDate = second.date.localeCompare(first.date);
-    if (byDate !== 0) return byDate;
-    return first.slug.localeCompare(second.slug);
-  });
-
-  const article = ordered[0];
-  return { article, ranked: Boolean(article) && (totals.get(article.translationKey) || 0) > 0 };
-}
-
-// The short list under the featured card: the most read articles of the last
-// two month buckets, in this language, excluding whatever the featured card
-// already shows. Returns an empty array when nothing has been counted, which is
-// what makes the rail disappear rather than render a heading over nothing.
+// The short list at the top of the blog index: the most read articles of the
+// last two month buckets, in this language, optionally excluding one slug.
+// Returns an empty array when nothing has been counted, which is what makes the
+// strip disappear rather than render a heading over nothing.
 //
-// Ranked on this language's own reads rather than the translation total, unlike
-// the featured card. The card answers "what is this journal known for", which is
-// the same answer in every language; the rail answers "what are people here
-// reading now", and a Portuguese reader is better served by what Portuguese
+// Ranked on this language's own reads rather than the translation total: the
+// strip answers "what are people here reading now", and a Portuguese reader is better served by what Portuguese
 // readers opened than by a total three languages contributed to.
 export function recentlyRead(articles, counts, exclude, limit = 3) {
   if (!counts || counts.size === 0) return [];

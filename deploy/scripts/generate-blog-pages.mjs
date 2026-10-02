@@ -17,7 +17,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { renderMarkdown, collectHeadings, escapeHtml, jsonLdScript } from './markdown.mjs';
-import { readViewCounts, readRecentViewCounts, totalsByTranslation, chooseFeatured, recentlyRead, translationPriorities } from './article-popularity.mjs';
+import { readViewCounts, readRecentViewCounts, recentlyRead, translationPriorities } from './article-popularity.mjs';
 import { readSharedCatalog } from './shared-catalog.mjs';
 import { GLOSSARY } from '../content/site/glossary.mjs';
 import { TOOLS } from '../content/site/tools.mjs';
@@ -258,12 +258,6 @@ const copy = {
     // when a filter changes, so both have to agree on the wording.
     countOne: 'article',
     countMany: 'articles',
-    // The featured card at the top of the index. Its badge says which rule
-    // picked the article: the reading counts, or the fallback to the newest one
-    // when nothing has been counted yet.
-    featuredLink: 'Read the essay',
-    featuredMostRead: 'Most read',
-    featuredLatest: 'Latest',
     feedTitle: 'The Compounding Blog',
     feedDescription: 'Practical money systems, intentional work, and the patient path toward financial freedom.',
     feedLink: 'RSS feed',
@@ -301,9 +295,6 @@ const copy = {
     footerNote: 'Decisiones pequeñas. Horizontes largos.',
     countOne: 'artículo',
     countMany: 'artículos',
-    featuredLink: 'Leer el artículo',
-    featuredMostRead: 'Lo más leído',
-    featuredLatest: 'Lo más reciente',
     feedTitle: 'El Blog del Interés Compuesto',
     feedDescription: 'Sistemas prácticos de dinero, trabajo intencional y el camino paciente hacia la libertad financiera.',
     feedLink: 'Fuente RSS',
@@ -341,9 +332,6 @@ const copy = {
     footerNote: 'Escolhas pequenas. Horizontes longos.',
     countOne: 'artigo',
     countMany: 'artigos',
-    featuredLink: 'Ler o artigo',
-    featuredMostRead: 'O mais lido',
-    featuredLatest: 'O mais recente',
     feedTitle: 'O Blog dos Juros Compostos',
     feedDescription: 'Sistemas práticos de dinheiro, trabalho intencional e o caminho paciente para a liberdade financeira.',
     feedLink: 'Fonte RSS',
@@ -813,21 +801,7 @@ function replaceBetween(source, name, replacement) {
   return pattern.test(source) ? source.replace(pattern, block) : { block };
 }
 
-// The card at the top of the index, in the markup the hand-authored one used.
-// The badge closes the meta line, which already carries a third item on the
-// grid cards below: it names the rule that chose this article, so a reader is
-// never told something is the most read one on a site that has counted no reads.
-function featuredCard(language, labels, article, ranked) {
-  const href = articlePath(language, article.slug);
-  const badge = ranked ? labels.featuredMostRead : labels.featuredLatest;
-  return `<article class="featured-card"><div class="featured-copy">`
-    + `<div class="post-meta"><span>${escapeHtml(article.category)}</span><span>${escapeHtml(formatDate(language, article.date))}</span><span>${escapeHtml(badge)}</span></div>`
-    + `<h2>${escapeHtml(article.title)}</h2><p>${escapeHtml(article.summary)}</p>`
-    + `<a class="text-link" href="${href}">${escapeHtml(labels.featuredLink)}</a>`
-    + `</div></article>`;
-}
-
-// The rail under the featured card. It is rendered here, at build time, from
+// The "read this month" strip at the top of the index. It is rendered here, at build time, from
 // counts that are already known - so it costs no request, cannot shift the
 // layout after paint, and is in the markup a crawler sees. When nothing has
 // been counted the function returns an empty string and the section is simply
@@ -848,7 +822,7 @@ function recentlyReadRail(language, labels, articles) {
     + `</section>`;
 }
 
-async function updateBlogIndex(language, articles, totals, recentCounts) {
+async function updateBlogIndex(language, articles, recentCounts) {
   const file = path.join(root, language, 'blog', 'index.html');
   const labels = copy[language] || copy.en;
   let source = await fs.readFile(file, 'utf8');
@@ -1017,39 +991,16 @@ async function updateBlogIndex(language, articles, totals, recentCounts) {
     );
   }
 
-  // Which article is featured is decided here on every build, so publishing or
-  // republishing anything from the content studio re-checks it. The markers are
-  // in the index markup; the replacement of the bare card below is what puts
-  // them there the first time this runs against a hand-authored index.
-  const { article: featured, ranked } = chooseFeatured(sorted, totals);
-  // A language with no articles has nothing to feature. It cannot happen while
-  // every article is translated three ways, but leaving the previous card in
-  // place is the right answer if it ever does - an empty featured section would
-  // be a hole at the top of the page.
-  if (featured) {
-    const featuredResult = replaceBetween(source, 'featured', featuredCard(language, labels, featured, ranked));
-    if (typeof featuredResult === 'string') {
-      source = featuredResult;
-    } else {
-      source = source.replace(/<article class="featured-card">[\s\S]*?<\/article>/, featuredResult.block);
-    }
-  }
-
-  // Rendered after the featured card is chosen, so the rail never repeats what
-  // the card above it already shows.
-  const recent = recentlyRead(articles, recentCounts, featured?.slug);
+  // The strip is the only thing above the catalog, so it now includes the
+  // single most read article too - there is no featured card left to repeat.
+  // The markers are always in the index markup; without them there is nowhere
+  // sensible to put the strip, so the page is left as it is.
+  const recent = recentlyRead(articles, recentCounts);
   const recentResult = replaceBetween(source, 'recent', recentlyReadRail(language, labels, recent));
-  if (typeof recentResult === 'string') {
-    source = recentResult;
-  } else {
-    source = source.replace(
-      /(<article class="featured-card">[\s\S]*?<\/article>)/,
-      `$1${recentResult.block}`
-    );
-  }
+  if (typeof recentResult === 'string') source = recentResult;
 
   await fs.writeFile(file, source);
-  return { featured, ranked, recent };
+  return { recent };
 }
 
 // The generator only ever writes pages, so a slug renamed or deleted in the
@@ -1215,25 +1166,20 @@ if (linkedNothing.length) {
 }
 
 const removed = [];
-// One read of each counter for the whole run: the lifetime totals, summed per
-// translation so the three indexes agree on which article is the most read one,
-// and the trailing two month buckets that feed each index's own rail.
+// One read of each counter for the whole run: the lifetime totals for the
+// translation report below, and the trailing two month buckets that feed each
+// index's own strip.
 const viewCounts = await readViewCounts();
-const totals = totalsByTranslation(generated, viewCounts);
 const recentCounts = await readRecentViewCounts();
 
 for (const language of languages) {
   const articles = generated.filter((article) => article.language === language);
-  const { featured, ranked, recent } = await updateBlogIndex(language, articles, totals, recentCounts);
+  const { recent } = await updateBlogIndex(language, articles, recentCounts);
   removed.push(...await pruneRemovedArticles(language, new Set(articles.map((article) => article.slug))));
 
   const labels = copy[language] || copy.en;
   await fs.writeFile(path.join(root, language, 'blog', 'feed.xml'), buildFeed(language, articles, labels));
 
-  let featuredNote = 'unchanged (no articles)';
-  if (featured && ranked) featuredNote = `${featured.title} (${totals.get(featured.translationKey)} views)`;
-  else if (featured) featuredNote = `${featured.title} (newest article; nothing counted yet)`;
-  console.log(`Featured on /${language}/blog/: ${featuredNote}.`);
   console.log(recent.length
     ? `Read this month on /${language}/blog/: ${recent.length} article(s) listed.`
     : `Read this month on /${language}/blog/: nothing counted yet, rail omitted.`);
