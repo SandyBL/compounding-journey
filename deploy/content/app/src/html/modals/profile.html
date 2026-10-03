@@ -1,0 +1,134 @@
+  <!-- MODAL: FISCAL JURISDICTION SELECTOR -->
+  <div id="modal-profile" class="app-modal no-print fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <!-- BUGFIX: this modal grew substantially over the session (household mode, App
+         Lock with PIN/biometric/auto-lock, ...) and never gained a height constraint to
+         match — on a short mobile viewport the card could be taller than the screen
+         with no way to scroll to the rest. max-h-[85vh] + flex flex-col on the outer
+         card, with the title/close row kept outside the scrollable area (so it's always
+         reachable to dismiss the modal) and everything else in a flex-1 overflow-y-auto
+         region, matches the same pattern already used correctly in import-review.html. -->
+    <div class="glass-card max-w-md w-full rounded-2xl p-6 border border-slate-700 shadow-2xl max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3 flex-shrink-0">
+        <h3 class="font-bold text-white text-base flex items-center gap-2">
+          <span>🌍</span> <span><span data-i18n="profTitle">Selecionar Residência Fiscal</span></span>
+        </h3>
+        <button onclick="closeProfileModal()" class="text-slate-400 hover:text-white text-sm font-bold">✕</button>
+      </div>
+      <div class="flex-1 overflow-y-auto space-y-4 pt-4 pr-1 -mr-1 modal-scroll-area">
+      <p class="text-xs text-slate-400">
+        <span data-i18n="profDesc">Adapta os regimes previdenciários oficiais, tributação salarial e regras de sucessão patrimonial.</span>
+      </p>
+
+      <div class="grid grid-cols-3 gap-2 text-xs">
+        <button id="btn-country-br" onclick="setProfileCountry('BR')" class="p-3 rounded-xl border border-teal-500 bg-teal-500/10 font-bold text-white text-left flex flex-col items-center justify-center gap-1.5">
+          <span class="text-2xl">🇧🇷</span> <span id="lbl-country-name-br">Brasil (BRL)</span>
+        </button>
+        <button id="btn-country-es" onclick="setProfileCountry('ES')" class="p-3 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900 font-semibold text-slate-300 text-left flex flex-col items-center justify-center gap-1.5">
+          <span class="text-2xl">🇪🇸</span> <span id="lbl-country-name-es">Espanha (EUR)</span>
+        </button>
+        <button id="btn-country-gl" onclick="setProfileCountry('GL')" class="p-3 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900 font-semibold text-slate-300 text-left flex flex-col items-center justify-center gap-1.5">
+          <span class="text-2xl">🌐</span> <span id="lbl-country-name-gl">Global</span>
+        </button>
+      </div>
+
+      <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-slate-300 text-xs font-semibold flex items-center">
+            <span data-i18n="householdModeLabel">Modelo financeiro da família:</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="householdModeTip">"Compartilhado": um único patrimônio e fluxo de caixa familiar (padrão, como hoje). "Dividido": adiciona um titular (conjunto ou uma pessoa) em investimentos, imóveis e metas, com um filtro para ver só os itens de alguém, e troca o Fluxo de Caixa por uma lista de itens recorrentes com divisão entre os titulares — nada é apagado ao alternar.</span></span>
+          </span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <button id="btn-household-shared" onclick="setHouseholdMode('shared')" class="p-2 rounded-xl border font-bold transition">
+            <span data-i18n="householdModeShared">Compartilhado</span>
+          </button>
+          <button id="btn-household-split" onclick="setHouseholdMode('split')" class="p-2 rounded-xl border font-bold transition">
+            <span data-i18n="householdModeSplit">Dividido</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="row-gl-base-currency" class="hidden flex items-center justify-between gap-2 p-3 bg-slate-950 rounded-xl border border-slate-800 text-xs">
+        <span class="text-slate-300" data-i18n="glBaseCurrencyLabel">Moeda base da família:</span>
+        <select id="input-gl-base-currency" onchange="setGlobalBaseCurrency(this.value)" class="glass-input rounded-lg px-2 py-1 font-bold">
+          <option value="USD">$ USD</option><option value="EUR">€ EUR</option><option value="BRL">R$ BRL</option>
+        </select>
+      </div>
+
+      <div class="border-t border-slate-800 pt-4 space-y-2">
+        <h4 class="font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+          <span>💾</span> <span data-i18n="profBackupTitle">Backup de Dados</span>
+        </h4>
+        <p class="text-[11px] text-slate-400">
+          <span data-i18n="profBackupDesc">Todos os dados ficam apenas neste navegador (localStorage). Exporte um arquivo .json regularmente para não perder nada e para levar seus dados para outro aparelho ou navegador.</span>
+        </p>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="exportDataJSON()" class="py-2 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 text-xs font-bold transition">
+            <span data-i18n="profExport">⬇️ Exportar (.json)</span>
+          </button>
+          <button onclick="document.getElementById('input-import-file').click()" class="py-2 rounded-xl border border-slate-700 hover:border-slate-500 bg-slate-900 text-slate-200 text-xs font-bold transition">
+            <span data-i18n="profImport">⬆️ Importar (.json)</span>
+          </button>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="exportDataXLSX()" class="py-2 rounded-xl border border-emerald-600/60 hover:border-emerald-500 bg-emerald-950/40 text-emerald-300 text-xs font-bold transition">
+            <span data-i18n="profExportXlsx">📊 Exportar (.xlsx)</span>
+          </button>
+          <button onclick="document.getElementById('input-import-file-xlsx').click()" class="py-2 rounded-xl border border-emerald-600/60 hover:border-emerald-500 bg-emerald-950/40 text-emerald-300 text-xs font-bold transition">
+            <span data-i18n="profImportXlsx">📥 Importar (.xlsx)</span>
+          </button>
+        </div>
+        <input type="file" id="input-import-file-xlsx" accept=".xlsx" class="hidden" onchange="handleImportXlsxFileSelected(this)">
+        <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="xlsxImportNote">Importar substitui a lista de investimentos, dívidas, metas e os seus próprios eventos de vida pelo que estiver na planilha exportada. As abas Resumo e Balanço são só leitura.</p>
+        <input type="file" id="input-import-file" accept="application/json,.json" class="hidden" onchange="handleImportFileSelected(this)">
+        <p class="text-[10px] text-slate-400" id="lbl-last-export-status"><span data-i18n="profBackupNone">Nenhum backup exportado ainda.</span></p>
+      </div>
+
+      <!-- App Lock (ui/security.js): PIN + optional biometric. A screen lock, not encryption. -->
+      <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2.5">
+        <span class="text-slate-300 text-xs font-semibold flex items-center">
+          <span>🔒</span>&nbsp;<span data-i18n="secSectionTitle">.</span>
+          <span class="field-tip">?<span class="field-tip-content" data-i18n="secSectionTip">.</span></span>
+        </span>
+
+        <div id="sec-setup-row" class="space-y-2">
+          <div class="grid grid-cols-2 gap-1.5">
+            <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" id="input-sec-new-pin" placeholder="••••" autocomplete="off" class="glass-input rounded-lg px-2 py-1.5 text-center font-bold text-sm">
+            <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" id="input-sec-confirm-pin" placeholder="••••" autocomplete="off" class="glass-input rounded-lg px-2 py-1.5 text-center font-bold text-sm">
+          </div>
+          <button onclick="setupPinLock(document.getElementById('input-sec-new-pin').value, document.getElementById('input-sec-confirm-pin').value)" class="w-full py-1.5 rounded-lg bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs transition" data-i18n="secSetPinBtn">.</button>
+        </div>
+
+        <div id="sec-manage-row" class="hidden space-y-2 text-xs">
+          <div class="flex items-center justify-between">
+            <span class="text-emerald-400 font-semibold" data-i18n="secPinActive">.</span>
+            <button onclick="handleDisablePinClick()" class="text-rose-400 hover:text-rose-300 text-[11px] font-semibold" data-i18n="secRemovePin">.</button>
+          </div>
+          <div id="sec-disable-row" class="hidden flex items-center gap-1.5">
+            <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" id="input-sec-disable-pin" placeholder="\u2022\u2022\u2022\u2022" autocomplete="off" class="flex-1 glass-input rounded-lg px-2 py-1 text-center font-bold text-sm">
+            <button onclick="disablePinLock(document.getElementById('input-sec-disable-pin').value)" class="px-2.5 py-1 rounded-lg bg-rose-900/60 hover:bg-rose-800 text-rose-100 border border-rose-600/50 font-bold text-[11px] transition" data-i18n="secConfirmBtn">.</button>
+          </div>
+          <div id="sec-biometric-row" class="hidden space-y-1.5">
+            <button id="btn-biometric-enable" onclick="setupBiometric()" class="hidden w-full py-1.5 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-200 font-bold text-[11px] transition" data-i18n="secEnableBiometric">.</button>
+            <div id="btn-biometric-disable" class="hidden flex items-center justify-between">
+              <span class="text-slate-400" data-i18n="secBiometricLabel">.</span>
+              <button onclick="disableBiometric()" class="text-rose-400 hover:text-rose-300 text-[11px] font-semibold" data-i18n="secRemoveBiometric">.</button>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <label class="text-slate-400" data-i18n="secAutoLabel">.</label>
+            <select id="input-autolock-minutes" onchange="updateAutoLockMinutes(this.value)" class="glass-input rounded-lg px-2 py-1 font-semibold text-[11px]">
+              <option value="0" data-i18n="secAutoNever">.</option>
+              <option value="1" data-i18n="secAuto1">.</option>
+              <option value="5" data-i18n="secAuto5">.</option>
+              <option value="15" data-i18n="secAuto15">.</option>
+              <option value="30" data-i18n="secAuto30">.</option>
+            </select>
+          </div>
+          <button onclick="lockNow()" class="w-full py-1.5 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-200 font-bold text-[11px] transition" data-i18n="secLockNowBtn">.</button>
+        </div>
+        <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="secDisclaimer">.</p>
+      </div>
+      </div>
+    </div>
+  </div>

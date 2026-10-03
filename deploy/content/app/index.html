@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Wealth Compass — by Compounding Journey</title>
+  <meta name="description" content="Family Wealth Compass: balance sheet, cash flow, retirement and tax planning for your family. Your data stays on your device. An educational tool by Compounding Journey.">
+  <!-- Installable web app (PWA). The manifest, icons and service worker are separate
+       files that must sit next to this page on an HTTPS host; when the page is
+       opened as a single file these links simply have nothing to load. -->
+  <meta name="theme-color" content="#1E4620">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Wealth Compass">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tw-config">
+@@INCLUDE styles/tailwind.config.js@@
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+@@INCLUDE styles/app.css@@
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-gold-500 selection:text-slate-950">
+@@INCLUDE html/shell-header-nav.html@@
+  <!-- MAIN APPLICATION CONTENT CONTAINER -->
+  <main class="no-print flex-1 max-w-7xl w-full mx-auto p-3 sm:p-5 lg:p-6 space-y-6">
+
+@@INCLUDE html/views/view-overview.html@@
+
+@@INCLUDE html/views/view-evolution.html@@
+
+@@INCLUDE html/views/view-balancesheet.html@@
+
+@@INCLUDE html/views/view-cashflow.html@@
+
+@@INCLUDE html/views/view-budget.html@@
+
+@@INCLUDE html/views/view-retirement.html@@
+
+@@INCLUDE html/views/view-whatif.html@@
+
+@@INCLUDE html/views/view-events.html@@
+
+@@INCLUDE html/views/view-taxes.html@@
+
+@@INCLUDE html/views/view-inheritance.html@@
+
+@@INCLUDE html/views/view-goals.html@@
+
+  </main>
+
+@@INCLUDE html/print-summary.html@@
+
+@@INCLUDE html/modals/profile.html@@
+
+@@INCLUDE html/modals/confirm.html@@
+
+@@INCLUDE html/modals/add-snapshot.html@@
+
+@@INCLUDE html/modals/wizard.html@@
+
+@@INCLUDE html/modals/import-review.html@@
+@@INCLUDE html/modals/app-lock.html@@
+
+  <script>
+@@SCRIPTS@@
+  </script>
+</body>
+</html>

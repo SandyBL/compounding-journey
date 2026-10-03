@@ -1,0 +1,283 @@
+    <!-- ========================================== -->
+    <!-- VIEW 6: RETIREMENT & SWR TRAJECTORY        -->
+    <!-- ========================================== -->
+    <div id="view-retirement" class="tab-content hidden space-y-6">
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>📈</span> <span data-i18n="rtTitle">Projeção de 30 Anos & Horizonte SWR (Regra dos 4%)</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="rtDesc">
+              Compara a evolução nominal dos investimentos com o poder de compra real deflacionado (Equação de Fisher).
+            </p>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-slate-400" data-i18n="rtTargetCapitalLabel">Capital Necessário de Liberdade (4% SWR):</span>
+            <div class="text-lg font-black text-teal-400" id="lbl-ret-target-capital">R$ 0</div>
+          </div>
+        </div>
+
+        <!-- 5 Pillars: Nominal Yield, Inflation, Real Net Compounding Return, Career Growth, Government Pension -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 p-4 bg-slate-950 rounded-xl border border-slate-800">
+          
+          <div class="space-y-0.5">
+            <span class="text-xs text-slate-400 font-semibold block flex items-center">
+              <span data-i18n="rtNominalYield">Rentabilidade Nominal do Portfólio</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="rtNominalYieldTip">Média ponderada do retorno bruto anual dos seus investimentos líquidos.</span></span>
+            </span>
+            <div class="text-lg font-black text-teal-400" id="lbl-ret-nominal-yield">8.5% a.a.</div>
+            <span class="text-[10px] text-slate-400" data-i18n="rtNominalYieldSub">Composição anual bruta</span>
+          </div>
+
+          <div class="space-y-0.5">
+            <span class="text-xs text-slate-400 font-semibold block flex items-center">
+              <span data-i18n="rtInflation">Inflação Projetada (IPCA / CPI)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="rtInflationTip">Taxa média anual de inflação esperada para deflacionar o poder de compra. Valor padrão varia por país (BR ≈4,5%, ES/PT ≈2,0%) — ajuste livremente conforme sua expectativa.</span></span>
+            </span>
+            <div class="flex items-center gap-1.5 mt-0.5">
+              <input type="number" id="input-inflation-rate" value="4.5" step="0.1" min="0" oninput="handleDataUpdate()" class="w-20 glass-input rounded-lg px-2 py-1 text-xs font-bold text-amber-400 text-right">
+              <span class="text-xs text-slate-400">% a.a.</span>
+            </div>
+            <span class="text-[10px] text-slate-400" data-i18n="rtInflationSub">Corrosão do poder de compra</span>
+          </div>
+
+          <div class="space-y-0.5">
+            <span class="text-xs text-slate-400 font-semibold block flex items-center">
+              <span data-i18n="rtRealYield">Juro Real Líquido Efetivo</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="rtRealYieldTip">Calculado matematicamente pela Equação de Fisher: ((1 + Nominal)/(1 + Inflação)) - 1.</span></span>
+            </span>
+            <div class="text-lg font-black text-emerald-400" id="lbl-ret-real-yield">+3.83% a.a.</div>
+            <span class="text-[10px] text-slate-400" data-i18n="rtRealYieldSub">Crescimento patrimonial verdadeiro</span>
+          </div>
+
+          <div class="space-y-0.5">
+            <span class="text-xs text-slate-400 font-semibold block flex items-center">
+              <span data-i18n="rtCareerGrowth">Crescimento Real de Carreira</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="rtCareerGrowthTip">Crescimento de renda ACIMA da inflação ao longo da carreira — promoções, mudanças de emprego, ganho de senioridade. Já é uma taxa real; não precisa somar à inflação acima. Aplicado à projeção de 30 anos, não aos valores atuais.</span></span>
+            </span>
+            <div class="flex items-center gap-1.5 mt-0.5">
+              <input type="number" id="input-career-growth-rate" value="2.0" step="0.1" min="0" oninput="handleDataUpdate()" class="w-20 glass-input rounded-lg px-2 py-1 text-xs font-bold text-teal-400 text-right">
+              <span class="text-xs text-slate-400">% a.a.</span>
+            </div>
+            <label class="flex items-center gap-1.5 text-[10px] text-slate-400 pt-0.5 cursor-pointer">
+              <input type="checkbox" id="input-career-growth-proportional" checked onchange="handleDataUpdate()" class="rounded border-slate-700 text-teal-500 focus:ring-teal-400 h-3.5 w-3.5 bg-slate-900">
+              <span data-i18n="rtCareerGrowthProportionalLabel">Aporte mensal cresce proporcionalmente</span>
+            </label>
+          </div>
+
+          <div class="space-y-0.5">
+            <span class="text-xs text-slate-400 font-semibold block flex items-center">
+              <span data-i18n="rtGovPension">Previdência Pública Esperada</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="rtGovPensionTip">Estimativa da sua aposentadoria pública (INSS/Seguridad Social/Segurança Social), em valores de hoje. Reduz o quanto sua carteira PRECISA cobrir na Meta Final (pós-filhos) — sem essa entrada, o app assumia que 100% da renda de aposentadoria viria do seu próprio patrimônio, superestimando o capital necessário. Não se aplica à Meta de Transição (parar de trabalhar hoje, antes da idade de elegibilidade da aposentadoria pública).</span></span>
+            </span>
+            <div class="flex items-center gap-1.5 mt-0.5">
+              <input type="number" id="input-gov-pension" value="0" step="50" min="0" oninput="handleDataUpdate()" class="w-24 glass-input rounded-lg px-2 py-1 text-xs font-bold text-teal-400 text-right">
+              <span class="text-xs text-slate-400" data-i18n="perMonth">/ mês</span>
+            </div>
+            <span class="text-[10px] text-slate-400" data-i18n="rtGovPensionSub">Reduz a Meta Final necessária</span>
+          </div>
+
+        </div>
+
+        <!-- FI Variants: Lean/Full/Fat targets + Coast FI status -->
+        <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3">
+          <h4 class="font-bold text-white text-xs flex items-center gap-2">
+            <span>🎚️</span> <span data-i18n="fiVariantsTitle">Variações de Independência Financeira</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="fiVariantsTip">Lean FI e Fat FI usam multiplicadores ilustrativos comuns na comunidade FIRE (60% e 150% da Meta Final) — não recalculam um perfil de despesas diferente, apenas oferecem lentes alternativas sobre o mesmo número. Coast FI é o valor que, crescendo apenas por juros compostos (SEM mais aportes) até a idade de aposentadoria tradicional, atingiria a Meta Final sozinho.</span></span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-center">
+              <span class="text-[10px] text-slate-400 block" data-i18n="fiLeanLabel">Lean FI (60%)</span>
+              <strong class="text-white font-black" id="lbl-fi-lean">R$ 0</strong>
+            </div>
+            <div class="p-2.5 bg-teal-950/40 rounded-lg border border-teal-700/40 text-center">
+              <span class="text-[10px] text-teal-400 block" data-i18n="fiFullLabel">Meta Final (100%)</span>
+              <strong class="text-teal-300 font-black" id="lbl-fi-full">R$ 0</strong>
+            </div>
+            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-center">
+              <span class="text-[10px] text-slate-400 block" data-i18n="fiFatLabel">Fat FI (150%)</span>
+              <strong class="text-white font-black" id="lbl-fi-fat">R$ 0</strong>
+            </div>
+          </div>
+          <div class="p-2.5 rounded-lg border flex items-center justify-between flex-wrap gap-2" id="box-coast-fi">
+            <span class="flex items-center text-xs" id="lbl-coast-fi-status">
+              <span data-i18n="fiCoastLabel">Coast FI:</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="fiCoastTip">Se sua carteira líquida atual já é maior que este número, você poderia parar de investir hoje e, apenas com o crescimento composto, ainda atingiria sua Meta Final até a idade de aposentadoria tradicional definida abaixo.</span></span>
+            </span>
+            <span class="flex items-center gap-2">
+              <input type="number" id="input-retirement-age" value="65" min="40" max="90" step="1" oninput="handleDataUpdate()" class="w-14 glass-input rounded-lg px-1.5 py-0.5 text-[11px] font-bold text-center">
+              <strong class="text-sm font-black" id="lbl-coast-fi-number">R$ 0</strong>
+            </span>
+          </div>
+        </div>
+
+        <!-- 30-Year Chart Canvas -->
+        <div class="h-72 sm:h-80 w-full pt-2">
+          <canvas id="chart-retirement-trajectory"></canvas>
+        </div>
+
+        <!-- Stress test: hand-off to the Compounding Journey Monte Carlo simulator.
+             Nothing is sent to the site; the person types these numbers in there. -->
+        <div id="card-mc-link" class="p-4 rounded-xl border border-gold-500/30 bg-gold-950/30 space-y-3">
+          <h4 class="font-bold text-white text-xs flex items-center gap-2">
+            <span>✈️</span> <span data-i18n="mcTitle">Teste de estresse: e se os mercados forem voláteis?</span>
+          </h4>
+          <p class="text-[11px] text-slate-300 leading-relaxed" data-i18n="mcBody">A projeção acima usa retornos constantes e a regra dos 4%. Nos mercados reais os retornos oscilam, e a ordem em que vêm importa. Teste seu plano contra milhares de futuros possíveis no simulador Monte Carlo FIRE da Compounding Journey e veja a probabilidade de a carteira sobreviver.</p>
+          <div class="space-y-1.5">
+            <span class="text-[10px] text-gold-300 font-bold block" data-i18n="mcNumsIntro">Seus números para digitar no simulador:</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">
+                <span class="text-[10px] text-slate-400 block" data-i18n="mcNumPortfolio">Carteira líquida hoje</span>
+                <strong class="text-white font-black" id="lbl-mc-portfolio">R$ 0</strong>
+              </div>
+              <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">
+                <span class="text-[10px] text-slate-400 block" data-i18n="mcNumSpending">Gasto anual (custos de hoje)</span>
+                <strong class="text-white font-black" id="lbl-mc-spending">R$ 0</strong>
+              </div>
+              <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">
+                <span class="text-[10px] text-slate-400 block" data-i18n="mcNumContribution">Aporte mensal</span>
+                <strong class="text-white font-black" id="lbl-mc-contrib">R$ 0</strong>
+              </div>
+              <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">
+                <span class="text-[10px] text-slate-400 block" data-i18n="mcNumReturn">Retorno esperado / inflação</span>
+                <strong class="text-white font-black" id="lbl-mc-return">0% / 0%</strong>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <a id="link-mc-simulator" href="https://compoundingjourney.com/pt/simulators/monte-carlo-fire" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-xs transition inline-flex items-center gap-1.5">
+              <span data-i18n="mcCta">Abrir o simulador</span> <span aria-hidden="true">↗</span>
+            </a>
+            <span class="text-[10px] text-slate-400 max-w-md" data-i18n="mcPrivacy">Abre em nova aba no site da Compounding Journey. Nenhum dado seu é enviado: você digita os números lá.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Withdrawal phase: taxes on withdrawals, drawdown by order, tax-adjusted target, allocation -->
+      <div id="card-withdrawal" class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🏦</span> <span data-i18n="wdTitle">Fase de Retirada: Impostos e Alocação</span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="wdDesc">Veja o que acontece quando você começa a sacar da carteira: quanto sacar para ter os gastos líquidos de imposto, quanto vai para o imposto conforme o tipo de conta, quanto tempo a carteira dura e em que ordem sacar. Tudo em dinheiro de hoje.</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdStartAge">Começar a sacar aos (anos)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdStartAgeTip">Idade em que os saques começam. Em branco, usamos a idade da liberdade financeira (ou a de aposentadoria, se a liberdade não for atingida). A carteira é projetada até essa idade com os seus aportes.</span></span></label>
+              <input type="number" id="input-wd-start" min="0" max="100" step="1" placeholder="automático" oninput="updateWithdrawalPlan('startAge', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdUntilAge">Planejar até (anos)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdUntilTip">Idade até a qual a carteira precisa durar.</span></span></label>
+              <input type="number" id="input-wd-until" min="60" max="110" step="1" value="95" oninput="updateWithdrawalPlan('untilAge', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdPensionAge">Previdência pública a partir de (anos)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdPensionAgeTip">Idade em que começa a previdência pública estimada que você informou. Antes dela, todo o gasto sai da carteira; depois, só o que a previdência não cobre.</span></span></label>
+              <input type="number" id="input-wd-pension-age" min="50" max="80" step="1" value="65" oninput="updateWithdrawalPlan('pensionStartAge', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdSpending">Gasto mensal na retirada</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdSpendingTip">Quanto você quer gastar por mês, líquido de imposto, em dinheiro de hoje. Em branco, usamos o custo de vida sem os filhos, do Fluxo de Caixa.</span></span></label>
+              <input type="number" id="input-wd-spending" min="0" step="100" placeholder="automático" oninput="updateWithdrawalPlan('monthlySpending', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdReturn">Retorno real na retirada (% ao ano)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdReturnTip">Retorno acima da inflação. Em branco, cada tipo de conta cresce pelo seu próprio rendimento, descontada a inflação.</span></span></label>
+              <input type="number" id="input-wd-return" min="-10" max="30" step="0.5" placeholder="automático" oninput="updateWithdrawalPlan('realReturnPct', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdOrder">Ordem dos saques</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdOrderTip">De qual conta sacar primeiro. Muda o imposto pago e por quanto tempo a carteira dura.</span></span></label>
+              <select id="input-wd-order" onchange="updateWithdrawalPlan('order', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-semibold">
+                <option value="taxable_first" data-i18n="wdOrderTaxableFirst">Tributáveis primeiro (padrão)</option>
+                <option value="deferred_first" data-i18n="wdOrderDeferredFirst">Previdência primeiro</option>
+                <option value="proportional" data-i18n="wdOrderProportional">Proporcional</option>
+              </select>
+            </div>
+        </div>
+
+        <!-- Tax rates of the fiscal residence -->
+        <div id="row-wd-br" class="hidden grid grid-cols-2 gap-3 text-xs max-w-md">
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdBrGains">Imposto sobre ganhos (%)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdBrGainsTip">Brasil: ações e renda fixa de longo prazo pagam 15% sobre o ganho (renda fixa: de 22,5% a 15% conforme o prazo; ações têm isenção em vendas de até R$ 20 mil por mês; FIIs pagam 20%). Ajuste à sua carteira. LCI/LCA são isentas: marque-as como "Isento".</span></span></label>
+              <input type="number" id="input-wd-br-gains" min="0" max="60" step="0.5" value="15" oninput="updateWithdrawalPlan('brGainsPct', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdBrPension">Imposto da previdência privada (%)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdBrPensionTip">Tabela regressiva de PGBL/VGBL: de 35% (até 2 anos) a 10% (após 10 anos). Use 10% se você vai resgatar depois de 10 anos. O PGBL paga sobre o resgate todo; o VGBL, só sobre o ganho.</span></span></label>
+              <input type="number" id="input-wd-br-pension" min="0" max="60" step="0.5" value="10" oninput="updateWithdrawalPlan('brPensionPct', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+        </div>
+        <div id="row-wd-gl" class="hidden grid grid-cols-2 gap-3 text-xs max-w-md">
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdGlGains">Imposto sobre ganhos (%)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdGlGainsTip">Um único percentual para os ganhos de capital realizados. Os saques de contas com imposto diferido usam a sua alíquota marginal da aba Planejamento Fiscal.</span></span></label>
+              <input type="number" id="input-wd-gl-gains" min="0" max="60" step="0.5" value="15" oninput="updateWithdrawalPlan('glGainsPct', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+        </div>
+        <p id="row-wd-es" class="hidden text-[11px] text-slate-400">Espanha: usamos as escalas oficiais de 2026: ganhos e dividendos na base do poupança (19% a 30%, por faixas) e resgates de planos de pensões como rendimento do trabalho.</p>
+
+        <label class="flex items-center gap-1.5 text-[11px] text-slate-300 cursor-pointer">
+          <input type="checkbox" id="input-wd-apply" onchange="updateWithdrawalPlan('applyToTarget', this.checked)" class="rounded border-slate-700 text-teal-500 focus:ring-teal-400">
+          <span data-i18n="wdApplyTarget">Usar o número de liberdade ajustado por impostos nas projeções</span>
+          <span class="field-tip">?<span class="field-tip-content" data-i18n="wdApplyTargetTip">O número de liberdade financeira supõe que tudo que você saca pode ser gasto (gastos ÷ 4%). Com o imposto sobre os saques ele precisa ser maior. Marque para usar o número ajustado em todas as projeções (ano da liberdade, aba E se?, Eventos de vida).</span></span>
+        </label>
+
+        <div id="wd-summary" class="grid grid-cols-2 sm:grid-cols-5 gap-2"></div>
+        <div id="wd-verdict" class="space-y-2"></div>
+        <div class="overflow-x-auto rounded-xl border border-slate-800" id="wd-strategies"></div>
+        <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="wdStarNote">★ = a ordem que deixa mais patrimônio ao fim do plano (ou que dura mais). Considera o imposto e também o rendimento de cada tipo de conta, por isso pode não ser a que paga menos imposto no total.</p>
+        <div class="h-64 w-full"><canvas id="chart-withdrawal"></canvas></div>
+
+        <div class="border-t border-slate-800 pt-4 space-y-3">
+          <h4 class="font-bold text-white text-sm flex items-center gap-2"><span>🧺</span> <span data-i18n="wdAllocTitle">Alocação da carteira</span></h4>
+          <p class="text-xs text-slate-400" data-i18n="wdAllocDesc">Como a carteira está distribuída por risco, liquidez, imposto no saque e moeda, e se há uma "reserva segura" para os primeiros anos de saques: ativos de baixa volatilidade que não estão travados. Assim, uma queda do mercado logo no começo não obriga você a vender ativos de crescimento na baixa.</p>
+          <div id="wd-alloc"></div>
+          <div class="flex items-end gap-3 text-xs">
+            <div class="space-y-1">
+              <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wdSafeTarget">Meta da reserva segura (anos de gastos)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wdSafeTip">Quantos anos de gastos manter em ativos de baixa volatilidade e não travados. Entre 2 e 3 anos é uma regra prática comum; não é garantia nem recomendação.</span></span></label>
+              <input type="number" id="input-wd-safe" min="0" max="10" step="0.5" value="3" oninput="updateWithdrawalPlan('safeBucketYears', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+          </div>
+          <div id="wd-alloc-verdict" class="space-y-2"></div>
+
+          <!-- Rebalancing: target vs. actual "risky" split (derived from the existing
+               volatility tag, no new per-holding field), a drift/rebalance suggestion,
+               and a link to the Market Time Machine simulator for a benchmark comparison. -->
+          <div class="border-t border-slate-800 pt-4 space-y-3">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <h4 class="font-bold text-white text-sm flex items-center gap-2"><span>⚖️</span> <span data-i18n="rebalanceTitle">Rebalanceamento e Comparação com Benchmarks</span></h4>
+              <div class="flex items-center gap-1.5 text-xs">
+                <label class="text-slate-400 flex items-center">
+                  <span data-i18n="rebalanceTargetLabel">Meta de risco:</span>
+                  <span class="field-tip">?<span class="field-tip-content" data-i18n="rebalanceTargetTip">Percentual da carteira líquida que você pretende manter em ativos de alta volatilidade (ações, ETFs de crescimento). O resto é considerado defensivo.</span></span>
+                </label>
+                <input type="number" id="input-target-risky" min="0" max="100" step="5" value="70" oninput="updateTargetRiskyAllocation(this.value)" class="w-16 glass-input rounded-lg px-2 py-1 text-right font-black">
+                <span class="text-slate-400">%</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400" data-i18n="rebalanceDesc">Combina as etiquetas de volatilidade que você já preenche em cada investimento: alta volatilidade conta como "de risco", baixa como "defensivo", e média é dividida meio a meio entre as duas — uma simplificação, não uma classificação por classe de ativo.</p>
+            <div id="rebalance-bars" class="space-y-2.5"></div>
+            <div id="rebalance-verdict" class="space-y-2"></div>
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+              <p class="text-xs text-slate-300" id="rebalance-yield-text"></p>
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <a id="link-market-time-machine" href="https://compoundingjourney.com/en/simulators/market-time-machine" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-xs transition">
+                  <span data-i18n="rebalanceCta">Abrir o simulador</span> <span aria-hidden="true">↗</span>
+                </a>
+                <span class="text-[10px] text-slate-400 max-w-md" data-i18n="rebalancePrivacy">Abre em nova aba no site da Compounding Journey. Nenhum dado seu é enviado: você digita os números lá.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="wdAssumptions">Como calculamos: tudo em dinheiro de hoje. No início de cada ano você saca o valor bruto necessário para sobrar o gasto líquido depois do imposto (descontada a previdência pública a partir da idade informada); o que sobra rende. O imposto depende do tipo de conta: tributável (sobre a parcela de ganho, que muda com o tempo), previdência (sobre o saque todo ou só o ganho) e isento. A parcela de ganho de cada investimento é a que você informou (padrão 30%). Simplificações: taxas de longo prazo (Brasil: 15% e 10%), sem come-cotas, sem a isenção de vendas de ações até R$ 20 mil, sem outras rendas. Simulação educativa: confirme com um profissional de tributação.</p>
+      </div>
+    </div>

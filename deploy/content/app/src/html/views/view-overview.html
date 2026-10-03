@@ -1,0 +1,286 @@
+    <!-- ========================================== -->
+    <!-- VIEW 1: OVERVIEW DASHBOARD (ONLY SUMMARY)  -->
+    <!-- ========================================== -->
+    <div id="view-overview" class="tab-content space-y-6">
+
+      <!-- Backup Reminder Banner (data lives only in this browser's localStorage) -->
+      <div id="banner-backup-reminder" class="hidden rounded-2xl bg-sky-950/60 border-2 border-sky-500/70 p-4 text-sky-100 flex items-start justify-between gap-3 shadow-xl shadow-sky-950/30">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">💾</span>
+          <div>
+            <h3 class="text-sm font-black text-sky-300 uppercase tracking-wider" id="lbl-backup-banner-title" data-i18n="bkBannerTitle">
+              Seus dados só existem neste navegador
+            </h3>
+            <p class="text-xs text-sky-200/90 mt-1" id="lbl-backup-banner-body" data-i18n="bkBannerBody">
+              Nada é enviado a um servidor. Se você limpar o histórico deste navegador ou trocar de aparelho, seus dados serão perdidos. Exporte um backup (.json) periodicamente.
+            </p>
+            <button onclick="openProfileModal()" class="mt-2 text-xs font-bold text-sky-300 hover:text-sky-100 underline underline-offset-2" id="lbl-backup-banner-cta" data-i18n="bkBannerCta">
+              Ir para Backup de Dados →
+            </button>
+          </div>
+        </div>
+        <button onclick="dismissBackupBanner()" class="text-sky-300/70 hover:text-sky-100 text-sm font-bold flex-shrink-0">✕</button>
+      </div>
+
+      <!-- High Priority High-Cost Debt Warning Banner (Shown only if revolving > 0) -->
+      <div id="banner-highcost-debt" class="hidden rounded-2xl bg-amber-950/60 border-2 border-amber-500/70 p-4 text-amber-100 flex items-start justify-between gap-3 shadow-xl shadow-amber-950/30">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">💡</span>
+          <div>
+            <h3 class="text-sm font-black text-amber-300 uppercase tracking-wider" id="lbl-highcost-alert-title">
+              <span data-i18n="hcBannerTitle">Oportunidade de Otimização: Linhas de Crédito de Maior Custo</span>
+            </h3>
+            <p class="text-xs text-amber-200/90 mt-0.5" id="lbl-highcost-alert-desc">
+              <span data-i18n="hcBannerPre">Identificamos um saldo de</span> <span id="lbl-banner-revolving-debt" class="font-black text-white">R$ 0</span> <span data-i18n="hcBannerPost">em crédito rotativo ou cheque especial. Como as taxas dessas modalidades tendem a superar a rentabilidade média de investimentos de longo prazo, a matemática financeira indica que priorizar sua amortização gera um retorno garantido superior antes de acelerar novos aportes.</span>
+            </p>
+          </div>
+        </div>
+        <button onclick="switchTab('view-balancesheet')" class="px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold transition shrink-0" id="lbl-highcost-btn">
+          <span data-i18n="hcBannerBtn">Revisar Passivos</span>
+        </button>
+      </div>
+
+      <!-- Proactive alerts (new): emergency reserve, bills due soon, approaching
+           freedom, negative cash flow. Each clears its own dismissal once the
+           underlying condition is no longer true, so a recurring problem is
+           shown again rather than staying silently suppressed forever. -->
+      <div id="banner-emergency-reserve" class="hidden rounded-2xl bg-rose-950/60 border-2 border-rose-500/70 p-4 text-rose-100 flex items-start justify-between gap-3 shadow-xl shadow-rose-950/30">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">🛟</span>
+          <div>
+            <h3 class="text-sm font-black text-rose-300 uppercase tracking-wider" data-i18n="alertReserveTitle">Reserva de Emergência Abaixo do Mínimo</h3>
+            <p class="text-xs text-rose-200/90 mt-0.5"><span data-i18n="alertReservePre">Sua reserva de emergência cobre</span> <span id="lbl-emergency-reserve-months" class="font-black text-white">0</span> <span data-i18n="alertReservePost">meses de custo de vida — a maioria dos especialistas recomenda pelo menos 3.</span></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="switchTab('view-balancesheet')" class="px-3 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition" data-i18n="alertReserveBtn">Revisar Investimentos</button>
+          <button onclick="dismissEmergencyReserveBanner()" class="text-rose-300/70 hover:text-rose-100 text-sm font-bold">✕</button>
+        </div>
+      </div>
+
+      <div id="banner-bills-due-soon" class="hidden rounded-2xl bg-amber-950/60 border-2 border-amber-500/70 p-4 text-amber-100 flex items-start justify-between gap-3 shadow-xl shadow-amber-950/30">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">⏰</span>
+          <div>
+            <h3 class="text-sm font-black text-amber-300 uppercase tracking-wider" data-i18n="alertBillsTitle">Contas Vencendo em Breve</h3>
+            <p class="text-xs text-amber-200/90 mt-0.5" id="lbl-bills-due-soon-text"></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="switchTab('view-cashflow')" class="px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold transition" data-i18n="alertBillsBtn">Ver Contas</button>
+          <button onclick="dismissBillsDueSoonBanner()" class="text-amber-300/70 hover:text-amber-100 text-sm font-bold">✕</button>
+        </div>
+      </div>
+
+      <div id="banner-freedom-approaching" class="hidden rounded-2xl bg-emerald-950/60 border-2 border-emerald-500/70 p-4 text-emerald-100 flex items-start justify-between gap-3 shadow-xl shadow-emerald-950/30">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">🎉</span>
+          <div>
+            <h3 class="text-sm font-black text-emerald-300 uppercase tracking-wider" data-i18n="alertFreedomTitle">Sua Liberdade Financeira Está Chegando</h3>
+            <p class="text-xs text-emerald-200/90 mt-0.5" id="lbl-freedom-approaching-text"></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="switchTab('view-retirement')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition" data-i18n="alertFreedomBtn">Ver Projeção</button>
+          <button onclick="dismissFreedomApproachingBanner()" class="text-emerald-300/70 hover:text-emerald-100 text-sm font-bold">✕</button>
+        </div>
+      </div>
+
+      <div id="banner-cashflow-negative" class="hidden rounded-2xl bg-rose-950/60 border-2 border-rose-500/70 p-4 text-rose-100 flex items-start justify-between gap-3 shadow-xl shadow-rose-950/30">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">⚠️</span>
+          <div>
+            <h3 class="text-sm font-black text-rose-300 uppercase tracking-wider" data-i18n="alertCashflowTitle">Gastos Acima da Renda Este Mês</h3>
+            <p class="text-xs text-rose-200/90 mt-0.5"><span data-i18n="alertCashflowPre">Sua renda líquida está</span> <span id="lbl-cashflow-negative-amount" class="font-black text-white">0</span> <span data-i18n="alertCashflowPost">abaixo dos seus gastos totais neste mês, considerando os aportes atuais.</span></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="switchTab('view-cashflow')" class="px-3 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition" data-i18n="alertCashflowBtn">Revisar Fluxo de Caixa</button>
+          <button onclick="dismissCashFlowNegativeBanner()" class="text-rose-300/70 hover:text-rose-100 text-sm font-bold">✕</button>
+        </div>
+      </div>
+
+      <!-- iOS: browser storage is not guaranteed to survive in a Safari tab, so nudge
+           toward installing to the Home Screen and taking a backup first -->
+      <div id="banner-install-hint" class="hidden rounded-2xl bg-sky-950/60 border-2 border-sky-500/70 p-4 text-sky-100 flex items-start justify-between gap-3 shadow-xl shadow-sky-950/30">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">📲</span>
+          <div>
+            <h3 class="text-sm font-black text-sky-300 uppercase tracking-wider" data-i18n="pwaHintTitle">Instale na Tela de Início</h3>
+            <p class="text-xs text-sky-200/90 mt-1" data-i18n="pwaHintBody">No iPhone, o Safari pode apagar dados de sites sem uso.</p>
+            <button onclick="exportDataJSON()" class="mt-2 px-2.5 py-1 rounded-lg bg-sky-900/60 hover:bg-sky-800 text-sky-100 border border-sky-600/50 text-[11px] font-bold transition" data-i18n="pwaHintExport">Exportar backup agora</button>
+          </div>
+        </div>
+        <button onclick="dismissInstallHint()" class="text-sky-300/70 hover:text-sky-100 text-sm font-bold flex-shrink-0">✕</button>
+      </div>
+
+      <!-- Post-Wizard "What's Next" Nudge (shown while the profile still looks
+           like just what the 1-earner wizard collected — no spouse, kids,
+           real estate, debts, or goals added yet) -->
+      <div id="banner-next-steps" class="hidden rounded-2xl bg-teal-950/60 border-2 border-teal-500/70 p-4 text-teal-100 flex items-start justify-between gap-3 shadow-xl shadow-teal-950/30">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">✅</span>
+          <div>
+            <h3 class="text-sm font-black text-teal-300 uppercase tracking-wider" id="lbl-next-steps-title" data-i18n="nextStepsTitle">
+              Configuração inicial pronta — o que fazer agora
+            </h3>
+            <p class="text-xs text-teal-200/90 mt-1" id="lbl-next-steps-body" data-i18n="nextStepsBody">
+              O assistente só pediu o essencial. Para um retrato mais preciso da família, considere adicionar:
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-2" id="container-next-steps-links">
+              <!-- Dynamically populated with only the sections still empty -->
+            </div>
+          </div>
+        </div>
+        <button onclick="dismissNextStepsBanner()" class="text-teal-300/70 hover:text-teal-100 text-sm font-bold flex-shrink-0">✕</button>
+      </div>
+
+      <!-- Top KPI Dashboard Grid: 5 Essential Indicators -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        
+        <!-- Net Worth Card -->
+        <div class="glass-card rounded-2xl p-4 border border-slate-800 space-y-1">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider" data-i18n="lblNetWorth">PATRIMÔNIO LÍQUIDO</span>
+            <span class="text-teal-400">🏛️</span>
+          </div>
+          <div class="text-xl sm:text-2xl font-black text-white" id="lbl-dash-networth">R$ 0</div>
+          <div class="text-[11px] text-slate-400 flex items-center justify-between">
+            <span data-i18n="lblNetWorthSub">Ativos - Dívidas</span>
+            <span class="text-slate-300 font-semibold" id="lbl-dash-liquid">Liq: R$ 0</span>
+          </div>
+        </div>
+
+        <!-- Monthly Estimated Passive Income Card -->
+        <div class="glass-card rounded-2xl p-4 border border-slate-800 space-y-1">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider" data-i18n="lblPassiveIncome">RENDA PASSIVA</span>
+            <span class="text-emerald-400">💵</span>
+          </div>
+          <div class="text-xl sm:text-2xl font-black text-emerald-400" id="lbl-dash-passive-income">R$ 0 / mês</div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden mt-1">
+            <div id="bar-dash-passive-coverage" class="bg-gradient-to-r from-emerald-400 to-teal-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+          <div class="text-[10px] text-slate-400 flex items-center justify-between pt-0.5">
+            <span id="lbl-dash-passive-sub">Cobre 0% das contas</span>
+            <span class="text-emerald-300 font-semibold" id="lbl-dash-passive-pct">0% coberto</span>
+          </div>
+        </div>
+
+        <!-- Freedom Horizon (4% SWR Crossover) -->
+        <div class="glass-card rounded-2xl p-4 border border-slate-800 space-y-1">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider flex items-center">
+              <span data-i18n="lblFreedomHorizon">HORIZONTE DE LIBERDADE</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="tipFreedomHorizon">Ano em que sua carteira, crescendo a juros compostos, atinge o capital necessário para que sua renda passiva (à taxa de retirada segura de 4% ao ano) cubra 100% do custo de vida da família — o momento em que trabalhar vira opcional.</span></span>
+            </span>
+            <span class="text-amber-400">🌅</span>
+          </div>
+          <div class="text-xl sm:text-2xl font-black text-amber-400" id="lbl-dash-crossover">--</div>
+          <div class="text-[11px] text-slate-400 flex items-center justify-between">
+            <span data-i18n="lblFreedomHorizonSub">Regra 4% SWR</span>
+            <span class="text-slate-300 font-semibold" id="lbl-dash-target-freedom">Meta: R$ 0</span>
+          </div>
+        </div>
+
+        <!-- Net Savings Rate -->
+        <div class="glass-card rounded-2xl p-4 border border-slate-800 space-y-1">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider" data-i18n="lblSavingsRate">TAXA DE POUPANÇA</span>
+            <span class="text-teal-400">⚡</span>
+          </div>
+          <div class="text-xl sm:text-2xl font-black text-teal-400" id="lbl-dash-savings-rate">0.0%</div>
+          <div class="text-[11px] text-slate-400 flex items-center justify-between">
+            <span id="lbl-dash-savings-gap">Meta: 25%</span>
+            <span class="text-slate-300 font-semibold"><span data-i18n="ovwPayYourselfFirst">Pague-se 1º</span></span>
+          </div>
+        </div>
+
+        <!-- Security & Antifragility Score -->
+        <div class="glass-card rounded-2xl p-4 border border-slate-800 space-y-1">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider" data-i18n="lblSecurityScore">SCORE DE SEGURANÇA</span>
+            <span class="text-teal-400">🛡️</span>
+          </div>
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-xl sm:text-2xl font-black text-white" id="lbl-dash-score">0</span>
+            <span class="text-xs text-slate-400">/ 100</span>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden mt-1">
+            <div id="bar-dash-score" class="bg-gradient-to-r from-teal-500 to-emerald-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+          <div class="grid grid-cols-4 gap-0.5 pt-1 text-[10px] text-center text-slate-400">
+            <div class="bg-slate-900/80 rounded py-0.5 border border-slate-800" data-i18n-title="scorePillRunwayTitle" title="Reserva de Emergência (&ge;6 meses): até 25 pts">
+              <span>💧</span> <span id="lbl-score-pill-runway">0/25</span>
+            </div>
+            <div class="bg-slate-900/80 rounded py-0.5 border border-slate-800" data-i18n-title="scorePillDebtTitle" title="Baixa Alavancagem e Zero Rotativo: até 25 pts">
+              <span>💳</span> <span id="lbl-score-pill-debt">0/25</span>
+            </div>
+            <div class="bg-slate-900/80 rounded py-0.5 border border-slate-800" data-i18n-title="scorePillSavingsTitle" title="Taxa de Poupança (&ge;25%): até 25 pts">
+              <span>⚡</span> <span id="lbl-score-pill-savings">0/25</span>
+            </div>
+            <div class="bg-slate-900/80 rounded py-0.5 border border-slate-800" title="Diversificação Internacional (&ge;25% fora da moeda base): até 25 pts">
+              <span>🌍</span> <span id="lbl-score-pill-diversif">0/25</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Financial Freedom & Earner Ages Horizon -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🌅</span> <span id="lbl-freedom-title"><span data-i18n="ovwFreedomTitle">Independência Financeira & Horizontes da Família</span></span>
+            </h3>
+            <p class="text-xs text-slate-400" id="lbl-freedom-desc">
+              <span data-i18n="ovwFreedomDesc">Momento em que os rendimentos do capital líquido cobrem 100% dos custos da família, tornando o trabalho opcional para todos os adultos.</span>
+            </p>
+          </div>
+          <div class="text-xs bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700">
+            <span class="text-slate-400"><span data-i18n="ovwFreedomYear">Ano Estimado de Liberdade:</span> </span>
+            <strong class="text-emerald-400 font-black text-sm" id="lbl-crossover-year">--</strong>
+          </div>
+        </div>
+        <!-- Dynamic earner crossover age cards -->
+        <div id="container-crossover-milestones" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Life insurance death-benefit analysis: asked for directly — the app already
+           tracked a coverage amount for the Score's hedge component, but never showed
+           what it actually MEANS for the family day to day: how many years would it
+           (plus existing assets) cover living costs if a parent died, specially with
+           kids in the picture, and whether the amount is too little, enough, or more
+           than necessary. One card per earner (calc/death-benefit.js), since each
+           parent's death has a different financial impact. -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🛡️</span> <span data-i18n="dbTitle">Proteção Familiar: Se Algo Acontecer</span>
+          </h3>
+          <p class="text-xs text-slate-400">
+            <span data-i18n="dbDesc">Quanto tempo o seguro de vida + patrimônio líquido cobririam o custo de vida da família se um dos pais faltasse, e se esse valor é suficiente até os filhos ficarem independentes.</span>
+          </p>
+        </div>
+        <div id="container-death-benefit" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Diagnostic Coach Radar Observations -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🛡️</span> <span data-i18n="lblRadarTitle">Diagnóstico de Segurança Financeira & Recomendações</span>
+          </h3>
+          <span class="text-[10px] text-teal-400 font-bold uppercase tracking-wider"><span data-i18n="ovwCoach">Coach Financeiro</span></span>
+        </div>
+        <div id="container-radar-observations" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+    </div>

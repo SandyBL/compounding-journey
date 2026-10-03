@@ -1,0 +1,340 @@
+    <!-- ========================================== -->
+    <!-- VIEW 3: BALANCE SHEET (ASSETS & DEBTS)     -->
+    <!-- ========================================== -->
+    <div id="view-balancesheet" class="tab-content hidden space-y-6">
+
+      <!-- Currency Hedging & Foreign Exchange Quotes -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🌍</span> <span data-i18n="bsFxTitle">Proteção Cambial & Cotações de Moedas</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="bsFxDesc">
+              Multiplicadores de câmbio para consolidar seus ativos internacionais na moeda base operacional da família.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded-xl bg-slate-900 border border-slate-700 text-teal-300 font-bold" id="lbl-fx-base-tag">Moeda Base: BRL</span>
+            <button onclick="refreshFxTimestamp()" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition" id="btn-fx-refresh" data-i18n-title="fxRefreshTitle" title="Registrar data de hoje">
+              <span data-i18n="bsFxUpdatedPrefix">Atualizado:</span> <strong id="lbl-fx-last-updated" class="text-white">Nunca confirmado</strong> 🔄
+            </button>
+          </div>
+        </div>
+
+        <div id="container-dynamic-fx-rates" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <!-- Dynamically populated based on base currency -->
+        </div>
+
+        <!-- Geographic Diversification Bar -->
+        <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+          <div class="flex justify-between text-xs">
+            <span class="text-slate-300 font-semibold" id="lbl-hedging-bar-title" data-i18n="bsHedgingBarTitle">Diversificação Internacional (% fora da moeda base)</span>
+            <span class="text-teal-400 font-bold" id="lbl-hard-currency-pct">0.0% Internacional</span>
+          </div>
+          <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+            <div id="bar-hard-currency" class="bg-gradient-to-r from-teal-400 to-emerald-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+          <div class="flex justify-between text-[11px] text-slate-400">
+            <span><span data-i18n="bsWeightedYieldPrefix">Rentabilidade média ponderada dos investimentos:</span> <strong class="text-emerald-400 font-bold" id="lbl-weighted-portfolio-yield">0.0% a.a.</strong></span>
+            <span data-i18n="bsHedgingTarget">Referência opcional: &ge;25% fora da moeda base</span>
+          </div>
+          <label class="flex items-center gap-1.5 text-[11px] text-slate-400 pt-1 cursor-pointer">
+            <input type="checkbox" id="input-score-include-hedge" onchange="handleDataUpdate()" class="rounded border-slate-700 text-teal-500 focus:ring-teal-400 h-3.5 w-3.5 bg-slate-900">
+            <span data-i18n="bsScoreIncludeHedge">Incluir a diversificação cambial na pontuação de segurança (peso 10%)</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="bsScoreIncludeHedgeTip">Opcional.</span></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Real Estate Assets (Imóveis) -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🏡</span> <span data-i18n="bsRealEstateTitle">Patrimônio Imobiliário (Residencial & Aluguel)</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="bsRealEstateDesc">
+              Valor de mercado estimado, saldo devedor do financiamento imobiliário e aluguéis líquidos recebidos.
+            </p>
+          </div>
+          <button onclick="addRealEstate()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-xs font-bold transition" data-i18n="bsAddRealEstate">
+            + Adicionar Imóvel
+          </button>
+        </div>
+        <!-- Rental-income tax settings (contract dependent) -->
+        <div id="row-rental-tax-es" class="hidden p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
+          <span class="text-slate-400 flex items-center">
+            <span data-i18n="rentalTaxESLabel">Redução do rendimento líquido de aluguel (Espanha):</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="rentalTaxESTip">Regras do IRPF.</span></span>
+          </span>
+          <select id="input-es-rental-reduction" onchange="handleDataUpdate()" class="glass-input rounded-lg px-2 py-1 font-semibold text-[11px]">
+            <option value="50" data-i18n="esRentRed50">50%</option>
+            <option value="60" data-i18n="esRentRed60">60%</option>
+            <option value="70" data-i18n="esRentRed70">70%</option>
+            <option value="90" data-i18n="esRentRed90">90%</option>
+          </select>
+        </div>
+        <div id="row-rental-tax-gl" class="hidden p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
+          <span class="text-slate-400 flex items-center">
+            <span data-i18n="rentalTaxGLLabel">Imposto sobre aluguéis (taxa efetiva):</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="rentalTaxGLTip">Taxa única sobre o aluguel líquido.</span></span>
+          </span>
+          <span class="flex items-center gap-1">
+            <input type="number" id="input-gl-rental-rate" min="0" max="60" step="1" value="20" oninput="handleDataUpdate()" class="w-16 glass-input rounded-lg px-2 py-1 text-right font-bold">
+            <span class="text-slate-400">%</span>
+          </span>
+        </div>
+        <div id="owner-filter-realEstate"></div>
+        <div id="container-real-estate-list" class="space-y-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Liquid Compounding Assets (Investimentos Líquidos) -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>📈</span> <span data-i18n="bsLiquidTitle">Portfólio Líquido Composto (Ações, ETFs, Renda Fixa)</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="bsLiquidDesc">
+              Ativos financeiros líquidos em qualquer moeda que financiam a independência financeira.
+            </p>
+          </div>
+          <button onclick="addLiquidInvestment()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-xs font-bold transition" data-i18n="bsAddLiquid">
+            + Adicionar Ativo
+          </button>
+        </div>
+        <div id="owner-filter-investments"></div>
+        <div id="container-liquid-investments-list" class="space-y-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Equity Compensation (Stock Options / RSUs) -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>📊</span> <span data-i18n="eqTitle">Compensação em Equity (Stock Options / RSUs)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="eqTitleTip">O valor JÁ ADQUIRIDO (vested) entra no patrimônio líquido, mas fica de fora do motor de aposentadoria (junto com outros ativos concentrados/não diversificados) — ações de um único empregador carregam risco de concentração que uma carteira diversificada não tem. O valor AINDA NÃO ADQUIRIDO (unvested) é apenas informativo, não é patrimônio até realmente adquirido.</span></span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="eqDesc">
+              Stock options, RSUs ou participações societárias concedidas pelo empregador.
+            </p>
+          </div>
+          <button onclick="addEquityGrant()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-xs font-bold transition" data-i18n="eqAddGrant">
+            + Adicionar Concessão
+          </button>
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2 bg-slate-950 rounded-lg border border-slate-800">
+            <span class="text-[10px] text-slate-400 block" data-i18n="eqTotalVestedLabel">Total Adquirido (no Patrimônio)</span>
+            <strong class="text-teal-400 font-black" id="lbl-eq-total-vested">R$ 0</strong>
+          </div>
+          <div class="p-2 bg-slate-950 rounded-lg border border-slate-800">
+            <span class="text-[10px] text-slate-400 block" data-i18n="eqTotalUnvestedLabel">Total Não Adquirido (informativo)</span>
+            <strong class="text-slate-400 font-black" id="lbl-eq-total-unvested">R$ 0</strong>
+          </div>
+        </div>
+        <div id="container-equity-grants-list" class="space-y-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Goals / Sinking Funds Savings (read-only summary; edited on the Metas tab) -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🏁</span> <span data-i18n="bsGoalsTitle">Reservas de Metas (Sinking Funds)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="bsGoalsTip">Soma do "Já Acumulado" de cada meta cadastrada na aba Metas. Entra no Patrimônio Líquido total, mas fica de fora do motor de aposentadoria/4% SWR (rentabilidade, renda passiva, horizonte de liberdade) — esse dinheiro está reservado para um objetivo específico, não disponível para gerar renda perpétua.</span></span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="bsGoalsDesc">
+              Valor já guardado para viagens, troca de carro, reformas etc. Edite os valores na aba Metas.
+            </p>
+          </div>
+          <button onclick="switchTab('view-goals')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-xs font-bold transition" data-i18n="bsGoalsGoTo">
+            Ir para Metas →
+          </button>
+        </div>
+        <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
+          <span class="text-xs text-slate-400" data-i18n="bsGoalsSavedLabel">Total Acumulado em Metas:</span>
+          <strong class="text-lg text-teal-400" id="lbl-bs-goals-saved">R$ 0</strong>
+        </div>
+      </div>
+
+      <!-- Liabilities & Debts Architecture -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>💳</span> <span data-i18n="bsDebtsTitle">Passivos & Estrutura de Dívidas</span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="bsDebtsDesc">
+            Diferencie compras parceladas sem juros de dívidas caras ou rotativas para eliminar perdas de juros.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="bsDebtInstallments">Parcelas Sem Juros (Cartão / Carnê)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="bsDebtInstallmentsTip">Soma de todas as compras parceladas futuras já contratadas sem juros.</span></span>
+            </label>
+            <input type="number" id="input-debt-parcelas" value="8500" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-rose-300 font-semibold flex items-center">
+              <span data-i18n="bsDebtRevolving">Dívida Rotativa / Cheque Especial</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="bsDebtRevolvingTip">Dívidas caras com juros de rotativo ou empréstimos pessoais caros. Prioridade zero para zerar!</span></span>
+            </label>
+            <input type="number" id="input-debt-revolving" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-black text-rose-400">
+            <div class="flex items-center gap-1 pt-0.5">
+              <input type="number" id="input-debt-revolving-rate" value="12.0" step="0.5" min="0" oninput="handleDataUpdate()" class="w-16 glass-input rounded-lg px-2 py-0.5 text-[11px] font-semibold text-rose-300">
+              <span class="text-[10px] text-slate-400" data-i18n="bsDebtRatePctYear">% ao ano</span>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="bsDebtAuto">Financiamento de Veículo / Empréstimos</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="bsDebtAutoTip">Saldo devedor total de financiamento de automóveis ou empréstimos de longo prazo.</span></span>
+            </label>
+            <input type="number" id="input-debt-auto" value="28000" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+            <div class="flex items-center gap-1 pt-0.5">
+              <input type="number" id="input-debt-auto-rate" value="18.0" step="0.5" min="0" oninput="handleDataUpdate()" class="w-16 glass-input rounded-lg px-2 py-0.5 text-[11px] font-semibold text-slate-300">
+              <span class="text-[10px] text-slate-400" data-i18n="bsDebtRatePctYear">% ao ano</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Annual Interest Cost — previously debts had no rate at all, so
+             there was no way to see the concrete cost of carrying them, only
+             the balance. Making this visible is what actually motivates
+             prioritizing high-interest debt over just "having" a payoff plan. -->
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
+          <span class="text-slate-400 flex items-center" data-i18n="bsDebtInterestCostLabel">Custo Anual Estimado de Juros:
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="bsDebtInterestCostTip">Estimativa simples: saldo devedor × taxa anual, para cada dívida com juros (rotativo e financiamento). Não considera amortização ao longo do ano — é o custo se o saldo atual permanecesse constante por 12 meses, útil como referência de quanto essa dívida "custa" por ano.</span></span>
+          </span>
+          <strong class="text-rose-400 font-black text-sm" id="lbl-debt-interest-cost">R$ 0 / ano</strong>
+        </div>
+
+        <!-- Credit Health (Score) -->
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
+          <span class="text-slate-400 flex items-center" data-i18n="bsCreditScoreLabel">Score de Crédito (0-1000):
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="bsCreditScoreTip">Escala 0-1000, no padrão dos birôs de crédito no Brasil (Serasa/Boa Vista/SPC). Na Espanha e na maioria dos outros países não existe um "score" único e público da mesma forma — use esta escala apenas como referência qualitativa relativa (quanto maior, melhor seu histórico de crédito).</span></span>
+          </span>
+          <div class="flex items-center gap-2">
+            <input type="number" id="input-credit-score" min="0" max="1000" step="1" oninput="handleDataUpdate()" class="w-20 glass-input rounded-lg px-2 py-1 text-right font-bold">
+            <strong class="font-black text-sm" id="lbl-credit-score-band">—</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Debt payoff planner: snowball vs avalanche, next to the interest cost above -->
+      <div id="card-debt-planner" class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🧮</span> <span data-i18n="dpTitle">Plano de Quitação de Dívidas</span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="dpDesc">Compare pagar só o mínimo com duas estratégias clássicas: bola de neve (a menor dívida primeiro, para ganhar embalo) e avalanche (a de maior juros primeiro, para pagar menos juros). Em ambas, o dinheiro liberado por cada dívida quitada passa para a próxima.</p>
+        </div>
+
+        <div class="flex flex-wrap items-end gap-3 text-xs">
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="dpExtraLabel">Valor extra por mês:</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="dpExtraTip">Quanto você pode pagar por mês ALÉM dos pagamentos mínimos de todas as dívidas. Na moeda base. Se não souber, use o botão para preencher com a sua sobra mensal de caixa.</span></span></label>
+            <input type="number" id="input-dp-extra" min="0" step="50" value="0" oninput="updateDebtPlan('extraMonthly', this.value)" class="w-36 glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+          <button id="btn-dp-surplus" onclick="useSurplusForDebts()" class="hidden px-3 py-1.5 rounded-xl border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition"></button>
+          <label class="flex items-center gap-1.5 text-[11px] text-slate-300 cursor-pointer">
+            <input type="checkbox" id="input-dp-auto" checked onchange="updateDebtPlan('autoEvents', this.checked)" class="rounded border-slate-700 text-teal-500 focus:ring-teal-400">
+            <span data-i18n="dpAutoEvents">Investir os pagamentos liberados depois de quitar (eventos de vida automáticos)</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="dpAutoEventsTip">Quando a última dívida do plano é quitada, os pagamentos que saíam do Fluxo de Caixa passam a ser investidos, e o valor extra deste plano sai da sua sobra durante a quitação. Isso cria dois eventos de vida automáticos, que entram em todas as projeções. Desmarque para ignorar.</span></span>
+          </label>
+          <label id="row-dp-mortgages" class="hidden flex items-center gap-1.5 text-[11px] text-slate-300 cursor-pointer">
+            <input type="checkbox" id="input-dp-mortgages" onchange="updateDebtPlan('includeMortgages', this.checked)" class="rounded border-slate-700 text-teal-500 focus:ring-teal-400">
+            <span data-i18n="dpIncludeMortgages">Incluir financiamentos imobiliários</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="dpIncludeMortgagesTip">Financiamentos de imóveis costumam ter juros menores e prazos de décadas; por isso ficam fora do plano por padrão. Marque para incluí-los (informe a taxa e a parcela de cada um na tabela).</span></span>
+          </label>
+        </div>
+
+        <p id="dp-empty" class="hidden text-xs text-slate-400 p-3 rounded-xl border border-dashed border-slate-800"></p>
+
+        <div id="dp-body" class="space-y-4">
+          <div class="overflow-x-auto rounded-xl border border-slate-800" id="dp-table"></div>
+          <div id="dp-verdict" class="space-y-2"></div>
+          <div class="overflow-x-auto rounded-xl border border-slate-800" id="dp-compare"></div>
+          <div id="dp-order"></div>
+          <div class="h-64 w-full"><canvas id="chart-debt-plan"></canvas></div>
+          <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="dpAssumptions">Como calculamos: os juros são a taxa efetiva anual (a mesma do custo anual de juros acima), cobrados mês a mês sobre o saldo, e os pagamentos são feitos no fim de cada mês. Em cada mês pagam-se todos os mínimos; o restante do orçamento (o extra mais o que as dívidas quitadas liberaram) vai para a dívida-alvo. Onde o pagamento está em branco usamos uma estimativa. Simulação educativa: confira as condições reais dos seus contratos. O plano não altera a projeção de liberdade financeira.</p>
+        </div>
+      </div>
+
+      <!-- Mortgage: amortization schedule and "prepay or invest?" -->
+      <div id="card-mortgage" class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🏠</span> <span data-i18n="msTitle">Financiamento Imobiliário: Cronograma e Antecipar vs. Investir</span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="msDesc">Veja quanto de cada parcela é juros e quanto amortiza a dívida, quando o financiamento acaba e se compensa usar dinheiro extra para antecipar parcelas ou investi-lo.</p>
+        </div>
+
+        <p id="ms-empty" class="hidden text-xs text-slate-400 p-3 rounded-xl border border-dashed border-slate-800"></p>
+
+        <div id="ms-body" class="space-y-4">
+          <div id="row-ms-property" class="hidden flex items-center gap-2 text-xs">
+            <span class="text-slate-400 font-semibold" data-i18n="msProperty">Imóvel:</span>
+            <select id="select-mortgage-property" onchange="updateMortgagePlan('propertyId', this.value)" class="glass-input rounded-lg px-2 py-1 font-semibold"></select>
+          </div>
+
+          <div id="ms-terms"></div>
+          <div id="ms-warn"></div>
+          <div id="ms-summary" class="grid grid-cols-2 sm:grid-cols-5 gap-2"></div>
+
+          <div class="space-y-2">
+            <h4 class="font-bold text-white text-xs" data-i18n="msScheduleTitle">Cronograma ano a ano</h4>
+            <div class="overflow-auto max-h-72 rounded-xl border border-slate-800" id="ms-schedule"></div>
+          </div>
+          <div class="h-56 w-full"><canvas id="chart-mortgage-balance"></canvas></div>
+
+          <div class="border-t border-slate-800 pt-4 space-y-3">
+            <h4 class="font-bold text-white text-sm flex items-center gap-2"><span>⚖️</span> <span data-i18n="msPrepayTitle">Antecipar parcelas ou investir?</span></h4>
+            <p class="text-xs text-slate-400" data-i18n="msPrepayDesc">Compare usar o mesmo dinheiro extra de duas formas: pagar a dívida mais rápido ou investir. Nas duas você desembolsa o mesmo valor por mês; quem antecipa, depois de quitar, passa a investir tudo. A comparação é pelo patrimônio líquido (investimentos menos dívida) no horizonte escolhido.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs">
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="msExtra">Valor extra por mês</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="msExtraTip">Dinheiro a mais, além da parcela, que você pode destinar todo mês, na moeda base.</span></span></label>
+            <input type="number" id="input-ms-extra" min="0" step="100" value="0" oninput="updateMortgagePlan('extraMonthly', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="msLump">Valor único hoje</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="msLumpTip">Um valor que você tem agora (bônus, venda de um bem) para antecipar ou investir, na moeda base.</span></span></label>
+            <input type="number" id="input-ms-lump" min="0" step="1000" value="0" oninput="updateMortgagePlan('lumpSum', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="msReturn">Retorno esperado (% ao ano)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="msReturnTip">Retorno esperado dos investimentos antes do imposto. Em branco, usamos o rendimento médio da sua carteira. É uma expectativa, não uma garantia.</span></span></label>
+            <input type="number" id="input-ms-return" min="0" max="60" step="0.5" placeholder="rendimento da carteira" oninput="updateMortgagePlan('returnPct', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="msTax">Imposto sobre os ganhos (%)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="msTaxTip">Reduz o retorno do investimento (10% de retorno com 20% de imposto rende 8%). A economia de juros do financiamento não paga imposto.</span></span></label>
+            <input type="number" id="input-ms-tax" min="0" max="60" step="1" value="0" oninput="updateMortgagePlan('taxPct', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="msHorizon">Horizonte (anos)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="msHorizonTip">Até quando comparar. Em branco = até o fim do financiamento como contratado.</span></span></label>
+            <input type="number" id="input-ms-horizon" min="0" max="50" step="1" placeholder="até o fim do financiamento" data-i18n-placeholder="msHorizonAuto" oninput="updateMortgagePlan('horizonYears', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+            </div>
+            <div id="ms-verdict" class="space-y-2"></div>
+            <div id="ms-compare-wrap" class="hidden space-y-3">
+              <div class="overflow-x-auto rounded-xl border border-slate-800" id="ms-compare"></div>
+              <div class="h-56 w-full"><canvas id="chart-mortgage-wealth"></canvas></div>
+            </div>
+            <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="msAssumptions">Como calculamos: juros pela taxa efetiva anual, cobrados mês a mês, com pagamentos no fim de cada mês; valores nominais (o valor "em dinheiro de hoje" desconta a inflação do perfil). Nas duas estratégias o desembolso mensal é o mesmo (parcela + extra); quem antecipa, ao quitar, investe todo o desembolso. Simulação educativa: confira as condições do seu contrato.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>

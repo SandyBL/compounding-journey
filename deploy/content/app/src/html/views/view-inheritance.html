@@ -1,0 +1,78 @@
+    <!-- ========================================== -->
+    <!-- VIEW 8: INHERITANCE & ESTATE SUCCESSION    -->
+    <!-- ========================================== -->
+    <div id="view-inheritance" class="tab-content hidden space-y-6">
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>⚖️</span> <span data-i18n="estTitle">Arquitetura de Sucessão Familiar & Herança</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="estDesc">
+              Simulação de inventário, custos de transmissão causa mortis e distribuição líquida por herdeiro.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5 text-xs justify-end">
+            <div id="row-estate-region" class="hidden flex items-center gap-1">
+              <label class="text-slate-400" data-i18n="estRegionLabel">Estado / Comunidade:</label>
+              <select id="select-estate-region" onchange="handleDataUpdate()" class="glass-input rounded-lg px-2 py-1 font-semibold max-w-[11rem]"></select>
+            </div>
+            <label class="text-slate-400 flex items-center whitespace-nowrap">
+              <span data-i18n="estRateLabel">Alíquota:</span>
+              <span class="field-tip">?<span class="field-tip-content" id="lbl-est-rate-tip" data-i18n="estRateTip">Alíquota estimada, editável — varia por jurisdição e circunstância. Veja a nota abaixo para o padrão do seu país.</span></span>
+            </label>
+            <input type="number" id="input-estate-tax-rate" step="0.5" min="0" value="4" oninput="handleDataUpdate()" class="w-16 glass-input rounded-lg px-2 py-1 text-right font-bold text-amber-400">
+            <span class="text-slate-400">%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-end" id="lbl-est-rate-badge"></div>
+        <p class="text-[11px] text-slate-400 p-2.5 bg-slate-950 rounded-lg border border-slate-800" id="lbl-est-country-note">
+          Nota sobre a regra do seu país.
+        </p>
+        <div id="row-estate-itp" class="hidden flex items-center justify-between gap-2 p-2.5 bg-slate-950 rounded-lg border border-slate-800 text-[11px]">
+          <span class="text-slate-400 flex items-center">
+            <span data-i18n="estItpLabel">Imposto de transmissão (ITP) numa compra futura:</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="estItpTip">Imposto pago pelo comprador ao adquirir um imóvel usado na sua comunidade autônoma. Só informativo aqui — não altera nenhum cálculo do app nem o valor sugerido no evento "Comprar um imóvel".</span></span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <strong class="text-white" id="lbl-est-itp-value">—</strong>
+            <span id="lbl-est-itp-badge"></span>
+          </span>
+        </div>
+        <div id="container-estate-succession-content" class="space-y-4">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Will / Guardian Designation — the non-tax side of estate planning
+           that's specifically a FAMILY concern, not just a tax calculation:
+           who raises minor children if both parents die? -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>📜</span> <span data-i18n="estWillTitle">Testamento & Guarda dos Filhos Menores</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="estWillTip">Um testamento formaliza a distribuição da herança (respeitando a legítima dos herdeiros necessários). A designação de tutor/guardião é a decisão mais importante do planejamento sucessório para famílias com filhos menores — sem ela, um tribunal decide quem cria seus filhos caso ambos os pais faltem.</span></span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="estWillDesc">
+            Estas são checagens de planejamento, não cálculos financeiros — apenas para manter no radar.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <label class="flex items-center gap-2 p-3 bg-slate-950 rounded-xl border border-slate-800 cursor-pointer hover:border-slate-700">
+            <input type="checkbox" id="input-has-will" onchange="handleDataUpdate()" class="rounded border-slate-700 text-teal-500 focus:ring-teal-400 h-4 w-4 bg-slate-900">
+            <span class="font-semibold text-slate-200" data-i18n="estHasWillLabel">Testamento formalizado existe</span>
+          </label>
+          <label class="flex items-center gap-2 p-3 bg-slate-950 rounded-xl border border-slate-800 cursor-pointer hover:border-slate-700">
+            <input type="checkbox" id="input-guardian-designated" onchange="handleDataUpdate()" class="rounded border-slate-700 text-teal-500 focus:ring-teal-400 h-4 w-4 bg-slate-900">
+            <span class="font-semibold text-slate-200" data-i18n="estGuardianDesignatedLabel">Tutor/guardião designado para os filhos</span>
+          </label>
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-400 block font-semibold" data-i18n="estGuardianNameLabel">Nome do Tutor/Guardião Designado (opcional):</label>
+          <input type="text" id="input-guardian-name" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-medium text-xs">
+        </div>
+        <div id="banner-no-guardian" class="hidden p-2.5 rounded-lg bg-amber-950/50 border border-amber-700/50 text-amber-300 text-[11px] flex items-center gap-2">
+          <span>⚠️</span> <span data-i18n="estNoGuardianWarning">A família tem filhos menores, mas nenhum tutor foi designado ainda.</span>
+        </div>
+      </div>
+    </div>

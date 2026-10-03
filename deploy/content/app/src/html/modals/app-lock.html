@@ -1,0 +1,22 @@
+  <!-- PIN / biometric lock screen (ui/security.js). A privacy screen, not encryption
+       \u2014 see the note in security.js and the disclaimer text below. Sits above
+       everything else and is shown by initApp() itself, before the first real render,
+       whenever state.security.pinEnabled is true; unlockApp() hides it again. -->
+  <div id="lock-screen" class="app-modal hidden fixed inset-0 z-[9999] bg-slate-950 flex items-center justify-center p-4">
+    <div class="w-full max-w-xs space-y-4 text-center">
+      <div class="text-4xl">\U0001f512</div>
+      <h2 class="text-white font-black text-lg" data-i18n="secLockTitle">.</h2>
+      <p class="text-slate-400 text-xs" data-i18n="secLockSubtitle">.</p>
+      <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" id="input-lock-pin"
+             placeholder="\u2022\u2022\u2022\u2022" autocomplete="off"
+             class="w-full text-center text-2xl tracking-[0.5em] glass-input rounded-xl px-3 py-3 font-black text-white"
+             onkeydown="if(event.key==='Enter')attemptPinUnlock(this.value)">
+      <p id="lock-error" class="hidden text-rose-400 text-xs min-h-[1em]"></p>
+      <button onclick="attemptPinUnlock(document.getElementById('input-lock-pin').value)" class="w-full py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-sm transition" data-i18n="secUnlockBtn">.</button>
+      <button id="btn-lock-biometric" onclick="tryBiometricUnlock()" class="hidden w-full py-2.5 rounded-xl border border-slate-700 hover:border-slate-500 text-slate-200 font-bold text-sm transition" data-i18n="secBiometricBtn">.</button>
+      <!-- No old PIN required: this is a privacy screen, not encryption, so there is
+           nothing encrypted to lose by resetting it \u2014 only the lock itself. -->
+      <button onclick="resetPinForgotten()" class="text-[11px] text-slate-400 hover:text-slate-300 underline" data-i18n="secForgotPin">.</button>
+      <p class="text-[10px] text-slate-600 leading-relaxed pt-2" data-i18n="secDisclaimer">.</p>
+    </div>
+  </div>

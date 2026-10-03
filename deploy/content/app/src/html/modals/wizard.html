@@ -1,0 +1,246 @@
+  <!-- MODAL: SETUP WIZARD (FIRST-TIME ONBOARDING) -->
+  <div id="modal-wizard" class="app-modal no-print fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <!-- Same height-constraint fix as profile.html: on a short mobile viewport, a
+         multi-step wizard step can easily be taller than the screen with no way to
+         scroll to its own Back/Next buttons. Title/close stays fixed; everything else
+         (all three steps, only one visible at a time) scrolls. -->
+    <div class="glass-card max-w-lg w-full rounded-2xl p-6 border border-slate-700 shadow-2xl max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3 flex-shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🚀</span>
+          <h3 class="font-black text-white text-base"><span data-i18n="wizTitle">Assistente de Configuração Familiar</span></h3>
+        </div>
+        <button onclick="closeWizardModal()" class="text-slate-400 hover:text-white text-sm font-bold">✕</button>
+      </div>
+      <div class="flex-1 overflow-y-auto space-y-4 pt-4 pr-1 -mr-1 modal-scroll-area">
+
+      <!-- Step 1: Country & Mode Selection -->
+      <div id="wizard-step-1" class="space-y-4 text-xs">
+        <p class="text-slate-300">
+          <span data-i18n="wizIntro">Escolha o país de residência fiscal da sua família para calibrar moeda, benefícios e previdência:</span>
+        </p>
+        <div class="grid grid-cols-3 gap-2">
+          <button id="wiz-btn-br" onclick="setWizardCountry('BR')" class="p-2.5 rounded-xl border border-teal-500 bg-teal-500/10 text-white font-bold text-center">
+            🇧🇷 <span id="lbl-wiz-country-name-br">Brasil (BRL)</span>
+          </button>
+          <button id="wiz-btn-es" onclick="setWizardCountry('ES')" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 font-semibold text-center">
+            🇪🇸 <span id="lbl-wiz-country-name-es">Espanha (EUR)</span>
+          </button>
+          <button id="wiz-btn-gl" onclick="setWizardCountry('GL')" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 font-semibold text-center">
+            🌐 <span id="lbl-wiz-country-name-gl">Global</span>
+          </button>
+        </div>
+        <div id="wiz-gl-currency-row" class="hidden flex items-center justify-between gap-2 p-2.5 bg-slate-950 rounded-xl border border-slate-800">
+          <span class="text-slate-300" data-i18n="glBaseCurrencyLabel">Moeda base da família:</span>
+          <select id="wiz-gl-currency" class="glass-input rounded-lg px-2 py-1 font-bold">
+            <option value="USD">$ USD</option><option value="EUR">€ EUR</option><option value="BRL">R$ BRL</option>
+          </select>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1 text-slate-400">
+          <span class="font-bold text-slate-200 block"><span data-i18n="wizStartQ">Deseja começar com dados limpos ou ver um modelo pronto?</span></span>
+          <span><span data-i18n="wizStartDesc">Você pode preencher os dados reais da sua casa ou carregar um portfólio de exemplo para testar as simulações.</span></span>
+        </div>
+        <div class="flex items-center gap-2 pt-2">
+          <button onclick="loadExampleFromWizard()" class="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 font-bold border border-teal-500/30 transition">
+            <span data-i18n="wizExample">✨ Ver Modelo de Exemplo</span>
+          </button>
+          <button onclick="goToWizardStep(2)" class="flex-1 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-black transition">
+            <span data-i18n="wizStartClean">Começar do Zero ➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Earner Setup -->
+      <div id="wizard-step-2" class="hidden space-y-3 text-xs">
+        <h4 class="font-bold text-white text-sm"><span data-i18n="wizStep1Title">Passo 1 de 3: Primeiro Membro da Família</span></h4>
+        <div class="space-y-2">
+          <div>
+            <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizName">Seu Nome / Como prefere ser chamado:</span></label>
+            <input type="text" id="wiz-earner-name" value="" placeholder="Seu nome" data-i18n-placeholder="wizNamePlaceholder" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizAge">Sua Idade:</span></label>
+              <input type="number" id="wiz-earner-age" value="35" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+            </div>
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizRegime">Regime de Trabalho:</span></label>
+              <select id="wiz-earner-regime" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+                <option value="CLT">CLT (Empregado)</option>
+                <option value="PJ">PJ (Simples Nacional)</option>
+              </select>
+            </div>
+          </div>
+          <!-- Gross is often harder to know off the top of your head than net (what
+               actually lands in the account each month) — asked for directly, and
+               matching the same manualNetOverride/realNetSalary mechanism already used
+               on the Cash Flow tab's Earners card, so a wizard-created earner behaves
+               identically to one set up that way later. -->
+          <label class="flex items-center gap-2 text-slate-400 font-semibold cursor-pointer pt-1">
+            <input type="checkbox" id="wiz-earner-know-net" onchange="toggleWizardIncomeMode('earner')" class="w-3.5 h-3.5 rounded accent-gold-500">
+            <span data-i18n="wizKnowNetInstead">Não sei o valor bruto — prefiro informar o líquido que cai na conta</span>
+          </label>
+          <div id="wiz-earner-gross-row">
+            <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizGross">Renda Bruta Mensal:</span></label>
+            <input type="number" id="wiz-earner-gross" value="12000" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-teal-400">
+          </div>
+          <div id="wiz-earner-net-row" class="hidden">
+            <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizNet">Renda Líquida Mensal (o que cai na conta):</span></label>
+            <input type="number" id="wiz-earner-net" value="9000" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-emerald-400">
+          </div>
+        </div>
+
+        <!-- Optional second earner: most households modeled by this app are couples, but
+             the wizard previously only ever asked about one income — a major gap for an
+             "approximate overview" when a second earner exists. Off by default (single
+             earners are just as common); toggling reveals the same 4 fields again. -->
+        <label class="flex items-center gap-2 p-2.5 bg-slate-950 rounded-xl border border-slate-800 cursor-pointer">
+          <input type="checkbox" id="wiz-has-partner" onchange="toggleWizardPartner()" class="w-4 h-4 rounded accent-gold-500">
+          <span class="text-slate-300 font-semibold"><span data-i18n="wizHasPartner">Também tenho um(a) parceiro(a) com renda própria</span></span>
+        </label>
+        <div id="wizard-partner-fields" class="hidden space-y-2 pt-1 border-t border-slate-800">
+          <div>
+            <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizPartnerName">Nome do(a) Parceiro(a):</span></label>
+            <input type="text" id="wiz-partner-name" value="" placeholder="Nome" data-i18n-placeholder="wizPartnerNamePlaceholder" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizAge">Sua Idade:</span></label>
+              <input type="number" id="wiz-partner-age" value="35" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+            </div>
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizRegime">Regime de Trabalho:</span></label>
+              <select id="wiz-partner-regime" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+                <option value="CLT">CLT (Empregado)</option>
+                <option value="PJ">PJ (Simples Nacional)</option>
+              </select>
+            </div>
+          </div>
+          <label class="flex items-center gap-2 text-slate-400 font-semibold cursor-pointer pt-1">
+            <input type="checkbox" id="wiz-partner-know-net" onchange="toggleWizardIncomeMode('partner')" class="w-3.5 h-3.5 rounded accent-gold-500">
+            <span data-i18n="wizKnowNetInstead">Não sei o valor bruto — prefiro informar o líquido que cai na conta</span>
+          </label>
+          <div id="wiz-partner-gross-row">
+            <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizGross">Renda Bruta Mensal:</span></label>
+            <input type="number" id="wiz-partner-gross" value="8000" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-teal-400">
+          </div>
+          <div id="wiz-partner-net-row" class="hidden">
+            <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizNet">Renda Líquida Mensal (o que cai na conta):</span></label>
+            <input type="number" id="wiz-partner-net" value="6500" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-emerald-400">
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 pt-2">
+          <button onclick="goToWizardStep(1)" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold">
+            <span data-i18n="wizBack">Voltar</span>
+          </button>
+          <button onclick="goToWizardStep(3)" class="flex-1 py-2 rounded-xl bg-teal-500 text-slate-950 font-black">
+            <span data-i18n="wizNext">Próximo: Patrimônio e Dívidas ➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Capital, Debts & Outflows Baseline -->
+      <!-- Split into two steps (step-3: investments & debts, step-4: expenses), rather
+           than one long step covering both — asked for directly, since this step had
+           grown to cover a lot of ground (two investment buckets, debts, four expense
+           categories) under a single "Step 2 of 2" label. -->
+      <div id="wizard-step-3" class="hidden space-y-3 text-xs">
+        <h4 class="font-bold text-white text-sm"><span data-i18n="wizStep2Title">Passo 2 de 3: Patrimônio e Dívidas</span></h4>
+        <div class="space-y-2">
+          <!-- Two buckets instead of one lump "total investments" figure: enough to give
+               a genuinely useful starting allocation (the Withdrawal tab's rebalancing
+               card, the Financial Security Score's hedge component, and the freedom-date
+               projection all already distinguish risky from safe money) without asking
+               a first-time, less financially experienced user to classify each holding
+               individually — that level of detail is exactly what they can explore later
+               on the Balance Sheet. -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1 flex items-center">
+                <span data-i18n="wizSafeCapital">Reserva de Emergência Hoje:</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wizSafeCapitalTip">Dinheiro de acesso rápido: poupança, conta remunerada, CDB de liquidez diária.</span></span>
+              </label>
+              <input type="number" id="wiz-safe-capital" value="30000" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-teal-400">
+            </div>
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1 flex items-center">
+                <span data-i18n="wizRiskyCapital">Investimentos de Longo Prazo Hoje:</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="wizRiskyCapitalTip">Ações, fundos, previdência privada — dinheiro que você não pretende tocar nos próximos anos.</span></span>
+              </label>
+              <input type="number" id="wiz-risky-capital" value="20000" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-teal-400">
+            </div>
+          </div>
+          <div>
+            <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizMonthly">Aporte Mensal Previsto (Pague-se Primeiro):</span></label>
+            <input type="number" id="wiz-monthly-invest" value="2000" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-emerald-400">
+          </div>
+
+          <!-- Debt was previously never asked at all, defaulting silently to zero —
+               meaning the Financial Security Score's debt component, and the high-cost-debt
+               banner, would show a falsely perfect "no debt" result for anyone who actually
+               has some, simply because the wizard never gave them the chance to say so. -->
+          <div class="pt-1 border-t border-slate-800">
+            <p class="text-slate-400 font-semibold pt-2 pb-1"><span data-i18n="wizDebtsIntro">Dívidas (deixe 0 se não tiver):</span></p>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizDebtRevolving">Rotativo/Cartão de Crédito:</span></label>
+                <input type="number" id="wiz-debt-revolving" value="0" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-rose-400">
+              </div>
+              <div>
+                <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizDebtInstallments">Financiamentos/Parcelas:</span></label>
+                <input type="number" id="wiz-debt-installments" value="0" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold text-rose-400">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 pt-2">
+          <button onclick="goToWizardStep(2)" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold">
+            <span data-i18n="wizBack">Voltar</span>
+          </button>
+          <button onclick="goToWizardStep(4)" class="flex-1 py-2 rounded-xl bg-teal-500 text-slate-950 font-black">
+            <span data-i18n="wizNextExpenses">Próximo: Gastos ➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Expenses baseline -->
+      <div id="wizard-step-4" class="hidden space-y-3 text-xs">
+        <h4 class="font-bold text-white text-sm"><span data-i18n="wizStep3Title">Passo 3 de 3: Principais Gastos</span></h4>
+        <div class="space-y-2">
+          <!-- Housing + groceries alone covered only 2 of the 10 real outflow categories;
+               adding transport and utilities (both large, universal monthly costs) gets a
+               meaningfully more honest living-cost total without asking for all 10, which
+               would overwhelm a first-time, less experienced user. -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizHousing">Moradia:</span></label>
+              <input type="number" id="wiz-outflow-housing" value="3500" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+            </div>
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizGroceries">Mercado:</span></label>
+              <input type="number" id="wiz-outflow-groceries" value="2500" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+            </div>
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizTransport">Transporte:</span></label>
+              <input type="number" id="wiz-outflow-transport" value="800" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+            </div>
+            <div>
+              <label class="text-slate-400 block font-semibold mb-1"><span data-i18n="wizUtilities">Contas Básicas:</span></label>
+              <input type="number" id="wiz-outflow-utilities" value="600" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 pt-2">
+          <button onclick="goToWizardStep(3)" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold">
+            <span data-i18n="wizBack">Voltar</span>
+          </button>
+          <button onclick="finishSetupWizard()" class="flex-1 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-black">
+            <span data-i18n="wizFinish">Concluir & Abrir Meu Balanço 🏁</span>
+          </button>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>

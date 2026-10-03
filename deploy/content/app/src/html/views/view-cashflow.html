@@ -1,0 +1,399 @@
+    <!-- ======================================================== -->
+    <!-- VIEW 4: CASH FLOW, KIDS & RECONCILIATION EQUILIBRIUM     -->
+    <!-- ======================================================== -->
+    <div id="view-cashflow" class="tab-content hidden space-y-6">
+
+      <!-- TOP DASHBOARD: Cash Flow Equilibrium & 3-Bucket Reconciliation -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="font-bold text-white text-base flex items-center gap-2">
+              <span>⚖️</span> <span data-i18n="cfEquilibriumTitle">Equilíbrio do Fluxo de Caixa Mensal (Regra 50 / 30 / 20)</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="cfEquilibriumDesc">
+              Reconciliação matemática: todo real de renda líquida familiar deve ser alocado com clareza em Necessidades, Estilo de Vida ou Investimentos.
+            </p>
+          </div>
+          <div id="badge-cf-equilibrium-status" class="px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            <span>✅</span> <span data-i18n="cfBalanced">Equilibrado</span>
+          </div>
+        </div>
+
+        <!-- 3 Allocation Buckets Summary Strip -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          
+          <!-- Bucket 1: Fixed Essentials (50-60%) -->
+          <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+              <span class="font-bold uppercase tracking-wider" data-i18n="cfBucketFixedTitle">Custos Fixos & Filhos</span>
+              <span class="text-slate-400" data-i18n="cfTarget5060">Alvo: 50–60%</span>
+            </div>
+            <div class="text-lg font-black text-white" id="lbl-cf-bucket-fixed-sum">R$ 0 / mês</div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+              <span data-i18n="cfBucketFixedSub">Moradia, contas, mercado e escola</span>
+              <strong class="text-teal-400" id="lbl-cf-bucket-fixed-pct">0.0%</strong>
+            </div>
+          </div>
+
+          <!-- Bucket: Debt payments (entered in the Balance Sheet, counted here) -->
+          <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+              <span class="font-bold uppercase tracking-wider" data-i18n="cfBucketDebtTitle">Pagamentos de Dívidas</span>
+              <button onclick="switchTab('view-balancesheet')" class="text-gold-400 hover:text-gold-300 font-semibold normal-case" data-i18n="cfBucketDebtEdit">Editar ↗</button>
+            </div>
+            <div class="text-lg font-black text-white" id="lbl-cf-bucket-debt-sum">R$ 0 / mês</div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+              <span data-i18n="cfBucketDebtSub">Parcelas, rotativo, veículo e financiamentos</span>
+              <strong class="text-rose-400" id="lbl-cf-bucket-debt-pct">0.0%</strong>
+            </div>
+            <div class="text-[10px] text-amber-400 hidden" id="lbl-cf-bucket-debt-est"></div>
+          </div>
+
+          <!-- Bucket 2: Lifestyle & Leisure (20-30%) -->
+          <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+              <span class="font-bold uppercase tracking-wider" data-i18n="cfBucketLifestyleTitle">Estilo de Vida & Lazer</span>
+              <span class="text-slate-400" data-i18n="cfTarget2030">Alvo: 20–30%</span>
+            </div>
+            <div class="text-lg font-black text-white" id="lbl-cf-bucket-lifestyle-sum">R$ 0 / mês</div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+              <span data-i18n="cfBucketLifestyleSub">Restaurantes, viagens e bem-estar</span>
+              <strong class="text-amber-400" id="lbl-cf-bucket-lifestyle-pct">0.0%</strong>
+            </div>
+          </div>
+
+          <!-- Bucket 3: Savings & Compounding (>=10%) -->
+          <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+              <span class="font-bold uppercase tracking-wider" data-i18n="cfBucketInvestTitle">Aporte de Liberdade</span>
+              <span class="text-slate-400" data-i18n="cfTarget20plus">Alvo: &ge;20%</span>
+            </div>
+            <div class="text-lg font-black text-teal-400" id="lbl-cf-bucket-invest-sum">R$ 0 / mês</div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+              <span data-i18n="cfBucketInvestSub">Pague-se Primeiro (Aporte)</span>
+              <strong class="text-emerald-400" id="lbl-cf-bucket-invest-pct">0.0%</strong>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Inflow vs Outflow Reconciliation Math Bar -->
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-4 flex-wrap">
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" data-i18n="cfNetIncomeTotal">Renda Líquida Total</span>
+              <strong class="text-emerald-400 text-sm font-black" id="lbl-cf-reconcile-inflow">R$ 0</strong>
+            </div>
+            <div class="text-slate-600 font-bold text-lg">&minus;</div>
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" data-i18n="cfTotalAllocated">Total Alocado (Gastos + Buffer + Aporte + Metas)</span>
+              <strong class="text-slate-200 text-sm font-black" id="lbl-cf-reconcile-outflow">R$ 0</strong>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-semibold" id="lbl-cf-reconcile-diff-title" data-i18n="cfUnallocatedBalance">Saldo Não Alocado</span>
+            <div class="text-sm font-black text-white" id="lbl-cf-reconcile-diff-val">R$ 0</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Household Earnings & Regimes -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>💼</span> <span data-i18n="cfEarnersTitle">Rendas da Família & Regimes de Trabalho</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="cfEarnersDesc">
+              Renda bruta convertida em líquida após INSS/Segurança Social e IRPF, ou informe o valor real do seu contracheque.
+            </p>
+          </div>
+          <button onclick="addEarner()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-xs font-bold transition" data-i18n="cfAddEarner">
+            + Adicionar Membro
+          </button>
+        </div>
+        <div id="container-earners-list" class="space-y-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- INTEGRATED KIDS: Children Lifecycle & Education Cost Offsets -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3" id="card-integrated-children">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🎒</span> <span data-i18n="cfChildrenTitle">Ciclo de Vida dos Filhos & Custos Educacionais</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="cfChildrenDesc">
+              Escola e faculdade são saídas mensais do fluxo de caixa que se encerram automaticamente quando os filhos atingem a idade de independência.
+            </p>
+          </div>
+          <button onclick="addChild()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-xs font-bold transition" data-i18n="cfAddChild">
+            + Adicionar Filho
+          </button>
+        </div>
+        <div id="container-children-list" class="space-y-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Monthly Family Living Outflows & +15% Safety Buffer -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🛒</span> <span data-i18n="cfOutflowsTitle">Despesas Mensais de Vida & Margem de Segurança (+15%)</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="cfOutflowsDesc">
+              Uma margem automática de +15% é adicionada para absorver despesas invisíveis e atritos do cotidiano (farmácia, pequenos reparos, presentes).
+            </p>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-slate-400" data-i18n="cfTotalLivingCost">Custo Total de Vida:</span>
+            <div class="text-lg font-black text-white" id="lbl-total-outflow-sum">R$ 0 / mês</div>
+          </div>
+        </div>
+
+        <div id="row-cashflow-shared">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="cfLabelHousing">Moradia (Aluguel/Condomínio/IPTU)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipHousing">Custos fixos de moradia (aluguel, condomínio, taxa municipal).</span></span>
+            </label>
+            <input type="number" id="input-outflow-housing" value="5400" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="cfLabelUtilities">Contas Básicas (Luz/Água/Gás)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipUtilities">Energia elétrica, água, gás encanado ou botijão.</span></span>
+            </label>
+            <input type="number" id="input-outflow-utilities" value="850" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="catTelecom">Telecom & Internet</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipTelecom">Planos de telefonia celular e internet banda larga da casa.</span></span>
+            </label>
+            <input type="number" id="input-outflow-telecom" value="380" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="cfLabelGroceries">Supermercado & Feira</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipGroceries">Compras de mantimentos, feira, produtos de limpeza e farmácia de rotina.</span></span>
+            </label>
+            <input type="number" id="input-outflow-groceries" value="3200" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="cfLabelDining">Restaurantes & Entregas</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipDining">Comer fora, cafeterias e aplicativos de delivery.</span></span>
+            </label>
+            <input type="number" id="input-outflow-dining" value="1800" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="cfLabelTransport">Transporte, Combustível & Seguro</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipTransport">Gasolina/recarga, seguro do carro, IPVA mensalizado e aplicativos de transporte.</span></span>
+            </label>
+            <input type="number" id="input-outflow-transport" value="1400" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="cfLabelCleaning">Limpeza & Cuidados com a Casa</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipCleaning">Diarista, passadeira e manutenção doméstica rotineira.</span></span>
+            </label>
+            <input type="number" id="input-outflow-cleaning" value="1200" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="catSubs">Assinaturas & Lazer</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipSubs">Netflix, Spotify, academia e serviços de streaming da família.</span></span>
+            </label>
+            <input type="number" id="input-outflow-subs" value="550" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="cfLabelElderCare">Apoio a Pais/Idosos</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipElderCare">Suporte financeiro mensal a pais ou outros familiares idosos — cuidadores, mensalidades de casa de repouso, medicamentos não cobertos, etc. ("geração sanduíche").</span></span>
+            </label>
+            <input type="number" id="input-outflow-eldercare" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="cfLabelCharitable">Doações & Filantropia</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="cfTipCharitable">Doações regulares a instituições, dízimo ou filantropia. Pode gerar benefício fiscal dependendo do país e do destinatário — veja a aba Planejamento Tributário.</span></span>
+            </label>
+            <input type="number" id="input-outflow-charitable" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+        </div>
+        </div>
+        <div id="row-cashflow-split" class="hidden space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-xs text-slate-400" data-i18n="recDesc">Cada item tem um valor e uma forma de divisão entre os titulares. O total de cada categoria é a soma dos seus itens.</p>
+            <button onclick="addRecurringExpense()" class="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs transition whitespace-nowrap" data-i18n="recAddItem">Adicionar item</button>
+          </div>
+          <div id="container-recurring-expenses" class="space-y-2.5"></div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5 text-xs">
+            <span class="text-slate-400 font-semibold block" data-i18n="recSummaryTitle">Quem paga o quê (por mês):</span>
+            <div id="container-recurring-summary" class="space-y-1"></div>
+          </div>
+        </div>
+
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-400" data-i18n="cfSafetyMarginLabel">Margem Automática de Segurança (+15% anti-atrito):</span>
+          <strong class="text-amber-400 font-bold" id="lbl-outflow-misc-15">R$ 0</strong>
+        </div>
+      </div>
+
+      <!-- Bills & Subscriptions: due-date tracking + reminders, available in BOTH household
+           modes (a due date has nothing to do with splitting expenses between partners).
+           Reads/writes the SAME state.recurringExpenses list as the split-mode Cash Flow
+           card above, but never touches state.outflows itself. -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between gap-2">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🔔</span> <span data-i18n="billsTitle">Contas & Assinaturas</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="billsDesc">Rastreie contas recorrentes e assinaturas com data de vencimento, veja o total e receba um aviso quando algo estiver perto de vencer. Funciona em qualquer modelo familiar — não precisa estar no modo Dividido.</p>
+          </div>
+          <button onclick="addBillOrSubscription()" class="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs transition whitespace-nowrap" data-i18n="billsAddItem">Adicionar</button>
+        </div>
+        <div id="bills-summary"></div>
+        <div id="bills-due-soon-banner" class="hidden p-2.5 bg-amber-950/30 rounded-xl border border-amber-500/30"></div>
+        <div id="container-bills-list" class="space-y-2.5"></div>
+      </div>
+
+      <!-- Insurance / Family Protection (life, disability, health, property) -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🛡️</span> <span data-i18n="insTitle">Seguros & Proteção Familiar</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="insTitleTip">Decisões de investimento e aposentadoria só fazem sentido se a família também está protegida contra o pior cenário: a perda de renda de quem contribui, por morte ou invalidez.</span></span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="insDesc">
+            Prêmios mensais entram automaticamente no custo de vida da família (categoria Necessidades).
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="insLifePremiumLabel">Seguro de Vida (prêmio/mês)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="insLifePremiumTip">Valor mensal pago pela apólice de seguro de vida. Some ao custo de vida da família.</span></span>
+            </label>
+            <input type="number" id="input-ins-life-premium" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+            <!-- Asked for directly: many employers cover some or all of a life
+                 insurance premium, so treating the full premium as a family cost
+                 overstates what the household actually pays. 0 (the default)
+                 means nothing employer-covered, matching the old behavior exactly
+                 for anyone who never touches this. -->
+            <div class="flex items-center justify-between gap-2 pt-0.5">
+              <label class="text-[10px] text-slate-400 flex items-center">
+                <span data-i18n="insLifeEmployerCoverageLabel">Coberto pelo empregador (%)</span>
+                <span class="field-tip">?<span class="field-tip-content" data-i18n="insLifeEmployerCoverageTip">Se seu empregador paga uma parte (ou tudo) do prêmio, o custo real da família é só a parte que você paga.</span></span>
+              </label>
+              <input type="number" min="0" max="100" step="5" id="input-ins-life-employer-pct" value="0" oninput="handleDataUpdate()" class="w-16 glass-input rounded-lg px-1.5 py-0.5 font-bold text-right">
+            </div>
+            <p class="text-[10px] text-slate-400" id="lbl-ins-life-family-share"></p>
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="insDisabilityPremiumLabel">Seguro de Invalidez (prêmio/mês)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="insDisabilityPremiumTip">Prêmio mensal de um seguro que paga um benefício caso o titular fique incapacitado para o trabalho.</span></span>
+            </label>
+            <input type="number" id="input-ins-disability-premium" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="insHealthPremiumLabel">Plano de Saúde Particular (prêmio/mês)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="insHealthPremiumTip">Custo mensal de plano de saúde privado — especialmente relevante para autônomos/PJ sem plano de saúde da empresa.</span></span>
+            </label>
+            <input type="number" id="input-ins-health-premium" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-300 font-semibold flex items-center">
+              <span data-i18n="insPropertyPremiumLabel">Seguro Residencial & Automóvel (prêmio/mês)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="insPropertyPremiumTip">Soma dos prêmios mensais de seguro residencial e de automóveis da família.</span></span>
+            </label>
+            <input type="number" id="input-ins-property-premium" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-xl px-3 py-1.5 font-bold">
+          </div>
+        </div>
+
+        <!-- Healthcare-Specific Inflation — historically outpaces general
+             inflation; affects how much capital the Final Retirement Target
+             sets aside for the health premium specifically (growing
+             perpetuity, not the flat 4% SWR used for everything else). -->
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
+          <span class="text-slate-400 flex items-center" data-i18n="insHealthcareInflationLabel">Inflação Específica de Saúde:
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="insHealthcareInflationTip">Custos de saúde historicamente crescem mais rápido que a inflação geral. Este valor ajusta apenas a parcela do prêmio de saúde na Meta Final de aposentadoria (fórmula de perpetuidade crescente), não os outros gastos. Padrão: inflação geral + 2 pontos percentuais.</span></span>
+          </span>
+          <div class="flex items-center gap-1.5">
+            <input type="number" id="input-healthcare-inflation" step="0.1" min="0" oninput="handleDataUpdate()" class="w-16 glass-input rounded-lg px-2 py-1 text-right font-bold text-amber-400">
+            <span class="text-slate-400">% a.a.</span>
+          </div>
+        </div>
+
+        <!-- Life Insurance Needs-Gap Analysis -->
+        <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h4 class="font-bold text-white text-xs flex items-center gap-2">
+              <span>📐</span> <span data-i18n="insGapTitle">Análise de Suficiência do Seguro de Vida</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="insGapTip">Estimativa educacional: dívidas totais + 7 anos do custo de vida atual da família, como uma referência de quanto seria necessário para a família se reestruturar financeiramente sem a renda de quem falecer. Não é uma recomendação profissional — consulte um planejador financeiro para uma análise real.</span></span>
+            </h4>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <div>
+              <label class="text-[10px] text-slate-400 block font-semibold" data-i18n="insCoverageHeldLabel">Cobertura Atual Contratada</label>
+              <input type="number" id="input-ins-life-coverage" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-lg px-2.5 py-1 font-bold text-teal-400">
+            </div>
+            <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">
+              <span class="text-[10px] text-slate-400 block" data-i18n="insCoverageRecommendedLabel">Cobertura Recomendada (estimativa)</span>
+              <strong class="text-sm font-black text-white" id="lbl-ins-recommended">R$ 0</strong>
+            </div>
+            <div class="p-2 rounded-lg border" id="box-ins-gap">
+              <span class="text-[10px] block" id="lbl-ins-gap-label">Situação</span>
+              <strong class="text-sm font-black" id="lbl-ins-gap-value">R$ 0</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pay Yourself First Monthly Investment Allocation -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>⚡</span> <span data-i18n="cfPayYourselfTitle">Pague-se Primeiro (Aporte Mensal para a Corretora)</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="cfPayYourselfTip">Valor transferido automaticamente no dia do salário para investimentos líquidos.</span></span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="cfPayYourselfDesc">
+            Alimenta diretamente o motor de juros compostos e define a velocidade do seu horizonte de liberdade.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="number" id="input-monthly-investment" value="8500" oninput="handleDataUpdate()" class="w-36 glass-input rounded-xl px-3 py-2 text-sm font-black text-teal-400 text-right">
+        </div>
+      </div>
+
+      <!-- Goals Monthly Contribution (auto-calculated on the Metas tab, read-only here) -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🏁</span> <span data-i18n="cfGoalsCardTitle">Aportes para Metas (Sinking Funds)</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="cfGoalsCardTip">Soma do aporte mensal necessário de cada meta cadastrada na aba Metas, calculado automaticamente a partir do valor restante e do prazo escolhido. Editável apenas na aba Metas — já entra na conta de fluxo de caixa abaixo.</span></span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="cfGoalsCardDesc">
+            Calculado automaticamente: (Valor da Meta − Já Acumulado) ÷ prazo, somado entre todas as metas ativas.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <strong class="text-sm font-black text-emerald-400" id="lbl-cf-goals-monthly">R$ 0 / mês</strong>
+          <button onclick="switchTab('view-goals')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-xs font-bold transition" data-i18n="cfGoalsCardEdit">
+            Editar →
+          </button>
+        </div>
+      </div>
+
+    </div>

@@ -1,0 +1,44 @@
+    <!-- ========================================== -->
+    <!-- VIEW 7: ANNUAL TAX PLANNING (PLAN. FISCAL) -->
+    <!-- ========================================== -->
+    <div id="view-taxes" class="tab-content hidden space-y-6">
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>📑</span> <span id="lbl-tax-title" data-i18n="taxTabTitle">Planejamento Tributário Anual & Engenharia Fiscal</span>
+          </h3>
+          <p class="text-xs text-slate-400" id="lbl-tax-desc" data-i18n="taxTabDesc">
+            Deduções legais específicas por país, diferimento em previdência e otimização para prestadores de serviços e autônomos.
+          </p>
+        </div>
+        <!-- Global only: the generic tax assumptions this tab works from -->
+        <div id="row-gl-tax-settings" class="hidden p-3 bg-slate-950 rounded-xl border border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div class="space-y-1">
+            <label class="text-slate-400 flex items-center"><span data-i18n="taxGlLimitLabel">Limite anual de aporte previdenciário:</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="taxGlLimitTip">Limite anual.</span></span></label>
+            <input type="number" id="input-gl-retirement-limit" min="0" step="100" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-400 flex items-center"><span data-i18n="taxGlMarginalLabel">Sua alíquota marginal (%):</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="taxGlMarginalTip">Alíquota marginal.</span></span></label>
+            <input type="number" id="input-gl-marginal-rate" min="0" max="80" step="0.5" value="25" oninput="handleDataUpdate()" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-400 flex items-center"><span data-i18n="taxGlCharitableLabel">Dedução de doações (%):</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="taxGlCharitableTip">Dedução de doações.</span></span></label>
+            <input type="number" id="input-gl-charitable-rate" min="0" max="100" step="1" value="0" oninput="handleDataUpdate()" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+          </div>
+        </div>
+        <!-- Brazil only: extra dependents for the income-tax calculation -->
+        <div id="row-br-extra-dependents" class="hidden p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
+          <span class="text-slate-400 flex items-center">
+            <span data-i18n="taxExtraDependentsLabel">Dependentes adicionais (IRPF):</span>
+            <span class="field-tip">?<span class="field-tip-content" data-i18n="taxExtraDependentsTip">Filhos elegíveis já são contados automaticamente.</span></span>
+          </span>
+          <input type="number" id="input-br-extra-dependents" min="0" step="1" value="0" oninput="handleDataUpdate()" class="w-16 glass-input rounded-lg px-2 py-1 text-right font-bold">
+        </div>
+        <div id="container-tax-study-content" class="space-y-4">
+          <!-- Dynamically populated based on active country -->
+        </div>
+      </div>
+    </div>

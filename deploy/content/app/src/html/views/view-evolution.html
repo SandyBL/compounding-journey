@@ -1,0 +1,53 @@
+    <!-- ========================================== -->
+    <!-- VIEW 2: EVOLUTION & SNAPSHOTS              -->
+    <!-- ========================================== -->
+    <div id="view-evolution" class="tab-content hidden space-y-6">
+      
+      <!-- Evolution Chart -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>📈</span> <span><span data-i18n="evoTitle">Trajetória Histórica do Patrimônio</span></span>
+            </h3>
+            <p class="text-xs text-slate-400">
+              <span data-i18n="evoDesc">Acompanhamento mensal da expansão do patrimônio líquido e da reserva líquida composta.</span>
+            </p>
+          </div>
+          <button onclick="openAddSnapshotModal()" class="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5 self-start sm:self-auto">
+            <span>📸</span> <span><span data-i18n="evoAddCheckpoint">Registrar Checkpoint</span></span>
+          </button>
+        </div>
+        <div class="h-64 sm:h-72 w-full">
+          <canvas id="chart-checkin-history"></canvas>
+        </div>
+      </div>
+
+      <!-- Snapshots Log Table -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>📋</span> <span><span data-i18n="evoLogTitle">Registro de Fechamentos Mensais</span></span>
+          </h3>
+          <span class="text-xs text-slate-400"><span data-i18n="evoLogSub">Selo temporal dos fechamentos</span></span>
+        </div>
+        <div class="overflow-x-auto rounded-xl border border-slate-800">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-900/90 text-slate-400 font-semibold border-b border-slate-800">
+              <tr>
+                <th class="p-3"><span data-i18n="evoColDate">Data</span></th>
+                <th class="p-3"><span data-i18n="evoColLabel">Rótulo / Checkpoint</span></th>
+                <th class="p-3 text-right"><span data-i18n="evoColNetWorth">Patrimônio Líquido</span></th>
+                <th class="p-3 text-right"><span data-i18n="evoColLiquid">Capital Líquido</span></th>
+                <th class="p-3 text-right"><span data-i18n="evoColDebts">Dívidas Totais</span></th>
+                <th class="p-3 text-center"><span data-i18n="evoColActions">Ações</span></th>
+              </tr>
+            </thead>
+            <tbody id="table-snapshots-body" class="divide-y divide-slate-800/60 text-slate-300">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>

@@ -1,0 +1,24 @@
+    <!-- ========================================== -->
+    <!-- VIEW 9: FAMILY GOALS & SINKING FUNDS       -->
+    <!-- ========================================== -->
+    <div id="view-goals" class="tab-content hidden space-y-6">
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🏁</span> <span data-i18n="glTitle">Metas Familiares & Reservas Dedicadas (Sinking Funds)</span>
+            </h3>
+            <p class="text-xs text-slate-400" data-i18n="glDesc">
+              Recursos carimbados para viagens de férias, troca de carro planejado ou reformas residenciais.
+            </p>
+          </div>
+          <button onclick="addGoal()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-xs font-bold transition" data-i18n="glAddGoal">
+            + Adicionar Meta
+          </button>
+        </div>
+        <div id="owner-filter-goals"></div>
+        <div id="container-goals-list" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>

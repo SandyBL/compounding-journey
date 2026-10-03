@@ -1,0 +1,164 @@
+
+  <!-- Top Educational Guardrail Banner -->
+  <div class="no-print bg-slate-900/90 border-b border-slate-800 text-[11px] text-slate-400 py-1 px-4 text-center">
+    <span class="inline-block mr-1">⚖️</span>
+    <span id="lbl-disclaimer-text">Simulador Educacional: Engenharia de riqueza para planejamento de vida familiar. Não constitui assessoria jurídica, contábil ou financeira oficial.</span>
+  </div>
+
+  <!-- Main Application Header -->
+  <header class="no-print border-b border-gold-500/25 bg-slate-950/80 sticky top-0 z-40 backdrop-blur-md px-3 lg:px-6 py-2.5">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
+      
+      <!-- Brand & Subtitle -->
+      <div class="flex items-center gap-2.5">
+        <img src="@@DATAURI assets/tree-mark-112.png@@" alt="" width="36" height="36" class="w-9 h-9 rounded-xl ring-1 ring-gold-500/40 shadow-lg shadow-gold-500/10">
+        <div>
+          <h1 class="text-sm sm:text-base font-extrabold tracking-tight text-white leading-tight">Family Wealth <span class="text-gold-400">Compass</span></h1>
+          <p class="text-[11px] text-slate-400 leading-tight">
+            <span id="lbl-header-subtitle" class="hidden sm:inline">Planejamento patrimonial e liberdade financeira para a sua família</span><span class="hidden sm:inline"> · </span><a href="https://compoundingjourney.com" target="_blank" rel="noopener" class="text-gold-400 hover:text-gold-300 hover:underline underline-offset-2" data-i18n="brandBy">por Compounding Journey</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Controls: Languages, Currency, Country, Actions -->
+      <div class="flex items-center gap-1.5 flex-wrap justify-end">
+        
+        <!-- Interactive Multi-language Switcher -->
+        <div class="flex items-center bg-slate-900/90 border border-slate-700/80 rounded-xl p-0.5 gap-0.5" id="container-lang-switcher">
+          <button id="btn-lang-pt" onclick="setLanguage('pt')" class="px-2 py-1 rounded-lg text-[11px] font-bold transition bg-teal-500 text-slate-950" title="Português (Brasil)">
+            PT 🇧🇷
+          </button>
+          <button id="btn-lang-es" onclick="setLanguage('es')" class="px-2 py-1 rounded-lg text-[11px] font-bold transition text-slate-300 hover:text-white" title="Español (España)">
+            ES 🇪🇸
+          </button>
+          <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2 py-1 rounded-lg text-[11px] font-bold transition text-slate-300 hover:text-white" title="English">
+            EN 🌐
+          </button>
+        </div>
+
+        <!-- Display Currency Toggle (view-only conversion — does NOT change the
+             household's real accounting currency; that only changes via Profile
+             🌍 / the setup wizard). Deliberately styled DIFFERENTLY from the
+             language switcher above (dashed border, sky accent instead of solid
+             teal, an 👁 micro-label) so the two don't read as "the same kind of
+             control" — they were previously visually identical pill groups,
+             which invited exactly the kind of confusion this app had a real bug
+             around (a currency-view click used to silently change the real
+             accounting currency). -->
+        <div class="flex items-center gap-1" title="Apenas visualização: converte os valores exibidos para esta moeda, sem alterar a moeda base real da família (definida em Perfil 🌍).">
+          <span class="text-[10px] text-sky-400/80" aria-hidden="true">👁</span>
+          <div class="flex items-center bg-slate-900/60 border border-dashed border-sky-700/60 rounded-xl p-0.5 gap-0.5">
+            <button id="btn-curr-BRL" onclick="setDisplayCurrency('BRL')" class="px-2 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-slate-950">
+              R$ BRL
+            </button>
+            <button id="btn-curr-EUR" onclick="setDisplayCurrency('EUR')" class="px-2 py-1 rounded-lg text-[11px] font-bold transition text-slate-400 hover:text-sky-200">
+              € EUR
+            </button>
+            <button id="btn-curr-USD" onclick="setDisplayCurrency('USD')" class="px-2 py-1 rounded-lg text-[11px] font-bold transition text-slate-400 hover:text-sky-200">
+              $ USD
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Wizard (the example profile is offered inside the wizard) -->
+        <button onclick="openWizardModal()" class="px-2 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-[11px] font-semibold transition hidden sm:inline-flex items-center gap-1" title="Abrir assistente guiado de configuração">
+          <span>🚀</span> <span><span data-i18n="hdrWizard">Assistente</span></span>
+        </button>
+
+        <!-- Print Executive PDF Button -->
+        <button onclick="prepareAndPrint()" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-[11px] font-bold transition flex items-center gap-1">
+          <span>🖨️</span>
+          <span class="hidden sm:inline" id="lbl-btn-print">PDF</span>
+        </button>
+
+        <!-- Profile & Settings (country, currency, household mode, App Lock, data
+             import/export, ...). Previously just a plain "jurisdiction" pill, visually
+             identical to the informational pills next to it (language, display currency)
+             — nothing signaled it was a button opening a full settings panel rather than
+             a static label. Now: a leading person icon (a universal "this is about your
+             account/profile" signal), a title tooltip for anyone hovering before
+             clicking, a bolder border so it reads as the important action rather than
+             one more pill, and moved to the rightmost position in the header, since that
+             is where people expect a profile control to live. -->
+        <!-- Quick "Lock now" (ui/security.js): only shown once a PIN is actually
+             configured — a lock icon with nothing behind it would just be confusing.
+             Lets someone lock the app in one tap before handing the device to someone
+             else, instead of having to go into Profile settings first every time.
+             syncHeaderLockButton() (security.js) shows/hides this on every render. -->
+        <button id="btn-header-lock" onclick="lockAppNow()" class="hidden items-center justify-center w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white transition" title="Bloquear agora">
+          <span aria-hidden="true">🔒</span>
+        </button>
+        <button onclick="openProfileModal()" class="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-800 border-2 border-gold-500/50 hover:border-gold-400 text-[11px] text-white font-semibold transition" title="Perfil e Configurações">
+          <span class="text-sm" aria-hidden="true">👤</span>
+          <span id="header-flag">🇧🇷</span>
+          <span id="header-jurisdiction" class="font-semibold">Brasil (BRL)</span>
+          <span class="text-[9px] text-slate-400">▼</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Navigation Tabs: Mathematically constrained grid without horizontal scrolling -->
+  <nav class="no-print bg-slate-950/70 border-b border-slate-800/80 px-3 lg:px-6 py-1.5 sticky top-[57px] z-30 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Desktop Tab Grid: 11 columns, exactly 100% width, no horizontal scrollbar -->
+      <div class="hidden md:grid md:grid-cols-11 gap-1 w-full text-xs">
+        <button onclick="switchTab('view-overview')" id="btn-tab-overview" class="tab-btn w-full px-1 py-1.5 rounded-xl font-bold transition flex items-center justify-center gap-1 bg-gold-500 text-slate-950 truncate">
+          <span>📊</span> <span class="truncate" data-i18n="navOverview">Visão Geral</span>
+        </button>
+        <button onclick="switchTab('view-evolution')" id="btn-tab-evolution" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate">
+          <span>📈</span> <span class="truncate" data-i18n="navEvolution">Evolução</span>
+        </button>
+        <button onclick="switchTab('view-balancesheet')" id="btn-tab-balancesheet" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate">
+          <span>🏛️</span> <span class="truncate" data-i18n="navBalance">Balanço</span>
+        </button>
+        <!-- Divider: "snapshot" tabs (Overview/Evolution/Balance) end here -->
+        <button onclick="switchTab('view-cashflow')" id="btn-tab-cashflow" data-group-start="true" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate border-l border-slate-700/60">
+          <span>💸</span> <span class="truncate" data-i18n="navCashflow">Fluxo & Filhos</span>
+        </button>
+        <button onclick="switchTab('view-budget')" id="btn-tab-budget" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate">
+          <span>📋</span> <span class="truncate" data-i18n="navBudget">Orçamento</span>
+        </button>
+        <button onclick="switchTab('view-retirement')" id="btn-tab-retirement" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate">
+          <span>🎯</span> <span class="truncate" data-i18n="navRetirement">Aposentadoria</span>
+        </button>
+        <button onclick="switchTab('view-whatif')" id="btn-tab-whatif" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate">
+          <span>🧪</span> <span class="truncate" data-i18n="navWhatIf">E se?</span>
+        </button>
+        <button onclick="switchTab('view-events')" id="btn-tab-events" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate">
+          <span>🗓️</span> <span class="truncate" data-i18n="navEvents">Eventos</span>
+        </button>
+        <!-- Divider: "day-to-day money" tabs (Cash Flow/Budget/Retirement) end here -->
+        <button onclick="switchTab('view-taxes')" id="btn-tab-taxes" data-group-start="true" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate border-l border-slate-700/60">
+          <span>📑</span> <span class="truncate" data-i18n="navTaxes">Plan. Fiscal</span>
+        </button>
+        <button onclick="switchTab('view-inheritance')" id="btn-tab-inheritance" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate">
+          <span>⚖️</span> <span class="truncate" data-i18n="navInheritance">Sucessão</span>
+        </button>
+        <button onclick="switchTab('view-goals')" id="btn-tab-goals" class="tab-btn w-full px-1 py-1.5 rounded-xl font-semibold transition flex items-center justify-center gap-1 bg-slate-900 text-slate-300 hover:text-white truncate">
+          <span>🏁</span> <span class="truncate" data-i18n="navGoals">Metas</span>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div class="md:hidden w-full">
+        <select id="mobile-nav-select" onchange="switchTab(this.value)" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-teal-500">
+          <option value="view-overview" id="mopt-overview">📊 Visão Geral & Renda Passiva</option>
+          <option value="view-evolution" id="mopt-evolution">📈 Evolução & Histórico Mensal</option>
+          <option value="view-balancesheet" id="mopt-balancesheet">🏛️ Balanço Patrimonial (Ativos & Dívidas)</option>
+          <option value="view-cashflow" id="mopt-cashflow">💸 Fluxo de Caixa, Filhos & Equilíbrio</option>
+          <option value="view-budget" id="mopt-budget">📋 Matriz Orçada vs. Realizada</option>
+          <option value="view-retirement" id="mopt-retirement">🎯 Aposentadoria & Trajetória 4% SWR</option>
+          <option value="view-whatif" id="mopt-whatif">🧪 E se…? Simulador de Cenários</option>
+          <option value="view-events" id="mopt-events">🗓️ Eventos de Vida</option>
+          <option value="view-taxes" id="mopt-taxes">📑 Planejamento Tributário Anual</option>
+          <option value="view-inheritance" id="mopt-inheritance">⚖️ Sucessão Familiar & ITCMD</option>
+          <option value="view-goals" id="mopt-goals">🏁 Metas Familiares & Reservas</option>
+        </select>
+      </div>
+
+    </div>
+  </nav>
+

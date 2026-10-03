@@ -1,0 +1,41 @@
+    <!-- ========================================== -->
+    <!-- VIEW 11: LIFE EVENTS                        -->
+    <!-- ========================================== -->
+    <div id="view-events" class="tab-content hidden space-y-6">
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🗓️</span> <span data-i18n="leTitle">Eventos de Vida</span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="leDesc">Registre o que vai acontecer e muda o seu dinheiro: um bônus, uma herança, a compra de um imóvel, uma pausa na carreira, os anos de faculdade dos filhos. Os eventos entram em todas as projeções do app (ano de liberdade, aba Aposentadoria, aba E se?).</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 text-[11px]">
+          <span class="text-slate-400 font-semibold" data-i18n="leAddLabel">Adicionar:</span>
+          <button onclick="addLifeEvent('home')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="leTplHomeChip">🏠 Compra de um imóvel</button>
+          <button onclick="addLifeEvent('career')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="leTplCareerChip">🧳 Pausa na carreira</button>
+          <button onclick="addLifeEvent('windfall')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="leTplWindfallChip">🎁 Bônus / herança</button>
+          <button onclick="addLifeEvent('tuition')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="leTplTuitionChip">🎓 Faculdade / estudos</button>
+          <button onclick="addLifeEvent('purchase')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="leTplPurchaseChip">🚗 Compra grande</button>
+          <button onclick="addLifeEvent('custom')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="leTplCustomChip">➕ Outro evento</button>
+        </div>
+
+        <div id="container-life-events" class="space-y-3"></div>
+
+        <!-- Automatic events from the debt payoff plan (read-only here) -->
+        <div id="le-auto-section" class="hidden space-y-2 pt-1">
+          <h4 class="font-bold text-white text-xs flex items-center gap-2"><span>🔗</span> <span data-i18n="leAutoTitle">Eventos automáticos do plano de quitação</span></h4>
+          <p class="text-[11px] text-slate-400" data-i18n="leAutoDesc">Criados a partir do plano de quitação de dívidas (aba Balanço). Não são editáveis aqui: mude o plano e eles se atualizam sozinhos.</p>
+          <div id="container-life-events-auto" class="space-y-2"></div>
+        </div>
+      </div>
+
+      <!-- What the events do to the plan -->
+      <div id="le-verdict" class="space-y-2"></div>
+
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="h-72 sm:h-80 w-full"><canvas id="chart-life-events"></canvas></div>
+        <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="leNote">Como funciona: valores na moeda base do perfil e no poder de compra de hoje. Um evento pontual entra ou sai da carteira no início do ano. Um evento mensal que traz dinheiro é investido; um que tira dinheiro é pago primeiro pela sobra mensal de caixa, depois reduzindo o aporte e, se ainda faltar, pela própria carteira. Os eventos não mudam o capital necessário para a liberdade (por exemplo, uma parcela que continue depois da aposentadoria).</p>
+        <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="leNoteKids">Os custos dos filhos já cadastrados na aba Fluxo de Caixa não precisam ser repetidos aqui; use "Faculdade / estudos" só para custos extras.</p>
+      </div>
+    </div>

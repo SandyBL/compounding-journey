@@ -1,0 +1,110 @@
+    <!-- ========================================== -->
+    <!-- VIEW 10: WHAT-IF SCENARIOS                  -->
+    <!-- ========================================== -->
+    <div id="view-whatif" class="tab-content hidden space-y-6">
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span>🧪</span> <span data-i18n="wiTitle">Simulador de Cenários: e se…?</span>
+          </h3>
+          <p class="text-xs text-slate-400" data-i18n="wiDesc">Mude uma ou mais alavancas e compare seu plano atual com o cenário, lado a lado. Os números usam o mesmo motor das outras abas: nada aqui altera seus dados reais.</p>
+        </div>
+
+        <!-- Shortcuts: each one sets its own lever, so they can be combined -->
+        <div class="flex flex-wrap items-center gap-2 text-[11px]">
+          <span class="text-slate-400 font-semibold" data-i18n="wiPresets">Atalhos:</span>
+          <button onclick="applyWhatIfPreset('save5')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="wiPresetSave">Poupar 5% a mais</button>
+          <button onclick="applyWhatIfPreset('retire55')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="wiPresetRetire">Aposentar aos 55</button>
+          <button onclick="applyWhatIfPreset('cut10')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="wiPresetCut">Gastar 10% menos</button>
+          <button onclick="applyWhatIfPreset('return2')" class="px-2.5 py-1 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 font-semibold transition" data-i18n="wiPresetReturn">Retorno 2 p.p. menor</button>
+          <button onclick="applyWhatIfPreset('reset')" class="px-2.5 py-1 rounded-full border border-slate-700 text-slate-300 hover:bg-slate-800 font-semibold transition" data-i18n="wiReset">Limpar cenário</button>
+        </div>
+
+        <!-- Levers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wiLeverSave">Poupar mais (% da renda líquida)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="wiLeverSaveTip">Aumenta o aporte mensal em uma porcentagem da sua renda líquida atual (por exemplo, 5 soma 5% da renda ao aporte). Use um valor negativo para simular poupar menos.</span></span></label>
+            <div class="flex items-center gap-1">
+              <input type="number" id="input-wi-save" step="1" min="-50" max="100" value="0" oninput="updateWhatIf('extraSavingsPct', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold"><span class="text-slate-400">%</span>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wiLeverSpend">Mudança nos gastos (%)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="wiLeverSpendTip">Aplica a variação a todas as despesas do dia a dia da aba Fluxo de Caixa (moradia, mercado, lazer…). Não muda filhos, seguros nem dívidas. Negativo = gastar menos.</span></span></label>
+            <div class="flex items-center gap-1">
+              <input type="number" id="input-wi-spend" step="1" min="-50" max="50" value="0" oninput="updateWhatIf('spendingChangePct', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold"><span class="text-slate-400">%</span>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wiLeverReturn">Retorno da carteira (± p.p.)</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="wiLeverReturnTip">Soma esse número (em pontos percentuais) ao rendimento anual de cada investimento líquido. Use −2 para testar um cenário pior, ou um valor positivo para um melhor.</span></span></label>
+            <div class="flex items-center gap-1">
+              <input type="number" id="input-wi-return" step="0.5" min="-5" max="5" value="0" oninput="updateWhatIf('returnDeltaPp', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold"><span class="text-slate-400">p.p.</span>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wiLeverLump">Aporte único hoje</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="wiLeverLumpTip">Valor extra investido hoje (bônus, herança, venda de um bem), na moeda base do perfil. Rende a taxa média atual da sua carteira.</span></span></label>
+            <div class="flex items-center gap-1">
+              <input type="number" id="input-wi-lump" step="1000" min="0" value="0" oninput="updateWhatIf('lumpSum', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] text-slate-400 font-semibold flex items-center"><span data-i18n="wiLeverRetire">Idade de aposentadoria</span>
+              <span class="field-tip">?<span class="field-tip-content" data-i18n="wiLeverRetireTip">Idade em que você quer parar de trabalhar. Deixe vazio para usar a idade do plano atual (a mesma da aba Aposentadoria). Usa a idade do primeiro membro da família.</span></span></label>
+            <div class="flex items-center gap-1">
+              <input type="number" id="input-wi-retire" step="1" min="40" max="90" placeholder="igual ao atual" data-i18n-placeholder="wiSameAsCurrent" onchange="updateWhatIf('retireAge', this.value)" class="w-full glass-input rounded-lg px-2 py-1 font-bold">
+            </div>
+          </div>
+        </div>
+        <label class="flex items-center gap-1.5 text-[11px] text-slate-300 cursor-pointer">
+          <input type="checkbox" id="input-wi-invest-freed" checked onchange="updateWhatIf('investFreed', this.checked)" class="rounded border-slate-700 text-teal-500 focus:ring-teal-400">
+          <span data-i18n="wiInvestFreed">Investir o dinheiro que deixo de gastar</span>
+        </label>
+      </div>
+
+      <!-- Verdict in plain language -->
+      <div id="wi-verdict" class="space-y-2"></div>
+
+      <!-- Side-by-side comparison -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="overflow-x-auto rounded-xl border border-slate-800" id="wi-table"></div>
+      </div>
+
+      <!-- Named scenario comparison: career change / sabbatical / saved lever sets,
+           several at once, each against the current profile and against each other
+           (not just one lever-set vs. "current", which the Quick Levers card above
+           already does). -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div>
+          <h3 class="font-bold text-white text-sm flex items-center gap-2"><span>🧭</span> <span data-i18n="scSectionTitle">Comparação de Cenários</span></h3>
+          <p class="text-xs text-slate-400" data-i18n="scSectionDesc">Compare uma mudança de carreira, um sabático ou um conjunto salvo de alavancas — vários de uma vez, uns contra os outros e contra o seu perfil atual, não apenas um cenário contra o \u201catual\u201d.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="addScenario('careerChange')" class="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs transition" data-i18n="scAddCareerChange">+ Mudança de carreira</button>
+          <button onclick="addScenario('sabbatical')" class="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs transition" data-i18n="scAddSabbatical">+ Sabático</button>
+          <!-- Asked for directly, alongside the Overview's own death-benefit analysis:
+               a dynamic what-if running the full projection if a parent died (income
+               to zero, the life insurance payout arriving as a lump sum), not just
+               today's snapshot. -->
+          <button onclick="addScenario('parentDeath')" class="px-3 py-1.5 rounded-xl bg-rose-500 hover:bg-rose-400 text-slate-950 font-bold text-xs transition" data-i18n="scAddParentDeath">+ Falecimento de um dos pais</button>
+          <button onclick="addScenario('lever')" class="px-3 py-1.5 rounded-xl border border-slate-700 hover:border-slate-500 bg-slate-900 text-slate-200 font-bold text-xs transition" data-i18n="scAddLever">+ Conjunto de alavancas</button>
+        </div>
+        <div id="sc-list" class="space-y-2.5"></div>
+        <div class="overflow-x-auto rounded-xl border border-slate-800" id="sc-table"></div>
+        <div class="h-64 w-full"><canvas id="chart-scenarios"></canvas></div>
+      </div>
+
+      <!-- Trajectories -->
+      <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+        <div class="h-72 sm:h-80 w-full"><canvas id="chart-whatif"></canvas></div>
+        <p class="text-[10px] text-slate-400 leading-relaxed" data-i18n="wiAssumptions">Premissas: projeção em termos reais (poder de compra de hoje), com retorno constante, os mesmos aportes (com o crescimento de carreira configurado) e a mesma regra de capital necessário das outras abas. É uma simulação educativa, não uma recomendação. Os mercados reais oscilam.</p>
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <span class="text-[11px] text-slate-400" data-i18n="wiSimLead">Quer testar o plano contra milhares de futuros possíveis?</span>
+          <a id="link-wi-simulator" href="https://compoundingjourney.com/pt/simulators/monte-carlo-fire" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-xs transition inline-flex items-center gap-1.5">
+            <span data-i18n="mcCta">Abrir o simulador</span> <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>

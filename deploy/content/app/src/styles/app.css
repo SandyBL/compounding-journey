@@ -1,0 +1,137 @@
+    /* Mobile bug fix: a stray 1-2px of horizontal slack anywhere on the page
+       otherwise lets mobile Safari rubber-band the whole viewport a little
+       left/right even though everything actually fits. A blanket guard here
+       is safe regardless of which specific element turns out to be the cause. */
+    html, body {
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #030712;
+      /* soft forest-green glow at the top of the page (Compounding Journey green) */
+      background-image: radial-gradient(1100px 520px at 50% -160px, rgba(30, 70, 32, 0.55), transparent 70%);
+      background-repeat: no-repeat;
+      color: #f3f4f6;
+      width: 100%;
+    }
+    /* Applied by ui/modals.js's setupModalScrollLock() for as long as any modal
+       is open. position:fixed (not just overflow:hidden) is the standard,
+       necessary trick for iOS Safari specifically, which otherwise still lets
+       the background scroll via touch while a modal is open. The JS sets
+       body.style.top to the negative of the scroll position being held, and
+       restores the real scroll position when the class is removed. */
+    body.body-scroll-locked {
+      overflow: hidden;
+      position: fixed;
+      left: 0;
+      right: 0;
+    }
+    /* Lets a modal's own internal scroll reach its top/bottom and stop there,
+       instead of "chaining" the rest of the gesture into the page behind it. */
+    .modal-scroll-area {
+      overscroll-behavior: contain;
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-input {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      transition: all 0.2s ease;
+    }
+    .glass-input:focus {
+      border-color: #C59B27;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(197, 155, 39, 0.25);
+    }
+    .field-tip {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 9999px;
+      background: rgba(51, 65, 85, 0.8);
+      color: #94a3b8;
+      font-size: 10px;
+      font-weight: 700;
+      cursor: help;
+      margin-left: 5px;
+      flex-shrink: 0;
+    }
+    .field-tip:hover {
+      background: #C59B27;
+      color: #0f172a;
+    }
+    .field-tip .field-tip-content {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: 135%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      padding: 7px 9px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.35;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7);
+      z-index: 100;
+      pointer-events: none;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      white-space: normal;
+      text-align: left;
+    }
+    .field-tip.tip-left .field-tip-content {
+      left: 0;
+      transform: none;
+    }
+    .field-tip.tip-right .field-tip-content {
+      left: auto;
+      right: 0;
+      transform: none;
+    }
+    .field-tip:hover .field-tip-content {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 4mm 6mm;
+      }
+      /* make sure the brand colors (badges, boxes) actually print */
+      #print-session-summary, #print-session-summary * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #0f172a !important;
+        font-size: 9px !important;
+      }
+      .no-print, header, nav, #modal-profile, #modal-add-snapshot, #modal-wizard, main {
+        display: none !important;
+      }
+      #print-session-summary {
+        display: block !important;
+        max-height: 280mm !important;
+        overflow: hidden !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+    }
+    #print-session-summary {
+      display: none;
+    }
