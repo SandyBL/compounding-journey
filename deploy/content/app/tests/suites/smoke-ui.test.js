@@ -1,0 +1,10 @@
+const {run,els}=require('../harness.js');
+run(`state.country='ES';state.language='es';state.earners=[{id:1,name:'A',age:38,regime:'Cuenta Ajena',grossMonthly:3000},{id:2,name:'B',age:36,regime:'Autónomo',grossMonthly:3500,pjTaxRate:15}];`);
+els['container-earners-list'].children.length=0;
+run(`updateUI();`);
+const html=els['container-earners-list'].children.map(c=>c.innerHTML).join('');
+console.log('ES autonomo card rendered:',html.length>0,' | shows Brazil PJ company-type select (expect false):',/setEarnerCompanyType/.test(html));
+run(`state.country='BR';state.language='pt';state.earners=[{id:1,name:'B',age:36,regime:'PJ',grossMonthly:12000,pjTaxRate:6}];`);
+els['container-earners-list'].children.length=0;
+run(`updateUI();`);
+console.log('BR PJ card shows the select (expect true):',/setEarnerCompanyType/.test(els['container-earners-list'].children.map(c=>c.innerHTML).join('')));
