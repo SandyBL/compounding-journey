@@ -57,8 +57,8 @@ window.SIM_CTA_COPY = {
       },
       modest: {
         eyebrow: "O que diz o teu resultado",
-        title: "Antecipaste a tua data de liberdade {years} anos — dos {baselineAge} para os {age}.",
-        body: "{monthly} por mês são {workDays} dias de trabalho por ano que já não tens de vender. É um resultado real e vem inteiro dos hábitos que esta ferramenta consegue ver. As alavancas grandes — o que ganhas, o que deves e em que está investida a tua poupança — são justamente as que ela não vê.",
+        title: "Antecipaste a tua data de liberdade {years} — dos {baselineAge} para os {age}.",
+        body: "{monthly} por mês são {workDays} por ano que já não tens de vender. É um resultado real e vem inteiro dos hábitos que esta ferramenta consegue ver. As alavancas grandes — o que ganhas, o que deves e em que está investida a tua poupança — são justamente as que ela não vê.",
         lever: "A tua maior poupança aqui é {topHabit}, com {topHabitMonthly} por mês. Vale a pena confirmar se é de facto a tua maior fuga ou apenas o controlo mais fácil de mexer.",
         primaryLabel: "Põe os teus números reais em cima da mesa",
         primaryRoute: "financialSnapshot",
@@ -67,8 +67,8 @@ window.SIM_CTA_COPY = {
       },
       strong: {
         eyebrow: "O que diz o teu resultado",
-        title: "{years} anos mais cedo — aos {age} em vez dos {baselineAge}.",
-        body: "Encontraste {monthly} por mês, que compostos dão {wealth} em trinta anos e te devolvem {workDays} dias de trabalho todos os anos. A armadilha está no pressuposto que vem por baixo: o modelo espera que aguentes isto durante três décadas, e quase ninguém sustenta uma mudança deste tamanho à base de força de vontade. Sustenta-se com estrutura.",
+        title: "{years} mais cedo — aos {age} em vez dos {baselineAge}.",
+        body: "Encontraste {monthly} por mês, que compostos dão {wealth} em trinta anos e te devolvem {workDays} todos os anos. A armadilha está no pressuposto que vem por baixo: o modelo espera que aguentes isto durante três décadas, e quase ninguém sustenta uma mudança deste tamanho à base de força de vontade. Sustenta-se com estrutura.",
         lever: "Transformar esses {monthly} por mês numa transferência automática, antes de o dinheiro chegar à conta à ordem, é o que faz um resultado assim aguentar-se.",
         primaryLabel: "Constrói isto sobre os teus números reais",
         primaryRoute: "financialSnapshot",
@@ -77,8 +77,8 @@ window.SIM_CTA_COPY = {
       },
       major: {
         eyebrow: "O que diz o teu resultado",
-        title: "Acabaste de mover a tua data de liberdade {years} anos — para os {age}.",
-        body: "{monthly} por mês, {workDays} dias de trabalho por ano, {wealth} em trinta anos. Um resultado tão grande costuma significar uma de duas coisas: que o ponto de partida era genuinamente caro, ou que cortaste até um nível em que, na verdade, não viverias. Saber qual das duas é muda por completo o que há para fazer a seguir.",
+        title: "Acabaste de mover a tua data de liberdade {years} — para os {age}.",
+        body: "{monthly} por mês, {workDays} por ano, {wealth} em trinta anos. Um resultado tão grande costuma significar uma de duas coisas: que o ponto de partida era genuinamente caro, ou que cortaste até um nível em que, na verdade, não viverias. Saber qual das duas é muda por completo o que há para fazer a seguir.",
         lever: "A questão não é se a aritmética funciona — funciona. É quais destes cortes ainda estarias a fazer no quinto ano.",
         primaryLabel: "Testa-o com os teus números reais",
         primaryRoute: "financialSnapshot",
@@ -94,8 +94,18 @@ window.SIM_CTA_COPY = {
       beat: {
         eyebrow: "O que diz o teu resultado",
         title: "A tua carteira terminou em {customVal} — {diff} à frente de um 60/40 comum.",
-        body: "{customCagr}% por ano contra {classicCagr}%, ao longo de {years} anos, de {startYear} a {endYear}. Nos números, ganhaste. O que o gráfico não te consegue dizer é se a terias aguentado: essa mesma carteira passou por períodos em que perdeu um terço do seu valor, e o retorno só pertenceu a quem ainda estava dentro do outro lado.",
+        body: "{customCagr}% por ano contra {classicCagr}%, ao longo de {years} anos, de {startYear} a {endYear}. Nos números, ganhaste. O que o gráfico não te consegue dizer é se a terias aguentado: pelo caminho, esta carteira chegou a cair {maxDrawdown}% desde um máximo, e o retorno só pertenceu a quem ainda estava dentro do outro lado.",
         lever: "A pergunta útil não é qual carteira ganha o backtest. É em qual ficarias durante os seus três piores anos.",
+        primaryLabel: "Descobre o que aguentarias de facto",
+        primaryRoute: "investmentProfile",
+        secondaryLabel: "Ou pergunta-me sobre a tua própria carteira",
+        secondaryRoute: "contact"
+      },
+      beatSteady: {
+        eyebrow: "O que diz o teu resultado",
+        title: "A tua carteira terminou em {customVal} — {diff} à frente de um 60/40 comum.",
+        body: "{customCagr}% por ano contra {classicCagr}%, ao longo de {years} anos, de {startYear} a {endYear}, e a sua pior queda desde um máximo foi de {maxDrawdown}%. Ganhar e ao mesmo tempo ir mais tranquilo é raro o suficiente para valer a pena confirmar antes de confiar: um ano de início com sorte, ou uma única classe de ativos a viver a sua década, podem produzi-lo. Experimenta a mesma carteira a partir de um ano de início que não terias escolhido.",
+        lever: "Uma carteira que vale a pena manter é a que continua a parecer razoável a partir de um ano de início que não escolheste.",
         primaryLabel: "Descobre o que aguentarias de facto",
         primaryRoute: "investmentProfile",
         secondaryLabel: "Ou pergunta-me sobre a tua própria carteira",
@@ -107,6 +117,16 @@ window.SIM_CTA_COPY = {
         body: "{customCagr}% por ano contra {classicCagr}%, ao longo de {years} anos. É o resultado mais frequente desta ferramenta e não é um erro: é o que acontece quando a carteira se escolhe por instinto em vez de ser decidida de antemão. O índice aborrecido é difícil de bater precisamente porque nunca muda de opinião.",
         lever: "Uma carteira vale a pena ser decidida uma vez, por escrito, antes de um ano mau decidir por ti.",
         primaryLabel: "Decide a tua como deve ser",
+        primaryRoute: "investmentProfile",
+        secondaryLabel: "Ou vamos falar diretamente",
+        secondaryRoute: "contact"
+      },
+      matched: {
+        eyebrow: "O que diz o teu resultado",
+        title: "Simulaste a própria referência: {customVal} ao fim de {years} anos.",
+        body: "Os teus sliders estão no 60/40 comum, por isso as duas linhas são a mesma: {customCagr}% por ano de {startYear} a {endYear}. É um bom ponto de partida, e o interesse da ferramenta está no que acontece quando te afastas dele: experimenta mais ações, algum ouro ou outro ano de início, e vê de que anos vem a diferença.",
+        lever: "Uma referência só serve quando sabes quais dos seus anos não terias aguentado.",
+        primaryLabel: "Descobre o que aguentarias de facto",
         primaryRoute: "investmentProfile",
         secondaryLabel: "Ou vamos falar diretamente",
         secondaryRoute: "contact"
@@ -149,7 +169,7 @@ window.SIM_CTA_COPY = {
       },
       comfortable: {
         eyebrow: "O teu relatório de voo",
-        title: "Terminaste com {finalBalance} — cerca de {multiple}× o que tinhas ao começar.",
+        title: "Terminaste com {finalBalance} — cerca de {multiple}× o que tinhas ao começar, descontada a inflação.",
         body: "O plano não se limitou a sobreviver até aos {age}: acabou com muito mais do que começou. Isso lê-se como uma vitória, e é — mas também significa que o plano está sobrefinanciado. Com estes números podias ter parado mais cedo, retirado mais de {spending} por ano, ou assumido menos risco para chegar ao mesmo sítio. Um excedente grande no fim também é um custo. Apenas mais silencioso.",
         lever: "O que esta partida levanta não é se vais ter o suficiente. É quanta vida estás a gastar a ter a mais.",
         primaryLabel: "Vê o que podias mudar sem risco",
@@ -197,7 +217,7 @@ window.SIM_CTA_COPY = {
       crossoverAscetic: {
         eyebrow: "O que diz o teu resultado",
         title: "Compraste a tua liberdade em {years} anos — com um índice de satisfação de {joy} em 100.",
-        body: "{passive} por mês contra {expenses}, e chegaste lá cortando quase tudo o que faz uma vida parecer-se com uma vida. É a rota mais rápida da ferramenta e a que quase ninguém termina. A pergunta honesta não é se a aritmética funciona, mas se ainda estarias a viver assim no ano oito, sem forma de saber como a história acaba.",
+        body: "{passive} por mês contra {expenses}, e chegaste lá cortando quase tudo o que faz uma vida parecer-se com uma vida. É a rota mais rápida da ferramenta e a que quase ninguém termina. A pergunta honesta não é se a aritmética funciona, mas se ainda estarias a viver assim no ano {years}, sem forma de saber como a história acaba.",
         lever: "Um plano que abandonarias a meio é mais lento do que um plano mais longo que terminarias.",
         primaryLabel: "Vamos falar de uma versão que viverias",
         primaryRoute: "contact",
@@ -235,7 +255,7 @@ window.SIM_CTA_COPY = {
       investing: {
         eyebrow: "O teu diagnóstico",
         title: "{archetype} — {score}% de literacia, e o teu ponto fraco em {weakest} com {weakestPct}%.",
-        body: "Em {strongest} saíste-te bem, com {strongestPct}%. {weakest} é onde esta partida te custou, e é o grupo mais caro de deixar como está: essas decisões compõem, portanto um erro ali continua a cobrar-te durante todo o tempo em que se mantiver. Acabaste com um património de {netWorth} e {cashFlow} por mês de fluxo de caixa.",
+        body: "{strengthNote}{weakest} é onde esta partida te custou, e é o grupo mais caro de deixar como está: essas decisões compõem, portanto um erro ali continua a cobrar-te durante todo o tempo em que se mantiver. Acabaste com um património de {netWorth} e {cashFlow} por mês de fluxo de caixa.",
         lever: "A carteira e as comissões merecem ser decididas uma vez, de propósito, em vez de ficarem decididas pela primeira coisa que compraste.",
         primaryLabel: "Define o teu perfil de investimento",
         primaryRoute: "investmentProfile",
@@ -245,7 +265,7 @@ window.SIM_CTA_COPY = {
       debt: {
         eyebrow: "O teu diagnóstico",
         title: "{archetype} — {score}% de literacia, e o teu ponto fraco em {weakest} com {weakestPct}%.",
-        body: "Em {strongest} estiveste sólido, com {strongestPct}%. {weakest} foi por onde a partida se escapou. A alavancagem é o grupo menos indulgente de todos porque o custo é contratual e o benefício é apenas uma previsão: os juros chegam faça o mercado o que fizer. Acabaste com um património de {netWorth} e {cashFlow} por mês de fluxo de caixa.",
+        body: "{strengthNote}{weakest} foi por onde a partida se escapou. A alavancagem é o grupo menos indulgente de todos porque o custo é contratual e o benefício é apenas uma previsão: os juros chegam faça o mercado o que fizer. Acabaste com um património de {netWorth} e {cashFlow} por mês de fluxo de caixa.",
         lever: "Toda a decisão de dívida é uma comparação, e não se consegue fazer sem ver o balanço completo de uma só vez.",
         primaryLabel: "Põe o teu balanço por escrito",
         primaryRoute: "financialSnapshot",
@@ -255,7 +275,7 @@ window.SIM_CTA_COPY = {
       spending: {
         eyebrow: "O teu diagnóstico",
         title: "{archetype} — {score}% de literacia, e o teu ponto fraco em {weakest} com {weakestPct}%.",
-        body: "Em {strongest} saíste-te forte, com {strongestPct}%. {weakest} é a lacuna — e é a que menos vezes é mostrada a alguém com honestidade, porque é a única que obriga a olhar para o que saiu de facto da conta e não para o que estava previsto sair. Acabaste com um património de {netWorth} e {cashFlow} por mês de fluxo de caixa.",
+        body: "{strengthNote}{weakest} é a lacuna — e é a que menos vezes é mostrada a alguém com honestidade, porque é a única que obriga a olhar para o que saiu de facto da conta e não para o que estava previsto sair. Acabaste com um património de {netWorth} e {cashFlow} por mês de fluxo de caixa.",
         lever: "Quinze dias a registar cada despesa dizem-te mais sobre isto do que qualquer projeção.",
         primaryLabel: "Descarrega o modelo de despesas gratuito",
         primaryRoute: "templates",
@@ -265,7 +285,7 @@ window.SIM_CTA_COPY = {
       tax: {
         eyebrow: "O teu diagnóstico",
         title: "{archetype} — {score}% de literacia, e o teu ponto fraco em {weakest} com {weakestPct}%.",
-        body: "Em {strongest} estiveste forte, com {strongestPct}%. {weakest} é onde esta partida deu dinheiro. É o único grupo em que o ganho está garantido e não apenas esperado, o que torna o não o reclamar no hábito mais caro do conjunto. Acabaste com um património de {netWorth}.",
+        body: "{strengthNote}{weakest} é onde esta partida deu dinheiro. Os seus ganhos estão entre os poucos que são garantidos e não apenas esperados (a contrapartida da empresa é paga no dia em que contribuis, tal como liquidar um cartão a 22% poupa esses 22%), o que torna não os reclamar num dos hábitos mais caros do conjunto. Acabaste com um património de {netWorth}.",
         lever: "A margem fiscal, na maioria dos anos, usa-se ou perde-se. Isso torna-a na primeira coisa a verificar, não na última.",
         primaryLabel: "Define o teu perfil e o teu horizonte",
         primaryRoute: "investmentProfile",
@@ -275,7 +295,7 @@ window.SIM_CTA_COPY = {
       risk: {
         eyebrow: "O teu diagnóstico",
         title: "{archetype} — {score}% de literacia, e o teu ponto fraco em {weakest} com {weakestPct}%.",
-        body: "Em {strongest} saíste-te bem, com {strongestPct}%. {weakest} é a exposição. As decisões de proteção custam um pouco todos os anos e importam exatamente uma vez, que é precisamente a forma que têm as decisões adiadas para sempre. Acabaste com um património de {netWorth}.",
+        body: "{strengthNote}{weakest} é a exposição. As decisões de proteção custam um pouco todos os anos e importam exatamente uma vez, que é precisamente a forma que têm as decisões adiadas para sempre. Acabaste com um património de {netWorth}.",
         lever: "A lacuna que vale a pena fechar primeiro é aquela em que um único ano mau desfaria uma década de todo o resto.",
         primaryLabel: "Define o teu perfil de risco",
         primaryRoute: "investmentProfile",

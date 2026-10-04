@@ -145,9 +145,9 @@
     "pt": "                * Nota: Seu salário líquido por hora é calculado em "
   },
   "textXs3": {
-    "en": ". Assumes a 7% real investment return rate and 4% safe withdrawal rate (FIRE 25x rule).\n",
-    "es": ". Asume una tasa de retorno real del 7% y una tasa de retirada segura del 4% (Regla del 25x de FIRE).\n",
-    "pt": ". Considera uma taxa de retorno real de 7% e uma taxa de retirada segura de 4% (Regra dos 25x do FIRE).\n"
+    "en": ". The real return and withdrawal rate above drive every date, the target, the chart and the 30-year figure.\n",
+    "es": ". La rentabilidad real y la tasa de retirada de arriba determinan todas las fechas, el objetivo, el gráfico y la cifra a 30 años.\n",
+    "pt": ". A rentabilidade real e a taxa de retirada acima determinam todas as datas, o objetivo, o gráfico e o valor em 30 anos.\n"
   },
   "textXs4": {
     "en": "The Opportunity Cost Converter",
@@ -224,25 +224,10 @@
     "es": "Línea Base",
     "pt": "Linha de Base"
   },
-  "baselineagedisplay": {
-    "en": "Age 65",
-    "es": "Edad 65",
-    "pt": "Idade 65"
-  },
   "text10px2": {
     "en": "New Target",
     "es": "Nuevo Objetivo",
     "pt": "Novo Alvo"
-  },
-  "optimizedagedisplay": {
-    "en": "Age 56",
-    "es": "Edad 56",
-    "pt": "Idade 56"
-  },
-  "yearssavedbadge": {
-    "en": "Freedom Pulled Forward 9 YEARS!",
-    "es": "¡Libertad Adelantada 9 AÑOS!",
-    "pt": "Liberdade Antecipada em 9 ANOS!"
   },
   "flex": {
     "en": "Start: ",
@@ -269,20 +254,10 @@
     "es": "Ahorro Mensual",
     "pt": "Economia Mensal"
   },
-  "statmonthlysaved": {
-    "en": "+$850/mo",
-    "es": "+€850/mes",
-    "pt": "+R$850/mês"
-  },
   "text10px4": {
     "en": "Annual Work Time Saved",
     "es": "Días Trabajados Ahorrados",
     "pt": "Dias Trabalhados Economizados"
-  },
-  "statworkdayssaved": {
-    "en": "35.4 Days",
-    "es": "35.4 Días/Año",
-    "pt": "35.4 Dias/Ano"
   },
   "text10px5": {
     "en": "30-Yr Wealth Gained",
@@ -347,7 +322,7 @@
   "minHScreen4": {
     "en": "                desc: 'Specialty lattes, energy drinks, or iced coffee purchased on the go.',\n                tip: 'Invest in a quality french press or espresso maker at home and a leakproof travel mug. You keep the daily ritual for under $0.50/cup!',\n",
     "es": "                desc: 'Cafés especiales, bebidas energéticas o cafés helados comprados al paso.',\n                tip: 'Invierte en una prensa francesa o cafetera de espresso de calidad para casa y un termo hermético. ¡Mantienes tu ritual diario por menos de €0,50 por taza!',\n",
-    "pt": "                desc: 'Cafés especiais, energéticos ou cafés gelados comprados no dia a dia.',\n                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de R$0,50 por xícara!',\n"
+    "pt": "                desc: 'Cafés especiais, energéticos ou cafés gelados comprados no dia a dia.',\n                tip: 'Invista em uma prensa francesa ou cafeteira de espresso de qualidade para casa e um copo térmico. Você mantém seu ritual diário por menos de R$1 por xícara!',\n"
   },
   "minHScreen5": {
     "en": "                title: 'Daily Restaurant & Lunch Delivery',\n",
@@ -489,165 +464,10 @@
     "es": "                desc: 'Comprar botellas de agua, refrescos o tés por pura conveniencia.',\n                tip: 'Lleva una botella de agua de acero inoxidable reutilizable con filtro. Ahorras dinero y reduces el plástico al instante.',\n",
     "pt": "                desc: 'Comprar garrafas de água, refrigerantes ou chás por pura conveniência.',\n                tip: 'Carregue uma garrafa de água reutilizável de aço inoxidável com filtro. Você economiza dinheiro e reduz o plástico instantaneamente.',\n"
   },
-  "minHScreen33": {
-    "en": "        // HELPER CALCULATION FUNCTIONS\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen34": {
-    "en": "        // RENDER HABIT CARDS\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen35": {
-    "en": "",
-    "es": "                const unitLabel = habit.unit === 'day' ? 'día' : (habit.unit === 'week' ? 'sem' : 'mes');\n\n",
-    "pt": "                const unitLabel = habit.unit === 'day' ? 'dia' : (habit.unit === 'week' ? 'sem' : 'mês');\n\n"
-  },
-  "minHScreen36": {
-    "en": "                                    ${habit.category} • Baseline: $${habit.baseCost}/${habit.unit}\n",
-    "es": "                                    ${habit.category} • Base: €${habit.baseCost}/${unitLabel}\n",
-    "pt": "                                    ${habit.category} • Base: R$${habit.baseCost}/${unitLabel}\n"
-  },
-  "minHScreen37": {
-    "en": "                                ${monthlySaved > 0 ? '+' + workDaysSavedPerYear.toFixed(1) + ' Work Days/Yr Saved' : 'Full Spending'}\n",
-    "es": "                                ${monthlySaved > 0 ? '+' + workDaysSavedPerYear.toFixed(1) + ' Días Trabajo/Año Ahorrados' : 'Gasto Total'}\n",
-    "pt": "                                ${monthlySaved > 0 ? '+' + workDaysSavedPerYear.toFixed(1) + ' Dias Trabalho/Ano Economizados' : 'Gasto Total'}\n"
-  },
-  "minHScreen38": {
-    "en": "                                <button onclick=\"deleteHabit(${idx})\" class=\"text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors\" title=\"Remove Habit\">\n",
-    "es": "                                <button onclick=\"deleteHabit(${idx})\" class=\"text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors\" title=\"Eliminar Gasto\">\n",
-    "pt": "                                <button onclick=\"deleteHabit(${idx})\" class=\"text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors\" title=\"Excluir Gasto\">\n"
-  },
-  "minHScreen39": {
-    "en": "                                <strong class=\"text-gold-700 font-bold block mb-0.5\">Smart Action Tip:</strong>\n",
-    "es": "                                <strong class=\"text-gold-700 font-bold block mb-0.5\">Consejo de Acción Inteligente:</strong>\n",
-    "pt": "                                <strong class=\"text-gold-700 font-bold block mb-0.5\">Dica de Ação Inteligente:</strong>\n"
-  },
-  "minHScreen40": {
-    "en": "                            <label class=\"text-xs font-bold text-espresso-900\">Base Expense ($):</label>\n",
-    "es": "                            <label class=\"text-xs font-bold text-espresso-900\">Gasto Base (€):</label>\n",
-    "pt": "                            <label class=\"text-xs font-bold text-espresso-900\">Gasto Base (R$):</label>\n"
-  },
-  "minHScreen41": {
-    "en": "                            <label class=\"text-xs font-bold text-espresso-900\">Frequency:</label>\n",
-    "es": "                            <label class=\"text-xs font-bold text-espresso-900\">Frecuencia:</label>\n",
-    "pt": "                            <label class=\"text-xs font-bold text-espresso-900\">Frequência:</label>\n"
-  },
-  "minHScreen42": {
-    "en": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Daily ($/day)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Weekly ($/wk)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Monthly ($/mo)</option>\n",
-    "es": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Diario (€/día)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Semanal (€/sem)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Mensual (€/mes)</option>\n",
-    "pt": "                                <option value=\"day\" ${habit.unit === 'day' ? 'selected' : ''}>Diário (R$/dia)</option>\n                                <option value=\"week\" ${habit.unit === 'week' ? 'selected' : ''}>Semanal (R$/sem)</option>\n                                <option value=\"month\" ${habit.unit === 'month' ? 'selected' : ''}>Mensal (R$/mês)</option>\n"
-  },
-  "minHScreen43": {
-    "en": "                            <span class=\"text-espresso-900\">Spending Choice: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Actual: $${Math.round(currentMonthlyCost)}/mo <span class=\"text-[10px] font-normal text-espresso-800/70\">(Full: $${Math.round(fullMonthlyCost)}/mo)</span></span>\n",
-    "es": "                            <span class=\"text-espresso-900\">Opción de Gasto: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Actual: €${Math.round(currentMonthlyCost)}/mes <span class=\"text-[10px] font-normal text-espresso-800/70\">(Total: €${Math.round(fullMonthlyCost)}/mes)</span></span>\n",
-    "pt": "                            <span class=\"text-espresso-900\">Opção de Gasto: <strong class=\"text-forest-800 font-mono\">${habit.choicePct}%</strong></span>\n                            <span class=\"text-espresso-800 font-mono\">Atual: R$${Math.round(currentMonthlyCost)}/mês <span class=\"text-[10px] font-normal text-espresso-800/70\">(Total: R$${Math.round(fullMonthlyCost)}/mês)</span></span>\n"
-  },
-  "minHScreen44": {
-    "en": "                            <span>0% (Eliminated)</span>\n                            <span>50% (Trimmed)</span>\n                            <span>100% (Keep All)</span>\n",
-    "es": "                            <span>0% (Eliminado)</span>\n                            <span>50% (Recortado)</span>\n                            <span>100% (Mantener Todo)</span>\n",
-    "pt": "                            <span>0% (Eliminado)</span>\n                            <span>50% (Reduzido)</span>\n                            <span>100% (Manter Tudo)</span>\n"
-  },
-  "minHScreen45": {
-    "en": "        // UPDATE HABIT BASE COST\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen46": {
-    "en": "        // UPDATE HABIT FREQUENCY UNIT\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen47": {
-    "en": "        // UPDATE CUSTOM HABIT TITLE\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen48": {
-    "en": "            habits[index].title = title || 'Custom Expense';\n",
-    "es": "            habits[index].title = title || 'Gasto Personalizado';\n",
-    "pt": "            habits[index].title = title || 'Gasto Personalizado';\n"
-  },
-  "minHScreen49": {
-    "en": "        // ADD CUSTOM HABIT\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen50": {
-    "en": "                title: 'New Custom Expense',\n",
-    "es": "                title: 'Nuevo Gasto Personalizado',\n",
-    "pt": "                title: 'Novo Gasto Personalizado',\n"
-  },
-  "minHScreen51": {
-    "en": "                category: 'Custom Expense',\n",
-    "es": "                category: 'Gasto Personalizado',\n",
-    "pt": "                category: 'Gasto Personalizado',\n"
-  },
-  "minHScreen52": {
-    "en": "                desc: 'Enter your custom recurring expense cost and frequency above.',\n",
-    "es": "                desc: 'Ingresa el coste y la frecuencia de tu gasto recurrente personalizado.',\n                tip: 'Analiza si este gasto te aporta verdadero valor o si puede ser optimizado sin afectar tu calidad de vida.',\n",
-    "pt": "                desc: 'Insira o custo e a frequência do seu gasto recorrente personalizado.',\n                tip: 'Analise se este gasto traz valor real para você ou se pode ser otimizado sem afetar sua qualidade de vida.',\n"
-  },
-  "minHScreen53": {
-    "en": "        // DELETE HABIT\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen54": {
-    "en": "        // UPDATE INDIVIDUAL HABIT CHOICE\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen55": {
-    "en": "        // SET GLOBAL PRESET (0%, 50%, 100%)\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen56": {
-    "en": "        // TOGGLE PROFILE DRAWER\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen57": {
-    "en": "        // UPDATE PROFILE SETTINGS FROM INPUTS\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen58": {
-    "en": "        // RECALCULATE ALL METRICS & UPDATE UI\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen59": {
-    "en": "            document.getElementById('baselineAgeDisplay').innerText = `Age ${baselineFreedomAge}`;\n            document.getElementById('optimizedAgeDisplay').innerText = `Age ${optimizedFreedomAge}`;\n",
-    "es": "            document.getElementById('baselineAgeDisplay').innerText = `Edad ${baselineFreedomAge}`;\n            document.getElementById('optimizedAgeDisplay').innerText = `Edad ${optimizedFreedomAge}`;\n",
-    "pt": "            document.getElementById('baselineAgeDisplay').innerText = `Idade ${baselineFreedomAge}`;\n            document.getElementById('optimizedAgeDisplay').innerText = `Idade ${optimizedFreedomAge}`;\n"
-  },
-  "minHScreen60": {
-    "en": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>Freedom Pulled Forward ${yearsPulledForward} YEARS!</span>`;\n",
-    "es": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>¡Libertad Adelantada ${yearsPulledForward} AÑOS!</span>`;\n",
-    "pt": "                badge.innerHTML = `<i class=\"fa-solid fa-calendar-check\"></i><span>Liberdade Antecipada em ${yearsPulledForward} ANOS!</span>`;\n"
-  },
-  "minHScreen61": {
-    "en": "            document.getElementById('statMonthlySaved').innerText = `+$${Math.round(monthlySaved).toLocaleString('en-US')}/mo`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Days/Yr`;\n            document.getElementById('stat30YearWealth').innerText = `$${Math.round(wealthGained30Yr).toLocaleString('en-US')}`;\n",
-    "es": "            document.getElementById('statMonthlySaved').innerText = `+€${Math.round(monthlySaved).toLocaleString('es-ES')}/mes`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Días/Año`;\n            document.getElementById('stat30YearWealth').innerText = `€${Math.round(wealthGained30Yr).toLocaleString('es-ES')}`;\n",
-    "pt": "            document.getElementById('statMonthlySaved').innerText = `+R$${Math.round(monthlySaved).toLocaleString('pt-BR')}/mês`;\n            document.getElementById('statWorkDaysSaved').innerText = `${annualWorkDaysSaved.toFixed(1)} Dias/Ano`;\n            document.getElementById('stat30YearWealth').innerText = `R$${Math.round(wealthGained30Yr).toLocaleString('pt-BR')}`;\n"
-  },
-  "minHScreen62": {
-    "en": "        // RENDER / UPDATE CHART\n",
-    "es": "",
-    "pt": ""
-  },
   "minHScreen63": {
     "en": "                    note.textContent = 'The chart could not be drawn. Every figure it would show is also listed as text on this page.';\n",
     "es": "                    note.textContent = 'No se pudo dibujar el gráfico. Todas las cifras que mostraría también aparecen como texto en esta página.';\n",
     "pt": "                    note.textContent = 'Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página.';\n"
-  },
-  "minHScreen64": {
-    "en": "            let baselineNW = profile.startingNetWorth;\n            let optimizedNW = profile.startingNetWorth;\n\n",
-    "es": "",
-    "pt": ""
   },
   "minHScreen65": {
     "en": "                labels.push(`Year ${i}`);\n",
@@ -700,14 +520,14 @@
     "pt": "Como a data é calculada"
   },
   "explHow1": {
-    "en": "Your target is the amount that can fund your annual spending indefinitely at a 4% withdrawal rate — twenty-five times what you spend in a year. That figure comes from research on how long a diversified portfolio survives being drawn down, and 4% is the rate at which it survived essentially every historical starting year over a thirty-year retirement. The calendar then grows your current investments and adds your monthly surplus month by month at a 7% annual real return, and reports the month the balance first reaches the target.",
-    "es": "Tu objetivo es la cantidad que puede financiar tu gasto anual de forma indefinida con una tasa de retirada del 4%: veinticinco veces lo que gastas en un año. Esa cifra viene de la investigación sobre cuánto sobrevive una cartera diversificada mientras se consume, y el 4% es la tasa a la que sobrevivió prácticamente en todos los años de inicio históricos durante una jubilación de treinta años. El calendario hace crecer tus inversiones actuales y suma tu excedente mensual mes a mes con un 7% de rentabilidad real anual, y señala el mes en que el saldo alcanza por primera vez el objetivo.",
-    "pt": "O seu objetivo é o montante que consegue financiar a sua despesa anual indefinidamente com uma taxa de retirada de 4%: vinte e cinco vezes o que gasta num ano. Esse número vem da investigação sobre quanto tempo uma carteira diversificada sobrevive a ser consumida, e 4% é a taxa à qual sobreviveu praticamente em todos os anos de início históricos ao longo de uma aposentadoria de trinta anos. O calendário faz crescer os seus investimentos atuais e soma o seu excedente mensal mês a mês com 7% de rentabilidade real anual, e indica o mês em que o saldo atinge pela primeira vez o objetivo."
+    "en": "Your target is the amount that can fund your annual spending indefinitely at your chosen withdrawal rate — at the default 4%, twenty-five times what you spend in a year. That figure comes from research on how long a diversified portfolio survives being drawn down, and 4% is the rate at which it survived essentially every historical starting year over a thirty-year retirement. The calendar then grows your current investments and adds your monthly surplus month by month at your chosen annual real return — 7% unless you change it — and reports the month the balance first reaches the target. If that has not happened by age 85, it says so rather than printing 85.",
+    "es": "Tu objetivo es la cantidad que puede financiar tu gasto anual de forma indefinida con la tasa de retirada que elijas: con el 4% por defecto, veinticinco veces lo que gastas en un año. Esa cifra viene de la investigación sobre cuánto sobrevive una cartera diversificada mientras se consume, y el 4% es la tasa a la que sobrevivió prácticamente en todos los años de inicio históricos durante una jubilación de treinta años. El calendario hace crecer tus inversiones actuales y suma tu excedente mensual mes a mes con la rentabilidad real anual que elijas —un 7% si no la cambias—, y señala el mes en que el saldo alcanza por primera vez el objetivo. Si a los 85 años aún no ha ocurrido, lo dice en lugar de mostrar 85.",
+    "pt": "O seu objetivo é o montante que consegue financiar a sua despesa anual indefinidamente com a taxa de retirada que escolher: com os 4% por defeito, vinte e cinco vezes o que gasta num ano. Esse número vem da investigação sobre quanto tempo uma carteira diversificada sobrevive a ser consumida, e 4% é a taxa à qual sobreviveu praticamente em todos os anos de início históricos ao longo de uma aposentadoria de trinta anos. O calendário faz crescer os seus investimentos atuais e soma o seu excedente mensal mês a mês com a rentabilidade real anual que escolher — 7% se não a mudar — e indica o mês em que o saldo atinge pela primeira vez o objetivo. Se aos 85 anos isso ainda não tiver acontecido, di-lo em vez de mostrar 85."
   },
   "explHow2": {
-    "en": "The 7% is a real return — already net of inflation — which is why the target does not need to be inflated year by year. Both sides of the comparison are in today's money, so the date they meet at is meaningful without any further adjustment. The second half of the tool divides your take-home pay by the hours you actually work to get a net hourly wage, then prices your recurring expenses in that unit. A subscription is no longer three dollars a month; it is the number of working hours a year it takes to pay for it.",
-    "es": "El 7% es una rentabilidad real, ya descontada la inflación, y por eso el objetivo no necesita inflarse año a año. Ambos lados de la comparación están en dinero de hoy, así que la fecha en la que se encuentran es significativa sin más ajustes. La segunda mitad de la herramienta divide tu sueldo neto entre las horas que realmente trabajas para obtener un salario neto por hora, y luego valora tus gastos recurrentes en esa unidad. Una suscripción deja de ser tres euros al mes: pasa a ser el número de horas de trabajo al año que cuesta pagarla.",
-    "pt": "Os 7% são uma rentabilidade real, já descontada a inflação, e por isso o objetivo não precisa ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, por isso a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade. Uma assinatura deixa de ser três reais por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la."
+    "en": "The return is a real return — already net of inflation — which is why the target does not need to be inflated year by year. Both sides of the comparison are in today’s money, so the date they meet at is meaningful without any further adjustment. The second half of the tool divides your take-home pay by the hours you actually work to get a net hourly wage, then prices your recurring expenses in that unit, counting a working day as a fifth of your weekly hours. A subscription is no longer three dollars a month; it is the number of working hours a year it takes to pay for it.",
+    "es": "La rentabilidad es real, ya descontada la inflación, y por eso el objetivo no necesita inflarse año a año. Ambos lados de la comparación están en dinero de hoy, así que la fecha en la que se encuentran es significativa sin más ajustes. La segunda mitad de la herramienta divide tu sueldo neto entre las horas que realmente trabajas para obtener un salario neto por hora, y luego valora tus gastos recurrentes en esa unidad, contando como jornada una quinta parte de tus horas semanales. Una suscripción deja de ser tres euros al mes: pasa a ser el número de horas de trabajo al año que cuesta pagarla.",
+    "pt": "A rentabilidade é real, já descontada a inflação, e por isso o objetivo não precisa ser inflacionado ano após ano. Ambos os lados da comparação estão em dinheiro de hoje, por isso a data em que se encontram é significativa sem mais ajustes. A segunda metade da ferramenta divide o seu salário líquido pelas horas que realmente trabalha para obter um salário líquido por hora, e depois avalia as suas despesas recorrentes nessa unidade, contando como dia de trabalho um quinto das suas horas semanais. Uma assinatura deixa de ser três reais por mês: passa a ser o número de horas de trabalho por ano que custa pagá-la."
   },
   "explAssumptionsTitle": {
     "en": "What it assumes",
@@ -715,14 +535,14 @@
     "pt": "O que pressupõe"
   },
   "explAssumption1": {
-    "en": "A 7% annual real return, applied evenly every month. Real markets do not deliver 7% evenly; they deliver something between −40% and +30% in any given year and average out over decades.",
-    "es": "Una rentabilidad real anual del 7%, aplicada de forma uniforme cada mes. Los mercados reales no entregan un 7% uniforme: entregan algo entre −40% y +30% en un año cualquiera y promedian a lo largo de décadas.",
-    "pt": "Uma rentabilidade real anual de 7%, aplicada de forma uniforme todos os meses. Os mercados reais não entregam 7% de forma uniforme: entregam algo entre −40% e +30% num ano qualquer e fazem média ao longo de décadas."
+    "en": "A 7% annual real return by default, compounded monthly at the equivalent monthly rate (about 0.57%), so that twelve months add up to exactly 7%. Real markets do not deliver 7% evenly; they deliver something between −40% and +30% in any given year and average out over decades.",
+    "es": "Una rentabilidad real anual del 7% por defecto, capitalizada cada mes al tipo mensual equivalente (en torno al 0,57%), de modo que doce meses suman exactamente un 7%. Los mercados reales no entregan un 7% uniforme: entregan algo entre −40% y +30% en un año cualquiera y promedian a lo largo de décadas.",
+    "pt": "Uma rentabilidade real anual de 7% por defeito, capitalizada todos os meses à taxa mensal equivalente (cerca de 0,57%), de modo que doze meses somam exatamente 7%. Os mercados reais não entregam 7% de forma uniforme: entregam algo entre −40% e +30% num ano qualquer e fazem média ao longo de décadas."
   },
   "explAssumption2": {
-    "en": "A 4% withdrawal rate, and therefore a 25× target. Lower it to 3.5% and the target becomes 28.6× — a change of a few years for most people.",
-    "es": "Una tasa de retirada del 4%, y por tanto un objetivo de 25×. Bájala al 3,5% y el objetivo pasa a 28,6×, una diferencia de varios años para la mayoría.",
-    "pt": "Uma taxa de retirada de 4%, e portanto um objetivo de 25×. Baixe-a para 3,5% e o objetivo passa a 28,6×, uma diferença de vários anos para a maioria das pessoas."
+    "en": "A 4% withdrawal rate by default, and therefore a 25× target. Lower it to 3.5% and the target becomes 28.6× — a change of a few years for most people.",
+    "es": "Una tasa de retirada del 4% por defecto, y por tanto un objetivo de 25×. Bájala al 3,5% y el objetivo pasa a 28,6×, una diferencia de varios años para la mayoría.",
+    "pt": "Uma taxa de retirada de 4% por defeito, e portanto um objetivo de 25×. Baixe-a para 3,5% e o objetivo passa a 28,6×, uma diferença de vários anos para a maioria das pessoas."
   },
   "explAssumption3": {
     "en": "Your income and your spending stay where you put them. No raises, no children, no move to a cheaper city, no new mortgage.",
@@ -745,14 +565,14 @@
     "pt": "Um exemplo resolvido"
   },
   "explExample1": {
-    "en": "Take someone earning 3,000 a month after tax, spending 2,200, with 20,000 already invested. Annual spending is 26,400, so the target is 660,000. The monthly surplus is 800. Starting from 20,000 and adding 800 a month at 7% real, the balance crosses 660,000 in roughly twenty-six years.",
-    "es": "Toma a alguien que gana 3.000 al mes después de impuestos, gasta 2.200 y tiene 20.000 ya invertidos. El gasto anual es 26.400, así que el objetivo es 660.000. El excedente mensual es 800. Partiendo de 20.000 y añadiendo 800 al mes al 7% real, el saldo cruza los 660.000 en unos veintiséis años.",
-    "pt": "Considere alguém que ganha 3.000 por mês depois de impostos, gasta 2.200 e tem 20.000 já investidos. A despesa anual é 26.400, então o objetivo é 660.000. O excedente mensal é 800. Partindo de 20.000 e acrescentando 800 por mês a 7% real, o saldo cruza os 660.000 em cerca de vinte e seis anos."
+    "en": "Take someone earning 3,000 a month after tax, spending 2,200, with 20,000 already invested. Annual spending is 26,400, so the target is 660,000. The monthly surplus is 800. Starting from 20,000 and adding 800 a month at 7% real, the balance crosses 660,000 after 285 months — just under twenty-four years.",
+    "es": "Toma a alguien que gana 3.000 al mes después de impuestos, gasta 2.200 y tiene 20.000 ya invertidos. El gasto anual es 26.400, así que el objetivo es 660.000. El excedente mensual es 800. Partiendo de 20.000 y añadiendo 800 al mes al 7% real, el saldo cruza los 660.000 a los 285 meses: algo menos de veinticuatro años.",
+    "pt": "Considere alguém que ganha 3.000 por mês depois de impostos, gasta 2.200 e tem 20.000 já investidos. A despesa anual é 26.400, então o objetivo é 660.000. O excedente mensal é 800. Partindo de 20.000 e acrescentando 800 por mês a 7% real, o saldo cruza os 660.000 ao fim de 285 meses: pouco menos de vinte e quatro anos."
   },
   "explExample2": {
-    "en": "Now cut spending to 2,000. The target falls to 600,000 and the monthly surplus rises to 1,000, because every dollar not spent is a dollar invested. The date moves in by about five years. That is the asymmetry the calendar exists to make visible: a change in spending moves both sides of the equation at once, while a raise of the same size moves only one.",
-    "es": "Ahora reduce el gasto a 2.000. El objetivo baja a 600.000 y el excedente mensual sube a 1.000, porque cada euro no gastado es un euro invertido. La fecha se adelanta unos cinco años. Esa es la asimetría que el calendario existe para hacer visible: un cambio en el gasto mueve los dos lados de la ecuación a la vez, mientras que un aumento del mismo tamaño solo mueve uno.",
-    "pt": "Agora reduza a despesa para 2.000. O objetivo desce para 600.000 e o excedente mensal sobe para 1.000, porque cada real não gasto é um real investido. A data antecipa-se cerca de cinco anos. É esta a assimetria que o calendário existe para tornar visível: uma alteração na despesa move os dois lados da equação ao mesmo tempo, enquanto um aumento do mesmo valor move apenas um."
+    "en": "Now cut spending to 2,000. The target falls to 600,000 and the monthly surplus rises to 1,000, because every dollar not spent is a dollar invested. The balance now gets there in 244 months, so the date moves in by about three and a half years. That is the asymmetry the calendar exists to make visible: a change in spending moves both sides of the equation at once, while a raise of the same size moves only one.",
+    "es": "Ahora reduce el gasto a 2.000. El objetivo baja a 600.000 y el excedente mensual sube a 1.000, porque cada euro no gastado es un euro invertido. El saldo llega ahora en 244 meses, así que la fecha se adelanta unos tres años y medio. Esa es la asimetría que el calendario existe para hacer visible: un cambio en el gasto mueve los dos lados de la ecuación a la vez, mientras que un aumento del mismo tamaño solo mueve uno.",
+    "pt": "Agora reduza a despesa para 2.000. O objetivo desce para 600.000 e o excedente mensal sobe para 1.000, porque cada real não gasto é um real investido. O saldo chega agora em 244 meses, por isso a data antecipa-se cerca de três anos e meio. É esta a assimetria que o calendário existe para tornar visível: uma alteração na despesa move os dois lados da equação ao mesmo tempo, enquanto um aumento do mesmo valor move apenas um."
   },
   "explFaqQ1": {
     "en": "Why 4% and not something else?",
@@ -853,5 +673,275 @@
     "en": "Compounding Journey. For educational purposes only. Not formal financial advice.",
     "es": "Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
     "pt": "Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
+  },
+  "fcLocale": {
+    "en": "en-US",
+    "es": "es-ES",
+    "pt": "pt-BR"
+  },
+  "fcDefaultIncome": {
+    "en": "60000",
+    "es": "40000",
+    "pt": "120000"
+  },
+  "fcDefaultNetWorth": {
+    "en": "15000",
+    "es": "10000",
+    "pt": "30000"
+  },
+  "fcDefaultBills": {
+    "en": "2500",
+    "es": "1500",
+    "pt": "4500"
+  },
+  "fcIntroLunch": {
+    "en": "15",
+    "es": "12",
+    "pt": "25"
+  },
+  "fcCustomCost": {
+    "en": "10",
+    "es": "5",
+    "pt": "20"
+  },
+  "fcPrices": {
+    "en": "{ coffee: 5, lunch: 15, subscriptions: 120, carLease: 350, impulseShopping: 40, weekendDining: 80, energySnacks: 6, techUpgrades: 50, gymMembership: 60, storageUnit: 150, foodWaste: 40, shortRideshares: 25, bottledWater: 3 }",
+    "es": "{ coffee: 3, lunch: 12, subscriptions: 40, carLease: 300, impulseShopping: 25, weekendDining: 50, energySnacks: 2.5, techUpgrades: 35, gymMembership: 40, storageUnit: 90, foodWaste: 25, shortRideshares: 15, bottledWater: 1.5 }",
+    "pt": "{ coffee: 7, lunch: 25, subscriptions: 100, carLease: 1500, impulseShopping: 80, weekendDining: 150, energySnacks: 8, techUpgrades: 150, gymMembership: 100, storageUnit: 300, foodWaste: 60, shortRideshares: 40, bottledWater: 4 }"
+  },
+  "fcReturnLabel": {
+    "en": "Expected real return (per year)",
+    "es": "Rentabilidad real esperada (anual)",
+    "pt": "Rentabilidade real esperada (ao ano)"
+  },
+  "fcReturnHelp": {
+    "en": "After inflation. Long-run global stock markets have delivered roughly 5–7%; a mixed portfolio, less. Used for the dates, the chart and the 30-year figure.",
+    "es": "Descontada la inflación. A largo plazo, las bolsas mundiales han dado en torno a un 5–7% real; una cartera mixta, menos. Se usa en las fechas, el gráfico y la cifra a 30 años.",
+    "pt": "Já descontada a inflação. No longo prazo, as bolsas mundiais renderam em torno de 5–7% reais; uma carteira mista, menos. É usada nas datas, no gráfico e no valor em 30 anos."
+  },
+  "fcSwrLabel": {
+    "en": "Safe withdrawal rate",
+    "es": "Tasa de retirada segura",
+    "pt": "Taxa de retirada segura"
+  },
+  "fcSwrHelp": {
+    "en": "The share of your portfolio you plan to spend each year once free. Your target is your annual spending divided by it: 4% means 25×, 3.5% means about 28.6×.",
+    "es": "La parte de la cartera que piensas gastar cada año una vez libre. Tu objetivo es tu gasto anual dividido por ella: un 4% son 25×, un 3,5% unas 28,6×.",
+    "pt": "A parte da carteira que pretende gastar por ano depois de livre. O seu objetivo é a despesa anual dividida por ela: 4% são 25×, 3,5% cerca de 28,6×."
+  },
+  "fcHorizonNote": {
+    "en": "85+ means the plan does not reach its target by age 85 on these numbers. The projection stops there.",
+    "es": "85+ significa que el plan no alcanza su objetivo antes de los 85 años con estas cifras. La proyección se detiene ahí.",
+    "pt": "85+ significa que o plano não atinge o objetivo até os 85 anos com estes números. A projeção para aí."
+  },
+  "fcAge": {
+    "en": "Age {age}",
+    "es": "Edad {age}",
+    "pt": "Idade {age}"
+  },
+  "fcAgeUnreached": {
+    "en": "Age {age}+",
+    "es": "Edad {age}+",
+    "pt": "Idade {age}+"
+  },
+  "fcYearOne": {
+    "en": "{n} year",
+    "es": "{n} año",
+    "pt": "{n} ano"
+  },
+  "fcYearMany": {
+    "en": "{n} years",
+    "es": "{n} años",
+    "pt": "{n} anos"
+  },
+  "fcAtLeast": {
+    "en": "at least {years}",
+    "es": "al menos {years}",
+    "pt": "pelo menos {years}"
+  },
+  "fcWorkDayOne": {
+    "en": "{n} working day",
+    "es": "{n} día de trabajo",
+    "pt": "{n} dia de trabalho"
+  },
+  "fcWorkDayMany": {
+    "en": "{n} working days",
+    "es": "{n} días de trabajo",
+    "pt": "{n} dias de trabalho"
+  },
+  "fcBadgeForward": {
+    "en": "Freedom pulled forward {years}!",
+    "es": "¡Libertad adelantada {years}!",
+    "pt": "Liberdade antecipada em {years}!"
+  },
+  "fcBadgeNeverReached": {
+    "en": "Not reached by {age}, even with these cuts",
+    "es": "No se alcanza a los {age}, ni con estos recortes",
+    "pt": "Não alcançada até os {age}, nem com estes cortes"
+  },
+  "fcBadgeUnderMonth": {
+    "en": "Less than a month earlier so far",
+    "es": "Por ahora, menos de un mes antes",
+    "pt": "Por enquanto, menos de um mês antes"
+  },
+  "fcBadgeHint": {
+    "en": "Move a slider below to pull your date forward",
+    "es": "Mueve un control de abajo para adelantar tu fecha",
+    "pt": "Mova um controle abaixo para antecipar a sua data"
+  },
+  "fcTargetLine": {
+    "en": "Freedom number: {amount} ({multiple}× a year of spending)",
+    "es": "Cifra de libertad: {amount} ({multiple}× tu gasto anual)",
+    "pt": "Número da liberdade: {amount} ({multiple}× a sua despesa anual)"
+  },
+  "fcPerHour": {
+    "en": "/hr",
+    "es": "/h",
+    "pt": "/h"
+  },
+  "fcStatMonthly": {
+    "en": "+{amount}/mo",
+    "es": "+{amount}/mes",
+    "pt": "+{amount}/mês"
+  },
+  "fcStatDays": {
+    "en": "{n} Days/Yr",
+    "es": "{n} Días/Año",
+    "pt": "{n} Dias/Ano"
+  },
+  "fcReturnBadge": {
+    "en": "{rate} Real Return",
+    "es": "Retorno Real {rate}",
+    "pt": "Retorno Real de {rate}"
+  },
+  "fcUnitDay": {
+    "en": "day",
+    "es": "día",
+    "pt": "dia"
+  },
+  "fcUnitWeek": {
+    "en": "wk",
+    "es": "sem",
+    "pt": "sem"
+  },
+  "fcUnitMonth": {
+    "en": "mo",
+    "es": "mes",
+    "pt": "mês"
+  },
+  "fcCardBaseline": {
+    "en": "{category} • Baseline: {amount}/{unit}",
+    "es": "{category} • Base: {amount}/{unit}",
+    "pt": "{category} • Base: {amount}/{unit}"
+  },
+  "fcCardDaysSaved": {
+    "en": "+{n} Work Days/Yr Saved",
+    "es": "+{n} Días Trabajo/Año Ahorrados",
+    "pt": "+{n} Dias Trabalho/Ano Economizados"
+  },
+  "fcCardFullSpending": {
+    "en": "Full Spending",
+    "es": "Gasto Total",
+    "pt": "Gasto Total"
+  },
+  "fcCardDelete": {
+    "en": "Remove Habit",
+    "es": "Eliminar Gasto",
+    "pt": "Excluir Gasto"
+  },
+  "fcCardTip": {
+    "en": "Smart Action Tip:",
+    "es": "Consejo de Acción Inteligente:",
+    "pt": "Dica de Ação Inteligente:"
+  },
+  "fcCardTitleLabel": {
+    "en": "Name of this expense",
+    "es": "Nombre de este gasto",
+    "pt": "Nome deste gasto"
+  },
+  "fcCardCost": {
+    "en": "Base Expense ({currency}):",
+    "es": "Gasto Base ({currency}):",
+    "pt": "Gasto Base ({currency}):"
+  },
+  "fcCardFrequency": {
+    "en": "Frequency:",
+    "es": "Frecuencia:",
+    "pt": "Frequência:"
+  },
+  "fcOptionDay": {
+    "en": "Daily ({currency}/day)",
+    "es": "Diario ({currency}/día)",
+    "pt": "Diário ({currency}/dia)"
+  },
+  "fcOptionWeek": {
+    "en": "Weekly ({currency}/wk)",
+    "es": "Semanal ({currency}/sem)",
+    "pt": "Semanal ({currency}/sem)"
+  },
+  "fcOptionMonth": {
+    "en": "Monthly ({currency}/mo)",
+    "es": "Mensual ({currency}/mes)",
+    "pt": "Mensal ({currency}/mês)"
+  },
+  "fcCardChoice": {
+    "en": "Spending Choice:",
+    "es": "Opción de Gasto:",
+    "pt": "Opção de Gasto:"
+  },
+  "fcCardActual": {
+    "en": "Actual: {amount}/mo",
+    "es": "Actual: {amount}/mes",
+    "pt": "Atual: {amount}/mês"
+  },
+  "fcCardFull": {
+    "en": "(Full: {amount}/mo)",
+    "es": "(Total: {amount}/mes)",
+    "pt": "(Total: {amount}/mês)"
+  },
+  "fcCardSliderLabel": {
+    "en": "Share of the full cost you keep: {title}",
+    "es": "Parte del gasto total que mantienes: {title}",
+    "pt": "Parte do gasto total que mantém: {title}"
+  },
+  "fcSliderEliminated": {
+    "en": "0% (Eliminated)",
+    "es": "0% (Eliminado)",
+    "pt": "0% (Eliminado)"
+  },
+  "fcSliderTrimmed": {
+    "en": "50% (Trimmed)",
+    "es": "50% (Recortado)",
+    "pt": "50% (Reduzido)"
+  },
+  "fcSliderKeepAll": {
+    "en": "100% (Keep All)",
+    "es": "100% (Mantener Todo)",
+    "pt": "100% (Manter Tudo)"
+  },
+  "fcCustomTitle": {
+    "en": "New Custom Expense",
+    "es": "Nuevo Gasto Personalizado",
+    "pt": "Novo Gasto Personalizado"
+  },
+  "fcCustomFallbackTitle": {
+    "en": "Custom Expense",
+    "es": "Gasto Personalizado",
+    "pt": "Gasto Personalizado"
+  },
+  "fcCustomCategory": {
+    "en": "Custom Expense",
+    "es": "Gasto Personalizado",
+    "pt": "Gasto Personalizado"
+  },
+  "fcCustomDesc": {
+    "en": "Enter your custom recurring expense cost and frequency below.",
+    "es": "Indica abajo el coste y la frecuencia de tu gasto recurrente personalizado.",
+    "pt": "Indique abaixo o custo e a frequência do seu gasto recorrente personalizado."
+  },
+  "fcCustomTip": {
+    "en": "Ask whether this expense gives you real value, or whether it could be trimmed without touching your quality of life.",
+    "es": "Analiza si este gasto te aporta verdadero valor o si puede ser optimizado sin afectar tu calidad de vida.",
+    "pt": "Analise se este gasto traz valor real para você ou se pode ser otimizado sem afetar sua qualidade de vida."
   }
 }

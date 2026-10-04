@@ -320,6 +320,19 @@
                 <div id="categoryBreakdown" class="space-y-4"></div>
             </div>
 
+            <!-- ANSWER REVIEW. Every scenario of the run, in order: what was
+                 chosen, what the best option was, what the choice did to the
+                 four meters, and the lesson. Filled by renderAnswerReview()
+                 from the decision history, so it reflects the stable option
+                 behind each answer and not the position it was shown in. -->
+            <section class="sim-panel p-6 sm:p-8" aria-labelledby="answerReviewTitle">
+                <h3 id="answerReviewTitle" class="text-xl font-bold text-espresso-900 mb-2 font-serif flex items-center gap-2">
+                    <i class="fa-solid fa-clock-rotate-left text-forest-800" aria-hidden="true"></i>{{reviewTitle}}
+                </h3>
+                <p class="text-sm text-espresso-800/80 mb-4">{{reviewIntro}}</p>
+                <ol id="answerReview" class="space-y-4"></ol>
+            </section>
+
 {{resultsscreen2}}            <div class="sim-panel p-6 sm:p-8">
                 <h3 class="text-xl font-bold text-espresso-900 mb-4 font-serif">{{textXl2}}</h3>
                 <div class="h-64 sm:h-80 w-full">
@@ -371,7 +384,8 @@
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <input type="text" id="playerNameInput" placeholder="{{playernameinputPlaceholder}}" aria-label="{{playernameinputPlaceholder}}" class="flex-1 px-4 py-2.5 rounded-xl border border-cream-300 bg-white text-espresso-900 focus:outline-none focus:ring-2 focus:ring-forest-800">
                     <button id="saveScoreButton" data-onclick="saveScoreToLeaderboard()" class="sim-btn sim-btn--primary sim-btn--lg">
-{{px6}}                    </button>
+                        <span id="saveScoreButtonLabel">{{px6}}</span>
+                    </button>
                 </div>
 
                 <div id="leaderboardList" class="divide-y divide-cream-200"></div>
@@ -517,6 +531,40 @@
 {{minHScreen6}}            return text.replace(pattern, '<span class="font-bold text-espresso-950 bg-amber-200/90 px-1.5 py-0.5 rounded font-mono text-[0.88em] border border-amber-300/80">$1</span>');
         }
 
+        // Every figure this tool prints is formatted for the language the page
+        // is in, read off the document rather than spelled out in each call: a
+        // bare toLocaleString() formats for the visitor's browser, which put
+        // "10,000" on the Spanish page for anybody browsing in English. The
+        // symbol is a label, not a conversion - the amounts are illustrative
+        // game units and identical in all three languages.
+        const PAGE_LOCALE = document.documentElement.lang || 'en';
+        const CURRENCY = '{{lang.currency}}';
+
+        function formatNumber(value) {
+            const number = Math.round(Number(value) || 0);
+            return number.toLocaleString(PAGE_LOCALE);
+        }
+
+        // The sign goes in front of the symbol ("-$300", not "$-300"), and
+        // `signed` adds the "+" the impact tags and the cash-flow meter use.
+        function formatMoney(value, signed) {
+            const number = Math.round(Number(value) || 0);
+            const sign = number < 0 ? '-' : (signed && number > 0 ? '+' : '');
+            return sign + CURRENCY + formatNumber(Math.abs(number));
+        }
+
+        function formatSigned(value) {
+            return (value > 0 ? '+' : '') + formatNumber(value);
+        }
+
+        // "A, B and C" in the page's own language, for the categories that tie.
+        function formatList(items) {
+            if (typeof Intl !== 'undefined' && typeof Intl.ListFormat === 'function') {
+                return new Intl.ListFormat(PAGE_LOCALE, { style: 'long', type: 'conjunction' }).format(items);
+            }
+            return items.join(', ');
+        }
+
 {{minHScreen7}}        const INITIAL_STATE = {
             netWorth: 10000,
             cashFlow: 500,
@@ -529,6 +577,23 @@
         let currentScenarioIndex = 0;
         let decisionHistory = [];
         let trajectoryData = [INITIAL_STATE.netWorth];
+
+        // The order the three options of each scenario are shown in, one array
+        // of keys per scenario, dealt again at the start of every game. The
+        // best answer used to be the first one shown in twelve scenarios out of
+        // fifteen, so "always pick the top one" was a strategy that scored at
+        // the top level without reading anything.
+        let optionOrder = [];
+
+        // The one Chart.js instance on the page. Chart.js 4 refuses to draw on
+        // a canvas that already carries a chart, so the second play-through
+        // threw "Canvas is already in use" and took the rest of the results
+        // screen - the board and the follow-up panel - down with it.
+        let trajectoryChart = null;
+
+        // Set once this run is on the board, and cleared only by a new game,
+        // so the same fifteen answers cannot be saved as several rows.
+        let runSubmitted = false;
 
 {{minHScreen11}}        let categoryScores = {
             [CATEGORIES.INVESTING]: { points: 0, max: 0 },
@@ -544,15 +609,15 @@
                 category: CATEGORIES.INVESTING,
 {{minHScreen13}}                optionA: {
 {{minHScreen14}}                    qualityScore: 10,
-                    impact: { netWorthDelta: 5000, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+                    impact: { netWorthDelta: 5000, cashFlowDelta: 0, happinessDelta: 0 },
 {{minHScreen15}}                },
                 optionB: {
 {{minHScreen16}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 5250, cashFlowDelta: 20, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 5250, cashFlowDelta: 20, happinessDelta: 10 },
 {{minHScreen17}}                },
                 optionC: {
 {{minHScreen18}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -3000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+                    impact: { netWorthDelta: 1000, cashFlowDelta: 0, happinessDelta: -15 }, // most of the $5,000 bonus lost: never worse than not having had it
 {{minHScreen19}}                }
             },
             {
@@ -560,15 +625,15 @@
                 category: CATEGORIES.INVESTING,
 {{minHScreen20}}                optionA: {
 {{minHScreen21}}                    qualityScore: 10,
-                    impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10, literacyDelta: -3.0, literacyDeltaText: "-3%" },
+                    impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10 },
 {{minHScreen22}}                },
                 optionB: {
 {{minHScreen23}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20 },
 {{minHScreen24}}                },
                 optionC: {
 {{minHScreen25}}                    qualityScore: 0,
-                    impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+                    impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -10 },
 {{minHScreen26}}                }
             },
             {
@@ -576,15 +641,15 @@
                 category: CATEGORIES.TAX,
 {{minHScreen27}}                optionA: {
 {{minHScreen28}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 3500, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 3500, cashFlowDelta: 0, happinessDelta: 15 },
 {{minHScreen29}}                },
                 optionB: {
-{{minHScreen30}}                    qualityScore: 10,
-                    impact: { netWorthDelta: -1500, cashFlowDelta: -50, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen30}}                    qualityScore: 15,
+                    impact: { netWorthDelta: -1500, cashFlowDelta: -50, happinessDelta: 0 },
 {{minHScreen31}}                },
                 optionC: {
 {{minHScreen32}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -4000, cashFlowDelta: -100, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+                    impact: { netWorthDelta: -4000, cashFlowDelta: -100, happinessDelta: -15 },
 {{minHScreen33}}                }
             },
             {
@@ -592,31 +657,31 @@
                 category: CATEGORIES.RISK,
 {{minHScreen34}}                optionA: {
 {{minHScreen35}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 4000, cashFlowDelta: -20, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 4000, cashFlowDelta: -20, happinessDelta: 15 },
 {{minHScreen36}}                },
                 optionB: {
-{{minHScreen37}}                    qualityScore: 10,
-                    impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: 5, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen37}}                    qualityScore: 15,
+                    impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: 5 },
 {{minHScreen38}}                },
                 optionC: {
 {{minHScreen39}}                    qualityScore: 0,
-                    impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -20, literacyDelta: -10.0, literacyDeltaText: "-10%" },
+                    impact: { netWorthDelta: 0, cashFlowDelta: 0, happinessDelta: -20 },
 {{minHScreen40}}                }
             },
             {
                 id: 5,
                 category: CATEGORIES.DEBT,
 {{minHScreen41}}                optionA: {
-{{minHScreen42}}                    qualityScore: 15,
-                    impact: { netWorthDelta: 1000, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 1.0, literacyDeltaText: "+1%" },
+{{minHScreen42}}                    qualityScore: 20,
+                    impact: { netWorthDelta: 1000, cashFlowDelta: 0, happinessDelta: 15 },
 {{minHScreen43}}                },
                 optionB: {
 {{minHScreen44}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 3500, cashFlowDelta: 40, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 3500, cashFlowDelta: 40, happinessDelta: 10 },
 {{minHScreen45}}                },
                 optionC: {
 {{minHScreen46}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -5000, cashFlowDelta: -250, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+                    impact: { netWorthDelta: -5000, cashFlowDelta: -250, happinessDelta: -10 },
 {{minHScreen47}}                }
             },
             {
@@ -624,15 +689,15 @@
                 category: CATEGORIES.SPENDING,
 {{minHScreen48}}                optionA: {
 {{minHScreen49}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 2000, cashFlowDelta: 150, happinessDelta: 25, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 2000, cashFlowDelta: 150, happinessDelta: 25 },
 {{minHScreen50}}                },
                 optionB: {
 {{minHScreen51}}                    qualityScore: 5,
-                    impact: { netWorthDelta: -1500, cashFlowDelta: -100, happinessDelta: 5, literacyDelta: -3.0, literacyDeltaText: "-3%" },
+                    impact: { netWorthDelta: -1500, cashFlowDelta: -100, happinessDelta: 5 },
 {{minHScreen52}}                },
                 optionC: {
-{{minHScreen53}}                    qualityScore: 10,
-                    impact: { netWorthDelta: 3000, cashFlowDelta: 300, happinessDelta: -20, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen53}}                    qualityScore: 15,
+                    impact: { netWorthDelta: 3000, cashFlowDelta: 300, happinessDelta: -20 },
 {{minHScreen54}}                }
             },
             {
@@ -640,15 +705,15 @@
                 category: CATEGORIES.SPENDING,
 {{minHScreen55}}                optionA: {
 {{minHScreen56}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 1500, cashFlowDelta: 0, happinessDelta: 10, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 1500, cashFlowDelta: 0, happinessDelta: 10 },
 {{minHScreen57}}                },
                 optionB: {
 {{minHScreen58}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -2000, cashFlowDelta: -85, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
+                    impact: { netWorthDelta: -2000, cashFlowDelta: -85, happinessDelta: -5 },
 {{minHScreen59}}                },
                 optionC: {
 {{minHScreen60}}                    qualityScore: 25,
-                    impact: { netWorthDelta: 1100, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 2.5, literacyDeltaText: "+2.5%" },
+                    impact: { netWorthDelta: 1100, cashFlowDelta: 0, happinessDelta: 15 },
 {{minHScreen61}}                }
             },
             {
@@ -656,15 +721,15 @@
                 category: CATEGORIES.TAX,
 {{minHScreen62}}                optionA: {
 {{minHScreen63}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 4500, cashFlowDelta: 50, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 4500, cashFlowDelta: 50, happinessDelta: 15 },
 {{minHScreen64}}                },
                 optionB: {
 {{minHScreen65}}                    qualityScore: 10,
-                    impact: { netWorthDelta: 1000, cashFlowDelta: 0, happinessDelta: 5, literacyDelta: -3.0, literacyDeltaText: "-3%" },
+                    impact: { netWorthDelta: 1000, cashFlowDelta: 0, happinessDelta: 5 },
 {{minHScreen66}}                },
                 optionC: {
 {{minHScreen67}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -1000, cashFlowDelta: -100, happinessDelta: -15, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+                    impact: { netWorthDelta: -1000, cashFlowDelta: -100, happinessDelta: -15 },
 {{minHScreen68}}                }
             },
             {
@@ -672,15 +737,15 @@
                 category: CATEGORIES.DEBT,
 {{minHScreen69}}                optionA: {
 {{minHScreen70}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 3000, cashFlowDelta: 120, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 880, cashFlowDelta: 120, happinessDelta: 20 }, // repaying debt from cash leaves net worth where it was; the gain is a year of 22% interest not paid
 {{minHScreen71}}                },
                 optionB: {
 {{minHScreen72}}                    qualityScore: 5,
-                    impact: { netWorthDelta: -2000, cashFlowDelta: -80, happinessDelta: -10, literacyDelta: -5.0, literacyDeltaText: "-5%" },
+                    impact: { netWorthDelta: -2000, cashFlowDelta: -80, happinessDelta: -10 },
 {{minHScreen73}}                },
                 optionC: {
 {{minHScreen74}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -5000, cashFlowDelta: -300, happinessDelta: -25, literacyDelta: -10.0, literacyDeltaText: "-10%" },
+                    impact: { netWorthDelta: -5000, cashFlowDelta: -300, happinessDelta: -25 },
 {{minHScreen75}}                }
             },
             {
@@ -688,15 +753,15 @@
                 category: CATEGORIES.SPENDING,
 {{minHScreen76}}                optionA: {
 {{minHScreen77}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 3500, cashFlowDelta: 100, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 3500, cashFlowDelta: 100, happinessDelta: 15 },
 {{minHScreen78}}                },
                 optionB: {
 {{minHScreen79}}                    qualityScore: 5,
-                    impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
+                    impact: { netWorthDelta: -4000, cashFlowDelta: -400, happinessDelta: 10 },
 {{minHScreen80}}                },
                 optionC: {
 {{minHScreen81}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -7000, cashFlowDelta: -600, happinessDelta: -10, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+                    impact: { netWorthDelta: -7000, cashFlowDelta: -600, happinessDelta: -10 },
 {{minHScreen82}}                }
             },
             {
@@ -704,15 +769,15 @@
                 category: CATEGORIES.INVESTING,
 {{minHScreen83}}                optionA: {
 {{minHScreen84}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 6000, cashFlowDelta: 0, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 6000, cashFlowDelta: 0, happinessDelta: 15 },
 {{minHScreen85}}                },
                 optionB: {
 {{minHScreen86}}                    qualityScore: 5,
-                    impact: { netWorthDelta: -3000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -6.0, literacyDeltaText: "-6%" },
+                    impact: { netWorthDelta: -3000, cashFlowDelta: 0, happinessDelta: -15 },
 {{minHScreen87}}                },
                 optionC: {
 {{minHScreen88}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -1500, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -7.0, literacyDeltaText: "-7%" },
+                    impact: { netWorthDelta: -1500, cashFlowDelta: 0, happinessDelta: -10 },
 {{minHScreen89}}                }
             },
             {
@@ -720,15 +785,15 @@
                 category: CATEGORIES.INVESTING,
 {{minHScreen90}}                optionA: {
 {{minHScreen91}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 4500, cashFlowDelta: 30, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 4500, cashFlowDelta: 30, happinessDelta: 15 },
 {{minHScreen92}}                },
                 optionB: {
-{{minHScreen93}}                    qualityScore: 10,
-                    impact: { netWorthDelta: -2000, cashFlowDelta: 0, happinessDelta: -15, literacyDelta: -5.0, literacyDeltaText: "-5%" },
+{{minHScreen93}}                    qualityScore: 5,
+                    impact: { netWorthDelta: -2000, cashFlowDelta: 0, happinessDelta: -15 },
 {{minHScreen94}}                },
                 optionC: {
 {{minHScreen95}}                    qualityScore: 15,
-                    impact: { netWorthDelta: 1200, cashFlowDelta: 15, happinessDelta: 0, literacyDelta: -1.0, literacyDeltaText: "-1%" },
+                    impact: { netWorthDelta: 1200, cashFlowDelta: 15, happinessDelta: 0 },
 {{minHScreen96}}                }
             },
             {
@@ -736,15 +801,15 @@
                 category: CATEGORIES.INVESTING,
 {{minHScreen97}}                optionA: {
 {{minHScreen98}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 5000, cashFlowDelta: 25, happinessDelta: 15, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 5000, cashFlowDelta: 25, happinessDelta: 15 },
 {{minHScreen99}}                },
                 optionB: {
 {{minHScreen100}}                    qualityScore: 10,
-                    impact: { netWorthDelta: -2500, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
+                    impact: { netWorthDelta: -2500, cashFlowDelta: 0, happinessDelta: -10 },
 {{minHScreen101}}                },
                 optionC: {
 {{minHScreen102}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -5000, cashFlowDelta: 0, happinessDelta: -20, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+                    impact: { netWorthDelta: -5000, cashFlowDelta: 0, happinessDelta: -20 },
 {{minHScreen103}}                }
             },
             {
@@ -752,15 +817,15 @@
                 category: CATEGORIES.RISK,
 {{minHScreen104}}                optionA: {
 {{minHScreen105}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 3000, cashFlowDelta: 20, happinessDelta: 25, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 3000, cashFlowDelta: 20, happinessDelta: 25 },
 {{minHScreen106}}                },
                 optionB: {
 {{minHScreen107}}                    qualityScore: 10,
-                    impact: { netWorthDelta: -1500, cashFlowDelta: 0, happinessDelta: -10, literacyDelta: -4.0, literacyDeltaText: "-4%" },
+                    impact: { netWorthDelta: -1500, cashFlowDelta: 0, happinessDelta: -10 },
 {{minHScreen108}}                },
                 optionC: {
 {{minHScreen109}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -3500, cashFlowDelta: -150, happinessDelta: -20, literacyDelta: -8.0, literacyDeltaText: "-8%" },
+                    impact: { netWorthDelta: -3500, cashFlowDelta: -150, happinessDelta: -20 },
 {{minHScreen110}}                }
             },
             {
@@ -768,18 +833,73 @@
                 category: CATEGORIES.SPENDING,
 {{minHScreen111}}                optionA: {
 {{minHScreen112}}                    qualityScore: 30,
-                    impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20, literacyDelta: 3.33, literacyDeltaText: "+3%" },
+                    impact: { netWorthDelta: 4000, cashFlowDelta: 50, happinessDelta: 20 },
 {{minHScreen113}}                },
                 optionB: {
-{{minHScreen114}}                    qualityScore: 10,
-                    impact: { netWorthDelta: 500, cashFlowDelta: 0, happinessDelta: 0, literacyDelta: -2.0, literacyDeltaText: "-2%" },
+{{minHScreen114}}                    qualityScore: 15,
+                    impact: { netWorthDelta: 500, cashFlowDelta: 0, happinessDelta: 0 },
 {{minHScreen115}}                },
                 optionC: {
 {{minHScreen116}}                    qualityScore: 0,
-                    impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: -5, literacyDelta: -6.0, literacyDeltaText: "-6%" },
+                    impact: { netWorthDelta: -2500, cashFlowDelta: -200, happinessDelta: -5 },
 {{minHScreen117}}                }
             }
         ];
+
+        /*
+         * The Literacy IQ, derived from the same quality points the category
+         * breakdown is built from, so the headline and the five percentages
+         * can never tell different stories.
+         *
+         * Every option carries a qualityScore out of MAX_QUALITY. Half of that
+         * is the neutral point: an answer above it raises the IQ, one below it
+         * lowers it, and the step is sized so that fifteen best answers take the
+         * starting 50 to exactly 100 and fifteen zero-point answers take it to
+         * exactly 0. With a start of 50 that makes the final IQ the same number
+         * as the share of all available quality points the run collected - and
+         * it keeps every intermediate value inside 0-100 on its own, so the
+         * clamp below is a guard and not part of the scale. The board rejects
+         * anything outside 0-100, which is what a negative IQ used to run into.
+         *
+         * The quality scores themselves are on one ladder: 30 for the best
+         * answer, 15-25 for a reasonable one that is not the best (neutral to
+         * slightly positive), 0-10 for a costly one. Always taking the second
+         * best option lands in the middle of the scale (about 41) rather than
+         * at the bottom, where it used to.
+         */
+        const MAX_QUALITY = 30;
+        const IQ_PER_POINT = (100 - INITIAL_STATE.literacyScore) / (SCENARIOS.length * MAX_QUALITY / 2);
+
+        function literacyAfter(history) {
+            const points = history.reduce((sum, entry) => sum + entry.qualityScore, 0);
+            const neutral = history.length * MAX_QUALITY / 2;
+            const score = INITIAL_STATE.literacyScore + (points - neutral) * IQ_PER_POINT;
+            return Math.max(0, Math.min(100, score));
+        }
+
+        const OPTION_KEYS = ['optionA', 'optionB', 'optionC'];
+
+        /** The key of the option with the most quality points in a scenario. */
+        function bestOptionKey(scenario) {
+            return OPTION_KEYS.reduce((best, key) => (scenario[key].qualityScore > scenario[best].qualityScore ? key : best));
+        }
+
+        /**
+         * A fresh display order for every scenario: Fisher-Yates over the three
+         * keys. Only what is *shown* moves. The option objects keep their keys,
+         * and the answer recorded for the board is still the stable key - 'A'
+         * means the same option on every run, whichever position it was dealt.
+         */
+        function shuffleOptionOrder() {
+            optionOrder = SCENARIOS.map(() => {
+                const keys = OPTION_KEYS.slice();
+                for (let i = keys.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [keys[i], keys[j]] = [keys[j], keys[i]];
+                }
+                return keys;
+            });
+        }
 
 {{minHScreen118}}        function initStepper() {
             const container = document.getElementById('stepperDotsContainer');
@@ -823,8 +943,15 @@
 {{minHScreen123}}            const container = document.getElementById('optionsContainer');
             container.innerHTML = '';
 
-            const options = [
-{{minHScreen124}}            ];
+            // Shown in this game's dealt order, and lettered by position: the
+            // first card on screen is always "A". The letter is only a label;
+            // what is recorded is `opt.key`, the option's stable identity.
+            const order = optionOrder[currentScenarioIndex] || OPTION_KEYS;
+            const options = order.map((key, position) => ({
+                key,
+                label: `{{optionLabel}} ${'ABC'.charAt(position)}`,
+                data: current[key]
+            }));
 
             options.forEach(opt => {
                 const btn = document.createElement('button');
@@ -864,52 +991,72 @@
             
 {{minHScreen128}}            currentState.happiness = Math.max(0, Math.min(100, currentState.happiness + (option.impact.happinessDelta || 0)));
 
-{{minHScreen129}}            currentState.literacyScore = Math.min(100, currentState.literacyScore + option.impact.literacyDelta);
-
 {{minHScreen130}}            if (categoryScores[scenario.category]) {
                 categoryScores[scenario.category].points += option.qualityScore;
-                categoryScores[scenario.category].max += 30;
+                categoryScores[scenario.category].max += MAX_QUALITY;
             }
 
 {{minHScreen131}}            trajectoryData.push(currentState.netWorth);
             decisionHistory.push({
                 scenarioId: scenario.id,
+                scenarioIndex: SCENARIOS.indexOf(scenario),
                 category: scenario.category,
                 selectedTitle: option.title,
                 qualityScore: option.qualityScore,
-                // 'A', 'B' or 'C'. The debrief does not use it; the board does,
-                // as one character of the run's answer sequence.
+                optionKey: optionKey,
+                // 'A', 'B' or 'C' - the option's own key, never the position it
+                // was shown in, which changes from game to game. The board
+                // stores it as one character of the run's answer sequence.
                 pick: (optionKey || '').replace('option', '') || '?'
             });
 
+            // The IQ is recomputed from the whole history rather than nudged,
+            // so it cannot drift from the points (see literacyAfter). What the
+            // tag reports is how far the header figure actually moved, so the
+            // tags of a run add up to the number on screen.
+            const shownBefore = Math.round(currentState.literacyScore);
+            currentState.literacyScore = literacyAfter(decisionHistory);
+            const iqShift = Math.round(currentState.literacyScore) - shownBefore;
+            decisionHistory[decisionHistory.length - 1].iqShift = iqShift;
+
 {{minHScreen132}}            updateMetricsDisplay();
 
-{{minHScreen133}}            showDebrief(option);
+{{minHScreen133}}            showDebrief(option, iqShift);
         }
 
 {{minHScreen134}}        function updateMetricsDisplay() {
-{{minHScreen135}}            document.getElementById('powerDisplay').innerText = `${Math.round(currentState.happiness)}%`;
+            document.getElementById('netWorthDisplay').innerText = formatMoney(currentState.netWorth);
+            document.getElementById('cashFlowDisplay').innerText = `${formatMoney(currentState.cashFlow, true)}{{perMonth}}`;
+            document.getElementById('powerDisplay').innerText = `${Math.round(currentState.happiness)}%`;
             document.getElementById('literacyDisplay').innerText = `${Math.round(currentState.literacyScore)}%`;
         }
 
-{{minHScreen136}}        function showDebrief(option) {
+        /**
+         * The four impact tags of one answer. Shared by the debrief and the
+         * answer review, so the two can never describe the same choice with
+         * different figures.
+         */
+        function impactTagsHtml(impact, iqShift) {
+            const hDelta = impact.happinessDelta || 0;
+            const tag = (classes, text) => `<span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${classes}">${text}</span>`;
+            return [
+                tag(impact.netWorthDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800',
+                    `{{tagNetWorth}}: ${formatMoney(impact.netWorthDelta, true)}`),
+                tag(impact.cashFlowDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800',
+                    `{{tagCashFlow}}: ${formatMoney(impact.cashFlowDelta, true)}{{perMonth}}`),
+                tag(hDelta >= 0 ? 'bg-sky-100 text-sky-800' : 'bg-rose-100 text-rose-800',
+                    `{{tagHappiness}}: ${formatSigned(hDelta)}%`),
+                tag('bg-amber-100 text-amber-900',
+                    `{{tagIq}}: ${formatSigned(iqShift)}%`)
+            ].join('');
+        }
+
+{{minHScreen136}}        function showDebrief(option, iqShift) {
             document.getElementById('scenarioCard').classList.add('hidden');
             const debriefCard = document.getElementById('debriefCard');
             debriefCard.classList.remove('hidden');
 
-            const hDelta = option.impact.happinessDelta || 0;
-
-{{minHScreen137}}            const impactsDiv = document.getElementById('debriefImpacts');
-            impactsDiv.innerHTML = `
-                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${option.impact.netWorthDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
-{{minHScreen138}}                </span>
-                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${option.impact.cashFlowDelta >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
-{{minHScreen139}}                </span>
-                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono ${hDelta >= 0 ? 'bg-sky-100 text-sky-800' : 'bg-rose-100 text-rose-800'}">
-{{minHScreen140}}                </span>
-                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono bg-amber-100 text-amber-900">
-{{minHScreen141}}                </span>
-            `;
+{{minHScreen137}}            document.getElementById('debriefImpacts').innerHTML = impactTagsHtml(option.impact, iqShift);
 
 {{minHScreen142}}            document.getElementById('debriefLesson').innerHTML = highlightNumbers(option.lesson);
         }
@@ -924,10 +1071,14 @@
             document.getElementById('debriefCard').classList.add('hidden');
             document.getElementById('resultsScreen').classList.remove('hidden');
 
-{{minHScreen145}}            document.getElementById('finalPower').innerText = `${Math.round(currentState.happiness)}%`;
+            document.getElementById('finalNetWorth').innerText = formatMoney(currentState.netWorth);
+            document.getElementById('finalCashFlow').innerText = `${formatMoney(currentState.cashFlow, true)}{{perMonth}}`;
+            document.getElementById('finalPower').innerText = `${Math.round(currentState.happiness)}%`;
             document.getElementById('finalLiteracy').innerText = `${Math.round(currentState.literacyScore)}%`;
 
-{{minHScreen146}}            const finalIQ = currentState.literacyScore;
+            // The level is read off the figure on screen, so a run shown as
+            // 80% is never told it fell short of the 80% level.
+            const finalIQ = Math.round(currentState.literacyScore);
             let archetype = "";
             let archetypeDescription = "";
 
@@ -948,9 +1099,19 @@
 
 {{minHScreen151}}            renderCategoryBreakdown();
 
-{{minHScreen152}}            renderTrajectoryChart();
+            renderAnswerReview();
+
+{{minHScreen152}}            // The chart is the one part of this screen that depends on a third-
+            // party library, so a failure in it is contained here rather than
+            // allowed to stop the board and the follow-up panel from appearing.
+            try {
+                renderTrajectoryChart();
+            } catch (error) {
+                console.error(error);
+            }
 
 {{minHScreen153}}            loadLeaderboard();
+            renderSaveControls();
 
             updateResultCta(archetype);
         }
@@ -980,12 +1141,32 @@
                 return {
                     bucket: key.toLowerCase(),
                     label: CATEGORIES[key],
-                    pct: score.max > 0 ? Math.round((score.points / score.max) * 100) : 0
+                    pct: score.max > 0 ? Math.round((score.points / score.max) * 100) : 0,
+                    lost: score.max - score.points
                 };
             });
 
-            const weakest = rows.reduce((low, row) => (row.pct < low.pct ? row : low));
-            const strongest = rows.reduce((high, row) => (row.pct > high.pct ? row : high));
+            // The bucket is one category, because its copy is about one, so a
+            // tie for the lowest percentage is broken by the points actually
+            // given away - the category with more scenarios lost more at the
+            // same rate - and only then by the order CATEGORIES lists them in.
+            const weakest = rows.reduce((low, row) => {
+                if (row.pct !== low.pct) return row.pct < low.pct ? row : low;
+                return row.lost > low.lost ? row : low;
+            });
+
+            // Every category that shares the top percentage is named, rather
+            // than whichever happened to be listed first - and none is named at
+            // all unless it is genuinely a strength: at least 50%, and better
+            // than the weakest. A near-worst run used to be told that its
+            // investing "came out well, at 7%".
+            const topPct = Math.max(...rows.map((row) => row.pct));
+            const strongestRows = rows.filter((row) => row.pct === topPct && row !== weakest);
+            const hasStrength = topPct >= 50 && topPct > weakest.pct && strongestRows.length > 0;
+            const strongestLabel = formatList(strongestRows.map((row) => row.label));
+            const strengthNote = hasStrength
+                ? `{{ctaStrengthNote}}`.replace('{names}', strongestLabel).replace('{pct}', topPct)
+                : '';
 
             // A run with no weak category is a different conversation: the
             // knowledge is not the constraint, so pointing at a "weakest" area
@@ -997,8 +1178,9 @@
                 score: Math.round(currentState.literacyScore),
                 weakest: weakest.label,
                 weakestPct: weakest.pct,
-                strongest: strongest.label,
-                strongestPct: strongest.pct,
+                strongest: hasStrength ? strongestLabel : '',
+                strongestPct: hasStrength ? topPct : '',
+                strengthNote,
                 netWorth: window.SimCta.money(currentState.netWorth),
                 cashFlow: window.SimCta.money(currentState.cashFlow)
             });
@@ -1035,6 +1217,65 @@
             }
         }
 
+        /**
+         * The end-of-run answer review: every scenario, what was chosen, what
+         * the best option was, what the choice did and why.
+         *
+         * Read from decisionHistory, which already holds the stable option key
+         * of every answer, so the review is the same whatever order the options
+         * were dealt in. It is an ordered list because the scenarios are a
+         * sequence, and each item leads with its own heading so a screen reader
+         * can move through the fifteen by heading as well as by list item.
+         */
+        function renderAnswerReview() {
+            const container = document.getElementById('answerReview');
+            if (!container) return;
+            container.innerHTML = '';
+
+            decisionHistory.forEach((entry) => {
+                const scenario = SCENARIOS[entry.scenarioIndex];
+                if (!scenario || !scenario[entry.optionKey]) return;
+
+                const chosen = scenario[entry.optionKey];
+                const bestKey = bestOptionKey(scenario);
+                const best = scenario[bestKey];
+                const isBest = chosen.qualityScore >= best.qualityScore;
+
+                // Three verdicts on the same scale as the IQ: the best answer, an
+                // answer at or above the neutral point (it did not lower the IQ),
+                // and one below it.
+                let verdictClass = 'bg-emerald-600';
+                let verdictText = `{{reviewVerdictBest}}`;
+                if (!isBest && chosen.qualityScore >= MAX_QUALITY / 2) {
+                    verdictClass = 'bg-amber-500';
+                    verdictText = `{{reviewVerdictReasonable}}`;
+                } else if (!isBest) {
+                    verdictClass = 'bg-rose-600';
+                    verdictText = `{{reviewVerdictCostly}}`;
+                }
+
+                const bestRows = isBest ? '' : `
+                    <p class="text-sm text-espresso-900 mb-1"><span class="font-semibold">{{reviewBestChoice}}:</span> ${best.title}</p>
+                    <p class="text-sm text-espresso-800/80 leading-relaxed mb-3">${highlightNumbers(best.lesson)}</p>`;
+
+                const item = document.createElement('li');
+                item.className = 'bg-cream-100 p-4 rounded-xl border border-cream-300';
+                item.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <h4 class="font-bold text-espresso-900 text-sm sm:text-base">${scenario.title}</h4>
+                        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full text-white ${verdictClass}">${verdictText}</span>
+                    </div>
+                    <p class="text-xs text-espresso-800/70 mb-3">${scenario.category}</p>
+                    <p class="text-sm text-espresso-900 mb-1"><span class="font-semibold">{{reviewYourChoice}}:</span> ${chosen.title}</p>
+                    <p class="text-sm text-espresso-800/80 leading-relaxed mb-3">${highlightNumbers(chosen.lesson)}</p>
+                    ${bestRows}
+                    <p class="text-xs font-semibold text-espresso-800/70 mb-1">{{reviewEffect}}</p>
+                    <div class="flex flex-wrap gap-2">${impactTagsHtml(chosen.impact, entry.iqShift || 0)}</div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
 {{minHScreen158}}        function renderTrajectoryChart() {
             const ctx = document.getElementById('trajectoryChart');
             if (!ctx) return;
@@ -1062,7 +1303,8 @@
             // rest of the configuration is in sim-chart-theme.js.
             const theme = window.SimChartTheme;
 
-            new Chart(ctx, {
+            destroyTrajectoryChart();
+            trajectoryChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
@@ -1076,17 +1318,36 @@
                     }]
                 },
                 options: {
+                    // The tooltip formats its numbers itself, and without this
+                    // it formats them for the browser rather than the page.
+                    locale: PAGE_LOCALE,
                     plugins: {
                         legend: { display: false }
                     },
                     scales: {
                         y: {
                             ticks: {
-{{minHScreen162}}                            }
+                                callback: value => formatMoney(value)
+                            }
                         }
                     }
                 }
             });
+        }
+
+        // Releases the canvas for the next run. Chart.getChart() covers a chart
+        // this file did not keep a reference to, which is the state a canvas is
+        // left in if an earlier render was interrupted part-way.
+        function destroyTrajectoryChart() {
+            if (trajectoryChart) {
+                trajectoryChart.destroy();
+                trajectoryChart = null;
+            }
+            const canvas = document.getElementById('trajectoryChart');
+            if (canvas && typeof Chart !== 'undefined' && typeof Chart.getChart === 'function') {
+                const orphan = Chart.getChart(canvas);
+                if (orphan) orphan.destroy();
+            }
         }
 
 {{lbSectionComment}}        const LEADERBOARD_SIMULATOR = 'simulator-hub';
@@ -1212,7 +1473,24 @@
             return number;
         }
 
+        /**
+         * The name field and the save button, as the state of this run says
+         * they should be: usable until the run is on the board, and from then
+         * on disabled and labelled as saved until a new game starts. The
+         * button used to come back after a successful save with the name
+         * cleared, which invited saving the same fifteen answers again.
+         */
+        function renderSaveControls() {
+            const input = document.getElementById('playerNameInput');
+            const button = document.getElementById('saveScoreButton');
+            const label = document.getElementById('saveScoreButtonLabel');
+            if (input) input.disabled = runSubmitted;
+            if (button) button.disabled = runSubmitted;
+            if (label) label.textContent = runSubmitted ? `{{lbSavedButton}}` : `{{px6}}`;
+        }
+
         function saveScoreToLeaderboard() {
+            if (runSubmitted) return;
             const input = document.getElementById('playerNameInput');
             const button = document.getElementById('saveScoreButton');
             const name = input ? input.value.trim() : '';
@@ -1234,15 +1512,30 @@
                 details: runShape()
             })
                 .then((result) => {
+                    runSubmitted = true;
                     leaderboardEntries = result.entries;
                     leaderboardState = 'ready';
                     renderLeaderboard();
-                    if (input) input.value = '';
+                    renderSaveControls();
 {{lbSaved}}                })
-                .catch(() => {
-{{lbSaveFailed}}                })
-                .finally(() => {
-                    if (button) button.disabled = false;
+                .catch((error) => {
+                    // Two different failures, and only one of them is the
+                    // visitor's connection. fetch() rejects with a TypeError when
+                    // the request never got an answer, and sim-leaderboard.js
+                    // aborts a slow one (an AbortError); anything else is a plain
+                    // Error carrying the server's own reason - an HTTP 4xx when
+                    // it refused the entry, a 503 when it could not store it -
+                    // and telling somebody to check their connection then sends
+                    // them looking in the wrong place.
+                    const unreachable = !error || error.name === 'TypeError' || error.name === 'AbortError';
+                    if (unreachable) {
+{{lbSaveFailed}}                    } else {
+                        // The server's sentence ends in a full stop, and the
+                        // message quotes it mid-sentence.
+                        const reason = (error.message || '').replace(/[.\s]+$/, '');
+                        alert(`{{lbSaveRejected}}`.replace('{reason}', reason));
+                    }
+                    renderSaveControls();
                 });
         }
 
@@ -1260,6 +1553,15 @@
                 [CATEGORIES.RISK]: { points: 0, max: 0 }
             };
 
+            // A new game: freshly dealt options, a clean canvas, and a run
+            // that has not been saved yet.
+            shuffleOptionOrder();
+            destroyTrajectoryChart();
+            runSubmitted = false;
+            renderSaveControls();
+            const review = document.getElementById('answerReview');
+            if (review) review.innerHTML = '';
+
 {{minHScreen172}}            document.getElementById('resultsScreen').classList.add('hidden');
             document.getElementById('debriefCard').classList.add('hidden');
             document.getElementById('scenarioCard').classList.remove('hidden');
@@ -1270,6 +1572,7 @@
         }
 
 {{minHScreen173}}        window.onload = function() {
+            shuffleOptionOrder();
             updateMetricsDisplay();
             initStepper();
             renderCurrentScenario();

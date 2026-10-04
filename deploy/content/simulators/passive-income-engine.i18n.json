@@ -195,14 +195,14 @@
     "pt": "1. Ajuste Despesas e Compre Ativos  ➔  2. Avance +1 Ano"
   },
   "textXs": {
-    "en": "                    Net Monthly Cash Flow: ",
-    "es": "                    Flujo de Caja Neto Mensual: ",
-    "pt": "                    Fluxo de Caixa Líquido Mensal: "
+    "en": "                    Next year’s net monthly cash flow: ",
+    "es": "                    Flujo de caja neto mensual del próximo año: ",
+    "pt": "                    Fluxo de caixa líquido mensal do próximo ano: "
   },
   "fontMono": {
-    "en": "(Active + Passive - Expenses)",
-    "es": "(Activo + Pasivo - Gastos)",
-    "pt": "(Ativo + Passivo - Despesas)"
+    "en": "(Salary + Passive − Expenses − Debt interest)",
+    "es": "(Salario + Pasivo − Gastos − Intereses)",
+    "pt": "(Salário + Passivo − Despesas − Juros)"
   },
   "projectedmonthlysavings": {
     "en": "+$530/mo",
@@ -210,9 +210,9 @@
     "pt": "+R$530/mês"
   },
   "textXs2": {
-    "en": " net surplus added to cash balance every year.\n",
-    "es": " superávit neto añadido al saldo cada año.\n",
-    "pt": " superávit líquido somado ao saldo a cada ano.\n"
+    "en": " at the yields shown, before one-off events. Added to cash at year end.\n",
+    "es": " con los rendimientos mostrados, antes de imprevistos. Se suma al efectivo al cerrar el año.\n",
+    "pt": " com os rendimentos mostrados, antes de imprevistos. Somado ao caixa no fim do ano.\n"
   },
   "wFull": {
     "en": "Advance +1 Year",
@@ -460,9 +460,9 @@
     "pt": "                                        Meta de Despesas\n"
   },
   "textForest800": {
-    "en": "                                        Passive Income\n",
-    "es": "                                        Ingreso Pasivo\n",
-    "pt": "                                        Renda Passiva\n"
+    "en": "                                        Sustainable Passive Income\n",
+    "es": "                                        Ingreso Pasivo Sostenible\n",
+    "pt": "                                        Renda Passiva Sustentável\n"
   },
   "barpassiveval": {
     "en": "$0/mo",
@@ -490,9 +490,9 @@
     "pt": "0 Ativos"
   },
   "text9px": {
-    "en": "Portfolio Allocation",
-    "es": "Distribución de la Cartera",
-    "pt": "Distribuição do Portfólio"
+    "en": "Portfolio Allocation (market value)",
+    "es": "Distribución de la Cartera (valor de mercado)",
+    "pt": "Distribuição do Portfólio (valor de mercado)"
   },
   "assetpiechartAriaLabel": {
     "en": "Pie chart: how the portfolio is split across asset classes. The same allocation is listed asset by asset below.",
@@ -505,9 +505,9 @@
     "pt": "                            <!-- Dynamic Injection -->\n"
   },
   "textEspresso80070": {
-    "en": "Total Invested:",
-    "es": "Total Invertido:",
-    "pt": "Total Investido:"
+    "en": "Market Value:",
+    "es": "Valor de Mercado:",
+    "pt": "Valor de Mercado:"
   },
   "textEspresso800702": {
     "en": "Total Passive Flow:",
@@ -724,320 +724,10 @@
     "es": "                Volver al Juego\n",
     "pt": "                Voltar ao Jogo\n"
   },
-  "fontSans": {
-    "en": "        // ASSET DATA DEFINITIONS\n",
-    "es": "        // ASSET DATA DEFINITIONS (SPANISH TRANSLATION)\n",
-    "pt": "        // ASSET DATA DEFINITIONS (PORTUGUESE TRANSLATION)\n"
-  },
-  "fontSans2": {
-    "en": "            { id: 'dividend_etf', name: 'Dividend ETF', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Broad market dividend index. Payouts compound & grow organically over time.', riskText: 'Low Risk / Compounding Growth' },\n            { id: 'bonds', name: 'Treasury Bonds', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Government backed. High yields during rate hike cycles.', riskText: 'Guaranteed / Safe' },\n            { id: 'rental_property', name: 'Rental Condo', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Real estate cash flow. Subject to occasional repair shocks.', riskText: 'Medium Risk / Cash Flow' },\n            { id: 'reit_index', name: 'REIT Index', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Real Estate Investment Trust pool. Consistent monthly payouts.', riskText: 'Moderate Risk / Real Estate' },\n            { id: 'digital_business', name: 'Online Business', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'Digital asset ecommerce. High yield, subject to ad cost shifts.', riskText: 'High Yield / Volatile' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Crypto asset. Huge surge during bull markets, yield drag in bear cycles.', riskText: 'High Volatility / Speculative' }\n",
-    "es": "            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos del mercado. Los pagos se componen y crecen orgánicamente.', riskText: 'Bajo Riesgo / Crecimiento Compuesto' },\n            { id: 'bonds', name: 'Bonos del Tesoro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Respaldados por el gobierno. Rinde más en ciclos de altas tasas.', riskText: 'Garantizado / Seguro' },\n            { id: 'rental_property', name: 'Piso en Alquiler', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Flujo inmobiliario. Sujeto a costes ocasionales de reparación.', riskText: 'Riesgo Medio / Flujo Caja' },\n            { id: 'reit_index', name: 'Índice REIT', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fondo de inversión inmobiliaria. Pagos mensuales constantes.', riskText: 'Riesgo Moderado / Inmuebles' },\n            { id: 'digital_business', name: 'Negocio Online', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimiento, sensible a costes publicitarios.', riskText: 'Alto Rendimiento / Volátil' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoactivo. Grandes auges alcistas, presión en ciclos bajistas.', riskText: 'Alta Volatilidad / Especulativo' }\n",
-    "pt": "            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos do mercado. Os pagamentos se multiplicam e crescem organicamente.', riskText: 'Baixo Risco / Crescimento Contínuo' },\n            { id: 'bonds', name: 'Títulos do Tesouro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Garantidos pelo governo. Rendem mais em ciclos de juros altos.', riskText: 'Garantido / Seguro' },\n            { id: 'rental_property', name: 'Imóvel para Aluguel', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Fluxo imobiliário. Sujeito a custos ocasionais de reparos.', riskText: 'Risco Médio / Fluxo de Caixa' },\n            { id: 'reit_index', name: 'Fundos Imobiliários (REITs)', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fundo de investimento imobiliário. Pagamentos mensais constantes.', riskText: 'Risco Moderado / Imóveis' },\n            { id: 'digital_business', name: 'Negócio Digital', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimento, sensível a custos de anúncios.', riskText: 'Alto Rendimento / Volátil' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoativo. Grandes ciclos de alta, pressão em ciclos de baixa.', riskText: 'Alta Volatilidade / Especulativo' }\n"
-  },
-  "fontSans5": {
-    "en": "        // TIME ADVANCEMENT & ANNUAL SIMULATION LOOP\n",
-    "es": "",
-    "pt": ""
-  },
-  "fontSans6": {
-    "en": "                eventLogs.push(`💸 <strong>Inflation Creep (+4%):</strong> Macro inflation increased general household living expenses by <strong>+$${expDiff.toLocaleString()}/mo</strong> (New Monthly Expenses: $${newExpenses.toLocaleString()}/mo).`);\n",
-    "es": "                eventLogs.push(`💸 <strong>Inflación Progresiva (+4%):</strong> La inflación macroeconómica aumentó los gastos del hogar en <strong>+€${expDiff.toLocaleString()}/mes</strong> (Nuevos Gastos: €${newExpenses.toLocaleString()}/mes).`);\n",
-    "pt": "                eventLogs.push(`💸 <strong>Inflação Progressiva (+4%):</strong> A inflação macroeconômica aumentou as despesas da família em <strong>+R$${expDiff.toLocaleString()}/mês</strong> (Novas Despesas: R$${newExpenses.toLocaleString()}/mês).`);\n"
-  },
-  "fontSans7": {
-    "en": "                    eventLogs.push(`🌟 <strong>High Life Joy Boost!</strong> Your high well-being and positive energy at work earned you an annual Performance Bonus of <strong>+$${bonus.toLocaleString()}</strong> added to Available Cash!`);\n",
-    "es": "                    eventLogs.push(`🌟 <strong>¡Impulso por Alta Alegría de Vivir!</strong> Tu alto bienestar y buena energía en el trabajo te valieron un Bono de Rendimiento de <strong>+€${bonus.toLocaleString()}</strong> al Efectivo Disponible.`);\n",
-    "pt": "                    eventLogs.push(`🌟 <strong>Bônus de Alta Alegria de Viver!</strong> Sua ótima energia e bem-estar no trabalho renderam um Bônus de Desempenho de <strong>+R$${bonus.toLocaleString()}</strong> no Saldo de Caixa.`);\n"
-  },
-  "fontSans8": {
-    "en": "                    eventLogs.push(`😫 <strong>Frugality Burnout:</strong> Severe lifestyle deprivation caused exhaustion. Spent <strong>-$${burnoutCost.toLocaleString()}</strong> on health, wellness & stress recovery.`);\n",
-    "es": "                    eventLogs.push(`😫 <strong>Agotamiento por Frugalidad:</strong> La privación excesiva generó estrés acumulado. Gastaste <strong>-€${burnoutCost.toLocaleString()}</strong> en salud, terapias y descanso.`);\n",
-    "pt": "                    eventLogs.push(`😫 <strong>Esgotamento por Frugalidade Extrema:</strong> O estresse acumulado exigiu gastos de <strong>-R$${burnoutCost.toLocaleString()}</strong> em saúde e descanso.`);\n"
-  },
-  "fontSans9": {
-    "en": "                    eventLogs.push(`🍼 <strong>Life Event: Baby Born!</strong> Added <strong>+$500/mo</strong> living expense for nursery, diapers & childcare.`);\n",
-    "es": "                    eventLogs.push(`🍼 <strong>Evento de Vida: ¡Nació un Bebé!</strong> Se añadieron <strong>+€500/mes</strong> en gastos por guardería, pañales y cuidado infantil.`);\n",
-    "pt": "                    eventLogs.push(`🍼 <strong>Evento de Vida: Nascimento de um Bebê!</strong> Adicionados <strong>+R$500/mês</strong> em custos de fraldas, berçário e cuidados.`);\n"
-  },
-  "fontSans10": {
-    "en": "                    eventLogs.push(`🎓 <strong>Empty Nest!</strong> Child turned 18 and moved out to college. Childcare expenses decreased by <strong>-$1,000/mo</strong>!`);\n",
-    "es": "                    eventLogs.push(`🎓 <strong>¡Nido Vacío!</strong> Tu hijo cumplió 18 años y se mudó a la universidad. ¡Los gastos cayeron <strong>-€1.000/mes</strong>!`);\n",
-    "pt": "                    eventLogs.push(`🎓 <strong>Ninho Vazio!</strong> Seu filho completou 18 anos e foi para a faculdade. As despesas caíram em <strong>-R$1.000/mês</strong>!`);\n"
-  },
-  "fontSans11": {
-    "en": "                    eventLogs.push(`🎒 <strong>School Age Upgrade:</strong> Child entered primary school! Expenses increased by <strong>+$250/mo</strong> (+$750/mo total child budget) for gear, activities & tuition.`);\n",
-    "es": "                    eventLogs.push(`🎒 <strong>Etapa Escolar:</strong> Tu hijo ingresó a la escuela primaria. Los gastos aumentaron <strong>+€250/mes</strong> (+€750/mes presupuesto total hijo) en útiles y deportes.`);\n",
-    "pt": "                    eventLogs.push(`🎒 <strong>Fase Escolar:</strong> Seu filho entrou no ensino fundamental. Custos aumentaram em <strong>+R$250/mês</strong> (+R$750/mês total do filho) em material e esportes.`);\n"
-  },
-  "fontSans12": {
-    "en": "                    eventLogs.push(`🎧 <strong>Teenager Stage:</strong> Teenager hobbies, tech, apparel, and appetite increased childcare costs by <strong>+$250/mo</strong> (+$1,000/mo total child budget).`);\n",
-    "es": "                    eventLogs.push(`🎧 <strong>Etapa Adolescente:</strong> Aficiones, tecnología y ropa aumentaron los gastos del hijo en <strong>+€250/mes</strong> (+€1.000/mes presupuesto total).`);\n",
-    "pt": "                    eventLogs.push(`🎧 <strong>Fase Adolescente:</strong> Atividades, tecnologia e roupas elevaram os gastos do filho em <strong>+R$250/mês</strong> (+R$1.000/mês total).`);\n"
-  },
-  "fontSans13": {
-    "en": "                eventLogs.push(`💼 <strong>Career Promotion & Raise!</strong> Earned a promotion! Active household salary increased by <strong>+$${raiseAmount}/mo</strong> (New Active Salary: $${baseMonthlySalary.toLocaleString()}/mo).`);\n",
-    "es": "                eventLogs.push(`💼 <strong>¡Promoción Profesional!</strong> ¡Aumento de sueldo! El salario activo del hogar subió <strong>+€${raiseAmount}/mes</strong> (Nuevo Salario: €${baseMonthlySalary.toLocaleString()}/mes).`);\n",
-    "pt": "                eventLogs.push(`💼 <strong>Promoção de Carreira!</strong> Aumento salarial! O salário ativo da família subiu <strong>+R$${raiseAmount}/mês</strong> (Novo Salário: R$${baseMonthlySalary.toLocaleString()}/mês).`);\n"
-  },
-  "fontSans14": {
-    "en": "                eventLogs.push(`🐶 <strong>Life Event: Adopted a Pet!</strong> Added <strong>+$120/mo</strong> ongoing expenses for vet care, food, and pet insurance.`);\n",
-    "es": "                eventLogs.push(`🐶 <strong>¡Adoptaste una Mascota!</strong> Se añadieron <strong>+€120/mes</strong> en comida, veterinario y seguro de mascota.`);\n",
-    "pt": "                eventLogs.push(`🐶 <strong>Adoção de um Pet!</strong> Adicionados <strong>+R$120/mês</strong> em ração, veterinário e plano de saúde animal.`);\n"
-  },
-  "fontSans15": {
-    "en": "                eventLogs.push(`👴 <strong>Aging Parents Healthcare Support:</strong> Assumed monthly medical caregiving support for aging parents, adding <strong>+$250/mo</strong> to living expenses.`);\n",
-    "es": "                eventLogs.push(`👴 <strong>Apoyo a Padres Mayores:</strong> Asumiste apoyo médico mensual para tus padres, añadiendo <strong>+€250/mes</strong> a los gastos.`);\n",
-    "pt": "                eventLogs.push(`👴 <strong>Apoio a Pais Idosos:</strong> Você assumiu suporte médico mensal para seus pais, adicionando <strong>+R$250/mês</strong> às despesas.`);\n"
-  },
-  "fontSans16": {
-    "en": "                eventLogs.push(`🏥 <strong>Medical / Dental Emergency:</strong> Unexpected health bill deducted <strong>-$${cost.toLocaleString()}</strong> from Available Cash.`);\n",
-    "es": "                eventLogs.push(`🏥 <strong>Emergencia Médica / Dental:</strong> Factura de salud inesperada descontó <strong>-€${cost.toLocaleString()}</strong> del Efectivo.`);\n",
-    "pt": "                eventLogs.push(`🏥 <strong>Emergência Médica / Odontológica:</strong> Despesa de saúde inesperada de <strong>-R$${cost.toLocaleString()}</strong> no Caixa.`);\n"
-  },
-  "fontSans17": {
-    "en": "                eventLogs.push(`🚗 <strong>Major Vehicle Transmission Repair:</strong> Deducted <strong>-$${cost.toLocaleString()}</strong> from Available Cash.`);\n",
-    "es": "                eventLogs.push(`🚗 <strong>Reparación Mecánica Mayor:</strong> Se descontaron <strong>-€${cost.toLocaleString()}</strong> del Efectivo por el vehículo.`);\n",
-    "pt": "                eventLogs.push(`🚗 <strong>Manutenção do Veículo:</strong> Conserto do carro exigiu <strong>-R$${cost.toLocaleString()}</strong> do Caixa.`);\n"
-  },
-  "fontSans18": {
-    "en": "                eventLogs.push(`🏛️ <strong>Property Tax & Escrow Hike:</strong> Annual escrow shortfall deducted <strong>-$${cost.toLocaleString()}</strong> from Available Cash.`);\n",
-    "es": "                eventLogs.push(`🏛️ <strong>Aumento de Impuestos de Propiedad:</strong> Ajuste anual de impuestos descontó <strong>-€${cost.toLocaleString()}</strong> del Efectivo.`);\n",
-    "pt": "                eventLogs.push(`🏛️ <strong>Aumento de IPTU / Seguros:</strong> Reajuste anual de impostos descontou <strong>-R$${cost.toLocaleString()}</strong> do Caixa.`);\n"
-  },
-  "fontSans19": {
-    "en": "                eventLogs.push(`💻 <strong>Side Hustle Windfall!</strong> Freelance gig added <strong>+$${bonus.toLocaleString()}</strong> bonus cash!`);\n",
-    "es": "                eventLogs.push(`💻 <strong>¡Ingreso Extra por Proyecto Freelance!</strong> Sumaste un bono de <strong>+€${bonus.toLocaleString()}</strong> en efectivo.`);\n",
-    "pt": "                eventLogs.push(`💻 <strong>Projeto Freelance Extra!</strong> Você ganhou um extra de <strong>+R$${bonus.toLocaleString()}</strong> em dinheiro.`);\n"
-  },
-  "fontSans20": {
-    "en": "                eventLogs.push(`🎁 <strong>Family Inheritance / Financial Gift!</strong> Received a surprise lump sum inheritance of <strong>+$${inheritance.toLocaleString()}</strong> added to Available Cash!`);\n",
-    "es": "                eventLogs.push(`🎁 <strong>¡Herencia o Regalo Familiar!</strong> Recibiste una suma de <strong>+€${inheritance.toLocaleString()}</strong> a tu Efectivo Disponible.`);\n",
-    "pt": "                eventLogs.push(`🎁 <strong>Herança ou Presente Familiar!</strong> Você recebeu uma quantia de <strong>+R$${inheritance.toLocaleString()}</strong> no Caixa.`);\n"
-  },
-  "fontSans21": {
-    "en": "                eventLogs.push(`🧾 <strong>Tax Refund & Performance Bonus:</strong> Work annual review & tax return credited <strong>+$${taxBonus.toLocaleString()}</strong> to Available Cash.`);\n",
-    "es": "                eventLogs.push(`🧾 <strong>Reembolso de Impuestos y Bono:</strong> Retorno fiscal y evaluación anual acreditaron <strong>+€${taxBonus.toLocaleString()}</strong> en efectivo.`);\n",
-    "pt": "                eventLogs.push(`🧾 <strong>Restituição de Imposto de Renda:</strong> O retorno fiscal adicionou <strong>+R$${taxBonus.toLocaleString()}</strong> ao Caixa.`);\n"
-  },
-  "fontSans22": {
-    "en": "                    eventLogs.push(`📈 <strong>Dividend Organic Growth!</strong> Corporate payouts raised dividend payouts by +${((compoundRate - 1)*100).toFixed(1)}%. Per unit yield rose +$${yieldDiff}/mo (Total portfolio boost: <strong>+$${totalEtfBoost}/mo</strong>).`);\n",
-    "es": "                    eventLogs.push(`📈 <strong>¡Crecimiento de Dividendos!</strong> Las empresas aumentaron pagos (+${((compoundRate - 1)*100).toFixed(1)}%). El rendimiento subió +€${yieldDiff}/mes por unidad (Impulso total: <strong>+€${totalEtfBoost}/mes</strong>).`);\n",
-    "pt": "                    eventLogs.push(`📈 <strong>Crescimento de Dividendos!</strong> As empresas aumentaram os proventos (+${((compoundRate - 1)*100).toFixed(1)}%). O rendimento subiu +R$${yieldDiff}/mês por unidade (Ganho total: <strong>+R$${totalEtfBoost}/mês</strong>).`);\n"
-  },
-  "fontSans23": {
-    "en": "                    bonds.riskText = 'High Rate Era (7.7% APY)';\n",
-    "es": "                    bonds.riskText = 'Ciclo de Altas Tasas (7,7% APY)';\n",
-    "pt": "                    bonds.riskText = 'Alta dos Juros (7,7% ao ano)';\n"
-  },
-  "fontSans24": {
-    "en": "                        eventLogs.push(`🏦 <strong>Central Bank Rate Hike:</strong> Treasury Bonds yield spiked to <strong>+$3.2/unit</strong> (7.7% APY). Added <strong>+$${bondBoost}/mo</strong> to bond cash flow.`);\n",
-    "es": "                        eventLogs.push(`🏦 <strong>Alza de Tasas del Banco Central:</strong> El rendimiento de los Bonos subió a <strong>+€3,2/unidad</strong> (7,7% APY). Añadió <strong>+€${bondBoost}/mes</strong> al flujo pasivo.`);\n",
-    "pt": "                        eventLogs.push(`🏦 <strong>Alta de Juros pelo Banco Central:</strong> O rendimento dos Títulos subiu para <strong>+R$3.2/unidade</strong> (7,7% ao ano). Adicionou <strong>+R$${bondBoost}/mês</strong> à renda passiva.`);\n"
-  },
-  "fontSans25": {
-    "en": "                bonds.riskText = 'Guaranteed / Safe';\n",
-    "es": "                bonds.riskText = 'Garantizado / Seguro';\n",
-    "pt": "                bonds.riskText = 'Garantido / Seguro';\n"
-  },
-  "fontSans26": {
-    "en": "                        eventLogs.push(`🚀 <strong>Bitcoin Bull Market:</strong> Crypto rally surged cash flow yield to +$65/unit/mo! Added <strong>+$${btcGain}/mo</strong> to passive cash flow.`);\n",
-    "es": "                        eventLogs.push(`🚀 <strong>Mercado Alcista en Bitcoin:</strong> ¡El rally elevó el flujo a +€65/unidad/mes! Añadió <strong>+€${btcGain}/mes</strong> a tu ingreso pasivo.`);\n",
-    "pt": "                        eventLogs.push(`🚀 <strong>Ciclo de Alta no Bitcoin:</strong> O rally impulsionou o fluxo para +R$65/unidade/mês! Somou <strong>+R$${btcGain}/mês</strong> à sua renda passiva.`);\n"
-  },
-  "fontSans27": {
-    "en": "                        eventLogs.push(`📉 <strong>Bitcoin Bear Market:</strong> Price correction caused temporary yield drag (-$15/unit/mo). Reduced passive cash flow by <strong>-$${btcLoss}/mo</strong>.`);\n",
-    "es": "                        eventLogs.push(`📉 <strong>Mercado Bajista en Bitcoin:</strong> Corrección temporal de precio (-€15/unidad/mes). Redujo el flujo pasivo en <strong>-€${btcLoss}/mes</strong>.`);\n",
-    "pt": "                        eventLogs.push(`📉 <strong>Ciclo de Baixa no Bitcoin:</strong> Correção temporária de preço (-R$15/unidade/mês). Reduziu a renda passiva em <strong>-R$${btcLoss}/mês</strong>.`);\n"
-  },
-  "fontSans28": {
-    "en": "                        eventLogs.push(`🚀 <strong>Online Business Boom:</strong> Product launch raised yield to +$120/unit/mo for the year.`);\n",
-    "es": "                        eventLogs.push(`🚀 <strong>Auge en Negocio Digital:</strong> Lanzamiento exitoso elevó el rendimiento a +€120/unidad/mes este año.`);\n",
-    "pt": "                        eventLogs.push(`🚀 <strong>Expansão do Negócio Digital:</strong> Novo produto elevou o rendimento para +R$120/unidade/mês este ano.`);\n"
-  },
-  "fontSans29": {
-    "en": "                        eventLogs.push(`⚠️ <strong>Digital Ad Cost Hike:</strong> Increased ad competition reduced business yield to +$35/unit/mo for the year.`);\n",
-    "es": "                        eventLogs.push(`⚠️ <strong>Aumento de Costes Publicitarios:</strong> Mayor competencia redujo el rendimiento del negocio a +€35/unidad/mes este año.`);\n",
-    "pt": "                        eventLogs.push(`⚠️ <strong>Aumento de Custos com Anúncios:</strong> Maior concorrência reduziu o rendimento do negócio digital para +R$35/unidade/mês este ano.`);\n"
-  },
-  "fontSans30": {
-    "en": "                    eventLogs.push(`🛠️ <strong>Condo Maintenance Repair:</strong> Paid emergency HVAC & roof repair out-of-pocket: <strong>-$${repairCost.toLocaleString()}</strong> from Available Cash.`);\n",
-    "es": "                    eventLogs.push(`🛠️ <strong>Reparación en el Piso:</strong> Pago de mantenimiento de emergencia: <strong>-€${repairCost.toLocaleString()}</strong> del Efectivo Disponible.`);\n",
-    "pt": "                    eventLogs.push(`🛠️ <strong>Reparo no Imóvel:</strong> Despesa emergencial de manutenção: <strong>-R$${repairCost.toLocaleString()}</strong> do Caixa.`);\n"
-  },
-  "fontSans31": {
-    "en": "                const yearsPassedStr = `Year ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Advanced +1 Year (${yearsPassedStr})`;\n                toastText.innerHTML = `Net annual cash surplus collected: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}$${Math.round(netMonthly).toLocaleString()}/mo x 12 months added to Available Cash).`;\n",
-    "es": "                const yearsPassedStr = `Año ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Período Avanzado (${yearsPassedStr})`;\n                toastText.innerHTML = `Superávit neto acumulado: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}€${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}€${Math.round(netMonthly).toLocaleString()}/mes x 12 meses sumados al Efectivo).`;\n",
-    "pt": "                const yearsPassedStr = `Ano ${Math.floor(monthsPassed / 12)}`;\n                toastTitle.innerText = `Período Avançado (${yearsPassedStr})`;\n                toastText.innerHTML = `Superávit líquido acumulado: <strong class=\"font-mono text-emerald-800\">${annualNetAdded >= 0 ? '+' : ''}R$${Math.round(annualNetAdded).toLocaleString()}</strong> (${netMonthly >= 0 ? '+' : ''}R$${Math.round(netMonthly).toLocaleString()}/mês x 12 meses somados ao Caixa).`;\n"
-  },
-  "fontSans32": {
-    "en": "                container.innerHTML = leaderboardNoticeRow('Loading the global Hall of Fame…');\n",
-    "es": "                container.innerHTML = leaderboardNoticeRow('Cargando el Salón de la Fama global…');\n",
-    "pt": "                container.innerHTML = leaderboardNoticeRow('Carregando o Salão da Fama global…');\n"
-  },
-  "fontSans33": {
-    "en": "                container.innerHTML = leaderboardNoticeRow('The Hall of Fame could not be reached. Try again in a moment.');\n",
-    "es": "                container.innerHTML = leaderboardNoticeRow('No se pudo acceder al Salón de la Fama. Inténtalo de nuevo en un momento.');\n",
-    "pt": "                container.innerHTML = leaderboardNoticeRow('Não foi possível acessar o Salão da Fama. Tente novamente em instantes.');\n"
-  },
-  "fontSans34": {
-    "en": "                const timeStr = yrs > 0 ? `${yrs} Years (${entry.score}m)` : `${entry.score} Months`;\n",
-    "es": "                const timeStr = yrs > 0 ? `${yrs} Años (${entry.score}m)` : `${entry.score} Meses`;\n",
-    "pt": "                const timeStr = yrs > 0 ? `${yrs} Anos (${entry.score}m)` : `${entry.score} Meses`;\n"
-  },
   "fontSans35": {
     "en": "                                Your run is on the global Hall of Fame!\n",
     "es": "                                ¡Tu partida ya está en el Salón de la Fama global!\n",
     "pt": "                                Sua partida já está no Salão da Fama global!\n"
-  },
-  "fontSans36": {
-    "en": "            document.getElementById('victoryPassive').innerText = `+$${Math.round(pass).toLocaleString()}/mo`;\n            document.getElementById('victoryExpenses').innerText = `$${exp.toLocaleString()}/mo`;\n",
-    "es": "            document.getElementById('victoryPassive').innerText = `+€${Math.round(pass).toLocaleString()}/mes`;\n            document.getElementById('victoryExpenses').innerText = `€${exp.toLocaleString()}/mes`;\n",
-    "pt": "            document.getElementById('victoryPassive').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;\n            document.getElementById('victoryExpenses').innerText = `R$${exp.toLocaleString()}/mês`;\n"
-  },
-  "fontSans37": {
-    "en": "            document.getElementById('victoryTime').innerText = `${yrs} Years (${monthsPassed} Months)`;\n",
-    "es": "            document.getElementById('victoryTime').innerText = `${yrs} Años (${monthsPassed} Meses)`;\n",
-    "pt": "            document.getElementById('victoryTime').innerText = `${yrs} Anos (${monthsPassed} Meses)`;\n"
-  },
-  "fontSans38": {
-    "en": "                    joyTitleElem.innerHTML = `👑 <strong class=\"text-amber-700\">Joyful Wealth Master</strong> (${joyScore}/100 Joy)`;\n",
-    "es": "                    joyTitleElem.innerHTML = `👑 <strong class=\"text-amber-700\">Maestro de Riqueza y Alegría</strong> (${joyScore}/100 Alegría)`;\n",
-    "pt": "                    joyTitleElem.innerHTML = `👑 <strong class=\"text-amber-700\">Mestre da Riqueza e Alegria</strong> (${joyScore}/100 Alegria)`;\n"
-  },
-  "fontSans39": {
-    "en": "                    joyTitleElem.innerHTML = `⚖️ <strong class=\"text-emerald-700\">Balanced Builder</strong> (${joyScore}/100 Joy)`;\n",
-    "es": "                    joyTitleElem.innerHTML = `⚖️ <strong class=\"text-emerald-700\">Constructor Balanceado</strong> (${joyScore}/100 Alegría)`;\n",
-    "pt": "                    joyTitleElem.innerHTML = `⚖️ <strong class=\"text-emerald-700\">Construtor Equilibrado</strong> (${joyScore}/100 Alegria)`;\n"
-  },
-  "fontSans40": {
-    "en": "                    joyTitleElem.innerHTML = `🪙 <strong class=\"text-rose-700\">Frugal Ascetic</strong> (${joyScore}/100 Joy)`;\n",
-    "es": "                    joyTitleElem.innerHTML = `🪙 <strong class=\"text-rose-700\">Asceta Frugal</strong> (${joyScore}/100 Alegría)`;\n",
-    "pt": "                    joyTitleElem.innerHTML = `🪙 <strong class=\"text-rose-700\">Asceta Frugal</strong> (${joyScore}/100 Alegria)`;\n"
-  },
-  "fontSans41": {
-    "en": "            document.getElementById('activeDisplay').innerText = `$${baseMonthlySalary.toLocaleString()}/mo`;\n            document.getElementById('expensesDisplay').innerText = `$${exp.toLocaleString()}/mo`;\n            document.getElementById('passiveDisplay').innerText = `+$${Math.round(pass).toLocaleString()}/mo`;\n",
-    "es": "            document.getElementById('activeDisplay').innerText = `€${baseMonthlySalary.toLocaleString()}/mes`;\n            document.getElementById('expensesDisplay').innerText = `€${exp.toLocaleString()}/mes`;\n            document.getElementById('passiveDisplay').innerText = `+€${Math.round(pass).toLocaleString()}/mes`;\n",
-    "pt": "            document.getElementById('activeDisplay').innerText = `R$${baseMonthlySalary.toLocaleString()}/mês`;\n            document.getElementById('expensesDisplay').innerText = `R$${exp.toLocaleString()}/mês`;\n            document.getElementById('passiveDisplay').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;\n"
-  },
-  "fontSans42": {
-    "en": "                    joySubtext.innerText = 'High energy • Bonus & raise boost!';\n",
-    "es": "                    joySubtext.innerText = 'Alta energía • Impulso de bonos!';\n",
-    "pt": "                    joySubtext.innerText = 'Alta energia • Bônus frequentes!';\n"
-  },
-  "fontSans43": {
-    "en": "                    joySubtext.innerText = 'Balanced • Sustainable pace';\n",
-    "es": "                    joySubtext.innerText = 'Balanceado • Ritmo sostenible';\n",
-    "pt": "                    joySubtext.innerText = 'Equilibrado • Ritmo sustentável';\n"
-  },
-  "fontSans44": {
-    "en": "                    joySubtext.innerText = 'Extreme frugal • Burnout risk';\n",
-    "es": "                    joySubtext.innerText = 'Frugalidad extrema • Riesgo estrés';\n",
-    "pt": "                    joySubtext.innerText = 'Frugalidade extrema • Risco de estresse';\n"
-  },
-  "fontSans45": {
-    "en": "                let stageLabel = \"Baby/Toddler (+$500/mo)\";\n                if (yrs >= 13) stageLabel = \"Teenager (+$1,000/mo)\";\n                else if (yrs >= 6) stageLabel = \"Primary School (+$750/mo)\";\n                familyText.innerText = `Child Age ${yrs} • ${stageLabel}`;\n",
-    "es": "                let stageLabel = \"Bebé/Párvulo (+€500/mes)\";\n                if (yrs >= 13) stageLabel = \"Adolescente (+€1.000/mes)\";\n                else if (yrs >= 6) stageLabel = \"Escuela Primaria (+€750/mes)\";\n                familyText.innerText = `Hijo Edad ${yrs} • ${stageLabel}`;\n",
-    "pt": "                let stageLabel = \"Bebé (+R$500/mês)\";\n                if (yrs >= 13) stageLabel = \"Adolescente (+R$1.000/mês)\";\n                else if (yrs >= 6) stageLabel = \"Ensino Fundamental (+R$750/mês)\";\n                familyText.innerText = `Filho ${yrs} Anos • ${stageLabel}`;\n"
-  },
-  "fontSans46": {
-    "en": "                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}$${Math.round(netSurplus).toLocaleString()}/mo`;\n",
-    "es": "                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}€${Math.round(netSurplus).toLocaleString()}/mes`;\n",
-    "pt": "                projElem.innerText = `${netSurplus >= 0 ? '+' : ''}R$${Math.round(netSurplus).toLocaleString()}/mês`;\n"
-  },
-  "fontSans47": {
-    "en": "            document.getElementById('monthsPassedBadge').innerText = `Year ${years}`;\n",
-    "es": "            document.getElementById('monthsPassedBadge').innerText = `Año ${years}`;\n",
-    "pt": "            document.getElementById('monthsPassedBadge').innerText = `Ano ${years}`;\n"
-  },
-  "fontSans48": {
-    "en": "            document.getElementById('barExpenseVal').innerText = `$${exp.toLocaleString()}/mo`;\n            document.getElementById('barPassiveVal').innerText = `+$${Math.round(pass).toLocaleString()}/mo`;\n",
-    "es": "            document.getElementById('barExpenseVal').innerText = `€${exp.toLocaleString()}/mes`;\n            document.getElementById('barPassiveVal').innerText = `+€${Math.round(pass).toLocaleString()}/mes`;\n",
-    "pt": "            document.getElementById('barExpenseVal').innerText = `R$${exp.toLocaleString()}/mês`;\n            document.getElementById('barPassiveVal').innerText = `+R$${Math.round(pass).toLocaleString()}/mês`;\n"
-  },
-  "fontSans49": {
-    "en": "                gapElem.innerHTML = `<i class=\"fa-solid fa-circle-check text-emerald-600 mr-1\"></i> CROSSOVER ACHIEVED!`;\n",
-    "es": "                gapElem.innerHTML = `<i class=\"fa-solid fa-circle-check text-emerald-600 mr-1\"></i> ¡PUNTO DE CRUCE ALCANZADO!`;\n",
-    "pt": "                gapElem.innerHTML = `<i class=\"fa-solid fa-circle-check text-emerald-600 mr-1\"></i> PONTO DE CRUZAMENTO ALCANÇADO!`;\n"
-  },
-  "fontSans50": {
-    "en": "                gapElem.innerHTML = `Gap: <span class=\"font-bold text-rose-700\">$${Math.round(gap).toLocaleString()}/mo</span> to freedom.`;\n",
-    "es": "                gapElem.innerHTML = `Brecha: <span class=\"font-bold text-rose-700\">€${Math.round(gap).toLocaleString()}/mes</span> para la libertad.`;\n",
-    "pt": "                gapElem.innerHTML = `Falta: <span class=\"font-bold text-rose-700\">R$${Math.round(gap).toLocaleString()}/mês</span> para a liberdade.`;\n"
-  },
-  "fontSans51": {
-    "en": "                            <span class=\"text-espresso-800/70\">Cost: <strong class=\"text-espresso-950 font-mono\">$${asset.unitCost.toLocaleString()}</strong></span>\n                            <span class=\"${yieldColor} font-bold font-mono\">${yieldSign}$${asset.monthlyYieldPerUnit}/mo</span>\n",
-    "es": "                            <span class=\"text-espresso-800/70\">Coste: <strong class=\"text-espresso-950 font-mono\">€${asset.unitCost.toLocaleString()}</strong></span>\n                            <span class=\"${yieldColor} font-bold font-mono\">${yieldSign}€${asset.monthlyYieldPerUnit}/mes</span>\n",
-    "pt": "                            <span class=\"text-espresso-800/70\">Preço: <strong class=\"text-espresso-950 font-mono\">R$${asset.unitCost.toLocaleString()}</strong></span>\n                            <span class=\"${yieldColor} font-bold font-mono\">${yieldSign}R$${asset.monthlyYieldPerUnit}/mês</span>\n"
-  },
-  "fontSans52": {
-    "en": "                                Buy 1\n",
-    "es": "                                Comprar 1\n",
-    "pt": "                                Comprar 1\n"
-  },
-  "fontSans53": {
-    "en": "                                Max\n",
-    "es": "                                Máx\n",
-    "pt": "                                Máx\n"
-  },
-  "fontSans54": {
-    "en": "                                Sell 1\n",
-    "es": "                                Vender 1\n",
-    "pt": "                                Vender 1\n"
-  },
-  "fontSans55": {
-    "en": "                                Sell All (${asset.ownedUnits})\n",
-    "es": "                                Vender Todo (${asset.ownedUnits})\n",
-    "pt": "                                Vender Tudo (${asset.ownedUnits})\n"
-  },
-  "fontSans56": {
-    "en": "            document.getElementById('holdingsCountBadge').innerText = `${totalHoldingsCount} Assets`;\n",
-    "es": "            document.getElementById('holdingsCountBadge').innerText = `${totalHoldingsCount} Activos`;\n",
-    "pt": "            document.getElementById('holdingsCountBadge').innerText = `${totalHoldingsCount} Ativos`;\n"
-  },
-  "fontSans57": {
-    "en": "            document.getElementById('sidebarTotalPassive').innerText = `+$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mo`;\n",
-    "es": "            document.getElementById('sidebarTotalPassive').innerText = `+€${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mes`;\n",
-    "pt": "            document.getElementById('sidebarTotalPassive').innerText = `+R$${Math.round(getTotalMonthlyPassiveIncome()).toLocaleString()}/mês`;\n"
-  },
-  "fontSans58": {
-    "en": "                        No cash-flow assets owned yet. Buy units in the marketplace!\n",
-    "es": "                        Aún no posees activos. ¡Compra en el mercado!\n",
-    "pt": "                        Você ainda não possui ativos. Compre no mercado!\n"
-  },
-  "fontSans59": {
-    "en": "                                <span class=\"text-[9px] text-espresso-800/70 font-mono\">${asset.ownedUnits} Units ($${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>\n",
-    "es": "                                <span class=\"text-[9px] text-espresso-800/70 font-mono\">${asset.ownedUnits} Unid. (€${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>\n",
-    "pt": "                                <span class=\"text-[9px] text-espresso-800/70 font-mono\">${asset.ownedUnits} Unid. (R$${(asset.ownedUnits * asset.unitCost).toLocaleString()})</span>\n"
-  },
-  "fontSans60": {
-    "en": "                        <span class=\"font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}\">${totalIncome >= 0 ? '+' : ''}$${Math.round(totalIncome)}/mo</span>\n",
-    "es": "                        <span class=\"font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}\">${totalIncome >= 0 ? '+' : ''}€${Math.round(totalIncome)}/mes</span>\n",
-    "pt": "                        <span class=\"font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}\">${totalIncome >= 0 ? '+' : ''}R$${Math.round(totalIncome)}/mês</span>\n"
-  },
-  "fontSans61": {
-    "en": "                            Sell 1\n",
-    "es": "                            Vender 1\n",
-    "pt": "                            Vender 1\n"
-  },
-  "fontSans62": {
-    "en": "                            Sell All\n",
-    "es": "                            Vender Todo\n",
-    "pt": "                            Vender Tudo\n"
-  },
-  "fontSans63": {
-    "en": "                    note.textContent = 'The chart could not be drawn. Every figure it would show is also listed as text on this page.';\n",
-    "es": "                    note.textContent = 'No se pudo dibujar el gráfico. Todas las cifras que mostraría también aparecen como texto en esta página.';\n",
-    "pt": "                    note.textContent = 'Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página.';\n"
-  },
-  "fontSans66": {
-    "en": "                console.error(\"Chart render error:\", e);\n",
-    "es": "                console.error(\"Error al renderizar gráfico:\", e);\n",
-    "pt": "                console.error(\"Erro ao renderizar gráfico:\", e);\n"
-  },
-  "fontSans67": {
-    "en": "            document.getElementById('housingCostBadge').innerText = `$${lifestyleCosts.housing[currentLifestyle.housing]}/mo`;\n            document.getElementById('transportCostBadge').innerText = `$${lifestyleCosts.transport[currentLifestyle.transport]}/mo`;\n            document.getElementById('lifestyleCostBadge').innerText = `$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mo`;\n            document.getElementById('subscriptionsCostBadge').innerText = `$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mo`;\n            document.getElementById('travelCostBadge').innerText = `$${lifestyleCosts.travel[currentLifestyle.travel]}/mo`;\n            document.getElementById('shoppingCostBadge').innerText = `$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mo`;\n",
-    "es": "            document.getElementById('housingCostBadge').innerText = `€${lifestyleCosts.housing[currentLifestyle.housing]}/mes`;\n            document.getElementById('transportCostBadge').innerText = `€${lifestyleCosts.transport[currentLifestyle.transport]}/mes`;\n            document.getElementById('lifestyleCostBadge').innerText = `€${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mes`;\n            document.getElementById('subscriptionsCostBadge').innerText = `€${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mes`;\n            document.getElementById('travelCostBadge').innerText = `€${lifestyleCosts.travel[currentLifestyle.travel]}/mes`;\n            document.getElementById('shoppingCostBadge').innerText = `€${lifestyleCosts.shopping[currentLifestyle.shopping]}/mes`;\n",
-    "pt": "            document.getElementById('housingCostBadge').innerText = `R$${lifestyleCosts.housing[currentLifestyle.housing]}/mês`;\n            document.getElementById('transportCostBadge').innerText = `R$${lifestyleCosts.transport[currentLifestyle.transport]}/mês`;\n            document.getElementById('lifestyleCostBadge').innerText = `R$${lifestyleCosts.lifestyle[currentLifestyle.lifestyle]}/mês`;\n            document.getElementById('subscriptionsCostBadge').innerText = `R$${lifestyleCosts.subscriptions[currentLifestyle.subscriptions]}/mês`;\n            document.getElementById('travelCostBadge').innerText = `R$${lifestyleCosts.travel[currentLifestyle.travel]}/mês`;\n            document.getElementById('shoppingCostBadge').innerText = `R$${lifestyleCosts.shopping[currentLifestyle.shopping]}/mês`;\n"
   },
   "langSwitchAriaLabel": {
     "en": "Language",
@@ -1259,20 +949,10 @@
     "es": "        /* =================================================================\n           CLASIFICACIÓN GLOBAL (una sola tabla, todos los visitantes, todos\n           los idiomas). Se lee y se escribe en /api/simulator-leaderboard.\n           ================================================================= */\n",
     "pt": "        /* =================================================================\n           PLACAR GLOBAL (uma única tabela, todos os visitantes, todos os\n           idiomas). Lido e gravado em /api/simulator-leaderboard.\n           ================================================================= */\n"
   },
-  "lbEmpty": {
-    "en": "                container.innerHTML = leaderboardNoticeRow('Nobody has reached crossover yet. Get there and the first line is yours.');\n",
-    "es": "                container.innerHTML = leaderboardNoticeRow('Todavía nadie ha alcanzado el cruce. Llega tú y la primera línea será tuya.');\n",
-    "pt": "                container.innerHTML = leaderboardNoticeRow('Ninguém alcançou o cruzamento ainda. Chegue lá e a primeira linha será sua.');\n"
-  },
   "lbYouBadge": {
     "en": "${isMine ? ' <span class=\"text-[9px] font-bold uppercase tracking-wide text-gold-600\">You</span>' : ''}",
     "es": "${isMine ? ' <span class=\"text-[9px] font-bold uppercase tracking-wide text-gold-600\">Tú</span>' : ''}",
     "pt": "${isMine ? ' <span class=\"text-[9px] font-bold uppercase tracking-wide text-gold-600\">Você</span>' : ''}"
-  },
-  "lbSaveFailed": {
-    "en": "                        warning.textContent = 'Your run could not be sent to the Hall of Fame. Check your connection and press Save Score again.';\n",
-    "es": "                        warning.textContent = 'No se pudo enviar tu partida al Salón de la Fama. Comprueba tu conexión y vuelve a pulsar Guardar.';\n",
-    "pt": "                        warning.textContent = 'Não foi possível enviar sua partida ao Salão da Fama. Verifique sua conexão e toque em Salvar novamente.';\n"
   },
   "ctaModalButton": {
     "en": "See what this run means",
@@ -1283,5 +963,430 @@
     "en": "Free interactive tool",
     "es": "Herramienta interactiva gratuita",
     "pt": "Ferramenta interativa gratuita"
+  },
+  "assetDefinitions": {
+    "en": "            { id: 'dividend_etf', name: 'Dividend ETF', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Broad market dividend index. Payouts compound & grow organically over time.', riskText: 'Low Risk / Compounding Growth' },\n            { id: 'bonds', name: 'Treasury Bonds', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Government backed. High yields during rate hike cycles.', riskText: 'Guaranteed / Safe' },\n            { id: 'rental_property', name: 'Rental Condo', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Real estate cash flow. Subject to occasional repair shocks.', riskText: 'Medium Risk / Cash Flow' },\n            { id: 'reit_index', name: 'REIT Index', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Real Estate Investment Trust pool. Consistent monthly payouts.', riskText: 'Moderate Risk / Real Estate' },\n            { id: 'digital_business', name: 'Online Business', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'Digital asset ecommerce. High yield, subject to ad cost shifts.', riskText: 'High Yield / Volatile' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Crypto asset. Huge surge during bull markets, yield drag in bear cycles.', riskText: 'High Volatility / Speculative' }\n",
+    "es": "            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos del mercado. Los pagos se componen y crecen orgánicamente.', riskText: 'Bajo Riesgo / Crecimiento Compuesto' },\n            { id: 'bonds', name: 'Bonos del Tesoro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Respaldados por el gobierno. Rinde más en ciclos de altas tasas.', riskText: 'Garantizado / Seguro' },\n            { id: 'rental_property', name: 'Piso en Alquiler', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Flujo inmobiliario. Sujeto a costes ocasionales de reparación.', riskText: 'Riesgo Medio / Flujo Caja' },\n            { id: 'reit_index', name: 'Índice REIT', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fondo de inversión inmobiliaria. Pagos mensuales constantes.', riskText: 'Riesgo Moderado / Inmuebles' },\n            { id: 'digital_business', name: 'Negocio Online', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimiento, sensible a costes publicitarios.', riskText: 'Alto Rendimiento / Volátil' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoactivo. Grandes auges alcistas, presión en ciclos bajistas.', riskText: 'Alta Volatilidad / Especulativo' }\n",
+    "pt": "            { id: 'dividend_etf', name: 'ETF de Dividendos', icon: 'fa-chart-line', unitCost: 1000, baseYield: 4, monthlyYieldPerUnit: 4, ownedUnits: 0, desc: 'Índice de dividendos do mercado. Os pagamentos se multiplicam e crescem organicamente.', riskText: 'Baixo Risco / Crescimento Contínuo' },\n            { id: 'bonds', name: 'Títulos do Tesouro', icon: 'fa-building-columns', unitCost: 500, baseYield: 2, monthlyYieldPerUnit: 2, ownedUnits: 0, desc: 'Garantidos pelo governo. Rendem mais em ciclos de juros altos.', riskText: 'Garantido / Seguro' },\n            { id: 'rental_property', name: 'Imóvel para Aluguel', icon: 'fa-city', unitCost: 15000, baseYield: 110, monthlyYieldPerUnit: 110, ownedUnits: 0, desc: 'Fluxo imobiliário. Sujeito a custos ocasionais de reparos.', riskText: 'Risco Médio / Fluxo de Caixa' },\n            { id: 'reit_index', name: 'Fundos Imobiliários (REITs)', icon: 'fa-building', unitCost: 2500, baseYield: 16, monthlyYieldPerUnit: 16, ownedUnits: 0, desc: 'Fundo de investimento imobiliário. Pagamentos mensais constantes.', riskText: 'Risco Moderado / Imóveis' },\n            { id: 'digital_business', name: 'Negócio Digital', icon: 'fa-laptop-code', unitCost: 5000, baseYield: 65, monthlyYieldPerUnit: 65, ownedUnits: 0, desc: 'E-commerce digital. Alto rendimento, sensível a custos de anúncios.', riskText: 'Alto Rendimento / Volátil' },\n            { id: 'bitcoin', name: 'Bitcoin (BTC)', icon: 'fa-brands fa-bitcoin', unitCost: 4000, baseYield: 15, monthlyYieldPerUnit: 15, ownedUnits: 0, desc: 'Criptoativo. Grandes ciclos de alta, pressão em ciclos de baixa.', riskText: 'Alta Volatilidade / Especulativo' }\n"
+  },
+  "travelcostbadge": {
+    "en": "$300/mo",
+    "es": "€300/mes",
+    "pt": "R$300/mês"
+  },
+  "marketDebtNotice": {
+    "en": "You are in debt. Pay it down (sell assets or run a surplus) before buying anything.",
+    "es": "Estás en deuda. Redúcela (vendiendo activos o con superávit) antes de comprar nada.",
+    "pt": "Você está em dívida. Quite-a (vendendo ativos ou com superávit) antes de comprar qualquer coisa."
+  },
+  "historyTitle": {
+    "en": "Crossover Race, Year by Year",
+    "es": "La carrera hacia el cruce, año a año",
+    "pt": "A corrida até o cruzamento, ano a ano"
+  },
+  "historyIntro": {
+    "en": "Sustainable monthly passive income against living expenses and salary at the end of each year. Crossover is where the green line reaches the red one.",
+    "es": "Ingreso pasivo sostenible mensual frente a gastos de vida y salario al cierre de cada año. El cruce es el punto donde la línea verde alcanza a la roja.",
+    "pt": "Renda passiva sustentável mensal contra despesas de vida e salário no fim de cada ano. O cruzamento é onde a linha verde alcança a vermelha."
+  },
+  "historyChartAriaLabel": {
+    "en": "Line chart of sustainable monthly passive income, living expenses and salary for each year of the run. The latest values are summarised in the text below it.",
+    "es": "Gráfico de líneas del ingreso pasivo sostenible mensual, los gastos de vida y el salario en cada año de la partida. Los valores más recientes se resumen en el texto de debajo.",
+    "pt": "Gráfico de linhas da renda passiva sustentável mensal, das despesas de vida e do salário em cada ano da partida. Os valores mais recentes estão resumidos no texto abaixo."
+  },
+  "howRulesTitle": {
+    "en": "House rules",
+    "es": "Reglas de la partida",
+    "pt": "Regras da partida"
+  },
+  "howRuleCrossover": {
+    "en": "Crossover counts sustainable income: the online business, bitcoin and bonds count at their normal-year yield. A boom year shows up in your cash, but it cannot win the game on its own.",
+    "es": "El cruce cuenta el ingreso sostenible: el negocio online, el bitcoin y los bonos cuentan con su rendimiento de un año normal. Un año de auge se nota en tu efectivo, pero no gana la partida por sí solo.",
+    "pt": "O cruzamento conta a renda sustentável: o negócio online, o bitcoin e os títulos entram com o rendimento de um ano normal. Um ano de boom aparece no seu caixa, mas não vence a partida sozinho."
+  },
+  "howRuleInflation": {
+    "en": "Every two years prices rise 4%, and so do your salary, rents, REIT payouts and the price of rental and REIT units. The dividend ETF grows its payout and its price together, so units you already hold keep the growth.",
+    "es": "Cada dos años los precios suben un 4%, y con ellos tu salario, los alquileres, los pagos del REIT y el precio de los pisos y del REIT. El ETF de dividendos sube su pago y su precio a la vez, así que las participaciones que ya tienes conservan el crecimiento.",
+    "pt": "A cada dois anos os preços sobem 4%, e com eles o seu salário, os aluguéis, os proventos do REIT e o preço dos imóveis e do REIT. O ETF de dividendos aumenta o provento e o preço juntos, então as cotas que você já tem ficam com o crescimento."
+  },
+  "howRuleDebt": {
+    "en": "Cash below zero becomes debt at 8% a year, and nothing can be bought until it is paid off. If the debt passes three years of salary, the bank sells your assets to bring it back within that limit — and with nothing left to sell, the run ends in bankruptcy.",
+    "es": "El efectivo por debajo de cero se convierte en deuda al 8% anual, y no se puede comprar nada hasta saldarla. Si la deuda supera tres años de salario, el banco vende tus activos para devolverla a ese límite; y si no queda nada que vender, la partida termina en bancarrota.",
+    "pt": "Caixa abaixo de zero vira dívida a 8% ao ano, e nada pode ser comprado até quitá-la. Se a dívida passar de três anos de salário, o banco vende seus ativos para trazê-la de volta a esse limite — e, sem nada para vender, a partida termina em falência."
+  },
+  "howRuleLength": {
+    "en": "A run lasts at most 60 years.",
+    "es": "Una partida dura como máximo 60 años.",
+    "pt": "Uma partida dura no máximo 60 anos."
+  },
+  "explAssumption5": {
+    "en": "The finish line is judged on sustainable income: the volatile engines count at their normal-year yield, so one lucky year cannot end the game. The whole model runs on one inflation rate, with expenses, salary, rents and asset prices all rising 4% every two years, and overspending is not free — cash below zero is debt at 8% a year.",
+    "es": "La meta se juzga sobre el ingreso sostenible: los motores volátiles cuentan con su rendimiento de un año normal, así que un año de suerte no termina la partida. Todo el modelo usa una única inflación, con gastos, salario, alquileres y precios de los activos subiendo un 4% cada dos años, y gastar de más no sale gratis: el efectivo por debajo de cero es deuda al 8% anual.",
+    "pt": "A linha de chegada é julgada pela renda sustentável: os motores voláteis contam com o rendimento de um ano normal, então um ano de sorte não encerra a partida. Todo o modelo usa uma única inflação, com despesas, salário, aluguéis e preços dos ativos subindo 4% a cada dois anos, e gastar demais não sai de graça: caixa abaixo de zero é dívida a 8% ao ano."
+  },
+  "tPerMonth": {
+    "en": "{amount}/mo",
+    "es": "{amount}/mes",
+    "pt": "{amount}/mês"
+  },
+  "tYear": {
+    "en": "Year {n}",
+    "es": "Año {n}",
+    "pt": "Ano {n}"
+  },
+  "tYearsMonths": {
+    "en": "{years} Years ({months} Months)",
+    "es": "{years} Años ({months} Meses)",
+    "pt": "{years} Anos ({months} Meses)"
+  },
+  "tBoardTime": {
+    "en": "{years} Years ({months}m)",
+    "es": "{years} Años ({months}m)",
+    "pt": "{years} Anos ({months}m)"
+  },
+  "tAssetsCount": {
+    "en": "{n} Assets",
+    "es": "{n} Activos",
+    "pt": "{n} Ativos"
+  },
+  "tCashNoteDebt": {
+    "en": "In debt · 8% a year · limit {limit}",
+    "es": "En deuda · 8% anual · límite {limit}",
+    "pt": "Em dívida · 8% ao ano · limite {limit}"
+  },
+  "tPassiveNote": {
+    "en": "Counts toward crossover: {amount}",
+    "es": "Cuenta para el cruce: {amount}",
+    "pt": "Conta para o cruzamento: {amount}"
+  },
+  "tJoyHigh": {
+    "en": "High energy • Bonus & raise boost!",
+    "es": "Alta energía • Más bonos y ascensos",
+    "pt": "Alta energia • Mais bônus e promoções"
+  },
+  "tJoyBalanced": {
+    "en": "Balanced • Sustainable pace",
+    "es": "Equilibrado • Ritmo sostenible",
+    "pt": "Equilibrado • Ritmo sustentável"
+  },
+  "tJoyLow": {
+    "en": "Extreme frugal • Burnout risk",
+    "es": "Frugalidad extrema • Riesgo de agotamiento",
+    "pt": "Frugalidade extrema • Risco de esgotamento"
+  },
+  "tTitleJoyful": {
+    "en": "Joyful Wealth Master",
+    "es": "Maestro de Riqueza y Alegría",
+    "pt": "Mestre da Riqueza e Alegria"
+  },
+  "tTitleBalanced": {
+    "en": "Balanced Builder",
+    "es": "Constructor Equilibrado",
+    "pt": "Construtor Equilibrado"
+  },
+  "tTitleAscetic": {
+    "en": "Frugal Ascetic",
+    "es": "Asceta Frugal",
+    "pt": "Asceta Frugal"
+  },
+  "tJoyOutOf": {
+    "en": "({joy}/100 Joy)",
+    "es": "({joy}/100 Alegría)",
+    "pt": "({joy}/100 Alegria)"
+  },
+  "tKidBaby": {
+    "en": "Baby/Toddler",
+    "es": "Bebé/Párvulo",
+    "pt": "Bebê"
+  },
+  "tKidSchool": {
+    "en": "Primary School",
+    "es": "Escuela Primaria",
+    "pt": "Ensino Fundamental"
+  },
+  "tKidTeen": {
+    "en": "Teenager",
+    "es": "Adolescente",
+    "pt": "Adolescente"
+  },
+  "tKidStatus": {
+    "en": "Child age {age} • {stage} ({amount})",
+    "es": "Hijo de {age} años • {stage} ({amount})",
+    "pt": "Filho de {age} anos • {stage} ({amount})"
+  },
+  "tCrossoverDone": {
+    "en": "CROSSOVER ACHIEVED!",
+    "es": "¡PUNTO DE CRUCE ALCANZADO!",
+    "pt": "PONTO DE CRUZAMENTO ALCANÇADO!"
+  },
+  "tGap": {
+    "en": "Gap: {amount} to freedom.",
+    "es": "Brecha: {amount} para la libertad.",
+    "pt": "Falta: {amount} para a liberdade."
+  },
+  "tCost": {
+    "en": "Price:",
+    "es": "Precio:",
+    "pt": "Preço:"
+  },
+  "tNormalYield": {
+    "en": "normal year {amount}",
+    "es": "año normal {amount}",
+    "pt": "ano normal {amount}"
+  },
+  "tBuyOne": {
+    "en": "Buy 1",
+    "es": "Comprar 1",
+    "pt": "Comprar 1"
+  },
+  "tBuyMax": {
+    "en": "Max",
+    "es": "Máx",
+    "pt": "Máx"
+  },
+  "tSellOne": {
+    "en": "Sell 1",
+    "es": "Vender 1",
+    "pt": "Vender 1"
+  },
+  "tSellAll": {
+    "en": "Sell All",
+    "es": "Vender Todo",
+    "pt": "Vender Tudo"
+  },
+  "tUnits": {
+    "en": "{n} Units ({value})",
+    "es": "{n} Unid. ({value})",
+    "pt": "{n} Unid. ({value})"
+  },
+  "tNoHoldings": {
+    "en": "No cash-flow assets owned yet. Buy units in the marketplace!",
+    "es": "Aún no posees activos. ¡Compra en el mercado!",
+    "pt": "Você ainda não possui ativos. Compre no mercado!"
+  },
+  "tToastTitle": {
+    "en": "Advanced +1 Year ({year})",
+    "es": "Período Avanzado ({year})",
+    "pt": "Período Avançado ({year})"
+  },
+  "tToastText": {
+    "en": "Net cash flow for the year: {annual} ({monthly}/mo × 12 months) added to Available Cash.",
+    "es": "Flujo de caja neto del año: {annual} ({monthly}/mes × 12 meses) sumado al Efectivo Disponible.",
+    "pt": "Fluxo de caixa líquido do ano: {annual} ({monthly}/mês × 12 meses) somado ao Caixa Disponível."
+  },
+  "tToastInterest": {
+    "en": " Debt interest charged on top: {amount}.",
+    "es": " Además se cobraron intereses de la deuda: {amount}.",
+    "pt": " Além disso, foram cobrados juros da dívida: {amount}."
+  },
+  "tRunOverTitle": {
+    "en": "The run is over",
+    "es": "La partida ha terminado",
+    "pt": "A partida terminou"
+  },
+  "tRunOver": {
+    "en": "You have played all {max} years this simulator models. Press Reset to start a new run.",
+    "es": "Has jugado los {max} años que modela este simulador. Pulsa Reiniciar para empezar una partida nueva.",
+    "pt": "Você jogou os {max} anos que este simulador modela. Toque em Reiniciar para começar uma nova partida."
+  },
+  "tBondsHighRisk": {
+    "en": "High Rate Era (7.7% a year)",
+    "es": "Ciclo de Tipos Altos (7,7% anual)",
+    "pt": "Ciclo de Juros Altos (7,7% ao ano)"
+  },
+  "tLbLoading": {
+    "en": "Loading the global Hall of Fame…",
+    "es": "Cargando el Salón de la Fama global…",
+    "pt": "Carregando o Salão da Fama global…"
+  },
+  "tLbError": {
+    "en": "The Hall of Fame could not be reached. Try again in a moment.",
+    "es": "No se pudo acceder al Salón de la Fama. Inténtalo de nuevo en un momento.",
+    "pt": "Não foi possível acessar o Salão da Fama. Tente novamente em instantes."
+  },
+  "tLbEmpty": {
+    "en": "Nobody has reached crossover yet. Get there and the first line is yours.",
+    "es": "Todavía nadie ha alcanzado el cruce. Llega tú y la primera línea será tuya.",
+    "pt": "Ninguém alcançou o cruzamento ainda. Chegue lá e a primeira linha será sua."
+  },
+  "tSaveNetwork": {
+    "en": "Your run could not be sent to the Hall of Fame. Check your connection and press Save Score again.",
+    "es": "No se pudo enviar tu partida al Salón de la Fama. Revisa tu conexión y pulsa Guardar de nuevo.",
+    "pt": "Não foi possível enviar sua partida ao Salão da Fama. Verifique sua conexão e toque em Salvar novamente."
+  },
+  "tSaveRejected": {
+    "en": "The Hall of Fame did not accept this run ({reason}), so it has not been saved. Trying again will not change that.",
+    "es": "El Salón de la Fama no aceptó esta partida ({reason}), así que no se ha guardado. Volver a intentarlo no lo cambiará.",
+    "pt": "O Salão da Fama não aceitou esta partida ({reason}), por isso ela não foi salva. Tentar de novo não vai mudar isso."
+  },
+  "tChartUnavailable": {
+    "en": "The chart could not be drawn. Every figure it would show is also listed as text on this page.",
+    "es": "No se pudo dibujar el gráfico. Todas las cifras que mostraría también aparecen como texto en esta página.",
+    "pt": "Não foi possível desenhar o gráfico. Todos os valores que mostraria também aparecem como texto nesta página."
+  },
+  "tChartPassive": {
+    "en": "Sustainable passive income",
+    "es": "Ingreso pasivo sostenible",
+    "pt": "Renda passiva sustentável"
+  },
+  "tChartExpenses": {
+    "en": "Living expenses",
+    "es": "Gastos de vida",
+    "pt": "Despesas de vida"
+  },
+  "tChartSalary": {
+    "en": "Salary",
+    "es": "Salario",
+    "pt": "Salário"
+  },
+  "tChartYearAxis": {
+    "en": "Year",
+    "es": "Año",
+    "pt": "Ano"
+  },
+  "tChartSummary": {
+    "en": "Year {year}: sustainable passive income of {passive}/mo against living expenses of {expenses}/mo and a salary of {salary}/mo.",
+    "es": "Año {year}: ingreso pasivo sostenible de {passive}/mes frente a gastos de vida de {expenses}/mes y un salario de {salary}/mes.",
+    "pt": "Ano {year}: renda passiva sustentável de {passive}/mês contra despesas de vida de {expenses}/mês e salário de {salary}/mês."
+  },
+  "evInflation": {
+    "en": "💸 <strong>Inflation (+4%):</strong> Living expenses rose by <strong>{diff}/mo</strong> to {expenses}/mo. Salary, rents and REIT payouts rose with it — salary is now {salary}/mo.",
+    "es": "💸 <strong>Inflación (+4%):</strong> Los gastos del hogar subieron <strong>{diff}/mes</strong> hasta {expenses}/mes. El salario, los alquileres y los pagos del REIT subieron con ella: el salario es ahora {salary}/mes.",
+    "pt": "💸 <strong>Inflação (+4%):</strong> As despesas da família subiram <strong>{diff}/mês</strong> para {expenses}/mês. O salário, os aluguéis e os proventos do REIT subiram junto — o salário agora é {salary}/mês."
+  },
+  "evJoyBonus": {
+    "en": "🌟 <strong>High Life Joy Boost!</strong> Your well-being and energy at work earned a performance bonus of <strong>{amount}</strong>, added to Available Cash.",
+    "es": "🌟 <strong>¡Impulso por Alta Alegría de Vivir!</strong> Tu bienestar y buena energía en el trabajo te valieron un bono de rendimiento de <strong>{amount}</strong>, sumado al Efectivo Disponible.",
+    "pt": "🌟 <strong>Impulso por Alta Alegria de Viver!</strong> Seu bem-estar e sua energia no trabalho renderam um bônus de desempenho de <strong>{amount}</strong>, somado ao Caixa Disponível."
+  },
+  "evBurnout": {
+    "en": "😫 <strong>Frugality Burnout:</strong> Severe lifestyle deprivation caused exhaustion. Spent <strong>{amount}</strong> on health, wellness & stress recovery.",
+    "es": "😫 <strong>Agotamiento por Frugalidad:</strong> La privación excesiva generó estrés acumulado. Gastaste <strong>{amount}</strong> en salud, terapias y descanso.",
+    "pt": "😫 <strong>Esgotamento por Frugalidade Extrema:</strong> O estresse acumulado exigiu gastos de <strong>{amount}</strong> em saúde e descanso."
+  },
+  "evBaby": {
+    "en": "🍼 <strong>Life Event: Baby Born!</strong> Living expenses rose by <strong>{diff}/mo</strong> for nursery, diapers & childcare.",
+    "es": "🍼 <strong>Evento de Vida: ¡Nació un Bebé!</strong> Los gastos subieron <strong>{diff}/mes</strong> por guardería, pañales y cuidado infantil.",
+    "pt": "🍼 <strong>Evento de Vida: Nasceu um Bebê!</strong> As despesas subiram <strong>{diff}/mês</strong> com creche, fraldas e cuidados."
+  },
+  "evBabyHousing": {
+    "en": " That includes moving out of the shared flat into a standard apartment.",
+    "es": " Incluye mudarse del piso compartido a un apartamento estándar.",
+    "pt": " Isso inclui a mudança do apartamento compartilhado para um apartamento padrão."
+  },
+  "evEmptyNest": {
+    "en": "🎓 <strong>Empty Nest!</strong> Your child turned 18 and moved out. Living expenses changed by <strong>{diff}/mo</strong>.",
+    "es": "🎓 <strong>¡Nido Vacío!</strong> Tu hijo cumplió 18 años y se independizó. Los gastos cambiaron <strong>{diff}/mes</strong>.",
+    "pt": "🎓 <strong>Ninho Vazio!</strong> Seu filho fez 18 anos e saiu de casa. As despesas mudaram <strong>{diff}/mês</strong>."
+  },
+  "evSchool": {
+    "en": "🎒 <strong>School Age:</strong> Your child started primary school. Expenses rose by <strong>{diff}/mo</strong> (child budget now {total}/mo) for gear, activities & tuition.",
+    "es": "🎒 <strong>Etapa Escolar:</strong> Tu hijo empezó la primaria. Los gastos subieron <strong>{diff}/mes</strong> (presupuesto del hijo: {total}/mes) en material, actividades y matrícula.",
+    "pt": "🎒 <strong>Idade Escolar:</strong> Seu filho entrou no ensino fundamental. As despesas subiram <strong>{diff}/mês</strong> (orçamento do filho: {total}/mês) com material, atividades e mensalidades."
+  },
+  "evTeen": {
+    "en": "🎧 <strong>Teenager Stage:</strong> Hobbies, tech, clothes and appetite raised costs by <strong>{diff}/mo</strong> (child budget now {total}/mo).",
+    "es": "🎧 <strong>Etapa Adolescente:</strong> Aficiones, tecnología, ropa y apetito subieron los gastos <strong>{diff}/mes</strong> (presupuesto del hijo: {total}/mes).",
+    "pt": "🎧 <strong>Fase Adolescente:</strong> Hobbies, tecnologia, roupas e apetite aumentaram as despesas em <strong>{diff}/mês</strong> (orçamento do filho: {total}/mês)."
+  },
+  "evPromotion": {
+    "en": "💼 <strong>Career Promotion & Raise!</strong> Your salary increased by <strong>{raise}/mo</strong> (new salary: {salary}/mo).",
+    "es": "💼 <strong>¡Promoción Profesional!</strong> Tu salario subió <strong>{raise}/mes</strong> (nuevo salario: {salary}/mes).",
+    "pt": "💼 <strong>Promoção de Carreira!</strong> Seu salário subiu <strong>{raise}/mês</strong> (novo salário: {salary}/mês)."
+  },
+  "evPet": {
+    "en": "🐶 <strong>Life Event: Adopted a Pet!</strong> Added <strong>{diff}/mo</strong> for vet care, food and pet insurance.",
+    "es": "🐶 <strong>¡Adoptaste una Mascota!</strong> Se añadieron <strong>{diff}/mes</strong> en comida, veterinario y seguro.",
+    "pt": "🐶 <strong>Adotou um Pet!</strong> Foram adicionados <strong>{diff}/mês</strong> com veterinário, ração e seguro."
+  },
+  "evElder": {
+    "en": "👴 <strong>Aging Parents Healthcare Support:</strong> Monthly caregiving support for your parents added <strong>{diff}/mo</strong> to living expenses.",
+    "es": "👴 <strong>Apoyo a Padres Mayores:</strong> El apoyo médico mensual a tus padres añadió <strong>{diff}/mes</strong> a los gastos.",
+    "pt": "👴 <strong>Apoio aos Pais Idosos:</strong> O apoio médico mensal aos seus pais acrescentou <strong>{diff}/mês</strong> às despesas."
+  },
+  "evMedical": {
+    "en": "🏥 <strong>Medical / Dental Emergency:</strong> An unexpected health bill took <strong>{amount}</strong> from Available Cash.",
+    "es": "🏥 <strong>Emergencia Médica / Dental:</strong> Una factura de salud inesperada descontó <strong>{amount}</strong> del Efectivo.",
+    "pt": "🏥 <strong>Emergência Médica / Odontológica:</strong> Uma conta de saúde inesperada descontou <strong>{amount}</strong> do Caixa."
+  },
+  "evVehicle": {
+    "en": "🚗 <strong>Major Vehicle Transmission Repair:</strong> <strong>{amount}</strong> from Available Cash.",
+    "es": "🚗 <strong>Reparación Mecánica Mayor:</strong> se descontaron <strong>{amount}</strong> del Efectivo.",
+    "pt": "🚗 <strong>Grande Reparo no Carro:</strong> foram descontados <strong>{amount}</strong> do Caixa."
+  },
+  "evTax": {
+    "en": "🏛️ <strong>Property Tax & Escrow Hike:</strong> An annual escrow shortfall took <strong>{amount}</strong> from Available Cash.",
+    "es": "🏛️ <strong>Aumento de Impuestos de Propiedad:</strong> El ajuste anual de impuestos descontó <strong>{amount}</strong> del Efectivo.",
+    "pt": "🏛️ <strong>Aumento do Imposto Predial:</strong> O ajuste anual de impostos descontou <strong>{amount}</strong> do Caixa."
+  },
+  "evSideHustle": {
+    "en": "💻 <strong>Side Hustle Windfall!</strong> A freelance gig added <strong>{amount}</strong> in bonus cash!",
+    "es": "💻 <strong>¡Ingreso Extra por Proyecto Freelance!</strong> Sumaste un bono de <strong>{amount}</strong> en efectivo.",
+    "pt": "💻 <strong>Renda Extra de Freelance!</strong> Um trabalho extra somou <strong>{amount}</strong> ao caixa."
+  },
+  "evInheritance": {
+    "en": "🎁 <strong>Family Inheritance / Financial Gift!</strong> A surprise lump sum of <strong>{amount}</strong> was added to Available Cash!",
+    "es": "🎁 <strong>¡Herencia o Regalo Familiar!</strong> Recibiste una suma de <strong>{amount}</strong> en tu Efectivo Disponible.",
+    "pt": "🎁 <strong>Herança ou Presente da Família!</strong> Você recebeu <strong>{amount}</strong> no Caixa Disponível."
+  },
+  "evTaxRefund": {
+    "en": "🧾 <strong>Tax Refund & Performance Bonus:</strong> Your annual review and tax return credited <strong>{amount}</strong> to Available Cash.",
+    "es": "🧾 <strong>Reembolso de Impuestos y Bono:</strong> La devolución fiscal y la evaluación anual acreditaron <strong>{amount}</strong> en efectivo.",
+    "pt": "🧾 <strong>Restituição e Bônus:</strong> A restituição do imposto e a avaliação anual creditaram <strong>{amount}</strong> no Caixa."
+  },
+  "evEtf": {
+    "en": "📈 <strong>Dividend Organic Growth!</strong> Payouts and the unit price both rose {pct}% (now {perUnit}/unit/mo at a price of {price}). Your units now pay <strong>{boost}/mo</strong> more.",
+    "es": "📈 <strong>¡Crecimiento de Dividendos!</strong> Los pagos y el precio de la participación subieron un {pct}% (ahora {perUnit}/unidad/mes a un precio de {price}). Tus participaciones pagan ahora <strong>{boost}/mes</strong> más.",
+    "pt": "📈 <strong>Crescimento de Dividendos!</strong> Os proventos e o preço da cota subiram {pct}% (agora {perUnit}/unidade/mês a um preço de {price}). Suas cotas agora pagam <strong>{boost}/mês</strong> a mais."
+  },
+  "evBondHike": {
+    "en": "🏦 <strong>Central Bank Rate Hike:</strong> For the coming year bonds pay <strong>{perUnit}/unit</strong> (7.7% a year) instead of {base}, adding <strong>{boost}/mo</strong> to bond cash flow.",
+    "es": "🏦 <strong>Alza de Tipos del Banco Central:</strong> Durante el próximo año los bonos pagan <strong>{perUnit}/unidad</strong> (7,7% anual) en lugar de {base}, sumando <strong>{boost}/mes</strong> al flujo pasivo.",
+    "pt": "🏦 <strong>Alta de Juros pelo Banco Central:</strong> No próximo ano os títulos pagam <strong>{perUnit}/unidade</strong> (7,7% ao ano) em vez de {base}, somando <strong>{boost}/mês</strong> à renda passiva."
+  },
+  "evBtcBull": {
+    "en": "🚀 <strong>Bitcoin Bull Market:</strong> For the coming year the yield surges to {perUnit}/unit/mo, adding <strong>{amount}/mo</strong> — a boom year that does not count toward crossover.",
+    "es": "🚀 <strong>Mercado Alcista en Bitcoin:</strong> Durante el próximo año el rendimiento sube a {perUnit}/unidad/mes y suma <strong>{amount}/mes</strong>; un año de auge que no cuenta para el cruce.",
+    "pt": "🚀 <strong>Mercado em Alta do Bitcoin:</strong> No próximo ano o rendimento sobe para {perUnit}/unidade/mês e soma <strong>{amount}/mês</strong> — um ano de boom que não conta para o cruzamento."
+  },
+  "evBtcBear": {
+    "en": "📉 <strong>Bitcoin Bear Market:</strong> For the coming year the yield drops to {perUnit}/unit/mo, changing passive cash flow by <strong>{amount}/mo</strong>.",
+    "es": "📉 <strong>Mercado Bajista en Bitcoin:</strong> Durante el próximo año el rendimiento cae a {perUnit}/unidad/mes y el flujo pasivo cambia <strong>{amount}/mes</strong>.",
+    "pt": "📉 <strong>Mercado em Baixa do Bitcoin:</strong> No próximo ano o rendimento cai para {perUnit}/unidade/mês e a renda passiva muda <strong>{amount}/mês</strong>."
+  },
+  "evBizBoom": {
+    "en": "🚀 <strong>Online Business Boom:</strong> A product launch lifts the yield to {perUnit}/unit/mo for the coming year — a boom year that does not count toward crossover.",
+    "es": "🚀 <strong>Auge en el Negocio Online:</strong> Un lanzamiento eleva el rendimiento a {perUnit}/unidad/mes durante el próximo año; un año de auge que no cuenta para el cruce.",
+    "pt": "🚀 <strong>Boom do Negócio Online:</strong> Um lançamento eleva o rendimento para {perUnit}/unidade/mês no próximo ano — um ano de boom que não conta para o cruzamento."
+  },
+  "evBizSlump": {
+    "en": "⚠️ <strong>Digital Ad Cost Hike:</strong> Increased ad competition cuts the yield to {perUnit}/unit/mo for the coming year.",
+    "es": "⚠️ <strong>Aumento de Costes Publicitarios:</strong> Más competencia reduce el rendimiento a {perUnit}/unidad/mes durante el próximo año.",
+    "pt": "⚠️ <strong>Alta no Custo de Anúncios:</strong> Mais concorrência reduz o rendimento para {perUnit}/unidade/mês no próximo ano."
+  },
+  "evCondo": {
+    "en": "🛠️ <strong>Condo Maintenance Repair:</strong> Emergency HVAC and roof repairs cost <strong>{amount}</strong> out of pocket.",
+    "es": "🛠️ <strong>Reparación en el Piso:</strong> El mantenimiento de emergencia costó <strong>{amount}</strong> del Efectivo Disponible.",
+    "pt": "🛠️ <strong>Reparo no Imóvel:</strong> A manutenção de emergência custou <strong>{amount}</strong> do Caixa Disponível."
+  },
+  "evForcedSale": {
+    "en": "🏦 <strong>Credit Limit Reached:</strong> Your debt passed the limit of {limit}, so the bank sold {units} asset units for {amount} to bring it back within it.",
+    "es": "🏦 <strong>Límite de Crédito Superado:</strong> Tu deuda superó el límite de {limit}, así que el banco vendió {units} unidades de activos por {amount} para devolverla a ese límite.",
+    "pt": "🏦 <strong>Limite de Crédito Atingido:</strong> Sua dívida passou do limite de {limit}, então o banco vendeu {units} unidades de ativos por {amount} para trazê-la de volta ao limite."
+  },
+  "tBankruptTitle": {
+    "en": "Bankrupt",
+    "es": "Bancarrota",
+    "pt": "Falência"
+  },
+  "tBankrupt": {
+    "en": "Your debt passed the credit limit of {limit} with nothing left to sell, so this run ended in bankruptcy. Press Reset to start a new one.",
+    "es": "Tu deuda superó el límite de crédito de {limit} sin nada más que vender, así que esta partida terminó en bancarrota. Pulsa Reiniciar para empezar una nueva.",
+    "pt": "Sua dívida passou do limite de crédito de {limit} sem nada mais para vender, então esta partida terminou em falência. Toque em Reiniciar para começar uma nova."
+  },
+  "evBankrupt": {
+    "en": "⛔ <strong>Bankruptcy:</strong> A debt of {debt} is past the credit limit of {limit} and there are no assets left to sell. The run is over.",
+    "es": "⛔ <strong>Bancarrota:</strong> Una deuda de {debt} supera el límite de crédito de {limit} y no quedan activos que vender. La partida ha terminado.",
+    "pt": "⛔ <strong>Falência:</strong> Uma dívida de {debt} passou do limite de crédito de {limit} e não restam ativos para vender. A partida terminou."
   }
 }

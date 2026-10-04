@@ -477,21 +477,24 @@ export const INSIGHT_METRICS = [
     id: 'mc-tactics',
     simulator: 'monte-carlo-fire',
     kind: 'shareSet',
+    // Each flag is "switched on for at least one simulated year of the
+    // flight". Runs recorded before that change carry the switches as they
+    // stood at landing, which undercounts a defense used and then dropped.
     fields: ['tacticJob', 'tacticCutSpend', 'tacticCashBuffer', 'tacticGuardrails', 'tacticDownsize', 'tacticPension'],
     labels: 'tactics',
     format: 'percent',
     minimum: 15,
     es: {
-      label: 'Defensas activadas ante una caída',
-      takeaway: 'Ante una caída del mercado, la defensa que más gente activa es {value} ({n} simulaciones).'
+      label: 'Defensas usadas durante el vuelo',
+      takeaway: 'La defensa que más pilotos usan en algún momento del vuelo es {value} ({n} simulaciones).'
     },
     en: {
-      label: 'Defenses switched on for a crash',
-      takeaway: 'Facing a market crash, the defense most people switch on is {value} ({n} simulations).'
+      label: 'Defenses used during a flight',
+      takeaway: 'The defense most pilots use at some point in a flight is {value} ({n} simulations).'
     },
     pt: {
-      label: 'Defesas ativadas face a uma queda',
-      takeaway: 'Face a uma queda do mercado, a defesa que mais gente ativa é {value} ({n} simulações).'
+      label: 'Defesas usadas durante o voo',
+      takeaway: 'A defesa que mais pilotos usam em algum momento do voo é {value} ({n} simulações).'
     }
   },
   {

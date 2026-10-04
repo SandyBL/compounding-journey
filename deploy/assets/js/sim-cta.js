@@ -241,6 +241,24 @@
   }
 
   /**
+   * Take the panel back down, for a simulator whose run was reset.
+   *
+   * A reset run has no outcome, so the reading of the previous one has to go
+   * rather than sit under a fresh game claiming to describe it. The text is
+   * cleared as well as hidden, and the next show() reveals it again as though
+   * it were the first.
+   */
+  function hide() {
+    if (!panel) return;
+    panel.hidden = true;
+    revealed = false;
+    setText(elements.eyebrow, '');
+    setText(elements.title, '');
+    setText(elements.body, '');
+    setText(elements.lever, '');
+  }
+
+  /**
    * Bring the panel to the visitor's attention on request.
    *
    * Only ever called from a control they pressed - the debrief modal in Monte
@@ -331,6 +349,7 @@
 
   window.SimCta = {
     show: show,
+    hide: hide,
     focus: focusPanel,
     money: money,
     integer: integer,
