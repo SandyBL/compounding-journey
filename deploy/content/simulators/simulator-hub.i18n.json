@@ -310,9 +310,9 @@
     "pt": "Placar Global"
   },
   "textSm": {
-    "en": "One leaderboard, shared by everyone who plays. Save your result under a name and it joins the ranking every other visitor sees — in English, Spanish and Portuguese alike.",
-    "es": "Una sola clasificación, compartida por todos los que juegan. Guarda tu resultado con un nombre y entrará en el ranking que ven los demás visitantes, tanto en español como en inglés o portugués.",
-    "pt": "Um único placar, compartilhado por todos os que jogam. Salve seu resultado com um nome e ele entra no ranking que todos os outros visitantes veem, em português, inglês ou espanhol."
+    "en": "One leaderboard, shared by everyone who plays. Save your result under a name and it joins the ranking every other visitor sees — in English, Spanish and Portuguese alike. Runs are ranked by Literacy IQ, and ties go to the higher final net worth, shown here in game points: the amounts in this game are illustrative units, not dollars, euros or reais.",
+    "es": "Una sola clasificación, compartida por todos los que juegan. Guarda tu resultado con un nombre y entrará en el ranking que ven los demás visitantes, tanto en español como en inglés o portugués. Las partidas se ordenan por IQ Financiero y, en caso de empate, gana el mayor patrimonio final, que aquí se muestra en puntos de juego: las cantidades de este juego son unidades ilustrativas, no euros, dólares ni reales.",
+    "pt": "Um único placar, compartilhado por todos os que jogam. Salve seu resultado com um nome e ele entra no ranking que todos os outros visitantes veem, em português, inglês ou espanhol. As partidas são ordenadas pelo IQ Financeiro e, em caso de empate, vence o maior patrimônio final, mostrado aqui em pontos de jogo: os valores deste jogo são unidades ilustrativas, não reais, dólares ou euros."
   },
   "playernameinputPlaceholder": {
     "en": "The name others will see",
@@ -320,9 +320,9 @@
     "pt": "O nome que os outros verão"
   },
   "px6": {
-    "en": "                        Save to Leaderboard\n",
-    "es": "                        Guardar en la Clasificación\n",
-    "pt": "                        Salvar no Placar\n"
+    "en": "Save to Leaderboard",
+    "es": "Guardar en la Clasificación",
+    "pt": "Salvar no Placar"
   },
   "langSwitchAriaLabel": {
     "en": "Language",
@@ -535,19 +535,19 @@
     "pt": "                    title: \"Quitar antecipadamente o financiamento de 3% o mais rápido possível.\",\n                    desc: \"Aplica liquidez em patrimônio imobilizado para eliminar a dívida de baixa taxa.\",\n"
   },
   "minHScreen43": {
-    "en": "                    lesson: \"Paying down low-interest debt guarantees a 3% return. While psychologically satisfying (+Happiness), it yields less than higher risk-free bond returns.\"\n",
-    "es": "                    lesson: \"Amortizar deuda barata garantiza un 3% de retorno. Brinda alivio psicológico (+Felicidad), pero rinde menos que inversiones seguras con mayor tasa.\"\n",
-    "pt": "                    lesson: \"Amortizar dívidas baratas garante 3% de retorno. Traz alívio psicológico (+Felicidade), mas rende menos do que investimentos seguros com retorno maior.\"\n"
+    "en": "                    lesson: \"Paying down low-interest debt earns a guaranteed 3%. It is psychologically satisfying (+Happiness), but it earns less than the 5.2% that safe, high-grade bonds pay — and it locks liquid cash into home equity.\"\n",
+    "es": "                    lesson: \"Amortizar deuda barata te da un 3% garantizado. Aporta alivio psicológico (+Felicidad), pero rinde menos que el 5,2% que pagan los bonos seguros de alta calidad, y deja inmovilizado un dinero que antes era líquido.\"\n",
+    "pt": "                    lesson: \"Amortizar dívida barata rende 3% garantidos. Traz alívio psicológico (+Felicidade), mas rende menos do que os 5,2% pagos por títulos seguros de alta qualidade, e imobiliza um dinheiro que antes era líquido.\"\n"
   },
   "minHScreen44": {
-    "en": "                    title: \"Keep the 3% mortgage and invest $20k in high-grade short term yields/index funds.\",\n                    desc: \"Arbitrages the interest spread (5.2% yield vs 3.0% mortgage cost).\",\n",
-    "es": "                    title: \"Mantener la deuda al 3% e invertir los €20k en bonos/índices que rinden más.\",\n                    desc: \"Aprovecha el diferencial de tasas (5,2% de rendimiento vs. 3,0% de coste de la deuda).\",\n",
-    "pt": "                    title: \"Manter a dívida de 3% e investir os R$20k em títulos/índices que rendem mais.\",\n                    desc: \"Aproveita o diferencial de juros (5,2% de rendimento vs. 3,0% de custo da dívida).\",\n"
+    "en": "                    title: \"Keep the 3% mortgage and invest the $20k in high-grade short-term bonds yielding 5.2%.\",\n                    desc: \"Captures the interest spread (5.2% yield vs 3.0% mortgage cost).\",\n",
+    "es": "                    title: \"Mantener la hipoteca al 3% e invertir los €20k en bonos a corto plazo de alta calidad que rinden el 5,2%.\",\n                    desc: \"Aprovecha el diferencial de tasas (5,2% de rendimiento vs. 3,0% de coste de la deuda).\",\n",
+    "pt": "                    title: \"Manter o financiamento de 3% e investir os R$20k em títulos de curto prazo de alta qualidade que rendem 5,2%.\",\n                    desc: \"Aproveita o diferencial de juros (5,2% de rendimento vs. 3,0% de custo da dívida).\",\n"
   },
   "minHScreen45": {
-    "en": "                    lesson: \"Good debt is low-rate fixed leverage. When risk-free investment returns exceed your debt cost, maintaining low-rate debt builds wealth faster.\"\n",
-    "es": "                    lesson: \"La deuda buena es apalancamiento fijo a tasas bajas. Cuando el rendimiento de activos seguros supera el coste de la deuda, invertir acelera la riqueza.\"\n",
-    "pt": "                    lesson: \"Dívida boa é alavancagem fixa a juros baixos. Quando o rendimento de ativos seguros supera o custo da dívida, investir acelera a riqueza.\"\n"
+    "en": "                    lesson: \"Good debt is cheap, fixed-rate leverage. When high-grade bonds pay more than your debt costs, keeping the cheap mortgage builds wealth faster. Those bonds are low-risk, not risk-free: their yield can fall when they mature, while the 3% mortgage rate stays fixed.\"\n",
+    "es": "                    lesson: \"La deuda buena es apalancamiento barato y a tipo fijo. Cuando los bonos de alta calidad pagan más de lo que cuesta tu deuda, mantener la hipoteca barata acelera la riqueza. Esos bonos son de bajo riesgo, no libres de riesgo: su rendimiento puede bajar al vencer, mientras que el 3% de la hipoteca no cambia.\"\n",
+    "pt": "                    lesson: \"Dívida boa é alavancagem barata e a juros fixos. Quando títulos de alta qualidade pagam mais do que a sua dívida custa, manter o financiamento barato acelera a riqueza. Esses títulos são de baixo risco, não isentos de risco: o rendimento pode cair no vencimento, enquanto os 3% do financiamento continuam fixos.\"\n"
   },
   "minHScreen46": {
     "en": "                    title: \"Take out an additional high-interest personal loan for a luxury vacation.\",\n                    desc: \"Piles on high-rate consumer debt for short-term gratification.\",\n",
@@ -641,8 +641,8 @@
   },
   "minHScreen64": {
     "en": "                    lesson: \"An employer match is an immediate 50-100% return on investment. Tax-advantaged accounts eliminate annual tax drag.\"\n",
-    "es": "                    lesson: \"La aportación de la empresa es dinero gratuito con retorno inmediato. Aprovechar los incentivos fiscales acelera la acumulación.\"\n",
-    "pt": "                    lesson: \"A contrapartida da empresa é dinheiro gratuito com retorno imediato. Aproveitar benefícios fiscais acelera a acumulação.\"\n"
+    "es": "                    lesson: \"La aportación de la empresa es un retorno inmediato del 50-100% sobre lo que aportas, y los planes con ventajas fiscales eliminan el lastre fiscal de cada año. Aprovecharlos acelera la acumulación.\"\n",
+    "pt": "                    lesson: \"A contrapartida da empresa é um retorno imediato de 50-100% sobre o que você aporta, e as contas com benefício fiscal eliminam o peso dos impostos de cada ano. Aproveitá-las acelera a acumulação.\"\n"
   },
   "minHScreen65": {
     "en": "                    title: \"Ignore the pension plan and invest only in standard taxable brokerage accounts.\",\n                    desc: \"Misses out on free match money and exposes dividends to annual tax drag.\",\n",
@@ -665,19 +665,19 @@
     "pt": "                    lesson: \"Recusar a contrapartida da empresa é o mesmo que rejeitar parte do seu próprio salário.\"\n"
   },
   "minHScreen69": {
-    "en": "                title: \"9. Eliminating Toxic Credit Card Debt\",\n                description: \"You have $4,000 in credit card debt charging 22% annual interest, and $4,000 in savings.\",\n",
-    "es": "                title: \"9. Eliminando Deudas Tóxicas de Tarjeta de Crédito\",\n                description: \"Tienes €4.000 en deudas de tarjeta de crédito al 22% de interés anual y €4.000 guardados en ahorros.\",\n",
-    "pt": "                title: \"9. Eliminando Dívidas Tóxicas de Cartão de Crédito\",\n                description: \"Você possui R$4.000 em dívidas no cartão de crédito a 22% de juros ao ano e R$4.000 guardados na poupança.\",\n"
+    "en": "                title: \"9. Eliminating Toxic Credit Card Debt\",\n                description: \"You have $4,000 in credit card debt charging 22% annual interest, and $5,000 in savings.\",\n",
+    "es": "                title: \"9. Eliminando Deudas Tóxicas de Tarjeta de Crédito\",\n                description: \"Tienes €4.000 en deudas de tarjeta de crédito al 22% de interés anual y €5.000 guardados en ahorros.\",\n",
+    "pt": "                title: \"9. Eliminando Dívidas Tóxicas de Cartão de Crédito\",\n                description: \"Você possui R$4.000 em dívidas no cartão de crédito a 22% de juros ao ano e R$5.000 guardados na poupança.\",\n"
   },
   "minHScreen70": {
-    "en": "                    title: \"Use savings to pay off the 22% credit card debt immediately.\",\n                    desc: \"Eliminates a high-rate financial drain and secures a guaranteed 22% return.\",\n",
-    "es": "                    title: \"Usar los ahorros para pagar la tarjeta de crédito de inmediato.\",\n                    desc: \"Elimina una fuga financiera severa y obtiene un retorno garantizado del 22%.\",\n",
-    "pt": "                    title: \"Usar a poupança para quitar a dívida do cartão de crédito imediatamente.\",\n                    desc: \"Elimina um dreno financeiro severo e obtém um retorno garantido de 22%.\",\n"
+    "en": "                    title: \"Pay off the 22% card from savings now, keeping $1,000 as a starter buffer.\",\n                    desc: \"Ends a 22% drain — about $880 a year in interest — without emptying the cushion.\",\n",
+    "es": "                    title: \"Pagar ya la tarjeta al 22% con los ahorros y conservar €1.000 como colchón inicial.\",\n                    desc: \"Elimina una fuga del 22% (unos €880 al año en intereses) sin vaciar el colchón.\",\n",
+    "pt": "                    title: \"Quitar já o cartão de 22% com a poupança e manter R$1.000 como reserva inicial.\",\n                    desc: \"Elimina um dreno de 22% (cerca de R$880 por ano em juros) sem zerar a reserva.\",\n"
   },
   "minHScreen71": {
-    "en": "                    lesson: \"Paying off 22% credit card debt is equivalent to earning a risk-free, tax-free 22% return while lifting monthly debt anxiety.\"\n",
-    "es": "                    lesson: \"Pagar una deuda del 22% equivale a una inversión sin riesgo y libre de impuestos con un retorno del 22% anual.\"\n",
-    "pt": "                    lesson: \"Pagar uma dívida de 22% equivale a um investimento sem risco e isento de impostos com retorno de 22% ao ano.\"\n"
+    "en": "                    lesson: \"Paying off 22% card debt is a guaranteed, tax-free 22% return: about $880 a year you no longer pay in interest. Paying a debt with cash does not make you richer on the day — it stops the leak. Keeping a small starter buffer means the next surprise does not go straight back onto the card; then keep building toward a full emergency fund.\"\n",
+    "es": "                    lesson: \"Pagar una deuda de tarjeta al 22% equivale a un retorno garantizado y libre de impuestos del 22%: unos €880 al año que dejas de pagar en intereses. Pagar deuda con efectivo no te hace más rico ese día; detiene la fuga. Conservar un pequeño colchón inicial evita que el próximo imprevisto vuelva directo a la tarjeta; después, sigue construyendo un fondo de emergencia completo.\"\n",
+    "pt": "                    lesson: \"Quitar uma dívida de cartão a 22% equivale a um retorno garantido e isento de impostos de 22%: cerca de R$880 por ano que você deixa de pagar em juros. Pagar dívida com dinheiro não deixa você mais rico no mesmo dia; estanca o vazamento. Manter uma pequena reserva inicial evita que o próximo imprevisto volte direto para o cartão; depois, continue construindo uma reserva de emergência completa.\"\n"
   },
   "minHScreen72": {
     "en": "                    title: \"Pay minimum monthly balance while investing $4,000 in stocks expected to yield 8%.\",\n                    desc: \"Loses money mathematically by earning 8% while paying 22%.\",\n",
@@ -745,9 +745,9 @@
     "pt": "                    title: \"Fundo de Índice Global diversificado (Taxa de 0,03%) cobrindo empresas de Qualidade e Crescimento.\",\n                    desc: \"Captura o retorno global do mercado com custo operacional quase zero.\",\n"
   },
   "minHScreen85": {
-    "en": "                    lesson: \"Low-cost index funds guarantee you capture total market returns without the high risk of individual company failures.\"\n",
-    "es": "                    lesson: \"Los fondos indexados globales de bajo coste garantizan el rendimiento del mercado sin los riesgos de quiebra individual.\"\n",
-    "pt": "                    lesson: \"Fundos de índice globais de baixo custo garantem o retorno do mercado sem os riscos de falência de empresas individuais.\"\n"
+    "en": "                    lesson: \"Low-cost index funds deliver close to the market's return, minus a small fee, without the risk of any single company failing. That return is not guaranteed: when the market falls, the fund falls with it.\"\n",
+    "es": "                    lesson: \"Los fondos indexados de bajo coste obtienen un rendimiento muy cercano al del mercado, menos una pequeña comisión, sin el riesgo de quiebra de una sola empresa. Ese rendimiento no está garantizado: cuando el mercado cae, el fondo cae con él.\"\n",
+    "pt": "                    lesson: \"Fundos de índice de baixo custo entregam um retorno muito próximo ao do mercado, menos uma pequena taxa, sem o risco de falência de uma única empresa. Esse retorno não é garantido: quando o mercado cai, o fundo cai junto.\"\n"
   },
   "minHScreen86": {
     "en": "                    title: \"Actively pick 3 viral penny stocks recommended on internet forums.\",\n                    desc: \"Takes unhedged concentration risk in unproven businesses.\",\n",
@@ -775,14 +775,14 @@
     "pt": "                title: \"12. Diversificação de Classes de Ativos\",\n                description: \"Você deseja construir um portfólio de investimentos resiliente.\",\n"
   },
   "minHScreen91": {
-    "en": "                    title: \"Balanced Asset Allocation: Stocks, Global Real Estate, Short Bonds & Gold.\",\n                    desc: \"Diversifies across non-correlated asset classes for smooth growth.\",\n",
-    "es": "                    title: \"Asignación Equilibrada: Acciones Globales, Inmuebles, Renta Fija y Oro.\",\n                    desc: \"Diversifica entre diferentes clases no correlacionadas para un crecimiento constante.\",\n",
-    "pt": "                    title: \"Alocação Equilibrada: Ações Globais, Imóveis, Títulos Renda Fixa e Ouro.\",\n                    desc: \"Diversifica entre classes não correlacionadas para um crescimento consistente.\",\n"
+    "en": "                    title: \"Balanced Asset Allocation: Stocks, Global Real Estate, Short Bonds & Gold.\",\n                    desc: \"Diversifies across low-correlated asset classes for a smoother ride.\",\n",
+    "es": "                    title: \"Asignación Equilibrada: Acciones Globales, Inmuebles, Renta Fija y Oro.\",\n                    desc: \"Diversifica entre clases de activos poco correlacionadas para un recorrido más estable.\",\n",
+    "pt": "                    title: \"Alocação Equilibrada: Ações Globais, Imóveis, Títulos Renda Fixa e Ouro.\",\n                    desc: \"Diversifica entre classes de ativos pouco correlacionadas para uma trajetória mais estável.\",\n"
   },
   "minHScreen92": {
-    "en": "                    lesson: \"True diversification across asset classes reduces portfolio volatility without sacrificing long-term growth potential.\"\n",
-    "es": "                    lesson: \"La verdadera diversificación reduce la volatilidad de la cartera sin sacrificar el potencial de crecimiento a largo plazo.\"\n",
-    "pt": "                    lesson: \"A verdadeira diversificação reduz a volatilidade da carteira sem sacrificar o potencial de crescimento de longo prazo.\"\n"
+    "en": "                    lesson: \"Diversifying across low-correlated asset classes reduces portfolio volatility. It usually costs some expected return compared with an all-stock portfolio — a price worth paying for a portfolio you can actually hold through a crash.\"\n",
+    "es": "                    lesson: \"Diversificar entre clases de activos poco correlacionadas reduce la volatilidad de la cartera. Suele costar algo de rentabilidad esperada frente a una cartera solo de acciones, un precio que compensa si te permite mantener la cartera durante una caída.\"\n",
+    "pt": "                    lesson: \"Diversificar entre classes de ativos pouco correlacionadas reduz a volatilidade da carteira. Costuma custar parte do retorno esperado em relação a uma carteira só de ações, um preço que vale a pena se permite manter a carteira durante uma queda.\"\n"
   },
   "minHScreen93": {
     "en": "                    title: \"Put 100% of total liquid net worth into Bitcoin & altcoins.\",\n                    desc: \"Exposes entire capital base to extreme regulatory & sentiment swings.\",\n",
@@ -939,11 +939,6 @@
     "es": "            // Contenedor de opciones\n",
     "pt": "            // Container para as 3 opções\n"
   },
-  "minHScreen124": {
-    "en": "                { key: 'optionA', label: 'Option A', data: current.optionA },\n                { key: 'optionB', label: 'Option B', data: current.optionB },\n                { key: 'optionC', label: 'Option C', data: current.optionC }\n",
-    "es": "                { key: 'optionA', label: 'Opción A', data: current.optionA },\n                { key: 'optionB', label: 'Opción B', data: current.optionB },\n                { key: 'optionC', label: 'Opción C', data: current.optionC }\n",
-    "pt": "                { key: 'optionA', label: 'Opção A', data: current.optionA },\n                { key: 'optionB', label: 'Opção B', data: current.optionB },\n                { key: 'optionC', label: 'Opção C', data: current.optionC }\n"
-  },
   "minHScreen125": {
     "en": "            // Ensure cards display correctly\n",
     "es": "            // Muestra u oculta elementos correctamente\n",
@@ -963,11 +958,6 @@
     "en": "            // Update Happiness (Clamped 0% to 100%)\n",
     "es": "            // Actualizar Felicidad (Limitada entre 0% y 100%)\n",
     "pt": "            // Atualizar Felicidade (Limitada entre 0% e 100%)\n"
-  },
-  "minHScreen129": {
-    "en": "            // Update Literacy IQ (Starts at 50%, capped at 100%, can drop into negative numbers)\n",
-    "es": "            // Actualizar IQ Financiero (Empieza en 50%, máximo 100%, puede ser negativo)\n",
-    "pt": "            // Atualizar IQ Financeiro (Inicia em 50%, teto de 100%, pode assumir valores negativos)\n"
   },
   "minHScreen130": {
     "en": "            // Update Quality Points & Category Score\n",
@@ -994,11 +984,6 @@
     "es": "        // ACTUALIZAR PANTALLA DE MÉTRICAS\n",
     "pt": "        // ATUALIZAR EXIBIÇÃO DAS MÉTRICAS\n"
   },
-  "minHScreen135": {
-    "en": "            document.getElementById('netWorthDisplay').innerText = `$${currentState.netWorth.toLocaleString()}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mo`;\n",
-    "es": "            document.getElementById('netWorthDisplay').innerText = `€${currentState.netWorth.toLocaleString('es-ES')}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}€${currentState.cashFlow}/mes`;\n",
-    "pt": "            document.getElementById('netWorthDisplay').innerText = `R$${currentState.netWorth.toLocaleString('pt-BR')}`;\n            document.getElementById('cashFlowDisplay').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}R$${currentState.cashFlow}/mês`;\n"
-  },
   "minHScreen136": {
     "en": "        // SHOW DEBRIEF\n",
     "es": "        // MOSTRAR ANÁLISIS FINANCIERO\n",
@@ -1008,26 +993,6 @@
     "en": "            // Construct impact tags\n",
     "es": "            // Generar etiquetas de impacto\n",
     "pt": "            // Criar tags de impacto\n"
-  },
-  "minHScreen138": {
-    "en": "                    Net Worth: ${option.impact.netWorthDelta >= 0 ? '+' : ''}$${option.impact.netWorthDelta.toLocaleString()}\n",
-    "es": "                    Patrimonio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}€${option.impact.netWorthDelta.toLocaleString('es-ES')}\n",
-    "pt": "                    Patrimônio: ${option.impact.netWorthDelta >= 0 ? '+' : ''}R$${option.impact.netWorthDelta.toLocaleString('pt-BR')}\n"
-  },
-  "minHScreen139": {
-    "en": "                    Cash Flow: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}$${option.impact.cashFlowDelta}/mo\n",
-    "es": "                    Flujo de Caja: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}€${option.impact.cashFlowDelta}/mes\n",
-    "pt": "                    Fluxo de Caixa: ${option.impact.cashFlowDelta >= 0 ? '+' : ''}R$${option.impact.cashFlowDelta}/mês\n"
-  },
-  "minHScreen140": {
-    "en": "                    Happiness: ${hDelta >= 0 ? '+' : ''}${hDelta}%\n",
-    "es": "                    Felicidad: ${hDelta >= 0 ? '+' : ''}${hDelta}%\n",
-    "pt": "                    Felicidade: ${hDelta >= 0 ? '+' : ''}${hDelta}%\n"
-  },
-  "minHScreen141": {
-    "en": "                    IQ Impact: ${option.impact.literacyDeltaText}\n",
-    "es": "                    Impacto en IQ: ${option.impact.literacyDeltaText}\n",
-    "pt": "                    Impacto no IQ: ${option.impact.literacyDeltaText}\n"
   },
   "minHScreen142": {
     "en": "            // Debrief text lesson\n",
@@ -1043,16 +1008,6 @@
     "en": "        // SHOW FINAL RESULTS\n",
     "es": "        // MOSTRAR RESULTADOS FINALES\n",
     "pt": "        // EXIBIR RESULTADOS FINAIS\n"
-  },
-  "minHScreen145": {
-    "en": "            // Populate final stats\n            document.getElementById('finalNetWorth').innerText = `$${currentState.netWorth.toLocaleString()}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}$${currentState.cashFlow}/mo`;\n",
-    "es": "            // Llenar estadísticas finales\n            document.getElementById('finalNetWorth').innerText = `€${currentState.netWorth.toLocaleString('es-ES')}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}€${currentState.cashFlow}/mes`;\n",
-    "pt": "            // Preencher estatísticas finais\n            document.getElementById('finalNetWorth').innerText = `R$${currentState.netWorth.toLocaleString('pt-BR')}`;\n            document.getElementById('finalCashFlow').innerText = `${currentState.cashFlow >= 0 ? '+' : ''}R$${currentState.cashFlow}/mês`;\n"
-  },
-  "minHScreen146": {
-    "en": "            // ARCHETYPE & EVALUATION LOGIC\n",
-    "es": "            // LÓGICA DE ARQUETIPO Y EVALUACIÓN\n",
-    "pt": "            // LÓGICA DE ARQUÉTIPO E AVALIAÇÃO\n"
   },
   "minHScreen147": {
     "en": "                archetype = \"The Freedom Strategist\";\n                archetypeDescription = \"Exemplary financial literacy! You systematically prioritize cash-generating assets, avoid high-fee traps, optimize leverage, and balance current happiness with future compounding.\";\n",
@@ -1129,11 +1084,6 @@
     "es": "                        label: 'Patrimonio Neto (€)',\n",
     "pt": "                        label: 'Patrimônio Líquido (R$)',\n"
   },
-  "minHScreen162": {
-    "en": "                                callback: value => '$' + value.toLocaleString()\n",
-    "es": "                                callback: value => '€' + value.toLocaleString('es-ES')\n",
-    "pt": "                                callback: value => 'R$' + value.toLocaleString('pt-BR')\n"
-  },
   "minHScreen171": {
     "en": "        // RESET GAME\n",
     "es": "        // REINICIAR EL JUEGO\n",
@@ -1185,14 +1135,14 @@
     "pt": "Como funciona"
   },
   "explHow1": {
-    "en": "You are dealt a sequence of scenarios. Each one offers two or more responses, and none of them is marked correct — because none of them is. Buying the cheaper car protects your cash flow and costs you something you wanted; taking the second job raises your income and spends the one resource you cannot buy back. Every choice moves all four meters, and the trade-off is the lesson.",
-    "es": "Recibes una secuencia de escenarios. Cada uno ofrece dos o más respuestas, y ninguna está marcada como correcta, porque ninguna lo es. Comprar el coche más barato protege tu flujo de caja y te cuesta algo que querías; aceptar el segundo trabajo sube tus ingresos y gasta el único recurso que no puedes recomprar. Cada elección mueve los cuatro indicadores, y esa tensión es la lección.",
-    "pt": "Você recebe uma sequência de cenários. Cada um oferece duas ou mais respostas, e nenhuma está marcada como correta, porque nenhuma o é. Comprar o carro mais barato protege o seu fluxo de caixa e custa a você algo que você queria; aceitar o segundo emprego aumenta a renda e gasta o único recurso que você não pode comprar de volta. Cada escolha move os quatro indicadores, e essa tensão é a lição."
+    "en": "You play fifteen scenarios in a fixed order, drawn from five areas: investing, debt, spending, tax and retirement, and risk and protection. Each one offers exactly three options, dealt in a fresh random order every game, so where an option sits on screen tells you nothing about it. Every option has a fixed quality score — one of the three is the best answer — and a fixed effect on your net worth, monthly cash flow and happiness, which you see after choosing, together with the lesson behind it.",
+    "es": "Juegas quince escenarios en un orden fijo, repartidos en cinco áreas: inversión, deuda, gasto, impuestos y jubilación, y riesgo y protección. Cada uno ofrece exactamente tres opciones, que se reparten en un orden aleatorio nuevo en cada partida, así que el lugar que ocupa una opción en pantalla no dice nada de ella. Cada opción tiene una puntuación de calidad fija (una de las tres es la mejor respuesta) y un efecto fijo sobre tu patrimonio, tu flujo de caja mensual y tu felicidad, que ves después de elegir junto con la lección que hay detrás.",
+    "pt": "Você joga quinze cenários numa ordem fixa, distribuídos em cinco áreas: investimentos, dívidas, gastos, impostos e aposentadoria, e risco e proteção. Cada um oferece exatamente três opções, embaralhadas numa nova ordem a cada partida, então a posição de uma opção na tela não diz nada sobre ela. Cada opção tem uma pontuação de qualidade fixa (uma das três é a melhor resposta) e um efeito fixo sobre o seu patrimônio, o seu fluxo de caixa mensal e a sua felicidade, que você vê depois de escolher, junto com a lição por trás dela."
   },
   "explHow2": {
-    "en": "The meters carry forward. A decision made early changes what the later scenarios can do to you, which is the closest a short session can get to showing how compounding actually behaves — slowly, and then all at once. At the end the simulator names the pattern your choices formed, as an archetype. That label is a summary of what you did, not a verdict on who you are.",
-    "es": "Los indicadores se arrastran. Una decisión tomada al principio cambia lo que los escenarios posteriores pueden hacerte, que es lo más cerca que una sesión corta puede estar de mostrar cómo se comporta el interés compuesto: despacio, y luego de golpe. Al final el simulador nombra el patrón que formaron tus elecciones, como un arquetipo. Esa etiqueta resume lo que hiciste, no dictamina quién eres.",
-    "pt": "Os indicadores acumulam-se. Uma decisão tomada no início muda o que os cenários seguintes podem fazer com você, que é o mais perto que uma sessão curta consegue estar de mostrar como os juros compostos se comportam: devagar, e depois de repente. No fim, o simulador nomeia o padrão que as suas escolhas formaram, como um arquétipo. Esse rótulo resume o que você fez, não determina quem você é."
+    "en": "The effects do not interact. No scenario changes because of what you chose earlier, and monthly cash flow is tracked on its own rather than added to net worth. Your Literacy IQ starts at 50% and moves with the quality of each answer — up for the best one, roughly unchanged for a reasonable one, down for a costly one — so fifteen best answers end at exactly 100% and the final figure is the share of all available quality points you collected. That figure sets one of four levels, from The Freedom Strategist down to The Vulnerable Consumer, and the results screen then reviews all fifteen answers against the best option for each.",
+    "es": "Los efectos no interactúan. Ningún escenario cambia por lo que elegiste antes, y el flujo de caja mensual se lleva por separado, sin sumarse al patrimonio. Tu IQ Financiero empieza en el 50% y se mueve con la calidad de cada respuesta: sube con la mejor, apenas cambia con una razonable y baja con una costosa. Así, quince mejores respuestas terminan exactamente en el 100%, y la cifra final es la parte de todos los puntos de calidad disponibles que conseguiste. Esa cifra fija uno de cuatro niveles, desde El Estratega de la Libertad hasta El Consumidor Vulnerable, y la pantalla de resultados repasa después las quince respuestas frente a la mejor opción de cada escenario.",
+    "pt": "Os efeitos não interagem. Nenhum cenário muda por causa do que você escolheu antes, e o fluxo de caixa mensal é acompanhado à parte, sem ser somado ao patrimônio. Seu IQ Financeiro começa em 50% e se move com a qualidade de cada resposta: sobe com a melhor, quase não muda com uma razoável e cai com uma custosa. Assim, quinze melhores respostas terminam exatamente em 100%, e o valor final é a parcela de todos os pontos de qualidade disponíveis que você conquistou. Esse valor define um de quatro níveis, de O Estrategista da Liberdade a O Consumidor Vulnerável, e a tela de resultados revisa depois as quinze respostas em comparação com a melhor opção de cada cenário."
   },
   "explAssumptionsTitle": {
     "en": "What it assumes",
@@ -1200,9 +1150,9 @@
     "pt": "O que pressupõe"
   },
   "explAssumption1": {
-    "en": "The four meters are relative, not denominated in any currency. They exist to be compared with each other and with where they were a decision ago.",
-    "es": "Los cuatro indicadores son relativos, no están expresados en ninguna moneda. Existen para compararse entre sí y con el punto donde estaban una decisión antes.",
-    "pt": "Os quatro indicadores são relativos, não estão expressos em nenhuma moeda. Existem para serem comparados entre si e com o ponto onde estavam uma decisão antes."
+    "en": "The amounts are illustrative game units. Each language version labels them with a familiar symbol — $, € or R$ — but the figures are the same in all three and nothing is converted, which is why the shared leaderboard shows final net worth as plain game points.",
+    "es": "Las cantidades son unidades ilustrativas del juego. Cada versión las etiqueta con un símbolo conocido ($, € o R$), pero las cifras son las mismas en los tres idiomas y no se convierte nada; por eso la clasificación compartida muestra el patrimonio final como simples puntos de juego.",
+    "pt": "Os valores são unidades ilustrativas do jogo. Cada versão os rotula com um símbolo conhecido ($, € ou R$), mas os números são os mesmos nos três idiomas e nada é convertido; por isso o placar compartilhado mostra o patrimônio final como simples pontos de jogo."
   },
   "explAssumption2": {
     "en": "Scenarios are written to be recognizable, not to match any one country's tax code, benefits system or cost of living.",
@@ -1230,14 +1180,14 @@
     "pt": "Um exemplo resolvido"
   },
   "explExample1": {
-    "en": "A scenario offers a promotion that raises your income by a fifth but adds an hour of commuting each way. Taking it lifts wealth and cash flow immediately and pushes happiness down. Declining it holds happiness and leaves the other two flat.",
-    "es": "Un escenario ofrece un ascenso que sube tus ingresos una quinta parte pero añade una hora de trayecto en cada sentido. Aceptarlo eleva de inmediato el patrimonio y el flujo de caja, y baja el bienestar. Rechazarlo mantiene el bienestar y deja los otros dos planos.",
-    "pt": "Um cenário oferece uma promoção que aumenta o rendimento num quinto mas acrescenta uma hora de trajeto em cada sentido. Aceitar eleva de imediato o patrimônio e o fluxo de caixa, e baixa o bem-estar. Recusar mantém o bem-estar e deixa os outros dois planos."
+    "en": "Scenario 9 gives you $4,000 of credit card debt at 22% and $5,000 in savings. The best answer is to pay the card off while keeping $1,000 as a starter buffer: net worth rises by $880, the interest you no longer pay in a year, cash flow improves by $120 a month and your IQ goes up. Paying only the minimum while investing the money at an expected 8% costs you $2,000 of net worth, and ignoring the balance to keep spending is the worst answer in the scenario.",
+    "es": "El escenario 9 te da €4.000 de deuda de tarjeta al 22% y €5.000 en ahorros. La mejor respuesta es pagar la tarjeta conservando €1.000 como colchón inicial: el patrimonio sube €880, los intereses que dejas de pagar en un año, el flujo de caja mejora €120 al mes y tu IQ sube. Pagar solo el mínimo mientras inviertes el dinero a un 8% esperado te cuesta €2.000 de patrimonio, e ignorar el saldo para seguir gastando es la peor respuesta del escenario.",
+    "pt": "O cenário 9 dá a você R$4.000 de dívida no cartão a 22% e R$5.000 de poupança. A melhor resposta é quitar o cartão mantendo R$1.000 como reserva inicial: o patrimônio sobe R$880, os juros que você deixa de pagar em um ano, o fluxo de caixa melhora R$120 por mês e o seu IQ sobe. Pagar só o mínimo enquanto investe o dinheiro a 8% esperados custa R$2.000 de patrimônio, e ignorar o saldo para continuar gastando é a pior resposta do cenário."
   },
   "explExample2": {
-    "en": "Neither is the right answer on its own. What decides it is the state you are already in: with no emergency fund, the income is what buys you the ability to survive the next scenario, and the happiness cost is temporary. With a cushion already built, spending an extra ten hours a week to grow a number you are not using is the more expensive choice. Run the same scenario twice from different starting states and the meters make that argument for you.",
-    "es": "Ninguna es la respuesta correcta por sí sola. Lo que decide es el estado del que partes: sin fondo de emergencia, esos ingresos son lo que te compra la capacidad de sobrevivir al siguiente escenario, y el coste en bienestar es temporal. Con un colchón ya construido, gastar diez horas más a la semana para hacer crecer una cifra que no estás usando es la opción más cara. Ejecuta el mismo escenario dos veces desde estados distintos y los indicadores te harán ese argumento.",
-    "pt": "Nenhuma é a resposta certa por si só. O que decide é o estado de que parte: sem fundo de emergência, essa renda é o que compra para você a capacidade de sobreviver ao cenário seguinte, e o custo em bem-estar é temporário. Com uma almofada já construída, gastar mais dez horas por semana para fazer crescer um número que você não está usando é a opção mais cara. Rode o mesmo cenário duas vezes a partir de estados diferentes e os indicadores fazem esse argumento sozinhos."
+    "en": "The same scenario shows why the score is not just net worth. Paying a debt with cash does not make you richer on the day — it stops a 22% leak — so the gain shown is the interest saved, not the balance repaid. And the buffer matters: emptying savings to zero would put the next surprise straight back onto the card, which is what the emergency-fund scenario later in the run is about.",
+    "es": "El mismo escenario muestra por qué la puntuación no es solo patrimonio. Pagar una deuda con efectivo no te hace más rico ese día, sino que detiene una fuga del 22%; por eso la ganancia que se muestra son los intereses ahorrados, no el saldo devuelto. Y el colchón importa: vaciar los ahorros por completo llevaría el próximo imprevisto directo a la tarjeta, que es justo de lo que trata el escenario del fondo de emergencia más adelante.",
+    "pt": "O mesmo cenário mostra por que a pontuação não é só patrimônio. Pagar uma dívida com dinheiro não deixa você mais rico no mesmo dia, e sim estanca um vazamento de 22%; por isso o ganho mostrado são os juros economizados, não o saldo quitado. E a reserva importa: zerar a poupança levaria o próximo imprevisto direto para o cartão, que é justamente o tema do cenário da reserva de emergência mais adiante."
   },
   "explFaqQ1": {
     "en": "Is there a way to win?",
@@ -1245,9 +1195,9 @@
     "pt": "Há forma de ganhar?"
   },
   "explFaqA1": {
-    "en": "No, and that is deliberate. A run that maximizes wealth while flattening happiness is not a better outcome than one that balances them — it is a different set of trade-offs, and seeing that clearly is the whole exercise.",
-    "es": "No, y es deliberado. Una partida que maximiza el patrimonio aplanando el bienestar no es mejor resultado que otra que los equilibra: es un conjunto distinto de compromisos, y verlo con claridad es todo el ejercicio.",
-    "pt": "Não, e é deliberado. Uma sessão que maximiza o patrimônio achatando o bem-estar não é melhor resultado do que outra que os equilibra: é um conjunto diferente de compromissos, e vê-lo com clareza é todo o exercício."
+    "en": "Yes. The score is ranked and every scenario has one best option, so choosing it fifteen times gives 100% and the top level. The meters still show the trade-offs: the extreme-frugality answer to the raise scenario adds the most cash flow and costs the most happiness, and it scores below the balanced answer. The useful part of a run is the answer review at the end, which shows where your choices and the best ones parted ways, and why.",
+    "es": "Sí. La puntuación se clasifica y cada escenario tiene una mejor opción, así que elegirla las quince veces da el 100% y el nivel más alto. Aun así, los indicadores muestran los compromisos: la respuesta de frugalidad extrema en el escenario del aumento de sueldo es la que más flujo de caja añade y la que más felicidad cuesta, y puntúa por debajo de la respuesta equilibrada. Lo útil de una partida es la revisión de respuestas del final, que muestra dónde se separaron tus decisiones de las mejores y por qué.",
+    "pt": "Sim. A pontuação é classificada e cada cenário tem uma melhor opção, então escolhê-la as quinze vezes dá 100% e o nível mais alto. Ainda assim, os indicadores mostram as trocas: a resposta de frugalidade extrema no cenário do aumento de salário é a que mais acrescenta fluxo de caixa e a que mais custa em felicidade, e pontua abaixo da resposta equilibrada. O que há de útil numa partida é a revisão das respostas no final, que mostra onde as suas escolhas se afastaram das melhores e por quê."
   },
   "explFaqQ2": {
     "en": "Does it store anything I enter?",
@@ -1255,9 +1205,9 @@
     "pt": "A ferramenta guarda algo do que eu insiro?"
   },
   "explFaqA2": {
-    "en": "The scenario run itself does not: every choice you make is evaluated in your browser and nothing about it is sent anywhere. The one exception is the leaderboard, and only if you ask for it — pressing Save sends the name you typed, your literacy score and your closing net worth to a shared table, because a ranking other people can see is the whole point of it. Nothing identifies you beyond the name you chose, and skipping the save button leaves no trace at all.",
-    "es": "La partida en sí no: cada decisión se evalúa en tu navegador y nada de ello se envía a ningún sitio. La única excepción es la clasificación, y solo si tú lo pides: al pulsar Guardar se envían el nombre que escribiste, tu puntuación de IQ financiero y tu patrimonio final a una tabla compartida, porque un ranking que otros puedan ver es precisamente su razón de ser. Nada te identifica más allá del nombre que elijas, y si no pulsas Guardar no queda ningún rastro.",
-    "pt": "A partida em si não: cada decisão é avaliada no seu navegador e nada disso é enviado a lugar algum. A única exceção é o placar, e somente se você pedir: ao tocar em Salvar, o nome que você digitou, sua pontuação de conhecimento financeiro e seu patrimônio final vão para uma tabela compartilhada, porque um ranking que outras pessoas possam ver é justamente o objetivo dele. Nada o identifica além do nome escolhido, e se você não salvar, não fica nenhum rastro."
+    "en": "The scenario run itself does not: every choice is evaluated in your browser and nothing about it is sent anywhere unless you ask. Pressing Save sends one row to the shared leaderboard: the name you typed, your Literacy IQ, your final net worth, your percentage in each of the five categories, the sequence of options you picked (one letter per scenario), your final happiness and monthly cash flow, and the language of the page you played on. The name, the score and the net worth appear on the board; the rest is used, in aggregate, to see which decisions readers find hardest. Nothing identifies you beyond the name you chose, and skipping the save button leaves no trace at all.",
+    "es": "La partida en sí no: cada decisión se evalúa en tu navegador y nada se envía a ningún sitio salvo que tú lo pidas. Al pulsar Guardar se envía una fila a la clasificación compartida: el nombre que escribiste, tu IQ Financiero, tu patrimonio final, tu porcentaje en cada una de las cinco categorías, la secuencia de opciones que elegiste (una letra por escenario), tu felicidad y tu flujo de caja mensual finales, y el idioma de la página en la que jugaste. El nombre, la puntuación y el patrimonio aparecen en la clasificación; el resto se usa, de forma agregada, para ver qué decisiones les cuestan más a los lectores. Nada te identifica más allá del nombre que elijas, y si no pulsas Guardar no queda ningún rastro.",
+    "pt": "A partida em si não: cada decisão é avaliada no seu navegador e nada é enviado a lugar algum, a menos que você peça. Ao tocar em Salvar, uma linha vai para o placar compartilhado: o nome que você digitou, seu IQ Financeiro, seu patrimônio final, sua porcentagem em cada uma das cinco categorias, a sequência de opções que você escolheu (uma letra por cenário), sua felicidade e seu fluxo de caixa mensal finais, e o idioma da página em que você jogou. O nome, a pontuação e o patrimônio aparecem no placar; o restante é usado, de forma agregada, para ver quais decisões os leitores acham mais difíceis. Nada identifica você além do nome escolhido, e se você não salvar, não fica nenhum rastro."
   },
   "explFaqQ3": {
     "en": "Which of the other tools should I use next?",
@@ -1325,9 +1275,9 @@
     "pt": "                container.innerHTML = leaderboardNotice('Não foi possível acessar o placar global. Seu resultado continua nesta página: tente salvá-lo novamente em instantes.');\n"
   },
   "lbNetWorthCell": {
-    "en": "                        <span class=\"text-forest-800 font-bold\">$${entry.tiebreak.toLocaleString()}</span>\n",
-    "es": "                        <span class=\"text-forest-800 font-bold\">€${entry.tiebreak.toLocaleString('es-ES')}</span>\n",
-    "pt": "                        <span class=\"text-forest-800 font-bold\">R$${entry.tiebreak.toLocaleString('pt-BR')}</span>\n"
+    "en": "                        <span class=\"text-forest-800 font-bold\" title=\"Final net worth, in game points\">${formatNumber(entry.tiebreak)} pts</span>\n",
+    "es": "                        <span class=\"text-forest-800 font-bold\" title=\"Patrimonio final, en puntos de juego\">${formatNumber(entry.tiebreak)} pts</span>\n",
+    "pt": "                        <span class=\"text-forest-800 font-bold\" title=\"Patrimônio final, em pontos de jogo\">${formatNumber(entry.tiebreak)} pts</span>\n"
   },
   "lbNameRequired": {
     "en": "                alert(\"Please enter a name or initials — it is what other visitors will see on the leaderboard.\");\n",
@@ -1340,9 +1290,9 @@
     "pt": "                    alert(\"Salvo. Seu resultado já está no placar global, visível para todos os visitantes.\");\n"
   },
   "lbSaveFailed": {
-    "en": "                    alert(\"Your result could not be sent to the global leaderboard. Check your connection and try again.\");\n",
-    "es": "                    alert(\"No se pudo enviar tu resultado a la clasificación global. Comprueba tu conexión e inténtalo de nuevo.\");\n",
-    "pt": "                    alert(\"Não foi possível enviar seu resultado ao placar global. Verifique sua conexão e tente novamente.\");\n"
+    "en": "                        alert(\"Your result could not be sent to the global leaderboard. Check your connection and try again.\");\n",
+    "es": "                        alert(\"No se pudo enviar tu resultado a la clasificación global. Comprueba tu conexión e inténtalo de nuevo.\");\n",
+    "pt": "                        alert(\"Não foi possível enviar seu resultado ao placar global. Verifique sua conexão e tente novamente.\");\n"
   },
   "lbEmpty": {
     "en": "                container.innerHTML = leaderboardNotice('No results on the global leaderboard yet. Save yours and you will be the first.');\n",
@@ -1358,5 +1308,90 @@
     "en": "Compounding Journey. For educational purposes only. Not formal financial advice.",
     "es": "Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
     "pt": "Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
+  },
+  "optionLabel": {
+    "en": "Option",
+    "es": "Opción",
+    "pt": "Opção"
+  },
+  "perMonth": {
+    "en": "/mo",
+    "es": "/mes",
+    "pt": "/mês"
+  },
+  "tagNetWorth": {
+    "en": "Net Worth",
+    "es": "Patrimonio",
+    "pt": "Patrimônio"
+  },
+  "tagCashFlow": {
+    "en": "Cash Flow",
+    "es": "Flujo de Caja",
+    "pt": "Fluxo de Caixa"
+  },
+  "tagHappiness": {
+    "en": "Happiness",
+    "es": "Felicidad",
+    "pt": "Felicidade"
+  },
+  "tagIq": {
+    "en": "IQ Impact",
+    "es": "Impacto en IQ",
+    "pt": "Impacto no IQ"
+  },
+  "ctaStrengthNote": {
+    "en": "{names} came out well, at {pct}%. ",
+    "es": "En {names} saliste bien, con un {pct}%. ",
+    "pt": "Em {names}, o resultado foi bom: {pct}%. "
+  },
+  "reviewTitle": {
+    "en": "Your answers, reviewed",
+    "es": "Revisión de tus respuestas",
+    "pt": "Revisão das suas respostas"
+  },
+  "reviewIntro": {
+    "en": "All fifteen scenarios in the order you played them: the option you chose, the best option where it was a different one, what your choice did to the four meters, and the lesson behind each.",
+    "es": "Los quince escenarios en el orden en que los jugaste: la opción que elegiste, la mejor opción cuando era otra, lo que tu decisión hizo con los cuatro indicadores y la lección detrás de cada una.",
+    "pt": "Os quinze cenários na ordem em que você jogou: a opção que escolheu, a melhor opção quando era outra, o que sua decisão fez com os quatro indicadores e a lição por trás de cada uma."
+  },
+  "reviewVerdictBest": {
+    "en": "Best choice",
+    "es": "Mejor opción",
+    "pt": "Melhor opção"
+  },
+  "reviewVerdictReasonable": {
+    "en": "Reasonable, not the best",
+    "es": "Razonable, pero no la mejor",
+    "pt": "Razoável, mas não a melhor"
+  },
+  "reviewVerdictCostly": {
+    "en": "Costly choice",
+    "es": "Decisión costosa",
+    "pt": "Decisão custosa"
+  },
+  "reviewYourChoice": {
+    "en": "Your choice",
+    "es": "Tu elección",
+    "pt": "Sua escolha"
+  },
+  "reviewBestChoice": {
+    "en": "Best option",
+    "es": "Mejor opción",
+    "pt": "Melhor opção"
+  },
+  "reviewEffect": {
+    "en": "What your choice did",
+    "es": "Lo que hizo tu decisión",
+    "pt": "O que sua decisão fez"
+  },
+  "lbSavedButton": {
+    "en": "Saved to the leaderboard",
+    "es": "Guardado en la clasificación",
+    "pt": "Salvo no placar"
+  },
+  "lbSaveRejected": {
+    "en": "The leaderboard did not save this result. The server answered: \"{reason}\". This is not a problem with your connection.",
+    "es": "La clasificación no guardó este resultado. El servidor respondió: \"{reason}\". No es un problema de tu conexión.",
+    "pt": "O placar não salvou este resultado. O servidor respondeu: \"{reason}\". Não é um problema da sua conexão."
   }
 }

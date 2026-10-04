@@ -18,7 +18,9 @@
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/sim-monte-carlo-fire.css?v=source">
   <link rel="stylesheet" href="/assets/css/icons.css?v=source">
-  
+  <!-- Chart.js, for the withdrawal-rate sweep on the 1,000-sims tab. The
+       cockpit itself still draws on a raw canvas. -->
+  <script defer src="/assets/js/chart-4.4.1.umd.min.js"></script>
 
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/simulator-cta.css?v=source">
@@ -228,13 +230,13 @@
               <i class="fa-solid fa-sliders text-cyan-400" aria-hidden="true"></i>{{fontHud}}            </span>
           </div>
           <div class="flex flex-wrap gap-2">
-            <button data-onclick="loadPreset('highrisk')" class="sim-btn sim-btn--quiet">
+            <button data-onclick="loadPreset('highrisk')" class="sim-btn sim-btn--quiet setup-control">
               <i class="fa-solid fa-fire-flame-curved text-red-400" aria-hidden="true"></i>{{px3}}            </button>
-            <button data-onclick="loadPreset('trinity')" class="sim-btn sim-btn--quiet">
+            <button data-onclick="loadPreset('trinity')" class="sim-btn sim-btn--quiet setup-control">
               <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i>{{px32}}            </button>
-            <button data-onclick="loadPreset('leanfire')" class="sim-btn sim-btn--quiet">
+            <button data-onclick="loadPreset('leanfire')" class="sim-btn sim-btn--quiet setup-control">
               <i class="fa-solid fa-leaf text-emerald-400" aria-hidden="true"></i>{{px33}}            </button>
-            <button data-onclick="loadPreset('fatfire')" class="sim-btn sim-btn--quiet">
+            <button data-onclick="loadPreset('fatfire')" class="sim-btn sim-btn--quiet setup-control">
               <i class="fa-solid fa-crown text-purple-400" aria-hidden="true"></i>{{px34}}            </button>
           </div>
         </div>
@@ -259,28 +261,28 @@
 
 {{hudGlass2}}            <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
-                <label class="text-espresso-900 font-medium flex items-center gap-1.5">
+                <label id="lbl-nestegg" class="text-espresso-900 font-medium flex items-center gap-1.5">
 {{textSlate300}}                </label>
                 <div class="flex items-center gap-2">
-                  <button data-onclick="openNestEggCalculator()" class="text-[10px] bg-cyan-50 text-cyan-300 hover:bg-cream-200 border border-cyan-200 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openNestEggCalculator()" class="setup-control text-[10px] bg-cyan-50 text-cyan-300 hover:bg-cream-200 border border-cyan-200 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i>{{text10px5}}                  </button>
                   <span id="disp-nestegg" class="font-mono text-cyan-300 font-bold">{{dispNestegg}}</span>
                 </div>
               </div>
-              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="200000" max="2000000" step="25000" value="850000" data-oninput="updateControlsUI()" class="w-full">
+              <input type="range" id="input-nestegg" aria-labelledby="lbl-nestegg" min="100000" max="5000000" step="10000" value="850000" data-oninput="updateControlsUI()" class="w-full setup-control">
             </div>
 
 {{hudGlass3}}            <div class="space-y-1.5">
               <div class="flex justify-between items-center text-xs">
-                <label class="text-espresso-900 font-medium flex items-center gap-1.5">
+                <label id="lbl-spending" class="text-espresso-900 font-medium flex items-center gap-1.5">
 {{textSlate3002}}                </label>
                 <div class="flex items-center gap-2">
-                  <button data-onclick="openSpendCalculator()" class="text-[10px] bg-emerald-50 text-emerald-300 hover:bg-cream-200 border border-emerald-200 px-2 py-0.5 rounded-md font-mono transition">
+                  <button data-onclick="openSpendCalculator()" class="setup-control text-[10px] bg-emerald-50 text-emerald-300 hover:bg-cream-200 border border-emerald-200 px-2 py-0.5 rounded-md font-mono transition">
                     <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i>{{text10px6}}                  </button>
                   <span id="disp-spending" class="font-mono text-emerald-300 font-bold">{{dispSpending}}</span>
                 </div>
               </div>
-              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="35000" max="150000" step="2500" value="45000" data-oninput="updateControlsUI()" class="w-full">
+              <input type="range" id="input-spending" aria-labelledby="lbl-spending" min="15000" max="250000" step="1000" value="45000" data-oninput="updateControlsUI()" class="w-full setup-control">
               <div class="flex justify-between items-center text-[11px] text-espresso-800 pt-1">
                 <span>{{flex2}}</span>
                 <span id="disp-swr-badge" class="font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-400 border border-red-200">
@@ -294,22 +296,23 @@
                   <label for="input-startage" class="text-espresso-900 font-medium">{{textSlate3003}}</label>
                   <span class="text-[9px] bg-cyan-50 text-cyan-400 px-1.5 rounded font-mono">{{text9px}}</span>
                 </div>
-                <input type="number" id="input-startage" min="30" max="85" value="50" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-1.5">
+                <input type="number" id="input-startage" min="18" max="90" value="50" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-1.5 setup-control">
               </div>
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
                   <label for="input-endage" class="text-espresso-900 font-medium">{{textSlate3004}}</label>
                   <span class="text-[9px] bg-emerald-50 text-emerald-400 px-1.5 rounded font-mono">{{text9px2}}</span>
                 </div>
-                <input type="number" id="input-endage" min="70" max="110" value="100" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-1.5">
+                <input type="number" id="input-endage" min="60" max="100" value="100" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-1.5 setup-control">
               </div>
             </div>
+            <p id="disp-horizon-note" class="text-[10px] text-espresso-800 font-sans">{{ageRangeNote}}</p>
 
 {{hudGlass5}}            <div class="space-y-2 pt-2 border-t border-cream-300">
               <div class="flex justify-between items-center">
                 <label for="toggle-tdf" class="text-xs font-bold text-espresso-900">{{textXs7}}</label>
 {{flex3}}                <label class="inline-flex items-center cursor-pointer">
-                  <input type="checkbox" id="toggle-tdf" data-onchange="toggleTargetDateFund()" class="sr-only peer">
+                  <input type="checkbox" id="toggle-tdf" data-onchange="toggleTargetDateFund()" class="sr-only peer setup-control">
                   <div class="w-8 h-4 bg-cream-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-cream-400 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-forest-800 relative"></div>
                   <span class="ml-2 text-[11px] font-mono text-cyan-400">{{ml2}}</span>
                 </label>
@@ -321,21 +324,21 @@
                     <span id="lbl-alloc-stocks" class="text-cyan-400 font-bold">{{lblAllocStocks}}</span>
                     <span id="disp-pct-stocks">80%</span>
                   </div>
-                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" data-oninput="adjustAssetAllocation('stocks')" class="w-full">
+                  <input type="range" id="input-stocks" aria-labelledby="lbl-alloc-stocks" aria-valuetext="80%" min="0" max="100" value="80" data-oninput="adjustAssetAllocation('stocks')" class="w-full setup-control">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-espresso-900 mb-0.5">
                     <span id="lbl-alloc-bonds" class="text-emerald-400 font-bold">{{lblAllocBonds}}</span>
                     <span id="disp-pct-bonds">15%</span>
                   </div>
-                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" data-oninput="adjustAssetAllocation('bonds')" class="w-full">
+                  <input type="range" id="input-bonds" aria-labelledby="lbl-alloc-bonds" aria-valuetext="15%" min="0" max="100" value="15" data-oninput="adjustAssetAllocation('bonds')" class="w-full setup-control">
                 </div>
                 <div>
                   <div class="flex justify-between text-[11px] font-mono text-espresso-900 mb-0.5">
                     <span id="lbl-alloc-cash" class="text-amber-400 font-bold">{{lblAllocCash}}</span>
                     <span id="disp-pct-cash">5%</span>
                   </div>
-                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" data-oninput="adjustAssetAllocation('cash')" class="w-full">
+                  <input type="range" id="input-cash" aria-labelledby="lbl-alloc-cash" aria-valuetext="5%" min="0" max="100" value="5" data-oninput="adjustAssetAllocation('cash')" class="w-full setup-control">
                 </div>
               </div>
 
@@ -356,13 +359,16 @@
 
 {{hudGlass6}}            <div class="space-y-1.5 pt-2 border-t border-cream-300">
               <label for="select-market-sequence" class="text-xs font-bold text-espresso-900">{{textXs8}}</label>
-              <select id="select-market-sequence" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-2">
+              <select id="select-market-sequence" data-onchange="updateControlsUI()" class="sim-field w-full px-3 py-2 setup-control">
                 <option value="simulated">{{selectMarketSequence}}</option>
                 <option value="1970s">{{selectMarketSequence2}}</option>
                 <option value="2000s">{{selectMarketSequence3}}</option>
                 <option value="bull">{{selectMarketSequence4}}</option>
               </select>
+              <p class="text-[10px] text-espresso-800 font-sans leading-tight">{{seqNote}}</p>
             </div>
+
+            <p id="setup-lock-note" class="text-[10px] text-amber-400 font-sans" hidden>{{setupLockNote}}</p>
 
 {{hudGlass7}}            <div class="pt-3 flex gap-2">
               <button id="btn-launch-flight" data-onclick="toggleFlightSimulation()" class="sim-btn sim-btn--primary sim-btn--lg flex-1 uppercase tracking-wider">
@@ -383,7 +389,7 @@
 {{hudVisualContainer}}            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-cream-300">
               <div class="flex items-center space-x-3">
                 <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-cream-50 border border-cream-400 text-cyan-300">
-                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i>{{inlineFlex}}<span id="hud-current-age" class="ml-1 text-espresso-900 text-sm">50</span> / 100
+                  <i class="fa-solid fa-user-clock text-cyan-400 mr-1.5" aria-hidden="true"></i>{{inlineFlex}}<span id="hud-current-age" class="ml-1 text-espresso-900 text-sm">50</span> / <span id="hud-target-age">100</span>
                 </span>
                 <span id="hud-flight-status-badge" role="status" class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-50 text-emerald-400 border border-emerald-200">
 {{hudFlightStatusBadge}}                </span>
@@ -439,7 +445,7 @@
                   <span id="canvas-sky-status-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span id="canvas-sky-status-text">{{canvasSkyStatusText}}</span>
                 </div>
-                <span>{{absolute}}</span>
+                <span id="canvas-target-label">{{absolute}}</span>
               </div>
             </div>
 
@@ -486,7 +492,7 @@
                 </div>
                 <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
                   <span class="text-espresso-800">{{textSlate4004}}</span>
-                  <span class="text-amber-400 font-bold">{{textAmber4002}}</span>
+                  <span id="impact-cutspend" class="text-amber-400 font-bold">{{textAmber4002}}</span>
                 </div>
               </div>
 
@@ -536,7 +542,7 @@
                 </div>
                 <div>
                   <h4 id="title-action-downsize" class="text-xs font-bold text-espresso-900">{{textXs13}}</h4>
-                  <p class="text-[10px] text-espresso-800 leading-tight">{{text10px13}}</p>
+                  <p id="desc-action-downsize" class="text-[10px] text-espresso-800 leading-tight">{{text10px13}}</p>
                 </div>
                 <div class="pt-1 border-t border-cream-300 flex justify-between items-center text-[10px] font-mono">
                   <span class="text-espresso-800">{{textSlate4004}}</span>
@@ -616,6 +622,7 @@
 {{leaderboardTableBody}}            </tbody>
           </table>
         </div>
+        <p class="text-[10px] text-espresso-800 font-sans">{{lbCurrencyNote}}</p>
       </div>
 
     </div>
@@ -629,12 +636,18 @@
           <div>
             <h2 class="text-base sm:text-lg font-bold text-espresso-900 flex items-center gap-2">
               <i class="fa-solid fa-network-wired text-cyan-400" aria-hidden="true"></i>{{textBase3}}            </h2>
-            <p class="text-xs text-espresso-900 leading-relaxed">
+            <p id="mc-intro" class="text-xs text-espresso-900 leading-relaxed">
 {{textXs20}}            </p>
+            <p id="mc-tactics-note" class="text-[11px] text-espresso-800 font-sans pt-1"></p>
           </div>
           <button data-onclick="runMonteCarloBatch()" class="sim-btn sim-btn--primary shrink-0">
             <i class="fa-solid fa-play mr-1.5" aria-hidden="true"></i>{{shrink0}}          </button>
         </div>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs font-sans">
+        <input type="checkbox" id="mc-real-toggle" data-onchange="renderMonteCarloResults()">
+        <label for="mc-real-toggle" class="text-espresso-900">{{mcRealToggle}}</label>
       </div>
 
 {{tabMontecarlo2}}      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono" role="status" aria-atomic="true">
@@ -649,6 +662,7 @@
           <span class="sim-stat__label">{{text10px17}}</span>
           <div id="mc-metric-median" class="sim-stat__value sim-stat__value--series-3 text-2xl">--</div>
           <p class="sim-stat__note">{{text10px18}}</p>
+          <p id="mc-metric-median-alt" class="sim-stat__note"></p>
         </div>
 
         <div class="sim-panel p-4 space-y-1">
@@ -667,6 +681,7 @@
 
 {{tabMontecarlo3}}      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-4">
         <h3 class="font-bold text-xs uppercase text-espresso-900">{{fontHud4}}</h3>
+        <p id="mc-table-unit" class="text-[11px] text-espresso-800 font-sans"></p>
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs font-mono">
             <thead>
@@ -687,6 +702,18 @@
             </tbody>
           </table>
         </div>
+      </div>
+
+      <!-- The withdrawal-rate sweep: the same 500-path batch run at every rate
+           from 2% to 7%, so the question "how much can this portfolio pay
+           out" is answered as a curve instead of one point. -->
+      <div class="sim-panel p-5 rounded-2xl border border-cream-300 space-y-3">
+        <h3 id="mc-sweep-title" class="font-bold text-xs uppercase text-espresso-900">{{mcSweepTitle}}</h3>
+        <p class="text-[11px] text-espresso-800 font-sans">{{mcSweepIntro}}</p>
+        <div class="sim-chart h-[290px]">
+          <canvas id="mc-sweep-chart" role="img" aria-labelledby="mc-sweep-title" aria-describedby="mc-sweep-summary"></canvas>
+        </div>
+        <p id="mc-sweep-summary" role="status" class="text-xs text-espresso-900 font-sans">{{mcSweepIdle}}</p>
       </div>
 
     </div>
@@ -828,6 +855,10 @@
             <h3 class="sim-explainer__heading">{{explExampleTitle}}</h3>
             <p>{{explExample1}}</p>
             <p>{{explExample2}}</p>
+
+            <h3 class="sim-explainer__heading">{{explScoreTitle}}</h3>
+            <p>{{explScore1}}</p>
+            <p>{{explScore2}}</p>
 
             <h3 class="sim-explainer__heading">{{explFaqTitle}}</h3>
             <dl class="sim-explainer__faq">
@@ -1047,6 +1078,20 @@
         </div>
       </div>
 
+      <!-- The score, line by line, before it is posted - the same object that
+           is submitted, so the board can never show a number the pilot was
+           not shown here. -->
+      <div class="sim-inset p-3 text-left space-y-1 font-mono text-xs">
+        <div class="text-[10px] uppercase font-bold text-espresso-800 border-b border-cream-300 pb-1">{{debriefScoreTitle}}</div>
+        <div class="flex justify-between"><span class="text-espresso-800">{{debriefScoreBase}}</span><span id="debrief-score-base" class="font-bold">0</span></div>
+        <div class="flex justify-between"><span class="text-espresso-800">{{debriefScoreBoard}}</span><span id="debrief-score-board" class="font-bold">0</span></div>
+        <div class="flex justify-between"><span class="text-espresso-800">{{debriefScoreCrash}}</span><span id="debrief-score-crash" class="text-red-400 font-bold">0</span></div>
+        <div class="flex justify-between"><span class="text-espresso-800">{{debriefScoreTactic}}</span><span id="debrief-score-tactic" class="text-amber-300 font-bold">0</span></div>
+        <div class="flex justify-between"><span class="text-espresso-800">{{debriefScoreBalance}}</span><span id="debrief-score-balance" class="text-emerald-400 font-bold">0</span></div>
+        <div class="flex justify-between border-t border-cream-300 pt-1"><span class="text-espresso-900 font-bold">{{debriefScoreTotal}}</span><span id="debrief-score-total" class="text-amber-400 font-bold">0</span></div>
+        <p id="debrief-score-note" class="text-[10px] text-espresso-800 font-sans"></p>
+      </div>
+
       <!-- The debrief is a full-screen overlay, so the panel this flight just
            filled in is behind it. This is the way through: one button, above
            the two that were already here and wider than either, because the
@@ -1074,7 +1119,10 @@
   <script src="/assets/js/sim-cta.{{lang.code}}.js?v=source" defer></script>
   <script src="/assets/js/sim-cta.js?v=source" defer></script>
   <script>
-{{minHScreen8}}    const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
+    /* =================================================================
+       GLOBAL STATE & CONFIGURATION
+       ================================================================= */
+    const LEADERBOARD_SIMULATOR = 'monte-carlo-fire';
 
     /* The five scenario presets, as the keys their boards are addressed by.
        The board is one table shared by the English, Spanish and Portuguese
@@ -1102,11 +1150,95 @@
       custom: { classes: 'bg-cream-200 text-espresso-900 border border-cream-400', icon: 'fa-sliders' }
     };
 
-    /* The board as last read from /api/simulator-leaderboard, and which of
-       three things the table is showing: the rows, the fact that they are on
-       their way, or the fact that they could not be fetched. An empty board
-       and an unreachable one are the same list of no rows, and only one of
-       them means nobody has flown this preset yet. */
+    /* What a preset board means. A flight lands on a preset's board only if
+       it was flown on every one of these assumptions - capital, spending,
+       ages, allocation, no target-date fund and the simulated market. The
+       board used to be read off the nest egg and spending alone, at landing,
+       so a pilot could fly anything and slide back onto a preset just before
+       touching down; anything else is the custom board. */
+    const PRESETS = {
+      highrisk: { nestEgg: 850000, annualSpending: 45000, startAge: 50, targetAge: 100, stocks: 80, bonds: 15, cash: 5 },
+      trinity: { nestEgg: 1000000, annualSpending: 40000, startAge: 50, targetAge: 100, stocks: 70, bonds: 20, cash: 10 },
+      leanfire: { nestEgg: 650000, annualSpending: 35000, startAge: 50, targetAge: 100, stocks: 85, bonds: 10, cash: 5 },
+      fatfire: { nestEgg: 1500000, annualSpending: 75000, startAge: 50, targetAge: 100, stocks: 75, bonds: 20, cash: 5 }
+    };
+
+    /* The ranges every setup control is held to. The sliders carry the same
+       numbers as attributes; they are repeated here because the calculators
+       and the typed age boxes write values the slider never saw, and because
+       the leaderboard endpoint validates the horizon against the same floor. */
+    const LIMITS = {
+      nestEgg: { min: 100000, max: 5000000 },
+      spending: { min: 15000, max: 250000 },
+      startAge: { min: 18, max: 90 },
+      targetAge: { max: 100 },
+      // A flight shorter than this is not a retirement, and a target age at
+      // or below the start age used to land on the first tick as a full win.
+      minHorizon: 10
+    };
+
+    /* The rules of a simulated year, shared by the cockpit and the batch. */
+    const RULES = {
+      jobIncome: 15000,          // part-time income, today's money
+      pensionIncome: 20000,      // pension / social security, today's money
+      pensionAge: 62,
+      downsizeAmount: 100000,    // one-time home equity release, today's money
+      cutSpend: 0.85,            // the 15% spending cut
+      guardrailCut: 0.90,        // the 10% guardrail cut
+      guardrailDrawdown: 0.15,   // ...applied while the portfolio is >15% below its peak
+      // Below zero there is nothing invested, so nothing earns a market
+      // return: the shortfall is borrowed, and the debt costs this much a year.
+      debtRate: 0.05,
+      crashLimit: 10             // consecutive years below zero that end a flight
+    };
+
+    /* The score. A reached target is worth up to 5,000, in proportion to the
+       years flown against a 50-year reference retirement, and never less
+       than the 1,000 a flight that fell short is worth - so a ten-year hop no
+       longer collects the same base as a fifty-year flight. */
+    const SCORE = {
+      referenceYears: 50,
+      reachedMax: 5000,
+      floor: 1000,
+      crashYear: 500,
+      tacticYear: 75,
+      balanceDivisor: 2500,
+      min: 100,
+      max: 100000
+    };
+
+    const TACTIC_KEYS = ['job', 'cutspend', 'cashbuffer', 'guardrails', 'downsize', 'pension'];
+
+    const TACTIC_LABELS = {
+      job: '{{textXs9}}',
+      cutspend: '{{textXs10}}',
+      cashbuffer: '{{textXs11}}',
+      guardrails: '{{textXs12}}',
+      downsize: '{{textXs13}}',
+      pension: '{{textXs14}}'
+    };
+
+    const TACTIC_BORDERS = {
+      job: 'border-cyan-500',
+      cutspend: 'border-amber-500',
+      cashbuffer: 'border-emerald-500',
+      guardrails: 'border-purple-500',
+      downsize: 'border-blue-500',
+      pension: 'border-pink-500'
+    };
+
+    /* Numbers are formatted in the page's language, not the browser's.
+       toLocaleString() with no argument used the visitor's own settings, so
+       the Spanish page in an English browser printed "€1,350,000". */
+    const NUMBER_LOCALE = { en: 'en-US', es: 'es-ES', pt: 'pt-BR' }['{{lang.code}}'] || 'en-US';
+    const CURRENCY = '{{lang.currency}}';
+
+    /* The symbol each page's flights were flown in. The board is shared by
+       the three pages, and a row's amount is in the unit its pilot typed:
+       a run flown in euros is printed in euros on the English page too,
+       rather than relabelled as dollars it never was. */
+    const RUN_CURRENCY = { en: '$', es: '€', pt: 'R$' };
+
     let leaderboardEntries = [];
     let leaderboardState = 'loading';
     let activeLeaderboardFilter = 'ALL';
@@ -1116,66 +1248,568 @@
        response that is no longer the newest is dropped instead of drawn. */
     let leaderboardRequest = 0;
 
+    function noTactics() {
+      return { job: false, cutspend: false, cashbuffer: false, guardrails: false, downsize: false, pension: false };
+    }
+
     const state = {
-{{minHScreen10}}      activePresetKey: 'highrisk',
-{{minHScreen11}}      nestEgg: 850000,
+      pilotName: '{{inputPilotNameValue}}',
+
+      // Flight setup, as the controls currently read
+      nestEgg: 850000,
       annualSpending: 45000,
       startAge: 50,
       targetAge: 100,
-      
-{{minHScreen12}}      pctStocks: 80,
+      pctStocks: 80,
       pctBonds: 15,
       pctCash: 5,
       useTargetDateFund: false,
+      marketSequence: 'simulated',
 
-{{minHScreen13}}      actJob: false,
-      actCutSpend: false,
-      actCashBuffer: false,
-      actGuardrails: false,
-      actDownsize: false,
-      actPension: false,
+      // The six tactics as currently switched
+      tactics: noTactics(),
 
-{{minHScreen14}}      isSimulating: false,
+      // The flight. `phase` is 'ready' (nothing flown yet), 'flying',
+      // 'paused' or 'over'. While a flight exists the setup is locked, and
+      // `plan` is the setup as it stood at launch - what the flight is
+      // simulated, scored, boarded and recorded on.
+      phase: 'ready',
+      plan: null,
+      board: 'highrisk',
+      path: null,
+      tacticsUsed: noTactics(),
+      totalTacticYears: 0,
+      historyLogs: [],
+      simulationInterval: null,
+      sequenceEndAnnounced: false,
+
+      // Telemetry mirrors of the path, read by the HUD and the canvas
       currentAge: 50,
       currentNestEgg: 850000,
       peakNestEgg: 850000,
       yearsInCrashlineConsecutive: 0,
-      totalCrashlineYears: 0,
-      totalTacticYears: 0,
-      marketSequence: 'simulated',
-      simulationInterval: null,
-      historyLogs: []
+      totalCrashlineYears: 0
     };
 
-{{minHScreen15}}    const MARKET_BENCHMARKS = {
-{{minHScreen16}}    };
-
-{{minHScreen17}}    const PRESET_HISTORICAL_SEQUENCES = {
-      '1970s': [
-        { stock: -0.18, bond: -0.03, infl: 0.07 },
-        { stock: -0.28, bond: 0.01, infl: 0.12 },
-        { stock: 0.35, bond: 0.07, infl: 0.09 },
-        { stock: 0.20, bond: 0.09, infl: 0.07 },
-        { stock: -0.12, bond: -0.02, infl: 0.14 },
-        { stock: 0.16, bond: 0.04, infl: 0.11 }
-      ],
-      '2000s': [
-        { stock: -0.12, bond: 0.10, infl: 0.03 },
-        { stock: -0.15, bond: 0.08, infl: 0.02 },
-        { stock: -0.25, bond: 0.09, infl: 0.01 },
-        { stock: 0.26, bond: 0.02, infl: 0.02 },
-        { stock: 0.08, bond: 0.04, infl: 0.03 },
-{{minHScreen18}}      ],
-      'bull': [
-        { stock: 0.16, bond: 0.04, infl: 0.02 },
-        { stock: 0.19, bond: 0.03, infl: 0.02 },
-        { stock: 0.14, bond: 0.05, infl: 0.02 },
-        { stock: 0.24, bond: 0.02, infl: 0.02 },
-        { stock: 0.15, bond: 0.04, infl: 0.02 }
-      ]
+    /* Calibration for the simulated years: one independent normal draw per
+       asset per year, with the arithmetic means and standard deviations of
+       the US record 1928-2025 (Damodaran, "Historical Returns on Stocks,
+       Bonds and Bills", histretSP): S&P 500 total return 11.85% / 19.4%,
+       10-year Treasury 4.82% / 7.9%, 3-month T-bill 3.37% / 2.98%, CPI
+       3.11% / 3.88%. Independent draws have no fat tails, no regime
+       persistence and no stock-bond-inflation correlation, so a real
+       sequence such as 1966-1981 can be worse than almost any simulated one -
+       which is what the historical sequences below are for. */
+    const MARKET_BENCHMARKS = {
+      stocks: { mean: 0.1185, stdDev: 0.194 },
+      bonds: { mean: 0.0482, stdDev: 0.079 },
+      cash: { mean: 0.0337, stdDev: 0.0298 },
+      inflation: { mean: 0.0311, stdDev: 0.0388 }
     };
 
-{{minHScreen19}}    window.onload = function() {
+    /* The three historical sequences, as real calendar years from the same
+       source and series: S&P 500 total return, 10-year Treasury total
+       return, 3-month T-bills and CPI inflation (Damodaran histretSP,
+       rounded to 0.1%), each row [stocks, bonds, cash, inflation].
+
+       Each sequence is played once, from its first year, and the rest of the
+       flight continues on simulated draws. They used to loop: the six-year
+       "2000s" sample repeated for fifty years compounded to -12% a year
+       forever, and the five-year bull market to +17.6% forever - neither of
+       which is a sequence any retiree has ever lived through. */
+    const HISTORICAL_SEQUENCES = {
+      '1970s': {
+        start: 1966,
+        years: [
+          [-0.100, 0.029, 0.049, 0.034],
+          [0.238, -0.016, 0.043, 0.033],
+          [0.108, 0.033, 0.053, 0.047],
+          [-0.082, -0.050, 0.067, 0.059],
+          [0.036, 0.168, 0.064, 0.056],
+          [0.142, 0.098, 0.043, 0.033],
+          [0.188, 0.028, 0.041, 0.034],
+          [-0.143, 0.037, 0.070, 0.089],
+          [-0.259, 0.020, 0.078, 0.121],
+          [0.370, 0.036, 0.058, 0.071],
+          [0.238, 0.160, 0.050, 0.050],
+          [-0.070, 0.013, 0.053, 0.067],
+          [0.065, -0.008, 0.072, 0.090],
+          [0.185, 0.007, 0.101, 0.133],
+          [0.317, -0.030, 0.114, 0.124],
+          [-0.047, 0.082, 0.140, 0.089]
+        ]
+      },
+      '2000s': {
+        start: 2000,
+        years: [
+          [-0.090, 0.167, 0.058, 0.034],
+          [-0.118, 0.056, 0.034, 0.016],
+          [-0.220, 0.151, 0.016, 0.025],
+          [0.284, 0.004, 0.010, 0.020],
+          [0.107, 0.045, 0.014, 0.033],
+          [0.048, 0.029, 0.031, 0.033],
+          [0.156, 0.020, 0.047, 0.025],
+          [0.055, 0.102, 0.044, 0.041],
+          [-0.366, 0.201, 0.014, 0.000],
+          [0.259, -0.111, 0.002, 0.028],
+          [0.148, 0.085, 0.001, 0.014],
+          [0.021, 0.160, 0.001, 0.031],
+          [0.159, 0.030, 0.001, 0.018]
+        ]
+      },
+      'bull': {
+        start: 1982,
+        years: [
+          [0.204, 0.328, 0.106, 0.038],
+          [0.223, 0.032, 0.086, 0.038],
+          [0.061, 0.137, 0.095, 0.040],
+          [0.312, 0.257, 0.075, 0.038],
+          [0.185, 0.243, 0.060, 0.012],
+          [0.058, -0.050, 0.058, 0.043],
+          [0.165, 0.082, 0.067, 0.044],
+          [0.315, 0.177, 0.081, 0.046],
+          [-0.031, 0.062, 0.075, 0.063],
+          [0.302, 0.150, 0.054, 0.030],
+          [0.075, 0.094, 0.034, 0.030],
+          [0.100, 0.142, 0.030, 0.028],
+          [0.013, -0.080, 0.043, 0.026],
+          [0.372, 0.235, 0.055, 0.025],
+          [0.227, 0.014, 0.050, 0.034],
+          [0.331, 0.099, 0.051, 0.017],
+          [0.283, 0.149, 0.048, 0.016],
+          [0.209, -0.083, 0.046, 0.027]
+        ]
+      }
+    };
+
+    /* Every sentence the behaviour writes, in the language of this page. */
+    const TEXT = {
+      riskHigh: '{{jsRiskHigh}}',
+      riskModerate: '{{jsRiskModerate}}',
+      riskSafe: '{{jsRiskSafe}}',
+      crashCounter: '{{jsCrashCounter}}',
+      tdfStatus: '{{jsTdfStatus}}',
+      active: '{{jsBadgeActive}}',
+      inactive: '{{badgeActionJob}}',
+      planned: '{{jsBadgePlanned}}',
+      used: '{{jsBadgeUsed}}',
+      launch: '{{btnLaunchText}}',
+      pause: '{{jsPause}}',
+      resume: '{{jsResume}}',
+      statusFlying: '{{jsStatusFlying}}',
+      statusPaused: '{{jsStatusPaused}}',
+      statusReady: '{{jsStatusReady}}',
+      statusOver: '{{jsStatusOver}}',
+      swrCrash: '{{jsSwrCrash}}',
+      horizonNote: '{{jsHorizonNote}}',
+      targetHorizon: '{{jsTargetHorizon}}',
+      cutImpact: '{{jsCutImpact}}',
+      downsizeTitle: '{{jsDownsizeTitle}}',
+      downsizeMsg: '{{jsDownsizeMsg}}',
+      downsizePlannedMsg: '{{jsDownsizePlannedMsg}}',
+      downsizeLockedMsg: '{{jsDownsizeLockedMsg}}',
+      downsizeTip: '{{jsDownsizeTip}}',
+      bufferTitle: '{{jsBufferTitle}}',
+      bufferNeedsCash: '{{jsBufferNeedsCash}}',
+      bufferTip: '{{jsBufferTip}}',
+      crashTitle: '{{jsCrashTitle}}',
+      crashMsg: '{{jsCrashMsg}}',
+      crashTipNoIncome: '{{jsCrashTipNoIncome}}',
+      crashTipShort: '{{jsCrashTipShort}}',
+      crashTipRecovering: '{{jsCrashTipRecovering}}',
+      dropTitle: '{{jsDropTitle}}',
+      dropMsg: '{{jsDropMsg}}',
+      dropTip: '{{jsDropTip}}',
+      inflTitle: '{{jsInflTitle}}',
+      inflMsg: '{{jsInflMsg}}',
+      inflTip: '{{jsInflTip}}',
+      seqEndTitle: '{{jsSeqEndTitle}}',
+      seqEndMsg: '{{jsSeqEndMsg}}',
+      winTitle: '{{jsWinTitle}}',
+      winMsg: '{{jsWinMsg}}',
+      lossTitle: '{{jsLossTitle}}',
+      lossMsgCrash: '{{jsLossMsgCrash}}',
+      lossMsgNegative: '{{jsLossMsgNegative}}',
+      todayMoney: '{{jsTodayMoney}}',
+      yearsAtAge: '{{jsYearsAtAge}}',
+      yearsCount: '{{jsYearsCount}}',
+      tacticYears: '{{jsTacticYears}}',
+      scoreNote: '{{jsScoreNote}}',
+      points: '{{jsPoints}}',
+      yes: '{{jsYes}}',
+      no: '{{jsNo}}',
+      lbYears: '{{jsLbYears}}',
+      lbTacticYears: '{{jsLbTacticYears}}',
+      canvasCrash: '{{jsCanvasCrash}}',
+      canvasClear: '{{jsCanvasClear}}',
+      canvasCaution: '{{jsCanvasCaution}}',
+      axisAge: '{{jsAxisAge}}',
+      pitchCrash: '{{jsPitchCrash}}',
+      pitchClimb: '{{jsPitchClimb}}',
+      pitchLevel: '{{jsPitchLevel}}',
+      pitchDescend: '{{jsPitchDescend}}',
+      pitchReady: '{{jsPitchReady}}',
+      crashZone: '{{jsCrashZone}}',
+      perYear: '{{jsPerYear}}',
+      eggFormula: '{{jsEggFormula}}',
+      mcIntro: '{{jsMcIntro}}',
+      mcTactics: '{{jsMcTactics}}',
+      mcTacticsNone: '{{jsMcTacticsNone}}',
+      mcSequence: '{{jsMcSequence}}',
+      mcAltReal: '{{jsMcAltReal}}',
+      mcAltNominal: '{{jsMcAltNominal}}',
+      mcUnitNominal: '{{jsMcUnitNominal}}',
+      mcUnitReal: '{{jsMcUnitReal}}',
+      mcRowAge: '{{jsMcRowAge}}',
+      sweepRunning: '{{jsSweepRunning}}',
+      sweepBest: '{{jsSweepBest}}',
+      sweepNone: '{{jsSweepNone}}',
+      sweepCurrent: '{{jsSweepCurrent}}',
+      sweepAxisX: '{{jsSweepAxisX}}',
+      sweepAxisY: '{{jsSweepAxisY}}',
+      sweepSeries: '{{jsSweepSeries}}',
+      sweepThreshold: '{{jsSweepThreshold}}'
+    };
+
+    /* "{name}" placeholders, filled from an object. */
+    function fill(template, values) {
+      return template.replace(/\{(\w+)\}/g, function (match, key) {
+        return Object.prototype.hasOwnProperty.call(values, key) ? values[key] : match;
+      });
+    }
+
+    function formatNumber(value) {
+      return Math.round(Number(value) || 0).toLocaleString(NUMBER_LOCALE);
+    }
+
+    /** An amount with its currency symbol, the sign outside the symbol. */
+    function money(value, symbol) {
+      const rounded = Math.round(Number(value) || 0);
+      return (rounded < 0 ? '-' : '') + (symbol || CURRENCY) + Math.abs(rounded).toLocaleString(NUMBER_LOCALE);
+    }
+
+    function percent(value, digits) {
+      return Number(value).toLocaleString(NUMBER_LOCALE, { minimumFractionDigits: digits, maximumFractionDigits: digits }) + '%';
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    /* =================================================================
+       THE SHARED YEARLY ENGINE
+       One set of rules for the cockpit flight and the batch tab. Both call
+       stepYear() for every simulated year, so a rule cannot be true in one
+       of them and not in the other.
+       ================================================================= */
+
+    /** The target-date glide path: stocks give way to bonds as age rises. */
+    function glideAllocation(age) {
+      const stocks = Math.max(20, Math.min(90, 110 - age));
+      let bonds = Math.max(10, Math.min(70, age - 20));
+      let cash = 100 - (stocks + bonds);
+      if (cash < 5) {
+        cash = 5;
+        bonds = 100 - stocks - cash;
+      }
+      return { stocks: stocks, bonds: bonds, cash: cash };
+    }
+
+    /** The allocation a plan holds during the year that starts at `age`. */
+    function allocationAt(plan, age) {
+      return plan.useTargetDateFund ? glideAllocation(age) : plan.allocation;
+    }
+
+    /** The setup as the controls read now, in the shape the engine takes. */
+    function currentPlan() {
+      return {
+        nestEgg: state.nestEgg,
+        annualSpending: state.annualSpending,
+        startAge: state.startAge,
+        targetAge: state.targetAge,
+        allocation: { stocks: state.pctStocks, bonds: state.pctBonds, cash: state.pctCash },
+        useTargetDateFund: state.useTargetDateFund,
+        marketSequence: state.marketSequence
+      };
+    }
+
+    /** Which board a plan belongs on: a preset only if it is that preset. */
+    function boardFor(plan) {
+      const keys = Object.keys(PRESETS);
+      for (let i = 0; i < keys.length; i++) {
+        const preset = PRESETS[keys[i]];
+        if (
+          plan.nestEgg === preset.nestEgg &&
+          plan.annualSpending === preset.annualSpending &&
+          plan.startAge === preset.startAge &&
+          plan.targetAge === preset.targetAge &&
+          !plan.useTargetDateFund &&
+          plan.allocation.stocks === preset.stocks &&
+          plan.allocation.bonds === preset.bonds &&
+          plan.allocation.cash === preset.cash &&
+          plan.marketSequence === 'simulated'
+        ) {
+          return keys[i];
+        }
+      }
+      return 'custom';
+    }
+
+    /**
+     * A path is one simulated retirement: the three sleeves, any debt, the
+     * cumulative price index since launch, and the counters the rules read.
+     */
+    function newPath(plan) {
+      const allocation = allocationAt(plan, plan.startAge);
+      return {
+        age: plan.startAge,
+        year: 0,
+        stocks: plan.nestEgg * allocation.stocks / 100,
+        bonds: plan.nestEgg * allocation.bonds / 100,
+        cash: plan.nestEgg * allocation.cash / 100,
+        debt: 0,
+        priceIndex: 1,
+        peak: plan.nestEgg,
+        lastStockReturn: 0,
+        downsized: false,
+        consecutiveCrash: 0,
+        crashYears: 0,
+        firstOutAge: null
+      };
+    }
+
+    function pathBalance(path) {
+      return path.stocks + path.bonds + path.cash - path.debt;
+    }
+
+    /**
+     * The market for year `yearIndex` of a flight. A historical sequence
+     * supplies its real years in order and then hands over to simulated
+     * draws; it is never replayed.
+     */
+    function marketYear(plan, yearIndex) {
+      const sequence = HISTORICAL_SEQUENCES[plan.marketSequence];
+      if (sequence && yearIndex < sequence.years.length) {
+        const row = sequence.years[yearIndex];
+        return { stock: row[0], bond: row[1], cash: row[2], infl: row[3], calendarYear: sequence.start + yearIndex };
+      }
+      return {
+        stock: randomGaussian(MARKET_BENCHMARKS.stocks.mean, MARKET_BENCHMARKS.stocks.stdDev),
+        bond: randomGaussian(MARKET_BENCHMARKS.bonds.mean, MARKET_BENCHMARKS.bonds.stdDev),
+        // A T-bill does not lose money in nominal terms.
+        cash: Math.max(0, randomGaussian(MARKET_BENCHMARKS.cash.mean, MARKET_BENCHMARKS.cash.stdDev)),
+        // A deflationary year is possible; a collapse of the price level is not.
+        infl: Math.max(-0.03, randomGaussian(MARKET_BENCHMARKS.inflation.mean, MARKET_BENCHMARKS.inflation.stdDev)),
+        calendarYear: null
+      };
+    }
+
+    /**
+     * One year of retirement, applied to `path` in place.
+     *
+     * The order is the order money moves in: at the start of the year the
+     * year's spending and income are settled against the portfolio, then the
+     * markets move, then prices rise. So the first year is spent at launch
+     * prices, and every later year at the prices the inflation before it
+     * produced - spending compounds with the price index instead of being
+     * re-inflated from the launch figure by one year's inflation.
+     *
+     *  - Spending is the plan's spending times the price index, cut 15% by
+     *    the spending-cut tactic and a further 10% by the guardrail while
+     *    the portfolio starts the year more than 15% below its peak.
+     *  - Part-time income and the pension (from 62) are paid in today's
+     *    money times the same index, and can exceed spending: the surplus is
+     *    invested, which is the only way back up from below zero apart from
+     *    the one-time downsizing.
+     *  - Downsizing adds its lump sum once per path, in the first year the
+     *    tactic is on.
+     *  - Below zero nothing is invested, so there is no market return: the
+     *    shortfall is debt and costs RULES.debtRate a year.
+     *  - Otherwise the portfolio is rebalanced to its target and the net
+     *    withdrawal comes out pro rata - except with the cash bucket on,
+     *    after a year in which stocks fell: then the withdrawal is drawn
+     *    from cash first, then bonds, then stocks, and the rebalance waits a
+     *    year, so no stocks are sold after a fall. Nothing is added to the
+     *    return; the protection is only that the shares are still held when
+     *    the market recovers.
+     */
+    function stepYear(path, plan, tactics, market) {
+      const startBal = pathBalance(path);
+      const pi = path.priceIndex;
+      const target = allocationAt(plan, path.age);
+
+      let lumpSum = 0;
+      let downsizedNow = false;
+      if (tactics.downsize && !path.downsized) {
+        lumpSum = RULES.downsizeAmount * pi;
+        path.downsized = true;
+        downsizedNow = true;
+      }
+
+      let spend = plan.annualSpending * pi;
+      if (tactics.cutspend) spend *= RULES.cutSpend;
+      const guardrailHit = !!tactics.guardrails && startBal > 0 && startBal < path.peak * (1 - RULES.guardrailDrawdown);
+      if (guardrailHit) spend *= RULES.guardrailCut;
+
+      let income = 0;
+      if (tactics.job) income += RULES.jobIncome * pi;
+      if (tactics.pension && path.age >= RULES.pensionAge) income += RULES.pensionIncome * pi;
+
+      // Positive: drawn from the portfolio. Negative: added to it.
+      const netDraw = spend - income - lumpSum;
+      const afterFlow = startBal - netDraw;
+
+      let shielded = false;
+      if (afterFlow <= 0) {
+        path.stocks = 0;
+        path.bonds = 0;
+        path.cash = 0;
+        path.debt = -afterFlow * (1 + RULES.debtRate);
+      } else {
+        path.debt = 0;
+        shielded = !!tactics.cashbuffer && target.cash > 0 && startBal > 0 && netDraw > 0 && path.lastStockReturn < 0;
+        if (shielded) {
+          let need = netDraw;
+          const fromCash = Math.min(need, path.cash);
+          path.cash -= fromCash;
+          need -= fromCash;
+          const fromBonds = Math.min(need, path.bonds);
+          path.bonds -= fromBonds;
+          need -= fromBonds;
+          path.stocks -= need;
+        } else {
+          path.stocks = afterFlow * target.stocks / 100;
+          path.bonds = afterFlow * target.bonds / 100;
+          path.cash = afterFlow * target.cash / 100;
+        }
+        path.stocks *= 1 + market.stock;
+        path.bonds *= 1 + market.bond;
+        path.cash *= 1 + market.cash;
+      }
+
+      const invested = afterFlow > 0 ? afterFlow : 0;
+      const endBal = pathBalance(path);
+      path.priceIndex *= 1 + market.infl;
+      path.lastStockReturn = market.stock;
+      path.age += 1;
+      path.year += 1;
+      if (endBal > path.peak) path.peak = endBal;
+
+      if (endBal <= 0) {
+        path.consecutiveCrash += 1;
+        path.crashYears += 1;
+        if (path.firstOutAge === null) path.firstOutAge = path.age;
+      } else {
+        path.consecutiveCrash = 0;
+      }
+
+      return {
+        startBal: startBal,
+        endBal: endBal,
+        spend: spend,
+        income: income,
+        lumpSum: lumpSum,
+        downsizedNow: downsizedNow,
+        guardrailHit: guardrailHit,
+        shielded: shielded,
+        portfolioReturn: invested > 0 && endBal > 0 ? endBal / invested - 1 : 0,
+        market: market
+      };
+    }
+
+    /** Whether a path has finished: target reached, or ten years below zero. */
+    function pathFinished(path, plan) {
+      return path.year >= plan.targetAge - plan.startAge || path.consecutiveCrash >= RULES.crashLimit;
+    }
+
+    /** Success means what a landed flight means: target reached, money left. */
+    function pathSucceeded(path, plan) {
+      return path.year >= plan.targetAge - plan.startAge && pathBalance(path) > 0;
+    }
+
+    /** How many tactics are costing tactic-years this year. */
+    function activeTacticCount(tactics) {
+      let count = 0;
+      TACTIC_KEYS.forEach(function (key) { if (tactics[key]) count++; });
+      return count;
+    }
+
+    /**
+     * Runs `numSims` paths of a plan under a fixed set of tactics, with the
+     * cockpit's own rules, and returns the success rate plus - unless
+     * `successOnly` - the ending balances and the balance at every
+     * checkpoint, nominal and in launch-year money.
+     */
+    function runBatch(plan, tactics, numSims, successOnly) {
+      const horizon = plan.targetAge - plan.startAge;
+      const checkpoints = [];
+      for (let y = 10; y < horizon; y += 10) checkpoints.push(y);
+      checkpoints.push(horizon);
+
+      const snapshots = {};
+      checkpoints.forEach(function (y) { snapshots[y] = { nominal: [], real: [] }; });
+      const endNominal = [];
+      const endReal = [];
+      let successes = 0;
+
+      for (let sim = 0; sim < numSims; sim++) {
+        const path = newPath(plan);
+        while (!pathFinished(path, plan)) {
+          stepYear(path, plan, tactics, marketYear(plan, path.year));
+          if (!successOnly && snapshots[path.year]) {
+            const bal = Math.max(0, pathBalance(path));
+            snapshots[path.year].nominal.push(bal);
+            snapshots[path.year].real.push(bal / path.priceIndex);
+          }
+        }
+        if (pathSucceeded(path, plan)) successes++;
+        if (successOnly) continue;
+
+        // A path that ended early holds nothing at the checkpoints after it.
+        checkpoints.forEach(function (y) {
+          if (y > path.year) {
+            snapshots[y].nominal.push(0);
+            snapshots[y].real.push(0);
+          }
+        });
+        const finalBal = Math.max(0, pathBalance(path));
+        endNominal.push(finalBal);
+        endReal.push(finalBal / path.priceIndex);
+      }
+
+      const byValue = function (a, b) { return a - b; };
+      endNominal.sort(byValue);
+      endReal.sort(byValue);
+      checkpoints.forEach(function (y) {
+        snapshots[y].nominal.sort(byValue);
+        snapshots[y].real.sort(byValue);
+      });
+
+      return {
+        numSims: numSims,
+        horizon: horizon,
+        successRate: (successes / numSims) * 100,
+        endNominal: endNominal,
+        endReal: endReal,
+        checkpoints: checkpoints,
+        snapshots: snapshots
+      };
+    }
+
+    function percentile(sorted, p) {
+      if (!sorted.length) return 0;
+      return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * p))];
+    }
+
+    /* =================================================================
+       INITIALIZATION & UI CONTROLS
+       ================================================================= */
+    window.onload = function() {
       updatePilotName();
       updateControlsUI();
       loadLeaderboard();
@@ -1191,95 +1825,129 @@
       }
     }
 
-    function checkAndDetectPresetCategory() {
-      if (state.nestEgg === 850000 && state.annualSpending === 45000) {
-        state.activePresetKey = 'highrisk';
-      } else if (state.nestEgg === 1000000 && state.annualSpending === 40000) {
-        state.activePresetKey = 'trinity';
-      } else if (state.nestEgg === 650000 && state.annualSpending === 35000) {
-        state.activePresetKey = 'leanfire';
-      } else if (state.nestEgg === 1500000 && state.annualSpending === 75000) {
-        state.activePresetKey = 'fatfire';
-      } else {
-        state.activePresetKey = 'custom';
-      }
+    function flightInProgress() {
+      return state.phase === 'flying' || state.phase === 'paused';
     }
 
-    function updateControlsUI() {
+    /**
+     * Reads the setup controls into `state`, holding each to its range and
+     * writing the corrected value back so the box shows what is simulated.
+     * The start age is held to 18-90 and the target to at least ten years
+     * after it, so a flight can no longer begin at or past its destination.
+     */
+    function readSetupInputs() {
       const nestEggEl = document.getElementById('input-nestegg');
       const spendingEl = document.getElementById('input-spending');
       const startAgeEl = document.getElementById('input-startage');
       const endAgeEl = document.getElementById('input-endage');
-
-      if (nestEggEl) state.nestEgg = parseFloat(nestEggEl.value) || 850000;
-      if (spendingEl) state.annualSpending = parseFloat(spendingEl.value) || 45000;
-      if (startAgeEl) state.startAge = parseInt(startAgeEl.value) || 50;
-      if (endAgeEl) state.targetAge = parseInt(endAgeEl.value) || 100;
-
-{{minHScreen25}}      checkAndDetectPresetCategory();
-
       const seqEl = document.getElementById('select-market-sequence');
-      if (seqEl) state.marketSequence = seqEl.value;
 
-{{minHScreen26}}      const dispEgg = document.getElementById('disp-nestegg');
-{{minHScreen27}}
-      const dispSpend = document.getElementById('disp-spending');
-{{minHScreen28}}
+      if (nestEggEl) state.nestEgg = clamp(Math.round(parseFloat(nestEggEl.value) || 850000), LIMITS.nestEgg.min, LIMITS.nestEgg.max);
+      if (spendingEl) state.annualSpending = clamp(Math.round(parseFloat(spendingEl.value) || 45000), LIMITS.spending.min, LIMITS.spending.max);
+
+      let start = startAgeEl ? parseInt(startAgeEl.value, 10) : state.startAge;
+      if (!Number.isFinite(start)) start = 50;
+      start = clamp(start, LIMITS.startAge.min, LIMITS.startAge.max);
+
+      let target = endAgeEl ? parseInt(endAgeEl.value, 10) : state.targetAge;
+      if (!Number.isFinite(target)) target = 100;
+      target = clamp(target, start + LIMITS.minHorizon, LIMITS.targetAge.max);
+
+      state.startAge = start;
+      state.targetAge = target;
+      if (startAgeEl && String(start) !== startAgeEl.value) startAgeEl.value = start;
+      if (endAgeEl) {
+        endAgeEl.min = start + LIMITS.minHorizon;
+        if (String(target) !== endAgeEl.value) endAgeEl.value = target;
+      }
+
+      if (seqEl) state.marketSequence = HISTORICAL_SEQUENCES[seqEl.value] ? seqEl.value : 'simulated';
+    }
+
+    /**
+     * Disables every setup control while a flight exists. The flight is
+     * simulated on the setup it launched with, so a control that kept moving
+     * would only change what the page said, not what was flown - and, before
+     * this, which board the score landed on. The tactics stay live.
+     */
+    function setSetupLocked(locked) {
+      document.querySelectorAll('.setup-control').forEach(function (el) {
+        el.disabled = locked;
+        el.classList.toggle('opacity-40', locked);
+      });
+      const note = document.getElementById('setup-lock-note');
+      if (note) note.hidden = !locked;
+      syncAllocationLock();
+    }
+
+    function updateControlsUI() {
+      if (flightInProgress()) return;
+      // A finished flight is still on screen until the setup changes; a
+      // change starts the next one from nothing.
+      if (state.phase === 'over') resetFlightSimulation(true);
+
+      readSetupInputs();
+
+      const nestEggEl = document.getElementById('input-nestegg');
+      const spendingEl = document.getElementById('input-spending');
+
+      setText('disp-nestegg', money(state.nestEgg));
+      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', money(state.nestEgg));
+      setText('disp-spending', money(state.annualSpending));
+      if (spendingEl) spendingEl.setAttribute('aria-valuetext', money(state.annualSpending));
+
       const swrVal = (state.annualSpending / state.nestEgg) * 100;
-      const swrStr = swrVal.toFixed(1) + '%';
-      
+      const swrStr = percent(swrVal, 1);
+
       const badgeSwr = document.getElementById('disp-swr-badge');
       if (badgeSwr) {
         if (swrVal > 4.5) {
-{{minHScreen29}}          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-400 border border-red-200 animate-pulse';
+          badgeSwr.textContent = fill(TEXT.riskHigh, { rate: swrStr });
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-400 border border-red-200 animate-pulse';
         } else if (swrVal > 3.8) {
-{{minHScreen30}}          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-400 border border-amber-200';
+          badgeSwr.textContent = fill(TEXT.riskModerate, { rate: swrStr });
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-400 border border-amber-200';
         } else {
-{{minHScreen31}}          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-400 border border-emerald-200';
+          badgeSwr.textContent = fill(TEXT.riskSafe, { rate: swrStr });
+          badgeSwr.className = 'font-mono px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-400 border border-emerald-200';
         }
       }
 
-      if (!state.isSimulating) {
-        state.currentAge = state.startAge;
-        state.currentNestEgg = state.nestEgg;
-        state.peakNestEgg = state.nestEgg;
+      state.currentAge = state.startAge;
+      state.currentNestEgg = state.nestEgg;
+      state.peakNestEgg = state.nestEgg;
 
-        const hudAge = document.getElementById('hud-current-age');
-        if (hudAge) hudAge.innerText = state.currentAge;
+      setText('hud-current-age', state.currentAge);
+      setText('hud-target-age', state.targetAge);
+      setText('hud-portfolio-val', money(state.currentNestEgg));
+      setText('hud-current-swr', swrStr);
+      setText('disp-horizon-note', fill(TEXT.horizonNote, { years: state.targetAge - state.startAge, start: state.startAge, end: state.targetAge }));
+      setText('canvas-target-label', fill(TEXT.targetHorizon, { age: state.targetAge }));
+      setText('impact-cutspend', fill(TEXT.cutImpact, { amount: money(state.annualSpending * (1 - RULES.cutSpend)) }));
 
-        const hudVal = document.getElementById('hud-portfolio-val');
-{{minHScreen32}}
-        const hudSwr = document.getElementById('hud-current-swr');
-        if (hudSwr) hudSwr.innerText = swrStr;
-
-        const crashCounter = document.getElementById('hud-crashline-counter');
-        if (crashCounter) {
-{{minHScreen33}}          crashCounter.className = 'text-emerald-400 font-bold text-sm';
-        }
+      const crashCounter = document.getElementById('hud-crashline-counter');
+      if (crashCounter) {
+        crashCounter.textContent = fill(TEXT.crashCounter, { years: 0, limit: RULES.crashLimit });
+        crashCounter.className = 'text-emerald-400 font-bold text-sm';
       }
 
-      if (state.useTargetDateFund) {
-        updateTargetDateGlidepath(state.currentAge);
-      }
-
+      updateTargetDateGlidepath(state.startAge);
+      updateMonteCarloIntro();
       renderCanvas();
     }
 
     function loadPreset(type) {
+      const preset = PRESETS[type];
+      if (!preset || flightInProgress()) return;
       playSound('click');
-      if (type === 'highrisk') {
-        state.activePresetKey = 'highrisk';
-        setControlValues(850000, 45000, 50, 100, 80, 15, 5);
-      } else if (type === 'trinity') {
-        state.activePresetKey = 'trinity';
-        setControlValues(1000000, 40000, 50, 100, 70, 20, 10);
-      } else if (type === 'leanfire') {
-        state.activePresetKey = 'leanfire';
-        setControlValues(650000, 35000, 50, 100, 85, 10, 5);
-      } else if (type === 'fatfire') {
-        state.activePresetKey = 'fatfire';
-        setControlValues(1500000, 75000, 50, 100, 75, 20, 5);
-      }
+      // A preset is the whole scenario, so it also clears the two setup
+      // choices that would otherwise move the flight onto the custom board.
+      const toggle = document.getElementById('toggle-tdf');
+      if (toggle) toggle.checked = false;
+      state.useTargetDateFund = false;
+      const seqEl = document.getElementById('select-market-sequence');
+      if (seqEl) seqEl.value = 'simulated';
+      setControlValues(preset.nestEgg, preset.annualSpending, preset.startAge, preset.targetAge, preset.stocks, preset.bonds, preset.cash);
     }
 
     function setControlValues(egg, spend, start, end, stocks, bonds, cash) {
@@ -1287,153 +1955,173 @@
       document.getElementById('input-spending').value = spend;
       document.getElementById('input-startage').value = start;
       document.getElementById('input-endage').value = end;
-
-      state.pctStocks = stocks;
-      state.pctBonds = bonds;
-      state.pctCash = cash;
-
-      document.getElementById('input-stocks').value = stocks;
-      document.getElementById('input-bonds').value = bonds;
-      document.getElementById('input-cash').value = cash;
-
-      document.getElementById('disp-pct-stocks').innerText = stocks + '%';
-      document.getElementById('disp-pct-bonds').innerText = bonds + '%';
-      document.getElementById('disp-pct-cash').innerText = cash + '%';
-
+      setAllocation(stocks, bonds, cash);
+      syncAllocationLock();
       updateControlsUI();
     }
 
-{{minHScreen34}}    function adjustAssetAllocation(changed) {
-      if (state.useTargetDateFund) return;
-
-      let s = parseInt(document.getElementById('input-stocks').value) || 0;
-      let b = parseInt(document.getElementById('input-bonds').value) || 0;
-      let c = parseInt(document.getElementById('input-cash').value) || 0;
-
-      if (changed === 'stocks') {
-        let rem = 100 - s;
-        b = Math.round(rem * 0.7);
-        c = rem - b;
-      } else if (changed === 'bonds') {
-        let rem = 100 - b;
-        s = Math.round(rem * 0.8);
-        c = rem - s;
-      } else {
-        let rem = 100 - c;
-        s = Math.round(rem * 0.75);
-        b = rem - s;
-      }
-
+    /* =================================================================
+       ASSET ALLOCATION & TARGET DATE FUND
+       ================================================================= */
+    function setAllocation(s, b, c) {
       state.pctStocks = s;
       state.pctBonds = b;
       state.pctCash = c;
 
-      document.getElementById('input-stocks').value = s;
-      document.getElementById('input-bonds').value = b;
-      document.getElementById('input-cash').value = c;
-
-      document.getElementById('disp-pct-stocks').innerText = s + '%';
-      document.getElementById('disp-pct-bonds').innerText = b + '%';
-      document.getElementById('disp-pct-cash').innerText = c + '%';
-
-      // A range input announces its raw value, so an allocation slider read
-      // out as "80" rather than "80 percent".
-      document.getElementById('input-stocks').setAttribute('aria-valuetext', s + '%');
-      document.getElementById('input-bonds').setAttribute('aria-valuetext', b + '%');
-      document.getElementById('input-cash').setAttribute('aria-valuetext', c + '%');
+      [['stocks', s], ['bonds', b], ['cash', c]].forEach(function (pair) {
+        const input = document.getElementById('input-' + pair[0]);
+        if (input) {
+          input.value = pair[1];
+          // A range input announces its raw value, so an allocation slider
+          // read out as "80" rather than "80 percent".
+          input.setAttribute('aria-valuetext', pair[1] + '%');
+        }
+        setText('disp-pct-' + pair[0], pair[1] + '%');
+      });
     }
 
-    function toggleTargetDateFund() {
-      const toggle = document.getElementById('toggle-tdf');
-      state.useTargetDateFund = toggle.checked;
+    /**
+     * Moves one slider and shares the remainder between the other two in
+     * the proportion they already had, so any split that sums to 100 can be
+     * reached - 60/40/0 included. The sliders used to snap the other two to
+     * a fixed ratio, which left only three lines of allocations reachable.
+     */
+    function adjustAssetAllocation(changed) {
+      if (state.useTargetDateFund || flightInProgress()) return;
 
+      const current = { stocks: state.pctStocks, bonds: state.pctBonds, cash: state.pctCash };
+      const input = document.getElementById('input-' + changed);
+      const value = clamp(parseInt(input && input.value, 10) || 0, 0, 100);
+      const others = ['stocks', 'bonds', 'cash'].filter(function (key) { return key !== changed; });
+      const rest = 100 - value;
+      const before = current[others[0]] + current[others[1]];
+      const first = before > 0 ? Math.round(rest * current[others[0]] / before) : Math.round(rest / 2);
+
+      const next = {};
+      next[changed] = value;
+      next[others[0]] = first;
+      next[others[1]] = rest - first;
+      setAllocation(next.stocks, next.bonds, next.cash);
+      if (state.phase === 'over') resetFlightSimulation(true);
+      updateMonteCarloIntro();
+    }
+
+    function syncAllocationLock() {
       const slidersBox = document.getElementById('allocation-sliders-container');
       const tdfCard = document.getElementById('tdf-glidepath-card');
+      if (slidersBox) slidersBox.classList.toggle('opacity-40', state.useTargetDateFund);
+      if (slidersBox) slidersBox.classList.toggle('pointer-events-none', state.useTargetDateFund);
+      if (tdfCard) tdfCard.classList.toggle('hidden', !state.useTargetDateFund);
+      ['stocks', 'bonds', 'cash'].forEach(function (key) {
+        const input = document.getElementById('input-' + key);
+        if (input) input.disabled = state.useTargetDateFund || flightInProgress();
+      });
+    }
 
-      if (state.useTargetDateFund) {
-        if (slidersBox) slidersBox.classList.add('opacity-40', 'pointer-events-none');
-        if (tdfCard) tdfCard.classList.remove('hidden');
-        updateTargetDateGlidepath(state.currentAge);
-      } else {
-        if (slidersBox) slidersBox.classList.remove('opacity-40', 'pointer-events-none');
-        if (tdfCard) tdfCard.classList.add('hidden');
-      }
+    /**
+     * The target-date fund replaces the allocation with the glide path for
+     * as long as it is on. The sliders keep the pilot's own split rather
+     * than being overwritten by the glide path, so turning the fund off
+     * restores exactly what was set before it was turned on.
+     */
+    function toggleTargetDateFund() {
+      if (flightInProgress()) return;
+      const toggle = document.getElementById('toggle-tdf');
+      state.useTargetDateFund = !!(toggle && toggle.checked);
+      if (state.phase === 'over') resetFlightSimulation(true);
+      setAllocation(state.pctStocks, state.pctBonds, state.pctCash);
+      syncAllocationLock();
+      updateTargetDateGlidepath(state.currentAge);
+      updateMonteCarloIntro();
       playSound('click');
     }
 
+    /** Draws the glide-path bar for `age`. Display only - it changes no state. */
     function updateTargetDateGlidepath(age) {
-      let stocks = Math.max(20, Math.min(90, 110 - age));
-      let bonds = Math.max(10, Math.min(70, age - 20));
-      let cash = 100 - (stocks + bonds);
-      if (cash < 5) {
-        cash = 5;
-        bonds = 100 - stocks - cash;
-      }
-
-      state.pctStocks = stocks;
-      state.pctBonds = bonds;
-      state.pctCash = cash;
-
+      const mix = glideAllocation(age);
       const barS = document.getElementById('tdf-bar-stocks');
       const barB = document.getElementById('tdf-bar-bonds');
       const barC = document.getElementById('tdf-bar-cash');
+      if (barS) barS.style.width = mix.stocks + '%';
+      if (barB) barB.style.width = mix.bonds + '%';
+      if (barC) barC.style.width = mix.cash + '%';
+      setText('tdf-status-text', fill(TEXT.tdfStatus, { age: age, stocks: mix.stocks, bonds: mix.bonds, cash: mix.cash }));
+    }
 
-      if (barS) barS.style.width = stocks + '%';
-      if (barB) barB.style.width = bonds + '%';
-      if (barC) barC.style.width = cash + '%';
-
-      const tdfText = document.getElementById('tdf-status-text');
-{{minHScreen35}}    }
-
-{{minHScreen36}}    function toggleAction(action) {
+    /* =================================================================
+       MID-FLIGHT 6 TACTICAL ADJUSTMENTS
+       ================================================================= */
+    function toggleAction(action) {
+      if (TACTIC_KEYS.indexOf(action) === -1) return;
       playSound('click');
-      if (action === 'job') {
-        state.actJob = !state.actJob;
-        updateActionCardUI('job', state.actJob, 'border-cyan-500');
-      } else if (action === 'cutspend') {
-        state.actCutSpend = !state.actCutSpend;
-        updateActionCardUI('cutspend', state.actCutSpend, 'border-amber-500');
-      } else if (action === 'cashbuffer') {
-        state.actCashBuffer = !state.actCashBuffer;
-        updateActionCardUI('cashbuffer', state.actCashBuffer, 'border-emerald-500');
-      } else if (action === 'guardrails') {
-        state.actGuardrails = !state.actGuardrails;
-        updateActionCardUI('guardrails', state.actGuardrails, 'border-purple-500');
-      } else if (action === 'downsize') {
-        state.actDownsize = !state.actDownsize;
-        updateActionCardUI('downsize', state.actDownsize, 'border-blue-500');
-        if (state.actDownsize && state.isSimulating) {
-{{minHScreen37}}          showCopilotBanner(
-{{minHScreen38}}            'info'
-          );
+
+      // A tactic switched after landing belongs to the next flight, which
+      // starts from no tactics at all.
+      if (state.phase === 'over') resetFlightSimulation(true);
+
+      const turningOn = !state.tactics[action];
+
+      if (action === 'downsize') {
+        // A house is sold once. During a flight the sale is final: it cannot
+        // be undone, and so it cannot be re-triggered for another lump sum.
+        if (!turningOn && flightInProgress()) {
+          showCopilotBanner(TEXT.downsizeTitle, TEXT.downsizeLockedMsg, TEXT.downsizeTip, 'info');
+          return;
         }
-      } else if (action === 'pension') {
-        state.actPension = !state.actPension;
-        updateActionCardUI('pension', state.actPension, 'border-pink-500');
+        if (turningOn) {
+          const amount = money(RULES.downsizeAmount * (state.path ? state.path.priceIndex : 1));
+          showCopilotBanner(TEXT.downsizeTitle, fill(TEXT.downsizePlannedMsg, { amount: amount }), TEXT.downsizeTip, 'info');
+        }
       }
+
+      if (action === 'cashbuffer' && turningOn) {
+        const plan = state.plan || currentPlan();
+        const age = state.path ? state.path.age : plan.startAge;
+        if (allocationAt(plan, age).cash <= 0) {
+          showCopilotBanner(TEXT.bufferTitle, TEXT.bufferNeedsCash, TEXT.bufferTip, 'warning');
+          return;
+        }
+      }
+
+      state.tactics[action] = turningOn;
+      updateActionCardUI(action);
+      updateMonteCarloIntro();
       renderCanvas();
     }
 
-    function updateActionCardUI(key, isActive, borderClass) {
+    function updateActionCardUI(key) {
       const card = document.getElementById('card-action-' + key);
       const badge = document.getElementById('badge-action-' + key);
       const check = document.getElementById('check-action-' + key);
+      const isActive = !!state.tactics[key];
+      const borderClass = TACTIC_BORDERS[key];
 
       if (!card || !badge) return;
 
       if (isActive) {
         card.classList.add('is-active', borderClass);
-{{minHScreen39}}        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-50 text-cyan-300 border border-cyan-200 font-bold';
+        let label = TEXT.active;
+        if (key === 'downsize') label = state.path && state.path.downsized ? TEXT.used : TEXT.planned;
+        badge.textContent = label;
+        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-50 text-cyan-300 border border-cyan-200 font-bold';
         if (check) check.checked = true;
       } else {
         card.classList.remove('is-active', borderClass);
-{{minHScreen40}}        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400';
+        badge.textContent = TEXT.inactive;
+        badge.className = 'text-[9px] font-mono px-2 py-0.5 rounded bg-cream-200 text-espresso-800 border border-cream-400';
         if (check) check.checked = false;
       }
     }
 
-{{minHScreen41}}    function toggleFlightSimulation() {
-      if (state.isSimulating) {
+    function refreshAllActionCards() {
+      TACTIC_KEYS.forEach(updateActionCardUI);
+    }
+
+    /* =================================================================
+       SIMULATION ENGINE (STEP BY STEP FLIGHT & CRASHLINE LOGIC)
+       ================================================================= */
+    function toggleFlightSimulation() {
+      if (state.phase === 'flying') {
         pauseFlightSimulation();
       } else {
         startFlightSimulation();
@@ -1441,195 +2129,202 @@
     }
 
     function startFlightSimulation() {
-      if (state.currentAge >= state.targetAge || state.yearsInCrashlineConsecutive >= 10) {
-        resetFlightSimulation();
+      if (state.phase === 'over') resetFlightSimulation(true);
+
+      if (state.phase === 'ready') {
+        // The launch snapshot: everything the flight is simulated, boarded,
+        // scored and recorded on is fixed here, and the setup is locked
+        // until the flight is over or reset.
+        readSetupInputs();
+        state.plan = currentPlan();
+        state.board = boardFor(state.plan);
+        state.path = newPath(state.plan);
+        state.tacticsUsed = noTactics();
+        state.totalTacticYears = 0;
+        state.historyLogs = [];
+        state.sequenceEndAnnounced = false;
       }
 
-      state.isSimulating = true;
+      state.phase = 'flying';
+      setSetupLocked(true);
       playSound('engine');
 
-      const launchBtnText = document.getElementById('btn-launch-text');
-{{minHScreen42}}
+      setText('btn-launch-text', TEXT.pause);
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
-{{minHScreen43}}        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cyan-50 text-cyan-400 border border-cyan-200 animate-pulse';
+        badge.textContent = TEXT.statusFlying;
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cyan-50 text-cyan-400 border border-cyan-200 animate-pulse';
       }
 
+      if (state.simulationInterval) clearInterval(state.simulationInterval);
       state.simulationInterval = setInterval(simulateOneYearStep, 800);
     }
 
-    function pauseFlightSimulation() {
-      state.isSimulating = false;
+    function stopTimer() {
       if (state.simulationInterval) clearInterval(state.simulationInterval);
+      state.simulationInterval = null;
+    }
 
-      const launchBtnText = document.getElementById('btn-launch-text');
-{{minHScreen44}}
+    function pauseFlightSimulation() {
+      if (state.phase !== 'flying') return;
+      stopTimer();
+      state.phase = 'paused';
+
+      setText('btn-launch-text', TEXT.resume);
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
-{{minHScreen45}}        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-amber-50 text-amber-400 border border-amber-200';
+        badge.textContent = TEXT.statusPaused;
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-amber-50 text-amber-400 border border-amber-200';
       }
     }
 
-    function resetFlightSimulation() {
-      pauseFlightSimulation();
-      state.currentAge = state.startAge;
-      state.currentNestEgg = state.nestEgg;
-      state.peakNestEgg = state.nestEgg;
-      state.yearsInCrashlineConsecutive = 0;
-      state.totalCrashlineYears = 0;
+    /**
+     * Back to the tarmac: no flight, no telemetry, no tactics. Every total
+     * the score reads is cleared here, so a new flight can never inherit
+     * crash years, tactic-years or a used downsizing from the last one.
+     */
+    function resetFlightSimulation(silent) {
+      stopTimer();
+      state.phase = 'ready';
+      state.plan = null;
+      state.path = null;
+      state.tactics = noTactics();
+      state.tacticsUsed = noTactics();
       state.totalTacticYears = 0;
+      state.totalCrashlineYears = 0;
+      state.yearsInCrashlineConsecutive = 0;
       state.historyLogs = [];
+      state.sequenceEndAnnounced = false;
 
       hideCopilotBanner();
+      refreshAllActionCards();
+      setSetupLocked(false);
 
       const container = document.getElementById('hud-visual-container');
       if (container) container.classList.remove('crash-warning');
 
-      const launchBtnText = document.getElementById('btn-launch-text');
-{{minHScreen46}}
+      setText('btn-launch-text', TEXT.launch);
       const badge = document.getElementById('hud-flight-status-badge');
       if (badge) {
-{{minHScreen47}}        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-50 text-emerald-400 border border-emerald-200';
+        badge.textContent = TEXT.statusReady;
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-emerald-50 text-emerald-400 border border-emerald-200';
       }
 
       updateControlsUI();
-      playSound('click');
+      if (silent !== true) playSound('click');
     }
 
     function simulateOneYearStep() {
-      if (state.currentAge >= state.targetAge || state.yearsInCrashlineConsecutive >= 10) {
+      const plan = state.plan;
+      const path = state.path;
+      if (!plan || !path || state.phase !== 'flying') return;
+      if (pathFinished(path, plan)) {
         finishFlightSimulation();
         return;
       }
 
-      state.currentAge++;
+      // The tactics as switched at the start of this year are the ones that
+      // apply to it, cost a tactic-year each, and count as used.
+      const tactics = Object.assign({}, state.tactics);
+      const market = marketYear(plan, path.year);
+      const year = stepYear(path, plan, tactics, market);
 
-{{minHScreen48}}      let activeTacticsThisYear = 0;
-      if (state.actJob) activeTacticsThisYear++;
-      if (state.actCutSpend) activeTacticsThisYear++;
-      if (state.actCashBuffer) activeTacticsThisYear++;
-      if (state.actGuardrails) activeTacticsThisYear++;
-      if (state.actDownsize) activeTacticsThisYear++;
-      if (state.actPension) activeTacticsThisYear++;
-      state.totalTacticYears += activeTacticsThisYear;
+      TACTIC_KEYS.forEach(function (key) {
+        if (tactics[key]) state.tacticsUsed[key] = true;
+      });
+      state.totalTacticYears += activeTacticCount(tactics);
 
-      if (state.useTargetDateFund) {
-        updateTargetDateGlidepath(state.currentAge);
-      }
+      state.currentAge = path.age;
+      state.currentNestEgg = Math.round(year.endBal);
+      state.peakNestEgg = Math.max(state.peakNestEgg, state.currentNestEgg);
+      state.yearsInCrashlineConsecutive = path.consecutiveCrash;
+      state.totalCrashlineYears = path.crashYears;
 
-{{minHScreen49}}      let effectiveSpend = state.annualSpending;
+      if (state.useTargetDateFund || plan.useTargetDateFund) updateTargetDateGlidepath(path.age);
 
-{{minHScreen50}}      if (state.actJob) {
-        effectiveSpend = Math.max(0, effectiveSpend - 15000);
-      }
-      if (state.actCutSpend) {
-        effectiveSpend = effectiveSpend * 0.85;
-      }
-      if (state.actPension && state.currentAge >= 62) {
-        effectiveSpend = Math.max(0, effectiveSpend - 20000);
-      }
-
-{{minHScreen51}}      let stockRet = 0, bondRet = 0, infl = 0;
-
-      if (state.marketSequence !== 'simulated' && PRESET_HISTORICAL_SEQUENCES[state.marketSequence]) {
-        const seq = PRESET_HISTORICAL_SEQUENCES[state.marketSequence];
-        const stepIdx = (state.currentAge - state.startAge - 1) % seq.length;
-        stockRet = seq[stepIdx].stock;
-        bondRet = seq[stepIdx].bond;
-        infl = seq[stepIdx].infl;
-      } else {
-        stockRet = randomGaussian(MARKET_BENCHMARKS.stocks.mean, MARKET_BENCHMARKS.stocks.stdDev);
-        bondRet = randomGaussian(MARKET_BENCHMARKS.bonds.mean, MARKET_BENCHMARKS.bonds.stdDev);
-        infl = randomGaussian(MARKET_BENCHMARKS.inflation.mean, MARKET_BENCHMARKS.inflation.stdDev);
-
-{{minHScreen52}}        const yearsElapsed = state.currentAge - state.startAge;
-        if (yearsElapsed <= 15 && (yearsElapsed % 5 === 2 || yearsElapsed === 3)) {
-{{minHScreen53}}        }
-      }
-
-{{minHScreen54}}      if (state.actGuardrails && stockRet < -0.15) {
-        effectiveSpend = effectiveSpend * 0.90;
-      }
-
-{{minHScreen55}}      effectiveSpend = effectiveSpend * (1 + Math.max(0, infl));
-
-{{minHScreen56}}      let weightedReturn = (stockRet * (state.pctStocks / 100)) + 
-                         (bondRet * (state.pctBonds / 100)) + 
-                         (MARKET_BENCHMARKS.cash.mean * (state.pctCash / 100));
-
-{{minHScreen57}}      if (state.actCashBuffer && stockRet < 0) {
-        weightedReturn += 0.035;
-      }
-
-{{minHScreen58}}      let startBal = state.currentNestEgg;
-      let afterSpend = startBal - effectiveSpend;
-      let endBal = afterSpend * (1 + weightedReturn);
-
-      state.currentNestEgg = Math.round(endBal);
-      if (state.currentNestEgg > state.peakNestEgg) {
-        state.peakNestEgg = state.currentNestEgg;
-      }
-
-{{minHScreen59}}      const container = document.getElementById('hud-visual-container');
-      if (state.currentNestEgg <= 0) {
-        state.yearsInCrashlineConsecutive++;
-        state.totalCrashlineYears++;
-        if (container) container.classList.add('crash-warning');
-
-        showCopilotBanner(
-{{minHScreen60}}          'danger'
-        );
-        playSound('alert');
-      } else {
-{{minHScreen61}}        if (container) container.classList.remove('crash-warning');
-      }
-
-{{minHScreen62}}      state.historyLogs.push({
-        age: state.currentAge,
-        startBal: startBal,
-        spend: effectiveSpend,
-        returnPct: weightedReturn,
+      state.historyLogs.push({
+        age: path.age,
+        startBal: year.startBal,
+        spend: year.spend,
+        income: year.income,
+        returnPct: year.portfolioReturn,
         endBal: state.currentNestEgg,
-        inCrashline: state.currentNestEgg <= 0
+        inCrashline: year.endBal <= 0
       });
 
-{{minHScreen63}}      const hudAge = document.getElementById('hud-current-age');
-      if (hudAge) hudAge.innerText = state.currentAge;
+      if (year.downsizedNow) updateActionCardUI('downsize');
 
-      const hudVal = document.getElementById('hud-portfolio-val');
-{{minHScreen64}}
-      const curSwr = ((effectiveSpend / Math.max(1, state.currentNestEgg)) * 100).toFixed(1);
-      const hudSwr = document.getElementById('hud-current-swr');
-{{minHScreen65}}
-      const crashCounter = document.getElementById('hud-crashline-counter');
-      if (crashCounter) {
-{{minHScreen66}}        if (state.yearsInCrashlineConsecutive > 0) {
-          crashCounter.className = 'text-red-400 font-bold text-sm animate-pulse';
+      const container = document.getElementById('hud-visual-container');
+      if (year.endBal <= 0) {
+        if (container) container.classList.add('crash-warning');
+        showCrashBanner(path, plan, tactics);
+        playSound('alert');
+      } else {
+        if (container) container.classList.remove('crash-warning');
+        if (year.downsizedNow) {
+          showCopilotBanner(TEXT.downsizeTitle, fill(TEXT.downsizeMsg, { amount: money(year.lumpSum), age: path.age - 1 }), TEXT.downsizeTip, 'info');
         } else {
-          crashCounter.className = 'text-emerald-400 font-bold text-sm';
+          checkCopilotEvents(year.market, path, plan);
         }
       }
 
-      checkCopilotEvents(stockRet, infl);
+      setText('hud-current-age', path.age);
+      setText('hud-portfolio-val', money(state.currentNestEgg));
+      setText('hud-current-swr', year.endBal > 0 ? percent((year.spend / year.endBal) * 100, 1) : TEXT.swrCrash);
+
+      const crashCounter = document.getElementById('hud-crashline-counter');
+      if (crashCounter) {
+        crashCounter.textContent = fill(TEXT.crashCounter, { years: path.consecutiveCrash, limit: RULES.crashLimit });
+        crashCounter.className = path.consecutiveCrash > 0
+          ? 'text-red-400 font-bold text-sm animate-pulse'
+          : 'text-emerald-400 font-bold text-sm';
+      }
 
       renderCanvas();
 
-{{minHScreen67}}      if (state.yearsInCrashlineConsecutive >= 10) {
-        finishFlightSimulation();
-      }
+      if (pathFinished(path, plan)) finishFlightSimulation();
     }
 
-    function checkCopilotEvents(stockRet, infl) {
-      if (state.currentNestEgg > 0) {
-        if (stockRet < -0.15) {
-          showCopilotBanner(
-{{minHScreen68}}            'warning'
-          );
-        } else if (infl > 0.05) {
-          showCopilotBanner(
-{{minHScreen69}}            'warning'
-          );
-        }
+    /**
+     * The crash banner says what is true in this model: below zero the
+     * pilot is borrowing, nothing is invested, and the only ways back up are
+     * income that exceeds spending or the one-time downsizing.
+     */
+    function showCrashBanner(path, plan, tactics) {
+      const left = RULES.crashLimit - path.consecutiveCrash;
+      const pi = path.priceIndex;
+      let spend = plan.annualSpending * pi * (tactics.cutspend ? RULES.cutSpend : 1);
+      let income = (tactics.job ? RULES.jobIncome * pi : 0) + (tactics.pension && path.age >= RULES.pensionAge ? RULES.pensionIncome * pi : 0);
+
+      let tip;
+      if (income > spend) tip = TEXT.crashTipRecovering;
+      else if (income > 0 || tactics.cutspend) tip = fill(TEXT.crashTipShort, { gap: money(spend - income) });
+      else tip = TEXT.crashTipNoIncome;
+
+      showCopilotBanner(
+        TEXT.crashTitle,
+        fill(TEXT.crashMsg, { age: path.age, debt: money(-pathBalance(path)), rate: percent(RULES.debtRate * 100, 0), left: left }),
+        tip,
+        'danger'
+      );
+    }
+
+    function checkCopilotEvents(market, path, plan) {
+      const sequence = HISTORICAL_SEQUENCES[plan.marketSequence];
+      if (sequence && !state.sequenceEndAnnounced && path.year === sequence.years.length) {
+        state.sequenceEndAnnounced = true;
+        showCopilotBanner(
+          TEXT.seqEndTitle,
+          fill(TEXT.seqEndMsg, { first: sequence.start, last: sequence.start + sequence.years.length - 1 }),
+          '',
+          'info'
+        );
+        return;
+      }
+      if (market.stock < -0.15) {
+        showCopilotBanner(TEXT.dropTitle, fill(TEXT.dropMsg, { pct: percent(market.stock * 100, 1), age: path.age }), TEXT.dropTip, 'warning');
+      } else if (market.infl > 0.05) {
+        showCopilotBanner(TEXT.inflTitle, fill(TEXT.inflMsg, { pct: percent(market.infl * 100, 1) }), TEXT.inflTip, 'warning');
       }
     }
 
@@ -1642,9 +2337,10 @@
 
       if (!banner || !titleEl || !msgEl || !tipEl) return;
 
-      titleEl.innerText = title;
-      msgEl.innerText = msg;
-      tipEl.innerText = tip;
+      titleEl.textContent = title;
+      msgEl.textContent = msg;
+      tipEl.textContent = tip;
+      tipEl.hidden = !tip;
 
       if (type === 'danger') {
         banner.className = 'absolute top-3 left-3 right-3 p-3.5 rounded-xl bg-cream-50 border border-red-300 text-xs backdrop-blur-md transition-all duration-300 flex items-start gap-3 border-l-4 border-l-red-500';
@@ -1665,51 +2361,135 @@
       if (banner) banner.classList.add('hidden');
     }
 
+    /**
+     * The score of a finished flight, line by line. One function for the
+     * debrief and the submission, so the number shown is the number posted.
+     *
+     * The base for a reached target scales with the years flown: 5,000 for a
+     * 50-year flight or longer, proportionally less for a shorter one, and
+     * never below the 1,000 a flight that fell short is worth.
+     */
+    function computeFlightScore(flight) {
+      const base = flight.reached
+        ? Math.max(SCORE.floor, Math.round(SCORE.reachedMax * Math.min(flight.years, SCORE.referenceYears) / SCORE.referenceYears))
+        : SCORE.floor;
+      const boardBonus = getCategoryBonus(flight.board);
+      const crashPenalty = flight.crashYears * SCORE.crashYear;
+      const tacticPenalty = flight.tacticYears * SCORE.tacticYear;
+      const balanceBonus = Math.round(flight.finalBalance / SCORE.balanceDivisor);
+      const raw = base + boardBonus - crashPenalty - tacticPenalty + balanceBonus;
+      // Clamped at both ends, and to the range the endpoint accepts. A flight
+      // that ends with a nine-figure portfolio is a real flight, and losing
+      // its score to a rejected write would be a worse outcome than a score
+      // that stops climbing.
+      return {
+        base: base,
+        boardBonus: boardBonus,
+        crashPenalty: crashPenalty,
+        tacticPenalty: tacticPenalty,
+        balanceBonus: balanceBonus,
+        raw: raw,
+        total: clamp(raw, SCORE.min, SCORE.max)
+      };
+    }
+
     function finishFlightSimulation() {
-      pauseFlightSimulation();
+      if (state.phase === 'over' || !state.path) return;
+      stopTimer();
+      state.phase = 'over';
+      setSetupLocked(false);
+
+      const plan = state.plan;
+      const path = state.path;
+
+      setText('btn-launch-text', TEXT.launch);
+      const badge = document.getElementById('hud-flight-status-badge');
+      if (badge) {
+        badge.textContent = TEXT.statusOver;
+        badge.className = 'px-2.5 py-1 rounded-lg text-xs font-bold uppercase bg-cream-200 text-espresso-900 border border-cream-400';
+      }
 
       const modal = document.getElementById('modal-flight-debrief');
       const title = document.getElementById('debrief-title');
       const msg = document.getElementById('debrief-msg');
       const iconBox = document.getElementById('debrief-icon-box');
       const icon = document.getElementById('debrief-icon');
-      const pilotName = document.getElementById('debrief-pilot-name');
-      const debriefCat = document.getElementById('debrief-scenario-cat');
-      const finalBal = document.getElementById('debrief-final-bal');
-      const years = document.getElementById('debrief-years');
-      const crashYrs = document.getElementById('debrief-crashline-yrs');
-      const tacticYrs = document.getElementById('debrief-tactic-yrs');
 
-      if (!modal) return;
+      const endBal = pathBalance(path);
+      // Held to the endpoint's cap, far above any balance a run reaches.
+      const finalBalance = Math.min(1e15, Math.max(0, Math.round(endBal)));
+      const reachedTarget = pathSucceeded(path, plan);
+      const flight = {
+        reached: reachedTarget,
+        years: path.year,
+        board: state.board,
+        crashYears: path.crashYears,
+        tacticYears: state.totalTacticYears,
+        finalBalance: finalBalance,
+        endAge: path.age,
+        firstOutAge: path.firstOutAge,
+        realBalance: finalBalance / path.priceIndex
+      };
+      const score = computeFlightScore(flight);
 
-      const survivedYears = state.currentAge - state.startAge;
-      const reachedTarget = state.currentAge >= state.targetAge && state.currentNestEgg > 0;
-
-      if (reachedTarget) {
-{{minHScreen70}}        title.className = 'text-lg font-bold text-emerald-400';
-{{minHScreen71}}        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-50 text-emerald-400 border border-emerald-200 shadow-lg';
-        icon.className = 'fa-solid fa-trophy';
-        playSound('success');
-      } else {
-{{minHScreen72}}        title.className = 'text-lg font-bold text-red-400';
-{{minHScreen73}}        iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-50 text-red-400 border border-red-200 shadow-lg';
-        icon.className = 'fa-solid fa-plane-slash';
-        playSound('crash');
+      if (title && msg && iconBox && icon) {
+        if (reachedTarget) {
+          title.textContent = TEXT.winTitle;
+          title.className = 'text-lg font-bold text-emerald-400';
+          msg.textContent = fill(TEXT.winMsg, { name: state.pilotName, age: path.age, amount: money(finalBalance), real: money(flight.realBalance) });
+          iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-emerald-50 text-emerald-400 border border-emerald-200 shadow-lg';
+          icon.className = 'fa-solid fa-trophy';
+          playSound('success');
+        } else {
+          title.textContent = TEXT.lossTitle;
+          title.className = 'text-lg font-bold text-red-400';
+          const template = path.consecutiveCrash >= RULES.crashLimit ? TEXT.lossMsgCrash : TEXT.lossMsgNegative;
+          msg.textContent = fill(template, {
+            name: state.pilotName,
+            outAge: path.firstOutAge === null ? path.age : path.firstOutAge,
+            age: path.age,
+            years: path.consecutiveCrash
+          });
+          iconBox.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-50 text-red-400 border border-red-200 shadow-lg';
+          icon.className = 'fa-solid fa-plane-slash';
+          playSound('crash');
+        }
       }
 
-      if (pilotName) pilotName.innerText = state.pilotName;
-      if (debriefCat) debriefCat.innerText = presetLabel(state.activePresetKey);
-{{minHScreen74}}
-{{minHScreen75}}      registerScoreToLeaderboard(state.pilotName, state.activePresetKey, reachedTarget, state.totalCrashlineYears, state.totalTacticYears, Math.max(0, state.currentNestEgg));
+      setText('debrief-pilot-name', state.pilotName);
+      setText('debrief-scenario-cat', presetLabel(state.board));
+      setText('debrief-final-bal', money(finalBalance) + ' ' + fill(TEXT.todayMoney, { amount: money(flight.realBalance) }));
+      setText('debrief-years', fill(TEXT.yearsAtAge, { years: path.year, age: path.age }));
+      setText('debrief-crashline-yrs', fill(TEXT.yearsCount, { years: path.crashYears }));
+      setText('debrief-tactic-yrs', fill(TEXT.tacticYears, { years: state.totalTacticYears, points: formatNumber(score.tacticPenalty) }));
 
-      modal.classList.remove('hidden');
+      const signed = function (value, negative) {
+        return (negative ? '-' : '+') + formatNumber(Math.abs(value));
+      };
+      setText('debrief-score-base', signed(score.base));
+      setText('debrief-score-board', signed(score.boardBonus));
+      setText('debrief-score-crash', signed(score.crashPenalty, true));
+      setText('debrief-score-tactic', signed(score.tacticPenalty, true));
+      setText('debrief-score-balance', signed(score.balanceBonus));
+      setText('debrief-score-total', fill(TEXT.points, { points: formatNumber(score.total) }));
+      setText('debrief-score-note', score.total !== score.raw
+        ? fill(TEXT.scoreNote, { min: formatNumber(SCORE.min), max: formatNumber(SCORE.max) })
+        : '');
+
+      // The flight is over, so its score goes to the shared board under the
+      // board it was launched on.
+      registerScoreToLeaderboard(flight, score);
+
+      if (modal) modal.classList.remove('hidden');
 
       // The run is over and the button that started it is now behind a
       // full-screen overlay, so focus has to follow the debrief.
-      title.setAttribute('tabindex', '-1');
-      title.focus({ preventScroll: true });
+      if (title) {
+        title.setAttribute('tabindex', '-1');
+        title.focus({ preventScroll: true });
+      }
 
-      updateResultCta(reachedTarget, survivedYears);
+      updateResultCta(flight);
     }
 
     /**
@@ -1726,27 +2506,33 @@
      * somebody abandon a plan. And a flight that ended with three times what
      * it started with is not simply a better win: it is a plan that was
      * over-funded, which was paid for with working years nobody gets back.
+     *
+     * A crashed flight reports the age the money first ran out, not the age
+     * the flight was called off at, which can be ten years later.
      */
-    function updateResultCta(reachedTarget, survivedYears) {
+    function updateResultCta(flight) {
       if (!window.SimCta) return;
 
-      const finalBalance = Math.max(0, state.currentNestEgg);
-      const swr = state.nestEgg > 0 ? ((state.annualSpending / state.nestEgg) * 100).toFixed(1) : '0.0';
-      const multiple = state.nestEgg > 0 ? (finalBalance / state.nestEgg).toFixed(1) : '0.0';
+      const plan = state.plan;
+      const swr = plan.nestEgg > 0 ? ((plan.annualSpending / plan.nestEgg) * 100).toFixed(1) : '0.0';
+      // In launch-year money: over a long flight inflation alone multiplies
+      // the nominal balance several times, and a plan is only over-funded if
+      // it ends with more purchasing power than it started with.
+      const multiple = plan.nestEgg > 0 ? (flight.realBalance / plan.nestEgg).toFixed(1) : '0.0';
 
       let bucket;
-      if (!reachedTarget) bucket = 'crashed';
-      else if (state.totalCrashlineYears >= 3) bucket = 'fragile';
-      else if (finalBalance > state.nestEgg * 2) bucket = 'comfortable';
+      if (!flight.reached) bucket = 'crashed';
+      else if (flight.crashYears >= 3) bucket = 'fragile';
+      else if (flight.realBalance > plan.nestEgg * 2) bucket = 'comfortable';
       else bucket = 'landed';
 
       window.SimCta.show(bucket, {
-        age: state.currentAge,
-        years: survivedYears,
-        crashYears: state.totalCrashlineYears,
-        finalBalance: window.SimCta.money(finalBalance),
-        nestEgg: window.SimCta.money(state.nestEgg),
-        spending: window.SimCta.money(state.annualSpending),
+        age: bucket === 'crashed' && flight.firstOutAge !== null ? flight.firstOutAge : flight.endAge,
+        years: flight.years,
+        crashYears: flight.crashYears,
+        finalBalance: window.SimCta.money(flight.finalBalance),
+        nestEgg: window.SimCta.money(plan.nestEgg),
+        spending: window.SimCta.money(plan.annualSpending),
         swr,
         multiple
       });
@@ -1812,7 +2598,10 @@
       }
     });
 
-{{minHScreen76}}    /** The display name of a preset, in the language of this page. */
+    /* =================================================================
+       LEADERBOARD SYSTEM BY CATEGORY
+       ================================================================= */
+    /** The display name of a preset, in the language of this page. */
     function presetLabel(key) {
       return PRESET_LABELS[key] || PRESET_LABELS.custom;
     }
@@ -1843,35 +2632,40 @@
      * people actually assume about safe withdrawal rates" is a question this
      * site can answer with its own numbers.
      *
+     * Read from the launch snapshot, never from the controls, which may have
+     * moved since landing. The allocation is the one the flight started on
+     * (the glide path at the start age, when the target-date fund is on), and
+     * each tactic flag means "used during the flight": switched on for at
+     * least one simulated year.
+     *
      * The withdrawal rate is computed here rather than server-side and carried
      * in basis points, because the stored column rounds to whole numbers and a
      * rate rounded to a whole percent is the wrong resolution for the one
-     * argument it exists to settle. A run whose starting capital was cleared to
-     * zero sends no rate at all instead of an infinity: the field is optional,
-     * and a missing value is honest where a placeholder would enter the average.
+     * argument it exists to settle.
      */
     function flightAssumptions() {
+      const plan = state.plan;
+      const start = allocationAt(plan, plan.startAge);
       const assumptions = {
-        startCapital: recordable(state.nestEgg, 0, 1000000000),
-        annualSpending: recordable(state.annualSpending, 0, 100000000),
-        startAge: recordable(state.startAge, 18, 100),
-        horizonYears: recordable(state.targetAge - state.startAge, 1, 90),
-        pctStocks: recordable(state.pctStocks, 0, 100),
-        pctBonds: recordable(state.pctBonds, 0, 100),
-        pctCash: recordable(state.pctCash, 0, 100),
-        targetDateFund: !!state.useTargetDateFund,
-        marketSequence: state.marketSequence,
-        // Which levers were pulled, whether or not they were pulled in time.
-        tacticJob: !!state.actJob,
-        tacticCutSpend: !!state.actCutSpend,
-        tacticCashBuffer: !!state.actCashBuffer,
-        tacticGuardrails: !!state.actGuardrails,
-        tacticDownsize: !!state.actDownsize,
-        tacticPension: !!state.actPension
+        startCapital: recordable(plan.nestEgg, 0, 1000000000),
+        annualSpending: recordable(plan.annualSpending, 0, 100000000),
+        startAge: recordable(plan.startAge, LIMITS.startAge.min, LIMITS.startAge.max),
+        horizonYears: recordable(plan.targetAge - plan.startAge, LIMITS.minHorizon, LIMITS.targetAge.max - LIMITS.startAge.min),
+        pctStocks: recordable(start.stocks, 0, 100),
+        pctBonds: recordable(start.bonds, 0, 100),
+        pctCash: recordable(start.cash, 0, 100),
+        targetDateFund: !!plan.useTargetDateFund,
+        marketSequence: plan.marketSequence,
+        tacticJob: !!state.tacticsUsed.job,
+        tacticCutSpend: !!state.tacticsUsed.cutspend,
+        tacticCashBuffer: !!state.tacticsUsed.cashbuffer,
+        tacticGuardrails: !!state.tacticsUsed.guardrails,
+        tacticDownsize: !!state.tacticsUsed.downsize,
+        tacticPension: !!state.tacticsUsed.pension
       };
 
-      if (state.nestEgg > 0) {
-        assumptions.withdrawalBps = recordable((state.annualSpending / state.nestEgg) * 10000, 0, 5000);
+      if (plan.nestEgg > 0) {
+        assumptions.withdrawalBps = recordable((plan.annualSpending / plan.nestEgg) * 10000, 0, 5000);
       }
 
       return assumptions;
@@ -1880,17 +2674,11 @@
     /**
      * The value if it is one the record can hold, and nothing if it is not.
      *
-     * Every field above comes from a number box a visitor can type anything
-     * into, and the endpoint refuses a write whose details fall outside the
-     * range it declares. Somebody modelling a €1 portfolio spending €45,000 a
-     * year has a withdrawal rate of 450,000 basis points, which is a real
-     * thing to try in a simulator and is not a rate; left in, it would cost
-     * them the score they earned, and clamped to 5,000 it would enter every
-     * published average as a 50% withdrawal that nobody chose.
-     *
-     * So an impossible value is dropped instead. The field is optional at the
-     * far end, the aggregate counts how many runs actually carried it, and a
-     * missing number stays missing rather than becoming a wrong one.
+     * The endpoint refuses a write whose details fall outside the range it
+     * declares, so an impossible value is dropped instead of costing the
+     * pilot the score they earned. The field is optional at the far end, the
+     * aggregate counts how many runs actually carried it, and a missing
+     * number stays missing rather than becoming a wrong one.
      */
     function recordable(value, min, max) {
       const number = Math.round(Number(value));
@@ -1898,22 +2686,8 @@
       return number;
     }
 
-    function registerScoreToLeaderboard(pilot, boardKey, reached100, crashYears, tacticYears, finalBalance) {
-{{minHScreen78}}      let baseScore = reached100 ? 5000 : 1000;
-      let catBonus = getCategoryBonus(boardKey);
-      let crashPenalty = crashYears * 500;
-      let tacticPenalty = (tacticYears || 0) * 75;
-      let wealthBonus = Math.round(finalBalance / 2500);
-
-      let score = baseScore + catBonus - crashPenalty - tacticPenalty + wealthBonus;
-      // Clamped at both ends, and to the range the endpoint accepts. A flight
-      // that ends with a nine-figure portfolio is a real flight, and losing
-      // its score to a rejected write would be a worse outcome than a score
-      // that stops climbing.
-      score = Math.min(100000, Math.max(100, score));
-
-      const board = PRESET_LABELS[boardKey] ? boardKey : 'custom';
-      const nestEgg = Math.min(1000000000, Math.max(0, Math.round(finalBalance)));
+    function registerScoreToLeaderboard(flight, score) {
+      const board = PRESET_LABELS[flight.board] ? flight.board : 'custom';
 
       // The board is switched to the one the flight was on before the write is
       // sent, so the pilot watches their own run arrive rather than being left
@@ -1927,18 +2701,20 @@
       window.SimLeaderboard.submit({
         simulator: LEADERBOARD_SIMULATOR,
         board: board,
-        name: pilot,
-        score: score,
+        name: state.pilotName,
+        score: score.total,
         // Ranked on score; equal scores settled by the bigger nest egg. The
         // remaining columns are carried as details because the board displays
-        // them and does not rank on them.
-        tiebreak: nestEgg,
+        // them and does not rank on them. `reached100` is the stored name of
+        // "reached the target age", kept so the rows already on the board
+        // still read correctly.
+        tiebreak: flight.finalBalance,
         details: Object.assign(
           {
-            reached100: !!reached100,
-            crashYears: crashYears || 0,
-            tacticYears: tacticYears || 0,
-            finalBalance: nestEgg
+            reached100: !!flight.reached,
+            crashYears: flight.crashYears || 0,
+            tacticYears: flight.tacticYears || 0,
+            finalBalance: flight.finalBalance
           },
           flightAssumptions()
         )
@@ -2037,7 +2813,7 @@
       }
 
       if (leaderboardEntries.length === 0) {
-        tbody.innerHTML = leaderboardNoticeRow(`{{minHScreen85}}`);
+        tbody.innerHTML = leaderboardNoticeRow(fill('{{lbEmpty}}', { board: '<strong>' + boardLabel() + '</strong>' }));
         return;
       }
 
@@ -2052,22 +2828,36 @@
         row.className = isMine
           ? 'bg-amber-50 hover:bg-cream-100 transition'
           : 'hover:bg-cream-100 transition';
-        
+
         let rankBadge = `<span class="font-bold text-espresso-800">#${idx + 1}</span>`;
         if (idx === 0) rankBadge = `<span class="font-bold text-amber-400"><i class="fa-solid fa-crown mr-1" aria-hidden="true"></i> #1</span>`;
         if (idx === 1) rankBadge = `<span class="font-bold text-espresso-900"><i class="fa-solid fa-medal mr-1" aria-hidden="true"></i> #2</span>`;
         if (idx === 2) rankBadge = `<span class="font-bold text-amber-600"><i class="fa-solid fa-award mr-1" aria-hidden="true"></i> #3</span>`;
 
+        // The amount in the unit it was flown in, read off the row's language.
+        const symbol = RUN_CURRENCY[entry.language] || CURRENCY;
+        const reached = details.reached100
+          ? `<span class="text-emerald-400"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> ${TEXT.yes}</span>`
+          : `<span class="text-red-400"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> ${TEXT.no}</span>`;
+
         row.innerHTML = `
           <td class="py-3 px-3">${rankBadge}</td>
           <td class="py-3 px-3 font-bold text-espresso-900">${window.SimLeaderboard.escapeHtml(entry.name)}${isMine ? '{{lbYouBadge}}' : ''}</td>
           <td class="py-3 px-3">${getCategoryBadgeHTML(entry.board)}</td>
-{{minHScreen86}}        `;
+          <td class="py-3 px-3 font-bold">${reached}</td>
+          <td class="py-3 px-3 text-red-400 font-bold">${fill(TEXT.lbYears, { years: formatNumber(details.crashYears || 0) })}</td>
+          <td class="py-3 px-3 text-amber-300 font-bold">${fill(TEXT.lbTacticYears, { years: formatNumber(details.tacticYears || 0) })}</td>
+          <td class="py-3 px-3 text-emerald-400 font-bold">${money(details.finalBalance || 0, symbol)}</td>
+          <td class="py-3 px-3 text-amber-400 font-bold font-hud">${fill(TEXT.points, { points: formatNumber(entry.score) })}</td>
+        `;
         tbody.appendChild(row);
       });
     }
 
-{{minHScreen87}}    function renderCanvas() {
+    /* =================================================================
+       ENHANCED CANVAS HUD VISUALIZER & CRASHLINE RENDERING
+       ================================================================= */
+    function renderCanvas() {
       const canvas = document.getElementById('flightCanvas');
       if (!canvas || !canvas.parentElement) return;
 
@@ -2083,13 +2873,16 @@
       const face = theme.font || 'ui-sans-serif, system-ui, sans-serif';
 
       const ctx = canvas.getContext('2d');
+      if (!ctx) return;
       canvas.width = canvas.parentElement.clientWidth;
       canvas.height = canvas.parentElement.clientHeight;
 
       const W = canvas.width;
       const H = canvas.height;
 
-      const healthRatio = Math.max(0, Math.min(1.5, state.currentNestEgg / state.nestEgg));
+      // The flight's own setup once it has launched, the controls before.
+      const plan = state.plan || currentPlan();
+      const healthRatio = Math.max(0, Math.min(1.5, state.currentNestEgg / plan.nestEgg));
       let skyGrad = ctx.createLinearGradient(0, 0, 0, H);
 
       const canvasStatusDot = document.getElementById('canvas-sky-status-dot');
@@ -2100,30 +2893,35 @@
         skyGrad.addColorStop(0, 'rgba(166, 64, 42, 0.16)');
         skyGrad.addColorStop(1, paper);
         if (canvasStatusText) {
-{{minHScreen88}}          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
+          canvasStatusText.textContent = fill(TEXT.canvasCrash, { years: state.yearsInCrashlineConsecutive, limit: RULES.crashLimit });
+          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
         }
       } else if (healthRatio > 0.8) {
         skyGrad.addColorStop(0, 'rgba(30, 70, 32, 0.12)');
         skyGrad.addColorStop(1, paper);
         if (canvasStatusText) {
-{{minHScreen89}}          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+          canvasStatusText.textContent = TEXT.canvasClear;
+          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
         }
       } else {
         skyGrad.addColorStop(0, 'rgba(138, 90, 11, 0.14)');
         skyGrad.addColorStop(1, paper);
         if (canvasStatusText) {
-{{minHScreen90}}          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-amber-500 animate-pulse';
+          canvasStatusText.textContent = TEXT.canvasCaution;
+          if (canvasStatusDot) canvasStatusDot.className = 'w-2 h-2 rounded-full bg-amber-500 animate-pulse';
         }
       }
 
       ctx.fillStyle = skyGrad;
       ctx.fillRect(0, 0, W, H);
 
-{{minHScreen91}}      const maxVal = Math.max(state.nestEgg * 2.2, state.peakNestEgg * 1.2);
+      // Bounds
+      const maxVal = Math.max(plan.nestEgg * 2.2, state.peakNestEgg * 1.2);
       const topY = 40;
       const bottomY = H - 35;
 
-{{minHScreen92}}      ctx.strokeStyle = role.grid || '#efeae0';
+      // Grid lines and money labels on the y axis
+      ctx.strokeStyle = role.grid || '#efeae0';
       ctx.lineWidth = 1;
 
       const numGridLines = 4;
@@ -2138,50 +2936,56 @@
 
         ctx.fillStyle = role.ink || '#574838';
         ctx.font = '600 9px ' + face;
-        ctx.fillText('{{lang.currency}}' + (dollarVal / 1000).toFixed(0) + 'k', 8, y + 3);
+        ctx.fillText(CURRENCY + formatNumber(dollarVal / 1000) + 'k', 8, y + 3);
       }
 
-{{minHScreen93}}      const totalYears = Math.max(1, state.targetAge - state.startAge);
+      // Age labels on the x axis
+      const totalYears = Math.max(1, plan.targetAge - plan.startAge);
       const startX = 60;
       const endX = W - 30;
 
       ctx.fillStyle = role.ink || '#574838';
       ctx.font = '600 10px ' + face;
-      for (let age = state.startAge; age <= state.targetAge; age += 10) {
-        const pct = (age - state.startAge) / totalYears;
+      for (let age = plan.startAge; age <= plan.targetAge; age += 10) {
+        const pct = (age - plan.startAge) / totalYears;
         const x = startX + pct * (endX - startX);
-{{minHScreen94}}      }
+        ctx.fillText(fill(TEXT.axisAge, { age: age }), x - 18, H - 12);
+      }
 
-{{minHScreen95}}      if (state.historyLogs.length > 0) {
+      if (state.historyLogs.length > 0) {
         const lastLog = state.historyLogs[state.historyLogs.length - 1];
-        const prevBal = state.historyLogs.length > 1 ? state.historyLogs[state.historyLogs.length - 2].endBal : state.nestEgg;
+        const prevBal = state.historyLogs.length > 1 ? state.historyLogs[state.historyLogs.length - 2].endBal : plan.nestEgg;
         const deltaBal = lastLog.endBal - prevBal;
 
         if (pitchBadge) {
-          if (state.yearsInCrashlineConsecutive > 0) {
-{{minHScreen96}}          } else if (deltaBal > 10000) {
-{{minHScreen97}}          } else if (deltaBal >= -5000) {
-{{minHScreen98}}          } else {
-{{minHScreen99}}          }
+          let pitch;
+          if (state.yearsInCrashlineConsecutive > 0) pitch = `<span class="text-red-400 font-bold animate-pulse"><i class="fa-solid fa-plane-circle-exclamation" aria-hidden="true"></i> ${TEXT.pitchCrash}</span>`;
+          else if (deltaBal > 10000) pitch = `<span class="text-emerald-400"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> ${TEXT.pitchClimb}</span>`;
+          else if (deltaBal >= -5000) pitch = `<span class="text-cyan-300"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ${TEXT.pitchLevel}</span>`;
+          else pitch = `<span class="text-amber-400"><i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i> ${TEXT.pitchDescend}</span>`;
+          pitchBadge.innerHTML = pitch;
         }
 
-{{minHScreen100}}        ctx.beginPath();
+        // The trajectory. A flight is never longer than its horizon - the
+        // setup is locked while it runs - so every point is on the chart.
+        ctx.beginPath();
         ctx.strokeStyle = state.yearsInCrashlineConsecutive > 0 ? alarm : line;
         ctx.lineWidth = 3;
 
-        const startY = bottomY - ((state.nestEgg / maxVal) * (bottomY - topY));
+        const startY = bottomY - ((plan.nestEgg / maxVal) * (bottomY - topY));
         ctx.moveTo(startX, startY);
 
         state.historyLogs.forEach((log, idx) => {
-          const x = startX + ((idx + 1) / totalYears) * (endX - startX);
+          const x = startX + (Math.min(idx + 1, totalYears) / totalYears) * (endX - startX);
           const y = bottomY - (Math.max(0, log.endBal) / maxVal) * (bottomY - topY);
           ctx.lineTo(x, y);
         });
 
         ctx.stroke();
 
-{{minHScreen101}}        const lastIdx = state.historyLogs.length - 1;
-        const lastX = startX + ((lastIdx + 1) / totalYears) * (endX - startX);
+        // Area fill
+        const lastIdx = state.historyLogs.length - 1;
+        const lastX = startX + (Math.min(lastIdx + 1, totalYears) / totalYears) * (endX - startX);
         const lastY = bottomY - (Math.max(0, state.historyLogs[lastIdx].endBal) / maxVal) * (bottomY - topY);
 
         ctx.lineTo(lastX, bottomY);
@@ -2194,15 +2998,17 @@
         ctx.fillStyle = fillGrad;
         ctx.fill();
 
-{{minHScreen102}}        drawAirplane(ctx, lastX, lastY, state.yearsInCrashlineConsecutive > 0 ? 0.1 : healthRatio);
+        drawAirplane(ctx, lastX, lastY, state.yearsInCrashlineConsecutive > 0 ? 0.1 : healthRatio);
       } else {
-        const startY = bottomY - ((state.nestEgg / maxVal) * (bottomY - topY));
+        const startY = bottomY - ((plan.nestEgg / maxVal) * (bottomY - topY));
         drawAirplane(ctx, startX, startY, 1.0);
         if (pitchBadge) {
-{{minHScreen103}}        }
+          pitchBadge.innerHTML = `<span class="text-emerald-400">${TEXT.pitchReady}</span>`;
+        }
       }
 
-{{minHScreen104}}      ctx.setLineDash([4, 4]);
+      // The crashline: zero
+      ctx.setLineDash([4, 4]);
       ctx.strokeStyle = alarm;
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -2213,7 +3019,8 @@
 
       ctx.fillStyle = alarm;
       ctx.font = '700 10px ' + face;
-{{minHScreen105}}    }
+      ctx.fillText(fill(TEXT.crashZone, { zero: CURRENCY + '0' }), 65, bottomY - 6);
+    }
 
     function drawAirplane(ctx, x, y, healthRatio) {
       ctx.save();
@@ -2226,11 +3033,15 @@
         ? (theme.line ? theme.line(0) : '#1e4620')
         : (role.negative || '#a6402a');
       ctx.beginPath();
-{{minHScreen106}}      ctx.lineTo(-6, 0);
-{{minHScreen107}}      ctx.closePath();
+      ctx.moveTo(16, 0); // Nose
+      ctx.lineTo(-12, -10); // Left wing
+      ctx.lineTo(-6, 0);
+      ctx.lineTo(-12, 10); // Right wing
+      ctx.closePath();
       ctx.fill();
 
-{{minHScreen108}}      ctx.fillStyle = role.gold || '#c59b27';
+      // Thrust flame
+      ctx.fillStyle = role.gold || '#c59b27';
       ctx.beginPath();
       ctx.moveTo(-6, 0);
       ctx.lineTo(-18, -3);
@@ -2242,7 +3053,11 @@
       ctx.restore();
     }
 
-{{minHScreen109}}    function openSpendCalculator() {
+    /* =================================================================
+       CALCULATORS HANDLERS
+       ================================================================= */
+    function openSpendCalculator() {
+      if (flightInProgress()) return;
       const modal = document.getElementById('modal-calc-spend');
       if (modal) modal.classList.remove('hidden');
       computeCalculatedSpend();
@@ -2262,19 +3077,23 @@
       const totalMonthly = h + f + md + t + m;
       const totalAnnual = totalMonthly * 12;
 
-      const totalEl = document.getElementById('calc-spend-total');
-{{minHScreen110}}      return totalAnnual;
+      setText('calc-spend-total', money(totalAnnual) + ' ' + TEXT.perYear);
+      return totalAnnual;
     }
+    // Held to the slider's own range, which is also the range the setup
+    // validates against - the clamp used to allow values the slider then
+    // silently snapped back.
     function applyCalculatedSpend() {
       const annualSpend = computeCalculatedSpend();
       const input = document.getElementById('input-spending');
-      if (input) input.value = Math.min(250000, Math.max(15000, annualSpend));
+      if (input) input.value = clamp(Math.round(annualSpend), LIMITS.spending.min, LIMITS.spending.max);
       updateControlsUI();
       closeSpendCalculator();
       playSound('success');
     }
 
     function openNestEggCalculator() {
+      if (flightInProgress()) return;
       const modal = document.getElementById('modal-calc-nestegg');
       if (modal) modal.classList.remove('hidden');
       const spendInput = document.getElementById('calc-egg-spend');
@@ -2292,103 +3111,224 @@
       const multiplier = 100 / swrPct;
 
       const requiredEgg = spend * multiplier;
+      const multiple = multiplier.toLocaleString(NUMBER_LOCALE, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-      const formulaEl = document.getElementById('calc-egg-formula');
-      if (formulaEl) {
-{{minHScreen111}}      }
-      const totalEl = document.getElementById('calc-egg-total');
-{{minHScreen112}}      return requiredEgg;
+      setText('calc-egg-formula', fill(TEXT.eggFormula, { spend: money(spend), multiple: multiple, egg: money(requiredEgg) }));
+      setText('calc-egg-total', money(requiredEgg));
+      return requiredEgg;
     }
     function applyCalculatedEgg() {
       const reqEgg = computeCalculatedEgg();
       const input = document.getElementById('input-nestegg');
-      if (input) input.value = Math.min(5000000, Math.max(200000, reqEgg));
+      if (input) input.value = clamp(Math.round(reqEgg), LIMITS.nestEgg.min, LIMITS.nestEgg.max);
       updateControlsUI();
       closeNestEggCalculator();
       playSound('success');
     }
 
-{{minHScreen113}}    function runMonteCarloBatch() {
+    /* =================================================================
+       TAB 3: 1,000 MONTE CARLO BATCH SIMULATOR
+       The same plan, the same tactics and the same stepYear() as the
+       cockpit, a thousand times over.
+       ================================================================= */
+    let mcLastResult = null;
+    let mcSweepToken = 0;
+    let mcSweepChart = null;
+
+    const SWEEP_RATES = [];
+    for (let bps = 200; bps <= 700; bps += 25) SWEEP_RATES.push(bps / 100);
+    const SWEEP_SIMS = 500;
+    const SWEEP_TARGET = 90;
+
+    /** The plan the batch tab runs: the flight's, or the setup before launch. */
+    function batchPlan() {
+      return state.plan || currentPlan();
+    }
+
+    function activeTacticNames(tactics) {
+      return TACTIC_KEYS.filter(function (key) { return tactics[key]; }).map(function (key) { return TACTIC_LABELS[key]; });
+    }
+
+    function updateMonteCarloIntro() {
+      const plan = batchPlan();
+      const sequence = HISTORICAL_SEQUENCES[plan.marketSequence];
+      let intro = fill(TEXT.mcIntro, { start: plan.startAge, end: plan.targetAge, years: plan.targetAge - plan.startAge });
+      if (sequence) {
+        intro += ' ' + fill(TEXT.mcSequence, { first: sequence.start, last: sequence.start + sequence.years.length - 1 });
+      }
+      setText('mc-intro', intro);
+      const names = activeTacticNames(state.tactics);
+      setText('mc-tactics-note', fill(TEXT.mcTactics, { list: names.length ? names.join(', ') : TEXT.mcTacticsNone }));
+    }
+
+    function runMonteCarloBatch() {
       playSound('click');
-
-      const numSims = 1000;
-      const totalYears = Math.max(1, state.targetAge - state.startAge);
-      let successCount = 0;
-      let endingBalances = [];
-      let trajectorySnapshots = {
-        10: [], 20: [], 30: [], 40: [], 50: []
-      };
-
-      for (let sim = 0; sim < numSims; sim++) {
-        let bal = state.nestEgg;
-        let spend = state.annualSpending;
-
-        if (state.actJob) spend = Math.max(0, spend - 15000);
-        if (state.actCutSpend) spend = spend * 0.85;
-
-        let crashYearsConsec = 0;
-
-        for (let year = 1; year <= totalYears; year++) {
-          if (bal <= 0) {
-            crashYearsConsec++;
-            bal = 0;
-          } else {
-            crashYearsConsec = 0;
-            let sRet = randomGaussian(MARKET_BENCHMARKS.stocks.mean, MARKET_BENCHMARKS.stocks.stdDev);
-            let bRet = randomGaussian(MARKET_BENCHMARKS.bonds.mean, MARKET_BENCHMARKS.bonds.stdDev);
-            let infl = randomGaussian(MARKET_BENCHMARKS.inflation.mean, MARKET_BENCHMARKS.inflation.stdDev);
-
-            spend = spend * (1 + Math.max(0, infl));
-            let wRet = (sRet * (state.pctStocks / 100)) + (bRet * (state.pctBonds / 100)) + (MARKET_BENCHMARKS.cash.mean * (state.pctCash / 100));
-
-            if (state.actCashBuffer && sRet < 0) wRet += 0.03;
-
-            bal = (bal - spend) * (1 + wRet);
-          }
-
-          if (year % 10 === 0 && trajectorySnapshots[year]) {
-            trajectorySnapshots[year].push(Math.max(0, bal));
-          }
-        }
-
-        if (bal > 0) successCount++;
-        endingBalances.push(Math.max(0, bal));
-      }
-
-      endingBalances.sort((a, b) => a - b);
-
-      const successRate = ((successCount / numSims) * 100).toFixed(1);
-      const medianEnd = endingBalances[Math.floor(numSims * 0.5)];
-      const p10 = endingBalances[Math.floor(numSims * 0.1)];
-      const p90 = endingBalances[Math.floor(numSims * 0.9)];
-
-      const succEl = document.getElementById('mc-metric-success');
-      const medEl = document.getElementById('mc-metric-median');
-      const p10El = document.getElementById('mc-metric-p10');
-      const p90El = document.getElementById('mc-metric-p90');
-
-      if (succEl) succEl.innerText = successRate + '%';
-{{minHScreen114}}
-{{minHScreen115}}      const tbody = document.getElementById('mc-table-body');
-      if (tbody) {
-        tbody.innerHTML = '';
-        [10, 20, 30, 40, 50].forEach(y => {
-          if (y <= totalYears) {
-            let arr = trajectorySnapshots[y].sort((a, b) => a - b);
-            let n = arr.length;
-            let row = document.createElement('tr');
-            row.className = 'hover:bg-cream-100 transition';
-            row.innerHTML = `
-{{minHScreen116}}            `;
-            tbody.appendChild(row);
-          }
-        });
-      }
-
+      const plan = batchPlan();
+      const tactics = Object.assign({}, state.tactics);
+      updateMonteCarloIntro();
+      mcLastResult = runBatch(plan, tactics, 1000, false);
+      mcLastResult.startAge = plan.startAge;
+      renderMonteCarloResults();
+      runWithdrawalSweep(plan, tactics);
       playSound('success');
     }
 
-{{minHScreen117}}    function randomGaussian(mean, stdDev) {
+    /**
+     * Draws the last batch in nominal money or in launch-year ("today's")
+     * money, as the toggle says; the other unit is shown under the median.
+     */
+    function renderMonteCarloResults() {
+      const result = mcLastResult;
+      if (!result) return;
+      const toggle = document.getElementById('mc-real-toggle');
+      const real = !!(toggle && toggle.checked);
+      const key = real ? 'real' : 'nominal';
+      const endings = real ? result.endReal : result.endNominal;
+      const other = real ? result.endNominal : result.endReal;
+
+      setText('mc-metric-success', percent(result.successRate, 1));
+      setText('mc-metric-median', money(percentile(endings, 0.5)));
+      setText('mc-metric-p10', money(percentile(endings, 0.1)));
+      setText('mc-metric-p90', money(percentile(endings, 0.9)));
+      setText('mc-metric-median-alt', fill(real ? TEXT.mcAltNominal : TEXT.mcAltReal, { amount: money(percentile(other, 0.5)) }));
+      setText('mc-table-unit', real ? TEXT.mcUnitReal : TEXT.mcUnitNominal);
+
+      const tbody = document.getElementById('mc-table-body');
+      if (tbody) {
+        tbody.innerHTML = '';
+        result.checkpoints.forEach(function (y) {
+          const arr = result.snapshots[y][key];
+          const row = document.createElement('tr');
+          row.className = 'hover:bg-cream-100 transition';
+          row.innerHTML = `
+              <td class="py-2.5 px-3 font-bold text-espresso-900">${fill(TEXT.mcRowAge, { age: result.startAge + y, years: y })}</td>
+              <td class="py-2.5 px-3 text-red-400 font-bold">${money(percentile(arr, 0.10))}</td>
+              <td class="py-2.5 px-3 text-amber-400">${money(percentile(arr, 0.25))}</td>
+              <td class="py-2.5 px-3 text-cyan-300 font-bold">${money(percentile(arr, 0.50))}</td>
+              <td class="py-2.5 px-3 text-emerald-400">${money(percentile(arr, 0.75))}</td>
+              <td class="py-2.5 px-3 text-purple-400 font-bold">${money(percentile(arr, 0.90))}</td>
+            `;
+          tbody.appendChild(row);
+        });
+      }
+    }
+
+    /**
+     * Success rate against withdrawal rate, 2% to 7% in quarter-point steps,
+     * on the pilot's allocation, horizon, sequence and tactics. One rate per
+     * timer tick, so the page stays responsive while it runs, and a newer
+     * run abandons an older one instead of racing it.
+     */
+    function runWithdrawalSweep(plan, tactics) {
+      const token = ++mcSweepToken;
+      const rates = [];
+      let index = 0;
+      setText('mc-sweep-summary', TEXT.sweepRunning);
+
+      function next() {
+        if (token !== mcSweepToken) return;
+        const rate = SWEEP_RATES[index];
+        const sweepPlan = Object.assign({}, plan, { annualSpending: plan.nestEgg * rate / 100 });
+        rates.push(runBatch(sweepPlan, tactics, SWEEP_SIMS, true).successRate);
+        index++;
+        if (index < SWEEP_RATES.length) setTimeout(next, 0);
+        else drawWithdrawalSweep(plan, rates);
+      }
+      setTimeout(next, 0);
+    }
+
+    /** The highest swept rate that still clears the target success rate. */
+    function bestSweepRate(rates) {
+      let best = null;
+      SWEEP_RATES.forEach(function (rate, i) {
+        if (rates[i] >= SWEEP_TARGET) best = rate;
+      });
+      return best;
+    }
+
+    function drawWithdrawalSweep(plan, rates) {
+      const best = bestSweepRate(rates);
+      const currentRate = (plan.annualSpending / plan.nestEgg) * 100;
+      let summary = best === null
+        ? fill(TEXT.sweepNone, { target: SWEEP_TARGET, min: percent(SWEEP_RATES[0], 0), max: percent(SWEEP_RATES[SWEEP_RATES.length - 1], 0) })
+        : fill(TEXT.sweepBest, { target: SWEEP_TARGET, rate: percent(best, 2), amount: money(plan.nestEgg * best / 100), egg: money(plan.nestEgg) });
+      summary += ' ' + fill(TEXT.sweepCurrent, { rate: percent(currentRate, 1) });
+      setText('mc-sweep-summary', summary);
+
+      const canvas = document.getElementById('mc-sweep-chart');
+      if (!canvas || typeof window.Chart === 'undefined') return;
+
+      const theme = window.SimChartTheme || {};
+      const role = theme.role || {};
+      const lineColor = theme.line ? theme.line(0) : '#1e4620';
+      const fillColor = theme.fill ? theme.fill(0) : 'rgba(30, 70, 32, 0.10)';
+      const highlight = role.gold || '#c59b27';
+      const thresholdColor = role.negative || '#a6402a';
+
+      if (mcSweepChart) {
+        mcSweepChart.destroy();
+        mcSweepChart = null;
+      }
+
+      const labels = SWEEP_RATES.map(function (rate) { return percent(rate, 2); });
+      const isBest = function (i) { return best !== null && SWEEP_RATES[i] === best; };
+
+      mcSweepChart = new window.Chart(canvas, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: TEXT.sweepSeries,
+              data: rates.map(function (value) { return Math.round(value * 10) / 10; }),
+              borderColor: lineColor,
+              backgroundColor: fillColor,
+              fill: true,
+              pointRadius: rates.map(function (value, i) { return isBest(i) ? 7 : 2.5; }),
+              pointBackgroundColor: rates.map(function (value, i) { return isBest(i) ? highlight : lineColor; }),
+              pointBorderColor: rates.map(function (value, i) { return isBest(i) ? lineColor : lineColor; })
+            },
+            {
+              label: fill(TEXT.sweepThreshold, { target: SWEEP_TARGET }),
+              data: SWEEP_RATES.map(function () { return SWEEP_TARGET; }),
+              borderColor: thresholdColor,
+              borderDash: [5, 4],
+              borderWidth: 1.5,
+              pointRadius: 0,
+              fill: false
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: false,
+          interaction: { mode: 'index', intersect: false },
+          scales: {
+            x: { title: { display: true, text: TEXT.sweepAxisX } },
+            y: {
+              min: 0,
+              max: 100,
+              title: { display: true, text: TEXT.sweepAxisY },
+              ticks: { callback: function (value) { return value + '%'; } }
+            }
+          },
+          plugins: {
+            legend: { position: 'bottom' },
+            tooltip: {
+              callbacks: {
+                label: function (context) { return context.dataset.label + ': ' + percent(context.parsed.y, 1); }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    /* =================================================================
+       MATH HELPERS & TAB SWITCHING
+       ================================================================= */
+    function randomGaussian(mean, stdDev) {
       let u = 0, v = 0;
       while (u === 0) u = Math.random();
       while (v === 0) v = Math.random();
@@ -2462,7 +3402,10 @@
       switchTab(TAB_KEYS[next], true);
     });
 
-{{minHScreen118}}    function playSound(type) {
+    /* =================================================================
+       WEBAUDIO SOUND SYNTHESIS
+       ================================================================= */
+    function playSound(type) {
       try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
@@ -2513,7 +3456,8 @@
           osc.stop(now + 0.4);
         }
       } catch (e) {
-{{minHScreen119}}      }
+        // AudioContext disabled or blocked by browser policy
+      }
     }
   </script>
 </body>

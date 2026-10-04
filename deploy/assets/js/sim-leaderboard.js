@@ -110,7 +110,12 @@
           .then(function (body) {
             if (!response.ok) {
               var message = body && body.error ? body.error : 'HTTP ' + response.status;
-              throw new Error(message);
+              // The status travels with the error so a page can tell "the
+              // server refused this entry" (4xx) from "the server is down"
+              // (5xx) without parsing the sentence.
+              var failure = new Error(message);
+              failure.status = response.status;
+              throw failure;
             }
             return body || {};
           });

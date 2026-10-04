@@ -158,7 +158,7 @@
 
                 <div class="sim-inset p-3.5">
                     <label for="inputAnnualIncome" class="block text-xs font-bold text-espresso-900 mb-1">{{block2}}</label>
-                    <input type="number" id="inputAnnualIncome" value="60000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                    <input type="number" id="inputAnnualIncome" value="{{fcDefaultIncome}}" min="0" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="sim-inset p-3.5">
@@ -168,17 +168,42 @@
 
                 <div class="sim-inset p-3.5">
                     <label for="inputNetWorth" class="block text-xs font-bold text-espresso-900 mb-1">{{block4}}</label>
-                    <input type="number" id="inputNetWorth" value="15000" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                    <input type="number" id="inputNetWorth" value="{{fcDefaultNetWorth}}" min="0" step="1000" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
 
                 <div class="sim-inset p-3.5">
                     <label for="inputBasicExpenses" class="block text-xs font-bold text-espresso-900 mb-1">{{block5}}</label>
-                    <input type="number" id="inputBasicExpenses" value="2500" step="100" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
+                    <input type="number" id="inputBasicExpenses" value="{{fcDefaultBills}}" min="0" step="100" data-onchange="updateProfileSettings()" class="w-full px-3 py-1.5 rounded-lg border border-cream-300 font-mono text-sm font-bold text-forest-800 focus:ring-2 focus:ring-forest-800">
                 </div>
             </div>
-            
+
+            <!-- The two assumptions every figure on the page rests on. They were
+                 fixed at 7% and 4% while already living in `profile`, so the
+                 page quoted them as facts; as sliders they read as what they
+                 are, and moving one moves the target, the dates, the chart and
+                 the thirty-year figure together. -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                <div class="sim-inset p-3.5">
+                    <div class="flex items-center justify-between gap-2 mb-1">
+                        <label for="inputRealReturn" class="block text-xs font-bold text-espresso-900">{{fcReturnLabel}}</label>
+                        <output id="realReturnOutput" for="inputRealReturn" class="font-mono text-sm font-bold text-forest-800">7%</output>
+                    </div>
+                    <input type="range" id="inputRealReturn" min="0" max="12" step="0.5" value="7" aria-describedby="realReturnHelp" data-oninput="updateRateSettings()" class="w-full">
+                    <p id="realReturnHelp" class="text-[11px] text-espresso-800/80 mt-1 leading-snug">{{fcReturnHelp}}</p>
+                </div>
+
+                <div class="sim-inset p-3.5">
+                    <div class="flex items-center justify-between gap-2 mb-1">
+                        <label for="inputSafeWithdrawal" class="block text-xs font-bold text-espresso-900">{{fcSwrLabel}}</label>
+                        <output id="safeWithdrawalOutput" for="inputSafeWithdrawal" class="font-mono text-sm font-bold text-forest-800">4%</output>
+                    </div>
+                    <input type="range" id="inputSafeWithdrawal" min="2.5" max="6" step="0.25" value="4" aria-describedby="safeWithdrawalHelp" data-oninput="updateRateSettings()" class="w-full">
+                    <p id="safeWithdrawalHelp" class="text-[11px] text-espresso-800/80 mt-1 leading-snug">{{fcSwrHelp}}</p>
+                </div>
+            </div>
+
             <p class="text-xs text-espresso-800/80 mt-3 italic">
-{{textXs2}}<span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">{{lang.currency}}28.85/hr</span>{{textXs3}}            </p>
+{{textXs2}}<span id="computedHourlyWage" class="font-bold text-forest-800 font-mono">—</span>{{textXs3}}            </p>
         </div>
     </section>
 
@@ -225,7 +250,7 @@
                 <span class="text-xs font-extrabold uppercase tracking-widest text-gold-600">{{textXs4}}</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-espresso-900 font-serif mt-1">{{text2xl}}</h2>
                 <p class="text-sm sm:text-base text-espresso-800/90 mt-2 leading-relaxed">
-                    {{textSm}}{{lang.currency}}15 {{textSm2}}<strong class="text-forest-800">{{textForest800}}</strong>{{textSm3}}<strong class="text-forest-800">{{textForest8002}}</strong>{{textSm4}}                </p>
+                    {{textSm}}{{lang.currency}}{{fcIntroLunch}} {{textSm2}}<strong class="text-forest-800">{{textForest800}}</strong>{{textSm3}}<strong class="text-forest-800">{{textForest8002}}</strong>{{textSm4}}                </p>
             </div>
 
             <!-- Quick Action Preset Buttons -->
@@ -246,7 +271,7 @@
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-lg font-bold text-espresso-900 font-serif flex items-center gap-2">
                         <i class="fa-solid fa-cart-flatbed text-gold-600" aria-hidden="true"></i>{{textLg}}                    </h3>
-                    <button data-onclick="addCustomHabit()" class="px-3 py-1.5 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow flex items-center gap-1.5 transition-all">
+                    <button id="addHabitButton" data-onclick="addCustomHabit()" class="px-3 py-1.5 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs rounded-xl shadow flex items-center gap-1.5 transition-all">
                         <i class="fa-solid fa-plus" aria-hidden="true"></i>{{px3}}                    </button>
                 </div>
 
@@ -271,30 +296,37 @@
                         <div class="my-2.5 flex items-center justify-center gap-2.5" role="status" aria-live="polite" aria-atomic="true">
                             <div class="bg-espresso-950/60 px-3.5 py-1.5 rounded-xl border border-espresso-800/80">
                                 <span class="text-[10px] text-cream-300/80 block uppercase font-bold tracking-wider">{{text10px}}</span>
-                                <span id="baselineAgeDisplay" class="text-xl font-black text-rose-300 font-mono">{{baselineagedisplay}}</span>
+                                <span id="baselineAgeDisplay" class="text-xl font-black text-rose-300 font-mono">—</span>
                             </div>
                             <i class="fa-solid fa-arrow-right text-gold-400 text-sm" aria-hidden="true"></i>
                             <div class="bg-gradient-to-br from-forest-700 to-forest-800 px-4 py-1.5 rounded-xl border border-gold-500/40 shadow-lg scale-105">
                                 <span class="text-[10px] text-emerald-200 block uppercase font-bold tracking-wider">{{text10px2}}</span>
-                                <span id="optimizedAgeDisplay" class="text-2xl font-black text-emerald-300 font-mono">{{optimizedagedisplay}}</span>
+                                <span id="optimizedAgeDisplay" class="text-2xl font-black text-emerald-300 font-mono">—</span>
                             </div>
                         </div>
 
                         <!-- Years Pulled Forward Badge -->
                         <div id="yearsSavedBadge" class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-500 text-espresso-950 font-black text-xs shadow-md mt-0.5">
                             <i class="fa-solid fa-calendar-check text-xs" aria-hidden="true"></i>
-                            <span>{{yearssavedbadge}}</span>
+                            <span id="yearsSavedText">—</span>
                         </div>
+
+                        <!-- The target the two ages are measured against, and the
+                             honest reading of "85+": the projection stops at 85,
+                             so a plan that has not arrived by then is reported as
+                             not arriving rather than as arriving at 85. -->
+                        <p id="targetNetWorthLine" class="text-[11px] text-cream-200 mt-2">—</p>
+                        <p id="horizonNote" class="text-[11px] text-gold-400 mt-1" hidden>{{fcHorizonNote}}</p>
 
                         <!-- Calendar Visual Timeline Progress Bar -->
                         <div class="mt-4 text-left bg-espresso-950/40 p-2.5 rounded-xl border border-forest-800/50">
                             <div class="flex justify-between text-[11px] text-cream-200 font-medium mb-1">
-                                <span>{{flex}}<strong id="currentAgeLabel" class="text-cream-50">30</strong></span>
-                                <span>{{flex2}}<strong id="timelineTargetLabel" class="text-emerald-300 font-bold">56</strong></span>
+                                <span>{{flex}}<strong id="currentAgeLabel" class="text-cream-50">—</strong></span>
+                                <span>{{flex2}}<strong id="timelineTargetLabel" class="text-emerald-300 font-bold">—</strong></span>
                                 <span>{{flex3}}<strong class="text-rose-300">65</strong></span>
                             </div>
                             <div class="w-full bg-espresso-900 h-3 rounded-full overflow-hidden p-0.5 border border-forest-700/60 relative">
-                                <div id="timelineProgressFill" class="bg-gradient-to-r from-emerald-400 via-emerald-300 to-gold-400 h-full rounded-full transition-all duration-500" style="width: 55%"></div>
+                                <div id="timelineProgressFill" class="bg-gradient-to-r from-emerald-400 via-emerald-300 to-gold-400 h-full rounded-full transition-all duration-500" style="width: 10%"></div>
                             </div>
                         </div>
                     </div>
@@ -309,22 +341,22 @@
                         <div class="grid grid-cols-2 gap-2.5">
                             <div class="sim-stat">
                                 <span class="sim-stat__label">{{text10px3}}</span>
-                                <span id="statMonthlySaved" class="sim-stat__value sim-stat__value--series-1">{{statmonthlysaved}}</span>
+                                <span id="statMonthlySaved" class="sim-stat__value sim-stat__value--series-1">—</span>
                             </div>
 
                             <div class="sim-stat">
                                 <span class="sim-stat__label">{{text10px4}}</span>
-                                <span id="statWorkDaysSaved" class="sim-stat__value sim-stat__value--series-2">{{statworkdayssaved}}</span>
+                                <span id="statWorkDaysSaved" class="sim-stat__value sim-stat__value--series-2">—</span>
                             </div>
                         </div>
 
                         <div class="sim-inset p-2.5 flex justify-between items-center">
                             <div>
                                 <span class="sim-stat__label">{{text10px5}}</span>
-                                <span id="stat30YearWealth" class="sim-stat__value sim-stat__value--positive text-lg">{{lang.currency}}1,036,400</span>
+                                <span id="stat30YearWealth" class="sim-stat__value sim-stat__value--positive text-lg">—</span>
                             </div>
                             <div class="text-right">
-                                <span class="text-[9px] text-espresso-800/60 block">{{text9px}}</span>
+                                <span id="returnRateBadge" class="text-[9px] text-espresso-800/60 block">{{text9px}}</span>
                                 <i class="fa-solid fa-chart-line text-emerald-600 text-sm" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -546,110 +578,126 @@
     <script src="/assets/js/sim-cta.js?v=source" defer></script>
 
     <script>
-{{minHScreen}}        const HABITS_DATA = [
+{{minHScreen}}        // Default prices in the page's own currency. They are amounts somebody
+        // in that country would plausibly pay - a R$ lunch is not a $ lunch with
+        // the symbol swapped - and the habit ids stay identical in all three.
+        const PRICES = {{fcPrices}};
+
+        const HABITS_DATA = [
             {
                 id: 'coffee',
 {{minHScreen2}}                icon: 'fa-mug-hot',
-{{minHScreen3}}                baseCost: 5,
+{{minHScreen3}}                baseCost: PRICES.coffee,
                 unit: 'day', // 'day', 'week', 'month'
 {{minHScreen4}}                choicePct: 100
             },
             {
                 id: 'lunch',
 {{minHScreen5}}                icon: 'fa-utensils',
-{{minHScreen3}}                baseCost: 15,
+{{minHScreen3}}                baseCost: PRICES.lunch,
                 unit: 'day',
 {{minHScreen6}}                choicePct: 100
             },
             {
                 id: 'subscriptions',
 {{minHScreen7}}                icon: 'fa-tv',
-{{minHScreen8}}                baseCost: 120,
+{{minHScreen8}}                baseCost: PRICES.subscriptions,
                 unit: 'month',
 {{minHScreen9}}                choicePct: 100
             },
             {
                 id: 'carLease',
 {{minHScreen10}}                icon: 'fa-car',
-{{minHScreen11}}                baseCost: 350,
+{{minHScreen11}}                baseCost: PRICES.carLease,
                 unit: 'month',
 {{minHScreen12}}                choicePct: 100
             },
             {
                 id: 'impulseShopping',
 {{minHScreen13}}                icon: 'fa-bag-shopping',
-{{minHScreen14}}                baseCost: 40,
+{{minHScreen14}}                baseCost: PRICES.impulseShopping,
                 unit: 'week',
 {{minHScreen15}}                choicePct: 100
             },
             {
                 id: 'weekendDining',
 {{minHScreen16}}                icon: 'fa-martini-glass-citrus',
-{{minHScreen17}}                baseCost: 80,
+{{minHScreen17}}                baseCost: PRICES.weekendDining,
                 unit: 'week',
 {{minHScreen18}}                choicePct: 100
             },
             {
                 id: 'energySnacks',
 {{minHScreen19}}                icon: 'fa-bolt',
-{{minHScreen3}}                baseCost: 6,
+{{minHScreen3}}                baseCost: PRICES.energySnacks,
                 unit: 'day',
 {{minHScreen20}}                choicePct: 100
             },
             {
                 id: 'techUpgrades',
 {{minHScreen21}}                icon: 'fa-mobile-screen-button',
-{{minHScreen11}}                baseCost: 50,
+{{minHScreen11}}                baseCost: PRICES.techUpgrades,
                 unit: 'month',
 {{minHScreen22}}                choicePct: 100
             },
             {
                 id: 'gymMembership',
 {{minHScreen23}}                icon: 'fa-dumbbell',
-{{minHScreen8}}                baseCost: 60,
+{{minHScreen8}}                baseCost: PRICES.gymMembership,
                 unit: 'month',
 {{minHScreen24}}                choicePct: 100
             },
             {
                 id: 'storageUnit',
 {{minHScreen25}}                icon: 'fa-boxes-stacked',
-{{minHScreen8}}                baseCost: 150,
+{{minHScreen8}}                baseCost: PRICES.storageUnit,
                 unit: 'month',
 {{minHScreen26}}                choicePct: 100
             },
             {
                 id: 'foodWaste',
 {{minHScreen27}}                icon: 'fa-trash-arrow-up',
-{{minHScreen14}}                baseCost: 40,
+{{minHScreen14}}                baseCost: PRICES.foodWaste,
                 unit: 'week',
 {{minHScreen28}}                choicePct: 100
             },
             {
                 id: 'shortRideshares',
 {{minHScreen29}}                icon: 'fa-taxi',
-{{minHScreen3}}                baseCost: 25,
+{{minHScreen3}}                baseCost: PRICES.shortRideshares,
                 unit: 'week',
 {{minHScreen30}}                choicePct: 100
             },
             {
                 id: 'bottledWater',
 {{minHScreen31}}                icon: 'fa-bottle-water',
-{{minHScreen3}}                baseCost: 3,
+{{minHScreen3}}                baseCost: PRICES.bottledWater,
                 unit: 'day',
 {{minHScreen32}}                choicePct: 100
             }
         ];
 
         // USER PROFILE BASELINE STATE
+        // The money defaults are per language: a Brazilian salary, Spanish
+        // bills and US prices are different amounts, not different symbols.
         let profile = {
             currentAge: 30,
-            annualIncome: 60000,
+            annualIncome: {{fcDefaultIncome}},
             workHoursPerWeek: 40,
-            startingNetWorth: 15000,
-            basicMonthlyExpenses: 2500, // Rent, groceries, utilities, basics
-            realReturnRate: 0.07, // 7% real compound interest rate
-            safeWithdrawalRate: 0.04 // 4% rule (FIRE 25x rule)
+            startingNetWorth: {{fcDefaultNetWorth}},
+            basicMonthlyExpenses: {{fcDefaultBills}}, // Rent, groceries, utilities, basics
+            realReturnRate: 0.07, // Real (after-inflation) annual return, editable in the drawer
+            safeWithdrawalRate: 0.04 // 4% rule (FIRE 25x rule), editable in the drawer
         };
+
+        const DEFAULT_PROFILE = Object.assign({}, profile);
+
+        /**
+         * The age the projection stops at. A plan that has not reached its
+         * target by then is reported as "85+" - not reached - rather than as
+         * arriving at 85, which is what the old cap printed.
+         */
+        const HORIZON_AGE = 85;
 
         let habits = JSON.parse(JSON.stringify(HABITS_DATA));
         let chartInstance = null;
@@ -683,15 +731,158 @@
             bottledWater: 'keptBottledWater'
         };
 
-{{minHScreen33}}        function getHourlyWage() {
+        // PAGE-LANGUAGE TEXT AND NUMBER FORMATTING
+        // Every sentence the script writes, in the page's language. `{name}`
+        // slots are filled by fill(); nothing here is ever parsed as HTML.
+        const LOCALE = '{{fcLocale}}';
+        const CURRENCY = '{{lang.currency}}';
+        const T = {
+            age: '{{fcAge}}',
+            ageUnreached: '{{fcAgeUnreached}}',
+            yearOne: '{{fcYearOne}}',
+            yearMany: '{{fcYearMany}}',
+            atLeast: '{{fcAtLeast}}',
+            workDayOne: '{{fcWorkDayOne}}',
+            workDayMany: '{{fcWorkDayMany}}',
+            badgeForward: '{{fcBadgeForward}}',
+            badgeNeverReached: '{{fcBadgeNeverReached}}',
+            badgeUnderMonth: '{{fcBadgeUnderMonth}}',
+            badgeHint: '{{fcBadgeHint}}',
+            targetLine: '{{fcTargetLine}}',
+            perHour: '{{fcPerHour}}',
+            statMonthly: '{{fcStatMonthly}}',
+            statDays: '{{fcStatDays}}',
+            returnBadge: '{{fcReturnBadge}}',
+            unitDay: '{{fcUnitDay}}',
+            unitWeek: '{{fcUnitWeek}}',
+            unitMonth: '{{fcUnitMonth}}',
+            cardBaseline: '{{fcCardBaseline}}',
+            cardDaysSaved: '{{fcCardDaysSaved}}',
+            cardFullSpending: '{{fcCardFullSpending}}',
+            cardDelete: '{{fcCardDelete}}',
+            cardTip: '{{fcCardTip}}',
+            cardTitleLabel: '{{fcCardTitleLabel}}',
+            cardCost: '{{fcCardCost}}',
+            cardFrequency: '{{fcCardFrequency}}',
+            optionDay: '{{fcOptionDay}}',
+            optionWeek: '{{fcOptionWeek}}',
+            optionMonth: '{{fcOptionMonth}}',
+            cardChoice: '{{fcCardChoice}}',
+            cardActual: '{{fcCardActual}}',
+            cardFull: '{{fcCardFull}}',
+            cardSliderLabel: '{{fcCardSliderLabel}}',
+            sliderEliminated: '{{fcSliderEliminated}}',
+            sliderTrimmed: '{{fcSliderTrimmed}}',
+            sliderKeepAll: '{{fcSliderKeepAll}}',
+            customTitle: '{{fcCustomTitle}}',
+            customFallbackTitle: '{{fcCustomFallbackTitle}}',
+            customCategory: '{{fcCustomCategory}}',
+            customDesc: '{{fcCustomDesc}}',
+            customTip: '{{fcCustomTip}}'
+        };
+
+        function fill(template, values) {
+            return template.replace(/\{(\w+)\}/g, (match, key) =>
+                Object.prototype.hasOwnProperty.call(values, key) ? String(values[key]) : match);
+        }
+
+        /**
+         * Formatters for the page's locale, built once. `useGrouping: 'always'`
+         * is there for es-ES, whose default leaves four-digit numbers ungrouped
+         * ("2500" beside "15.000"); a browser that predates the option ignores
+         * it, and groupDigits() below inserts the separator itself.
+         */
+        const numberFormats = {};
+        function numberFormat(decimals) {
+            if (!numberFormats[decimals]) {
+                numberFormats[decimals] = new Intl.NumberFormat(LOCALE, {
+                    minimumFractionDigits: decimals,
+                    maximumFractionDigits: decimals,
+                    useGrouping: 'always'
+                });
+            }
+            return numberFormats[decimals];
+        }
+
+        const GROUP_SEPARATOR = (() => {
+            const part = new Intl.NumberFormat(LOCALE).formatToParts(1000000).find(p => p.type === 'group');
+            return part ? part.value : ',';
+        })();
+
+        function groupDigits(text) {
+            return text.replace(/^(-?)(\d{4,})/, (match, sign, digits) =>
+                sign + digits.replace(/\B(?=(\d{3})+(?!\d))/g, GROUP_SEPARATOR));
+        }
+
+        function formatNumber(value, decimals = 0) {
+            const number = Number.isFinite(value) ? value : 0;
+            return groupDigits(numberFormat(decimals).format(number));
+        }
+
+        function formatMoney(value, decimals = 0) {
+            const number = Number.isFinite(value) ? value : 0;
+            return (number < 0 ? '-' : '') + CURRENCY + formatNumber(Math.abs(number), decimals);
+        }
+
+        /** Fewest decimals (up to `max`) that show the value exactly: 7, 6.5, 3.25. */
+        function significantDecimals(value, max) {
+            for (let decimals = 0; decimals < max; decimals++) {
+                if (Math.abs(value - Number(value.toFixed(decimals))) < 1e-9) return decimals;
+            }
+            return max;
+        }
+
+        function formatPercent(rate) {
+            const pct = rate * 100;
+            return formatNumber(pct, significantDecimals(pct, 2)) + '%';
+        }
+
+        /** "1 year", "3.4 years", "12 years" - whole numbers lose their ".0". */
+        function formatYears(years) {
+            const rounded = Math.round(years * 10) / 10;
+            const text = formatNumber(rounded, Number.isInteger(rounded) ? 0 : 1);
+            return fill(rounded === 1 ? T.yearOne : T.yearMany, { n: text });
+        }
+
+        function formatAge(result) {
+            return result.reached
+                ? fill(T.age, { age: Math.floor(result.age) })
+                : fill(T.ageUnreached, { age: HORIZON_AGE });
+        }
+
+        /** Escapes text a visitor typed before it goes anywhere near innerHTML. */
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, (c) => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[c]);
+        }
+
+        // HELPER CALCULATION FUNCTIONS
+        function getHourlyWage() {
             const annualHours = Math.max(1, profile.workHoursPerWeek * 52);
-            return Math.max(0.01, profile.annualIncome / annualHours);
+            return Math.max(0, profile.annualIncome / annualHours);
+        }
+
+        /**
+         * Working days a year a monthly amount costs. With no salary entered
+         * there is no wage to divide by, and the answer is "no figure" (NaN,
+         * printed as a dash) rather than a division by a made-up minimum wage.
+         */
+        function workDaysPerYear(monthlyAmount) {
+            const wage = getHourlyWage();
+            if (!(wage > 0)) return NaN;
+            return (monthlyAmount * 12 / wage) / getHoursPerWorkDay();
+        }
+
+        /** A working day is a fifth of the week the visitor entered, not a fixed eight hours. */
+        function getHoursPerWorkDay() {
+            return Math.max(0.2, profile.workHoursPerWeek / 5);
         }
 
         function getHabitMonthlyCost(habit, forceChoicePct = null) {
             const pct = (forceChoicePct !== null) ? forceChoicePct : habit.choicePct;
             const effectiveCost = (habit.baseCost * pct) / 100;
-            
+
             if (habit.unit === 'day') {
                 return effectiveCost * (365 / 12);
             } else if (habit.unit === 'week') {
@@ -701,85 +892,122 @@
             }
         }
 
-        function calculate30YearWealth(monthlySavings) {
-            if (monthlySavings <= 0) return 0;
-            const r = profile.realReturnRate / 12;
-            const n = 360;
-            return monthlySavings * ((Math.pow(1 + r, n) - 1) / r);
+        /**
+         * The one compounding convention the whole page uses: the surplus is
+         * invested at the end of every month, and the monthly rate is the one
+         * that compounds to exactly the annual real return over twelve months -
+         * (1 + r)^(1/12) - 1, not r / 12, which would quietly turn 7% into
+         * 7.23%. The freedom age, the chart and the thirty-year figure all go
+         * through here, so the stat is the gap between the chart's two lines.
+         */
+        function monthlyRate() {
+            return Math.pow(1 + profile.realReturnRate, 1 / 12) - 1;
         }
 
+        /** The monthly surplus with these habits, never below zero. */
+        function monthlySurplus(monthlyHabitsCost) {
+            return Math.max(0, profile.annualIncome / 12 - profile.basicMonthlyExpenses - monthlyHabitsCost);
+        }
+
+        /** Balance after `months` months of growth and end-of-month deposits. */
+        function projectBalance(monthlyHabitsCost, months) {
+            const rate = monthlyRate();
+            const deposit = monthlySurplus(monthlyHabitsCost);
+            let balance = profile.startingNetWorth;
+            for (let month = 0; month < months; month++) {
+                balance = balance * (1 + rate) + deposit;
+            }
+            return balance;
+        }
+
+        /** Extra wealth after 30 years from the habits trimmed: optimised line minus baseline line. */
+        function calculate30YearWealth(baselineMonthlyHabits, optimizedMonthlyHabits) {
+            return Math.max(0, projectBalance(optimizedMonthlyHabits, 360) - projectBalance(baselineMonthlyHabits, 360));
+        }
+
+        function freedomTarget(monthlyHabitsCost) {
+            return (profile.basicMonthlyExpenses + monthlyHabitsCost) * 12 / profile.safeWithdrawalRate;
+        }
+
+        /**
+         * The month the balance first reaches the target, as an age. `reached`
+         * is false when it does not get there by HORIZON_AGE; `age` is then the
+         * horizon itself and must be read as "85 or later", never as 85.
+         */
         function simulateFreedomAge(monthlyHabitsCost) {
-            const annualExpenses = (profile.basicMonthlyExpenses + monthlyHabitsCost) * 12;
-            const targetNetWorth = annualExpenses / profile.safeWithdrawalRate;
-            let currentNW = profile.startingNetWorth;
-            const annualSavings = Math.max(0, profile.annualIncome - annualExpenses);
+            const target = freedomTarget(monthlyHabitsCost);
+            const rate = monthlyRate();
+            const deposit = monthlySurplus(monthlyHabitsCost);
+            const maxMonths = Math.max(0, (HORIZON_AGE - profile.currentAge) * 12);
+            let balance = profile.startingNetWorth;
+            let months = 0;
 
-            if (currentNW >= targetNetWorth) return profile.currentAge;
-
-            let years = 0;
-            const maxYears = 70;
-
-            while (currentNW < targetNetWorth && years < maxYears) {
-                currentNW = (currentNW * (1 + profile.realReturnRate)) + annualSavings;
-                years++;
+            while (balance < target && months < maxMonths) {
+                balance = balance * (1 + rate) + deposit;
+                months++;
             }
 
-            return Math.min(85, profile.currentAge + years);
+            const reached = balance >= target;
+            return {
+                reached,
+                months,
+                age: reached ? profile.currentAge + months / 12 : HORIZON_AGE
+            };
         }
 
-{{minHScreen34}}        function renderHabitCards() {
+        // RENDER HABIT CARDS
+        // The cards are built once per structural change (a habit added or
+        // removed, a preset, a new profile). Moving a slider or editing a
+        // cost only rewrites that card's figures through updateHabitCardFigures,
+        // so the control being dragged or typed in is never replaced under the
+        // pointer or the keyboard focus.
+        function renderHabitCards() {
             const container = document.getElementById('habitsContainer');
             if (!container) return;
             container.innerHTML = '';
 
-            const hourlyWage = getHourlyWage();
-
             habits.forEach((habit, idx) => {
-                const fullMonthlyCost = getHabitMonthlyCost(habit, 100);
-                const currentMonthlyCost = getHabitMonthlyCost(habit);
-                const monthlySaved = fullMonthlyCost - currentMonthlyCost;
-
-                const annualSaved = monthlySaved * 12;
-                const workHoursSavedPerYear = annualSaved / hourlyWage;
-                const workDaysSavedPerYear = workHoursSavedPerYear / 8; // Assuming 8-hr workday
-
                 const card = document.createElement('div');
                 card.className = 'bg-cream-50 rounded-2xl p-5 border border-cream-300 custom-shadow transition-all duration-200 hover:border-cream-400';
+                card.dataset.habitIndex = String(idx);
+                const title = escapeHtml(habit.title);
+                const unitOption = (unit, label) =>
+                    `<option value="${unit}" ${habit.unit === unit ? 'selected' : ''}>${escapeHtml(fill(label, { currency: CURRENCY }))}</option>`;
 
-{{minHScreen35}}                card.innerHTML = `
+                card.innerHTML = `
                     <div class="flex items-start justify-between gap-3 mb-2">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-forest-800/10 text-forest-800 flex items-center justify-center text-lg flex-shrink-0">
-                                <i class="fa-solid ${habit.icon}" aria-hidden="true"></i>
+                                <i class="fa-solid ${escapeHtml(habit.icon)}" aria-hidden="true"></i>
                             </div>
                             <div>
-                                ${habit.isCustom ? 
-                                    `<input type="text" value="${habit.title}" data-onchange="updateHabitTitle(${idx}, this.value)" class="font-bold text-espresso-950 text-base bg-transparent border-b border-dashed border-cream-400 focus:outline-none focus:border-forest-800">` : 
-                                    `<h4 class="font-bold text-espresso-950 text-base">${habit.title}</h4>`
+                                ${habit.isCustom ?
+                                    `<input type="text" value="${title}" aria-label="${escapeHtml(T.cardTitleLabel)}" data-onchange="updateHabitTitle(${idx}, this.value)" class="font-bold text-espresso-950 text-base bg-transparent border-b border-dashed border-cream-400 focus:outline-none focus:border-forest-800">` :
+                                    `<h4 class="font-bold text-espresso-950 text-base">${title}</h4>`
                                 }
-                                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-cream-200 text-espresso-800 block mt-0.5 w-fit">
-{{minHScreen36}}                                </span>
+                                <span data-role="baseline" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-cream-200 text-espresso-800 block mt-0.5 w-fit"></span>
                             </div>
                         </div>
 
                         <!-- Badge: Work Days Saved & Actions -->
                         <div class="flex items-center gap-2">
-                            <span class="text-xs font-bold font-mono ${monthlySaved > 0 ? 'text-emerald-700 bg-emerald-100' : 'text-espresso-800/60 bg-cream-200'} px-2.5 py-1 rounded-lg block">
-{{minHScreen37}}                            </span>
+                            <span data-role="daysBadge" class="text-xs font-bold font-mono px-2.5 py-1 rounded-lg block"></span>
                             ${habit.isCustom ? `
-{{minHScreen38}}                                    <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+                                <button type="button" data-onclick="deleteHabit(${idx})" class="text-rose-600 hover:text-rose-800 p-1 text-xs font-bold transition-colors" title="${escapeHtml(T.cardDelete)}" aria-label="${escapeHtml(T.cardDelete)}: ${title}">
+                                    <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
                                 </button>
                             ` : ''}
                         </div>
                     </div>
 
-                    <p class="text-xs text-espresso-800/80 mb-3 leading-relaxed">${habit.desc}</p>
+                    <p class="text-xs text-espresso-800/80 mb-3 leading-relaxed">${escapeHtml(habit.desc || '')}</p>
 
                     ${habit.tip ? `
                         <div class="mb-3 p-2.5 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-start gap-2 text-xs text-espresso-900">
                             <i class="fa-solid fa-lightbulb text-gold-600 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
                             <div>
-{{minHScreen39}}                                <span class="text-espresso-800/90 leading-normal">${habit.tip}</span>
+                                <strong class="text-gold-700 font-bold block mb-0.5">${escapeHtml(T.cardTip)}</strong>
+                                <span class="text-espresso-800/90 leading-normal">${escapeHtml(habit.tip)}</span>
                             </div>
                         </div>
                     ` : ''}
@@ -787,148 +1015,287 @@
                     <!-- EDITABLE COST & FREQUENCY INPUT ROW -->
                     <div class="sim-inset grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 p-3">
                         <div class="flex items-center justify-between gap-2">
-{{minHScreen40}}                            <div class="relative flex items-center">
-                                <span class="absolute left-2.5 text-xs text-espresso-800 font-bold">{{lang.currency}}</span>
-                                <input type="number" min="0" step="1" value="${habit.baseCost}" 
-                                    data-onchange="updateHabitBaseCost(${idx}, this.value)" 
-                                    class="sim-field sim-field--inline w-28 pl-6 pr-2 py-1">
+                            <label for="habit-cost-${idx}" class="text-xs font-bold text-espresso-900">${escapeHtml(fill(T.cardCost, { currency: CURRENCY }))}</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-2.5 text-xs text-espresso-800 font-bold" aria-hidden="true">${escapeHtml(CURRENCY)}</span>
+                                <input type="number" id="habit-cost-${idx}" min="0" step="any" value="${escapeHtml(habit.baseCost)}"
+                                    data-onchange="updateHabitBaseCost(${idx}, this.value)"
+                                    class="sim-field sim-field--inline w-28 pl-7 pr-2 py-1">
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between gap-2">
-{{minHScreen41}}                            <select data-onchange="updateHabitUnit(${idx}, this.value)" 
+                            <label for="habit-unit-${idx}" class="text-xs font-bold text-espresso-900">${escapeHtml(T.cardFrequency)}</label>
+                            <select id="habit-unit-${idx}" data-onchange="updateHabitUnit(${idx}, this.value)"
                                 class="sim-field px-2.5 py-1">
-{{minHScreen42}}                            </select>
+                                ${unitOption('day', T.optionDay)}
+                                ${unitOption('week', T.optionWeek)}
+                                ${unitOption('month', T.optionMonth)}
+                            </select>
                         </div>
                     </div>
 
                     <!-- Slider Control -->
                     <div class="sim-inset space-y-2 p-3.5">
                         <div class="flex justify-between items-center text-xs font-bold">
-{{minHScreen43}}                        </div>
+                            <span class="text-espresso-900">${escapeHtml(T.cardChoice)} <strong data-role="choicePct" class="text-forest-800 font-mono"></strong></span>
+                            <span class="text-espresso-800 font-mono"><span data-role="actual"></span> <span data-role="full" class="text-[10px] font-normal text-espresso-800/70"></span></span>
+                        </div>
 
-                        <input type="range" min="0" max="100" step="25" value="${habit.choicePct}" 
-                            data-oninput="updateHabitChoice(${idx}, this.value)" 
+                        <input type="range" min="0" max="100" step="25" value="${habit.choicePct}"
+                            aria-label="${escapeHtml(fill(T.cardSliderLabel, { title: habit.title }))}"
+                            data-oninput="updateHabitChoice(${idx}, this.value)"
                             class="w-full">
 
-                        <div class="flex justify-between text-[10px] font-semibold text-espresso-800/70">
-{{minHScreen44}}                        </div>
+                        <div class="flex justify-between text-[10px] font-semibold text-espresso-800/70" aria-hidden="true">
+                            <span>${escapeHtml(T.sliderEliminated)}</span>
+                            <span>${escapeHtml(T.sliderTrimmed)}</span>
+                            <span>${escapeHtml(T.sliderKeepAll)}</span>
+                        </div>
                     </div>
                 `;
 
                 container.appendChild(card);
+                updateHabitCardFigures(idx);
             });
         }
 
-{{minHScreen45}}        function updateHabitBaseCost(index, value) {
+        /** Rewrites the text of one card from its habit, leaving every control in place. */
+        function updateHabitCardFigures(idx) {
+            const habit = habits[idx];
+            const card = document.querySelector(`#habitsContainer [data-habit-index="${idx}"]`);
+            if (!habit || !card) return;
+
+            const fullMonthlyCost = getHabitMonthlyCost(habit, 100);
+            const currentMonthlyCost = getHabitMonthlyCost(habit);
+            const monthlySaved = fullMonthlyCost - currentMonthlyCost;
+            const workDaysSavedPerYear = workDaysPerYear(monthlySaved);
+            const unitLabel = habit.unit === 'day' ? T.unitDay : (habit.unit === 'week' ? T.unitWeek : T.unitMonth);
+
+            const set = (role, text) => {
+                const element = card.querySelector(`[data-role="${role}"]`);
+                if (element) element.textContent = text;
+            };
+
+            set('baseline', fill(T.cardBaseline, {
+                category: habit.category,
+                amount: formatMoney(habit.baseCost, Number.isInteger(habit.baseCost) ? 0 : 2),
+                unit: unitLabel
+            }));
+            set('choicePct', `${habit.choicePct}%`);
+            set('actual', fill(T.cardActual, { amount: formatMoney(currentMonthlyCost) }));
+            set('full', fill(T.cardFull, { amount: formatMoney(fullMonthlyCost) }));
+            set('daysBadge', monthlySaved > 0
+                ? fill(T.cardDaysSaved, { n: Number.isFinite(workDaysSavedPerYear) ? formatNumber(workDaysSavedPerYear, 1) : '—' })
+                : T.cardFullSpending);
+
+            const badge = card.querySelector('[data-role="daysBadge"]');
+            if (badge) {
+                badge.classList.toggle('text-emerald-700', monthlySaved > 0);
+                badge.classList.toggle('bg-emerald-100', monthlySaved > 0);
+                badge.classList.toggle('text-espresso-800/60', !(monthlySaved > 0));
+                badge.classList.toggle('bg-cream-200', !(monthlySaved > 0));
+            }
+        }
+
+        // UPDATE HABIT BASE COST
+        function updateHabitBaseCost(index, value) {
+            if (!habits[index]) return;
             const val = parseFloat(value);
-            habits[index].baseCost = isNaN(val) ? 0 : Math.max(0, val);
+            habits[index].baseCost = Number.isFinite(val) ? Math.min(1000000, Math.max(0, val)) : 0;
+            updateHabitCardFigures(index);
             recalculateAll();
-            renderHabitCards();
         }
 
-{{minHScreen46}}        function updateHabitUnit(index, unit) {
+        // UPDATE HABIT FREQUENCY UNIT
+        function updateHabitUnit(index, unit) {
+            if (!habits[index] || !['day', 'week', 'month'].includes(unit)) return;
             habits[index].unit = unit;
-            renderHabitCards();
+            updateHabitCardFigures(index);
             recalculateAll();
         }
 
-{{minHScreen47}}        function updateHabitTitle(index, title) {
-{{minHScreen48}}        }
+        // UPDATE CUSTOM HABIT TITLE
+        // Stored as typed; escapeHtml() is applied wherever it is rendered.
+        function updateHabitTitle(index, title) {
+            if (!habits[index]) return;
+            habits[index].title = String(title || '').trim().slice(0, 80) || T.customFallbackTitle;
+        }
 
-{{minHScreen49}}        function addCustomHabit() {
+        // ADD CUSTOM HABIT
+        function addCustomHabit() {
             habits.push({
                 id: 'custom_' + Date.now(),
-{{minHScreen50}}                icon: 'fa-receipt',
-{{minHScreen51}}                baseCost: 10,
+                title: T.customTitle,
+                icon: 'fa-receipt',
+                category: T.customCategory,
+                baseCost: {{fcCustomCost}},
                 unit: 'day',
-{{minHScreen52}}                choicePct: 100,
+                desc: T.customDesc,
+                tip: T.customTip,
+                choicePct: 100,
                 isCustom: true
             });
             renderHabitCards();
             recalculateAll();
         }
 
-{{minHScreen53}}        function deleteHabit(index) {
+        // DELETE HABIT
+        // The button that was clicked no longer exists afterwards, so focus is
+        // handed to the "add" button rather than dropped onto the document.
+        function deleteHabit(index) {
+            if (!habits[index] || !habits[index].isCustom) return;
             habits.splice(index, 1);
             renderHabitCards();
             recalculateAll();
+            const addButton = document.getElementById('addHabitButton');
+            if (addButton) addButton.focus();
         }
 
-{{minHScreen54}}        function updateHabitChoice(index, value) {
-            habits[index].choicePct = parseInt(value, 10);
-            renderHabitCards();
+        // UPDATE INDIVIDUAL HABIT CHOICE
+        function updateHabitChoice(index, value) {
+            if (!habits[index]) return;
+            const pct = parseInt(value, 10);
+            habits[index].choicePct = Number.isFinite(pct) ? Math.min(100, Math.max(0, pct)) : 100;
+            updateHabitCardFigures(index);
             recalculateAll();
         }
 
-{{minHScreen55}}        function setGlobalPreset(pct) {
+        // SET GLOBAL PRESET (0%, 50%, 100%)
+        function setGlobalPreset(pct) {
             habits.forEach(h => h.choicePct = pct);
             renderHabitCards();
             recalculateAll();
         }
 
-{{minHScreen56}}        function toggleProfileDrawer() {
+        // TOGGLE PROFILE DRAWER
+        function toggleProfileDrawer() {
             const drawer = document.getElementById('profileDrawer');
             if (drawer) drawer.classList.toggle('hidden');
         }
 
-{{minHScreen57}}        function updateProfileSettings() {
-            profile.currentAge = parseInt(document.getElementById('inputCurrentAge').value, 10) || 30;
-            profile.annualIncome = parseFloat(document.getElementById('inputAnnualIncome').value) || 60000;
-            profile.workHoursPerWeek = parseInt(document.getElementById('inputWorkHours').value, 10) || 40;
-            profile.startingNetWorth = parseFloat(document.getElementById('inputNetWorth').value) || 15000;
-            profile.basicMonthlyExpenses = parseFloat(document.getElementById('inputBasicExpenses').value) || 2500;
+        /**
+         * A number box read as a number. Zero is a real answer - no savings
+         * yet, no bills, no salary - so only an empty or unreadable box falls
+         * back to the default; anything else is clamped into range, and the box
+         * is rewritten when the value used differs from what it shows.
+         */
+        function readNumberInput(id, fallback, min, max, integer = false) {
+            const input = document.getElementById(id);
+            if (!input) return fallback;
+            const raw = String(input.value).trim();
+            let value = raw === '' ? NaN : Number(raw);
+            if (!Number.isFinite(value)) value = fallback;
+            if (integer) value = Math.round(value);
+            value = Math.min(max, Math.max(min, value));
+            if (raw === '' || Number(raw) !== value) input.value = String(value);
+            return value;
+        }
 
-            const wage = getHourlyWage();
-            document.getElementById('computedHourlyWage').innerText = `{{lang.currency}}${wage.toFixed(2)}/hr`;
+        // UPDATE PROFILE SETTINGS FROM INPUTS
+        function updateProfileSettings() {
+            profile.currentAge = readNumberInput('inputCurrentAge', DEFAULT_PROFILE.currentAge, 18, 75, true);
+            profile.annualIncome = readNumberInput('inputAnnualIncome', DEFAULT_PROFILE.annualIncome, 0, 100000000);
+            profile.workHoursPerWeek = readNumberInput('inputWorkHours', DEFAULT_PROFILE.workHoursPerWeek, 1, 120);
+            profile.startingNetWorth = readNumberInput('inputNetWorth', DEFAULT_PROFILE.startingNetWorth, 0, 1000000000);
+            profile.basicMonthlyExpenses = readNumberInput('inputBasicExpenses', DEFAULT_PROFILE.basicMonthlyExpenses, 0, 1000000);
+            readRateInputs();
+
+            document.getElementById('computedHourlyWage').textContent = formatMoney(getHourlyWage(), 2) + T.perHour;
 
             renderHabitCards();
             recalculateAll();
         }
 
-{{minHScreen58}}        function recalculateAll() {
-            const hourlyWage = getHourlyWage();
+        /** Reads the two rate sliders into `profile` and labels them. */
+        function readRateInputs() {
+            const returnPct = readNumberInput('inputRealReturn', DEFAULT_PROFILE.realReturnRate * 100, 0, 12);
+            const withdrawalPct = readNumberInput('inputSafeWithdrawal', DEFAULT_PROFILE.safeWithdrawalRate * 100, 2.5, 6);
+            profile.realReturnRate = returnPct / 100;
+            profile.safeWithdrawalRate = withdrawalPct / 100;
 
+            // The visible value and the one a screen reader announces while
+            // the slider moves, both in the page's own decimal convention.
+            [['inputRealReturn', 'realReturnOutput', profile.realReturnRate],
+             ['inputSafeWithdrawal', 'safeWithdrawalOutput', profile.safeWithdrawalRate]].forEach(([inputId, outputId, rate]) => {
+                const input = document.getElementById(inputId);
+                if (input) input.setAttribute('aria-valuetext', formatPercent(rate));
+                const output = document.getElementById(outputId);
+                if (output) output.textContent = formatPercent(rate);
+            });
+            const returnBadge = document.getElementById('returnRateBadge');
+            if (returnBadge) returnBadge.textContent = fill(T.returnBadge, { rate: formatPercent(profile.realReturnRate) });
+        }
+
+        // UPDATE RATE SLIDERS (fires while dragging; the cards do not depend on either rate)
+        function updateRateSettings() {
+            readRateInputs();
+            recalculateAll();
+        }
+
+        // RECALCULATE ALL METRICS & UPDATE UI
+        function recalculateAll() {
             // Total Monthly Spend at 100%
             const baselineMonthlyHabits = habits.reduce((sum, h) => sum + getHabitMonthlyCost(h, 100), 0);
-            
+
             // Total Monthly Spend at Current Choices
             const optimizedMonthlyHabits = habits.reduce((sum, h) => sum + getHabitMonthlyCost(h), 0);
 
             const monthlySaved = baselineMonthlyHabits - optimizedMonthlyHabits;
-            const annualSaved = monthlySaved * 12;
 
             // Work Time Saved
-            const annualWorkHoursSaved = annualSaved / hourlyWage;
-            const annualWorkDaysSaved = annualWorkHoursSaved / 8;
+            const annualWorkDaysSaved = workDaysPerYear(monthlySaved);
 
-            // 30-Year Compounded Wealth Gained
-            const wealthGained30Yr = calculate30YearWealth(monthlySaved);
+            // 30-Year Compounded Wealth Gained: the gap between the chart's two lines at year 30
+            const wealthGained30Yr = calculate30YearWealth(baselineMonthlyHabits, optimizedMonthlyHabits);
 
             // Freedom Target Ages
-            const baselineFreedomAge = simulateFreedomAge(baselineMonthlyHabits);
-            const optimizedFreedomAge = simulateFreedomAge(optimizedMonthlyHabits);
-            const yearsPulledForward = Math.max(0, baselineFreedomAge - optimizedFreedomAge);
+            const baseline = simulateFreedomAge(baselineMonthlyHabits);
+            const optimized = simulateFreedomAge(optimizedMonthlyHabits);
+            // With the baseline past the horizon the true gap is unknown and
+            // at least this large, which is how it is labelled everywhere.
+            const yearsPulledForward = optimized.reached ? Math.max(0, baseline.age - optimized.age) : 0;
+            const isLowerBound = optimized.reached && !baseline.reached;
 
             // UPDATE UI ELEMENTS
-{{minHScreen59}}
-            const badge = document.getElementById('yearsSavedBadge');
-            if (yearsPulledForward > 0) {
-                badge.classList.remove('hidden');
-{{minHScreen60}}            } else {
-                badge.classList.add('hidden');
-            }
+            document.getElementById('baselineAgeDisplay').textContent = formatAge(baseline);
+            document.getElementById('optimizedAgeDisplay').textContent = formatAge(optimized);
 
-            document.getElementById('currentAgeLabel').innerText = profile.currentAge;
-            document.getElementById('timelineTargetLabel').innerText = optimizedFreedomAge;
+            const yearsText = isLowerBound
+                ? fill(T.atLeast, { years: formatYears(yearsPulledForward) })
+                : formatYears(yearsPulledForward);
+
+            let badgeText;
+            if (!(monthlySaved > 0)) badgeText = T.badgeHint;
+            else if (!optimized.reached) badgeText = fill(T.badgeNeverReached, { age: HORIZON_AGE });
+            else if (yearsPulledForward < 1 / 12) badgeText = T.badgeUnderMonth;
+            else badgeText = fill(T.badgeForward, { years: yearsText });
+            document.getElementById('yearsSavedText').textContent = badgeText;
+            document.getElementById('yearsSavedBadge').classList.remove('hidden');
+
+            document.getElementById('targetNetWorthLine').textContent = fill(T.targetLine, {
+                amount: formatMoney(freedomTarget(optimizedMonthlyHabits)),
+                multiple: formatNumber(1 / profile.safeWithdrawalRate, significantDecimals(1 / profile.safeWithdrawalRate, 1))
+            });
+            document.getElementById('horizonNote').hidden = baseline.reached && optimized.reached;
+
+            document.getElementById('currentAgeLabel').textContent = profile.currentAge;
+            document.getElementById('timelineTargetLabel').textContent = optimized.reached
+                ? Math.floor(optimized.age)
+                : `${HORIZON_AGE}+`;
 
             // Progress Fill Bar
             const totalRange = Math.max(1, 65 - profile.currentAge);
-            const progressPct = Math.min(100, Math.max(10, ((65 - optimizedFreedomAge) / totalRange) * 100));
+            const progressPct = Math.min(100, Math.max(10, ((65 - optimized.age) / totalRange) * 100));
             document.getElementById('timelineProgressFill').style.width = `${progressPct}%`;
 
             // Stat Cards
-{{minHScreen61}}
+            document.getElementById('statMonthlySaved').textContent = fill(T.statMonthly, { amount: formatMoney(monthlySaved) });
+            document.getElementById('statWorkDaysSaved').textContent = Number.isFinite(annualWorkDaysSaved)
+                ? fill(T.statDays, { n: formatNumber(annualWorkDaysSaved, 1) })
+                : '—';
+            document.getElementById('stat30YearWealth').textContent = formatMoney(wealthGained30Yr);
+
             // Update Chart
             updateWealthChart(baselineMonthlyHabits, optimizedMonthlyHabits);
 
@@ -936,15 +1303,16 @@
                 monthlySaved,
                 annualWorkDaysSaved,
                 wealthGained30Yr,
-                baselineFreedomAge,
-                optimizedFreedomAge,
-                yearsPulledForward
+                baseline,
+                optimized,
+                yearsPulledForward,
+                yearsText
             });
 
             // Kept so the contribute button has something to describe. It is
             // the last computed run and nothing more: no history is retained,
             // and moving a slider replaces it rather than adding to it.
-            lastRun = { monthlySaved, baselineFreedomAge, optimizedFreedomAge, yearsPulledForward };
+            lastRun = { monthlySaved, baseline, optimized, yearsPulledForward };
 
             // A habit has been moved off its default, so there is a run to offer.
             if (window.contributeReady) window.contributeReady(monthlySaved > 0);
@@ -967,6 +1335,12 @@
          * taken at the moment the trade-off was visible to them, and there is no
          * survey anywhere that has it.
          *
+         * A plan that does not reach its target by HORIZON_AGE has no freedom
+         * age, so the age field is left out and `baselineReached` /
+         * `optimizedReached` say so - an "85" in the age column would be
+         * averaged as if it were an answer. The score is then the gap to the
+         * horizon, a lower bound, which the same flag identifies.
+         *
          * Two things are deliberately absent. Nothing is sent when no habit has
          * been touched, because an untouched page is the tool's own defaults and
          * a data set filling up with its own defaults would be measuring itself.
@@ -987,8 +1361,10 @@
                 safeWithdrawalBps: recordable(profile.safeWithdrawalRate * 10000, 1, 2000),
                 // Ages and the years pulled forward are carried times 100, so
                 // "3.4 years earlier" survives a column that stores integers.
-                baselineFreedomAge: recordable(lastRun.baselineFreedomAge * 100, 0, 10000),
-                optimizedFreedomAge: recordable(lastRun.optimizedFreedomAge * 100, 0, 10000),
+                baselineFreedomAge: lastRun.baseline.reached ? recordable(lastRun.baseline.age * 100, 0, 10000) : undefined,
+                optimizedFreedomAge: lastRun.optimized.reached ? recordable(lastRun.optimized.age * 100, 0, 10000) : undefined,
+                baselineReached: lastRun.baseline.reached,
+                optimizedReached: lastRun.optimized.reached,
                 monthlySaved: recordable(lastRun.monthlySaved, 0, 1000000)
             };
 
@@ -1013,7 +1389,7 @@
             return {
                 simulator: 'freedom-calendar',
                 score: clamp(lastRun.yearsPulledForward * 100, 0, 7000),
-                tiebreak: clamp(lastRun.optimizedFreedomAge * 100, 0, 10000),
+                tiebreak: clamp(lastRun.optimized.age * 100, 0, 10000),
                 details
             };
         }
@@ -1057,16 +1433,19 @@
          * never reaches independence however hard they cut needs a different
          * conversation altogether, and asking them to fill in a long
          * questionnaire is the wrong response to it.
+         *
+         * `years` and `workDays` are handed over as finished phrases ("1 year",
+         * "at least 12 years", "3 working days") so the copy never has to
+         * pluralise, and so a baseline past the horizon reads as a lower bound.
          */
         function updateResultCta(result) {
             if (!window.SimCta) return;
             if (result.monthlySaved <= 0) return;
 
-            // The tool caps its own projection at 85, which is how it says
-            // "not within a working life". Asked with every habit at zero,
-            // that answer is about the shape of the plan rather than about
-            // spending, and no slider on this page moves it.
-            const cannotGetThereAtAll = simulateFreedomAge(0) >= 85;
+            // Asked with every habit at zero, a plan that still does not
+            // arrive by the horizon is about the shape of the plan rather than
+            // about spending, and no slider on this page moves it.
+            const cannotGetThereAtAll = !simulateFreedomAge(0).reached;
 
             const years = result.yearsPulledForward;
             let bucket;
@@ -1085,19 +1464,22 @@
                 if (!top || saved > top.saved) top = { title: habit.title, saved };
             });
 
+            const workDays = Number.isFinite(result.annualWorkDaysSaved) ? Math.round(result.annualWorkDaysSaved) : 0;
+
             window.SimCta.show(bucket, {
-                years,
-                age: result.optimizedFreedomAge,
-                baselineAge: result.baselineFreedomAge,
-                monthly: window.SimCta.money(result.monthlySaved),
-                workDays: window.SimCta.integer(result.annualWorkDaysSaved),
-                wealth: window.SimCta.money(result.wealthGained30Yr),
+                years: result.yearsText,
+                age: Math.floor(result.optimized.age),
+                baselineAge: result.baseline.reached ? Math.floor(result.baseline.age) : `${HORIZON_AGE}+`,
+                monthly: formatMoney(result.monthlySaved),
+                workDays: fill(workDays === 1 ? T.workDayOne : T.workDayMany, { n: formatNumber(workDays) }),
+                wealth: formatMoney(result.wealthGained30Yr),
                 topHabit: top ? top.title : '',
-                topHabitMonthly: top ? window.SimCta.money(top.saved) : ''
+                topHabitMonthly: top ? formatMoney(top.saved) : ''
             });
         }
 
-{{minHScreen62}}        function updateWealthChart(baselineHabitsMonthly, optimizedHabitsMonthly) {
+        // RENDER / UPDATE CHART
+        function updateWealthChart(baselineHabitsMonthly, optimizedHabitsMonthly) {
             const ctx = document.getElementById('wealthChart');
             if (!ctx) return;
 
@@ -1123,26 +1505,21 @@
             const baselineData = [];
             const optimizedData = [];
 
-            const baselineAnnualSavings = Math.max(0, profile.annualIncome - (profile.basicMonthlyExpenses * 12) - (baselineHabitsMonthly * 12));
-            const optimizedAnnualSavings = Math.max(0, profile.annualIncome - (profile.basicMonthlyExpenses * 12) - (optimizedHabitsMonthly * 12));
-
-{{minHScreen64}}            for (let i = 0; i <= yearsToProject; i += 5) {
-{{minHScreen65}}            }
-
-            let curB = profile.startingNetWorth;
-            let curO = profile.startingNetWorth;
-
-            for (let year = 0; year <= yearsToProject; year++) {
-                if (year % 5 === 0) {
-                    baselineData.push(Math.round(curB));
-                    optimizedData.push(Math.round(curO));
-                }
-                curB = (curB * (1 + profile.realReturnRate)) + baselineAnnualSavings;
-                curO = (curO * (1 + profile.realReturnRate)) + optimizedAnnualSavings;
+            // Sampled every five years from the same month-by-month projection
+            // the freedom age and the thirty-year figure use.
+            for (let i = 0; i <= yearsToProject; i += 5) {
+{{minHScreen65}}                baselineData.push(Math.round(projectBalance(baselineHabitsMonthly, i * 12)));
+                optimizedData.push(Math.round(projectBalance(optimizedHabitsMonthly, i * 12)));
             }
 
+            // Redrawn in place while a slider is dragged rather than rebuilt on
+            // every notch.
             if (chartInstance) {
-                chartInstance.destroy();
+                chartInstance.data.labels = labels;
+                chartInstance.data.datasets[0].data = optimizedData;
+                chartInstance.data.datasets[1].data = baselineData;
+                chartInstance.update('none');
+                return;
             }
 
             // The optimised path is the first series and the baseline it is
@@ -1177,7 +1554,14 @@
                     scales: {
                         y: {
                             ticks: {
-                                callback: val => '{{lang.currency}}' + (val / 1000).toFixed(0) + 'k'
+                                callback: val => CURRENCY + formatNumber(val / 1000) + 'k'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: (item) => `${item.dataset.label}: ${formatMoney(item.parsed.y)}`
                             }
                         }
                     }

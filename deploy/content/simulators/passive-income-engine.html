@@ -197,7 +197,7 @@
                 </div>
                 <div class="mt-1">
                     <span id="cashDisplay" class="sim-stat__value text-base sm:text-lg">{{cashdisplay}}</span>
-                    <span class="sim-stat__note block text-[9px] mt-0.5">{{block}}</span>
+                    <span id="cashNote" class="sim-stat__note block text-[9px] mt-0.5">{{block}}</span>
                 </div>
             </div>
 
@@ -221,7 +221,7 @@
                 </div>
                 <div class="mt-1">
                     <span id="passiveDisplay" class="sim-stat__value sim-stat__value--positive text-base sm:text-lg">{{passivedisplay}}</span>
-                    <span class="sim-stat__note block text-[9px] mt-0.5">{{block3}}</span>
+                    <span id="passiveNote" class="sim-stat__note block text-[9px] mt-0.5">{{block3}}</span>
                 </div>
             </div>
 
@@ -244,7 +244,7 @@
                     <i class="fa-solid fa-face-smile text-amber-500 text-sm" aria-hidden="true"></i>
                 </div>
                 <div class="mt-1">
-                    <span id="happinessDisplay" class="sim-stat__value sim-stat__value--caution text-base sm:text-lg">66 / 100</span>
+                    <span id="happinessDisplay" class="sim-stat__value sim-stat__value--caution text-base sm:text-lg">39 / 100</span>
                     <span id="happinessSubtext" class="sim-stat__note block text-[9px] mt-0.5">{{happinesssubtext}}</span>
                 </div>
             </div>
@@ -320,6 +320,9 @@
                         </span>
                     </div>
 
+                    <!-- Shown while cash is below zero: debt blocks every purchase. -->
+                    <p id="marketplaceDebtNotice" class="text-[11px] font-bold text-rose-800 bg-rose-50 border border-rose-200 rounded-lg px-2.5 py-1.5" role="status" hidden>{{marketDebtNotice}}</p>
+
                     <!-- ASSET GRID (3 COLUMNS) -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5" id="assetGridContainer">
 {{assetgridcontainer}}                    </div>
@@ -392,7 +395,7 @@
                                 <option value="annual" selected>{{travelselect2}}</option>
                                 <option value="luxury">{{travelselect3}}</option>
                             </select>
-                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="travelCostBadge">{{transportcostbadge}}</div>
+                            <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="travelCostBadge">{{travelcostbadge}}</div>
                         </div>
 
 {{grid6}}                        <div class="sim-inset p-2.5 space-y-1.5">
@@ -407,6 +410,22 @@
                             <div class="text-[10px] font-mono font-bold text-rose-700 text-right" id="shoppingCostBadge">{{shoppingcostbadge}}</div>
                         </div>
                     </div>
+                </div>
+
+                <!-- SECTION 3: THE CROSSOVER RACE, YEAR BY YEAR. One point per
+                     year-end; the summary under it is the same reading in text,
+                     for anybody the canvas says nothing to. -->
+                <div class="sim-panel p-3.5 space-y-2">
+                    <div>
+                        <h3 class="text-xs sm:text-sm font-bold text-espresso-950 font-serif flex items-center gap-2 border-b border-cream-200 pb-1.5">
+                            <i class="fa-solid fa-chart-line text-forest-800" aria-hidden="true"></i>{{historyTitle}}
+                        </h3>
+                        <p class="text-[11px] text-espresso-800/70 mt-0.5">{{historyIntro}}</p>
+                    </div>
+                    <div class="w-full relative" style="height: 14rem">
+                        <canvas id="historyChart" role="img" aria-label="{{historyChartAriaLabel}}" aria-describedby="historyChartSummary"></canvas>
+                    </div>
+                    <p id="historyChartSummary" class="text-[10px] text-espresso-800/70" aria-live="polite"></p>
                 </div>
             </div>
 
@@ -565,6 +584,7 @@
                     <li>{{explAssumption2}}</li>
                     <li>{{explAssumption3}}</li>
                     <li>{{explAssumption4}}</li>
+                    <li>{{explAssumption5}}</li>
                 </ul>
                 <p class="sim-explainer__note">{{explAssumptionsNote}}</p>
 
@@ -602,7 +622,7 @@
 
     <!-- HOW TO PLAY / GOAL OF THE GAME MODAL -->
     <div id="howToPlayModal" class="fixed inset-0 bg-espresso-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="sim-panel border-2 border-forest-800 max-w-lg w-full p-6 sm:p-7 space-y-4 sim-enter">
+        <div class="sim-panel border-2 border-forest-800 max-w-lg w-full p-6 sm:p-7 space-y-4 sim-enter overflow-y-auto" style="max-height: 92vh">
             <div class="flex items-center justify-between border-b border-cream-200 pb-3">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 rounded-lg bg-forest-800 text-amber-300 flex items-center justify-center font-bold">
@@ -653,6 +673,17 @@
                         <p class="text-[11px] text-espresso-800/80">{{text11px6}}</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- THE RULES THAT DECIDE A WIN -->
+            <div class="space-y-1.5 text-xs">
+                <h4 class="font-bold uppercase text-[10px] tracking-wider text-espresso-800/70">{{howRulesTitle}}</h4>
+                <ul class="list-disc pl-6 space-y-1 text-[11px] text-espresso-800/80">
+                    <li>{{howRuleCrossover}}</li>
+                    <li>{{howRuleInflation}}</li>
+                    <li>{{howRuleDebt}}</li>
+                    <li>{{howRuleLength}}</li>
+                </ul>
             </div>
 
             <button data-onclick="toggleHowToPlayModal()" class="w-full py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs shadow transition">
@@ -776,12 +807,199 @@
     <script>
         // GAME STATE
         let monthsPassed = 0; // Increments in steps of 12 (Years)
-        let cash = 10000;
-        let baseMonthlySalary = 3200; // Household Active Salary baseline
+        let cash = 10000; // Below zero this is debt - see DEBT below
+        // The salary in year-zero money. What is actually paid is this times
+        // the inflation multiplier, so a promotion is a real raise and the
+        // cost of living does not quietly eat the salary every two years.
+        let baseMonthlySalary = 3200;
         let pieChartInstance = null;
+        let historyChartInstance = null;
+        // What the history chart last drew, so a purchase or a dial change -
+        // which re-render everything but add no year - does not rebuild it.
+        let historyChartKey = '';
 
-{{fontSans}}        const assets = [
-{{fontSans2}}        ];
+        // One run is a working life, not an open-ended loop. The cap is also
+        // what gives the leaderboard's score a real ceiling (60 x 12 months).
+        const MAX_YEARS = 60;
+
+        // DEBT. Cash below zero is a loan at 8% a year, charged on the balance
+        // at the start of each year. Nothing can be bought while it is owed, and
+        // past three years of salary the bank sells assets to bring it back
+        // within that limit. With nothing left to sell the run ends in
+        // bankruptcy - which is what keeps a run from sliding into a debt with
+        // no floor.
+        const DEBT_RATE = 0.08;
+        const CREDIT_LIMIT_MONTHS = 36;
+
+        // The joy index is reported 0-100 and every rule that reads it uses
+        // these two lines: at or above `high` the bonus and the better promotion
+        // odds apply and the run counts as joyful; below `low` burnout is a risk
+        // and the run counts as ascetic.
+        const JOY = { high: 50, low: 25 };
+
+        const LOCALE = '{{lang.code}}';
+        const CURRENCY = '{{lang.currency}}';
+
+        // Every sentence the behaviour writes, in this page's language. Values
+        // carry {name} tokens that fmt() fills; none of them may contain a
+        // straight apostrophe, which would end the string literal early.
+        const T = {
+            perMonth: '{{tPerMonth}}',
+            year: '{{tYear}}',
+            yearsMonths: '{{tYearsMonths}}',
+            boardTime: '{{tBoardTime}}',
+            assetsCount: '{{tAssetsCount}}',
+            cashNote: '{{block}}',
+            cashNoteDebt: '{{tCashNoteDebt}}',
+            passiveNote: '{{tPassiveNote}}',
+            joyHigh: '{{tJoyHigh}}',
+            joyBalanced: '{{tJoyBalanced}}',
+            joyLow: '{{tJoyLow}}',
+            titleJoyful: '{{tTitleJoyful}}',
+            titleBalanced: '{{tTitleBalanced}}',
+            titleAscetic: '{{tTitleAscetic}}',
+            joyOutOf: '{{tJoyOutOf}}',
+            kidBaby: '{{tKidBaby}}',
+            kidSchool: '{{tKidSchool}}',
+            kidTeen: '{{tKidTeen}}',
+            kidStatus: '{{tKidStatus}}',
+            crossoverDone: '{{tCrossoverDone}}',
+            gap: '{{tGap}}',
+            cost: '{{tCost}}',
+            normalYield: '{{tNormalYield}}',
+            buyOne: '{{tBuyOne}}',
+            buyMax: '{{tBuyMax}}',
+            sellOne: '{{tSellOne}}',
+            sellAll: '{{tSellAll}}',
+            units: '{{tUnits}}',
+            noHoldings: '{{tNoHoldings}}',
+            toastTitle: '{{tToastTitle}}',
+            toastText: '{{tToastText}}',
+            toastInterest: '{{tToastInterest}}',
+            runOverTitle: '{{tRunOverTitle}}',
+            runOver: '{{tRunOver}}',
+            bankruptTitle: '{{tBankruptTitle}}',
+            bankrupt: '{{tBankrupt}}',
+            bondsHighRisk: '{{tBondsHighRisk}}',
+            lbLoading: '{{tLbLoading}}',
+            lbError: '{{tLbError}}',
+            lbEmpty: '{{tLbEmpty}}',
+            saveNetwork: '{{tSaveNetwork}}',
+            saveRejected: '{{tSaveRejected}}',
+            chartUnavailable: '{{tChartUnavailable}}',
+            chartPassive: '{{tChartPassive}}',
+            chartExpenses: '{{tChartExpenses}}',
+            chartSalary: '{{tChartSalary}}',
+            chartYearAxis: '{{tChartYearAxis}}',
+            chartSummary: '{{tChartSummary}}',
+            ev: {
+                inflation: '{{evInflation}}',
+                joyBonus: '{{evJoyBonus}}',
+                burnout: '{{evBurnout}}',
+                baby: '{{evBaby}}',
+                babyHousing: '{{evBabyHousing}}',
+                emptyNest: '{{evEmptyNest}}',
+                school: '{{evSchool}}',
+                teen: '{{evTeen}}',
+                promotion: '{{evPromotion}}',
+                pet: '{{evPet}}',
+                elder: '{{evElder}}',
+                medical: '{{evMedical}}',
+                vehicle: '{{evVehicle}}',
+                tax: '{{evTax}}',
+                sideHustle: '{{evSideHustle}}',
+                inheritance: '{{evInheritance}}',
+                taxRefund: '{{evTaxRefund}}',
+                etf: '{{evEtf}}',
+                bondHike: '{{evBondHike}}',
+                btcBull: '{{evBtcBull}}',
+                btcBear: '{{evBtcBear}}',
+                bizBoom: '{{evBizBoom}}',
+                bizSlump: '{{evBizSlump}}',
+                condo: '{{evCondo}}',
+                forcedSale: '{{evForcedSale}}',
+                bankrupt: '{{evBankrupt}}'
+            }
+        };
+
+        function fmt(template, values) {
+            return template.replace(/\{(\w+)\}/g, (match, key) =>
+                Object.prototype.hasOwnProperty.call(values, key) ? String(values[key]) : match);
+        }
+
+        // Grouped from four digits in every language. Spanish groups only from
+        // five by default, which printed "€1248" beside a select reading
+        // "€1.200"; a browser without the 'always' option groups as it did.
+        function formatNumber(value, decimals = 0) {
+            return Number(value).toLocaleString(LOCALE, {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+                useGrouping: 'always'
+            });
+        }
+
+        // Money in this page's currency and number format, with the sign in
+        // front of the symbol ("−$150", never "$-150"). The figure is rounded
+        // before its sign is read, so a value that rounds to zero is not shown
+        // as a negative zero.
+        function money(value, decimals = 0) {
+            const factor = Math.pow(10, decimals);
+            const rounded = Math.round(Number(value) * factor) / factor;
+            const sign = rounded < 0 ? '−' : '';
+            return sign + CURRENCY + formatNumber(Math.abs(rounded), decimals);
+        }
+
+        // The same, with an explicit plus for a gain - used for flows.
+        function signedMoney(value, decimals = 0) {
+            const factor = Math.pow(10, decimals);
+            const rounded = Math.round(Number(value) * factor) / factor;
+            return (rounded >= 0 ? '+' : '') + money(rounded, decimals);
+        }
+
+        function perMonth(text) {
+            return fmt(T.perMonth, { amount: text });
+        }
+
+        // A per-unit yield: whole money units where it is whole, one decimal
+        // where it is not (a bond pays 3.2 a month, an ETF 4.6).
+        function unitMoney(value) {
+            return money(value, Math.abs(value - Math.round(value)) < 0.05 ? 0 : 1);
+        }
+
+        // ASSET DATA DEFINITIONS
+        const assets = [
+{{assetDefinitions}}        ];
+
+        // Each asset's price and its normal-year payout move together on one
+        // index, so the yield on a new purchase stays where it started while an
+        // existing holding keeps the growth. The dividend ETF's index compounds
+        // with its dividend; the rental condo and the REIT index follow
+        // inflation; the other three are fixed. `volatile` engines are re-rolled
+        // every year and count toward crossover only at their normal yield.
+        const ASSET_RULES = {
+            dividend_etf: { indexed: 'dividend', volatile: false },
+            bonds: { indexed: 'none', volatile: true },
+            rental_property: { indexed: 'inflation', volatile: false },
+            reit_index: { indexed: 'inflation', volatile: false },
+            digital_business: { indexed: 'none', volatile: true },
+            bitcoin: { indexed: 'none', volatile: true }
+        };
+
+        assets.forEach((asset, position) => {
+            asset.position = position; // Fixes the asset's colour in the doughnut
+            asset.index = 1;
+            asset.costBasis = 0;
+            asset.baseRiskText = asset.riskText;
+        });
+
+        function assetPrice(asset) {
+            return asset.unitCost * asset.index;
+        }
+
+        // What one unit pays in a normal year - the figure crossover is judged on.
+        function normalYield(asset) {
+            return asset.baseYield * asset.index;
+        }
 
 {{lbSectionComment}}        const LEADERBOARD_SIMULATOR = 'passive-income-engine';
 
@@ -791,17 +1009,35 @@
         let leaderboardEntries = [];
         let leaderboardState = 'loading';
 
+        // The run as it stood at the moment it crossed over. The victory modal
+        // and the score it submits read this, so playing on afterwards cannot
+        // change the row that gets saved.
+        let victorySnapshot = null;
+        // Set when a year ends over the credit limit with nothing left to sell.
+        let bankrupt = false;
+        // The markup of the save box as the page shipped it. A successful save
+        // replaces it with a confirmation, and the next run needs it back.
+        let submitBoxMarkup = '';
+        // The name last typed into it, so a second run does not ask again.
+        let lastPlayerName = '';
+
+        // One point per year-end, for the history chart.
+        let history = [];
+
         // FAMILY & LIFE CYCLE STATE
-        let familyState = {
-            hasKid: false,
-            kidAgeMonths: 0,
-            kidEventTriggered: false,
-            hasPet: false,
-            hasElderCare: false,
-            promotionTriggered: false,
-            inflationMultiplier: 1.0,
-            totalJoyAccumulated: 0
-        };
+        function freshFamilyState() {
+            return {
+                hasKid: false,
+                kidAgeMonths: 0,
+                kidEventTriggered: false,
+                hasPet: false,
+                hasElderCare: false,
+                promotionTriggered: false,
+                inflationMultiplier: 1.0,
+                totalJoyAccumulated: 0
+            };
+        }
+        let familyState = freshFamilyState();
 
         let currentLifestyle = {
             housing: 'standard',
@@ -831,30 +1067,32 @@
             shopping: { minimal: 2, standard: 8, luxury: 18 }
         };
 
+        // The raw points run from 19 (every dial at its cheapest) to 141 (every
+        // dial at its dearest). The display said "/100" over that range, so the
+        // score is now rescaled onto the scale it was always labelled with.
+        const JOY_RAW_MIN = Object.values(lifestyleHappiness).reduce((sum, c) => sum + Math.min(...Object.values(c)), 0);
+        const JOY_RAW_MAX = Object.values(lifestyleHappiness).reduce((sum, c) => sum + Math.max(...Object.values(c)), 0);
+
         function getHappinessScore() {
-            return lifestyleHappiness.housing[currentLifestyle.housing] +
-                   lifestyleHappiness.transport[currentLifestyle.transport] +
-                   lifestyleHappiness.lifestyle[currentLifestyle.lifestyle] +
-                   lifestyleHappiness.subscriptions[currentLifestyle.subscriptions] +
-                   lifestyleHappiness.travel[currentLifestyle.travel] +
-                   lifestyleHappiness.shopping[currentLifestyle.shopping];
+            const raw = Object.keys(lifestyleHappiness)
+                .reduce((sum, type) => sum + lifestyleHappiness[type][currentLifestyle[type]], 0);
+            return Math.round(((raw - JOY_RAW_MIN) / (JOY_RAW_MAX - JOY_RAW_MIN)) * 100);
+        }
+
+        function getChildCost() {
+            if (!familyState.hasKid) return 0;
+            const ageYears = Math.floor(familyState.kidAgeMonths / 12);
+            if (ageYears < 6) return 500;        // Baby / Toddler
+            if (ageYears < 13) return 750;       // Primary School
+            return 1000;                         // Teenager
         }
 
         function getMonthlyExpenses() {
-            let base = lifestyleCosts.housing[currentLifestyle.housing] +
-                       lifestyleCosts.transport[currentLifestyle.transport] +
-                       lifestyleCosts.lifestyle[currentLifestyle.lifestyle] +
-                       lifestyleCosts.subscriptions[currentLifestyle.subscriptions] +
-                       lifestyleCosts.travel[currentLifestyle.travel] +
-                       lifestyleCosts.shopping[currentLifestyle.shopping];
+            let base = Object.keys(lifestyleCosts)
+                .reduce((sum, type) => sum + lifestyleCosts[type][currentLifestyle[type]], 0);
 
             // Parenting stage expense additions
-            if (familyState.hasKid) {
-                const ageYears = Math.floor(familyState.kidAgeMonths / 12);
-                if (ageYears < 6) base += 500;        // Baby / Toddler
-                else if (ageYears < 13) base += 750;  // Primary School
-                else base += 1000;                    // Teenager
-            }
+            base += getChildCost();
 
             // Pet extra expenses
             if (familyState.hasPet) {
@@ -872,146 +1110,328 @@
             return Math.round(base);
         }
 
+        function getMonthlySalary() {
+            return Math.round(baseMonthlySalary * familyState.inflationMultiplier);
+        }
+
+        // What the holdings pay this year, at this year's rolled yields.
         function getTotalMonthlyPassiveIncome() {
             return assets.reduce((sum, asset) => sum + (asset.ownedUnits * asset.monthlyYieldPerUnit), 0);
         }
 
+        // What the holdings pay in a normal year. Crossover is judged on this,
+        // not on the figure above: a boom year in the online business or bitcoin
+        // is re-rolled at the next Advance, so a crossover that only exists for
+        // one year is not one.
+        function getSustainablePassiveIncome() {
+            return assets.reduce((sum, asset) => sum + (asset.ownedUnits * normalYield(asset)), 0);
+        }
+
+        // Cost basis: what was paid for the units still held.
         function getTotalInvestedCapital() {
-            return assets.reduce((sum, asset) => sum + (asset.ownedUnits * asset.unitCost), 0);
+            return assets.reduce((sum, asset) => sum + asset.costBasis, 0);
+        }
+
+        // Market value: what the units would sell for today.
+        function getPortfolioValue() {
+            return assets.reduce((sum, asset) => sum + (asset.ownedUnits * assetPrice(asset)), 0);
         }
 
         function getNetWorth() {
-            return cash + getTotalInvestedCapital();
+            return cash + getPortfolioValue();
         }
 
+        function getDebt() {
+            return cash < 0 ? -cash : 0;
+        }
+
+        function getCreditLimit() {
+            return getMonthlySalary() * CREDIT_LIMIT_MONTHS;
+        }
+
+        // Next year's monthly cash flow at the yields on screen, including the
+        // interest the current debt will cost - the same sum advanceTime() pays
+        // out, before any one-off event.
         function getNetMonthlySurplus() {
-            return baseMonthlySalary + getTotalMonthlyPassiveIncome() - getMonthlyExpenses();
+            return getMonthlySalary() + getTotalMonthlyPassiveIncome() - getMonthlyExpenses() - (getDebt() * DEBT_RATE) / 12;
         }
 
         function getFreedomCoveragePct() {
             const exp = getMonthlyExpenses();
             if (exp === 0) return 100;
-            return Math.min(100, (getTotalMonthlyPassiveIncome() / exp) * 100);
+            return Math.max(0, Math.min(100, (getSustainablePassiveIncome() / exp) * 100));
         }
 
-{{fontSans5}}        function advanceTime(months = 12) {
-            let eventLogs = [];
-            monthsPassed += 12;
+        // The single crossover test, used after a purchase, after a lifestyle
+        // change and at every year-end, so the banner and the victory always
+        // agree.
+        function hasCrossedOver() {
+            const exp = getMonthlyExpenses();
+            return exp > 0 && getSustainablePassiveIncome() >= exp;
+        }
 
+        function checkCrossover() {
+            if (!victorySnapshot && monthsPassed > 0 && hasCrossedOver()) {
+                triggerCrossoverVictory();
+            }
+        }
+
+        function recordHistory() {
+            const year = Math.floor(monthsPassed / 12);
+            history = history.filter((point) => point.year !== year);
+            history.push({
+                year,
+                passive: Math.round(getSustainablePassiveIncome()),
+                expenses: getMonthlyExpenses(),
+                salary: getMonthlySalary()
+            });
+        }
+
+        // Sell one unit at a time from whichever holding gives up the least
+        // normal-year income per unit of cash raised, until the debt is back
+        // within the limit or nothing is left to sell.
+        function forceSaleToCreditLimit() {
+            const limit = getCreditLimit();
+            let unitsSold = 0;
+            let raised = 0;
+            while (cash < -limit) {
+                const held = assets.filter((a) => a.ownedUnits > 0);
+                if (held.length === 0) break;
+                held.sort((a, b) => (normalYield(a) / assetPrice(a)) - (normalYield(b) / assetPrice(b)));
+                const asset = held[0];
+                const price = assetPrice(asset);
+                asset.costBasis -= asset.costBasis / asset.ownedUnits;
+                asset.ownedUnits -= 1;
+                if (asset.ownedUnits === 0) asset.costBasis = 0;
+                cash += price;
+                raised += price;
+                unitsSold += 1;
+            }
+            if (unitsSold === 0) return null;
+            return fmt(T.ev.forcedSale, { limit: money(limit), units: formatNumber(unitsSold), amount: money(raised) });
+        }
+
+        // TIME ADVANCEMENT & ANNUAL SIMULATION LOOP
+        //
+        // The year is paid out first, at the yields that were on screen while
+        // it was being planned, and only then are next year's yields rolled.
+        // The other order paid each year at yields nobody had seen, which made
+        // the projected cash flow a guess and a boom on screen worth nothing.
+        function advanceTime(months = 12) {
+            const toast = document.getElementById('turnSummaryToast');
+            const toastTitle = document.getElementById('turnSummaryTitle');
+            const toastText = document.getElementById('turnSummaryText');
+            const eventLogList = document.getElementById('eventLogList');
+
+            if (bankrupt || monthsPassed >= MAX_YEARS * 12) {
+                if (toast && toastText) {
+                    toastTitle.innerText = bankrupt ? T.bankruptTitle : T.runOverTitle;
+                    toastText.innerText = bankrupt ? fmt(T.bankrupt, { limit: money(getCreditLimit()) }) : fmt(T.runOver, { max: MAX_YEARS });
+                    eventLogList.classList.add('hidden');
+                    eventLogList.innerHTML = '';
+                    toast.classList.remove('hidden');
+                }
+                return;
+            }
+
+            let eventLogs = [];
             const joyScore = getHappinessScore();
             familyState.totalJoyAccumulated += joyScore * 12;
 
-            // 1. DYNAMIC INFLATION CREEP (Every 2 years / 24 months)
+            // 1. THE YEAR'S CASH FLOW, at this year's yields
+            const interest = getDebt() * DEBT_RATE;
+            const netMonthly = getMonthlySalary() + getTotalMonthlyPassiveIncome() - getMonthlyExpenses();
+            const annualNetAdded = netMonthly * 12;
+            cash += annualNetAdded - interest;
+
+            monthsPassed += 12;
+
+            // 2. DYNAMIC INFLATION CREEP (Every 2 years / 24 months). One rate
+            // for the whole model: expenses, salary, rents and REIT payouts and
+            // the prices of those units all move together.
             if (monthsPassed % 24 === 0) {
                 const oldExpenses = getMonthlyExpenses();
                 familyState.inflationMultiplier *= 1.04; // +4% inflation
+                assets.forEach((asset) => {
+                    if (ASSET_RULES[asset.id] && ASSET_RULES[asset.id].indexed === 'inflation') {
+                        asset.index = familyState.inflationMultiplier;
+                    }
+                });
                 const newExpenses = getMonthlyExpenses();
-                const expDiff = newExpenses - oldExpenses;
-{{fontSans6}}            }
+                eventLogs.push(fmt(T.ev.inflation, {
+                    diff: signedMoney(newExpenses - oldExpenses),
+                    expenses: money(newExpenses),
+                    salary: money(getMonthlySalary())
+                }));
+            }
+            const inflation = familyState.inflationMultiplier;
 
-            // 2. HAPPINESS / LIFE JOY COMPENSATION EFFECTS
-            if (joyScore >= 70) { 
+            // 3. HAPPINESS / LIFE JOY COMPENSATION EFFECTS
+            if (joyScore >= JOY.high) {
                 if (Math.random() < 0.40) {
-                    const bonus = Math.floor(Math.random() * 2500) + 2000;
+                    const bonus = Math.round((Math.floor(Math.random() * 2500) + 2000) * inflation);
                     cash += bonus;
-{{fontSans7}}                }
-            } else if (joyScore < 30) {
+                    eventLogs.push(fmt(T.ev.joyBonus, { amount: signedMoney(bonus) }));
+                }
+            } else if (joyScore < JOY.low) {
                 if (Math.random() < 0.30) {
-                    const burnoutCost = 1200;
-                    if (cash >= burnoutCost) cash -= burnoutCost;
-{{fontSans8}}                }
+                    // Charged whether or not the cash is there - a recovery bill
+                    // does not wait for a balance - so the message and the
+                    // deduction always agree. Short of cash, it becomes debt.
+                    const burnoutCost = Math.round(1200 * inflation);
+                    cash -= burnoutCost;
+                    eventLogs.push(fmt(T.ev.burnout, { amount: money(-burnoutCost) }));
+                }
             }
 
-            // 3. FAMILY & LIFE CYCLE STAGES
+            // 4. FAMILY & LIFE CYCLE STAGES
             if (!familyState.hasKid && !familyState.kidEventTriggered && monthsPassed >= 24) {
                 if (Math.random() < 0.25 || monthsPassed === 48) {
+                    const before = getMonthlyExpenses();
                     familyState.hasKid = true;
                     familyState.kidEventTriggered = true;
                     familyState.kidAgeMonths = 0;
 
+                    let movedHome = false;
                     if (currentLifestyle.housing === 'modest') {
                         currentLifestyle.housing = 'standard';
                         document.getElementById('housingSelect').value = 'standard';
+                        movedHome = true;
                     }
-                    
-{{fontSans9}}                }
+
+                    eventLogs.push(fmt(T.ev.baby, { diff: signedMoney(getMonthlyExpenses() - before) }) +
+                        (movedHome ? T.ev.babyHousing : ''));
+                }
             } else if (familyState.hasKid) {
+                const before = getMonthlyExpenses();
                 const prevAgeYears = Math.floor(familyState.kidAgeMonths / 12);
                 familyState.kidAgeMonths += 12;
                 const newAgeYears = Math.floor(familyState.kidAgeMonths / 12);
 
                 if (newAgeYears >= 18) {
                     familyState.hasKid = false;
-{{fontSans10}}                } else if (prevAgeYears < 6 && newAgeYears >= 6) {
-{{fontSans11}}                } else if (prevAgeYears < 13 && newAgeYears >= 13) {
-{{fontSans12}}                }
+                    eventLogs.push(fmt(T.ev.emptyNest, { diff: signedMoney(getMonthlyExpenses() - before) }));
+                } else if (prevAgeYears < 6 && newAgeYears >= 6) {
+                    eventLogs.push(fmt(T.ev.school, {
+                        diff: signedMoney(getMonthlyExpenses() - before),
+                        total: money(getChildCost() * inflation)
+                    }));
+                } else if (prevAgeYears < 13 && newAgeYears >= 13) {
+                    eventLogs.push(fmt(T.ev.teen, {
+                        diff: signedMoney(getMonthlyExpenses() - before),
+                        total: money(getChildCost() * inflation)
+                    }));
+                }
             }
 
             // Career Promotion
-            const promotionChance = joyScore >= 50 ? 0.40 : 0.20;
+            const promotionChance = joyScore >= JOY.high ? 0.40 : 0.20;
             if (!familyState.promotionTriggered && monthsPassed >= 36 && Math.random() < promotionChance) {
                 familyState.promotionTriggered = true;
-                const raiseAmount = 400;
-                baseMonthlySalary += raiseAmount;
-{{fontSans13}}            }
+                const before = getMonthlySalary();
+                baseMonthlySalary += 400;
+                eventLogs.push(fmt(T.ev.promotion, {
+                    raise: signedMoney(getMonthlySalary() - before),
+                    salary: money(getMonthlySalary())
+                }));
+            }
 
             // Pet Adoption
             if (!familyState.hasPet && monthsPassed >= 60 && Math.random() < 0.15) {
+                const before = getMonthlyExpenses();
                 familyState.hasPet = true;
-{{fontSans14}}            }
+                eventLogs.push(fmt(T.ev.pet, { diff: signedMoney(getMonthlyExpenses() - before) }));
+            }
 
             // Aging Parents Healthcare Support
             if (!familyState.hasElderCare && monthsPassed >= 120 && Math.random() < 0.20) {
+                const before = getMonthlyExpenses();
                 familyState.hasElderCare = true;
-{{fontSans15}}            }
+                eventLogs.push(fmt(T.ev.elder, { diff: signedMoney(getMonthlyExpenses() - before) }));
+            }
 
-            // 4. OUT-OF-POCKET EXPENSE SHOCKS & WINDFALLS
+            // 5. OUT-OF-POCKET EXPENSE SHOCKS & WINDFALLS, in today's money.
+            // A shock is charged in full, and becomes debt when the cash is not
+            // there; it used to be skipped instead, which made being broke a
+            // shield against bad luck.
             const shockRoll = Math.random();
-            if (shockRoll < 0.10 && cash >= 1000) {
-                const cost = Math.floor(Math.random() * 800) + 1000;
+            if (shockRoll < 0.10) {
+                const cost = Math.round((Math.floor(Math.random() * 800) + 1000) * inflation);
                 cash -= cost;
-{{fontSans16}}            } else if (shockRoll >= 0.10 && shockRoll < 0.20 && cash >= 1200) {
-                const cost = Math.floor(Math.random() * 1000) + 1200;
+                eventLogs.push(fmt(T.ev.medical, { amount: money(-cost) }));
+            } else if (shockRoll < 0.20) {
+                const cost = Math.round((Math.floor(Math.random() * 1000) + 1200) * inflation);
                 cash -= cost;
-{{fontSans17}}            } else if (shockRoll >= 0.20 && shockRoll < 0.28 && cash >= 1500) {
-                const cost = Math.floor(Math.random() * 1200) + 1600;
+                eventLogs.push(fmt(T.ev.vehicle, { amount: money(-cost) }));
+            } else if (shockRoll < 0.28) {
+                const cost = Math.round((Math.floor(Math.random() * 1200) + 1600) * inflation);
                 cash -= cost;
-{{fontSans18}}            } else if (shockRoll >= 0.28 && shockRoll < 0.33) {
-                const bonus = Math.floor(Math.random() * 2000) + 1500;
+                eventLogs.push(fmt(T.ev.tax, { amount: money(-cost) }));
+            } else if (shockRoll < 0.33) {
+                const bonus = Math.round((Math.floor(Math.random() * 2000) + 1500) * inflation);
                 cash += bonus;
-{{fontSans19}}            } else if (shockRoll >= 0.33 && shockRoll < 0.38) {
-                const inheritance = Math.floor(Math.random() * 5000) + 6000;
+                eventLogs.push(fmt(T.ev.sideHustle, { amount: signedMoney(bonus) }));
+            } else if (shockRoll < 0.38) {
+                const inheritance = Math.round((Math.floor(Math.random() * 5000) + 6000) * inflation);
                 cash += inheritance;
-{{fontSans20}}            } else if (shockRoll >= 0.38 && shockRoll < 0.42) {
-                const taxBonus = Math.floor(Math.random() * 1500) + 1200;
+                eventLogs.push(fmt(T.ev.inheritance, { amount: signedMoney(inheritance) }));
+            } else if (shockRoll < 0.42) {
+                const taxBonus = Math.round((Math.floor(Math.random() * 1500) + 1200) * inflation);
                 cash += taxBonus;
-{{fontSans21}}            }
+                eventLogs.push(fmt(T.ev.taxRefund, { amount: signedMoney(taxBonus) }));
+            }
 
-            // 5. ASSET DYNAMICS
-            // Dividend ETF Organic Compounding
+            // Condo Repair
+            const condo = assets.find(a => a.id === 'rental_property');
+            if (condo && condo.ownedUnits > 0 && Math.random() < 0.20) {
+                const repairCost = Math.round((Math.floor(Math.random() * 1500) + 1000) * inflation);
+                cash -= repairCost;
+                eventLogs.push(fmt(T.ev.condo, { amount: money(-repairCost) }));
+            }
+
+            // 6. ASSET DYNAMICS - the yields the coming year will pay.
+            // Dividend ETF: the payout and the unit price grow together, so a
+            // unit bought later costs more and yields what one always did, while
+            // units already held keep the growth.
             const divEtf = assets.find(a => a.id === 'dividend_etf');
             if (divEtf) {
                 const compoundRate = 1 + (0.035 + Math.random() * 0.03);
-                const oldYield = divEtf.monthlyYieldPerUnit;
-                divEtf.monthlyYieldPerUnit = parseFloat((divEtf.monthlyYieldPerUnit * compoundRate).toFixed(1));
-                const yieldDiff = (divEtf.monthlyYieldPerUnit - oldYield).toFixed(1);
+                const oldYield = normalYield(divEtf);
+                divEtf.index *= compoundRate;
                 if (divEtf.ownedUnits > 0) {
-                    const totalEtfBoost = (yieldDiff * divEtf.ownedUnits).toFixed(0);
-{{fontSans22}}                }
+                    eventLogs.push(fmt(T.ev.etf, {
+                        pct: formatNumber((compoundRate - 1) * 100, 1),
+                        perUnit: unitMoney(normalYield(divEtf)),
+                        price: money(assetPrice(divEtf)),
+                        boost: signedMoney((normalYield(divEtf) - oldYield) * divEtf.ownedUnits)
+                    }));
+                }
             }
+            // The deterministic engines pay their normal yield.
+            assets.forEach((asset) => {
+                if (ASSET_RULES[asset.id] && !ASSET_RULES[asset.id].volatile) {
+                    asset.monthlyYieldPerUnit = normalYield(asset);
+                }
+            });
 
             // Treasury Bonds Rate Cycles
             const bonds = assets.find(a => a.id === 'bonds');
-            if (Math.random() < 0.25) {
-                if (bonds) {
+            if (bonds) {
+                if (Math.random() < 0.25) {
                     bonds.monthlyYieldPerUnit = 3.2;
-{{fontSans23}}                    if (bonds.ownedUnits > 0) {
-                        const bondBoost = ((3.2 - bonds.baseYield) * bonds.ownedUnits).toFixed(0);
-{{fontSans24}}                    }
+                    bonds.riskText = T.bondsHighRisk;
+                    if (bonds.ownedUnits > 0) {
+                        eventLogs.push(fmt(T.ev.bondHike, {
+                            perUnit: unitMoney(3.2),
+                            base: unitMoney(normalYield(bonds)),
+                            boost: signedMoney((3.2 - normalYield(bonds)) * bonds.ownedUnits)
+                        }));
+                    }
+                } else {
+                    bonds.monthlyYieldPerUnit = normalYield(bonds);
+                    bonds.riskText = bonds.baseRiskText;
                 }
-            } else if (bonds) {
-                bonds.monthlyYieldPerUnit = bonds.baseYield;
-{{fontSans25}}            }
+            }
 
             // Bitcoin Single Evaluation
             const btc = assets.find(a => a.id === 'bitcoin');
@@ -1020,15 +1440,21 @@
                 if (btcRoll < 0.28) {
                     btc.monthlyYieldPerUnit = 65;
                     if (btc.ownedUnits > 0) {
-                        const btcGain = ((65 - btc.baseYield) * btc.ownedUnits).toFixed(0);
-{{fontSans26}}                    }
+                        eventLogs.push(fmt(T.ev.btcBull, {
+                            perUnit: unitMoney(65),
+                            amount: signedMoney((65 - normalYield(btc)) * btc.ownedUnits)
+                        }));
+                    }
                 } else if (btcRoll < 0.52) {
                     btc.monthlyYieldPerUnit = -15;
                     if (btc.ownedUnits > 0) {
-                        const btcLoss = (Math.abs(-15 - btc.baseYield) * btc.ownedUnits).toFixed(0);
-{{fontSans27}}                    }
+                        eventLogs.push(fmt(T.ev.btcBear, {
+                            perUnit: unitMoney(-15),
+                            amount: money((-15 - normalYield(btc)) * btc.ownedUnits)
+                        }));
+                    }
                 } else {
-                    btc.monthlyYieldPerUnit = btc.baseYield;
+                    btc.monthlyYieldPerUnit = normalYield(btc);
                 }
             }
 
@@ -1039,38 +1465,34 @@
                 if (bizRoll < 0.25) {
                     biz.monthlyYieldPerUnit = 120;
                     if (biz.ownedUnits > 0) {
-{{fontSans28}}                    }
+                        eventLogs.push(fmt(T.ev.bizBoom, { perUnit: unitMoney(120) }));
+                    }
                 } else if (bizRoll < 0.45) {
                     biz.monthlyYieldPerUnit = 35;
                     if (biz.ownedUnits > 0) {
-{{fontSans29}}                    }
+                        eventLogs.push(fmt(T.ev.bizSlump, { perUnit: unitMoney(35) }));
+                    }
                 } else {
-                    biz.monthlyYieldPerUnit = biz.baseYield;
+                    biz.monthlyYieldPerUnit = normalYield(biz);
                 }
             }
 
-            // Condo Repair
-            const condo = assets.find(a => a.id === 'rental_property');
-            if (condo && condo.ownedUnits > 0 && Math.random() < 0.20) {
-                const repairCost = Math.floor(Math.random() * 1500) + 1000;
-                if (cash >= repairCost) {
-                    cash -= repairCost;
-{{fontSans30}}                }
+            // 7. THE CREDIT LIMIT
+            const forcedSale = forceSaleToCreditLimit();
+            if (forcedSale) eventLogs.push(forcedSale);
+            if (cash < -getCreditLimit()) {
+                bankrupt = true;
+                eventLogs.push(fmt(T.ev.bankrupt, { debt: money(getDebt()), limit: money(getCreditLimit()) }));
             }
 
-            // 6. CASH SURPLUS ACCUMULATION
-            const netMonthly = baseMonthlySalary + getTotalMonthlyPassiveIncome() - getMonthlyExpenses();
-            const annualNetAdded = netMonthly * 12;
-            cash += annualNetAdded;
-
             // UPDATE UI FEEDBACK
-            const toast = document.getElementById('turnSummaryToast');
-            const toastTitle = document.getElementById('turnSummaryTitle');
-            const toastText = document.getElementById('turnSummaryText');
-            const eventLogList = document.getElementById('eventLogList');
-            
             if (toast && toastText) {
-{{fontSans31}}
+                toastTitle.innerText = fmt(T.toastTitle, { year: fmt(T.year, { n: Math.floor(monthsPassed / 12) }) });
+                toastText.innerHTML = fmt(T.toastText, {
+                    annual: `<strong class="font-mono ${annualNetAdded >= 0 ? 'text-emerald-800' : 'text-rose-700'}">${signedMoney(annualNetAdded)}</strong>`,
+                    monthly: signedMoney(netMonthly)
+                }) + (interest > 0 ? fmt(T.toastInterest, { amount: money(-interest) }) : '');
+
                 if (eventLogs.length > 0) {
                     eventLogList.classList.remove('hidden');
                     eventLogList.innerHTML = eventLogs.map(e => `
@@ -1084,11 +1506,9 @@
                 toast.classList.remove('hidden');
             }
 
+            recordHistory();
             renderUI();
-
-            if (getTotalMonthlyPassiveIncome() >= getMonthlyExpenses() && getMonthlyExpenses() > 0) {
-                triggerCrossoverVictory();
-            }
+            checkCrossover();
         }
 
         function toggleHowToPlayModal() {
@@ -1135,13 +1555,16 @@
             if (!container) return;
 
             if (leaderboardState === 'loading') {
-{{fontSans32}}                return;
+                container.innerHTML = leaderboardNoticeRow(T.lbLoading);
+                return;
             }
             if (leaderboardState === 'error') {
-{{fontSans33}}                return;
+                container.innerHTML = leaderboardNoticeRow(T.lbError);
+                return;
             }
             if (leaderboardEntries.length === 0) {
-{{lbEmpty}}                return;
+                container.innerHTML = leaderboardNoticeRow(T.lbEmpty);
+                return;
             }
 
             container.innerHTML = '';
@@ -1150,8 +1573,8 @@
             // there is nothing to sort here. Sorting a second time on the client
             // is how the page and the board start disagreeing about who won.
             leaderboardEntries.forEach((entry, idx) => {
-                const yrs = Math.floor(entry.score / 12);
-{{fontSans34}}
+                const timeStr = fmt(T.boardTime, { years: Math.floor(entry.score / 12), months: entry.score });
+
                 let rankBadge = `<span class="font-bold font-mono text-espresso-800">${idx + 1}</span>`;
                 if (idx === 0) rankBadge = `<i class="fa-solid fa-crown text-amber-500 text-sm" aria-hidden="true"></i>`;
                 else if (idx === 1) rankBadge = `<i class="fa-solid fa-medal text-slate-400 text-sm" aria-hidden="true"></i>`;
@@ -1166,7 +1589,7 @@
                     <td class="p-2.5 text-center">${rankBadge}</td>
                     <td class="p-2.5 font-semibold text-espresso-950">${window.SimLeaderboard.escapeHtml(entry.name)}{{lbYouBadge}}</td>
                     <td class="p-2.5 text-center font-mono font-bold text-forest-800">${timeStr}</td>
-                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">{{lang.currency}}${entry.tiebreak.toLocaleString()}</td>
+                    <td class="p-2.5 text-right font-mono font-bold text-espresso-900">${money(entry.tiebreak)}</td>
                 `;
                 container.appendChild(tr);
             });
@@ -1186,20 +1609,21 @@
          * `topEngine` is the engine producing the largest share of the monthly
          * income, not the one with the most units. A single rental condo out-
          * yields fifty bond units, and the interesting fact is which asset the
-         * income came from.
+         * income came from. Both it and `monthlyPassive` use the normal-year
+         * income crossover is judged on.
          */
         function crossoverShape() {
             let top = null;
             assets.forEach((asset) => {
-                const income = asset.ownedUnits * asset.monthlyYieldPerUnit;
+                const income = asset.ownedUnits * normalYield(asset);
                 if (income > 0 && (!top || income > top.income)) top = { id: asset.id, income };
             });
 
             const shape = {
                 monthlyExpenses: recordable(getMonthlyExpenses(), 0, 1000000),
-                monthlyPassive: recordable(getTotalMonthlyPassiveIncome(), 0, 1000000),
+                monthlyPassive: recordable(getSustainablePassiveIncome(), 0, 1000000),
                 investedCapital: recordable(getTotalInvestedCapital(), 0, 1000000000),
-                joyScore: recordable(getHappinessScore(), 0, 400),
+                joyScore: recordable(getHappinessScore(), 0, 100),
                 housing: currentLifestyle.housing,
                 transport: currentLifestyle.transport,
                 lifestyle: currentLifestyle.lifestyle,
@@ -1224,11 +1648,9 @@
          * The value if the record can hold it, and nothing if it cannot.
          *
          * The endpoint refuses a whole write whose details fall outside the
-         * ranges it declares, and inflation compounds every two years for as
-         * long as a run lasts, so a hundred-year game can carry an expense line
-         * larger than any figure a ceiling should have to anticipate. Dropping
-         * the field costs one number in one row; a rejected write costs the
-         * crossover the player just spent an hour reaching.
+         * ranges it declares. Dropping the field costs one number in one row; a
+         * rejected write costs the crossover the player just spent an hour
+         * reaching.
          */
         function recordable(value, min, max) {
             const number = Math.round(Number(value));
@@ -1236,11 +1658,41 @@
             return number;
         }
 
+        // The save box as it shipped, with the name the visitor last typed
+        // kept in it. Called for every new crossover and on reset, because a
+        // successful save replaces the box with a confirmation.
+        function restoreSubmitBox() {
+            const submitBox = document.getElementById('victoryLeaderboardSubmit');
+            if (!submitBox || !submitBoxMarkup) return;
+            const previous = document.getElementById('playerNameInput');
+            if (previous && previous.value) lastPlayerName = previous.value;
+            submitBox.innerHTML = submitBoxMarkup;
+            const input = document.getElementById('playerNameInput');
+            if (input) input.value = lastPlayerName;
+            const button = document.getElementById('submitScoreButton');
+            if (button) button.disabled = false;
+        }
+
+        function showSaveWarning(message) {
+            const submitBox = document.getElementById('victoryLeaderboardSubmit');
+            if (!submitBox) return;
+            let warning = document.getElementById('submitScoreWarning');
+            if (!warning) {
+                warning = document.createElement('p');
+                warning.id = 'submitScoreWarning';
+                warning.className = 'text-[11px] font-bold text-rose-700';
+                warning.setAttribute('role', 'alert');
+                submitBox.appendChild(warning);
+            }
+            warning.textContent = message;
+        }
+
         function submitPlayerScore() {
             const nameInput = document.getElementById('playerNameInput');
             const button = document.getElementById('submitScoreButton');
             const name = nameInput ? nameInput.value.trim() : '';
-            if (!name) return;
+            if (!name || !victorySnapshot) return;
+            lastPlayerName = name;
 
             // One row per crossover. The button is a write to a table everybody
             // reads, so a second click while the first request is open is a
@@ -1251,9 +1703,9 @@
                 simulator: LEADERBOARD_SIMULATOR,
                 board: 'ALL',
                 name: name,
-                score: monthsPassed,
-                tiebreak: Math.round(getNetWorth()),
-                details: crossoverShape()
+                score: victorySnapshot.months,
+                tiebreak: victorySnapshot.netWorth,
+                details: victorySnapshot.details
             })
                 .then((result) => {
                     leaderboardEntries = result.entries;
@@ -1274,18 +1726,20 @@
                         toggleLeaderboardModal();
                     }, 800);
                 })
-                .catch(() => {
+                .catch((error) => {
                     // The run is not lost, only unsent. Saying so in the box the
                     // button lived in keeps the offer on screen to try again.
-                    const submitBox = document.getElementById('victoryLeaderboardSubmit');
-                    if (submitBox) {
-                        const warning = document.createElement('p');
-                        warning.className = 'text-[11px] font-bold text-rose-700';
-{{lbSaveFailed}}                        submitBox.appendChild(warning);
-                    }
+                    // A fetch that never got an answer rejects with a TypeError
+                    // (or an AbortError on the timeout), and a server that is
+                    // down answers 5xx; anything else is the endpoint refusing
+                    // this run, which pressing Save again will not change.
+                    const message = error && error.message ? error.message : '';
+                    const unreachable = !error || error.name === 'TypeError' || error.name === 'AbortError' || (error.status >= 500) || /^HTTP 5/.test(message);
+                    showSaveWarning(unreachable ? T.saveNetwork : fmt(T.saveRejected, { reason: message }));
                 })
                 .finally(() => {
-                    if (button) button.disabled = false;
+                    const current = document.getElementById('submitScoreButton');
+                    if (current) current.disabled = false;
                 });
         }
 
@@ -1297,23 +1751,35 @@
             loadLeaderboard();
         }
 
+        function joyTitleFor(joy) {
+            if (joy >= JOY.high) return `👑 <strong class="text-amber-700">${T.titleJoyful}</strong> ${fmt(T.joyOutOf, { joy })}`;
+            if (joy >= JOY.low) return `⚖️ <strong class="text-emerald-700">${T.titleBalanced}</strong> ${fmt(T.joyOutOf, { joy })}`;
+            return `🪙 <strong class="text-rose-700">${T.titleAscetic}</strong> ${fmt(T.joyOutOf, { joy })}`;
+        }
+
         function triggerCrossoverVictory() {
             const exp = getMonthlyExpenses();
-            const pass = getTotalMonthlyPassiveIncome();
+            const pass = getSustainablePassiveIncome();
             const joyScore = getHappinessScore();
-            
-{{fontSans36}}            
+
+            victorySnapshot = {
+                months: monthsPassed,
+                netWorth: Math.round(getNetWorth()),
+                details: crossoverShape()
+            };
+            restoreSubmitBox();
+            const warning = document.getElementById('submitScoreWarning');
+            if (warning) warning.remove();
+
+            document.getElementById('victoryPassive').innerText = perMonth(signedMoney(pass));
+            document.getElementById('victoryExpenses').innerText = perMonth(money(exp));
             const yrs = Math.floor(monthsPassed / 12);
-{{fontSans37}}            document.getElementById('victoryNetWorth').innerText = `{{lang.currency}}${Math.round(getNetWorth()).toLocaleString()}`;
+            document.getElementById('victoryTime').innerText = fmt(T.yearsMonths, { years: yrs, months: monthsPassed });
+            document.getElementById('victoryNetWorth').innerText = money(victorySnapshot.netWorth);
 
             // Life Joy Title
             const joyTitleElem = document.getElementById('victoryJoyTitle');
-            if (joyTitleElem) {
-                if (joyScore >= 75) {
-{{fontSans38}}                } else if (joyScore >= 45) {
-{{fontSans39}}                } else {
-{{fontSans40}}                }
-            }
+            if (joyTitleElem) joyTitleElem.innerHTML = joyTitleFor(joyScore);
 
             document.getElementById('victoryModal').classList.remove('hidden');
         }
@@ -1354,13 +1820,13 @@
             if (coverage < 100 && years < 10) return;
 
             const exp = getMonthlyExpenses();
-            const pass = getTotalMonthlyPassiveIncome();
+            const pass = getSustainablePassiveIncome();
             const joy = getHappinessScore();
 
             let bucket;
             if (coverage >= 100) {
-                if (joy >= 75) bucket = 'crossoverJoyful';
-                else if (joy < 45) bucket = 'crossoverAscetic';
+                if (joy >= JOY.high) bucket = 'crossoverJoyful';
+                else if (joy < JOY.low) bucket = 'crossoverAscetic';
                 else bucket = 'crossoverBalanced';
             } else if (coverage >= 75) {
                 bucket = 'close';
@@ -1379,30 +1845,59 @@
             });
         }
 
+        function updateCostBadges() {
+            // The current price of each choice, inflation included - the select
+            // labels carry the year-zero prices.
+            Object.keys(lifestyleCosts).forEach((type) => {
+                const badge = document.getElementById(`${type}CostBadge`);
+                if (badge) {
+                    badge.innerText = perMonth(money(lifestyleCosts[type][currentLifestyle[type]] * familyState.inflationMultiplier));
+                }
+            });
+        }
+
         function renderUI() {
             const exp = getMonthlyExpenses();
-            const pass = getTotalMonthlyPassiveIncome();
+            const thisYearPassive = getTotalMonthlyPassiveIncome();
+            const pass = getSustainablePassiveIncome();
             const coverage = getFreedomCoveragePct();
             const netSurplus = getNetMonthlySurplus();
             const joyScore = getHappinessScore();
+            const inDebt = cash < 0;
 
             // Header stats
-            document.getElementById('cashDisplay').innerText = `{{lang.currency}}${Math.round(cash).toLocaleString()}`;
-{{fontSans41}}            document.getElementById('freedomPctDisplay').innerText = `${coverage.toFixed(1)}%`;
+            const cashDisplay = document.getElementById('cashDisplay');
+            cashDisplay.innerText = money(cash);
+            cashDisplay.classList.toggle('sim-stat__value--negative', inDebt);
+            const cashNote = document.getElementById('cashNote');
+            if (cashNote) {
+                cashNote.innerText = inDebt ? fmt(T.cashNoteDebt, { limit: money(getCreditLimit()) }) : T.cashNote;
+            }
+            document.getElementById('activeDisplay').innerText = perMonth(money(getMonthlySalary()));
+            document.getElementById('expensesDisplay').innerText = perMonth(money(exp));
+            document.getElementById('passiveDisplay').innerText = perMonth(signedMoney(thisYearPassive));
+            const passiveNote = document.getElementById('passiveNote');
+            if (passiveNote) passiveNote.innerText = fmt(T.passiveNote, { amount: perMonth(money(pass)) });
+            document.getElementById('freedomPctDisplay').innerText = `${formatNumber(coverage, 1)}%`;
             document.getElementById('freedomProgressBar').style.width = `${coverage}%`;
-            document.getElementById('marketplaceCash').innerText = `{{lang.currency}}${Math.round(cash).toLocaleString()}`;
+            document.getElementById('marketplaceCash').innerText = money(cash);
+            const debtNotice = document.getElementById('marketplaceDebtNotice');
+            if (debtNotice) debtNotice.hidden = !inDebt;
 
             // Life Joy Card Update
             const joyDisplay = document.getElementById('happinessDisplay');
             const joySubtext = document.getElementById('happinessSubtext');
             if (joyDisplay && joySubtext) {
                 joyDisplay.innerText = `${joyScore} / 100`;
-                if (joyScore >= 70) {
-{{fontSans42}}                    joySubtext.className = 'block text-[9px] text-emerald-800 font-bold mt-0.5';
-                } else if (joyScore >= 40) {
-{{fontSans43}}                    joySubtext.className = 'block text-[9px] text-amber-900/70 font-medium mt-0.5';
+                if (joyScore >= JOY.high) {
+                    joySubtext.innerText = T.joyHigh;
+                    joySubtext.className = 'block text-[9px] text-emerald-800 font-bold mt-0.5';
+                } else if (joyScore >= JOY.low) {
+                    joySubtext.innerText = T.joyBalanced;
+                    joySubtext.className = 'block text-[9px] text-amber-900/70 font-medium mt-0.5';
                 } else {
-{{fontSans44}}                    joySubtext.className = 'block text-[9px] text-rose-700 font-bold mt-0.5';
+                    joySubtext.innerText = T.joyLow;
+                    joySubtext.className = 'block text-[9px] text-rose-700 font-bold mt-0.5';
                 }
             }
 
@@ -1412,35 +1907,47 @@
             if (familyState.hasKid) {
                 familyBadge.classList.remove('hidden');
                 const yrs = Math.floor(familyState.kidAgeMonths / 12);
-{{fontSans45}}            } else {
+                const stage = yrs >= 13 ? T.kidTeen : (yrs >= 6 ? T.kidSchool : T.kidBaby);
+                familyText.innerText = fmt(T.kidStatus, {
+                    age: yrs,
+                    stage,
+                    amount: perMonth(signedMoney(getChildCost() * familyState.inflationMultiplier))
+                });
+            } else {
                 familyBadge.classList.add('hidden');
             }
 
             // Turn Action Projected Savings
             const projElem = document.getElementById('projectedMonthlySavings');
             if (projElem) {
-{{fontSans46}}                projElem.className = netSurplus >= 0 ? 'text-gold-400 font-mono font-bold' : 'text-rose-300 font-mono font-bold';
+                projElem.innerText = perMonth(signedMoney(netSurplus));
+                projElem.className = netSurplus >= 0 ? 'text-gold-400 font-mono font-bold' : 'text-rose-300 font-mono font-bold';
             }
 
             // Time & Crossover Bar
             const years = Math.floor(monthsPassed / 12);
-{{fontSans47}}
-{{fontSans48}}
+            document.getElementById('monthsPassedBadge').innerText = fmt(T.year, { n: years });
+            document.getElementById('barExpenseVal').innerText = perMonth(money(exp));
+            document.getElementById('barPassiveVal').innerText = perMonth(signedMoney(pass));
+
             // Normalize racing bar scales
             const maxBarScale = Math.max(exp, pass, 3000);
             document.getElementById('expensesBar').style.width = `${Math.min(100, (exp / maxBarScale) * 100)}%`;
-            document.getElementById('passiveBar').style.width = `${Math.min(100, (pass / maxBarScale) * 100)}%`;
+            document.getElementById('passiveBar').style.width = `${Math.max(0, Math.min(100, (pass / maxBarScale) * 100))}%`;
 
-            const gap = exp - pass;
             const gapElem = document.getElementById('crossoverGapNotice');
-            if (gap <= 0) {
+            if (hasCrossedOver()) {
                 gapElem.className = 'text-center py-1.5 text-xs font-bold text-emerald-800 bg-emerald-100 rounded-lg border border-emerald-300';
-{{fontSans49}}            } else {
+                gapElem.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1" aria-hidden="true"></i> ${T.crossoverDone}`;
+            } else {
                 gapElem.className = 'text-center py-1 text-xs font-medium text-espresso-800/80 bg-cream-100 rounded-lg border border-cream-200';
-{{fontSans50}}            }
+                gapElem.innerHTML = fmt(T.gap, { amount: `<span class="font-bold text-rose-700">${perMonth(money(exp - pass))}</span>` });
+            }
 
+            updateCostBadges();
             renderMarketplace();
             renderHoldingsSidebar();
+            updateHistoryChart();
             updateResultCta();
         }
 
@@ -1450,12 +1957,20 @@
             container.innerHTML = '';
 
             assets.forEach((asset) => {
-                const canAfford = cash >= asset.unitCost;
+                const price = assetPrice(asset);
+                const canAfford = cash >= price;
                 const card = document.createElement('div');
                 card.className = 'p-3 rounded-xl bg-cream-100 border border-cream-300 space-y-1.5 flex flex-col justify-between';
 
                 const yieldColor = asset.monthlyYieldPerUnit >= 0 ? 'text-emerald-700' : 'text-rose-600';
-                const yieldSign = asset.monthlyYieldPerUnit >= 0 ? '+' : '';
+                const yieldText = perMonth(asset.monthlyYieldPerUnit >= 0 ? `+${unitMoney(asset.monthlyYieldPerUnit)}` : unitMoney(asset.monthlyYieldPerUnit));
+                // A volatile engine off its normal year says what it normally
+                // pays, because that is the figure crossover counts.
+                const offNormal = ASSET_RULES[asset.id] && ASSET_RULES[asset.id].volatile &&
+                    Math.abs(asset.monthlyYieldPerUnit - normalYield(asset)) > 0.01;
+                const normalNote = offNormal
+                    ? `<div class="text-[9px] text-espresso-800/70 text-right font-mono">${fmt(T.normalYield, { amount: perMonth(unitMoney(normalYield(asset))) })}</div>`
+                    : '';
 
                 card.innerHTML = `
                     <div>
@@ -1470,23 +1985,30 @@
 
                     <div class="space-y-1.5 pt-1.5 border-t border-cream-200">
                         <div class="flex justify-between items-center text-[11px]">
-{{fontSans51}}                        </div>
+                            <span class="text-espresso-800/70">${T.cost} <strong class="text-espresso-950 font-mono">${money(price)}</strong></span>
+                            <span class="${yieldColor} font-bold font-mono">${yieldText}</span>
+                        </div>
+                        ${normalNote}
                         <div class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-200 truncate">
                             <i class="fa-solid fa-shield-halved mr-0.5 text-amber-600" aria-hidden="true"></i>${asset.riskText}
                         </div>
 
                         <div class="flex gap-1.5">
                             <button data-onclick="buyAsset('${asset.id}', 1)" ${!canAfford ? 'disabled' : ''} class="flex-1 py-1 rounded-lg bg-forest-800 hover:bg-forest-700 disabled:opacity-40 text-white text-[11px] font-bold transition">
-{{fontSans52}}                            </button>
+                                ${T.buyOne}
+                            </button>
                             <button data-onclick="buyMaxAsset('${asset.id}')" ${!canAfford ? 'disabled' : ''} class="px-2 py-1 rounded-lg border border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white disabled:opacity-40 text-[11px] font-bold transition">
-{{fontSans53}}                            </button>
+                                ${T.buyMax}
+                            </button>
                         </div>
                         ${asset.ownedUnits > 0 ? `
                         <div class="flex gap-1.5 pt-1 border-t border-cream-200">
                             <button data-onclick="sellAsset('${asset.id}', 1)" class="flex-1 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
-{{fontSans54}}                            </button>
+                                ${T.sellOne}
+                            </button>
                             <button data-onclick="sellAllAsset('${asset.id}')" class="px-2 py-0.5 rounded-lg bg-rose-700 hover:bg-rose-800 text-white text-[10px] font-bold transition">
-{{fontSans55}}                            </button>
+                                ${T.sellAll} (${formatNumber(asset.ownedUnits)})
+                            </button>
                         </div>
                         ` : ''}
                     </div>
@@ -1499,9 +2021,11 @@
         function renderHoldingsSidebar() {
             const container = document.getElementById('holdingsContainer');
             const totalHoldingsCount = assets.reduce((sum, a) => sum + a.ownedUnits, 0);
-            
-{{fontSans56}}            document.getElementById('sidebarTotalInvested').innerText = `{{lang.currency}}${getTotalInvestedCapital().toLocaleString()}`;
-{{fontSans57}}
+
+            document.getElementById('holdingsCountBadge').innerText = fmt(T.assetsCount, { n: formatNumber(totalHoldingsCount) });
+            document.getElementById('sidebarTotalInvested').innerText = money(getPortfolioValue());
+            document.getElementById('sidebarTotalPassive').innerText = perMonth(signedMoney(getTotalMonthlyPassiveIncome()));
+
             updateAssetPieChart();
 
             if (!container) return;
@@ -1512,7 +2036,8 @@
             if (activeHoldings.length === 0) {
                 container.innerHTML = `
                     <div class="text-center py-4 text-espresso-800/60 italic text-xs">
-{{fontSans58}}                    </div>
+                        ${T.noHoldings}
+                    </div>
                 `;
                 return;
             }
@@ -1528,14 +2053,18 @@
                             <i class="fa-solid ${asset.icon} text-forest-800" aria-hidden="true"></i>
                             <div>
                                 <span class="font-bold text-espresso-950 block leading-tight text-[11px]">${asset.name}</span>
-{{fontSans59}}                            </div>
+                                <span class="text-[9px] text-espresso-800/70 font-mono">${fmt(T.units, { n: formatNumber(asset.ownedUnits), value: money(asset.ownedUnits * assetPrice(asset)) })}</span>
+                            </div>
                         </div>
-{{fontSans60}}                    </div>
+                        <span class="font-bold font-mono text-xs ${totalIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}">${perMonth(signedMoney(totalIncome))}</span>
+                    </div>
                     <div class="flex items-center justify-end gap-1.5 pt-1 border-t border-cream-200">
                         <button data-onclick="sellAsset('${asset.id}', 1)" class="px-2 py-0.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] font-bold transition">
-{{fontSans61}}                        </button>
+                            ${T.sellOne}
+                        </button>
                         <button data-onclick="sellAllAsset('${asset.id}')" class="px-2 py-0.5 rounded-lg bg-rose-700 hover:bg-rose-800 text-white text-[10px] font-bold transition">
-{{fontSans62}}                        </button>
+                            ${T.sellAll}
+                        </button>
                     </div>
                 `;
 
@@ -1543,27 +2072,30 @@
             });
         }
 
+        // chart-4.4.1.umd.min.js is deferred and can fail to load. Every value
+        // a chart plots is already on the page as text, so the graceful path is
+        // to say so once and stop; throwing would take the rest of the render
+        // down with it. True when the chart can be drawn.
+        function chartAvailable(ctx) {
+            if (typeof Chart !== 'undefined') return true;
+            if (!ctx.dataset.fallbackShown) {
+                ctx.dataset.fallbackShown = 'true';
+                // The canvas is a blank box once the chart cannot draw, and its container
+                // is height-constrained; hiding it lets the note take the same space.
+                ctx.hidden = true;
+                const note = document.createElement('p');
+                note.className = 'chart-unavailable';
+                note.textContent = T.chartUnavailable;
+                ctx.insertAdjacentElement('afterend', note);
+            }
+            return false;
+        }
+
         function updateAssetPieChart() {
             const pieContainer = document.getElementById('pieChartContainer');
             const ctx = document.getElementById('assetPieChart');
             if (!ctx || !pieContainer) return;
-
-            // chart-4.4.1.umd.min.js is deferred and can fail to load. Every value
-            // the chart plots is already on the page as text, so the graceful path
-            // is to say so and stop; throwing here would take the rest of the
-            // render down with it.
-            if (typeof Chart === 'undefined') {
-                if (!ctx.dataset.fallbackShown) {
-                    ctx.dataset.fallbackShown = 'true';
-                    // The canvas is a blank box once the chart cannot draw, and its container
-                    // is height-constrained; hiding it lets the note take the same space.
-                    ctx.hidden = true;
-                    const note = document.createElement('p');
-                    note.className = 'chart-unavailable';
-{{fontSans63}}                    ctx.insertAdjacentElement('afterend', note);
-                }
-                return;
-            }
+            if (!chartAvailable(ctx)) return;
 
             const activeHoldings = assets.filter(a => a.ownedUnits > 0);
 
@@ -1579,14 +2111,15 @@
             pieContainer.classList.remove('hidden');
 
             const labels = activeHoldings.map(a => a.name);
-            const dataValues = activeHoldings.map(a => a.ownedUnits * a.unitCost);
+            const dataValues = activeHoldings.map(a => Math.round(a.ownedUnits * assetPrice(a)));
             const totalVal = dataValues.reduce((a, b) => a + b, 0);
 
-            // The six slice colours are the six series colours, in the same
-            // order, so a holding in the doughnut is the colour the same
-            // holding would be as a line on the chart above it.
+            // Each asset keeps the series colour of its place in the
+            // marketplace, whichever of the others are held alongside it - a
+            // slice coloured by its position among the holdings changed colour
+            // every time another asset was bought or sold.
             const theme = window.SimChartTheme;
-            const colorPalette = theme.series.map(s => s.line);
+            const colors = activeHoldings.map(a => theme.line(a.position));
 
             if (pieChartInstance) {
                 pieChartInstance.destroy();
@@ -1600,7 +2133,7 @@
                         labels: labels,
                         datasets: [{
                             data: dataValues,
-                            backgroundColor: colorPalette.slice(0, activeHoldings.length)
+                            backgroundColor: colors
                         }]
                     },
                     options: {
@@ -1620,8 +2153,8 @@
                                 callbacks: {
                                     label: function(context) {
                                         const val = context.raw || 0;
-                                        const pct = totalVal > 0 ? ((val / totalVal) * 100).toFixed(1) : 0;
-                                        return ` {{lang.currency}}${val.toLocaleString()} (${pct}%)`;
+                                        const pct = totalVal > 0 ? (val / totalVal) * 100 : 0;
+                                        return ` ${money(val)} (${formatNumber(pct, 1)}%)`;
                                     }
                                 }
                             }
@@ -1630,23 +2163,115 @@
                     }
                 });
             } catch(e) {
-{{fontSans66}}                pieChartInstance = null;
+                console.error('Chart render error:', e);
+                pieChartInstance = null;
+            }
+        }
+
+        // The year-by-year race: normal-year passive income against expenses,
+        // with the salary for scale. Rebuilt from `history` on every render, so
+        // a reset that empties the history empties the chart with it.
+        function updateHistoryChart() {
+            const ctx = document.getElementById('historyChart');
+            const summary = document.getElementById('historyChartSummary');
+            const last = history[history.length - 1];
+            if (summary && last) {
+                summary.textContent = fmt(T.chartSummary, {
+                    year: last.year,
+                    passive: money(last.passive),
+                    expenses: money(last.expenses),
+                    salary: money(last.salary)
+                });
+            }
+            if (!ctx || !chartAvailable(ctx)) return;
+
+            const key = JSON.stringify(history);
+            if (historyChartInstance && key === historyChartKey) return;
+            historyChartKey = key;
+
+            if (historyChartInstance) {
+                historyChartInstance.destroy();
+                historyChartInstance = null;
+            }
+
+            const theme = window.SimChartTheme;
+            try {
+                historyChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: history.map(point => String(point.year)),
+                        datasets: [
+                            {
+                                label: T.chartPassive,
+                                data: history.map(point => point.passive),
+                                borderColor: theme.role.positive,
+                                backgroundColor: theme.fill(0, 0.12),
+                                fill: true,
+                                pointRadius: history.length === 1 ? 3 : 0,
+                                pointBackgroundColor: theme.role.positive
+                            },
+                            {
+                                label: T.chartExpenses,
+                                data: history.map(point => point.expenses),
+                                borderColor: theme.role.negative,
+                                backgroundColor: 'transparent',
+                                pointRadius: history.length === 1 ? 3 : 0,
+                                pointBackgroundColor: theme.role.negative
+                            },
+                            {
+                                label: T.chartSalary,
+                                data: history.map(point => point.salary),
+                                borderColor: theme.line(2),
+                                backgroundColor: 'transparent',
+                                borderDash: [5, 5],
+                                borderWidth: 1.5,
+                                pointRadius: 0
+                            }
+                        ]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        animation: false,
+                        interaction: { mode: 'index', intersect: false },
+                        scales: {
+                            x: {
+                                title: { display: true, text: T.chartYearAxis }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: val => money(val)
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    title: items => items.length ? fmt(T.year, { n: items[0].label }) : '',
+                                    label: context => ` ${context.dataset.label}: ${perMonth(money(context.raw))}`
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch(e) {
+                console.error('Chart render error:', e);
+                historyChartInstance = null;
             }
         }
 
         function buyAsset(assetId, units = 1) {
             const asset = assets.find(a => a.id === assetId);
-            if (!asset) return;
+            if (!asset || units <= 0) return;
 
-            const totalCost = asset.unitCost * units;
+            const totalCost = assetPrice(asset) * units;
+            // Never while in debt: cash below zero cannot cover any price.
             if (cash >= totalCost) {
                 cash -= totalCost;
                 asset.ownedUnits += units;
+                asset.costBasis += totalCost;
                 renderUI();
-
-                if (getTotalMonthlyPassiveIncome() >= getMonthlyExpenses()) {
-                    triggerCrossoverVictory();
-                }
+                checkCrossover();
             }
         }
 
@@ -1654,19 +2279,22 @@
             const asset = assets.find(a => a.id === assetId);
             if (!asset) return;
 
-            const maxUnits = Math.floor(cash / asset.unitCost);
+            const maxUnits = Math.floor(cash / assetPrice(asset));
             if (maxUnits > 0) {
                 buyAsset(assetId, maxUnits);
             }
         }
 
+        // Sold at today's price, and the cost basis drops by the average cost
+        // of the units that left.
         function sellAsset(assetId, units = 1) {
             const asset = assets.find(a => a.id === assetId);
-            if (!asset || asset.ownedUnits < units) return;
+            if (!asset || units <= 0 || asset.ownedUnits < units) return;
 
-            const returnCash = asset.unitCost * units;
-            cash += returnCash;
+            cash += assetPrice(asset) * units;
+            asset.costBasis -= (asset.costBasis / asset.ownedUnits) * units;
             asset.ownedUnits -= units;
+            if (asset.ownedUnits === 0) asset.costBasis = 0;
             renderUI();
         }
 
@@ -1678,32 +2306,27 @@
         }
 
         function updateLifestyle(type, value) {
+            if (!lifestyleCosts[type] || lifestyleCosts[type][value] === undefined) return;
             currentLifestyle[type] = value;
-            
-            // Update cost badges
-{{fontSans67}}
             renderUI();
+            // Cutting expenses can be what closes the gap, and the banner says
+            // so the moment it does - so the victory has to come with it.
+            checkCrossover();
         }
 
         function resetSimulation() {
             monthsPassed = 0;
             cash = 10000;
             baseMonthlySalary = 3200;
-            familyState = { 
-                hasKid: false, 
-                kidAgeMonths: 0, 
-                kidEventTriggered: false, 
-                hasPet: false, 
-                hasElderCare: false,
-                promotionTriggered: false,
-                inflationMultiplier: 1.0,
-                totalJoyAccumulated: 0 
-            };
+            familyState = freshFamilyState();
             currentLifestyle = { housing: 'standard', transport: 'used', lifestyle: 'balanced', subscriptions: 'standard', travel: 'annual', shopping: 'standard' };
 
             assets.forEach(a => {
                 a.ownedUnits = 0;
+                a.index = 1;
+                a.costBasis = 0;
                 a.monthlyYieldPerUnit = a.baseYield;
+                a.riskText = a.baseRiskText;
             });
 
             document.getElementById('housingSelect').value = 'standard';
@@ -1713,8 +2336,18 @@
             document.getElementById('travelSelect').value = 'annual';
             document.getElementById('shoppingSelect').value = 'standard';
 
-            updateLifestyle('housing', 'standard');
+            victorySnapshot = null;
+            bankrupt = false;
+            restoreSubmitBox();
+            const warning = document.getElementById('submitScoreWarning');
+            if (warning) warning.remove();
             closeVictoryModal();
+            dismissTurnSummary();
+            // The previous run's reading has no business under a fresh game.
+            if (window.SimCta && window.SimCta.hide) window.SimCta.hide();
+
+            history = [];
+            recordHistory();
             renderUI();
         }
 
@@ -1730,6 +2363,9 @@
         }
 
         window.onload = function() {
+            const submitBox = document.getElementById('victoryLeaderboardSubmit');
+            if (submitBox) submitBoxMarkup = submitBox.innerHTML;
+            recordHistory();
             renderUI();
         };
     </script>

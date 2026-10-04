@@ -136,22 +136,29 @@ const SIMULATORS = {
     order: 'asc',
     boards: new Set(['ALL']),
     limit: 10,
-    // Months from the start of the run to the crossover point. A run that
-    // crosses over in its first year is one month; 1,200 is a century.
-    score: { min: 1, max: 1200 },
+    // Months from the start of the run to the crossover point. The tool
+    // advances a year at a time, so the score is always a multiple of 12: a
+    // run that crosses over in its first year scores 12, and 720 is the end of
+    // the 60 years a run is allowed to last.
+    score: { min: 12, max: 720, step: 12 },
     // Net worth at crossover. Bigger is better, so the tiebreak is compared
-    // descending regardless of the ascending score above.
-    tiebreak: { min: 0, max: 1_000_000_000 },
+    // descending regardless of the ascending score above. It can be negative:
+    // cash below zero is debt in the tool, and a run can cross over while
+    // still carrying some. The tool caps debt at three years of salary by
+    // selling assets, which at the most inflation a 60-year run compounds is
+    // about 420,000 - so a million below zero is out of reach of a real run.
+    tiebreak: { min: -1_000_000, max: 1_000_000_000 },
     details: {
       // The two numbers that crossed. Their ratio is what "financially
       // independent" meant in this run, and their level is what it cost.
       monthlyExpenses: { type: 'number', min: 0, max: 1_000_000 },
       monthlyPassive: { type: 'number', min: 0, max: 1_000_000 },
       investedCapital: { type: 'number', min: 0, max: 1_000_000_000 },
-      // The tool's lifestyle-joy track, 0-141 by construction. Recorded
-      // because the trade-off it exists to expose - reaching freedom sooner by
-      // living smaller - is only visible if both halves are stored.
-      joyScore: { type: 'number', min: 0, max: 400 },
+      // The tool's lifestyle-joy track, normalised to 0-100 (every dial at its
+      // cheapest is 0, every dial at its dearest is 100). Recorded because the
+      // trade-off it exists to expose - reaching freedom sooner by living
+      // smaller - is only visible if both halves are stored.
+      joyScore: { type: 'number', min: 0, max: 100 },
       // Which of the six income engines was producing the largest share of the
       // monthly income at crossover. The single most publishable field in this
       // file: it answers "what do people reach for when the choice is free and
@@ -188,11 +195,21 @@ const SIMULATORS = {
     // rows that no filter tab could ever show.
     aggregate: true,
     limit: 25,
-    // The flight score the tool computes. Its own formula floors it at 100.
+    // The flight score the tool computes: a base for reaching the target age
+    // (up to 5,000, in proportion to the years flown against a 50-year
+    // reference, never below the 1,000 a flight that fell short earns), the
+    // board bonus, minus 500 per year below zero and 75 per tactic-year, plus
+    // one point per 2,500 of ending balance. Its own formula clamps it to
+    // this range. Rows written before the base was scaled by the horizon
+    // carry the old flat 5,000 and are left as they are.
     score: { min: 100, max: 100_000 },
     // Ending nest egg, which the score already includes a bonus for; it is
-    // repeated here because the board sorts on it when scores are level.
-    tiebreak: { min: 0, max: 1_000_000_000 },
+    // repeated here because the board sorts on it when scores are level. In
+    // nominal money: on the historical calibration a long, all-equity flight
+    // can end in the trillions (the far tail of 40,000 simulated 82-year runs
+    // reached about 2.7e13), so the cap is 1e15 - still an exact integer in
+    // the DOUBLE PRECISION column, which holds them up to about 9e15.
+    tiebreak: { min: 0, max: 1_000_000_000_000_000 },
     details: {
       // The four the board shows and does not rank on. These four predate the
       // rest of this object and are the reason it exists: they were the only
@@ -200,7 +217,7 @@ const SIMULATORS = {
       reached100: { type: 'boolean' },
       crashYears: { type: 'number', min: 0, max: 120 },
       tacticYears: { type: 'number', min: 0, max: 600 },
-      finalBalance: { type: 'number', min: 0, max: 1_000_000_000 },
+      finalBalance: { type: 'number', min: 0, max: 1_000_000_000_000_000 },
 
       // The assumption the entire safe-withdrawal-rate argument is about,
       // stored in basis points so it survives a column that rounds to whole
@@ -212,8 +229,12 @@ const SIMULATORS = {
       annualSpending: { type: 'number', min: 0, max: 100_000_000 },
       // The horizon, which is the other half of any withdrawal-rate claim: 4%
       // over thirty years and 4% over fifty years are different bets.
-      startAge: { type: 'number', min: 18, max: 100 },
-      horizonYears: { type: 'number', min: 1, max: 90 },
+      // The tool holds the start age to 18-90 and the target to at least ten
+      // years after it and at most 100, so a flight cannot begin at or past
+      // its own destination - which used to land on the first tick as a full
+      // win with the nest egg untouched.
+      startAge: { type: 'number', min: 18, max: 90 },
+      horizonYears: { type: 'number', min: 10, max: 82 },
       // The allocation. Sums to 100 in the tool; not enforced as a sum here,
       // because rejecting a write is a worse outcome than storing a run whose
       // three weights are 99, and the aggregate can filter on the sum.
@@ -229,7 +250,9 @@ const SIMULATORS = {
       // The six levers the cockpit offers when a flight is going wrong. Which
       // one people pull first, and which combination actually rescues a run,
       // is a post on its own - and it is the question the tool is built to
-      // answer, which was until now not being recorded at all.
+      // answer, which was until now not being recorded at all. Each flag
+      // means "switched on for at least one simulated year of the flight",
+      // not "switched on when it landed".
       tacticJob: { type: 'boolean' },
       tacticCutSpend: { type: 'boolean' },
       tacticCashBuffer: { type: 'boolean' },
@@ -267,8 +290,9 @@ const SIMULATORS = {
     boards: new Set(['DATA']),
     limit: 25,
     // Years the run pulled financial independence forward, times 100, so a
-    // result of 3.4 years survives the rounding as 340. The tool caps its own
-    // projection at 70 years.
+    // result of 3.4 years survives the rounding as 340. The tool stops its
+    // projection at age 85, so this is at most 67 years; when the baseline
+    // never arrives it is the gap to 85, a lower bound - see baselineReached.
     score: { min: 0, max: 7000 },
     // The age the optimised plan reaches independence at, times 100.
     tiebreak: { min: 0, max: 10_000 },
@@ -288,9 +312,14 @@ const SIMULATORS = {
       // two distributions worth doing.
       realReturnBps: { type: 'number', min: 0, max: 3000 },
       safeWithdrawalBps: { type: 'number', min: 1, max: 2000 },
-      // What the run produced. Both ages times 100.
+      // What the run produced. Both ages times 100, and each sent only when
+      // that plan reaches its target by 85: a plan that never arrives has no
+      // freedom age, and an 85 standing in for one would be averaged as an
+      // answer. The two flags say which, so a missing age is not a gap.
       baselineFreedomAge: { type: 'number', min: 0, max: 10_000 },
       optimizedFreedomAge: { type: 'number', min: 0, max: 10_000 },
+      baselineReached: { type: 'boolean' },
+      optimizedReached: { type: 'boolean' },
       monthlySaved: { type: 'number', min: 0, max: 1_000_000 },
       // Which habit the visitor cut hardest, and how far each of the thirteen
       // was pulled down, as the percentage of the full cost they left in place:
@@ -320,21 +349,30 @@ const SIMULATORS = {
     boards: new Set(['DATA']),
     limit: 25,
     // The compound annual growth rate the custom portfolio achieved over the
-    // stretch of history the run covered, in basis points, offset by 10,000 so
+    // stretch of history the run covered - time-weighted, so a yearly
+    // contribution does not inflate it, and over the years of returns applied,
+    // start year included - in basis points, offset by 10,000 so
     // a losing portfolio is still a non-negative score: 0 is -100%/yr, 10,000
     // is flat, 10,700 is +7%/yr. The offset exists because the column is the
     // one every board sorts on and a negative score would sort below an
     // unplayed run.
     score: { min: 0, max: 20_000 },
-    // Ending value of the custom portfolio.
-    tiebreak: { min: 0, max: 1_000_000_000 },
+    // Ending value of the custom portfolio. The ceiling covers the largest run
+    // the tool allows: 100% stocks from 1921 with the capped 10 million of
+    // capital and 1 million a year of contributions ends near 9 x 10^11.
+    tiebreak: { min: 0, max: 10_000_000_000_000 },
     details: {
       // Which stretch of the twentieth and twenty-first centuries the run chose
       // to live through, and for how long. People do not pick a start year at
       // random: they pick 1929, or 2000, or the year they were born.
-      startYear: { type: 'number', min: 1920, max: 2026 },
+      // The data ends with 2025, the last finished year.
+      startYear: { type: 'number', min: 1920, max: 2025 },
       yearsElapsed: { type: 'number', min: 0, max: 110 },
       initialCapital: { type: 'number', min: 1, max: 1_000_000_000 },
+      // Added at the start of every simulated year to the custom portfolio and
+      // the benchmark alike. Zero for a lump-sum run; absent from rows sent
+      // before the field existed, which were all lump sums.
+      annualContribution: { type: 'number', min: 0, max: 1_000_000 },
       // The allocation the sliders were left on, and whether it came from one
       // of the five named benchmark portfolios or was built by hand. "What do
       // people build when they build their own" is the question, and `preset`
@@ -351,8 +389,8 @@ const SIMULATORS = {
       // The run's own outcome, and the Classic 60/40 over exactly the same
       // years. The comparison is the point: a portfolio that returned 9%/yr is
       // a fact about the decade unless you also know what the default did.
-      finalValue: { type: 'number', min: 0, max: 1_000_000_000 },
-      benchmarkValue: { type: 'number', min: 0, max: 1_000_000_000 },
+      finalValue: { type: 'number', min: 0, max: 10_000_000_000_000 },
+      benchmarkValue: { type: 'number', min: 0, max: 10_000_000_000_000 },
       // Worst peak-to-trough fall the custom portfolio took, in basis points,
       // which is the number a chart makes people feel and a table makes
       // comparable.
@@ -569,14 +607,14 @@ async function topOf(simulator, board, definition) {
     rows =
       definition.order === 'asc'
         ? await db.sql`
-            SELECT id, board, player_name, score, tiebreak, details, created_at
+            SELECT id, board, player_name, score, tiebreak, details, language, created_at
             FROM simulator_scores
             WHERE simulator = ${simulator}
             ORDER BY score ASC, tiebreak DESC, created_at ASC
             LIMIT ${limit}
           `
         : await db.sql`
-            SELECT id, board, player_name, score, tiebreak, details, created_at
+            SELECT id, board, player_name, score, tiebreak, details, language, created_at
             FROM simulator_scores
             WHERE simulator = ${simulator}
             ORDER BY score DESC, tiebreak DESC, created_at ASC
@@ -586,14 +624,14 @@ async function topOf(simulator, board, definition) {
     rows =
       definition.order === 'asc'
         ? await db.sql`
-            SELECT id, board, player_name, score, tiebreak, details, created_at
+            SELECT id, board, player_name, score, tiebreak, details, language, created_at
             FROM simulator_scores
             WHERE simulator = ${simulator} AND board = ${board}
             ORDER BY score ASC, tiebreak DESC, created_at ASC
             LIMIT ${limit}
           `
         : await db.sql`
-            SELECT id, board, player_name, score, tiebreak, details, created_at
+            SELECT id, board, player_name, score, tiebreak, details, language, created_at
             FROM simulator_scores
             WHERE simulator = ${simulator} AND board = ${board}
             ORDER BY score DESC, tiebreak DESC, created_at ASC
@@ -613,6 +651,9 @@ async function topOf(simulator, board, definition) {
     score: Number(row.score),
     tiebreak: Number(row.tiebreak),
     details: row.details ?? {},
+    // The page the run was submitted from. Amounts in `details` are in that
+    // page's currency, and a board shared by three languages has to say so.
+    language: row.language ?? null,
     createdAt: row.created_at
   }));
 }
@@ -644,6 +685,10 @@ function boundedNumber(value, spec) {
   const number = typeof value === 'number' ? value : Number(value);
   if (!Number.isFinite(number)) return null;
   if (number < spec.min || number > spec.max) return null;
+  // A value the tool can only produce in fixed increments - the Passive Income
+  // Engine's month count advances a year at a time - is refused off the grid,
+  // because no run could have produced it.
+  if (spec.step && Math.round(number) % spec.step !== 0) return null;
   // Every value any of these boards stores is a whole number - a percentage, a
   // month count, a year count or an amount of money - so rounding here keeps a
   // float out of a column that is only ever read back as an integer.

@@ -150,14 +150,14 @@
     "pt": "                🎯 OBJETIVO DA MISSÃO\n"
   },
   "textXs": {
-    "en": "Goal: Reach Age 100 with Minimal Years in Crashline!",
-    "es": "¡Llegar a los 100 Años con el Mínimo de Años en Desplome!",
-    "pt": "Chegar aos 100 Anos com o Mínimo de Anos em Colapso!"
+    "en": "Goal: Reach Your Target Age with as Few Crashline Years as Possible!",
+    "es": "¡Llega a tu edad objetivo con el mínimo de años en desplome!",
+    "pt": "Chegue à sua idade-alvo com o mínimo de anos em colapso!"
   },
   "textBase": {
-    "en": "              PILOT YOUR RETIREMENT FLIGHT TO AGE 100\n",
-    "es": "              PILOTA TU VUELO DE JUBILACIÓN HASTA LOS 100 AÑOS\n",
-    "pt": "              PILOTE SEU VOO DE APOSENTADORIA ATÉ OS 100 ANOS\n"
+    "en": "              PILOT YOUR RETIREMENT FLIGHT TO YOUR TARGET AGE\n",
+    "es": "              PILOTA TU VUELO DE JUBILACIÓN HASTA TU EDAD OBJETIVO\n",
+    "pt": "              PILOTE SEU VOO DE APOSENTADORIA ATÉ A SUA IDADE-ALVO\n"
   },
   "textCyan300": {
     "en": "How Crashline Works:",
@@ -165,9 +165,9 @@
     "pt": "Como funciona a Zona de Colapso:"
   },
   "textXs2": {
-    "en": " If market drops or high spending drain your net worth to $0, you enter the ",
-    "es": " Si las caídas del mercado o los altos gastos agotan tu patrimonio neto a €0, entras en la ",
-    "pt": " Se as quedas do mercado ou os altos gastos reduzirem seu patrimônio líquido a R$0, você entra na "
+    "en": " If market drops or high spending push your net worth below $0, you enter the ",
+    "es": " Si las caídas del mercado o los altos gastos llevan tu patrimonio por debajo de €0, entras en la ",
+    "pt": " Se as quedas do mercado ou os altos gastos levarem seu patrimônio abaixo de R$0, você entra na "
   },
   "textRed400": {
     "en": "CRASHLINE ZONE",
@@ -185,9 +185,9 @@
     "pt": "Período de Graça de 10 Anos"
   },
   "textXs5": {
-    "en": " to adjust tactics (side job, spending cuts, cash buffers, downsizing) and bounce back. Stay in the crashline for 10 consecutive years and your flight is destroyed!\n",
-    "es": " para ajustar tácticas (trabajo parcial, recortes, colchón de efectivo, reducción de vivienda) y remontar. ¡Si permaneces 10 años consecutivos en desplome, tu vuelo se destruye!\n",
-    "pt": " para ajustar táticas (trabalho em meio período, cortes, reserva de caixa, redução de imóvel) e se recuperar. Se permanecer 10 anos consecutivos em colapso, seu voo é destruído!\n"
+    "en": " to climb back. Below zero nothing is invested and the shortfall is borrowed at 5% a year, so only income above your spending (part-time work, the pension from 62) or the one-time downsizing lifts you out — spending cuts only slow the fall. Stay in the crashline for 10 consecutive years and your flight is destroyed!\n",
+    "es": " para remontar. Bajo cero no queda nada invertido y el déficit se financia con deuda al 5% anual, así que solo te sacan unos ingresos superiores al gasto (trabajo parcial, la pensión desde los 62) o la reducción de vivienda, que es única; los recortes solo frenan la caída. ¡Si permaneces 10 años consecutivos en desplome, tu vuelo se destruye!\n",
+    "pt": " para se recuperar. Abaixo de zero não há nada investido e o déficit é financiado com dívida a 5% ao ano, então só uma renda maior que o gasto (trabalho em meio período, a pensão a partir dos 62) ou a redução de imóvel, que é única, tira você de lá; os cortes só freiam a queda. Se permanecer 10 anos consecutivos em colapso, seu voo é destruído!\n"
   },
   "flex": {
     "en": "          <!-- Quick 3-Step Guide Badges -->\n",
@@ -210,9 +210,9 @@
     "pt": "2. DECOLE O VOO"
   },
   "text10px2": {
-    "en": "Fly from Age 50 to 100",
-    "es": "Vuela de los 50 a 100 años",
-    "pt": "Voe dos 50 aos 100 anos"
+    "en": "Fly from your start age to your target",
+    "es": "Vuela de tu edad inicial a tu objetivo",
+    "pt": "Voe da idade inicial até a idade-alvo"
   },
   "textAmber400": {
     "en": "3. USE 6 TACTICS",
@@ -295,9 +295,9 @@
     "pt": "Capitão FIRE"
   },
   "hudGlass2": {
-    "en": "            <!-- Nest Egg Input (Controlled Max: $2,000,000, Default: $850,000) -->\n",
-    "es": "            <!-- Entrada de Capital Inicial -->\n",
-    "pt": "            <!-- Entrada de Patrimônio Inicial -->\n"
+    "en": "            <!-- Nest Egg Input (100,000 to 5,000,000, default 850,000) -->\n",
+    "es": "            <!-- Entrada de Capital Inicial (100.000 a 5.000.000) -->\n",
+    "pt": "            <!-- Entrada de Patrimônio Inicial (100.000 a 5.000.000) -->\n"
   },
   "textSlate300": {
     "en": "                  Starting Nest Egg ($)\n",
@@ -315,9 +315,9 @@
     "pt": "R$850.000"
   },
   "hudGlass3": {
-    "en": "            <!-- Annual Spending Input (Controlled Min: $35,000, Default: $45,000) -->\n",
-    "es": "            <!-- Entrada de Gasto Anual -->\n",
-    "pt": "            <!-- Entrada de Gasto Anual -->\n"
+    "en": "            <!-- Annual Spending Input (15,000 to 250,000, default 45,000) -->\n",
+    "es": "            <!-- Entrada de Gasto Anual (15.000 a 250.000) -->\n",
+    "pt": "            <!-- Entrada de Gasto Anual (15.000 a 250.000) -->\n"
   },
   "textSlate3002": {
     "en": "                  Annual Living Spend ($)\n",
@@ -425,9 +425,9 @@
     "pt": "Redução de risco ativa"
   },
   "text10px7": {
-    "en": "                  Automatically shifts from growth stocks to conservative bonds as your age increases toward 100.\n",
-    "es": "                  Sustituye automáticamente acciones de crecimiento por bonos conservadores conforme aumenta tu edad hacia los 100 años.\n",
-    "pt": "                  Substitui automaticamente ações por renda fixa e reserva à medida que a idade avança em direção aos 100 anos.\n"
+    "en": "                  Automatically shifts from growth stocks to conservative bonds as your age increases, year by year during the flight.\n",
+    "es": "                  Sustituye automáticamente acciones de crecimiento por bonos conservadores conforme aumenta tu edad, año a año durante el vuelo.\n",
+    "pt": "                  Substitui automaticamente ações por renda fixa e reserva à medida que a idade avança, ano a ano durante o voo.\n"
   },
   "hudGlass6": {
     "en": "            <!-- Turbulence Sequence Selector -->\n",
@@ -445,19 +445,19 @@
     "pt": "🎲 Monte Carlo de Alta Volatilidade (Turbulência Aleatória)"
   },
   "selectMarketSequence2": {
-    "en": "🔥 1970s Severe Inflation Spike & Bear Market",
-    "es": "🔥 Pico de Inflación Severo de 1970 y Mercado Bajista",
-    "pt": "🔥 Pico de Inflação Severo de 1970 e Mercado em Queda"
+    "en": "🔥 1966–1981: Inflation Spike & Bear Markets (then random)",
+    "es": "🔥 1966–1981: inflación disparada y mercados bajistas (luego aleatorio)",
+    "pt": "🔥 1966–1981: inflação disparada e mercados em queda (depois aleatório)"
   },
   "selectMarketSequence3": {
-    "en": "💥 2000 Dot-Com Crash + 2008 Great Recession",
-    "es": "💥 Caída Dot-Com 2000 + Gran Recesión 2008",
-    "pt": "💥 Queda Dot-Com 2000 + Grande Recessão 2008"
+    "en": "💥 2000–2012: Dot-Com Crash + 2008 (then random)",
+    "es": "💥 2000–2012: caída puntocom + 2008 (luego aleatorio)",
+    "pt": "💥 2000–2012: queda pontocom + 2008 (depois aleatório)"
   },
   "selectMarketSequence4": {
-    "en": "🚀 Extended Historical Bull Market",
-    "es": "🚀 Mercado Alcista Histórico Prolongado",
-    "pt": "🚀 Mercado de Alta Histórico Prolongado"
+    "en": "🚀 1982–1999: The Long Bull Market (then random)",
+    "es": "🚀 1982–1999: el largo mercado alcista (luego aleatorio)",
+    "pt": "🚀 1982–1999: o longo mercado de alta (depois aleatório)"
   },
   "hudGlass7": {
     "en": "            <!-- Launch & Reset Controls -->\n",
@@ -590,9 +590,9 @@
     "pt": " AJUSTES TÁTICOS NA CABINE (6 OPÇÕES)\n"
   },
   "text11px": {
-    "en": "Toggle during flight to bounce back!",
-    "es": "¡Actívalas en vuelo para remontar!",
-    "pt": "Ative em voo para se recuperar!"
+    "en": "Switch on before launch or during the flight",
+    "es": "Actívalas antes de despegar o en pleno vuelo",
+    "pt": "Ative antes da decolagem ou durante o voo"
   },
   "hudGlass8": {
     "en": "            <!-- 6 Tactical Adjustment Action Cards Grid -->\n",
@@ -615,9 +615,9 @@
     "pt": "Renda Extra / Meio Período"
   },
   "text10px9": {
-    "en": "Earn $15,000/yr part-time income to reduce portfolio withdrawals.",
-    "es": "Gana €15.000/año a tiempo parcial para reducir retiradas de la cartera.",
-    "pt": "Ganhe R$15.000/ano em meio período para reduzir retiradas do portfólio."
+    "en": "Earn $15,000/yr (today’s money, rising with inflation). Income above your spending is added to the portfolio.",
+    "es": "Gana €15.000/año (dinero de hoy, sube con la inflación). Lo que supere tu gasto se suma a la cartera.",
+    "pt": "Ganhe R$15.000/ano (dinheiro de hoje, sobe com a inflação). O que passar do seu gasto é somado à carteira."
   },
   "textSlate4004": {
     "en": "Impact:",
@@ -625,9 +625,9 @@
     "pt": "Impacto:"
   },
   "textEmerald4002": {
-    "en": "+$15k / Yr Buffer",
-    "es": "Colchón +€15k / Año",
-    "pt": "+R$15k / Ano Proteção"
+    "en": "+$15k / Yr Income",
+    "es": "+€15k / Año de Ingreso",
+    "pt": "+R$15k / Ano de Renda"
   },
   "grid4": {
     "en": "              <!-- Tactic 2: Cut Spending 15% -->\n",
@@ -640,14 +640,14 @@
     "pt": "Cortar Gastos em 15%"
   },
   "text10px10": {
-    "en": "Trim living expenses during market downturn years.",
-    "es": "Reduce gastos de vida durante los años de caída de mercado.",
-    "pt": "Reduza despesas durante os anos de baixa no mercado."
+    "en": "Trim living expenses by 15% for every year it is on.",
+    "es": "Recorta un 15% el gasto de vida cada año que esté activa.",
+    "pt": "Corta 15% das despesas em cada ano em que estiver ativa."
   },
   "textAmber4002": {
-    "en": "Saves ~$6.7k / Yr",
-    "es": "Ahorra ~€6,7k / Año",
-    "pt": "Econ. ~R$6,7k / Ano"
+    "en": "Saves ~$6,750/yr at today’s prices",
+    "es": "Ahorra ~€6.750/año a precios de hoy",
+    "pt": "Economiza ~R$6.750/ano a preços de hoje"
   },
   "grid5": {
     "en": "              <!-- Tactic 3: Draw From Cash Bucket -->\n",
@@ -660,14 +660,14 @@
     "pt": "Escudo de Caixa"
   },
   "text10px11": {
-    "en": "Draw from cash buffer to avoid selling stocks in down years.",
-    "es": "Usa el colchón de efectivo para no vender acciones en caídas.",
-    "pt": "Use a reserva de caixa para evitar vender ações na baixa."
+    "en": "After a year in which stocks fell, withdrawals come from cash, then bonds, instead of selling stocks, and rebalancing waits. Needs a cash allocation above 0%.",
+    "es": "Tras un año de caída de las acciones, las retiradas salen del efectivo y luego de los bonos en vez de vender acciones, y el reequilibrio espera. Requiere una asignación en efectivo mayor que 0%.",
+    "pt": "Depois de um ano de queda das ações, as retiradas saem do caixa e depois da renda fixa em vez de vender ações, e o rebalanceamento espera. Exige alocação em caixa acima de 0%."
   },
   "textCyan3002": {
-    "en": "Protects Principal",
-    "es": "Protege Capital Principal",
-    "pt": "Protege o Capital"
+    "en": "No Stock Sales After a Fall",
+    "es": "No vende acciones tras una caída",
+    "pt": "Sem vender ações após uma queda"
   },
   "grid6": {
     "en": "              <!-- Tactic 4: Dynamic Spending Guardrails -->\n",
@@ -680,9 +680,9 @@
     "pt": "Regras Dinâmicas"
   },
   "text10px12": {
-    "en": "Guyton-Klinger rule: auto-cuts spending 10% when portfolio drops &gt;15%.",
-    "es": "Regla Guyton-Klinger: recorta gasto 10% si la cartera cae &gt;15%.",
-    "pt": "Regra Guyton-Klinger: corta 10% do gasto se o portfólio cair &gt;15%."
+    "en": "Guardrail rule: cuts spending 10% in any year the portfolio starts more than 15% below its peak.",
+    "es": "Regla de guardarraíles: recorta el gasto un 10% cada año que la cartera empiece más de un 15% por debajo de su máximo.",
+    "pt": "Regra de proteção: corta 10% do gasto em todo ano em que a carteira começar mais de 15% abaixo do seu pico."
   },
   "textPurple300": {
     "en": "Auto Drawdown Stop",
@@ -700,14 +700,14 @@
     "pt": "Redução de Imóvel"
   },
   "text10px13": {
-    "en": "One-time equity cash-in of +$100,000 emergency fuel injection.",
-    "es": "Inyección única de +€100.000 por venta o alquiler de patrimonio inmobiliario.",
-    "pt": "Injeção única de +R$100.000 por venda/aluguel de patrimônio imobiliário."
+    "en": "One-time home sale: +$100,000 (today’s money), once per flight. Chosen before launch it lands in year one; it cannot be undone.",
+    "es": "Venta única de vivienda: +€100.000 (dinero de hoy), una vez por vuelo. Elegida antes de despegar llega en el primer año; no se puede deshacer.",
+    "pt": "Venda única de imóvel: +R$100.000 (dinheiro de hoje), uma vez por voo. Escolhida antes da decolagem, entra no primeiro ano; não pode ser desfeita."
   },
   "textBlue300": {
-    "en": "+$100k Instant Fuel",
-    "es": "+€100k Inyección",
-    "pt": "+R$100k Injeção Direta"
+    "en": "+$100k Once",
+    "es": "+€100k una vez",
+    "pt": "+R$100k uma vez"
   },
   "grid8": {
     "en": "              <!-- Tactic 6: Social Security / Pension -->\n",
@@ -720,9 +720,9 @@
     "pt": "Pensão / Aposentadoria"
   },
   "text10px14": {
-    "en": "Claim guaranteed +$20,000/yr annuity income starting at Age 62+.",
-    "es": "Ingreso de renta garantizada de +€20.000/año a partir de los 62 años.",
-    "pt": "Entrada de renda garantida de +R$20.000/ano a partir dos 62 anos."
+    "en": "Claim +$20,000/yr (today’s money, inflation-linked) from age 62.",
+    "es": "Cobra +€20.000/año (dinero de hoy, ligado a la inflación) desde los 62 años.",
+    "pt": "Receba +R$20.000/ano (dinheiro de hoje, corrigido pela inflação) a partir dos 62 anos."
   },
   "textPink300": {
     "en": "+$20k / Yr Guaranteed",
@@ -745,9 +745,9 @@
     "pt": "              Todos os voos de todos os pilotos, em uma única tabela compartilhada: filtre por cenário. A pontuação premia "
   },
   "textXs16": {
-    "en": "reaching age 100",
-    "es": "llegar a los 100 años",
-    "pt": "chegar aos 100 anos"
+    "en": "reaching the target age",
+    "es": "llegar a la edad objetivo",
+    "pt": "chegar à idade-alvo"
   },
   "textXs17": {
     "en": "the fewest crashline years",
@@ -830,9 +830,9 @@
     "pt": "Categoria do Cenário"
   },
   "py254": {
-    "en": "Reached Age 100?",
-    "es": "¿Llegó a 100?",
-    "pt": "Chegou aos 100?"
+    "en": "Reached target age?",
+    "es": "¿Llegó a su edad objetivo?",
+    "pt": "Chegou à idade-alvo?"
   },
   "py255": {
     "en": "Crashline Years",
@@ -875,9 +875,9 @@
     "pt": " MOTOR DE TESTE DE ESTRESSE MONTE CARLO (1.000 EXECUÇÕES)\n"
   },
   "textXs20": {
-    "en": "              Simulates 1,000 randomized retirement flight paths over a 50-year horizon (Age 50 to Age 100) using high volatility historical distributions.\n",
-    "es": "              Simula 1.000 trayectorias de vuelo aleatorias durante un horizonte de 50 años (Edad 50 a 100) aplicando distribuciones históricas de alta volatilidad.\n",
-    "pt": "              Simula 1.000 trajetórias de voo aleatórias em um horizonte de 50 anos (Idade 50 aos 100) aplicando distribuições históricas de alta volatilidade.\n"
+    "en": "              Simulates 1,000 randomized retirements from age 50 to 100 (50 years) with the same yearly rules as the cockpit flight: your allocation, target-date fund, market sequence and switched-on tactics.\n",
+    "es": "              Simula 1.000 jubilaciones aleatorias de los 50 a los 100 años (50 años) con las mismas reglas anuales que el vuelo de la cabina: tu asignación, el fondo de fecha objetivo, la secuencia de mercado y las tácticas activadas.\n",
+    "pt": "              Simula 1.000 aposentadorias aleatórias dos 50 aos 100 anos (50 anos) com as mesmas regras anuais do voo da cabine: sua alocação, o fundo de data-alvo, a sequência de mercado e as táticas ativadas.\n"
   },
   "shrink0": {
     "en": " RUN 1,000 SIMULATIONS\n",
@@ -895,9 +895,9 @@
     "pt": "Taxa de Sucesso do Voo"
   },
   "text10px16": {
-    "en": "Paths reaching Age 100 safely.",
-    "es": "Rutas que llegaron a los 100 años.",
-    "pt": "Rotas que chegaram aos 100 anos."
+    "en": "Paths reaching the target age with money left.",
+    "es": "Rutas que llegan a la edad objetivo con dinero.",
+    "pt": "Rotas que chegam à idade-alvo com dinheiro."
   },
   "text10px17": {
     "en": "Median Ending Wealth",
@@ -905,9 +905,9 @@
     "pt": "Patrimônio Mediano Final"
   },
   "text10px18": {
-    "en": "50th percentile nest egg at Age 100.",
-    "es": "Percentil 50 a los 100 años.",
-    "pt": "Percentil 50 aos 100 anos."
+    "en": "50th percentile nest egg at the target age.",
+    "es": "Percentil 50 a la edad objetivo.",
+    "pt": "Percentil 50 na idade-alvo."
   },
   "text10px19": {
     "en": "Worst 10% Outcome",
@@ -1065,9 +1065,9 @@
     "pt": "            Aposentados flexíveis não retiram valores fixos rigidamente durante mercados em queda. Trabalhar em meio período, cortar gastos em 15% ou usar reservas de caixa permite que as ações se recuperem sem liquidações forçadas nas mínimas.\n"
   },
   "p34": {
-    "en": "            Guyton-Klinger Rule: Cut spending by 10% when portfolio drops >15%.\n",
-    "es": "            Regla Guyton-Klinger: Recorta el gasto un 10% cuando la cartera cae >15%.\n",
-    "pt": "            Regra Guyton-Klinger: Corte os gastos em 10% quando o portfólio cair >15%.\n"
+    "en": "            Guardrail rule (a simplified Guyton-Klinger): cut spending 10% while the portfolio is more than 15% below its peak.\n",
+    "es": "            Regla de guardarraíles (un Guyton-Klinger simplificado): recorta el gasto un 10% mientras la cartera esté más de un 15% por debajo de su máximo.\n",
+    "pt": "            Regra de proteção (um Guyton-Klinger simplificado): corte 10% dos gastos enquanto a carteira estiver mais de 15% abaixo do seu pico.\n"
   },
   "langSwitchAriaLabel": {
     "en": "Language",
@@ -1299,501 +1299,6 @@
     "es": "  <!-- MOTOR JAVASCRIPT Y LÓGICA DE SIMULACIÓN -->\n",
     "pt": "  <!-- JAVASCRIPT: LÓGICA DO SIMULADOR E MOTOR DE VOO -->\n"
   },
-  "minHScreen8": {
-    "en": "    /* =================================================================\n       GLOBAL STATE & CONFIGURATION\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       ESTADO GLOBAL Y CONFIGURACIÓN\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen10": {
-    "en": "      pilotName: 'Captain FIRE',\n",
-    "es": "      pilotName: 'Capitán FIRE',\n",
-    "pt": "      pilotName: 'Capitão FIRE',\n"
-  },
-  "minHScreen11": {
-    "en": "      // Flight setup\n",
-    "es": "      // Configuración de Vuelo\n",
-    "pt": "      // Configurações do Voo\n"
-  },
-  "minHScreen12": {
-    "en": "      // Allocation\n",
-    "es": "      // Asignación\n",
-    "pt": "      // Alocação\n"
-  },
-  "minHScreen13": {
-    "en": "      // 6 Mid-flight tactics\n",
-    "es": "      // 6 Tácticas en Cabina\n",
-    "pt": "      // 6 Táticas na Cabine\n"
-  },
-  "minHScreen14": {
-    "en": "      // Live simulation telemetry\n",
-    "es": "      // Telemetría de Simulación\n",
-    "pt": "      // Telemetria da Simulação\n"
-  },
-  "minHScreen15": {
-    "en": "    // Calibration for market benchmarks\n",
-    "es": "    // Calibración de Referencias de Mercado\n",
-    "pt": "    // Referências de Mercado\n"
-  },
-  "minHScreen16": {
-    "en": "      stocks: { mean: 0.082, stdDev: 0.24 }, // Higher equity dispersion & volatility drag\n      bonds: { mean: 0.035, stdDev: 0.06 },  // Bond yield\n      cash: { mean: 0.015, stdDev: 0.01 },   // Cash yield\n      inflation: { mean: 0.035, stdDev: 0.025 } // CPI inflation\n",
-    "es": "      stocks: { mean: 0.082, stdDev: 0.24 }, // Mayor dispersión y volatilidad de acciones\n      bonds: { mean: 0.035, stdDev: 0.06 },  // Rendimiento de bonos\n      cash: { mean: 0.015, stdDev: 0.01 },   // Rendimiento de efectivo\n      inflation: { mean: 0.035, stdDev: 0.025 } // Inflación IPC\n",
-    "pt": "      stocks: { mean: 0.082, stdDev: 0.24 }, // Alta volatilidade de ações\n      bonds: { mean: 0.035, stdDev: 0.06 },  // Renda fixa\n      cash: { mean: 0.015, stdDev: 0.01 },   // Reserva em caixa\n      inflation: { mean: 0.035, stdDev: 0.025 } // Inflação\n"
-  },
-  "minHScreen17": {
-    "en": "    // Historical crash sequences\n",
-    "es": "    // Secuencias Históricas de Caída\n",
-    "pt": "    // Sequências Históricas\n"
-  },
-  "minHScreen18": {
-    "en": "        { stock: -0.40, bond: 0.18, infl: 0.00 } // 2008 Crash\n",
-    "es": "        { stock: -0.40, bond: 0.18, infl: 0.00 } // Caída 2008\n",
-    "pt": "        { stock: -0.40, bond: 0.18, infl: 0.00 } // Queda de 2008\n"
-  },
-  "minHScreen19": {
-    "en": "    /* =================================================================\n       INITIALIZATION & UI CONTROLS\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       INICIALIZACIÓN Y CONTROLES DE INTERFAZ\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen25": {
-    "en": "      // Auto-detect if current parameters match a preset or represent a custom scenario\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen26": {
-    "en": "      // Update text displays safely\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen27": {
-    "en": "      if (dispEgg) dispEgg.innerText = '$' + state.nestEgg.toLocaleString();\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '$' + state.nestEgg.toLocaleString());\n",
-    "es": "      if (dispEgg) dispEgg.innerText = '€' + state.nestEgg.toLocaleString();\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', '€' + state.nestEgg.toLocaleString());\n",
-    "pt": "      if (dispEgg) dispEgg.innerText = 'R$' + state.nestEgg.toLocaleString('pt-BR');\n      if (nestEggEl) nestEggEl.setAttribute('aria-valuetext', 'R$' + state.nestEgg.toLocaleString('pt-BR'));\n"
-  },
-  "minHScreen28": {
-    "en": "      if (dispSpend) dispSpend.innerText = '$' + state.annualSpending.toLocaleString();\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '$' + state.annualSpending.toLocaleString());\n",
-    "es": "      if (dispSpend) dispSpend.innerText = '€' + state.annualSpending.toLocaleString();\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', '€' + state.annualSpending.toLocaleString());\n",
-    "pt": "      if (dispSpend) dispSpend.innerText = 'R$' + state.annualSpending.toLocaleString('pt-BR');\n      if (spendingEl) spendingEl.setAttribute('aria-valuetext', 'R$' + state.annualSpending.toLocaleString('pt-BR'));\n"
-  },
-  "minHScreen29": {
-    "en": "          badgeSwr.innerText = `${swrStr} (HIGH RISK)`;\n",
-    "es": "          badgeSwr.innerText = `${swrStr} (ALTO RIESGO)`;\n",
-    "pt": "          badgeSwr.innerText = `${swrStr} (ALTO RISCO)`;\n"
-  },
-  "minHScreen30": {
-    "en": "          badgeSwr.innerText = `${swrStr} (MODERATE RISK)`;\n",
-    "es": "          badgeSwr.innerText = `${swrStr} (RIESGO MODERADO)`;\n",
-    "pt": "          badgeSwr.innerText = `${swrStr} (RISCO MODERADO)`;\n"
-  },
-  "minHScreen31": {
-    "en": "          badgeSwr.innerText = `${swrStr} (SAFE SWR)`;\n",
-    "es": "          badgeSwr.innerText = `${swrStr} (SWR SEGURO)`;\n",
-    "pt": "          badgeSwr.innerText = `${swrStr} (SWR SEGURO)`;\n"
-  },
-  "minHScreen32": {
-    "en": "        if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
-    "es": "        if (hudVal) hudVal.innerText = '€' + state.currentNestEgg.toLocaleString();\n",
-    "pt": "        if (hudVal) hudVal.innerText = 'R$' + state.currentNestEgg.toLocaleString('pt-BR');\n"
-  },
-  "minHScreen33": {
-    "en": "          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Yrs`;\n",
-    "es": "          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Años`;\n",
-    "pt": "          crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Anos`;\n"
-  },
-  "minHScreen34": {
-    "en": "    /* =================================================================\n       ASSET ALLOCATION & TARGET DATE FUND\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       ASIGNACIÓN DE ACTIVOS Y FONDO FECHA OBJETIVO\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen35": {
-    "en": "      if (tdfText) tdfText.innerText = `Age ${age}: ${stocks}% Stocks / ${bonds}% Bonds / ${cash}% Cash`;\n",
-    "es": "      if (tdfText) tdfText.innerText = `Edad ${age}: ${stocks}% Acciones / ${bonds}% Bonos / ${cash}% Efectivo`;\n",
-    "pt": "      if (tdfText) tdfText.innerText = `Idade ${age}: ${stocks}% Ações / ${bonds}% Renda Fixa / ${cash}% Caixa`;\n"
-  },
-  "minHScreen36": {
-    "en": "    /* =================================================================\n       MID-FLIGHT 6 TACTICAL ADJUSTMENTS\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       AJUSTES TÁCTICOS EN CABINA DE VUELO\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen37": {
-    "en": "          state.currentNestEgg += 100000; // Instant emergency lump-sum injection\n",
-    "es": "          state.currentNestEgg += 100000;\n",
-    "pt": "          state.currentNestEgg += 100000;\n"
-  },
-  "minHScreen38": {
-    "en": "            '🏠 REAL ESTATE DOWNSIZING INJECTION',\n            'You injected +$100,000 emergency fuel from downsizing your home into your retirement portfolio!',\n            '💡 Tip: Real estate equity acts as a powerful last-resort longevity buffer.',\n",
-    "es": "            '🏠 INYECCIÓN POR REDUCCIÓN DE VIVIENDA',\n            '¡Inyectaste +€100.000 de combustible de emergencia tras vender o reducir tu vivienda!',\n            '💡 Consejo: El capital inmobiliario funciona como un potente colchón de longevidad.',\n",
-    "pt": "            '🏠 INJEÇÃO POR REDUÇÃO DE IMÓVEL',\n            'Você injetou +R$100.000 de combustível de emergência após vender ou reduzir seu imóvel!',\n            '💡 Dica: O patrimônio imobiliário atua como um excelente colchão de segurança.',\n"
-  },
-  "minHScreen39": {
-    "en": "        badge.innerText = 'ACTIVE';\n",
-    "es": "        badge.innerText = 'ACTIVO';\n",
-    "pt": "        badge.innerText = 'ATIVO';\n"
-  },
-  "minHScreen40": {
-    "en": "        badge.innerText = 'INACTIVE';\n",
-    "es": "        badge.innerText = 'INACTIVO';\n",
-    "pt": "        badge.innerText = 'INATIVO';\n"
-  },
-  "minHScreen41": {
-    "en": "    /* =================================================================\n       SIMULATION ENGINE (STEP BY STEP FLIGHT & CRASHLINE LOGIC)\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       MOTOR DE SIMULACIÓN (PASO A PASO Y LÓGICA CRASHLINE)\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen42": {
-    "en": "      if (launchBtnText) launchBtnText.innerText = 'PAUSE FLIGHT';\n",
-    "es": "      if (launchBtnText) launchBtnText.innerText = 'PAUSAR VUELO';\n",
-    "pt": "      if (launchBtnText) launchBtnText.innerText = 'PAUSAR VOO';\n"
-  },
-  "minHScreen43": {
-    "en": "        badge.innerText = '✈️ IN FLIGHT (AIRBORNE)';\n",
-    "es": "        badge.innerText = '✈️ EN VUELO (EN EL AIRE)';\n",
-    "pt": "        badge.innerText = '✈️ EM VOO (NO AR)';\n"
-  },
-  "minHScreen44": {
-    "en": "      if (launchBtnText) launchBtnText.innerText = 'RESUME FLIGHT';\n",
-    "es": "      if (launchBtnText) launchBtnText.innerText = 'REANUDAR VUELO';\n",
-    "pt": "      if (launchBtnText) launchBtnText.innerText = 'RETOMAR VOO';\n"
-  },
-  "minHScreen45": {
-    "en": "        badge.innerText = '⏸️ FLIGHT PAUSED';\n",
-    "es": "        badge.innerText = '⏸️ VUELO EN PAUSA';\n",
-    "pt": "        badge.innerText = '⏸️ VOO EM PAUSA';\n"
-  },
-  "minHScreen46": {
-    "en": "      if (launchBtnText) launchBtnText.innerText = 'LAUNCH FLIGHT';\n",
-    "es": "      if (launchBtnText) launchBtnText.innerText = 'DESPEGAR VUELO';\n",
-    "pt": "      if (launchBtnText) launchBtnText.innerText = 'INICIAR VOO';\n"
-  },
-  "minHScreen47": {
-    "en": "        badge.innerText = 'Ready On Tarmac';\n",
-    "es": "        badge.innerText = 'Listo en Pista';\n",
-    "pt": "        badge.innerText = 'Pronto na Pista';\n"
-  },
-  "minHScreen48": {
-    "en": "      // Track active tactics penalty (1 Tactic-Year per active tactic per year)\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen49": {
-    "en": "      // Calculate annual living spending\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen50": {
-    "en": "      // Apply mid-flight tactical adjustments\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen51": {
-    "en": "      // Generate annual market returns with Sequence of Returns Risk (SORR) stress testing\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen52": {
-    "en": "        // Inject periodic bear market shocks during early retirement decades (Ages 50 - 65)\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen53": {
-    "en": "          stockRet -= 0.18; // -18% market shock to enforce early SORR vulnerability\n",
-    "es": "          stockRet -= 0.18;\n",
-    "pt": "          stockRet -= 0.18;\n"
-  },
-  "minHScreen54": {
-    "en": "      // Apply Dynamic Guardrails rule\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen55": {
-    "en": "      // Adjust spending for inflation\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen56": {
-    "en": "      // Weighted portfolio return\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen57": {
-    "en": "      // Cash Buffer tactic protects stock liquidation in down years\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen58": {
-    "en": "      // Calculate ending balance\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen59": {
-    "en": "      // Crashline Check ($0 or below)\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen60": {
-    "en": "          '🚨 CRASHLINE EMERGENCY: PORTFOLIO STALL',\n          `Your net worth hit $0 at Age ${state.currentAge}! You have ${10 - state.yearsInCrashlineConsecutive} year(s) remaining in the crashline before game over. Activate side income, downsizing, or spending cuts to bounce back!`,\n          '💡 Tip: Turn on Part-Time Income, Real Estate Downsizing, or Cut Spending to climb out of $0 bankruptcy.',\n",
-    "es": "          '🚨 EMERGENCIA EN DESPLOME: PERDIDA DE SUSTENTACIÓN',\n          `¡Tu patrimonio neto cayó a €0 a los ${state.currentAge} Años! Te quedan ${10 - state.yearsInCrashlineConsecutive} año(s) en la zona de desplome antes del fin de juego. ¡Activa empleo parcial, reducción o recortes!`,\n          '💡 Consejo: Activa Trabajo Parcial, Reducción de Vivienda o Recorte de Gastos para salir de la bancarrota €0.',\n",
-    "pt": "          '🚨 EMERGÊNCIA EM QUEDA: PERDA DE SUSTENTAÇÃO',\n          `Seu patrimônio líquido caiu para R$0 aos ${state.currentAge} Anos! Restam ${10 - state.yearsInCrashlineConsecutive} ano(s) na zona de colapso antes do fim do voo. Ative renda extra, redução de imóvel ou cortes!`,\n          '💡 Dica: Ative Trabalho em Meio Período, Redução de Imóvel ou Cortar Gastos para sair da falência.',\n"
-  },
-  "minHScreen61": {
-    "en": "        state.yearsInCrashlineConsecutive = 0; // Reset consecutive counter if balance climbs back > $0\n",
-    "es": "        state.yearsInCrashlineConsecutive = 0;\n",
-    "pt": "        state.yearsInCrashlineConsecutive = 0;\n"
-  },
-  "minHScreen62": {
-    "en": "      // Record log entry\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen63": {
-    "en": "      // Update Telemetry Displays\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen64": {
-    "en": "      if (hudVal) hudVal.innerText = '$' + state.currentNestEgg.toLocaleString();\n",
-    "es": "      if (hudVal) hudVal.innerText = '€' + state.currentNestEgg.toLocaleString();\n",
-    "pt": "      if (hudVal) hudVal.innerText = 'R$' + state.currentNestEgg.toLocaleString('pt-BR');\n"
-  },
-  "minHScreen65": {
-    "en": "      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'CRASH';\n",
-    "es": "      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'CAÍDA';\n",
-    "pt": "      if (hudSwr) hudSwr.innerText = state.currentNestEgg > 0 ? curSwr + '%' : 'COLAPSO';\n"
-  },
-  "minHScreen66": {
-    "en": "        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Yrs`;\n",
-    "es": "        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Años`;\n",
-    "pt": "        crashCounter.innerText = `${state.yearsInCrashlineConsecutive} / 10 Anos`;\n"
-  },
-  "minHScreen67": {
-    "en": "      // Check if player failed 10-year crashline limit\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen68": {
-    "en": "            '🚨 MARKET DROP: SEQUENCE OF RETURNS RISK',\n            `Equities dropped ${(stockRet * 100).toFixed(1)}% at Age ${state.currentAge}. High stock exposure during bear markets causes steep drawdowns!`,\n            '💡 Tip: Rebalance into bonds or activate \"Cash Bucket Shield\" and \"Side Income\".',\n",
-    "es": "            '🚨 CAÍDA DE MERCADO: RIESGO DE SECUENCIA DE RENDIMIENTOS',\n            `Las acciones cayeron un ${(stockRet * 100).toFixed(1)}% a los ${state.currentAge} años. ¡La alta exposición a acciones en mercados bajistas causa fuertes caídas!`,\n            '💡 Consejo: Reequilibra hacia bonos o activa \"Escudo de Efectivo\" y \"Trabajo Parcial\".',\n",
-    "pt": "            '🚨 QUEDA NO MERCADO: RISCO DA SEQUÊNCIA DE RETORNOS',\n            `As ações caíram ${(stockRet * 100).toFixed(1)}% aos ${state.currentAge} anos. A alta exposição a ações em períodos de queda causa grandes perdas!`,\n            '💡 Dica: Reequilibre para renda fixa ou ative \"Escudo de Caixa\" e \"Renda Extra\".',\n"
-  },
-  "minHScreen69": {
-    "en": "            '🔥 INFLATION SURGE SHOCK',\n            `Inflation jumped to ${(infl * 100).toFixed(1)}%, driving up living costs.`,\n            '💡 Tip: Keep some equity growth in your portfolio long-term to outpace inflation.',\n",
-    "es": "            '🔥 PICO DE INFLACIÓN SHOCK',\n            `La inflación saltó al ${(infl * 100).toFixed(1)}%, aumentando los costes de vida.`,\n            '💡 Consejo: Mantén cierto crecimiento en acciones a largo plazo para superar la inflación.',\n",
-    "pt": "            '🔥 SURTO DE INFLAÇÃO',\n            `A inflação subiu para ${(infl * 100).toFixed(1)}%, aumentando o custo de vida.`,\n            '💡 Dica: Mantenha parte do patrimônio em ações para superar a inflação a longo prazo.',\n"
-  },
-  "minHScreen70": {
-    "en": "        title.innerText = 'MISSION ACCOMPLISHED!';\n",
-    "es": "        title.innerText = '¡MISIÓN CUMPLIDA!';\n",
-    "pt": "        title.innerText = 'MISSÃO CUMPRIDA!';\n"
-  },
-  "minHScreen71": {
-    "en": "        msg.innerText = `Congratulations Pilot ${state.pilotName}! You successfully landed at Age 100 with $${state.currentNestEgg.toLocaleString()} in remaining nest egg altitude!`;\n",
-    "es": "        msg.innerText = `¡Felicitaciones Piloto ${state.pilotName}! ¡Aterrizaste con éxito a los 100 Años con €${state.currentNestEgg.toLocaleString()} en altitud de combustible restante!`;\n",
-    "pt": "        msg.innerText = `Parabéns Piloto ${state.pilotName}! Você chegou com sucesso aos 100 Anos com R$${state.currentNestEgg.toLocaleString('pt-BR')} restantes em altitude de combustível no portfólio!`;\n"
-  },
-  "minHScreen72": {
-    "en": "        title.innerText = 'FLIGHT DESTROYED: CRASHLINE ENGINE FAILURE';\n",
-    "es": "        title.innerText = '¡VUELO DESTRUIDO: BANCARROTA EN DESPLOME!';\n",
-    "pt": "        title.innerText = 'VOO DESTRUÍDO: FALÊNCIA NA ZONA DE COLAPSO!';\n"
-  },
-  "minHScreen73": {
-    "en": "        msg.innerText = `Pilot ${state.pilotName}, your flight remained in the $0 crashline zone for 10 consecutive years at Age ${state.currentAge}. Your retirement portfolio ran out of fuel!`;\n",
-    "es": "        msg.innerText = `Piloto ${state.pilotName}, tu vuelo permaneció en la zona de desplome de €0 durante 10 años consecutivos a los ${state.currentAge} años. ¡Tu cartera se quedó sin combustible!`;\n",
-    "pt": "        msg.innerText = `Piloto ${state.pilotName}, seu voo permaneceu na zona de colapso de R$0 por 10 anos consecutivos aos ${state.currentAge} anos. Seu portfólio ficou sem combustível!`;\n"
-  },
-  "minHScreen74": {
-    "en": "      if (finalBal) finalBal.innerText = '$' + Math.max(0, state.currentNestEgg).toLocaleString();\n      if (years) years.innerText = survivedYears + ' Years (Age ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Year(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Tactic-Yrs (-${state.totalTacticYears * 75} pts)`;\n",
-    "es": "      if (finalBal) finalBal.innerText = '€' + Math.max(0, state.currentNestEgg).toLocaleString();\n      if (years) years.innerText = survivedYears + ' Años (Edad ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Año(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Años-Táctica (-${state.totalTacticYears * 75} pts)`;\n",
-    "pt": "      if (finalBal) finalBal.innerText = 'R$' + Math.max(0, state.currentNestEgg).toLocaleString('pt-BR');\n      if (years) years.innerText = survivedYears + ' Anos (Idade ' + state.currentAge + ')';\n      if (crashYrs) crashYrs.innerText = state.totalCrashlineYears + ' Ano(s)';\n      if (tacticYrs) tacticYrs.innerText = `${state.totalTacticYears} Anos-Tática (-${state.totalTacticYears * 75} pts)`;\n"
-  },
-  "minHScreen75": {
-    "en": "      // The flight is over, so its score goes to the shared board under the\n      // preset it was flown on.\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen76": {
-    "en": "    /* =================================================================\n       LEADERBOARD SYSTEM BY CATEGORY\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       SISTEMA DE CLASIFICACIÓN POR CATEGORÍA\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen78": {
-    "en": "      // Score formula: \n      // Base score (5000 pts for reaching 100, 1000 pts baseline)\n      // + Scenario Difficulty Bonus (Lean FIRE +2000, High Risk SWR +1500, Trinity +800, Fat FIRE +200)\n      // - (crashYears * 500 pts penalty) \n      // - (tacticYears * 75 pts penalty per active tactic-year) \n      // + (finalBalance / 2500 pts wealth bonus)\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen85": {
-    "en": "              No flight logs on the global board yet for <strong>${boardLabel()}</strong>. Fly this preset and yours is the first score every other pilot sees.\n",
-    "es": "              Todavía no hay registros de vuelo en la tabla global para <strong>${boardLabel()}</strong>. Vuela este escenario y tu puntuación será la primera que vean los demás pilotos.\n",
-    "pt": "              Ainda não há registros de voo na tabela global para <strong>${boardLabel()}</strong>. Voe este cenário e a sua pontuação será a primeira que os outros pilotos verão.\n"
-  },
-  "minHScreen86": {
-    "en": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> YES</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Year(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Tactic-Yrs</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">$${(details.finalBalance || 0).toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
-    "es": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SÍ</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Año(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Años-Táctica</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">€${(details.finalBalance || 0).toLocaleString()}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString()} pts</td>\n",
-    "pt": "          <td class=\"py-3 px-3 font-bold\">${details.reached100 ? '<span class=\"text-emerald-400\"><i class=\"fa-solid fa-circle-check\"></i> SIM</span>' : '<span class=\"text-red-400\"><i class=\"fa-solid fa-circle-xmark\"></i> NÃO</span>'}</td>\n          <td class=\"py-3 px-3 text-red-400 font-bold\">${details.crashYears || 0} Ano(s)</td>\n          <td class=\"py-3 px-3 text-amber-300 font-bold\">${details.tacticYears || 0} Anos-Tática</td>\n          <td class=\"py-3 px-3 text-emerald-400 font-bold\">R$${(details.finalBalance || 0).toLocaleString('pt-BR')}</td>\n          <td class=\"py-3 px-3 text-amber-400 font-bold font-hud\">${entry.score.toLocaleString('pt-BR')} pts</td>\n"
-  },
-  "minHScreen87": {
-    "en": "    /* =================================================================\n       ENHANCED CANVAS HUD VISUALIZER & CRASHLINE RENDERING\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       VISUALIZADOR HUD EN CANVAS Y DIBUJO DE TRAYECTORIA\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen88": {
-    "en": "          canvasStatusText.innerText = `CRASHLINE EMERGENCY: ${state.yearsInCrashlineConsecutive}/10 Years in $0 Bankruptcy Zone!`;\n",
-    "es": "          canvasStatusText.innerText = `EMERGENCIA EN DESPLOME: ¡${state.yearsInCrashlineConsecutive}/10 Años en Bancarrota €0!`;\n",
-    "pt": "          canvasStatusText.innerText = `EMERGÊNCIA EM QUEDA: ${state.yearsInCrashlineConsecutive}/10 Anos na Zona de Colapso R$0!`;\n"
-  },
-  "minHScreen89": {
-    "en": "          canvasStatusText.innerText = 'Atmosphere: Clear Skies & Safe Cruising Altitude';\n",
-    "es": "          canvasStatusText.innerText = 'Atmósfera: Cielos Despejados y Altitud Segura';\n",
-    "pt": "          canvasStatusText.innerText = 'Atmosfera: Céu Limpo e Altitude Segura';\n"
-  },
-  "minHScreen90": {
-    "en": "          canvasStatusText.innerText = 'Atmosphere: Mild Turbulence / Altitude Caution';\n",
-    "es": "          canvasStatusText.innerText = 'Atmósfera: Turbulencia Leve / Precaución de Altitud';\n",
-    "pt": "          canvasStatusText.innerText = 'Atmosfera: Turbulência Leve / Cuidado com a Altitude';\n"
-  },
-  "minHScreen91": {
-    "en": "      // Bounds\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen92": {
-    "en": "      // Draw Grid Lines & Y-Axis Dollar Labels\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen93": {
-    "en": "      // X-Axis Age Labels\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen94": {
-    "en": "        ctx.fillText(`Age ${age}`, x - 18, H - 12);\n",
-    "es": "        ctx.fillText(`Edad ${age}`, x - 18, H - 12);\n",
-    "pt": "        ctx.fillText(`Idade ${age}`, x - 18, H - 12);\n"
-  },
-  "minHScreen95": {
-    "en": "      // Trajectory Pitch Status\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen96": {
-    "en": "            pitchBadge.innerHTML = `<span class=\"text-red-400 font-bold animate-pulse\"><i class=\"fa-solid fa-plane-circle-exclamation\"></i> 🚨 CRASHLINE STALL</span>`;\n",
-    "es": "            pitchBadge.innerHTML = `<span class=\"text-red-400 font-bold animate-pulse\"><i class=\"fa-solid fa-plane-circle-exclamation\"></i> 🚨 PERDIDA SUSTENTACIÓN</span>`;\n",
-    "pt": "            pitchBadge.innerHTML = `<span class=\"text-red-400 font-bold animate-pulse\"><i class=\"fa-solid fa-plane-circle-exclamation\"></i> 🚨 RISCO DE QUEDA</span>`;\n"
-  },
-  "minHScreen97": {
-    "en": "            pitchBadge.innerHTML = `<span class=\"text-emerald-400\"><i class=\"fa-solid fa-arrow-trend-up\"></i> 🛫 CLIMBING</span>`;\n",
-    "es": "            pitchBadge.innerHTML = `<span class=\"text-emerald-400\"><i class=\"fa-solid fa-arrow-trend-up\"></i> 🛫 ASCENDIENDO</span>`;\n",
-    "pt": "            pitchBadge.innerHTML = `<span class=\"text-emerald-400\"><i class=\"fa-solid fa-arrow-trend-up\"></i> 🛫 SUBINDO</span>`;\n"
-  },
-  "minHScreen98": {
-    "en": "            pitchBadge.innerHTML = `<span class=\"text-cyan-300\"><i class=\"fa-solid fa-arrow-right\"></i> ✈️ LEVEL CRUISE</span>`;\n",
-    "es": "            pitchBadge.innerHTML = `<span class=\"text-cyan-300\"><i class=\"fa-solid fa-arrow-right\"></i> ✈️ CRUCERO NIVELADO</span>`;\n",
-    "pt": "            pitchBadge.innerHTML = `<span class=\"text-cyan-300\"><i class=\"fa-solid fa-arrow-right\"></i> ✈️ CRUZEIRO NIVELADO</span>`;\n"
-  },
-  "minHScreen99": {
-    "en": "            pitchBadge.innerHTML = `<span class=\"text-amber-400\"><i class=\"fa-solid fa-arrow-trend-down\"></i> 📉 DESCENDING</span>`;\n",
-    "es": "            pitchBadge.innerHTML = `<span class=\"text-amber-400\"><i class=\"fa-solid fa-arrow-trend-down\"></i> 📉 DESCENDIENDO</span>`;\n",
-    "pt": "            pitchBadge.innerHTML = `<span class=\"text-amber-400\"><i class=\"fa-solid fa-arrow-trend-down\"></i> 📉 DESCENDO</span>`;\n"
-  },
-  "minHScreen100": {
-    "en": "        // Draw Curve\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen101": {
-    "en": "        // Area fill\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen102": {
-    "en": "        // Draw Airplane\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen103": {
-    "en": "          pitchBadge.innerHTML = `<span class=\"text-emerald-400\">🛫 READY ON TARMAC</span>`;\n",
-    "es": "          pitchBadge.innerHTML = `<span class=\"text-emerald-400\">🛫 LISTO EN PISTA</span>`;\n",
-    "pt": "          pitchBadge.innerHTML = `<span class=\"text-emerald-400\">🛫 PRONTO NA PISTA</span>`;\n"
-  },
-  "minHScreen104": {
-    "en": "      // Ground Crashline ($0 Bankruptcy)\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen105": {
-    "en": "      ctx.fillText('CRASHLINE ZONE ($0 BANKRUPTCY)', 65, bottomY - 6);\n",
-    "es": "      ctx.fillText('ZONA CRASHLINE (BANCARROTA €0)', 65, bottomY - 6);\n",
-    "pt": "      ctx.fillText('ZONA DE COLAPSO (FALÊNCIA R$0)', 65, bottomY - 6);\n"
-  },
-  "minHScreen106": {
-    "en": "      ctx.moveTo(16, 0); // Nose\n      ctx.lineTo(-12, -10); // Left wing\n",
-    "es": "      ctx.moveTo(16, 0);\n      ctx.lineTo(-12, -10);\n",
-    "pt": "      ctx.moveTo(16, 0);\n      ctx.lineTo(-12, -10);\n"
-  },
-  "minHScreen107": {
-    "en": "      ctx.lineTo(-12, 10); // Right wing\n",
-    "es": "      ctx.lineTo(-12, 10);\n",
-    "pt": "      ctx.lineTo(-12, 10);\n"
-  },
-  "minHScreen108": {
-    "en": "      // Thrust flame\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen109": {
-    "en": "    /* =================================================================\n       CALCULATORS HANDLERS\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       MANEJADORES DE CALCULADORAS\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen110": {
-    "en": "      if (totalEl) totalEl.innerText = '$' + Math.round(totalAnnual).toLocaleString() + ' / yr';\n",
-    "es": "      if (totalEl) totalEl.innerText = '€' + Math.round(totalAnnual).toLocaleString() + ' / año';\n",
-    "pt": "      if (totalEl) totalEl.innerText = 'R$' + Math.round(totalAnnual).toLocaleString('pt-BR') + ' / ano';\n"
-  },
-  "minHScreen111": {
-    "en": "        formulaEl.innerText = `$${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = $${Math.round(requiredEgg).toLocaleString()} (${multiplier.toFixed(1)}x Rule)`;\n",
-    "es": "        formulaEl.innerText = `€${Math.round(spend).toLocaleString()} × ${multiplier.toFixed(1)} = €${Math.round(requiredEgg).toLocaleString()} (Regla del ${multiplier.toFixed(1)}x)`;\n",
-    "pt": "        formulaEl.innerText = `R$${Math.round(spend).toLocaleString('pt-BR')} × ${multiplier.toFixed(1)} = R$${Math.round(requiredEgg).toLocaleString('pt-BR')} (Regla de ${multiplier.toFixed(1)}x)`;\n"
-  },
-  "minHScreen112": {
-    "en": "      if (totalEl) totalEl.innerText = '$' + Math.round(requiredEgg).toLocaleString();\n",
-    "es": "      if (totalEl) totalEl.innerText = '€' + Math.round(requiredEgg).toLocaleString();\n",
-    "pt": "      if (totalEl) totalEl.innerText = 'R$' + Math.round(requiredEgg).toLocaleString('pt-BR');\n"
-  },
-  "minHScreen113": {
-    "en": "    /* =================================================================\n       TAB 3: 1,000 MONTE CARLO BATCH SIMULATOR\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       PESTAÑA 3: SIMULADOR MONTE CARLO DE 1.000 CORRIDAS\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen114": {
-    "en": "      if (medEl) medEl.innerText = '$' + Math.round(medianEnd).toLocaleString();\n      if (p10El) p10El.innerText = '$' + Math.round(p10).toLocaleString();\n      if (p90El) p90El.innerText = '$' + Math.round(p90).toLocaleString();\n",
-    "es": "      if (medEl) medEl.innerText = '€' + Math.round(medianEnd).toLocaleString();\n      if (p10El) p10El.innerText = '€' + Math.round(p10).toLocaleString();\n      if (p90El) p90El.innerText = '€' + Math.round(p90).toLocaleString();\n",
-    "pt": "      if (medEl) medEl.innerText = 'R$' + Math.round(medianEnd).toLocaleString('pt-BR');\n      if (p10El) p10El.innerText = 'R$' + Math.round(p10).toLocaleString('pt-BR');\n      if (p90El) p90El.innerText = 'R$' + Math.round(p90).toLocaleString('pt-BR');\n"
-  },
-  "minHScreen115": {
-    "en": "      // Render percentile table\n",
-    "es": "",
-    "pt": ""
-  },
-  "minHScreen116": {
-    "en": "              <td class=\"py-2.5 px-3 font-bold text-espresso-900\">Age ${state.startAge + y} (${y} Yrs)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
-    "es": "              <td class=\"py-2.5 px-3 font-bold text-espresso-900\">Edad ${state.startAge + y} (${y} Años)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">€${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">€${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">€${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">€${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString()}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">€${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString()}</td>\n",
-    "pt": "              <td class=\"py-2.5 px-3 font-bold text-espresso-900\">Idade ${state.startAge + y} (${y} Anos)</td>\n              <td class=\"py-2.5 px-3 text-red-400 font-bold\">R$${Math.round(arr[Math.floor(n * 0.10)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-amber-400\">R$${Math.round(arr[Math.floor(n * 0.25)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-cyan-300 font-bold\">R$${Math.round(arr[Math.floor(n * 0.50)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-emerald-400\">R$${Math.round(arr[Math.floor(n * 0.75)] || 0).toLocaleString('pt-BR')}</td>\n              <td class=\"py-2.5 px-3 text-purple-400 font-bold\">R$${Math.round(arr[Math.floor(n * 0.90)] || 0).toLocaleString('pt-BR')}</td>\n"
-  },
-  "minHScreen117": {
-    "en": "    /* =================================================================\n       MATH HELPERS & TAB SWITCHING\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       FUNCIONES MATEMÁTICAS Y NAVEGACIÓN DE PESTAÑAS\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen118": {
-    "en": "    /* =================================================================\n       WEBAUDIO SOUND SYNTHESIS\n       ================================================================= */\n",
-    "es": "    /* =================================================================\n       SINTETIZADOR DE SONIDO WEBAUDIO\n       ================================================================= */\n",
-    "pt": ""
-  },
-  "minHScreen119": {
-    "en": "        // AudioContext disabled or blocked by browser policy\n",
-    "es": "        // AudioContext no disponible o bloqueado por navegador\n",
-    "pt": "        // AudioContext não disponível ou bloqueado pelo navegador\n"
-  },
   "a11yResetSimulation": {
     "en": "Reset simulation",
     "es": "Reiniciar la simulación",
@@ -1845,14 +1350,14 @@
     "pt": "Como funcionam as mil simulações"
   },
   "explHow1": {
-    "en": "For each of the 1,000 runs and each year within it, the simulator draws a random return for stocks, bonds and cash, and a random rate of inflation, from distributions calibrated to long-run history: stocks average 8.2% a year with a standard deviation of 24%, bonds 3.5% with 6%, cash 1.5% with 1%, and inflation 3.5% with 2.5%. Your portfolio grows by the weighted result, your withdrawal is taken out, and the withdrawal is inflated for the following year.",
-    "es": "Para cada una de las 1.000 simulaciones y cada año dentro de ella, el simulador extrae una rentabilidad aleatoria para acciones, bonos y efectivo, y una tasa aleatoria de inflación, de distribuciones calibradas con la historia a largo plazo: las acciones promedian un 8,2% anual con una desviación típica del 24%, los bonos un 3,5% con un 6%, el efectivo un 1,5% con un 1%, y la inflación un 3,5% con un 2,5%. Tu cartera crece según el resultado ponderado, se retira tu gasto, y ese gasto se infla para el año siguiente.",
-    "pt": "Para cada uma das 1.000 simulações e cada ano dentro dela, o simulador sorteia uma rentabilidade aleatória para ações, títulos e liquidez, e uma taxa aleatória de inflação, a partir de distribuições calibradas com a história de longo prazo: as ações têm média de 8,2% ao ano com um desvio-padrão de 24%, as títulos 3,5% com 6%, a liquidez 1,5% com 1%, e a inflação 3,5% com 2,5%. A sua carteira cresce segundo o resultado ponderado, é levantada a sua despesa, e essa despesa é inflacionada para o ano seguinte."
+    "en": "For each of the 1,000 runs and each year within it, the simulator draws a random return for stocks, bonds and cash, and a random rate of inflation, each from a normal distribution with the arithmetic mean and standard deviation of the US record from 1928 to 2025 (Aswath Damodaran’s historical returns data): stocks (S&P 500 with dividends) 11.9% a year with a standard deviation of 19.4%, 10-year Treasuries 4.8% with 7.9%, Treasury bills 3.4% with 3.0%, and inflation 3.1% with 3.9%. At the start of each year that year’s withdrawal comes out at that year’s prices; the portfolio, rebalanced to your allocation, then earns the weighted return, and prices rise by the year’s inflation — so every later withdrawal is larger by all the inflation since you retired. The cockpit flight uses exactly the same yearly rules, one path at a time.",
+    "es": "Para cada una de las 1.000 simulaciones y cada año dentro de ella, el simulador extrae una rentabilidad aleatoria para acciones, bonos y efectivo, y una tasa aleatoria de inflación, cada una de una distribución normal con la media aritmética y la desviación típica del historial de EE. UU. entre 1928 y 2025 (datos de rentabilidades históricas de Aswath Damodaran): las acciones (S&P 500 con dividendos) un 11,9% anual con una desviación típica del 19,4%, el bono del Tesoro a 10 años un 4,8% con un 7,9%, las letras del Tesoro un 3,4% con un 3,0%, y la inflación un 3,1% con un 3,9%. Al principio de cada año sale la retirada de ese año, a los precios de ese año; después la cartera, reequilibrada a tu asignación, obtiene la rentabilidad ponderada, y los precios suben con la inflación del año, de modo que cada retirada posterior es mayor en toda la inflación acumulada desde que te jubilaste. El vuelo de la cabina usa exactamente las mismas reglas anuales, de una en una trayectoria.",
+    "pt": "Para cada uma das 1.000 simulações e cada ano dentro dela, o simulador sorteia uma rentabilidade aleatória para ações, títulos e liquidez, e uma taxa aleatória de inflação, cada uma de uma distribuição normal com a média aritmética e o desvio-padrão do histórico dos EUA entre 1928 e 2025 (dados de rentabilidades históricas de Aswath Damodaran): as ações (S&P 500 com dividendos) 11,9% ao ano com um desvio-padrão de 19,4%, o título do Tesouro a 10 anos 4,8% com 7,9%, as letras do Tesouro 3,4% com 3,0%, e a inflação 3,1% com 3,9%. No início de cada ano sai a retirada desse ano, aos preços desse ano; depois a carteira, rebalanceada para a sua alocação, obtém a rentabilidade ponderada, e os preços sobem com a inflação do ano, de modo que cada retirada seguinte é maior em toda a inflação acumulada desde a reforma. O voo da cabine usa exatamente as mesmas regras anuais, uma trajetória de cada vez."
   },
   "explHow2": {
-    "en": "The thousand results are then sorted, and three of them are shown: the 10th percentile, the median and the 90th. The median is the ordinary outcome. The 10th percentile is the one that matters — it is what happens when the draws go against you, and a plan that only works at the median is a plan that fails one time in two. A run in which the balance sits at zero for ten consecutive years is counted as ruined, not as recovered.",
-    "es": "Los mil resultados se ordenan y se muestran tres: el percentil 10, la mediana y el percentil 90. La mediana es el desenlace corriente. El percentil 10 es el que importa: es lo que ocurre cuando los sorteos van en tu contra, y un plan que solo funciona en la mediana es un plan que falla una vez de cada dos. Una simulación en la que el saldo se queda a cero durante diez años seguidos se cuenta como arruinada, no como recuperada.",
-    "pt": "Os mil resultados são ordenados e são mostrados três: o percentil 10, a mediana e o percentil 90. A mediana é o desfecho corrente. O percentil 10 é o que importa: é o que acontece quando os sorteios correm contra si, e um plano que só funciona na mediana é um plano que falha uma vez em cada duas. Uma simulação em que o saldo fica a zero durante dez anos seguidos conta como arruinada, não como recuperada."
+    "en": "The thousand results are then sorted, and three of them are shown: the 10th percentile, the median and the 90th. The median is the ordinary outcome. The 10th percentile is the one that matters — it is what happens when the draws go against you, and a plan that only works at the median is a plan that fails one time in two. A run succeeds if it reaches the target age with money left. Below zero nothing is invested and the shortfall is carried as debt at 5% a year; a run that stays below zero for ten consecutive years is ended there and counted as ruined.",
+    "es": "Los mil resultados se ordenan y se muestran tres: el percentil 10, la mediana y el percentil 90. La mediana es el desenlace corriente. El percentil 10 es el que importa: es lo que ocurre cuando los sorteos van en tu contra, y un plan que solo funciona en la mediana es un plan que falla una vez de cada dos. Una simulación tiene éxito si llega a la edad objetivo con dinero. Bajo cero no queda nada invertido y el déficit se arrastra como deuda al 5% anual; una simulación que pasa diez años seguidos bajo cero se termina ahí y se cuenta como arruinada.",
+    "pt": "Os mil resultados são ordenados e são mostrados três: o percentil 10, a mediana e o percentil 90. A mediana é o desfecho corrente. O percentil 10 é o que importa: é o que acontece quando os sorteios correm contra você, e um plano que só funciona na mediana é um plano que falha uma vez em cada duas. Uma simulação tem sucesso se chega à idade-alvo com dinheiro. Abaixo de zero não há nada investido e o déficit é carregado como dívida a 5% ao ano; uma simulação que passa dez anos seguidos abaixo de zero termina ali e conta como arruinada."
   },
   "explAssumptionsTitle": {
     "en": "What it assumes",
@@ -1860,9 +1365,9 @@
     "pt": "O que pressupõe"
   },
   "explAssumption1": {
-    "en": "Returns are drawn independently each year from a normal distribution. Real markets have fat tails — extreme years happen more often than a bell curve predicts — and they cluster, so a bad year is more likely to be followed by another.",
-    "es": "Las rentabilidades se extraen de forma independiente cada año de una distribución normal. Los mercados reales tienen colas gruesas —los años extremos ocurren más de lo que predice una campana— y se agrupan, así que un mal año tiene más probabilidad de ir seguido de otro.",
-    "pt": "As rentabilidades são sorteadas de forma independente em cada ano a partir de uma distribuição normal. Os mercados reais têm caudas grossas — os anos extremos acontecem mais do que uma curva de sino prevê — e se agrupam, por isso um ano ruim tem mais probabilidade de ser seguido de outro."
+    "en": "Returns are drawn independently each year from a normal distribution. Real markets have fat tails — extreme years happen more often than a bell curve predicts — and they cluster, so a bad year is more likely to be followed by another. A real stretch such as 1966–1981 can therefore be worse than almost any simulated path; the historical sequences in the cockpit replay it.",
+    "es": "Las rentabilidades se extraen de forma independiente cada año de una distribución normal. Los mercados reales tienen colas gruesas —los años extremos ocurren más de lo que predice una campana— y se agrupan, así que un mal año tiene más probabilidad de ir seguido de otro. Por eso un tramo real como 1966–1981 puede ser peor que casi cualquier trayectoria simulada; las secuencias históricas de la cabina lo reproducen.",
+    "pt": "As rentabilidades são sorteadas de forma independente em cada ano a partir de uma distribuição normal. Os mercados reais têm caudas grossas — os anos extremos acontecem mais do que uma curva de sino prevê — e se agrupam, por isso um ano ruim tem mais probabilidade de ser seguido de outro. Por isso um trecho real como 1966–1981 pode ser pior do que quase qualquer trajetória simulada; as sequências históricas da cabine o reproduzem."
   },
   "explAssumption2": {
     "en": "Asset classes are drawn independently of each other. In a real crisis correlations rise towards one, which is precisely when diversification is supposed to help.",
@@ -1870,14 +1375,14 @@
     "pt": "As classes de ativos são sorteadas independentemente umas das outras. Numa crise real as correlações sobem para perto de um, que é precisamente quando a diversificação deveria ajudar."
   },
   "explAssumption3": {
-    "en": "Your withdrawal rises with inflation regardless of what the portfolio did. Real retirees spend less after a bad year, which is the single most effective defense available and is not modeled here.",
-    "es": "Tu retirada sube con la inflación pase lo que pase con la cartera. Los jubilados reales gastan menos tras un mal año, que es la defensa más eficaz disponible y aquí no está modelada.",
-    "pt": "O seu retirada sobe com a inflação independentemente do que a carteira fez. Os aposentados reais gastam menos depois de um mau ano, que é a defesa mais eficaz disponível e aqui não está modelada."
+    "en": "Your withdrawal rises with inflation regardless of what the portfolio did, unless you switch on the spending-cut or guardrail tactics. Real retirees spend less after a bad year, which is the single most effective defense available — and in this model it is only there if you choose it.",
+    "es": "Tu retirada sube con la inflación pase lo que pase con la cartera, salvo que actives las tácticas de recorte de gasto o de guardarraíles. Los jubilados reales gastan menos tras un mal año, que es la defensa más eficaz disponible, y en este modelo solo existe si la eliges.",
+    "pt": "A sua retirada sobe com a inflação independentemente do que a carteira fez, a não ser que ative as táticas de corte de gastos ou de regras de proteção. Os aposentados reais gastam menos depois de um mau ano, que é a defesa mais eficaz disponível, e neste modelo só existe se a escolher."
   },
   "explAssumption4": {
-    "en": "No taxes, no fund fees, no state pension and no other income. Each of those shifts the result, and not all of them in the same direction.",
-    "es": "Sin impuestos, sin comisiones de fondos, sin pensión pública y sin otros ingresos. Cada uno de esos factores mueve el resultado, y no todos en la misma dirección.",
-    "pt": "Sem impostos, sem comissões de fundos, sem pensão pública e sem outros rendimentos. Cada um desses fatores move o resultado, e não todos na mesma direção."
+    "en": "No taxes and no fund fees. Part-time income, a pension and downsizing are only included when you switch those tactics on, in today’s money and rising with inflation. Each of those shifts the result, and not all of them in the same direction.",
+    "es": "Sin impuestos ni comisiones de fondos. El trabajo parcial, la pensión y la reducción de vivienda solo entran si activas esas tácticas, en dinero de hoy y subiendo con la inflación. Cada uno de esos factores mueve el resultado, y no todos en la misma dirección.",
+    "pt": "Sem impostos nem comissões de fundos. A renda de meio período, a pensão e a redução de imóvel só entram se ativar essas táticas, em dinheiro de hoje e subindo com a inflação. Cada um desses fatores move o resultado, e não todos na mesma direção."
   },
   "explAssumptionsNote": {
     "en": "Read the success rate as a comparison tool, not as a forecast. Ninety percent here does not mean a nine-in-ten chance in the world; it means this plan failed a tenth of the time under these assumptions, and you can see exactly which change makes that number move.",
@@ -1890,14 +1395,14 @@
     "pt": "Um exemplo resolvido"
   },
   "explExample1": {
-    "en": "A portfolio of 800,000, 70% in stocks, drawn down at 4% a year over thirty years, comes back with a success rate in the low nineties. The median run ends with more money than it started with — often several times more — which is the counter-intuitive part: the typical outcome of a sustainable withdrawal plan is dying rich.",
-    "es": "Una cartera de 800.000, con un 70% en acciones, consumida al 4% anual durante treinta años, devuelve una tasa de éxito en los noventa y pocos. La simulación mediana termina con más dinero del que empezó, a menudo varias veces más, que es la parte contraintuitiva: el desenlace típico de un plan de retirada sostenible es morir rico.",
-    "pt": "Uma carteira de 800.000, com 70% em ações, consumida a 4% ao ano durante trinta anos, devolve uma taxa de sucesso nos noventa e poucos. A simulação mediana termina com mais dinheiro do que começou, muitas vezes várias vezes mais, que é a parte contraintuitiva: o desfecho típico de um plano de retirada sustentável é morrer rico."
+    "en": "A portfolio of 800,000 held 70% in stocks and 30% in bonds, drawn down at 4% a year — 32,000, rising with inflation — over thirty years, succeeds in about nine runs out of ten: 91% across 40,000 simulations, in the same range the Trinity Study found in US history. The median run ends with around 3.7 million in future money, roughly 1.5 million in today’s money — almost twice the starting balance after inflation — which is the counter-intuitive part: the typical outcome of a sustainable withdrawal plan is dying rich. The 10th-percentile run, by contrast, ends with only a few tens of thousands left.",
+    "es": "Una cartera de 800.000, con un 70% en acciones y un 30% en bonos, consumida al 4% anual —32.000, subiendo con la inflación— durante treinta años, tiene éxito en unas nueve de cada diez simulaciones: un 91% en 40.000 corridas, en el mismo rango que encontró el estudio Trinity en la historia de EE. UU. La simulación mediana termina con unos 3,7 millones en dinero futuro, cerca de 1,5 millones en dinero de hoy —casi el doble del capital inicial descontada la inflación—, que es la parte contraintuitiva: el desenlace típico de un plan de retirada sostenible es morir rico. La del percentil 10, en cambio, termina con apenas unas decenas de miles.",
+    "pt": "Uma carteira de 800.000, com 70% em ações e 30% em títulos, consumida a 4% ao ano — 32.000, subindo com a inflação — durante trinta anos, tem sucesso em cerca de nove de cada dez simulações: 91% em 40.000 corridas, na mesma faixa que o estudo Trinity encontrou na história dos EUA. A simulação mediana termina com cerca de 3,7 milhões em dinheiro futuro, perto de 1,5 milhão em dinheiro de hoje — quase o dobro do capital inicial descontada a inflação —, que é a parte contraintuitiva: o desfecho típico de um plano de retirada sustentável é morrer rico. A do percentil 10, pelo contrário, termina com apenas algumas dezenas de milhares."
   },
   "explExample2": {
-    "en": "Now raise the withdrawal rate to 5%. The median barely moves — but the success rate falls by more than twenty points and the 10th percentile run runs out of money in the mid-twenties. That gap is the entire argument for looking at the bottom decile: the typical outcome of the riskier plan looks fine, and the risk is all hiding in the tail you were not shown.",
-    "es": "Ahora sube la tasa de retirada al 5%. La mediana apenas se mueve, pero la tasa de éxito cae más de veinte puntos y la simulación del percentil 10 se queda sin dinero a mitad de los veintitantos años. Esa brecha es todo el argumento para mirar el decil inferior: el desenlace típico del plan más arriesgado parece correcto, y el riesgo está escondido entero en la cola que no te enseñaron.",
-    "pt": "Agora suba a taxa de retirada para 5%. A mediana quase não se move, mas a taxa de sucesso cai mais de vinte pontos e a simulação do percentil 10 fica sem dinheiro na metade dos vinte e tantos anos. Essa diferença é todo o argumento para olhar para o decil inferior: o desfecho típico do plano mais arriscado parece bom, e o risco está escondido inteiro na cauda que ninguém mostrou para você."
+    "en": "Now raise the withdrawal rate to 5%, or 40,000 a year. The median still ends with more than it started with after inflation — but the success rate falls to about three in four, and the 10th-percentile run is out of money roughly twenty-two years in. One percentage point of withdrawal costs about fourteen points of success, and the damage is all in the tail a single average never shows. Choose the 1966–1981 sequence and even the 4% plan almost never lasts: independent draws rarely produce a stretch that bad, which is what the historical sequences are there to show. To reproduce these runs, set the nest egg to 800,000, spending to 32,000 or 40,000, the allocation to 70/30/0 and the ages to 65 and 95, then open the 1,000 sims tab.",
+    "es": "Ahora sube la tasa de retirada al 5%, es decir, 40.000 al año. La mediana sigue terminando con más de lo que empezó, descontada la inflación, pero la tasa de éxito cae a unas tres de cada cuatro, y la simulación del percentil 10 se queda sin dinero hacia los veintidós años. Un punto de retirada cuesta unos catorce puntos de éxito, y todo el daño está en la cola que una sola media nunca enseña. Elige la secuencia 1966–1981 y hasta el plan del 4% casi nunca aguanta: los sorteos independientes rara vez producen un tramo tan malo, y para eso están las secuencias históricas. Para reproducir estas simulaciones, pon el capital en 800.000, el gasto en 32.000 o 40.000, la asignación en 70/30/0 y las edades en 65 y 95, y abre la pestaña de 1.000 simulaciones.",
+    "pt": "Agora suba a taxa de retirada para 5%, ou seja, 40.000 por ano. A mediana continua terminando com mais do que começou, descontada a inflação, mas a taxa de sucesso cai para cerca de três em cada quatro, e a simulação do percentil 10 fica sem dinheiro por volta dos vinte e dois anos. Um ponto de retirada custa uns catorze pontos de sucesso, e todo o estrago está na cauda que uma única média nunca mostra. Escolha a sequência 1966–1981 e até o plano de 4% quase nunca aguenta: os sorteios independentes raramente produzem um trecho tão ruim, e é para isso que existem as sequências históricas. Para reproduzir estas simulações, coloque o patrimônio em 800.000, o gasto em 32.000 ou 40.000, a alocação em 70/30/0 e as idades em 65 e 95, e abra a aba de 1.000 simulações."
   },
   "explFaqQ1": {
     "en": "Why a thousand runs and not more?",
@@ -1905,9 +1410,9 @@
     "pt": "Porquê mil simulações e não mais?"
   },
   "explFaqA1": {
-    "en": "A thousand is enough for the success rate to be stable to about a percentage point, and few enough to finish instantly in your browser. Running ten thousand would move the second decimal place, not the decision.",
-    "es": "Mil bastan para que la tasa de éxito sea estable con un margen de cerca de un punto porcentual, y son pocas para terminar al instante en tu navegador. Ejecutar diez mil movería el segundo decimal, no la decisión.",
-    "pt": "Mil bastam para que a taxa de sucesso seja estável com uma margem de cerca de um ponto percentual, e são poucas para terminar instantaneamente no seu navegador. Executar dez mil moveria a segunda casa decimal, não a decisão."
+    "en": "A thousand is enough for the success rate to be stable to within a couple of percentage points, and few enough to finish instantly in your browser. Running ten thousand would narrow that to under a point without changing the decision.",
+    "es": "Mil bastan para que la tasa de éxito sea estable con un margen de un par de puntos porcentuales, y son pocas para terminar al instante en tu navegador. Diez mil reducirían ese margen a menos de un punto sin cambiar la decisión.",
+    "pt": "Mil bastam para que a taxa de sucesso fique estável dentro de uns dois pontos percentuais, e são poucas para terminar na hora no seu navegador. Dez mil reduziriam essa margem para menos de um ponto sem mudar a decisão."
   },
   "explFaqQ2": {
     "en": "Why does the result change each time I run it?",
@@ -2023,5 +1528,515 @@
     "en": "Compounding Journey. For educational purposes only. Not formal financial advice.",
     "es": "Compounding Journey. Solo con fines educativos. No constituye asesoramiento financiero formal.",
     "pt": "Compounding Journey. Apenas para fins educacionais. Não constitui consultoria financeira formal."
+  },
+  "ageRangeNote": {
+    "en": "50-year horizon (age 50 to 100). Start 18–90; the target must be at least 10 years later, up to 100.",
+    "es": "Horizonte de 50 años (de los 50 a los 100). Inicio entre 18 y 90; el destino, al menos 10 años después y hasta 100.",
+    "pt": "Horizonte de 50 anos (dos 50 aos 100). Início entre 18 e 90; o destino, pelo menos 10 anos depois e até 100."
+  },
+  "jsHorizonNote": {
+    "en": "{years}-year horizon (age {start} to {end}). Start 18–90; the target must be at least 10 years later, up to 100.",
+    "es": "Horizonte de {years} años (de los {start} a los {end}). Inicio entre 18 y 90; el destino, al menos 10 años después y hasta 100.",
+    "pt": "Horizonte de {years} anos (dos {start} aos {end}). Início entre 18 e 90; o destino, pelo menos 10 anos depois e até 100."
+  },
+  "seqNote": {
+    "en": "Historical sequences play the real years once, in order (S&P 500 total return, 10-year Treasuries, T-bills and CPI); the rest of the flight continues with simulated returns.",
+    "es": "Las secuencias históricas reproducen una sola vez los años reales, en orden (rentabilidad total del S&P 500, bono del Tesoro a 10 años, letras y IPC de EE. UU.); el resto del vuelo continúa con rentabilidades simuladas.",
+    "pt": "As sequências históricas reproduzem uma única vez os anos reais, em ordem (retorno total do S&P 500, título do Tesouro a 10 anos, T-bills e CPI dos EUA); o resto do voo continua com retornos simulados."
+  },
+  "setupLockNote": {
+    "en": "Setup is locked while a flight is in the air or paused, so the flight is scored on what it launched with. Tactics stay available; reset to change the setup.",
+    "es": "La configuración queda bloqueada mientras hay un vuelo en el aire o en pausa, para puntuarlo con lo que despegó. Las tácticas siguen disponibles; reinicia para cambiar la configuración.",
+    "pt": "A configuração fica bloqueada enquanto há um voo no ar ou em pausa, para pontuá-lo com o que decolou. As táticas continuam disponíveis; reinicie para mudar a configuração."
+  },
+  "lbCurrencyNote": {
+    "en": "Amounts are shown in the currency of the page each flight was flown on ($ English, € Spanish, R$ Portuguese) and are not converted.",
+    "es": "Los importes se muestran en la moneda de la página en la que se voló cada vuelo ($ inglés, € español, R$ portugués) y no se convierten.",
+    "pt": "Os valores aparecem na moeda da página em que cada voo foi feito ($ inglês, € espanhol, R$ português) e não são convertidos."
+  },
+  "lbEmpty": {
+    "en": "No flight logs on the global board yet for {board}. Fly this preset and yours is the first score every other pilot sees.",
+    "es": "Todavía no hay registros de vuelo en la tabla global para {board}. Vuela este escenario y tu puntuación será la primera que vean los demás pilotos.",
+    "pt": "Ainda não há registros de voo na tabela global para {board}. Voe este cenário e a sua pontuação será a primeira que os outros pilotos verão."
+  },
+  "mcRealToggle": {
+    "en": "Show amounts in today’s money (inflation-adjusted)",
+    "es": "Mostrar importes en dinero de hoy (ajustados por inflación)",
+    "pt": "Mostrar valores em dinheiro de hoje (corrigidos pela inflação)"
+  },
+  "mcSweepTitle": {
+    "en": "Success rate by withdrawal rate",
+    "es": "Tasa de éxito según la tasa de retirada",
+    "pt": "Taxa de sucesso por taxa de retirada"
+  },
+  "mcSweepIntro": {
+    "en": "The same plan at every initial withdrawal rate from 2% to 7%, in quarter-point steps, with 500 runs per rate. The highlighted point is the highest rate that still succeeds at least 90% of the time.",
+    "es": "El mismo plan con cada tasa de retirada inicial del 2% al 7%, en pasos de un cuarto de punto, con 500 simulaciones por tasa. El punto resaltado es la tasa más alta que aún tiene éxito al menos el 90% de las veces.",
+    "pt": "O mesmo plano com cada taxa de retirada inicial de 2% a 7%, em passos de um quarto de ponto, com 500 simulações por taxa. O ponto destacado é a maior taxa que ainda tem sucesso pelo menos 90% das vezes."
+  },
+  "mcSweepIdle": {
+    "en": "Run the simulations to draw the curve.",
+    "es": "Ejecuta las simulaciones para dibujar la curva.",
+    "pt": "Execute as simulações para desenhar a curva."
+  },
+  "debriefScoreTitle": {
+    "en": "Flight score",
+    "es": "Puntuación del vuelo",
+    "pt": "Pontuação do voo"
+  },
+  "debriefScoreBase": {
+    "en": "Base (scaled by years flown)",
+    "es": "Base (según los años volados)",
+    "pt": "Base (conforme os anos voados)"
+  },
+  "debriefScoreBoard": {
+    "en": "Board bonus",
+    "es": "Bonus del escenario",
+    "pt": "Bônus do cenário"
+  },
+  "debriefScoreCrash": {
+    "en": "Crashline penalty",
+    "es": "Penalización por desplome",
+    "pt": "Penalidade por colapso"
+  },
+  "debriefScoreTactic": {
+    "en": "Tactic penalty",
+    "es": "Penalización por tácticas",
+    "pt": "Penalidade por táticas"
+  },
+  "debriefScoreBalance": {
+    "en": "Ending balance bonus",
+    "es": "Bonus por saldo final",
+    "pt": "Bônus pelo saldo final"
+  },
+  "debriefScoreTotal": {
+    "en": "Score posted to the board",
+    "es": "Puntuación enviada a la tabla",
+    "pt": "Pontuação enviada ao ranking"
+  },
+  "explScoreTitle": {
+    "en": "How the flight score works",
+    "es": "Cómo se calcula la puntuación del vuelo",
+    "pt": "Como funciona a pontuação do voo"
+  },
+  "explScore1": {
+    "en": "A flight that reaches its target age with money left earns a base of up to 5,000 points, in proportion to the years flown against a 50-year reference retirement: a 30-year flight earns 3,000, a flight of 50 years or more 5,000, and no flight earns less than the 1,000 a flight that fell short gets. The board then adds a bonus for the harder presets (Tight Lean FIRE 2,000, High Risk SWR 1,500, custom 1,000, Trinity 800, Fat FIRE 200), takes away 500 points for every year below zero and 75 for every year each tactic was switched on, and adds one point for every 2,500 of ending balance. The total is held between 100 and 100,000, and the debrief shows each line before the score is posted.",
+    "es": "Un vuelo que llega a su edad objetivo con dinero obtiene una base de hasta 5.000 puntos, en proporción a los años volados frente a una jubilación de referencia de 50 años: un vuelo de 30 años obtiene 3.000, uno de 50 años o más 5.000, y ningún vuelo obtiene menos de los 1.000 que recibe un vuelo que no llegó. La tabla suma después un bonus por los escenarios más difíciles (Lean FIRE ajustado 2.000, SWR de alto riesgo 1.500, personalizado 1.000, Trinity 800, Fat FIRE 200), resta 500 puntos por cada año bajo cero y 75 por cada año que estuvo activa cada táctica, y suma un punto por cada 2.500 de saldo final. El total se mantiene entre 100 y 100.000, y el informe del vuelo muestra cada línea antes de enviar la puntuación.",
+    "pt": "Um voo que chega à idade-alvo com dinheiro recebe uma base de até 5.000 pontos, em proporção aos anos voados contra uma aposentadoria de referência de 50 anos: um voo de 30 anos recebe 3.000, um de 50 anos ou mais 5.000, e nenhum voo recebe menos que os 1.000 de um voo que não chegou. O ranking soma depois um bônus pelos cenários mais difíceis (Lean FIRE apertado 2.000, SWR de alto risco 1.500, personalizado 1.000, Trinity 800, Fat FIRE 200), tira 500 pontos por cada ano abaixo de zero e 75 por cada ano em que cada tática esteve ativa, e soma um ponto a cada 2.500 de saldo final. O total fica entre 100 e 100.000, e o relatório do voo mostra cada linha antes de a pontuação ser enviada."
+  },
+  "explScore2": {
+    "en": "The board is decided at launch, not at landing: a flight counts as a preset only if it was flown on that preset’s nest egg, spending, ages and allocation, against the simulated market and without the target-date fund — anything else is a custom scenario. The setup is locked for the length of the flight, and downsizing can be used once per flight.",
+    "es": "El escenario se decide al despegar, no al aterrizar: un vuelo cuenta como un escenario predefinido solo si se voló con su capital, su gasto, sus edades y su asignación, contra el mercado simulado y sin el fondo de fecha objetivo; cualquier otra cosa es un escenario personalizado. La configuración queda bloqueada durante todo el vuelo, y la reducción de vivienda solo puede usarse una vez por vuelo.",
+    "pt": "O cenário é decidido na decolagem, não no pouso: um voo conta como um cenário predefinido só se foi feito com o patrimônio, o gasto, as idades e a alocação desse cenário, contra o mercado simulado e sem o fundo de data-alvo; qualquer outra coisa é um cenário personalizado. A configuração fica bloqueada durante todo o voo, e a redução de imóvel só pode ser usada uma vez por voo."
+  },
+  "jsRiskHigh": {
+    "en": "{rate} (HIGH RISK)",
+    "es": "{rate} (ALTO RIESGO)",
+    "pt": "{rate} (ALTO RISCO)"
+  },
+  "jsRiskModerate": {
+    "en": "{rate} (MODERATE RISK)",
+    "es": "{rate} (RIESGO MODERADO)",
+    "pt": "{rate} (RISCO MODERADO)"
+  },
+  "jsRiskSafe": {
+    "en": "{rate} (LOWER RISK)",
+    "es": "{rate} (RIESGO BAJO)",
+    "pt": "{rate} (RISCO BAIXO)"
+  },
+  "jsCrashCounter": {
+    "en": "{years} / {limit} Yrs",
+    "es": "{years} / {limit} Años",
+    "pt": "{years} / {limit} Anos"
+  },
+  "jsTdfStatus": {
+    "en": "Age {age}: {stocks}% Stocks / {bonds}% Bonds / {cash}% Cash",
+    "es": "Edad {age}: {stocks}% Acciones / {bonds}% Bonos / {cash}% Efectivo",
+    "pt": "Idade {age}: {stocks}% Ações / {bonds}% Renda Fixa / {cash}% Caixa"
+  },
+  "jsBadgeActive": {
+    "en": "ACTIVE",
+    "es": "ACTIVO",
+    "pt": "ATIVO"
+  },
+  "jsBadgePlanned": {
+    "en": "PLANNED",
+    "es": "PREVISTO",
+    "pt": "PREVISTO"
+  },
+  "jsBadgeUsed": {
+    "en": "USED (ONE-TIME)",
+    "es": "USADO (ÚNICA VEZ)",
+    "pt": "USADO (ÚNICA VEZ)"
+  },
+  "jsPause": {
+    "en": "PAUSE FLIGHT",
+    "es": "PAUSAR VUELO",
+    "pt": "PAUSAR VOO"
+  },
+  "jsResume": {
+    "en": "RESUME FLIGHT",
+    "es": "REANUDAR VUELO",
+    "pt": "RETOMAR VOO"
+  },
+  "jsStatusFlying": {
+    "en": "✈️ IN FLIGHT (AIRBORNE)",
+    "es": "✈️ EN VUELO (EN EL AIRE)",
+    "pt": "✈️ EM VOO (NO AR)"
+  },
+  "jsStatusPaused": {
+    "en": "⏸️ FLIGHT PAUSED",
+    "es": "⏸️ VUELO EN PAUSA",
+    "pt": "⏸️ VOO EM PAUSA"
+  },
+  "jsStatusReady": {
+    "en": "Ready On Tarmac",
+    "es": "Listo en Pista",
+    "pt": "Pronto na Pista"
+  },
+  "jsStatusOver": {
+    "en": "FLIGHT OVER",
+    "es": "VUELO TERMINADO",
+    "pt": "VOO ENCERRADO"
+  },
+  "jsSwrCrash": {
+    "en": "CRASH",
+    "es": "CAÍDA",
+    "pt": "COLAPSO"
+  },
+  "jsTargetHorizon": {
+    "en": "Target Horizon: Age {age}",
+    "es": "Horizonte Objetivo: {age} Años",
+    "pt": "Horizonte Alvo: {age} Anos"
+  },
+  "jsCutImpact": {
+    "en": "Saves ~{amount}/yr at today’s prices",
+    "es": "Ahorra ~{amount}/año a precios de hoy",
+    "pt": "Economiza ~{amount}/ano a preços de hoje"
+  },
+  "jsDownsizeTitle": {
+    "en": "🏠 REAL ESTATE DOWNSIZING",
+    "es": "🏠 REDUCCIÓN DE VIVIENDA",
+    "pt": "🏠 REDUÇÃO DE IMÓVEL"
+  },
+  "jsDownsizeMsg": {
+    "en": "{amount} from downsizing your home was added to the portfolio at age {age}. A house is sold once: this cannot be repeated or undone in this flight.",
+    "es": "Se añadieron {amount} de la venta de tu vivienda a la cartera a los {age} años. Una casa se vende una vez: no se puede repetir ni deshacer en este vuelo.",
+    "pt": "{amount} da venda do seu imóvel foram somados à carteira aos {age} anos. Um imóvel se vende uma vez: isso não pode ser repetido nem desfeito neste voo."
+  },
+  "jsDownsizePlannedMsg": {
+    "en": "Downsizing is set: {amount} (today’s money) is added once, at the start of the next simulated year. Once the flight is under way it cannot be undone.",
+    "es": "Reducción de vivienda programada: se añadirán {amount} (dinero de hoy) una sola vez, al comienzo del próximo año simulado. Con el vuelo en marcha ya no se puede deshacer.",
+    "pt": "Redução de imóvel programada: {amount} (dinheiro de hoje) serão somados uma única vez, no início do próximo ano simulado. Com o voo em andamento, não pode mais ser desfeita."
+  },
+  "jsDownsizeLockedMsg": {
+    "en": "The house is already sold in this flight. Downsizing is a one-time move: it cannot be switched off or triggered again until the next flight.",
+    "es": "La vivienda ya se vendió en este vuelo. Es una decisión única: no se puede desactivar ni volver a usar hasta el próximo vuelo.",
+    "pt": "O imóvel já foi vendido neste voo. É uma decisão única: não pode ser desativada nem usada de novo até o próximo voo."
+  },
+  "jsDownsizeTip": {
+    "en": "💡 Tip: home equity is a last-resort buffer, and you only get to use it once.",
+    "es": "💡 Consejo: el capital de la vivienda es un colchón de último recurso, y solo se puede usar una vez.",
+    "pt": "💡 Dica: o patrimônio do imóvel é um colchão de último recurso, e só pode ser usado uma vez."
+  },
+  "jsBufferTitle": {
+    "en": "🏦 CASH BUCKET SHIELD",
+    "es": "🏦 ESCUDO DE EFECTIVO",
+    "pt": "🏦 ESCUDO DE CAIXA"
+  },
+  "jsBufferNeedsCash": {
+    "en": "The cash bucket draws on your cash allocation, and it is 0%. Give cash a share of the portfolio before launch.",
+    "es": "El escudo tira de tu asignación en efectivo, y está en 0%. Asigna una parte de la cartera al efectivo antes de despegar.",
+    "pt": "O escudo usa a sua alocação em caixa, que está em 0%. Reserve uma parte da carteira para caixa antes de decolar."
+  },
+  "jsBufferTip": {
+    "en": "💡 Tip: the shield adds no return. It only avoids selling stocks right after they fell.",
+    "es": "💡 Consejo: el escudo no añade rentabilidad. Solo evita vender acciones justo después de una caída.",
+    "pt": "💡 Dica: o escudo não adiciona retorno. Só evita vender ações logo depois de uma queda."
+  },
+  "jsCrashTitle": {
+    "en": "🚨 CRASHLINE: PORTFOLIO BELOW ZERO",
+    "es": "🚨 DESPLOME: CARTERA BAJO CERO",
+    "pt": "🚨 COLAPSO: CARTEIRA ABAIXO DE ZERO"
+  },
+  "jsCrashMsg": {
+    "en": "At age {age} you owe {debt}. Nothing is invested, so the markets no longer help: the shortfall is borrowed at {rate} a year. {left} year(s) left below zero before the flight is lost.",
+    "es": "A los {age} años debes {debt}. No queda nada invertido, así que el mercado ya no ayuda: el déficit se financia con deuda al {rate} anual. Te quedan {left} año(s) bajo cero antes de perder el vuelo.",
+    "pt": "Aos {age} anos você deve {debt}. Não há nada investido, então o mercado já não ajuda: o déficit é financiado com dívida a {rate} ao ano. Restam {left} ano(s) abaixo de zero antes de perder o voo."
+  },
+  "jsCrashTipNoIncome": {
+    "en": "💡 Only income above your spending climbs out of debt: part-time income, the pension from 62, or the one-time downsizing. Cutting spending slows the fall but cannot reverse it.",
+    "es": "💡 Solo unos ingresos superiores al gasto sacan de la deuda: el trabajo parcial, la pensión desde los 62 o la reducción de vivienda, que es única. Recortar gastos frena la caída, pero no la revierte.",
+    "pt": "💡 Só uma renda maior que o gasto tira você da dívida: o trabalho em meio período, a pensão a partir dos 62 ou a redução de imóvel, que é única. Cortar gastos freia a queda, mas não a reverte."
+  },
+  "jsCrashTipShort": {
+    "en": "💡 Your income is still {gap} a year short of your spending, so the debt keeps growing. Add another income tactic or the one-time downsizing.",
+    "es": "💡 Tus ingresos aún se quedan {gap} al año por debajo de tu gasto, así que la deuda sigue creciendo. Añade otra táctica de ingresos o la reducción de vivienda.",
+    "pt": "💡 Sua renda ainda fica {gap} por ano abaixo do seu gasto, então a dívida continua crescendo. Some outra tática de renda ou a redução de imóvel."
+  },
+  "jsCrashTipRecovering": {
+    "en": "💡 Your income now exceeds your spending: the surplus pays the debt down every year until the portfolio is positive again.",
+    "es": "💡 Tus ingresos ya superan tu gasto: el excedente reduce la deuda cada año hasta que la cartera vuelva a ser positiva.",
+    "pt": "💡 Sua renda já supera o seu gasto: o excedente reduz a dívida todo ano até a carteira voltar a ficar positiva."
+  },
+  "jsDropTitle": {
+    "en": "🚨 MARKET DROP: SEQUENCE OF RETURNS RISK",
+    "es": "🚨 CAÍDA DE MERCADO: RIESGO DE SECUENCIA DE RENDIMIENTOS",
+    "pt": "🚨 QUEDA NO MERCADO: RISCO DA SEQUÊNCIA DE RETORNOS"
+  },
+  "jsDropMsg": {
+    "en": "Equities returned {pct} in the year to age {age}. High stock exposure during bear markets causes steep drawdowns!",
+    "es": "Las acciones rindieron un {pct} en el año hasta los {age}. ¡La alta exposición a acciones en mercados bajistas causa fuertes caídas!",
+    "pt": "As ações renderam {pct} no ano até os {age} anos. A alta exposição a ações em períodos de queda causa grandes perdas!"
+  },
+  "jsDropTip": {
+    "en": "💡 Tip: the Cash Bucket Shield and part-time income help now; a larger bond share is a choice for the next flight.",
+    "es": "💡 Consejo: el Escudo de Efectivo y el trabajo parcial ayudan ahora; más peso en bonos es una decisión para el próximo vuelo.",
+    "pt": "💡 Dica: o Escudo de Caixa e a renda extra ajudam agora; mais renda fixa é uma escolha para o próximo voo."
+  },
+  "jsInflTitle": {
+    "en": "🔥 INFLATION SURGE SHOCK",
+    "es": "🔥 PICO DE INFLACIÓN",
+    "pt": "🔥 SURTO DE INFLAÇÃO"
+  },
+  "jsInflMsg": {
+    "en": "Inflation jumped to {pct}, and every future withdrawal rises with it.",
+    "es": "La inflación saltó al {pct}, y todas las retiradas futuras suben con ella.",
+    "pt": "A inflação subiu para {pct}, e todas as retiradas futuras sobem junto."
+  },
+  "jsInflTip": {
+    "en": "💡 Tip: keep some equity growth in your portfolio long-term to outpace inflation.",
+    "es": "💡 Consejo: mantén cierto crecimiento en acciones a largo plazo para superar la inflación.",
+    "pt": "💡 Dica: mantenha parte do patrimônio em ações para superar a inflação a longo prazo."
+  },
+  "jsSeqEndTitle": {
+    "en": "📜 THE HISTORICAL YEARS ARE OVER",
+    "es": "📜 FIN DEL TRAMO HISTÓRICO",
+    "pt": "📜 FIM DO TRECHO HISTÓRICO"
+  },
+  "jsSeqEndMsg": {
+    "en": "The real years {first}–{last} have been played. From here on the flight continues on simulated returns.",
+    "es": "Ya se jugaron los años reales {first}–{last}. A partir de aquí el vuelo sigue con rentabilidades simuladas.",
+    "pt": "Os anos reais {first}–{last} já foram jogados. Daqui em diante o voo continua com retornos simulados."
+  },
+  "jsWinTitle": {
+    "en": "MISSION ACCOMPLISHED!",
+    "es": "¡MISIÓN CUMPLIDA!",
+    "pt": "MISSÃO CUMPRIDA!"
+  },
+  "jsWinMsg": {
+    "en": "Congratulations, Pilot {name}! You landed at age {age} with {amount} left in the portfolio, about {real} in today’s money.",
+    "es": "¡Enhorabuena, Piloto {name}! Aterrizaste a los {age} años con {amount} en la cartera, unos {real} en dinero de hoy.",
+    "pt": "Parabéns, Piloto {name}! Você pousou aos {age} anos com {amount} na carteira, cerca de {real} em dinheiro de hoje."
+  },
+  "jsLossTitle": {
+    "en": "FLIGHT LOST: OUT OF FUEL",
+    "es": "VUELO PERDIDO: SIN COMBUSTIBLE",
+    "pt": "VOO PERDIDO: SEM COMBUSTÍVEL"
+  },
+  "jsLossMsgCrash": {
+    "en": "Pilot {name}, your portfolio first ran out at age {outAge} and stayed below zero for {years} consecutive years, so the flight ended at age {age}.",
+    "es": "Piloto {name}, tu cartera se agotó por primera vez a los {outAge} años y siguió bajo cero {years} años consecutivos, así que el vuelo terminó a los {age}.",
+    "pt": "Piloto {name}, sua carteira se esgotou pela primeira vez aos {outAge} anos e ficou abaixo de zero por {years} anos consecutivos, então o voo terminou aos {age}."
+  },
+  "jsLossMsgNegative": {
+    "en": "Pilot {name}, your portfolio first ran out at age {outAge} and was still below zero when the flight reached age {age}.",
+    "es": "Piloto {name}, tu cartera se agotó por primera vez a los {outAge} años y seguía bajo cero cuando el vuelo llegó a los {age}.",
+    "pt": "Piloto {name}, sua carteira se esgotou pela primeira vez aos {outAge} anos e ainda estava abaixo de zero quando o voo chegou aos {age}."
+  },
+  "jsTodayMoney": {
+    "en": "(≈ {amount} today)",
+    "es": "(≈ {amount} de hoy)",
+    "pt": "(≈ {amount} de hoje)"
+  },
+  "jsYearsAtAge": {
+    "en": "{years} Years (Age {age})",
+    "es": "{years} Años (Edad {age})",
+    "pt": "{years} Anos (Idade {age})"
+  },
+  "jsYearsCount": {
+    "en": "{years} Year(s)",
+    "es": "{years} Año(s)",
+    "pt": "{years} Ano(s)"
+  },
+  "jsTacticYears": {
+    "en": "{years} Tactic-Yrs (-{points} pts)",
+    "es": "{years} Años-Táctica (-{points} pts)",
+    "pt": "{years} Anos-Tática (-{points} pts)"
+  },
+  "jsLbYears": {
+    "en": "{years} Year(s)",
+    "es": "{years} Año(s)",
+    "pt": "{years} Ano(s)"
+  },
+  "jsLbTacticYears": {
+    "en": "{years} Tactic-Yrs",
+    "es": "{years} Años-Táctica",
+    "pt": "{years} Anos-Tática"
+  },
+  "jsScoreNote": {
+    "en": "Held to the board’s range of {min} to {max} points.",
+    "es": "Ajustada al rango de la tabla: de {min} a {max} puntos.",
+    "pt": "Ajustada à faixa do ranking: de {min} a {max} pontos."
+  },
+  "jsPoints": {
+    "en": "{points} pts",
+    "es": "{points} pts",
+    "pt": "{points} pts"
+  },
+  "jsYes": {
+    "en": "YES",
+    "es": "SÍ",
+    "pt": "SIM"
+  },
+  "jsNo": {
+    "en": "NO",
+    "es": "NO",
+    "pt": "NÃO"
+  },
+  "jsCanvasCrash": {
+    "en": "CRASHLINE EMERGENCY: {years}/{limit} Years Below Zero!",
+    "es": "EMERGENCIA EN DESPLOME: ¡{years}/{limit} años bajo cero!",
+    "pt": "EMERGÊNCIA EM QUEDA: {years}/{limit} anos abaixo de zero!"
+  },
+  "jsCanvasClear": {
+    "en": "Atmosphere: Clear Skies & Safe Cruising Altitude",
+    "es": "Atmósfera: Cielos Despejados y Altitud Segura",
+    "pt": "Atmosfera: Céu Limpo e Altitude Segura"
+  },
+  "jsCanvasCaution": {
+    "en": "Atmosphere: Mild Turbulence / Altitude Caution",
+    "es": "Atmósfera: Turbulencia Leve / Precaución de Altitud",
+    "pt": "Atmosfera: Turbulência Leve / Cuidado com a Altitude"
+  },
+  "jsAxisAge": {
+    "en": "Age {age}",
+    "es": "Edad {age}",
+    "pt": "Idade {age}"
+  },
+  "jsPitchCrash": {
+    "en": "🚨 CRASHLINE STALL",
+    "es": "🚨 PÉRDIDA DE SUSTENTACIÓN",
+    "pt": "🚨 RISCO DE QUEDA"
+  },
+  "jsPitchClimb": {
+    "en": "🛫 CLIMBING",
+    "es": "🛫 ASCENDIENDO",
+    "pt": "🛫 SUBINDO"
+  },
+  "jsPitchLevel": {
+    "en": "✈️ LEVEL CRUISE",
+    "es": "✈️ CRUCERO NIVELADO",
+    "pt": "✈️ CRUZEIRO NIVELADO"
+  },
+  "jsPitchDescend": {
+    "en": "📉 DESCENDING",
+    "es": "📉 DESCENDIENDO",
+    "pt": "📉 DESCENDO"
+  },
+  "jsPitchReady": {
+    "en": "🛫 READY ON TARMAC",
+    "es": "🛫 LISTO EN PISTA",
+    "pt": "🛫 PRONTO NA PISTA"
+  },
+  "jsCrashZone": {
+    "en": "CRASHLINE ZONE (BELOW {zero})",
+    "es": "ZONA DE DESPLOME (BAJO {zero})",
+    "pt": "ZONA DE COLAPSO (ABAIXO DE {zero})"
+  },
+  "jsPerYear": {
+    "en": "/ yr",
+    "es": "/ año",
+    "pt": "/ ano"
+  },
+  "jsEggFormula": {
+    "en": "{spend} × {multiple} = {egg} ({multiple}x Rule)",
+    "es": "{spend} × {multiple} = {egg} (Regla del {multiple}x)",
+    "pt": "{spend} × {multiple} = {egg} (Regra dos {multiple}x)"
+  },
+  "jsMcIntro": {
+    "en": "Simulates 1,000 randomized retirements from age {start} to {end} ({years} years) with the same yearly rules as the cockpit flight: your allocation, target-date fund, market sequence and switched-on tactics.",
+    "es": "Simula 1.000 jubilaciones aleatorias de los {start} a los {end} años ({years} años) con las mismas reglas anuales que el vuelo de la cabina: tu asignación, el fondo de fecha objetivo, la secuencia de mercado y las tácticas activadas.",
+    "pt": "Simula 1.000 aposentadorias aleatórias dos {start} aos {end} anos ({years} anos) com as mesmas regras anuais do voo da cabine: sua alocação, o fundo de data-alvo, a sequência de mercado e as táticas ativadas."
+  },
+  "jsMcSequence": {
+    "en": "Every run starts with the real years {first}–{last}, then continues on simulated returns.",
+    "es": "Cada simulación empieza con los años reales {first}–{last} y sigue con rentabilidades simuladas.",
+    "pt": "Cada simulação começa com os anos reais {first}–{last} e continua com retornos simulados."
+  },
+  "jsMcTactics": {
+    "en": "Tactics included: {list}.",
+    "es": "Tácticas incluidas: {list}.",
+    "pt": "Táticas incluídas: {list}."
+  },
+  "jsMcTacticsNone": {
+    "en": "none (switch them on in the cockpit)",
+    "es": "ninguna (actívalas en la cabina)",
+    "pt": "nenhuma (ative-as na cabine)"
+  },
+  "jsMcAltReal": {
+    "en": "≈ {amount} in today’s money",
+    "es": "≈ {amount} en dinero de hoy",
+    "pt": "≈ {amount} em dinheiro de hoje"
+  },
+  "jsMcAltNominal": {
+    "en": "≈ {amount} in future (nominal) money",
+    "es": "≈ {amount} en dinero futuro (nominal)",
+    "pt": "≈ {amount} em dinheiro futuro (nominal)"
+  },
+  "jsMcUnitNominal": {
+    "en": "Amounts in future (nominal) money, as an account statement would show them.",
+    "es": "Importes en dinero futuro (nominal), como los mostraría un extracto.",
+    "pt": "Valores em dinheiro futuro (nominal), como apareceriam num extrato."
+  },
+  "jsMcUnitReal": {
+    "en": "Amounts in today’s money, deflated by each run’s own inflation.",
+    "es": "Importes en dinero de hoy, descontada la inflación de cada simulación.",
+    "pt": "Valores em dinheiro de hoje, descontada a inflação de cada simulação."
+  },
+  "jsMcRowAge": {
+    "en": "Age {age} ({years} Yrs)",
+    "es": "Edad {age} ({years} Años)",
+    "pt": "Idade {age} ({years} Anos)"
+  },
+  "jsSweepRunning": {
+    "en": "Running 500 simulations at each withdrawal rate…",
+    "es": "Ejecutando 500 simulaciones por tasa de retirada…",
+    "pt": "Executando 500 simulações por taxa de retirada…"
+  },
+  "jsSweepBest": {
+    "en": "The highest withdrawal rate with at least {target}% success here is {rate}: {amount} a year on {egg}.",
+    "es": "La tasa de retirada más alta con al menos un {target}% de éxito aquí es {rate}: {amount} al año sobre {egg}.",
+    "pt": "A maior taxa de retirada com pelo menos {target}% de sucesso aqui é {rate}: {amount} por ano sobre {egg}."
+  },
+  "jsSweepNone": {
+    "en": "No withdrawal rate between {min} and {max} reaches {target}% success with this setup.",
+    "es": "Ninguna tasa de retirada entre {min} y {max} llega al {target}% de éxito con esta configuración.",
+    "pt": "Nenhuma taxa de retirada entre {min} e {max} chega a {target}% de sucesso com esta configuração."
+  },
+  "jsSweepCurrent": {
+    "en": "Your current rate is {rate}.",
+    "es": "Tu tasa actual es {rate}.",
+    "pt": "Sua taxa atual é {rate}."
+  },
+  "jsSweepAxisX": {
+    "en": "Initial withdrawal rate",
+    "es": "Tasa de retirada inicial",
+    "pt": "Taxa de retirada inicial"
+  },
+  "jsSweepAxisY": {
+    "en": "Success rate",
+    "es": "Tasa de éxito",
+    "pt": "Taxa de sucesso"
+  },
+  "jsSweepSeries": {
+    "en": "Success rate (500 runs per rate)",
+    "es": "Tasa de éxito (500 simulaciones por tasa)",
+    "pt": "Taxa de sucesso (500 simulações por taxa)"
+  },
+  "jsSweepThreshold": {
+    "en": "{target}% target",
+    "es": "Objetivo {target}%",
+    "pt": "Meta de {target}%"
   }
 }

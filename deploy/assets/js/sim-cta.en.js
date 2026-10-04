@@ -56,8 +56,8 @@ window.SIM_CTA_COPY = {
       },
       modest: {
         eyebrow: "What your result says",
-        title: "You moved your freedom date forward {years} years — from {baselineAge} to {age}.",
-        body: "{monthly} a month is {workDays} working days a year you no longer have to sell. That is a real result, and it came entirely from the habits this tool can see. The larger levers — what you earn, what you owe, and what your savings are invested in — are the ones it can’t.",
+        title: "You moved your freedom date forward {years} — from {baselineAge} to {age}.",
+        body: "{monthly} a month is {workDays} a year you no longer have to sell. That is a real result, and it came entirely from the habits this tool can see. The larger levers — what you earn, what you owe, and what your savings are invested in — are the ones it can’t.",
         lever: "Your largest single saving here is {topHabit}, at {topHabitMonthly} a month. Worth checking whether that is genuinely your biggest leak, or just the easiest slider to move.",
         primaryLabel: "Map your real numbers",
         primaryRoute: "financialSnapshot",
@@ -66,8 +66,8 @@ window.SIM_CTA_COPY = {
       },
       strong: {
         eyebrow: "What your result says",
-        title: "{years} years earlier — age {age} instead of {baselineAge}.",
-        body: "You found {monthly} a month, which compounds to {wealth} over thirty years and buys back {workDays} working days every year. The catch is in the assumption underneath it: the model expects you to hold this for three decades, and almost nobody sustains a change this size on willpower. They sustain it on structure.",
+        title: "{years} earlier — age {age} instead of {baselineAge}.",
+        body: "You found {monthly} a month, which compounds to {wealth} over thirty years and buys back {workDays} every year. The catch is in the assumption underneath it: the model expects you to hold this for three decades, and almost nobody sustains a change this size on willpower. They sustain it on structure.",
         lever: "Turning {monthly} a month into a standing instruction, before it reaches your current account, is what makes a result like this hold.",
         primaryLabel: "Build it around your real numbers",
         primaryRoute: "financialSnapshot",
@@ -76,8 +76,8 @@ window.SIM_CTA_COPY = {
       },
       major: {
         eyebrow: "What your result says",
-        title: "You just moved your freedom date {years} years — to age {age}.",
-        body: "{monthly} a month, {workDays} working days a year, {wealth} over thirty years. A result this large usually means one of two things: the habit set you started from was genuinely expensive, or you have cut to a level you would not actually live at. Which of the two it is changes everything about what to do next.",
+        title: "You just moved your freedom date {years} — to age {age}.",
+        body: "{monthly} a month, {workDays} a year, {wealth} over thirty years. A result this large usually means one of two things: the habit set you started from was genuinely expensive, or you have cut to a level you would not actually live at. Which of the two it is changes everything about what to do next.",
         lever: "The question isn’t whether the arithmetic works — it does. It’s which of these cuts you would still be making in year five.",
         primaryLabel: "Pressure-test it with your real numbers",
         primaryRoute: "financialSnapshot",
@@ -93,8 +93,18 @@ window.SIM_CTA_COPY = {
       beat: {
         eyebrow: "What your result says",
         title: "Your mix ended at {customVal} — {diff} ahead of plain 60/40.",
-        body: "{customCagr}% a year against {classicCagr}%, across {years} years from {startYear} to {endYear}. On the numbers, you won. What the chart cannot tell you is whether you would have held it: the same allocation that produced this went through stretches where it lost a third of its value, and the return only ever belonged to whoever was still holding on the other side.",
+        body: "{customCagr}% a year against {classicCagr}%, across {years} years from {startYear} to {endYear}. On the numbers, you won. What the chart cannot tell you is whether you would have held it: on the way, this allocation fell {maxDrawdown}% from a peak at its worst, and the return only ever belonged to whoever was still holding on the other side.",
         lever: "The useful question is not which allocation wins the backtest. It’s which one you would stay in through the worst three years of it.",
+        primaryLabel: "Find out what you’d actually hold",
+        primaryRoute: "investmentProfile",
+        secondaryLabel: "Or ask me about your own allocation",
+        secondaryRoute: "contact"
+      },
+      beatSteady: {
+        eyebrow: "What your result says",
+        title: "Your mix ended at {customVal} — {diff} ahead of plain 60/40.",
+        body: "{customCagr}% a year against {classicCagr}%, across {years} years from {startYear} to {endYear}, and its worst fall from a peak was {maxDrawdown}%. Ahead and calmer at once is rare enough to check before trusting it: a lucky start year, or one asset class having its decade, can produce it. Run the same mix from a start year you would not have picked.",
+        lever: "An allocation worth keeping is one that still looks reasonable from a start year you did not choose.",
         primaryLabel: "Find out what you’d actually hold",
         primaryRoute: "investmentProfile",
         secondaryLabel: "Or ask me about your own allocation",
@@ -106,6 +116,16 @@ window.SIM_CTA_COPY = {
         body: "{customCagr}% a year against {classicCagr}%, across {years} years. This is the most common outcome in the tool, and it is not a mistake. It is what happens when an allocation is arrived at by instinct rather than decided in advance — the dull benchmark is hard to beat precisely because it never changes its mind.",
         lever: "An allocation is worth deciding once, in writing, before a bad year makes the decision for you.",
         primaryLabel: "Decide yours properly",
+        primaryRoute: "investmentProfile",
+        secondaryLabel: "Or talk it through with me",
+        secondaryRoute: "contact"
+      },
+      matched: {
+        eyebrow: "What your result says",
+        title: "You ran the benchmark itself: {customVal} after {years} years.",
+        body: "Your sliders are on the plain 60/40, so the two lines are the same line: {customCagr}% a year from {startYear} to {endYear}. That is a fine place to start, and the point of the tool is what happens when you move away from it — try more stocks, some gold or a different start year, and watch which years the difference comes from.",
+        lever: "A benchmark is only useful once you know which of its years you could not have sat through.",
+        primaryLabel: "Find out what you’d actually hold",
         primaryRoute: "investmentProfile",
         secondaryLabel: "Or talk it through with me",
         secondaryRoute: "contact"
@@ -148,7 +168,7 @@ window.SIM_CTA_COPY = {
       },
       comfortable: {
         eyebrow: "Your flight debrief",
-        title: "You finished with {finalBalance} — around {multiple}× what you started with.",
+        title: "You finished with {finalBalance} — around {multiple}× what you started with, after inflation.",
         body: "The plan did not merely survive to {age}; it ended with far more than it began. That reads as a win, and it is one — but it also means the plan is over-funded. On these numbers you could have stopped earlier, drawn more than {spending} a year, or taken less risk to arrive in the same place. A large surplus at the end is a cost too. It is just a quieter one.",
         lever: "The question this run raises isn’t whether you’ll have enough. It’s how much of your life you’re spending to over-fund it.",
         primaryLabel: "See what you could safely change",
@@ -196,7 +216,7 @@ window.SIM_CTA_COPY = {
       crossoverAscetic: {
         eyebrow: "What your result says",
         title: "You bought freedom in {years} years — with a joy score of {joy} out of 100.",
-        body: "{passive} a month against {expenses}, reached by cutting almost everything that makes a life feel like one. It is the fastest route in the tool and the one hardly anyone completes. The honest question isn’t whether the arithmetic works — it’s whether you would still be living this way in year eight, with no way to know how the story ends.",
+        body: "{passive} a month against {expenses}, reached by cutting almost everything that makes a life feel like one. It is the fastest route in the tool and the one hardly anyone completes. The honest question isn’t whether the arithmetic works — it’s whether you would still be living this way in year {years}, with no way to know how the story ends.",
         lever: "A plan you would abandon halfway is slower than a longer plan you would finish.",
         primaryLabel: "Talk through a version you’d actually live",
         primaryRoute: "contact",
@@ -234,7 +254,7 @@ window.SIM_CTA_COPY = {
       investing: {
         eyebrow: "Your diagnosis",
         title: "{archetype} — {score}% literacy, weakest in {weakest} at {weakestPct}%.",
-        body: "{strongest} came out well, at {strongestPct}%. {weakest} is where this run cost you, and it is the most expensive group to leave alone: those decisions compound, so an error in them keeps charging you for as long as it stays in place. You finished with a net worth of {netWorth} and {cashFlow} a month of cash flow.",
+        body: "{strengthNote}{weakest} is where this run cost you, and it is the most expensive group to leave alone: those decisions compound, so an error in them keeps charging you for as long as it stays in place. You finished with a net worth of {netWorth} and {cashFlow} a month of cash flow.",
         lever: "Allocation and fees are worth deciding once, deliberately, instead of being decided by whatever you happened to buy first.",
         primaryLabel: "Set your investment profile",
         primaryRoute: "investmentProfile",
@@ -244,7 +264,7 @@ window.SIM_CTA_COPY = {
       debt: {
         eyebrow: "Your diagnosis",
         title: "{archetype} — {score}% literacy, weakest in {weakest} at {weakestPct}%.",
-        body: "{strongest} was solid, at {strongestPct}%. {weakest} is where the run leaked. Leverage is the least forgiving group here because the cost is contractual and the benefit is only ever a forecast — the interest arrives whatever the market does. You finished with a net worth of {netWorth} and {cashFlow} a month of cash flow.",
+        body: "{strengthNote}{weakest} is where the run leaked. Leverage is the least forgiving group here because the cost is contractual and the benefit is only ever a forecast — the interest arrives whatever the market does. You finished with a net worth of {netWorth} and {cashFlow} a month of cash flow.",
         lever: "Every debt decision is a comparison, and you cannot make it without seeing the whole balance sheet at once.",
         primaryLabel: "Lay out your balance sheet",
         primaryRoute: "financialSnapshot",
@@ -254,7 +274,7 @@ window.SIM_CTA_COPY = {
       spending: {
         eyebrow: "Your diagnosis",
         title: "{archetype} — {score}% literacy, weakest in {weakest} at {weakestPct}%.",
-        body: "{strongest} came out strong, at {strongestPct}%. {weakest} is the gap — and it is the one people are least often shown honestly, because it is the only one that requires looking at what actually left the account rather than what was meant to. You finished with a net worth of {netWorth} and {cashFlow} a month of cash flow.",
+        body: "{strengthNote}{weakest} is the gap — and it is the one people are least often shown honestly, because it is the only one that requires looking at what actually left the account rather than what was meant to. You finished with a net worth of {netWorth} and {cashFlow} a month of cash flow.",
         lever: "Fifteen days of recording every expense will tell you more about this than any projection can.",
         primaryLabel: "Get the free expense template",
         primaryRoute: "templates",
@@ -264,7 +284,7 @@ window.SIM_CTA_COPY = {
       tax: {
         eyebrow: "Your diagnosis",
         title: "{archetype} — {score}% literacy, weakest in {weakest} at {weakestPct}%.",
-        body: "{strongest} was strong, at {strongestPct}%. {weakest} is where this run gave money away. It is the only group here where the gain is guaranteed rather than expected, which makes leaving it unclaimed the most expensive habit in the set. You finished with a net worth of {netWorth}.",
+        body: "{strengthNote}{weakest} is where this run gave money away. Its gains are among the few here that are guaranteed rather than expected — an employer match is paid the day you contribute, as surely as paying off a 22% card saves 22% — which makes leaving them unclaimed one of the most expensive habits in the set. You finished with a net worth of {netWorth}.",
         lever: "Tax-advantaged capacity is use-it-or-lose-it in most years, which makes it the first thing to check rather than the last.",
         primaryLabel: "Set your profile and horizon",
         primaryRoute: "investmentProfile",
@@ -274,7 +294,7 @@ window.SIM_CTA_COPY = {
       risk: {
         eyebrow: "Your diagnosis",
         title: "{archetype} — {score}% literacy, weakest in {weakest} at {weakestPct}%.",
-        body: "{strongest} came out well, at {strongestPct}%. {weakest} is the exposure. Protection decisions cost a little every year and matter exactly once, which is precisely the shape of decision that gets deferred indefinitely. You finished with a net worth of {netWorth}.",
+        body: "{strengthNote}{weakest} is the exposure. Protection decisions cost a little every year and matter exactly once, which is precisely the shape of decision that gets deferred indefinitely. You finished with a net worth of {netWorth}.",
         lever: "The gap worth closing first is the one where a single bad year would undo a decade of everything else.",
         primaryLabel: "Set your risk profile",
         primaryRoute: "investmentProfile",

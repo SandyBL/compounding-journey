@@ -357,7 +357,7 @@ Las decisiones que tomes son tuyas, y sus consecuencias también.
 
 ## Las calculadoras y los simuladores
 
-Las [calculadoras]({{tools}}) y los simuladores hacen aritmética con los números que tú introduces y con los supuestos que la propia página declara. Sus resultados son **estimaciones ilustrativas**, no previsiones: no incorporan inflación real, fiscalidad, comisiones futuras, crisis, cambios en tus ingresos ni el comportamiento de ningún mercado concreto. Una rentabilidad pasada no se repite porque una calculadora la extienda en línea recta.
+Las [calculadoras]({{tools}}) y los simuladores hacen aritmética con los números que tú introduces y con los supuestos que la propia página declara. Sus resultados son **estimaciones ilustrativas**, no previsiones: cuando modelan inflación, crisis o rentabilidades de mercado, lo hacen con supuestos simplificados o con datos históricos que la propia página cita, y no tienen en cuenta tu fiscalidad, comisiones futuras ni cambios en tus ingresos. Ninguno predice cómo se comportará un mercado a partir de hoy. Una rentabilidad pasada no se repite porque una calculadora la extienda en línea recta.
 
 Todo el cálculo ocurre en tu navegador y no se guarda nada, salvo las simulaciones que tú decidas guardar: una puntuación enviada a una clasificación, o un escenario añadido a los [datos públicos]({{data}}).
 
@@ -422,7 +422,7 @@ The decisions you make are yours, and so are their consequences.
 
 ## The calculators and simulators
 
-The [calculators]({{tools}}) and simulators do arithmetic on the numbers you enter, under the assumptions each page states. Their results are **illustrative estimates, not forecasts**: they do not model real inflation, tax, future fees, crashes, changes in your income, or the behavior of any actual market. A past return does not repeat because a calculator extended it in a straight line.
+The [calculators]({{tools}}) and simulators do arithmetic on the numbers you enter, under the assumptions each page states. Their results are **illustrative estimates, not forecasts**: where they model inflation, crashes or market returns, they do so with simplified assumptions or with historical data the page itself cites, and they do not account for your tax, future fees or changes in your income. None of them predicts how any market will behave from today. A past return does not repeat because a calculator extended it in a straight line.
 
 All of the calculation happens in your browser, and nothing is stored — except the simulations you choose to save: a score submitted to a leaderboard, or a scenario added to the [public data]({{data}}).
 
@@ -487,7 +487,7 @@ As decisões que você toma são suas, e as consequências também.
 
 ## As calculadoras e os simuladores
 
-As [calculadoras]({{tools}}) e os simuladores fazem aritmética com os números que você informa e com as premissas que cada página declara. Os resultados são **estimativas ilustrativas, não previsões**: não modelam inflação real, impostos, comissões futuras, quedas de mercado, mudanças na sua renda nem o comportamento de nenhum mercado específico. Uma rentabilidade passada não se repete só porque uma calculadora a prolongou em linha reta.
+As [calculadoras]({{tools}}) e os simuladores fazem aritmética com os números que você informa e com as premissas que cada página declara. Os resultados são **estimativas ilustrativas, não previsões**: quando modelam inflação, quedas de mercado ou rentabilidades, fazem isso com premissas simplificadas ou com dados históricos que a própria página cita, e não consideram os seus impostos, comissões futuras nem mudanças na sua renda. Nenhum deles prevê como um mercado vai se comportar a partir de hoje. Uma rentabilidade passada não se repete só porque uma calculadora a prolongou em linha reta.
 
 Todo o cálculo acontece no seu navegador e nada é guardado — exceto as simulações que você escolher guardar: uma pontuação enviada para um ranking, ou um cenário acrescentado aos [dados públicos]({{data}}).
 
