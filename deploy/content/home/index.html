@@ -1555,10 +1555,14 @@
                     <a href="/es/blog/" data-blog-link class="header-publication-button" aria-label="Blog">
                         <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
                     </a>
-                    <a href="https://compoundingjourney.substack.com/" data-newsletter-link target="_blank" rel="noopener noreferrer" class="header-publication-button" aria-label="Newsletter">
-                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-                    </a>
                 </div>
+                <!-- build: The email subscription. It opens the Subscribe dialog the
+                     build appends to every page (scripts/newsletter-subscribe.mjs);
+                     it never links to Substack, which is labelled separately. -->
+                <a href="#subscribe" class="header-subscribe" data-subscribe-open data-subscribe-placement="header">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span class="header-subscribe__label"><span lang-content="es">Suscribirse</span><span lang-content="en">Subscribe</span><span lang-content="pt">Inscrever-se</span></span>
+                </a>
                 <button type="button" class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
                     <span class="mobile-menu-toggle__icon" aria-hidden="true"></span>
                 </button>
@@ -1636,6 +1640,10 @@
                     <span lang-content="es">Freedom Compass</span><span lang-content="en">Freedom Compass</span><span lang-content="pt">Freedom Compass</span>
                     <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M4 10h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
+                <a class="site-menu-subscribe" href="#subscribe" data-subscribe-open data-subscribe-placement="menu">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span lang-content="es">Suscribirse por email</span><span lang-content="en">Subscribe by email</span><span lang-content="pt">Inscrever-se por e-mail</span>
+                </a>
             </div>
         </div>
 
@@ -1680,12 +1688,12 @@
                 Desenhe a sua liberdade. Invista e viva de acordo com os seus valores. Estratégia financeira com propósito e disciplina.
             </p>
 
-            <!-- Newsletter Mantra / Slogan Card -->
+            <!-- Mantra / Slogan Card -->
             <div class="bg-white/5 border border-white/15 rounded-2xl p-6 max-w-xl mx-auto backdrop-blur-md shadow-xl mb-10">
                 <p class="text-[10px] uppercase tracking-widest text-warmgold font-bold mb-1">
-                    <span lang-content="es">Mantra de la Newsletter</span>
-                    <span lang-content="en">Newsletter Mantra</span>
-                    <span lang-content="pt">Mantra da Newsletter</span>
+                    <span lang-content="es">Nuestro mantra</span>
+                    <span lang-content="en">Our mantra</span>
+                    <span lang-content="pt">O nosso mantra</span>
                 </p>
                 <p class="text-lg sm:text-xl font-medium tracking-wide italic text-creamsoft">
                     <span lang-content="es">"Haz que tu dinero trabaje para tu felicidad"</span>
@@ -1695,10 +1703,10 @@
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://compoundingjourney.substack.com/" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 bg-warmgold hover:bg-warmgold/95 text-darkbark font-bold rounded-lg shadow-lg hover:shadow-warmgold/20 hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
-                    <span lang-content="es">Unirse al Newsletter</span>
-                    <span lang-content="en">Join the Newsletter</span>
-                    <span lang-content="pt">Inscrever-se na Newsletter</span>
+                <a href="#subscribe" data-subscribe-open data-subscribe-placement="hero" class="inline-flex items-center gap-2 px-6 py-3.5 bg-warmgold hover:bg-warmgold/95 text-darkbark font-bold rounded-lg shadow-lg hover:shadow-warmgold/20 hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
+                    <span lang-content="es">Suscribirme por email</span>
+                    <span lang-content="en">Subscribe by email</span>
+                    <span lang-content="pt">Inscrever-me por e-mail</span>
                     <i class="fa-solid fa-paper-plane text-sm"></i>
                 </a>
                 <a href="#herramientas" class="inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/35 text-white font-semibold rounded-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
@@ -1956,10 +1964,10 @@
             <div class="bg-creamsoft border border-creamborder rounded-3xl p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
                 <div class="space-y-4 max-w-xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-forestgreen/5 border border-forestgreen/10 rounded-full text-xs font-semibold text-forestgreen">
-                        <i class="fa-solid fa-newspaper text-warmgold"></i>
-                        <span lang-content="es">Newsletter Oficial</span>
-                        <span lang-content="en">Official Newsletter</span>
-                        <span lang-content="pt">Newsletter Oficial</span>
+                        <i class="fa-regular fa-envelope text-warmgold"></i>
+                        <span lang-content="es">Suscripción por email</span>
+                        <span lang-content="en">Email subscription</span>
+                        <span lang-content="pt">Inscrição por e-mail</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-extrabold text-forestgreen leading-tight">
                         <span lang-content="es">Ideas para invertir con propósito y vivir con más libertad</span>
@@ -1967,18 +1975,26 @@
                         <span lang-content="pt">Ideias para investir com propósito e viver com mais liberdade</span>
                     </h3>
                     <p class="text-sm text-darkbark/80 leading-relaxed">
-                        <span lang-content="es">Psicología del dinero, hábitos conscientes y estrategias de inversión de calidad para convertir tus recursos en tiempo, tranquilidad y experiencias que importan.</span>
-                        <span lang-content="en">Money psychology, mindful habits, and quality investment strategies to turn your resources into time, peace of mind, and meaningful experiences.</span>
-                        <span lang-content="pt">Psicologia do dinheiro, hábitos conscientes e estratégias de investimento de qualidade para transformar os seus recursos em tempo, tranquilidade e experiências importantes.</span>
+                        <span lang-content="es">Psicología del dinero, hábitos conscientes y estrategias de inversión de calidad para convertir tus recursos en tiempo, tranquilidad y experiencias que importan. Cada artículo nuevo llega a tu email, en español.</span>
+                        <span lang-content="en">Money psychology, mindful habits, and quality investment strategies to turn your resources into time, peace of mind, and meaningful experiences. Every new article arrives in your inbox, in English.</span>
+                        <span lang-content="pt">Psicologia do dinheiro, hábitos conscientes e estratégias de investimento de qualidade para transformar os seus recursos em tempo, tranquilidade e experiências importantes. Cada novo artigo chega ao seu e-mail, em português.</span>
                     </p>
                 </div>
-                <div class="w-full md:w-auto shrink-0">
-                    <a href="https://compoundingjourney.substack.com/" data-newsletter-link target="_blank" rel="noopener noreferrer" class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all">
+                <div class="w-full md:w-auto shrink-0 text-center">
+                    <a href="#subscribe" data-subscribe-open data-subscribe-placement="home-strategy-card" class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all">
                         <span lang-content="es">Suscribirse gratis</span>
                         <span lang-content="en">Subscribe for free</span>
                         <span lang-content="pt">Inscrever-se gratuitamente</span>
                         <i class="fa-solid fa-arrow-right text-warmgold"></i>
                     </a>
+                    <p class="mt-3 text-xs text-darkbark/60">
+                        <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="substack-link">
+                            <svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="14" height="14"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                            <span lang-content="es">O lee la newsletter en Substack (en inglés)</span>
+                            <span lang-content="en">Or read the newsletter on Substack (English)</span>
+                            <span lang-content="pt">Ou leia a newsletter no Substack (em inglês)</span>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -3026,12 +3042,18 @@
                 <!--latest-articles:start--><!--latest-articles:end-->
             </div>
 
-            <div class="mt-10 flex justify-center">
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
                 <a href="/es/blog/" data-blog-link class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                     <span lang-content="es">Ver todos los artículos</span>
                     <span lang-content="en">See every article</span>
                     <span lang-content="pt">Ver todos os artigos</span>
                     <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#subscribe" class="subscribe-button" data-subscribe-open data-subscribe-placement="home-latest-articles">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span lang-content="es">Recibir los nuevos por email</span>
+                    <span lang-content="en">Get new ones by email</span>
+                    <span lang-content="pt">Receber os novos por e-mail</span>
                 </a>
             </div>
         </div>
@@ -3499,9 +3521,9 @@
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    <span lang-content="es">Conoce al educador, sigue la newsletter o cuéntanos directamente tu situación financiera.</span>
-                    <span lang-content="en">Meet the educator, follow the newsletter, or tell us directly about your financial situation.</span>
-                    <span lang-content="pt">Conheça o educador, acompanhe a newsletter ou fale diretamente comigo sobre a sua situação financeira.</span>
+                    <span lang-content="es">Conoce al educador, recibe los artículos por email o cuéntanos directamente tu situación financiera.</span>
+                    <span lang-content="en">Meet the educator, get the articles by email, or tell us directly about your financial situation.</span>
+                    <span lang-content="pt">Conheça o educador, receba os artigos por e-mail ou fale diretamente comigo sobre a sua situação financeira.</span>
                 </p>
 
                 <nav class="contact-path-nav" aria-labelledby="contact-heading">
@@ -3512,10 +3534,10 @@
                         <span lang-content="pt">Conheça o educador</span>
                     </a>
                     <a href="#contact-newsletter" class="contact-path-link">
-                        <i class="fa-regular fa-newspaper text-warmgold" aria-hidden="true"></i>
-                        <span lang-content="es">Sigue la Newsletter</span>
-                        <span lang-content="en">Follow the Newsletter</span>
-                        <span lang-content="pt">Acompanhe a Newsletter</span>
+                        <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
+                        <span lang-content="es">Suscripción por email</span>
+                        <span lang-content="en">Email subscription</span>
+                        <span lang-content="pt">Inscrição por e-mail</span>
                     </a>
                     <a href="#contact-form" class="contact-path-link">
                         <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
@@ -3643,17 +3665,19 @@
                                     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                                 </a>
 
+                                <!-- build: Always Substack, in every language. It used to carry
+                                     data-newsletter-link, which pointed the Spanish and Portuguese
+                                     pages at a different provider under a "Substack" label. -->
                                 <a
-                                    href="https://preview.mailerlite.io/forms/2524111/193713027715958521/share"
-                                    data-newsletter-link
+                                    href="https://compoundingjourney.substack.com/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="inline-flex items-center gap-3 px-6 py-3.5 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
+                                    class="inline-flex items-center gap-3 px-6 py-3.5 bg-white border-2 border-forestgreen text-forestgreen font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
                                 >
-                                    <i class="fa-solid fa-bookmark text-warmgold text-lg"></i>
-                                    <span lang-content="es">Leer en Substack</span>
-                                    <span lang-content="en">Read on Substack</span>
-                                    <span lang-content="pt">Ler no Substack</span>
+                                    <svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                                    <span lang-content="es">Leer en Substack (en inglés)</span>
+                                    <span lang-content="en">Read on Substack (English)</span>
+                                    <span lang-content="pt">Ler no Substack (em inglês)</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                                 </a>
                             </div>
@@ -3677,9 +3701,9 @@
                                 <span lang-content="pt">Uma conversa que continua</span>
                             </p>
                             <h3 id="contact-newsletter-heading" class="text-2xl font-extrabold text-forestgreen leading-tight">
-                                <span lang-content="es">Sigue la newsletter en tu idioma</span>
-                                <span lang-content="en">Follow the newsletter in your language</span>
-                                <span lang-content="pt">Acompanhe a newsletter no seu idioma</span>
+                                <span lang-content="es">Recibe cada nuevo artículo por email, en español</span>
+                                <span lang-content="en">Get every new article by email, in English</span>
+                                <span lang-content="pt">Receba cada novo artigo por e-mail, em português</span>
                             </h3>
                             <p class="mt-3 text-sm text-darkbark/70 leading-relaxed">
                                 <span lang-content="es">Recibe ideas prácticas sobre psicología del dinero, inversión con propósito y decisiones financieras que respetan tus valores.</span>
@@ -3690,16 +3714,22 @@
 
                         <div class="md:col-span-5 rounded-2xl bg-creamsoft border border-creamborder p-6">
                             <p class="text-sm font-semibold text-darkbark/75 leading-relaxed mb-5">
-                                <span lang-content="es">El botón abre automáticamente la edición en español seleccionada para esta página.</span>
-                                <span lang-content="en">The button automatically opens the English edition selected for this page.</span>
-                                <span lang-content="pt">O botão abre automaticamente a edição em português selecionada para esta página.</span>
+                                <span lang-content="es">Solo tu nombre y tu email. Primero llega un email de bienvenida con los tres artículos más leídos, y después uno por cada artículo nuevo.</span>
+                                <span lang-content="en">Just your first name and email. A welcome email with the three most-read articles comes first, then one email per new article.</span>
+                                <span lang-content="pt">Só o seu nome e o seu e-mail. Primeiro chega um e-mail de boas-vindas com os três artigos mais lidos, e depois um por cada novo artigo.</span>
                             </p>
-                            <a href="https://preview.mailerlite.io/forms/2524111/193713027715958521/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:ring-4 focus:ring-warmgold/30 transition-all">
-                                <span lang-content="es">Seguir la Newsletter</span>
-                                <span lang-content="en">Follow the Newsletter</span>
-                                <span lang-content="pt">Acompanhar a Newsletter</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-warmgold" aria-hidden="true"></i>
+                            <a href="#subscribe" data-subscribe-open data-subscribe-placement="home-contact-newsletter" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:ring-4 focus:ring-warmgold/30 transition-all">
+                                <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
+                                <span lang-content="es">Suscribirme por email</span>
+                                <span lang-content="en">Subscribe by email</span>
+                                <span lang-content="pt">Inscrever-me por e-mail</span>
                             </a>
+                            <p class="mt-4 text-xs text-darkbark/60 leading-relaxed">
+                                <span lang-content="es">¿Prefieres Substack? La newsletter de Compounding Journey en Substack es una publicación aparte, en inglés:</span>
+                                <span lang-content="en">Prefer Substack? The Compounding Journey newsletter on Substack is a separate publication, in English:</span>
+                                <span lang-content="pt">Prefere o Substack? A newsletter do Compounding Journey no Substack é uma publicação separada, em inglês:</span>
+                                <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="substack-link"><svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="14" height="14"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>Substack</a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -3993,7 +4023,17 @@
                         <span lang-content="pt">E-mail</span>
                     </a>
                     <a href="https://www.linkedin.com/in/sandy-bradbury" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">LinkedIn</a>
-                    <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Substack</a>
+                    <a href="#subscribe" data-subscribe-open data-subscribe-placement="footer" class="hover:text-warmgold transition-colors">
+                        <span lang-content="es">Suscribirse por email</span>
+                        <span lang-content="en">Subscribe by email</span>
+                        <span lang-content="pt">Inscrever-se por e-mail</span>
+                    </a>
+                    <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 hover:text-warmgold transition-colors">
+                        <svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="12" height="12"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                        <span lang-content="es">Substack (en inglés)</span>
+                        <span lang-content="en">Substack (English)</span>
+                        <span lang-content="pt">Substack (em inglês)</span>
+                    </a>
                     <a href="https://www.instagram.com/compounding.journey_sb/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Instagram</a>
                 </div>
             </div>
@@ -4229,10 +4269,14 @@
             console.warn("Currency preference could not be read from localStorage.", error);
         }
 
+        // Where a data-newsletter-link points. That is now only ever the English
+        // Substack, in all three languages: the third-party forms it used to name
+        // for Spanish and Portuguese are replaced by the on-site email
+        // subscription, which every "Subscribe" control opens instead.
         const newsletterLinks = {
-            es: "https://preview.mailerlite.io/forms/2524111/193713027715958521/share",
+            es: "https://compoundingjourney.substack.com/",
             en: "https://compoundingjourney.substack.com/",
-            pt: "https://preview.mailerlite.io/forms/2524111/193713995121690448/share"
+            pt: "https://compoundingjourney.substack.com/"
         };
 
         // Where the nav's page items point, per language.

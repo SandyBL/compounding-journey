@@ -19,6 +19,10 @@ import { escapeHtml, jsonLdScript } from './markdown.mjs';
 // for why one table rather than one per generator, and for why the header now
 // draws the home page's own pill rather than a strip of its own below it.
 import { NAV_SCRIPT, assertSectionKey, headerMenu, headerNav, sectionNavRow } from './section-nav.mjs';
+// The email subscription: a band above the footer of every shell page, and the
+// dialog it opens at the end of <body>. See the comment at the top of that
+// module for how it is kept apart from the Substack link it carries.
+import { subscribeFooterBand, subscribeTail } from './newsletter-subscribe.mjs';
 import {
   DEFAULT_LANGUAGE,
   LANGUAGES,
@@ -163,6 +167,7 @@ function footer(strings, language, section, pathname) {
     .map((page) => `<a href="${legalPath(page, language)}">${escapeHtml(strings[`legalNav_${page}`])}</a>`)
     .join('');
   return `
+  ${subscribeFooterBand(language)}
   <footer class="site-footer"><div class="container">
     <nav class="footer-legal" aria-label="${escapeHtml(strings.legalOtherPages)}">${legal}</nav>
     <div class="footer-row">
@@ -293,7 +298,7 @@ ${jsonLd}
     </div>
 ${body}
   </main>${footer(strings, language, section, pathname)}
-</div>${NAV_SCRIPT}${extraScripts}</body>
+</div>${subscribeTail(language)}${NAV_SCRIPT}${extraScripts}</body>
 </html>
 `;
 }

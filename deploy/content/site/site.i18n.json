@@ -457,9 +457,9 @@
     "pt": "Ver como são as sessões"
   },
   "newsletterFollow": {
-    "es": "Recibir la newsletter",
-    "en": "Get the newsletter",
-    "pt": "Receber a newsletter"
+    "es": "Recibir los nuevos artículos por email",
+    "en": "Get new articles by email",
+    "pt": "Receber os novos artigos por e-mail"
   },
   "templatesAll": {
     "es": "Ver todas las plantillas",
@@ -502,19 +502,19 @@
     "pt": "Receba o que eu escrever a seguir"
   },
   "templateOptinBody": {
-    "es": "La plantilla es tuya sin dejar ningún dato. Si quieres, puedes suscribirte al boletín y recibir los artículos nuevos, las plantillas y las herramientas cuando salgan.",
-    "en": "The template is yours without leaving any details. If you want to, you can subscribe to the newsletter and get new articles, templates and tools as they come out.",
-    "pt": "O modelo é seu sem deixar nenhum dado. Se quiser, você pode assinar a newsletter e receber os artigos, modelos e ferramentas novos quando saírem."
+    "es": "La plantilla es tuya sin dejar ningún dato. Si quieres, puedes suscribirte por email y recibir cada artículo nuevo en español en cuanto se publique.",
+    "en": "The template is yours without leaving any details. If you want to, you can subscribe by email and get each new article in English as soon as it is published.",
+    "pt": "O modelo é seu sem deixar nenhum dado. Se quiser, você pode se inscrever por e-mail e receber cada novo artigo em português assim que for publicado."
   },
   "templateOptinAction": {
-    "es": "Suscribirme al boletín",
-    "en": "Subscribe to the newsletter",
-    "pt": "Assinar a newsletter"
+    "es": "Suscribirme por email",
+    "en": "Subscribe by email",
+    "pt": "Inscrever-me por e-mail"
   },
   "templateOptinNote": {
-    "es": "Se abre en el formulario del proveedor del boletín. Puedes darte de baja en cualquier momento y la descarga no depende de ello.",
-    "en": "Opens the newsletter provider's own form. You can unsubscribe at any time, and the download does not depend on it.",
-    "pt": "Abre o formulário do próprio fornecedor da newsletter. Você pode cancelar a assinatura a qualquer momento, e o download não depende disso."
+    "es": "Solo te pide tu nombre y tu email. Puedes darte de baja con un clic desde cualquier email, y la descarga no depende de ello.",
+    "en": "It only asks for your first name and email. You can unsubscribe with one click from any email, and the download does not depend on it.",
+    "pt": "Só pede o seu nome e o seu e-mail. Você pode cancelar a inscrição com um clique em qualquer e-mail, e o download não depende disso."
   },
   "templateNextStarted": {
     "es": "Tu descarga ha comenzado",

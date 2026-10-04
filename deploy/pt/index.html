@@ -55,6 +55,7 @@
         "height": 2048
       },
       "description": "Financial education about money psychology, intentional investing, compound growth, budgeting, and financial freedom, with free calculators and downloadable Excel templates.",
+      "email": "compoundingjourney@gmail.com",
       "founder": {
         "@id": "https://compoundingjourney.com/#sandy-bradbury"
       },
@@ -78,6 +79,7 @@
       "url": "https://compoundingjourney.com/es/sobre-mi/",
       "image": "https://compoundingjourney.com/sandy-bradbury-portrait.png",
       "jobTitle": "Financial educator",
+      "email": "compoundingjourney@gmail.com",
       "description": "Financial educator writing about money psychology, budgeting, compound growth and long-term investing. Not an accredited financial adviser: no personal investment recommendations are given and no client money is managed.",
       "worksFor": {
         "@id": "https://compoundingjourney.com/#organization"
@@ -181,7 +183,7 @@
           "name": "Que calculadoras financeiras gratuitas inclui a Compounding Journey?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de retirada, e uma calculadora que converte o custo de uma compra em horas de trabalho."
+            "text": "A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de retirada, uma calculadora que converte o custo de uma compra em horas de trabalho e uma calculadora de juros compostos negativos que mostra quanto patrimônio as taxas e os impostos levam ao longo dos anos."
           }
         },
         {
@@ -240,7 +242,7 @@
     <link rel="stylesheet" href="/assets/css/home.css?v=443ff8e984c0">
     <link rel="stylesheet" href="/assets/css/header.css?v=source">
     <link rel="stylesheet" href="/assets/css/a11y.css?v=source">
-    <script defer src="/assets/js/home.js?v=a289998bbb19"></script>
+    <script defer src="/assets/js/home.js?v=071527cdcd12"></script>
     <script type="module" src="/assets/js/home-identity.js?v=3944bba45c45"></script>
     <!--manifest:start-->
     <link rel="manifest" href="/manifest.pt.webmanifest">
@@ -305,10 +307,15 @@
                  Pilares used to be the first item and is not here any more. It
                  is the strip immediately below the hero - the first thing under
                  the fold, reached by scrolling once - while Sesiones is a page
-                 that cannot be found at all unless something links it. The pill
-                 has room for seven items, so the slot went to the page that
-                 needs it. /pillars still redirects and siteRoutes still maps it, so
-                 the old shortcut and any inbound link to it keep working. -->
+                 that cannot be found at all unless something links it, so the
+                 slot went to the page that needed it. /pillars still redirects
+                 and siteRoutes still maps it, so the old shortcut and any
+                 inbound link to it keep working.
+                 The row was full at seven items when that trade was made. It
+                 holds four and a call to action now, because two of those seven
+                 and the two that followed them moved behind the Ayuda label
+                 below - which is what made room for the Freedom Compass button
+                 on every generated page, where it had never been. -->
             <nav class="desktop-section-nav" aria-label="Section navigation">
                 <a href="/pt/blog/" data-blog-link>
                     <span data-i18n>Blog</span>
@@ -336,29 +343,54 @@
                         </a>
                     </div>
                 </div>
-                <a href="/pt/sobre-mim/" data-section-link="about">
-                    <span data-i18n>Sobre mim</span>
-                </a>
-                <a href="/pt/sessoes/" data-section-link="sessions">
-                    <span data-i18n>Sessões</span>
-                </a>
-                <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
-                    <span data-i18n>FAQ</span>
-                </a>
-                <!-- No data-site-route, unlike FAQ and the Freedom Compass
-                     button. That attribute is the hook for the handler that
-                     turns a nav click into a smooth scroll, and it doubles as
-                     the key into `siteRoutes`, which exists so that arriving at
-                     one of the /pillars, /faq, ... shortcut redirects still
-                     lands on the right section. There is no /contact shortcut,
-                     so claiming one here would name a URL that does not
-                     resolve. The plain "#contacto" anchor is picked up by the
-                     fallback handler on the document instead, which gives this
-                     link the same smooth scroll, the same history entry and the
-                     same focus move as the rest of the nav. -->
-                <a href="#contacto" data-section="contacto">
-                    <span data-i18n>Contato</span>
-                </a>
+                <!-- Sobre mí, Sesiones, FAQ and Contacto, behind one label.
+                     They were four tabs of their own until the row ran out of
+                     room, and they answer one question between them: who is
+                     behind this, and how do I reach them. Grouping them the way
+                     Recursos groups the four reference sections is what paid for
+                     the Freedom Compass button on the other two hundred pages of
+                     the site, which had never had it - see the comment on
+                     HEADER_NAV in scripts/section-nav.mjs.
+                     Two pages and two sections of this document, in one menu,
+                     which is why the attributes inside it are not all the same
+                     kind. That mix is deliberate and it is the reader's view
+                     that decides it: "Sesiones" and "FAQ" are both things the
+                     site can tell them about, and which one happens to be a
+                     separate document is not something a nav should make them
+                     think about. -->
+                <div class="desktop-resources" data-resources-dropdown>
+                    <button type="button" class="desktop-resources-toggle" aria-expanded="false" aria-controls="desktop-support-menu">
+                        <span data-i18n>Ajuda</span>
+                        <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div id="desktop-support-menu" class="desktop-resources-menu">
+                        <a href="/pt/sobre-mim/" data-section-link="about">
+                            <span data-i18n>Sobre mim</span>
+                        </a>
+                        <a href="/pt/sessoes/" data-section-link="sessions">
+                            <span data-i18n>Sessões</span>
+                        </a>
+                        <a href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">
+                            <span data-i18n>FAQ</span>
+                        </a>
+                        <!-- No data-site-route, unlike FAQ and the Freedom
+                             Compass button. That attribute is the hook for the
+                             handler that turns a nav click into a smooth scroll,
+                             and it doubles as the key into `siteRoutes`, which
+                             exists so that arriving at one of the /pillars,
+                             /faq, ... shortcut redirects still lands on the
+                             right section. There is no /contact shortcut, so
+                             claiming one here would name a URL that does not
+                             resolve. The plain "#contacto" anchor is picked up
+                             by the fallback handler on the document instead,
+                             which gives this link the same smooth scroll, the
+                             same history entry and the same focus move as the
+                             rest of the nav. -->
+                        <a href="#contacto" data-section="contacto">
+                            <span data-i18n>Contato</span>
+                        </a>
+                    </div>
+                </div>
                 <a href="#assessment" data-site-route="/assessment" data-section="assessment" class="desktop-nav-cta">
                     <span data-i18n>Freedom Compass</span>
                 </a>
@@ -405,10 +437,11 @@
                     <a href="/pt/blog/" data-blog-link class="header-publication-button" aria-label="Blog">
                         <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
                     </a>
-                    <a href="https://preview.mailerlite.io/forms/2524111/193713995121690448/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="header-publication-button" aria-label="Newsletter">
-                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-                    </a>
                 </div>
+                <a href="#subscribe" class="header-subscribe" data-subscribe-open data-subscribe-placement="header">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span class="header-subscribe__label"><span data-i18n>Inscrever-se</span></span>
+                </a>
                 <button type="button" class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
                     <span class="mobile-menu-toggle__icon" aria-hidden="true"></span>
                 </button>
@@ -421,13 +454,18 @@
                 <p class="mobile-menu__label">
                     <span data-i18n>Navegação</span>
                 </p>
-                <!-- The same six items as the desktop pill, in the same
-                     order, pointing at the same places. The drawer has vertical
-                     room the pill does not, so it could carry more - but a
-                     reader who learns the nav on a laptop and then opens it on
-                     a phone should find the nav they already know, and every
-                     item that is here on one and missing on the other is a
-                     support question waiting to happen. -->
+                <!-- The same items as the desktop pill, in the same order,
+                     grouped the same way, pointing at the same places. The
+                     drawer has vertical room the pill does not, so it could
+                     carry more - but a reader who learns the nav on a laptop and
+                     then opens it on a phone should find the nav they already
+                     know, and every item that is here on one and missing on the
+                     other is a support question waiting to happen.
+                     Sobre mí was exactly that: it was added to the pill and not
+                     to this list, so the page introducing the person the reader
+                     is deciding whether to pay was unreachable from the nav on a
+                     phone. Mirroring the Ayuda group brought it back, because
+                     the group is rendered from the same four items on both. -->
                 <nav class="mobile-nav" aria-label="Mobile section navigation">
                     <a class="mobile-nav-link" href="/pt/blog/" data-blog-link>
                         <span data-i18n>Blog</span>
@@ -453,17 +491,30 @@
                             <span data-i18n>Dados</span>
                         </a>
                     </div>
-                    <a class="mobile-nav-link" href="/pt/sessoes/" data-section-link="sessions">
-                        <span data-i18n>Sessões</span>
-                    </a>
-                    <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
-                    <a class="mobile-nav-link" href="#contacto" data-section="contacto">
-                        <span data-i18n>Contato</span>
-                    </a>
+                    <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-support-panel">
+                        <span><span data-i18n>Ajuda</span></span>
+                        <svg aria-hidden="true" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div id="mobile-support-panel" class="mobile-resources-panel" hidden>
+                        <a class="mobile-nav-link" href="/pt/sobre-mim/" data-section-link="about">
+                            <span data-i18n>Sobre mim</span>
+                        </a>
+                        <a class="mobile-nav-link" href="/pt/sessoes/" data-section-link="sessions">
+                            <span data-i18n>Sessões</span>
+                        </a>
+                        <a class="mobile-nav-link" href="#preguntas-frecuentes" data-site-route="/faq" data-section="preguntas-frecuentes">FAQ</a>
+                        <a class="mobile-nav-link" href="#contacto" data-section="contacto">
+                            <span data-i18n>Contato</span>
+                        </a>
+                    </div>
                 </nav>
                 <a class="mobile-nav-cta" href="#assessment" data-site-route="/assessment" data-section="assessment">
                     <span data-i18n>Freedom Compass</span>
                     <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M4 10h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a class="site-menu-subscribe" href="#subscribe" data-subscribe-open data-subscribe-placement="menu">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span data-i18n>Inscrever-se por e-mail</span>
                 </a>
             </div>
         </div>
@@ -494,18 +545,18 @@
             <p data-i18n class="text-lg sm:text-xl text-creamsoft/85 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
                 Desenhe a sua liberdade. Invista e viva de acordo com os seus valores. Estratégia financeira com propósito e disciplina.
             </p>
-            <!-- Newsletter Mantra / Slogan Card -->
+            <!-- Mantra / Slogan Card -->
             <div class="bg-white/5 border border-white/15 rounded-2xl p-6 max-w-xl mx-auto backdrop-blur-md shadow-xl mb-10">
                 <p class="text-[10px] uppercase tracking-widest text-warmgold font-bold mb-1">
-                    <span data-i18n>Mantra da Newsletter</span>
+                    <span data-i18n>O nosso mantra</span>
                 </p>
                 <p class="text-lg sm:text-xl font-medium tracking-wide italic text-creamsoft">
                     <span data-i18n>"Faça o seu dinheiro trabalhar pela sua felicidade"</span>
                 </p>
             </div>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://preview.mailerlite.io/forms/2524111/193713995121690448/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 bg-warmgold hover:bg-warmgold/95 text-darkbark font-bold rounded-lg shadow-lg hover:shadow-warmgold/20 hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
-                    <span data-i18n>Inscrever-se na Newsletter</span>
+                <a href="#subscribe" data-subscribe-open data-subscribe-placement="hero" class="inline-flex items-center gap-2 px-6 py-3.5 bg-warmgold hover:bg-warmgold/95 text-darkbark font-bold rounded-lg shadow-lg hover:shadow-warmgold/20 hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
+                    <span data-i18n>Inscrever-me por e-mail</span>
                     <i class="fa-solid fa-paper-plane text-sm"></i>
                 </a>
                 <a href="#herramientas" class="inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/35 text-white font-semibold rounded-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
@@ -665,21 +716,27 @@
             <div class="bg-creamsoft border border-creamborder rounded-3xl p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
                 <div class="space-y-4 max-w-xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-forestgreen/5 border border-forestgreen/10 rounded-full text-xs font-semibold text-forestgreen">
-                        <i class="fa-solid fa-newspaper text-warmgold"></i>
-                        <span data-i18n>Newsletter Oficial</span>
+                        <i class="fa-regular fa-envelope text-warmgold"></i>
+                        <span data-i18n>Inscrição por e-mail</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-extrabold text-forestgreen leading-tight">
                         <span data-i18n>Ideias para investir com propósito e viver com mais liberdade</span>
                     </h3>
                     <p class="text-sm text-darkbark/80 leading-relaxed">
-                        <span data-i18n>Psicologia do dinheiro, hábitos conscientes e estratégias de investimento de qualidade para transformar os seus recursos em tempo, tranquilidade e experiências importantes.</span>
+                        <span data-i18n>Psicologia do dinheiro, hábitos conscientes e estratégias de investimento de qualidade para transformar os seus recursos em tempo, tranquilidade e experiências importantes. Cada novo artigo chega ao seu e-mail, em português.</span>
                     </p>
                 </div>
-                <div class="w-full md:w-auto shrink-0">
-                    <a href="https://preview.mailerlite.io/forms/2524111/193713995121690448/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all">
+                <div class="w-full md:w-auto shrink-0 text-center">
+                    <a href="#subscribe" data-subscribe-open data-subscribe-placement="home-strategy-card" class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all">
                         <span data-i18n>Inscrever-se gratuitamente</span>
                         <i class="fa-solid fa-arrow-right text-warmgold"></i>
                     </a>
+                    <p class="mt-3 text-xs text-darkbark/60">
+                        <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="substack-link">
+                            <svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="14" height="14"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                            <span data-i18n>Ou leia a newsletter no Substack (em inglês)</span>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -776,7 +833,7 @@
                     <span data-i18n>Ferramentas para transformar dinheiro em liberdade</span>
                 </h2>
                 <p class="text-sm text-darkbark/70 mt-2 max-w-lg mx-auto">
-                    <span data-i18n>Dê números aos seus sonhos: veja como o dinheiro cresce, o que você precisa para ganhar autonomia e quantas horas de vida custa cada compra.</span>
+                    <span data-i18n>Dê números aos seus sonhos: veja como o dinheiro cresce, o que você precisa para ganhar autonomia, quantas horas de vida custa cada compra e quanto taxas e impostos levam.</span>
                 </p>
             </div>
             <div class="flex justify-center mb-6">
@@ -811,6 +868,11 @@
                     <button type="button" role="tab" id="tab-btn-life-cost" aria-selected="false" aria-controls="panel-life-cost" tabindex="-1" data-tab="life-cost" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
                         <i class="fa-solid fa-hourglass-half text-sm" aria-hidden="true"></i>
                         <span data-i18n>Custo em Horas</span>
+                    </button>
+                    <!-- Tab Button 4: Negative Compounding -->
+                    <button type="button" role="tab" id="tab-btn-negative" aria-selected="false" aria-controls="panel-negative" tabindex="-1" data-tab="negative" class="tab-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-extrabold tracking-wider transition-all border border-transparent">
+                        <i class="fa-solid fa-arrow-trend-down text-sm" aria-hidden="true"></i>
+                        <span data-i18n>Juros Compostos Negativos</span>
                     </button>
                 </div>
             </div>
@@ -1142,6 +1204,158 @@
                     </div>
                 </div>
             </div>
+            <!-- PANEL 4: NEGATIVE COMPOUNDING CALCULATOR (FEES AND TAX).
+                 A compact version of the standalone page: the same inputs, the
+                 same tax regimes per language and the same headline figures,
+                 without the chart and the option explanations, which the link
+                 at the bottom leads to. The regime list differs by language
+                 (Spain, US, Brazil), so each language has its own <select>. -->
+            <div id="panel-negative" role="tabpanel" tabindex="0" aria-labelledby="tab-btn-negative" class="bg-white rounded-3xl border border-creamborder shadow-md p-8 sm:p-12 transition-all duration-300 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-warmgold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                <span data-i18n>O custo invisível de investir</span>
+                            </p>
+                            <h3 class="text-2xl font-extrabold text-forestgreen leading-tight">
+                                <span data-i18n>Quanto taxas e impostos levam?</span>
+                            </h3>
+                            <p class="text-sm text-darkbark/70 mt-2 leading-relaxed">
+                                <span data-i18n>Compare a sua carteira ideal, sem atritos, com a que de fato chega à sua conta.</span>
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="neg-initial" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span data-i18n>Capital inicial</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-initial"
+                                    min="0" step="100" inputmode="decimal"
+                                    value="10000"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                            <div>
+                                <label for="neg-monthly" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span data-i18n>Aporte mensal</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-monthly"
+                                    min="0" step="25" inputmode="decimal"
+                                    value="300"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                            <div>
+                                <label for="neg-years" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span data-i18n>Anos</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-years"
+                                    min="1" max="60" step="1" inputmode="numeric"
+                                    value="30"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                            <div>
+                                <label for="neg-rate" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span data-i18n>Rentabilidade bruta (%)</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-rate"
+                                    min="0" max="20" step="0.1" inputmode="decimal"
+                                    value="7"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                        </div>
+                        <div class="pt-5 border-t border-creamborder space-y-6">
+                            <div>
+                                <label for="neg-fee" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">
+                                    <span data-i18n>Taxa de administração anual (%)</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="neg-fee"
+                                    min="0" max="5" step="0.05" inputmode="decimal"
+                                    value="1.5"
+                                    class="w-full bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen"
+                                >
+                            </div>
+                            <div data-i18n>
+                                <label for="neg-regime-pt" class="block text-xs font-bold text-forestgreen uppercase tracking-wider mb-2">Como é tributado (Brasil)</label>
+                                <select id="neg-regime-pt" class="neg-regime w-full cursor-pointer bg-creamsoft border border-creamborder rounded-xl px-4 py-3 text-sm text-darkbark font-semibold focus:ring-2 focus:ring-forestgreen/20 focus:border-forestgreen">
+                                    <option value="BR_COMECOTAS">Fundo de renda fixa ou multimercado (come-cotas)</option>
+                                    <option value="BR_REGRESSIVA">CDB ou Tesouro Direto (tabela regressiva)</option>
+                                    <option value="BR_ACOES">Ações, ETFs ou fundos de ações</option>
+                                    <option value="BR_ISENTO">LCI, LCA, CRI ou CRA (isentos para pessoa física)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-creamsoft rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-creamborder" role="status" aria-live="polite" aria-atomic="true">
+                        <div id="neg-results" class="space-y-6">
+                            <div>
+                                <p class="text-xs font-bold text-forestgreen/75 uppercase tracking-wider mb-1">
+                                    <span data-i18n>O que taxas e impostos custam a você</span>
+                                </p>
+                                <p id="neg-result-gap" class="text-3xl sm:text-4xl font-extrabold text-[#a6402a]">€0,00</p>
+                                <p class="text-[11px] font-bold text-darkbark/60 mt-1">
+                                    <span data-i18n>Parte do patrimônio perdida:</span>
+                                    <span id="neg-result-erosion" class="text-darkbark">0 %</span>
+                                </p>
+                            </div>
+                            <div class="border-t border-creamborder pt-4 grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
+                                        <span data-i18n>Sem atritos</span>
+                                    </p>
+                                    <p id="neg-result-ideal" class="text-lg font-bold text-forestgreen">€0,00</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-darkbark/60 uppercase tracking-widest mb-1">
+                                        <span data-i18n>Líquido real</span>
+                                    </p>
+                                    <p id="neg-result-net" class="text-lg font-bold text-darkbark">€0,00</p>
+                                </div>
+                            </div>
+                            <dl class="border-t border-creamborder pt-4 space-y-2 text-xs">
+                                <div class="flex justify-between gap-4">
+                                    <dt class="text-darkbark/65">
+                                        <span data-i18n>Taxas pagas</span>
+                                    </dt>
+                                    <dd id="neg-result-fees" class="font-bold text-darkbark text-right">€0,00</dd>
+                                </div>
+                                <div class="flex justify-between gap-4">
+                                    <dt class="text-darkbark/65">
+                                        <span data-i18n>Impostos pagos</span>
+                                    </dt>
+                                    <dd id="neg-result-tax" class="font-bold text-darkbark text-right">€0,00</dd>
+                                </div>
+                                <div class="flex justify-between gap-4">
+                                    <dt class="text-darkbark/65">
+                                        <span data-i18n>Crescimento que esse dinheiro não gerou</span>
+                                    </dt>
+                                    <dd id="neg-result-lost-growth" class="font-bold text-warmgold text-right">€0,00</dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <div id="neg-warning" class="hidden rounded-xl border border-warmgold/40 bg-warmgold/10 px-4 py-3 text-xs text-darkbark/75">
+                            <span data-i18n>Informe um capital inicial ou um aporte mensal acima de zero: sem dinheiro investido não há nada a corroer.</span>
+                        </div>
+                        <div class="mt-6 p-4 bg-white rounded-xl border border-creamborder">
+                            <p class="text-[11px] leading-relaxed text-darkbark/80">
+                                <span data-i18n>Estimativa com tributação simplificada. <a href="/pt/calculadoras/juros-compostos-negativos/" class="font-bold text-forestgreen underline hover:text-warmgold transition-colors">Abra a calculadora completa</a> para ver o gráfico e como funciona cada opção.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- DOWNLOADABLE EXCEL TEMPLATES -->
@@ -1305,22 +1519,22 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" data-latest-articles>
                     <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                         <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Design de vida</span>
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Liberdade financeira</span>
                             <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
                             <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
-                                <time datetime="2026-09-08"><span class="sr-only">Publicado em </span>8 de setembro de 2026</time>
+                                <time datetime="2026-10-01"><span class="sr-only">Publicado em </span>1 de outubro de 2026</time>
                                 <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
-                                <span>6 min de leitura</span>
+                                <span>4 min de leitura</span>
                             </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/pt/blog/aumente-sua-produtividade-diaria-com-ferramentas-de-lean-management/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Aumente sua produtividade diária com ferramentas de Lean management</a>
+                                <a href="/pt/blog/por-que-a-inflacao-existe-e-como-proteger-o-seu-dinheiro-dela/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Por que a inflação existe e como proteger o seu dinheiro dela</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">Criada para as fábricas da Toyota, a metodologia Lean pode transformar seu foco pessoal.</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">A inflação corrói silenciosamente o seu poder de compra.</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/pt/blog/aumente-sua-produtividade-diaria-com-ferramentas-de-lean-management/" aria-label="Ler o artigo: Aumente sua produtividade diária com ferramentas de Lean management" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/pt/blog/por-que-a-inflacao-existe-e-como-proteger-o-seu-dinheiro-dela/" aria-label="Ler o artigo: Por que a inflação existe e como proteger o seu dinheiro dela" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Ler o artigo
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
@@ -1328,22 +1542,22 @@
                     </article>
                     <article class="group flex flex-col bg-white border border-creamborder rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                         <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Hábitos financeiros</span>
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Design de vida</span>
                             <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
                             <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
-                                <time datetime="2026-09-05"><span class="sr-only">Publicado em </span>5 de setembro de 2026</time>
+                                <time datetime="2026-09-29"><span class="sr-only">Publicado em </span>29 de setembro de 2026</time>
                                 <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
-                                <span>6 min de leitura</span>
+                                <span>5 min de leitura</span>
                             </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/pt/blog/a-psicologia-das-decisoes-de-dinheiro-por-que-saber-as-contas-nao-basta/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">A psicologia das decisões de dinheiro: por que saber as contas não basta</a>
+                                <a href="/pt/blog/liberar-tempo-para-o-que-importa-dominando-a-arte-de-delegar/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Liberar tempo para o que importa: dominando a arte de delegar</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">Ninguém fracassa com dinheiro por não saber calcular juros compostos.</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">Muito ocupado para avançar nas suas metas reais?</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/pt/blog/a-psicologia-das-decisoes-de-dinheiro-por-que-saber-as-contas-nao-basta/" aria-label="Ler o artigo: A psicologia das decisões de dinheiro: por que saber as contas não basta" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/pt/blog/liberar-tempo-para-o-que-importa-dominando-a-arte-de-delegar/" aria-label="Ler o artigo: Liberar tempo para o que importa: dominando a arte de delegar" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Ler o artigo
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
@@ -1354,29 +1568,33 @@
                             <span class="text-[10px] font-extrabold uppercase tracking-widest text-warmgold">Investimentos</span>
                             <span class="h-px w-8 shrink-0 bg-warmgold/50" aria-hidden="true"></span>
                             <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-darkbark/45">
-                                <time datetime="2026-09-04"><span class="sr-only">Publicado em </span>4 de setembro de 2026</time>
+                                <time datetime="2026-09-24"><span class="sr-only">Publicado em </span>24 de setembro de 2026</time>
                                 <span class="h-1 w-1 shrink-0 rounded-full bg-darkbark/30" aria-hidden="true"></span>
-                                <span>3 min de leitura</span>
+                                <span>5 min de leitura</span>
                             </span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="text-xl font-extrabold text-forestgreen mb-2 leading-snug">
-                                <a href="/pt/blog/investimento-para-iniciantes-guia-basico-para-fazer-crescer-o-seu-patrimonio/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">Investimento para iniciantes: guia básico para fazer crescer o seu patrimônio</a>
+                                <a href="/pt/blog/de-pagar-27-5-ao-zero-absoluto-veiculos-e-impostos-imobiliarios/" class="rounded transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">De pagar 27,5% ao zero absoluto: veículos e impostos imobiliários</a>
                             </h3>
-                            <p class="text-sm text-darkbark/70 leading-relaxed">Investir não é apenas para ricos.</p>
+                            <p class="text-sm text-darkbark/70 leading-relaxed">Descubra como funciona a tributação do aluguel direto em comparação com os FIIs e os fundos de investimento.</p>
                         </div>
                         <div class="mt-6">
-                            <a href="/pt/blog/investimento-para-iniciantes-guia-basico-para-fazer-crescer-o-seu-patrimonio/" aria-label="Ler o artigo: Investimento para iniciantes: guia básico para fazer crescer o seu patrimônio" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
+                            <a href="/pt/blog/de-pagar-27-5-ao-zero-absoluto-veiculos-e-impostos-imobiliarios/" aria-label="Ler o artigo: De pagar 27,5% ao zero absoluto: veículos e impostos imobiliários" class="inline-flex items-center gap-2 rounded text-xs font-extrabold text-forestgreen transition-colors hover:text-warmgold focus:ring-4 focus:ring-warmgold/30">
                                 Ler o artigo
                                 <i class="fa-solid fa-arrow-right text-warmgold group-hover:translate-x-0.5 transition-transform"></i>
                             </a>
                         </div>
                     </article>
             </div>
-            <div class="mt-10 flex justify-center">
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
                 <a href="/pt/blog/" data-blog-link class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 border-forestgreen text-forestgreen text-xs font-extrabold hover:bg-forestgreen hover:text-white focus:ring-4 focus:ring-warmgold/30 transition-all">
                     <span data-i18n>Ver todos os artigos</span>
                     <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#subscribe" class="subscribe-button" data-subscribe-open data-subscribe-placement="home-latest-articles">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span data-i18n>Receber os novos por e-mail</span>
                 </a>
             </div>
         </div>
@@ -1578,7 +1796,7 @@
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
                         <h3 class="text-base font-extrabold">Que calculadoras financeiras gratuitas inclui a Compounding Journey?</h3>
                     </summary>
-                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de retirada, e uma calculadora que converte o custo de uma compra em horas de trabalho. Todas estão disponíveis na seção <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Ferramentas</a>.</p>
+                    <p class="mt-4 pr-10 text-sm text-darkbark/75 leading-relaxed">A página inclui uma calculadora de juros compostos, uma calculadora indicativa de liberdade financeira baseada em despesas e taxa de retirada, uma calculadora que converte o custo de uma compra em horas de trabalho e uma calculadora de juros compostos negativos que mostra quanto patrimônio as taxas e os impostos levam ao longo dos anos. Todas estão disponíveis na seção <a href="#herramientas" class="font-bold text-forestgreen hover:text-warmgold transition-colors">Ferramentas</a>.</p>
                 </details>
                 <details name="faq" class="faq-item bg-white border border-creamborder rounded-2xl p-6 transition-all">
                     <summary class="flex items-center justify-between gap-5 cursor-pointer text-forestgreen font-extrabold">
@@ -1631,7 +1849,7 @@
                 </h2>
                 <div class="w-12 h-1 bg-warmgold mx-auto mt-4 rounded-full"></div>
                 <p class="text-sm text-darkbark/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    <span data-i18n>Conheça o educador, acompanhe a newsletter ou fale diretamente comigo sobre a sua situação financeira.</span>
+                    <span data-i18n>Conheça o educador, receba os artigos por e-mail ou fale diretamente comigo sobre a sua situação financeira.</span>
                 </p>
                 <nav class="contact-path-nav" aria-labelledby="contact-heading">
                     <a href="#biografia" class="contact-path-link">
@@ -1639,8 +1857,8 @@
                         <span data-i18n>Conheça o educador</span>
                     </a>
                     <a href="#contact-newsletter" class="contact-path-link">
-                        <i class="fa-regular fa-newspaper text-warmgold" aria-hidden="true"></i>
-                        <span data-i18n>Acompanhe a Newsletter</span>
+                        <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
+                        <span data-i18n>Inscrição por e-mail</span>
                     </a>
                     <a href="#contact-form" class="contact-path-link">
                         <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
@@ -1719,14 +1937,13 @@
                                     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                                 </a>
                                 <a
-                                    href="https://preview.mailerlite.io/forms/2524111/193713995121690448/share"
-                                    data-newsletter-link
+                                    href="https://compoundingjourney.substack.com/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="inline-flex items-center gap-3 px-6 py-3.5 bg-forestgreen hover:bg-forestgreen/95 text-white font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
+                                    class="inline-flex items-center gap-3 px-6 py-3.5 bg-white border-2 border-forestgreen text-forestgreen font-bold rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm"
                                 >
-                                    <i class="fa-solid fa-bookmark text-warmgold text-lg"></i>
-                                    <span data-i18n>Ler no Substack</span>
+                                    <svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                                    <span data-i18n>Ler no Substack (em inglês)</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                                 </a>
                             </div>
@@ -1746,7 +1963,7 @@
                                 <span data-i18n>Uma conversa que continua</span>
                             </p>
                             <h3 id="contact-newsletter-heading" class="text-2xl font-extrabold text-forestgreen leading-tight">
-                                <span data-i18n>Acompanhe a newsletter no seu idioma</span>
+                                <span data-i18n>Receba cada novo artigo por e-mail, em português</span>
                             </h3>
                             <p class="mt-3 text-sm text-darkbark/70 leading-relaxed">
                                 <span data-i18n>Receba ideias práticas sobre psicologia do dinheiro, investimento com propósito e decisões financeiras alinhadas com os seus valores.</span>
@@ -1754,12 +1971,16 @@
                         </div>
                         <div class="md:col-span-5 rounded-2xl bg-creamsoft border border-creamborder p-6">
                             <p class="text-sm font-semibold text-darkbark/75 leading-relaxed mb-5">
-                                <span data-i18n>O botão abre automaticamente a edição em português selecionada para esta página.</span>
+                                <span data-i18n>Só o seu nome e o seu e-mail. Primeiro chega um e-mail de boas-vindas com os três artigos mais lidos, e depois um por cada novo artigo.</span>
                             </p>
-                            <a href="https://preview.mailerlite.io/forms/2524111/193713995121690448/share" data-newsletter-link target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:ring-4 focus:ring-warmgold/30 transition-all">
-                                <span data-i18n>Acompanhar a Newsletter</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-warmgold" aria-hidden="true"></i>
+                            <a href="#subscribe" data-subscribe-open data-subscribe-placement="home-contact-newsletter" class="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-forestgreen px-6 py-3.5 text-sm font-extrabold text-white hover:bg-forestgreen/95 focus:ring-4 focus:ring-warmgold/30 transition-all">
+                                <i class="fa-regular fa-envelope text-warmgold" aria-hidden="true"></i>
+                                <span data-i18n>Inscrever-me por e-mail</span>
                             </a>
+                            <p class="mt-4 text-xs text-darkbark/60 leading-relaxed">
+                                <span data-i18n>Prefere o Substack? A newsletter do Compounding Journey no Substack é uma publicação separada, em inglês:</span>
+                                <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="substack-link"><svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="14" height="14"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>Substack</a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1806,6 +2027,18 @@
                     </h3>
                     <p class="mt-3 text-sm text-darkbark/65 leading-relaxed max-w-2xl mx-auto">
                         <span data-i18n>Inclua o contexto que você considerar importante para começarmos com uma conversa útil e concreta.</span>
+                    </p>
+                    <!-- The second channel, under the first. The form is offered first
+                         because it posts to Netlify Forms and lands somewhere that is
+                         monitored; the address is here for the reader who would rather
+                         write from their own mail client, and both arrive in the same
+                         mailbox. Any change to the address has to be made here, in the
+                         footer below, in the two structured-data nodes in <head>, and in
+                         CONTACT_EMAIL in scripts/site-routes.mjs, which is what the
+                         generated pages print - scripts/verify-output.mjs fails the build
+                         on any page that prints a different one. -->
+                    <p class="mt-2 text-sm text-darkbark/65 leading-relaxed max-w-2xl mx-auto">
+                        <span data-i18n>Ou escreva diretamente para <a class="font-bold text-forestgreen underline decoration-warmgold/60 decoration-2 underline-offset-2 hover:text-warmgold break-words" href="mailto:compoundingjourney@gmail.com">compoundingjourney@gmail.com</a>.</span>
                     </p>
                 </div>
                 <form id="contact-form" name="contact" method="POST" autocomplete="on" novalidate data-netlify="true" netlify-honeypot="bot-field" class="space-y-6 relative z-10">
@@ -1964,12 +2197,59 @@
                     <a href="#contacto" class="hover:text-warmgold transition-colors">
                         <span data-i18n>Contato</span>
                     </a>
+                    <a href="mailto:compoundingjourney@gmail.com" class="hover:text-warmgold transition-colors">
+                        <span data-i18n>E-mail</span>
+                    </a>
                     <a href="https://www.linkedin.com/in/sandy-bradbury" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">LinkedIn</a>
-                    <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Substack</a>
+                    <a href="#subscribe" data-subscribe-open data-subscribe-placement="footer" class="hover:text-warmgold transition-colors">
+                        <span data-i18n>Inscrever-se por e-mail</span>
+                    </a>
+                    <a href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 hover:text-warmgold transition-colors">
+                        <svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="12" height="12"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                        <span data-i18n>Substack (em inglês)</span>
+                    </a>
                     <a href="https://www.instagram.com/compounding.journey_sb/" target="_blank" rel="noopener noreferrer" class="hover:text-warmgold transition-colors">Instagram</a>
                 </div>
             </div>
         </div>
     </footer>
+
+<dialog id="subscribe" class="subscribe-dialog" lang="pt" aria-labelledby="subscribe-title" data-subscribe-dialog
+  data-error-generic="Algo deu errado e a inscrição não foi guardada. Tente novamente daqui a pouco." data-error-name="Escreva o seu nome."
+  data-error-email="Escreva um e-mail válido." data-sending="Inscrevendo…">
+  <div class="subscribe-dialog__card">
+    <a class="subscribe-dialog__close" href="#" data-subscribe-close aria-label="Fechar"><span aria-hidden="true">&times;</span></a>
+    <div class="subscribe-dialog__view" data-subscribe-view="form">
+      <p class="subscribe-dialog__eyebrow"><svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Inscrição gratuita por e-mail</span></p>
+      <h2 id="subscribe-title" class="subscribe-dialog__title">Receba cada novo artigo por e-mail</h2>
+      <p class="subscribe-dialog__intro">Deixe o seu nome e o seu e-mail. Cada novo artigo do Compounding Journey em português chegará à sua caixa de entrada, começando por um e-mail de boas-vindas com os três artigos mais lidos.</p>
+      <form class="subscribe-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate data-subscribe-form>
+        <input type="hidden" name="form-name" value="newsletter" />
+        <input type="hidden" name="language" value="pt" />
+        <input type="hidden" name="placement" value="direct" data-subscribe-placement-field />
+        <p class="subscribe-form__trap" aria-hidden="true"><label>Leave empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="subscribe-form__field">
+          <label for="subscribe-first-name">Nome</label>
+          <input id="subscribe-first-name" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" maxlength="60" required />
+        </div>
+        <div class="subscribe-form__field">
+          <label for="subscribe-email">E-mail</label>
+          <input id="subscribe-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" required />
+        </div>
+        <p class="subscribe-form__error" role="alert" data-subscribe-error hidden></p>
+        <button type="submit" class="subscribe-form__submit" data-subscribe-submit>Inscrever-me</button>
+        <p class="subscribe-form__consent">Sem spam, e cada e-mail traz um link para cancelar a inscrição com um clique. Como o seu nome e o seu e-mail são usados está explicado na <a href="/pt/privacidade/">política de privacidade</a>.</p>
+      </form>
+    </div>
+    <div class="subscribe-dialog__view" data-subscribe-view="success" hidden>
+      <p class="subscribe-dialog__check" aria-hidden="true">&#10003;</p>
+      <h2 class="subscribe-dialog__title" tabindex="-1" data-subscribe-success-title>Inscrição feita!</h2>
+      <p class="subscribe-dialog__intro">O seu e-mail de boas-vindas está a caminho. Se não o vir na caixa de entrada em alguns minutos, verifique a pasta de spam ou de promoções.</p>
+      <a class="subscribe-form__submit" href="#" data-subscribe-close>Voltar à página</a>
+    </div>
+    <p class="subscribe-dialog__substack">Procura a newsletter do Substack? É uma publicação separada, só em inglês: <a class="substack-link" href="https://compoundingjourney.substack.com/" target="_blank" rel="noopener noreferrer" data-substack-link><svg class="substack-icon" aria-hidden="true" viewBox="0 0 24 24" width="14" height="14"><path fill="#FF6719" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>Compounding Journey no Substack (em inglês)<svg aria-hidden="true" viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M9 3h4v4M13 3 7 9M11 9.5V13H3V5h3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="subscribe-sr"> (abre o Substack numa nova aba)</span></a></p>
+  </div>
+</dialog>
+<script src="/assets/js/subscribe.js?v=source" defer></script>
 </body>
 </html>

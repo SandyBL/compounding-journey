@@ -161,3 +161,11 @@ https://compoundingjourney.netlify.app/* https://compoundingjourney.com/:splat 3
 /tailwind.config.js /404.html 404
 /content/home/* /404.html 404
 /content/simulators/* /404.html 404
+
+# The functions, their shared newsletter library and the database migrations.
+# They are bundled and deployed by Netlify from here, and nothing on the site
+# links to them as files - but with the repository root as the publish
+# directory, every one of them was also a fetchable static file, including the
+# email templates and the subscription logic. The functions themselves answer
+# at /api/* and /.netlify/functions/*, which this does not touch.
+/netlify/* /404.html 404

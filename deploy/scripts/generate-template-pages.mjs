@@ -17,8 +17,8 @@
  *   - The download button links the workbook directly, above the fold, with no
  *     email gate. That is a deliberate trade: an address collected in exchange
  *     for a spreadsheet is worth very little and costs the thing the site is
- *     for. The newsletter is offered next to the download as a choice, using
- *     the provider's own hosted form, so nothing new processes personal data.
+ *     for. The email subscription is offered next to the download as a
+ *     choice, through the site's Subscribe dialog, and never as a condition.
  *   - What the page asks for instead is attention, and only once the file is
  *     already on its way: every page carries a panel naming the next workbook
  *     in the sequence and one tool that reads the same figures, hidden until
@@ -40,7 +40,7 @@ import { GLOSSARY } from '../content/site/glossary.mjs';
 import { readSharedCatalog } from './shared-catalog.mjs';
 import { renderMarkdown, escapeHtml, slugify } from './markdown.mjs';
 import { addInlineLinks, glossaryTargets } from './inline-links.mjs';
-import { newsletterLinks } from './newsletter-links.mjs';
+import { subscribeTrigger, substackLink } from './newsletter-subscribe.mjs';
 import {
   LANGUAGES, ORIGIN, SIMULATORS, sectionPath, templatePath, glossaryPath, articlePath,
   simulatorPath, homePath, absolute
@@ -106,20 +106,21 @@ function relatedArticles(template, language, catalog) {
 }
 
 /**
- * The newsletter card.
+ * The subscription card.
  *
- * It is a link to the hosted form rather than a form of its own, and that is
- * the whole point: an email field posting to this domain would make the site a
- * data controller for a mailing list it does not hold, with a consent record it
- * would have to keep. The list already exists at the provider; this sends the
- * reader to it.
+ * It opens the Subscribe dialog every page carries (see
+ * scripts/newsletter-subscribe.mjs) rather than linking out to a provider's
+ * form, and it says what it is: an email subscription to new articles in this
+ * page's language. The separate English Substack is offered underneath and
+ * labelled as such, so the two are never mistaken for each other.
  */
-function optin(strings, url) {
+function optin(strings, language) {
   return `        <aside class="template-optin">
           <h2>${escapeHtml(strings.templateOptinTitle)}</h2>
           <p>${escapeHtml(strings.templateOptinBody)}</p>
-          <a class="button" href="${url}" rel="noopener nofollow" target="_blank">${escapeHtml(strings.templateOptinAction)}</a>
+          ${subscribeTrigger(language, 'template', { className: 'button', label: strings.templateOptinAction, icon: false })}
           <p class="optin-consent">${escapeHtml(strings.templateOptinNote)}</p>
+          <p class="optin-consent">${substackLink(language)}</p>
         </aside>`;
 }
 
@@ -231,7 +232,7 @@ ${cards}
 
 /** --------------------------------------------------------------- template */
 
-function renderTemplate(template, language, strings, catalog, targets, sizes, newsletter) {
+function renderTemplate(template, language, strings, catalog, targets, sizes) {
   const copy = template[language];
   const url = absolute(templatePath(language, copy.slug));
   const href = fileHref(template, language);
@@ -291,7 +292,7 @@ ${nextPanel(template, language, strings)}
             <h2 class="section-title">${escapeHtml(strings.templateHowToUse)}</h2>
             <div class="article-body">${prose(copy.howToUse)}</div>
           </section>
-${optin(strings, newsletter)}
+${optin(strings, language)}
           <section class="page-section">
             <h2 class="section-title">${escapeHtml(strings.faqTitle)}</h2>
             <div class="faq-list">
@@ -408,7 +409,7 @@ async function measure() {
  * is fire-and-forget by design.
  *
  * So the build reads the endpoint's own source and compares. The same trick as
- * newsletter-links.mjs reading the home page and verify-output.mjs reading
+ * generate-home-pages.mjs reading the home page's route table and verify-output.mjs reading
  * _headers: the file that states the fact stays the one source of it, and the
  * build refuses to ship a page whose counter cannot count.
  */
@@ -460,7 +461,6 @@ async function main() {
   const catalog = await readSharedCatalog();
   const sizes = await measure();
   await assertEndpointTemplates();
-  const newsletter = await newsletterLinks();
 
   for (const language of LANGUAGES) {
     const slugs = TEMPLATES.map((template) => template[language].slug);
@@ -493,7 +493,7 @@ async function main() {
       const slug = template[language].slug;
       await write(
         `${templatePath(language, slug).replace(/^\//, '')}index.html`,
-        renderTemplate(template, language, strings, catalog, targets, sizes, newsletter[language])
+        renderTemplate(template, language, strings, catalog, targets, sizes)
       );
       written.push(templatePath(language, slug));
       pages += 1;

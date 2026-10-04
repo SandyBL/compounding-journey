@@ -34,6 +34,7 @@ import { stringsFor } from './page-shell.mjs';
 // from. The journal has its own chrome rather than going through page-shell.mjs,
 // which is why it links the pieces itself.
 import { NAV_SCRIPT, headerMenu, headerNav, sectionNavRow } from './section-nav.mjs';
+import { SUBSCRIBE_ID, subscribeCard, subscribeFooterBand, subscribeTail } from './newsletter-subscribe.mjs';
 import { shareRow } from './share-row.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -220,7 +221,9 @@ function practicalLinks(language) {
 function workLinks(language, labels) {
   const strings = siteStrings[language];
   const links = [
-    `<a href="${homeHref(language)}#contact-newsletter">${escapeHtml(strings.newsletterFollow)}</a>`,
+    // Opens the email subscription dialog on this page, rather than sending the
+    // reader to the home page to find it.
+    `<a href="#${SUBSCRIBE_ID}" data-subscribe-open data-subscribe-placement="article-next-steps">${escapeHtml(strings.newsletterFollow)}</a>`,
     `<a href="${sessionsPath(language)}">${escapeHtml(strings.sessionsAll)}</a>`
   ];
   return `<p class="cta-simulators cta-work">${escapeHtml(labels.ctaWorkLead)} ${links.join(' · ')}</p>`;
@@ -771,7 +774,7 @@ ${structuredData(article, labels, body)}
     <header class="article-header"><div class="container article-header-inner"><div class="post-meta">${categoryChip(article)}<span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
     <div class="container article-layout">${toc}<div class="article-main"><div id="article-body" class="article-body">
 ${body}
-    </div>${sourcesBlock(article, labels)}${shareRow({ url, title: article.title, strings: siteStrings[article.language] })}<footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer></div></div>
+    </div>${sourcesBlock(article, labels)}${shareRow({ url, title: article.title, strings: siteStrings[article.language] })}<footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer>${subscribeCard(article.language, 'article-end')}</div></div>
   </article>${readNextSection(article, labels, related)}
     <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p>${simulatorLinks(article, labels)}${practicalLinks(article.language)}${workLinks(article.language, labels)}</div><div class="journey-actions"><a class="button" href="${simulatorsPath(article.language)}">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
@@ -782,8 +785,9 @@ ${body}
        has instead of the header's hamburger. It replaces a lone "back to the
        journal" link that said what the header's return link and the Blog item
        both already say. -->
+  ${subscribeFooterBand(article.language)}
   <footer class="site-footer"><div class="container footer-row">${sectionNavRow('journal', article.language, articlePath(article.language, article.slug))}<span>© 2026 Compounding Journey</span></div></footer>
-</div>${NAV_SCRIPT}<script src="/assets/js/article-view.js?v=source" defer></script><script src="/assets/js/share.js?v=source" defer></script></body>
+</div>${subscribeTail(article.language)}${NAV_SCRIPT}<script src="/assets/js/article-view.js?v=source" defer></script><script src="/assets/js/share.js?v=source" defer></script></body>
 </html>
 `;
 }
@@ -970,6 +974,19 @@ async function updateBlogIndex(language, articles, recentCounts) {
   if (!source.includes('/assets/js/section-nav.js')) {
     source = source.replace('</body>', `${NAV_SCRIPT}</body>`);
   }
+
+  // The email subscription: the band above the footer and the dialog it opens.
+  // Patched between markers like everything else here, so a change to the
+  // dialog reaches the three committed indexes on the next build.
+  const bandResult = replaceBetween(source, 'subscribeband', subscribeFooterBand(language));
+  source = typeof bandResult === 'string'
+    ? bandResult
+    : source.replace('<footer class="site-footer">', `${bandResult.block}\n  <footer class="site-footer">`);
+
+  const tailResult = replaceBetween(source, 'subscribetail', subscribeTail(language));
+  source = typeof tailResult === 'string'
+    ? tailResult
+    : source.replace('</body>', `${tailResult.block}</body>`);
 
   // What the site records, stated where a reader can find it rather than only
   // where the ranking appears. The rail above is conditional - it is absent

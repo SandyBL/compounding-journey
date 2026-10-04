@@ -35,6 +35,7 @@ import { fileURLToPath } from 'node:url';
 // template literal, so it arrives here as a {{page.headerNav}} substitution
 // like every other value that follows from the language.
 import { NAV_SCRIPT, headerMenu, headerNav } from './section-nav.mjs';
+import { subscribeTail } from './newsletter-subscribe.mjs';
 import { SIMULATORS, dataPath, legalPath, simulatorPath, simulatorsPath } from './site-routes.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -476,7 +477,9 @@ function liftBehaviour(page, simulator, language, context) {
     `\n    <script src="/assets/js/${behaviourFileName(name, language)}?v=source" defer></script>`;
   const markup = page
     .replace(BEHAVIOUR_BLOCK, tag)
-    .replace(FOOTER_YEAR, String(new Date().getFullYear()));
+    .replace(FOOTER_YEAR, String(new Date().getFullYear()))
+    // The email subscription dialog the header's Subscribe button opens.
+    .replace('</body>', `${subscribeTail(language)}\n</body>`);
 
   return { markup, behaviour: `${block[1].trim()}\n` };
 }
