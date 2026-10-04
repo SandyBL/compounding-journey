@@ -355,6 +355,10 @@
 /assets/js/section-nav.js
   Cache-Control: public, max-age=31536000, immutable
 
+# The Subscribe dialog's script, linked from every page with a content hash.
+/assets/js/subscribe.js
+  Cache-Control: public, max-age=31536000, immutable
+
 # The glossary page's two behaviours: opening the term a fragment link points
 # at, and putting the open term's slug in the address bar so a reader can copy
 # the link to a definition. Progressive enhancement in the same sense as

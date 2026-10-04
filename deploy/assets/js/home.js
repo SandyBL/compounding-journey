@@ -59,10 +59,14 @@
             console.warn("Currency preference could not be read from localStorage.", error);
         }
 
+        // Where a data-newsletter-link points. That is now only ever the English
+        // Substack, in all three languages: the third-party forms it used to name
+        // for Spanish and Portuguese are replaced by the on-site email
+        // subscription, which every "Subscribe" control opens instead.
         const newsletterLinks = {
-            es: "https://preview.mailerlite.io/forms/2524111/193713027715958521/share",
+            es: "https://compoundingjourney.substack.com/",
             en: "https://compoundingjourney.substack.com/",
-            pt: "https://preview.mailerlite.io/forms/2524111/193713995121690448/share"
+            pt: "https://compoundingjourney.substack.com/"
         };
 
         // Where the nav's page items point, per language.
@@ -438,6 +442,7 @@
             calculateCompoundInterest();
             calculateFreedom();
             calculateLifeCost();
+            calculateNegativeCompounding();
         }
 
         function setCalculatorCurrency(currency) {
@@ -457,14 +462,16 @@
             calculateCompoundInterest();
             calculateFreedom();
             calculateLifeCost();
+            calculateNegativeCompounding();
         }
 
         // TAB SWITCHER
-        const calculatorTabs = ['compound', 'freedom', 'life-cost'];
+        const calculatorTabs = ['compound', 'freedom', 'life-cost', 'negative'];
         const calculatorRecalculators = {
             compound: () => calculateCompoundInterest(),
             freedom: () => calculateFreedom(),
-            'life-cost': () => calculateLifeCost()
+            'life-cost': () => calculateLifeCost(),
+            negative: () => calculateNegativeCompounding()
         };
 
         function switchTab(tabId, moveFocus = false) {
@@ -626,6 +633,128 @@
                 maximumFractionDigits: 1
             });
             document.getElementById('life-cost-warning').classList.toggle('hidden', hasValidRate);
+        }
+
+        // NEGATIVE COMPOUNDING CALCULATOR ENGINE
+        //
+        // Restates negativeCompounding() and REGIMES from
+        // assets/js/calculators.js, for the reason given at the top of that
+        // file. If a rate or the loop changes there, it changes here too. The
+        // ideal portfolio is calculateCompoundInterest()'s loop exactly.
+        const SPAIN_SAVINGS_BANDS = [[6000, 0.19], [50000, 0.21], [200000, 0.23], [300000, 0.27], [Infinity, 0.30]];
+
+        function spainSavingsTax(gain) {
+            let tax = 0;
+            let floor = 0;
+            for (let i = 0; i < SPAIN_SAVINGS_BANDS.length && gain > floor; i++) {
+                const ceiling = SPAIN_SAVINGS_BANDS[i][0];
+                tax += (Math.min(gain, ceiling) - floor) * SPAIN_SAVINGS_BANDS[i][1];
+                floor = ceiling;
+            }
+            return tax;
+        }
+
+        const flatTax = rate => gain => gain * rate;
+
+        function brazilRegressiveTax(gain, years) {
+            const months = years * 12;
+            const rate = months <= 6 ? 0.225 : months <= 12 ? 0.20 : months <= 24 ? 0.175 : 0.15;
+            return gain * rate;
+        }
+
+        const NEGATIVE_REGIMES = {
+            ES_REPARTO: { every: 12, distribution: 0.03, periodicTax: spainSavingsTax, exitTax: spainSavingsTax },
+            ES_TRASPASO: { exitTax: spainSavingsTax },
+            ES_PENSIONES: { exitOnTotal: 0.30 },
+            US_TURNOVER: { every: 12, distribution: 0.03, periodicTax: flatTax(0.15), exitTax: flatTax(0.15) },
+            US_ETF: { every: 12, distribution: 0.015, periodicTax: flatTax(0.15), exitTax: flatTax(0.15) },
+            US_HIGH: { every: 12, distribution: 0.015, periodicTax: flatTax(0.238), exitTax: flatTax(0.238) },
+            US_ROTH: {},
+            BR_COMECOTAS: { every: 6, accrual: flatTax(0.15), exitTax: brazilRegressiveTax },
+            BR_REGRESSIVA: { exitTax: brazilRegressiveTax },
+            BR_ACOES: { exitTax: flatTax(0.15) },
+            BR_ISENTO: {}
+        };
+
+        // Each language has its own regime list, so only one of the three
+        // selects exists on a generated page. The template has all three.
+        function negativeRegimeSelect() {
+            return document.getElementById(`neg-regime-${currentLanguage()}`)
+                || document.querySelector('.neg-regime');
+        }
+
+        function calculateNegativeCompounding() {
+            const panel = document.getElementById('panel-negative');
+            if (!panel) return;
+
+            const initial = Math.max(0, parseFloat(document.getElementById('neg-initial').value) || 0);
+            const monthly = Math.max(0, parseFloat(document.getElementById('neg-monthly').value) || 0);
+            const years = Math.max(1, Math.round(parseFloat(document.getElementById('neg-years').value) || 0));
+            const rateVal = parseFloat(document.getElementById('neg-rate').value) || 0;
+            const feeRate = Math.max(0, parseFloat(document.getElementById('neg-fee').value) || 0) / 100;
+            const regimeSelect = negativeRegimeSelect();
+            const regime = (regimeSelect && NEGATIVE_REGIMES[regimeSelect.value]) || {};
+
+            const monthlyRate = (rateVal / 100) / 12;
+            const totalMonths = years * 12;
+
+            let ideal = initial;
+            let net = initial;
+            let basis = initial;
+            let fees = 0;
+            let taxPaid = 0;
+
+            for (let month = 1; month <= totalMonths; month++) {
+                ideal = (ideal * (1 + monthlyRate)) + monthly;
+
+                net = net * (1 + monthlyRate);
+                const fee = net * feeRate / 12;
+                net = net - fee + monthly;
+                fees += fee;
+                basis += monthly;
+
+                if (regime.every && month % regime.every === 0) {
+                    let tax = 0;
+                    if (regime.distribution) {
+                        const paidOut = net * regime.distribution;
+                        tax = regime.periodicTax(paidOut, years);
+                        basis += paidOut - tax;
+                    } else if (regime.accrual && net > basis) {
+                        tax = regime.accrual(net - basis, years);
+                        basis = net - tax;
+                    }
+                    net -= tax;
+                    taxPaid += tax;
+                }
+            }
+
+            let exitTax = 0;
+            if (regime.exitOnTotal) {
+                exitTax = net * regime.exitOnTotal;
+            } else if (regime.exitTax && net > basis) {
+                exitTax = regime.exitTax(net - basis, years);
+            }
+            net -= exitTax;
+            taxPaid += exitTax;
+
+            const valid = ideal > 0;
+            document.getElementById('neg-results').classList.toggle('hidden', !valid);
+            document.getElementById('neg-warning').classList.toggle('hidden', valid);
+            if (!valid) return;
+
+            const gap = Math.max(0, ideal - net);
+            const lostGrowth = Math.max(0, gap - fees - taxPaid);
+            const language = currentLanguage();
+            const locale = language === 'en' ? 'en-US' : language === 'pt' ? 'pt-BR' : 'es-ES';
+            const erosion = (gap / ideal) * 100;
+
+            document.getElementById('neg-result-gap').textContent = formatCurrency(gap);
+            document.getElementById('neg-result-erosion').textContent = `${erosion.toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`;
+            document.getElementById('neg-result-ideal').textContent = formatCurrency(ideal);
+            document.getElementById('neg-result-net').textContent = formatCurrency(net);
+            document.getElementById('neg-result-fees').textContent = formatCurrency(fees);
+            document.getElementById('neg-result-tax').textContent = formatCurrency(taxPaid);
+            document.getElementById('neg-result-lost-growth').textContent = formatCurrency(lostGrowth);
         }
 
         function formatCurrency(amount) {
@@ -1626,6 +1755,12 @@
         });
         ['#life-monthly-salary', '#life-monthly-hours', '#life-purchase-cost'].forEach((selector) => {
             on(selector, 'input', calculateLifeCost);
+        });
+        ['#neg-initial', '#neg-monthly', '#neg-years', '#neg-rate', '#neg-fee'].forEach((selector) => {
+            on(selector, 'input', calculateNegativeCompounding);
+        });
+        document.querySelectorAll('.neg-regime').forEach((select) => {
+            select.addEventListener('change', calculateNegativeCompounding);
         });
         on('#calculator-currency', 'change', (event) => setCalculatorCurrency(event.target.value));
         on('#contact-form', 'submit', handleFormSubmit);

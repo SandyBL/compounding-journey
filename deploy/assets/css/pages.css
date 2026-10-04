@@ -300,11 +300,8 @@
 .template-optin { margin: 34px 0; padding: 26px 28px; border: 1px solid var(--line); background: var(--cream); }
 .template-optin h2 { margin: 0 0 8px; color: var(--forest); font-family: var(--serif); font-size: 1.3rem; letter-spacing: -.02em; }
 .template-optin p { margin: 0 0 14px; color: var(--muted); font-family: var(--sans); font-size: .86rem; line-height: 1.65; }
-/* The opt-in is a link to the newsletter provider's own hosted form rather than
-   an email field posting here, so all this block needs is the note under the
-   button. A form of our own would make the site the controller of a mailing
-   list it does not hold, with a consent record to keep, in exchange for
-   nothing the provider is not already doing. */
+/* The opt-in opens the site's Subscribe dialog (styled in header.css), so all
+   this block needs is the button and the two notes under it. */
 .template-optin .button { width: auto; }
 .optin-consent { margin: 12px 0 0; color: var(--muted); font-family: var(--sans); font-size: .74rem; line-height: 1.55; }
 

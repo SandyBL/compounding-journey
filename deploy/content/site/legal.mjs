@@ -57,13 +57,14 @@ No hay delegado de protección de datos: el sitio lo lleva una sola persona y ni
 | Nombre, correo y mensaje del formulario de contacto | Responder a tu consulta | Tu consentimiento al enviar el formulario, y la relación precontractual que tú solicitas | 24 meses desde el último mensaje |
 | Nombre visible y puntuación en las clasificaciones de los simuladores | Publicar la clasificación que tú decides enviar | Tu consentimiento al pulsar «enviar puntuación» | Hasta que pidas su retirada |
 | Los ajustes y el resultado de una simulación (cifras, porcentajes y opciones elegidas) | Publicar medias y porcentajes agregados en la [página de datos]({{data}}) | Tu consentimiento al pulsar el botón de guardar la simulación | Indefinidamente, en forma agregada y sin nombre |
+| Nombre, correo e idioma de la suscripción por email | Enviarte un email de bienvenida y un email por cada artículo nuevo | Tu consentimiento al enviar el formulario de suscripción | Hasta que te des de baja; después solo se conserva la constancia de la baja |
 | Número de veces que se abre cada artículo | Decidir qué contenido destacar | Interés legítimo en saber qué se lee | Un contador agregado por artículo y mes, sin caducidad |
 | Número de veces que se descarga cada plantilla, y cuántas veces se sigue el enlace que aparece después | Saber qué plantilla sirve y si el panel que la sigue sirve de algo | Interés legítimo en saber qué se descarga | Dos contadores agregados por plantilla, idioma y mes, sin caducidad |
 | Dirección IP y datos técnicos de la petición | Servir la página, limitar abusos y registrar incidencias | Interés legítimo en la seguridad del servicio | Registros del proveedor de alojamiento, días |
 
 ## El formulario de contacto
 
-El formulario pide tu nombre, tu correo electrónico y tu mensaje. Se envía a Netlify Forms, donde queda almacenado, y se me reenvía por correo. No se usa para enviarte nada que no hayas pedido, no se cede a nadie y no alimenta ninguna lista de correo: si quieres recibir la newsletter tienes que apuntarte aparte.
+El formulario pide tu nombre, tu correo electrónico y tu mensaje. Se envía a Netlify Forms, donde queda almacenado, y se me reenvía por correo. No se usa para enviarte nada que no hayas pedido, no se cede a nadie y no alimenta ninguna lista de correo: si quieres recibir los artículos por email tienes que suscribirte aparte.
 
 ## Los simuladores y los datos públicos
 
@@ -105,17 +106,20 @@ Puedes borrarlas cuando quieras desde tu navegador. El sitio seguirá funcionand
 ## Quién más ve tus datos
 
 - **Netlify** (Netlify, Inc.) aloja el sitio, procesa el formulario y ejecuta la base de datos donde viven las simulaciones, las puntuaciones y los contadores. Actúa como encargado del tratamiento.
-- **Nadie más.** Cuando cargas una página de este sitio, tu navegador no contacta con ningún tercero: las tipografías, los gráficos y los scripts se sirven desde este mismo dominio. No hay Google Analytics, no hay píxeles, no hay botones sociales que te sigan.
+- **Resend** (Resend, Inc.) envía los emails de la suscripción. Recibe tu nombre, tu correo y tu idioma, y solo si te suscribes. Actúa como encargado del tratamiento.
+- **Nadie más mientras navegas.** Cuando cargas una página de este sitio, tu navegador no contacta con ningún tercero: las tipografías, los gráficos y los scripts se sirven desde este mismo dominio. No hay Google Analytics, no hay píxeles, no hay botones sociales que te sigan.
 
-## La newsletter y los botones de compartir
+## La suscripción por email, Substack y los botones de compartir
 
-La suscripción a la newsletter no se hace aquí: el enlace te lleva al formulario del proveedor (MailerLite para español y portugués, Substack para inglés), y desde ese momento son ellos quienes tratan tu correo, con su propia política. Este sitio no recibe tu dirección.
+Los botones «Suscribirse» de este sitio abren un formulario que pide tu nombre y tu correo. Se envía a Netlify Forms y se guarda en la base de datos del sitio junto con el idioma de la página y el botón desde el que te suscribiste. Con eso, y solo con eso, se te envía un email de bienvenida y después un email por cada artículo nuevo en tu idioma, a través de Resend. Cada email lleva un enlace para darte de baja con un clic; al usarlo dejas de recibir nada y se guarda la fecha de la baja para no volver a escribirte.
+
+La newsletter de Compounding Journey en **Substack** es otra cosa: es una publicación aparte, solo en inglés, y los enlaces a Substack te llevan a su web. Si te suscribes allí, quien trata tu correo es Substack, con su propia política; este sitio no recibe esa dirección.
 
 Los botones de compartir de los artículos son enlaces normales. No cargan nada de esas redes ni les cuentan que has estado aquí: solo se abren cuando los pulsas tú.
 
 ## Transferencias internacionales
 
-Netlify, Inc. y Substack están en Estados Unidos, así que los datos que tratan pueden salir del Espacio Económico Europeo. Esas transferencias se amparan en el Marco de Privacidad de Datos UE-EEUU y en las cláusulas contractuales tipo de la Comisión Europea, según el proveedor.
+Netlify, Inc., Resend, Inc. y Substack están en Estados Unidos, así que los datos que tratan pueden salir del Espacio Económico Europeo. Esas transferencias se amparan en el Marco de Privacidad de Datos UE-EEUU y en las cláusulas contractuales tipo de la Comisión Europea, según el proveedor.
 
 ## Tus derechos
 
@@ -151,13 +155,14 @@ There is no data protection officer: one person runs this site, and none of the 
 | Name, email and message from the contact form | Answering you | Your consent in sending the form, and the pre-contractual relationship you asked for | 24 months from the last message |
 | Display name and score in the simulator leaderboards | Publishing the ranking you chose to submit | Your consent in pressing "submit score" | Until you ask for it to be removed |
 | The settings and the result of a simulation (figures, percentages and options chosen) | Publishing aggregate averages and shares on the [data page]({{data}}) | Your consent in pressing the button that saves the simulation | Indefinitely, in aggregate and with no name |
+| Name, email address and language of the email subscription | Sending you a welcome email and one email per new article | Your consent when you submit the subscription form | Until you unsubscribe; after that, only the record that you did |
 | How many times each article is opened | Deciding what to feature | Legitimate interest in knowing what is read | One aggregate counter per article per month, indefinitely |
 | How many times each template is downloaded, and how often the link shown afterwards is followed | Knowing which template is useful, and whether the panel after it is worth keeping | Legitimate interest in knowing what is downloaded | Two aggregate counters per template per language per month, indefinitely |
 | IP address and technical request data | Serving the page, rate-limiting abuse, logging faults | Legitimate interest in keeping the service up | The hosting provider's logs, days |
 
 ## The contact form
 
-The form asks for your name, your email address and your message. It is submitted to Netlify Forms, stored there, and forwarded to me by email. It is not used to send you anything you did not ask for, it is not shared, and it does not feed a mailing list: subscribing to the newsletter is a separate, deliberate act.
+The form asks for your name, your email address and your message. It is submitted to Netlify Forms, stored there, and forwarded to me by email. It is not used to send you anything you did not ask for, it is not shared, and it does not feed a mailing list: subscribing to the articles by email is a separate, deliberate act.
 
 ## The simulators and the public data
 
@@ -199,17 +204,20 @@ You can delete them from your browser whenever you like. The site keeps working;
 ## Who else sees your data
 
 - **Netlify** (Netlify, Inc.) hosts the site, processes the form, and runs the database holding the simulations, the scores and the counters. It acts as a data processor.
-- **Nobody else.** Loading a page here contacts no third party: the fonts, the charts and the scripts are all served from this domain. There is no Google Analytics, no pixel, and no social button that follows you.
+- **Resend** (Resend, Inc.) sends the subscription emails. It receives your first name, email address and language, and only if you subscribe. It acts as a data processor.
+- **Nobody else while you browse.** Loading a page here contacts no third party: the fonts, the charts and the scripts are all served from this domain. There is no Google Analytics, no pixel, and no social button that follows you.
 
-## The newsletter and the share buttons
+## The email subscription, Substack and the share buttons
 
-Newsletter sign-up does not happen here: the link takes you to the provider's own form (MailerLite for Spanish and Portuguese, Substack for English), and from that point they process your address under their own policy. This site never receives it.
+The "Subscribe" buttons on this site open a form asking for your first name and email address. It is sent to Netlify Forms and stored in the site's database together with the page's language and the button you subscribed from. That, and only that, is used to send you a welcome email and then one email per new article in your language, through Resend. Every email has a one-click unsubscribe link; using it stops everything, and the date you unsubscribed is kept so you are not written to again.
+
+The Compounding Journey newsletter on **Substack** is something else: a separate publication, in English only, and links to Substack take you to its website. If you subscribe there, Substack processes your address under its own policy; this site never receives it.
 
 The share buttons on the articles are ordinary links. They load nothing from those networks and tell them nothing about your visit: they only open when you press them.
 
 ## International transfers
 
-Netlify, Inc. and Substack are in the United States, so data they process may leave the European Economic Area. Those transfers rely on the EU-US Data Privacy Framework and on the European Commission's standard contractual clauses, depending on the provider.
+Netlify, Inc., Resend, Inc. and Substack are in the United States, so data they process may leave the European Economic Area. Those transfers rely on the EU-US Data Privacy Framework and on the European Commission's standard contractual clauses, depending on the provider.
 
 ## Your rights
 
@@ -245,13 +253,14 @@ Não existe encarregado de proteção de dados: o site é gerido por uma só pes
 | Nome, e-mail e mensagem do formulário de contato | Responder a você | O seu consentimento ao enviar o formulário, e a relação pré-contratual que você pediu | 24 meses desde a última mensagem |
 | Nome visível e pontuação nos rankings dos simuladores | Publicar a pontuação que você decidiu enviar | O seu consentimento ao clicar em «enviar pontuação» | Até você pedir a remoção |
 | Os valores e o resultado de uma simulação (números, porcentagens e opções escolhidas) | Publicar médias e porcentagens agregadas na [página de dados]({{data}}) | O seu consentimento ao clicar no botão que guarda a simulação | Indefinidamente, de forma agregada e sem nome |
+| Nome, e-mail e idioma da inscrição por e-mail | Enviar um e-mail de boas-vindas e um e-mail por cada novo artigo | O seu consentimento ao enviar o formulário de inscrição | Até cancelar a inscrição; depois, só o registro do cancelamento |
 | Número de vezes que cada artigo é aberto | Decidir o que destacar | Interesse legítimo em saber o que é lido | Um contador agregado por artigo e por mês, sem prazo |
 | Número de vezes que cada modelo é baixado, e quantas vezes o link que aparece depois é seguido | Saber qual modelo é útil e se o painel que vem depois serve para algo | Interesse legítimo em saber o que é baixado | Dois contadores agregados por modelo, idioma e mês, sem prazo |
 | Endereço IP e dados técnicos da requisição | Servir a página, limitar abusos e registrar falhas | Interesse legítimo na segurança do serviço | Logs do fornecedor de hospedagem, dias |
 
 ## O formulário de contato
 
-O formulário pede o seu nome, o seu e-mail e a sua mensagem. Ele é enviado para o Netlify Forms, fica guardado lá e é encaminhado para mim por e-mail. Não serve para enviar a você nada que você não tenha pedido, não é cedido a ninguém e não alimenta nenhuma lista de e-mails: assinar a newsletter é um passo separado.
+O formulário pede o seu nome, o seu e-mail e a sua mensagem. Ele é enviado para o Netlify Forms, fica guardado lá e é encaminhado para mim por e-mail. Não serve para enviar a você nada que você não tenha pedido, não é cedido a ninguém e não alimenta nenhuma lista de e-mails: inscrever-se para receber os artigos por e-mail é um passo separado.
 
 ## Os simuladores e os dados públicos
 
@@ -293,17 +302,20 @@ Você pode apagá-las quando quiser pelo navegador. O site continua funcionando;
 ## Quem mais vê os seus dados
 
 - **A Netlify** (Netlify, Inc.) hospeda o site, processa o formulário e executa o banco de dados onde vivem as simulações, as pontuações e os contadores. Atua como operador dos dados.
-- **Mais ninguém.** Carregar uma página aqui não contata nenhum terceiro: as fontes, os gráficos e os scripts são servidos deste mesmo domínio. Não há Google Analytics, não há pixels e não há botões sociais que sigam você.
+- **A Resend** (Resend, Inc.) envia os e-mails da inscrição. Recebe o seu nome, o seu e-mail e o seu idioma, e só se você se inscrever. Atua como operador dos dados.
+- **Mais ninguém enquanto você navega.** Carregar uma página aqui não contata nenhum terceiro: as fontes, os gráficos e os scripts são servidos deste mesmo domínio. Não há Google Analytics, não há pixels e não há botões sociais que sigam você.
 
-## A newsletter e os botões de compartilhamento
+## A inscrição por e-mail, o Substack e os botões de compartilhamento
 
-A assinatura da newsletter não acontece aqui: o link leva você ao formulário do próprio fornecedor (MailerLite para espanhol e português, Substack para inglês) e, a partir daí, são eles que tratam o seu e-mail, com a política deles. Este site nunca o recebe.
+Os botões «Inscrever-se» deste site abrem um formulário que pede o seu nome e o seu e-mail. Ele é enviado ao Netlify Forms e guardado no banco de dados do site junto com o idioma da página e o botão a partir do qual você se inscreveu. Isso, e só isso, é usado para lhe enviar um e-mail de boas-vindas e depois um e-mail por cada novo artigo no seu idioma, através da Resend. Cada e-mail traz um link para cancelar a inscrição com um clique; ao usá-lo, você deixa de receber tudo, e a data do cancelamento é guardada para não voltarmos a escrever-lhe.
+
+A newsletter do Compounding Journey no **Substack** é outra coisa: uma publicação separada, só em inglês, e os links para o Substack levam você ao site dele. Se você se inscrever lá, quem trata o seu e-mail é o Substack, com a política dele; este site nunca o recebe.
 
 Os botões de compartilhamento dos artigos são links normais. Não carregam nada dessas redes nem contam a elas que você esteve aqui: só abrem quando você clica neles.
 
 ## Transferências internacionais
 
-A Netlify, Inc. e a Substack estão nos Estados Unidos, então os dados que elas tratam podem sair do Espaço Econômico Europeu. Essas transferências se apoiam no Quadro de Privacidade de Dados UE-EUA e nas cláusulas contratuais-tipo da Comissão Europeia, conforme o fornecedor.
+A Netlify, Inc., a Resend, Inc. e a Substack estão nos Estados Unidos, então os dados que elas tratam podem sair do Espaço Econômico Europeu. Essas transferências se apoiam no Quadro de Privacidade de Dados UE-EUA e nas cláusulas contratuais-tipo da Comissão Europeia, conforme o fornecedor.
 
 ## Os seus direitos
 

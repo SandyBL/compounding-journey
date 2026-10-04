@@ -173,6 +173,7 @@ ${languages.map((code) => `- [${languageNames[code]}](${homeUrl(code)})`).join('
 - [Frequently asked questions](${origin}/#preguntas-frecuentes): direct answers about the 4% rule, what FIRE means and its variants, compound growth, saving versus investing, financial advisors, the cost-in-hours calculator, investment risk profiles, Excel budget templates, and the educational scope of the content.
 - [About Sandy Bradbury](${origin}${aboutPath(DEFAULT_LANGUAGE)}): who writes the site, what is and is not being claimed, and the six rules the material is written under. The home page carries a short version of the same under its ${origin}/#biografia heading.
 - [Contact](${origin}/#contacto): the newsletter, a direct contact form, and the project's address, ${CONTACT_EMAIL}. The form and the address arrive in the same mailbox.
+- Email subscription: every page has a "Subscribe" button that opens a form for a first name and an email address. Subscribers get a welcome email and then one email per new article, in the language they subscribed in (English, Spanish or Portuguese). This is separate from the Compounding Journey newsletter on Substack (https://compoundingjourney.substack.com/), which is English only.
 
 ## Blog
 

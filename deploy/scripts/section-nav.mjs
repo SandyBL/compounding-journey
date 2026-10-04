@@ -56,6 +56,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { escapeHtml } from './markdown.mjs';
+import { headerSubscribe, menuSubscribe } from './newsletter-subscribe.mjs';
 import { LANGUAGES, glossaryPath, homePath, journalPath, sectionPath } from './site-routes.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -400,7 +401,13 @@ export function headerMenu(section, language, currentPath = null) {
       + 'the button from headerMenu() too if it is meant to be gone.'
     );
   }
-  return `<div class="site-header-menu">`
+  // The Subscribe button comes first, ahead of the hamburger, because it is the
+  // one header control that is not navigation: it opens the email subscription
+  // dialog every page carries (scripts/newsletter-subscribe.mjs). The panel
+  // repeats it under the Freedom Compass button for the widths where the
+  // header has no room for a label.
+  return headerSubscribe(language)
+    + `<div class="site-header-menu">`
     + `<button type="button" class="site-menu-toggle" aria-expanded="false"`
     + ` aria-controls="site-menu-panel" aria-label="${open}"`
     + ` data-label-open="${open}" data-label-close="${close}" hidden>`
@@ -412,6 +419,7 @@ export function headerMenu(section, language, currentPath = null) {
     + `</nav>`
     + `<a class="site-menu-cta" href="${homePath(language)}#${cta.fragment}"`
     + ` data-site-route="${cta.route}">${escapeHtml(labelFor(cta.label, language))}${ARROW}</a>`
+    + menuSubscribe(language)
     + `</div></div>`;
 }
 

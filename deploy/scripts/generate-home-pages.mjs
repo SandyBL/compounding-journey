@@ -23,6 +23,7 @@ import { fileURLToPath } from 'node:url';
 import { jsonLdScript } from './markdown.mjs';
 import { readSharedCatalog } from './shared-catalog.mjs';
 import { sectionPath } from './site-routes.mjs';
+import { subscribeTail } from './newsletter-subscribe.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -979,6 +980,12 @@ for (const language of languages) {
   assertAbsoluteAssetUrls(page, language);
 
   page = tidyOutput(page);
+
+  // The email subscription dialog every Subscribe control on the page opens,
+  // rendered by the same module as on every other page of the site, so the
+  // form Netlify registers is identical wherever it is read from.
+  if (!page.includes('</body>')) throw new Error(`The "${language}" homepage has no </body> for the subscribe dialog.`);
+  page = page.replace('</body>', `${subscribeTail(language)}\n</body>`);
 
   const file = outputFile(language);
   await fs.mkdir(path.dirname(file), { recursive: true });
