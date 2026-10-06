@@ -18,7 +18,7 @@
 // run cut off by the 30-second limit loses nothing: the next one resumes from
 // the same place. And no subscriber can be sent the same article twice - see
 // newsletter_deliveries in the migration.
-import { LANGUAGES, MAX_ARTICLE_AGE_DAYS, newsletterFrom, newsletterReplyTo } from '../lib/newsletter/config.mjs';
+import { LANGUAGES, MAX_ARTICLE_AGE_DAYS, newsletterFrom, newsletterReplyTo, resendName } from '../lib/newsletter/config.mjs';
 import { articleBroadcast } from '../lib/newsletter/emails.mjs';
 import { readFeed } from '../lib/newsletter/feeds.mjs';
 import { hasApiKey, isNotFound, isQuotaError, resend } from '../lib/newsletter/resend.mjs';
@@ -230,7 +230,7 @@ async function deliver(database, account, outOfTime) {
       }
 
       const segment = await resend('POST', '/segments', {
-        name: `Compounding Journey · ${article.language.toUpperCase()} · article ${article.id} · ${new Date().toISOString().slice(0, 10)}`
+        name: resendName(`Compounding Journey · ${article.language.toUpperCase()} · article ${article.id} · ${new Date().toISOString().slice(0, 10)}`)
       });
       [batch] = await database.sql`
         INSERT INTO newsletter_batches (article_id, resend_account, segment_id)
@@ -336,7 +336,7 @@ async function sendBatch(database, batch, article) {
       subject: email.subject,
       html: email.html,
       text: email.text,
-      name: `${article.title} (${article.language}, batch ${batch.id})`,
+      name: resendName(article.title, ` (${article.language}, batch ${batch.id})`),
       send: true
     });
   } catch (error) {

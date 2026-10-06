@@ -11,9 +11,11 @@
 //
 // Unsubscribing marks the row in the database and the contact in Resend, so
 // neither the broadcasts (sent by Resend) nor a later re-sync can reach them.
+// A reader subscribed in several languages has one link per language, and
+// each one ends that language only.
 import { SITE_ORIGIN, SUBSTACK_URL } from '../lib/newsletter/config.mjs';
 import { escapeHtml } from '../lib/newsletter/emails.mjs';
-import { hasApiKey, resend } from '../lib/newsletter/resend.mjs';
+import { hasApiKey, isNotFound, resend } from '../lib/newsletter/resend.mjs';
 import { db } from '../lib/newsletter/store.mjs';
 
 const COPY = {
@@ -110,8 +112,27 @@ async function unsubscribe(subscriber) {
     WHERE id = ${subscriber.id}
   `;
   if (!hasApiKey()) return;
+  const address = encodeURIComponent(subscriber.email);
   try {
-    await resend('PATCH', `/contacts/${encodeURIComponent(subscriber.email)}`, { unsubscribed: true });
+    // Each link belongs to one language's subscription. Resend's unsubscribed
+    // flag would stop every language at once, so while the reader still has
+    // another language active, the contact only leaves this language's segment.
+    const [{ others }] = await db().sql`
+      SELECT count(*)::int AS others FROM newsletter_subscribers
+      WHERE email = ${subscriber.email} AND id <> ${subscriber.id} AND status = 'active'
+    `;
+    if (Number(others) === 0) {
+      await resend('PATCH', `/contacts/${address}`, { unsubscribed: true });
+      return;
+    }
+    const [segment] = await db().sql`
+      SELECT value FROM newsletter_resend_state WHERE key = ${`segment_${subscriber.language}`}
+    `;
+    if (segment) {
+      await resend('DELETE', `/contacts/${address}/segments/${segment.value}`).catch((error) => {
+        if (!isNotFound(error)) throw error;
+      });
+    }
   } catch (error) {
     // The database already says unsubscribed, and nothing is sent to a row
     // that says so. Resend's copy is corrected by the next re-sync.

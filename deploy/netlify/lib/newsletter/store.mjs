@@ -106,13 +106,15 @@ export async function forgetSegment(database, language) {
 
 /**
  * Creates or updates one subscriber's contact in Resend and puts it in the
- * segment for their language.
+ * segment for their language. A reader subscribed in several languages is one
+ * Resend contact (Resend keys contacts by address) that sits in each of those
+ * segments, one database row per language.
  *
  * `resubscribe` is set when the subscriber has just submitted the form. Only
  * then is the contact's unsubscribed flag cleared: a background re-sync must
  * never undo an unsubscribe made from Resend's side.
  */
-export async function syncSubscriber(database, account, subscriber, { resubscribe = false, previousLanguage = null } = {}) {
+export async function syncSubscriber(database, account, subscriber, { resubscribe = false } = {}) {
   const segmentId = account.segments[subscriber.language];
   const address = encodeURIComponent(subscriber.email);
   let contactId = null;
@@ -144,10 +146,6 @@ export async function syncSubscriber(database, account, subscriber, { resubscrib
       if (!(error instanceof ResendError) || [0, 401, 403, 404, 429].includes(error.status) || error.status >= 500) throw error;
       contactId = await updateExisting();
     }
-  }
-
-  if (previousLanguage && previousLanguage !== subscriber.language && account.segments[previousLanguage]) {
-    await resend('DELETE', `/contacts/${address}/segments/${account.segments[previousLanguage]}`).catch(() => {});
   }
 
   await database.sql`

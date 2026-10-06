@@ -4,7 +4,8 @@
 //
 // Three steps, each allowed to fail without losing the one before it:
 //   1. the subscriber is saved in Netlify Database, which is the source of truth;
-//   2. they are added to Resend as a contact, in the segment for their language;
+//   2. they are added to Resend as a contact, in the segment for their language
+//      (one contact per address, in one segment per language subscribed to);
 //   3. the welcome email goes out.
 // Anything that fails at 2 or 3 is still marked as not done in the database,
 // and the hourly dispatcher (newsletter-dispatch.mjs) finishes it.
@@ -14,7 +15,7 @@
 import { randomBytes } from 'node:crypto';
 
 import { LANGUAGES } from '../lib/newsletter/config.mjs';
-import { hasApiKey } from '../lib/newsletter/resend.mjs';
+import { hasApiKey, isNotFound, resend } from '../lib/newsletter/resend.mjs';
 import { db, ensureAccount, syncWithRecovery } from '../lib/newsletter/store.mjs';
 import { sendWelcome } from '../lib/newsletter/welcome.mjs';
 
@@ -52,9 +53,13 @@ export default async (request) => {
   }
 
   const database = db();
-  const [previous] = await database.sql`
+  // Each language is a subscription of its own: subscribing from the Spanish
+  // page adds Spanish to an English subscriber, it does not replace English.
+  const existing = await database.sql`
     SELECT id, status, language FROM newsletter_subscribers WHERE email = ${email}
   `;
+  const previous = existing.find((row) => row.language === language);
+  const otherActive = existing.filter((row) => row.language !== language && row.status === 'active');
   const token = randomBytes(24).toString('base64url');
 
   // A returning subscriber who had unsubscribed starts again: new subscription
@@ -63,9 +68,8 @@ export default async (request) => {
   const [subscriber] = await database.sql`
     INSERT INTO newsletter_subscribers (email, first_name, language, placement, unsubscribe_token)
     VALUES (${email}, ${firstName}, ${language}, ${placement}, ${token})
-    ON CONFLICT (email) DO UPDATE SET
+    ON CONFLICT (email, language) DO UPDATE SET
       first_name = CASE WHEN EXCLUDED.first_name <> '' THEN EXCLUDED.first_name ELSE newsletter_subscribers.first_name END,
-      language = EXCLUDED.language,
       placement = EXCLUDED.placement,
       subscribed_at = CASE WHEN newsletter_subscribers.status = 'active' THEN newsletter_subscribers.subscribed_at ELSE now() END,
       welcome_sent_at = CASE WHEN newsletter_subscribers.status = 'active' THEN newsletter_subscribers.welcome_sent_at ELSE NULL END,
@@ -83,11 +87,9 @@ export default async (request) => {
   }
 
   try {
+    if (otherActive.length) await mirrorResendUnsubscribe(database, email, language);
     const account = await ensureAccount(database);
-    await syncWithRecovery(database, account, subscriber, {
-      resubscribe: true,
-      previousLanguage: previous?.language ?? null
-    });
+    await syncWithRecovery(database, account, subscriber, { resubscribe: true });
   } catch (error) {
     console.error(`newsletter: could not sync subscriber #${subscriber.id} to Resend yet; the dispatcher will retry.`, error);
   }
@@ -105,3 +107,24 @@ export default async (request) => {
 
   return new Response('OK');
 };
+
+/**
+ * Resend has one contact per address, and its unsubscribed flag covers every
+ * language. Subscribing to another language clears that flag, so if the reader
+ * had unsubscribed through a broadcast link that the daily mirror has not
+ * copied here yet, their other languages are marked unsubscribed first -
+ * otherwise this sign-up would quietly re-enrol them.
+ */
+async function mirrorResendUnsubscribe(database, email, language) {
+  try {
+    const contact = await resend('GET', `/contacts/${encodeURIComponent(email)}`);
+    if (!contact?.unsubscribed) return;
+    await database.sql`
+      UPDATE newsletter_subscribers
+      SET status = 'unsubscribed', unsubscribed_at = now(), updated_at = now()
+      WHERE email = ${email} AND language <> ${language} AND status = 'active'
+    `;
+  } catch (error) {
+    if (!isNotFound(error)) console.error('newsletter: could not check the Resend contact before resubscribing.', error);
+  }
+}
