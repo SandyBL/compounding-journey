@@ -44,6 +44,7 @@ export async function readFeed(language) {
         guid: field(item, 'guid') || link,
         title: field(item, 'title'),
         summary: field(item, 'description'),
+        category: field(item, 'category'),
         link,
         publishedAt: Number.isNaN(date.getTime()) ? null : date
       };

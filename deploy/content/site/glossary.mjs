@@ -1336,5 +1336,689 @@ Isto não é um argumento para ignorar o risco. É um argumento sobre qual alava
 
 A consequência prática é aborrecida e por isso funciona: escolher uma alocação que consiga manter numa queda de 40%, automatizar os reforços e olhar para a carteira muito menos do que te dá vontade.`
     }
+  },
+  {
+    id: 'hedge-fund',
+    group: 'investing',
+    related: ['leverage', 'derivatives', 'mutual-fund'],
+    es: {
+      name: 'Hedge fund (fondo de inversión libre)',
+      slug: 'hedge-fund-fondo-de-inversion-libre',
+      aliases: ['hedge fund', 'hedge funds', 'fondo de inversión libre', 'fondos de inversión libre', 'IICIL'],
+      short: 'Un fondo de gestión alternativa con muchas menos restricciones que un fondo tradicional: puede apalancarse, vender en corto, usar derivados y concentrar la cartera.',
+      body: `Un hedge fund es un vehículo de inversión colectiva que renuncia a buena parte de las reglas que protegen al inversor minorista a cambio de libertad para el gestor. Puede endeudarse para invertir, apostar a la baja, usar derivados sin apenas límites y concentrar el capital en pocas posiciones. En España su forma regulada es la IICIL, la institución de inversión colectiva de inversión libre, supervisada por la CNMV y pensada sobre todo para inversores profesionales o con un importe mínimo elevado.
+
+Su modelo de costes es el más reconocible: el clásico «2 y 20», un 2 % anual sobre el patrimonio más un 20 % de los beneficios por encima de un umbral. Con una rentabilidad bruta del 8 %, ese esquema puede dejar al inversor con menos del 5 % neto, y la diferencia se paga tanto en los años buenos como en los mediocres.
+
+Para un ahorrador particular, la pregunta no es si existen gestores alternativos brillantes, que los hay, sino si puede identificarlos de antemano y aceptar la menor liquidez, la menor transparencia y las comisiones. En la mayoría de los casos, una cartera indexada y diversificada cumple el mismo objetivo con menos piezas que pueden fallar.`
+    },
+    en: {
+      name: 'Hedge fund',
+      slug: 'hedge-fund',
+      aliases: ['hedge funds'],
+      short: 'An alternative investment fund with far fewer restrictions than a conventional fund: it can borrow, sell short, use derivatives and concentrate its portfolio.',
+      body: `A hedge fund is a pooled investment vehicle that gives up most of the rules protecting retail investors in exchange for freedom for the manager. It can borrow to invest, bet on prices falling, use derivatives with few limits and put most of its capital in a handful of positions. In most countries it is open only to professional or wealthy investors, precisely because those protections are missing.
+
+Its fee model is the best-known part: the classic "2 and 20", 2% a year on assets plus 20% of profits above a threshold. On a gross return of 8%, that structure can leave the investor with less than 5% net, and the fixed part is charged in mediocre years as well as good ones.
+
+For an individual saver the question is not whether brilliant alternative managers exist, because some do, but whether you can identify them in advance and accept the lower liquidity, lower transparency and higher fees. Most of the time a diversified index portfolio does the same job with fewer parts that can break.`
+    },
+    pt: {
+      name: 'Hedge fund',
+      slug: 'hedge-fund',
+      aliases: ['hedge funds', 'fundo multimercado', 'fundos multimercado'],
+      short: 'Um fundo de gestão alternativa com muito menos restrições do que um fundo tradicional: pode se alavancar, vender a descoberto, usar derivativos e concentrar a carteira.',
+      body: `Um hedge fund é um veículo de investimento coletivo que abre mão de boa parte das regras que protegem o investidor comum em troca de liberdade para o gestor. Ele pode tomar dinheiro emprestado para investir, apostar na queda, usar derivativos com poucos limites e concentrar o capital em poucas posições. No Brasil, o parente mais próximo é o fundo multimercado, regulado pela CVM, e as versões mais livres costumam ser restritas a investidores qualificados ou profissionais.
+
+O modelo de custos é a parte mais conhecida: o clássico "2 e 20", 2% ao ano sobre o patrimônio mais 20% do lucro acima de um referencial. Com uma rentabilidade bruta de 8%, esse esquema pode deixar o investidor com menos de 5% líquido, e a parte fixa é cobrada também nos anos medíocres.
+
+Para quem investe por conta própria, a pergunta não é se existem gestores alternativos brilhantes, porque existem, mas se você consegue identificá-los antes e aceitar menos liquidez, menos transparência e taxas maiores. Na maioria dos casos, uma carteira diversificada e de baixo custo cumpre o mesmo objetivo com menos peças que podem falhar.`
+    }
+  },
+  {
+    id: 'reit',
+    group: 'investing',
+    related: ['passive-income', 'diversification', 'dividend-yield'],
+    es: {
+      name: 'REIT (inmobiliario cotizado)',
+      slug: 'reit-inmobiliario-cotizado',
+      aliases: ['REIT', 'REITs', 'SOCIMI', 'inmobiliario cotizado'],
+      short: 'Una sociedad cotizada que posee y alquila inmuebles y está obligada a repartir la mayor parte de sus beneficios entre sus accionistas.',
+      body: `Un REIT permite ser propietario de una parte de una cartera de inmuebles sin comprar ninguno: se compra y se vende como una acción, en segundos y por unos pocos euros. En España la figura equivalente es la SOCIMI.
+
+En contrapartida, un REIT se comporta como una acción, no como un piso: cotiza todos los días y puede caer un 40 % en un año en el que los alquileres que cobra no se han movido. La liquidez que gana se paga en volatilidad visible.
+
+Como reparte obligatoriamente casi todo su beneficio, su rentabilidad por dividendo suele ser alta y su crecimiento por reinversión, bajo. Es una fuente de renta más que un motor de acumulación, y conviene tenerlo en cuenta antes de compararlo con un índice de acciones.`
+    },
+    en: {
+      name: 'REIT (listed real estate)',
+      slug: 'reit-listed-real-estate',
+      aliases: ['REIT', 'REITs', 'real estate investment trust', 'listed real estate'],
+      short: 'A listed company that owns and rents out property and is required to distribute most of its profit to shareholders.',
+      body: `A REIT lets you own a share of a property portfolio without buying any property: it is bought and sold like a share, in seconds and for a few dollars.
+
+In exchange, a REIT behaves like a share and not like an apartment: it is priced every day and can fall 40% in a year in which the rents it collects did not move at all. The liquidity it gains is paid for in visible volatility.
+
+Because it is obliged to pay out nearly all of its profit, a REIT's dividend yield tends to be high and its growth from reinvestment low. It is a source of income rather than an engine of accumulation, which is worth remembering before comparing it with a stock index.`
+    },
+    pt: {
+      name: 'Fundo imobiliário (FII)',
+      slug: 'fundo-imobiliario-fii',
+      aliases: ['FII', 'FIIs', 'fundos imobiliários', 'fundo de investimento imobiliário', 'fundos de investimento imobiliário', 'REIT', 'REITs'],
+      short: 'Um fundo negociado na bolsa que possui imóveis ou títulos ligados a imóveis e distribui a maior parte do resultado aos cotistas, normalmente todo mês.',
+      body: `Um fundo imobiliário permite ser dono de uma fração de uma carteira de imóveis sem comprar nenhum: as cotas são compradas e vendidas na B3, em segundos e por poucos reais. É a versão brasileira do que nos Estados Unidos se chama REIT.
+
+Em troca, um FII se comporta como um ativo de bolsa e não como um apartamento: tem cotação todos os dias e pode cair 30% num ano em que os aluguéis que recebe não mudaram. A liquidez que você ganha é paga em volatilidade visível.
+
+Como o fundo é obrigado a distribuir a maior parte do resultado, o dividend yield tende a ser alto e o crescimento por reinvestimento, baixo. Os rendimentos mensais podem ser isentos de imposto de renda para a pessoa física quando o fundo cumpre as regras de isenção, mas o lucro na venda das cotas é tributado. Vale lembrar as duas coisas antes de comparar um FII com um índice de ações.`
+    }
+  },
+  {
+    id: 'money-market-fund',
+    group: 'investing',
+    related: ['emergency-fund', 'liquidity', 'bond'],
+    es: {
+      name: 'Fondo monetario',
+      slug: 'fondo-monetario',
+      aliases: ['fondos monetarios', 'fondo del mercado monetario', 'fondos del mercado monetario', 'mercado monetario'],
+      short: 'Un fondo que invierte solo en deuda de muy corto plazo y alta calidad, como letras del Tesoro y depósitos, para ofrecer estabilidad y liquidez con una rentabilidad cercana a los tipos de interés.',
+      body: `Un fondo monetario compra deuda que vence en semanas o pocos meses: letras del Tesoro, pagarés de empresas solventes y depósitos bancarios. Como los préstamos son tan cortos, su valor apenas se mueve cuando cambian los tipos de interés, y su rentabilidad sigue de cerca al tipo del Banco Central Europeo menos la comisión.
+
+Eso lo convierte en un buen aparcamiento para dinero que vas a necesitar pronto o que no quieres exponer a la bolsa. Con los tipos al 3 % y una comisión del 0,2 %, 10.000 € rinden unos 280 € al año, sin la volatilidad de la renta variable.
+
+No es lo mismo que una cuenta garantizada: no está cubierto por el fondo de garantía de depósitos, y en episodios extremos puede perder algo de valor. Tampoco es una inversión a largo plazo: a veinte años, lo que gana apenas supera la inflación. Su función es la estabilidad, no el crecimiento.`
+    },
+    en: {
+      name: 'Money market fund',
+      slug: 'money-market-fund',
+      aliases: ['money market funds', 'money market'],
+      short: 'A fund that invests only in very short-term, high-quality debt such as Treasury bills and bank deposits, aiming for stability and liquidity with a return close to prevailing interest rates.',
+      body: `A money market fund buys debt that matures in weeks or a few months: Treasury bills, commercial paper from solid companies and bank deposits. Because the loans are so short, their value barely moves when interest rates change, and the fund's return tracks the central bank's rate minus its fee.
+
+That makes it a sensible place to park money you will need soon or do not want exposed to the stock market. With rates at 4% and a 0.2% fee, $10,000 earns around $380 a year without the swings of equities.
+
+It is not the same as an insured bank account: it is not covered by deposit insurance, and in extreme episodes it can lose a little value. Nor is it a long-term investment: over twenty years its return barely beats inflation. Its job is stability, not growth.`
+    },
+    pt: {
+      name: 'Fundo monetário (fundo DI)',
+      slug: 'fundo-monetario-fundo-di',
+      aliases: ['fundos monetários', 'fundo monetário', 'mercado monetário', 'fundo DI', 'fundos DI'],
+      short: 'Um fundo que investe apenas em dívida de prazo muito curto e alta qualidade, como títulos públicos pós-fixados, para oferecer estabilidade e liquidez com uma rentabilidade próxima da taxa básica de juros.',
+      body: `Um fundo monetário compra dívida de prazo muito curto ou que acompanha a taxa do dia: no Brasil, sobretudo títulos públicos pós-fixados e operações atreladas ao CDI, por isso esses fundos também são chamados de fundos DI. Como o rendimento acompanha os juros diários, o valor da cota quase não oscila.
+
+Isso faz dele um bom estacionamento para o dinheiro que você vai precisar em breve ou que não quer expor à bolsa. O ponto de atenção é a taxa de administração: num fundo DI, uma taxa de 1% ao ano pode consumir uma parte grande do rendimento, e o Tesouro Selic direto faz quase o mesmo trabalho por menos.
+
+Não é o mesmo que uma conta garantida: fundos não têm a cobertura do FGC, e o imposto de renda segue a tabela regressiva, com come-cotas semestral. Também não é um investimento de longo prazo para crescer: a função dele é estabilidade e liquidez, não crescimento.`
+    }
+  },
+  {
+    id: 'ucits',
+    group: 'investing',
+    related: ['mutual-fund', 'diversification', 'etf'],
+    es: {
+      name: 'UCITS',
+      slug: 'ucits',
+      aliases: ['fondo UCITS', 'fondos UCITS', 'directiva UCITS', 'normativa UCITS'],
+      short: 'El marco europeo que regula los fondos de inversión vendidos al público minorista, con límites de diversificación, liquidez y custodia comunes en toda la Unión Europea.',
+      body: `UCITS son las siglas en inglés de los Organismos de Inversión Colectiva en Valores Mobiliarios, la directiva europea que fija qué puede hacer un fondo para poder venderse a cualquier ahorrador de la Unión. Un fondo UCITS autorizado en un país puede comercializarse en los demás con un régimen común, y por eso la etiqueta aparece en casi todos los fondos y ETF que compra un inversor español.
+
+Las reglas más conocidas son de diversificación: como norma general, no más del 10 % del fondo en un mismo emisor, y las posiciones que superan el 5 % no pueden sumar más del 40 % del total. A eso se añaden la obligación de ofrecer reembolsos frecuentes, de dejar los activos en manos de un depositario independiente y de publicar un documento de datos fundamentales.
+
+UCITS no garantiza que un fondo sea bueno ni barato, ni protege contra caídas del mercado. Lo que garantiza es que el fondo no puede jugarse tu dinero en una sola empresa, que sus activos están separados de la gestora y que puedes salir con relativa rapidez.`
+    },
+    en: {
+      name: 'UCITS',
+      slug: 'ucits',
+      aliases: ['UCITS fund', 'UCITS funds', 'UCITS directive'],
+      short: 'The European framework that regulates investment funds sold to the public, with common limits on diversification, liquidity and custody across the European Union.',
+      body: `UCITS stands for Undertakings for Collective Investment in Transferable Securities, the EU directive that sets what a fund may do if it is to be sold to any retail saver in the Union. A UCITS fund authorised in one country can be marketed in the others under a shared rulebook, which is why the label appears on almost every European fund and ETF.
+
+The best-known rules are about diversification: as a general rule, no more than 10% of the fund in a single issuer, and the positions above 5% cannot add up to more than 40% of the total. On top of that come frequent redemptions, an independent depositary holding the assets, and a standard key information document.
+
+UCITS does not promise that a fund is good or cheap, and it does not protect you from market falls. What it does guarantee is that the fund cannot bet your money on one company, that its assets are kept apart from the manager, and that you can get out reasonably quickly.`
+    },
+    pt: {
+      name: 'UCITS',
+      slug: 'ucits',
+      aliases: ['fundo UCITS', 'fundos UCITS', 'diretiva UCITS'],
+      short: 'O marco europeu que regula os fundos de investimento vendidos ao público, com limites comuns de diversificação, liquidez e custódia em toda a União Europeia.',
+      body: `UCITS é a sigla em inglês dos Organismos de Investimento Coletivo em Valores Mobiliários, a diretiva europeia que define o que um fundo pode fazer para ser vendido a qualquer investidor comum da União Europeia. Para o investidor brasileiro, a etiqueta aparece sobretudo em ETFs e fundos domiciliados na Irlanda ou em Luxemburgo, acessados por corretoras no exterior.
+
+As regras mais conhecidas são de diversificação: como regra geral, no máximo 10% do fundo num mesmo emissor, e as posições acima de 5% não podem somar mais de 40% do total. Somam-se a isso resgates frequentes, um custodiante independente que guarda os ativos e um documento padronizado de informações essenciais. No Brasil, o papel equivalente é cumprido pelas regras da CVM, hoje a Resolução CVM 175.
+
+UCITS não garante que um fundo seja bom ou barato, nem protege contra quedas do mercado. O que garante é que o fundo não pode apostar o seu dinheiro numa única empresa, que os ativos ficam separados da gestora e que você consegue sair com relativa rapidez.`
+    }
+  },
+  {
+    id: 'mutual-fund',
+    group: 'investing',
+    related: ['nav', 'index-fund', 'ter'],
+    es: {
+      name: 'Fondo de inversión',
+      slug: 'fondo-de-inversion',
+      aliases: ['fondos de inversión', 'IIC', 'institución de inversión colectiva', 'instituciones de inversión colectiva'],
+      short: 'Un patrimonio común formado por el dinero de muchos inversores, gestionado por una gestora profesional y repartido en participaciones cuyo valor se calcula cada día.',
+      body: `Un fondo de inversión junta el dinero de miles de personas y lo invierte según una política definida: acciones, renta fija, una mezcla de ambas o un índice. Cada inversor posee participaciones, y el valor de cada una sube o baja con la cartera. Una gestora toma las decisiones, un depositario custodia los activos y, en España, la CNMV supervisa a ambos. Es la forma más común de las instituciones de inversión colectiva, o IIC.
+
+Su gran ventaja es el acceso: con 100 € puedes tener una parte de cientos de empresas que nunca podrías comprar una a una. Su gran riesgo es el coste. Un fondo de gestión activa que cobra un 1,8 % anual frente a un indexado al 0,2 % se queda, en treinta años y con un 7 % bruto, con aproximadamente un tercio menos de patrimonio final.
+
+En España tienen además una ventaja fiscal propia: puedes traspasar el dinero de un fondo a otro sin pagar impuestos hasta el reembolso final. Eso convierte al fondo en una herramienta de diferimiento fiscal, siempre que la elección de fondos y comisiones sea buena.`
+    },
+    en: {
+      name: 'Mutual fund',
+      slug: 'mutual-fund',
+      aliases: ['mutual funds', 'collective investment scheme', 'collective investment schemes', 'investment fund', 'investment funds'],
+      short: 'A pool of money from many investors, run by a professional manager and divided into units or shares whose value is calculated every day.',
+      body: `A mutual fund pools money from thousands of people and invests it according to a stated policy: shares, bonds, a mix of the two, or an index. Each investor owns units, and the value of each unit rises and falls with the portfolio. A management company makes the decisions, a separate custodian holds the assets and a regulator supervises both. In Europe the same thing is usually called a collective investment scheme.
+
+Its great advantage is access: with $100 you can own a slice of hundreds of companies you could never buy one by one. Its great risk is cost. An active fund charging 1.8% a year against an index fund at 0.2%, at a 7% gross return over thirty years, ends with roughly a third less money.
+
+Unlike an ETF, a traditional mutual fund is bought and sold once a day at the net asset value calculated after the market closes, so you never know the exact price when you place the order. That is a feature of the structure, not a flaw, and it matters mostly to people who trade often, which is itself a habit worth avoiding.`
+    },
+    pt: {
+      name: 'Fundo de investimento',
+      slug: 'fundo-de-investimento',
+      aliases: ['fundos de investimento', 'organismo de investimento coletivo', 'organismos de investimento coletivo'],
+      short: 'Um patrimônio comum formado pelo dinheiro de muitos investidores, administrado por uma gestora profissional e dividido em cotas cujo valor é calculado todos os dias.',
+      body: `Um fundo de investimento junta o dinheiro de milhares de pessoas e o aplica segundo uma política definida: ações, renda fixa, uma mistura das duas ou um índice. Cada investidor tem cotas, e o valor de cada cota sobe ou desce com a carteira. Uma gestora toma as decisões, um administrador e um custodiante cuidam dos ativos e da contabilidade, e a CVM supervisiona tudo, hoje pela Resolução CVM 175.
+
+A grande vantagem é o acesso: com pouco dinheiro você tem uma parte de dezenas de ativos que nunca conseguiria comprar um a um. O grande risco é o custo. Um fundo que cobra 2% ao ano contra uma alternativa a 0,3%, com 7% de rentabilidade bruta em trinta anos, termina com mais de um terço a menos de patrimônio.
+
+No Brasil, a tributação também pesa: fundos abertos de renda fixa e multimercado sofrem o come-cotas, uma antecipação semestral de imposto de renda em maio e novembro que reduz o efeito dos juros compostos. Comparar fundos pelo resultado líquido, depois de taxas e impostos, é o que separa uma boa escolha de uma propaganda bem feita.`
+    }
+  },
+  {
+    id: 'nav',
+    group: 'investing',
+    related: ['mutual-fund', 'etf', 'liquidity'],
+    es: {
+      name: 'Valor liquidativo',
+      slug: 'valor-liquidativo',
+      aliases: ['NAV', 'valor liquidativo de la participación'],
+      short: 'El precio de una participación de un fondo: el valor de todo lo que posee menos lo que debe, dividido entre el número de participaciones.',
+      body: `El valor liquidativo se calcula sumando el valor de mercado de todos los activos del fondo, restando sus deudas y gastos pendientes y dividiendo el resultado entre las participaciones en circulación. Un fondo con 101 millones de euros en activos, 1 millón en obligaciones y 4 millones de participaciones tiene un valor liquidativo de 25 €.
+
+La gestora lo calcula una vez al día, con los precios de cierre. Por eso, cuando das una orden de suscripción o reembolso antes de la hora de corte, no sabes el precio exacto al que se ejecutará: lo sabrás al día siguiente. Es lo que se llama operar «a ciegas», y existe para que nadie pueda aprovecharse de precios ya conocidos a costa de los demás partícipes.
+
+A diferencia de una acción, el valor liquidativo no depende de la oferta y la demanda del propio fondo: refleja lo que vale la cartera. Una subida del valor liquidativo no es una opinión del mercado sobre el fondo, sino el resultado de lo que ha pasado con lo que el fondo posee.`
+    },
+    en: {
+      name: 'Net asset value (NAV)',
+      slug: 'net-asset-value-nav',
+      aliases: ['NAV', 'net asset value', 'NAV per share'],
+      short: 'The price of one unit of a fund: the value of everything it owns minus what it owes, divided by the number of units.',
+      body: `Net asset value is calculated by adding up the market value of every asset in the fund, subtracting its debts and accrued expenses, and dividing the result by the units in issue. A fund with $101 million of assets, $1 million of liabilities and 4 million units has a NAV of $25.
+
+The manager calculates it once a day, using closing prices. That is why an order to buy or sell placed before the cut-off time does not tell you the exact price it will get: you find out the next day. This "forward pricing" exists so that nobody can trade on a price that is already known at the expense of the fund's other investors.
+
+Unlike a share, a fund's NAV is not set by supply and demand for the fund itself: it reflects what the portfolio is worth. A rising NAV is not the market's opinion of the fund but the arithmetic result of what happened to the things it holds.`
+    },
+    pt: {
+      name: 'Valor da cota',
+      slug: 'valor-da-cota',
+      aliases: ['NAV', 'valor patrimonial da cota', 'cota do fundo'],
+      short: 'O preço de uma cota de um fundo: o valor de tudo o que ele possui menos o que deve, dividido pelo número de cotas.',
+      body: `O valor da cota é calculado somando o valor de mercado de todos os ativos do fundo, subtraindo dívidas e despesas a pagar e dividindo o resultado pelo número de cotas emitidas. Um fundo com 101 milhões em ativos, 1 milhão em obrigações e 4 milhões de cotas tem uma cota de 25.
+
+A administradora calcula esse valor uma vez por dia, com os preços de fechamento. Por isso, quando você faz uma aplicação ou um resgate antes do horário de corte, não sabe o preço exato que vai conseguir: só fica sabendo depois. É o que se chama de operar "às cegas", e existe para que ninguém aproveite um preço já conhecido à custa dos outros cotistas.
+
+Diferente de uma ação, o valor da cota de um fundo aberto não depende da oferta e da demanda pelo próprio fundo: reflete o que a carteira vale. Uma alta na cota não é a opinião do mercado sobre o fundo, mas o resultado aritmético do que aconteceu com o que ele possui.`
+    }
+  },
+  {
+    id: 'bond',
+    group: 'investing',
+    related: ['asset-allocation', 'diversification', 'inflation'],
+    es: {
+      name: 'Bono',
+      slug: 'bono',
+      aliases: ['bonos', 'renta fija', 'obligaciones del Estado', 'letras del Tesoro'],
+      short: 'Un préstamo que haces a un Estado o a una empresa a cambio de unos intereses fijos y de la devolución del capital en una fecha acordada.',
+      body: `Cuando compras un bono, prestas dinero. El emisor, sea el Tesoro o una empresa, se compromete a pagarte un interés periódico, el cupón, y a devolverte el nominal al vencimiento. Un bono de 1.000 € al 3 % a diez años paga 30 € al año y devuelve los 1.000 € al final. Las letras del Tesoro son la versión a corto plazo: no pagan cupón, se compran por debajo de su valor y se cobran enteras al vencer.
+
+El precio de un bono se mueve en sentido contrario a los tipos de interés. Si los tipos suben al 5 %, nadie pagará 1.000 € por tu bono al 3 %, y su precio de mercado cae; cuanto más lejos esté el vencimiento, más cae. Por eso los índices de renta fija «segura» perdieron entre un 13 % y un 17 % en 2022, cuando los tipos subieron de golpe.
+
+En una cartera, los bonos de alta calidad cumplen una función distinta a la de las acciones: menos rentabilidad esperada a cambio de caídas más suaves y de ingresos previsibles. Son el amortiguador que permite mantener la parte de renta variable cuando la bolsa cae, y su peso es una de las decisiones centrales de la distribución de activos.`
+    },
+    en: {
+      name: 'Bond',
+      slug: 'bond',
+      aliases: ['bonds', 'fixed income', 'government bonds', 'Treasury bills'],
+      short: 'A loan you make to a government or a company in exchange for fixed interest payments and the return of your capital on an agreed date.',
+      body: `When you buy a bond you are lending money. The issuer, whether a government or a company, promises to pay you regular interest, the coupon, and to repay the face value at maturity. A $1,000 ten-year bond at 3% pays $30 a year and returns the $1,000 at the end. Treasury bills are the short-term version: they pay no coupon, are bought below face value and repay the full amount when they mature.
+
+A bond's price moves in the opposite direction to interest rates. If rates rise to 5%, nobody will pay $1,000 for your 3% bond, so its market price falls; the longer the time to maturity, the bigger the fall. That is why broad "safe" bond indexes lost between 13% and 17% in 2022, when rates rose sharply.
+
+In a portfolio, high-quality bonds do a different job from shares: lower expected return in exchange for gentler falls and predictable income. They are the shock absorber that lets you keep holding the equity part when the market drops, and how much of them to own is one of the central asset allocation decisions.`
+    },
+    pt: {
+      name: 'Título de renda fixa',
+      slug: 'titulo-de-renda-fixa',
+      aliases: ['títulos de renda fixa', 'renda fixa', 'títulos públicos', 'debêntures', 'bonds'],
+      short: 'Um empréstimo que você faz a um governo, a um banco ou a uma empresa em troca de juros combinados e da devolução do capital numa data acertada.',
+      body: `Quando você compra um título de renda fixa, está emprestando dinheiro. O emissor, seja o Tesouro Nacional, um banco num CDB ou uma empresa numa debênture, se compromete a pagar juros e a devolver o valor no vencimento. Os juros podem ser prefixados, atrelados à inflação, como no Tesouro IPCA+, ou pós-fixados, acompanhando a Selic ou o CDI.
+
+O preço de um título prefixado ou atrelado à inflação se move no sentido contrário aos juros. Se a taxa de mercado sobe, ninguém paga o preço cheio por um título que rende menos, e o valor dele cai; quanto mais longo o vencimento, maior a queda. É por isso que um Tesouro IPCA+ longo pode mostrar perdas fortes antes do vencimento, mesmo sendo "seguro" se levado até o fim.
+
+Numa carteira, a renda fixa de boa qualidade cumpre um papel diferente das ações: menos rentabilidade esperada em troca de quedas mais suaves e rendimentos previsíveis. É o amortecedor que permite manter a parte de renda variável quando a bolsa cai, e quanto ter dela é uma das decisões centrais da alocação de ativos.`
+    }
+  },
+  {
+    id: 'liquidity',
+    group: 'investing',
+    related: ['emergency-fund', 'money-market-fund', 'reit'],
+    es: {
+      name: 'Liquidez',
+      slug: 'liquidez',
+      aliases: ['ilíquido', 'ilíquida', 'ilíquidos', 'ilíquidas', 'iliquidez'],
+      short: 'La facilidad con la que una inversión se convierte en dinero disponible, rápido y sin tener que aceptar un precio peor.',
+      body: `Una inversión es líquida cuando puedes venderla en poco tiempo, con pocos costes y a un precio cercano a su valor. Un ETF sobre un gran índice se vende en segundos en horario de mercado; un fondo de inversión, en uno o dos días; un piso puede tardar meses y costar entre un 6 % y un 10 % entre impuestos, notaría y comisiones.
+
+La liquidez tiene valor, y el mercado lo cobra. Los activos ilíquidos suelen prometer una rentabilidad algo mayor precisamente porque te obligan a renunciar al acceso a tu dinero. El problema llega cuando necesitas ese dinero en el peor momento: una venta urgente de algo ilíquido se hace siempre con descuento.
+
+Por eso la regla práctica es separar el dinero por plazos. Lo que puedes necesitar en meses va en instrumentos líquidos y estables, como el fondo de emergencia; solo lo que no vas a tocar en muchos años puede permitirse estar en algo difícil de vender.`
+    },
+    en: {
+      name: 'Liquidity',
+      slug: 'liquidity',
+      aliases: ['liquid', 'illiquid', 'illiquidity'],
+      short: 'How easily an investment can be turned into spendable cash, quickly and without having to accept a worse price.',
+      body: `An investment is liquid when you can sell it quickly, cheaply and at a price close to its value. An ETF on a major index sells in seconds during market hours; a mutual fund in a day or two; a house can take months and cost 6% to 10% in taxes, legal fees and agent commissions.
+
+Liquidity has value, and the market charges for it. Illiquid assets tend to promise a somewhat higher return precisely because they ask you to give up access to your money. The problem comes when you need that money at the worst moment: an urgent sale of something illiquid always happens at a discount.
+
+So the practical rule is to separate money by time horizon. What you might need within months belongs in liquid, stable instruments such as an emergency fund; only money you will not touch for many years can afford to sit in something hard to sell.`
+    },
+    pt: {
+      name: 'Liquidez',
+      slug: 'liquidez',
+      aliases: ['ilíquido', 'ilíquida', 'ilíquidos', 'ilíquidas', 'iliquidez'],
+      short: 'A facilidade com que um investimento se transforma em dinheiro disponível, rápido e sem precisar aceitar um preço pior.',
+      body: `Um investimento é líquido quando você consegue vendê-lo em pouco tempo, com pouco custo e a um preço próximo do seu valor. Um ETF de um grande índice é vendido em segundos no pregão; um Tesouro Selic, em um dia útil; um imóvel pode levar meses e custar uma fatia relevante do valor entre ITBI, cartório e corretagem.
+
+A liquidez tem valor, e o mercado cobra por ela. Ativos ilíquidos costumam prometer uma rentabilidade um pouco maior justamente porque pedem que você abra mão do acesso ao dinheiro. O problema aparece quando você precisa desse dinheiro no pior momento: uma venda urgente de algo ilíquido sempre sai com desconto.
+
+Por isso a regra prática é separar o dinheiro por prazos. O que você pode precisar em meses vai para aplicações líquidas e estáveis, como a reserva de emergência; só o que não vai ser tocado por muitos anos pode ficar em algo difícil de vender.`
+    }
+  },
+  {
+    id: 'leverage',
+    group: 'investing',
+    related: ['volatility', 'drawdown', 'hedge-fund'],
+    es: {
+      name: 'Apalancamiento',
+      slug: 'apalancamiento',
+      aliases: ['apalancado', 'apalancada', 'apalancados', 'apalancadas', 'apalancarse'],
+      short: 'Invertir con dinero prestado para multiplicar la exposición, lo que amplifica tanto las ganancias como las pérdidas.',
+      body: `Apalancarse es invertir más dinero del que tienes. Si con 10.000 € propios y 10.000 € prestados compras 20.000 € de acciones, estás apalancado dos veces: una subida del 10 % te da un 20 % sobre tu capital, menos los intereses del préstamo. Una hipoteca es la forma de apalancamiento más común, aunque rara vez se llame así.
+
+El problema es que el multiplicador funciona igual hacia abajo. Con un apalancamiento de dos veces, una caída del 10 % se convierte en una pérdida del 20 %, y una del 50 % se lleva todo tu capital. Peor aún, el prestamista puede obligarte a vender en mitad de la caída, convirtiendo una pérdida temporal en definitiva.
+
+Por eso el apalancamiento no cambia la calidad de una inversión, solo su tamaño y su fragilidad. Usado por gestores profesionales con coberturas ya es un riesgo serio; en una cartera personal pensada para décadas, la pregunta útil es qué pasaría con él en la peor caída de la historia, no en un año normal.`
+    },
+    en: {
+      name: 'Financial leverage',
+      slug: 'financial-leverage',
+      aliases: ['leveraged', 'levered', 'borrowing to invest', 'margin borrowing'],
+      short: 'Investing with borrowed money to multiply your exposure, which amplifies gains and losses alike.',
+      body: `Leverage means investing more money than you have. If you combine $10,000 of your own with $10,000 borrowed to buy $20,000 of shares, you are leveraged two times: a 10% rise gives you 20% on your capital, minus the interest on the loan. A mortgage is the most common form of leverage, even if it is rarely called that.
+
+The trouble is that the multiplier works the same way on the way down. At two times leverage, a 10% fall becomes a 20% loss, and a 50% fall wipes out your capital entirely. Worse, the lender can force you to sell in the middle of the fall, turning a temporary loss into a permanent one.
+
+So leverage does not change the quality of an investment, only its size and its fragility. In the hands of professional managers with hedges it is already a serious risk; in a personal portfolio meant to last decades, the useful question is what it would do in the worst crash on record, not in an ordinary year.`
+    },
+    pt: {
+      name: 'Alavancagem',
+      slug: 'alavancagem',
+      aliases: ['alavancado', 'alavancada', 'alavancados', 'alavancadas', 'alavancar'],
+      short: 'Investir com dinheiro emprestado para multiplicar a exposição, o que amplia tanto os ganhos quanto as perdas.',
+      body: `Alavancar-se é investir mais dinheiro do que você tem. Se, com 10.000 próprios e 10.000 emprestados, você compra 20.000 em ações, está alavancado duas vezes: uma alta de 10% rende 20% sobre o seu capital, menos os juros do empréstimo. Um financiamento imobiliário é a forma mais comum de alavancagem, mesmo que quase nunca seja chamado assim.
+
+O problema é que o multiplicador funciona igual para baixo. Com alavancagem de duas vezes, uma queda de 10% vira uma perda de 20%, e uma queda de 50% leva todo o seu capital. Pior: quem emprestou pode obrigar você a vender no meio da queda, transformando uma perda temporária em definitiva.
+
+Por isso a alavancagem não muda a qualidade de um investimento, só o tamanho e a fragilidade dele. Nas mãos de gestores profissionais com proteções, já é um risco sério; numa carteira pessoal pensada para décadas, a pergunta útil é o que ela faria na pior queda da história, não num ano normal.`
+    }
+  },
+  {
+    id: 'derivatives',
+    group: 'investing',
+    related: ['leverage', 'hedge-fund', 'ucits'],
+    es: {
+      name: 'Derivado financiero',
+      slug: 'derivado-financiero',
+      aliases: ['derivados financieros', 'derivados', 'instrumentos derivados', 'productos derivados'],
+      short: 'Un contrato cuyo valor depende del precio de otro activo, como una acción, un índice, un tipo de interés o una divisa.',
+      body: `Un derivado no es una inversión en algo, sino un contrato sobre algo. Un futuro obliga a comprar o vender un activo a un precio fijado hoy para una fecha futura; una opción da el derecho, pero no la obligación, de hacerlo; un swap intercambia flujos de pago, por ejemplo un tipo fijo por uno variable. Su valor sube y baja con el activo del que «deriva».
+
+Sirven para dos cosas opuestas. Para cubrirse, como una empresa que fija hoy el precio del combustible que usará el año que viene, o un fondo garantizado que compra opciones para asegurar el capital. Y para especular con poco dinero, porque muchos derivados llevan apalancamiento incorporado: un movimiento del 5 % en el subyacente puede suponer un 50 % en el contrato.
+
+Por eso la normativa UCITS limita cuánto puede usar un fondo dirigido al público, y por eso los derivados están en el centro de casi todos los grandes accidentes financieros. Para un inversor particular, lo relevante suele ser saber si su fondo los usa y para qué, no usarlos directamente.`
+    },
+    en: {
+      name: 'Derivative',
+      slug: 'derivative',
+      aliases: ['derivatives', 'derivative contracts', 'futures contracts', 'options contracts'],
+      short: 'A contract whose value depends on the price of something else, such as a share, an index, an interest rate or a currency.',
+      body: `A derivative is not an investment in something but a contract about something. A futures contract obliges you to buy or sell an asset at a price fixed today for a date in the future; an option gives you the right, but not the obligation, to do so; a swap exchanges streams of payments, such as a fixed rate for a floating one. Its value rises and falls with the asset it is "derived" from.
+
+They are used for two opposite purposes. To hedge, like an airline locking in today the fuel price it will pay next year, or a guaranteed fund buying options to protect its capital. And to speculate with little money, because many derivatives come with leverage built in: a 5% move in the underlying asset can mean 50% on the contract.
+
+That is why the UCITS rules cap how much a fund sold to the public can use them, and why derivatives sit at the centre of almost every major financial accident. For an individual investor the relevant question is usually whether your fund uses them and for what, not whether to use them yourself.`
+    },
+    pt: {
+      name: 'Derivativo',
+      slug: 'derivativo',
+      aliases: ['derivativos', 'contratos futuros', 'contratos de opções'],
+      short: 'Um contrato cujo valor depende do preço de outro ativo, como uma ação, um índice, uma taxa de juros ou uma moeda.',
+      body: `Um derivativo não é um investimento em algo, mas um contrato sobre algo. Um contrato futuro obriga a comprar ou vender um ativo a um preço fixado hoje para uma data futura; uma opção dá o direito, mas não a obrigação, de fazer isso; um swap troca fluxos de pagamento, como uma taxa prefixada por uma pós-fixada. O valor dele sobe e desce com o ativo do qual "deriva".
+
+Os derivativos servem para duas coisas opostas. Para se proteger, como uma empresa que fixa hoje o preço do dólar que vai pagar no ano que vem, ou um fundo de capital protegido que compra opções para garantir o principal. E para especular com pouco dinheiro, porque muitos derivativos já trazem alavancagem embutida: um movimento de 5% no ativo pode significar 50% no contrato.
+
+É por isso que a regulação limita quanto um fundo vendido ao público pode usá-los, e é por isso que os derivativos estão no centro de quase todos os grandes acidentes financeiros. Para quem investe por conta própria, o relevante costuma ser saber se o seu fundo os usa e para quê, não operá-los diretamente.`
+    }
+  },
+  {
+    id: 'capital-gains',
+    group: 'investing',
+    related: ['tax-deferral', 'mutual-fund', 'real-return'],
+    es: {
+      name: 'Plusvalía',
+      slug: 'plusvalia',
+      aliases: ['plusvalías', 'ganancia patrimonial', 'ganancias patrimoniales', 'ganancia de capital', 'ganancias de capital'],
+      short: 'La ganancia que obtienes al vender una inversión por más de lo que pagaste por ella; en España tributa en la base del ahorro.',
+      body: `Si compras participaciones de un fondo por 10.000 € y las vendes por 15.000 €, la plusvalía es de 5.000 €. Mientras no vendes, la ganancia es solo latente: existe en el valor de tu cartera, pero Hacienda no la grava. Al vender se materializa y tributa como ganancia patrimonial en la base del ahorro, con tipos que suben por tramos según el importe.
+
+Que el impuesto solo llegue con la venta es más valioso de lo que parece. El dinero que no pagas cada año sigue invirtiéndose y generando rendimientos, y la diferencia a lo largo de décadas es grande. En España, el traspaso entre fondos de inversión permite cambiar de fondo sin vender a efectos fiscales, lo que mantiene ese diferimiento intacto; con acciones o ETF, cada cambio es una venta.
+
+Lo que no conviene hacer es dejar que el impuesto dirija la estrategia. Una plusvalía es la prueba de que algo salió bien; renunciar a rebalancear o a salir de una mala inversión solo para no pagarla suele costar más de lo que ahorra.`
+    },
+    en: {
+      name: 'Capital gain',
+      slug: 'capital-gain',
+      aliases: ['capital gains', 'capital gains tax'],
+      short: 'The profit you make when you sell an investment for more than you paid for it, usually taxed only when you sell.',
+      body: `If you buy fund units for $10,000 and sell them for $15,000, your capital gain is $5,000. Until you sell, the gain is only unrealised: it exists in the value of your portfolio, but in most countries it is not taxed. When you sell it becomes realised and is taxed as a capital gain, often at a different rate from income.
+
+The fact that the tax only arrives with the sale is worth more than it looks. Money you do not pay every year stays invested and keeps compounding, and the difference over decades is large. That is why holding a broad fund for a long time is usually more tax-efficient than trading in and out of positions, and why tax-advantaged accounts are worth filling first.
+
+What you should not do is let the tax drive the strategy. A capital gain is proof that something worked; refusing to rebalance or to sell a bad investment just to avoid paying it usually costs more than it saves.`
+    },
+    pt: {
+      name: 'Ganho de capital',
+      slug: 'ganho-de-capital',
+      aliases: ['ganhos de capital', 'lucro na venda'],
+      short: 'O lucro que você obtém ao vender um investimento por mais do que pagou por ele; no Brasil, em geral tributado só na venda ou no resgate.',
+      body: `Se você compra cotas de um ETF por 10.000 e as vende por 15.000, o ganho de capital é de 5.000. Enquanto você não vende, o ganho é apenas potencial: está no valor da carteira, mas não é tributado. Na venda ele se realiza, e o imposto de renda incide sobre o lucro, com regras diferentes para ações, ETFs, FIIs e renda fixa.
+
+Que o imposto só chegue com a venda vale mais do que parece. O dinheiro que você não paga todo ano continua investido e rendendo juros sobre juros, e a diferença em décadas é grande. É por isso que o come-cotas dos fundos abertos pesa: ele antecipa parte do imposto duas vezes por ano e reduz esse efeito.
+
+O que não convém é deixar o imposto dirigir a estratégia. Um ganho de capital é a prova de que algo deu certo; desistir de rebalancear ou de sair de um investimento ruim só para não pagar o imposto costuma custar mais do que economiza.`
+    }
+  },
+  {
+    id: 'dividend-yield',
+    group: 'investing',
+    related: ['passive-income', 'etf', 'real-return'],
+    es: {
+      name: 'Rentabilidad por dividendo',
+      slug: 'rentabilidad-por-dividendo',
+      aliases: ['dividend yield', 'rentabilidad del dividendo'],
+      short: 'El dividendo anual que paga una acción o un fondo dividido entre su precio, expresado en porcentaje.',
+      body: `La rentabilidad por dividendo se calcula dividiendo el dividendo pagado en un año entre el precio de la acción. Una acción a 20 € que reparte 1 € al año tiene una rentabilidad por dividendo del 5 %.
+
+Es un cociente, y eso significa que sube cuando el numerador crece y también cuando el denominador cae. Una empresa cuyo precio se ha desplomado un 40 % aparece de golpe con una rentabilidad por dividendo altísima, y esa cifra no es una buena noticia: es el mercado diciendo que duda de que el dividendo se mantenga.
+
+Para quien vive de su cartera, el dividendo es solo una de las dos formas de sacar dinero de ella; la otra es vender participaciones. Elegir acciones por su dividendo alto en lugar de por su rentabilidad total es una de las trampas más frecuentes al construir una cartera de ingresos.`
+    },
+    en: {
+      name: 'Dividend yield',
+      slug: 'dividend-yield',
+      aliases: ['dividend yields'],
+      short: 'The annual dividend a share or fund pays divided by its price, expressed as a percentage.',
+      body: `Dividend yield is the dividend paid over a year divided by the share price. A share at $20 paying $1 a year yields 5%.
+
+It is a ratio, which means it rises when the numerator grows and also when the denominator falls. A company whose price has collapsed by 40% suddenly shows a spectacular yield, and that number is not good news: it is the market saying it doubts the dividend will survive.
+
+For somebody living off a portfolio, dividends are only one of the two ways of taking money out; the other is selling units. Picking shares for a high yield rather than for total return is one of the most common traps in building an income portfolio.`
+    },
+    pt: {
+      name: 'Dividend yield',
+      slug: 'dividend-yield',
+      aliases: ['dividend yields', 'rendimento por dividendo', 'rentabilidade por dividendo'],
+      short: 'O dividendo anual que uma ação ou um fundo paga dividido pelo seu preço, expresso em porcentagem.',
+      body: `O dividend yield é calculado dividindo os dividendos pagos em doze meses pelo preço atual da ação ou da cota. Uma ação a 20 que distribui 1 por ano tem um dividend yield de 5%.
+
+É uma divisão, e isso significa que ele sobe quando os dividendos crescem e também quando o preço cai. Uma empresa cuja ação despencou 40% aparece de repente com um dividend yield altíssimo, e esse número não é boa notícia: é o mercado dizendo que duvida que o dividendo vá se manter. Nos FIIs, um yield muito acima dos pares costuma vir de um problema que ainda não apareceu na distribuição.
+
+Para quem vive da carteira, o dividendo é só uma das duas formas de tirar dinheiro dela; a outra é vender cotas. Escolher ações pelo dividend yield alto em vez da rentabilidade total é uma das armadilhas mais comuns ao montar uma carteira de renda.`
+    }
+  },
+  {
+    id: 'bear-market',
+    group: 'investing',
+    related: ['volatility', 'drawdown', 'time-in-market'],
+    es: {
+      name: 'Mercado bajista',
+      slug: 'mercado-bajista',
+      aliases: ['bear market', 'mercado en caída', 'mercados bajistas'],
+      short: 'Un periodo en el que un índice cae al menos un 20 % desde su máximo anterior y se mantiene ahí.',
+      body: `El umbral del 20 % es una convención, no una ley: sirve para distinguir una caída seria de una corrección ordinaria, que es cualquier retroceso del 10 %.
+
+Los mercados bajistas son frecuentes y suelen ser más cortos de lo que parecen mientras se viven. En la bolsa estadounidense ha habido uno cada seis o siete años de media desde 1950, con una duración típica de menos de dos años y una recuperación posterior que ha superado siempre el punto de partida.
+
+Lo que decide tu resultado no es el mercado bajista, sino lo que haces dentro de él. Vender en el suelo convierte una pérdida temporal en una permanente, y es la única forma segura de que una caída del 30 % te cueste dinero de verdad.`
+    },
+    en: {
+      name: 'Bear market',
+      slug: 'bear-market',
+      aliases: ['bear markets', 'falling market'],
+      short: 'A period in which an index falls at least 20% from its previous peak and stays there.',
+      body: `The 20% threshold is a convention rather than a law: it exists to separate a serious fall from an ordinary correction, which is any 10% pullback.
+
+Bear markets are frequent and usually shorter than they feel while you are inside one. US stocks have had one every six or seven years on average since 1950, typically lasting under two years, with a recovery that has always gone on to pass the starting point.
+
+What decides your outcome is not the bear market but what you do inside it. Selling at the bottom turns a temporary loss into a permanent one, and it is the only reliable way to make a 30% fall cost you real money.`
+    },
+    pt: {
+      name: 'Mercado em baixa (bear market)',
+      slug: 'mercado-em-baixa',
+      aliases: ['bear market', 'bear markets', 'mercado de baixa', 'mercados em baixa'],
+      short: 'Um período em que um índice cai pelo menos 20% desde o seu máximo anterior e se mantém nesse patamar.',
+      body: `O limite de 20% é uma convenção, não uma lei: serve para separar uma queda séria de uma correção comum, que é qualquer recuo de 10%.
+
+Os mercados em baixa são frequentes e costumam ser mais curtos do que parecem enquanto acontecem. Na bolsa americana houve um a cada seis ou sete anos, em média, desde 1950, com duração típica inferior a dois anos e uma recuperação posterior que sempre superou o ponto de partida.
+
+O que decide o seu resultado não é o mercado em baixa, mas o que você faz dentro dele. Vender no fundo transforma uma perda temporária em permanente, e é a única forma garantida de uma queda de 30% custar dinheiro de verdade.`
+    }
+  },
+  {
+    id: 'lump-sum',
+    group: 'investing',
+    related: ['dca', 'time-in-market', 'present-bias'],
+    es: {
+      name: 'Aportación única',
+      slug: 'aportacion-unica',
+      aliases: ['lump sum', 'inversión de golpe', 'invertir todo de una vez'],
+      short: 'Invertir una cantidad entera en un solo momento, en lugar de repartirla en aportaciones periódicas.',
+      body: `La alternativa a la aportación única es la aportación periódica: dividir el dinero en partes iguales y entrar a lo largo de varios meses.
+
+Estadísticamente, invertir todo de golpe gana en aproximadamente dos de cada tres periodos históricos, simplemente porque el mercado sube más veces de las que baja y estar dentro paga. El precio de esa ventaja es la posibilidad de entrar justo antes de una caída.
+
+Por eso la decisión es más psicológica que matemática. Si una caída del 20 % la semana siguiente te haría vender, la aportación periódica es mejor: no porque rinda más, sino porque es la que serás capaz de mantener.`
+    },
+    en: {
+      name: 'Lump sum',
+      slug: 'lump-sum',
+      aliases: ['lump-sum investing', 'investing it all at once'],
+      short: 'Investing a whole amount at a single moment, rather than spreading it across periodic contributions.',
+      body: `The alternative to a lump sum is dollar-cost averaging: splitting the money into equal parts and entering over several months.
+
+Statistically, investing it all at once wins in roughly two out of every three historical periods, simply because markets rise more often than they fall and being invested pays. The price of that edge is the chance of buying just before a crash.
+
+Which makes the decision more psychological than mathematical. If a 20% fall the following week would make you sell, averaging in is the better choice: not because it returns more, but because it is the one you will be able to stick to.`
+    },
+    pt: {
+      name: 'Aporte único',
+      slug: 'aporte-unico',
+      aliases: ['lump sum', 'investimento de uma só vez', 'investir tudo de uma vez'],
+      short: 'Investir um valor inteiro num único momento, em vez de dividi-lo em aportes periódicos.',
+      body: `A alternativa ao aporte único é o aporte periódico: dividir o dinheiro em partes iguais e entrar ao longo de vários meses.
+
+Estatisticamente, investir tudo de uma vez ganha em cerca de dois de cada três períodos históricos, simplesmente porque o mercado sobe mais vezes do que cai e estar investido compensa. O preço dessa vantagem é a possibilidade de entrar pouco antes de uma queda.
+
+Por isso a decisão é mais psicológica do que matemática. Se uma queda de 20% na semana seguinte fizesse você vender, o aporte periódico é melhor: não porque renda mais, mas porque é o que você será capaz de manter.`
+    }
+  },
+  {
+    id: 'mortgage',
+    group: 'money',
+    related: ['apr', 'leverage', 'compound-debt'],
+    es: {
+      name: 'Hipoteca',
+      slug: 'hipoteca',
+      aliases: ['hipotecas', 'préstamo hipotecario', 'préstamos hipotecarios', 'crédito hipotecario'],
+      short: 'Un préstamo a largo plazo para comprar una vivienda, en el que la propia vivienda queda como garantía si dejas de pagar.',
+      body: `Una hipoteca es un préstamo de muchos años, normalmente entre 20 y 30, con la vivienda como garantía. Puede ser a tipo fijo, con la misma cuota toda la vida, o a tipo variable, en la que el interés se revisa cada año según el Euríbor más un diferencial. La comparación entre ofertas se hace por la TAE, no por el tipo nominal, porque la TAE incluye comisiones y productos vinculados.
+
+El plazo es lo que más pesa. Un préstamo de 200.000 € al 3 % a 30 años tiene una cuota de unos 843 € al mes, y al final se habrán pagado cerca de 103.000 € solo en intereses. El mismo préstamo a 20 años sube la cuota a unos 1.109 €, pero los intereses totales bajan a unos 66.000 €.
+
+Una hipoteca también es apalancamiento: con un 20 % de entrada, una caída del 10 % en el precio de la vivienda se come la mitad de tu aportación. Eso no la hace mala, pero sí explica por qué los bancos limitan la cuota a una parte de los ingresos y por qué conviene que la tuya quede por debajo de ese límite, no justo en él.`
+    },
+    en: {
+      name: 'Mortgage',
+      slug: 'mortgage',
+      aliases: ['mortgages', 'home loan', 'home loans', 'mortgage loan'],
+      short: 'A long-term loan to buy a home, in which the home itself is the security the lender can take if you stop paying.',
+      body: `A mortgage is a loan over many years, usually 15 to 30, secured on the property. It can be fixed-rate, with the same payment for the whole term or a set period, or variable, with the interest reset periodically against a benchmark rate plus a margin. Offers should be compared on APR, not on the headline rate, because the APR includes fees.
+
+The term is what weighs most. A $200,000 loan at 3% over 30 years costs about $843 a month, and by the end roughly $103,000 has gone on interest alone. The same loan over 20 years raises the payment to about $1,109, but cuts total interest to around $66,000.
+
+A mortgage is also leverage: with a 20% deposit, a 10% fall in the price of the home wipes out half of your stake. That does not make it bad, but it does explain why lenders cap the payment at a share of income, and why it is wise for yours to sit comfortably below that limit rather than right at it.`
+    },
+    pt: {
+      name: 'Financiamento imobiliário',
+      slug: 'financiamento-imobiliario',
+      aliases: ['financiamentos imobiliários', 'crédito imobiliário', 'hipoteca', 'hipotecas'],
+      short: 'Um empréstimo de longo prazo para comprar um imóvel, em que o próprio imóvel fica como garantia caso você deixe de pagar.',
+      body: `Um financiamento imobiliário é um empréstimo de muitos anos, muitas vezes de 20 a 35, com o imóvel como garantia, normalmente por alienação fiduciária. No Brasil, as duas tabelas mais comuns são a SAC, em que as parcelas começam mais altas e diminuem, e a Price, com parcelas iguais. Ofertas devem ser comparadas pelo CET, o Custo Efetivo Total, e não só pela taxa de juros, porque o CET inclui seguros e tarifas.
+
+O prazo e a taxa são o que mais pesa. Um financiamento de 200.000 a 10% ao ano por 30 anos na tabela Price tem parcela de cerca de 1.700 por mês, e no fim os juros somam mais do que o dobro do valor emprestado. Encurtar o prazo ou amortizar antes reduz esse total de forma drástica.
+
+Um financiamento também é alavancagem: com 20% de entrada, uma queda de 10% no preço do imóvel consome metade do que você colocou. Isso não o torna ruim, mas explica por que os bancos limitam a parcela a cerca de 30% da renda e por que convém que a sua fique bem abaixo desse limite, não encostada nele.`
+    }
+  },
+  {
+    id: 'apr',
+    group: 'money',
+    related: ['compound-debt', 'mortgage', 'debt-avalanche'],
+    es: {
+      name: 'TAE (tasa anual equivalente)',
+      slug: 'tae-tasa-anual-equivalente',
+      aliases: ['TAE', 'tasa anual equivalente', 'APR'],
+      short: 'El coste real anual de un préstamo, que incluye el tipo de interés más las comisiones y los gastos obligatorios.',
+      body: `El TIN es solo el interés; la TAE añade comisiones de apertura, seguros vinculados y cualquier gasto obligatorio, y los reparte a lo largo de la vida del préstamo. Es la cifra que permite comparar dos ofertas.
+
+La diferencia entre las dos no es cosmética. Un préstamo al 6 % de interés con una comisión de apertura del 2 % puede tener una TAE cercana al 8 % si se devuelve en pocos años, porque esa comisión se paga entera al principio.
+
+Por eso, ante cualquier crédito, la pregunta útil no es cuánto es la cuota, sino cuál es la TAE y cuánto se paga en total. La cuota se puede hacer pequeña alargando el plazo; el total, no.`
+    },
+    en: {
+      name: 'APR (annual percentage rate)',
+      slug: 'apr-annual-percentage-rate',
+      aliases: ['APR', 'annual percentage rate', 'TAE'],
+      short: 'The real yearly cost of a loan, including the interest rate plus fees and any compulsory charges.',
+      body: `The nominal rate is only the interest; the APR adds arrangement fees, tied insurance and any compulsory cost, spread across the life of the loan. It is the figure that lets you compare two offers.
+
+The gap between the two is not cosmetic. A loan at 6% interest with a 2% arrangement fee can carry an APR close to 8% if it is repaid over a few years, because that fee is paid in full at the start.
+
+So the useful question about any credit is not what the monthly payment is but what the APR is and what the total comes to. A payment can be made small by stretching the term; the total cannot.`
+    },
+    pt: {
+      name: 'CET (Custo Efetivo Total)',
+      slug: 'cet-custo-efetivo-total',
+      aliases: ['CET', 'custo efetivo total', 'APR'],
+      short: 'O custo real anual de um empréstimo ou financiamento, que inclui a taxa de juros mais tarifas, seguros e impostos obrigatórios.',
+      body: `A taxa de juros nominal é só o juro; o CET soma tarifas, seguros obrigatórios, IOF e qualquer outro encargo, e os distribui ao longo do contrato. Os bancos são obrigados a informá-lo, e é o número que permite comparar duas propostas de verdade.
+
+A diferença entre os dois não é cosmética. Um empréstimo com juros de 2% ao mês pode ter um CET bem acima disso quando se somam seguro prestamista e tarifas, sobretudo se o prazo for curto, porque esses custos são cobrados de uma vez no início.
+
+Por isso, diante de qualquer crédito, a pergunta útil não é de quanto é a parcela, mas qual é o CET e quanto se paga no total. A parcela pode ficar pequena esticando o prazo; o total, não.`
+    }
+  },
+  {
+    id: 'debt-avalanche',
+    group: 'money',
+    related: ['debt-snowball', 'compound-debt', 'apr'],
+    es: {
+      name: 'Método avalancha',
+      slug: 'metodo-avalancha',
+      aliases: ['debt avalanche', 'avalancha de deudas', 'método del tipo más alto'],
+      short: 'Una forma de pagar deudas que ataca primero la de tipo de interés más alto, con independencia de su saldo.',
+      body: `Se pagan los mínimos de todas y el excedente va a la deuda más cara. Cuando esa se liquida, se pasa a la siguiente por tipo de interés, no por tamaño.
+
+Es la opción óptima en intereses pagados y en tiempo total. Con una tarjeta al 20 % y un préstamo al 6 %, cada euro que va a la tarjeta ahorra más del triple que el mismo euro en el préstamo.
+
+Su punto débil es el ánimo: si la deuda más cara es también la más grande, pueden pasar meses sin que desaparezca ninguna. Quien necesita ver progreso para no abandonar suele terminar más planes con el método bola de nieve.`
+    },
+    en: {
+      name: 'Debt avalanche',
+      slug: 'debt-avalanche',
+      aliases: ['avalanche method', 'highest-rate-first method'],
+      short: 'A way of paying off debt that attacks the highest interest rate first, regardless of the balance.',
+      body: `You pay the minimum on everything and send the surplus to the most expensive debt. When it is cleared, you move to the next by interest rate, not by size.
+
+It is the optimal choice in interest paid and in total time. With a card at 20% and a loan at 6%, every dollar sent to the card saves more than three times what the same dollar saves on the loan.
+
+Its weak point is morale: if the most expensive debt is also the largest, months can pass without anything disappearing. People who need visible progress in order not to quit tend to finish more plans with the snowball.`
+    },
+    pt: {
+      name: 'Método avalanche',
+      slug: 'metodo-avalanche',
+      aliases: ['debt avalanche', 'avalanche de dívidas', 'método da taxa mais alta'],
+      short: 'Uma forma de pagar dívidas que ataca primeiro a de juros mais altos, independentemente do saldo.',
+      body: `Você paga o mínimo de todas e direciona o excedente para a dívida mais cara. Quando ela é quitada, passa para a seguinte pela taxa de juros, não pelo tamanho.
+
+É a opção ótima em juros pagos e em tempo total. Com um cartão de crédito a 12% ao mês e um empréstimo consignado a 2% ao mês, cada real que vai para o cartão economiza seis vezes mais do que o mesmo real no consignado.
+
+O ponto fraco é o ânimo: se a dívida mais cara também for a maior, podem passar meses sem que nenhuma desapareça. Quem precisa ver progresso para não desistir costuma terminar mais planos com o método bola de neve.`
+    }
+  },
+  {
+    id: 'debt-snowball',
+    group: 'money',
+    related: ['compound-debt', 'debt-avalanche', 'cash-flow'],
+    es: {
+      name: 'Método bola de nieve',
+      slug: 'metodo-bola-de-nieve',
+      aliases: ['debt snowball', 'bola de nieve de deudas', 'snowball'],
+      short: 'Una forma de pagar deudas que ataca primero la de saldo más pequeño, con independencia de su tipo de interés.',
+      body: `Se pagan los mínimos de todas las deudas y todo el dinero que sobra va a la más pequeña. Cuando esa desaparece, su cuota se suma al ataque de la siguiente, y así el pago se acelera solo.
+
+Matemáticamente no es óptimo: pagar antes la deuda más cara ahorra más intereses. Lo que gana la bola de nieve es la primera deuda liquidada pronto, y con ella la prueba de que el plan funciona.
+
+Esa prueba tiene valor real. En los estudios sobre planes de pago, quienes empiezan por la deuda pequeña abandonan menos, y un plan peor que se termina bate a un plan óptimo que se deja a medias.`
+    },
+    en: {
+      name: 'Debt snowball',
+      slug: 'debt-snowball',
+      aliases: ['snowball method', 'snowball'],
+      short: 'A way of paying off debt that attacks the smallest balance first, regardless of its interest rate.',
+      body: `You pay the minimum on every debt and send everything left over to the smallest one. When it disappears, its payment joins the attack on the next, so the payoff accelerates on its own.
+
+Mathematically it is not optimal: paying the most expensive debt first saves more interest. What the snowball buys is the first debt cleared early, and with it the proof that the plan works.
+
+That proof has real value. In studies of repayment plans, people who start with the small balance drop out less often, and a worse plan you finish beats an optimal plan you abandon halfway.`
+    },
+    pt: {
+      name: 'Método bola de neve',
+      slug: 'metodo-bola-de-neve',
+      aliases: ['debt snowball', 'bola de neve de dívidas', 'snowball'],
+      short: 'Uma forma de pagar dívidas que ataca primeiro o menor saldo, independentemente da taxa de juros.',
+      body: `Você paga o mínimo de todas as dívidas e todo o dinheiro que sobra vai para a menor. Quando ela desaparece, a parcela que você pagava se soma ao ataque à seguinte, e o pagamento acelera sozinho.
+
+Matematicamente não é o ideal: pagar primeiro a dívida mais cara economiza mais juros. O que a bola de neve ganha é a primeira dívida quitada cedo e, com ela, a prova de que o plano funciona.
+
+Essa prova tem valor real. Nos estudos sobre planos de pagamento, quem começa pela dívida pequena desiste menos, e um plano pior que se termina vence um plano ótimo abandonado no meio.`
+    }
   }
 ];

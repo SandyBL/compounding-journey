@@ -398,7 +398,8 @@ function categoryHref(language, name) {
  * before the glossary because their names contain glossary terms - "compound
  * interest calculator" should link the calculator, not the two words inside its
  * name - and articles come last because their link phrases are the broadest and
- * would otherwise swallow the specific pages.
+ * would otherwise swallow the specific pages. They are returned apart from the
+ * rest so placeInlineLinks() can keep a share of the slots for them.
  *
  * The calculators place almost nothing today, and that is the honest result:
  * the word "calculator" appears in none of the twenty-one articles, because the
@@ -412,7 +413,7 @@ function categoryHref(language, name) {
 function linkTargets(article, all) {
   const language = article.language;
   const sameLanguage = all.filter((candidate) => candidate.language === language);
-  return [
+  const specific = [
     ...TOOLS.map((tool) => ({
       href: toolPath(language, tool[language].slug),
       name: tool[language].name,
@@ -427,11 +428,12 @@ function linkTargets(article, all) {
       title: template[language].description,
       dataAttribute: 'data-link-kind="template"'
     })),
-    ...glossaryTargets(GLOSSARY, language, (entry, code) => glossaryPath(code, entry[code].slug)),
-    ...articleTargets(sameLanguage, language, (item, code) => articlePath(code, item.slug), {
-      excludeSlug: article.slug
-    })
+    ...glossaryTargets(GLOSSARY, language, (entry, code) => glossaryPath(code, entry[code].slug))
   ];
+  const siblings = articleTargets(sameLanguage, language, (item, code) => articlePath(code, item.slug), {
+    excludeSlug: article.slug
+  });
+  return { specific, siblings };
 }
 
 /**
@@ -444,6 +446,33 @@ function linkTargets(article, all) {
  * thing a reader meets is still a sentence.
  */
 const MAX_INLINE_LINKS = 8;
+
+/**
+ * How many of those links are held back for the article's siblings.
+ *
+ * With fifty-odd glossary terms, the specific targets alone fill all eight
+ * slots in most finance pieces, and the links between articles - the ones that
+ * keep older pages participating in the journal - stopped being placed at all.
+ * So the links go in three passes: tools, templates and glossary up to the
+ * limit minus this reserve; then other articles into what is left; then the
+ * specific targets again, so a reserve no sibling claimed goes back to the
+ * glossary rather than being wasted. Each pass skips text an earlier one
+ * already linked, because the linker never places a link inside another.
+ */
+const SIBLING_LINK_RESERVE = 2;
+
+function placeInlineLinks(html, article, all) {
+  const { specific, siblings } = linkTargets(article, all);
+  const first = addInlineLinks(html, specific, { maxLinks: MAX_INLINE_LINKS - SIBLING_LINK_RESERVE });
+  const second = addInlineLinks(first.html, siblings, { maxLinks: MAX_INLINE_LINKS - first.linked.length });
+  const placed = new Set([...first.linked, ...second.linked]);
+  const third = addInlineLinks(
+    second.html,
+    specific.filter((target) => !placed.has(target.href)),
+    { maxLinks: MAX_INLINE_LINKS - placed.size }
+  );
+  return { html: third.html, linked: [...first.linked, ...second.linked, ...third.linked] };
+}
 
 function parseScalar(value) {
   const trimmed = value.trim();
@@ -1163,9 +1192,7 @@ const linkedNothing = [];
 
 for (const { article, labels, html, headings } of prepared) {
   const related = relatedArticles(article, generated);
-  const { html: body, linked } = addInlineLinks(html, linkTargets(article, generated), {
-    maxLinks: MAX_INLINE_LINKS
-  });
+  const { html: body, linked } = placeInlineLinks(html, article, generated);
   inlineLinkCount += linked.length;
   if (linked.length === 0) linkedNothing.push(`/${article.language}/blog/${article.slug}/`);
 

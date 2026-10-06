@@ -20,6 +20,7 @@
 // newsletter_deliveries in the migration.
 import { LANGUAGES, MAX_ARTICLE_AGE_DAYS, newsletterFrom, newsletterReplyTo, resendName } from '../lib/newsletter/config.mjs';
 import { articleBroadcast } from '../lib/newsletter/emails.mjs';
+import { broadcastExtras } from '../lib/newsletter/extras.mjs';
 import { readFeed } from '../lib/newsletter/feeds.mjs';
 import { hasApiKey, isNotFound, isQuotaError, resend } from '../lib/newsletter/resend.mjs';
 import {
@@ -316,6 +317,12 @@ async function sendBatch(database, batch, article) {
     return true;
   }
 
+  // The related article and glossary term are looked up before anything is
+  // reserved or marked as sending: the lookups are bounded by a timeout and
+  // never throw, but a run cut off while making them should leave the batch
+  // 'preparing' with nothing spent, for the next run to pick up.
+  const { related, term } = await broadcastExtras(article);
+
   // The allowance was checked when the batch was built, but a welcome email
   // may have spent some of it since. If it no longer fits, the batch waits
   // for tomorrow's allowance, already built.
@@ -326,7 +333,7 @@ async function sendBatch(database, batch, article) {
 
   await database.sql`UPDATE newsletter_batches SET status = 'sending', size = ${size} WHERE id = ${batch.id}`;
 
-  const email = articleBroadcast({ language: article.language, article });
+  const email = articleBroadcast({ language: article.language, article, related, term });
   let broadcast;
   try {
     broadcast = await resend('POST', '/broadcasts', {
