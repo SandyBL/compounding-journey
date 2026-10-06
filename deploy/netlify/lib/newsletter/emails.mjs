@@ -21,6 +21,9 @@ const COPY = {
     guideIntro: 'While you wait for the next one, these are the articles readers come back to most.',
     readArticle: 'Read the article',
     newArticle: 'New on Compounding Journey',
+    relatedLabel: 'Also worth reading',
+    termLabel: 'From the glossary',
+    termCta: 'Read the definition',
     signOff: 'See you in the next one,',
     substackTitle: 'Also on Substack (in English)',
     substackBody:
@@ -42,6 +45,9 @@ const COPY = {
     guideIntro: 'Mientras llega el próximo, estos son los artículos a los que más vuelven los lectores.',
     readArticle: 'Leer el artículo',
     newArticle: 'Nuevo en Compounding Journey',
+    relatedLabel: 'También te puede interesar',
+    termLabel: 'Del glosario',
+    termCta: 'Leer la definición',
     signOff: 'Nos leemos en el próximo,',
     substackTitle: 'También en Substack (en inglés)',
     substackBody:
@@ -63,6 +69,9 @@ const COPY = {
     guideIntro: 'Enquanto o próximo não chega, estes são os artigos aos quais os leitores mais voltam.',
     readArticle: 'Ler o artigo',
     newArticle: 'Novo no Compounding Journey',
+    relatedLabel: 'Também vale a leitura',
+    termLabel: 'Do glossário',
+    termCta: 'Ler a definição',
     signOff: 'Até o próximo,',
     substackTitle: 'Também no Substack (em inglês)',
     substackBody:
@@ -249,15 +258,47 @@ export function welcomeEmail({ language, firstName, articles, unsubscribeHref })
 }
 
 /**
+ * A secondary card under the article: a label, a linked heading, a sentence and
+ * a text link. Lighter than the article's own card - white rather than cream,
+ * no button - so the new article stays the one obvious thing to click.
+ */
+function extraCard({ label, title, href, description, cta }) {
+  return `
+    <tr><td style="padding:14px 32px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid ${BORDER};border-left:4px solid ${GREEN};border-radius:12px;">
+        <tr><td style="padding:18px 20px;">
+          <p style="margin:0 0 6px;font-family:${BRAND_FONT};font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:${GOLD};">${escapeHtml(label)}</p>
+          <a href="${escapeHtml(href)}" style="display:block;font-family:${BRAND_FONT};font-size:17px;font-weight:700;line-height:1.35;color:${GREEN};text-decoration:none;">${escapeHtml(title)}</a>
+          ${description ? `<p style="margin:8px 0 0;font-size:14px;line-height:1.6;color:${MUTED};">${escapeHtml(description)}</p>` : ''}
+          <p style="margin:12px 0 0;"><a href="${escapeHtml(href)}" style="font-family:${BRAND_FONT};font-size:14px;font-weight:700;color:${GREEN};text-decoration:none;border-bottom:2px solid ${GOLD};">${escapeHtml(cta)} &rarr;</a></p>
+        </td></tr>
+      </table>
+    </td></tr>`;
+}
+
+/**
  * The new-article broadcast. Personalised by Resend at send time: the first
  * name comes from the contact, and the unsubscribe link is Resend's own, which
  * marks the contact unsubscribed in Resend - the dispatcher mirrors that back
  * into the database once a day.
+ *
+ * `related` (another article, as read from the feed) and `term` (a glossary
+ * entry the article uses) are optional, and each card is left out when its
+ * extra could not be found - see lib/newsletter/extras.mjs.
  */
-export function articleBroadcast({ language, article }) {
+export function articleBroadcast({ language, article, related = null, term = null }) {
   const copy = COPY[language] ?? COPY.en;
   const name = `{{{contact.first_name|${copy.nameFallback}}}}`;
   const unsubscribeHref = '{{{RESEND_UNSUBSCRIBE_URL}}}';
+
+  const extras = [
+    related
+      ? extraCard({ label: copy.relatedLabel, title: related.title, href: related.link, description: related.summary, cta: copy.readArticle })
+      : '',
+    term
+      ? extraCard({ label: copy.termLabel, title: term.name, href: term.link, description: term.short, cta: copy.termCta })
+      : ''
+  ].join('');
 
   const html = frame(
     language,
@@ -275,6 +316,7 @@ export function articleBroadcast({ language, article }) {
         </td></tr>
       </table>
     </td></tr>
+    ${extras}
     ${signOff(copy, '18px 32px 0')}
     ${footer(copy, unsubscribeHref)}`
   );
@@ -289,6 +331,8 @@ export function articleBroadcast({ language, article }) {
     '',
     `${copy.readArticle}: ${article.link}`,
     '',
+    ...(related ? [copy.relatedLabel, related.title, `${copy.readArticle}: ${related.link}`, ''] : []),
+    ...(term ? [copy.termLabel, `${term.name}: ${term.short}`, `${copy.termCta}: ${term.link}`, ''] : []),
     copy.signOff,
     'Sandy Bradbury',
     '',
