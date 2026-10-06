@@ -39,6 +39,20 @@ export function segmentName(language) {
   return `Compounding Journey · ${language.toUpperCase()} subscribers`;
 }
 
+// Resend rejects a broadcast whose `name` is longer than 70 characters ("Field
+// name has a maximum of 70 items"), and a rejected broadcast is retried every
+// hour without ever going out. Names are only labels in Resend's dashboard, so
+// the variable part is shortened to fit and the suffix that identifies the
+// batch is always kept. Segment names go through the same cut to be safe.
+export const RESEND_NAME_MAX = 70;
+
+export function resendName(label, suffix = '') {
+  const room = RESEND_NAME_MAX - [...suffix].length;
+  const chars = [...String(label).replace(/\s+/g, ' ').trim()];
+  const head = chars.length <= room ? chars.join('') : `${chars.slice(0, Math.max(room - 1, 0)).join('').trimEnd()}…`;
+  return [...`${head}${suffix}`].slice(0, RESEND_NAME_MAX).join('');
+}
+
 // Articles older than this when the dispatcher first sees them are recorded
 // but not broadcast: a republished archive piece is not news.
 export const MAX_ARTICLE_AGE_DAYS = 7;
