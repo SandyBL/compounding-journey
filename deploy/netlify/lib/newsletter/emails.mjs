@@ -96,10 +96,11 @@ const BORDER = '#EFEAE0';
 // Outlook ignore web fonts and fall through to the system stack.
 const BRAND_FONT = "'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
 
-// A 128px copy of the logo, for retina at 64px. The original is 2048px and
-// ~750 KB; this one is served from the root, under the /*.png rule in _headers
-// that allows other origins - mail clients among them - to embed it.
-const LOGO_URL = `${SITE_ORIGIN}/email-logo-compounding-journey.png`;
+// The tree from the logo, cropped without the wordmark (the name is set as
+// text below it) and saved at 192px, for retina at 88px. The original is
+// 2048px and ~750 KB; this one is served from the root, under the /*.png rule
+// in _headers that allows other origins - mail clients among them - to embed it.
+const LOGO_URL = `${SITE_ORIGIN}/email-logo-tree.png`;
 
 export function escapeHtml(value) {
   return String(value ?? '')
@@ -127,7 +128,7 @@ function divider(margin = '0 0 18px') {
 function signOff(copy, padding) {
   return `
     <tr><td style="padding:${padding};font-size:15px;line-height:1.7;color:${INK};">
-      <p style="margin:0;">${escapeHtml(copy.signOff)}<br><strong style="font-family:${BRAND_FONT};color:${GREEN};">Sandy Bradbury</strong></p>
+      <p style="margin:0;">${escapeHtml(copy.signOff)}<br><strong style="font-family:${BRAND_FONT};color:${GREEN};">Compounding Journey</strong></p>
     </td></tr>`;
 }
 
@@ -168,7 +169,7 @@ function frame(language, preheader, body) {
     <tr><td align="center" style="background:${HEADER_CREAM};border-bottom:3px solid ${GOLD};border-radius:16px 16px 0 0;padding:30px 24px 24px;">
       <a href="${SITE_ORIGIN}/" style="text-decoration:none;display:inline-block;">
         <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto 14px;"><tr><td style="background:#ffffff;border-radius:16px;box-shadow:0 1px 3px rgba(45,36,27,0.12);">
-          <img src="${LOGO_URL}" width="64" height="64" alt="Compounding Journey" style="display:block;width:64px;height:64px;border:0;border-radius:16px;">
+          <img src="${LOGO_URL}" width="88" height="88" alt="Compounding Journey" style="display:block;width:88px;height:88px;border:0;border-radius:16px;">
         </td></tr></table>
         <span style="display:block;font-family:${BRAND_FONT};font-size:17px;font-weight:800;letter-spacing:-.01em;line-height:1.2;text-transform:uppercase;color:${GREEN};">Compounding Journey</span>
         <span style="display:block;margin-top:4px;font-family:${BRAND_FONT};font-size:11px;font-weight:700;letter-spacing:.08em;line-height:1.2;text-transform:uppercase;color:${GOLD};">${escapeHtml(copy.tagline)}</span>
@@ -245,7 +246,7 @@ export function welcomeEmail({ language, firstName, articles, unsubscribeHref })
         ]
       : []),
     copy.signOff,
-    'Sandy Bradbury',
+    'Compounding Journey',
     '',
     '---',
     substackText(copy),
@@ -334,7 +335,7 @@ export function articleEmail({ language, article, firstName = '', unsubscribeHre
     ...(related ? [copy.relatedLabel, related.title, `${copy.readArticle}: ${related.link}`, ''] : []),
     ...(term ? [copy.termLabel, `${term.name}: ${term.short}`, `${copy.termCta}: ${term.link}`, ''] : []),
     copy.signOff,
-    'Sandy Bradbury',
+    'Compounding Journey',
     '',
     '---',
     substackText(copy),
