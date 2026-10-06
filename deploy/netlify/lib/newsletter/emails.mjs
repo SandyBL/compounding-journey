@@ -1,5 +1,5 @@
 // The two emails the site sends: the welcome email and the new-article
-// broadcast, in each of the three languages.
+// email, in each of the three languages.
 //
 // Both end with the same footer, which is required on every email this system
 // sends: an invitation to the English Substack, labelled as Substack and as
@@ -277,19 +277,19 @@ function extraCard({ label, title, href, description, cta }) {
 }
 
 /**
- * The new-article broadcast. Personalised by Resend at send time: the first
- * name comes from the contact, and the unsubscribe link is Resend's own, which
- * marks the contact unsubscribed in Resend - the dispatcher mirrors that back
- * into the database once a day.
+ * The new-article email. One copy per subscriber, sent through Resend's batch
+ * endpoint rather than as a Broadcast: a Broadcast needs a Resend segment, and
+ * the free plan allows only three. So the first name and the unsubscribe link
+ * are filled in here, and the link is this site's own - the same one the
+ * welcome email carries, which ends this language's subscription only.
  *
  * `related` (another article, as read from the feed) and `term` (a glossary
  * entry the article uses) are optional, and each card is left out when its
  * extra could not be found - see lib/newsletter/extras.mjs.
  */
-export function articleBroadcast({ language, article, related = null, term = null }) {
+export function articleEmail({ language, article, firstName = '', unsubscribeHref, related = null, term = null }) {
   const copy = COPY[language] ?? COPY.en;
-  const name = `{{{contact.first_name|${copy.nameFallback}}}}`;
-  const unsubscribeHref = '{{{RESEND_UNSUBSCRIBE_URL}}}';
+  const name = firstName || copy.nameFallback;
 
   const extras = [
     related
@@ -318,7 +318,7 @@ export function articleBroadcast({ language, article, related = null, term = nul
     </td></tr>
     ${extras}
     ${signOff(copy, '18px 32px 0')}
-    ${footer(copy, unsubscribeHref)}`
+    ${footer(copy, escapeHtml(unsubscribeHref))}`
   );
 
   const text = [

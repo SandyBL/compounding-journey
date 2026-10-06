@@ -57,7 +57,8 @@ async function createLanguageSegment(database, language) {
 }
 
 /**
- * The Resend account currently in use, with one segment id per language.
+ * The Resend account currently in use, with one segment id per language - or
+ * null for a language the plan has no segment left for.
  *
  * `verify` asks Resend whether each remembered segment still exists. The
  * hourly dispatcher verifies; the subscription handler does not, so a new
@@ -95,7 +96,19 @@ export async function ensureAccount(database, { verify = false } = {}) {
         id = null;
       }
     }
-    segments[language] = id ?? (await createLanguageSegment(database, language));
+    if (!id) {
+      try {
+        id = await createLanguageSegment(database, language);
+      } catch (error) {
+        // Resend's free plan allows three segments and answers a fourth with a
+        // 400 ("Your plan includes 3 segments"). The segments are only a view
+        // of the list in Resend's dashboard - nothing is sent through them - so
+        // the language goes without one rather than stopping every run.
+        if (!(error instanceof ResendError) || ![400, 403, 422].includes(error.status)) throw error;
+        console.log(`newsletter: no Resend segment for "${language}" (${error.message}); its contacts are kept without one.`);
+      }
+    }
+    segments[language] = id;
   }
   return { fingerprint, segments };
 }
@@ -123,7 +136,7 @@ export async function syncSubscriber(database, account, subscriber, { resubscrib
     const body = { first_name: subscriber.first_name };
     if (resubscribe) body.unsubscribed = false;
     const updated = await resend('PATCH', `/contacts/${address}`, body);
-    await resend('POST', `/contacts/${address}/segments/${segmentId}`);
+    if (segmentId) await resend('POST', `/contacts/${address}/segments/${segmentId}`);
     return updated?.id ?? null;
   };
 
@@ -136,7 +149,7 @@ export async function syncSubscriber(database, account, subscriber, { resubscrib
         email: subscriber.email,
         first_name: subscriber.first_name,
         unsubscribed: false,
-        segments: [{ id: segmentId }]
+        ...(segmentId ? { segments: [{ id: segmentId }] } : {})
       });
       contactId = created?.id ?? null;
     } catch (error) {

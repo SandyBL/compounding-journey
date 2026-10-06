@@ -1,4 +1,4 @@
-// The unsubscribe link in every welcome email.
+// The unsubscribe link in every welcome and article email.
 //
 // GET shows a confirmation page with one button, and only the POST that button
 // sends actually unsubscribes. Mail scanners and link previewers open every
@@ -10,7 +10,7 @@
 // accepted without a page, which is what that standard requires.
 //
 // Unsubscribing marks the row in the database and the contact in Resend, so
-// neither the broadcasts (sent by Resend) nor a later re-sync can reach them.
+// neither the article emails nor a later re-sync can reach them.
 // A reader subscribed in several languages has one link per language, and
 // each one ends that language only.
 import { SITE_ORIGIN, SUBSTACK_URL } from '../lib/newsletter/config.mjs';
