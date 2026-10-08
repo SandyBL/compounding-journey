@@ -61,6 +61,7 @@ No hay delegado de protección de datos: el sitio lo lleva una sola persona y ni
 | Número de veces que se abre cada artículo | Decidir qué contenido destacar | Interés legítimo en saber qué se lee | Un contador agregado por artículo y mes, sin caducidad |
 | Número de veces que se descarga cada plantilla, y cuántas veces se sigue el enlace que aparece después | Saber qué plantilla sirve y si el panel que la sigue sirve de algo | Interés legítimo en saber qué se descarga | Dos contadores agregados por plantilla, idioma y mes, sin caducidad |
 | Dirección IP y datos técnicos de la petición | Servir la página, limitar abusos y registrar incidencias | Interés legítimo en la seguridad del servicio | Registros del proveedor de alojamiento, días |
+| Visita a la página del curso: cookies de Google Ads, dirección IP y datos del navegador | Medir qué anuncios traen visitas al curso | Interés legítimo en medir la publicidad del curso | Lo que fije Google; sus cookies de anuncios duran hasta 90 días |
 
 ## El formulario de contacto
 
@@ -88,9 +89,11 @@ Las plantillas se descargan sin dejar ningún dato: no hay formulario delante de
 
 Ese segundo número existe para poder juzgar el panel: si casi nadie lo usa, sobra. Ninguno de los dos guarda nada más. Se envía el idioma de la página y el identificador interno de la plantilla, y eso es todo: no hay correo, no hay cookie, no hay identificador de visitante y no queda registro de quién ha descargado qué.
 
-## Almacenamiento en tu navegador, y por qué no hay aviso de cookies
+## Cookies y almacenamiento en tu navegador
 
-Este sitio **no usa cookies**, ni propias ni de terceros, ni de analítica ni de publicidad. Por eso no verás un aviso pidiéndote permiso: no hay nada que consentir.
+El sitio **no usa cookies propias**, y fuera de la página del curso tampoco de terceros. La excepción es esa página, la del curso «De Cero a la Libertad Financiera» en cualquiera de sus tres idiomas: carga la etiqueta de Google Ads (gtag.js), que puede guardar cookies de publicidad de Google —como \`_gcl_au\`— y enviar a Google tu dirección IP, los datos de tu navegador y el identificador del clic si llegaste desde un anuncio. Sirve para saber qué anuncios traen visitas al curso. El resto del sitio no la carga.
+
+Puedes evitarlo bloqueando las cookies de terceros en tu navegador o con un bloqueador de anuncios; la página del curso funciona igual, incluidos los botones de compra. Google trata esos datos según su propia [política de privacidad](https://policies.google.com/privacy), y puedes gestionar los anuncios que te muestra en [Mi centro de anuncios](https://myadcenter.google.com/).
 
 Sí se usan seis claves de almacenamiento local, que se quedan en tu navegador y no viajan a ningún servidor:
 
@@ -107,7 +110,8 @@ Puedes borrarlas cuando quieras desde tu navegador. El sitio seguirá funcionand
 
 - **Netlify** (Netlify, Inc.) aloja el sitio, procesa el formulario y ejecuta la base de datos donde viven las simulaciones, las puntuaciones y los contadores. Actúa como encargado del tratamiento.
 - **Resend** (Resend, Inc.) envía los emails de la suscripción. Recibe tu nombre, tu correo y tu idioma, y solo si te suscribes. Actúa como encargado del tratamiento.
-- **Nadie más mientras navegas.** Cuando cargas una página de este sitio, tu navegador no contacta con ningún tercero: las tipografías, los gráficos y los scripts se sirven desde este mismo dominio. No hay Google Analytics, no hay píxeles, no hay botones sociales que te sigan.
+- **Google** (Google Ireland Ltd. y Google LLC) recibe los datos de la etiqueta de Google Ads, solo en la página del curso. Ver el apartado de cookies.
+- **Nadie más mientras navegas.** En el resto del sitio tu navegador no contacta con ningún tercero: las tipografías, los gráficos y los scripts se sirven desde este mismo dominio. No hay Google Analytics, no hay píxeles fuera de la página del curso, no hay botones sociales que te sigan.
 
 ## La suscripción por email, Substack y los botones de compartir
 
@@ -159,6 +163,7 @@ There is no data protection officer: one person runs this site, and none of the 
 | How many times each article is opened | Deciding what to feature | Legitimate interest in knowing what is read | One aggregate counter per article per month, indefinitely |
 | How many times each template is downloaded, and how often the link shown afterwards is followed | Knowing which template is useful, and whether the panel after it is worth keeping | Legitimate interest in knowing what is downloaded | Two aggregate counters per template per language per month, indefinitely |
 | IP address and technical request data | Serving the page, rate-limiting abuse, logging faults | Legitimate interest in keeping the service up | The hosting provider's logs, days |
+| A visit to the course page: Google Ads cookies, IP address and browser data | Measuring which ads bring visits to the course | Legitimate interest in measuring the course's advertising | As set by Google; its ad cookies last up to 90 days |
 
 ## The contact form
 
@@ -186,9 +191,11 @@ The templates download without leaving any details: there is no form in front of
 
 That second number exists so the panel can be judged: if almost nobody uses it, it should go. Neither counter holds anything more. What is sent is the page's language and the template's internal id, and that is all: no address, no cookie, no visitor identifier, and no record of who downloaded what.
 
-## Storage in your browser, and why there is no cookie banner
+## Cookies and storage in your browser
 
-This site **uses no cookies** — not its own, not anyone else's, none for analytics and none for advertising. That is why you are not asked to accept anything: there is nothing to consent to.
+The site **sets no cookies of its own**, and outside the course page none from anyone else either. The exception is that page — the "De Cero a la Libertad Financiera" course, in any of its three languages: it loads the Google Ads tag (gtag.js), which may store Google advertising cookies — such as \`_gcl_au\` — and send Google your IP address, your browser's details and the click identifier if you arrived from an ad. It is there to tell which ads bring visits to the course. No other page loads it.
+
+You can prevent it by blocking third-party cookies in your browser or with an ad blocker; the course page works the same, buy buttons included. Google handles that data under its own [privacy policy](https://policies.google.com/privacy), and you can manage the ads it shows you in [My Ad Center](https://myadcenter.google.com/).
 
 It does use six local-storage keys, which stay in your browser and are never sent anywhere:
 
@@ -205,7 +212,8 @@ You can delete them from your browser whenever you like. The site keeps working;
 
 - **Netlify** (Netlify, Inc.) hosts the site, processes the form, and runs the database holding the simulations, the scores and the counters. It acts as a data processor.
 - **Resend** (Resend, Inc.) sends the subscription emails. It receives your first name, email address and language, and only if you subscribe. It acts as a data processor.
-- **Nobody else while you browse.** Loading a page here contacts no third party: the fonts, the charts and the scripts are all served from this domain. There is no Google Analytics, no pixel, and no social button that follows you.
+- **Google** (Google Ireland Ltd. and Google LLC) receives the Google Ads tag's data, on the course page only. See the cookies section.
+- **Nobody else while you browse.** Anywhere else on the site, loading a page contacts no third party: the fonts, the charts and the scripts are all served from this domain. There is no Google Analytics, no pixel outside the course page, and no social button that follows you.
 
 ## The email subscription, Substack and the share buttons
 
@@ -257,6 +265,7 @@ Não existe encarregado de proteção de dados: o site é gerido por uma só pes
 | Número de vezes que cada artigo é aberto | Decidir o que destacar | Interesse legítimo em saber o que é lido | Um contador agregado por artigo e por mês, sem prazo |
 | Número de vezes que cada modelo é baixado, e quantas vezes o link que aparece depois é seguido | Saber qual modelo é útil e se o painel que vem depois serve para algo | Interesse legítimo em saber o que é baixado | Dois contadores agregados por modelo, idioma e mês, sem prazo |
 | Endereço IP e dados técnicos da requisição | Servir a página, limitar abusos e registrar falhas | Interesse legítimo na segurança do serviço | Logs do fornecedor de hospedagem, dias |
+| Visita à página do curso: cookies do Google Ads, endereço IP e dados do navegador | Medir quais anúncios trazem visitas ao curso | Interesse legítimo em medir a publicidade do curso | O que o Google definir; os cookies de anúncios duram até 90 dias |
 
 ## O formulário de contato
 
@@ -284,9 +293,11 @@ Os modelos são baixados sem deixar nenhum dado: não há formulário na frente 
 
 Esse segundo número existe para poder julgar o painel: se quase ninguém o usa, ele é dispensável. Nenhum dos dois guarda mais nada. O que é enviado é o idioma da página e o identificador interno do modelo, e é tudo: sem e-mail, sem cookies, sem identificador de visitante, sem registro de quem baixou o quê.
 
-## Armazenamento no seu navegador, e por que não há aviso de cookies
+## Cookies e armazenamento no seu navegador
 
-Este site **não usa cookies** — nem próprias, nem de terceiros, nem de análise, nem de publicidade. É por isso que não pedimos que você aceite nada: não há nada a consentir.
+O site **não usa cookies próprios**, e fora da página do curso também nenhum de terceiros. A exceção é essa página — a do curso «De Cero a la Libertad Financiera», em qualquer um dos três idiomas: ela carrega a tag do Google Ads (gtag.js), que pode guardar cookies de publicidade do Google — como \`_gcl_au\` — e enviar ao Google o seu endereço IP, os dados do seu navegador e o identificador do clique, se você chegou por um anúncio. Serve para saber quais anúncios trazem visitas ao curso. Nenhuma outra página a carrega.
+
+Você pode evitar isso bloqueando cookies de terceiros no navegador ou com um bloqueador de anúncios; a página do curso funciona igual, inclusive os botões de compra. O Google trata esses dados conforme a sua própria [política de privacidade](https://policies.google.com/privacy), e você pode gerenciar os anúncios que ele mostra na [Minha Central de Anúncios](https://myadcenter.google.com/).
 
 Usa seis chaves de armazenamento local, que ficam no seu navegador e nunca são enviadas para nenhum servidor:
 
@@ -303,7 +314,8 @@ Você pode apagá-las quando quiser pelo navegador. O site continua funcionando;
 
 - **A Netlify** (Netlify, Inc.) hospeda o site, processa o formulário e executa o banco de dados onde vivem as simulações, as pontuações e os contadores. Atua como operador dos dados.
 - **A Resend** (Resend, Inc.) envia os e-mails da inscrição. Recebe o seu nome, o seu e-mail e o seu idioma, e só se você se inscrever. Atua como operador dos dados.
-- **Mais ninguém enquanto você navega.** Carregar uma página aqui não contata nenhum terceiro: as fontes, os gráficos e os scripts são servidos deste mesmo domínio. Não há Google Analytics, não há pixels e não há botões sociais que sigam você.
+- **O Google** (Google Ireland Ltd. e Google LLC) recebe os dados da tag do Google Ads, só na página do curso. Veja a seção de cookies.
+- **Mais ninguém enquanto você navega.** No resto do site, carregar uma página não contata nenhum terceiro: as fontes, os gráficos e os scripts são servidos deste mesmo domínio. Não há Google Analytics, não há pixels fora da página do curso e não há botões sociais que sigam você.
 
 ## A inscrição por e-mail, o Substack e os botões de compartilhamento
 
@@ -577,7 +589,7 @@ El contenido se publica de buena fe y se revisa, pero puede contener errores o q
 
 ## Datos personales
 
-El tratamiento de datos personales se describe en la [política de privacidad]({{privacy}}). En resumen: este sitio no usa cookies, no lleva analítica de terceros y no contacta con ningún tercero cuando cargas una página.
+El tratamiento de datos personales se describe en la [política de privacidad]({{privacy}}). En resumen: este sitio no usa cookies propias ni analítica de terceros, y no contacta con ningún tercero cuando cargas una página, salvo la página del curso, que carga la etiqueta de Google Ads.
 
 ## Legislación aplicable
 
@@ -628,7 +640,7 @@ The content is published in good faith and reviewed, but it may contain errors o
 
 ## Personal data
 
-How personal data is handled is described in the [privacy policy]({{privacy}}). In short: this site uses no cookies, runs no third-party analytics, and contacts no third party when you load a page.
+How personal data is handled is described in the [privacy policy]({{privacy}}). In short: this site sets no cookies of its own, runs no third-party analytics, and contacts no third party when you load a page — except the course page, which loads the Google Ads tag.
 
 ## Governing law
 
@@ -679,7 +691,7 @@ O conteúdo é publicado de boa-fé e revisado, mas pode conter erros ou ficar d
 
 ## Dados pessoais
 
-O tratamento de dados pessoais está descrito na [política de privacidade]({{privacy}}). Em resumo: este site não usa cookies, não tem análise de terceiros e não contata nenhum terceiro quando você carrega uma página.
+O tratamento de dados pessoais está descrito na [política de privacidade]({{privacy}}). Em resumo: este site não usa cookies próprios nem análise de terceiros, e não contata nenhum terceiro quando você carrega uma página — exceto a página do curso, que carrega a tag do Google Ads.
 
 ## Legislação aplicável
 
