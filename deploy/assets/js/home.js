@@ -91,7 +91,8 @@
                 glossary: "/es/glosario/",
                 data: "/es/datos/",
                 about: "/es/sobre-mi/",
-                sessions: "/es/sesiones/"
+                sessions: "/es/sesiones/",
+                course: "/es/curso/"
             },
             en: {
                 simulators: "/en/simulators/",
@@ -100,7 +101,8 @@
                 glossary: "/en/glossary/",
                 data: "/en/data/",
                 about: "/en/about/",
-                sessions: "/en/sessions/"
+                sessions: "/en/sessions/",
+                course: "/en/course/"
             },
             pt: {
                 simulators: "/pt/simulators/",
@@ -109,7 +111,8 @@
                 glossary: "/pt/glossario/",
                 data: "/pt/dados/",
                 about: "/pt/sobre-mim/",
-                sessions: "/pt/sessoes/"
+                sessions: "/pt/sessoes/",
+                course: "/pt/curso/"
             }
         };
 

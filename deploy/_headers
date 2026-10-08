@@ -367,6 +367,17 @@
 /assets/js/glossary.js
   Cache-Control: public, max-age=31536000, immutable
 
+# The course page's script: copying the coupon, and carrying an ad click's
+# campaign parameters onto the Hotmart checkout links. Versioned like the rest.
+/assets/js/course.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# The course artwork. Pages request it through /.netlify/images, which caches
+# its own transforms; this covers the original, which the structured data names.
+# Not versioned, so a month with revalidation rather than immutable.
+/assets/course/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
 # Generated bundles: the precompiled Tailwind that replaced the Play CDN on the
 # simulator pages, and the Font Awesome subset that replaced the cdnjs build.
 # Both are versioned in their <link> URLs, so they can be cached hard.

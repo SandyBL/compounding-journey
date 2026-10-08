@@ -36,6 +36,7 @@ import {
   LANGUAGES, SIMULATORS, absolute, dataPath, glossaryPath, sectionPath, simulatorPath, simulatorsPath
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
+import { coursePromo } from './course-promo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -93,6 +94,7 @@ ${SIMULATORS.map((simulator) => card(simulator, language, copy)).join('\n')}
           </p>
         </div>
       </section>
+${coursePromo(language, { placement: 'simulators-index' })}
       ${disclaimer(strings, language, { compact: true })}
     </div>`;
 

@@ -215,7 +215,11 @@ export function renderShell({
   ogType = 'website',
   extraHead = '',
   extraScripts = '',
-  bodyClass = ''
+  bodyClass = '',
+  // A page with artwork of its own - the course - shares that instead of the
+  // logo card. Both must be absolute and already HTML-escaped.
+  socialImage = socialCard,
+  socialImageAlt: imageAlt = socialImageAlt
 }) {
   assertSectionKey(section);
 
@@ -254,16 +258,16 @@ export function renderShell({
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:url" content="${url}" />
-  <meta property="og:image" content="${socialCard}" />
+  <meta property="og:image" content="${socialImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:alt" content="${socialImageAlt}" />
+  <meta property="og:image:type" content="${socialImage.includes('fm=jpg') ? 'image/jpeg' : 'image/png'}" />
+  <meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(title)}" />
   <meta name="twitter:description" content="${escapeHtml(description)}" />
-  <meta name="twitter:image" content="${socialCard}" />
-  <meta name="twitter:image:alt" content="${socialImageAlt}" />
+  <meta name="twitter:image" content="${socialImage}" />
+  <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}" />
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2?v=source" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2?v=source" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/blog.css?v=source" />

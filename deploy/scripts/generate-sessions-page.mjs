@@ -60,6 +60,7 @@ import {
   journalPath, legalPath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
+import { coursePromo } from './course-promo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -196,6 +197,7 @@ ${scopeBlock(copy)}
           <ol>${copy.how.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}</ol>
         </div>
       </section>
+${coursePromo(language, { placement: 'sessions' })}
       ${disclaimer(strings, language)}
     </div>`;
 

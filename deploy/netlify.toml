@@ -67,6 +67,7 @@ node scripts/generate-category-pages.mjs && \
 node scripts/generate-legal-pages.mjs && \
 node scripts/generate-about-page.mjs && \
 node scripts/generate-sessions-page.mjs && \
+node scripts/generate-course-page.mjs && \
 node scripts/generate-data-pages.mjs && \
 node scripts/generate-llms-txt.mjs && \
 node scripts/generate-manifests.mjs && \

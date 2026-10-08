@@ -20,9 +20,10 @@ import { GLOSSARY } from '../content/site/glossary.mjs';
 import { CATEGORIES } from '../content/site/categories.mjs';
 import {
   DEFAULT_LANGUAGE, CONTACT_EMAIL,
-  toolPath, templatePath, glossaryPath, categoryPath, sessionsPath, dataPath, aboutPath, sectionPath, legalPath, LEGAL_PAGES
+  toolPath, templatePath, glossaryPath, categoryPath, sessionsPath, coursePath, dataPath, aboutPath, sectionPath, legalPath, LEGAL_PAGES
 } from './site-routes.mjs';
 import { SAME_AS } from '../content/site/about.mjs';
+import { COURSE_PRICE } from '../content/site/course.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -258,6 +259,20 @@ contact form on the home page or to ${CONTACT_EMAIL}; both arrive in the same
 mailbox.
 
 ${languages.map((code) => `- [${languageNames[code]}](${origin}${sessionsPath(code)})`).join('\n')}
+
+## Course
+
+"De Cero a la Libertad Financiera" (From Zero to Financial Freedom), the
+site's one paid product: an online course sold through Hotmart that arranges
+what the site teaches into one learning path - money psychology, saving and
+spending, debt, compound interest, inflation and the economic cycle, portfolio
+construction and diversification, investment philosophies, and a hands-on
+workshop on investing and tax in Spain - plus an additional module on
+Graham, Buffett, Lynch, Fisher, Akre and Terry Smith. Recorded in Spanish, with
+subtitles in Spanish, Portuguese and English. ${COURSE_PRICE.amount} ${COURSE_PRICE.currency}.
+Financial education, not investment advice.
+
+${languages.map((code) => `- [${languageNames[code]}](${origin}${coursePath(code)})`).join('\n')}
 
 ## Simulator Data
 
