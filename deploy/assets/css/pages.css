@@ -599,3 +599,73 @@
 /* The sentence under a table that carries one. Same muted register as
    .data-spread: it is a footnote to the numbers above it, not a warning. */
 .article-body .data-note { margin: 10px 0 0; color: var(--muted); font-family: var(--sans); font-size: .8rem; line-height: 1.6; }
+
+/* ------------------------------------------------------------ course ------- */
+
+.course-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; align-items: start; margin-bottom: 30px; }
+@media (max-width: 900px) { .course-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+.course-hero > * { min-width: 0; }
+.course-figure { margin: 0; overflow: hidden; border: 1px solid var(--line); background: white; box-shadow: 0 18px 42px rgba(45,61,48,.1); }
+.course-figure img { width: 100%; height: auto; }
+/* On a phone the offer comes first: an ad visitor's first screen should hold
+   the price and the button, with the picture of the path just below it. */
+@media (max-width: 900px) { .course-offer { order: -1; } }
+
+.course-offer { padding: 28px; border: 1px solid #d8ccb3; background: linear-gradient(160deg, rgba(244,239,228,.9), var(--paper)); box-shadow: 0 18px 42px rgba(45,61,48,.07); font-family: var(--sans); }
+.course-language { margin: 0 0 18px; padding: 12px 14px; border-left: 3px solid var(--forest); background: rgba(30,70,32,.07); color: var(--ink); font-size: .9rem; line-height: 1.55; }
+.course-price-now { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin: 0 0 16px; }
+.course-price-label { color: var(--muted); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.course-price-now strong { color: var(--forest); font-family: var(--serif); font-size: 2.6rem; font-weight: 600; letter-spacing: -.03em; line-height: 1; }
+.course-price-now s { color: var(--muted); font-size: 1.2rem; }
+
+.course-coupon { margin: 0 0 20px; padding: 16px 18px; border: 1px dashed var(--gold); background: rgba(200,154,50,.1); }
+.course-coupon-lead { margin: 0 0 4px; color: var(--rust); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.course-coupon-body { margin: 0 0 10px; color: var(--ink); font-size: .9rem; line-height: 1.5; }
+.course-coupon-code-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; }
+.course-coupon-code { padding: 6px 12px; border: 1px solid var(--gold); background: white; color: var(--forest); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.05rem; font-weight: 700; letter-spacing: .08em; }
+.course-coupon-copy { padding: 7px 12px; border: 1px solid var(--forest); background: transparent; color: var(--forest); font-family: var(--sans); font-size: .74rem; font-weight: 700; cursor: pointer; }
+.course-coupon-copy:hover { background: var(--forest); color: white; }
+.course-coupon-copy[hidden] { display: none; }
+
+.course-buy-row { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+.course-buy-row .button { width: 100%; padding: 17px 20px; font-family: var(--sans); font-size: .82rem; }
+.course-buy-plain { color: var(--forest); font-size: .84rem; font-weight: 700; text-align: center; text-underline-offset: 3px; }
+.course-buy-note { margin: 12px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.5; text-align: center; }
+
+.course-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 22px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); list-style: none; color: var(--muted); font-size: .84rem; line-height: 1.4; }
+.course-facts strong { display: block; color: var(--forest); font-family: var(--serif); font-size: 1.3rem; font-weight: 600; }
+
+.course-outcomes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.course-outcomes li { position: relative; padding: 16px 18px 16px 44px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: .93rem; line-height: 1.55; }
+.course-outcomes li::before { content: "✓"; position: absolute; top: 14px; left: 16px; color: var(--forest); font-weight: 800; }
+
+.course-modules { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.course-module details { border: 1px solid var(--line); background: var(--paper); }
+.course-module summary { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px 16px; align-items: center; padding: 18px 20px; cursor: pointer; list-style: none; }
+.course-module summary::-webkit-details-marker { display: none; }
+.course-module summary::after { content: "+"; grid-column: 3; grid-row: 1; color: var(--gold); font-size: 1.4rem; font-weight: 700; line-height: 1; }
+.course-module details[open] summary::after { content: "−"; }
+.course-module-number { color: var(--rust); font-family: var(--sans); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.course-module-title { color: var(--forest); font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.25; }
+.course-module-meta { grid-column: 2; color: var(--muted); font-family: var(--sans); font-size: .76rem; }
+.course-module-badge { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; background: var(--gold); color: #1b2b20; font-family: var(--sans); font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; vertical-align: middle; }
+.course-module-goal { margin: 0; padding: 0 20px 12px; color: var(--muted); font-family: var(--sans); font-size: .9rem; font-style: italic; line-height: 1.55; }
+.course-lessons { margin: 0; padding: 0 20px 14px; list-style: none; }
+.course-lesson { padding: 12px 0; border-top: 1px solid var(--line); }
+.course-lesson-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; margin: 0 0 4px; font-family: var(--sans); }
+.course-lesson-number { color: var(--gold); font-size: .78rem; font-weight: 800; }
+.course-lesson-title { flex: 1 1 16rem; color: var(--ink); font-size: .95rem; font-weight: 700; line-height: 1.4; }
+.course-lesson-tag { padding: 2px 7px; background: rgba(30,70,32,.1); color: var(--forest); font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.course-lesson-time { color: var(--muted); font-size: .76rem; white-space: nowrap; }
+.course-lesson-summary { margin: 0; padding-left: 30px; color: var(--muted); font-family: var(--sans); font-size: .86rem; line-height: 1.55; }
+.course-module-additional details { border-color: var(--gold); background: linear-gradient(160deg, #fffaf0, #f6eedb); box-shadow: 0 14px 32px rgba(200,154,50,.14); }
+
+.course-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px; }
+@media (max-width: 900px) { .course-split { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+
+.course-final { margin: 48px 0 10px; padding: 40px 32px; background: var(--forest); color: var(--cream); text-align: center; }
+.course-final h2 { margin: 0 0 10px; color: var(--cream); font-family: var(--serif); font-size: clamp(1.6rem, 3.4vw, 2.3rem); letter-spacing: -.02em; line-height: 1.2; }
+.course-final p { margin: 0 auto 10px; max-width: 56ch; color: rgba(244,239,228,.85); font-family: var(--sans); font-size: .95rem; line-height: 1.6; }
+.course-final .course-final-language { margin-bottom: 22px; color: var(--gold); font-weight: 700; }
+.course-final .course-buy-row { max-width: 420px; margin: 0 auto; }
+.course-final .course-buy-plain { color: var(--cream); }

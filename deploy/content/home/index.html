@@ -1441,6 +1441,11 @@
                             <span lang-content="en">Data</span>
                             <span lang-content="pt">Dados</span>
                         </a>
+                        <!-- The course, painted as an offer: see .nav-featured in header.css. -->
+                        <a class="nav-featured" href="/es/curso/" data-section-link="course">
+                            <span class="nav-featured-label"><span lang-content="es">Curso: De Cero a la Libertad Financiera</span><span lang-content="en">Course: From Zero to Financial Freedom</span><span lang-content="pt">Curso: Do Zero à Liberdade Financeira</span></span>
+                            <span class="nav-featured-badge"><span lang-content="es">Nuevo</span><span lang-content="en">New</span><span lang-content="pt">Novo</span></span>
+                        </a>
                     </div>
                 </div>
                 <!-- Sobre mí, Sesiones, FAQ and Contacto, behind one label.
@@ -1616,6 +1621,10 @@
                         <a class="mobile-nav-link" href="/es/datos/" data-section-link="data">
                             <span lang-content="es">Datos</span><span lang-content="en">Data</span><span lang-content="pt">Dados</span>
                         </a>
+                        <a class="mobile-nav-link nav-featured" href="/es/curso/" data-section-link="course">
+                            <span class="nav-featured-label"><span lang-content="es">Curso: De Cero a la Libertad Financiera</span><span lang-content="en">Course: From Zero to Financial Freedom</span><span lang-content="pt">Curso: Do Zero à Liberdade Financeira</span></span>
+                            <span class="nav-featured-badge"><span lang-content="es">Nuevo</span><span lang-content="en">New</span><span lang-content="pt">Novo</span></span>
+                        </a>
                     </div>
                     <button type="button" class="mobile-resources-toggle" aria-expanded="false" aria-controls="mobile-support-panel">
                         <span><span lang-content="es">Ayuda</span><span lang-content="en">Support</span><span lang-content="pt">Ajuda</span></span>
@@ -1716,6 +1725,19 @@
                     <i class="fa-solid fa-calculator text-sm text-warmgold"></i>
                 </a>
             </div>
+
+            <!-- The course, announced under the two hero buttons rather than as a
+                 third one: the hero's job is still the newsletter and the free
+                 tools, and the course has its own band further down. -->
+            <a href="/es/curso/" data-section-link="course" class="group mt-8 inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full bg-warmgold/15 border border-warmgold/50 text-sm font-semibold text-creamsoft hover:bg-warmgold/25 transition-all">
+                <span class="px-2 py-0.5 rounded-full bg-warmgold text-darkbark text-[10px] font-extrabold uppercase tracking-widest">
+                    <span lang-content="es">Nuevo</span><span lang-content="en">New</span><span lang-content="pt">Novo</span>
+                </span>
+                <span lang-content="es">Curso online «De Cero a la Libertad Financiera» · 50 % dto. con PRIMEROS10</span>
+                <span lang-content="en">Online course "From Zero to Financial Freedom" · 50% off with PRIMEROS10</span>
+                <span lang-content="pt">Curso online «Do Zero à Liberdade Financeira» · 50% desc. com PRIMEROS10</span>
+                <i class="fa-solid fa-arrow-right text-xs text-warmgold transition-transform group-hover:translate-x-1"></i>
+            </a>
         </div>
     </section>
 
@@ -1955,6 +1977,60 @@
                 </div>
 
             </div>
+        </div>
+    </section>
+
+    <!-- COURSE BAND
+         The paid course, "De Cero a la Libertad Financiera". It sits straight
+         after the three pillars because it is those pillars taught in order:
+         the band says what the course is, what language it is in, what it
+         costs, and links to its page (/es/curso/, /en/course/, /pt/curso/) -
+         the checkout is one click further, on the page that explains it. -->
+    <section id="curso" aria-labelledby="course-heading" class="scroll-mt-20 py-20 bg-forestgreen text-white border-b border-creamborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="text-warmgold text-xs font-bold uppercase tracking-widest mb-3">
+                    <span lang-content="es">Nuevo curso online · En español</span>
+                    <span lang-content="en">New online course · Taught in Spanish</span>
+                    <span lang-content="pt">Novo curso online · Em espanhol</span>
+                </p>
+                <h2 id="course-heading" class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 leading-tight">
+                    <span lang-content="es">De Cero a la Libertad Financiera</span>
+                    <span lang-content="en">From Zero to Financial Freedom</span>
+                    <span lang-content="pt">Do Zero à Liberdade Financeira</span>
+                </h2>
+                <p class="text-lg text-creamsoft/85 leading-relaxed font-light mb-6">
+                    <span lang-content="es">Todo lo de esta web, en una ruta de aprendizaje ordenada: psicología del dinero, ahorro y deudas, interés compuesto e inflación, carteras y diversificación, filosofías de inversión y un taller práctico en España. Seis módulos y un módulo adicional sobre los grandes inversores.</span>
+                    <span lang-content="en">Everything on this site, in one ordered learning path: money psychology, saving and debt, compound interest and inflation, portfolios and diversification, investment philosophies and a hands-on workshop. Six modules plus an additional module on the great investors.</span>
+                    <span lang-content="pt">Tudo o que há neste site, numa rota de aprendizagem ordenada: psicologia do dinheiro, poupança e dívidas, juros compostos e inflação, carteiras e diversificação, filosofias de investimento e um workshop prático. Seis módulos e um módulo adicional sobre os grandes investidores.</span>
+                </p>
+                <ul class="space-y-2 text-creamsoft/90 mb-8">
+                    <li class="flex gap-3"><i class="fa-solid fa-graduation-cap text-warmgold mt-1"></i>
+                        <span lang-content="es">Grabado en español, con subtítulos en español, portugués e inglés.</span>
+                        <span lang-content="en">Recorded in Spanish, with subtitles in English, Portuguese and Spanish.</span>
+                        <span lang-content="pt">Gravado em espanhol, com legendas em português, inglês e espanhol.</span>
+                    </li>
+                    <li class="flex gap-3"><i class="fa-solid fa-play text-warmgold mt-1"></i>
+                        <span lang-content="es">27 lecciones cortas, a tu ritmo, en Hotmart.</span>
+                        <span lang-content="en">27 short lessons, at your own pace, on Hotmart.</span>
+                        <span lang-content="pt">27 aulas curtas, ao seu ritmo, na Hotmart.</span>
+                    </li>
+                    <li class="flex gap-3"><i class="fa-solid fa-coins text-warmgold mt-1"></i>
+                        <span lang-content="es">24,90 € · 50 % de descuento para los 10 primeros alumnos con el cupón <strong class="text-warmgold">PRIMEROS10</strong>.</span>
+                        <span lang-content="en">€24.90 · 50% off for the first 10 students with the coupon <strong class="text-warmgold">PRIMEROS10</strong>.</span>
+                        <span lang-content="pt">24,90 € · 50% de desconto para os 10 primeiros alunos com o cupão <strong class="text-warmgold">PRIMEROS10</strong>.</span>
+                    </li>
+                </ul>
+                <a href="/es/curso/" data-section-link="course" class="inline-flex items-center gap-2 px-6 py-3.5 bg-warmgold hover:bg-warmgold/95 text-darkbark font-bold rounded-lg shadow-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center">
+                    <span lang-content="es">Ver el curso</span>
+                    <span lang-content="en">See the course</span>
+                    <span lang-content="pt">Ver o curso</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+            <a href="/es/curso/" data-section-link="course" class="block rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-white" tabindex="-1" aria-hidden="true">
+                <img src="/.netlify/images?url=/assets/course/de-cero-a-la-libertad-financiera.jpg&amp;w=720&amp;h=720&amp;fit=cover&amp;fm=webp" width="720" height="720" loading="lazy" decoding="async" alt="" class="w-full h-auto">
+            </a>
         </div>
     </section>
 
@@ -4301,7 +4377,8 @@
                 glossary: "/es/glosario/",
                 data: "/es/datos/",
                 about: "/es/sobre-mi/",
-                sessions: "/es/sesiones/"
+                sessions: "/es/sesiones/",
+                course: "/es/curso/"
             },
             en: {
                 simulators: "/en/simulators/",
@@ -4310,7 +4387,8 @@
                 glossary: "/en/glossary/",
                 data: "/en/data/",
                 about: "/en/about/",
-                sessions: "/en/sessions/"
+                sessions: "/en/sessions/",
+                course: "/en/course/"
             },
             pt: {
                 simulators: "/pt/simulators/",
@@ -4319,7 +4397,8 @@
                 glossary: "/pt/glossario/",
                 data: "/pt/dados/",
                 about: "/pt/sobre-mim/",
-                sessions: "/pt/sessoes/"
+                sessions: "/pt/sessoes/",
+                course: "/pt/curso/"
             }
         };
 

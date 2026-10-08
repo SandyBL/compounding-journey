@@ -41,6 +41,7 @@ import {
   LANGUAGES, ORIGIN, sectionPath, toolPath, glossaryPath, articlePath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
+import { coursePromo } from './course-promo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -295,6 +296,7 @@ function renderIndex(language, strings, catalog) {
       <div class="card-grid">
 ${cards}
       </div>
+${coursePromo(language, { placement: 'tools-index' })}
       ${disclaimer(strings, language, { compact: true })}
     </div>`;
 
@@ -379,6 +381,7 @@ ${chartMarkup(tool, language)}
             <div class="article-body">${prose(copy.assumptions)}</div>
           </section>
 ${faqMarkup(tool, language, strings)}
+${coursePromo(language, { placement: 'tool' })}
         </div>
         <aside class="term-aside">
           <h2>${escapeHtml(strings.toolsOther)}</h2>

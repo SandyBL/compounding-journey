@@ -46,6 +46,7 @@ import {
   simulatorPath, homePath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
+import { coursePromo } from './course-promo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -198,6 +199,7 @@ function renderIndex(language, strings, sizes) {
       <div class="card-grid">
 ${cards}
       </div>
+${coursePromo(language, { placement: 'templates-index' })}
       ${disclaimer(strings, language, { compact: true })}
     </div>`;
 
@@ -299,6 +301,7 @@ ${optin(strings, language)}
 ${faq}
             </div>
           </section>
+${coursePromo(language, { placement: 'template' })}
           ${disclaimer(strings, language, { compact: true })}
         </div>
         <aside class="term-aside">

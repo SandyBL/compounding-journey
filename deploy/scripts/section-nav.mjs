@@ -90,7 +90,13 @@ const SECTION_NAV = [
   { key: 'glossary', href: (code) => glossaryPath(code), label: 'glossaryNavLabel' },
   { key: 'data', href: (code) => sectionPath('data', code), label: 'dataNavLabel' },
   { key: 'about', href: (code) => sectionPath('about', code), label: 'aboutNavLabel' },
-  { key: 'sessions', href: (code) => sectionPath('sessions', code), label: 'sessionsNavLabel' }
+  { key: 'sessions', href: (code) => sectionPath('sessions', code), label: 'sessionsNavLabel' },
+  // The paid course. Last in the flat lists and last in Recursos, and the one
+  // entry painted differently: `featured` gives it the gold treatment and a
+  // "Nuevo" badge in the pill, the phone panel and the footer row alike, so
+  // the only thing on the site that is for sale reads as an offer rather than
+  // as a fifth reference section.
+  { key: 'course', href: (code) => sectionPath('course', code), label: 'courseNavLabel', featured: true }
 ];
 
 /**
@@ -140,7 +146,13 @@ const HEADER_NAV = [
   {
     group: 'resourcesNavLabel',
     id: 'desktop-resources-menu',
-    items: [{ section: 'tools' }, { section: 'templates' }, { section: 'glossary' }, { section: 'data' }]
+    items: [
+      { section: 'tools' },
+      { section: 'templates' },
+      { section: 'glossary' },
+      { section: 'data' },
+      { section: 'course' }
+    ]
   },
   {
     group: 'supportNavLabel',
@@ -251,12 +263,28 @@ function assertRenderable(section, currentPath, what) {
   }
 }
 
+/**
+ * The inside of a nav link. A featured item - the course - carries a small
+ * badge after its label, and a class the stylesheets paint it with.
+ */
+function labelMarkup(item, language) {
+  const label = escapeHtml(labelFor(item.label, language));
+  if (!item.featured) return label;
+  return `<span class="nav-featured-label">${label}</span>`
+    + `<span class="nav-featured-badge">${escapeHtml(labelFor('courseNavBadge', language))}</span>`;
+}
+
+function featuredClass(item, className = '') {
+  const classes = [className, item.featured ? 'nav-featured' : ''].filter(Boolean).join(' ');
+  return classes ? ` class="${classes}"` : '';
+}
+
 function links(section, language, currentPath) {
   assertRenderable(section, currentPath, 'the nav');
   return SECTION_NAV
     .map((item) => {
       const current = currentAttribute(item, section, language, currentPath);
-      return `<a href="${item.href(language)}"${current}>${escapeHtml(labelFor(item.label, language))}</a>`;
+      return `<a${featuredClass(item)} href="${item.href(language)}"${current}>${labelMarkup(item, language)}</a>`;
     })
     .join('');
 }
@@ -284,8 +312,8 @@ function navLink(entry, section, language, currentPath, className = '') {
 
   const item = itemFor(entry.section);
   const current = currentAttribute(item, section, language, currentPath);
-  return `<a${classAttribute} href="${item.href(language)}"${current}>`
-    + `${escapeHtml(labelFor(item.label, language))}</a>`;
+  return `<a${featuredClass(item, className)} href="${item.href(language)}"${current}>`
+    + `${labelMarkup(item, language)}</a>`;
 }
 
 /**

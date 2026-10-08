@@ -366,6 +366,21 @@
     "en": "Data",
     "pt": "Dados"
   },
+  "courseNavLabel": {
+    "es": "Curso: De Cero a la Libertad Financiera",
+    "en": "Course: From Zero to Financial Freedom",
+    "pt": "Curso: Do Zero à Liberdade Financeira"
+  },
+  "courseNavBadge": {
+    "es": "Nuevo",
+    "en": "New",
+    "pt": "Novo"
+  },
+  "courseAll": {
+    "es": "Curso «De Cero a la Libertad Financiera»",
+    "en": "Course \"From Zero to Financial Freedom\"",
+    "pt": "Curso «Do Zero à Liberdade Financeira»"
+  },
   "resourcesNavLabel": {
     "es": "Recursos",
     "en": "Resources",

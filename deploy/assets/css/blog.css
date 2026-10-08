@@ -578,3 +578,20 @@ button, input { font: inherit; }
 }
 .share-link:hover, .share-copy:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--forest); }
 .share-copy[data-copied="true"] { border-color: var(--forest); color: var(--forest); }
+
+/* ------------------------------------------------------------ course promo
+   The card scripts/course-promo.mjs renders at the foot of articles, tools,
+   templates and the sessions and about pages. It lives here rather than in
+   pages.css because the journal loads this file and not that one. */
+.course-promo { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 26px; align-items: center; margin: 40px 0; padding: 24px; border: 1px solid rgba(200,154,50,.55); background: linear-gradient(135deg, #fffaf0, #f6eedb); box-shadow: 0 18px 42px rgba(45,61,48,.08); }
+.course-promo-media { display: block; overflow: hidden; border: 1px solid var(--line); background: white; }
+.course-promo-media img { width: 100%; height: auto; }
+.course-promo-eyebrow { margin: 0 0 8px; color: var(--rust); font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.course-promo-title { margin: 0 0 10px; color: var(--forest); font-family: var(--serif); font-size: 1.55rem; line-height: 1.15; letter-spacing: -.02em; }
+.course-promo-body { margin: 0 0 10px; color: var(--ink); font-family: var(--sans); font-size: .92rem; line-height: 1.6; }
+.course-promo-coupon { margin: 0 0 16px; color: #7a5a0d; font-family: var(--sans); font-size: .82rem; font-weight: 700; }
+.course-promo .button.course-promo-action { width: auto; min-width: 0; }
+@media (max-width: 640px) {
+  .course-promo { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 20px; }
+  .course-promo-media { max-width: 220px; }
+}

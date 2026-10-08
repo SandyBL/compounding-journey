@@ -37,6 +37,7 @@ import {
   simulatorsPath, legalPath, absolute
 } from './site-routes.mjs';
 import { renderShell, disclaimer, stringsFor } from './page-shell.mjs';
+import { coursePromo } from './course-promo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -165,6 +166,7 @@ ${practiceBlock(copy, language, strings)}
           </p>
         </div>
       </section>
+${coursePromo(language, { placement: 'about' })}
       ${disclaimer(strings, language)}
     </div>`;
 

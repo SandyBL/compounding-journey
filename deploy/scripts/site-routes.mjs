@@ -52,6 +52,11 @@ export const SECTIONS = {
   templates: { es: 'plantillas', en: 'templates', pt: 'modelos' },
   glossary: { es: 'glosario', en: 'glossary', pt: 'glossario' },
   sessions: { es: 'sesiones', en: 'sessions', pt: 'sessoes' },
+  // The paid course's landing page. One page per language even though the
+  // course itself is recorded in Spanish: it carries subtitles in all three, so
+  // every edition of the site sells it, and each says plainly what language
+  // the videos are in.
+  course: { es: 'curso', en: 'course', pt: 'curso' },
   // Who is writing all of this. It used to be an anchor on the home page,
   // #biografia, which is the wrong shape for the job in two ways: an anchor
   // cannot be the target of a Person's `url` in structured data without
@@ -117,6 +122,10 @@ export function glossaryPath(language, slug) {
 
 export function sessionsPath(language) {
   return sectionPath('sessions', language);
+}
+
+export function coursePath(language) {
+  return sectionPath('course', language);
 }
 
 export function aboutPath(language) {

@@ -34,7 +34,7 @@ import { sitemapEntry, lastCommitted, newestDate } from './page-dates.mjs';
 import {
   LANGUAGES, DEFAULT_LANGUAGE, ORIGIN, LEGAL_PAGES, SIMULATORS,
   homePath, journalPath, articlePath, sectionPath, toolPath, templatePath,
-  glossaryPath, categoryPath, sessionsPath, dataPath, aboutPath, legalPath, absolute,
+  glossaryPath, categoryPath, sessionsPath, coursePath, dataPath, aboutPath, legalPath, absolute,
   simulatorPath, simulatorsPath
 } from './site-routes.mjs';
 
@@ -99,6 +99,10 @@ async function main() {
   const sessionsDate = lastCommitted(
     path.join('content', 'site', 'sessions.mjs'),
     path.join('scripts', 'generate-sessions-page.mjs')
+  );
+  const courseDate = lastCommitted(
+    path.join('content', 'site', 'course.mjs'),
+    path.join('scripts', 'generate-course-page.mjs')
   );
   const aboutDate = lastCommitted(
     path.join('content', 'site', 'about.mjs'),
@@ -172,6 +176,7 @@ async function main() {
     ...family(glossaryPath, glossaryDate),
     ...family(aboutPath, aboutDate),
     ...family(sessionsPath, sessionsDate),
+    ...family(coursePath, courseDate),
     ...family(dataPath, dataDate),
 
     // The legal documents. Their date is the one printed on the page itself,

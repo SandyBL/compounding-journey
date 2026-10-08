@@ -36,6 +36,7 @@ import { stringsFor } from './page-shell.mjs';
 import { NAV_SCRIPT, headerMenu, headerNav, sectionNavRow } from './section-nav.mjs';
 import { SUBSCRIBE_ID, subscribeCard, subscribeFooterBand, subscribeTail } from './newsletter-subscribe.mjs';
 import { shareRow } from './share-row.mjs';
+import { coursePromo } from './course-promo.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDirectory, '..');
@@ -803,7 +804,7 @@ ${structuredData(article, labels, body)}
     <header class="article-header"><div class="container article-header-inner"><div class="post-meta">${categoryChip(article)}<span>${escapeHtml(formatDate(article.language, article.date))}</span><span>${article.readingTime} ${escapeHtml(labels.reading)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="article-dek">${escapeHtml(article.summary)}</p></div></header>
     <div class="container article-layout">${toc}<div class="article-main"><div id="article-body" class="article-body">
 ${body}
-    </div>${sourcesBlock(article, labels)}${shareRow({ url, title: article.title, strings: siteStrings[article.language] })}<footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer>${subscribeCard(article.language, 'article-end')}</div></div>
+    </div>${sourcesBlock(article, labels)}${shareRow({ url, title: article.title, strings: siteStrings[article.language] })}<footer class="author-card"><img src="${logoAt(192)}" alt="Compounding Journey logo" width="192" height="192" loading="lazy" decoding="async" /><div><h2>${escapeHtml(labels.authorPrefix)} ${escapeHtml(article.author)}</h2><p>${escapeHtml(labels.authorBio)}</p></div></footer>${subscribeCard(article.language, 'article-end')}${coursePromo(article.language, { placement: 'article' })}</div></div>
   </article>${readNextSection(article, labels, related)}
     <section class="tools-cta"><div class="container"><div class="cta-panel"><div><p class="eyebrow">${escapeHtml(labels.ctaEyebrow)}</p><h2>${escapeHtml(labels.ctaTitle)}</h2><p>${escapeHtml(labels.ctaBody)}</p>${simulatorLinks(article, labels)}${practicalLinks(article.language)}${workLinks(article.language, labels)}</div><div class="journey-actions"><a class="button" href="${simulatorsPath(article.language)}">${escapeHtml(labels.ctaTools)}</a><a class="button button-secondary" href="${homeHref(article.language)}#assessment">${escapeHtml(labels.ctaAssessment)}</a></div></div></div></section>
   </main>
