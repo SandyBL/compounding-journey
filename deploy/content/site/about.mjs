@@ -89,7 +89,7 @@ export const ABOUT_PAGE = {
       },
       {
         title: 'Sin rastrearte',
-        body: 'Este sitio cuenta cuántas veces se abre cada artículo y nada más: sin cookies, sin identificadores y sin registro de quién leyó qué. Los cálculos de las calculadoras ocurren en tu navegador y no salen de ahí.'
+        body: 'Este sitio cuenta cuántas veces se abre cada artículo y nada más: sin cookies, sin identificadores y sin registro de quién leyó qué. La única excepción es la página del curso, que lleva la etiqueta de Google Ads para medir los anuncios. Los cálculos de las calculadoras ocurren en tu navegador y no salen de ahí.'
       },
       {
         title: 'Tres idiomas escritos, no traducidos automáticamente',
@@ -161,7 +161,7 @@ export const ABOUT_PAGE = {
       },
       {
         title: 'No tracking',
-        body: 'This site counts how many times each article is opened and nothing else: no cookies, no identifiers, no record of who read what. The calculators do their arithmetic in your browser, and it does not leave it.'
+        body: 'This site counts how many times each article is opened and nothing else: no cookies, no identifiers, no record of who read what. The one exception is the course page, which carries the Google Ads tag to measure the ads. The calculators do their arithmetic in your browser, and it does not leave it.'
       },
       {
         title: 'Three languages written, not machine-translated',
@@ -233,7 +233,7 @@ export const ABOUT_PAGE = {
       },
       {
         title: 'Sem rastrear você',
-        body: 'Este site conta quantas vezes cada artigo é aberto e mais nada: sem cookies, sem identificadores e sem registro de quem leu o quê. As calculadoras fazem a conta no seu navegador, e ela não sai de lá.'
+        body: 'Este site conta quantas vezes cada artigo é aberto e mais nada: sem cookies, sem identificadores e sem registro de quem leu o quê. A única exceção é a página do curso, que tem a tag do Google Ads para medir os anúncios. As calculadoras fazem a conta no seu navegador, e ela não sai de lá.'
       },
       {
         title: 'Três idiomas escritos, não traduzidos automaticamente',

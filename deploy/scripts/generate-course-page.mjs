@@ -277,9 +277,22 @@ ${offerPanel(language, copy)}
     body,
     socialImage: `${ORIGIN}/.netlify/images?url=${COURSE_IMAGE}&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=jpg`,
     socialImageAlt: copy.imageAlt,
+    extraHead: GOOGLE_ADS_TAG,
     extraScripts: '<script src="/assets/js/course.js?v=source" defer></script>'
   });
 }
+
+/** ------------------------------------------------------------ ad tag */
+
+// The Google Ads tag, on this page and no other: it is where the campaigns
+// send people, so it is where a visit from an ad is measured. Two tags because
+// the CSP allows no inline script - the bootstrap that Google prints inline is
+// /assets/js/google-ads.js. The Content-Security-Policy for the course paths in
+// _headers allows Google's hosts; every other page keeps the same-origin policy.
+const GOOGLE_ADS_ID = 'AW-18500563301';
+const GOOGLE_ADS_TAG =
+  `\n  <script async src="https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}"></script>` +
+  '\n  <script src="/assets/js/google-ads.js?v=source"></script>';
 
 /** ------------------------------------------------------------------ build */
 
