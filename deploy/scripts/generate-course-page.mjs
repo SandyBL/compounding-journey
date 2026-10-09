@@ -191,12 +191,13 @@ ${offerPanel(language, copy)}
       <section class="page-section course-split" aria-labelledby="course-free">
         <div>
           <h2 id="course-free" class="section-title">${escapeHtml(copy.freeTitle)}</h2>
-          <div class="article-body"><p>${escapeHtml(copy.freeBody)}</p><p>${freeLinks}</p></div>
+          <div class="article-body"><p>${escapeHtml(copy.freeBody)}</p></div>
+          <div class="article-body course-split-foot"><p>${freeLinks}</p></div>
         </div>
         <div>
           <h2 class="section-title">${escapeHtml(copy.authorTitle)}</h2>
           <div class="article-body"><p>${escapeHtml(copy.authorBody)}</p></div>
-          <a class="text-link" href="${aboutPath(language)}">${escapeHtml(copy.authorLink)}</a>
+          <a class="text-link course-split-foot" href="${aboutPath(language)}">${escapeHtml(copy.authorLink)}</a>
         </div>
       </section>
 

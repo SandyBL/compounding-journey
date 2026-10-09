@@ -417,7 +417,7 @@ export const COURSE_COPY = {
     authorTitle: 'Quién te enseña',
     authorBody:
       'Sandy Bradbury es educadora financiera y autora de Compounding Journey. El curso reúne en una ruta lo que ha ido publicando en el blog, las herramientas y las sesiones, explicado con el mismo enfoque: sistemas sencillos, paciencia y largo plazo.',
-    authorLink: 'Conoce a Sandy',
+    authorLink: 'Conoce al instructor',
     faqTitle: 'Preguntas frecuentes',
     faq: [
       ['¿En qué idioma está el curso?', 'El curso está grabado en español. Todas las lecciones tienen subtítulos en español, portugués e inglés, así que puedes seguirlo aunque el español no sea tu lengua materna.'],
@@ -503,7 +503,7 @@ export const COURSE_COPY = {
     authorTitle: 'Who teaches it',
     authorBody:
       'Sandy Bradbury is a financial educator and the author of Compounding Journey. The course gathers into one path what has been published across the journal, the tools and the sessions, with the same approach: simple systems, patience and the long term.',
-    authorLink: 'Meet Sandy',
+    authorLink: 'Meet the instructor',
     faqTitle: 'Frequently asked questions',
     faq: [
       ['What language is the course in?', 'The course is recorded in Spanish. Every lesson has subtitles in English, Portuguese and Spanish, so you can follow it even if Spanish is not your first language.'],
@@ -588,7 +588,7 @@ export const COURSE_COPY = {
     authorTitle: 'Quem ensina',
     authorBody:
       'Sandy Bradbury é educadora financeira e autora da Compounding Journey. O curso reúne numa rota o que foi publicando no blog, nas ferramentas e nas sessões, com a mesma abordagem: sistemas simples, paciência e longo prazo.',
-    authorLink: 'Conheça a Sandy',
+    authorLink: 'Conheça o instrutor',
     faqTitle: 'Perguntas frequentes',
     faq: [
       ['Em que idioma está o curso?', 'O curso está gravado em espanhol. Todas as aulas têm legendas em português, inglês e espanhol, por isso pode acompanhá-lo mesmo que o espanhol não seja a sua língua materna.'],
