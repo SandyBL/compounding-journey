@@ -661,6 +661,12 @@
 .course-module-additional details { border-color: var(--gold); background: linear-gradient(160deg, #fffaf0, #f6eedb); box-shadow: 0 14px 32px rgba(200,154,50,.14); }
 
 .course-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px; }
+/* Both columns end in a link; pin them to the bottom so they share a line. The
+   text-link gets the height of one .article-body line so its label centres on it. */
+.course-split > div { display: flex; flex-direction: column; }
+.course-split-foot { margin-top: auto; }
+.course-split-foot p { margin: 0; }
+.course-split .text-link.course-split-foot { min-height: calc(1.2rem * 1.8); }
 @media (max-width: 900px) { .course-split { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
 
 .course-final { margin: 48px 0 10px; padding: 40px 32px; background: var(--forest); color: var(--cream); text-align: center; }
