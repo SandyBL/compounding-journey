@@ -30,13 +30,13 @@ export const COURSE_LINKS = {
  * The price, in the one currency Hotmart charges it in.
  *
  * `amount` is what goes into the structured data; `display` is what a reader
- * sees, written per language because "24,90 €" and "€24.90" are both correct and
+ * sees, written per language because "24,50 €" and "€24.50" are both correct and
  * belong to different readers.
  */
 export const COURSE_PRICE = {
-  amount: 24.9,
+  amount: 49,
   currency: 'EUR',
-  display: { es: '24,90 €', en: '€24.90', pt: '24,90 €' }
+  display: { es: '49 €', en: '€49', pt: '49 €' }
 };
 
 /**
@@ -52,7 +52,7 @@ export const COURSE_COUPON = {
   code: 'PRIMEROS10',
   percent: 50,
   seats: 10,
-  display: { es: '12,45 €', en: '€12.45', pt: '12,45 €' }
+  display: { es: '24,50 €', en: '€24.50', pt: '24,50 €' }
 };
 
 export function checkoutUrl({ coupon = false } = {}) {
@@ -359,7 +359,7 @@ export const COURSE_COPY = {
     name: 'De Cero a la Libertad Financiera',
     title: 'Curso «De Cero a la Libertad Financiera» — finanzas personales e inversión',
     description:
-      'Curso online en español de finanzas personales e inversión: psicología del dinero, ahorro, deudas, interés compuesto, carteras, fondos indexados y fiscalidad en España. 24,90 €.',
+      'Curso online en español de finanzas personales e inversión: psicología del dinero, ahorro, deudas, interés compuesto, carteras, fondos indexados y fiscalidad en España. 49 €.',
     eyebrow: 'Curso online · En español',
     intro:
       'Todo lo que enseña Compounding Journey, ordenado en una sola ruta de aprendizaje: de entender tu relación con el dinero a abrir tu cuenta de inversión y automatizar tu primera aportación.',
@@ -422,7 +422,7 @@ export const COURSE_COPY = {
     faq: [
       ['¿En qué idioma está el curso?', 'El curso está grabado en español. Todas las lecciones tienen subtítulos en español, portugués e inglés, así que puedes seguirlo aunque el español no sea tu lengua materna.'],
       ['¿Necesito conocimientos previos?', 'No. El primer módulo empieza por la psicología del dinero y cada módulo se apoya en el anterior. Si ya tienes base, el programa te ayuda a ordenarla y a pasar a la acción.'],
-      ['¿Cuánto cuesta y cómo funciona el cupón?', 'El curso cuesta 24,90 € en un único pago. Los 10 primeros alumnos tienen un 50 % de descuento con el cupón PRIMEROS10: el botón de descuento lo aplica automáticamente en el pago, o puedes escribirlo a mano.'],
+      ['¿Cuánto cuesta y cómo funciona el cupón?', 'El curso cuesta 49 € en un único pago. Los 10 primeros alumnos tienen un 50 % de descuento con el cupón PRIMEROS10: el botón de descuento lo aplica automáticamente en el pago, o puedes escribirlo a mano.'],
       ['¿Dónde se ve el curso?', 'En la plataforma Hotmart, desde el ordenador, el móvil o la app de Hotmart. Recibes el acceso por email nada más completar el pago.'],
       ['¿Y si no me convence?', 'Hotmart ofrece una garantía de reembolso de 7 días: si el curso no es lo que esperabas, solicitas la devolución desde tu cuenta de Hotmart.'],
       ['¿Me sirve si no vivo en España?', 'Casi todo el curso es universal: psicología, hábitos, interés compuesto, carteras y filosofías de inversión. El módulo 6 aplica la fiscalidad y las herramientas españolas, y te muestra qué preguntas hacerte en tu propio país.'],
@@ -445,7 +445,7 @@ export const COURSE_COPY = {
     name: 'De Cero a la Libertad Financiera (From Zero to Financial Freedom)',
     title: 'Course "From Zero to Financial Freedom" — personal finance and investing',
     description:
-      'Online course on personal finance and investing, taught in Spanish with English subtitles: money psychology, saving, debt, compound interest, portfolios and index funds. €24.90.',
+      'Online course on personal finance and investing, taught in Spanish with English subtitles: money psychology, saving, debt, compound interest, portfolios and index funds. €49.',
     eyebrow: 'Online course · Taught in Spanish · English subtitles',
     intro:
       'Everything Compounding Journey teaches, arranged into one learning path: from understanding your relationship with money to opening an investment account and automating your first contribution.',
@@ -508,7 +508,7 @@ export const COURSE_COPY = {
     faq: [
       ['What language is the course in?', 'The course is recorded in Spanish. Every lesson has subtitles in English, Portuguese and Spanish, so you can follow it even if Spanish is not your first language.'],
       ['Do I need any prior knowledge?', 'No. Module 1 starts with the psychology of money and each module builds on the one before. If you already have a base, the programme helps you put it in order and act on it.'],
-      ['How much does it cost, and how does the coupon work?', 'The course costs €24.90 as a one-off payment. The first 10 students get 50% off with the coupon PRIMEROS10: the discount button applies it automatically at checkout, or you can type it in yourself.'],
+      ['How much does it cost, and how does the coupon work?', 'The course costs €49 as a one-off payment. The first 10 students get 50% off with the coupon PRIMEROS10: the discount button applies it automatically at checkout, or you can type it in yourself.'],
       ['Where do I watch it?', 'On the Hotmart platform, from your computer, your phone or the Hotmart app. Access arrives by email as soon as payment is complete.'],
       ['What if it is not for me?', 'Hotmart offers a 7-day refund guarantee: if the course is not what you expected, request a refund from your Hotmart account.'],
       ['Is it useful if I do not live in Spain?', 'Most of the course is universal: psychology, habits, compound interest, portfolios and investment philosophies. Module 6 applies Spanish tax rules and tools, and shows you which questions to ask in your own country.'],
@@ -530,7 +530,7 @@ export const COURSE_COPY = {
     name: 'De Cero a la Libertad Financiera (Do Zero à Liberdade Financeira)',
     title: 'Curso «Do Zero à Liberdade Financeira» — finanças pessoais e investimento',
     description:
-      'Curso online de finanças pessoais e investimento, em espanhol com legendas em português: psicologia do dinheiro, poupança, dívidas, juros compostos, carteiras e fundos de índice. 24,90 €.',
+      'Curso online de finanças pessoais e investimento, em espanhol com legendas em português: psicologia do dinheiro, poupança, dívidas, juros compostos, carteiras e fundos de índice. 49 €.',
     eyebrow: 'Curso online · Em espanhol · Legendas em português',
     intro:
       'Tudo o que a Compounding Journey ensina, organizado numa única rota de aprendizagem: de perceber a sua relação com o dinheiro a abrir a conta de investimento e automatizar a primeira contribuição.',
@@ -593,7 +593,7 @@ export const COURSE_COPY = {
     faq: [
       ['Em que idioma está o curso?', 'O curso está gravado em espanhol. Todas as aulas têm legendas em português, inglês e espanhol, por isso pode acompanhá-lo mesmo que o espanhol não seja a sua língua materna.'],
       ['Preciso de conhecimentos prévios?', 'Não. O módulo 1 começa pela psicologia do dinheiro e cada módulo apoia-se no anterior. Se já tem uma base, o programa ajuda a organizá-la e a passar à ação.'],
-      ['Quanto custa e como funciona o cupão?', 'O curso custa 24,90 € num único pagamento. Os 10 primeiros alunos têm 50% de desconto com o cupão PRIMEROS10: o botão de desconto aplica-o automaticamente no pagamento, ou pode escrevê-lo à mão.'],
+      ['Quanto custa e como funciona o cupão?', 'O curso custa 49 € num único pagamento. Os 10 primeiros alunos têm 50% de desconto com o cupão PRIMEROS10: o botão de desconto aplica-o automaticamente no pagamento, ou pode escrevê-lo à mão.'],
       ['Onde vejo o curso?', 'Na plataforma Hotmart, no computador, no telemóvel ou na app da Hotmart. Recebe o acesso por email assim que concluir o pagamento.'],
       ['E se não me convencer?', 'A Hotmart oferece uma garantia de reembolso de 7 dias: se o curso não for o que esperava, pede a devolução na sua conta Hotmart.'],
       ['Serve-me se não vivo em Espanha?', 'Quase todo o curso é universal: psicologia, hábitos, juros compostos, carteiras e filosofias de investimento. O módulo 6 aplica a fiscalidade e as ferramentas espanholas, e mostra que perguntas fazer no seu próprio país.'],
